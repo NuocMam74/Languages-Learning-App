@@ -1,11 +1,5 @@
-import type { Localized, Tone } from "@parlo/core";
-import { localize } from "@parlo/core";
-
-/**
- * Chaînes d'interface uniquement. Le contenu pédagogique vient des packs
- * (ADR 0002) ; rien ici ne doit enseigner la langue.
- */
-const fr = {
+/** Chaînes d'interface communes (accueil, hub, leçon, exercices). */
+export const fr = {
   "common.back": "Retour",
   "welcome.noAlphabet": "Pas d'alphabet à apprendre : le vietnamien s'écrit en lettres latines.",
   "welcome.start": "Commencer",
@@ -102,9 +96,7 @@ const fr = {
   "error.retry": "Réessayer",
 } as const;
 
-export type MessageKey = keyof typeof fr;
-
-const en: Partial<Record<MessageKey, string>> = {
+export const en: Partial<Record<keyof typeof fr, string>> = {
   "welcome.noAlphabet": "No alphabet to learn: Vietnamese uses Latin letters.",
   "welcome.start": "Start",
   "hub.daily": "Today's session",
@@ -114,27 +106,3 @@ const en: Partial<Record<MessageKey, string>> = {
   "lesson.wrong": "Not quite.",
   "recap.title": "Lesson complete",
 };
-
-const dictionaries: Record<string, Partial<Record<MessageKey, string>>> = { fr, en };
-
-export function getLocale(): "fr" | "en" {
-  return navigator.language.toLowerCase().startsWith("fr") ? "fr" : navigator.language ? "en" : "fr";
-}
-
-export function t(key: MessageKey, vars: Record<string, string | number> = {}, locale = getLocale()): string {
-  const template = dictionaries[locale]?.[key] ?? fr[key];
-  return template.replace(/\{(\w+)\}/g, (_, name: string) => String(vars[name] ?? `{${name}}`));
-}
-
-export function plural(key: MessageKey, pluralKey: MessageKey, n: number): string {
-  return t(n > 1 ? pluralKey : key, { n });
-}
-
-export function toneLabel(tones: readonly Tone[]): string {
-  if (tones.length === 2 && tones.includes("hoi") && tones.includes("nga")) return t("tone.hoi_nga");
-  return tones.map((tone) => t(`tone.${tone}` as MessageKey)).join(" / ");
-}
-
-export function l(text: Localized | null | undefined): string {
-  return text ? localize(text, getLocale()) : "";
-}

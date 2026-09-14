@@ -2,7 +2,7 @@ import type { ChoiceOption, ContentIndex, Exercise, ExerciseResponse } from "@pa
 import { useState, type ReactNode } from "react";
 import { playConcept, playPath, ttsAllowed } from "../audio.ts";
 import { mediaUrl } from "../content.ts";
-import { l, t, toneLabel, type MessageKey } from "../i18n.ts";
+import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { AudioButton } from "./AudioButton.tsx";
 import { Button, Vi } from "./ui.tsx";
 

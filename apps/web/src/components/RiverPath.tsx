@@ -1,6 +1,6 @@
 import type { ContentIndex, LessonId } from "@parlo/core";
 import { Link } from "react-router";
-import { l } from "../i18n.ts";
+import { l } from "../i18n/index.ts";
 
 /**
  * Carte du parcours : un fleuve vertical en SVG, les leçons sont des

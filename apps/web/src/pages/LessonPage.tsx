@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { ExerciseView } from "../components/exercises.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
-import { l, t } from "../i18n.ts";
+import { l, t } from "../i18n/index.ts";
 import { useLesson } from "../lesson-store.ts";
 
 /** Durée d'affichage d'une bonne réponse avant d'enchaîner (pas d'écran intermédiaire). */

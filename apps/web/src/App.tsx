@@ -4,7 +4,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { Button, Screen } from "./components/ui.tsx";
 import { loadPack } from "./content.ts";
 import type { Profile } from "./db.ts";
-import { t } from "./i18n.ts";
+import { t } from "./i18n/index.ts";
 import { currentSnapshot, getProfile } from "./learner.ts";
 import { Hub } from "./pages/Hub.tsx";
 import { LessonPage } from "./pages/LessonPage.tsx";

@@ -37,6 +37,19 @@ export type ParloEvent =
       }
     >
   | BaseEvent<"srs_card_updated", { card: SrsCard }>
+  | BaseEvent<
+      "placement_completed",
+      {
+        /** Estimation 0 (débutant) à 3 (comprend et parle un peu). */
+        levelEstimate: number;
+        entryLessonId: LessonId;
+        correct: number;
+        total: number;
+        /** Concepts reconnus pendant le test : cartes SRS de départ. */
+        knownConceptIds: ConceptId[];
+      }
+    >
+  | BaseEvent<"badge_earned", { badgeCode: string }>
   | BaseEvent<"lesson_completed", { sessionId: string; lessonId: LessonId; score: number; durationMs: number }>
   | BaseEvent<
       "session_completed",

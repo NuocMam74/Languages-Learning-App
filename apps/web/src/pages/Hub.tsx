@@ -5,7 +5,7 @@ import { InstallHint } from "../components/InstallHint.tsx";
 import { RiverPath } from "../components/RiverPath.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import type { Profile, Totals } from "../db.ts";
-import { l, plural, t } from "../i18n.ts";
+import { l, plural, t } from "../i18n/index.ts";
 import { completedLessons, getTotals } from "../learner.ts";
 import { useOnline } from "../use-online.ts";
 

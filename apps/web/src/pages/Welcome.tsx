@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { playPath } from "../audio.ts";
 import { AudioButton } from "../components/AudioButton.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
-import { l, t } from "../i18n.ts";
+import { l, t } from "../i18n/index.ts";
 
 /** Première ouverture : on entend la langue avant tout (spec §4.1.1). */
 export function Welcome({ content }: { content: ContentIndex }) {

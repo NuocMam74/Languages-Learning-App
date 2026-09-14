@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { PlaybackSource } from "../audio.ts";
-import { t } from "../i18n.ts";
+import { t } from "../i18n/index.ts";
 
 interface Props {
   play: (speed: "natural" | "slow") => Promise<PlaybackSource>;

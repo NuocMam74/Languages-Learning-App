@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { t } from "../i18n.ts";
+import { t } from "../i18n/index.ts";
 
 /** Aide à l'installation selon la plateforme (spec §8.1). */
 

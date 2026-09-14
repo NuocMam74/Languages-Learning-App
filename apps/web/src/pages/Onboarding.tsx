@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Screen } from "../components/ui.tsx";
 import type { Profile } from "../db.ts";
-import { t, type MessageKey } from "../i18n.ts";
+import { t, type MessageKey } from "../i18n/index.ts";
 import { DEFAULT_PROFILE, saveProfile } from "../learner.ts";
 
 /** 5 questions, une par écran, réponses en gros boutons (spec §4.1.3). */
