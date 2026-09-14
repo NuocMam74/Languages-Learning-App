@@ -9,10 +9,16 @@ async function onboard(page: Page) {
   await page.goto("/");
   await expect(page).toHaveURL(/\/bienvenue$/);
   await page.getByRole("button", { name: "Commencer" }).click();
+  // Choix de la langue (seul le vietnamien du Sud est actif).
+  await expect(page).toHaveURL(/\/langue$/);
+  await page.getByRole("button", { name: "Continuer" }).click();
   for (let i = 0; i < 5; i++) {
     await expect(page.getByText(`Question ${i + 1} sur 5`)).toBeVisible();
     await page.locator("main button").first().click();
   }
+  // Mini-test de placement facultatif : on le passe.
+  await expect(page).toHaveURL(/\/placement$/);
+  await page.getByRole("button", { name: /^Passer/ }).click();
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
 }
 
@@ -29,6 +35,8 @@ async function playOneStep(page: Page): Promise<"done" | "step"> {
   const radio = page.getByRole("radio").first();
   const check = page.getByRole("button", { name: "Valider" });
 
+  // L'écran peut encore être en train de se construire : attendre une action possible avant de choisir.
+  await expect(cont.or(done).or(radio).or(check).first()).toBeVisible();
   const wasFeedback = (await lesson.getAttribute("data-status")) === "feedback";
   if (wasFeedback) {
     await cont.click(); // correction affichée après une erreur
@@ -47,9 +55,14 @@ async function playOneStep(page: Page): Promise<"done" | "step"> {
   // Attend un nouvel état stable : correction affichée, étape suivante, question de la carte culture, ou fin.
   await expect(async () => {
     if (await finished.isVisible()) return;
-    const el = page.getByTestId("lesson");
-    const status = await el.getAttribute("data-status");
-    const moved = (await el.getAttribute("data-cursor")) !== cursor;
+    // Lecture atomique : pendant l'enregistrement du bilan l'écran de séance est démonté.
+    const snap = await page.evaluate(() => {
+      const el = document.querySelector('[data-testid="lesson"]');
+      return el ? { status: el.getAttribute("data-status"), cursor: el.getAttribute("data-cursor") } : null;
+    });
+    if (!snap) throw new Error("transition en cours");
+    const status = snap.status;
+    const moved = snap.cursor !== cursor;
     const freshQuestion = (await radio.isVisible()) && (await page.locator('[role="radio"][aria-checked="true"]').count()) === 0;
     const ready = (status === "feedback" && (await cont.isVisible())) || (status === "answering" && (moved || freshQuestion || wasFeedback));
     expect(ready).toBe(true);

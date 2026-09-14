@@ -353,8 +353,9 @@ export function recordResult(run: LessonRun, exercise: Exercise, evaluation: Eva
   }
 
   // Une erreur relance l'exercice en fin de leçon, sans interrompre (spec §3.3).
+  // Les mini-jeux (mise en pratique) ne sont jamais relancés : le résultat compte, on avance.
   const queue = [...run.queue];
-  if (evaluation.graded && !evaluation.correct && item.attempt < MAX_ATTEMPTS) {
+  if (evaluation.graded && !evaluation.correct && item.attempt < MAX_ATTEMPTS && exercise.type !== "game") {
     queue.push({ stepIndex: item.stepIndex, attempt: item.attempt + 1 });
   }
 

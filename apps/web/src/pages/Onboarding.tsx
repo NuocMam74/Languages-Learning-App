@@ -46,9 +46,10 @@ export function Onboarding({ content, onDone }: { content: ContentIndex; onDone:
     const final = { ...updated, onboardedAt: new Date().toISOString() };
     await saveProfile(final);
     onDone(final);
-    // Première leçon immédiatement, avant toute création de compte (spec §4.1.5).
+    // Mini-test de placement optionnel (spec §4.1.4), puis première leçon avant tout compte (§4.1.5).
+    const hasPlacement = content.lessons.size > 0;
     const first = nextLesson(content.curriculum, content.lessons, new Set(), final.motivation);
-    navigate(first ? `/lecon/${first.id}` : "/", { replace: true });
+    navigate(hasPlacement ? "/placement" : first ? `/lecon/${first.id}` : "/", { replace: true });
   };
 
   return (

@@ -2,6 +2,7 @@ import type { ChoiceOption, ContentIndex, Exercise, ExerciseResponse } from "@pa
 import { useState, type ReactNode } from "react";
 import { playConcept, playPath, ttsAllowed } from "../audio.ts";
 import { mediaUrl } from "../content.ts";
+import { GameExercise } from "../games/GameExercise.tsx";
 import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { AudioButton } from "./AudioButton.tsx";
 import { Button, Vi } from "./ui.tsx";
@@ -34,6 +35,7 @@ export function ExerciseView({ exercise, content, onAnswer, locked }: { exercise
     case "speak_repeat":
       return <SpeakRepeatView exercise={exercise} {...common} />;
     case "game":
+      if (exercise.game === "cho_noi") return <GameExercise exercise={exercise} {...common} />;
       return <Placeholder message={t("ex.game.soon", { name: t(`game.${exercise.game}` as MessageKey) })} onAnswer={onAnswer} />;
     case "unsupported":
       return <Placeholder message={t("ex.unsupported")} onAnswer={onAnswer} />;
@@ -65,21 +67,24 @@ function ChoiceView({ exercise, content, onAnswer, locked }: ViewProps<ChoiceTyp
   switch (exercise.type) {
     case "listen_pick_image":
       prompt = t("ex.listenPickImage");
-      stage = <AudioButton play={(speed) => playConcept(content, exercise.audio, { speed, allowTts: ttsAllowed(false) })} />;
+      stage = <AudioButton play={(speed) => playConcept(content, exercise.audio, { speed, allowTts: ttsAllowed(false) })} transcript={exercise.audio.vi} />;
       break;
-    case "listen_pick_text":
-      stage = <AudioButton play={(speed) => playConcept(content, exercise.audio, { speed, allowTts: ttsAllowed(false) })} />;
+    case "listen_pick_text": {
+      // Mode silencieux : options en vietnamien → on montre le sens ; options de sens → on montre le mot.
+      const byMeaning = exercise.options.some((o) => o.label !== undefined);
+      stage = <AudioButton play={(speed) => playConcept(content, exercise.audio, { speed, allowTts: ttsAllowed(false) })} transcript={byMeaning ? exercise.audio.vi : l(exercise.audio.gloss)} />;
       break;
+    }
     case "tone_identify":
       prompt = t("ex.toneIdentify");
-      stage = <AudioButton play={(speed) => playConcept(content, exercise.audio, { speed, allowTts: ttsAllowed(true) })} />;
+      stage = <AudioButton play={(speed) => playConcept(content, exercise.audio, { speed, allowTts: ttsAllowed(true) })} transcript={exercise.audio.vi} />;
       break;
     case "tone_minimal_pair": {
       prompt = t("ex.toneMinimalPair");
       const audio = exercise.audio;
       stage = audio
-        ? <AudioButton play={(speed) => playConcept(content, audio, { speed, allowTts: ttsAllowed(true) })} />
-        : <AudioButton play={() => playPath(content, undefined, exercise.target, ttsAllowed(true))} withSlow={false} />;
+        ? <AudioButton play={(speed) => playConcept(content, audio, { speed, allowTts: ttsAllowed(true) })} transcript={audio.vi} />
+        : <AudioButton play={() => playPath(content, undefined, exercise.target, ttsAllowed(true))} withSlow={false} transcript={exercise.target} />;
       break;
     }
     case "spot_the_south":

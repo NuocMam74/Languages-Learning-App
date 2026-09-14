@@ -28,6 +28,17 @@ describe("planSession", () => {
     }
   });
 
+  it("objectif 5 min : quelques révisions dues passent avant la leçon, dans la tolérance", () => {
+    const plan = planSession({ targetMinutes: 5, cards: dueCards(3), nextLesson: l01, now: NOW });
+    expect(plan.blocks.map((b) => b.kind)).toEqual(["review", "new", "recap"]);
+    expect(plan.estimatedSeconds).toBeLessThanOrEqual(300 * (1 + OVERRUN_TOLERANCE));
+  });
+
+  it("beaucoup de révisions en retard : journée de révision, sans nouveau", () => {
+    const plan = planSession({ targetMinutes: 5, cards: dueCards(12), nextLesson: l01, now: NOW });
+    expect(plan.blocks.map((b) => b.kind)).toEqual(["review", "recap"]);
+  });
+
   it("les révisions en trop glissent au lendemain", () => {
     const plan = planSession({ targetMinutes: 5, cards: dueCards(100), nextLesson: null, now: NOW });
     const reviewBlock = plan.blocks.find((b) => b.kind === "review");

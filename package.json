@@ -17,6 +17,9 @@
     "test": "npm run test --workspaces --if-present",
     "content:validate": "tsx scripts/validate-content.ts",
     "content:lint": "tsx scripts/south-lint-content.ts",
+    "audio:list": "tsx scripts/audio/recording-list.ts",
+    "audio:process": "tsx scripts/audio/process.ts",
+    "audio:e2e": "tsx scripts/audio/synth-fixtures.ts --e2e",
     "check": "npm run typecheck && npm run test && npm run content:validate && npm run content:lint"
   },
   "devDependencies": {

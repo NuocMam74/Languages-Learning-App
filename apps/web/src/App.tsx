@@ -1,15 +1,31 @@
 import type { ContentIndex } from "@parlo/core";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
+import { useAccount } from "./account.ts";
 import { Button, Screen } from "./components/ui.tsx";
 import { loadPack } from "./content.ts";
 import type { Profile } from "./db.ts";
 import { t } from "./i18n/index.ts";
-import { currentSnapshot, getProfile } from "./learner.ts";
+import { currentSession, getProfile, sessionPath } from "./learner.ts";
 import { Hub } from "./pages/Hub.tsx";
-import { LessonPage } from "./pages/LessonPage.tsx";
 import { Onboarding } from "./pages/Onboarding.tsx";
+import { SessionPage } from "./pages/SessionPage.tsx";
 import { Welcome } from "./pages/Welcome.tsx";
+import { GamePlayPage, GamesPage } from "./games/GamesPage.tsx";
+import { usePrefs } from "./prefs.ts";
+import { startSync } from "./sync.ts";
+
+/** Pages de démonstration des composants (spec §16) : développement uniquement, absentes du build. */
+const DemoPage = import.meta.env.DEV ? lazy(() => import("./demo/DemoPage.tsx")) : null;
+
+// Écrans hors du parcours quotidien : chargés à la demande (bundle principal léger).
+const LanguageChoice = lazy(() => import("./pages/LanguageChoice.tsx"));
+const Placement = lazy(() => import("./pages/Placement.tsx"));
+const AccountPage = lazy(() => import("./pages/Account.tsx"));
+const Settings = lazy(() => import("./pages/Settings.tsx"));
+const Badges = lazy(() => import("./pages/Badges.tsx"));
+
+const later = (node: ReactNode) => <Suspense fallback={null}>{node}</Suspense>;
 
 interface Boot {
   content: ContentIndex;
@@ -19,14 +35,16 @@ interface Boot {
 export function App() {
   const [boot, setBoot] = useState<Boot | null>(null);
   const [failed, setFailed] = useState(false);
+  const locale = usePrefs((s) => s.locale);
 
   const start = useCallback(() => {
     setFailed(false);
-    Promise.all([loadPack(), getProfile(), currentSnapshot()])
-      .then(([content, profile, snapshot]) => {
-        // Reprise exacte, une seule fois au lancement : quitter la leçon ramène ensuite au hub.
-        if (snapshot && profile.onboardedAt && window.location.pathname === "/") {
-          window.history.replaceState(null, "", `/lecon/${snapshot.run.lessonId}`);
+    Promise.all([loadPack(), getProfile()])
+      .then(async ([content, profile]) => {
+        const session = await currentSession(content);
+        // Reprise exacte, une seule fois au lancement : quitter la séance ramène ensuite au hub.
+        if (session && profile.onboardedAt && window.location.pathname === "/") {
+          window.history.replaceState(null, "", sessionPath(session));
         }
         setBoot({ content, profile });
       })
@@ -34,6 +52,11 @@ export function App() {
   }, []);
 
   useEffect(start, [start]);
+
+  useEffect(() => {
+    void useAccount.getState().init();
+    return startSync();
+  }, []);
 
   if (failed) {
     return (
@@ -43,24 +66,41 @@ export function App() {
     );
   }
   if (!boot) return null;
-  return <Routes boot={boot} onProfile={(profile) => setBoot({ ...boot, profile })} />;
+  // Changer la langue d'interface remonte l'arbre : toutes les chaînes sont relues.
+  return <Routes key={locale ?? "auto"} boot={boot} onProfile={(profile) => setBoot({ ...boot, profile })} />;
 }
 
 function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => void }) {
   const { content, profile } = boot;
   const onboarded = profile.onboardedAt !== null;
 
-  // Recréé seulement quand l'onboarding se termine (le profil n'évolue pas ailleurs en Phase 0).
+  // Recréé seulement quand l'onboarding se termine ; les pages relisent le profil elles-mêmes.
   const router = useMemo(
     () =>
       createBrowserRouter([
         {
           path: "/",
-          element: onboarded ? <Hub content={content} profile={profile} /> : <Navigate to="/bienvenue" replace />,
+          element: onboarded ? <Hub content={content} /> : <Navigate to="/bienvenue" replace />,
         },
         { path: "/bienvenue", element: <Welcome content={content} /> },
+        { path: "/langue", element: later(<LanguageChoice content={content} />) },
         { path: "/onboarding", element: <Onboarding content={content} onDone={onProfile} /> },
-        { path: "/lecon/:lessonId", element: <LessonPage content={content} /> },
+        { path: "/placement", element: later(<Placement content={content} />) },
+        { path: "/seance", element: <SessionPage content={content} mode="daily" /> },
+        { path: "/revision", element: <SessionPage content={content} mode="review" /> },
+        { path: "/lecon/:lessonId", element: <SessionPage content={content} mode="lesson" /> },
+        { path: "/compte", element: later(<AccountPage mode="register" />) },
+        { path: "/connexion", element: later(<AccountPage mode="login" />) },
+        { path: "/reglages", element: later(<Settings />) },
+        { path: "/badges", element: later(<Badges />) },
+        { path: "/jeux", element: <GamesPage /> },
+        { path: "/jeux/:game", element: <GamePlayPage content={content} /> },
+        ...(DemoPage
+          ? [
+              { path: "/demo", element: <Suspense fallback={null}><DemoPage content={content} /></Suspense> },
+              { path: "/demo/:component", element: <Suspense fallback={null}><DemoPage content={content} /></Suspense> },
+            ]
+          : []),
         { path: "*", element: <Navigate to="/" replace /> },
       ]),
     [content, onboarded],

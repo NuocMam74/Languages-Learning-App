@@ -10,9 +10,20 @@ import { l } from "../i18n/index.ts";
 const STEP_Y = 112;
 const AMPLITUDE = 26; // % de la largeur
 
-export function RiverPath({ content, completed, current }: { content: ContentIndex; completed: ReadonlySet<LessonId>; current: LessonId | null }) {
-  const nodes = content.curriculum.units.flatMap((unit) =>
-    unit.status === "available"
+export function RiverPath({ content, completed, current, unlocked = completed }: {
+  content: ContentIndex;
+  completed: ReadonlySet<LessonId>;
+  current: LessonId | null;
+  /** Leçons ouvertes sans être terminées (sautées grâce au test de placement). */
+  unlocked?: ReadonlySet<LessonId>;
+}) {
+  const units = content.curriculum.units;
+  // Unité courante dépliée ; les unités suivantes restent visibles mais repliées et grisées (spec §4.2).
+  const withCurrent = units.findIndex((u) => current !== null && u.lessons.includes(current));
+  const lastTouched = units.reduce((acc, u, i) => (u.lessons.some((id) => completed.has(id) || unlocked.has(id)) ? i : acc), -1);
+  const currentUnit = withCurrent >= 0 ? withCurrent : Math.max(0, lastTouched);
+  const nodes = units.flatMap((unit, i) =>
+    unit.status === "available" && i <= currentUnit
       ? unit.lessons.map((id) => ({ id, unit, lesson: content.lessons.get(id) }))
       : [{ id: unit.id, unit, lesson: undefined }],
   );
@@ -40,7 +51,7 @@ export function RiverPath({ content, completed, current }: { content: ContentInd
         {nodes.map((node, i) => {
           const done = completed.has(node.id);
           const isCurrent = node.id === current;
-          const locked = !node.lesson || (!done && !isCurrent);
+          const locked = !node.lesson || (!done && !isCurrent && !unlocked.has(node.id));
           const showUnit = node.unit.id !== lastUnit;
           lastUnit = node.unit.id;
           const left = xOf(i);

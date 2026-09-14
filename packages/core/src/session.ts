@@ -33,6 +33,11 @@ export interface PlanInput {
   now: Date;
 }
 
+/** Nombre de révisions dues à partir duquel la séance ne propose pas de nouveau (la moitié du budget). */
+export function reviewDayThreshold(budgetSeconds: number): number {
+  return Math.max(8, Math.floor((budgetSeconds * 0.5) / REVIEW_ITEM_SECONDS));
+}
+
 export function planSession({ targetMinutes, cards, nextLesson, now }: PlanInput): SessionPlan {
   const budget = targetMinutes * 60;
   const blocks: SessionBlock[] = [];
@@ -52,11 +57,17 @@ export function planSession({ targetMinutes, cards, nextLesson, now }: PlanInput
   }
 
   const lessonSeconds = nextLesson ? nextLesson.estimatedMinutes * 60 : 0;
+  // Trop de révisions en retard : journée de révision, pas de nouveau (sinon le SRS n'est jamais servi
+  // quand la leçon remplit à elle seule l'objectif de 5 min).
+  const reviewDay = due.length >= reviewDayThreshold(budget);
   // Le nouveau n'entre que s'il tient dans le budget (avec tolérance), ou s'il n'y a rien à réviser.
   const includeLesson =
-    nextLesson !== null && (due.length === 0 || used + lessonSeconds <= budget * (1 + OVERRUN_TOLERANCE));
+    nextLesson !== null && (due.length === 0 || (!reviewDay && used + lessonSeconds <= budget * (1 + OVERRUN_TOLERANCE)));
 
-  const reviewBudget = Math.max(0, budget - used - (includeLesson ? lessonSeconds : 0));
+  // Avec une leçon, les révisions prennent la marge de tolérance ; seules, elles tiennent dans l'objectif.
+  const reviewBudget = includeLesson
+    ? Math.max(0, budget * (1 + OVERRUN_TOLERANCE) - used - lessonSeconds)
+    : Math.max(0, budget - used);
   const reviewCount = Math.min(due.length, Math.floor(reviewBudget / REVIEW_ITEM_SECONDS));
   if (reviewCount > 0) {
     blocks.push({ kind: "review", conceptIds: due.slice(0, reviewCount).map((c) => c.conceptId), deferred: due.length - reviewCount });

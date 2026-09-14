@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { PlaybackSource } from "../audio.ts";
 import { t } from "../i18n/index.ts";
+import { usePrefs } from "../prefs.ts";
 
 interface Props {
   play: (speed: "natural" | "slow") => Promise<PlaybackSource>;
@@ -8,16 +9,19 @@ interface Props {
   autoPlay?: boolean;
   large?: boolean;
   withSlow?: boolean;
+  /** Texte affiché en mode silencieux, à la place de l'écoute (spec §13). */
+  transcript?: string;
 }
 
-export function AudioButton({ play, autoPlay = true, large = true, withSlow = true }: Props) {
+export function AudioButton({ play, autoPlay = true, large = true, withSlow = true, transcript }: Props) {
   const [source, setSource] = useState<PlaybackSource | null>(null);
   const played = useRef(false);
+  const silent = usePrefs((s) => s.silent);
 
   const run = async (speed: "natural" | "slow") => setSource(await play(speed));
 
   useEffect(() => {
-    if (autoPlay && !played.current) {
+    if (autoPlay && !silent && !played.current) {
       played.current = true;
       void run("natural");
     }
@@ -47,6 +51,12 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
       </div>
       {source === "tts" && <p className="text-sm text-phu-sa/70">{t("audio.tts")}</p>}
       {source === "missing" && <p className="text-sm text-son-mai">{t("audio.missing")}</p>}
+      {silent && transcript && (
+        <p className="text-center text-lg" data-testid="transcript">
+          <span className="sr-only">{t("settings.silent.transcript")} </span>
+          {transcript}
+        </p>
+      )}
     </div>
   );
 }

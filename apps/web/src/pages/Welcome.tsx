@@ -11,7 +11,7 @@ export function Welcome({ content }: { content: ContentIndex }) {
   const welcome = content.pack.welcome;
 
   return (
-    <Screen action={<Button onClick={() => navigate("/onboarding")}>{t("welcome.start")}</Button>}>
+    <Screen action={<Button onClick={() => navigate("/langue")}>{t("welcome.start")}</Button>}>
       <div className="flex flex-1 flex-col justify-center gap-10">
         {welcome && (
           <>

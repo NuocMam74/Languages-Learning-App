@@ -163,6 +163,19 @@ describe("déroulé de leçon", () => {
     expect(run.tutorNudge).toBe("c_ma_mom");
   });
 
+  it("un mini-jeu raté n'est pas relancé, mais son résultat est noté", () => {
+    const l = lesson("vi-south.u01.l01");
+    const gameIdx = l.steps.findIndex((s) => s.type === "game");
+    let run = startLesson(l, "sess", NOW);
+    run = { ...run, cursor: run.queue.findIndex((q) => q.stepIndex === gameIdx) };
+    const ex = buildExercise(content, l, gameIdx, "sess");
+    const ev = evaluate(ex, { kind: "game", correct: 2, total: 10 });
+    expect(ev).toMatchObject({ correct: false, graded: true });
+    const next = recordResult(run, ex, ev, 30_000);
+    expect(next.queue).toHaveLength(run.queue.length);
+    expect(next.results.at(-1)).toMatchObject({ stepIndex: gameIdx, correct: false, graded: true });
+  });
+
   it("l'état survit à un aller-retour JSON (sauvegarde locale)", () => {
     const l = lesson("vi-south.u01.l02");
     let run = startLesson(l, "sess", NOW);

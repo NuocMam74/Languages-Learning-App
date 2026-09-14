@@ -1,0 +1,31 @@
+{
+  "$schema": "../schema/placement.schema.json",
+  "pack": "vi-south",
+  "durationSeconds": 90,
+  "slots": ["tone", "tone", "comprehension", "comprehension", "comprehension", "comprehension", "vocab", "vocab"],
+  "items": [
+    { "id": "pt_ma_mom", "skill": "tone", "difficulty": 1, "concept": "c_ma_mom" },
+    { "id": "pt_ba_grandma", "skill": "tone", "difficulty": 2, "concept": "c_ba_grandma" },
+    { "id": "pt_da", "skill": "tone", "difficulty": 2, "concept": "c_da" },
+    { "id": "pt_ma_tomb", "skill": "tone", "difficulty": 3, "concept": "c_ma_tomb" },
+
+    { "id": "pc_chao_anh", "skill": "comprehension", "difficulty": 1, "concept": "s_chao_anh", "distractors": ["c_cam_on", "s_day_la", "c_ma_ghost"] },
+    { "id": "pc_cam_on", "skill": "comprehension", "difficulty": 1, "concept": "c_cam_on", "distractors": ["c_chao", "c_da", "c_toi"] },
+    { "id": "pc_day_la", "skill": "comprehension", "difficulty": 2, "concept": "s_day_la", "distractors": ["s_chao_anh", "c_cam_on", "c_da"] },
+    { "id": "pc_da", "skill": "comprehension", "difficulty": 2, "concept": "c_da", "distractors": ["c_cam_on", "c_toi", "c_chao"] },
+    { "id": "pc_chi", "skill": "comprehension", "difficulty": 3, "concept": "c_chi", "distractors": ["c_anh", "c_em", "c_ba_grandma"] },
+    { "id": "pc_em", "skill": "comprehension", "difficulty": 3, "concept": "c_em", "distractors": ["c_anh", "c_chi", "c_toi"] },
+
+    { "id": "pv_ba", "skill": "vocab", "difficulty": 1, "concept": "c_ba", "distractors": ["c_ma_mom", "c_ba_grandma"] },
+    { "id": "pv_anh", "skill": "vocab", "difficulty": 2, "concept": "c_anh", "distractors": ["c_chi", "c_em"] },
+    { "id": "pv_toi", "skill": "vocab", "difficulty": 2, "concept": "c_toi", "distractors": ["c_chi", "c_em"] },
+    { "id": "pv_ma_seedling", "skill": "vocab", "difficulty": 3, "concept": "c_ma_seedling", "distractors": ["c_ma_ghost", "c_ma_but", "c_ma_mom"] }
+  ],
+  "levels": [
+    { "level": 0, "minScore": 0 },
+    { "level": 1, "minScore": 0.45 },
+    { "level": 2, "minScore": 0.7 },
+    { "level": 3, "minScore": 0.9 }
+  ],
+  "reviewed": false
+}

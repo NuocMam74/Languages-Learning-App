@@ -1,5 +1,6 @@
 import type { Localized, Tone } from "@parlo/core";
 import { localize } from "@parlo/core";
+import { usePrefs } from "../prefs.ts";
 import { modules } from "./messages/index.ts";
 
 /**
@@ -20,6 +21,8 @@ const en = Object.assign({}, ...modules.map((m) => ("en" in m ? m.en : {}))) as 
 const dictionaries: Record<string, Partial<Record<MessageKey, string>>> = { fr, en };
 
 export function getLocale(): "fr" | "en" {
+  const chosen = usePrefs.getState().locale;
+  if (chosen) return chosen;
   return navigator.language.toLowerCase().startsWith("fr") ? "fr" : navigator.language ? "en" : "fr";
 }
 

@@ -9,7 +9,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { Ajv2020 } from "ajv/dist/2020.js";
-import { buildContentIndex, checkContent, type ContentIssue } from "@parlo/core";
+import { buildContentIndex, checkContent, checkPlacement, type ContentIssue, type PlacementSpec } from "@parlo/core";
 import { CONTENT_ROOT, listPacks, readPackFiles, rel, toRaw, type JsonFile } from "./lib/load-pack.ts";
 
 const production = process.argv.includes("--production");
@@ -63,6 +63,17 @@ for (const code of listPacks()) {
 
   const index = buildContentIndex(toRaw(files));
   issues.push(...checkContent(index, { production }));
+
+  // Mini-test de placement (facultatif par pack).
+  const placementPath = join(files.root, "placement.json");
+  if (existsSync(placementPath)) {
+    const placement: JsonFile = { path: placementPath, data: JSON.parse(readFileSync(placementPath, "utf8")) };
+    const before = issues.length;
+    validate("placement.schema.json", placement, rel(placementPath));
+    if (issues.length === before) {
+      for (const message of checkPlacement(index, placement.data as PlacementSpec)) report("error", rel(placementPath), message);
+    }
+  }
 
   const media = new Set<string>();
   [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture].forEach((f) => collectMedia(f.data, media));

@@ -1,4 +1,4 @@
-import type { LessonId, LessonRun, ParloEvent, RawPackFiles, SrsCard, Streak } from "@parlo/core";
+import type { LessonId, LessonRun, ParloEvent, RawPackFiles, SessionRun, SrsCard, Streak } from "@parlo/core";
 import { Dexie, type EntityTable } from "dexie";
 
 /**
@@ -27,6 +27,15 @@ export interface OutboxRow {
   event: ParloEvent;
 }
 
+/** Journal local des événements refusés définitivement par le serveur. */
+export interface SyncLogRow {
+  seq?: number;
+  eventId: string;
+  eventType: string;
+  reason: string;
+  at: string;
+}
+
 export interface Profile {
   motivation: "family" | "travel" | "work" | "roots" | "curiosity" | null;
   entourage: "nobody" | "partner" | "parents" | "colleagues" | null;
@@ -41,11 +50,15 @@ export interface Totals {
   streak: Streak;
 }
 
-/** Séance en cours : réécrite après chaque réponse pour une reprise exacte. */
+/**
+ * Séance en cours : réécrite après chaque réponse pour une reprise exacte.
+ * `session` couvre toute la séance ; `run` seul = snapshot de la Phase 0 (leçon).
+ */
 export interface SessionSnapshot {
   key: "current";
   packCode: string;
-  run: LessonRun;
+  session?: SessionRun;
+  run?: LessonRun;
   savedAt: string;
 }
 
@@ -61,6 +74,7 @@ export class ParloDB extends Dexie {
   outbox!: EntityTable<OutboxRow, "id">;
   snapshot!: EntityTable<SessionSnapshot, "key">;
   kv!: EntityTable<KeyValue, "key">;
+  syncLog!: EntityTable<SyncLogRow, "seq">;
 
   constructor(name = "parlo") {
     super(name);
@@ -71,6 +85,9 @@ export class ParloDB extends Dexie {
       outbox: "id, occurredAt",
       snapshot: "key",
       kv: "key",
+    });
+    this.version(2).stores({
+      syncLog: "++seq, at",
     });
   }
 }
