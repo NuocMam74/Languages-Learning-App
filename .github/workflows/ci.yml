@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  web:
+    name: Contenu, core, PWA
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Validation des schémas et contrôles de contenu
+        run: npm run content:validate
+      - name: Garde du Sud (south-lint)
+        run: npm run content:lint
+      - name: Types
+        run: npm run typecheck
+      - name: Tests unitaires
+        run: npm test
+      - name: Build PWA
+        run: npm run build
+      - name: Parcours critiques (Playwright)
+        working-directory: apps/web
+        run: |
+          npx playwright install --with-deps chromium
+          npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-traces
+          path: apps/web/test-results
+
+  api:
+    name: API
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest -q
+
+  lighthouse:
+    name: Lighthouse mobile (budget ≥ 90)
+    runs-on: ubuntu-latest
+    needs: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci && npm run build
+      - name: Lighthouse CI
+        run: |
+          npx --yes @lhci/cli@0.15 autorun \
+            --collect.staticDistDir=apps/web/dist \
+            --collect.url=http://localhost/ \
+            --assert.assertions.categories:performance="['error',{'minScore':0.9}]" \
+            --assert.assertions.categories:accessibility="['error',{'minScore':0.9}]" \
+            --upload.target=temporary-public-storage
