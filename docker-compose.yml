@@ -1,0 +1,63 @@
+# Démarrage local complet : `docker compose up --build`, puis
+#   docker compose exec api python -m app.seed
+# Variables : copier .env.example en .env (valeurs par défaut utilisables en dev).
+
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: parlo
+      POSTGRES_PASSWORD: parlo
+      POSTGRES_DB: parlo
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U parlo -d parlo"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build: ./apps/api
+    # Migrations puis serveur (commande par défaut de l'image).
+    command: ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://parlo:parlo@db:5432/parlo
+      JWT_SECRET: ${JWT_SECRET:-dev-insecure-change-me-dev-insecure-change-me}
+      CONTENT_DIR: /content
+      SERVE_CONTENT: "true"
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+      # Dev en http : le cookie de refresh ne peut pas être `Secure` sans https.
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      TUTOR_MODEL: ${TUTOR_MODEL:-claude-sonnet-4-6}
+      TUTOR_DAILY_QUOTA: ${TUTOR_DAILY_QUOTA:-30}
+    volumes:
+      - ./content:/content:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    image: node:24
+    working_dir: /repo
+    command: ["sh", "-c", "npm ci && npm run dev -w @parlo/web -- --host"]
+    environment:
+      # Le front appelle /api/* ; Vite relaie vers le service api du réseau compose.
+      API_PROXY_TARGET: http://api:8000
+    volumes:
+      - ./:/repo
+      # node_modules propres au conteneur (binaires Linux), sans écraser ceux de l'hôte.
+      - web_node_modules:/repo/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+  web_node_modules:

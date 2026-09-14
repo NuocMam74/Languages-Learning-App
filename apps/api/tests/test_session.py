@@ -1,0 +1,123 @@
+"""Plan de séance (portage de session.ts) et série (portage de streak.ts)."""
+
+from datetime import UTC, date, datetime, timedelta
+
+from fastapi.testclient import TestClient
+
+from app.config import REPO_ROOT
+from app.services.content import Lesson, load_packs
+from app.services.planner import next_lesson, plan_session
+from app.services.srs import SrsCard
+from app.services.streak import Streak, record_activity
+from tests.conftest import event
+
+NOW = datetime(2026, 9, 14, 12, tzinfo=UTC)
+PACK = load_packs(REPO_ROOT / "content")["vi-south"]
+
+
+def make_card(concept_id: str, *, due_in_days: float, stability: float = 1.0, state: str = "review") -> SrsCard:
+    return SrsCard(
+        concept_id=concept_id,
+        due=NOW + timedelta(days=due_in_days),
+        stability=stability,
+        difficulty=5,
+        scheduled_days=1,
+        learning_steps=0,
+        reps=3,
+        lapses=0,
+        state=state,  # type: ignore[arg-type]
+        last_review=NOW - timedelta(days=1),
+    )
+
+
+def test_session_next_for_fresh_user(client: TestClient, auth: dict[str, str]) -> None:
+    plan = client.get("/me/session/next", headers=auth).json()
+    assert plan == {
+        "courseCode": "vi-south",
+        "targetMinutes": 10,
+        "blocks": [{"kind": "new", "lessonId": "vi-south.u01.l01"}, {"kind": "recap"}],
+        "estimatedSeconds": 20 + PACK.lessons["vi-south.u01.l01"].estimated_minutes * 60,
+    }
+
+
+def test_session_next_uses_progress_cards_and_goal(client: TestClient, auth: dict[str, str]) -> None:
+    due_card = {
+        "conceptId": "c_ma_mom",
+        "due": "2026-01-01T00:00:00.000Z",
+        "stability": 2,
+        "difficulty": 5,
+        "scheduledDays": 1,
+        "learningSteps": 0,
+        "reps": 2,
+        "lapses": 0,
+        "state": "review",
+        "lastReview": "2025-12-31T00:00:00.000Z",
+    }
+    client.post(
+        "/me/events",
+        headers=auth,
+        json={
+            "events": [
+                event(
+                    "lesson_completed", {"sessionId": "s", "lessonId": "vi-south.u01.l01", "score": 1, "durationMs": 1}
+                ),
+                event("srs_card_updated", {"card": due_card}),
+            ]
+        },
+    )
+    lesson_seconds = PACK.lessons["vi-south.u01.l02"].estimated_minutes * 60
+    plan = client.get("/me/session/next", headers=auth).json()
+    assert plan["blocks"] == [
+        {"kind": "review", "conceptIds": ["c_ma_mom"], "deferred": 0},
+        {"kind": "new", "lessonId": "vi-south.u01.l02"},
+        {"kind": "recap"},
+    ]
+    assert plan["estimatedSeconds"] == 20 + 15 + lesson_seconds
+
+    # Objectif 5 min (300 s, toléré 360 s) : la leçon de 5 min tient, il ne reste aucun budget de révision.
+    assert lesson_seconds == 300
+    client.patch("/me/profile", headers=auth, json={"dailyGoalMin": 5})
+    plan = client.get("/me/session/next", headers=auth).json()
+    assert plan["blocks"] == [{"kind": "new", "lessonId": "vi-south.u01.l02"}, {"kind": "recap"}]
+
+
+def test_plan_session_warmup_review_cap_and_lesson() -> None:
+    mastered = [make_card(f"m{i}", due_in_days=10, stability=10 + i) for i in range(4)]
+    due = [make_card(f"d{i}", due_in_days=-i) for i in range(40)]
+    lesson = Lesson(id="L", unit="U", estimated_minutes=6, prerequisites=())
+    plan = plan_session(10, [*mastered, *due], lesson, NOW)
+    warmup, review, new, recap = plan.blocks
+    assert warmup == {"kind": "warmup", "conceptIds": ["m3", "m2", "m1"]}
+    # 600 − 20 − 30 − 360 = 190 s → 12 révisions, les plus en retard d'abord.
+    assert review["conceptIds"] == [f"d{i}" for i in range(39, 27, -1)]
+    assert review["deferred"] == 28
+    assert new == {"kind": "new", "lessonId": "L"}
+    assert recap == {"kind": "recap"}
+    assert plan.estimated_seconds == 20 + 30 + 12 * 15 + 360
+
+
+def test_next_lesson_follows_prerequisites() -> None:
+    assert next_lesson(PACK, PACK.lessons, set(), None).id == "vi-south.u01.l01"  # type: ignore[union-attr]
+    assert next_lesson(PACK, PACK.lessons, {"vi-south.u01.l01"}, "family").id == "vi-south.u01.l02"  # type: ignore[union-attr]
+    done = {"vi-south.u01.l01", "vi-south.u01.l02", "vi-south.u01.l03"}
+    assert next_lesson(PACK, PACK.lessons, done, None) is None
+
+
+def test_record_activity_rules() -> None:
+    s = record_activity(Streak(), date(2026, 9, 1))
+    assert (s.current, s.longest, s.last_active_date) == (1, 1, date(2026, 9, 1))
+    assert record_activity(s, date(2026, 9, 1)) is s  # même jour
+    assert record_activity(s, date(2026, 8, 31)) is s  # horloge revenue en arrière
+    assert record_activity(s, date(2026, 9, 2)).current == 2
+    assert record_activity(s, date(2026, 9, 3)).current == 1  # trou sans protection
+
+    # Absence déclarée : les jours gelés couvrent le trou.
+    frozen = Streak(current=5, longest=5, last_active_date=date(2026, 9, 1), frozen_until=date(2026, 9, 5))
+    after = record_activity(frozen, date(2026, 9, 6))
+    assert (after.current, after.frozen_until) == (6, None)
+    during = record_activity(frozen, date(2026, 9, 4))
+    assert (during.current, during.frozen_until) == (6, date(2026, 9, 5))
+
+    # Protections plafonnées à 2.
+    s = Streak(current=29, longest=29, last_active_date=date(2026, 9, 1), freezes_available=2)
+    assert record_activity(s, date(2026, 9, 2)).freezes_available == 2
