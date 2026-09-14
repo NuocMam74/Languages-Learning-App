@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_em",
+  "type": "word",
+  "vi": "em",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "petit frère/sœur ; toi (plus jeune) ; moi (face à plus âgé)",
+    "en": "younger sibling; you (younger); me (to someone older)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_em_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_em_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/em.webp",
+  "reviewed": false
+}

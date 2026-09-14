@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_greet_the_person",
+  "title": {
+    "fr": "On salue quelqu'un, pas tout le monde",
+    "en": "You greet someone, not everyone"
+  },
+  "body": {
+    "fr": "En vietnamien, on ne dit pas un « bonjour » neutre. On salue la personne selon son âge par rapport à toi : chào anh pour un homme un peu plus âgé, chào chị pour une femme un peu plus âgée. Le même mot sert à dire au revoir.",
+    "en": "Vietnamese has no neutral 'hello'. You greet the person according to their age relative to you: chào anh for a slightly older man, chào chị for a slightly older woman. The same word says goodbye."
+  },
+  "vi": "Chào anh. Chào chị.",
+  "audio": "audio/cc_greet_the_person.opus",
+  "question": {
+    "prompt": {
+      "fr": "Tu salues une femme un peu plus âgée que toi. Tu dis…",
+      "en": "You greet a woman slightly older than you. You say…"
+    },
+    "options": [
+      {
+        "fr": "chào anh",
+        "en": "chào anh"
+      },
+      {
+        "fr": "chào chị",
+        "en": "chào chị"
+      },
+      {
+        "fr": "chào em",
+        "en": "chào em"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

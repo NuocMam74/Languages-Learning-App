@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_family_south",
+  "title": {
+    "fr": "Ba et má, les mots du Sud",
+    "en": "Ba and má, southern words"
+  },
+  "body": {
+    "fr": "À Saïgon et dans le delta, on appelle ses parents ba et má. Les manuels enseignent souvent les mots du Nord, bố et mẹ. Tout le monde les comprend, mais dans une famille du Sud, ba et má sonnent juste.",
+    "en": "In Saigon and the delta, parents are ba and má. Textbooks often teach the northern bố and mẹ. Everyone understands them, but in a southern family, ba and má sound right."
+  },
+  "vi": "Ba ơi! Má ơi!",
+  "audio": "audio/cc_family_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "Dans une famille de Cần Thơ, papa se dit…",
+      "en": "In a Cần Thơ family, dad is…"
+    },
+    "options": [
+      {
+        "fr": "ba",
+        "en": "ba"
+      },
+      {
+        "fr": "bố",
+        "en": "bố"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

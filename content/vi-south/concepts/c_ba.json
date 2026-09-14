@@ -1,0 +1,42 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ba",
+  "type": "word",
+  "vi": "ba",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "papa",
+    "en": "dad"
+  },
+  "ipaSouth": "ɓaː˧",
+  "register": "neutral",
+  "northernEquivalent": "bố",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ba_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ba_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/family/dad.webp",
+  "examples": [
+    {
+      "vi": "Đây là ba tôi.",
+      "fr": "Voici mon père.",
+      "en": "This is my dad.",
+      "audio": "audio/ex_day_la_ba.opus"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud on dit ba ; au Nord, bố. Les deux se comprennent partout.",
+    "en": "In the South: ba; in the North: bố. Both are understood everywhere."
+  },
+  "reviewed": false
+}

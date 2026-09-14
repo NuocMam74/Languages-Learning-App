@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u01.l01",
+  "unit": "vi-south.u01",
+  "title": { "fr": "Cinq tons à entendre", "en": "Five tones to hear" },
+  "goal": { "fr": "Distinguer à l'oreille ma, mà, má, mả et mạ.", "en": "Tell ma, mà, má, mả and mạ apart by ear." },
+  "estimatedMinutes": 5,
+  "prerequisites": [],
+  "concepts": ["c_ma_ghost", "c_ma_but", "c_ma_mom", "c_ma_tomb", "c_ma_seedling"],
+  "steps": [
+    { "type": "culture_card", "ref": "cc_tones_south" },
+    {
+      "type": "tone_minimal_pair",
+      "pair": ["ma", "má"],
+      "audioConcepts": ["c_ma_ghost", "c_ma_mom"],
+      "explain": { "fr": "ma reste plat ; má monte. Fantôme contre maman.", "en": "ma stays flat; má rises. Ghost versus mom." }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": ["ma", "mà"],
+      "audioConcepts": ["c_ma_ghost", "c_ma_but"],
+      "explain": { "fr": "mà descend doucement et reste grave.", "en": "mà falls gently and stays low." }
+    },
+    { "type": "tone_identify", "concept": "c_ma_mom" },
+    {
+      "type": "tone_minimal_pair",
+      "pair": ["má", "mả", "mạ"],
+      "audioConcepts": ["c_ma_mom", "c_ma_tomb", "c_ma_seedling"],
+      "explain": { "fr": "má monte, mả plonge puis remonte, mạ tombe court et net.", "en": "má rises, mả dips then rises, mạ drops short and sharp." }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_mom",
+      "distractors": ["ma", "mà", "mạ"],
+      "explain": { "fr": "L'accent aigu (má) note le ton qui monte.", "en": "The acute accent (má) marks the rising tone." }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ma_tomb",
+      "explain": { "fr": "Au Sud, hỏi et ngã sonnent pareil : une seule réponse pour les deux.", "en": "In the South hỏi and ngã sound the same: one answer for both." }
+    },
+    { "type": "speak_repeat", "concept": "c_ma_mom" },
+    { "type": "game", "game": "cho_noi", "conceptPool": "lesson" }
+  ],
+  "review": { "srsIntroduce": ["c_ma_ghost", "c_ma_but", "c_ma_mom", "c_ma_tomb", "c_ma_seedling"] },
+  "reviewed": false
+}

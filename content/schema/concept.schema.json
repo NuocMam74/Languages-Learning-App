@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/concept.schema.json",
+  "title": "Concept (unité atomique de savoir)",
+  "type": "object",
+  "required": ["id", "type", "vi", "gloss", "audio", "reviewed"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "$ref": "common.schema.json#/$defs/conceptId" },
+    "type": { "enum": ["word", "structure", "tone", "sound"] },
+    "vi": { "$ref": "common.schema.json#/$defs/viText" },
+    "ipaSouth": { "type": "string" },
+    "tone": { "$ref": "common.schema.json#/$defs/tone" },
+    "gloss": { "$ref": "common.schema.json#/$defs/localized" },
+    "northernEquivalent": { "type": "string", "description": "Forme du Nord, à reconnaître. Ignorée par south-lint." },
+    "register": { "enum": ["neutral", "familiar", "formal"] },
+    "audio": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["voice", "src", "source", "speed"],
+        "additionalProperties": false,
+        "properties": {
+          "voice": { "type": "string" },
+          "src": { "$ref": "common.schema.json#/$defs/mediaPath" },
+          "source": { "$ref": "common.schema.json#/$defs/audioSource" },
+          "speed": { "enum": ["natural", "slow"] }
+        }
+      }
+    },
+    "pitch": { "$ref": "common.schema.json#/$defs/mediaPath" },
+    "image": { "$ref": "common.schema.json#/$defs/mediaPath" },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["vi", "fr"],
+        "additionalProperties": false,
+        "properties": {
+          "vi": { "$ref": "common.schema.json#/$defs/viText" },
+          "fr": { "type": "string" },
+          "en": { "type": "string" },
+          "audio": { "$ref": "common.schema.json#/$defs/mediaPath" }
+        }
+      }
+    },
+    "note": { "$ref": "common.schema.json#/$defs/localized" },
+    "reviewed": { "$ref": "common.schema.json#/$defs/reviewed" }
+  }
+}

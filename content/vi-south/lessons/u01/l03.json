@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u01.l03",
+  "unit": "vi-south.u01",
+  "title": { "fr": "Ba, má et les autres", "en": "Ba, má and the others" },
+  "goal": { "fr": "Présenter ton père et ta mère comme on le dit à Saïgon.", "en": "Introduce your dad and mom the Saigon way." },
+  "estimatedMinutes": 5,
+  "prerequisites": ["vi-south.u01.l02"],
+  "concepts": ["c_ba", "c_ma_mom", "c_ba_grandma", "c_toi", "s_day_la"],
+  "steps": [
+    { "type": "culture_card", "ref": "cc_family_south" },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba",
+      "distractors": ["c_ma_mom", "c_ba_grandma"],
+      "explain": { "fr": "ba, ton plat : papa.", "en": "ba, flat tone: dad." }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": ["ba", "bà"],
+      "audioConcepts": ["c_ba", "c_ba_grandma"],
+      "explain": { "fr": "Ton plat contre ton descendant : papa contre grand-mère.", "en": "Flat versus falling: dad versus grandma." }
+    },
+    { "type": "spot_the_south", "variant": "lv_papa" },
+    {
+      "type": "build_sentence",
+      "target": "Đây là ba tôi.",
+      "tokens": ["Đây", "là", "ba", "tôi", "má", "bà"],
+      "translation": { "fr": "Voici mon père.", "en": "This is my dad." },
+      "audioConcept": "s_day_la",
+      "explain": { "fr": "Đây là… = « voici… ». Pas de verbe être conjugué, et le possesseur vient après : ba tôi.", "en": "Đây là… = 'this is…'. No conjugation, and the owner comes after: ba tôi." }
+    },
+    { "type": "spot_the_south", "variant": "lv_maman" },
+    { "type": "tone_identify", "concept": "c_ba_grandma" },
+    { "type": "speak_repeat", "concept": "s_day_la", "pitchRef": "pitch/s_day_la.json" },
+    { "type": "game", "game": "cho_noi", "conceptPool": "lesson" }
+  ],
+  "review": { "srsIntroduce": ["c_ba", "c_ba_grandma", "c_toi", "s_day_la"] },
+  "reviewed": false
+}

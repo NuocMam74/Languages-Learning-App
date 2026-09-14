@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chao",
+  "type": "word",
+  "vi": "chào",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "saluer, bonjour / au revoir",
+    "en": "hello / goodbye"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chao_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chao_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Chào anh.",
+      "fr": "Bonjour (à un homme un peu plus âgé).",
+      "en": "Hello (to a slightly older man)."
+    }
+  ],
+  "note": {
+    "fr": "Chào s'emploie presque toujours avec un pronom : on salue quelqu'un, pas « le monde ».",
+    "en": "Chào almost always takes a pronoun: you greet someone, not 'everyone'."
+  },
+  "reviewed": false
+}

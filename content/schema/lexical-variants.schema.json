@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/lexical-variants.schema.json",
+  "title": "Variantes lexicales régionales",
+  "type": "object",
+  "required": ["version", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "integer", "minimum": 1 },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "gloss", "south", "north", "severity", "reviewed"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^lv_[a-z0-9_]+$" },
+          "gloss": { "$ref": "common.schema.json#/$defs/localized" },
+          "south": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/viText" } },
+          "north": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/viText" } },
+          "severity": {
+            "description": "error = bloquant en CI et au runtime ; warning = signalé seulement ; none = forme identique, non vérifiée",
+            "enum": ["error", "warning", "none"]
+          },
+          "exceptions": {
+            "description": "Expressions où la forme du Nord est correcte aussi au Sud (ex. « công bố », « kết quả »).",
+            "type": "array", "items": { "$ref": "common.schema.json#/$defs/viText" }
+          },
+          "note": { "$ref": "common.schema.json#/$defs/localized" },
+          "reviewed": { "$ref": "common.schema.json#/$defs/reviewed" }
+        }
+      }
+    },
+    "familiar": {
+      "description": "Formes familières du Sud à enseigner en reconnaissance.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["form", "standard", "gloss"],
+        "additionalProperties": false,
+        "properties": {
+          "form": { "type": "string" },
+          "standard": { "type": "string" },
+          "gloss": { "$ref": "common.schema.json#/$defs/localized" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ma_mom",
+  "type": "word",
+  "vi": "má",
+  "tone": "sac",
+  "gloss": {
+    "fr": "maman",
+    "en": "mom"
+  },
+  "register": "neutral",
+  "northernEquivalent": "mẹ",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ma_mom_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ma_mom_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/family/mom.webp",
+  "examples": [
+    {
+      "vi": "Đây là má tôi.",
+      "fr": "Voici ma mère.",
+      "en": "This is my mom."
+    }
+  ],
+  "note": {
+    "fr": "Au Sud on dit má ; au Nord, mẹ. Attention : « má » veut aussi dire « joue ».",
+    "en": "In the South: má; in the North: mẹ. Note: « má » also means 'cheek'."
+  },
+  "reviewed": false
+}

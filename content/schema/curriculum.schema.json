@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/curriculum.schema.json",
+  "title": "Cursus (graphe de leçons)",
+  "type": "object",
+  "required": ["pack", "blocks", "units", "paths"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "pack": { "type": "string" },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "units"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^b[0-9]$" },
+          "title": { "$ref": "common.schema.json#/$defs/localized" },
+          "units": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/unitId" } },
+          "certificate": { "enum": ["A0", "A1", "A2"] }
+        }
+      }
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "lessons", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/unitId" },
+          "title": { "$ref": "common.schema.json#/$defs/localized" },
+          "status": { "enum": ["available", "planned"] },
+          "tags": { "type": "array", "items": { "enum": ["family", "travel", "work", "culture", "core"] } },
+          "lessons": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/lessonId" } }
+        }
+      }
+    },
+    "paths": {
+      "description": "Fonction de tri des nœuds disponibles par profil : un seul corpus, plusieurs chemins.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["boostTags"],
+        "additionalProperties": false,
+        "properties": {
+          "boostTags": { "type": "array", "items": { "type": "string" } },
+          "extraUnits": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/unitId" } }
+        }
+      }
+    }
+  }
+}

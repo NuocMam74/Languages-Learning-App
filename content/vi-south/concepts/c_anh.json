@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_anh",
+  "type": "word",
+  "vi": "anh",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "grand frère ; toi/vous (homme un peu plus âgé)",
+    "en": "older brother; you (slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/anh.webp",
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_cam_on",
+  "type": "word",
+  "vi": "cảm ơn",
+  "gloss": {
+    "fr": "merci",
+    "en": "thank you"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_cam_on_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_cam_on_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud on entend et on écrit aussi « cám ơn ». Les deux sont acceptés.",
+    "en": "In the South you also hear and see « cám ơn ». Both are accepted."
+  },
+  "reviewed": false
+}

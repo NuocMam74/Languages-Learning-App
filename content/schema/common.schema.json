@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/common.schema.json",
+  "title": "Définitions communes",
+  "$defs": {
+    "localized": {
+      "description": "Texte localisé dans les langues d'interface. Le français est obligatoire (langue par défaut).",
+      "type": "object",
+      "required": ["fr"],
+      "propertyNames": { "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "conceptId": {
+      "type": "string",
+      "pattern": "^(c|s|t|p)_[a-z0-9_]+$",
+      "description": "c_ = mot, s_ = structure/phrase, t_ = ton, p_ = paire/son"
+    },
+    "lessonId": { "type": "string", "pattern": "^[a-z]{2,3}(-[a-z]+)?\\.u[0-9]{2}\\.l[0-9]{2}$" },
+    "unitId": { "type": "string", "pattern": "^[a-z]{2,3}(-[a-z]+)?\\.u[0-9]{2}$" },
+    "tone": { "enum": ["ngang", "huyen", "sac", "hoi", "nga", "nang"] },
+    "viText": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Texte vietnamien, Unicode NFC obligatoire (vérifié par le validateur)."
+    },
+    "mediaPath": { "type": "string", "pattern": "^[a-z0-9_\\-/]+\\.(opus|m4a|webp|png|svg|json)$" },
+    "audioSource": { "enum": ["native", "tts"] },
+    "reviewed": {
+      "type": "boolean",
+      "description": "false tant qu'un locuteur natif du Sud n'a pas relu. Un build de production refuse false."
+    }
+  }
+}

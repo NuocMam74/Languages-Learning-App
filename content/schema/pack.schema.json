@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/pack.schema.json",
+  "title": "Pack de langue",
+  "type": "object",
+  "required": ["code", "lang", "name", "version", "script", "direction", "features", "voices", "interfaceLocales"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "code": { "type": "string", "pattern": "^[a-z]{2,3}(-[a-z]+)?$" },
+    "lang": { "type": "string", "pattern": "^[a-z]{2,3}$" },
+    "variant": { "type": "string" },
+    "name": { "$ref": "common.schema.json#/$defs/localized" },
+    "version": { "type": "integer", "minimum": 1 },
+    "script": { "enum": ["latin", "cyrillic", "arabic", "han", "kana", "hangul", "devanagari"] },
+    "direction": { "enum": ["ltr", "rtl"] },
+    "features": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["tones", "lexical_variants", "diacritic_keyboard"] }
+    },
+    "toneSystem": {
+      "type": "object",
+      "description": "Présent si features contient 'tones'.",
+      "required": ["written", "heardClasses"],
+      "additionalProperties": false,
+      "properties": {
+        "written": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/tone" } },
+        "heardClasses": {
+          "description": "Classes de tons distinguées à l'oreille. Deux tons dans la même classe ne sont jamais opposés en discrimination auditive.",
+          "type": "array",
+          "items": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/tone" } }
+        }
+      }
+    },
+    "voices": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "gender", "accent"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "label": { "type": "string" },
+          "gender": { "enum": ["f", "m"] },
+          "accent": { "type": "string" }
+        }
+      }
+    },
+    "interfaceLocales": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "comingSoon": { "type": "boolean" }
+  }
+}

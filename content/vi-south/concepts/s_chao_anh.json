@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_chao_anh",
+  "type": "structure",
+  "vi": "Chào anh.",
+  "gloss": {
+    "fr": "Bonjour (à un homme un peu plus âgé).",
+    "en": "Hello (to a slightly older man)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chao_anh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chao_anh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "pitch": "pitch/s_chao_anh.json",
+  "reviewed": false
+}

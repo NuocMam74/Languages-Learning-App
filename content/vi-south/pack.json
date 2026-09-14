@@ -1,0 +1,20 @@
+{
+  "$schema": "../schema/pack.schema.json",
+  "code": "vi-south",
+  "lang": "vi",
+  "variant": "south",
+  "name": { "fr": "Vietnamien du Sud", "en": "Southern Vietnamese" },
+  "version": 1,
+  "script": "latin",
+  "direction": "ltr",
+  "features": ["tones", "lexical_variants", "diacritic_keyboard"],
+  "toneSystem": {
+    "written": ["ngang", "huyen", "sac", "hoi", "nga", "nang"],
+    "heardClasses": [["ngang"], ["huyen"], ["sac"], ["hoi", "nga"], ["nang"]]
+  },
+  "voices": [
+    { "id": "mai_hcm_f", "label": "Mai", "gender": "f", "accent": "Hô Chi Minh-Ville" },
+    { "id": "tuan_ct_m", "label": "Tuấn", "gender": "m", "accent": "Cần Thơ (delta)" }
+  ],
+  "interfaceLocales": ["fr", "en"]
+}

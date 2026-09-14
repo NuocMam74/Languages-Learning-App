@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/culture.schema.json",
+  "title": "Carte culture",
+  "type": "object",
+  "required": ["id", "title", "body", "question", "reviewed"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^cc_[a-z0-9_]+$" },
+    "title": { "$ref": "common.schema.json#/$defs/localized" },
+    "body": {
+      "$ref": "common.schema.json#/$defs/localized",
+      "description": "60 mots maximum par langue (vérifié par le validateur)."
+    },
+    "vi": { "$ref": "common.schema.json#/$defs/viText", "description": "Phrase vietnamienne mise en avant sur la carte." },
+    "audio": { "$ref": "common.schema.json#/$defs/mediaPath" },
+    "question": {
+      "type": "object",
+      "required": ["prompt", "options", "answer"],
+      "additionalProperties": false,
+      "properties": {
+        "prompt": { "$ref": "common.schema.json#/$defs/localized" },
+        "options": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "common.schema.json#/$defs/localized" } },
+        "answer": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "explain": { "$ref": "common.schema.json#/$defs/localized" }
+      }
+    },
+    "reviewed": { "$ref": "common.schema.json#/$defs/reviewed" }
+  }
+}

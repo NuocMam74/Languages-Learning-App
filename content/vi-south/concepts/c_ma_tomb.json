@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ma_tomb",
+  "type": "word",
+  "vi": "mả",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "tombe",
+    "en": "grave"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ma_tomb_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ma_tomb_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, hỏi (mả) et ngã (mã) se prononcent pareil : on les distingue à l'écrit seulement.",
+    "en": "In the South, hỏi (mả) and ngã (mã) sound alike: only spelling tells them apart."
+  },
+  "reviewed": false
+}

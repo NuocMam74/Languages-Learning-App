@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_toi",
+  "type": "word",
+  "vi": "tôi",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "je, moi (neutre)",
+    "en": "I, me (neutral)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_toi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_toi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Neutre et un peu distant. En famille, on se désigne plutôt selon la relation (con, em…) — on y vient à l'unité 3.",
+    "en": "Neutral, a bit distant. In the family you refer to yourself by relationship (con, em…) — covered in unit 3."
+  },
+  "reviewed": false
+}

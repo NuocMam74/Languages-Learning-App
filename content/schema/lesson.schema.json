@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/lesson.schema.json",
+  "title": "Leçon",
+  "type": "object",
+  "required": ["id", "unit", "title", "goal", "estimatedMinutes", "prerequisites", "concepts", "steps", "review", "reviewed"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "$ref": "common.schema.json#/$defs/lessonId" },
+    "unit": { "$ref": "common.schema.json#/$defs/unitId" },
+    "kind": { "enum": ["lesson", "review", "unit_test"], "default": "lesson" },
+    "title": { "$ref": "common.schema.json#/$defs/localized" },
+    "goal": { "$ref": "common.schema.json#/$defs/localized" },
+    "estimatedMinutes": { "type": "integer", "minimum": 2, "maximum": 15 },
+    "prerequisites": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/lessonId" } },
+    "concepts": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/conceptId" } },
+    "steps": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/step" } },
+    "review": {
+      "type": "object",
+      "required": ["srsIntroduce"],
+      "additionalProperties": false,
+      "properties": {
+        "srsIntroduce": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/conceptId" } }
+      }
+    },
+    "reviewed": { "$ref": "common.schema.json#/$defs/reviewed" }
+  },
+  "$defs": {
+    "explain": { "$ref": "common.schema.json#/$defs/localized" },
+    "step": {
+      "type": "object",
+      "required": ["type"],
+      "discriminator": { "propertyName": "type" },
+      "oneOf": [
+        { "$ref": "#/$defs/culture_card" },
+        { "$ref": "#/$defs/listen_pick_image" },
+        { "$ref": "#/$defs/listen_pick_text" },
+        { "$ref": "#/$defs/listen_transcribe" },
+        { "$ref": "#/$defs/tone_identify" },
+        { "$ref": "#/$defs/tone_minimal_pair" },
+        { "$ref": "#/$defs/tone_produce" },
+        { "$ref": "#/$defs/speak_repeat" },
+        { "$ref": "#/$defs/match_pairs" },
+        { "$ref": "#/$defs/build_sentence" },
+        { "$ref": "#/$defs/fill_gap" },
+        { "$ref": "#/$defs/translate_to_vi" },
+        { "$ref": "#/$defs/translate_to_fr" },
+        { "$ref": "#/$defs/spot_the_south" },
+        { "$ref": "#/$defs/game" }
+      ]
+    },
+    "culture_card": {
+      "type": "object",
+      "required": ["type", "ref"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "culture_card" },
+        "ref": { "type": "string", "pattern": "^cc_[a-z0-9_]+$" }
+      }
+    },
+    "listen_pick_image": {
+      "type": "object",
+      "required": ["type", "concept", "distractors"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "listen_pick_image" },
+        "concept": { "$ref": "common.schema.json#/$defs/conceptId" },
+        "distractors": { "type": "array", "minItems": 1, "maxItems": 3, "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/conceptId" } },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "listen_pick_text": {
+      "type": "object",
+      "required": ["type", "concept", "distractors"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "listen_pick_text" },
+        "concept": { "$ref": "common.schema.json#/$defs/conceptId" },
+        "distractors": {
+          "description": "Transcriptions pièges (paires minimales tonales de préférence).",
+          "type": "array", "minItems": 1, "maxItems": 3, "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/viText" }
+        },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "listen_transcribe": {
+      "type": "object",
+      "required": ["type", "concept"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "listen_transcribe" },
+        "concept": { "$ref": "common.schema.json#/$defs/conceptId" },
+        "accepted": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/viText" } },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "tone_identify": {
+      "type": "object",
+      "required": ["type", "concept"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "tone_identify" },
+        "concept": { "$ref": "common.schema.json#/$defs/conceptId" },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "tone_minimal_pair": {
+      "type": "object",
+      "required": ["type", "pair"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "tone_minimal_pair" },
+        "pair": {
+          "description": "2 à 5 syllabes ne différant que par le ton. hỏi et ngã ne sont jamais opposés (vérifié).",
+          "type": "array", "minItems": 2, "maxItems": 5, "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/viText" }
+        },
+        "audioConcepts": {
+          "description": "Concept portant l'audio de chaque élément de pair, dans le même ordre.",
+          "type": "array", "items": { "$ref": "common.schema.json#/$defs/conceptId" }
+        },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "tone_produce": {
+      "type": "object",
+      "required": ["type", "concept"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "tone_produce" },
+        "concept": { "$ref": "common.schema.json#/$defs/conceptId" },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "speak_repeat": {
+      "type": "object",
+      "required": ["type", "concept"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "speak_repeat" },
+        "concept": { "$ref": "common.schema.json#/$defs/conceptId" },
+        "pitchRef": { "$ref": "common.schema.json#/$defs/mediaPath" },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "match_pairs": {
+      "type": "object",
+      "required": ["type", "concepts"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "match_pairs" },
+        "concepts": { "type": "array", "minItems": 3, "maxItems": 6, "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/conceptId" } },
+        "mode": { "enum": ["audio_text", "text_gloss", "audio_image"] }
+      }
+    },
+    "build_sentence": {
+      "type": "object",
+      "required": ["type", "target", "tokens", "translation"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "build_sentence" },
+        "target": { "$ref": "common.schema.json#/$defs/viText" },
+        "tokens": { "type": "array", "minItems": 2, "items": { "$ref": "common.schema.json#/$defs/viText" } },
+        "translation": { "$ref": "common.schema.json#/$defs/localized" },
+        "audioConcept": { "$ref": "common.schema.json#/$defs/conceptId" },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "fill_gap": {
+      "type": "object",
+      "required": ["type", "text", "answer", "options"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "fill_gap" },
+        "text": { "type": "string", "pattern": "___" },
+        "answer": { "$ref": "common.schema.json#/$defs/viText" },
+        "options": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "common.schema.json#/$defs/viText" } },
+        "translation": { "$ref": "common.schema.json#/$defs/localized" },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "translate_to_vi": {
+      "type": "object",
+      "required": ["type", "source", "accepted"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "translate_to_vi" },
+        "source": { "$ref": "common.schema.json#/$defs/localized" },
+        "accepted": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/viText" } },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "translate_to_fr": {
+      "type": "object",
+      "required": ["type", "source", "accepted"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "translate_to_fr" },
+        "source": { "$ref": "common.schema.json#/$defs/viText" },
+        "accepted": { "type": "object", "required": ["fr"], "additionalProperties": { "type": "array", "items": { "type": "string" } } },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "spot_the_south": {
+      "type": "object",
+      "required": ["type", "variant"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "spot_the_south" },
+        "variant": { "type": "string", "pattern": "^lv_[a-z0-9_]+$", "description": "Id d'entrée de lexical-variants.json" },
+        "explain": { "$ref": "#/$defs/explain" }
+      }
+    },
+    "game": {
+      "type": "object",
+      "required": ["type", "game", "conceptPool"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "game" },
+        "game": { "enum": ["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "doi_dap", "nho_mat"] },
+        "conceptPool": {
+          "oneOf": [
+            { "enum": ["lesson", "unit", "known"] },
+            { "type": "array", "minItems": 3, "items": { "$ref": "common.schema.json#/$defs/conceptId" } }
+          ]
+        }
+      }
+    }
+  }
+}

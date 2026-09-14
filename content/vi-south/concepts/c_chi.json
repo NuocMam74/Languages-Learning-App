@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chi",
+  "type": "word",
+  "vi": "chị",
+  "tone": "nang",
+  "gloss": {
+    "fr": "grande sœur ; toi/vous (femme un peu plus âgée)",
+    "en": "older sister; you (slightly older woman)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/chi.webp",
+  "reviewed": false
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_day_la",
+  "type": "structure",
+  "vi": "Đây là…",
+  "gloss": {
+    "fr": "Voici… / C'est…",
+    "en": "This is…"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_day_la_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_day_la_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "pitch": "pitch/s_day_la.json",
+  "examples": [
+    {
+      "vi": "Đây là ba tôi.",
+      "fr": "Voici mon père.",
+      "en": "This is my dad."
+    }
+  ],
+  "note": {
+    "fr": "Là relie deux noms : « ceci est ». Pas de conjugaison.",
+    "en": "Là links two nouns: 'this is'. No conjugation."
+  },
+  "reviewed": false
+}

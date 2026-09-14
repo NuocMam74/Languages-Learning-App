@@ -1,0 +1,33 @@
+{
+  "$schema": "../schema/curriculum.schema.json",
+  "pack": "vi-south",
+  "blocks": [
+    { "id": "b0", "title": { "fr": "L'oreille", "en": "The ear" }, "units": ["vi-south.u01", "vi-south.u02"] },
+    { "id": "b1", "title": { "fr": "Moi et toi", "en": "Me and you" }, "units": ["vi-south.u03", "vi-south.u04", "vi-south.u05", "vi-south.u06"], "certificate": "A0" },
+    { "id": "b2", "title": { "fr": "Le quotidien", "en": "Everyday life" }, "units": [] },
+    { "id": "b3", "title": { "fr": "Échanger", "en": "Exchanging" }, "units": [], "certificate": "A1" },
+    { "id": "b4", "title": { "fr": "Vivre là-bas", "en": "Living there" }, "units": [] },
+    { "id": "b5", "title": { "fr": "Raconter", "en": "Telling stories" }, "units": [], "certificate": "A2" }
+  ],
+  "units": [
+    {
+      "id": "vi-south.u01",
+      "title": { "fr": "Premiers sons, premiers mots", "en": "First sounds, first words" },
+      "status": "available",
+      "tags": ["core"],
+      "lessons": ["vi-south.u01.l01", "vi-south.u01.l02", "vi-south.u01.l03"]
+    },
+    { "id": "vi-south.u02", "title": { "fr": "L'alphabet et les sons du Sud", "en": "Alphabet and southern sounds" }, "status": "planned", "tags": ["core"], "lessons": [] },
+    { "id": "vi-south.u03", "title": { "fr": "Pronoms et rapports d'âge", "en": "Pronouns and age" }, "status": "planned", "tags": ["core", "family"], "lessons": [] },
+    { "id": "vi-south.u04", "title": { "fr": "La famille", "en": "Family" }, "status": "planned", "tags": ["family"], "lessons": [] },
+    { "id": "vi-south.u05", "title": { "fr": "Se présenter", "en": "Introductions" }, "status": "planned", "tags": ["core", "work"], "lessons": [] },
+    { "id": "vi-south.u06", "title": { "fr": "Les chiffres", "en": "Numbers" }, "status": "planned", "tags": ["core", "travel"], "lessons": [] }
+  ],
+  "paths": {
+    "family": { "boostTags": ["family"] },
+    "roots": { "boostTags": ["family"] },
+    "travel": { "boostTags": ["travel"] },
+    "work": { "boostTags": ["work"] },
+    "curiosity": { "boostTags": [] }
+  }
+}

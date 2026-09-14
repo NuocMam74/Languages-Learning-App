@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_da",
+  "type": "word",
+  "vi": "dạ",
+  "tone": "nang",
+  "gloss": {
+    "fr": "oui (poli) ; formule de respect",
+    "en": "yes (polite); respect marker"
+  },
+  "register": "neutral",
+  "northernEquivalent": "vâng",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_da_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_da_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Dạ ouvre une réponse polie envers un aîné. Au Sud, on l'entend partout, même en décrochant le téléphone.",
+    "en": "Dạ opens a polite reply to an elder. In the South you hear it everywhere, even when answering the phone."
+  },
+  "reviewed": false
+}

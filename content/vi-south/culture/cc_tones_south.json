@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_tones_south",
+  "title": {
+    "fr": "5 tons à entendre, 6 à écrire",
+    "en": "5 tones to hear, 6 to write"
+  },
+  "body": {
+    "fr": "Le vietnamien a six tons à l'écrit. Bonne nouvelle : dans le Sud, deux d'entre eux, hỏi et ngã, se prononcent pareil. Ton oreille n'a donc que cinq mélodies à apprendre. Et pas d'alphabet à découvrir : tout s'écrit en lettres latines.",
+    "en": "Vietnamese writes six tones. Good news: in the South, two of them, hỏi and ngã, sound the same. Your ear only has five melodies to learn. And no new alphabet: it's all Latin letters."
+  },
+  "vi": "ma, mà, má, mả, mạ",
+  "audio": "audio/cc_tones_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "Combien de tons entend-on dans le Sud ?",
+      "en": "How many tones do you hear in the South?"
+    },
+    "options": [
+      {
+        "fr": "4",
+        "en": "4"
+      },
+      {
+        "fr": "5",
+        "en": "5"
+      },
+      {
+        "fr": "6",
+        "en": "6"
+      }
+    ],
+    "answer": 1,
+    "explain": {
+      "fr": "Cinq : hỏi et ngã se confondent à l'oral.",
+      "en": "Five: hỏi and ngã merge in speech."
+    }
+  },
+  "reviewed": false
+}
