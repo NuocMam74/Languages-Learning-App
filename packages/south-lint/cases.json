@@ -1,0 +1,17 @@
+[
+  { "text": "Đây là ba tôi.", "expect": [] },
+  { "text": "Đây là bố tôi.", "expect": ["lv_papa"] },
+  { "text": "BỐ ơi!", "expect": ["lv_papa"] },
+  { "text": "Tôi có bốn anh chị em.", "expect": [] },
+  { "text": "Chính phủ công bố kết quả.", "expect": [] },
+  { "text": "Vâng, cho tôi một cốc cà phê.", "expect": ["lv_oui_poli", "lv_verre"] },
+  { "text": "Dạ, cho em một ly cà phê sữa đá.", "expect": [] },
+  { "text": "Tôi bị lạc đường rồi.", "expect": [] },
+  { "text": "Một đĩa lạc rang.", "expect": ["lv_assiette", "lv_arachide"] },
+  { "text": "Đi máy bay hay đi ô tô?", "expect": ["lv_voiture"] },
+  { "text": "Cha mẹ tôi ở Cần Thơ.", "expect": [] },
+  { "text": "Mẹ ơi!", "expect": ["lv_maman"] },
+  { "text": "Sao vậy? Thế giới rộng lắm.", "expect": [] },
+  { "text": "Ba quả dứa, đắt quá!", "expect": ["lv_fruit_clf", "lv_ananas", "lv_cher"] },
+  { "text": "Cái nón này mắc quá hông?", "expect": [] }
+]
