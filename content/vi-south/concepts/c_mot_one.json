@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_mot_one",
+  "type": "word",
+  "vi": "một",
+  "tone": "nang",
+  "gloss": {
+    "fr": "un",
+    "en": "one"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mot_one_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mot_one_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, le -t final sonne presque « c ».",
+    "en": "In the South, final -t sounds almost like 'c'."
+  },
+  "reviewed": false
+}

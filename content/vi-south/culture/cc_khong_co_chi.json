@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_khong_co_chi",
+  "title": {
+    "fr": "Không có chi, le « de rien » du Sud",
+    "en": "Không có chi, the southern 'you're welcome'"
+  },
+  "body": {
+    "fr": "Quand on te dit cảm ơn, réponds không có chi : « il n'y a pas de quoi ». C'est la formule du Sud et du Centre ; au Nord, tu entendras không có gì. Pour t'excuser, dis xin lỗi. On te répondra souvent không sao : « ce n'est rien ».",
+    "en": "When someone says cảm ơn, answer không có chi: 'it's nothing'. That's the southern and central phrase; in the North you'll hear không có gì. To apologise, say xin lỗi. The usual reply is không sao: 'no problem'."
+  },
+  "vi": "Dạ, không có chi.",
+  "audio": "audio/cc_khong_co_chi.opus",
+  "question": {
+    "prompt": {
+      "fr": "On te remercie à Saïgon. Tu réponds…",
+      "en": "Someone thanks you in Saigon. You answer…"
+    },
+    "options": [
+      {
+        "fr": "xin lỗi",
+        "en": "xin lỗi"
+      },
+      {
+        "fr": "không có chi",
+        "en": "không có chi"
+      },
+      {
+        "fr": "hẹn gặp lại",
+        "en": "hẹn gặp lại"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_ong_xa_ba_xa",
+  "title": {
+    "fr": "Ông xã, bà xã",
+    "en": "Ông xã, bà xã"
+  },
+  "body": {
+    "fr": "Vợ et chồng sont les mots neutres : épouse et mari. Entre amis, au Sud, on parle volontiers de son ông xã (mon mari) ou de sa bà xã (ma femme), avec le sourire. Pour présenter, on dit simplement : Đây là vợ tôi.",
+    "en": "Vợ and chồng are the neutral words: wife and husband. Among friends in the South, people happily say ông xã (my hubby) or bà xã (my wife), with a smile. To introduce, simply say: Đây là vợ tôi."
+  },
+  "vi": "Đây là bà xã tôi.",
+  "audio": "audio/cc_ong_xa_ba_xa.opus",
+  "question": {
+    "prompt": {
+      "fr": "Bà xã veut dire…",
+      "en": "Bà xã means…"
+    },
+    "options": [
+      {
+        "fr": "ma grand-mère",
+        "en": "my grandmother"
+      },
+      {
+        "fr": "ma femme (familier)",
+        "en": "my wife (casual)"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

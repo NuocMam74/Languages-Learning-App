@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tu",
+  "type": "word",
+  "vi": "tư",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "quatre (rang : troisième enfant)",
+    "en": "four (rank: third child)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "On compte bốn, mais le rang se dit tư : chú Tư, chị Tư.",
+    "en": "You count bốn, but the rank is tư: chú Tư, chị Tư."
+  },
+  "reviewed": false
+}

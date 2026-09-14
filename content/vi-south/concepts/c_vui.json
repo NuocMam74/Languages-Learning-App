@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_vui",
+  "type": "word",
+  "vi": "vui",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "joyeux, content ; amusant",
+    "en": "happy; fun"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_vui_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_vui_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, dans la conversation, le v glisse souvent vers « y ».",
+    "en": "In southern conversation, v often slides towards 'y'."
+  },
+  "reviewed": false
+}

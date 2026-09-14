@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_anh_he",
+  "type": "word",
+  "vi": "ảnh",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "lui (anh ấy, à l'oral au Sud) ; photo",
+    "en": "he, him (anh ấy, southern speech); photo"
+  },
+  "register": "familiar",
+  "northernEquivalent": "anh ấy",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_he_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_he_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_anh_khoe_khong",
+  "type": "structure",
+  "vi": "Anh khỏe không?",
+  "gloss": {
+    "fr": "Tu vas bien ? (à un homme un peu plus âgé)",
+    "en": "How are you? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_khoe_khong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_khoe_khong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Entre amis, au Sud, on entend aussi : Khỏe hông ?",
+    "en": "Among friends in the South you also hear: Khỏe hông?"
+  },
+  "reviewed": false
+}

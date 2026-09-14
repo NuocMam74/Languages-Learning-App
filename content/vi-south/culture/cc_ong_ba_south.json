@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_ong_ba_south",
+  "title": {
+    "fr": "Ổng, bả, ảnh, chỉ",
+    "en": "Ổng, bả, ảnh, chỉ"
+  },
+  "body": {
+    "fr": "Pour parler de quelqu'un, on dit ông ấy, anh ấy… Au Sud, à l'oral, les deux mots fusionnent : ông ấy devient ổng, bà ấy bả, anh ấy ảnh, chị ấy chỉ, cô ấy cổ. Un ton hỏi remplace ấy. C'est partout : à reconnaître absolument.",
+    "en": "To talk about someone you say ông ấy, anh ấy… In southern speech the two words fuse: ông ấy becomes ổng, bà ấy bả, anh ấy ảnh, chị ấy chỉ, cô ấy cổ. A hỏi tone replaces ấy. It's everywhere: a must to recognise."
+  },
+  "vi": "Ổng là ba tôi.",
+  "audio": "audio/cc_ong_ba_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "À Saïgon, dans une conversation, « ảnh » veut souvent dire…",
+      "en": "In a Saigon conversation, 'ảnh' often means…"
+    },
+    "options": [
+      {
+        "fr": "lui (anh ấy)",
+        "en": "him (anh ấy)"
+      },
+      {
+        "fr": "uniquement « photo »",
+        "en": "only 'photo'"
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "ảnh veut aussi dire « photo » : le contexte tranche.",
+      "en": "ảnh also means 'photo': context decides."
+    }
+  },
+  "reviewed": false
+}

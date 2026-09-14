@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_gia",
+  "type": "word",
+  "vi": "già",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "vieux, âgé",
+    "en": "old (person)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gia_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gia_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Pour parler poliment de l'âge d'un aîné, on préfère lớn tuổi.",
+    "en": "To speak politely about an elder's age, lớn tuổi is preferred."
+  },
+  "reviewed": false
+}

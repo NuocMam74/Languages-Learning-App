@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u01.l04",
+  "unit": "vi-south.u01",
+  "title": {
+    "fr": "Pardon, merci, de rien",
+    "en": "Sorry, thanks, you're welcome"
+  },
+  "goal": {
+    "fr": "T'excuser, remercier et répondre « de rien » à la manière du Sud.",
+    "en": "Apologise, thank, and say 'you're welcome' the southern way."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u01.l03"
+  ],
+  "concepts": [
+    "c_xin_loi",
+    "s_khong_co_chi",
+    "s_khong_sao",
+    "c_oi",
+    "s_hen_gap_lai"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xin_loi",
+      "distractors": [
+        "xin lối",
+        "xin lội"
+      ],
+      "explain": {
+        "fr": "lỗi porte le ngã : au Sud, il plonge puis remonte, comme un hỏi.",
+        "en": "lỗi carries ngã: in the South it dips then rises, like hỏi."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_khong_co_chi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khong_co_chi",
+      "distractors": [
+        "Không sao.",
+        "Xin lỗi."
+      ],
+      "explain": {
+        "fr": "Không có chi : « il n'y a pas de quoi », la réponse du Sud à cảm ơn.",
+        "en": "Không có chi: 'it's nothing', the southern reply to cảm ơn."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_de_rien",
+      "explain": {
+        "fr": "Au Sud, on répond không có chi ; không có gì est la forme du Nord.",
+        "en": "In the South you say không có chi; không có gì is the northern form."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, không có chi.",
+      "tokens": [
+        "Dạ",
+        "không",
+        "có",
+        "chi",
+        "gì"
+      ],
+      "translation": {
+        "fr": "De rien (poliment).",
+        "en": "You're welcome (politely)."
+      },
+      "explain": {
+        "fr": "Dạ ouvre une réponse polie ; không có chi dit « de rien ».",
+        "en": "Dạ opens a polite reply; không có chi says 'you're welcome'."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_oi",
+      "explain": {
+        "fr": "ơi est plat : on le tient pour appeler quelqu'un.",
+        "en": "ơi is level: you hold it to call someone."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị ơi, xin lỗi.",
+      "tokens": [
+        "Chị",
+        "ơi",
+        "xin lỗi",
+        "anh"
+      ],
+      "translation": {
+        "fr": "Excusez-moi (à une femme un peu plus âgée).",
+        "en": "Excuse me (to a slightly older woman)."
+      },
+      "explain": {
+        "fr": "On appelle d'abord la personne (chị ơi), puis on s'excuse.",
+        "en": "First call the person (chị ơi), then apologise."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khong_sao",
+      "distractors": [
+        "Không có chi.",
+        "Hẹn gặp lại."
+      ],
+      "explain": {
+        "fr": "Không sao : « ce n'est rien ». C'est la réponse à xin lỗi.",
+        "en": "Không sao: 'no problem'. It's the reply to xin lỗi."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_hen_gap_lai",
+      "explain": {
+        "fr": "Hẹn gặp lại : « à la prochaine ». hẹn et gặp tombent court.",
+        "en": "Hẹn gặp lại: 'see you again'. hẹn and gặp drop short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_xin_loi",
+      "s_khong_co_chi",
+      "s_khong_sao",
+      "c_oi",
+      "s_hen_gap_lai"
+    ]
+  },
+  "reviewed": false
+}

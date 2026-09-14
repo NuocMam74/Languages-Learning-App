@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_com",
+  "type": "word",
+  "vi": "cơm",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "riz cuit ; repas",
+    "en": "cooked rice; meal"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_com_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_com_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/rice.svg",
+  "reviewed": false
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chi_hai",
+  "type": "word",
+  "vi": "chị hai",
+  "gloss": {
+    "fr": "sœur aînée (Sud)",
+    "en": "eldest sister (southern)"
+  },
+  "register": "neutral",
+  "northernEquivalent": "chị cả",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chi_hai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chi_hai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/family/eldest_sister.svg",
+  "reviewed": false
+}

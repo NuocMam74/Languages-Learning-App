@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u04.l02",
+  "unit": "vi-south.u04",
+  "title": {
+    "fr": "Vợ, chồng, ông xã, bà xã",
+    "en": "Vợ, chồng, ông xã, bà xã"
+  },
+  "goal": {
+    "fr": "Présenter ta femme, ton mari et ta famille.",
+    "en": "Introduce your wife, husband and family."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u04.l01"
+  ],
+  "concepts": [
+    "c_vo",
+    "c_chong",
+    "c_gia_dinh",
+    "c_cua",
+    "c_ong_xa",
+    "c_ba_xa"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_vo",
+      "distractors": [
+        "c_chong",
+        "c_ma_mom"
+      ],
+      "explain": {
+        "fr": "vợ : l'épouse.",
+        "en": "vợ: wife."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chong",
+      "distractors": [
+        "c_vo",
+        "c_ba"
+      ],
+      "explain": {
+        "fr": "chồng : le mari.",
+        "en": "chồng: husband."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_vo",
+      "explain": {
+        "fr": "vợ tombe court (nặng).",
+        "en": "vợ drops short (nặng)."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ong_xa_ba_xa"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_xa",
+      "distractors": [
+        "bà xã",
+        "ông già"
+      ],
+      "explain": {
+        "fr": "ông xã : « mon mari », affectueux et courant au Sud.",
+        "en": "ông xã: 'my hubby', affectionate and common in the South."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là vợ tôi.",
+      "tokens": [
+        "Đây",
+        "là",
+        "vợ",
+        "tôi",
+        "chồng"
+      ],
+      "translation": {
+        "fr": "Voici ma femme.",
+        "en": "This is my wife."
+      },
+      "explain": {
+        "fr": "Comme ba tôi : le possesseur vient après, sans của.",
+        "en": "Like ba tôi: the owner comes after, no của needed."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gia_dinh",
+      "distractors": [
+        "giả định",
+        "gia đinh"
+      ],
+      "explain": {
+        "fr": "gia đình : la famille. gia se dit « ya » au Sud.",
+        "en": "gia đình: family. gia sounds like 'ya' in the South."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là gia đình của tôi.",
+      "tokens": [
+        "Đây",
+        "là",
+        "gia đình",
+        "của",
+        "tôi",
+        "vợ"
+      ],
+      "translation": {
+        "fr": "Voici ma famille.",
+        "en": "This is my family."
+      },
+      "explain": {
+        "fr": "của = « de » (possession). On l'ajoute pour insister, souvent on l'omet.",
+        "en": "của = 'of' (possession). Added for emphasis, often left out."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_ba_xa",
+      "explain": {
+        "fr": "bà descend ; xã (ngã) se prononce comme un hỏi au Sud.",
+        "en": "bà falls; xã (ngã) sounds like hỏi in the South."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_vo",
+      "c_chong",
+      "c_gia_dinh",
+      "c_cua",
+      "c_ong_xa",
+      "c_ba_xa"
+    ]
+  },
+  "reviewed": false
+}

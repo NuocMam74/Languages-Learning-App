@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nuoc",
+  "type": "word",
+  "vi": "nước",
+  "tone": "sac",
+  "gloss": {
+    "fr": "eau ; pays",
+    "en": "water; country"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nuoc_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nuoc_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/water.svg",
+  "note": {
+    "fr": "nước veut aussi dire « pays » : nước Pháp, la France.",
+    "en": "nước also means 'country': nước Pháp, France."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_finals_south",
+  "title": {
+    "fr": "Les finales qui glissent",
+    "en": "Sliding final sounds"
+  },
+  "body": {
+    "fr": "Au Sud, le -n final sonne souvent -ng, et le -t sonne -c : bạn ressemble à « bạng », Việt à « Việc ». Mắt (œil) et mắc (cher) se confondent presque. C'est à reconnaître, pas à écrire : l'orthographe garde n et t.",
+    "en": "In the South, final -n often sounds like -ng, and -t like -c: bạn sounds like 'bạng', Việt like 'Việc'. Mắt (eye) and mắc (expensive) almost merge. Learn to recognise it, not to write it: spelling keeps n and t."
+  },
+  "vi": "tiếng Việt",
+  "audio": "audio/cc_finals_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "À Saïgon, tu entends « bạng » (ami). On écrit…",
+      "en": "In Saigon you hear 'bạng' (friend). It's written…"
+    },
+    "options": [
+      {
+        "fr": "bạng",
+        "en": "bạng"
+      },
+      {
+        "fr": "bạn",
+        "en": "bạn"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

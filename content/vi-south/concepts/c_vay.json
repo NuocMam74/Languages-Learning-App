@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_vay",
+  "type": "word",
+  "vi": "vậy",
+  "tone": "nang",
+  "gloss": {
+    "fr": "ainsi, comme ça ; particule qui adoucit",
+    "en": "so, like that; softening particle"
+  },
+  "register": "neutral",
+  "northernEquivalent": "thế",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_vay_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_vay_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Sao vậy ? : « Qu'est-ce qu'il y a ? ». Au Nord, on dirait thế.",
+    "en": "Sao vậy?: 'What's up?'. The North would say thế."
+  },
+  "reviewed": false
+}

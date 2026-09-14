@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_da_a_respect",
+  "title": {
+    "fr": "Dạ, ạ, et les deux mains",
+    "en": "Dạ, ạ, and both hands"
+  },
+  "body": {
+    "fr": "Avec un aîné, on commence sa réponse par dạ, et on peut la finir par ạ pour plus de respect. On tend et on reçoit un objet à deux mains. À table, on invite les aînés avant de manger : mời ông, mời bà.",
+    "en": "With an elder, start your reply with dạ, and you can end it with ạ for extra respect. Give and receive things with both hands. At the table, invite the elders before eating: mời ông, mời bà."
+  },
+  "vi": "Dạ, con mời bà ăn cơm.",
+  "audio": "audio/cc_da_a_respect.opus",
+  "question": {
+    "prompt": {
+      "fr": "Tu tends une tasse de thé à un aîné. Tu la tends…",
+      "en": "You hand a cup of tea to an elder. You hand it…"
+    },
+    "options": [
+      {
+        "fr": "d'une main, vite",
+        "en": "with one hand, quickly"
+      },
+      {
+        "fr": "à deux mains",
+        "en": "with both hands"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

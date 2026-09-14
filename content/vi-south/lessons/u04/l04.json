@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u04.l04",
+  "unit": "vi-south.u04",
+  "title": {
+    "fr": "Cô, chú, dì, cậu",
+    "en": "Cô, chú, dì, cậu"
+  },
+  "goal": {
+    "fr": "Nommer oncles et tantes des deux côtés de la famille.",
+    "en": "Name uncles and aunts on both sides of the family."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u04.l03"
+  ],
+  "concepts": [
+    "c_di",
+    "c_cau",
+    "c_duong",
+    "c_thim",
+    "c_mo",
+    "c_ho_hang"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_di",
+      "distractors": [
+        "đi",
+        "dí"
+      ],
+      "explain": {
+        "fr": "dì descend : la sœur de ta mère. Au Sud, d se dit « y ».",
+        "en": "dì falls: your mother's sister. In the South, d sounds like 'y'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_uncles_aunts"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cau",
+      "distractors": [
+        "câu",
+        "cầu"
+      ],
+      "explain": {
+        "fr": "cậu tombe court : le frère de ta mère. cầu descend : le pont.",
+        "en": "cậu drops short: your mother's brother. cầu falls: bridge."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_thim",
+      "explain": {
+        "fr": "thím monte : la femme de chú.",
+        "en": "thím rises: chú's wife."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mo",
+      "distractors": [
+        "mờ",
+        "mở"
+      ],
+      "explain": {
+        "fr": "mợ tombe court : la femme de cậu. mở plonge : ouvrir.",
+        "en": "mợ drops short: cậu's wife. mở dips: to open."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_duong",
+      "explain": {
+        "fr": "dượng tombe court : le mari de cô ou de dì.",
+        "en": "dượng drops short: the husband of cô or dì."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dì Út tôi ở Sài Gòn.",
+      "tokens": [
+        "Dì",
+        "Út",
+        "tôi",
+        "ở",
+        "Sài Gòn",
+        "cậu"
+      ],
+      "translation": {
+        "fr": "Ma plus jeune tante (côté mère) habite à Saïgon.",
+        "en": "My youngest aunt (mother's side) lives in Saigon."
+      },
+      "explain": {
+        "fr": "Au Sud, on appelle souvent par le rang : dì Út, chú Tư.",
+        "en": "In the South people are often called by rank: dì Út, chú Tư."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_hang",
+      "distractors": [
+        "họ tên",
+        "hàng họ"
+      ],
+      "explain": {
+        "fr": "họ hàng : la parenté, oncles, tantes et cousins.",
+        "en": "họ hàng: relatives, uncles, aunts and cousins."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chú là em của ba tôi.",
+      "tokens": [
+        "Chú",
+        "là",
+        "em",
+        "của",
+        "ba",
+        "tôi",
+        "anh"
+      ],
+      "translation": {
+        "fr": "Chú est le petit frère de mon père.",
+        "en": "Chú is my father's younger brother."
+      },
+      "explain": {
+        "fr": "chú = frère cadet du père. Plus âgé que ton père, ce serait bác.",
+        "en": "chú = father's younger brother. Older than your father, it would be bác."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_cau",
+      "explain": {
+        "fr": "cậu : ton bas, court, qui tombe.",
+        "en": "cậu: low, short, falling tone."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_di",
+      "c_cau",
+      "c_duong",
+      "c_thim",
+      "c_mo",
+      "c_ho_hang"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u04.l07",
+  "unit": "vi-south.u04",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : la famille",
+    "en": "Review: family"
+  },
+  "goal": {
+    "fr": "Revoir les mots de la famille et les questions qui vont avec.",
+    "en": "Go over family words and the questions that go with them."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u04.l06"
+  ],
+  "concepts": [
+    "c_chi_hai",
+    "s_ong_ngoai",
+    "c_cau",
+    "c_chong",
+    "c_ngoai",
+    "s_ba_noi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chi_hai",
+      "distractors": [
+        "c_anh_hai",
+        "c_em_ut"
+      ],
+      "explain": {
+        "fr": "chị hai : la sœur aînée, au Sud.",
+        "en": "chị hai: eldest sister, in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ong_ngoai",
+      "distractors": [
+        "ông nội",
+        "ông ngoài"
+      ],
+      "explain": {
+        "fr": "ông ngoại : le père de ta mère.",
+        "en": "ông ngoại: your mother's father."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_aine",
+      "explain": {
+        "fr": "Au Sud : anh hai ; au Nord : anh cả.",
+        "en": "South: anh hai; North: anh cả."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cau",
+      "distractors": [
+        "câu",
+        "cầu"
+      ],
+      "explain": {
+        "fr": "cậu : le frère de ta mère.",
+        "en": "cậu: your mother's brother."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh có vợ chưa?",
+      "tokens": [
+        "Anh",
+        "có",
+        "vợ",
+        "chưa",
+        "không"
+      ],
+      "translation": {
+        "fr": "Tu es marié ? (à un homme un peu plus âgé)",
+        "en": "Are you married? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "có … chưa ? pour le mariage.",
+        "en": "có … chưa? for marriage."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chong",
+      "distractors": [
+        "c_vo",
+        "c_ba"
+      ],
+      "explain": {
+        "fr": "chồng : le mari.",
+        "en": "chồng: husband."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ngoai",
+      "explain": {
+        "fr": "ngoại tombe court (nặng).",
+        "en": "ngoại drops short (nặng)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà tôi có hai con mèo.",
+      "tokens": [
+        "Nhà",
+        "tôi",
+        "có",
+        "hai",
+        "con",
+        "mèo",
+        "cái"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a deux chats.",
+        "en": "At my home there are two cats."
+      },
+      "explain": {
+        "fr": "con devant les animaux.",
+        "en": "con before animals."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_ba_noi",
+      "explain": {
+        "fr": "bà descend, nội tombe court.",
+        "en": "bà falls, nội drops short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

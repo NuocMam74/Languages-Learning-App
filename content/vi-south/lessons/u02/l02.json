@@ -1,0 +1,140 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u02.l02",
+  "unit": "vi-south.u02",
+  "title": {
+    "fr": "D, gi, v et r",
+    "en": "D, gi, v and r"
+  },
+  "goal": {
+    "fr": "Reconnaître le « y » du Sud et le distinguer du r.",
+    "en": "Recognise the southern 'y' and tell it from r."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u02.l01"
+  ],
+  "concepts": [
+    "c_gi_what",
+    "c_vui",
+    "c_dua_coconut",
+    "c_rau",
+    "c_ra",
+    "c_da_skin",
+    "c_da"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dua_coconut",
+      "distractors": [
+        "c_rau",
+        "c_nuoc"
+      ],
+      "explain": {
+        "fr": "dừa : au Sud, d se dit comme un « y ».",
+        "en": "dừa: in the South, d sounds like a 'y'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_d_gi_v_south"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ra",
+      "distractors": [
+        "da",
+        "gia"
+      ],
+      "explain": {
+        "fr": "Au Sud, da et gia sonnent tous deux « ya » ; r reste un vrai r.",
+        "en": "In the South da and gia both sound 'ya'; r stays a real r."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "da",
+        "dạ"
+      ],
+      "audioConcepts": [
+        "c_da_skin",
+        "c_da"
+      ],
+      "explain": {
+        "fr": "da est plat (la peau), dạ tombe court (oui poli).",
+        "en": "da is level (skin), dạ drops short (polite yes)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gi_what",
+      "distractors": [
+        "gỉ",
+        "gí"
+      ],
+      "explain": {
+        "fr": "gì descend : « quoi ? ». gỉ plonge, gí monte.",
+        "en": "gì falls: 'what?'. gỉ dips, gí rises."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_vui",
+      "explain": {
+        "fr": "vui est plat. Dans la conversation au Sud, le v glisse vers « y ».",
+        "en": "vui is level. In southern conversation, v slides towards 'y'."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_rau",
+      "distractors": [
+        "c_dua_coconut",
+        "c_com"
+      ],
+      "explain": {
+        "fr": "rau : les légumes verts et les herbes.",
+        "en": "rau: greens and herbs."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em vui lắm.",
+      "tokens": [
+        "Em",
+        "vui",
+        "lắm",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Je suis très content(e).",
+        "en": "I'm very happy."
+      },
+      "explain": {
+        "fr": "L'adjectif suit le sujet, sans verbe « être » : em vui.",
+        "en": "The adjective follows the subject, no verb 'to be': em vui."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_dua_coconut",
+      "explain": {
+        "fr": "Commence par « y », puis laisse le ton descendre.",
+        "en": "Start with 'y', then let the tone fall."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_gi_what",
+      "c_vui",
+      "c_dua_coconut",
+      "c_rau",
+      "c_ra",
+      "c_da_skin"
+    ]
+  },
+  "reviewed": false
+}

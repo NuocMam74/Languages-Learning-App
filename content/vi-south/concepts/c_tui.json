@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tui",
+  "type": "word",
+  "vi": "tụi",
+  "tone": "nang",
+  "gloss": {
+    "fr": "marque du pluriel des personnes (Sud)",
+    "en": "plural marker for people (southern)"
+  },
+  "register": "familiar",
+  "northernEquivalent": "chúng",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tui_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tui_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "tụi mình, tụi em, tụi nó. Au Nord : chúng tôi, chúng em.",
+    "en": "tụi mình, tụi em, tụi nó. In the North: chúng tôi, chúng em."
+  },
+  "reviewed": false
+}

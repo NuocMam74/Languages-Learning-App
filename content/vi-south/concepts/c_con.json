@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_con",
+  "type": "word",
+  "vi": "con",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "enfant ; moi (face à la génération des parents)",
+    "en": "child; me (to your parents' generation)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_con_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_con_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/child.svg",
+  "note": {
+    "fr": "Au Sud, on se désigne souvent par con face à cô, chú, ông ou bà ; au Nord, plutôt cháu.",
+    "en": "In the South people often call themselves con with cô, chú, ông or bà; in the North, cháu is more usual."
+  },
+  "reviewed": false
+}

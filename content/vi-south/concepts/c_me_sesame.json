@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_me_sesame",
+  "type": "word",
+  "vi": "mè",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "sésame",
+    "en": "sesame"
+  },
+  "register": "neutral",
+  "northernEquivalent": "vừng",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_me_sesame_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_me_sesame_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : mè ; au Nord : vừng. Bánh tráng mè : galette de riz au sésame.",
+    "en": "South: mè; North: vừng. Bánh tráng mè: sesame rice cracker."
+  },
+  "reviewed": false
+}

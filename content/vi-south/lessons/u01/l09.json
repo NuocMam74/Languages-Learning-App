@@ -1,0 +1,195 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u01.l09",
+  "unit": "vi-south.u01",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : premiers sons, premiers mots",
+    "en": "Test: first sounds, first words"
+  },
+  "goal": {
+    "fr": "Montrer que tu entends les tons et que tu sais saluer et remercier.",
+    "en": "Show you can hear the tones and greet and thank people."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u01.l08"
+  ],
+  "concepts": [
+    "c_ma_ghost",
+    "c_ma_but",
+    "c_ma_mom",
+    "c_ma_seedling",
+    "c_chi",
+    "c_chao",
+    "c_ba",
+    "c_ba_grandma",
+    "s_khong_co_chi",
+    "c_nuoc",
+    "c_ga_station",
+    "c_ga_chicken",
+    "c_khoe"
+  ],
+  "steps": [
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ma",
+        "mà",
+        "má"
+      ],
+      "audioConcepts": [
+        "c_ma_ghost",
+        "c_ma_but",
+        "c_ma_mom"
+      ],
+      "explain": {
+        "fr": "ma plat, mà descend, má monte.",
+        "en": "ma level, mà falls, má rises."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ma_seedling",
+      "explain": {
+        "fr": "mạ porte le point souscrit : ton bas, court, qui tombe.",
+        "en": "mạ has the dot below: low, short, falling."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chi",
+      "distractors": [
+        "c_anh",
+        "c_em"
+      ],
+      "explain": {
+        "fr": "chị : une femme un peu plus âgée que toi.",
+        "en": "chị: a woman slightly older than you."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chao",
+      "distractors": [
+        "cháo",
+        "chạo"
+      ],
+      "explain": {
+        "fr": "chào descend. cháo, qui monte, c'est la soupe de riz.",
+        "en": "chào falls. cháo, rising, is rice porridge."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ba",
+        "bà"
+      ],
+      "audioConcepts": [
+        "c_ba",
+        "c_ba_grandma"
+      ],
+      "explain": {
+        "fr": "ba plat (papa), bà descend (grand-mère).",
+        "en": "ba level (dad), bà falls (grandma)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khong_co_chi",
+      "distractors": [
+        "Không sao.",
+        "Cảm ơn."
+      ],
+      "explain": {
+        "fr": "Không có chi : « de rien », la réponse à un merci.",
+        "en": "Không có chi: 'you're welcome', the reply to thanks."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_papa",
+      "explain": {
+        "fr": "Au Sud, papa se dit ba ; bố est la forme du Nord.",
+        "en": "In the South dad is ba; bố is the northern form."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, em cảm ơn chị.",
+      "tokens": [
+        "Dạ",
+        "em",
+        "cảm ơn",
+        "chị",
+        "anh"
+      ],
+      "translation": {
+        "fr": "Merci (à une femme un peu plus âgée).",
+        "en": "Thank you (to a slightly older woman)."
+      },
+      "explain": {
+        "fr": "Tu te désignes par em et tu nommes chị à la fin.",
+        "en": "Call yourself em and name chị at the end."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nuoc",
+      "distractors": [
+        "c_com",
+        "c_ca_eggplant"
+      ],
+      "explain": {
+        "fr": "nước : l'eau.",
+        "en": "nước: water."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ga",
+        "gà"
+      ],
+      "audioConcepts": [
+        "c_ga_station",
+        "c_ga_chicken"
+      ],
+      "explain": {
+        "fr": "ga plat (la gare), gà descend (le poulet).",
+        "en": "ga level (station), gà falls (chicken)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em cũng khỏe.",
+      "tokens": [
+        "Em",
+        "cũng",
+        "khỏe",
+        "không"
+      ],
+      "translation": {
+        "fr": "Moi aussi, je vais bien.",
+        "en": "I'm well too."
+      },
+      "explain": {
+        "fr": "cũng se place avant l'adjectif.",
+        "en": "cũng goes before the adjective."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_khoe",
+      "explain": {
+        "fr": "khỏe : hỏi, qui au Sud sonne comme le ngã.",
+        "en": "khỏe: hỏi, which sounds like ngã in the South."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

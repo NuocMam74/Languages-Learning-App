@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u01.l08",
+  "unit": "vi-south.u01",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : premiers sons, premiers mots",
+    "en": "Review: first sounds, first words"
+  },
+  "goal": {
+    "fr": "Revoir les tons, les salutations et les premiers mots de l'unité.",
+    "en": "Go over the unit's tones, greetings and first words."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u01.l07"
+  ],
+  "concepts": [
+    "c_ma_ghost",
+    "c_ma_mom",
+    "c_ma_but",
+    "c_ba",
+    "c_ga_chicken",
+    "c_cam_on",
+    "c_ba_grandma",
+    "s_khong_co_chi"
+  ],
+  "steps": [
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ma",
+        "má",
+        "mà"
+      ],
+      "audioConcepts": [
+        "c_ma_ghost",
+        "c_ma_mom",
+        "c_ma_but"
+      ],
+      "explain": {
+        "fr": "ma plat, má monte, mà descend.",
+        "en": "ma level, má rises, mà falls."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba",
+      "distractors": [
+        "c_ma_mom",
+        "c_ba_grandma"
+      ],
+      "explain": {
+        "fr": "ba, ton plat : papa.",
+        "en": "ba, level tone: dad."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ga_chicken",
+      "distractors": [
+        "c_ca_fish",
+        "c_com"
+      ],
+      "explain": {
+        "fr": "gà descend : le poulet.",
+        "en": "gà falls: chicken."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cam_on",
+      "distractors": [
+        "cam ơn",
+        "cạm ơn"
+      ],
+      "explain": {
+        "fr": "cảm porte le hỏi : il plonge puis remonte.",
+        "en": "cảm carries hỏi: it dips then rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, không có chi.",
+      "tokens": [
+        "Dạ",
+        "không",
+        "có",
+        "chi",
+        "sao"
+      ],
+      "translation": {
+        "fr": "De rien (poliment).",
+        "en": "You're welcome (politely)."
+      },
+      "explain": {
+        "fr": "Au Sud, on répond à cảm ơn par không có chi.",
+        "en": "In the South, you answer cảm ơn with không có chi."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ba_grandma",
+      "explain": {
+        "fr": "bà descend doucement : grand-mère.",
+        "en": "bà falls gently: grandma."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_maman",
+      "explain": {
+        "fr": "Au Sud, maman se dit má ; mẹ est surtout du Nord.",
+        "en": "In the South mom is má; mẹ is mostly northern."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh khỏe không?",
+      "tokens": [
+        "Anh",
+        "khỏe",
+        "không",
+        "cũng"
+      ],
+      "translation": {
+        "fr": "Tu vas bien ? (à un homme un peu plus âgé)",
+        "en": "How are you? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "không en fin de phrase transforme la phrase en question.",
+        "en": "không at the end turns the sentence into a question."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_khong_co_chi",
+      "explain": {
+        "fr": "chi est plat, không et có bien distincts.",
+        "en": "chi is level, không and có clearly apart."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

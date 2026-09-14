@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_xe",
+  "type": "word",
+  "vi": "xe",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "véhicule (moto, vélo, voiture)",
+    "en": "vehicle (motorbike, bike, car)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xe_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xe_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/scooter.svg",
+  "note": {
+    "fr": "À Saïgon, xe tout court, c'est souvent la moto. La voiture : xe hơi.",
+    "en": "In Saigon, plain xe often means the motorbike. A car is xe hơi."
+  },
+  "reviewed": false
+}

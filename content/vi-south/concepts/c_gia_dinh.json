@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_gia_dinh",
+  "type": "word",
+  "vi": "gia đình",
+  "gloss": {
+    "fr": "famille",
+    "en": "family"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gia_dinh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gia_dinh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Có gia đình : « avoir une famille », c'est-à-dire être marié.",
+    "en": "Có gia đình: 'to have a family', i.e. to be married."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_personal_questions",
+  "title": {
+    "fr": "Des questions qui rapprochent",
+    "en": "Questions that bring people closer"
+  },
+  "body": {
+    "fr": "Âge, mariage, enfants : au Vietnam, ces questions arrivent vite, souvent dès la première rencontre. Ce n'est pas de l'indiscrétion : elles aident à choisir les bons pronoms et montrent de l'intérêt. « Anh có vợ chưa ? » attend simplement « Dạ, có rồi » ou « Dạ, chưa ».",
+    "en": "Age, marriage, children: in Vietnam these questions come quickly, often at the first meeting. It isn't nosiness: they help pick the right pronouns and show interest. 'Anh có vợ chưa?' simply expects 'Dạ, có rồi' or 'Dạ, chưa'."
+  },
+  "vi": "Anh có vợ chưa?",
+  "audio": "audio/cc_personal_questions.opus",
+  "question": {
+    "prompt": {
+      "fr": "On te demande ton âge dès la première rencontre. C'est…",
+      "en": "Someone asks your age the first time you meet. It's…"
+    },
+    "options": [
+      {
+        "fr": "très impoli",
+        "en": "very rude"
+      },
+      {
+        "fr": "normal et amical",
+        "en": "normal and friendly"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

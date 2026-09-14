@@ -34,7 +34,17 @@
     { "id": "lv_ainsi", "gloss": { "fr": "ainsi / comme ça", "en": "like that" }, "south": ["vậy"], "north": ["thế"], "severity": "warning",
       "exceptions": ["thế giới", "thay thế", "thế hệ", "thế kỷ", "tư thế", "lợi thế", "thế lực", "địa thế", "thế chấp", "thế mạnh", "xu thế"],
       "note": { "fr": "« thế » a de nombreux sens hors « ainsi » : signalé sans bloquer." }, "reviewed": false },
-    { "id": "lv_gateau", "gloss": { "fr": "gâteau", "en": "cake" }, "south": ["bánh"], "north": ["bánh"], "severity": "none", "reviewed": false }
+    { "id": "lv_gateau", "gloss": { "fr": "gâteau", "en": "cake" }, "south": ["bánh"], "north": ["bánh"], "severity": "none", "reviewed": false },
+    { "id": "lv_de_rien", "gloss": { "fr": "de rien", "en": "you're welcome" }, "south": ["không có chi"], "north": ["không có gì"], "severity": "warning",
+      "note": { "fr": "« không có gì » veut aussi dire « il n'y a rien » partout : signalé sans bloquer.", "en": "« không có gì » also means 'there is nothing' everywhere: flagged, not blocking." }, "reviewed": false },
+    { "id": "lv_sesame", "gloss": { "fr": "sésame", "en": "sesame" }, "south": ["mè"], "north": ["vừng"], "severity": "error", "reviewed": false },
+    { "id": "lv_aine", "gloss": { "fr": "frère / sœur aîné(e)", "en": "eldest brother / sister" }, "south": ["anh hai", "chị hai"], "north": ["anh cả", "chị cả"], "severity": "error",
+      "exceptions": ["anh cả nhà", "chị cả nhà", "anh cả đời", "chị cả đời", "anh cả ngày", "chị cả ngày"], "reviewed": false },
+    { "id": "lv_ong_ay", "gloss": { "fr": "lui (homme âgé)", "en": "he (older man)" }, "south": ["ổng"], "north": ["ông ấy"], "severity": "warning",
+      "note": { "fr": "« ông ấy » reste correct à l'écrit au Sud ; « ổng » est la forme orale : signalé sans bloquer.", "en": "« ông ấy » is still fine in southern writing; « ổng » is the spoken form: flagged, not blocking." }, "reviewed": false },
+    { "id": "lv_ba_ay", "gloss": { "fr": "elle (femme âgée)", "en": "she (older woman)" }, "south": ["bả"], "north": ["bà ấy"], "severity": "warning", "reviewed": false },
+    { "id": "lv_anh_ay", "gloss": { "fr": "lui (homme un peu plus âgé)", "en": "he (slightly older man)" }, "south": ["ảnh"], "north": ["anh ấy"], "severity": "warning", "reviewed": false },
+    { "id": "lv_chi_ay", "gloss": { "fr": "elle (femme un peu plus âgée)", "en": "she (slightly older woman)" }, "south": ["chỉ"], "north": ["chị ấy"], "severity": "warning", "reviewed": false }
   ],
   "familiar": [
     { "form": "hông", "standard": "không", "gloss": { "fr": "non / ne… pas (familier)", "en": "no / not (casual)" } },

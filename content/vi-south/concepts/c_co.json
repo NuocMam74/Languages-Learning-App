@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_co",
+  "type": "word",
+  "vi": "có",
+  "tone": "sac",
+  "gloss": {
+    "fr": "avoir ; il y a ; oui (en réponse)",
+    "en": "to have; there is; yes (as an answer)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_co_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_co_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Pour répondre oui à une question en có … không ?, on reprend có.",
+    "en": "To say yes to a có … không? question, repeat có."
+  },
+  "reviewed": false
+}

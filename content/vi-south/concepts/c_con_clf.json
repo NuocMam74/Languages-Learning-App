@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_con_clf",
+  "type": "word",
+  "vi": "con",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "classificateur des animaux",
+    "en": "classifier for animals"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_con_clf_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_con_clf_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Même mot que con « enfant » : con chó, con mèo, con cá.",
+    "en": "Same word as con 'child': con chó, con mèo, con cá."
+  },
+  "reviewed": false
+}

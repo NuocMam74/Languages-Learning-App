@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ba_she",
+  "type": "word",
+  "vi": "bả",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "elle (bà ấy, à l'oral au Sud)",
+    "en": "she, her (bà ấy, southern speech)"
+  },
+  "register": "familiar",
+  "northernEquivalent": "bà ấy",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ba_she_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ba_she_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

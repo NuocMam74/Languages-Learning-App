@@ -1,0 +1,154 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u01.l07",
+  "unit": "vi-south.u01",
+  "title": {
+    "fr": "Khỏe không ?",
+    "en": "Khỏe không?"
+  },
+  "goal": {
+    "fr": "Demander des nouvelles et répondre que tu vas bien.",
+    "en": "Ask how someone is and say you're well."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u01.l06"
+  ],
+  "concepts": [
+    "c_khoe",
+    "s_anh_khoe_khong",
+    "c_cung",
+    "c_con_and",
+    "c_binh_thuong",
+    "c_lam"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_khoe_khong",
+      "distractors": [
+        "Chị khỏe không?",
+        "Em khỏe không?"
+      ],
+      "explain": {
+        "fr": "anh : on s'adresse à un homme un peu plus âgé.",
+        "en": "anh: you're talking to a slightly older man."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_khoe",
+      "explain": {
+        "fr": "khỏe porte le hỏi : il plonge puis remonte.",
+        "en": "khỏe carries hỏi: it dips then rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cung",
+      "distractors": [
+        "cùng",
+        "cúng"
+      ],
+      "explain": {
+        "fr": "cũng s'écrit avec le ngã, qui sonne comme un hỏi au Sud. cùng descend, cúng monte.",
+        "en": "cũng is written with ngã, which sounds like hỏi in the South. cùng falls, cúng rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, em khỏe. Còn anh?",
+      "tokens": [
+        "Dạ",
+        "em",
+        "khỏe",
+        "Còn",
+        "anh",
+        "cũng"
+      ],
+      "translation": {
+        "fr": "Je vais bien. Et toi ? (à un homme un peu plus âgé)",
+        "en": "I'm well. And you? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Còn + la personne = « et toi ? ». On renvoie la question en nommant l'autre.",
+        "en": "Còn + the person = 'and you?'. You return the question by naming them."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_binh_thuong",
+      "distractors": [
+        "bình thương",
+        "binh thường"
+      ],
+      "explain": {
+        "fr": "bình thường : les deux syllabes descendent. « Normal, comme d'habitude ».",
+        "en": "bình thường: both syllables fall. 'Normal, as usual'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em cũng khỏe.",
+      "tokens": [
+        "Em",
+        "cũng",
+        "khỏe",
+        "còn"
+      ],
+      "translation": {
+        "fr": "Moi aussi, je vais bien.",
+        "en": "I'm well too."
+      },
+      "explain": {
+        "fr": "cũng se place avant l'adjectif : em cũng khỏe.",
+        "en": "cũng goes before the adjective: em cũng khỏe."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_lam",
+      "explain": {
+        "fr": "lắm monte : « très », placé après le mot.",
+        "en": "lắm rises: 'very', placed after the word."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, khỏe lắm.",
+      "tokens": [
+        "Dạ",
+        "khỏe",
+        "lắm",
+        "cũng"
+      ],
+      "translation": {
+        "fr": "Très bien (poliment).",
+        "en": "Very well (politely)."
+      },
+      "explain": {
+        "fr": "lắm vient après l'adjectif : khỏe lắm.",
+        "en": "lắm comes after the adjective: khỏe lắm."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_anh_khoe_khong",
+      "explain": {
+        "fr": "La question finit par không, sans monter la voix : le mot fait la question.",
+        "en": "The question ends with không, no rising voice: the word makes the question."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_khoe",
+      "s_anh_khoe_khong",
+      "c_cung",
+      "c_con_and",
+      "c_binh_thuong",
+      "c_lam"
+    ]
+  },
+  "reviewed": false
+}

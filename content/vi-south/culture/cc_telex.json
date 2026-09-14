@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_telex",
+  "title": {
+    "fr": "Taper les tons : Telex",
+    "en": "Typing tones: Telex"
+  },
+  "body": {
+    "fr": "Sur un clavier ordinaire, la méthode Telex ajoute les signes avec des lettres : s pour sắc, f huyền, r hỏi, x ngã, j nặng. Doubler une voyelle ajoute le chapeau : aa = â, ee = ê, oo = ô. Et aw = ă, ow = ơ, uw = ư, dd = đ.",
+    "en": "On a regular keyboard, Telex adds marks with letters: s for sắc, f huyền, r hỏi, x ngã, j nặng. Doubling a vowel adds the hat: aa = â, ee = ê, oo = ô. And aw = ă, ow = ơ, uw = ư, dd = đ."
+  },
+  "vi": "tiếng Việt",
+  "audio": "audio/cc_telex.opus",
+  "question": {
+    "prompt": {
+      "fr": "En Telex, pour écrire má, tu tapes…",
+      "en": "In Telex, to write má you type…"
+    },
+    "options": [
+      {
+        "fr": "mas",
+        "en": "mas"
+      },
+      {
+        "fr": "maf",
+        "en": "maf"
+      },
+      {
+        "fr": "maj",
+        "en": "maj"
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "s ajoute l'accent aigu : le ton sắc.",
+      "en": "s adds the acute accent: the sắc tone."
+    }
+  },
+  "reviewed": false
+}

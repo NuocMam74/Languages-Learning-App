@@ -1,0 +1,141 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u01.l06",
+  "unit": "vi-south.u01",
+  "title": {
+    "fr": "Cá, gà, cơm, nước",
+    "en": "Cá, gà, cơm, nước"
+  },
+  "goal": {
+    "fr": "Reconnaître tes premiers mots de cuisine grâce aux tons.",
+    "en": "Recognise your first food words by their tones."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u01.l05"
+  ],
+  "concepts": [
+    "c_ca_fish",
+    "c_ca_eggplant",
+    "c_ga_chicken",
+    "c_ga_station",
+    "c_com",
+    "c_nuoc"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ca_fish",
+      "distractors": [
+        "c_ga_chicken",
+        "c_ca_eggplant"
+      ],
+      "explain": {
+        "fr": "cá monte : le poisson.",
+        "en": "cá rises: fish."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "cá",
+        "cà"
+      ],
+      "audioConcepts": [
+        "c_ca_fish",
+        "c_ca_eggplant"
+      ],
+      "explain": {
+        "fr": "cá monte, cà descend : poisson contre aubergine.",
+        "en": "cá rises, cà falls: fish versus eggplant."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ga_chicken",
+      "distractors": [
+        "c_ga_station",
+        "c_ca_fish"
+      ],
+      "explain": {
+        "fr": "gà descend : le poulet. ga, plat, c'est la gare.",
+        "en": "gà falls: chicken. ga, level, is the station."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ga",
+        "gà"
+      ],
+      "audioConcepts": [
+        "c_ga_station",
+        "c_ga_chicken"
+      ],
+      "explain": {
+        "fr": "ga reste plat (la gare), gà descend (le poulet).",
+        "en": "ga stays level (station), gà falls (chicken)."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_an_com_chua"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_com",
+      "distractors": [
+        "c_nuoc",
+        "c_ca_fish"
+      ],
+      "explain": {
+        "fr": "cơm : le riz cuit, et par extension le repas.",
+        "en": "cơm: cooked rice, and by extension a meal."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_nuoc",
+      "explain": {
+        "fr": "nước monte : l'accent aigu est posé sur le ơ.",
+        "en": "nước rises: the acute accent sits on ơ."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ca_eggplant",
+      "distractors": [
+        "cá",
+        "ca"
+      ],
+      "explain": {
+        "fr": "cà, accent grave : le ton descend.",
+        "en": "cà, grave accent: the tone falls."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_com",
+      "explain": {
+        "fr": "cơm est plat ; ferme bien les lèvres sur le m final.",
+        "en": "cơm is level; close your lips on the final m."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ca_fish",
+      "c_ca_eggplant",
+      "c_ga_chicken",
+      "c_ga_station",
+      "c_com",
+      "c_nuoc"
+    ]
+  },
+  "reviewed": false
+}

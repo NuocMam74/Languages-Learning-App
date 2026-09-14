@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_xin",
+  "type": "word",
+  "vi": "xin",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "demander poliment",
+    "en": "to ask politely"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xin_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xin_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Xin lỗi : « demander pardon ». Em xin… : « je voudrais… ».",
+    "en": "Xin lỗi: 'ask forgiveness'. Em xin…: 'may I have…'."
+  },
+  "reviewed": false
+}

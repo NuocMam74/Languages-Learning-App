@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ca_eggplant",
+  "type": "word",
+  "vi": "cà",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "aubergine (on dit souvent cà tím)",
+    "en": "eggplant (often cà tím)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ca_eggplant_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ca_eggplant_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/eggplant.svg",
+  "note": {
+    "fr": "cà désigne aussi d'autres légumes de la même famille : cà chua, la tomate.",
+    "en": "cà also names related vegetables: cà chua, tomato."
+  },
+  "reviewed": false
+}

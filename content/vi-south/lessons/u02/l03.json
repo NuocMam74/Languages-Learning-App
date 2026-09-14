@@ -1,0 +1,138 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u02.l03",
+  "unit": "vi-south.u02",
+  "title": {
+    "fr": "S et x",
+    "en": "S and x"
+  },
+  "goal": {
+    "fr": "Entendre s et x, deux sons que le Sud distingue souvent.",
+    "en": "Hear s and x, two sounds the South often keeps apart."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u02.l02"
+  ],
+  "concepts": [
+    "c_xe",
+    "c_sua_milk",
+    "c_song_river",
+    "c_xa_far",
+    "c_xin",
+    "c_sach"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe",
+      "distractors": [
+        "c_song_river",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "xe : x se dit comme un s français.",
+        "en": "xe: x sounds like an English s."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_song_river",
+      "distractors": [
+        "xông",
+        "sống"
+      ],
+      "explain": {
+        "fr": "sông : s, langue un peu recourbée. xông : s simple. sống monte : vivre.",
+        "en": "sông: s, tongue slightly curled. xông: plain s. sống rises: to live."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_s_x_tr_ch"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sua_milk",
+      "distractors": [
+        "c_nuoc",
+        "c_xe"
+      ],
+      "explain": {
+        "fr": "sữa : le lait. Son ngã sonne comme un hỏi au Sud.",
+        "en": "sữa: milk. Its ngã sounds like hỏi in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xa_far",
+      "distractors": [
+        "sa",
+        "xà"
+      ],
+      "explain": {
+        "fr": "xa, plat, avec un x doux : loin. xà descend.",
+        "en": "xa, level, with a soft x: far. xà falls."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_sach",
+      "explain": {
+        "fr": "sách monte (sắc).",
+        "en": "sách rises (sắc)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em xin ly sữa.",
+      "tokens": [
+        "Em",
+        "xin",
+        "ly",
+        "sữa",
+        "xa"
+      ],
+      "translation": {
+        "fr": "Je voudrais un verre de lait.",
+        "en": "May I have a glass of milk?"
+      },
+      "explain": {
+        "fr": "xin + chose = demander poliment. ly, c'est le verre au Sud.",
+        "en": "xin + thing = ask politely. ly is 'glass' in the South."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_verre",
+      "explain": {
+        "fr": "Au Sud, un verre, c'est ly ; cốc est du Nord.",
+        "en": "In the South a glass is ly; cốc is northern."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_sua_milk",
+      "explain": {
+        "fr": "Langue un peu recourbée pour s, puis ư lèvres étirées.",
+        "en": "Curl your tongue slightly for s, then spread lips for ư."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_xe",
+      "c_sua_milk",
+      "c_song_river",
+      "c_xa_far",
+      "c_xin",
+      "c_sach"
+    ]
+  },
+  "reviewed": false
+}

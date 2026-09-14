@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_tieng_viet",
+  "type": "structure",
+  "vi": "tiếng Việt",
+  "gloss": {
+    "fr": "la langue vietnamienne",
+    "en": "the Vietnamese language"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_tieng_viet_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_tieng_viet_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, Việt sonne presque « Việc ». En Telex : tieengs Vieetj.",
+    "en": "In the South, Việt sounds almost like 'Việc'. In Telex: tieengs Vieetj."
+  },
+  "reviewed": false
+}

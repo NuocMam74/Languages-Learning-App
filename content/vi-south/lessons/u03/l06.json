@@ -1,0 +1,167 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l06",
+  "unit": "vi-south.u03",
+  "title": {
+    "fr": "Ổng, bả, ảnh, chỉ",
+    "en": "Ổng, bả, ảnh, chỉ"
+  },
+  "goal": {
+    "fr": "Reconnaître les pronoms « il, elle » de l'oral du Sud.",
+    "en": "Recognise the southern spoken 'he, she' pronouns."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l05"
+  ],
+  "concepts": [
+    "c_ong_he",
+    "c_ba_she",
+    "c_anh_he",
+    "c_chi_she",
+    "c_co_she",
+    "c_ong",
+    "c_chi",
+    "c_ba_grandma",
+    "c_co_aunt"
+  ],
+  "steps": [
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ông",
+        "ổng"
+      ],
+      "audioConcepts": [
+        "c_ong",
+        "c_ong_he"
+      ],
+      "explain": {
+        "fr": "ông est plat ; ổng plonge : « lui », un homme âgé.",
+        "en": "ông is level; ổng dips: 'him', an older man."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ong_ba_south"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chị",
+        "chỉ"
+      ],
+      "audioConcepts": [
+        "c_chi",
+        "c_chi_she"
+      ],
+      "explain": {
+        "fr": "chị tombe court (toi, grande sœur) ; chỉ plonge (elle).",
+        "en": "chị drops short (you, older sister); chỉ dips (her)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_he",
+      "distractors": [
+        "anh",
+        "ánh"
+      ],
+      "explain": {
+        "fr": "ảnh = anh ấy : « lui ». Le hỏi remplace ấy.",
+        "en": "ảnh = anh ấy: 'him'. The hỏi replaces ấy."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ong_ay",
+      "explain": {
+        "fr": "À l'oral du Sud, ông ấy devient ổng.",
+        "en": "In southern speech, ông ấy becomes ổng."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "bà",
+        "bả"
+      ],
+      "audioConcepts": [
+        "c_ba_grandma",
+        "c_ba_she"
+      ],
+      "explain": {
+        "fr": "bà descend (madame) ; bả plonge (elle, une femme âgée).",
+        "en": "bà falls (madam); bả dips (her, an older woman)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ổng là ba tôi.",
+      "tokens": [
+        "Ổng",
+        "là",
+        "ba",
+        "tôi",
+        "bả"
+      ],
+      "translation": {
+        "fr": "Lui, c'est mon père.",
+        "en": "He's my dad."
+      },
+      "explain": {
+        "fr": "ổng reprend ông ấy : on parle de lui, pas à lui.",
+        "en": "ổng stands for ông ấy: talking about him, not to him."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "cô",
+        "cổ"
+      ],
+      "audioConcepts": [
+        "c_co_aunt",
+        "c_co_she"
+      ],
+      "explain": {
+        "fr": "cô est plat ; cổ plonge : elle, une femme de l'âge de tes parents.",
+        "en": "cô is level; cổ dips: her, a woman your parents' age."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chỉ là chị tôi.",
+      "tokens": [
+        "Chỉ",
+        "là",
+        "chị",
+        "tôi",
+        "ảnh"
+      ],
+      "translation": {
+        "fr": "Elle, c'est ma grande sœur.",
+        "en": "She's my older sister."
+      },
+      "explain": {
+        "fr": "chỉ (elle) et chị (grande sœur) : même syllabe, ton différent.",
+        "en": "chỉ (her) and chị (older sister): same syllable, different tone."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ong_he",
+      "c_ba_she",
+      "c_anh_he",
+      "c_chi_she",
+      "c_co_she"
+    ]
+  },
+  "reviewed": false
+}

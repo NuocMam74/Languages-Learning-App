@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_hong",
+  "type": "word",
+  "vi": "hông",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "non ; ne… pas (familier, Sud)",
+    "en": "no; not (casual, southern)"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Forme familière de không, très entendue au Sud. À reconnaître ; avec un aîné, dis không.",
+    "en": "Casual form of không, heard everywhere in the South. Recognise it; with an elder, say không."
+  },
+  "reviewed": false
+}

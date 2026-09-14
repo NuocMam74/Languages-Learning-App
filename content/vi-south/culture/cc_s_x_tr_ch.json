@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_s_x_tr_ch",
+  "title": {
+    "fr": "S et x, tr et ch : le Sud les sépare",
+    "en": "S and x, tr and ch: the South keeps them apart"
+  },
+  "body": {
+    "fr": "Au Nord, s se prononce comme x, et tr comme ch. Au Sud, on les distingue souvent : s et tr se disent la langue un peu recourbée vers l'arrière. Écoute sông (fleuve) et xông, trà (thé) et chà. Les entendre aide aussi à bien les écrire.",
+    "en": "In the North, s sounds like x, and tr like ch. In the South they are often kept apart: s and tr are said with the tongue curled slightly back. Listen to sông (river) and xông, trà (tea) and chà. Hearing them helps you spell them too."
+  },
+  "vi": "sông, xông; trà, chà",
+  "audio": "audio/cc_s_x_tr_ch.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, sông et xông…",
+      "en": "In the South, sông and xông…"
+    },
+    "options": [
+      {
+        "fr": "sonnent toujours pareil",
+        "en": "always sound the same"
+      },
+      {
+        "fr": "se distinguent souvent",
+        "en": "are often told apart"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

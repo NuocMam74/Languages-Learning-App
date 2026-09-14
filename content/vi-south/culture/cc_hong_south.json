@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_hong_south",
+  "title": {
+    "fr": "Hông, le « non » qui chante",
+    "en": "Hông, the singing 'no'"
+  },
+  "body": {
+    "fr": "Dans les rues de Saïgon, không se raccourcit souvent en hông, voire hổng pour insister. C'est familier : parfait entre amis, à éviter avec un aîné qu'on respecte. Apprends surtout à le reconnaître : tu l'entendras partout, jusque dans les chansons.",
+    "en": "On Saigon's streets, không often shrinks to hông, or hổng for emphasis. It's casual: fine among friends, best avoided with an elder you respect. Above all, learn to recognise it: you'll hear it everywhere, even in songs."
+  },
+  "vi": "Hông có đâu!",
+  "audio": "audio/cc_hong_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "Tu réponds non à la mère d'un ami. Tu dis plutôt…",
+      "en": "You say no to a friend's mother. You'd rather say…"
+    },
+    "options": [
+      {
+        "fr": "Hông!",
+        "en": "Hông!"
+      },
+      {
+        "fr": "Dạ, không.",
+        "en": "Dạ, không."
+      }
+    ],
+    "answer": 1,
+    "explain": {
+      "fr": "hông est familier : avec un aîné, dạ + không.",
+      "en": "hông is casual: with an elder, dạ + không."
+    }
+  },
+  "reviewed": false
+}

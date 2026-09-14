@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_bac",
+  "type": "word",
+  "vi": "bác",
+  "tone": "sac",
+  "gloss": {
+    "fr": "oncle ou tante plus âgé(e) que tes parents ; aîné(e) respecté(e)",
+    "en": "uncle or aunt older than your parents; respected elder"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_bac_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_bac_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/bac.svg",
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_bo_beef",
+  "type": "word",
+  "vi": "bò",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "bœuf, vache",
+    "en": "beef, cow"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_bo_beef_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_bo_beef_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/cow.svg",
+  "note": {
+    "fr": "Phở bò : phở au bœuf.",
+    "en": "Phở bò: beef phở."
+  },
+  "reviewed": false
+}

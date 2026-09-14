@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_con_south",
+  "title": {
+    "fr": "Con chào cô : le « con » du Sud",
+    "en": "Con chào cô: the southern 'con'"
+  },
+  "body": {
+    "fr": "Une personne de l'âge de tes parents, tu l'appelles cô ou chú. Et toi ? Au Sud, on se désigne très souvent par con, « enfant », même adulte. Au Nord, on dit plutôt cháu. Con chào cô : « bonjour madame », avec une chaleur familiale.",
+    "en": "Someone your parents' age is cô or chú. And you? In the South people very often call themselves con, 'child', even as adults. In the North, cháu is more usual. Con chào cô: 'hello, ma'am', with family warmth."
+  },
+  "vi": "Con chào cô.",
+  "audio": "audio/cc_con_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, face à une amie de ta mère, tu te désignes souvent par…",
+      "en": "In the South, talking to your mother's friend, you often call yourself…"
+    },
+    "options": [
+      {
+        "fr": "con",
+        "en": "con"
+      },
+      {
+        "fr": "anh",
+        "en": "anh"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_anh_chi_em",
+  "type": "word",
+  "vi": "anh chị em",
+  "gloss": {
+    "fr": "frères et sœurs",
+    "en": "siblings"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_chi_em_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_chi_em_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Có anh chị em không ? : có + chose + không ? pose une question oui/non. Réponse : có, ou không.",
+    "en": "Có anh chị em không?: có + thing + không? asks a yes/no question. Answer: có, or không."
+  },
+  "reviewed": false
+}

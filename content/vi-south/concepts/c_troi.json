@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_troi",
+  "type": "word",
+  "vi": "trời",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "ciel ; temps (météo)",
+    "en": "sky; weather"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_troi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_troi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/nature/sun.svg",
+  "note": {
+    "fr": "Trời ơi ! : « Mon Dieu ! », l'exclamation de tous les jours.",
+    "en": "Trời ơi!: 'Oh my God!', the everyday exclamation."
+  },
+  "reviewed": false
+}

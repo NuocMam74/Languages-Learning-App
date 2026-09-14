@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_phai",
+  "type": "word",
+  "vi": "phải",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "juste, c'est ça ; devoir",
+    "en": "right, correct; must"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_phai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_phai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Dạ, phải : « oui, c'est bien ça ». Không phải : « ce n'est pas ça ».",
+    "en": "Dạ, phải: 'yes, that's right'. Không phải: 'that's not it'."
+  },
+  "reviewed": false
+}

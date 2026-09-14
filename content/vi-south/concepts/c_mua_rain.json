@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_mua_rain",
+  "type": "word",
+  "vi": "mưa",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "pluie ; pleuvoir",
+    "en": "rain; to rain"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mua_rain_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mua_rain_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/nature/rain.svg",
+  "reviewed": false
+}

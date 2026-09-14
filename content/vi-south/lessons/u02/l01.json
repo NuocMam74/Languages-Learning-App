@@ -1,0 +1,131 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u02.l01",
+  "unit": "vi-south.u02",
+  "title": {
+    "fr": "Douze voyelles",
+    "en": "Twelve vowels"
+  },
+  "goal": {
+    "fr": "Entendre la différence entre o, ô, ơ et quelques autres voyelles.",
+    "en": "Hear the difference between o, ô, ơ and a few other vowels."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u01.l09"
+  ],
+  "concepts": [
+    "c_to_big",
+    "c_to_bowl",
+    "c_mi",
+    "c_mua_rain",
+    "c_me_sesame",
+    "c_bo_beef"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_to_bowl",
+      "distractors": [
+        "c_mi",
+        "c_mua_rain"
+      ],
+      "explain": {
+        "fr": "tô : le grand bol. ô se dit bouche arrondie et fermée.",
+        "en": "tô: the big bowl. ô is said with rounded, closed lips."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_to_big",
+      "distractors": [
+        "tô",
+        "tơ"
+      ],
+      "explain": {
+        "fr": "to : o ouvert. tô : o fermé. tơ : lèvres non arrondies.",
+        "en": "to: open o. tô: closed o. tơ: unrounded lips."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_vowels_hats"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "c_to_bowl",
+        "c_bo_beef"
+      ],
+      "explain": {
+        "fr": "mưa : ư se dit lèvres étirées, sans les arrondir.",
+        "en": "mưa: ư is said with spread, unrounded lips."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mi",
+      "distractors": [
+        "mù",
+        "mờ"
+      ],
+      "explain": {
+        "fr": "mì : i, lèvres étirées. mù : u arrondi. mờ : ơ neutre.",
+        "en": "mì: i, spread lips. mù: rounded u. mờ: neutral ơ."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_sesame",
+      "explain": {
+        "fr": "Au Sud, le sésame, c'est mè ; au Nord, vừng.",
+        "en": "In the South sesame is mè; in the North, vừng."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_me_sesame",
+      "explain": {
+        "fr": "mè descend doucement (huyền).",
+        "en": "mè falls gently (huyền)."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bo_beef",
+      "distractors": [
+        "c_ga_chicken",
+        "c_ca_fish"
+      ],
+      "explain": {
+        "fr": "bò : le bœuf. o ouvert, ton qui descend.",
+        "en": "bò: beef. Open o, falling tone."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_mua_rain",
+      "explain": {
+        "fr": "Étire les lèvres pour ư, puis ouvre sur a.",
+        "en": "Spread your lips for ư, then open onto a."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_to_big",
+      "c_to_bowl",
+      "c_mi",
+      "c_mua_rain",
+      "c_me_sesame",
+      "c_bo_beef"
+    ]
+  },
+  "reviewed": false
+}

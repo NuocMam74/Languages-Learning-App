@@ -15,11 +15,67 @@
       "title": { "fr": "Premiers sons, premiers mots", "en": "First sounds, first words" },
       "status": "available",
       "tags": ["core"],
-      "lessons": ["vi-south.u01.l01", "vi-south.u01.l02", "vi-south.u01.l03"]
+      "lessons": [
+        "vi-south.u01.l01",
+        "vi-south.u01.l02",
+        "vi-south.u01.l03",
+        "vi-south.u01.l04",
+        "vi-south.u01.l05",
+        "vi-south.u01.l06",
+        "vi-south.u01.l07",
+        "vi-south.u01.l08",
+        "vi-south.u01.l09"
+      ]
     },
-    { "id": "vi-south.u02", "title": { "fr": "L'alphabet et les sons du Sud", "en": "Alphabet and southern sounds" }, "status": "planned", "tags": ["core"], "lessons": [] },
-    { "id": "vi-south.u03", "title": { "fr": "Pronoms et rapports d'âge", "en": "Pronouns and age" }, "status": "planned", "tags": ["core", "family"], "lessons": [] },
-    { "id": "vi-south.u04", "title": { "fr": "La famille", "en": "Family" }, "status": "planned", "tags": ["family"], "lessons": [] },
+    {
+      "id": "vi-south.u02",
+      "title": { "fr": "L'alphabet et les sons du Sud", "en": "Alphabet and southern sounds" },
+      "status": "available",
+      "tags": ["core"],
+      "lessons": [
+        "vi-south.u02.l01",
+        "vi-south.u02.l02",
+        "vi-south.u02.l03",
+        "vi-south.u02.l04",
+        "vi-south.u02.l05",
+        "vi-south.u02.l06",
+        "vi-south.u02.l07",
+        "vi-south.u02.l08"
+      ]
+    },
+    {
+      "id": "vi-south.u03",
+      "title": { "fr": "Pronoms et rapports d'âge", "en": "Pronouns and age" },
+      "status": "available",
+      "tags": ["core", "family"],
+      "lessons": [
+        "vi-south.u03.l01",
+        "vi-south.u03.l02",
+        "vi-south.u03.l03",
+        "vi-south.u03.l04",
+        "vi-south.u03.l05",
+        "vi-south.u03.l06",
+        "vi-south.u03.l07",
+        "vi-south.u03.l08",
+        "vi-south.u03.l09"
+      ]
+    },
+    {
+      "id": "vi-south.u04",
+      "title": { "fr": "La famille", "en": "Family" },
+      "status": "available",
+      "tags": ["family"],
+      "lessons": [
+        "vi-south.u04.l01",
+        "vi-south.u04.l02",
+        "vi-south.u04.l03",
+        "vi-south.u04.l04",
+        "vi-south.u04.l05",
+        "vi-south.u04.l06",
+        "vi-south.u04.l07",
+        "vi-south.u04.l08"
+      ]
+    },
     { "id": "vi-south.u05", "title": { "fr": "Se présenter", "en": "Introductions" }, "status": "planned", "tags": ["core", "work"], "lessons": [] },
     { "id": "vi-south.u06", "title": { "fr": "Les chiffres", "en": "Numbers" }, "status": "planned", "tags": ["core", "travel"], "lessons": [] }
   ],

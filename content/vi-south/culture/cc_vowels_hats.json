@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_vowels_hats",
+  "title": {
+    "fr": "Des chapeaux sur les voyelles",
+    "en": "Hats on the vowels"
+  },
+  "body": {
+    "fr": "Le vietnamien écrit douze voyelles. Les petits signes de â, ê, ô, ơ, ư, ă changent la voyelle elle-même : to (grand) n'est pas tô (bol). Les tons, eux, se posent au-dessus ou en dessous. Une syllabe peut donc porter deux signes : tốt, mắc.",
+    "en": "Vietnamese writes twelve vowels. The small marks in â, ê, ô, ơ, ư, ă change the vowel itself: to (big) is not tô (bowl). Tone marks sit above or below. So one syllable can carry two marks: tốt, mắc."
+  },
+  "vi": "to, tô, tơ",
+  "audio": "audio/cc_vowels_hats.opus",
+  "question": {
+    "prompt": {
+      "fr": "Dans tô, le chapeau sur le o indique…",
+      "en": "In tô, the hat on the o shows…"
+    },
+    "options": [
+      {
+        "fr": "un ton",
+        "en": "a tone"
+      },
+      {
+        "fr": "une autre voyelle",
+        "en": "a different vowel"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ra",
+  "type": "word",
+  "vi": "ra",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "sortir",
+    "en": "to go out"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ra_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ra_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, r ne se confond pas avec d ni gi.",
+    "en": "In the South, r doesn't merge with d or gi."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_che_south",
+  "title": {
+    "fr": "Chè : dessert ou thé ?",
+    "en": "Chè: dessert or tea?"
+  },
+  "body": {
+    "fr": "À Saïgon, chè désigne un dessert sucré : haricots, lait de coco, gelée, glace pilée. Au Nord, le même mot peut aussi désigner le thé. Au Sud, le thé se dit trà, et le thé glacé souvent offert dans les petits restaurants, trà đá.",
+    "en": "In Saigon, chè is a sweet dessert: beans, coconut milk, jelly, crushed ice. In the North the same word can also mean tea. In the South tea is trà, and the iced tea often served free at small eateries is trà đá."
+  },
+  "vi": "Cho em một ly chè nha.",
+  "audio": "audio/cc_che_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "À Saïgon, tu commandes un chè. Tu reçois…",
+      "en": "In Saigon you order a chè. You get…"
+    },
+    "options": [
+      {
+        "fr": "un dessert sucré",
+        "en": "a sweet dessert"
+      },
+      {
+        "fr": "une tasse de thé",
+        "en": "a cup of tea"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

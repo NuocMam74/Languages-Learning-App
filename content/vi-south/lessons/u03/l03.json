@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l03",
+  "unit": "vi-south.u03",
+  "title": {
+    "fr": "Cô, chú et con",
+    "en": "Cô, chú and con"
+  },
+  "goal": {
+    "fr": "Saluer une personne de l'âge de tes parents comme au Sud.",
+    "en": "Greet someone your parents' age the southern way."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l02"
+  ],
+  "concepts": [
+    "c_co_aunt",
+    "c_chu",
+    "c_con",
+    "s_con_chao_co",
+    "c_thay",
+    "c_con_and"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_co_aunt",
+      "distractors": [
+        "c_chi",
+        "c_ba_grandma"
+      ],
+      "explain": {
+        "fr": "cô : une femme de l'âge de tes parents, ou ton enseignante.",
+        "en": "cô: a woman your parents' age, or your teacher."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chu",
+      "distractors": [
+        "c_anh",
+        "c_co_aunt"
+      ],
+      "explain": {
+        "fr": "chú : un homme de l'âge de tes parents, un peu plus jeune qu'eux.",
+        "en": "chú: a man your parents' age, a bit younger than them."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_con_south"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "con",
+        "còn"
+      ],
+      "audioConcepts": [
+        "c_con",
+        "c_con_and"
+      ],
+      "explain": {
+        "fr": "con est plat (enfant, ou « moi » face à cô, chú) ; còn descend (« et… ? »).",
+        "en": "con is level (child, or 'me' to cô, chú); còn falls ('and…?')."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_con_chao_co",
+      "distractors": [
+        "Con chào chú.",
+        "Em chào cô."
+      ],
+      "explain": {
+        "fr": "Face à cô, au Sud, on se désigne par con : con chào cô.",
+        "en": "To cô, in the South, you call yourself con: con chào cô."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, con cảm ơn chú.",
+      "tokens": [
+        "Dạ",
+        "con",
+        "cảm ơn",
+        "chú",
+        "em"
+      ],
+      "translation": {
+        "fr": "Merci (à un homme de l'âge de tes parents).",
+        "en": "Thank you (to a man your parents' age)."
+      },
+      "explain": {
+        "fr": "Le respect est dans les pronoms : con pour toi, chú pour lui.",
+        "en": "Respect lives in the pronouns: con for you, chú for him."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_chu",
+      "explain": {
+        "fr": "chú monte. Attention : chủ (le patron) plonge.",
+        "en": "chú rises. Careful: chủ (boss) dips."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_con",
+      "distractors": [
+        "c_co_aunt",
+        "c_chu"
+      ],
+      "explain": {
+        "fr": "con : l'enfant. C'est aussi « moi » quand on parle à ses parents.",
+        "en": "con: child. It's also 'me' when talking to your parents."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thay",
+      "distractors": [
+        "thấy",
+        "tay"
+      ],
+      "explain": {
+        "fr": "thầy descend : le maître. thấy monte : voir.",
+        "en": "thầy falls: teacher. thấy rises: to see."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_con_chao_co",
+      "explain": {
+        "fr": "con et cô plats, chào descend au milieu.",
+        "en": "con and cô level, chào falls in the middle."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_co_aunt",
+      "c_chu",
+      "c_con",
+      "s_con_chao_co",
+      "c_thay"
+    ]
+  },
+  "reviewed": false
+}

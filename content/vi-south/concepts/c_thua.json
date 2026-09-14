@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_thua",
+  "type": "word",
+  "vi": "thưa",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "s'adresser avec respect",
+    "en": "to address respectfully"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_thua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_thua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Thưa cô : formule de l'élève à son enseignante.",
+    "en": "Thưa cô: how a pupil addresses the teacher."
+  },
+  "reviewed": false
+}

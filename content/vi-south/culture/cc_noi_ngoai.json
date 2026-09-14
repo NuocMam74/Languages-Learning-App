@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_noi_ngoai",
+  "title": {
+    "fr": "Nội, ngoại : dedans, dehors",
+    "en": "Nội, ngoại: inside, outside"
+  },
+  "body": {
+    "fr": "Les grands-parents du côté du père sont ông bà nội ; ceux du côté de la mère, ông bà ngoại. Nội veut dire « intérieur », ngoại « extérieur » : la famille traditionnelle s'organisait autour de la lignée du père. Au Sud, les enfants appellent souvent « Nội ơi ! », « Ngoại ơi ! ».",
+    "en": "Grandparents on the father's side are ông bà nội; on the mother's side, ông bà ngoại. Nội means 'inside', ngoại 'outside': the traditional family was built around the father's line. In the South, children often just call 'Nội ơi!', 'Ngoại ơi!'."
+  },
+  "vi": "Ngoại ơi!",
+  "audio": "audio/cc_noi_ngoai.opus",
+  "question": {
+    "prompt": {
+      "fr": "La mère de ta mère, c'est…",
+      "en": "Your mother's mother is…"
+    },
+    "options": [
+      {
+        "fr": "bà ngoại",
+        "en": "bà ngoại"
+      },
+      {
+        "fr": "bà nội",
+        "en": "bà nội"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tui_me",
+  "type": "word",
+  "vi": "tui",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "je, moi (familier, Sud)",
+    "en": "I, me (casual, southern)"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tui_me_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tui_me_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Forme du Sud de tôi entre amis. Pas avec un aîné qu'on respecte.",
+    "en": "Southern casual form of tôi among friends. Not with an elder you respect."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_sua_milk",
+  "type": "word",
+  "vi": "sữa",
+  "tone": "nga",
+  "gloss": {
+    "fr": "lait",
+    "en": "milk"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_sua_milk_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_sua_milk_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/milk.svg",
+  "note": {
+    "fr": "Cà phê sữa đá : le café au lait glacé de Saïgon.",
+    "en": "Cà phê sữa đá: Saigon's iced milk coffee."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u04.l03",
+  "unit": "vi-south.u04",
+  "title": {
+    "fr": "Nội et ngoại",
+    "en": "Nội and ngoại"
+  },
+  "goal": {
+    "fr": "Distinguer les grands-parents du côté du père et de la mère.",
+    "en": "Tell paternal from maternal grandparents."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u04.l02"
+  ],
+  "concepts": [
+    "c_noi",
+    "c_ngoai",
+    "c_ong_ba",
+    "s_ba_noi",
+    "s_ong_ngoai",
+    "c_que"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ba_noi",
+      "distractors": [
+        "bà ngoại",
+        "ba nội"
+      ],
+      "explain": {
+        "fr": "bà nội : la mère de ton père. bà descend, ba est plat.",
+        "en": "bà nội: your father's mother. bà falls, ba is level."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_noi_ngoai"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_noi",
+      "explain": {
+        "fr": "nội tombe court : le côté du père.",
+        "en": "nội drops short: father's side."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ngoai",
+      "explain": {
+        "fr": "ngoại tombe court aussi : le côté de la mère.",
+        "en": "ngoại drops short too: mother's side."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ong_ngoai",
+      "distractors": [
+        "ông nội",
+        "ông ngoài"
+      ],
+      "explain": {
+        "fr": "ông ngoại : le père de ta mère. ngoài, qui descend, veut dire « dehors ».",
+        "en": "ông ngoại: your mother's father. ngoài, falling, means 'outside'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_ba",
+      "distractors": [
+        "ông ba",
+        "ổng bả"
+      ],
+      "explain": {
+        "fr": "ông bà : les grands-parents. ổng bả, avec le hỏi : « lui et elle ».",
+        "en": "ông bà: grandparents. ổng bả, with hỏi: 'him and her'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Quê ngoại tôi ở Bến Tre.",
+      "tokens": [
+        "Quê",
+        "ngoại",
+        "tôi",
+        "ở",
+        "Bến Tre",
+        "nội"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      },
+      "explain": {
+        "fr": "quê ngoại : le pays d'origine du côté de la mère.",
+        "en": "quê ngoại: the home village on the mother's side."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_que",
+      "distractors": [
+        "quế",
+        "quẻ"
+      ],
+      "explain": {
+        "fr": "quê, plat : le pays natal. quế monte : la cannelle.",
+        "en": "quê, level: home village. quế rises: cinnamon."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bà nội tôi còn khỏe lắm.",
+      "tokens": [
+        "Bà",
+        "nội",
+        "tôi",
+        "còn",
+        "khỏe",
+        "lắm",
+        "ngoại"
+      ],
+      "translation": {
+        "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+        "en": "My paternal grandmother is still in great shape."
+      },
+      "explain": {
+        "fr": "còn + adjectif = « encore » : còn khỏe lắm.",
+        "en": "còn + adjective = 'still': còn khỏe lắm."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_ba_noi",
+      "explain": {
+        "fr": "bà descend doucement, nội tombe court.",
+        "en": "bà falls gently, nội drops short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_noi",
+      "c_ngoai",
+      "c_ong_ba",
+      "s_ba_noi",
+      "s_ong_ngoai",
+      "c_que"
+    ]
+  },
+  "reviewed": false
+}

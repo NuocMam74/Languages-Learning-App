@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nha_house",
+  "type": "word",
+  "vi": "nhà",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "maison ; chez soi",
+    "en": "house; home"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nha_house_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nha_house_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/house.svg",
+  "note": {
+    "fr": "Nhà tôi : chez moi, ma maison… ou ma famille.",
+    "en": "Nhà tôi: my home, my house… or my family."
+  },
+  "reviewed": false
+}

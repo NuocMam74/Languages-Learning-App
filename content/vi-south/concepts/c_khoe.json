@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_khoe",
+  "type": "word",
+  "vi": "khỏe",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "en forme, en bonne santé",
+    "en": "well, healthy"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_khoe_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_khoe_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "On voit aussi l'orthographe khoẻ : c'est le même mot.",
+    "en": "You'll also see the spelling khoẻ: same word."
+  },
+  "reviewed": false
+}

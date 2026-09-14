@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_con_chao_co",
+  "type": "structure",
+  "vi": "Con chào cô.",
+  "gloss": {
+    "fr": "Bonjour (à une femme de l'âge de tes parents).",
+    "en": "Hello (to a woman your parents' age)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_con_chao_co_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_con_chao_co_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

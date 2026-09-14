@@ -1,0 +1,157 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l04",
+  "unit": "vi-south.u03",
+  "title": {
+    "fr": "Bác, ông, bà et cháu",
+    "en": "Bác, ông, bà and cháu"
+  },
+  "goal": {
+    "fr": "Saluer les aînés et parler de l'âge avec tact.",
+    "en": "Greet elders and talk about age tactfully."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l03"
+  ],
+  "concepts": [
+    "c_bac",
+    "c_ong",
+    "c_chau",
+    "s_con_chao_ong",
+    "c_gia",
+    "c_tre"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ong",
+      "distractors": [
+        "c_bac",
+        "c_chu"
+      ],
+      "explain": {
+        "fr": "ông : un homme de l'âge de tes grands-parents.",
+        "en": "ông: a man your grandparents' age."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bac",
+      "distractors": [
+        "c_ong",
+        "c_co_aunt"
+      ],
+      "explain": {
+        "fr": "bác : plus âgé que tes parents, sans être de la génération des grands-parents.",
+        "en": "bác: older than your parents, but not your grandparents' generation."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_bac",
+      "explain": {
+        "fr": "bác monte, et s'arrête sec sur le c.",
+        "en": "bác rises and stops sharply on the c."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chau",
+      "distractors": [
+        "châu",
+        "chầu"
+      ],
+      "explain": {
+        "fr": "cháu monte : petit-enfant, neveu ou nièce.",
+        "en": "cháu rises: grandchild, nephew or niece."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gia",
+      "distractors": [
+        "da",
+        "giá"
+      ],
+      "explain": {
+        "fr": "già descend : vieux, âgé. Au Sud, gi se dit « y ».",
+        "en": "già falls: old. In the South, gi sounds like 'y'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tre",
+      "distractors": [
+        "che",
+        "tre"
+      ],
+      "explain": {
+        "fr": "trẻ plonge : jeune. tr recourbé ; che commence par ch.",
+        "en": "trẻ dips: young. Curled tr; che starts with ch."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Con chào ông.",
+      "tokens": [
+        "Con",
+        "chào",
+        "ông",
+        "bà"
+      ],
+      "translation": {
+        "fr": "Bonjour (à un homme âgé).",
+        "en": "Hello (to an elderly man)."
+      },
+      "audioConcept": "s_con_chao_ong",
+      "explain": {
+        "fr": "Face aux grands-parents, au Sud, on se désigne souvent par con.",
+        "en": "With grandparents' generation, southerners often say con."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bác còn trẻ lắm.",
+      "tokens": [
+        "Bác",
+        "còn",
+        "trẻ",
+        "lắm",
+        "già"
+      ],
+      "translation": {
+        "fr": "Vous êtes encore très jeune (à un aîné).",
+        "en": "You still look very young (to an elder)."
+      },
+      "explain": {
+        "fr": "còn devant un adjectif = « encore ». Un compliment toujours apprécié.",
+        "en": "còn before an adjective = 'still'. A compliment always welcome."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_ong",
+      "explain": {
+        "fr": "ông est plat : voix stable, bouche arrondie.",
+        "en": "ông is level: steady voice, rounded lips."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_bac",
+      "c_ong",
+      "c_chau",
+      "s_con_chao_ong",
+      "c_gia",
+      "c_tre"
+    ]
+  },
+  "reviewed": false
+}

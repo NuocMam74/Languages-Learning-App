@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_toi_tui_minh",
+  "title": {
+    "fr": "Tôi, tui, mình : dire « je »",
+    "en": "Tôi, tui, mình: saying 'I'"
+  },
+  "body": {
+    "fr": "Tôi est neutre, un peu distant : au travail, avec un inconnu. Entre amis, au Sud, on dit volontiers tui. Mình est chaleureux : « moi », ou « nous » entre proches. En famille, on se nomme selon la relation : con, em, cháu… On y arrive.",
+    "en": "Tôi is neutral, a bit distant: at work, with strangers. Among friends in the South, people often say tui. Mình is warm: 'me', or 'us' among close ones. In the family, you name yourself by relationship: con, em, cháu… Coming up."
+  },
+  "vi": "Tui tên là Hùng.",
+  "audio": "audio/cc_toi_tui_minh.opus",
+  "question": {
+    "prompt": {
+      "fr": "Avec un ami de ton âge, à Saïgon, tu peux dire…",
+      "en": "With a friend your age in Saigon, you can say…"
+    },
+    "options": [
+      {
+        "fr": "con",
+        "en": "con"
+      },
+      {
+        "fr": "tui",
+        "en": "tui"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_oi",
+  "type": "word",
+  "vi": "ơi",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "particule d'appel : « hé ! »",
+    "en": "calling particle: 'hey!'"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_oi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_oi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Anh ơi!",
+      "fr": "S'il vous plaît ! (pour appeler un homme un peu plus âgé)",
+      "en": "Excuse me! (calling a slightly older man)"
+    }
+  ],
+  "note": {
+    "fr": "Se place après le nom ou le pronom : Chị ơi ! Má ơi !",
+    "en": "Comes after the name or pronoun: Chị ơi! Má ơi!"
+  },
+  "reviewed": false
+}

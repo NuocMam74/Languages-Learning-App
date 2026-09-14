@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_toi_ten_la",
+  "type": "structure",
+  "vi": "Tôi tên là…",
+  "gloss": {
+    "fr": "Je m'appelle…",
+    "en": "My name is…"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_toi_ten_la_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_toi_ten_la_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "On entend aussi, plus court : Tôi tên Lan.",
+    "en": "You also hear the shorter: Tôi tên Lan."
+  },
+  "reviewed": false
+}

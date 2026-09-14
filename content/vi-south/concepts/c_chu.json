@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chu",
+  "type": "word",
+  "vi": "chú",
+  "tone": "sac",
+  "gloss": {
+    "fr": "oncle (frère cadet du père) ; monsieur (âge des parents)",
+    "en": "uncle (father's younger brother); sir (parents' age)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/chu.svg",
+  "reviewed": false
+}

@@ -1,0 +1,140 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u02.l05",
+  "unit": "vi-south.u02",
+  "title": {
+    "fr": "Les finales du Sud",
+    "en": "Southern final sounds"
+  },
+  "goal": {
+    "fr": "Reconnaître -n et -t quand le Sud les fait sonner -ng et -c.",
+    "en": "Recognise -n and -t when the South makes them sound -ng and -c."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u02.l04"
+  ],
+  "concepts": [
+    "c_ban_friend",
+    "c_ban_table",
+    "c_an_eat",
+    "c_mot_one",
+    "c_tot_good",
+    "c_mac_expensive"
+  ],
+  "steps": [
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "bạn",
+        "bàn"
+      ],
+      "audioConcepts": [
+        "c_ban_friend",
+        "c_ban_table"
+      ],
+      "explain": {
+        "fr": "bạn tombe court (ami), bàn descend doucement (table).",
+        "en": "bạn drops short (friend), bàn falls gently (table)."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ban_table",
+      "distractors": [
+        "c_bo_beef",
+        "c_to_bowl"
+      ],
+      "explain": {
+        "fr": "bàn : la table. On écrit n, même si le Sud dit presque « bàng ».",
+        "en": "bàn: table. It's written n, even if the South says almost 'bàng'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_finals_south"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_one",
+      "distractors": [
+        "mốt",
+        "mọt"
+      ],
+      "explain": {
+        "fr": "một tombe court, et son -t sonne presque -c au Sud.",
+        "en": "một drops short, and its -t sounds almost like -c in the South."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_tot_good",
+      "explain": {
+        "fr": "tốt monte. On l'entend presque « tốc », mais on écrit tốt.",
+        "en": "tốt rises. You hear almost 'tốc', but it's written tốt."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mac_expensive",
+      "distractors": [
+        "mác",
+        "mặc"
+      ],
+      "explain": {
+        "fr": "mắc monte, voyelle ă brève : « cher » au Sud. mặc tombe : porter (un vêtement).",
+        "en": "mắc rises, short ă: 'expensive' in the South. mặc drops: to wear."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_cher",
+      "explain": {
+        "fr": "Au Sud, cher se dit mắc ; đắt est la forme du Nord.",
+        "en": "In the South expensive is mắc; đắt is the northern form."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ăn cơm chưa?",
+      "tokens": [
+        "Ăn",
+        "cơm",
+        "chưa",
+        "một"
+      ],
+      "translation": {
+        "fr": "Tu as mangé ? (salutation entre proches)",
+        "en": "Have you eaten? (greeting between close ones)"
+      },
+      "explain": {
+        "fr": "chưa en fin de phrase demande « déjà ou pas encore ? ».",
+        "en": "chưa at the end asks 'yet or not yet?'."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_an_eat",
+      "explain": {
+        "fr": "Au Sud, ăn finit presque en « ng » : laisse la bouche ouverte.",
+        "en": "In the South, ăn ends almost in 'ng': keep your mouth open."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ban_friend",
+      "c_ban_table",
+      "c_an_eat",
+      "c_mot_one",
+      "c_tot_good",
+      "c_mac_expensive"
+    ]
+  },
+  "reviewed": false
+}

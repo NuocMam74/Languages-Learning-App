@@ -1,0 +1,208 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l09",
+  "unit": "vi-south.u03",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : pronoms et rapports d'âge",
+    "en": "Test: pronouns and age"
+  },
+  "goal": {
+    "fr": "Montrer que tu choisis le bon pronom selon l'âge.",
+    "en": "Show you pick the right pronoun by age."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l08"
+  ],
+  "concepts": [
+    "c_co_aunt",
+    "c_bac",
+    "s_em_may_tuoi",
+    "c_con",
+    "c_con_and",
+    "c_chi",
+    "c_chi_she",
+    "c_minh",
+    "c_nho",
+    "s_ai_vay",
+    "c_tui_me",
+    "c_tui"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_co_aunt",
+      "distractors": [
+        "c_chi",
+        "c_ba_grandma"
+      ],
+      "explain": {
+        "fr": "cô : l'âge de tes parents.",
+        "en": "cô: your parents' age."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bac",
+      "distractors": [
+        "c_ong",
+        "c_chu"
+      ],
+      "explain": {
+        "fr": "bác : plus âgé que tes parents.",
+        "en": "bác: older than your parents."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_may_tuoi",
+      "distractors": [
+        "Anh mấy tuổi?",
+        "Chị mấy tuổi?"
+      ],
+      "explain": {
+        "fr": "On demande l'âge à em, plus jeune.",
+        "en": "You ask em, someone younger."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "con",
+        "còn"
+      ],
+      "audioConcepts": [
+        "c_con",
+        "c_con_and"
+      ],
+      "explain": {
+        "fr": "con plat, còn descend.",
+        "en": "con level, còn falls."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chị",
+        "chỉ"
+      ],
+      "audioConcepts": [
+        "c_chi",
+        "c_chi_she"
+      ],
+      "explain": {
+        "fr": "chị court, chỉ plonge.",
+        "en": "chị short, chỉ dips."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_minh",
+      "explain": {
+        "fr": "mình descend (huyền).",
+        "en": "mình falls (huyền)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi tên là Lan.",
+      "tokens": [
+        "Tôi",
+        "tên",
+        "là",
+        "Lan",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Je m'appelle Lan.",
+        "en": "My name is Lan."
+      },
+      "explain": {
+        "fr": "tên là = « le nom est ».",
+        "en": "tên là = 'the name is'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nho",
+      "distractors": [
+        "nhớ",
+        "nho"
+      ],
+      "explain": {
+        "fr": "nhỏ : petit, jeune.",
+        "en": "nhỏ: small, young."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mời bác uống trà.",
+      "tokens": [
+        "Mời",
+        "bác",
+        "uống",
+        "trà",
+        "ăn"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      },
+      "explain": {
+        "fr": "Mời en tête, puis l'aîné, puis l'action.",
+        "en": "Mời first, then the elder, then the action."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ai_vay",
+      "distractors": [
+        "Ai đó?",
+        "Gì vậy?"
+      ],
+      "explain": {
+        "fr": "Ai vậy ? = « C'est qui ? ».",
+        "en": "Ai vậy? = 'Who is it?'."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "tui",
+        "tụi"
+      ],
+      "audioConcepts": [
+        "c_tui_me",
+        "c_tui"
+      ],
+      "explain": {
+        "fr": "tui plat (moi), tụi court (pluriel).",
+        "en": "tui level (me), tụi short (plural)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ổng là ba tôi.",
+      "tokens": [
+        "Ổng",
+        "là",
+        "ba",
+        "tôi",
+        "bả"
+      ],
+      "translation": {
+        "fr": "Lui, c'est mon père.",
+        "en": "He's my dad."
+      },
+      "explain": {
+        "fr": "ổng = ông ấy, à l'oral du Sud.",
+        "en": "ổng = ông ấy, in southern speech."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

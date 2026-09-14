@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_khong_sao",
+  "type": "structure",
+  "vi": "Không sao.",
+  "gloss": {
+    "fr": "Ce n'est rien, pas de souci.",
+    "en": "No problem, it's fine."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_khong_sao_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_khong_sao_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Réponse habituelle à xin lỗi. Plus appuyé : Không sao đâu.",
+    "en": "The usual reply to xin lỗi. Stronger: Không sao đâu."
+  },
+  "reviewed": false
+}

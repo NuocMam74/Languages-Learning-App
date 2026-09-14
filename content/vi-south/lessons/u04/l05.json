@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u04.l05",
+  "unit": "vi-south.u04",
+  "title": {
+    "fr": "Có … không ? Tes frères et sœurs",
+    "en": "Có … không? Your siblings"
+  },
+  "goal": {
+    "fr": "Poser et répondre aux questions sur la famille.",
+    "en": "Ask and answer questions about family."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u04.l04"
+  ],
+  "concepts": [
+    "c_anh_chi_em",
+    "c_chua",
+    "s_co_vo_chua",
+    "s_co_anh_chi_em_khong",
+    "s_da_co",
+    "c_co"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_co_anh_chi_em_khong",
+      "distractors": [
+        "Em có vợ chưa?",
+        "Em có khỏe không?"
+      ],
+      "explain": {
+        "fr": "có … không ? encadre ce qu'on demande : anh chị em.",
+        "en": "có … không? frames what you ask about: anh chị em."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_personal_questions"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua",
+      "distractors": [
+        "chùa",
+        "chua"
+      ],
+      "explain": {
+        "fr": "chưa est plat : « pas encore ». chùa descend : la pagode.",
+        "en": "chưa is level: 'not yet'. chùa falls: pagoda."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh có vợ chưa?",
+      "tokens": [
+        "Anh",
+        "có",
+        "vợ",
+        "chưa",
+        "không"
+      ],
+      "translation": {
+        "fr": "Tu es marié ? (à un homme un peu plus âgé)",
+        "en": "Are you married? (to a slightly older man)"
+      },
+      "audioConcept": "s_co_vo_chua",
+      "explain": {
+        "fr": "Pour le mariage, on dit có … chưa ? : « déjà, ou pas encore ? ».",
+        "en": "For marriage you say có … chưa?: 'already, or not yet?'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_da_co",
+      "distractors": [
+        "Dạ, chưa.",
+        "Dạ, không."
+      ],
+      "explain": {
+        "fr": "Pour dire oui, on reprend le verbe : có.",
+        "en": "To say yes, repeat the verb: có."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em có anh chị em không?",
+      "tokens": [
+        "Em",
+        "có",
+        "anh chị em",
+        "không",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu as des frères et sœurs ? (à plus jeune)",
+        "en": "Do you have brothers and sisters? (to someone younger)"
+      },
+      "audioConcept": "s_co_anh_chi_em_khong",
+      "explain": {
+        "fr": "có + chose + không ? = « est-ce que tu as… ? ».",
+        "en": "có + thing + không? = 'do you have…?'."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_co",
+      "explain": {
+        "fr": "có monte : c'est lui qui ouvre la question.",
+        "en": "có rises: it opens the question."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, em chưa có gia đình.",
+      "tokens": [
+        "Dạ",
+        "em",
+        "chưa",
+        "có",
+        "gia đình",
+        "không"
+      ],
+      "translation": {
+        "fr": "Non, je ne suis pas encore marié(e).",
+        "en": "No, I'm not married yet."
+      },
+      "explain": {
+        "fr": "chưa có gia đình : « pas encore de famille », la façon polie de dire qu'on n'est pas marié.",
+        "en": "chưa có gia đình: 'no family yet', the polite way to say you're not married."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_co_vo_chua",
+      "explain": {
+        "fr": "có monte, vợ tombe court, chưa reste plat à la fin.",
+        "en": "có rises, vợ drops short, chưa stays level at the end."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_anh_chi_em",
+      "c_chua",
+      "s_co_vo_chua",
+      "s_co_anh_chi_em_khong",
+      "s_da_co"
+    ]
+  },
+  "reviewed": false
+}

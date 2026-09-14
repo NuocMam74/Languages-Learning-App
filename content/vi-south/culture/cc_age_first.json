@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_age_first",
+  "title": {
+    "fr": "Pas de « tu » : l'âge d'abord",
+    "en": "No 'you': age comes first"
+  },
+  "body": {
+    "fr": "Le vietnamien n'a pas de « tu » ou de « vous » neutre. On choisit un mot de parenté selon l'âge : anh ou chị pour un peu plus âgé, em pour plus jeune. D'où cette question, pas du tout indiscrète : « Em mấy tuổi ? ».",
+    "en": "Vietnamese has no neutral 'you'. You pick a kinship word by age: anh or chị for someone a little older, em for someone younger. Hence this question, not rude at all: 'Em mấy tuổi?'."
+  },
+  "vi": "Em mấy tuổi?",
+  "audio": "audio/cc_age_first.opus",
+  "question": {
+    "prompt": {
+      "fr": "Tu parles à quelqu'un de plus jeune. Tu l'appelles…",
+      "en": "You're talking to someone younger. You call them…"
+    },
+    "options": [
+      {
+        "fr": "anh",
+        "en": "anh"
+      },
+      {
+        "fr": "chị",
+        "en": "chị"
+      },
+      {
+        "fr": "em",
+        "en": "em"
+      }
+    ],
+    "answer": 2
+  },
+  "reviewed": false
+}

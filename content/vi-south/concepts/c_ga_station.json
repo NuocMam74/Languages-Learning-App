@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ga_station",
+  "type": "word",
+  "vi": "ga",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "gare",
+    "en": "(train) station"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ga_station_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ga_station_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/train.svg",
+  "note": {
+    "fr": "Mot venu du français « gare ».",
+    "en": "Borrowed from French 'gare'."
+  },
+  "reviewed": false
+}

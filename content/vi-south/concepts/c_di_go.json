@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_di_go",
+  "type": "word",
+  "vi": "đi",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "aller",
+    "en": "to go"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_di_go_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_di_go_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "đ se dit langue contre les dents, comme un d français appuyé.",
+    "en": "đ is said with the tongue against the teeth, like a firm English d."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_cung",
+  "type": "word",
+  "vi": "cũng",
+  "tone": "nga",
+  "gloss": {
+    "fr": "aussi",
+    "en": "also, too"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_cung_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_cung_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Se place avant le verbe ou l'adjectif : Em cũng khỏe.",
+    "en": "Goes before the verb or adjective: Em cũng khỏe."
+  },
+  "reviewed": false
+}

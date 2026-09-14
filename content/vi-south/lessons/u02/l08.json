@@ -1,0 +1,187 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u02.l08",
+  "unit": "vi-south.u02",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : l'alphabet et les sons du Sud",
+    "en": "Test: alphabet and southern sounds"
+  },
+  "goal": {
+    "fr": "Montrer que tu reconnais les sons du Sud à l'oreille et à l'écrit.",
+    "en": "Show you recognise southern sounds by ear and in writing."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u02.l07"
+  ],
+  "concepts": [
+    "c_mua_rain",
+    "c_mi",
+    "c_gi_what",
+    "c_da_skin",
+    "c_da",
+    "c_xa_far",
+    "c_trai_fruit",
+    "c_ban_friend",
+    "c_ban_table",
+    "c_mac_expensive",
+    "c_dau_where",
+    "c_o_at"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "c_to_bowl",
+        "c_bo_beef"
+      ],
+      "explain": {
+        "fr": "mưa : la pluie.",
+        "en": "mưa: rain."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mi",
+      "distractors": [
+        "mù",
+        "mờ"
+      ],
+      "explain": {
+        "fr": "mì : i, lèvres étirées.",
+        "en": "mì: i, spread lips."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gi_what",
+      "distractors": [
+        "gỉ",
+        "gí"
+      ],
+      "explain": {
+        "fr": "gì descend : « quoi ? ».",
+        "en": "gì falls: 'what?'."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "da",
+        "dạ"
+      ],
+      "audioConcepts": [
+        "c_da_skin",
+        "c_da"
+      ],
+      "explain": {
+        "fr": "da plat (peau), dạ court (oui poli).",
+        "en": "da level (skin), dạ short (polite yes)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xa_far",
+      "distractors": [
+        "sa",
+        "xà"
+      ],
+      "explain": {
+        "fr": "xa : x doux, ton plat.",
+        "en": "xa: soft x, level tone."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_trai_fruit",
+      "distractors": [
+        "c_che_dessert",
+        "c_dua_coconut"
+      ],
+      "explain": {
+        "fr": "trái : le fruit, mot du Sud.",
+        "en": "trái: fruit, the southern word."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "bạn",
+        "bàn"
+      ],
+      "audioConcepts": [
+        "c_ban_friend",
+        "c_ban_table"
+      ],
+      "explain": {
+        "fr": "bạn court (ami), bàn descend (table).",
+        "en": "bạn short (friend), bàn falls (table)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mac_expensive",
+      "distractors": [
+        "mác",
+        "mặc"
+      ],
+      "explain": {
+        "fr": "mắc monte : « cher ».",
+        "en": "mắc rises: 'expensive'."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_fruit_clf",
+      "explain": {
+        "fr": "Au Sud : trái ; au Nord : quả.",
+        "en": "South: trái; North: quả."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_where",
+      "distractors": [
+        "đầu",
+        "dâu"
+      ],
+      "explain": {
+        "fr": "đâu, plat : « où ? ».",
+        "en": "đâu, level: 'where?'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đi đâu vậy?",
+      "tokens": [
+        "Anh",
+        "đi",
+        "đâu",
+        "vậy",
+        "nhà"
+      ],
+      "translation": {
+        "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+        "en": "Where are you going? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "đâu reste en fin de question, vậy l'adoucit.",
+        "en": "đâu stays at the end, vậy softens it."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_o_at",
+      "explain": {
+        "fr": "ở : hỏi, confondu avec le ngã au Sud.",
+        "en": "ở: hỏi, merged with ngã in the South."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

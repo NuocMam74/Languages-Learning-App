@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_song_river",
+  "type": "word",
+  "vi": "sông",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "fleuve, rivière",
+    "en": "river"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_song_river_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_song_river_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/nature/river.svg",
+  "note": {
+    "fr": "Sông Cửu Long : le Mékong, « le fleuve des Neuf Dragons ».",
+    "en": "Sông Cửu Long: the Mekong, 'river of the Nine Dragons'."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ong",
+  "type": "word",
+  "vi": "ông",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "grand-père ; monsieur (âgé)",
+    "en": "grandfather; sir (elderly)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/ong.svg",
+  "reviewed": false
+}

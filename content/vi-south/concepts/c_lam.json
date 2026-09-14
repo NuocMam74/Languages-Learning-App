@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_lam",
+  "type": "word",
+  "vi": "lắm",
+  "tone": "sac",
+  "gloss": {
+    "fr": "très (après le mot)",
+    "en": "very (after the word)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_lam_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_lam_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Toujours après l'adjectif : khỏe lắm, vui lắm.",
+    "en": "Always after the adjective: khỏe lắm, vui lắm."
+  },
+  "reviewed": false
+}

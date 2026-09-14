@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chi_she",
+  "type": "word",
+  "vi": "chỉ",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "elle (chị ấy, à l'oral au Sud) ; seulement",
+    "en": "she, her (chị ấy, southern speech); only"
+  },
+  "register": "familiar",
+  "northernEquivalent": "chị ấy",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chi_she_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chi_she_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

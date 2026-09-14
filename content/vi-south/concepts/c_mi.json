@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_mi",
+  "type": "word",
+  "vi": "mì",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "nouilles (de blé)",
+    "en": "(wheat) noodles"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/noodles.svg",
+  "reviewed": false
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_anh_hai_south",
+  "title": {
+    "fr": "Au Sud, l'aîné s'appelle « deux »",
+    "en": "In the South, the eldest is 'two'"
+  },
+  "body": {
+    "fr": "Dans une famille du Sud, on numérote les enfants à partir de deux : l'aîné est anh hai ou chị hai, puis viennent ba, tư, năm… et le petit dernier est út. Au Nord, l'aîné est anh cả. Plusieurs explications circulent ; l'usage, lui, est bien vivant.",
+    "en": "In southern families, children are numbered from two: the eldest is anh hai or chị hai, then come ba, tư, năm… and the youngest is út. In the North, the eldest is anh cả. Several explanations circulate; the custom itself is alive and well."
+  },
+  "vi": "Anh Hai ơi!",
+  "audio": "audio/cc_anh_hai_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "À Cần Thơ, le frère aîné, c'est…",
+      "en": "In Cần Thơ, the eldest brother is…"
+    },
+    "options": [
+      {
+        "fr": "anh ba",
+        "en": "anh ba"
+      },
+      {
+        "fr": "anh một",
+        "en": "anh một"
+      },
+      {
+        "fr": "anh hai",
+        "en": "anh hai"
+      }
+    ],
+    "answer": 2
+  },
+  "reviewed": false
+}

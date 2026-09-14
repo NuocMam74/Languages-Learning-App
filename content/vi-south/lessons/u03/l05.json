@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l05",
+  "unit": "vi-south.u03",
+  "title": {
+    "fr": "Dạ, ạ, thưa, mời",
+    "en": "Dạ, ạ, thưa, mời"
+  },
+  "goal": {
+    "fr": "Parler poliment à un aîné et l'inviter à boire le thé.",
+    "en": "Speak politely to an elder and invite them to have tea."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l04"
+  ],
+  "concepts": [
+    "c_a",
+    "c_thua",
+    "c_moi",
+    "c_uong",
+    "s_moi_bac_uong_tra"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_moi_bac_uong_tra",
+      "distractors": [
+        "Mời bác ăn cơm.",
+        "Mời cô uống trà."
+      ],
+      "explain": {
+        "fr": "Mời + la personne + l'action : on invite en nommant l'aîné.",
+        "en": "Mời + person + action: you invite by naming the elder."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_da_a_respect"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_a",
+      "explain": {
+        "fr": "ạ tombe court, tout bas, en fin de phrase.",
+        "en": "ạ drops short and low, at the end of the sentence."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi",
+      "distractors": [
+        "mới",
+        "môi"
+      ],
+      "explain": {
+        "fr": "mời descend : inviter. mới monte : nouveau.",
+        "en": "mời falls: to invite. mới rises: new."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_uong",
+      "explain": {
+        "fr": "uống monte : boire.",
+        "en": "uống rises: to drink."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, con cảm ơn cô ạ.",
+      "tokens": [
+        "Dạ",
+        "con",
+        "cảm ơn",
+        "cô",
+        "ạ",
+        "em"
+      ],
+      "translation": {
+        "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",
+        "en": "Thank you (very polite, to a woman your parents' age)."
+      },
+      "explain": {
+        "fr": "dạ ouvre, ạ ferme : deux marques de respect autour de la phrase.",
+        "en": "dạ opens, ạ closes: two marks of respect around the sentence."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thua",
+      "distractors": [
+        "thừa",
+        "thua"
+      ],
+      "explain": {
+        "fr": "thưa, plat et doux : s'adresser avec respect. thua : perdre.",
+        "en": "thưa, level and soft: address respectfully. thua: to lose."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mời bác uống trà.",
+      "tokens": [
+        "Mời",
+        "bác",
+        "uống",
+        "trà",
+        "ăn"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      },
+      "audioConcept": "s_moi_bac_uong_tra",
+      "explain": {
+        "fr": "Mời vient en tête : c'est une invitation polie.",
+        "en": "Mời comes first: it's a polite invitation."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_oui_poli",
+      "explain": {
+        "fr": "Pour répondre poliment à un aîné, au Sud : dạ.",
+        "en": "To answer an elder politely in the South: dạ."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_moi_bac_uong_tra",
+      "explain": {
+        "fr": "mời descend, uống monte, trà descend.",
+        "en": "mời falls, uống rises, trà falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_a",
+      "c_thua",
+      "c_moi",
+      "c_uong",
+      "s_moi_bac_uong_tra"
+    ]
+  },
+  "reviewed": false
+}

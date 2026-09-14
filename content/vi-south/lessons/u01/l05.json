@@ -1,0 +1,135 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u01.l05",
+  "unit": "vi-south.u01",
+  "title": {
+    "fr": "Oui, non : có, không, hông",
+    "en": "Yes, no: có, không, hông"
+  },
+  "goal": {
+    "fr": "Dire oui et non poliment, et reconnaître le hông du Sud.",
+    "en": "Say yes and no politely, and recognise the southern hông."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u01.l04"
+  ],
+  "concepts": [
+    "c_co",
+    "c_khong",
+    "c_hong",
+    "c_phai",
+    "s_khong_phai"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khong",
+      "distractors": [
+        "khống",
+        "khổng"
+      ],
+      "explain": {
+        "fr": "không est plat : non, ne… pas.",
+        "en": "không is level: no, not."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co",
+      "distractors": [
+        "cô",
+        "cỏ"
+      ],
+      "explain": {
+        "fr": "có monte (sắc). cô, plat avec un ô, c'est « tante, madame ».",
+        "en": "có rises (sắc). cô, level with ô, means 'aunt, madam'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_hong_south"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hong",
+      "distractors": [
+        "không",
+        "hồng"
+      ],
+      "explain": {
+        "fr": "hông, c'est không à la mode du Sud, entre amis. hồng descend : rose.",
+        "en": "hông is the southern casual không. hồng falls: pink."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_phai",
+      "explain": {
+        "fr": "phải porte le hỏi : au Sud, il plonge puis remonte, comme le ngã.",
+        "en": "phải carries hỏi: in the South it dips then rises, like ngã."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_oui_poli",
+      "explain": {
+        "fr": "Au Sud, le oui poli se dit dạ ; vâng sonne du Nord.",
+        "en": "In the South the polite yes is dạ; vâng sounds northern."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, không phải.",
+      "tokens": [
+        "Dạ",
+        "không",
+        "phải",
+        "có"
+      ],
+      "translation": {
+        "fr": "Non, ce n'est pas ça (poliment).",
+        "en": "No, that's not it (politely)."
+      },
+      "explain": {
+        "fr": "không phải = « ce n'est pas ça ». Dạ garde la politesse, même pour dire non.",
+        "en": "không phải = 'that's not it'. Dạ keeps it polite, even when saying no."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, phải.",
+      "tokens": [
+        "Dạ",
+        "phải",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Oui, c'est bien ça (poliment).",
+        "en": "Yes, that's right (politely)."
+      },
+      "explain": {
+        "fr": "phải = « c'est juste ». Avec dạ devant, c'est poli.",
+        "en": "phải = 'that's right'. With dạ in front, it's polite."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_khong_phai",
+      "explain": {
+        "fr": "không reste plat, phải plonge puis remonte.",
+        "en": "không stays level, phải dips then rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_co",
+      "c_khong",
+      "c_hong",
+      "c_phai",
+      "s_khong_phai"
+    ]
+  },
+  "reviewed": false
+}

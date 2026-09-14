@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_mac_expensive",
+  "type": "word",
+  "vi": "mắc",
+  "tone": "sac",
+  "gloss": {
+    "fr": "cher (prix)",
+    "en": "expensive"
+  },
+  "register": "neutral",
+  "northernEquivalent": "đắt",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mac_expensive_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mac_expensive_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : mắc ; au Nord : đắt. Mắc quá ! : « trop cher ! »",
+    "en": "South: mắc; North: đắt. Mắc quá!: 'too expensive!'"
+  },
+  "reviewed": false
+}

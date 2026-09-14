@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l08",
+  "unit": "vi-south.u03",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : pronoms et âges",
+    "en": "Review: pronouns and age"
+  },
+  "goal": {
+    "fr": "Revoir comment s'adresser à chacun selon son âge.",
+    "en": "Go over how to address each person by age."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l07"
+  ],
+  "concepts": [
+    "c_ong",
+    "s_con_chao_co",
+    "c_ong_he",
+    "c_tui_me",
+    "c_tuoi",
+    "s_moi_bac_uong_tra"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ong",
+      "distractors": [
+        "c_bac",
+        "c_chu"
+      ],
+      "explain": {
+        "fr": "ông : la génération des grands-parents.",
+        "en": "ông: grandparents' generation."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_con_chao_co",
+      "distractors": [
+        "Con chào chú.",
+        "Em chào cô."
+      ],
+      "explain": {
+        "fr": "Face à cô, au Sud : con chào cô.",
+        "en": "To cô, in the South: con chào cô."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ông",
+        "ổng"
+      ],
+      "audioConcepts": [
+        "c_ong",
+        "c_ong_he"
+      ],
+      "explain": {
+        "fr": "ông plat, ổng plonge.",
+        "en": "ông level, ổng dips."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh lớn hơn em.",
+      "tokens": [
+        "Anh",
+        "lớn",
+        "hơn",
+        "em",
+        "nhỏ"
+      ],
+      "translation": {
+        "fr": "Je suis plus âgé que toi (dit par un grand frère).",
+        "en": "I'm older than you (said by an older brother)."
+      },
+      "explain": {
+        "fr": "lớn hơn = « plus âgé que ».",
+        "en": "lớn hơn = 'older than'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui_me",
+      "distractors": [
+        "tụi",
+        "túi"
+      ],
+      "explain": {
+        "fr": "tui, plat : « moi » familier du Sud.",
+        "en": "tui, level: casual southern 'me'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, con cảm ơn cô ạ.",
+      "tokens": [
+        "Dạ",
+        "con",
+        "cảm ơn",
+        "cô",
+        "ạ",
+        "chị"
+      ],
+      "translation": {
+        "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",
+        "en": "Thank you (very polite, to a woman your parents' age)."
+      },
+      "explain": {
+        "fr": "dạ en tête, ạ à la fin : très poli.",
+        "en": "dạ first, ạ last: very polite."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ong_ay",
+      "explain": {
+        "fr": "À l'oral du Sud : ổng plutôt que ông ấy.",
+        "en": "In southern speech: ổng rather than ông ấy."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_tuoi",
+      "explain": {
+        "fr": "tuổi : hỏi, qui sonne comme le ngã au Sud.",
+        "en": "tuổi: hỏi, which sounds like ngã in the South."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_moi_bac_uong_tra",
+      "explain": {
+        "fr": "Invite l'aîné : mời bác uống trà.",
+        "en": "Invite the elder: mời bác uống trà."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

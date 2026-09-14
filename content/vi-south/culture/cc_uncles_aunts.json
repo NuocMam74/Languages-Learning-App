@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_uncles_aunts",
+  "title": {
+    "fr": "Un mot pour chaque oncle",
+    "en": "A word for each uncle"
+  },
+  "body": {
+    "fr": "Côté père : chú est le frère cadet, cô la sœur, bác l'aîné. Côté mère : cậu est le frère, dì la sœur. Les conjoints ont leur mot : thím pour la femme de chú, mợ pour celle de cậu, dượng pour le mari de cô ou dì. Au Sud, on ajoute le rang : chú Tư, dì Út.",
+    "en": "Father's side: chú is his younger brother, cô his sister, bác the elder. Mother's side: cậu is her brother, dì her sister. Spouses have words too: thím for chú's wife, mợ for cậu's, dượng for the husband of cô or dì. In the South, add the rank: chú Tư, dì Út."
+  },
+  "vi": "Dì Út ơi!",
+  "audio": "audio/cc_uncles_aunts.opus",
+  "question": {
+    "prompt": {
+      "fr": "Le frère de ta mère, c'est…",
+      "en": "Your mother's brother is…"
+    },
+    "options": [
+      {
+        "fr": "chú",
+        "en": "chú"
+      },
+      {
+        "fr": "cậu",
+        "en": "cậu"
+      },
+      {
+        "fr": "bác",
+        "en": "bác"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_d_gi_v_south",
+  "title": {
+    "fr": "D, gi, v : un « y » à Saïgon",
+    "en": "D, gi, v: a 'y' in Saigon"
+  },
+  "body": {
+    "fr": "Au Sud, d et gi se prononcent comme le y de « yaourt » : dừa sonne « yừa ». Dans la conversation, le v glisse souvent vers ce même y. Au Nord, ces lettres, et aussi r, se disent plutôt z. Le r du Sud, lui, reste un r.",
+    "en": "In the South, d and gi sound like the y in 'yes': dừa sounds like 'yừa'. In conversation, v often slides to that same y. In the North these letters, and r too, sound more like z. The southern r stays an r."
+  },
+  "vi": "Dừa tươi nè!",
+  "audio": "audio/cc_d_gi_v_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, dạ se prononce à peu près…",
+      "en": "In the South, dạ sounds roughly like…"
+    },
+    "options": [
+      {
+        "fr": "« ya »",
+        "en": "'ya'"
+      },
+      {
+        "fr": "« za »",
+        "en": "'za'"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

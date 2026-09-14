@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_co_she",
+  "type": "word",
+  "vi": "cổ",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "elle (cô ấy, à l'oral au Sud) ; cou",
+    "en": "she, her (cô ấy, southern speech); neck"
+  },
+  "register": "familiar",
+  "northernEquivalent": "cô ấy",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_co_she_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_co_she_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

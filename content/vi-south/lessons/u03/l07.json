@@ -1,0 +1,160 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l07",
+  "unit": "vi-south.u03",
+  "title": {
+    "fr": "Tụi mình, ai ?",
+    "en": "Tụi mình, ai?"
+  },
+  "goal": {
+    "fr": "Dire « nous » à la manière du Sud et demander qui c'est.",
+    "en": "Say 'we' the southern way and ask who someone is."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l06"
+  ],
+  "concepts": [
+    "c_tui",
+    "s_tui_minh",
+    "c_ai",
+    "s_ai_vay",
+    "c_vay",
+    "c_moi_nguoi",
+    "c_tui_me"
+  ],
+  "steps": [
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "tui",
+        "tụi"
+      ],
+      "audioConcepts": [
+        "c_tui_me",
+        "c_tui"
+      ],
+      "explain": {
+        "fr": "tui est plat (moi, familier) ; tụi tombe court (marque du pluriel).",
+        "en": "tui is level (me, casual); tụi drops short (plural marker)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tui_minh",
+      "distractors": [
+        "tụi em",
+        "tụi anh"
+      ],
+      "explain": {
+        "fr": "tụi mình = « nous », toi compris, entre proches.",
+        "en": "tụi mình = 'we', including you, among close ones."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ai",
+      "distractors": [
+        "ải",
+        "ái"
+      ],
+      "explain": {
+        "fr": "ai est plat : « qui ? ».",
+        "en": "ai is level: 'who?'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ai_vay",
+      "distractors": [
+        "Ai đó?",
+        "Gì vậy?"
+      ],
+      "explain": {
+        "fr": "Ai vậy ? = « C'est qui ? ». vậy adoucit la question.",
+        "en": "Ai vậy? = 'Who is it?'. vậy softens the question."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_vay",
+      "explain": {
+        "fr": "vậy tombe court (nặng) : « ainsi, alors ».",
+        "en": "vậy drops short (nặng): 'so, then'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tụi mình đi đâu?",
+      "tokens": [
+        "Tụi",
+        "mình",
+        "đi",
+        "đâu",
+        "ai"
+      ],
+      "translation": {
+        "fr": "On va où ?",
+        "en": "Where are we going?"
+      },
+      "explain": {
+        "fr": "tụi + pronom forme le pluriel : tụi mình, tụi em.",
+        "en": "tụi + pronoun makes a plural: tụi mình, tụi em."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi_nguoi",
+      "distractors": [
+        "mời người",
+        "mọi ngày"
+      ],
+      "explain": {
+        "fr": "mọi người = « tout le monde ». mọi tombe court.",
+        "en": "mọi người = 'everyone'. mọi drops short."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chào mọi người.",
+      "tokens": [
+        "Chào",
+        "mọi",
+        "người",
+        "ai"
+      ],
+      "translation": {
+        "fr": "Bonjour tout le monde.",
+        "en": "Hello everyone."
+      },
+      "explain": {
+        "fr": "Pour saluer un groupe : chào + mọi người.",
+        "en": "To greet a group: chào + mọi người."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_ai_vay",
+      "explain": {
+        "fr": "ai plat, vậy court et tombant.",
+        "en": "ai level, vậy short and falling."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_tui",
+      "s_tui_minh",
+      "c_ai",
+      "s_ai_vay",
+      "c_vay",
+      "c_moi_nguoi"
+    ]
+  },
+  "reviewed": false
+}

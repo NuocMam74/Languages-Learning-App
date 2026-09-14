@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_a",
+  "type": "word",
+  "vi": "ạ",
+  "tone": "nang",
+  "gloss": {
+    "fr": "particule de respect (fin de phrase)",
+    "en": "respect particle (end of sentence)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_a_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_a_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, dạ en tête de réponse est le plus fréquent ; ạ ajoute encore de la déférence.",
+    "en": "In the South, dạ at the start of a reply is most common; ạ adds extra deference."
+  },
+  "reviewed": false
+}

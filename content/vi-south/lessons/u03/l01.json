@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l01",
+  "unit": "vi-south.u03",
+  "title": {
+    "fr": "Tôi, tui, mình",
+    "en": "Tôi, tui, mình"
+  },
+  "goal": {
+    "fr": "Dire ton nom et choisir entre tôi, tui et mình.",
+    "en": "Say your name and choose between tôi, tui and mình."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u02.l08"
+  ],
+  "concepts": [
+    "c_tui_me",
+    "c_minh",
+    "c_ten",
+    "c_la",
+    "s_toi_ten_la",
+    "s_ban_ten_gi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui_me",
+      "distractors": [
+        "tụi",
+        "túi"
+      ],
+      "explain": {
+        "fr": "tui : « moi », familier au Sud. Ton plat.",
+        "en": "tui: 'me', casual in the South. Level tone."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_toi_tui_minh"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_minh",
+      "explain": {
+        "fr": "mình descend : « moi » chaleureux, ou « nous » entre proches.",
+        "en": "mình falls: a warm 'me', or 'us' among close ones."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ban_ten_gi",
+      "distractors": [
+        "Bạn ăn gì?",
+        "Bạn đi đâu?"
+      ],
+      "explain": {
+        "fr": "tên gì ? = « quel nom ? ». Le mot interrogatif reste à la fin.",
+        "en": "tên gì? = 'what name?'. The question word stays at the end."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi tên là Lan.",
+      "tokens": [
+        "Tôi",
+        "tên",
+        "là",
+        "Lan",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Je m'appelle Lan.",
+        "en": "My name is Lan."
+      },
+      "explain": {
+        "fr": "tên = nom ; là relie : « mon nom est Lan ».",
+        "en": "tên = name; là links: 'my name is Lan'."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ten",
+      "explain": {
+        "fr": "tên est plat : le nom.",
+        "en": "tên is level: name."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui tên là Hùng.",
+      "tokens": [
+        "Tui",
+        "tên",
+        "là",
+        "Hùng",
+        "tụi"
+      ],
+      "translation": {
+        "fr": "Moi, c'est Hùng (familier).",
+        "en": "I'm Hùng (casual)."
+      },
+      "explain": {
+        "fr": "tui remplace tôi entre amis, au Sud.",
+        "en": "tui replaces tôi among friends, in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_la",
+      "distractors": [
+        "lá",
+        "lạ"
+      ],
+      "explain": {
+        "fr": "là descend : il relie deux noms. lá monte : la feuille.",
+        "en": "là falls: it links two nouns. lá rises: leaf."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_toi_ten_la",
+      "explain": {
+        "fr": "tôi et tên restent plats, là descend.",
+        "en": "tôi and tên stay level, là falls."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_tui_me",
+      "c_minh",
+      "c_ten",
+      "c_la",
+      "s_toi_ten_la",
+      "s_ban_ten_gi"
+    ]
+  },
+  "reviewed": false
+}

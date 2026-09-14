@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_anh_ba",
+  "type": "word",
+  "vi": "anh ba",
+  "gloss": {
+    "fr": "grand frère, deuxième enfant (rang « ba »)",
+    "en": "older brother, second-born (rank 'ba')"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_ba_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_ba_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

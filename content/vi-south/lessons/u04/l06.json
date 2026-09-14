@@ -1,0 +1,168 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u04.l06",
+  "unit": "vi-south.u04",
+  "title": {
+    "fr": "Cái et con : les classificateurs",
+    "en": "Cái and con: classifiers"
+  },
+  "goal": {
+    "fr": "Compter les animaux et les objets de la maison.",
+    "en": "Count animals and things at home."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u04.l05"
+  ],
+  "concepts": [
+    "c_cai",
+    "c_con_clf",
+    "c_cho_dog",
+    "c_meo",
+    "c_ghe",
+    "s_nha_toi_co"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_dog",
+      "distractors": [
+        "c_meo",
+        "c_ga_chicken"
+      ],
+      "explain": {
+        "fr": "chó monte : le chien.",
+        "en": "chó rises: dog."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_meo",
+      "distractors": [
+        "c_cho_dog",
+        "c_ca_fish"
+      ],
+      "explain": {
+        "fr": "mèo descend : le chat.",
+        "en": "mèo falls: cat."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_cai",
+      "explain": {
+        "fr": "cái monte : le classificateur des objets.",
+        "en": "cái rises: the classifier for objects."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ghe",
+      "distractors": [
+        "ghe",
+        "ghé"
+      ],
+      "explain": {
+        "fr": "ghế monte : la chaise. ghe, plat, est une barque au Sud !",
+        "en": "ghế rises: chair. ghe, level, is a boat in the South!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà tôi có hai con mèo.",
+      "tokens": [
+        "Nhà",
+        "tôi",
+        "có",
+        "hai",
+        "con",
+        "mèo",
+        "cái"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a deux chats.",
+        "en": "At my home there are two cats."
+      },
+      "explain": {
+        "fr": "Nombre + con + animal : hai con mèo. Le nom ne change pas au pluriel.",
+        "en": "Number + con + animal: hai con mèo. The noun doesn't change in the plural."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là cái bàn.",
+      "tokens": [
+        "Đây",
+        "là",
+        "cái",
+        "bàn",
+        "con"
+      ],
+      "translation": {
+        "fr": "Ceci est une table.",
+        "en": "This is a table."
+      },
+      "explain": {
+        "fr": "cái se met devant les objets : cái bàn, cái ghế.",
+        "en": "cái goes before objects: cái bàn, cái ghế."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_con_clf",
+      "distractors": [
+        "còn",
+        "cơn"
+      ],
+      "explain": {
+        "fr": "con : devant un animal, c'est le classificateur des êtres vivants.",
+        "en": "con: before an animal, it's the classifier for living beings."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà tôi có một con chó.",
+      "tokens": [
+        "Nhà",
+        "tôi",
+        "có",
+        "một",
+        "con",
+        "chó",
+        "cái"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a un chien.",
+        "en": "At my home there's a dog."
+      },
+      "explain": {
+        "fr": "một con chó : un chien. con parce que c'est un animal.",
+        "en": "một con chó: one dog. con because it's an animal."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nha_toi_co",
+      "explain": {
+        "fr": "nhà descend, tôi plat, có monte.",
+        "en": "nhà falls, tôi level, có rises."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_cai",
+      "c_con_clf",
+      "c_cho_dog",
+      "c_meo",
+      "c_ghe",
+      "s_nha_toi_co"
+    ]
+  },
+  "reviewed": false
+}

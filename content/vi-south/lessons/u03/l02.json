@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u03.l02",
+  "unit": "vi-south.u03",
+  "title": {
+    "fr": "Plus âgé, plus jeune",
+    "en": "Older, younger"
+  },
+  "goal": {
+    "fr": "Demander l'âge et dire qui est plus âgé.",
+    "en": "Ask someone's age and say who is older."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l01"
+  ],
+  "concepts": [
+    "c_tuoi",
+    "c_lon",
+    "c_nho",
+    "c_may",
+    "s_em_may_tuoi",
+    "c_hon",
+    "c_em"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_em",
+      "distractors": [
+        "c_anh",
+        "c_chi"
+      ],
+      "explain": {
+        "fr": "em : plus jeune que toi, garçon ou fille.",
+        "en": "em: younger than you, boy or girl."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_may_tuoi",
+      "distractors": [
+        "Anh mấy tuổi?",
+        "Chị mấy tuổi?"
+      ],
+      "explain": {
+        "fr": "On pose la question à em : la personne est plus jeune.",
+        "en": "The question is put to em: the person is younger."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_age_first"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_tuoi",
+      "explain": {
+        "fr": "tuổi porte le hỏi, qui au Sud sonne comme le ngã.",
+        "en": "tuổi carries hỏi, which sounds like ngã in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lon",
+      "distractors": [
+        "lộn",
+        "non"
+      ],
+      "explain": {
+        "fr": "lớn monte : grand, plus âgé.",
+        "en": "lớn rises: big, older."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nho",
+      "distractors": [
+        "nhớ",
+        "nho"
+      ],
+      "explain": {
+        "fr": "nhỏ plonge puis remonte : petit, jeune. nhớ monte : se souvenir.",
+        "en": "nhỏ dips then rises: small, young. nhớ rises: to remember."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh lớn hơn em.",
+      "tokens": [
+        "Anh",
+        "lớn",
+        "hơn",
+        "em",
+        "nhỏ"
+      ],
+      "translation": {
+        "fr": "Je suis plus âgé que toi (dit par un grand frère).",
+        "en": "I'm older than you (said by an older brother)."
+      },
+      "explain": {
+        "fr": "Adjectif + hơn = « plus… que ». L'âge décide qui est anh et qui est em.",
+        "en": "Adjective + hơn = 'more… than'. Age decides who is anh and who is em."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_may",
+      "explain": {
+        "fr": "mấy monte : « combien », pour un petit nombre.",
+        "en": "mấy rises: 'how many', for a small number."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em nhỏ hơn chị.",
+      "tokens": [
+        "Em",
+        "nhỏ",
+        "hơn",
+        "chị",
+        "lớn"
+      ],
+      "translation": {
+        "fr": "Je suis plus jeune que toi (à une femme plus âgée).",
+        "en": "I'm younger than you (to an older woman)."
+      },
+      "explain": {
+        "fr": "nhỏ hơn = « plus jeune que ». Tu te désignes par em face à chị.",
+        "en": "nhỏ hơn = 'younger than'. You call yourself em with chị."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_em_may_tuoi",
+      "explain": {
+        "fr": "mấy monte, tuổi plonge et remonte.",
+        "en": "mấy rises, tuổi dips and rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_tuoi",
+      "c_lon",
+      "c_nho",
+      "c_may",
+      "s_em_may_tuoi",
+      "c_hon"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ngu_sleep",
+  "type": "word",
+  "vi": "ngủ",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "dormir",
+    "en": "to sleep"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ngu_sleep_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ngu_sleep_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/sleep.svg",
+  "reviewed": false
+}

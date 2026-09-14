@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_moi_bac_uong_tra",
+  "type": "structure",
+  "vi": "Mời bác uống trà.",
+  "gloss": {
+    "fr": "Je vous en prie, prenez du thé (à un aîné).",
+    "en": "Please have some tea (to an elder)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_moi_bac_uong_tra_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_moi_bac_uong_tra_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

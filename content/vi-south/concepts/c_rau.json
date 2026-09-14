@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_rau",
+  "type": "word",
+  "vi": "rau",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "légumes verts, herbes",
+    "en": "greens, herbs"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_rau_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_rau_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/greens.svg",
+  "reviewed": false
+}

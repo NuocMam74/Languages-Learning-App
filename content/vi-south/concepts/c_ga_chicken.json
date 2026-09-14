@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ga_chicken",
+  "type": "word",
+  "vi": "gà",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "poulet, poule",
+    "en": "chicken"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ga_chicken_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ga_chicken_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/chicken.svg",
+  "reviewed": false
+}

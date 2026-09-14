@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_may",
+  "type": "word",
+  "vi": "mấy",
+  "tone": "sac",
+  "gloss": {
+    "fr": "combien (petit nombre)",
+    "en": "how many (small number)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_may_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_may_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Em mấy tuổi ? se dit à un enfant ou à plus jeune. Pour un adulte : bao nhiêu tuổi ?",
+    "en": "Em mấy tuổi? is for a child or someone younger. For an adult: bao nhiêu tuổi?"
+  },
+  "reviewed": false
+}

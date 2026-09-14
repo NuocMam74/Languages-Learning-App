@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tra_tea",
+  "type": "word",
+  "vi": "trà",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "thé",
+    "en": "tea"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tra_tea_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tra_tea_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/tea.svg",
+  "note": {
+    "fr": "Au Sud, le thé se dit trà. Trà đá : thé glacé.",
+    "en": "In the South, tea is trà. Trà đá: iced tea."
+  },
+  "reviewed": false
+}

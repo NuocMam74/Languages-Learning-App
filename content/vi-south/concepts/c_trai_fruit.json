@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_trai_fruit",
+  "type": "word",
+  "vi": "trái",
+  "tone": "sac",
+  "gloss": {
+    "fr": "fruit ; classificateur des fruits",
+    "en": "fruit; classifier for fruit"
+  },
+  "register": "neutral",
+  "northernEquivalent": "quả",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_trai_fruit_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_trai_fruit_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/mango.svg",
+  "note": {
+    "fr": "Trái xoài (mangue), trái dừa (coco). Au Nord : quả.",
+    "en": "Trái xoài (mango), trái dừa (coconut). North: quả."
+  },
+  "reviewed": false
+}

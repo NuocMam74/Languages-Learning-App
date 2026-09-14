@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_co_anh_chi_em_khong",
+  "type": "structure",
+  "vi": "Em có anh chị em không?",
+  "gloss": {
+    "fr": "Tu as des frères et sœurs ? (à plus jeune)",
+    "en": "Do you have brothers and sisters? (to someone younger)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_co_anh_chi_em_khong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_co_anh_chi_em_khong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

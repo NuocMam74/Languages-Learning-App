@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u02.l06",
+  "unit": "vi-south.u02",
+  "title": {
+    "fr": "Đ, nh, ng… et Telex",
+    "en": "Đ, nh, ng… and Telex"
+  },
+  "goal": {
+    "fr": "Reconnaître đ, nh, ng et savoir taper les tons en Telex.",
+    "en": "Recognise đ, nh, ng and type tones with Telex."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u02.l05"
+  ],
+  "concepts": [
+    "c_di_go",
+    "c_nha_house",
+    "c_dau_where",
+    "c_ngu_sleep",
+    "c_o_at",
+    "s_tieng_viet"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_house",
+      "distractors": [
+        "c_ngu_sleep",
+        "c_cho_market"
+      ],
+      "explain": {
+        "fr": "nhà : nh se dit comme « gn » dans « montagne ».",
+        "en": "nhà: nh sounds like the 'ny' in 'canyon'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_di_go",
+      "distractors": [
+        "di",
+        "đì"
+      ],
+      "explain": {
+        "fr": "đ barré : langue contre les dents. d sans barre se dit « y » au Sud.",
+        "en": "Barred đ: tongue against the teeth. Plain d sounds like 'y' in the South."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_telex"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ngu_sleep",
+      "distractors": [
+        "c_nha_house",
+        "c_mua_rain"
+      ],
+      "explain": {
+        "fr": "ngủ : ng au début, comme à la fin de « parking ».",
+        "en": "ngủ: initial ng, like the end of 'sing'."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_o_at",
+      "explain": {
+        "fr": "ở porte le hỏi, qui au Sud se confond avec le ngã.",
+        "en": "ở carries hỏi, which merges with ngã in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_where",
+      "distractors": [
+        "đầu",
+        "dâu"
+      ],
+      "explain": {
+        "fr": "đâu est plat : « où ? ». đầu descend : la tête. dâu commence par « y ».",
+        "en": "đâu is level: 'where?'. đầu falls: head. dâu starts with 'y'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đi đâu vậy?",
+      "tokens": [
+        "Anh",
+        "đi",
+        "đâu",
+        "vậy",
+        "ở"
+      ],
+      "translation": {
+        "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+        "en": "Where are you going? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Le mot interrogatif reste en fin de phrase. vậy adoucit la question.",
+        "en": "The question word stays at the end. vậy softens the question."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ở nhà.",
+      "tokens": [
+        "Em",
+        "ở",
+        "nhà",
+        "đi"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      },
+      "explain": {
+        "fr": "ở = « être à, se trouver ». Pas d'article : ở nhà.",
+        "en": "ở = 'to be at'. No article: ở nhà."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_tieng_viet",
+      "explain": {
+        "fr": "tiếng monte, Việt tombe court. En Telex : tieengs Vieetj.",
+        "en": "tiếng rises, Việt drops short. In Telex: tieengs Vieetj."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_di_go",
+      "c_nha_house",
+      "c_dau_where",
+      "c_ngu_sleep",
+      "c_o_at",
+      "s_tieng_viet"
+    ]
+  },
+  "reviewed": false
+}

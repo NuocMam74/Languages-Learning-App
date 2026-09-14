@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_an_com_chua",
+  "title": {
+    "fr": "« Tu as mangé ? » pour dire bonjour",
+    "en": "'Have you eaten?' as a greeting"
+  },
+  "body": {
+    "fr": "Cơm, c'est le riz cuit, mais aussi le repas. Entre proches, on se salue souvent par « Ăn cơm chưa ? » : « Tu as déjà mangé ? ». Ce n'est pas forcément une invitation, plutôt une façon de montrer qu'on pense à l'autre.",
+    "en": "Cơm is cooked rice, and also 'a meal'. Close friends and family often greet each other with 'Ăn cơm chưa?': 'Have you eaten yet?'. It isn't necessarily an invitation, more a way of showing you care."
+  },
+  "vi": "Ăn cơm chưa?",
+  "audio": "audio/cc_an_com_chua.opus",
+  "question": {
+    "prompt": {
+      "fr": "Entre proches, « Ăn cơm chưa ? » sert souvent à…",
+      "en": "Among close ones, 'Ăn cơm chưa?' is often used to…"
+    },
+    "options": [
+      {
+        "fr": "commander au restaurant",
+        "en": "order at a restaurant"
+      },
+      {
+        "fr": "saluer et montrer qu'on s'intéresse",
+        "en": "greet and show you care"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_co_aunt",
+  "type": "word",
+  "vi": "cô",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "tante (sœur du père) ; madame (âge des parents) ; enseignante",
+    "en": "aunt (father's sister); madam (parents' age); female teacher"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_co_aunt_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_co_aunt_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/co.svg",
+  "reviewed": false
+}

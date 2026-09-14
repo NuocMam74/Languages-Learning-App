@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u02.l07",
+  "unit": "vi-south.u02",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : les sons du Sud",
+    "en": "Review: southern sounds"
+  },
+  "goal": {
+    "fr": "Revoir voyelles, consonnes et finales du Sud.",
+    "en": "Go over southern vowels, consonants and finals."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u02.l06"
+  ],
+  "concepts": [
+    "c_to_bowl",
+    "c_dua_coconut",
+    "c_ra",
+    "c_cho_market",
+    "c_cho_wait",
+    "c_song_river",
+    "c_da_skin",
+    "c_da",
+    "c_tra_tea"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_to_bowl",
+      "distractors": [
+        "to",
+        "tơ"
+      ],
+      "explain": {
+        "fr": "tô : o fermé, bouche arrondie.",
+        "en": "tô: closed o, rounded lips."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dua_coconut",
+      "distractors": [
+        "c_tra_tea",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "dừa : d se dit « y » au Sud.",
+        "en": "dừa: d sounds like 'y' in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ra",
+      "distractors": [
+        "da",
+        "gia"
+      ],
+      "explain": {
+        "fr": "r reste distinct ; da et gia sonnent « ya ».",
+        "en": "r stays distinct; da and gia sound 'ya'."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chợ",
+        "chờ"
+      ],
+      "audioConcepts": [
+        "c_cho_market",
+        "c_cho_wait"
+      ],
+      "explain": {
+        "fr": "chợ tombe court, chờ descend.",
+        "en": "chợ drops short, chờ falls."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_song_river",
+      "distractors": [
+        "xông",
+        "sống"
+      ],
+      "explain": {
+        "fr": "sông : s recourbé, ton plat.",
+        "en": "sông: curled s, level tone."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_bol",
+      "explain": {
+        "fr": "Au Sud, le bol à riz, c'est chén ; bát est du Nord.",
+        "en": "In the South the rice bowl is chén; bát is northern."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "da",
+        "dạ"
+      ],
+      "audioConcepts": [
+        "c_da_skin",
+        "c_da"
+      ],
+      "explain": {
+        "fr": "da plat, dạ court et tombant.",
+        "en": "da level, dạ short and falling."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em xin ly trà.",
+      "tokens": [
+        "Em",
+        "xin",
+        "ly",
+        "trà",
+        "chè"
+      ],
+      "translation": {
+        "fr": "Je voudrais un verre de thé.",
+        "en": "May I have a glass of tea?"
+      },
+      "explain": {
+        "fr": "xin + chose : demander poliment. trà, c'est le thé.",
+        "en": "xin + thing: ask politely. trà is tea."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_tra_tea",
+      "explain": {
+        "fr": "tr recourbé, puis le ton descend.",
+        "en": "Curled tr, then the tone falls."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

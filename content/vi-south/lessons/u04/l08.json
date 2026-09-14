@@ -1,0 +1,199 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u04.l08",
+  "unit": "vi-south.u04",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : la famille",
+    "en": "Test: family"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais présenter ta famille à la manière du Sud.",
+    "en": "Show you can present your family the southern way."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u04.l07"
+  ],
+  "concepts": [
+    "c_anh_hai",
+    "c_hai",
+    "c_vo",
+    "c_ong_xa",
+    "s_ba_noi",
+    "c_di",
+    "s_co_anh_chi_em_khong",
+    "c_meo",
+    "c_thim"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_anh_hai",
+      "distractors": [
+        "c_chi_hai",
+        "c_em_ut"
+      ],
+      "explain": {
+        "fr": "anh hai : le frère aîné.",
+        "en": "anh hai: eldest brother."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hai",
+      "distractors": [
+        "hái",
+        "hải"
+      ],
+      "explain": {
+        "fr": "hai, plat : deux.",
+        "en": "hai, level: two."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_vo",
+      "distractors": [
+        "c_chong",
+        "c_ma_mom"
+      ],
+      "explain": {
+        "fr": "vợ : l'épouse.",
+        "en": "vợ: wife."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_xa",
+      "distractors": [
+        "bà xã",
+        "ông già"
+      ],
+      "explain": {
+        "fr": "ông xã : mon mari (familier).",
+        "en": "ông xã: my hubby (casual)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ba_noi",
+      "distractors": [
+        "bà ngoại",
+        "ba nội"
+      ],
+      "explain": {
+        "fr": "bà nội : côté du père.",
+        "en": "bà nội: father's side."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_di",
+      "distractors": [
+        "đi",
+        "dí"
+      ],
+      "explain": {
+        "fr": "dì : la sœur de ta mère.",
+        "en": "dì: your mother's sister."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chú là em của ba tôi.",
+      "tokens": [
+        "Chú",
+        "là",
+        "em",
+        "của",
+        "ba",
+        "tôi",
+        "anh"
+      ],
+      "translation": {
+        "fr": "Chú est le petit frère de mon père.",
+        "en": "Chú is my father's younger brother."
+      },
+      "explain": {
+        "fr": "chú : frère cadet du père.",
+        "en": "chú: father's younger brother."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_co_anh_chi_em_khong",
+      "distractors": [
+        "Em có vợ chưa?",
+        "Em có khỏe không?"
+      ],
+      "explain": {
+        "fr": "có … không ? sur les frères et sœurs.",
+        "en": "có … không? about siblings."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, em chưa có gia đình.",
+      "tokens": [
+        "Dạ",
+        "em",
+        "chưa",
+        "có",
+        "gia đình",
+        "không"
+      ],
+      "translation": {
+        "fr": "Non, je ne suis pas encore marié(e).",
+        "en": "No, I'm not married yet."
+      },
+      "explain": {
+        "fr": "chưa = « pas encore ».",
+        "en": "chưa = 'not yet'."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_meo",
+      "distractors": [
+        "c_cho_dog",
+        "c_ca_fish"
+      ],
+      "explain": {
+        "fr": "mèo : le chat.",
+        "en": "mèo: cat."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là cái bàn.",
+      "tokens": [
+        "Đây",
+        "là",
+        "cái",
+        "bàn",
+        "con"
+      ],
+      "translation": {
+        "fr": "Ceci est une table.",
+        "en": "This is a table."
+      },
+      "explain": {
+        "fr": "cái devant les objets.",
+        "en": "cái before objects."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_thim",
+      "explain": {
+        "fr": "thím monte (sắc).",
+        "en": "thím rises (sắc)."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

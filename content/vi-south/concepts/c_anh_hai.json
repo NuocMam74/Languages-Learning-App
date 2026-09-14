@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_anh_hai",
+  "type": "word",
+  "vi": "anh hai",
+  "gloss": {
+    "fr": "frère aîné (Sud)",
+    "en": "eldest brother (southern)"
+  },
+  "register": "neutral",
+  "northernEquivalent": "anh cả",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_hai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_anh_hai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/family/eldest_brother.svg",
+  "reviewed": false
+}

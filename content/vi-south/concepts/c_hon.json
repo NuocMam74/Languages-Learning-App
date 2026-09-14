@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_hon",
+  "type": "word",
+  "vi": "hơn",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "plus (que)",
+    "en": "more (than)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hon_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hon_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Adjectif + hơn : lớn hơn = plus âgé, plus grand.",
+    "en": "Adjective + hơn: lớn hơn = older, bigger."
+  },
+  "reviewed": false
+}

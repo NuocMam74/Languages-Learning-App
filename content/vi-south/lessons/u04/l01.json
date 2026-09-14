@@ -1,0 +1,139 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u04.l01",
+  "unit": "vi-south.u04",
+  "title": {
+    "fr": "Anh hai, chị hai",
+    "en": "Anh hai, chị hai"
+  },
+  "goal": {
+    "fr": "Nommer frères et sœurs selon leur rang, à la manière du Sud.",
+    "en": "Name siblings by birth rank, the southern way."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u03.l09"
+  ],
+  "concepts": [
+    "c_hai",
+    "c_anh_hai",
+    "c_chi_hai",
+    "c_anh_ba",
+    "c_tu",
+    "c_em_ut"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_anh_hai",
+      "distractors": [
+        "c_chi_hai",
+        "c_em_ut"
+      ],
+      "explain": {
+        "fr": "anh hai : au Sud, l'aîné porte le rang « hai ».",
+        "en": "anh hai: in the South, the eldest has rank 'hai'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_anh_hai_south"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hai",
+      "distractors": [
+        "hái",
+        "hải"
+      ],
+      "explain": {
+        "fr": "hai, plat : deux, et le rang de l'aîné.",
+        "en": "hai, level: two, and the eldest's rank."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_aine",
+      "explain": {
+        "fr": "Au Sud, l'aîné est anh hai ; au Nord, anh cả.",
+        "en": "In the South the eldest is anh hai; in the North, anh cả."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_em_ut",
+      "distractors": [
+        "c_anh_hai",
+        "c_chi_hai"
+      ],
+      "explain": {
+        "fr": "em út : le petit dernier, la petite dernière.",
+        "en": "em út: the youngest child."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_ba",
+      "distractors": [
+        "anh hai",
+        "anh tư"
+      ],
+      "explain": {
+        "fr": "anh ba : le deuxième enfant, puisque l'aîné porte déjà le rang hai.",
+        "en": "anh ba: the second child, since the eldest already holds rank hai."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_tu",
+      "explain": {
+        "fr": "tư est plat : pour le rang, on dit tư, pas bốn.",
+        "en": "tư is level: for rank you say tư, not bốn."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh hai tôi ở Cần Thơ.",
+      "tokens": [
+        "Anh",
+        "hai",
+        "tôi",
+        "ở",
+        "Cần Thơ",
+        "ba"
+      ],
+      "translation": {
+        "fr": "Mon frère aîné habite à Cần Thơ.",
+        "en": "My eldest brother lives in Cần Thơ."
+      },
+      "explain": {
+        "fr": "Le possesseur suit : anh hai tôi. ở = « habiter, se trouver à ».",
+        "en": "The owner follows: anh hai tôi. ở = 'to live, be at'."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_chi_hai",
+      "explain": {
+        "fr": "chị tombe court, hai reste plat.",
+        "en": "chị drops short, hai stays level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_hai",
+      "c_anh_hai",
+      "c_chi_hai",
+      "c_anh_ba",
+      "c_tu",
+      "c_em_ut"
+    ]
+  },
+  "reviewed": false
+}

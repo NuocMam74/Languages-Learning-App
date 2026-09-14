@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_xin_loi",
+  "type": "word",
+  "vi": "xin lỗi",
+  "gloss": {
+    "fr": "pardon, excuse-moi / excusez-moi",
+    "en": "sorry, excuse me"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xin_loi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xin_loi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Xin lỗi chị.",
+      "fr": "Pardon (à une femme un peu plus âgée).",
+      "en": "Sorry (to a slightly older woman)."
+    }
+  ],
+  "note": {
+    "fr": "Sert à s'excuser et à interpeller poliment. On ajoute la personne : xin lỗi anh.",
+    "en": "Used to apologise and to politely get attention. Add the person: xin lỗi anh."
+  },
+  "reviewed": false
+}

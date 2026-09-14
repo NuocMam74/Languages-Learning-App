@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_con_and",
+  "type": "word",
+  "vi": "còn",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "et… ? ; encore",
+    "en": "and (what about)…?; still"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_con_and_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_con_and_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Còn anh ? = « Et toi ? ». Devant un adjectif : còn trẻ = encore jeune.",
+    "en": "Còn anh? = 'And you?'. Before an adjective: còn trẻ = still young."
+  },
+  "reviewed": false
+}

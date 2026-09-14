@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_khong",
+  "type": "word",
+  "vi": "không",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "non ; ne… pas",
+    "en": "no; not"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_khong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_khong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Devant le verbe, il nie : không có. En fin de phrase, il pose une question.",
+    "en": "Before a verb it negates: không có. At the end of a sentence it asks a question."
+  },
+  "reviewed": false
+}

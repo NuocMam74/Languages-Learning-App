@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ca_fish",
+  "type": "word",
+  "vi": "cá",
+  "tone": "sac",
+  "gloss": {
+    "fr": "poisson",
+    "en": "fish"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ca_fish_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ca_fish_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/fish.svg",
+  "note": {
+    "fr": "Au Sud, le cá kho (poisson mijoté au caramel) est un plat de famille.",
+    "en": "In the South, cá kho (fish braised in caramel) is a family dish."
+  },
+  "reviewed": false
+}

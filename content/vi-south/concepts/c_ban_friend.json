@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ban_friend",
+  "type": "word",
+  "vi": "bạn",
+  "tone": "nang",
+  "gloss": {
+    "fr": "ami ; toi (entre pairs)",
+    "en": "friend; you (between peers)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ban_friend_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ban_friend_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, le -n final de bạn sonne presque « ng ».",
+    "en": "In the South, the final -n of bạn sounds almost like 'ng'."
+  },
+  "reviewed": false
+}

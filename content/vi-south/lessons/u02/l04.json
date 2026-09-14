@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u02.l04",
+  "unit": "vi-south.u02",
+  "title": {
+    "fr": "Tr et ch",
+    "en": "Tr and ch"
+  },
+  "goal": {
+    "fr": "Distinguer tr et ch, et découvrir des mots du quotidien du Sud.",
+    "en": "Tell tr from ch, and meet everyday southern words."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u02.l03"
+  ],
+  "concepts": [
+    "c_tra_tea",
+    "c_cho_market",
+    "c_cho_wait",
+    "c_trai_fruit",
+    "c_che_dessert",
+    "c_troi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tra_tea",
+      "distractors": [
+        "c_che_dessert",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "trà : le thé. Au Sud, tr se dit langue recourbée, différent de ch.",
+        "en": "trà: tea. In the South, tr is said with a curled tongue, unlike ch."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chợ",
+        "chờ"
+      ],
+      "audioConcepts": [
+        "c_cho_market",
+        "c_cho_wait"
+      ],
+      "explain": {
+        "fr": "chợ tombe court (le marché) ; chờ descend doucement (attendre).",
+        "en": "chợ drops short (market); chờ falls gently (wait)."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_che_south"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_trai_fruit",
+      "distractors": [
+        "c_che_dessert",
+        "c_rau"
+      ],
+      "explain": {
+        "fr": "trái : le fruit.",
+        "en": "trái: fruit."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tra_tea",
+      "distractors": [
+        "chà",
+        "trả"
+      ],
+      "explain": {
+        "fr": "trà : tr recourbé, ton qui descend. chà commence par ch ; trả plonge.",
+        "en": "trà: curled tr, falling tone. chà starts with ch; trả dips."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_fruit_clf",
+      "explain": {
+        "fr": "Au Sud, on dit trái pour les fruits ; quả est la forme du Nord.",
+        "en": "In the South fruit takes trái; quả is the northern form."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_che_dessert",
+      "distractors": [
+        "c_tra_tea",
+        "c_trai_fruit"
+      ],
+      "explain": {
+        "fr": "chè : au Sud, le dessert sucré en verre.",
+        "en": "chè: in the South, the sweet dessert in a glass."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_troi",
+      "explain": {
+        "fr": "trời descend. Trời ơi ! : l'exclamation préférée du Sud.",
+        "en": "trời falls. Trời ơi!: the South's favourite exclamation."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chờ em chút nha.",
+      "tokens": [
+        "Chờ",
+        "em",
+        "chút",
+        "nha",
+        "chợ"
+      ],
+      "translation": {
+        "fr": "Attends-moi un peu, d'accord ?",
+        "en": "Wait for me a moment, okay?"
+      },
+      "explain": {
+        "fr": "nha adoucit la demande, très Sud. chờ (attendre) n'est pas chợ (marché).",
+        "en": "nha softens the request, very southern. chờ (wait) isn't chợ (market)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_cho_market",
+      "explain": {
+        "fr": "ch simple, puis un ton qui tombe court et net.",
+        "en": "Plain ch, then a tone that drops short and sharp."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_tra_tea",
+      "c_cho_market",
+      "c_cho_wait",
+      "c_trai_fruit",
+      "c_che_dessert",
+      "c_troi"
+    ]
+  },
+  "reviewed": false
+}
