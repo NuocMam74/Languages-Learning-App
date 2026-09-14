@@ -1,0 +1,23 @@
+node_modules/
+dist/
+dev-dist/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.db
+*.sqlite3
+
+# Audio sources (lourds, hors git — voir docs/ADR/0002)
+content/**/audio/**/*.wav
+
+.DS_Store
+Thumbs.db

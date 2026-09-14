@@ -1,0 +1,29 @@
+{
+  "name": "parlo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/web"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "npm run dev -w @parlo/web",
+    "build": "npm run build -w @parlo/web",
+    "typecheck": "tsc --noEmit && npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "content:validate": "tsx scripts/validate-content.ts",
+    "content:lint": "tsx scripts/south-lint-content.ts",
+    "check": "npm run typecheck && npm run test && npm run content:validate && npm run content:lint"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
