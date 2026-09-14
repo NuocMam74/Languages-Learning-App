@@ -1,0 +1,79 @@
+@import "tailwindcss";
+/* Sous-ensembles latin + vietnamien seulement : moins de précache hors ligne. */
+@import "@fontsource/be-vietnam-pro/latin-400.css";
+@import "@fontsource/be-vietnam-pro/vietnamese-400.css";
+@import "@fontsource/be-vietnam-pro/latin-500.css";
+@import "@fontsource/be-vietnam-pro/vietnamese-500.css";
+@import "@fontsource/be-vietnam-pro/latin-600.css";
+@import "@fontsource/be-vietnam-pro/vietnamese-600.css";
+@import "@fontsource-variable/source-serif-4/wght.css";
+
+/* Direction artistique §13 : laque, eau, lumière chaude. 6 valeurs nommées. */
+@theme {
+  --color-nuoc: #f2f6f3;
+  --color-muc: #14201e;
+  --color-ngoc: #0e5e55;
+  --color-ngoc-sang: #d7e7e2;
+  --color-son-mai: #c2352a;
+  --color-nghe: #e5a21b;
+  --color-phu-sa: #3a3a34;
+
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-serif: "Source Serif 4 Variable", Georgia, serif;
+
+  /* Échelle fixe ; interlignage généreux : les diacritiques empilés prennent de la place. */
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6;
+  --text-lg: 1.1875rem;
+  --text-lg--line-height: 1.55;
+  --text-2xl: 1.625rem;
+  --text-2xl--line-height: 1.3;
+  --text-vi: 2.5rem;
+  --text-vi--line-height: 1.35;
+  --text-vi-xl: 3.5rem;
+  --text-vi-xl--line-height: 1.3;
+}
+
+@layer base {
+  html {
+    background: var(--color-nuoc);
+    color: var(--color-muc);
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    min-height: 100dvh;
+  }
+  /* Le mot vietnamien est l'objet visuel : jamais rogné. */
+  [lang="vi"] {
+    overflow: visible;
+    font-feature-settings: "kern";
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-nghe);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(0.75rem);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
