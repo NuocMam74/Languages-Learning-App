@@ -62,6 +62,12 @@ describe("events", () => {
     expect(a < b).toBe(true);
   });
 
+  it("uuidv7 : monotone dans une même milliseconde", () => {
+    const now = new Date("2026-09-14T09:00:00Z");
+    const ids = Array.from({ length: 50 }, () => uuidv7(now));
+    expect([...ids].sort()).toEqual(ids);
+  });
+
   it("makeEvent horodate et versionne", () => {
     const e = makeEvent("session_started", { sessionId: "s", source: "lesson", plannedSeconds: 300 }, new Date("2026-09-14T08:00:00Z"));
     expect(e).toMatchObject({ type: "session_started", occurredAt: "2026-09-14T08:00:00.000Z", schemaVersion: 1 });

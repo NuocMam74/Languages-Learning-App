@@ -126,6 +126,7 @@ export interface Pack {
   toneSystem?: { written: Tone[]; heardClasses: Tone[][] };
   voices: { id: string; label: string; gender: "f" | "m"; accent: string }[];
   interfaceLocales: string[];
+  welcome?: { vi: string; translation: Localized; audio?: string; reviewed: boolean };
   comingSoon?: boolean;
 }
 

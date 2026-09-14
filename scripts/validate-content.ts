@@ -65,7 +65,7 @@ for (const code of listPacks()) {
   issues.push(...checkContent(index, { production }));
 
   const media = new Set<string>();
-  [...files.lessons, ...files.concepts, ...files.culture].forEach((f) => collectMedia(f.data, media));
+  [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture].forEach((f) => collectMedia(f.data, media));
   const missing = [...media].filter((m) => !existsSync(join(files.root, m)));
   if (missing.length > 0) {
     report(strictMedia ? "error" : "warning", code, `${missing.length} média(s) référencé(s) absent(s), ex. ${missing.slice(0, 3).join(", ")}`);

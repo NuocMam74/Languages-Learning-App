@@ -42,7 +42,8 @@ for (const code of listPacks()) {
       }
     }
   };
-  for (const f of [...files.lessons, ...files.concepts, ...files.culture]) walk(f.data, rel(f.path), "", false);
+  const all = [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture];
+  for (const f of all) walk(f.data, rel(f.path), "", false);
 
   for (const h of hits) {
     const icon = h.severity === "error" ? "✖" : "⚠";

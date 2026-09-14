@@ -16,5 +16,14 @@
     { "id": "mai_hcm_f", "label": "Mai", "gender": "f", "accent": "Hô Chi Minh-Ville" },
     { "id": "tuan_ct_m", "label": "Tuấn", "gender": "m", "accent": "Cần Thơ (delta)" }
   ],
-  "interfaceLocales": ["fr", "en"]
+  "interfaceLocales": ["fr", "en"],
+  "welcome": {
+    "vi": "Chào bạn! Mình học tiếng Việt với cô nghen?",
+    "translation": {
+      "fr": "Bonjour ! On apprend le vietnamien ensemble, d'accord ?",
+      "en": "Hello! Shall we learn Vietnamese together?"
+    },
+    "audio": "audio/welcome_mai.opus",
+    "reviewed": false
+  }
 }

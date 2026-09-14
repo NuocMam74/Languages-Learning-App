@@ -59,16 +59,37 @@ export function makeEvent<T extends ParloEventType>(type: T, payload: PayloadOf<
   return event as unknown as Extract<ParloEvent, { type: T }>;
 }
 
-/** UUID v7 (RFC 9562) : 48 bits de timestamp ms + aléa. Trie chronologiquement. */
+let lastMs = -1;
+let sequence = 0;
+
+/**
+ * UUID v7 (RFC 9562) monotone : 48 bits de timestamp ms, puis un compteur de
+ * 12 bits (rand_a) pour garder l'ordre de création dans une même milliseconde.
+ * Les ids trient donc dans l'ordre d'émission — l'outbox en dépend.
+ */
 export function uuidv7(now: Date = new Date()): string {
   const bytes = new Uint8Array(16);
   globalThis.crypto.getRandomValues(bytes);
   let ms = now.getTime();
-  for (let i = 5; i >= 0; i--) {
-    bytes[i] = ms & 0xff;
-    ms = Math.floor(ms / 256);
+  if (ms <= lastMs) {
+    ms = lastMs;
+    sequence++;
+    if (sequence > 0xfff) {
+      ms++;
+      sequence = 0;
+    }
+  } else {
+    sequence = 0;
   }
-  bytes[6] = ((bytes[6] ?? 0) & 0x0f) | 0x70;
+  lastMs = ms;
+
+  let t = ms;
+  for (let i = 5; i >= 0; i--) {
+    bytes[i] = t & 0xff;
+    t = Math.floor(t / 256);
+  }
+  bytes[6] = 0x70 | (sequence >> 8);
+  bytes[7] = sequence & 0xff;
   bytes[8] = ((bytes[8] ?? 0) & 0x3f) | 0x80;
   const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
