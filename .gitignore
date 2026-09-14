@@ -4,6 +4,7 @@ dev-dist/
 coverage/
 test-results/
 playwright-report/
+scripts/audio/out/
 *.tsbuildinfo
 .env
 .env.*
