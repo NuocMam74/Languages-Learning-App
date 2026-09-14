@@ -1,5 +1,5 @@
 import type { SrsCard } from "./srs.ts";
-import type { ConceptId, LessonId, StepType } from "./types.ts";
+import type { ConceptId, GameId, LessonId, StepType } from "./types.ts";
 
 /**
  * Événements pédagogiques (ADR 0004). Contrat partagé avec l'API :
@@ -50,6 +50,12 @@ export type ParloEvent =
       }
     >
   | BaseEvent<"badge_earned", { badgeCode: string }>
+  /** Score de prononciation seul — jamais l'audio (spec §11, §14). */
+  | BaseEvent<"pronunciation_scored", { sessionId: string | null; conceptId: ConceptId; score: number; exerciseType: StepType }>
+  /** « Je pars quelques jours » : série gelée jusqu'au jour local inclus. */
+  | BaseEvent<"streak_frozen", { frozenUntil: string; localDate: string }>
+  /** Partie de mini-jeu hors leçon (onglet Jeux, défi express). */
+  | BaseEvent<"game_played", { game: GameId; correct: number; total: number; durationMs: number; localDate: string }>
   | BaseEvent<"lesson_completed", { sessionId: string; lessonId: LessonId; score: number; durationMs: number }>
   | BaseEvent<
       "session_completed",
