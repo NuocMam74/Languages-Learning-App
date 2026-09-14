@@ -13,6 +13,7 @@ dependencies = [
     "psycopg[binary]>=3.2",
     "argon2-cffi>=23.1",
     "pyjwt>=2.9",
+    "anthropic>=1.5.0",
 ]
 
 [dependency-groups]
@@ -45,6 +46,7 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S101", "S105", "S106"]
 "app/seed.py" = ["S105", "T20"]
+"app/maintenance.py" = ["T20"]
 
 [tool.ruff.lint.isort]
 known-third-party = ["alembic"]

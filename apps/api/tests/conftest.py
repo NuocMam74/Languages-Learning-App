@@ -25,6 +25,10 @@ def settings(tmp_path: Path) -> Settings:
         content_dir=REPO_ROOT / "content",
         cors_origins="http://localhost:5173",
         auth_rate_limit=1000,
+        # Jamais de réseau en test : pas de clé, le modèle est remplacé par un double (tests/test_tutor.py).
+        anthropic_api_key=None,
+        tutor_rate_limit=1000,
+        root_path="",
     )
 
 

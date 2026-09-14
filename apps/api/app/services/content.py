@@ -98,3 +98,50 @@ def load_packs(content_dir: Path) -> dict[str, Pack]:
 def course_code_of_lesson(lesson_id: str) -> str:
     """Les ids de leçon sont préfixés par le code du pack : `vi-south.u01.l01` → `vi-south`."""
     return lesson_id.split(".", 1)[0]
+
+
+# --- Lecture détaillée (professeur IA) -----------------------------------------------------
+
+
+@lru_cache(maxsize=256)
+def _lesson_documents(directory: Path) -> dict[str, dict[str, Any]]:
+    docs: dict[str, dict[str, Any]] = {}
+    for lesson_file in sorted((directory / "lessons").rglob("*.json")):
+        data = _read_json(lesson_file)
+        docs[data["id"]] = data
+    return docs
+
+
+@lru_cache(maxsize=16)
+def _concept_documents(directory: Path) -> dict[str, dict[str, Any]]:
+    docs: dict[str, dict[str, Any]] = {}
+    concepts_dir = directory / "concepts"
+    if concepts_dir.is_dir():
+        for concept_file in sorted(concepts_dir.rglob("*.json")):
+            data = _read_json(concept_file)
+            docs[data["id"]] = data
+    return docs
+
+
+def lesson_document(pack: Pack, lesson_id: str) -> dict[str, Any] | None:
+    """JSON complet d'une leçon (titre, objectif, étapes), ou None."""
+    return _lesson_documents(pack.directory).get(lesson_id)
+
+
+def concept_documents(pack: Pack) -> dict[str, dict[str, Any]]:
+    """Concepts du pack indexés par id (forme `vi`, glose, note, ton…)."""
+    return _concept_documents(pack.directory)
+
+
+def localized(value: Any, locale: str) -> str | None:
+    """Texte localisé `{fr, en}` : langue demandée, sinon français, sinon première valeur."""
+    if isinstance(value, str):
+        return value
+    if not isinstance(value, dict) or not value:
+        return None
+    for key in (locale, "fr"):
+        text = value.get(key)
+        if isinstance(text, str) and text:
+            return text
+    first = next((v for v in value.values() if isinstance(v, str) and v), None)
+    return first

@@ -1,6 +1,6 @@
 # Parlo API (FastAPI)
 
-API de la Phase 0 : auth, `/me`, synchronisation des événements hors ligne, plan de séance.
+API Parlo : auth, `/me`, synchronisation des événements hors ligne, plan de séance, Cô Mai (Phase 1).
 Le contenu pédagogique est lu depuis `content/` (jamais en base, spec §11).
 
 ## Démarrage local sans Docker (SQLite)
@@ -24,6 +24,18 @@ docker compose up --build
 docker compose exec api python -m app.seed
 ```
 
+## Derrière un préfixe `/api` (PWA)
+
+Le web appelle l'API en même origine via `/api/*` (proxy Vite en dev), ou via `VITE_API_BASE` en prod.
+
+- **Proxy qui retire le préfixe** (Vite `rewrite: p => p.replace(/^\/api/, "")`, nginx `proxy_pass http://api:8000/;`) :
+  lancer l'API avec `ROOT_PATH=/api`. FastAPI publie alors ses URLs (`/docs`, OpenAPI) sous `/api`, et le cookie
+  de refresh est posé sur `Path=/api/auth`, le chemin que voit le navigateur. Un proxy qui conserve le préfixe
+  fonctionne aussi (le `root_path` est retiré avant le routage).
+- **Appel direct** (`VITE_API_BASE=https://api.exemple.fr`) : laisser `ROOT_PATH` vide (cookie sur `/auth`),
+  ajouter l'origine du web à `CORS_ORIGINS` ; le cookie étant `SameSite=Lax`, web et API doivent partager le même
+  site (ex. `app.exemple.fr` et `api.exemple.fr`).
+
 ## Tests et lint
 
 ```sh
@@ -39,13 +51,24 @@ Les tests utilisent une base SQLite temporaire et le contenu réel du dépôt ;
 | Route | Rôle |
 |---|---|
 | `POST /auth/register` · `/auth/login` · `/auth/refresh` · `/auth/logout` | JWT d'accès 15 min + refresh en cookie `httpOnly` (30 j, rotation, révocable) |
-| `GET /me` · `PATCH /me/profile` | Utilisateur, profil, inscription, série |
+| `GET /me?localDate=` · `PATCH /me/profile` | Utilisateur, profil, inscription, série, `levelEstimate`, `badges`, `dailyGoal` |
 | `GET /courses` · `GET /courses/{code}/manifest` | Packs disponibles, fichiers et URL de base versionnée |
-| `POST /me/events` | Lot d'événements (`{events: [...]}`, ≤ 500), idempotent sur `id` |
+| `POST /me/events` | Lot d'événements (`{events: [...]}`, ≤ 500), idempotent sur `id` (dont `placement_completed`, `badge_earned`) |
 | `GET /me/srs/due?limit=` · `GET /me/session/next` | Cartes dues, plan de séance |
+| `GET /tutor/greeting?locale=fr\|en&localDate=` | Salutation de Cô Mai → `{text, cached, source}` (cache 12 h) |
+| `POST /tutor/why` | `{lessonId, stepIndex, given, expected, locale}` → `{text, cached, source}` (cache partagé) |
 | `GET /healthz` | Sonde |
 
 - `app/services/planner.py`, `streak.py`, `srs.py` : portages fidèles de `packages/core` (mêmes constantes).
 - `app/south_lint.py` : portage de `packages/south-lint`.
+- `app/services/tutor.py` : Cô Mai. Prompt système figé (persona, garde-fous §5.7, lexique du Sud) marqué
+  pour le cache de prompt, contexte injecté dans le tour `user`. Sortie vérifiée par `south_lint` (+ longueur,
+  formulations culpabilisantes) → une régénération corrective → repli préécrit (`source: "fallback"`) ;
+  même repli sans `ANTHROPIC_API_KEY`, sur erreur/délai, ou quota `TUTOR_DAILY_QUOTA` atteint.
+  Le client modèle est derrière `TutorLLM` (`app/services/tutor_llm.py`) : les tests n'appellent jamais le réseau.
+- Purge glissante (à planifier quotidiennement, cron ou tâche planifiée) :
+  `uv run python -m app.maintenance purge-tutor` (messages > `TUTOR_RETENTION_DAYS`, cache expiré).
+- Badges : codes connus seulement (`streak_7`, `streak_30`, `first_lesson`, `unit_1_done`, `words_50`, `tone_ear`,
+  voir `app/services/badges.py` et la migration 0002) ; code inconnu → rejet `unknown_badge`.
 - Nouvelle migration : `uv run alembic revision --autogenerate -m "..."`, puis remplacer
   `app.db.UTCDateTime()` par `sa.DateTime(timezone=True)` dans le fichier généré.

@@ -119,3 +119,24 @@ def test_auth_rate_limit(settings: Settings) -> None:
         ]
     app.state.engine.dispose()
     assert codes == [401, 401, 401, 429]
+
+
+def test_refresh_cookie_path_behind_root_path(settings: Settings) -> None:
+    """Derrière un proxy `/api` (ROOT_PATH=/api), le cookie est posé sur /api/auth et renvoyé par le navigateur."""
+    settings.root_path = "/api"
+    app = create_app(settings)
+    Base.metadata.create_all(app.state.engine)
+    with TestClient(app, base_url="https://testserver/api") as c:
+        res = c.post(
+            "/auth/register",
+            json={"email": "proxy@example.com", "password": PASSWORD, "displayName": "Lan", "locale": "fr"},
+        )
+        assert res.status_code == 201
+        set_cookie = res.headers["set-cookie"]
+        assert "Path=/api/auth" in set_cookie
+        assert "HttpOnly" in set_cookie
+        refreshed = c.post("/auth/refresh")  # https://testserver/api/auth/refresh : cookie envoyé
+        assert refreshed.status_code == 200
+        assert c.get("/me", headers={"Authorization": f"Bearer {refreshed.json()['accessToken']}"}).status_code == 200
+        assert c.post("/auth/logout").status_code == 204
+    app.state.engine.dispose()

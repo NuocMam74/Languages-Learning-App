@@ -14,7 +14,10 @@ from app.services.learner import create_learner
 
 router = APIRouter(prefix="/auth", tags=["auth"], dependencies=[Depends(auth_rate_limit)])
 
-COOKIE_PATH = "/auth"
+
+def cookie_path(settings: Settings) -> str:
+    """Chemin vu par le navigateur : préfixe du proxy (ROOT_PATH) + /auth."""
+    return f"{settings.normalized_root_path}/auth"
 
 
 def _set_refresh_cookie(response: Response, settings: Settings, token: str) -> None:
@@ -22,7 +25,7 @@ def _set_refresh_cookie(response: Response, settings: Settings, token: str) -> N
         key=settings.refresh_cookie_name,
         value=token,
         max_age=settings.refresh_token_ttl_days * 86_400,
-        path=COOKIE_PATH,
+        path=cookie_path(settings),
         httponly=True,
         secure=settings.cookie_secure,
         samesite="lax",
@@ -88,7 +91,7 @@ def refresh(request: Request, response: Response, db: DbDep, settings: SettingsD
         denied = JSONResponse(
             status_code=status.HTTP_401_UNAUTHORIZED, content={"detail": "Session expirée, reconnecte-toi"}
         )
-        denied.delete_cookie(settings.refresh_cookie_name, path=COOKIE_PATH)
+        denied.delete_cookie(settings.refresh_cookie_name, path=cookie_path(settings))
         return denied
     user_id, new_token = rotated
     return _tokens(response, settings, user_id, new_token)
@@ -102,7 +105,11 @@ def logout(request: Request, db: DbDep, settings: SettingsDep) -> Response:
         db.commit()
     response = Response(status_code=status.HTTP_204_NO_CONTENT)
     response.delete_cookie(
-        settings.refresh_cookie_name, path=COOKIE_PATH, httponly=True, secure=settings.cookie_secure, samesite="lax"
+        settings.refresh_cookie_name,
+        path=cookie_path(settings),
+        httponly=True,
+        secure=settings.cookie_secure,
+        samesite="lax",
     )
     return response
 

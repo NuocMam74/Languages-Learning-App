@@ -40,14 +40,29 @@ class Settings(BaseSettings):
     # Liste séparée par des virgules.
     cors_origins: str = "http://localhost:5173"
 
-    # Professeur IA (Phase 1) : lus ici pour que la configuration soit complète dès maintenant.
+    # Préfixe sous lequel un proxy expose l'API (ex. « /api ») : FastAPI `root_path` et chemin du cookie.
+    root_path: str = ""
+
+    # Professeur IA (Cô Mai). Sans clé, les endpoints /tutor/* répondent avec des messages préécrits.
     anthropic_api_key: str | None = None
     tutor_model: str = "claude-sonnet-4-6"
+    # Appels au modèle par utilisateur et par jour UTC (une régénération « garde du Sud » compte).
     tutor_daily_quota: int = 30
+    # Requêtes /tutor/* par utilisateur sur la fenêtre glissante.
+    tutor_rate_limit: int = 10
+    tutor_rate_window_seconds: int = 60
+    tutor_timeout_seconds: float = 15.0
+    tutor_retention_days: int = 90
 
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
+
+    @property
+    def normalized_root_path(self) -> str:
+        """`/api` (sans barre finale) ou chaîne vide."""
+        path = self.root_path.strip().rstrip("/")
+        return f"/{path.lstrip('/')}" if path else ""
 
 
 @lru_cache

@@ -156,6 +156,8 @@ class StudySession(Base):
     source: Mapped[str | None] = mapped_column(String(16))
     planned_seconds: Mapped[int | None] = mapped_column(Integer)
     duration_ms: Mapped[int | None] = mapped_column(Integer)
+    # Jour local de l'utilisateur (payload `localDate` de session_completed) : objectif quotidien.
+    local_date: Mapped[date | None] = mapped_column(Date)
 
 
 class StreakRow(Base):
@@ -262,6 +264,22 @@ class TutorMessage(Base):
     content: Mapped[str] = mapped_column(Text)
     tokens: Mapped[int] = mapped_column(Integer, default=0)
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow, index=True)
+
+
+class TutorCache(Base):
+    """Réponses de Cô Mai mises en cache (salutation par utilisateur/jour, « pourquoi ? » partagé)."""
+
+    __tablename__ = "tutor_cache"
+
+    # SHA-256 hexadécimal de la clé logique (voir app/services/tutor.py).
+    key: Mapped[str] = mapped_column(String(64), primary_key=True)
+    kind: Mapped[str] = mapped_column(String(16))
+    # Null pour les entrées non personnalisées (partagées entre utilisateurs).
+    user_id: Mapped[str | None] = mapped_column(user_fk(), index=True)
+    locale: Mapped[str] = mapped_column(String(8))
+    text: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+    expires_at: Mapped[datetime | None] = mapped_column(UTCDateTime(), index=True)
 
 
 class PushSubscription(Base):

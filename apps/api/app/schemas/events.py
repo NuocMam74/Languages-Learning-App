@@ -93,6 +93,19 @@ class SessionCompletedPayload(CamelModel):
     local_date: date
 
 
+class PlacementCompletedPayload(CamelModel):
+    level_estimate: Annotated[int, Field(ge=0, le=3)]
+    entry_lesson_id: Id
+    correct: Annotated[int, Field(ge=0)]
+    total: Annotated[int, Field(ge=0)]
+    # Informatif : le client envoie les cartes SRS de départ en `srs_card_updated`.
+    known_concept_ids: Annotated[list[Id], Field(max_length=2000)]
+
+
+class BadgeEarnedPayload(CamelModel):
+    badge_code: Annotated[str, Field(min_length=1, max_length=64)]
+
+
 class SessionStarted(_BaseEvent):
     type: Literal["session_started"]
     payload: SessionStartedPayload
@@ -118,8 +131,24 @@ class SessionCompleted(_BaseEvent):
     payload: SessionCompletedPayload
 
 
+class PlacementCompleted(_BaseEvent):
+    type: Literal["placement_completed"]
+    payload: PlacementCompletedPayload
+
+
+class BadgeEarned(_BaseEvent):
+    type: Literal["badge_earned"]
+    payload: BadgeEarnedPayload
+
+
 ParloEvent = Annotated[
-    SessionStarted | AnswerSubmitted | SrsCardUpdated | LessonCompleted | SessionCompleted,
+    SessionStarted
+    | AnswerSubmitted
+    | SrsCardUpdated
+    | PlacementCompleted
+    | BadgeEarned
+    | LessonCompleted
+    | SessionCompleted,
     Field(discriminator="type"),
 ]
 event_adapter: TypeAdapter[ParloEvent] = TypeAdapter(ParloEvent)

@@ -45,11 +45,28 @@ class StreakOut(CamelModel):
     frozen_until: date | None
 
 
+class BadgeOut(CamelModel):
+    code: str
+    earned_at: datetime
+
+
+class DailyGoalOut(CamelModel):
+    target_min: int
+    # Minutes de séances terminées ce jour local (1 décimale).
+    done_today_min: float
+    # Jour local retenu : paramètre `localDate`, sinon jour de la dernière séance récente, sinon date UTC.
+    local_date: date
+
+
 class MeOut(CamelModel):
     user: UserOut
     profile: ProfileOut
     enrollment: EnrollmentOut | None
     streak: StreakOut
+    # Estimation 0–3 issue du test de placement (null tant qu'il n'a pas été passé).
+    level_estimate: int | None
+    badges: list[BadgeOut]
+    daily_goal: DailyGoalOut
 
 
 class ProfilePatch(CamelModel):

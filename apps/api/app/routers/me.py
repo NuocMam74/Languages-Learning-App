@@ -1,6 +1,6 @@
 """`/me/*` : profil, événements hors ligne, cartes dues, plan de séance. JWT obligatoire."""
 
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from typing import Annotated
 
 from fastapi import APIRouter, HTTPException, Query, status
@@ -10,6 +10,8 @@ from app.deps import CurrentUser, DbDep, PacksDep
 from app.models import Enrollment, Profile, User
 from app.schemas.events import EventBatch, EventBatchResult
 from app.schemas.me import (
+    BadgeOut,
+    DailyGoalOut,
     EnrollmentOut,
     MeOut,
     ProfileOut,
@@ -59,10 +61,17 @@ def _enrollment_out(e: Enrollment | None) -> EnrollmentOut | None:
 
 
 @router.get("", response_model=MeOut)
-def get_me(user: CurrentUser, db: DbDep) -> MeOut:
+def get_me(
+    user: CurrentUser,
+    db: DbDep,
+    local_date: Annotated[
+        date | None, Query(alias="localDate", description="Jour local du client (AAAA-MM-JJ), pour l'objectif")
+    ] = None,
+) -> MeOut:
     profile = _profile(db, user)
     streak = learner.get_streak(db, user.id)
     db.commit()
+    today = learner.current_local_date(db, user.id, datetime.now(UTC), local_date)
     return MeOut(
         user=UserOut(
             id=user.id,
@@ -80,6 +89,13 @@ def get_me(user: CurrentUser, db: DbDep) -> MeOut:
             last_active_date=streak.last_active_date,
             freezes_available=streak.freezes_available,
             frozen_until=streak.frozen_until,
+        ),
+        level_estimate=learner.level_estimate(profile),
+        badges=[BadgeOut(code=code, earned_at=at) for code, at in learner.user_badges(db, user.id)],
+        daily_goal=DailyGoalOut(
+            target_min=profile.daily_goal_min,
+            done_today_min=learner.minutes_done_on(db, user.id, today),
+            local_date=today,
         ),
     )
 

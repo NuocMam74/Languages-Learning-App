@@ -20,12 +20,15 @@ from app.models import (
     Profile,
     SrsCardRow,
     StudySession,
+    UserBadge,
 )
 from app.schemas.events import (
     AnswerSubmitted,
+    BadgeEarned,
     EventBatchResult,
     LessonCompleted,
     ParloEvent,
+    PlacementCompleted,
     RejectedEvent,
     SessionCompleted,
     SessionStarted,
@@ -34,6 +37,7 @@ from app.schemas.events import (
     event_adapter,
 )
 from app.services import learner
+from app.services.badges import ensure_badge
 from app.services.content import Pack, course_code_of_lesson
 from app.services.planner import next_lesson
 from app.services.srs import SrsCard, merge_cards
@@ -122,6 +126,41 @@ def _apply(db: Session, user_id: str, event: ParloEvent, packs: dict[str, Pack],
             _apply_session_started(db, user_id, event)
         case SessionCompleted():
             _apply_session_completed(db, user_id, event, packs)
+        case PlacementCompleted():
+            _apply_placement_completed(db, user_id, event, packs)
+        case BadgeEarned():
+            _apply_badge_earned(db, user_id, event)
+
+
+def _apply_placement_completed(db: Session, user_id: str, event: PlacementCompleted, packs: dict[str, Pack]) -> None:
+    p = event.payload
+    pack = _pack_for(packs, course_code_of_lesson(p.entry_lesson_id))
+    if p.entry_lesson_id not in pack.lessons:
+        raise EventRejectedError("unknown_lesson")
+    if p.correct > p.total:
+        raise EventRejectedError("invalid: payload.correct: greater than total")
+
+    profile = db.get(Profile, user_id)
+    if profile is None:
+        profile = Profile(user_id=user_id, daily_goal_min=10, leagues_enabled=True)
+        db.add(profile)
+    profile.level_estimate = str(p.level_estimate)
+
+    enrollment = _enrollment_for(db, user_id, pack)
+    # Le test de placement ne déplace le point d'entrée que tant qu'aucune leçon n'est terminée.
+    if not learner.completed_lessons(db, user_id):
+        enrollment.current_lesson_id = p.entry_lesson_id
+
+
+def _apply_badge_earned(db: Session, user_id: str, event: BadgeEarned) -> None:
+    badge = ensure_badge(db, event.payload.badge_code)
+    if badge is None:
+        raise EventRejectedError("unknown_badge")
+    row = db.get(UserBadge, (user_id, badge.id))
+    if row is None:
+        db.add(UserBadge(user_id=user_id, badge_id=badge.id, earned_at=event.occurred_at))
+    elif event.occurred_at < row.earned_at:
+        row.earned_at = event.occurred_at  # même badge renvoyé : on garde la première obtention
 
 
 def _apply_answer(db: Session, user_id: str, event: AnswerSubmitted) -> None:
@@ -252,6 +291,7 @@ def _apply_session_completed(db: Session, user_id: str, event: SessionCompleted,
     row.xp_gained = p.xp_gained
     row.items_count = p.items_count
     row.duration_ms = round(p.duration_ms)
+    row.local_date = p.local_date
     if row.started_at is None:
         row.started_at = event.occurred_at - timedelta(milliseconds=p.duration_ms)
     if already_completed:
