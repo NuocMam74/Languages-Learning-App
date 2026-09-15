@@ -1,0 +1,157 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u14.l04",
+  "unit": "vi-south.u14",
+  "title": {
+    "fr": "Đẹp, hay",
+    "en": "Beautiful, good"
+  },
+  "goal": {
+    "fr": "Parler d'un lieu, d'un film.",
+    "en": "Talk about a place or a film."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u14.l03"
+  ],
+  "concepts": [
+    "c_dep",
+    "c_xau",
+    "c_hay_good",
+    "c_phim",
+    "c_coi",
+    "s_phim_hay_qua",
+    "c_song_river",
+    "c_cong_vien",
+    "c_chua_pagoda"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dep",
+      "distractors": [
+        "đẹt",
+        "đép"
+      ],
+      "explain": {
+        "fr": "đẹp tombe court : beau.",
+        "en": "đẹp drops short: beautiful."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_coi_phim"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_watch",
+      "explain": {
+        "fr": "Sud : coi ; Nord : xem.",
+        "en": "South: coi; North: xem."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_dep",
+      "explain": {
+        "fr": "đẹp : tombe court et bas (nặng).",
+        "en": "đẹp: drops short and low (nặng)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_phim_hay_qua",
+      "distractors": [
+        "Phim này hay không?",
+        "Phim này dở quá!"
+      ],
+      "explain": {
+        "fr": "hay : bien, intéressant. dở : raté.",
+        "en": "hay: good, interesting. dở: bad."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tối nay mình đi coi phim nha.",
+      "tokens": [
+        "Tối nay",
+        "mình",
+        "đi",
+        "coi",
+        "phim",
+        "nha",
+        "hay"
+      ],
+      "translation": {
+        "fr": "Ce soir, on va voir un film ?",
+        "en": "Shall we go see a film tonight?"
+      },
+      "explain": {
+        "fr": "đi coi phim : aller au cinéma.",
+        "en": "đi coi phim: go to the movies."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xau",
+      "distractors": [
+        "sáu",
+        "xâu"
+      ],
+      "explain": {
+        "fr": "xấu : laid. sáu : six.",
+        "en": "xấu: ugly. sáu: six."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Thành phố này đẹp quá!",
+      "tokens": [
+        "Thành phố",
+        "này",
+        "đẹp",
+        "quá",
+        "xấu"
+      ],
+      "translation": {
+        "fr": "Cette ville est vraiment belle !",
+        "en": "This city is so beautiful!"
+      },
+      "explain": {
+        "fr": "đẹp quá : tellement beau.",
+        "en": "đẹp quá: so beautiful."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_song_river",
+      "distractors": [
+        "c_cong_vien",
+        "c_chua_pagoda"
+      ],
+      "explain": {
+        "fr": "sông : le fleuve. Sông Sài Gòn đẹp lắm.",
+        "en": "sông: river. Sông Sài Gòn đẹp lắm."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_phim_hay_qua",
+      "explain": {
+        "fr": "hay plat, quá monte.",
+        "en": "hay level, quá rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_dep",
+      "c_xau",
+      "c_hay_good",
+      "c_phim",
+      "c_coi",
+      "s_phim_hay_qua"
+    ]
+  },
+  "reviewed": false
+}

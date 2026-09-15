@@ -1,0 +1,112 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "es.u01.l01",
+  "unit": "es.u01",
+  "title": {
+    "fr": "Hola, buenos días",
+    "en": "Hola, buenos días"
+  },
+  "goal": {
+    "fr": "Saluer quelqu'un à toute heure et dire merci.",
+    "en": "Greet someone at any time of day and say thank you."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [],
+  "concepts": [
+    "c_es_hola",
+    "c_es_buenos_dias",
+    "c_es_buenas_tardes",
+    "c_es_buenas_noches",
+    "c_es_adios",
+    "c_es_gracias"
+  ],
+  "steps": [
+    {
+      "type": "culture_card",
+      "ref": "cc_es_saludos"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_hola",
+      "distractors": [
+        "c_es_buenas_noches",
+        "c_es_gracias"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_buenos_dias",
+      "distractors": [
+        "c_es_buenas_tardes",
+        "c_es_buenas_noches"
+      ],
+      "explain": {
+        "fr": "Días = jours : buenos días se dit le matin.",
+        "en": "Días = days: buenos días is for the morning."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_buenas_noches",
+      "distractors": [
+        "buenas tardes",
+        "buenos días"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_gracias",
+      "distractors": [
+        "c_es_adios",
+        "c_es_hola"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_adios",
+      "distractors": [
+        "hola",
+        "gracias"
+      ]
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_es_hola"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hola, buenos días.",
+      "tokens": [
+        "Hola",
+        "buenos",
+        "días",
+        "noches",
+        "adiós"
+      ],
+      "translation": {
+        "fr": "Bonjour (le matin).",
+        "en": "Hello, good morning."
+      },
+      "explain": {
+        "fr": "Buenos, au masculin, parce que día est masculin.",
+        "en": "Buenos is masculine because día is masculine."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_es_hola",
+      "c_es_buenos_dias",
+      "c_es_buenas_tardes",
+      "c_es_buenas_noches",
+      "c_es_adios",
+      "c_es_gracias"
+    ]
+  },
+  "reviewed": false
+}

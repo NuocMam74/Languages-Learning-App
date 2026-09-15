@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_da_con_an_roi",
+  "type": "structure",
+  "vi": "Dạ, con ăn rồi.",
+  "gloss": {
+    "fr": "Oui, j'ai déjà mangé (à un aîné).",
+    "en": "Yes, I've already eaten (to an elder)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_da_con_an_roi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_da_con_an_roi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

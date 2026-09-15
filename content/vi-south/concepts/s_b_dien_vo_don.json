@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_dien_vo_don",
+  "type": "structure",
+  "vi": "Anh điền vô đơn này nha.",
+  "gloss": {
+    "fr": "Remplis ce formulaire, d'accord ? (à un homme un peu plus âgé)",
+    "en": "Fill in this form, okay? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_dien_vo_don_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_dien_vo_don_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "vô : dans, entrer (Sud) ; au Nord, vào.",
+    "en": "vô: into (South); North: vào."
+  },
+  "reviewed": false
+}

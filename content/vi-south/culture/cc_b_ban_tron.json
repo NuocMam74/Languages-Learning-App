@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_ban_tron",
+  "title": {
+    "fr": "Refaire le monde au café",
+    "en": "Putting the world to rights at the café"
+  },
+  "body": {
+    "fr": "Au café, entre amis, on débat de tout : football, chanteurs, prix de l'essence. Le ton monte vite, puis tout le monde rit. Tại vì et nhưng mà rythment la discussion. Pour conclure sans vainqueur : « Thôi, huề nha ! », match nul, on reste amis.",
+    "en": "At the café, friends debate everything: football, singers, fuel prices. Voices rise quickly, then everyone laughs. Tại vì and nhưng mà set the rhythm. To end with no winner: 'Thôi, huề nha!', a draw, still friends."
+  },
+  "vi": "Mọi người thấy sao?",
+  "audio": "audio/cc_b_ban_tron.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Thôi, huề nha ! » à la fin d'un débat veut dire…",
+      "en": "'Thôi, huề nha!' at the end of a debate means…"
+    },
+    "options": [
+      {
+        "fr": "Match nul, on reste amis.",
+        "en": "It's a draw, still friends."
+      },
+      {
+        "fr": "Tu as perdu !",
+        "en": "You lost!"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

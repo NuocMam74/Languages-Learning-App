@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_neu_ranh",
+  "type": "structure",
+  "vi": "Nếu rảnh thì ghé nhà tui chơi nha.",
+  "gloss": {
+    "fr": "Si tu es libre, passe chez moi, d'accord ?",
+    "en": "If you're free, drop by my place, okay?"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_neu_ranh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_neu_ranh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

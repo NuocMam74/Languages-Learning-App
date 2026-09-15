@@ -47,8 +47,9 @@
     line-height: 1.6;
     min-height: 100dvh;
   }
-  /* Le mot vietnamien est l'objet visuel : jamais rogné. */
-  [lang="vi"] {
+  /* Le mot de la langue apprise est l'objet visuel : jamais rogné. */
+  [lang="vi"],
+  [data-target-text] {
     overflow: visible;
     font-feature-settings: "kern";
   }

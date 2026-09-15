@@ -54,7 +54,7 @@ PATCH /me/profile        -> leaguesEnabled (déjà existant)
 POST /challenges/friends                 body {kind: "xp_7d"} -> 201 {id, inviteCode, inviteUrl, endsAt}
 POST /challenges/friends/join/{code}     -> {id, participants: [{displayName, xp, isMe}], endsAt}
 GET  /challenges/friends                 -> [{id, inviteCode, endsAt, participants: [...] }]
-POST /challenges/express/scores          body {game: "cho_noi", score, correct, total, localDate} -> {best, rankToday: number|null}
+POST /challenges/express/scores          body {game: "cho_noi", score, correct, total, localDate} -> {id, best, rankToday: number|null}
 GET  /share/express/{id}                 -> public : {displayName, game, score, createdAt}
 ```
 
@@ -76,7 +76,7 @@ GET  /share/express/{id}                 -> public : {displayName, game, score, 
   nécessaire, il doit être générique (piloté par `pack.features`).
 - L'app gère plusieurs packs : progression, SRS, outbox et snapshot **par pack** (clé `packCode`) ; choix de langue
   actif ; l'API accepte `enrollments` multiples (`course_id` = code de pack) et les événements portent le pack
-  via la leçon/le concept (préfixe d'id) — les concepts de `es` sont préfixés `es_` pour éviter toute collision.
+  via la leçon/le concept (préfixe d'id) — les concepts de `es` sont préfixés `c_es_` / `s_es_` (motif du schéma) pour éviter toute collision ; l'API accepte `es_`, `c_es_`, `s_es_`.
 
 ## 6. Convention de numérotation des unités 12 à 24
 

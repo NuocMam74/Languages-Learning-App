@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_chua_answer",
+  "title": {
+    "fr": "Rồi ou chưa, jamais không",
+    "en": "Rồi or chưa, never không"
+  },
+  "body": {
+    "fr": "À la question « … chưa ? », on ne répond pas không. Si c'est fait : « Rồi » ; sinon : « Chưa », pas encore. Poliment, face à un aîné : « Dạ, rồi », « Dạ, chưa ». Et « chưa bao giờ », c'est « jamais », avec l'idée que ça peut encore arriver.",
+    "en": "To a '… chưa?' question you don't answer không. If it's done: 'Rồi'; if not: 'Chưa', not yet. Politely, to an elder: 'Dạ, rồi', 'Dạ, chưa'. And 'chưa bao giờ' is 'never', with a hint that it may still happen."
+  },
+  "vi": "Dạ, chưa.",
+  "audio": "audio/cc_chua_answer.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Anh đi Đà Lạt chưa ? » — tu n'y es jamais allé :",
+      "en": "'Anh đi Đà Lạt chưa?' — you've never been:"
+    },
+    "options": [
+      {
+        "fr": "Dạ, chưa.",
+        "en": "Dạ, chưa."
+      },
+      {
+        "fr": "Dạ, không.",
+        "en": "Dạ, không."
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

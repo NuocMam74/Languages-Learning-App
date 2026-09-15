@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_chua_chac",
+  "type": "structure",
+  "vi": "Chưa chắc.",
+  "gloss": {
+    "fr": "Pas sûr. / Rien n'est moins sûr.",
+    "en": "Not so sure."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_chua_chac_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_chua_chac_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

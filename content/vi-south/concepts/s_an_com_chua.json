@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_an_com_chua",
+  "type": "structure",
+  "vi": "Em ăn cơm chưa?",
+  "gloss": {
+    "fr": "Tu as mangé ? (à plus jeune)",
+    "en": "Have you eaten? (to someone younger)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_an_com_chua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_an_com_chua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Une salutation autant qu'une question : réponds Rồi (oui) ou Chưa (pas encore).",
+    "en": "As much a greeting as a question: answer Rồi (yes) or Chưa (not yet)."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u21.l04",
+  "unit": "vi-south.u21",
+  "title": {
+    "fr": "Đi đâu vậy?",
+    "en": "Where are you off to?"
+  },
+  "goal": {
+    "fr": "Reconnaître vậy (« dzậy »), nè, há et coi.",
+    "en": "Recognise vậy ('dzậy'), nè, há and coi."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u21.l03"
+  ],
+  "concepts": [
+    "s_b_di_dau_vay",
+    "c_b_ha_particle",
+    "c_b_ne",
+    "c_b_coi",
+    "s_b_ne_coi_nay",
+    "s_b_thiet_ha",
+    "c_vay"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_di_dau_vay",
+      "distractors": [
+        "Đi đâu đó?",
+        "Ở đâu vậy?"
+      ],
+      "explain": {
+        "fr": "đi đâu : où vas-tu ; ở đâu : où es-tu.",
+        "en": "đi đâu: where to; ở đâu: where at."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_dzay"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ainsi",
+      "explain": {
+        "fr": "Sud : vậy ; Nord : thế.",
+        "en": "South: vậy; North: thế."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vay",
+      "distractors": [
+        "vây",
+        "vấy"
+      ],
+      "explain": {
+        "fr": "vậy tombe court. À l'oral : « dzậy ».",
+        "en": "vậy drops short. Spoken: 'dzậy'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_thiet_ha",
+      "distractors": [
+        "Thiệt hông?",
+        "Thật hả?"
+      ],
+      "explain": {
+        "fr": "thiệt : vrai (Sud) ; há : « ah bon ? ».",
+        "en": "thiệt: true (South); há: 'really?'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nè, coi cái này nè!",
+      "tokens": [
+        "Nè",
+        "coi",
+        "cái",
+        "này",
+        "nè",
+        "nay"
+      ],
+      "translation": {
+        "fr": "Tiens, regarde ça !",
+        "en": "Hey, look at this!"
+      },
+      "explain": {
+        "fr": "nè au début et à la fin : attire l'attention. coi : regarder.",
+        "en": "nè at start and end: grabs attention. coi: to look."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_coi",
+      "distractors": [
+        "cói",
+        "cỗi"
+      ],
+      "explain": {
+        "fr": "coi, plat : regarder (Sud).",
+        "en": "coi, level: to look (South)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đi đâu vậy?",
+      "tokens": [
+        "Anh",
+        "đi",
+        "đâu",
+        "vậy",
+        "đây"
+      ],
+      "translation": {
+        "fr": "Tu vas où comme ça ?",
+        "en": "Where are you off to?"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_ha_particle",
+      "explain": {
+        "fr": "há : sắc, monte.",
+        "en": "há: sắc, rises."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_di_dau_vay",
+      "explain": {
+        "fr": "Écris vậy, même si tu entends « dzậy ».",
+        "en": "Write vậy, even if you hear 'dzậy'."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_b_di_dau_vay",
+      "c_b_ha_particle",
+      "c_b_ne",
+      "c_b_coi",
+      "s_b_ne_coi_nay",
+      "s_b_thiet_ha"
+    ]
+  },
+  "reviewed": false
+}

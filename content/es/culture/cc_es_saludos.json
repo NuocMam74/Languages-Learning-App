@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_es_saludos",
+  "title": {
+    "fr": "Une bise, pas deux",
+    "en": "One kiss, not two"
+  },
+  "body": {
+    "fr": "Dans une grande partie de l'Amérique latine, entre amis ou pour saluer une femme, on fait une seule bise sur la joue droite. Entre hommes, on se serre la main ou on se donne une accolade. Au travail, la poignée de main reste la règle.",
+    "en": "In much of Latin America, among friends or when greeting a woman, people give a single kiss on the right cheek. Men usually shake hands or hug. At work, a handshake is the rule."
+  },
+  "vi": "¡Hola! ¿Qué tal?",
+  "audio": "audio/cc_es_saludos.opus",
+  "question": {
+    "prompt": {
+      "fr": "Entre amis, combien de bises en général ?",
+      "en": "Among friends, how many kisses usually?"
+    },
+    "options": [
+      {
+        "fr": "Une",
+        "en": "One"
+      },
+      {
+        "fr": "Deux",
+        "en": "Two"
+      },
+      {
+        "fr": "Quatre",
+        "en": "Four"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

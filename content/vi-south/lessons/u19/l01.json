@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u19.l01",
+  "unit": "vi-south.u19",
+  "title": {
+    "fr": "Giấy tờ",
+    "en": "Papers"
+  },
+  "goal": {
+    "fr": "Nommer tes papiers : passeport, visa, formulaire.",
+    "en": "Name your papers: passport, visa, form."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u18.l08"
+  ],
+  "concepts": [
+    "c_b_giay_to",
+    "c_b_ho_chieu",
+    "c_b_visa",
+    "c_b_don",
+    "c_b_giay_paper",
+    "c_b_giay_second"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ho_chieu",
+      "distractors": [
+        "c_b_visa",
+        "c_b_don",
+        "c_sach"
+      ],
+      "explain": {
+        "fr": "hộ chiếu : le passeport.",
+        "en": "hộ chiếu: passport."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_con_dau"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_visa",
+      "distractors": [
+        "c_b_ho_chieu",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "visa : le visa, tamponné dans le passeport.",
+        "en": "visa: the visa, stamped in the passport."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "giấy",
+        "giây"
+      ],
+      "audioConcepts": [
+        "c_b_giay_paper",
+        "c_b_giay_second"
+      ],
+      "explain": {
+        "fr": "giấy monte : le papier. giây, plat : la seconde.",
+        "en": "giấy rises: paper. giây, level: second."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_to",
+      "distractors": [
+        "giây tờ",
+        "giấy tớ"
+      ],
+      "explain": {
+        "fr": "giấy tờ : les papiers, les documents.",
+        "en": "giấy tờ: papers, documents."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_don",
+      "distractors": [
+        "c_b_ho_chieu",
+        "c_sach"
+      ],
+      "explain": {
+        "fr": "đơn : le formulaire.",
+        "en": "đơn: form."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Giấy tờ của anh đâu?",
+      "tokens": [
+        "Giấy tờ",
+        "của",
+        "anh",
+        "đâu",
+        "giây"
+      ],
+      "translation": {
+        "fr": "Où sont tes papiers ? (à un homme un peu plus âgé)",
+        "en": "Where are your papers? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_giay_paper",
+      "explain": {
+        "fr": "giấy : sắc, monte.",
+        "en": "giấy: sắc, rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui có hộ chiếu và visa.",
+      "tokens": [
+        "Tui",
+        "có",
+        "hộ chiếu",
+        "và",
+        "visa",
+        "không"
+      ],
+      "translation": {
+        "fr": "J'ai un passeport et un visa.",
+        "en": "I have a passport and a visa."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_b_ho_chieu",
+      "explain": {
+        "fr": "hộ tombe court, chiếu monte.",
+        "en": "hộ drops short, chiếu rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_giay_to",
+      "c_b_ho_chieu",
+      "c_b_visa",
+      "c_b_don",
+      "c_b_giay_paper",
+      "c_b_giay_second"
+    ]
+  },
+  "reviewed": false
+}

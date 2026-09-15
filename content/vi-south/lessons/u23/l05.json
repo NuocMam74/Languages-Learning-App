@@ -1,0 +1,160 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u23.l05",
+  "unit": "vi-south.u23",
+  "title": {
+    "fr": "Nếu có tiền…",
+    "en": "If I had money…"
+  },
+  "goal": {
+    "fr": "Dire ce que tu ferais.",
+    "en": "Say what you would do."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u23.l04"
+  ],
+  "concepts": [
+    "c_b_se_future",
+    "c_b_du_lich",
+    "s_b_neu_co_tien",
+    "c_nha_house",
+    "c_mua_buy"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_co_tien",
+      "distractors": [
+        "Nếu có tiền, tui sẽ mua xe.",
+        "Nếu có thời gian, tui sẽ mua nhà."
+      ],
+      "explain": {
+        "fr": "tiền : argent ; thời gian : temps.",
+        "en": "tiền: money; thời gian: time."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_house",
+      "distractors": [
+        "c_b_vuon",
+        "c_xe_hoi"
+      ],
+      "explain": {
+        "fr": "nhà : la maison.",
+        "en": "nhà: house."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_se_future",
+      "explain": {
+        "fr": "sẽ porte le ngã : au Sud, il sonne comme un hỏi.",
+        "en": "sẽ carries ngã: in the South it sounds like hỏi."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nếu có nhiều tiền, tui sẽ mua nhà.",
+      "tokens": [
+        "Nếu",
+        "có",
+        "nhiều",
+        "tiền",
+        "tui",
+        "sẽ",
+        "mua",
+        "nhà",
+        "mưa"
+      ],
+      "translation": {
+        "fr": "Si j'avais beaucoup d'argent, j'achèterais une maison.",
+        "en": "If I had lots of money, I'd buy a house."
+      },
+      "explain": {
+        "fr": "sẽ devant le verbe : futur ou conditionnel.",
+        "en": "sẽ before the verb: future or 'would'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_du_lich",
+      "distractors": [
+        "dú lịch",
+        "du lích"
+      ],
+      "explain": {
+        "fr": "du lịch : voyager.",
+        "en": "du lịch: to travel."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui sẽ đi du lịch miền Tây.",
+      "tokens": [
+        "Tui",
+        "sẽ",
+        "đi",
+        "du lịch",
+        "miền Tây",
+        "đã"
+      ],
+      "translation": {
+        "fr": "Je voyagerai dans le delta.",
+        "en": "I'll travel around the Mekong Delta."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_buy",
+      "distractors": [
+        "mưa",
+        "múa"
+      ],
+      "explain": {
+        "fr": "mua, plat : acheter. mưa : pleuvoir.",
+        "en": "mua, level: to buy. mưa: rain."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nếu tui là anh, tui sẽ đi Grab.",
+      "tokens": [
+        "Nếu",
+        "tui",
+        "là",
+        "anh",
+        "tui",
+        "sẽ",
+        "đi",
+        "Grab"
+      ],
+      "translation": {
+        "fr": "À ta place, je prendrais un Grab.",
+        "en": "If I were you, I'd take a Grab."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_neu_co_tien",
+      "explain": {
+        "fr": "nếu monte, nhiều descend, sẽ plonge au Sud.",
+        "en": "nếu rises, nhiều falls, sẽ dips in the South."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_se_future",
+      "c_b_du_lich",
+      "s_b_neu_co_tien"
+    ]
+  },
+  "reviewed": false
+}

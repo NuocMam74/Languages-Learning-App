@@ -8,6 +8,9 @@ import type { ConceptId, ContentIndex, LessonId, Localized, UnitId } from "./typ
  * mêmes règles, à partir des événements de la période.
  */
 
+/** Tour de conversation avec Cô Mai compté dans les défis « parole » (contrat Phase 3 §4). */
+export const SPEAKING_SECONDS_PER_TURN = 20;
+
 export const CHALLENGE_KINDS = ["words_theme", "streak_days", "speaking_minutes", "lessons", "game_score"] as const;
 export type ChallengeKind = (typeof CHALLENGE_KINDS)[number];
 
@@ -80,8 +83,10 @@ export function challengeProgress(spec: ChallengeSpec, events: readonly ParloEve
     case "streak_days":
       return longestDayRun(mine.flatMap((e) => (e.type === "session_completed" ? [e.payload.localDate] : [])));
     case "speaking_minutes": {
+      // Même règle que l'API : 10 s par prononciation notée, 20 s par tour de conversation.
       const items = mine.filter((e) => e.type === "pronunciation_scored").length;
-      return Math.floor((items * SPEAKING_SECONDS_PER_ITEM) / 60);
+      const turns = mine.filter((e) => e.type === "conversation_turn").length;
+      return Math.floor((items * SPEAKING_SECONDS_PER_ITEM + turns * SPEAKING_SECONDS_PER_TURN) / 60);
     }
     case "lessons":
       return mine.filter((e) => e.type === "lesson_completed").length;

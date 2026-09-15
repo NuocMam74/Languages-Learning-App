@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u19.l06",
+  "unit": "vi-south.u19",
+  "title": {
+    "fr": "Hình thẻ, photo",
+    "en": "ID photos and copies"
+  },
+  "goal": {
+    "fr": "Demander des photos d'identité et des photocopies.",
+    "en": "Ask for ID photos and photocopies."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u19.l05"
+  ],
+  "concepts": [
+    "c_b_chup_hinh",
+    "c_b_hinh_the",
+    "c_b_gium",
+    "s_b_photo_gium",
+    "c_b_can_need"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_chup_hinh",
+      "distractors": [
+        "chúp hình",
+        "chụp hính"
+      ],
+      "explain": {
+        "fr": "chụp hình : prendre une photo (Sud).",
+        "en": "chụp hình: take a photo (South)."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_hinh_the"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gium",
+      "distractors": [
+        "giúm",
+        "gium"
+      ],
+      "explain": {
+        "fr": "giùm : pour moi, à ma place (Sud).",
+        "en": "giùm: for me, as a favour (South)."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_gium",
+      "explain": {
+        "fr": "giùm : huyền, descends doucement.",
+        "en": "giùm: huyền, fall gently."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị photo giùm em hai bản nha.",
+      "tokens": [
+        "Chị",
+        "photo",
+        "giùm",
+        "em",
+        "hai",
+        "bản",
+        "nha",
+        "bàn"
+      ],
+      "translation": {
+        "fr": "Tu me fais deux photocopies, s'il te plaît ?",
+        "en": "Could you make me two copies?"
+      },
+      "explain": {
+        "fr": "photo : photocopier. Au Nord, on dirait làm hộ plutôt que giùm.",
+        "en": "photo: to photocopy. In the North, hộ rather than giùm."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hinh_the",
+      "distractors": [
+        "hình thé",
+        "hinh thẻ"
+      ],
+      "explain": {
+        "fr": "hình thẻ : la photo d'identité.",
+        "en": "hình thẻ: ID photo."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em cần hai tấm hình thẻ.",
+      "tokens": [
+        "Em",
+        "cần",
+        "hai",
+        "tấm",
+        "hình thẻ",
+        "hình"
+      ],
+      "translation": {
+        "fr": "J'ai besoin de deux photos d'identité.",
+        "en": "I need two ID photos."
+      },
+      "explain": {
+        "fr": "tấm : classificateur des photos et objets plats.",
+        "en": "tấm: classifier for photos and flat things."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chụp hình ở đâu vậy chị?",
+      "tokens": [
+        "Chụp hình",
+        "ở",
+        "đâu",
+        "vậy",
+        "chị",
+        "đây"
+      ],
+      "translation": {
+        "fr": "On fait les photos où ? (à une femme un peu plus âgée)",
+        "en": "Where can I get photos taken? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_photo_gium",
+      "explain": {
+        "fr": "giùm descend, bản plonge, nha plat.",
+        "en": "giùm falls, bản dips, nha level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_chup_hinh",
+      "c_b_hinh_the",
+      "c_b_gium",
+      "s_b_photo_gium",
+      "c_b_can_need"
+    ]
+  },
+  "reviewed": false
+}

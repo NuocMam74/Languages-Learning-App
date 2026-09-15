@@ -1,0 +1,163 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u15.l01",
+  "unit": "vi-south.u15",
+  "title": {
+    "fr": "Alô !",
+    "en": "Alô!"
+  },
+  "goal": {
+    "fr": "Décrocher et demander qui appelle.",
+    "en": "Pick up and ask who's calling."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u14.l08"
+  ],
+  "concepts": [
+    "c_alo",
+    "s_alo_em_nghe",
+    "s_ai_vay_a",
+    "c_goi_pack",
+    "c_goi_salad",
+    "c_dien_thoai",
+    "c_sach",
+    "c_tien",
+    "c_goi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_sach",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "điện thoại : le téléphone.",
+        "en": "điện thoại: phone."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_alo_em_nghe",
+      "distractors": [
+        "Alô, em nói.",
+        "Alô, em nghỉ."
+      ],
+      "explain": {
+        "fr": "em nghe : j'écoute. nghỉ : se reposer.",
+        "en": "em nghe: I'm listening. nghỉ: to rest."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_alo_phone"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_alo",
+      "distractors": [
+        "a lố",
+        "à lô"
+      ],
+      "explain": {
+        "fr": "alô : a plat, lô plat.",
+        "en": "alô: a level, lô level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ai_vay_a",
+      "distractors": [
+        "Dạ, gì vậy ạ?",
+        "Dạ, đi đâu ạ?"
+      ],
+      "explain": {
+        "fr": "ai vậy ạ ? : c'est qui ? (poli)",
+        "en": "ai vậy ạ?: who is it? (polite)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Alô, em nghe nè.",
+      "tokens": [
+        "Alô",
+        "em",
+        "nghe",
+        "nè",
+        "nói"
+      ],
+      "translation": {
+        "fr": "Allô, je t'écoute.",
+        "en": "Hello, I'm listening."
+      },
+      "explain": {
+        "fr": "nè : particule du Sud, chaleureuse.",
+        "en": "nè: warm southern particle."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "gọi",
+        "gói",
+        "gỏi"
+      ],
+      "audioConcepts": [
+        "c_goi",
+        "c_goi_pack",
+        "c_goi_salad"
+      ],
+      "explain": {
+        "fr": "gọi tombe court : appeler. gói monte : paquet. gỏi plonge : salade.",
+        "en": "gọi drops short: to call. gói rises: package. gỏi dips: salad."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ai gọi em vậy?",
+      "tokens": [
+        "Ai",
+        "gọi",
+        "em",
+        "vậy",
+        "gỏi"
+      ],
+      "translation": {
+        "fr": "Qui t'appelle ?",
+        "en": "Who's calling you?"
+      },
+      "explain": {
+        "fr": "Ai + verbe : qui… ?",
+        "en": "Ai + verb: who…?"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_goi",
+      "explain": {
+        "fr": "gọi tombe court (nặng).",
+        "en": "gọi drops short (nặng)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_alo_em_nghe",
+      "explain": {
+        "fr": "nghe reste plat.",
+        "en": "nghe stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_alo",
+      "s_alo_em_nghe",
+      "s_ai_vay_a",
+      "c_goi_pack",
+      "c_goi_salad"
+    ]
+  },
+  "reviewed": false
+}

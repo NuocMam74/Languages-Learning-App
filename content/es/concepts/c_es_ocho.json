@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_es_ocho",
+  "type": "word",
+  "vi": "ocho",
+  "gloss": {
+    "fr": "huit",
+    "en": "eight"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_ocho_lucia.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_ocho_lucia_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/numbers/n8.svg",
+  "reviewed": false
+}

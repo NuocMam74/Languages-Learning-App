@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_dzay",
+  "title": {
+    "fr": "vậy, qui se dit « dzậy »",
+    "en": "vậy, pronounced 'dzậy'"
+  },
+  "body": {
+    "fr": "À Saïgon, vậy se prononce souvent comme « dzậy », et vô comme « dzô ». Ce sont des prononciations, pas des mots différents : on écrit toujours vậy et vô. Tu verras « dzậy » dans des messages entre amis, pour imiter l'oral.",
+    "en": "In Saigon, vậy often sounds like 'dzậy', and vô like 'dzô'. These are pronunciations, not different words: they're always written vậy and vô. You'll see 'dzậy' in texts between friends, mimicking speech."
+  },
+  "vi": "Đi đâu vậy?",
+  "audio": "audio/cc_b_dzay.opus",
+  "question": {
+    "prompt": {
+      "fr": "Comment écrit-on le « dzậy » que tu entends ?",
+      "en": "How do you write the 'dzậy' you hear?"
+    },
+    "options": [
+      {
+        "fr": "vậy",
+        "en": "vậy"
+      },
+      {
+        "fr": "dậy",
+        "en": "dậy"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

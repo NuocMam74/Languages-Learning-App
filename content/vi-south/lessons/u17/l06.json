@@ -1,0 +1,154 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u17.l06",
+  "unit": "vi-south.u17",
+  "title": {
+    "fr": "Chung cư ou hẻm ?",
+    "en": "Apartment or alley house?"
+  },
+  "goal": {
+    "fr": "Comparer deux logements.",
+    "en": "Compare two places to live."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u17.l05"
+  ],
+  "concepts": [
+    "c_chung_cu",
+    "c_on_noisy",
+    "c_yen_tinh",
+    "s_hem_xe_hoi",
+    "c_nha_house",
+    "c_khach_san"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chung_cu",
+      "distractors": [
+        "c_nha_house",
+        "c_khach_san"
+      ],
+      "explain": {
+        "fr": "chung cư : l'immeuble d'appartements.",
+        "en": "chung cư: apartment building."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_hem_xe_hoi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_on_noisy",
+      "distractors": [
+        "ổn",
+        "ôn"
+      ],
+      "explain": {
+        "fr": "ồn descend : bruyant. ổn : ça va, stable.",
+        "en": "ồn falls: noisy. ổn: okay, stable."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_on_noisy",
+      "explain": {
+        "fr": "ồn descend (huyền).",
+        "en": "ồn falls (huyền)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_yen_tinh",
+      "distractors": [
+        "yên tính",
+        "yến tĩnh"
+      ],
+      "explain": {
+        "fr": "yên plat, tĩnh casse : calme.",
+        "en": "yên level, tĩnh broken: quiet."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà trong hẻm yên tĩnh hơn.",
+      "tokens": [
+        "Nhà",
+        "trong",
+        "hẻm",
+        "yên tĩnh",
+        "hơn",
+        "ồn"
+      ],
+      "translation": {
+        "fr": "Une maison dans une ruelle, c'est plus calme.",
+        "en": "A house down an alley is quieter."
+      },
+      "explain": {
+        "fr": "adjectif + hơn : plus…",
+        "en": "adjective + hơn: more…"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hem_xe_hoi",
+      "distractors": [
+        "hẻm xe máy",
+        "hẻm xe buýt"
+      ],
+      "explain": {
+        "fr": "hẻm xe hơi : une voiture peut entrer.",
+        "en": "hẻm xe hơi: a car can get in."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chung cư này gần chợ, mà hơi ồn.",
+      "tokens": [
+        "Chung cư",
+        "này",
+        "gần",
+        "chợ",
+        "mà",
+        "hơi",
+        "ồn",
+        "xa"
+      ],
+      "translation": {
+        "fr": "Cet immeuble est près du marché, mais un peu bruyant.",
+        "en": "This building is near the market, but a bit noisy."
+      },
+      "explain": {
+        "fr": "mà : mais.",
+        "en": "mà: but."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_voiture",
+      "explain": {
+        "fr": "Sud : xe hơi ; Nord : ô tô.",
+        "en": "South: xe hơi; North: ô tô."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_hem_xe_hoi",
+      "explain": {
+        "fr": "hẻm plonge, xe plat, hơi plat.",
+        "en": "hẻm dips, xe level, hơi level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_chung_cu",
+      "c_on_noisy",
+      "c_yen_tinh",
+      "s_hem_xe_hoi"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_o_quan_may",
+  "title": {
+    "fr": "Tu habites où ? Quận mấy ?",
+    "en": "Where do you live? Which district?"
+  },
+  "body": {
+    "fr": "À Saïgon, quand on te demande « Nhà em ở đâu ? », on attend souvent un arrondissement : Quận 1, Quận 3, Bình Thạnh… Certains ont un numéro, d'autres un nom. Répondre avec un repère marche aussi : « gần chợ Bến Thành ».",
+    "en": "In Saigon, when someone asks 'Nhà em ở đâu?', they usually expect a district: Quận 1, Quận 3, Bình Thạnh… Some have numbers, others names. Answering with a landmark works too: 'gần chợ Bến Thành'."
+  },
+  "vi": "Nhà em ở Quận 3.",
+  "audio": "audio/cc_o_quan_may.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Nhà em ở đâu ? » attend souvent…",
+      "en": "'Nhà em ở đâu?' usually expects…"
+    },
+    "options": [
+      {
+        "fr": "un arrondissement ou un repère",
+        "en": "a district or a landmark"
+      },
+      {
+        "fr": "l'adresse postale complète",
+        "en": "the full postal address"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,175 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u17.l07",
+  "unit": "vi-south.u17",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : logement",
+    "en": "Review: housing"
+  },
+  "goal": {
+    "fr": "Revoir pièces, étages, loyer et factures.",
+    "en": "Go over rooms, floors, rent and bills."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u17.l06"
+  ],
+  "concepts": [
+    "c_phong",
+    "c_nha_house",
+    "c_giuong",
+    "c_lau_floor",
+    "c_lau_long",
+    "c_lau_hotpot",
+    "c_chia_khoa",
+    "c_dien_thoai",
+    "c_tien",
+    "c_chu_owner",
+    "c_chu",
+    "s_con_phong"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_phong",
+      "distractors": [
+        "c_nha_house",
+        "c_giuong"
+      ],
+      "explain": {
+        "fr": "phòng : la pièce, la chambre.",
+        "en": "phòng: room."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_floor",
+      "explain": {
+        "fr": "Sud : lầu ; Nord : tầng.",
+        "en": "South: lầu; North: tầng."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "lầu",
+        "lâu",
+        "lẩu"
+      ],
+      "audioConcepts": [
+        "c_lau_floor",
+        "c_lau_long",
+        "c_lau_hotpot"
+      ],
+      "explain": {
+        "fr": "lầu descend : l'étage. lâu plat : longtemps. lẩu plonge : la fondue.",
+        "en": "lầu falls: floor. lâu level: long time. lẩu dips: hot pot."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Phòng này bao nhiêu một tháng?",
+      "tokens": [
+        "Phòng",
+        "này",
+        "bao nhiêu",
+        "một",
+        "tháng",
+        "ký"
+      ],
+      "translation": {
+        "fr": "Cette chambre, c'est combien par mois ?",
+        "en": "How much is this room per month?"
+      },
+      "explain": {
+        "fr": "bao nhiêu một + unité : combien par…",
+        "en": "bao nhiêu một + unit: how much per…"
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chia_khoa",
+      "distractors": [
+        "c_dien_thoai",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "chìa khóa : la clé.",
+        "en": "chìa khóa: key."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chủ",
+        "chú"
+      ],
+      "audioConcepts": [
+        "c_chu_owner",
+        "c_chu"
+      ],
+      "explain": {
+        "fr": "chủ plonge : le patron. chú monte : l'oncle.",
+        "en": "chủ dips: owner. chú rises: uncle."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tiền điện nước tính riêng.",
+      "tokens": [
+        "Tiền",
+        "điện",
+        "nước",
+        "tính",
+        "riêng",
+        "nhà"
+      ],
+      "translation": {
+        "fr": "L'eau et l'électricité sont facturées à part.",
+        "en": "Water and electricity are charged separately."
+      },
+      "explain": {
+        "fr": "tính riêng : compté à part.",
+        "en": "tính riêng: charged separately."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà trong hẻm yên tĩnh hơn.",
+      "tokens": [
+        "Nhà",
+        "trong",
+        "hẻm",
+        "yên tĩnh",
+        "hơn",
+        "ồn"
+      ],
+      "translation": {
+        "fr": "Une maison dans une ruelle, c'est plus calme.",
+        "en": "A house down an alley is quieter."
+      },
+      "explain": {
+        "fr": "adjectif + hơn : plus…",
+        "en": "adjective + hơn: more…"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_con_phong",
+      "explain": {
+        "fr": "còn et phòng descendent, không plat.",
+        "en": "còn and phòng fall, không level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

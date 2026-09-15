@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_may_tinh",
+  "type": "word",
+  "vi": "máy tính",
+  "gloss": {
+    "fr": "ordinateur ; calculatrice",
+    "en": "computer; calculator"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_may_tinh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_may_tinh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/laptop.svg",
+  "reviewed": false
+}

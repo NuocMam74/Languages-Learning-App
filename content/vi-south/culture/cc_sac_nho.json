@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_sac_nho",
+  "title": {
+    "fr": "Sạc nhờ",
+    "en": "Borrowing a charge"
+  },
+  "body": {
+    "fr": "Plus de batterie ? Dans un café ou une boutique, demande poliment : « Cho em sạc pin nhờ được không ? ». nhờ veut dire « grâce à ton aide ». On te le propose presque toujours. Et on dicte un numéro chiffre par chiffre : không chín không…",
+    "en": "Battery dead? In a café or shop, ask politely: 'Cho em sạc pin nhờ được không?'. nhờ means 'thanks to your help'. People nearly always say yes. And phone numbers are read digit by digit: không chín không…"
+  },
+  "vi": "Cho em sạc pin nhờ được không?",
+  "audio": "audio/cc_sac_nho.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour recharger ton téléphone dans un café, tu demandes…",
+      "en": "To charge your phone in a café, you ask…"
+    },
+    "options": [
+      {
+        "fr": "Cho em sạc pin nhờ được không ?",
+        "en": "Cho em sạc pin nhờ được không?"
+      },
+      {
+        "fr": "Điện thoại em đẹp không ?",
+        "en": "Điện thoại em đẹp không?"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

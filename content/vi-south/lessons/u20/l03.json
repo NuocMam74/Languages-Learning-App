@@ -1,0 +1,141 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u20.l03",
+  "unit": "vi-south.u20",
+  "title": {
+    "fr": "Ăn cơm chưa?",
+    "en": "Have you eaten?"
+  },
+  "goal": {
+    "fr": "Répondre à « Tu as mangé ? » et bien te tenir au repas de famille.",
+    "en": "Answer 'Have you eaten?' and behave well at a family meal."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u20.l02"
+  ],
+  "concepts": [
+    "s_b_an_com_chua",
+    "s_b_da_con_an_roi",
+    "s_b_con_moi_ba_ma",
+    "s_b_an_them_di",
+    "s_b_da_con_no_roi",
+    "c_no_full"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_an_com_chua",
+      "distractors": [
+        "Ăn cơm rồi.",
+        "Uống cà phê chưa?"
+      ],
+      "explain": {
+        "fr": "chưa en fin de question : « déjà ? ».",
+        "en": "chưa ending a question: 'yet?'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_moi_an_com"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_da_con_an_roi",
+      "distractors": [
+        "Dạ, con chưa ăn.",
+        "Dạ, con no rồi."
+      ],
+      "explain": {
+        "fr": "ăn rồi : déjà mangé ; chưa ăn : pas encore.",
+        "en": "ăn rồi: already ate; chưa ăn: not yet."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Con mời ba má ăn cơm.",
+      "tokens": [
+        "Con",
+        "mời",
+        "ba",
+        "má",
+        "ăn cơm",
+        "mới"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, papa, maman, mangez.",
+        "en": "Please eat, Dad, Mum."
+      },
+      "explain": {
+        "fr": "mời + personne + verbe : inviter à.",
+        "en": "mời + person + verb: invite to."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_an_them_di",
+      "distractors": [
+        "Ăn thêm đi em!",
+        "Uống thêm đi con!"
+      ],
+      "explain": {
+        "fr": "thêm : encore, en plus.",
+        "en": "thêm: more."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, con no rồi.",
+      "tokens": [
+        "Dạ",
+        "con",
+        "no",
+        "rồi",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Merci, je n'ai plus faim.",
+        "en": "Thank you, I'm full."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_no_full",
+      "explain": {
+        "fr": "no : ngang, plat.",
+        "en": "no: ngang, level."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_papa",
+      "explain": {
+        "fr": "Sud : ba ; Nord : bố.",
+        "en": "South: ba; North: bố."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_con_moi_ba_ma",
+      "explain": {
+        "fr": "mời descend, má monte, cơm plat.",
+        "en": "mời falls, má rises, cơm level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_b_an_com_chua",
+      "s_b_da_con_an_roi",
+      "s_b_con_moi_ba_ma",
+      "s_b_an_them_di",
+      "s_b_da_con_no_roi"
+    ]
+  },
+  "reviewed": false
+}

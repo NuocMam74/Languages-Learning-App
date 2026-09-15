@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import Settings, get_settings
 from app.db import make_engine, make_session_factory
-from app.routers import auth, challenges, courses, exams, me, push, tutor
+from app.routers import auth, challenges, courses, exams, leagues, me, push, social, tutor
 from app.services.content import load_packs
 from app.services.pdf import make_renderer
 from app.services.rate_limit import InMemorySlidingWindow
@@ -33,7 +33,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             if scheduler is not None:
                 scheduler.shutdown(wait=False)
 
-    app = FastAPI(title="Parlo API", version="0.2.0", root_path=settings.normalized_root_path, lifespan=lifespan)
+    app = FastAPI(title="Parlo API", version="0.3.0", root_path=settings.normalized_root_path, lifespan=lifespan)
 
     engine = make_engine(settings.database_url)
     app.state.settings = settings
@@ -62,7 +62,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(courses.router)
     app.include_router(tutor.router)
     app.include_router(exams.router)
+    app.include_router(social.router)
     app.include_router(challenges.router)
+    app.include_router(leagues.router)
     app.include_router(push.router)
 
     @app.get("/healthz", tags=["ops"])

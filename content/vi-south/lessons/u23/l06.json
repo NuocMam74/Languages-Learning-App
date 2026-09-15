@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u23.l06",
+  "unit": "vi-south.u23",
+  "title": {
+    "fr": "Ước gì…",
+    "en": "If only…"
+  },
+  "goal": {
+    "fr": "Exprimer un souhait ou un regret.",
+    "en": "Express a wish or a regret."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u23.l05"
+  ],
+  "concepts": [
+    "c_b_uoc",
+    "c_b_uoc_gi",
+    "c_b_gioi",
+    "s_b_uoc_gi_noi_gioi",
+    "s_b_uoc_gi_ve_que"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_uoc_gi_noi_gioi",
+      "distractors": [
+        "Ước gì tui nói giỏi tiếng Pháp.",
+        "Ước gì tui học giỏi tiếng Việt."
+      ],
+      "explain": {
+        "fr": "nói giỏi : bien parler ; học giỏi : bien étudier.",
+        "en": "nói giỏi: speak well; học giỏi: study well."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_uoc_gi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_uoc",
+      "distractors": [
+        "ược",
+        "uốc"
+      ],
+      "explain": {
+        "fr": "ước monte : souhaiter.",
+        "en": "ước rises: to wish."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_uoc",
+      "explain": {
+        "fr": "ước : monte.",
+        "en": "ước: rise."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gioi",
+      "distractors": [
+        "giời",
+        "giội"
+      ],
+      "explain": {
+        "fr": "giỏi plonge : doué.",
+        "en": "giỏi dips: skilled."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ước gì tui nói giỏi tiếng Việt.",
+      "tokens": [
+        "Ước gì",
+        "tui",
+        "nói",
+        "giỏi",
+        "tiếng Việt",
+        "giờ"
+      ],
+      "translation": {
+        "fr": "Si seulement je parlais bien vietnamien.",
+        "en": "If only I spoke Vietnamese well."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ước gì tui được về quê ăn Tết.",
+      "tokens": [
+        "Ước gì",
+        "tui",
+        "được",
+        "về",
+        "quê",
+        "ăn Tết",
+        "vê"
+      ],
+      "translation": {
+        "fr": "Si seulement je pouvais rentrer au pays pour le Tết.",
+        "en": "If only I could go home for Tết."
+      },
+      "explain": {
+        "fr": "được + verbe : avoir la chance de.",
+        "en": "được + verb: get to."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_gioi",
+      "explain": {
+        "fr": "giỏi : hỏi.",
+        "en": "giỏi: hỏi."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_uoc_gi_noi_gioi",
+      "explain": {
+        "fr": "ước monte, giỏi plonge, Việt tombe court.",
+        "en": "ước rises, giỏi dips, Việt drops short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_uoc",
+      "c_b_uoc_gi",
+      "c_b_gioi",
+      "s_b_uoc_gi_noi_gioi",
+      "s_b_uoc_gi_ve_que"
+    ]
+  },
+  "reviewed": false
+}

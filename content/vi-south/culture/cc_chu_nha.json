@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_chu_nha",
+  "title": {
+    "fr": "Le chủ nhà",
+    "en": "The landlord"
+  },
+  "body": {
+    "fr": "Le chủ nhà vit souvent sur place, au rez-de-chaussée. On verse un tiền cọc, en général un ou deux mois de loyer, et on signe un hợp đồng. Certaines maisons ferment le portail le soir : demande l'heure, et une chìa khóa si tu rentres tard.",
+    "en": "The chủ nhà often lives on site, on the ground floor. You pay a tiền cọc, usually one or two months' rent, and sign a hợp đồng. Some houses lock the gate at night: ask the time, and for a chìa khóa if you come home late."
+  },
+  "vi": "Anh cho em chìa khóa nha.",
+  "audio": "audio/cc_chu_nha.opus",
+  "question": {
+    "prompt": {
+      "fr": "Le tiền cọc, c'est…",
+      "en": "The tiền cọc is…"
+    },
+    "options": [
+      {
+        "fr": "la caution",
+        "en": "the deposit"
+      },
+      {
+        "fr": "la facture d'eau",
+        "en": "the water bill"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

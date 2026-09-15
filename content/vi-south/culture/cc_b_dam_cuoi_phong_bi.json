@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_dam_cuoi_phong_bi",
+  "title": {
+    "fr": "Le mariage et l'enveloppe",
+    "en": "Weddings and envelopes"
+  },
+  "body": {
+    "fr": "Au Sud, un mariage réunit souvent des centaines d'invités, prévenus par un thiệp mời. Pas de liste de cadeaux : on glisse de l'argent dans une phong bì, remise à l'entrée. On mange, on trinque, et on repart assez vite après le repas.",
+    "en": "In the South, a wedding often gathers hundreds of guests, invited with a thiệp mời. No gift list: you slip money into a phong bì, handed over at the entrance. You eat, toast, and leave fairly soon after the meal."
+  },
+  "vi": "Chúc mừng hạnh phúc!",
+  "audio": "audio/cc_b_dam_cuoi_phong_bi.opus",
+  "question": {
+    "prompt": {
+      "fr": "À un mariage, le cadeau le plus courant est…",
+      "en": "At a wedding, the most common gift is…"
+    },
+    "options": [
+      {
+        "fr": "une enveloppe d'argent",
+        "en": "an envelope of money"
+      },
+      {
+        "fr": "un objet choisi sur une liste",
+        "en": "an item from a gift list"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_li_xi",
+  "title": {
+    "fr": "Lì xì, l'argent porte-bonheur",
+    "en": "Lì xì, lucky money"
+  },
+  "body": {
+    "fr": "Au Tết, les adultes offrent aux enfants, et parfois aux aînés, des enveloppes rouges : le lì xì. On y met des billets neufs. L'enfant remercie et présente ses vœux : « Con chúc cô năm mới vui vẻ ». Au Nord, on dit plutôt mừng tuổi.",
+    "en": "At Tết, adults give children, and sometimes elders, red envelopes: lì xì. Crisp new notes go inside. The child says thanks and offers wishes: 'Con chúc cô năm mới vui vẻ'. In the North, people rather say mừng tuổi."
+  },
+  "vi": "Chúc mừng năm mới!",
+  "audio": "audio/cc_b_li_xi.opus",
+  "question": {
+    "prompt": {
+      "fr": "Dans une enveloppe lì xì, on met…",
+      "en": "In a lì xì envelope, you put…"
+    },
+    "options": [
+      {
+        "fr": "des billets neufs",
+        "en": "new banknotes"
+      },
+      {
+        "fr": "une lettre",
+        "en": "a letter"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

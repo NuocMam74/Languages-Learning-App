@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_em_la_nhan_vien_moi",
+  "type": "structure",
+  "vi": "Em là nhân viên mới.",
+  "gloss": {
+    "fr": "Je suis le nouvel employé / la nouvelle employée (à plus âgé).",
+    "en": "I'm the new employee (to someone older)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_em_la_nhan_vien_moi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_em_la_nhan_vien_moi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

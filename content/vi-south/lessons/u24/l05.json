@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u24.l05",
+  "unit": "vi-south.u24",
+  "title": {
+    "fr": "Tại vì",
+    "en": "Because"
+  },
+  "goal": {
+    "fr": "Justifier ton avis.",
+    "en": "Justify your opinion."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u24.l04"
+  ],
+  "concepts": [
+    "c_b_tai_vi",
+    "c_b_nen",
+    "c_b_tai_sao",
+    "s_b_tai_vi_ket_xe",
+    "s_b_tai_sao_vay",
+    "c_ket_xe"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tai_vi_ket_xe",
+      "distractors": [
+        "Tại vì mưa nên em tới trễ.",
+        "Tại vì kẹt xe nên em về sớm."
+      ],
+      "explain": {
+        "fr": "tại vì… nên… : parce que… donc…",
+        "en": "tại vì… nên…: because… so…"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tai_sao_vay",
+      "distractors": [
+        "Tại sao hông?",
+        "Sao vậy?"
+      ],
+      "explain": {
+        "fr": "Tại sao vậy ? : pourquoi donc ?",
+        "en": "Tại sao vậy?: why is that?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nen",
+      "distractors": [
+        "nến",
+        "nền"
+      ],
+      "explain": {
+        "fr": "nên, plat : donc.",
+        "en": "nên, level: so."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_traffic_jam",
+      "explain": {
+        "fr": "Sud : kẹt xe ; Nord : tắc đường.",
+        "en": "South: kẹt xe; North: tắc đường."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tại vì kẹt xe nên em tới trễ.",
+      "tokens": [
+        "Tại vì",
+        "kẹt xe",
+        "nên",
+        "em",
+        "tới",
+        "trễ",
+        "nếu"
+      ],
+      "translation": {
+        "fr": "Je suis en retard parce qu'il y avait des bouchons.",
+        "en": "I'm late because of the traffic jam."
+      },
+      "explain": {
+        "fr": "tại vì + cause, nên + conséquence.",
+        "en": "tại vì + cause, nên + result."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_nen",
+      "explain": {
+        "fr": "nên : ngang.",
+        "en": "nên: ngang."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui thích Sài Gòn, tại vì người ta dễ thương.",
+      "tokens": [
+        "Tui",
+        "thích",
+        "Sài Gòn",
+        "tại vì",
+        "người ta",
+        "dễ thương",
+        "nên"
+      ],
+      "translation": {
+        "fr": "J'aime Saïgon parce que les gens sont gentils.",
+        "en": "I like Saigon because people are nice."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_vi",
+      "distractors": [
+        "tài vì",
+        "tại ví"
+      ],
+      "explain": {
+        "fr": "tại vì : parce que.",
+        "en": "tại vì: because."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_tai_vi_ket_xe",
+      "explain": {
+        "fr": "tại court, vì descend, kẹt court, trễ plonge au Sud.",
+        "en": "tại short, vì falls, kẹt short, trễ dips in the South."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_tai_vi",
+      "c_b_nen",
+      "c_b_tai_sao",
+      "s_b_tai_vi_ket_xe",
+      "s_b_tai_sao_vay"
+    ]
+  },
+  "reviewed": false
+}

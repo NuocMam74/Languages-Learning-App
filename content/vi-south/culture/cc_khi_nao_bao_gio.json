@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_khi_nao_bao_gio",
+  "title": {
+    "fr": "Quand ? Avant ou après",
+    "en": "When? Before or after"
+  },
+  "body": {
+    "fr": "Khi nào et bao giờ veulent dire « quand ». En début de phrase, on parle du futur : « Khi nào anh về ? ». En fin de phrase, du passé : « Anh về khi nào ? » (tu es rentré quand ?). Au Sud, on entend aussi chừng nào (futur) et hồi nào (passé).",
+    "en": "Khi nào and bao giờ both mean 'when'. At the start of a sentence they point to the future: 'Khi nào anh về?'. At the end, to the past: 'Anh về khi nào?' (when did you get back?). In the South you also hear chừng nào (future) and hồi nào (past)."
+  },
+  "vi": "Khi nào anh về?",
+  "audio": "audio/cc_khi_nao_bao_gio.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Khi nào anh về ? » parle…",
+      "en": "'Khi nào anh về?' is about…"
+    },
+    "options": [
+      {
+        "fr": "du futur",
+        "en": "the future"
+      },
+      {
+        "fr": "du passé",
+        "en": "the past"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

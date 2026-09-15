@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u14.l06",
+  "unit": "vi-south.u14",
+  "title": {
+    "fr": "Vậy hả ?",
+    "en": "Really?"
+  },
+  "goal": {
+    "fr": "Réagir dans une conversation.",
+    "en": "React in a conversation."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u14.l05"
+  ],
+  "concepts": [
+    "s_vay_ha",
+    "s_thiet_hong",
+    "s_dung_roi",
+    "s_em_cung_vay",
+    "c_do_bad",
+    "c_do_dirty"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_vay_ha",
+      "distractors": [
+        "Vậy hen.",
+        "Ai vậy?"
+      ],
+      "explain": {
+        "fr": "Vậy hả ? : ah bon ?",
+        "en": "Vậy hả?: really?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_vay_ha"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ainsi",
+      "explain": {
+        "fr": "Sud : Vậy hả ? ; Nord : Thế à ?",
+        "en": "South: Vậy hả?; North: Thế à?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thiet_hong",
+      "distractors": [
+        "Thiết hông?",
+        "Mệt hông?"
+      ],
+      "explain": {
+        "fr": "Thiệt hông ? : vraiment ? thiệt tombe court.",
+        "en": "Thiệt hông?: for real? thiệt drops short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_dung_roi",
+      "distractors": [
+        "Đúng giờ.",
+        "Dùng rồi."
+      ],
+      "explain": {
+        "fr": "Đúng rồi : exactement. dùng : utiliser.",
+        "en": "Đúng rồi: exactly. dùng: to use."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em cũng vậy.",
+      "tokens": [
+        "Em",
+        "cũng",
+        "vậy",
+        "vui"
+      ],
+      "translation": {
+        "fr": "Moi aussi.",
+        "en": "Me too."
+      },
+      "explain": {
+        "fr": "cũng vậy : pareil, moi aussi.",
+        "en": "cũng vậy: same, me too."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "dở",
+        "dơ"
+      ],
+      "audioConcepts": [
+        "c_do_bad",
+        "c_do_dirty"
+      ],
+      "explain": {
+        "fr": "dở plonge, dơ reste plat.",
+        "en": "dở dips, dơ stays level."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Vậy hả? Em cũng thích phở.",
+      "tokens": [
+        "Vậy",
+        "hả",
+        "Em",
+        "cũng",
+        "thích",
+        "phở",
+        "ghét"
+      ],
+      "translation": {
+        "fr": "Ah bon ? Moi aussi j'aime le phở.",
+        "en": "Really? I like phở too."
+      },
+      "explain": {
+        "fr": "Réagir, puis partager son goût.",
+        "en": "React, then share your taste."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_cung_vay",
+      "distractors": [
+        "Em cũng vui.",
+        "Anh cũng vậy."
+      ],
+      "explain": {
+        "fr": "Em cũng vậy : moi aussi.",
+        "en": "Em cũng vậy: me too."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_vay_ha",
+      "explain": {
+        "fr": "vậy tombe court, hả plonge : ton surpris.",
+        "en": "vậy drops short, hả dips: a surprised tone."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_vay_ha",
+      "s_thiet_hong",
+      "s_dung_roi",
+      "s_em_cung_vay"
+    ]
+  },
+  "reviewed": false
+}

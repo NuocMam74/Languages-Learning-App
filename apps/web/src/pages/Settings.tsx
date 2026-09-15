@@ -7,6 +7,8 @@ import { t, type MessageKey } from "../i18n/index.ts";
 import { deleteLocalData, exportLocalData, getProfile, saveProfile } from "../learner.ts";
 import { clearPrefs, usePrefs } from "../prefs.ts";
 import { ReminderSettings } from "../notifications/Reminders.tsx";
+import { LeagueSettings } from "../leagues/LeagueWidgets.tsx";
+import { PackSettings } from "../packs/PackSettings.tsx";
 
 /** Réglages (spec §4.1.6, §13, §14) : profil, affichage, compte, données. */
 
@@ -73,7 +75,7 @@ function download(filename: string, data: unknown) {
 export default function Settings() {
   const navigate = useNavigate();
   const { status, account, signOut } = useAccount();
-  const { locale, silent, setLocale, setSilent } = usePrefs();
+  const { locale, silent, dictation, setLocale, setSilent, setDictation } = usePrefs();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -109,6 +111,10 @@ export default function Settings() {
         </div>
       }
     >
+      <Section title={t("packs.settings.title")}>
+        <PackSettings />
+      </Section>
+
       {profile && (
         <Section title={t("settings.profile")}>
           <p className="text-sm text-phu-sa">{t("settings.goal")}</p>
@@ -124,10 +130,15 @@ export default function Settings() {
         <ReminderSettings />
       </Section>
 
+      <Section title={t("league.settings.title")}>
+        <LeagueSettings motivation={profile?.motivation ?? null} />
+      </Section>
+
       <Section title={t("settings.display")}>
         <p className="text-sm text-phu-sa">{t("settings.locale")}</p>
         <Segmented label={t("settings.locale")} value={locale ?? "auto"} options={[{ value: "auto", label: t("settings.locale.auto") }, { value: "fr", label: "Français" }, { value: "en", label: "English" }]} onChange={(v) => setLocale(v === "fr" || v === "en" ? v : null)} />
         <Switch label={t("settings.silent")} hint={t("settings.silent.hint")} checked={silent} onChange={setSilent} />
+        <Switch label={t("tutor.dictation.setting")} hint={t("tutor.dictation.hint")} checked={dictation} onChange={setDictation} />
       </Section>
 
       <Section title={t("settings.account")}>

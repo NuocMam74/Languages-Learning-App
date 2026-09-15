@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_de_thuong",
+  "type": "word",
+  "vi": "dễ thương",
+  "gloss": {
+    "fr": "mignon, gentil",
+    "en": "cute, sweet"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_de_thuong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_de_thuong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Littéralement « facile à aimer ».",
+    "en": "Literally 'easy to love'."
+  },
+  "reviewed": false
+}

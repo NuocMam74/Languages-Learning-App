@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_nhuc_dau",
+  "title": {
+    "fr": "Nhức đầu et cạo gió",
+    "en": "Headaches and cạo gió"
+  },
+  "body": {
+    "fr": "nhức, c'est la douleur qui lance : nhức đầu, nhức răng, nhức mình. Beaucoup attribuent ces maux au « gió », le mauvais vent. Remède traditionnel : le cạo gió, frotter la peau avec une pièce et du baume. Les marques rouges impressionnent, mais c'est courant.",
+    "en": "nhức is a throbbing ache: nhức đầu, nhức răng, nhức mình. Many blame these aches on 'gió', bad wind. A traditional remedy: cạo gió, rubbing the skin with a coin and balm. The red marks look alarming, but it's common."
+  },
+  "vi": "Em bị nhức đầu quá.",
+  "audio": "audio/cc_nhuc_dau.opus",
+  "question": {
+    "prompt": {
+      "fr": "Le cạo gió consiste à…",
+      "en": "Cạo gió means…"
+    },
+    "options": [
+      {
+        "fr": "frotter la peau avec une pièce",
+        "en": "rubbing the skin with a coin"
+      },
+      {
+        "fr": "boire une tisane froide",
+        "en": "drinking a cold herbal tea"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

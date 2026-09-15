@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_em_khong_dong_y_lam",
+  "type": "structure",
+  "vi": "Em không đồng ý lắm.",
+  "gloss": {
+    "fr": "Je ne suis pas trop d'accord (à plus âgé).",
+    "en": "I don't really agree (to someone older)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_em_khong_dong_y_lam_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_em_khong_dong_y_lam_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

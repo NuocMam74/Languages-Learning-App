@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_tang_ca",
+  "type": "structure",
+  "vi": "Tối nay tui phải tăng ca.",
+  "gloss": {
+    "fr": "Ce soir, je dois faire des heures sup.",
+    "en": "Tonight I have to work overtime."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_tang_ca_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_tang_ca_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

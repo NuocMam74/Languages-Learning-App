@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u12.l02",
+  "unit": "vi-south.u12",
+  "title": {
+    "fr": "Đâu ? Nào ?",
+    "en": "Where? Which?"
+  },
+  "goal": {
+    "fr": "Demander où et lequel.",
+    "en": "Ask where and which."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u12.l01"
+  ],
+  "concepts": [
+    "c_nao_which",
+    "s_cai_nao",
+    "s_nha_em_o_dau",
+    "s_mon_nao_ngon",
+    "c_cho_market",
+    "c_benh_vien",
+    "c_ngan_hang"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_em_o_dau",
+      "distractors": [
+        "Nhà em ở đây.",
+        "Nhà em ở xa."
+      ],
+      "explain": {
+        "fr": "ở đâu ? : où ? ở đây : ici.",
+        "en": "ở đâu?: where? ở đây: here."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_o_quan_may"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nao_which",
+      "distractors": [
+        "nao",
+        "náo"
+      ],
+      "explain": {
+        "fr": "nào descend (huyền) : lequel.",
+        "en": "nào falls (huyền): which."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_market",
+      "distractors": [
+        "c_benh_vien",
+        "c_ngan_hang"
+      ],
+      "explain": {
+        "fr": "Chợ ở đâu ? — le marché.",
+        "en": "Chợ ở đâu? — the market."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chợ Bến Thành ở đâu?",
+      "tokens": [
+        "Chợ",
+        "Bến Thành",
+        "ở",
+        "đâu",
+        "nào"
+      ],
+      "translation": {
+        "fr": "Où est le marché Bến Thành ?",
+        "en": "Where is Bến Thành market?"
+      },
+      "explain": {
+        "fr": "lieu + ở đâu ? : où est… ?",
+        "en": "place + ở đâu?: where is…?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cai_nao",
+      "distractors": [
+        "Cái này?",
+        "Con nào?"
+      ],
+      "explain": {
+        "fr": "cái nào : lequel (objet). con nào : lequel (animal).",
+        "en": "cái nào: which one (object). con nào: which one (animal)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị lấy cái nào?",
+      "tokens": [
+        "Chị",
+        "lấy",
+        "cái",
+        "nào",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",
+        "en": "Which one are you taking? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "nom + nào : quel… ?",
+        "en": "noun + nào: which…?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mon_nao_ngon",
+      "distractors": [
+        "Món này ngon.",
+        "Món nào ngọt?"
+      ],
+      "explain": {
+        "fr": "Món nào ngon ? : quel plat est bon ? Question idéale au restaurant.",
+        "en": "Món nào ngon?: which dish is good? Perfect question at a restaurant."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nha_em_o_dau",
+      "explain": {
+        "fr": "đâu reste plat à la fin.",
+        "en": "đâu stays level at the end."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_nao_which",
+      "s_cai_nao",
+      "s_nha_em_o_dau",
+      "s_mon_nao_ngon"
+    ]
+  },
+  "reviewed": false
+}

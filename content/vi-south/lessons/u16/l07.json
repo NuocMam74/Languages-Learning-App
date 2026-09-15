@@ -1,0 +1,159 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u16.l07",
+  "unit": "vi-south.u16",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : santé",
+    "en": "Review: health"
+  },
+  "goal": {
+    "fr": "Revoir symptômes, pharmacie et médecin.",
+    "en": "Go over symptoms, pharmacy and doctor."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u16.l06"
+  ],
+  "concepts": [
+    "s_nhuc_dau",
+    "s_dau_bung",
+    "c_ngu_sleep",
+    "c_dau_where",
+    "c_dau_head",
+    "c_nha_thuoc",
+    "c_benh_vien",
+    "c_ngan_hang",
+    "s_em_dau_o_day",
+    "s_khoe_chua"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "s_nhuc_dau",
+      "distractors": [
+        "s_dau_bung",
+        "c_ngu_sleep"
+      ],
+      "explain": {
+        "fr": "nhức đầu : mal de tête.",
+        "en": "nhức đầu: headache."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_sick",
+      "explain": {
+        "fr": "Sud : bệnh ; Nord : ốm.",
+        "en": "South: bệnh; North: ốm."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "đâu",
+        "đầu"
+      ],
+      "audioConcepts": [
+        "c_dau_where",
+        "c_dau_head"
+      ],
+      "explain": {
+        "fr": "đâu reste plat : où. đầu descend : la tête.",
+        "en": "đâu stays level: where. đầu falls: head."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em bị sốt với ho.",
+      "tokens": [
+        "Em",
+        "bị",
+        "sốt",
+        "với",
+        "ho",
+        "khỏe"
+      ],
+      "translation": {
+        "fr": "J'ai de la fièvre et je tousse.",
+        "en": "I have a fever and a cough."
+      },
+      "explain": {
+        "fr": "với : et (à l'oral).",
+        "en": "với: and (spoken)."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_thuoc",
+      "distractors": [
+        "c_benh_vien",
+        "c_ngan_hang"
+      ],
+      "explain": {
+        "fr": "nhà thuốc : la pharmacie.",
+        "en": "nhà thuốc: pharmacy."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ngày uống mấy lần?",
+      "tokens": [
+        "Ngày",
+        "uống",
+        "mấy",
+        "lần",
+        "bao lâu"
+      ],
+      "translation": {
+        "fr": "Combien de fois par jour ?",
+        "en": "How many times a day?"
+      },
+      "explain": {
+        "fr": "Ngày… mấy lần : par jour.",
+        "en": "Ngày… mấy lần: per day."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dau_o_day",
+      "distractors": [
+        "Em đau ở đâu?",
+        "Em đâu ở đây."
+      ],
+      "explain": {
+        "fr": "đau ở đây : j'ai mal ici. đau ở đâu ? : où as-tu mal ?",
+        "en": "đau ở đây: it hurts here. đau ở đâu?: where does it hurt?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khoe_chua",
+      "distractors": [
+        "Khỏe không?",
+        "Khỏe rồi."
+      ],
+      "explain": {
+        "fr": "Khỏe chưa ? : ça va mieux ?",
+        "en": "Khỏe chưa?: feeling better yet?"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nhuc_dau",
+      "explain": {
+        "fr": "nhức monte, đầu descend.",
+        "en": "nhức rises, đầu falls."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

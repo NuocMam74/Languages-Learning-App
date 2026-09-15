@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_xin_nghi_phep",
+  "type": "structure",
+  "vi": "Em xin nghỉ phép ba ngày.",
+  "gloss": {
+    "fr": "Je demande trois jours de congé.",
+    "en": "I'd like to take three days off."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_xin_nghi_phep_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_xin_nghi_phep_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

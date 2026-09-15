@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_tinh_rieng",
+  "type": "structure",
+  "vi": "Tiền điện tính riêng.",
+  "gloss": {
+    "fr": "L'électricité est facturée à part.",
+    "en": "Electricity is charged separately."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_tinh_rieng_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_tinh_rieng_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_ha_particle",
+  "type": "word",
+  "vi": "há",
+  "tone": "sac",
+  "gloss": {
+    "fr": "particule : « ah bon ? », « hein ? » (Sud)",
+    "en": "particle: 'really?', 'huh?' (South)"
+  },
+  "northernEquivalent": "hả",
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_ha_particle_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_ha_particle_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

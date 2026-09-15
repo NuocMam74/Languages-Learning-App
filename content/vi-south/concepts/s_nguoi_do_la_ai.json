@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_nguoi_do_la_ai",
+  "type": "structure",
+  "vi": "Người đó là ai?",
+  "gloss": {
+    "fr": "Qui est cette personne ?",
+    "en": "Who is that person?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nguoi_do_la_ai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nguoi_do_la_ai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

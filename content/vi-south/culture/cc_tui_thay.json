@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_tui_thay",
+  "title": {
+    "fr": "Tui thấy…",
+    "en": "Tui thấy…"
+  },
+  "body": {
+    "fr": "Pour donner ton avis : « … thấy », je trouve. Entre amis au Sud : « Tui thấy phim này hay ». Face à un aîné, garde le bon pronom : « Em thấy… », « Con thấy… ». Pour demander : « Anh thấy sao ? ». Si c'est drôle : « Mắc cười quá ! ».",
+    "en": "To give your opinion, say '… thấy': I find. Among southern friends: 'Tui thấy phim này hay'. With an elder, keep the right pronoun: 'Em thấy…', 'Con thấy…'. To ask: 'Anh thấy sao?'. And if it's funny: 'Mắc cười quá!'."
+  },
+  "vi": "Tui thấy cũng được.",
+  "audio": "audio/cc_tui_thay.opus",
+  "question": {
+    "prompt": {
+      "fr": "Face à ta tante, tu dis plutôt…",
+      "en": "With your aunt, you'd rather say…"
+    },
+    "options": [
+      {
+        "fr": "Con thấy…",
+        "en": "Con thấy…"
+      },
+      {
+        "fr": "Tui thấy…",
+        "en": "Tui thấy…"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

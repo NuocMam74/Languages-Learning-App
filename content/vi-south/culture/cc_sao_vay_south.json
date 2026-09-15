@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_sao_vay_south",
+  "title": {
+    "fr": "Sao vậy ?",
+    "en": "Sao vậy?"
+  },
+  "body": {
+    "fr": "Au Sud, on ajoute vậy aux questions pour les adoucir : « Ai vậy ? », « Sao vậy ? ». Au Nord, on entend thế : « Sao thế ? ». sao veut dire « pourquoi » ou « comment » selon la phrase. tại sao est plus appuyé, un peu plus formel.",
+    "en": "In the South, vậy softens questions: 'Ai vậy?', 'Sao vậy?'. In the North you hear thế: 'Sao thế?'. sao means 'why' or 'how' depending on the sentence. tại sao is more emphatic, a bit more formal."
+  },
+  "vi": "Sao vậy?",
+  "audio": "audio/cc_sao_vay_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Sao vậy ? » au Nord devient…",
+      "en": "In the North 'Sao vậy?' becomes…"
+    },
+    "options": [
+      {
+        "fr": "Sao thế ?",
+        "en": "Sao thế?"
+      },
+      {
+        "fr": "Sao đâu ?",
+        "en": "Sao đâu?"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

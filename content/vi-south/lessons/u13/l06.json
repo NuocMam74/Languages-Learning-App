@@ -1,0 +1,159 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u13.l06",
+  "unit": "vi-south.u13",
+  "title": {
+    "fr": "Năm ngoái, năm sau",
+    "en": "Last year, next year"
+  },
+  "goal": {
+    "fr": "Situer un souvenir ou un projet.",
+    "en": "Place a memory or a plan in time."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u13.l05"
+  ],
+  "concepts": [
+    "c_nam_ngoai",
+    "c_nam_sau",
+    "s_sau_tet",
+    "s_nam_sau_di_can_tho",
+    "c_may_bay",
+    "c_xe_buyt",
+    "c_xe_hoi",
+    "c_roi",
+    "c_roi_tangled"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_ngoai",
+      "distractors": [
+        "năm ngoài",
+        "năm nay"
+      ],
+      "explain": {
+        "fr": "ngoái monte : l'an dernier. ngoài : dehors.",
+        "en": "ngoái rises: last year. ngoài: outside."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_truoc_sau_tet"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_sau",
+      "distractors": [
+        "năm sáu",
+        "năm nay"
+      ],
+      "explain": {
+        "fr": "năm sau : l'an prochain. năm sáu : cinq-six.",
+        "en": "năm sau: next year. năm sáu: five-six."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Năm ngoái em đã tới Việt Nam.",
+      "tokens": [
+        "Năm ngoái",
+        "em",
+        "đã",
+        "tới",
+        "Việt Nam",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "L'année dernière, je suis venu(e) au Vietnam.",
+        "en": "Last year I came to Vietnam."
+      },
+      "explain": {
+        "fr": "Repère de temps en tête, puis đã.",
+        "en": "Time word first, then đã."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_may_bay",
+      "distractors": [
+        "c_xe_buyt",
+        "c_xe_hoi"
+      ],
+      "explain": {
+        "fr": "máy bay : l'avion.",
+        "en": "máy bay: plane."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Năm sau em sẽ đi Cần Thơ.",
+      "tokens": [
+        "Năm sau",
+        "em",
+        "sẽ",
+        "đi",
+        "Cần Thơ",
+        "đã"
+      ],
+      "translation": {
+        "fr": "L'année prochaine, j'irai à Cần Thơ.",
+        "en": "Next year I'll go to Cần Thơ."
+      },
+      "explain": {
+        "fr": "năm sau + sẽ : futur.",
+        "en": "năm sau + sẽ: future."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "rồi",
+        "rối"
+      ],
+      "audioConcepts": [
+        "c_roi",
+        "c_roi_tangled"
+      ],
+      "explain": {
+        "fr": "rồi descend, rối monte.",
+        "en": "rồi falls, rối rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_sau_tet",
+      "distractors": [
+        "trước Tết",
+        "sáu Tết"
+      ],
+      "explain": {
+        "fr": "sau Tết : après le Tết. sáu : six.",
+        "en": "sau Tết: after Tết. sáu: six."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nam_sau_di_can_tho",
+      "explain": {
+        "fr": "Cần descend, Thơ reste plat.",
+        "en": "Cần falls, Thơ stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_nam_ngoai",
+      "c_nam_sau",
+      "s_sau_tet",
+      "s_nam_sau_di_can_tho"
+    ]
+  },
+  "reviewed": false
+}

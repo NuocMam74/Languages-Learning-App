@@ -12,7 +12,7 @@ import { Ajv2020 } from "ajv/dist/2020.js";
 import { buildContentIndex, checkContent, checkExam, checkPlacement, type ContentIssue, type ExamFile, type PlacementSpec } from "@parlo/core";
 import { checkXeOmData, type XeOmData } from "@parlo/core";
 import { createSouthLinter, hasBlocking, type LexicalVariantEntry } from "@parlo/south-lint";
-import { CONTENT_ROOT, listPacks, readPackFiles, rel, toRaw, type JsonFile } from "./lib/load-pack.ts";
+import { CONTENT_ROOT, listPacks, packFeatures, readPackFiles, rel, toRaw, type JsonFile } from "./lib/load-pack.ts";
 
 const production = process.argv.includes("--production");
 const strictMedia = process.argv.includes("--strict-media") || production;
@@ -51,8 +51,24 @@ function collectMedia(value: unknown, out: Set<string>): void {
   }
 }
 
+const errorCount = () => issues.filter((i) => i.level === "error").length;
+
+/**
+ * Plusieurs packs (ADR 0006) : l'état SRS local et serveur est indexé par identifiant de
+ * concept, sans code de pack. Un même id dans deux packs serait donc une collision.
+ */
+const conceptOwners = new Map<string, string>();
+
 for (const code of listPacks()) {
   const files = readPackFiles(code);
+  const errorsBefore = errorCount();
+  for (const f of files.concepts) {
+    const id = (f.data as { id?: unknown }).id;
+    if (typeof id !== "string") continue;
+    const owner = conceptOwners.get(id);
+    if (owner && owner !== code) report("error", rel(f.path), `Concept ${id} déjà défini par le pack ${owner} (préfixer les ids, ex. c_${code.replace(/-/g, "_")}_…)`);
+    else conceptOwners.set(id, code);
+  }
   validate("pack.schema.json", files.pack, `${code}/pack.json`);
   validate("curriculum.schema.json", files.curriculum, `${code}/curriculum.json`);
   if (files.variants) validate("lexical-variants.schema.json", files.variants, `${code}/lexical-variants.json`);
@@ -60,8 +76,8 @@ for (const code of listPacks()) {
   files.concepts.forEach((f) => validate("concept.schema.json", f, rel(f.path)));
   files.culture.forEach((f) => validate("culture.schema.json", f, rel(f.path)));
 
-  // Les contrôles sémantiques supposent des fichiers conformes aux schémas.
-  if (issues.some((i) => i.level === "error")) continue;
+  // Les contrôles sémantiques supposent des fichiers conformes aux schémas (ceux de ce pack).
+  if (errorCount() > errorsBefore) continue;
 
   const index = buildContentIndex(toRaw(files));
   issues.push(...checkContent(index, { production }));
@@ -111,7 +127,7 @@ for (const code of listPacks()) {
       if (production && (!data.reviewed || data.routes.some((r) => !r.reviewed))) report("error", rel(xeOmPath), "Itinéraires non relus");
       const texts = [...data.maps.flatMap((m) => m.landmarks.map((l) => l.vi)), ...data.routes.flatMap((r) => r.instructions.map((i) => i.vi))];
       for (const text of texts) if (text !== text.normalize("NFC")) report("error", rel(xeOmPath), `Chaîne non NFC : « ${text} »`);
-      if (files.variants) {
+      if (files.variants && packFeatures(files).includes("lexical_variants")) {
         const lint = createSouthLinter((files.variants.data as { entries: LexicalVariantEntry[] }).entries);
         for (const text of texts) if (hasBlocking(lint(text))) report("error", rel(xeOmPath), `Forme du Nord dans « ${text} »`);
       }

@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_chi_co_con_khong",
+  "type": "structure",
+  "vi": "Chị có con không?",
+  "gloss": {
+    "fr": "Tu as des enfants ? (à une femme un peu plus âgée)",
+    "en": "Do you have children? (to a slightly older woman)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chi_co_con_khong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chi_co_con_khong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

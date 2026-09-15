@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_ve_so",
+  "title": {
+    "fr": "Le vé số",
+    "en": "The vé số"
+  },
+  "body": {
+    "fr": "Dans les rues du Sud, des vendeurs proposent des vé số, billets de loterie tirés chaque jour dans une province différente. Chacun rêve un peu : « Nếu trúng số thì… ». Acheter un billet à un vendeur âgé, c'est aussi une façon discrète de l'aider.",
+    "en": "On southern streets, vendors sell vé số, lottery tickets drawn every day in a different province. Everyone dreams a little: 'Nếu trúng số thì…'. Buying a ticket from an elderly seller is also a discreet way to help them."
+  },
+  "vi": "Giả sử trúng số, anh làm gì?",
+  "audio": "audio/cc_b_ve_so.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, les tirages du vé số ont lieu…",
+      "en": "In the South, vé số draws take place…"
+    },
+    "options": [
+      {
+        "fr": "chaque jour",
+        "en": "every day"
+      },
+      {
+        "fr": "une fois par an",
+        "en": "once a year"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

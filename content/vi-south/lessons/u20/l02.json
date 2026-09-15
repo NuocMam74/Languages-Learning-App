@@ -1,0 +1,162 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u20.l02",
+  "unit": "vi-south.u20",
+  "title": {
+    "fr": "Đám cưới",
+    "en": "Weddings"
+  },
+  "goal": {
+    "fr": "Féliciter les mariés et parler du mariage.",
+    "en": "Congratulate a couple and talk about the wedding."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u20.l01"
+  ],
+  "concepts": [
+    "c_b_cuoi_wed",
+    "c_b_cuoi_laugh",
+    "s_b_chuc_mung_hanh_phuc",
+    "c_b_qua_gift",
+    "c_b_phong_bi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_qua_gift",
+      "distractors": [
+        "c_b_li_xi",
+        "c_b_dam_cuoi"
+      ],
+      "explain": {
+        "fr": "quà : le cadeau.",
+        "en": "quà: gift."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "cưới",
+        "cười"
+      ],
+      "audioConcepts": [
+        "c_b_cuoi_wed",
+        "c_b_cuoi_laugh"
+      ],
+      "explain": {
+        "fr": "cưới monte : se marier. cười descend : rire.",
+        "en": "cưới rises: to marry. cười falls: to laugh."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chuc_mung_hanh_phuc",
+      "distractors": [
+        "Chúc mừng năm mới!",
+        "Chúc mừng sinh nhật!"
+      ],
+      "explain": {
+        "fr": "hạnh phúc : bonheur ; năm mới : nouvel an ; sinh nhật : anniversaire.",
+        "en": "hạnh phúc: happiness; năm mới: new year; sinh nhật: birthday."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_cuoi_wed",
+      "explain": {
+        "fr": "cưới : monte nettement.",
+        "en": "cưới: rise clearly."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_phong_bi",
+      "distractors": [
+        "phòng bì",
+        "phong bị"
+      ],
+      "explain": {
+        "fr": "phong bì : l'enveloppe.",
+        "en": "phong bì: envelope."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chúc mừng hạnh phúc!",
+      "tokens": [
+        "Chúc mừng",
+        "hạnh phúc",
+        "năm mới"
+      ],
+      "translation": {
+        "fr": "Tous mes vœux de bonheur !",
+        "en": "Wishing you happiness!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tháng sau tụi em cưới.",
+      "tokens": [
+        "Tháng sau",
+        "tụi em",
+        "cưới",
+        "cười"
+      ],
+      "translation": {
+        "fr": "Nous nous marions le mois prochain.",
+        "en": "We're getting married next month."
+      },
+      "explain": {
+        "fr": "tụi em : nous (plus jeunes que l'interlocuteur).",
+        "en": "tụi em: we (younger than the listener)."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_cuoi_laugh",
+      "explain": {
+        "fr": "cười : huyền.",
+        "en": "cười: huyền."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em bỏ tiền vô phong bì.",
+      "tokens": [
+        "Em",
+        "bỏ",
+        "tiền",
+        "vô",
+        "phong bì",
+        "phòng"
+      ],
+      "translation": {
+        "fr": "Je mets l'argent dans l'enveloppe.",
+        "en": "I put the money in the envelope."
+      },
+      "explain": {
+        "fr": "bỏ vô : mettre dans (Sud).",
+        "en": "bỏ vô: put into (South)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_chuc_mung_hanh_phuc",
+      "explain": {
+        "fr": "chúc monte, mừng descend, hạnh court, phúc monte.",
+        "en": "chúc rises, mừng falls, hạnh short, phúc rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_cuoi_wed",
+      "c_b_cuoi_laugh",
+      "s_b_chuc_mung_hanh_phuc",
+      "c_b_qua_gift",
+      "c_b_phong_bi"
+    ]
+  },
+  "reviewed": false
+}

@@ -12,8 +12,8 @@ export const PALETTE = {
   phuSa: "#3A3A34",
 } as const;
 
-const SERIF = '"Source Serif 4 Variable", Georgia, serif';
-const SANS = '"Be Vietnam Pro", system-ui, sans-serif';
+export const SERIF = '"Source Serif 4 Variable", Georgia, serif';
+export const SANS = '"Be Vietnam Pro", system-ui, sans-serif';
 export const SHARE_SIZE = 1080;
 
 export interface CertificateImageInput {
@@ -28,7 +28,7 @@ export interface CertificateImageInput {
   locale: string;
 }
 
-async function fontsReady(): Promise<void> {
+export async function fontsReady(): Promise<void> {
   if (!("fonts" in document)) return;
   await Promise.all(
     [`600 96px ${SERIF}`, `italic 400 96px ${SERIF}`, `400 30px ${SANS}`, `600 30px ${SANS}`].map((f) => document.fonts.load(f, "Bén rễ Nguyễn Ạ").catch(() => [])),
@@ -36,7 +36,7 @@ async function fontsReady(): Promise<void> {
 }
 
 /** Taille de police qui fait tenir `text` dans `maxWidth`. */
-function fit(ctx: CanvasRenderingContext2D, text: string, font: (size: number) => string, size: number, maxWidth: number, min = 28): number {
+export function fit(ctx: CanvasRenderingContext2D, text: string, font: (size: number) => string, size: number, maxWidth: number, min = 28): number {
   let s = size;
   ctx.font = font(s);
   while (s > min && ctx.measureText(text).width > maxWidth) {
@@ -46,7 +46,7 @@ function fit(ctx: CanvasRenderingContext2D, text: string, font: (size: number) =
   return s;
 }
 
-function diamond(ctx: CanvasRenderingContext2D, x: number, y: number, r: number) {
+export function diamond(ctx: CanvasRenderingContext2D, x: number, y: number, r: number) {
   ctx.beginPath();
   ctx.moveTo(x, y - r);
   ctx.lineTo(x + r, y);
@@ -57,7 +57,7 @@ function diamond(ctx: CanvasRenderingContext2D, x: number, y: number, r: number)
 }
 
 /** Trois lignes d'eau, discrètes : le fleuve, sans dégradé. */
-function waves(ctx: CanvasRenderingContext2D, y: number, width: number, left: number) {
+export function waves(ctx: CanvasRenderingContext2D, y: number, width: number, left: number) {
   ctx.save();
   ctx.strokeStyle = PALETTE.ngoc;
   ctx.lineWidth = 2;

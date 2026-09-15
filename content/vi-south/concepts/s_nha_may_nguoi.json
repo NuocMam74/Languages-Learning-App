@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_nha_may_nguoi",
+  "type": "structure",
+  "vi": "Nhà em có mấy người?",
+  "gloss": {
+    "fr": "Vous êtes combien dans ta famille ? (à plus jeune)",
+    "en": "How many people in your family? (to someone younger)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nha_may_nguoi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nha_may_nguoi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

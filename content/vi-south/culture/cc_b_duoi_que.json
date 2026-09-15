@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_duoi_que",
+  "title": {
+    "fr": "Monter en ville, descendre au pays",
+    "en": "Up to the city, down to the village"
+  },
+  "body": {
+    "fr": "Au Sud, on dit « lên Sài Gòn », monter à Saïgon, et « về dưới quê », redescendre au village natal. Beaucoup de Saïgonnais ont grandi dưới quê et y retournent pour le Tết : leurs souvenirs d'enfance parlent de rivières, de vergers et de ghe.",
+    "en": "In the South, people say 'lên Sài Gòn', go up to Saigon, and 'về dưới quê', go back down to the home village. Many Saigon people grew up dưới quê and return for Tết: their childhood memories are of rivers, orchards and ghe."
+  },
+  "vi": "Hồi nhỏ tui ở dưới quê.",
+  "audio": "audio/cc_b_duoi_que.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Hồi nhỏ tui ở dưới quê » : cette personne a grandi…",
+      "en": "'Hồi nhỏ tui ở dưới quê': this person grew up…"
+    },
+    "options": [
+      {
+        "fr": "à la campagne",
+        "en": "in the countryside"
+      },
+      {
+        "fr": "dans le centre de Saïgon",
+        "en": "in central Saigon"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

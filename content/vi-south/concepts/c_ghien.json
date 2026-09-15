@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ghien",
+  "type": "word",
+  "vi": "ghiền",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "être accro à, adorer",
+    "en": "to be hooked on"
+  },
+  "northernEquivalent": "nghiện",
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ghien_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ghien_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, ghiền s'emploie gaiement : ghiền cà phê, ghiền trà sữa. Au Nord, nghiện.",
+    "en": "In the South ghiền is used cheerfully: ghiền cà phê, ghiền trà sữa. In the North, nghiện."
+  },
+  "reviewed": false
+}

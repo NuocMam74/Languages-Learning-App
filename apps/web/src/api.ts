@@ -115,6 +115,42 @@ export async function requestBlob(path: string): Promise<Blob> {
   return res.blob();
 }
 
+/**
+ * Requête authentifiée à réponse en flux (text/event-stream, Phase 3).
+ * EventSource ne sait ni POSTer ni envoyer Authorization : on passe par fetch.
+ * Le 401 est rattrapé une seule fois, avant que le flux ne commence ; la
+ * réponse `ok` est rendue telle quelle (corps non lu). Un abandon via `signal`
+ * rejette avec l'AbortError du navigateur (pas une NetworkError).
+ */
+export async function requestStream(path: string, { method = "POST", body, signal }: { method?: "GET" | "POST"; body?: unknown; signal?: AbortSignal } = {}): Promise<Response> {
+  const build = (): RequestInit => {
+    const headers: Record<string, string> = { Accept: "text/event-stream" };
+    if (body !== undefined) headers["Content-Type"] = "application/json";
+    if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
+    return { method, headers, ...(signal ? { signal } : {}), ...(body !== undefined ? { body: JSON.stringify(body) } : {}) };
+  };
+  const attempt = async () => {
+    try {
+      return await send(path, build());
+    } catch (error) {
+      if (signal?.aborted) throw signal.reason ?? new DOMException("Aborted", "AbortError");
+      throw error;
+    }
+  };
+  let refreshed = false;
+  if (!accessToken) {
+    if (!(await refreshAccess())) throw new ApiError(401, "not_authenticated");
+    refreshed = true;
+  }
+  let res = await attempt();
+  if (res.status === 401 && !refreshed && (await refreshAccess())) res = await attempt();
+  if (!res.ok) {
+    const errorBody: unknown = await res.clone().json().catch(() => null);
+    throw new ApiError(res.status, await detailOf(res), errorBody);
+  }
+  return res;
+}
+
 interface TokenResponse {
   accessToken: string;
   tokenType: "bearer";
@@ -317,6 +353,8 @@ export interface ProfilePatch {
   reminderHour?: number | null;
   timezone?: string;
   notificationsEnabled?: boolean;
+  /** Phase 3 : ligues (docs/contracts/phase3.md §2). */
+  leaguesEnabled?: boolean;
 }
 
 export const patchProfile = (patch: ProfilePatch) => request<unknown>("/me/profile", { method: "PATCH", body: patch });

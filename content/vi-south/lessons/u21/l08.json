@@ -1,0 +1,170 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u21.l08",
+  "unit": "vi-south.u21",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : parler du Sud",
+    "en": "Test: southern speech"
+  },
+  "goal": {
+    "fr": "Montrer que tu reconnais le parler familier du Sud.",
+    "en": "Show you recognise casual southern speech."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u21.l07"
+  ],
+  "concepts": [
+    "c_hong",
+    "s_b_hong_biet",
+    "c_b_bong",
+    "c_b_hong_emph",
+    "c_b_mac_co",
+    "c_b_vuon",
+    "s_b_thiet_ha"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hong_biet",
+      "distractors": [
+        "Hông biết.",
+        "Hổng biết hả?"
+      ],
+      "explain": {
+        "fr": "Hổng biết.",
+        "en": "Hổng biết."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ba_ay",
+      "explain": {
+        "fr": "bả = bà ấy.",
+        "en": "bả = bà ấy."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_bong",
+      "distractors": [
+        "c_b_ghe",
+        "c_b_vuon"
+      ],
+      "explain": {
+        "fr": "bông : la fleur.",
+        "en": "bông: flower."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_chi_ay",
+      "explain": {
+        "fr": "chỉ = chị ấy.",
+        "en": "chỉ = chị ấy."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "hông",
+        "hổng"
+      ],
+      "audioConcepts": [
+        "c_hong",
+        "c_b_hong_emph"
+      ],
+      "explain": {
+        "fr": "hông plat, hổng plonge.",
+        "en": "hông level, hổng dips."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mai gặp hen.",
+      "tokens": [
+        "Mai",
+        "gặp",
+        "hen",
+        "hẹn"
+      ],
+      "translation": {
+        "fr": "À demain, hein.",
+        "en": "See you tomorrow, eh."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_mac_co",
+      "distractors": [
+        "mắc có",
+        "mác cỡ"
+      ],
+      "explain": {
+        "fr": "mắc cỡ : gêné.",
+        "en": "mắc cỡ: shy."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_de_rien",
+      "explain": {
+        "fr": "Sud : không có chi.",
+        "en": "South: không có chi."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nè, coi cái này nè!",
+      "tokens": [
+        "Nè",
+        "coi",
+        "cái",
+        "này",
+        "nè",
+        "nay"
+      ],
+      "translation": {
+        "fr": "Tiens, regarde ça !",
+        "en": "Hey, look at this!"
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_vuon",
+      "distractors": [
+        "c_b_ghe",
+        "c_song_river"
+      ],
+      "explain": {
+        "fr": "vườn : le verger.",
+        "en": "vườn: orchard."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_thiet_ha",
+      "distractors": [
+        "Thiệt hông?",
+        "Thật hả?"
+      ],
+      "explain": {
+        "fr": "Thiệt há ?",
+        "en": "Thiệt há?"
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ainsi",
+      "explain": {
+        "fr": "Sud : vậy ; Nord : thế.",
+        "en": "South: vậy; North: thế."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

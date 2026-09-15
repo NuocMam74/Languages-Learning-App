@@ -25,7 +25,16 @@ from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
 
 from app.config import Settings
-from app.models import Answer, LessonProgress, Profile, TutorCache, TutorMessage, User
+from app.models import (
+    Answer,
+    Conversation,
+    ConversationTurn,
+    LessonProgress,
+    Profile,
+    TutorCache,
+    TutorMessage,
+    User,
+)
 from app.services import learner
 from app.services.content import (
     Pack,
@@ -180,7 +189,12 @@ def purge_tutor_data(db: Session, now: datetime | None = None, retention_days: i
     Retourne (messages supprimés, entrées de cache supprimées).
     """
     now = now or datetime.now(UTC)
-    messages = db.execute(delete(TutorMessage).where(TutorMessage.created_at < now - timedelta(days=retention_days)))
+    cutoff = now - timedelta(days=retention_days)
+    messages = db.execute(delete(TutorMessage).where(TutorMessage.created_at < cutoff))
+    # Conversations et leurs tours purgés avec le même délai.
+    old = select(Conversation.id).where(Conversation.created_at < cutoff)
+    db.execute(delete(ConversationTurn).where(ConversationTurn.conversation_id.in_(old)))
+    db.execute(delete(Conversation).where(Conversation.created_at < cutoff))
     cache = db.execute(delete(TutorCache).where(TutorCache.expires_at.is_not(None), TutorCache.expires_at <= now))
     db.commit()
     return int(getattr(messages, "rowcount", 0) or 0), int(getattr(cache, "rowcount", 0) or 0)

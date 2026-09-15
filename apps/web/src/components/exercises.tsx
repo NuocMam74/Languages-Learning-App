@@ -3,6 +3,8 @@ import { useState, type ReactNode } from "react";
 import { playConcept, playPath, ttsAllowed } from "../audio.ts";
 import { mediaUrl } from "../content.ts";
 import { GameExercise, SESSION_GAMES } from "../games/GameExercise.tsx";
+import { DoiDapExercise } from "../games/DoiDapExercise.tsx";
+import { NhoMatExercise } from "../games/NhoMat.tsx";
 import { KaraokeExercise } from "../karaoke/KaraokeExercise.tsx";
 import { useSession } from "../session-store.ts";
 import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
@@ -38,6 +40,8 @@ export function ExerciseView({ exercise, content, onAnswer, locked }: { exercise
     case "tone_produce":
       return <SpeechView exercise={exercise} {...common} />;
     case "game":
+      if (exercise.game === "doi_dap") return <DoiDapExercise exercise={exercise} {...common} />;
+      if (exercise.game === "nho_mat") return <NhoMatExercise exercise={exercise} {...common} />;
       if (SESSION_GAMES.has(exercise.game)) return <GameExercise exercise={exercise} {...common} />;
       return <Placeholder message={t("ex.game.soon", { name: t(`game.${exercise.game}` as MessageKey) })} onAnswer={onAnswer} />;
     case "unsupported":

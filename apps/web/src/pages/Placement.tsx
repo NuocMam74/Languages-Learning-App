@@ -16,11 +16,8 @@ import { ExerciseView } from "../components/exercises.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import { l, t, type MessageKey } from "../i18n/index.ts";
 import { getProfile, savePlacement } from "../learner.ts";
+import { loadPlacement } from "../packs/placement.ts";
 
-/** Fichiers de placement par pack (données de contenu, chargées à la demande). */
-const SPECS: Record<string, () => Promise<{ default: unknown }>> = {
-  "vi-south": () => import("../../../../content/vi-south/placement.json"),
-};
 
 type Stage = { kind: "intro" } | { kind: "test"; startedAt: number } | { kind: "saving" } | { kind: "result"; result: PlacementResult; entry: Lesson | null };
 
@@ -34,8 +31,8 @@ export default function Placement({ content }: { content: ContentIndex }) {
   const seed = useRef(`placement:${Date.now()}`);
 
   useEffect(() => {
-    const load = SPECS[content.pack.code];
-    if (load) void load().then((m) => setSpec(m.default as PlacementSpec), () => setSpec(null));
+    // Fichier facultatif du pack, découvert au build (packs/placement.ts).
+    void loadPlacement(content.pack.code).then(setSpec, () => setSpec(null));
   }, [content]);
 
   const skip = async () => {

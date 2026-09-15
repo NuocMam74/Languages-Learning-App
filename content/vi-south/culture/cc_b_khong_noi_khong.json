@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_khong_noi_khong",
+  "title": {
+    "fr": "Contredire en douceur",
+    "en": "Disagreeing gently"
+  },
+  "body": {
+    "fr": "Dire « Sai rồi ! » à un aîné ou à son chef peut lui faire perdre la face. On nuance : « Cũng đúng, nhưng mà… », « Em không đồng ý lắm ». On commence par ce qui est juste, puis on propose son avis. Entre amis proches, on est plus direct.",
+    "en": "Saying 'Sai rồi!' to an elder or your boss can make them lose face. People soften it: 'Cũng đúng, nhưng mà…', 'Em không đồng ý lắm'. Start with what's right, then offer your view. Among close friends, people are more direct."
+  },
+  "vi": "Cũng đúng, nhưng mà…",
+  "audio": "audio/cc_b_khong_noi_khong.opus",
+  "question": {
+    "prompt": {
+      "fr": "Tu n'es pas d'accord avec ton chef. Tu commences par…",
+      "en": "You disagree with your boss. You start with…"
+    },
+    "options": [
+      {
+        "fr": "Cũng đúng, nhưng mà…",
+        "en": "Cũng đúng, nhưng mà…"
+      },
+      {
+        "fr": "Sai rồi!",
+        "en": "Sai rồi!"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_es_buenos_dias",
+  "type": "structure",
+  "vi": "buenos días",
+  "gloss": {
+    "fr": "bonjour (le matin)",
+    "en": "good morning"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_buenos_dias_lucia.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_buenos_dias_lucia_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/greetings/morning.svg",
+  "reviewed": false
+}

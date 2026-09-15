@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_gion",
+  "type": "word",
+  "vi": "giỡn",
+  "tone": "nga",
+  "gloss": {
+    "fr": "plaisanter, faire l'idiot (Sud)",
+    "en": "to joke, fool around (South)"
+  },
+  "northernEquivalent": "đùa",
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_gion_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_gion_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

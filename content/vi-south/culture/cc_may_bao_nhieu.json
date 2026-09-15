@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_may_bao_nhieu",
+  "title": {
+    "fr": "Mấy ou bao nhiêu ?",
+    "en": "Mấy or bao nhiêu?"
+  },
+  "body": {
+    "fr": "mấy s'emploie quand on attend un petit nombre : l'heure, l'âge d'un enfant, les membres de la famille. bao nhiêu, pour les grands nombres ou quand on ne sait pas : prix, âge d'un adulte. Au marché du Sud, on raccourcit : « Nhiêu ? ».",
+    "en": "mấy is used when you expect a small number: the time, a child's age, family members. bao nhiêu is for big numbers or when you have no idea: prices, an adult's age. At southern markets it gets clipped: 'Nhiêu?'."
+  },
+  "vi": "Nhà em có mấy người?",
+  "audio": "audio/cc_may_bao_nhieu.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour demander un prix, on dit plutôt…",
+      "en": "To ask a price, you'd rather say…"
+    },
+    "options": [
+      {
+        "fr": "bao nhiêu",
+        "en": "bao nhiêu"
+      },
+      {
+        "fr": "mấy",
+        "en": "mấy"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

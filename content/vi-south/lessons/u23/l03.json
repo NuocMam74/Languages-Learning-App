@@ -1,0 +1,147 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u23.l03",
+  "unit": "vi-south.u23",
+  "title": {
+    "fr": "Chắc, có lẽ",
+    "en": "Probably, perhaps"
+  },
+  "goal": {
+    "fr": "Dire que c'est probable ou possible.",
+    "en": "Say something is likely or possible."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u23.l02"
+  ],
+  "concepts": [
+    "c_b_chac",
+    "c_b_co_le",
+    "s_b_chac_tre",
+    "s_b_co_le_mai_mua",
+    "s_b_chac_hong",
+    "c_anh_he"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chac_tre",
+      "distractors": [
+        "Chắc ảnh tới sớm.",
+        "Chắc chỉ tới trễ."
+      ],
+      "explain": {
+        "fr": "ảnh : lui ; chỉ : elle. trễ : en retard ; sớm : tôt.",
+        "en": "ảnh: he; chỉ: she. trễ: late; sớm: early."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_chac"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_chac",
+      "distractors": [
+        "chạc",
+        "chác"
+      ],
+      "explain": {
+        "fr": "chắc monte, bref : sûrement.",
+        "en": "chắc rises, short: probably."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chắc ảnh tới trễ.",
+      "tokens": [
+        "Chắc",
+        "ảnh",
+        "tới",
+        "trễ",
+        "tối"
+      ],
+      "translation": {
+        "fr": "Il va sûrement arriver en retard.",
+        "en": "He'll probably be late."
+      },
+      "explain": {
+        "fr": "chắc en tête : « sûrement ».",
+        "en": "chắc up front: 'probably'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_co_le",
+      "distractors": [
+        "cô lẽ",
+        "có lè"
+      ],
+      "explain": {
+        "fr": "có lẽ : peut-être.",
+        "en": "có lẽ: perhaps."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Có lẽ mai trời mưa.",
+      "tokens": [
+        "Có lẽ",
+        "mai",
+        "trời",
+        "mưa",
+        "mua"
+      ],
+      "translation": {
+        "fr": "Il pleuvra peut-être demain.",
+        "en": "It might rain tomorrow."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chac_hong",
+      "distractors": [
+        "Chắc chưa?",
+        "Thiệt hông?"
+      ],
+      "explain": {
+        "fr": "Chắc hông ? : t'es sûr(e) ?",
+        "en": "Chắc hông?: are you sure?"
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_anh_ay",
+      "explain": {
+        "fr": "Sud, à l'oral : ảnh ; ailleurs : anh ấy.",
+        "en": "Spoken South: ảnh; elsewhere: anh ấy."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_chac",
+      "explain": {
+        "fr": "chắc : sắc, bref.",
+        "en": "chắc: sắc, short."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_co_le_mai_mua",
+      "explain": {
+        "fr": "có monte, lẽ plonge au Sud, mưa plat.",
+        "en": "có rises, lẽ dips in the South, mưa level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_chac",
+      "c_b_co_le",
+      "s_b_chac_tre",
+      "s_b_co_le_mai_mua",
+      "s_b_chac_hong"
+    ]
+  },
+  "reviewed": false
+}

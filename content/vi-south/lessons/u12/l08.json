@@ -1,0 +1,203 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u12.l08",
+  "unit": "vi-south.u12",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : questions",
+    "en": "Test: questions"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais poser les questions de base.",
+    "en": "Show you can ask the basic questions."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u12.l07"
+  ],
+  "concepts": [
+    "s_nguoi_do_la_ai",
+    "c_nao_which",
+    "c_tai_sao",
+    "s_khi_nao_anh_ve",
+    "c_may",
+    "c_may_cloud",
+    "s_chi_co_con_khong",
+    "c_hoi_ask",
+    "s_bao_nhieu_tien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_do_la_ai",
+      "distractors": [
+        "Người đó là anh.",
+        "Người này là ai?"
+      ],
+      "explain": {
+        "fr": "ai = qui. đó : là-bas ; này : ici.",
+        "en": "ai = who. đó: over there; này: here."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nao_which",
+      "distractors": [
+        "nao",
+        "náo"
+      ],
+      "explain": {
+        "fr": "nào descend (huyền) : lequel.",
+        "en": "nào falls (huyền): which."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị lấy cái nào?",
+      "tokens": [
+        "Chị",
+        "lấy",
+        "cái",
+        "nào",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",
+        "en": "Which one are you taking? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "nom + nào : quel… ?",
+        "en": "noun + nào: which…?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tai_sao",
+      "distractors": [
+        "tại sau",
+        "tai sao"
+      ],
+      "explain": {
+        "fr": "tại tombe court, sao reste plat.",
+        "en": "tại drops short, sao stays level."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tại sao em học tiếng Việt?",
+      "tokens": [
+        "Tại sao",
+        "em",
+        "học",
+        "tiếng Việt",
+        "vì"
+      ],
+      "translation": {
+        "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
+        "en": "Why are you learning Vietnamese? (to someone younger)"
+      },
+      "explain": {
+        "fr": "Tại sao se met en tête de phrase.",
+        "en": "Tại sao goes at the start of the sentence."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khi_nao_anh_ve",
+      "distractors": [
+        "Khi nào anh đi?",
+        "Anh về khi nào?"
+      ],
+      "explain": {
+        "fr": "Khi nào anh về ? : futur. Anh về khi nào ? : passé.",
+        "en": "Khi nào anh về?: future. Anh về khi nào?: past."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "mấy",
+        "mây"
+      ],
+      "audioConcepts": [
+        "c_may",
+        "c_may_cloud"
+      ],
+      "explain": {
+        "fr": "mấy monte : combien. mây reste plat : le nuage.",
+        "en": "mấy rises: how many. mây stays level: cloud."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ở Sài Gòn mấy ngày?",
+      "tokens": [
+        "Em",
+        "ở",
+        "Sài Gòn",
+        "mấy",
+        "ngày",
+        "bao lâu"
+      ],
+      "translation": {
+        "fr": "Tu restes combien de jours à Saïgon ? (à plus jeune)",
+        "en": "How many days are you staying in Saigon? (to someone younger)"
+      },
+      "explain": {
+        "fr": "mấy + unité : un petit nombre attendu.",
+        "en": "mấy + unit: a small number expected."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chi_co_con_khong",
+      "distractors": [
+        "Chị có con chưa?",
+        "Chị có chồng không?"
+      ],
+      "explain": {
+        "fr": "con : enfant. chồng : mari.",
+        "en": "con: child. chồng: husband."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_hoi_ask",
+      "explain": {
+        "fr": "hỏi : la voix plonge puis remonte un peu.",
+        "en": "hỏi: the voice dips then rises a little."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh là người Pháp phải không?",
+      "tokens": [
+        "Anh",
+        "là",
+        "người Pháp",
+        "phải không",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu es français, n'est-ce pas ? (à un homme un peu plus âgé)",
+        "en": "You're French, right? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "… phải không ? : pour vérifier une supposition.",
+        "en": "… phải không?: to check an assumption."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_bao_nhieu_tien",
+      "explain": {
+        "fr": "nhiêu reste plat, tiền descend.",
+        "en": "nhiêu stays level, tiền falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

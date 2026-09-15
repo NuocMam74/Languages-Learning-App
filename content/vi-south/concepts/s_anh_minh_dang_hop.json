@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_anh_minh_dang_hop",
+  "type": "structure",
+  "vi": "Anh Minh đang họp.",
+  "gloss": {
+    "fr": "Minh est en réunion.",
+    "en": "Minh is in a meeting."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_minh_dang_hop_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_minh_dang_hop_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

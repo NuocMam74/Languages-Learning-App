@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_question_word_end",
+  "title": {
+    "fr": "La question reste à sa place",
+    "en": "The question stays in place"
+  },
+  "body": {
+    "fr": "En vietnamien, pas d'inversion : le mot interrogatif se met là où sera la réponse. « Em ăn gì ? » : tu manges quoi ? Réponse : « Em ăn phở. » Même chose pour ai, đâu, nào. Remplace simplement le mot par la réponse.",
+    "en": "Vietnamese doesn't invert: the question word sits where the answer will go. 'Em ăn gì?': you eat what? Answer: 'Em ăn phở.' Same with ai, đâu, nào. Just swap the question word for the answer."
+  },
+  "vi": "Em ăn gì?",
+  "audio": "audio/cc_question_word_end.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour répondre à « Em ăn gì ? », tu…",
+      "en": "To answer 'Em ăn gì?', you…"
+    },
+    "options": [
+      {
+        "fr": "remplaces gì par ce que tu manges",
+        "en": "replace gì with what you eat"
+      },
+      {
+        "fr": "inverses le sujet et le verbe",
+        "en": "swap subject and verb"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

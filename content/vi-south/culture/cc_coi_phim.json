@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_coi_phim",
+  "title": {
+    "fr": "Đi coi phim",
+    "en": "Đi coi phim"
+  },
+  "body": {
+    "fr": "Au Sud, on « coi » un film ; au Nord, on le « xem ». Un bon film est « hay », pas « tốt » : tốt, c'est pour la qualité ou une bonne personne. Et quelque chose de beau est « đẹp » : một thành phố đẹp.",
+    "en": "In the South you 'coi' a film; in the North you 'xem' it. A good film is 'hay', not 'tốt': tốt is for quality or a good person. And something beautiful is 'đẹp': một thành phố đẹp."
+  },
+  "vi": "Tối nay mình đi coi phim nha.",
+  "audio": "audio/cc_coi_phim.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour dire qu'un film est bien, on dit…",
+      "en": "To say a film is good, you say…"
+    },
+    "options": [
+      {
+        "fr": "hay",
+        "en": "hay"
+      },
+      {
+        "fr": "tốt",
+        "en": "tốt"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

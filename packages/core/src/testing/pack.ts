@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildContentIndex } from "../content-index.ts";
 import type { ContentIndex, RawPackFiles } from "../index.ts";
@@ -15,7 +15,8 @@ export function loadPack(code = "vi-south"): ContentIndex {
   const raw: RawPackFiles = {
     pack: read(join(root, "pack.json")),
     curriculum: read(join(root, "curriculum.json")),
-    variants: read(join(root, "lexical-variants.json")),
+    // Facultatif : seuls les packs à variantes régionales (feature lexical_variants) en ont.
+    ...(existsSync(join(root, "lexical-variants.json")) ? { variants: read<NonNullable<RawPackFiles["variants"]>>(join(root, "lexical-variants.json")) } : {}),
     lessons: all(join(root, "lessons")),
     concepts: all(join(root, "concepts")),
     culture: all(join(root, "culture")),

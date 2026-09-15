@@ -1,0 +1,165 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u14.l07",
+  "unit": "vi-south.u14",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : goûts et opinions",
+    "en": "Review: likes and opinions"
+  },
+  "goal": {
+    "fr": "Revoir thích, ghét, ngon, dở, đẹp, hay.",
+    "en": "Go over thích, ghét, ngon, dở, đẹp, hay."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u14.l06"
+  ],
+  "concepts": [
+    "s_ca_phe_sua_da",
+    "s_tra_da",
+    "c_sua_milk",
+    "c_do_bad",
+    "c_do_dirty",
+    "s_phim_hay_qua",
+    "s_vay_ha",
+    "s_anh_thay_sao"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "s_ca_phe_sua_da",
+      "distractors": [
+        "s_tra_da",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "cà phê sữa đá : le café glacé au lait.",
+        "en": "cà phê sữa đá: iced milk coffee."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_addicted",
+      "explain": {
+        "fr": "Sud : ghiền ; Nord : nghiện.",
+        "en": "South: ghiền; North: nghiện."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em thích cà phê sữa đá.",
+      "tokens": [
+        "Em",
+        "thích",
+        "cà phê",
+        "sữa",
+        "đá",
+        "trà"
+      ],
+      "translation": {
+        "fr": "J'aime le café glacé au lait.",
+        "en": "I like iced milk coffee."
+      },
+      "explain": {
+        "fr": "thích + nom : aimer quelque chose.",
+        "en": "thích + noun: to like something."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "dở",
+        "dơ"
+      ],
+      "audioConcepts": [
+        "c_do_bad",
+        "c_do_dirty"
+      ],
+      "explain": {
+        "fr": "dở plonge : pas bon. dơ reste plat : sale.",
+        "en": "dở dips: not good. dơ stays level: dirty."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_phim_hay_qua",
+      "distractors": [
+        "Phim này hay không?",
+        "Phim này dở quá!"
+      ],
+      "explain": {
+        "fr": "hay : bien, intéressant. dở : raté.",
+        "en": "hay: good, interesting. dở: bad."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui thấy phim này hay.",
+      "tokens": [
+        "Tui",
+        "thấy",
+        "phim",
+        "này",
+        "hay",
+        "dở"
+      ],
+      "translation": {
+        "fr": "Je trouve ce film bien.",
+        "en": "I think this film is good."
+      },
+      "explain": {
+        "fr": "thấy + phrase : trouver que.",
+        "en": "thấy + clause: to think that."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_vay_ha",
+      "distractors": [
+        "Vậy hen.",
+        "Ai vậy?"
+      ],
+      "explain": {
+        "fr": "Vậy hả ? : ah bon ?",
+        "en": "Vậy hả?: really?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Món này hơi dở.",
+      "tokens": [
+        "Món",
+        "này",
+        "hơi",
+        "dở",
+        "dơ"
+      ],
+      "translation": {
+        "fr": "Ce plat n'est pas terrible.",
+        "en": "This dish isn't great."
+      },
+      "explain": {
+        "fr": "hơi + adjectif : un peu. Plus doux que dở quá.",
+        "en": "hơi + adjective: a bit. Softer than dở quá."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_anh_thay_sao",
+      "explain": {
+        "fr": "thấy monte, sao reste plat.",
+        "en": "thấy rises, sao stays level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

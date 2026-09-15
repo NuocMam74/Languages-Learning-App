@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_di_da_lat_chua",
+  "type": "structure",
+  "vi": "Anh đi Đà Lạt chưa?",
+  "gloss": {
+    "fr": "Tu es déjà allé à Đà Lạt ? (à un homme un peu plus âgé)",
+    "en": "Have you been to Đà Lạt? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_di_da_lat_chua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_di_da_lat_chua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

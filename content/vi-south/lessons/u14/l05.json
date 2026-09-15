@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u14.l05",
+  "unit": "vi-south.u14",
+  "title": {
+    "fr": "Tui thấy…",
+    "en": "I think…"
+  },
+  "goal": {
+    "fr": "Donner ton avis et demander celui des autres.",
+    "en": "Give your opinion and ask for others'."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u14.l04"
+  ],
+  "concepts": [
+    "c_thay_feel",
+    "s_tui_thay",
+    "s_anh_thay_sao",
+    "c_mac_cuoi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_thay_sao",
+      "distractors": [
+        "Anh thấy ai?",
+        "Anh làm sao?"
+      ],
+      "explain": {
+        "fr": "Anh thấy sao ? : tu en penses quoi ?",
+        "en": "Anh thấy sao?: what do you think?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_tui_thay"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tui_thay",
+      "distractors": [
+        "Tui thầy…",
+        "Tôi thấy…"
+      ],
+      "explain": {
+        "fr": "tui : je (Sud, familier). thầy : le maître.",
+        "en": "tui: I (southern, casual). thầy: teacher."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_thay_feel",
+      "explain": {
+        "fr": "thấy monte (sắc).",
+        "en": "thấy rises (sắc)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui thấy phim này hay.",
+      "tokens": [
+        "Tui",
+        "thấy",
+        "phim",
+        "này",
+        "hay",
+        "dở"
+      ],
+      "translation": {
+        "fr": "Je trouve ce film bien.",
+        "en": "I think this film is good."
+      },
+      "explain": {
+        "fr": "thấy + phrase : trouver que.",
+        "en": "thấy + clause: to think that."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mac_cuoi",
+      "distractors": [
+        "mắc cỡ",
+        "mặc cười"
+      ],
+      "explain": {
+        "fr": "mắc cười : drôle. mắc cỡ : timide (Sud aussi).",
+        "en": "mắc cười: funny. mắc cỡ: shy (also southern)."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_funny",
+      "explain": {
+        "fr": "Sud : mắc cười ; Nord : buồn cười.",
+        "en": "South: mắc cười; North: buồn cười."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em thấy cũng được.",
+      "tokens": [
+        "Em",
+        "thấy",
+        "cũng",
+        "được",
+        "không"
+      ],
+      "translation": {
+        "fr": "Je trouve ça correct.",
+        "en": "I think it's okay."
+      },
+      "explain": {
+        "fr": "Avis prudent et poli.",
+        "en": "A cautious, polite opinion."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_anh_thay_sao",
+      "explain": {
+        "fr": "thấy monte, sao reste plat.",
+        "en": "thấy rises, sao stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_thay_feel",
+      "s_tui_thay",
+      "s_anh_thay_sao",
+      "c_mac_cuoi"
+    ]
+  },
+  "reviewed": false
+}

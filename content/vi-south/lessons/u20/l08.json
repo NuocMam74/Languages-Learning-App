@@ -1,0 +1,176 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u20.l08",
+  "unit": "vi-south.u20",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : invitations",
+    "en": "Test: invitations"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais inviter, remercier et refuser avec tact.",
+    "en": "Show you can invite, thank and decline tactfully."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u20.l07"
+  ],
+  "concepts": [
+    "c_b_qua_gift",
+    "s_b_moi_di_dam_cuoi",
+    "c_b_dam_gio",
+    "s_b_da_con_an_roi",
+    "c_b_cuoi_wed",
+    "s_b_chuc_mung_nam_moi",
+    "c_b_nhang",
+    "c_b_tiec"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_qua_gift",
+      "distractors": [
+        "c_b_li_xi",
+        "c_b_dam_cuoi"
+      ],
+      "explain": {
+        "fr": "quà : le cadeau.",
+        "en": "quà: gift."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_moi_di_dam_cuoi",
+      "distractors": [
+        "Mời anh đi đám cưới em nha.",
+        "Mời chị đi đám giỗ nha."
+      ],
+      "explain": {
+        "fr": "đi đám cưới.",
+        "en": "đi đám cưới."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, con no rồi.",
+      "tokens": [
+        "Dạ",
+        "con",
+        "no",
+        "rồi",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Merci, je n'ai plus faim.",
+        "en": "Thank you, I'm full."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dam_gio",
+      "distractors": [
+        "c_b_dam_cuoi",
+        "c_b_qua_gift"
+      ],
+      "explain": {
+        "fr": "đám giỗ.",
+        "en": "đám giỗ."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_da_con_an_roi",
+      "distractors": [
+        "Dạ, con chưa ăn.",
+        "Dạ, con no rồi."
+      ],
+      "explain": {
+        "fr": "ăn rồi : déjà mangé.",
+        "en": "ăn rồi: already ate."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_cuoi_wed",
+      "explain": {
+        "fr": "cưới : sắc.",
+        "en": "cưới: sắc."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Con chúc cô năm mới vui vẻ.",
+      "tokens": [
+        "Con",
+        "chúc",
+        "cô",
+        "năm mới",
+        "vui vẻ",
+        "mới"
+      ],
+      "translation": {
+        "fr": "Je vous souhaite une joyeuse année.",
+        "en": "I wish you a happy new year."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_fruit_clf",
+      "explain": {
+        "fr": "Sud : trái ; Nord : quả.",
+        "en": "South: trái; North: quả."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chuc_mung_nam_moi",
+      "distractors": [
+        "Chúc mừng hạnh phúc!",
+        "Chúc mừng năm mời!"
+      ],
+      "explain": {
+        "fr": "năm mới : nouvel an.",
+        "en": "năm mới: new year."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nhang",
+      "distractors": [
+        "nháng",
+        "nhàng"
+      ],
+      "explain": {
+        "fr": "nhang : l'encens.",
+        "en": "nhang: incense."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Để bữa khác nha.",
+      "tokens": [
+        "Để",
+        "bữa",
+        "khác",
+        "nha",
+        "bưa"
+      ],
+      "translation": {
+        "fr": "Une autre fois, d'accord ?",
+        "en": "Another time, okay?"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_tiec",
+      "explain": {
+        "fr": "tiếc : sắc.",
+        "en": "tiếc: sắc."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

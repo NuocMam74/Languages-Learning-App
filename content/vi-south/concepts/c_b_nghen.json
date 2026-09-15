@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_nghen",
+  "type": "word",
+  "vi": "nghen",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "particule : « hein », « d'accord ? » (Sud)",
+    "en": "particle: 'okay?', 'right?' (South)"
+  },
+  "northernEquivalent": "nhé",
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_nghen_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_nghen_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

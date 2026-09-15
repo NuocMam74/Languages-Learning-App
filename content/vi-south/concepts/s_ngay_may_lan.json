@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_ngay_may_lan",
+  "type": "structure",
+  "vi": "Ngày uống mấy lần?",
+  "gloss": {
+    "fr": "Combien de fois par jour ?",
+    "en": "How many times a day?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ngay_may_lan_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ngay_may_lan_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

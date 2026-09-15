@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_em_mac_co",
+  "type": "structure",
+  "vi": "Em mắc cỡ quá.",
+  "gloss": {
+    "fr": "Je suis tout(e) gêné(e).",
+    "en": "I'm so embarrassed."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_em_mac_co_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_em_mac_co_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_benh_om",
+  "title": {
+    "fr": "Bệnh ou ốm ?",
+    "en": "Bệnh or ốm?"
+  },
+  "body": {
+    "fr": "Au Sud, être malade se dit bệnh, souvent prononcé « bịnh ». Au Nord, on dit ốm. Piège : au Sud, ốm veut dire maigre ! bị marque ce qu'on subit : « Em bị bệnh », « Em bị sốt ». Réponse gentille : « Mau khỏe nha ! ».",
+    "en": "In the South, being sick is bệnh, often pronounced 'bịnh'. In the North it's ốm. Trap: in the South, ốm means skinny! bị marks something you suffer: 'Em bị bệnh', 'Em bị sốt'. A kind reply: 'Mau khỏe nha!'."
+  },
+  "vi": "Em bị bệnh rồi.",
+  "audio": "audio/cc_benh_om.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, « ốm » veut dire…",
+      "en": "In the South, 'ốm' means…"
+    },
+    "options": [
+      {
+        "fr": "maigre",
+        "en": "skinny"
+      },
+      {
+        "fr": "malade",
+        "en": "sick"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

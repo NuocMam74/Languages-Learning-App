@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_xin_loi_toi_tre",
+  "type": "structure",
+  "vi": "Xin lỗi, em tới trễ.",
+  "gloss": {
+    "fr": "Pardon, je suis en retard (à plus âgé).",
+    "en": "Sorry, I'm late (to someone older)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_xin_loi_toi_tre_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_xin_loi_toi_tre_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

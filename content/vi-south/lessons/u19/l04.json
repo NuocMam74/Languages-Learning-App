@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u19.l04",
+  "unit": "vi-south.u19",
+  "title": {
+    "fr": "Ngân hàng, tài khoản",
+    "en": "Bank and account"
+  },
+  "goal": {
+    "fr": "Ouvrir un compte, retirer de l'argent, payer par virement.",
+    "en": "Open an account, withdraw money, pay by transfer."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u19.l03"
+  ],
+  "concepts": [
+    "c_b_tai_khoan",
+    "c_b_mo",
+    "s_b_mo_tai_khoan",
+    "c_b_rut",
+    "s_b_rut_tien",
+    "c_b_the",
+    "c_b_chuyen_khoan",
+    "c_ngan_hang"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "c_benh_vien",
+        "c_khach_san",
+        "c_truong_hoc"
+      ],
+      "explain": {
+        "fr": "ngân hàng : la banque.",
+        "en": "ngân hàng: bank."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_chuyen_khoan_qr"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_khoan",
+      "distractors": [
+        "tai khoản",
+        "tài khoan"
+      ],
+      "explain": {
+        "fr": "tài descend, khoản plonge : le compte.",
+        "en": "tài falls, khoản dips: account."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em muốn mở tài khoản.",
+      "tokens": [
+        "Em",
+        "muốn",
+        "mở",
+        "tài khoản",
+        "mua"
+      ],
+      "translation": {
+        "fr": "Je voudrais ouvrir un compte.",
+        "en": "I'd like to open an account."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_the",
+      "distractors": [
+        "c_tien",
+        "c_b_ho_chieu"
+      ],
+      "explain": {
+        "fr": "thẻ : la carte (bancaire).",
+        "en": "thẻ: (bank) card."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_rut_tien",
+      "distractors": [
+        "Tui muốn gửi tiền.",
+        "Tui muốn đổi tiền."
+      ],
+      "explain": {
+        "fr": "rút tiền : retirer. gửi : déposer. đổi : changer.",
+        "en": "rút tiền: withdraw. gửi: deposit. đổi: exchange."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_the",
+      "explain": {
+        "fr": "thẻ porte le hỏi.",
+        "en": "thẻ carries hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_chuyen_khoan",
+      "distractors": [
+        "chuyển khoan",
+        "chuyện khoản"
+      ],
+      "explain": {
+        "fr": "chuyển khoản : le virement.",
+        "en": "chuyển khoản: bank transfer."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị chuyển khoản cho em nha.",
+      "tokens": [
+        "Chị",
+        "chuyển khoản",
+        "cho",
+        "em",
+        "nha",
+        "không"
+      ],
+      "translation": {
+        "fr": "Paie-moi par virement, d'accord ? (à une femme un peu plus âgée)",
+        "en": "Pay me by transfer, okay? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_mo_tai_khoan",
+      "explain": {
+        "fr": "mở plonge, tài descend, khoản plonge.",
+        "en": "mở dips, tài falls, khoản dips."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_tai_khoan",
+      "c_b_mo",
+      "s_b_mo_tai_khoan",
+      "c_b_rut",
+      "s_b_rut_tien",
+      "c_b_the",
+      "c_b_chuyen_khoan"
+    ]
+  },
+  "reviewed": false
+}

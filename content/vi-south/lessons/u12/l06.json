@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u12.l06",
+  "unit": "vi-south.u12",
+  "title": {
+    "fr": "Có… không ? Chưa ?",
+    "en": "Yes/no questions"
+  },
+  "goal": {
+    "fr": "Poser une question fermée et y répondre.",
+    "en": "Ask yes/no questions and answer them."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u12.l05"
+  ],
+  "concepts": [
+    "s_an_com_chua",
+    "s_an_roi",
+    "s_chi_co_con_khong",
+    "s_phai_khong",
+    "c_chua"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_an_com_chua",
+      "distractors": [
+        "Em ăn cơm không?",
+        "Em ăn cơm rồi."
+      ],
+      "explain": {
+        "fr": "… chưa ? : déjà ? On répond Rồi ou Chưa.",
+        "en": "… chưa?: yet? You answer Rồi or Chưa."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_an_com_chua"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_an_roi",
+      "distractors": [
+        "Dạ, chưa.",
+        "Dạ, ăn cơm."
+      ],
+      "explain": {
+        "fr": "Dạ, ăn rồi : oui, j'ai mangé.",
+        "en": "Dạ, ăn rồi: yes, I've eaten."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị có con không?",
+      "tokens": [
+        "Chị",
+        "có",
+        "con",
+        "không",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu as des enfants ? (à une femme un peu plus âgée)",
+        "en": "Do you have children? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "có + nom + không ? : as-tu… ?",
+        "en": "có + noun + không?: do you have…?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chi_co_con_khong",
+      "distractors": [
+        "Chị có con chưa?",
+        "Chị có chồng không?"
+      ],
+      "explain": {
+        "fr": "con : enfant. chồng : mari.",
+        "en": "con: child. chồng: husband."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_chua",
+      "explain": {
+        "fr": "chưa reste plat (ngang).",
+        "en": "chưa stays level (ngang)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh là người Pháp phải không?",
+      "tokens": [
+        "Anh",
+        "là",
+        "người Pháp",
+        "phải không",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu es français, n'est-ce pas ? (à un homme un peu plus âgé)",
+        "en": "You're French, right? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "… phải không ? : pour vérifier une supposition.",
+        "en": "… phải không?: to check an assumption."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_phai_khong",
+      "distractors": [
+        "phải rồi",
+        "không phải"
+      ],
+      "explain": {
+        "fr": "phải không ? : n'est-ce pas ? phải rồi : c'est ça.",
+        "en": "phải không?: right? phải rồi: that's right."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_an_com_chua",
+      "explain": {
+        "fr": "cơm plat, chưa plat : phrase facile à dire.",
+        "en": "cơm level, chưa level: an easy one to say."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_an_com_chua",
+      "s_an_roi",
+      "s_chi_co_con_khong",
+      "s_phai_khong"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_dam_gio",
+  "title": {
+    "fr": "Le đám giỗ",
+    "en": "The đám giỗ"
+  },
+  "body": {
+    "fr": "Chaque année, la famille célèbre l'anniversaire de la mort d'un ancêtre : le đám giỗ. On dépose un repas sur le bàn thờ, on allume des nhang, puis tout le monde mange ensemble. Être invité est un honneur : apporte des fruits et salue les aînés.",
+    "en": "Every year, the family marks the anniversary of an ancestor's death: the đám giỗ. A meal is placed on the bàn thờ, nhang are lit, then everyone eats together. Being invited is an honour: bring fruit and greet the elders."
+  },
+  "vi": "Mai nhà em có đám giỗ.",
+  "audio": "audio/cc_b_dam_gio.opus",
+  "question": {
+    "prompt": {
+      "fr": "Invité à un đám giỗ, tu peux apporter…",
+      "en": "Invited to a đám giỗ, you can bring…"
+    },
+    "options": [
+      {
+        "fr": "des fruits",
+        "en": "fruit"
+      },
+      {
+        "fr": "rien : c'est mal vu",
+        "en": "nothing: gifts are frowned upon"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

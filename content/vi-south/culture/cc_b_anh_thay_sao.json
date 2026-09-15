@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_anh_thay_sao",
+  "title": {
+    "fr": "« Anh thấy sao ? »",
+    "en": "'Anh thấy sao?'"
+  },
+  "body": {
+    "fr": "Pour demander un avis, on dit simplement « Anh thấy sao ? » : « Tu vois ça comment ? ». Thấy veut dire voir, mais aussi trouver, ressentir. La réponse commence souvent par « Tui thấy… » ou « Theo tui… ». « Tui nghĩ là… » sonne plus réfléchi.",
+    "en": "To ask for an opinion, just say 'Anh thấy sao?': 'How do you see it?'. Thấy means to see, but also to find or feel. Answers often start with 'Tui thấy…' or 'Theo tui…'. 'Tui nghĩ là…' sounds more considered."
+  },
+  "vi": "Anh thấy sao?",
+  "audio": "audio/cc_b_anh_thay_sao.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Chị thấy sao ? » demande…",
+      "en": "'Chị thấy sao?' asks for…"
+    },
+    "options": [
+      {
+        "fr": "ton avis",
+        "en": "your opinion"
+      },
+      {
+        "fr": "ton adresse",
+        "en": "your address"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

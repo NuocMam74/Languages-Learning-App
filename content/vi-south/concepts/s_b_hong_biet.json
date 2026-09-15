@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_hong_biet",
+  "type": "structure",
+  "vi": "Hổng biết.",
+  "gloss": {
+    "fr": "Sais pas. (familier)",
+    "en": "Dunno. (casual)"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hong_biet_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hong_biet_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

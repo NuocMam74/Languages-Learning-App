@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_dam_gio",
+  "type": "word",
+  "vi": "đám giỗ",
+  "gloss": {
+    "fr": "anniversaire de la mort d'un ancêtre (repas familial)",
+    "en": "death anniversary (family meal)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_dam_gio_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_dam_gio_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/altar.svg",
+  "reviewed": false
+}

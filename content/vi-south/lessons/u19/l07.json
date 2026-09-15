@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u19.l07",
+  "unit": "vi-south.u19",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : démarches",
+    "en": "Review: paperwork"
+  },
+  "goal": {
+    "fr": "Revoir papiers, banque et formulaires.",
+    "en": "Go over papers, banking and forms."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u19.l06"
+  ],
+  "concepts": [
+    "c_b_ho_chieu",
+    "c_b_giay_paper",
+    "c_b_giay_second",
+    "s_b_gia_han_visa",
+    "c_b_cong_an",
+    "c_b_tam_tru",
+    "c_b_the",
+    "s_b_ky_ten_o_day"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ho_chieu",
+      "distractors": [
+        "c_b_visa",
+        "c_b_the"
+      ],
+      "explain": {
+        "fr": "hộ chiếu : le passeport.",
+        "en": "hộ chiếu: passport."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "giấy",
+        "giây"
+      ],
+      "audioConcepts": [
+        "c_b_giay_paper",
+        "c_b_giay_second"
+      ],
+      "explain": {
+        "fr": "giấy monte, giây plat.",
+        "en": "giấy rises, giây level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gia_han_visa",
+      "distractors": [
+        "Tui muốn gia hạn hộ chiếu.",
+        "Tui mượn gia hạn visa."
+      ],
+      "explain": {
+        "fr": "muốn : vouloir ; mượn : emprunter.",
+        "en": "muốn: want; mượn: borrow."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_cong_an",
+      "distractors": [
+        "c_b_sep",
+        "c_bac_si"
+      ],
+      "explain": {
+        "fr": "công an : le policier.",
+        "en": "công an: police officer."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh điền vô đơn này nha.",
+      "tokens": [
+        "Anh",
+        "điền",
+        "vô",
+        "đơn",
+        "này",
+        "nha",
+        "điện"
+      ],
+      "translation": {
+        "fr": "Remplis ce formulaire, d'accord ?",
+        "en": "Fill in this form, okay?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tam_tru",
+      "distractors": [
+        "tám trú",
+        "tạm trụ"
+      ],
+      "explain": {
+        "fr": "tạm trú.",
+        "en": "tạm trú."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em muốn mở tài khoản.",
+      "tokens": [
+        "Em",
+        "muốn",
+        "mở",
+        "tài khoản",
+        "mua"
+      ],
+      "translation": {
+        "fr": "Je voudrais ouvrir un compte.",
+        "en": "I'd like to open an account."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_the",
+      "explain": {
+        "fr": "thẻ : hỏi.",
+        "en": "thẻ: hỏi."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_ky_ten_o_day",
+      "explain": {
+        "fr": "ký monte, đây plat.",
+        "en": "ký rises, đây level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

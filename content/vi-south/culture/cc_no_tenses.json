@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_no_tenses",
+  "title": {
+    "fr": "Pas de conjugaison !",
+    "en": "No conjugation!"
+  },
+  "body": {
+    "fr": "Le verbe vietnamien ne change jamais. Pour le temps, on ajoute un petit mot : đã ou rồi pour le passé, đang pour le présent, sẽ pour le futur. Souvent, on ne met rien : « Hôm qua em đi chợ » suffit, hôm qua dit déjà que c'est passé.",
+    "en": "Vietnamese verbs never change. For time you add a little word: đã or rồi for the past, đang for now, sẽ for the future. Often you add nothing: 'Hôm qua em đi chợ' is enough, since hôm qua already says it's past."
+  },
+  "vi": "Hôm qua em đi chợ.",
+  "audio": "audio/cc_no_tenses.opus",
+  "question": {
+    "prompt": {
+      "fr": "Dans « Hôm qua em đi chợ », le passé est indiqué par…",
+      "en": "In 'Hôm qua em đi chợ', the past is shown by…"
+    },
+    "options": [
+      {
+        "fr": "hôm qua",
+        "en": "hôm qua"
+      },
+      {
+        "fr": "une terminaison du verbe",
+        "en": "a verb ending"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

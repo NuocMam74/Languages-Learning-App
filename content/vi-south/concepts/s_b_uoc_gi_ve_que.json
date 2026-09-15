@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_uoc_gi_ve_que",
+  "type": "structure",
+  "vi": "Ước gì tui được về quê ăn Tết.",
+  "gloss": {
+    "fr": "Si seulement je pouvais rentrer au pays pour le Tết.",
+    "en": "If only I could go home for Tết."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_uoc_gi_ve_que_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_uoc_gi_ve_que_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

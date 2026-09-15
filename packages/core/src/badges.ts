@@ -1,6 +1,6 @@
 import type { SrsCard } from "./srs.ts";
 import type { Streak } from "./streak.ts";
-import type { ConceptId, Curriculum, LessonId, StepType } from "./types.ts";
+import type { ConceptId, Curriculum, LessonId, PackFeature, StepType } from "./types.ts";
 
 /**
  * Badges de la Phase 1 (spec §5.4). Les critères sont évalués après chaque
@@ -35,6 +35,13 @@ export interface BadgeInput {
   knownWords: number;
   /** Résultats des derniers items de tons, du plus ancien au plus récent. */
   toneLog: readonly boolean[];
+  /** Fonctionnalités du pack : sans « tones », le badge d'oreille tonale ne s'applique pas. */
+  features?: readonly PackFeature[];
+}
+
+/** Badges qui ont un sens pour ce pack (ordre de BADGE_CODES). */
+export function badgeCodesFor(pack: { features: readonly PackFeature[] }): BadgeCode[] {
+  return BADGE_CODES.filter((code) => code !== "tone_ear" || pack.features.includes("tones"));
 }
 
 /** Ajoute un résultat au journal des tons en gardant la fenêtre utile. */
@@ -71,5 +78,6 @@ function criterion(code: BadgeCode, input: BadgeInput): boolean {
 
 /** Badges nouvellement gagnés (ordre stable de BADGE_CODES). */
 export function evaluateBadges(input: BadgeInput, earned: ReadonlySet<string>): BadgeCode[] {
-  return BADGE_CODES.filter((code) => !earned.has(code) && criterion(code, input));
+  const applicable: readonly BadgeCode[] = input.features ? badgeCodesFor({ features: input.features }) : BADGE_CODES;
+  return applicable.filter((code) => !earned.has(code) && criterion(code, input));
 }

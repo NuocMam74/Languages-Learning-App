@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_hom_qua_tui_di_cho",
+  "type": "structure",
+  "vi": "Hôm qua tui đi chợ rồi về nhà.",
+  "gloss": {
+    "fr": "Hier, je suis allé(e) au marché puis je suis rentré(e).",
+    "en": "Yesterday I went to the market, then went home."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hom_qua_tui_di_cho_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hom_qua_tui_di_cho_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

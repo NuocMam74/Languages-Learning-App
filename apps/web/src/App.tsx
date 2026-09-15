@@ -7,12 +7,14 @@ import { loadPack } from "./content.ts";
 import type { Profile } from "./db.ts";
 import { t } from "./i18n/index.ts";
 import { currentSession, getProfile, sessionPath } from "./learner.ts";
+import { loadActivePack } from "./packs/switch.ts";
 import { Hub } from "./pages/Hub.tsx";
 import { Onboarding } from "./pages/Onboarding.tsx";
 import { SessionPage } from "./pages/SessionPage.tsx";
 import { Welcome } from "./pages/Welcome.tsx";
 import { GamePlayPage, GamesPage } from "./games/GamesPage.tsx";
 import { usePrefs } from "./prefs.ts";
+import { startExpressQueue } from "./social/express-store.ts";
 import { startSync } from "./sync.ts";
 
 /** Pages de démonstration des composants (spec §16) : développement uniquement, absentes du build. */
@@ -32,6 +34,17 @@ const CertificatesPage = lazy(() => import("./certificates/CertificatePages.tsx"
 const VerifyPage = lazy(() => import("./certificates/CertificatePages.tsx").then((m) => ({ default: m.VerifyPage })));
 const KaraokePage = lazy(() => import("./karaoke/KaraokePage.tsx"));
 const RemindersPage = lazy(() => import("./notifications/Reminders.tsx").then((m) => ({ default: m.RemindersPage })));
+// Phase 3 : Cô Mai (conversation, bilan de la semaine) et Đối đáp.
+const TutorStartPage = lazy(() => import("./tutor/ConversationPage.tsx").then((m) => ({ default: m.TutorStartPage })));
+const ConversationPage = lazy(() => import("./tutor/ConversationPage.tsx").then((m) => ({ default: m.ConversationPage })));
+const DebriefPage = lazy(() => import("./tutor/DebriefPage.tsx"));
+const DoiDapPage = lazy(() => import("./games/DoiDapPage.tsx"));
+// Phase 3 : ligue, défis entre amis, défi express, partage.
+const LeaguePage = lazy(() => import("./leagues/LeaguePage.tsx").then((m) => ({ default: m.LeaguePage })));
+const ChallengesPage = lazy(() => import("./social/FriendsPages.tsx").then((m) => ({ default: m.ChallengesPage })));
+const JoinChallengePage = lazy(() => import("./social/FriendsPages.tsx").then((m) => ({ default: m.JoinChallengePage })));
+const ExpressPage = lazy(() => import("./social/ExpressPages.tsx").then((m) => ({ default: m.ExpressPage })));
+const SharePage = lazy(() => import("./social/ExpressPages.tsx").then((m) => ({ default: m.SharePage })));
 
 const later = (node: ReactNode) => <Suspense fallback={null}>{node}</Suspense>;
 
@@ -47,7 +60,9 @@ export function App() {
 
   const start = useCallback(() => {
     setFailed(false);
-    Promise.all([loadPack(), getProfile()])
+    // Langue apprise enregistrée d'abord (ADR 0006) : contenu, profil et progression sont ceux de ce pack.
+    loadActivePack()
+      .then(() => Promise.all([loadPack(), getProfile()]))
       .then(async ([content, profile]) => {
         const session = await currentSession(content);
         // Reprise exacte, une seule fois au lancement : quitter la séance ramène ensuite au hub.
@@ -63,7 +78,12 @@ export function App() {
 
   useEffect(() => {
     void useAccount.getState().init();
-    return startSync();
+    const stopExpress = startExpressQueue(() => useAccount.getState().status === "signed_in");
+    const stopSync = startSync();
+    return () => {
+      stopExpress();
+      stopSync();
+    };
   }, []);
 
   if (failed) {
@@ -103,6 +123,10 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/badges", element: later(<Badges />) },
         { path: "/jeux", element: <GamesPage /> },
         { path: "/jeux/karaoke_tonal", element: later(<KaraokePage content={content} />) },
+        { path: "/jeux/doi_dap", element: later(<DoiDapPage content={content} />) },
+        { path: "/co-mai", element: later(<TutorStartPage />) },
+        { path: "/co-mai/:conversationId", element: later(<ConversationPage content={content} />) },
+        { path: "/bilan-semaine", element: later(<DebriefPage />) },
         { path: "/jeux/:game", element: <GamePlayPage content={content} /> },
         { path: "/examens", element: later(<ExamsPage content={content} />) },
         { path: "/examens/:level", element: later(<RealExamPage content={content} />) },
@@ -110,6 +134,12 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/certificats", element: later(<CertificatesPage content={content} />) },
         { path: "/verifier/:code", element: later(<VerifyPage />) },
         { path: "/rappels", element: later(<RemindersPage />) },
+        { path: "/ligue", element: later(<LeaguePage />) },
+        { path: "/defis", element: later(<ChallengesPage />) },
+        { path: "/defi/:code", element: later(<JoinChallengePage />) },
+        { path: "/:lang/defi/:code", element: later(<JoinChallengePage />) },
+        { path: "/express", element: later(<ExpressPage content={content} />) },
+        { path: "/partage/:id", element: later(<SharePage />) },
         ...(DemoPage
           ? [
               { path: "/demo", element: <Suspense fallback={null}><DemoPage content={content} /></Suspense> },

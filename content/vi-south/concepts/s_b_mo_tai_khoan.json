@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_mo_tai_khoan",
+  "type": "structure",
+  "vi": "Em muốn mở tài khoản.",
+  "gloss": {
+    "fr": "Je voudrais ouvrir un compte (à plus âgé).",
+    "en": "I'd like to open an account (to someone older)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_mo_tai_khoan_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_mo_tai_khoan_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u24.l01",
+  "unit": "vi-south.u24",
+  "title": {
+    "fr": "Theo tui",
+    "en": "In my opinion"
+  },
+  "goal": {
+    "fr": "Donner ton avis simplement et demander celui des autres.",
+    "en": "Give your opinion simply and ask for others'."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u23.l08"
+  ],
+  "concepts": [
+    "c_b_theo",
+    "s_b_theo_tui",
+    "s_b_theo_tui_ngon",
+    "s_b_anh_thay_sao",
+    "c_hon"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_theo_tui_ngon",
+      "distractors": [
+        "Theo tui, quán này mắc hơn.",
+        "Theo chị, quán này ngon hơn."
+      ],
+      "explain": {
+        "fr": "theo tui : à mon avis ; theo chị : selon toi.",
+        "en": "theo tui: in my view; theo chị: in your view."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_anh_thay_sao"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_theo",
+      "distractors": [
+        "thèo",
+        "thẹo"
+      ],
+      "explain": {
+        "fr": "theo, plat : selon.",
+        "en": "theo, level: according to."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Theo tui, quán này ngon hơn.",
+      "tokens": [
+        "Theo tui",
+        "quán này",
+        "ngon",
+        "hơn",
+        "hơi"
+      ],
+      "translation": {
+        "fr": "À mon avis, ce resto est meilleur.",
+        "en": "In my opinion, this place is better."
+      },
+      "explain": {
+        "fr": "adjectif + hơn : plus… (que).",
+        "en": "adjective + hơn: more… (than)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_anh_thay_sao",
+      "distractors": [
+        "Chị thấy sao?",
+        "Anh thấy hông?"
+      ],
+      "explain": {
+        "fr": "thấy sao : qu'en penses-tu ?",
+        "en": "thấy sao: what do you think?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh thấy sao?",
+      "tokens": [
+        "Anh",
+        "thấy",
+        "sao",
+        "sau"
+      ],
+      "translation": {
+        "fr": "Qu'en penses-tu ?",
+        "en": "What do you think?"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_hon",
+      "explain": {
+        "fr": "hơn : ngang.",
+        "en": "hơn: ngang."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui thấy phở ngon hơn hủ tiếu.",
+      "tokens": [
+        "Tui",
+        "thấy",
+        "phở",
+        "ngon",
+        "hơn",
+        "hủ tiếu",
+        "hơi"
+      ],
+      "translation": {
+        "fr": "Je trouve le phở meilleur que le hủ tiếu.",
+        "en": "I think phở is better than hủ tiếu."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_theo_tui_ngon",
+      "explain": {
+        "fr": "theo plat, này descend, hơn plat.",
+        "en": "theo level, này falls, hơn level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_theo",
+      "s_b_theo_tui",
+      "s_b_theo_tui_ngon",
+      "s_b_anh_thay_sao"
+    ]
+  },
+  "reviewed": false
+}

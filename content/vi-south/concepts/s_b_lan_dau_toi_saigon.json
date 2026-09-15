@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_lan_dau_toi_saigon",
+  "type": "structure",
+  "vi": "Lần đầu tui tới Sài Gòn là năm 2015.",
+  "gloss": {
+    "fr": "La première fois que je suis venu(e) à Saïgon, c'était en 2015.",
+    "en": "The first time I came to Saigon was in 2015."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_lan_dau_toi_saigon_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_lan_dau_toi_saigon_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

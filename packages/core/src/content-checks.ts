@@ -1,5 +1,5 @@
 import { heardClassOf, isToneMinimalPair, normalizeAnswer, toneOf } from "./text.ts";
-import type { ContentIndex, Lesson, LessonStep } from "./types.ts";
+import { hasFeature, TONAL_STEP_TYPES, type ContentIndex, type Lesson, type LessonStep } from "./types.ts";
 
 /**
  * Contrôles sémantiques du contenu, au-delà des schémas JSON :
@@ -21,6 +21,7 @@ export function checkContent(content: ContentIndex, opts: { production?: boolean
   const warn = (where: string, message: string) => issues.push({ level: "warning", where, message });
 
   checkNfc(content, err);
+  checkPackFeatures(content, err);
 
   // Cursus ↔ leçons
   const listed = new Map<string, string>();
@@ -81,11 +82,50 @@ export function checkLessonStep(content: ContentIndex, lesson: Lesson, step: Les
   return issues;
 }
 
+/**
+ * Cohérence entre `pack.features` et le contenu (ADR 0006) : un pack sans tons ne
+ * contient ni système tonal, ni exercice de tons, ni concept marqué d'un ton ; un pack
+ * sans variantes régionales n'a pas d'exercice « repère la forme régionale ».
+ * Les identifiants de leçon et d'unité portent le code du pack (pas de collision entre packs).
+ */
+function checkPackFeatures(content: ContentIndex, err: Report) {
+  const { pack, curriculum } = content;
+  const tonal = hasFeature(pack, "tones");
+  if (tonal && !pack.toneSystem) err("pack.json", `features contient "tones" mais toneSystem est absent`);
+  if (!tonal && pack.toneSystem) err("pack.json", `toneSystem présent sans la feature "tones"`);
+  if (hasFeature(pack, "lexical_variants") && !content.variants) err("pack.json", `features contient "lexical_variants" mais lexical-variants.json est absent`);
+  if (curriculum.pack !== pack.code) err("curriculum.json", `pack "${curriculum.pack}" ≠ code du pack "${pack.code}"`);
+  const prefix = `${pack.code}.`;
+  for (const unit of curriculum.units) {
+    if (!unit.id.startsWith(prefix)) err(unit.id, `L'identifiant d'unité doit commencer par ${prefix}`);
+  }
+  for (const lesson of content.lessons.values()) {
+    if (!lesson.id.startsWith(prefix)) err(lesson.id, `L'identifiant de leçon doit commencer par ${prefix}`);
+  }
+  if (!tonal) {
+    for (const concept of content.concepts.values()) {
+      if (concept.tone || concept.type === "tone") err(concept.id, `Ton déclaré dans un pack sans la feature "tones"`);
+    }
+  }
+}
+
 function checkStep(content: ContentIndex, lesson: Lesson, step: LessonStep, where: string, err: Report, warn: Report) {
   const needConcept = (id: string) => {
     if (!content.concepts.has(id)) err(where, `Concept inconnu : ${id}`);
     else if (!lesson.concepts.includes(id)) warn(where, `Concept ${id} utilisé mais absent de lesson.concepts`);
   };
+  if (TONAL_STEP_TYPES.has(step.type) && !hasFeature(content.pack, "tones")) {
+    err(where, `Exercice de tons dans un pack sans la feature "tones"`);
+    return;
+  }
+  if (step.type === "spot_the_south" && !hasFeature(content.pack, "lexical_variants")) {
+    err(where, `spot_the_south dans un pack sans la feature "lexical_variants"`);
+    return;
+  }
+  if (step.type === "game" && step.game === "karaoke_tonal" && !hasFeature(content.pack, "tones")) {
+    err(where, `Karaoké tonal dans un pack sans la feature "tones"`);
+    return;
+  }
 
   switch (step.type) {
     case "culture_card":

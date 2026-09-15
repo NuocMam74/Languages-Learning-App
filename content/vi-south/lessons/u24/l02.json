@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u24.l02",
+  "unit": "vi-south.u24",
+  "title": {
+    "fr": "Đúng hay sai?",
+    "en": "Right or wrong?"
+  },
+  "goal": {
+    "fr": "Dire qu'une chose est juste ou fausse, avec tact.",
+    "en": "Say something is right or wrong, tactfully."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u24.l01"
+  ],
+  "concepts": [
+    "c_b_dung_right",
+    "c_b_dung_bump",
+    "c_b_sai",
+    "c_b_hay",
+    "s_b_dung_roi",
+    "s_b_sai_roi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dung_roi",
+      "distractors": [
+        "Đụng rồi!",
+        "Sai rồi!"
+      ],
+      "explain": {
+        "fr": "đúng rồi : c'est ça. đụng : heurter.",
+        "en": "đúng rồi: that's right. đụng: to bump."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "đúng",
+        "đụng"
+      ],
+      "audioConcepts": [
+        "c_b_dung_right",
+        "c_b_dung_bump"
+      ],
+      "explain": {
+        "fr": "đúng monte : juste. đụng tombe court : heurter.",
+        "en": "đúng rises: right. đụng drops short: to bump."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_dung_right",
+      "explain": {
+        "fr": "đúng : monte.",
+        "en": "đúng: rise."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sai",
+      "distractors": [
+        "sài",
+        "sải"
+      ],
+      "explain": {
+        "fr": "sai, plat : faux.",
+        "en": "sai, level: wrong."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_khong_noi_khong"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cái này đúng hay sai?",
+      "tokens": [
+        "Cái này",
+        "đúng",
+        "hay",
+        "sai",
+        "đụng"
+      ],
+      "translation": {
+        "fr": "C'est juste ou faux ?",
+        "en": "Is this right or wrong?"
+      },
+      "explain": {
+        "fr": "hay dans une question : ou.",
+        "en": "hay in a question: or."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cũng đúng, nhưng mà hơi khác.",
+      "tokens": [
+        "Cũng",
+        "đúng",
+        "nhưng mà",
+        "hơi",
+        "khác",
+        "đụng"
+      ],
+      "translation": {
+        "fr": "C'est vrai aussi, mais c'est un peu différent.",
+        "en": "That's true too, but it's a bit different."
+      },
+      "explain": {
+        "fr": "Commencer par cũng đúng adoucit le désaccord.",
+        "en": "Starting with cũng đúng softens disagreement."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_sai",
+      "explain": {
+        "fr": "sai : ngang.",
+        "en": "sai: ngang."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hay",
+      "distractors": [
+        "hày",
+        "háy"
+      ],
+      "explain": {
+        "fr": "hay, plat : ou ; intéressant.",
+        "en": "hay, level: or; interesting."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_dung_roi",
+      "explain": {
+        "fr": "đúng monte, rồi descend.",
+        "en": "đúng rises, rồi falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_dung_right",
+      "c_b_dung_bump",
+      "c_b_sai",
+      "c_b_hay",
+      "s_b_dung_roi",
+      "s_b_sai_roi"
+    ]
+  },
+  "reviewed": false
+}

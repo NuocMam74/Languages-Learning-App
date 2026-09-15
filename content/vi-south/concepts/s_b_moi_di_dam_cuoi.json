@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_moi_di_dam_cuoi",
+  "type": "structure",
+  "vi": "Mời chị đi đám cưới em nha.",
+  "gloss": {
+    "fr": "Viens à mon mariage, s'il te plaît (à une femme un peu plus âgée).",
+    "en": "Please come to my wedding (to a slightly older woman)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_moi_di_dam_cuoi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_moi_di_dam_cuoi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

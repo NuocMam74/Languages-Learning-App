@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_luc_do_troi_mua",
+  "type": "structure",
+  "vi": "Lúc đó trời mưa lớn lắm.",
+  "gloss": {
+    "fr": "À ce moment-là, il pleuvait très fort.",
+    "en": "At that moment it was raining really hard."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_luc_do_troi_mua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_luc_do_troi_mua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "mưa lớn : forte pluie (Sud) ; au Nord on dit souvent mưa to.",
+    "en": "mưa lớn: heavy rain (South); the North often says mưa to."
+  },
+  "reviewed": false
+}

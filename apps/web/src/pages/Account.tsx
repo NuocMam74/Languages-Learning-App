@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ReactNode } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import { useAccount } from "../account.ts";
 import { ApiError, NetworkError } from "../api.ts";
 import { Button, Screen } from "../components/ui.tsx";
@@ -49,6 +49,11 @@ function ProviderButtons() {
 
 export default function AccountPage({ mode }: { mode: "register" | "login" }) {
   const navigate = useNavigate();
+  // Retour après création de compte / connexion (ex. invitation /defi/:code) : chemin interne seulement.
+  const [params] = useSearchParams();
+  const rawNext = params.get("next");
+  const next = rawNext && rawNext.startsWith("/") && !rawNext.startsWith("//") ? rawNext : null;
+  const withNext = (path: string) => (next ? `${path}?next=${encodeURIComponent(next)}` : path);
   const { createAccount, signIn } = useAccount();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,7 +75,8 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
     try {
       if (mode === "register") await createAccount({ email: email.trim(), password, displayName: displayName.trim(), locale });
       else await signIn(email.trim(), password);
-      setDone(true);
+      if (next) navigate(next, { replace: true });
+      else setDone(true);
     } catch (err) {
       setError(errorKey(err, mode));
     } finally {
@@ -152,14 +158,14 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
         <ProviderButtons />
         {register ? (
           <>
-            <Link to="/connexion" className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.toLogin")}</Link>
+            <Link to={withNext("/connexion")} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.toLogin")}</Link>
             <div className="border-t border-phu-sa/10 pt-4">
               <Link to="/" className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.guest.continue")}</Link>
               <p className="text-center text-sm text-phu-sa">{t("account.offer.guestWarning")}</p>
             </div>
           </>
         ) : (
-          <Link to="/compte" className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.toRegister")}</Link>
+          <Link to={withNext("/compte")} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.toRegister")}</Link>
         )}
       </div>
     </Screen>

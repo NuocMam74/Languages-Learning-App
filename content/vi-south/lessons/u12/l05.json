@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u12.l05",
+  "unit": "vi-south.u12",
+  "title": {
+    "fr": "Mấy ? Bao nhiêu ?",
+    "en": "How many? How much?"
+  },
+  "goal": {
+    "fr": "Demander un nombre, petit ou grand.",
+    "en": "Ask for a number, small or large."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u12.l04"
+  ],
+  "concepts": [
+    "c_may_cloud",
+    "s_nha_may_nguoi",
+    "s_may_ngay",
+    "s_bao_nhieu_tien",
+    "c_may",
+    "c_tien",
+    "c_dien_thoai",
+    "c_sach"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_may_nguoi",
+      "distractors": [
+        "Nhà em có mấy phòng?",
+        "Nhà em có bốn người."
+      ],
+      "explain": {
+        "fr": "mấy người : combien de personnes.",
+        "en": "mấy người: how many people."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_may_bao_nhieu"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "mấy",
+        "mây"
+      ],
+      "audioConcepts": [
+        "c_may",
+        "c_may_cloud"
+      ],
+      "explain": {
+        "fr": "mấy monte : combien. mây reste plat : le nuage.",
+        "en": "mấy rises: how many. mây stays level: cloud."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_may_ngay",
+      "distractors": [
+        "mấy người",
+        "mấy giờ"
+      ],
+      "explain": {
+        "fr": "mấy ngày : combien de jours.",
+        "en": "mấy ngày: how many days."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ở Sài Gòn mấy ngày?",
+      "tokens": [
+        "Em",
+        "ở",
+        "Sài Gòn",
+        "mấy",
+        "ngày",
+        "bao lâu"
+      ],
+      "translation": {
+        "fr": "Tu restes combien de jours à Saïgon ? (à plus jeune)",
+        "en": "How many days are you staying in Saigon? (to someone younger)"
+      },
+      "explain": {
+        "fr": "mấy + unité : un petit nombre attendu.",
+        "en": "mấy + unit: a small number expected."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bao_nhieu_tien",
+      "distractors": [
+        "Bao nhiêu tuổi?",
+        "Bao nhiêu người?"
+      ],
+      "explain": {
+        "fr": "bao nhiêu tiền : combien d'argent.",
+        "en": "bao nhiêu tiền: how much money."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_dien_thoai",
+        "c_sach"
+      ],
+      "explain": {
+        "fr": "tiền : l'argent.",
+        "en": "tiền: money."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà em có mấy người?",
+      "tokens": [
+        "Nhà",
+        "em",
+        "có",
+        "mấy",
+        "người",
+        "bao nhiêu"
+      ],
+      "translation": {
+        "fr": "Vous êtes combien dans ta famille ? (à plus jeune)",
+        "en": "How many people in your family? (to someone younger)"
+      },
+      "explain": {
+        "fr": "Une famille : un petit nombre, donc mấy.",
+        "en": "A family: a small number, so mấy."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_may",
+      "explain": {
+        "fr": "mấy monte franchement (sắc).",
+        "en": "mấy rises clearly (sắc)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_bao_nhieu_tien",
+      "explain": {
+        "fr": "nhiêu reste plat, tiền descend.",
+        "en": "nhiêu stays level, tiền falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_may_cloud",
+      "s_nha_may_nguoi",
+      "s_may_ngay",
+      "s_bao_nhieu_tien"
+    ]
+  },
+  "reviewed": false
+}

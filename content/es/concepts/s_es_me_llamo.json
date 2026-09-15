@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_es_me_llamo",
+  "type": "structure",
+  "vi": "me llamo",
+  "gloss": {
+    "fr": "je m'appelle",
+    "en": "my name is"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/s_es_me_llamo_lucia.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/s_es_me_llamo_lucia_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Me llamo Ana.",
+      "fr": "Je m'appelle Ana.",
+      "en": "My name is Ana."
+    }
+  ],
+  "reviewed": false
+}

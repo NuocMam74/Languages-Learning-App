@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_goi_lai_nha",
+  "type": "structure",
+  "vi": "Lát em gọi lại nha.",
+  "gloss": {
+    "fr": "Je te rappelle tout à l'heure.",
+    "en": "I'll call you back in a bit."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_goi_lai_nha_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_goi_lai_nha_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

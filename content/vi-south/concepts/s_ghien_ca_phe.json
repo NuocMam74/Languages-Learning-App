@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_ghien_ca_phe",
+  "type": "structure",
+  "vi": "Anh ghiền cà phê sữa đá.",
+  "gloss": {
+    "fr": "Je suis accro au café glacé au lait (homme, à plus jeune).",
+    "en": "I'm hooked on iced milk coffee (man, to someone younger)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ghien_ca_phe_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ghien_ca_phe_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

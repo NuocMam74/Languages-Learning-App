@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u23.l01",
+  "unit": "vi-south.u23",
+  "title": {
+    "fr": "Nếu… thì…",
+    "en": "If… then…"
+  },
+  "goal": {
+    "fr": "Poser une condition simple.",
+    "en": "Set a simple condition."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u22.l08"
+  ],
+  "concepts": [
+    "c_b_neu",
+    "c_b_thi",
+    "s_b_neu_mua_thi_o_nha",
+    "c_mua_rain"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_mua_thi_o_nha",
+      "distractors": [
+        "Nếu mưa thì tui đi làm.",
+        "Hôm qua mưa nên tui ở nhà."
+      ],
+      "explain": {
+        "fr": "nếu… thì : si… alors. nên : donc (fait réel).",
+        "en": "nếu… thì: if… then. nên: so (real fact)."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_neu_thi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_neu",
+      "distractors": [
+        "nêu",
+        "nều"
+      ],
+      "explain": {
+        "fr": "nếu monte : si.",
+        "en": "nếu rises: if."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_neu",
+      "explain": {
+        "fr": "nếu : monte.",
+        "en": "nếu: rise."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "c_troi",
+        "c_b_bong"
+      ],
+      "explain": {
+        "fr": "mưa : la pluie.",
+        "en": "mưa: rain."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nếu mưa thì tui ở nhà.",
+      "tokens": [
+        "Nếu",
+        "mưa",
+        "thì",
+        "tui",
+        "ở",
+        "nhà",
+        "mua"
+      ],
+      "translation": {
+        "fr": "S'il pleut, je reste à la maison.",
+        "en": "If it rains, I'll stay home."
+      },
+      "explain": {
+        "fr": "Nếu + condition, thì + suite.",
+        "en": "Nếu + condition, thì + result."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thi",
+      "distractors": [
+        "thí",
+        "thị"
+      ],
+      "explain": {
+        "fr": "thì descend : alors.",
+        "en": "thì falls: then."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nếu trễ thì đi Grab.",
+      "tokens": [
+        "Nếu",
+        "trễ",
+        "thì",
+        "đi",
+        "Grab",
+        "tre"
+      ],
+      "translation": {
+        "fr": "Si on est en retard, on prend un Grab.",
+        "en": "If we're late, we'll take a Grab."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_thi",
+      "explain": {
+        "fr": "thì : huyền.",
+        "en": "thì: huyền."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_neu_mua_thi_o_nha",
+      "explain": {
+        "fr": "nếu monte, mưa plat, thì descend.",
+        "en": "nếu rises, mưa level, thì falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_neu",
+      "c_b_thi",
+      "s_b_neu_mua_thi_o_nha"
+    ]
+  },
+  "reviewed": false
+}

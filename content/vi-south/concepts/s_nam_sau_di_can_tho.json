@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_nam_sau_di_can_tho",
+  "type": "structure",
+  "vi": "Năm sau em sẽ đi Cần Thơ.",
+  "gloss": {
+    "fr": "L'année prochaine, j'irai à Cần Thơ.",
+    "en": "Next year I'll go to Cần Thơ."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nam_sau_di_can_tho_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nam_sau_di_can_tho_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

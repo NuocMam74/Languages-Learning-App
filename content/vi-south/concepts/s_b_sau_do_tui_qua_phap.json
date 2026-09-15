@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_sau_do_tui_qua_phap",
+  "type": "structure",
+  "vi": "Sau đó tui qua Pháp.",
+  "gloss": {
+    "fr": "Ensuite, je suis parti(e) en France.",
+    "en": "After that I went to France."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_sau_do_tui_qua_phap_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_sau_do_tui_qua_phap_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

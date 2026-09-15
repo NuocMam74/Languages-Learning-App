@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_nhau",
+  "title": {
+    "fr": "Après le travail : đi nhậu",
+    "en": "After work: đi nhậu"
+  },
+  "body": {
+    "fr": "Le soir, les collègues vont souvent đi nhậu : grignoter et boire ensemble en trinquant « Một, hai, ba, dô ! ». Refuser une fois passe très bien ; refuser toujours peut sembler distant. Tu peux boire du trà đá et trinquer quand même.",
+    "en": "In the evening, colleagues often go đi nhậu: snacking and drinking together, toasting 'Một, hai, ba, dô!'. Saying no once is fine; always saying no can seem distant. You can drink trà đá and still join the toast."
+  },
+  "vi": "Một, hai, ba, dô!",
+  "audio": "audio/cc_b_nhau.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pendant un nhậu, tu ne bois pas d'alcool. Tu peux…",
+      "en": "At a nhậu, you don't drink alcohol. You can…"
+    },
+    "options": [
+      {
+        "fr": "prendre un trà đá et trinquer quand même",
+        "en": "have a trà đá and still toast"
+      },
+      {
+        "fr": "partir sans rien dire",
+        "en": "leave without a word"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

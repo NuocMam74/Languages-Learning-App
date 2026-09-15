@@ -114,6 +114,8 @@ export interface Curriculum {
   paths: Record<string, { boostTags: string[]; extraUnits?: UnitId[] }>;
 }
 
+export type PackFeature = "tones" | "lexical_variants" | "diacritic_keyboard";
+
 export interface Pack {
   code: string;
   lang: string;
@@ -122,11 +124,13 @@ export interface Pack {
   version: number;
   script: string;
   direction: "ltr" | "rtl";
-  features: ("tones" | "lexical_variants" | "diacritic_keyboard")[];
+  features: PackFeature[];
   toneSystem?: { written: Tone[]; heardClasses: Tone[][] };
   voices: { id: string; label: string; gender: "f" | "m"; accent: string }[];
   interfaceLocales: string[];
   welcome?: { vi: string; translation: Localized; audio?: string; reviewed: boolean };
+  /** Noms des 5 divisions de ligue, de l'entrée au sommet. */
+  leagueDivisions?: Localized[];
   comingSoon?: boolean;
 }
 
@@ -139,6 +143,17 @@ export interface ContentIndex {
   culture: ReadonlyMap<string, CultureCard>;
   variants?: LexicalVariants;
 }
+
+/**
+ * Module optionnel activé par le pack (spec §9, ADR 0002). Le moteur ne teste jamais
+ * une langue : il teste une fonctionnalité déclarée dans pack.json.
+ */
+export function hasFeature(pack: Pick<Pack, "features">, feature: PackFeature): boolean {
+  return pack.features.includes(feature);
+}
+
+/** Exercices qui n'ont de sens que pour un pack tonal (`features: ["tones"]`). */
+export const TONAL_STEP_TYPES: ReadonlySet<StepType> = new Set<StepType>(["tone_identify", "tone_minimal_pair", "tone_produce"]);
 
 export function localize(text: Localized, locale: string): string {
   return text[locale] ?? text.fr;

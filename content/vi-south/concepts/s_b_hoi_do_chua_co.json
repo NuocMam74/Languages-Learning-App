@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_hoi_do_chua_co",
+  "type": "structure",
+  "vi": "Hồi đó chưa có điện thoại.",
+  "gloss": {
+    "fr": "À l'époque, il n'y avait pas encore de téléphone.",
+    "en": "Back then, there were no phones yet."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hoi_do_chua_co_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hoi_do_chua_co_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

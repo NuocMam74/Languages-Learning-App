@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u13.l01",
+  "unit": "vi-south.u13",
+  "title": {
+    "fr": "Đã, rồi : c'est fait",
+    "en": "Đã, rồi: it's done"
+  },
+  "goal": {
+    "fr": "Dire qu'une action est passée ou finie.",
+    "en": "Say an action is past or done."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u12.l08"
+  ],
+  "concepts": [
+    "c_da_past",
+    "s_em_da_an_roi",
+    "c_xong",
+    "s_lam_xong_roi",
+    "c_roi",
+    "c_com",
+    "c_pho",
+    "c_banh_mi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_da_an_roi",
+      "distractors": [
+        "Em chưa ăn.",
+        "Em đang ăn."
+      ],
+      "explain": {
+        "fr": "đã… rồi : déjà fait.",
+        "en": "đã… rồi: already done."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_no_tenses"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_past",
+      "distractors": [
+        "đá",
+        "đà"
+      ],
+      "explain": {
+        "fr": "đã : le passé. đá monte : la glace.",
+        "en": "đã: past marker. đá rises: ice."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_roi",
+      "explain": {
+        "fr": "rồi descend (huyền).",
+        "en": "rồi falls (huyền)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm qua em đã đi chợ.",
+      "tokens": [
+        "Hôm qua",
+        "em",
+        "đã",
+        "đi",
+        "chợ",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "Hier, je suis allé(e) au marché.",
+        "en": "Yesterday I went to the market."
+      },
+      "explain": {
+        "fr": "đã se place juste avant le verbe.",
+        "en": "đã goes right before the verb."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_lam_xong_roi",
+      "distractors": [
+        "Làm xong chưa?",
+        "Làm chưa xong."
+      ],
+      "explain": {
+        "fr": "xong rồi : c'est fini.",
+        "en": "xong rồi: it's finished."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_com",
+      "distractors": [
+        "c_pho",
+        "c_banh_mi"
+      ],
+      "explain": {
+        "fr": "Em ăn cơm rồi : j'ai déjà mangé.",
+        "en": "Em ăn cơm rồi: I've already eaten."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em làm xong rồi.",
+      "tokens": [
+        "Em",
+        "làm",
+        "xong",
+        "rồi",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "J'ai fini (mon travail).",
+        "en": "I've finished (my work)."
+      },
+      "explain": {
+        "fr": "verbe + xong rồi : avoir fini de…",
+        "en": "verb + xong rồi: to have finished…"
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_em_da_an_roi",
+      "explain": {
+        "fr": "đã et rồi encadrent le verbe.",
+        "en": "đã and rồi frame the verb."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_da_past",
+      "s_em_da_an_roi",
+      "c_xong",
+      "s_lam_xong_roi"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u12.l04",
+  "unit": "vi-south.u12",
+  "title": {
+    "fr": "Khi nào ? Bao giờ ?",
+    "en": "When?"
+  },
+  "goal": {
+    "fr": "Demander quand, au futur et au passé.",
+    "en": "Ask when, about future and past."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u12.l03"
+  ],
+  "concepts": [
+    "c_khi_nao",
+    "c_bao_gio_when",
+    "s_khi_nao_anh_ve",
+    "s_chung_nao",
+    "c_gio"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khi_nao",
+      "distractors": [
+        "khi nao",
+        "khỉ nào"
+      ],
+      "explain": {
+        "fr": "khi nào : quand. khỉ : le singe !",
+        "en": "khi nào: when. khỉ: monkey!"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_khi_nao_bao_gio"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bao_gio_when",
+      "distractors": [
+        "bao lâu",
+        "bao nhiêu"
+      ],
+      "explain": {
+        "fr": "bao giờ : quand. bao lâu : combien de temps.",
+        "en": "bao giờ: when. bao lâu: how long."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Khi nào anh về quê?",
+      "tokens": [
+        "Khi nào",
+        "anh",
+        "về",
+        "quê",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Quand est-ce que tu rentres au pays ? (à un homme un peu plus âgé)",
+        "en": "When are you going back to your hometown? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Khi nào en tête : futur.",
+        "en": "Khi nào first: future."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khi_nao_anh_ve",
+      "distractors": [
+        "Khi nào anh đi?",
+        "Anh về khi nào?"
+      ],
+      "explain": {
+        "fr": "Khi nào anh về ? : futur. Anh về khi nào ? : passé.",
+        "en": "Khi nào anh về?: future. Anh về khi nào?: past."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_gio",
+      "explain": {
+        "fr": "giờ descend (huyền).",
+        "en": "giờ falls (huyền)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị tới khi nào?",
+      "tokens": [
+        "Chị",
+        "tới",
+        "khi nào",
+        "bao lâu"
+      ],
+      "translation": {
+        "fr": "Tu es arrivée quand ? (à une femme un peu plus âgée)",
+        "en": "When did you arrive? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "khi nào en fin de phrase : le passé.",
+        "en": "khi nào at the end: the past."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chung_nao",
+      "distractors": [
+        "chừng này",
+        "từng nào"
+      ],
+      "explain": {
+        "fr": "chừng nào : quand (Sud, familier). chừng này : autant que ça.",
+        "en": "chừng nào: when (southern, casual). chừng này: this much."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_khi_nao_anh_ve",
+      "explain": {
+        "fr": "nào et về descendent tous les deux.",
+        "en": "nào and về both fall."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_khi_nao",
+      "c_bao_gio_when",
+      "s_khi_nao_anh_ve",
+      "s_chung_nao"
+    ]
+  },
+  "reviewed": false
+}

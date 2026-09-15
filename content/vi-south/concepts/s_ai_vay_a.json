@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_ai_vay_a",
+  "type": "structure",
+  "vi": "Dạ, ai vậy ạ?",
+  "gloss": {
+    "fr": "Oui, c'est de la part de qui ? (poli)",
+    "en": "Yes, who's calling? (polite)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ai_vay_a_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ai_vay_a_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

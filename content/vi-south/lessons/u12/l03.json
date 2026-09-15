@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u12.l03",
+  "unit": "vi-south.u12",
+  "title": {
+    "fr": "Sao ? Tại sao ?",
+    "en": "Why? How come?"
+  },
+  "goal": {
+    "fr": "Demander pourquoi et répondre avec vì.",
+    "en": "Ask why and answer with vì."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u12.l02"
+  ],
+  "concepts": [
+    "c_sao_why",
+    "c_tai_sao",
+    "s_sao_vay",
+    "c_vi_because",
+    "s_tai_sao_em_hoc"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_sao_vay",
+      "distractors": [
+        "Sao rồi?",
+        "Ai vậy?"
+      ],
+      "explain": {
+        "fr": "Sao vậy ? : qu'est-ce qui se passe ?",
+        "en": "Sao vậy?: what's wrong?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_sao_vay_south"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ainsi",
+      "explain": {
+        "fr": "Sud : Sao vậy ? ; Nord : Sao thế ?",
+        "en": "South: Sao vậy?; North: Sao thế?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tai_sao",
+      "distractors": [
+        "tại sau",
+        "tai sao"
+      ],
+      "explain": {
+        "fr": "tại tombe court, sao reste plat.",
+        "en": "tại drops short, sao stays level."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_vi_because",
+      "explain": {
+        "fr": "vì descend (huyền).",
+        "en": "vì falls (huyền)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tại sao em học tiếng Việt?",
+      "tokens": [
+        "Tại sao",
+        "em",
+        "học",
+        "tiếng Việt",
+        "vì"
+      ],
+      "translation": {
+        "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
+        "en": "Why are you learning Vietnamese? (to someone younger)"
+      },
+      "explain": {
+        "fr": "Tại sao se met en tête de phrase.",
+        "en": "Tại sao goes at the start of the sentence."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Vì ba má em là người Việt.",
+      "tokens": [
+        "Vì",
+        "ba má",
+        "em",
+        "là",
+        "người Việt",
+        "Pháp"
+      ],
+      "translation": {
+        "fr": "Parce que mes parents sont vietnamiens.",
+        "en": "Because my parents are Vietnamese."
+      },
+      "explain": {
+        "fr": "Vì… : parce que…",
+        "en": "Vì…: because…"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sao_why",
+      "distractors": [
+        "sáo",
+        "xao"
+      ],
+      "explain": {
+        "fr": "sao : s du Sud, bien distinct de x.",
+        "en": "sao: southern s, clearly distinct from x."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tai_sao_em_hoc",
+      "distractors": [
+        "Tại sao em hỏi?",
+        "Khi nào em học?"
+      ],
+      "explain": {
+        "fr": "học : étudier. hỏi : demander.",
+        "en": "học: to study. hỏi: to ask."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_sao_vay",
+      "explain": {
+        "fr": "sao plat, vậy tombe court.",
+        "en": "sao level, vậy drops short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_sao_why",
+      "c_tai_sao",
+      "s_sao_vay",
+      "c_vi_because",
+      "s_tai_sao_em_hoc"
+    ]
+  },
+  "reviewed": false
+}

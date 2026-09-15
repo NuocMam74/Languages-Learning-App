@@ -1,0 +1,317 @@
+{
+  "$schema": "../../schema/exam.schema.json",
+  "id": "vi-south.exam.a2",
+  "level": "A2",
+  "certificate": {
+    "fr": "A2 Trò chuyện",
+    "en": "A2 Trò chuyện"
+  },
+  "requiresUnits": [
+    "vi-south.u01",
+    "vi-south.u02",
+    "vi-south.u03",
+    "vi-south.u04",
+    "vi-south.u05",
+    "vi-south.u06",
+    "vi-south.u07",
+    "vi-south.u08",
+    "vi-south.u09",
+    "vi-south.u10",
+    "vi-south.u11",
+    "vi-south.u12",
+    "vi-south.u13",
+    "vi-south.u14",
+    "vi-south.u15",
+    "vi-south.u16",
+    "vi-south.u17",
+    "vi-south.u18",
+    "vi-south.u19",
+    "vi-south.u20",
+    "vi-south.u21",
+    "vi-south.u22",
+    "vi-south.u23",
+    "vi-south.u24"
+  ],
+  "durationMinutes": 20,
+  "passThreshold": 0.75,
+  "retryAfterHours": 48,
+  "sections": [
+    {
+      "skill": "listening",
+      "items": [
+        {
+          "step": {
+            "type": "tone_minimal_pair",
+            "pair": [
+              "hồi",
+              "hội"
+            ],
+            "audioConcepts": [
+              "c_b_hoi_back",
+              "c_b_hoi_festival"
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_b_dam_cuoi",
+            "distractors": [
+              "c_b_dam_gio",
+              "c_b_li_xi"
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "s_b_may_gio_hop",
+            "distractors": [
+              "Mấy giờ học vậy anh?",
+              "Mấy giờ họp vậy chị?"
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "tone_identify",
+            "concept": "c_b_ranh"
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "s_b_neu_mua_thi_o_nha",
+            "distractors": [
+              "Nếu mưa thì tui đi làm.",
+              "Hôm qua mưa nên tui ở nhà."
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "tone_minimal_pair",
+            "pair": [
+              "đúng",
+              "đụng"
+            ],
+            "audioConcepts": [
+              "c_b_dung_right",
+              "c_b_dung_bump"
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "s_b_hoi_do_chua_co",
+            "distractors": [
+              "Hồi đó có điện thoại rồi.",
+              "Bây giờ chưa có điện thoại."
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "s_b_tai_vi_ket_xe",
+            "distractors": [
+              "Tại vì mưa nên em tới trễ.",
+              "Tại vì kẹt xe nên em về sớm."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "skill": "reading",
+      "items": [
+        {
+          "step": {
+            "type": "spot_the_south",
+            "variant": "lv_ong_ay"
+          }
+        },
+        {
+          "step": {
+            "type": "build_sentence",
+            "target": "Tui đồng ý với chị.",
+            "tokens": [
+              "Tui",
+              "đồng ý",
+              "với",
+              "chị",
+              "cho"
+            ],
+            "translation": {
+              "fr": "Je suis d'accord avec toi.",
+              "en": "I agree with you."
+            }
+          },
+          "silent": true
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "s_b_gia_han_visa",
+            "distractors": [
+              "Tui muốn gia hạn hộ chiếu.",
+              "Tui mượn gia hạn visa."
+            ]
+          },
+          "silent": true
+        },
+        {
+          "step": {
+            "type": "spot_the_south",
+            "variant": "lv_chi_ay"
+          }
+        },
+        {
+          "step": {
+            "type": "build_sentence",
+            "target": "Hơi mắc, nhưng mà ngon.",
+            "tokens": [
+              "Hơi",
+              "mắc",
+              "nhưng mà",
+              "ngon",
+              "hỏi"
+            ],
+            "translation": {
+              "fr": "Un peu cher, mais c'est bon.",
+              "en": "A bit pricey, but tasty."
+            }
+          },
+          "silent": true
+        },
+        {
+          "step": {
+            "type": "spot_the_south",
+            "variant": "lv_fruit_clf"
+          }
+        }
+      ]
+    },
+    {
+      "skill": "vocabulary",
+      "items": [
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_b_ho_chieu",
+            "distractors": [
+              "c_b_visa",
+              "c_b_the"
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_b_ghe",
+            "distractors": [
+              "c_b_bong",
+              "c_b_vuon"
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "build_sentence",
+            "target": "Em xin nghỉ phép ba ngày.",
+            "tokens": [
+              "Em",
+              "xin",
+              "nghỉ phép",
+              "ba",
+              "ngày",
+              "tuần"
+            ],
+            "translation": {
+              "fr": "Je demande trois jours de congé.",
+              "en": "I'd like to take three days off."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_b_dong_nghiep",
+            "distractors": [
+              "c_b_sep",
+              "c_b_may_tinh"
+            ]
+          }
+        },
+        {
+          "step": {
+            "type": "build_sentence",
+            "target": "Nếu rảnh thì ghé nhà tui chơi nha.",
+            "tokens": [
+              "Nếu",
+              "rảnh",
+              "thì",
+              "ghé",
+              "nhà",
+              "tui",
+              "chơi",
+              "nha",
+              "ghe"
+            ],
+            "translation": {
+              "fr": "Si tu es libre, passe chez moi, d'accord ?",
+              "en": "If you're free, drop by my place, okay?"
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_b_ve_so",
+            "distractors": [
+              "c_tien",
+              "c_b_the"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "skill": "speaking",
+      "items": [
+        {
+          "step": {
+            "type": "speak_repeat",
+            "concept": "s_b_da_con_cam_on"
+          }
+        },
+        {
+          "step": {
+            "type": "speak_repeat",
+            "concept": "s_b_hoi_nho_tui_o_que"
+          }
+        },
+        {
+          "step": {
+            "type": "speak_repeat",
+            "concept": "s_b_theo_tui_ngon"
+          }
+        },
+        {
+          "step": {
+            "type": "tone_produce",
+            "concept": "c_b_cuoi_wed"
+          }
+        },
+        {
+          "step": {
+            "type": "speak_repeat",
+            "concept": "s_b_uoc_gi_noi_gioi"
+          }
+        }
+      ]
+    }
+  ],
+  "reviewed": false
+}

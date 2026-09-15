@@ -1,0 +1,162 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u19.l03",
+  "unit": "vi-south.u19",
+  "title": {
+    "fr": "Công an phường",
+    "en": "The ward police"
+  },
+  "goal": {
+    "fr": "Te présenter au poste de police du quartier.",
+    "en": "Go to the ward police station."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u19.l02"
+  ],
+  "concepts": [
+    "c_b_cong_an",
+    "c_b_phuong",
+    "c_b_tam_tru",
+    "s_b_cho_coi_ho_chieu",
+    "s_b_khai_bao_tam_tru",
+    "c_dia_chi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_cong_an",
+      "distractors": [
+        "c_bac_si",
+        "c_giao_vien",
+        "c_b_sep"
+      ],
+      "explain": {
+        "fr": "công an : la police, le policier.",
+        "en": "công an: police, police officer."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_tam_tru"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_phuong",
+      "distractors": [
+        "phượng",
+        "phương"
+      ],
+      "explain": {
+        "fr": "phường descend : le quartier administratif.",
+        "en": "phường falls: the ward."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_cho_coi_ho_chieu",
+      "distractors": [
+        "Anh cho tôi coi giấy tờ.",
+        "Anh cho tôi coi địa chỉ."
+      ],
+      "explain": {
+        "fr": "coi : regarder, voir (Sud).",
+        "en": "coi: to look, see (South)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh cho tôi coi hộ chiếu.",
+      "tokens": [
+        "Anh",
+        "cho",
+        "tôi",
+        "coi",
+        "hộ chiếu",
+        "visa"
+      ],
+      "translation": {
+        "fr": "Montrez-moi votre passeport.",
+        "en": "Show me your passport."
+      },
+      "explain": {
+        "fr": "cho tôi coi : « laissez-moi voir ». Au Nord : xem.",
+        "en": "cho tôi coi: 'let me see'. North: xem."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tam_tru",
+      "distractors": [
+        "tám trú",
+        "tạm trụ"
+      ],
+      "explain": {
+        "fr": "tạm trú : la résidence temporaire.",
+        "en": "tạm trú: temporary residence."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui đi khai báo tạm trú.",
+      "tokens": [
+        "Tui",
+        "đi",
+        "khai báo",
+        "tạm trú",
+        "tám"
+      ],
+      "translation": {
+        "fr": "Je vais déclarer mon lieu de résidence.",
+        "en": "I'm going to register my residence."
+      },
+      "explain": {
+        "fr": "khai báo : déclarer.",
+        "en": "khai báo: to declare."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_phuong",
+      "explain": {
+        "fr": "phường : huyền, descend.",
+        "en": "phường: huyền, falls."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Địa chỉ của anh ở phường nào?",
+      "tokens": [
+        "Địa chỉ",
+        "của",
+        "anh",
+        "ở",
+        "phường",
+        "nào",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Ton adresse est dans quel quartier ?",
+        "en": "Which ward is your address in?"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_khai_bao_tam_tru",
+      "explain": {
+        "fr": "khai plat, báo monte, tạm court, trú monte.",
+        "en": "khai level, báo rises, tạm short, trú rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_cong_an",
+      "c_b_phuong",
+      "c_b_tam_tru",
+      "s_b_cho_coi_ho_chieu",
+      "s_b_khai_bao_tam_tru"
+    ]
+  },
+  "reviewed": false
+}

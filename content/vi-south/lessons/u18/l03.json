@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u18.l03",
+  "unit": "vi-south.u18",
+  "title": {
+    "fr": "Họp",
+    "en": "Meetings"
+  },
+  "goal": {
+    "fr": "Demander l'heure d'une réunion et t'excuser d'un retard.",
+    "en": "Ask when a meeting is and apologise for being late."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u18.l02"
+  ],
+  "concepts": [
+    "s_b_may_gio_hop",
+    "c_b_ban_busy",
+    "s_b_em_ban_lam",
+    "s_b_xin_loi_toi_tre",
+    "c_hop",
+    "c_tre_late"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_may_gio_hop",
+      "distractors": [
+        "Mấy giờ họp vậy chị?",
+        "Mấy giờ học vậy anh?"
+      ],
+      "explain": {
+        "fr": "họp : la réunion. học : étudier.",
+        "en": "họp: meeting. học: to study."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_gio_cao_su"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hop",
+      "distractors": [
+        "hộp",
+        "học"
+      ],
+      "explain": {
+        "fr": "họp : la réunion. hộp : la boîte.",
+        "en": "họp: meeting. hộp: box."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ban_busy",
+      "distractors": [
+        "bạn",
+        "bàn"
+      ],
+      "explain": {
+        "fr": "bận : occupé. bạn : ami ; bàn : table.",
+        "en": "bận: busy. bạn: friend; bàn: table."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_ban_busy",
+      "explain": {
+        "fr": "bận porte le nặng : court et tombant.",
+        "en": "bận carries nặng: short and falling."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bữa nay em bận lắm.",
+      "tokens": [
+        "Bữa nay",
+        "em",
+        "bận",
+        "lắm",
+        "bạn"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui je suis très occupé(e).",
+        "en": "I'm very busy today."
+      },
+      "explain": {
+        "fr": "bữa nay : aujourd'hui, au Sud, à l'oral.",
+        "en": "bữa nay: today, spoken southern form."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_xin_loi_toi_tre",
+      "distractors": [
+        "Xin lỗi, em tới sớm.",
+        "Xin lỗi, em tối trễ."
+      ],
+      "explain": {
+        "fr": "tới trễ : arriver en retard. sớm : tôt.",
+        "en": "tới trễ: to arrive late. sớm: early."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_late",
+      "explain": {
+        "fr": "Sud : trễ ; Nord : muộn.",
+        "en": "South: trễ; North: muộn."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi, em tới trễ.",
+      "tokens": [
+        "Xin lỗi",
+        "em",
+        "tới",
+        "trễ",
+        "tối"
+      ],
+      "translation": {
+        "fr": "Pardon, je suis en retard.",
+        "en": "Sorry, I'm late."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_xin_loi_toi_tre",
+      "explain": {
+        "fr": "tới monte ; trễ, au Sud, sonne comme un hỏi.",
+        "en": "tới rises; trễ sounds like hỏi in the South."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_b_may_gio_hop",
+      "c_b_ban_busy",
+      "s_b_em_ban_lam",
+      "s_b_xin_loi_toi_tre"
+    ]
+  },
+  "reviewed": false
+}

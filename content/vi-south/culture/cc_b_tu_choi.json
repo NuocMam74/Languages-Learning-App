@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_tu_choi",
+  "title": {
+    "fr": "Refuser sans dire non",
+    "en": "Declining without saying no"
+  },
+  "body": {
+    "fr": "Un « non » sec peut blesser. On adoucit : « Tiếc quá, em bận rồi », « Để bữa khác nha ». Face à une insistance, on remercie, puis on refuse encore, gentiment. La première proposition est souvent une politesse : il faut parfois refuser deux fois.",
+    "en": "A blunt 'no' can hurt. People soften it: 'Tiếc quá, em bận rồi', 'Để bữa khác nha'. If someone insists, thank them, then decline again, kindly. The first offer is often just politeness: you may need to decline twice."
+  },
+  "vi": "Để bữa khác nha.",
+  "audio": "audio/cc_b_tu_choi.opus",
+  "question": {
+    "prompt": {
+      "fr": "On t'invite, mais tu ne peux pas. Tu dis…",
+      "en": "You're invited but can't go. You say…"
+    },
+    "options": [
+      {
+        "fr": "Để bữa khác nha.",
+        "en": "Để bữa khác nha."
+      },
+      {
+        "fr": "Hông!",
+        "en": "Hông!"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

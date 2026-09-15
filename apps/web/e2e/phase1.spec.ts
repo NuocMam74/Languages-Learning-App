@@ -20,9 +20,12 @@ async function seedDueCards(page: Page, conceptIds: string[]) {
       for (const conceptId of ids) {
         tx.objectStore("srsCards").put({
           conceptId, due: past, stability: 3, difficulty: 5, scheduledDays: 3, learningSteps: 0, reps: 1, lapses: 0, state: "review", lastReview: past,
+          // Écriture IndexedDB brute (sans les hooks Dexie) : étiquette du pack explicite (ADR 0006).
+          packCode: "vi-south",
         });
       }
-      tx.objectStore("snapshot").delete("current");
+      // Séance en cours : une ligne par pack depuis le schéma multi-pack — on les efface toutes.
+      tx.objectStore("snapshot").clear();
       tx.oncomplete = () => resolve();
       tx.onerror = () => reject(tx.error);
     });

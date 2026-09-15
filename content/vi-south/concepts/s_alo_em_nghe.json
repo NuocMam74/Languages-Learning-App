@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_alo_em_nghe",
+  "type": "structure",
+  "vi": "Alô, em nghe.",
+  "gloss": {
+    "fr": "Allô, oui ? (j'écoute)",
+    "en": "Hello, I'm listening."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_alo_em_nghe_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_alo_em_nghe_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

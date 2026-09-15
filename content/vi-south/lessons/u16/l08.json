@@ -1,0 +1,209 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u16.l08",
+  "unit": "vi-south.u16",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : santé",
+    "en": "Test: health"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais te débrouiller quand tu es malade.",
+    "en": "Show you can cope when you're sick."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u16.l07"
+  ],
+  "concepts": [
+    "s_em_bi_benh",
+    "s_dau_bung",
+    "s_nhuc_dau",
+    "c_ngu_sleep",
+    "c_sot",
+    "c_ho_cough",
+    "s_em_dau_o_day",
+    "s_do_roi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_bi_benh",
+      "distractors": [
+        "Em hết bệnh rồi.",
+        "Em khỏe rồi."
+      ],
+      "explain": {
+        "fr": "bị bệnh : être malade. hết bệnh : guéri.",
+        "en": "bị bệnh: sick. hết bệnh: recovered."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay em bị bệnh.",
+      "tokens": [
+        "Hôm nay",
+        "em",
+        "bị",
+        "bệnh",
+        "khỏe"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je suis malade.",
+        "en": "I'm sick today."
+      },
+      "explain": {
+        "fr": "bị + maladie.",
+        "en": "bị + illness."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_dau_bung",
+      "distractors": [
+        "s_nhuc_dau",
+        "c_ngu_sleep"
+      ],
+      "explain": {
+        "fr": "đau bụng : mal au ventre.",
+        "en": "đau bụng: stomachache."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em bị nhức đầu quá.",
+      "tokens": [
+        "Em",
+        "bị",
+        "nhức",
+        "đầu",
+        "quá",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "J'ai vraiment mal à la tête.",
+        "en": "I have a bad headache."
+      },
+      "explain": {
+        "fr": "bị nhức đầu : avoir mal à la tête.",
+        "en": "bị nhức đầu: to have a headache."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sot",
+      "distractors": [
+        "c_ho_cough",
+        "s_nhuc_dau"
+      ],
+      "explain": {
+        "fr": "sốt : la fièvre.",
+        "en": "sốt: fever."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_sot",
+      "explain": {
+        "fr": "sốt : monte, coupé net par le -t.",
+        "en": "sốt: rises, cut off by the -t."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_pharmacy",
+      "explain": {
+        "fr": "Sud : nhà thuốc ; Nord : hiệu thuốc.",
+        "en": "South: nhà thuốc; North: hiệu thuốc."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị bán cho em thuốc nhức đầu.",
+      "tokens": [
+        "Chị",
+        "bán",
+        "cho",
+        "em",
+        "thuốc",
+        "nhức đầu",
+        "bệnh"
+      ],
+      "translation": {
+        "fr": "Vends-moi un médicament contre le mal de tête. (à une femme un peu plus âgée)",
+        "en": "Could I have something for a headache? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "thuốc + symptôme : médicament contre…",
+        "en": "thuốc + symptom: medicine for…"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dau_o_day",
+      "distractors": [
+        "Em đau ở đâu?",
+        "Em đâu ở đây."
+      ],
+      "explain": {
+        "fr": "đau ở đây : j'ai mal ici. đau ở đâu ? : où as-tu mal ?",
+        "en": "đau ở đây: it hurts here. đau ở đâu?: where does it hurt?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bác sĩ ơi, em đau ở đây.",
+      "tokens": [
+        "Bác sĩ",
+        "ơi",
+        "em",
+        "đau",
+        "ở",
+        "đây",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Docteur, j'ai mal ici.",
+        "en": "Doctor, it hurts here."
+      },
+      "explain": {
+        "fr": "Montre du doigt et dis ở đây.",
+        "en": "Point and say ở đây."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_do_roi",
+      "distractors": [
+        "Đó rồi.",
+        "Đợi rồi."
+      ],
+      "explain": {
+        "fr": "Đỡ rồi : ça va mieux.",
+        "en": "Đỡ rồi: I'm better."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Giữ sức khỏe nha.",
+      "tokens": [
+        "Giữ",
+        "sức khỏe",
+        "nha",
+        "bệnh"
+      ],
+      "translation": {
+        "fr": "Prends soin de toi.",
+        "en": "Take care of yourself."
+      },
+      "explain": {
+        "fr": "Formule d'au revoir attentionnée.",
+        "en": "A caring way to say goodbye."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

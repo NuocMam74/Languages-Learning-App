@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_so_bao_nhieu",
+  "type": "structure",
+  "vi": "Số điện thoại của chị là bao nhiêu?",
+  "gloss": {
+    "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+    "en": "What's your phone number? (to a slightly older woman)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_so_bao_nhieu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_so_bao_nhieu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

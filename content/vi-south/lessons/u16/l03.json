@@ -1,0 +1,147 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u16.l03",
+  "unit": "vi-south.u16",
+  "title": {
+    "fr": "Sốt, ho",
+    "en": "Fever and cough"
+  },
+  "goal": {
+    "fr": "Décrire tes symptômes.",
+    "en": "Describe your symptoms."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u16.l02"
+  ],
+  "concepts": [
+    "c_sot",
+    "c_ho_cough",
+    "s_bi_sot",
+    "c_met",
+    "s_met_qua",
+    "s_nhuc_dau",
+    "s_dau_bung"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sot",
+      "distractors": [
+        "c_ho_cough",
+        "s_nhuc_dau"
+      ],
+      "explain": {
+        "fr": "sốt : la fièvre.",
+        "en": "sốt: fever."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ho_cough",
+      "distractors": [
+        "c_sot",
+        "s_dau_bung"
+      ],
+      "explain": {
+        "fr": "ho : tousser.",
+        "en": "ho: to cough."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sot",
+      "distractors": [
+        "sốc",
+        "xốt"
+      ],
+      "explain": {
+        "fr": "sốt : fièvre. xốt : sauce. s et x restent distincts au Sud.",
+        "en": "sốt: fever. xốt: sauce. s and x stay distinct in the South."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_sot",
+      "explain": {
+        "fr": "sốt : monte, coupé net par le -t.",
+        "en": "sốt: rises, cut off by the -t."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_met_qua",
+      "distractors": [
+        "Mệt hông?",
+        "Mắc quá!"
+      ],
+      "explain": {
+        "fr": "Mệt quá : crevé. Mắc quá : trop cher.",
+        "en": "Mệt quá: exhausted. Mắc quá: too expensive."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_met",
+      "explain": {
+        "fr": "mệt tombe court (nặng).",
+        "en": "mệt drops short (nặng)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em bị sốt với ho.",
+      "tokens": [
+        "Em",
+        "bị",
+        "sốt",
+        "với",
+        "ho",
+        "khỏe"
+      ],
+      "translation": {
+        "fr": "J'ai de la fièvre et je tousse.",
+        "en": "I have a fever and a cough."
+      },
+      "explain": {
+        "fr": "với : et (à l'oral).",
+        "en": "với: and (spoken)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bi_sot",
+      "distractors": [
+        "Em bị sốc.",
+        "Em hết sốt."
+      ],
+      "explain": {
+        "fr": "bị sốt : avoir de la fièvre. hết sốt : plus de fièvre.",
+        "en": "bị sốt: have a fever. hết sốt: fever's gone."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_met_qua",
+      "explain": {
+        "fr": "mệt tombe court, quá monte.",
+        "en": "mệt drops short, quá rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_sot",
+      "c_ho_cough",
+      "s_bi_sot",
+      "c_met",
+      "s_met_qua"
+    ]
+  },
+  "reviewed": false
+}

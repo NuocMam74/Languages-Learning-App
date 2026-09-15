@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_bao_nhieu_tien",
+  "type": "structure",
+  "vi": "Bao nhiêu tiền?",
+  "gloss": {
+    "fr": "Combien ça coûte ?",
+    "en": "How much is it?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bao_nhieu_tien_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bao_nhieu_tien_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_de_bua_khac",
+  "type": "structure",
+  "vi": "Để bữa khác nha.",
+  "gloss": {
+    "fr": "Une autre fois, d'accord ?",
+    "en": "Another time, okay?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_de_bua_khac_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_de_bua_khac_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "bữa : jour, au Sud.",
+    "en": "bữa: day, in the South."
+  },
+  "reviewed": false
+}

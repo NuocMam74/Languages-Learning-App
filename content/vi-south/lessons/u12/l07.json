@@ -1,0 +1,157 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u12.l07",
+  "unit": "vi-south.u12",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : questions",
+    "en": "Review: questions"
+  },
+  "goal": {
+    "fr": "Revoir tous les mots interrogatifs.",
+    "en": "Go over all the question words."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u12.l06"
+  ],
+  "concepts": [
+    "s_cai_gi_vay",
+    "c_cho_market",
+    "c_benh_vien",
+    "c_ngan_hang",
+    "s_sao_vay",
+    "c_may",
+    "c_may_cloud",
+    "s_an_com_chua",
+    "s_nha_em_o_dau"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cai_gi_vay",
+      "distractors": [
+        "Cái này vậy?",
+        "Ai vậy?"
+      ],
+      "explain": {
+        "fr": "Cái gì vậy ? : c'est quoi ? gì = quoi.",
+        "en": "Cái gì vậy?: what's that? gì = what."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_market",
+      "distractors": [
+        "c_benh_vien",
+        "c_ngan_hang"
+      ],
+      "explain": {
+        "fr": "Chợ ở đâu ? — le marché.",
+        "en": "Chợ ở đâu? — the market."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Người đó là ai?",
+      "tokens": [
+        "Người",
+        "đó",
+        "là",
+        "ai",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Qui est cette personne ?",
+        "en": "Who is that person?"
+      },
+      "explain": {
+        "fr": "ai prend la place de la réponse : Người đó là chị Lan.",
+        "en": "ai takes the answer's place: Người đó là chị Lan."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_sao_vay",
+      "distractors": [
+        "Sao rồi?",
+        "Ai vậy?"
+      ],
+      "explain": {
+        "fr": "Sao vậy ? : qu'est-ce qui se passe ?",
+        "en": "Sao vậy?: what's wrong?"
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ainsi",
+      "explain": {
+        "fr": "Sud : Sao vậy ? ; Nord : Sao thế ?",
+        "en": "South: Sao vậy?; North: Sao thế?"
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "mấy",
+        "mây"
+      ],
+      "audioConcepts": [
+        "c_may",
+        "c_may_cloud"
+      ],
+      "explain": {
+        "fr": "mấy monte : combien. mây reste plat : le nuage.",
+        "en": "mấy rises: how many. mây stays level: cloud."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Khi nào anh về quê?",
+      "tokens": [
+        "Khi nào",
+        "anh",
+        "về",
+        "quê",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Quand est-ce que tu rentres au pays ? (à un homme un peu plus âgé)",
+        "en": "When are you going back to your hometown? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Khi nào en tête : futur.",
+        "en": "Khi nào first: future."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_an_com_chua",
+      "distractors": [
+        "Em ăn cơm không?",
+        "Em ăn cơm rồi."
+      ],
+      "explain": {
+        "fr": "… chưa ? : déjà ? On répond Rồi ou Chưa.",
+        "en": "… chưa?: yet? You answer Rồi or Chưa."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nha_em_o_dau",
+      "explain": {
+        "fr": "đâu reste plat à la fin.",
+        "en": "đâu stays level at the end."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

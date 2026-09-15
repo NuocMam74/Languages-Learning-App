@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u21.l05",
+  "unit": "vi-south.u21",
+  "title": {
+    "fr": "Mắc cỡ, dễ thương",
+    "en": "Shy and cute"
+  },
+  "goal": {
+    "fr": "Reconnaître des mots du Sud pour décrire les gens.",
+    "en": "Recognise southern words to describe people."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u21.l04"
+  ],
+  "concepts": [
+    "c_b_mac_co",
+    "c_b_de_thuong",
+    "s_b_de_thuong_qua",
+    "s_b_em_mac_co",
+    "c_b_gion",
+    "c_b_hoai",
+    "s_b_gion_hoai"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_de_thuong_qua",
+      "distractors": [
+        "Dễ thương hông?",
+        "Ngon quá!"
+      ],
+      "explain": {
+        "fr": "Dễ thương quá : trop mignon.",
+        "en": "Dễ thương quá: so cute."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_mac_co"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_mac_co",
+      "distractors": [
+        "mắc có",
+        "mác cỡ"
+      ],
+      "explain": {
+        "fr": "mắc cỡ : gêné, timide.",
+        "en": "mắc cỡ: shy, embarrassed."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Con nhỏ dễ thương quá!",
+      "tokens": [
+        "Con nhỏ",
+        "dễ thương",
+        "quá",
+        "qua"
+      ],
+      "translation": {
+        "fr": "Qu'elle est mignonne, cette petite !",
+        "en": "What a cute little girl!"
+      },
+      "explain": {
+        "fr": "con nhỏ : la petite, la fillette (familier, Sud).",
+        "en": "con nhỏ: the little girl (casual, South)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gion",
+      "distractors": [
+        "giờn",
+        "giợn"
+      ],
+      "explain": {
+        "fr": "giỡn : plaisanter. Au Sud, le ngã sonne comme un hỏi.",
+        "en": "giỡn: to joke. In the South, ngã sounds like hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gion_hoai",
+      "distractors": [
+        "Anh giỡn hả?",
+        "Anh nói hoài!"
+      ],
+      "explain": {
+        "fr": "hoài : tout le temps (Sud).",
+        "en": "hoài: all the time (South)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em mắc cỡ quá.",
+      "tokens": [
+        "Em",
+        "mắc cỡ",
+        "quá",
+        "mắc"
+      ],
+      "translation": {
+        "fr": "Je suis tout(e) gêné(e).",
+        "en": "I'm so embarrassed."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_hoai",
+      "explain": {
+        "fr": "hoài : huyền.",
+        "en": "hoài: huyền."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh giỡn hoài!",
+      "tokens": [
+        "Anh",
+        "giỡn",
+        "hoài",
+        "hỏi"
+      ],
+      "translation": {
+        "fr": "Tu blagues tout le temps !",
+        "en": "You're always joking!"
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_mac_co",
+      "c_b_de_thuong",
+      "s_b_de_thuong_qua",
+      "s_b_em_mac_co",
+      "c_b_gion",
+      "c_b_hoai",
+      "s_b_gion_hoai"
+    ]
+  },
+  "reviewed": false
+}

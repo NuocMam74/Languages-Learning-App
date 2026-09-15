@@ -1,0 +1,208 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u17.l08",
+  "unit": "vi-south.u17",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : logement",
+    "en": "Test: housing"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais chercher et louer un logement.",
+    "en": "Show you can look for and rent a place."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u17.l07"
+  ],
+  "concepts": [
+    "c_giuong",
+    "c_ghe",
+    "c_ban_table",
+    "s_o_lau_hai",
+    "c_thue",
+    "s_thue_bao_nhieu",
+    "c_chu_nha",
+    "s_tien_dien",
+    "c_on_noisy",
+    "s_hem_xe_hoi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_giuong",
+      "distractors": [
+        "c_ghe",
+        "c_ban_table"
+      ],
+      "explain": {
+        "fr": "giường : le lit.",
+        "en": "giường: bed."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà em có ba phòng ngủ.",
+      "tokens": [
+        "Nhà",
+        "em",
+        "có",
+        "ba",
+        "phòng ngủ",
+        "phòng tắm"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a trois chambres.",
+        "en": "My house has three bedrooms."
+      },
+      "explain": {
+        "fr": "có + nombre + pièce.",
+        "en": "có + number + room."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_o_lau_hai",
+      "distractors": [
+        "Em ở lầu ba.",
+        "Em ở hẻm hai."
+      ],
+      "explain": {
+        "fr": "lầu hai : le deuxième étage.",
+        "en": "lầu hai: second floor."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà em ở trong hẻm, lầu hai.",
+      "tokens": [
+        "Nhà",
+        "em",
+        "ở",
+        "trong",
+        "hẻm",
+        "lầu",
+        "hai",
+        "lâu"
+      ],
+      "translation": {
+        "fr": "J'habite dans une ruelle, au deuxième étage.",
+        "en": "I live down an alley, on the second floor."
+      },
+      "explain": {
+        "fr": "Adresse du Sud : hẻm, puis lầu.",
+        "en": "A southern address: hẻm, then lầu."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thue",
+      "distractors": [
+        "thuế",
+        "thui"
+      ],
+      "explain": {
+        "fr": "thuê : louer. thuế : l'impôt !",
+        "en": "thuê: to rent. thuế: tax!"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thue_bao_nhieu",
+      "distractors": [
+        "Phòng này bao nhiêu một đêm?",
+        "Phòng này mấy người?"
+      ],
+      "explain": {
+        "fr": "một tháng : par mois. một đêm : par nuit.",
+        "en": "một tháng: per month. một đêm: per night."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_nha",
+      "distractors": [
+        "chú nhà",
+        "chủ nhật"
+      ],
+      "explain": {
+        "fr": "chủ nhà : propriétaire. chủ nhật : dimanche.",
+        "en": "chủ nhà: landlord. chủ nhật: Sunday."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tiền cọc là một tháng.",
+      "tokens": [
+        "Tiền cọc",
+        "là",
+        "một",
+        "tháng",
+        "tuần"
+      ],
+      "translation": {
+        "fr": "La caution, c'est un mois.",
+        "en": "The deposit is one month."
+      },
+      "explain": {
+        "fr": "Montant de la caution en mois de loyer.",
+        "en": "Deposit counted in months of rent."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tien_dien",
+      "distractors": [
+        "tiền điện thoại",
+        "tiền nhà"
+      ],
+      "explain": {
+        "fr": "tiền điện : l'électricité. tiền điện thoại : le forfait téléphone.",
+        "en": "tiền điện: power bill. tiền điện thoại: phone bill."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Phòng có máy lạnh không?",
+      "tokens": [
+        "Phòng",
+        "có",
+        "máy lạnh",
+        "không",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "La chambre a la clim ?",
+        "en": "Does the room have air conditioning?"
+      },
+      "explain": {
+        "fr": "có… không ? : y a-t-il… ?",
+        "en": "có… không?: is there…?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_on_noisy",
+      "distractors": [
+        "ổn",
+        "ôn"
+      ],
+      "explain": {
+        "fr": "ồn descend : bruyant. ổn : ça va, stable.",
+        "en": "ồn falls: noisy. ổn: okay, stable."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_hem_xe_hoi",
+      "explain": {
+        "fr": "hẻm plonge, xe plat, hơi plat.",
+        "en": "hẻm dips, xe level, hơi level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u22.l01",
+  "unit": "vi-south.u22",
+  "title": {
+    "fr": "Hồi nhỏ",
+    "en": "As a child"
+  },
+  "goal": {
+    "fr": "Dire où tu vivais quand tu étais petit(e).",
+    "en": "Say where you lived as a child."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u21.l08"
+  ],
+  "concepts": [
+    "c_b_hoi_back",
+    "c_b_hoi_festival",
+    "c_b_hoi_nho",
+    "s_b_hoi_nho_tui_o_que",
+    "c_que"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hoi_nho_tui_o_que",
+      "distractors": [
+        "Hồi nhỏ tui ở Sài Gòn.",
+        "Bây giờ tui ở dưới quê."
+      ],
+      "explain": {
+        "fr": "hồi nhỏ : dans l'enfance ; bây giờ : maintenant.",
+        "en": "hồi nhỏ: as a child; bây giờ: now."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_duoi_que"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "hồi",
+        "hội"
+      ],
+      "audioConcepts": [
+        "c_b_hoi_back",
+        "c_b_hoi_festival"
+      ],
+      "explain": {
+        "fr": "hồi descend : autrefois. hội tombe court : la fête.",
+        "en": "hồi falls: back then. hội drops short: festival."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_nho",
+      "distractors": [
+        "hồi nhớ",
+        "hỏi nhỏ"
+      ],
+      "explain": {
+        "fr": "hồi nhỏ : quand j'étais petit(e).",
+        "en": "hồi nhỏ: when I was little."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_hoi_back",
+      "explain": {
+        "fr": "hồi : descends doucement.",
+        "en": "hồi: fall gently."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hồi nhỏ tui ở dưới quê.",
+      "tokens": [
+        "Hồi nhỏ",
+        "tui",
+        "ở",
+        "dưới",
+        "quê",
+        "hỏi"
+      ],
+      "translation": {
+        "fr": "Quand j'étais petit(e), je vivais à la campagne.",
+        "en": "As a child, I lived in the countryside."
+      },
+      "explain": {
+        "fr": "Le repère de temps en tête suffit : pas de conjugaison.",
+        "en": "The time marker up front is enough: no conjugation."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_que",
+      "distractors": [
+        "qué",
+        "quế"
+      ],
+      "explain": {
+        "fr": "quê, plat : le pays natal.",
+        "en": "quê, level: hometown."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hồi nhỏ em ở đâu?",
+      "tokens": [
+        "Hồi nhỏ",
+        "em",
+        "ở",
+        "đâu",
+        "đây"
+      ],
+      "translation": {
+        "fr": "Tu vivais où quand tu étais petit(e) ?",
+        "en": "Where did you live as a child?"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_hoi_festival",
+      "explain": {
+        "fr": "hội : nặng, court et tombant.",
+        "en": "hội: nặng, short and falling."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_hoi_nho_tui_o_que",
+      "explain": {
+        "fr": "hồi descend, nhỏ plonge, quê plat.",
+        "en": "hồi falls, nhỏ dips, quê level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_hoi_back",
+      "c_b_hoi_festival",
+      "c_b_hoi_nho",
+      "s_b_hoi_nho_tui_o_que"
+    ]
+  },
+  "reviewed": false
+}

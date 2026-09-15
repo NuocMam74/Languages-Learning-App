@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u20.l05",
+  "unit": "vi-south.u20",
+  "title": {
+    "fr": "Lì xì",
+    "en": "Lucky money"
+  },
+  "goal": {
+    "fr": "Recevoir un lì xì et présenter tes vœux du Tết.",
+    "en": "Receive lì xì and give Tết wishes."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u20.l04"
+  ],
+  "concepts": [
+    "c_b_li_xi",
+    "s_b_chuc_mung_nam_moi",
+    "s_b_con_chuc_co",
+    "c_b_tet",
+    "c_tien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_li_xi",
+      "distractors": [
+        "c_tien",
+        "c_b_qua_gift",
+        "c_b_dam_cuoi"
+      ],
+      "explain": {
+        "fr": "lì xì : l'enveloppe rouge du Tết.",
+        "en": "lì xì: Tết red envelope."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_li_xi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chuc_mung_nam_moi",
+      "distractors": [
+        "Chúc mừng hạnh phúc!",
+        "Chúc mừng năm mời!"
+      ],
+      "explain": {
+        "fr": "năm mới : nouvel an. mới monte.",
+        "en": "năm mới: new year. mới rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tet",
+      "distractors": [
+        "tệt",
+        "tét"
+      ],
+      "explain": {
+        "fr": "Tết monte : le Nouvel An lunaire.",
+        "en": "Tết rises: Lunar New Year."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Con chúc cô năm mới vui vẻ.",
+      "tokens": [
+        "Con",
+        "chúc",
+        "cô",
+        "năm mới",
+        "vui vẻ",
+        "mới"
+      ],
+      "translation": {
+        "fr": "Je vous souhaite une joyeuse année.",
+        "en": "I wish you a happy new year."
+      },
+      "explain": {
+        "fr": "chúc + personne + vœu.",
+        "en": "chúc + person + wish."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_tet",
+      "explain": {
+        "fr": "Tết : sắc.",
+        "en": "Tết: sắc."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Con chúc bà sống lâu trăm tuổi.",
+      "tokens": [
+        "Con",
+        "chúc",
+        "bà",
+        "sống lâu",
+        "trăm tuổi",
+        "sông"
+      ],
+      "translation": {
+        "fr": "Je te souhaite de vivre cent ans, grand-mère.",
+        "en": "I wish you a hundred years of life, Grandma."
+      },
+      "explain": {
+        "fr": "Vœu classique pour les grands-parents.",
+        "en": "A classic wish for grandparents."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_li_xi",
+      "distractors": [
+        "lí xì",
+        "lì xí"
+      ],
+      "explain": {
+        "fr": "lì et xì descendent tous les deux.",
+        "en": "lì and xì both fall."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_con_chuc_co",
+      "explain": {
+        "fr": "chúc monte, mới monte, vẻ plonge.",
+        "en": "chúc rises, mới rises, vẻ dips."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_li_xi",
+      "s_b_chuc_mung_nam_moi",
+      "s_b_con_chuc_co",
+      "c_b_tet"
+    ]
+  },
+  "reviewed": false
+}

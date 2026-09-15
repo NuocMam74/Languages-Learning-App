@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_ong_di_dau_roi",
+  "type": "structure",
+  "vi": "Ổng đi đâu rồi?",
+  "gloss": {
+    "fr": "Il est parti où ? (un homme âgé)",
+    "en": "Where did he go? (an older man)"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_ong_di_dau_roi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_ong_di_dau_roi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

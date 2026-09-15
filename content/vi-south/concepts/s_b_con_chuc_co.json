@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_con_chuc_co",
+  "type": "structure",
+  "vi": "Con chúc cô năm mới vui vẻ.",
+  "gloss": {
+    "fr": "Je vous souhaite une joyeuse année (à une femme de l'âge de tes parents).",
+    "en": "I wish you a happy new year (to a woman your parents' age)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_con_chuc_co_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_con_chuc_co_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

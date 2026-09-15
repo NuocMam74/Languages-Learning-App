@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u17.l01",
+  "unit": "vi-south.u17",
+  "title": {
+    "fr": "Nhà, phòng",
+    "en": "House and rooms"
+  },
+  "goal": {
+    "fr": "Nommer les pièces de la maison.",
+    "en": "Name the rooms of a house."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u16.l08"
+  ],
+  "concepts": [
+    "c_phong",
+    "c_giuong",
+    "c_phong_ngu",
+    "c_phong_tam",
+    "c_nha_house",
+    "c_chua_pagoda",
+    "c_truong_hoc",
+    "c_ghe",
+    "c_ban_table"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_house",
+      "distractors": [
+        "c_chua_pagoda",
+        "c_truong_hoc"
+      ],
+      "explain": {
+        "fr": "nhà : la maison.",
+        "en": "nhà: house."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_phong",
+      "distractors": [
+        "c_nha_house",
+        "c_giuong"
+      ],
+      "explain": {
+        "fr": "phòng : la pièce, la chambre.",
+        "en": "phòng: room."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_nha_ong"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong",
+      "distractors": [
+        "phóng",
+        "phông"
+      ],
+      "explain": {
+        "fr": "phòng descend (huyền).",
+        "en": "phòng falls (huyền)."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_giuong",
+      "distractors": [
+        "c_ghe",
+        "c_ban_table"
+      ],
+      "explain": {
+        "fr": "giường : le lit.",
+        "en": "giường: bed."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong_ngu",
+      "distractors": [
+        "phòng tắm",
+        "phong ngủ"
+      ],
+      "explain": {
+        "fr": "phòng ngủ : pour dormir (ngủ).",
+        "en": "phòng ngủ: for sleeping (ngủ)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà em có ba phòng ngủ.",
+      "tokens": [
+        "Nhà",
+        "em",
+        "có",
+        "ba",
+        "phòng ngủ",
+        "phòng tắm"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a trois chambres.",
+        "en": "My house has three bedrooms."
+      },
+      "explain": {
+        "fr": "có + nombre + pièce.",
+        "en": "có + number + room."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong_tam",
+      "distractors": [
+        "phòng tám",
+        "phòng khám"
+      ],
+      "explain": {
+        "fr": "tắm : se laver. tám : huit. khám : le cabinet médical.",
+        "en": "tắm: to bathe. tám: eight. khám: clinic."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_phong_tam",
+      "explain": {
+        "fr": "phòng descend, tắm monte.",
+        "en": "phòng falls, tắm rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_phong",
+      "c_giuong",
+      "c_phong_ngu",
+      "c_phong_tam"
+    ]
+  },
+  "reviewed": false
+}

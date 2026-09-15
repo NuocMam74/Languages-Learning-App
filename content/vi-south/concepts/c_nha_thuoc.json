@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nha_thuoc",
+  "type": "word",
+  "vi": "nhà thuốc",
+  "gloss": {
+    "fr": "pharmacie",
+    "en": "pharmacy"
+  },
+  "northernEquivalent": "hiệu thuốc",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nha_thuoc_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nha_thuoc_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/health/pharmacy.svg",
+  "reviewed": false
+}

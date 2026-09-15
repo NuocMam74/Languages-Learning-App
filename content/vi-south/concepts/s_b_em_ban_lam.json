@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_em_ban_lam",
+  "type": "structure",
+  "vi": "Bữa nay em bận lắm.",
+  "gloss": {
+    "fr": "Aujourd'hui je suis très occupé(e) (à plus âgé).",
+    "en": "I'm very busy today (to someone older)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_em_ban_lam_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_em_ban_lam_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

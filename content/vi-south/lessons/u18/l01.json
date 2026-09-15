@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u18.l01",
+  "unit": "vi-south.u18",
+  "title": {
+    "fr": "Công ty, văn phòng",
+    "en": "Company and office"
+  },
+  "goal": {
+    "fr": "Dire où tu travailles et présenter ton bureau.",
+    "en": "Say where you work and describe your office."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u17.l08"
+  ],
+  "concepts": [
+    "c_b_sep",
+    "c_b_dong_nghiep",
+    "c_b_may_tinh",
+    "s_b_tui_lam_cong_ty",
+    "c_cong_ty",
+    "c_van_phong"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_sep",
+      "distractors": [
+        "c_b_dong_nghiep",
+        "c_ky_su",
+        "c_bac_si"
+      ],
+      "explain": {
+        "fr": "sếp : le chef, la cheffe.",
+        "en": "sếp: the boss."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_sep_anh_chi"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dong_nghiep",
+      "distractors": [
+        "c_b_sep",
+        "c_giao_vien"
+      ],
+      "explain": {
+        "fr": "đồng nghiệp : les collègues.",
+        "en": "đồng nghiệp: colleagues."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cong_ty",
+      "distractors": [
+        "cồng ty",
+        "công tý"
+      ],
+      "explain": {
+        "fr": "công ty : l'entreprise. công et ty restent plats.",
+        "en": "công ty: company. công and ty stay level."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_may_tinh",
+      "distractors": [
+        "c_dien_thoai",
+        "c_sach"
+      ],
+      "explain": {
+        "fr": "máy tính : l'ordinateur.",
+        "en": "máy tính: computer."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tui_lam_cong_ty",
+      "distractors": [
+        "Tui làm ở một trường Pháp.",
+        "Tui học ở một công ty Pháp."
+      ],
+      "explain": {
+        "fr": "làm ở + lieu : travailler à, dans.",
+        "en": "làm ở + place: to work at, in."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Văn phòng tui ở quận 1.",
+      "tokens": [
+        "Văn phòng",
+        "tui",
+        "ở",
+        "quận",
+        "1",
+        "đi"
+      ],
+      "translation": {
+        "fr": "Mon bureau est dans le 1er arrondissement.",
+        "en": "My office is in District 1."
+      },
+      "explain": {
+        "fr": "Nom + tui : « mon… », sans của (familier).",
+        "en": "Noun + tui: 'my…', without của (casual)."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_sep",
+      "explain": {
+        "fr": "sếp porte le sắc : il monte.",
+        "en": "sếp carries sắc: it rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là đồng nghiệp của tui.",
+      "tokens": [
+        "Đây là",
+        "đồng nghiệp",
+        "của",
+        "tui",
+        "sếp"
+      ],
+      "translation": {
+        "fr": "Voici mon/ma collègue.",
+        "en": "This is my colleague."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_tui_lam_cong_ty",
+      "explain": {
+        "fr": "làm descend, công ty reste plat, Pháp monte.",
+        "en": "làm falls, công ty stays level, Pháp rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_sep",
+      "c_b_dong_nghiep",
+      "c_b_may_tinh",
+      "s_b_tui_lam_cong_ty"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_nghi_phep_tet",
+  "title": {
+    "fr": "Les congés et le Tết",
+    "en": "Time off and Tết"
+  },
+  "body": {
+    "fr": "Le Tết est la grande pause de l'année : souvent une semaine, parfois plus. Pour les autres congés, on demande un nghỉ phép à l'avance, souvent par écrit. Les jours fériés du 30 avril et du 1er mai font des ponts très attendus.",
+    "en": "Tết is the big break of the year: often a week, sometimes more. For other time off, you request nghỉ phép in advance, often in writing. The 30 April and 1 May holidays make for long, eagerly awaited weekends."
+  },
+  "vi": "Em xin nghỉ phép ba ngày.",
+  "audio": "audio/cc_b_nghi_phep_tet.opus",
+  "question": {
+    "prompt": {
+      "fr": "La plus longue pause de l'année au travail, c'est…",
+      "en": "The longest break of the work year is…"
+    },
+    "options": [
+      {
+        "fr": "le Tết",
+        "en": "Tết"
+      },
+      {
+        "fr": "Noël",
+        "en": "Christmas"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

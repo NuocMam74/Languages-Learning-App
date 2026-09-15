@@ -1,5 +1,6 @@
 """État d'apprentissage d'un utilisateur : inscription, leçons terminées, cartes SRS, série."""
 
+from collections.abc import Iterable
 from datetime import date, datetime, timedelta
 
 from sqlalchemy import func, select
@@ -9,6 +10,7 @@ from app.models import (
     Badge,
     Enrollment,
     LessonProgress,
+    ProcessedEvent,
     Profile,
     SrsCardRow,
     StreakRow,
@@ -16,7 +18,7 @@ from app.models import (
     User,
     UserBadge,
 )
-from app.services.content import Pack
+from app.services.content import Pack, course_code_of_concept
 from app.services.planner import next_lesson
 from app.services.srs import SrsCard
 
@@ -39,11 +41,43 @@ def enroll(db: Session, user_id: str, pack: Pack, path: str | None) -> Enrollmen
     return enrollment
 
 
-def primary_enrollment(db: Session, user_id: str) -> Enrollment | None:
-    """Inscription courante : la plus récente (une seule en Phase 0)."""
-    return db.scalar(
-        select(Enrollment).where(Enrollment.user_id == user_id).order_by(Enrollment.started_at.desc()).limit(1)
+DEFAULT_PACK = "vi-south"
+
+
+def current_pack_code(db: Session, user_id: str) -> str | None:
+    """Pack choisi par le dernier `pack_switched` (par `occurredAt`), ou None."""
+    payload = db.scalar(
+        select(ProcessedEvent.payload_json)
+        .where(ProcessedEvent.user_id == user_id, ProcessedEvent.type == "pack_switched")
+        .order_by(ProcessedEvent.occurred_at.desc(), ProcessedEvent.id.desc())
+        .limit(1)
     )
+    code = (payload or {}).get("payload", {}).get("toPack")
+    return code if isinstance(code, str) else None
+
+
+def enrollments(db: Session, user_id: str) -> list[Enrollment]:
+    return list(
+        db.scalars(
+            select(Enrollment)
+            .where(Enrollment.user_id == user_id)
+            .order_by(Enrollment.started_at, Enrollment.course_id)
+        )
+    )
+
+
+def primary_enrollment(db: Session, user_id: str) -> Enrollment | None:
+    """Inscription courante (plusieurs packs, contrat Phase 3 §5).
+
+    Pack du dernier `pack_switched` s'il est suivi, sinon `vi-south`, sinon l'inscription la plus récente.
+    """
+    rows = {e.course_id: e for e in enrollments(db, user_id)}
+    if not rows:
+        return None
+    for code in (current_pack_code(db, user_id), DEFAULT_PACK):
+        if code is not None and code in rows:
+            return rows[code]
+    return max(rows.values(), key=lambda e: e.started_at)
 
 
 def path_of(profile: Profile) -> str | None:
@@ -95,9 +129,15 @@ def to_card(row: SrsCardRow) -> SrsCard:
     )
 
 
-def user_cards(db: Session, user_id: str) -> list[SrsCard]:
+def user_cards(db: Session, user_id: str, pack_code: str | None = None, codes: Iterable[str] = ()) -> list[SrsCard]:
+    """Cartes SRS de l'utilisateur ; avec `pack_code`, seulement celles des concepts de ce pack."""
     rows = db.scalars(select(SrsCardRow).where(SrsCardRow.user_id == user_id).order_by(SrsCardRow.concept_id))
-    return [to_card(r) for r in rows]
+    codes = list(codes)
+    return [
+        to_card(r)
+        for r in rows
+        if pack_code is None or course_code_of_concept(r.concept_id, codes, DEFAULT_PACK) == pack_code
+    ]
 
 
 def due_cards(db: Session, user_id: str, now: datetime, limit: int) -> list[SrsCardRow]:

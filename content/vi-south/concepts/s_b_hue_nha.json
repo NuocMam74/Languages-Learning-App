@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_hue_nha",
+  "type": "structure",
+  "vi": "Thôi, huề nha!",
+  "gloss": {
+    "fr": "Allez, match nul, d'accord ?",
+    "en": "Okay, let's call it a draw!"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hue_nha_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hue_nha_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "huề : match nul (Sud) ; au Nord, hòa.",
+    "en": "huề: a draw (South); North: hòa."
+  },
+  "reviewed": false
+}

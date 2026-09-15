@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_ne",
+  "type": "word",
+  "vi": "nè",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "particule : « tiens », « regarde » (Sud)",
+    "en": "particle: 'here', 'look' (South)"
+  },
+  "northernEquivalent": "này",
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_ne_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_ne_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

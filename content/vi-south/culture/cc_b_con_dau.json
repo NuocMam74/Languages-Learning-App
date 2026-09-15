@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_con_dau",
+  "title": {
+    "fr": "Le tampon rouge",
+    "en": "The red stamp"
+  },
+  "body": {
+    "fr": "Un document officiel n'est vraiment complet qu'avec le con dấu, le tampon rouge. Garde toujours sur toi des photocopies de ton passeport et quelques photos d'identité : on te les demandera souvent. Un sourire et beaucoup de patience aident plus que tout.",
+    "en": "An official document is only really complete with the con dấu, the red stamp. Always carry copies of your passport and a few ID photos: you'll often be asked for them. A smile and plenty of patience help more than anything."
+  },
+  "vi": "giấy tờ",
+  "audio": "audio/cc_b_con_dau.opus",
+  "question": {
+    "prompt": {
+      "fr": "Un papier officiel est complet avec…",
+      "en": "An official paper is complete with…"
+    },
+    "options": [
+      {
+        "fr": "le tampon rouge (con dấu)",
+        "en": "the red stamp (con dấu)"
+      },
+      {
+        "fr": "un simple trombone",
+        "en": "a paper clip"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

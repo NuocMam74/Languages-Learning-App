@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_gia_han_visa",
+  "type": "structure",
+  "vi": "Tui muốn gia hạn visa.",
+  "gloss": {
+    "fr": "Je veux prolonger mon visa.",
+    "en": "I want to extend my visa."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_gia_han_visa_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_gia_han_visa_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

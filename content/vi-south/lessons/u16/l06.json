@@ -1,0 +1,160 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u16.l06",
+  "unit": "vi-south.u16",
+  "title": {
+    "fr": "Khỏe chưa ?",
+    "en": "Feeling better?"
+  },
+  "goal": {
+    "fr": "Prendre des nouvelles et répondre.",
+    "en": "Ask after someone and reply."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u16.l05"
+  ],
+  "concepts": [
+    "s_khoe_chua",
+    "s_do_roi",
+    "s_nghi_ngoi",
+    "s_giu_suc_khoe",
+    "c_thuoc_medicine",
+    "c_nuoc",
+    "c_tien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khoe_chua",
+      "distractors": [
+        "Khỏe không?",
+        "Khỏe rồi."
+      ],
+      "explain": {
+        "fr": "Khỏe chưa ? : ça va mieux ?",
+        "en": "Khỏe chưa?: feeling better yet?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_hoi_tham"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_do_roi",
+      "distractors": [
+        "Đó rồi.",
+        "Đợi rồi."
+      ],
+      "explain": {
+        "fr": "Đỡ rồi : ça va mieux.",
+        "en": "Đỡ rồi: I'm better."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em đỡ nhiều rồi, cảm ơn chị.",
+      "tokens": [
+        "Em",
+        "đỡ",
+        "nhiều",
+        "rồi",
+        "cảm ơn",
+        "chị",
+        "đó"
+      ],
+      "translation": {
+        "fr": "Je vais beaucoup mieux, merci. (à une femme un peu plus âgée)",
+        "en": "I'm much better, thanks. (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "đỡ nhiều rồi : beaucoup mieux.",
+        "en": "đỡ nhiều rồi: much better."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nghi_ngoi",
+      "distractors": [
+        "nghỉ trưa",
+        "nghỉ việc"
+      ],
+      "explain": {
+        "fr": "nghỉ ngơi : se reposer. nghỉ trưa : la sieste.",
+        "en": "nghỉ ngơi: to rest. nghỉ trưa: midday nap."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh nghỉ ngơi đi nha.",
+      "tokens": [
+        "Anh",
+        "nghỉ ngơi",
+        "đi",
+        "nha",
+        "làm việc"
+      ],
+      "translation": {
+        "fr": "Repose-toi, d'accord ? (à un homme un peu plus âgé)",
+        "en": "Get some rest, okay? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "verbe + đi nha : encourager gentiment.",
+        "en": "verb + đi nha: gentle encouragement."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_thuoc_medicine",
+      "distractors": [
+        "c_nuoc",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "thuốc : le médicament.",
+        "en": "thuốc: medicine."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Giữ sức khỏe nha.",
+      "tokens": [
+        "Giữ",
+        "sức khỏe",
+        "nha",
+        "bệnh"
+      ],
+      "translation": {
+        "fr": "Prends soin de toi.",
+        "en": "Take care of yourself."
+      },
+      "explain": {
+        "fr": "Formule d'au revoir attentionnée.",
+        "en": "A caring way to say goodbye."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_giu_suc_khoe",
+      "explain": {
+        "fr": "sức monte, khỏe plonge.",
+        "en": "sức rises, khỏe dips."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_khoe_chua",
+      "s_do_roi",
+      "s_nghi_ngoi",
+      "s_giu_suc_khoe"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "../schema/curriculum.schema.json",
+  "pack": "es",
+  "blocks": [
+    {
+      "id": "b0",
+      "title": {
+        "fr": "Premiers pas",
+        "en": "First steps"
+      },
+      "units": [
+        "es.u01"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "es.u01",
+      "title": {
+        "fr": "Saluer, se présenter, compter",
+        "en": "Greeting, introducing yourself, counting"
+      },
+      "status": "available",
+      "tags": [
+        "core",
+        "travel"
+      ],
+      "lessons": [
+        "es.u01.l01",
+        "es.u01.l02",
+        "es.u01.l03"
+      ]
+    }
+  ],
+  "paths": {
+    "family": {
+      "boostTags": [
+        "family"
+      ]
+    },
+    "roots": {
+      "boostTags": [
+        "family"
+      ]
+    },
+    "travel": {
+      "boostTags": [
+        "travel"
+      ]
+    },
+    "work": {
+      "boostTags": [
+        "work"
+      ]
+    },
+    "curiosity": {
+      "boostTags": []
+    }
+  }
+}

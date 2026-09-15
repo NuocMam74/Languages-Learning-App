@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_hay_good",
+  "type": "word",
+  "vi": "hay",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "intéressant, bien (film, livre, chanson)",
+    "en": "interesting, good (film, book, song)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hay_good_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hay_good_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

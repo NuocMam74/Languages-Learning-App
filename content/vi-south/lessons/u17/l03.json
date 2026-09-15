@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u17.l03",
+  "unit": "vi-south.u17",
+  "title": {
+    "fr": "Thuê phòng",
+    "en": "Renting a room"
+  },
+  "goal": {
+    "fr": "Demander si une chambre est libre et son prix.",
+    "en": "Ask if a room is free and how much it costs."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u17.l02"
+  ],
+  "concepts": [
+    "c_thue",
+    "c_thang_month",
+    "s_thue_bao_nhieu",
+    "c_phong_tro",
+    "s_con_phong",
+    "c_tien",
+    "c_giuong",
+    "c_phong"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_con_phong",
+      "distractors": [
+        "Còn phòng tắm không?",
+        "Còn phở không?"
+      ],
+      "explain": {
+        "fr": "Còn phòng không ? : il reste une chambre ?",
+        "en": "Còn phòng không?: any rooms left?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_phong_tro"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thue",
+      "distractors": [
+        "thuế",
+        "thui"
+      ],
+      "explain": {
+        "fr": "thuê : louer. thuế : l'impôt !",
+        "en": "thuê: to rent. thuế: tax!"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_thang_month",
+      "explain": {
+        "fr": "tháng monte (sắc).",
+        "en": "tháng rises (sắc)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Phòng này bao nhiêu một tháng?",
+      "tokens": [
+        "Phòng",
+        "này",
+        "bao nhiêu",
+        "một",
+        "tháng",
+        "ký"
+      ],
+      "translation": {
+        "fr": "Cette chambre, c'est combien par mois ?",
+        "en": "How much is this room per month?"
+      },
+      "explain": {
+        "fr": "bao nhiêu một + unité : combien par…",
+        "en": "bao nhiêu một + unit: how much per…"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thue_bao_nhieu",
+      "distractors": [
+        "Phòng này bao nhiêu một đêm?",
+        "Phòng này mấy người?"
+      ],
+      "explain": {
+        "fr": "một tháng : par mois. một đêm : par nuit.",
+        "en": "một tháng: per month. một đêm: per night."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_giuong",
+        "c_phong"
+      ],
+      "explain": {
+        "fr": "tiền : l'argent.",
+        "en": "tiền: money."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em muốn thuê phòng trọ.",
+      "tokens": [
+        "Em",
+        "muốn",
+        "thuê",
+        "phòng trọ",
+        "thuế"
+      ],
+      "translation": {
+        "fr": "Je voudrais louer une chambre.",
+        "en": "I'd like to rent a room."
+      },
+      "explain": {
+        "fr": "muốn thuê : vouloir louer.",
+        "en": "muốn thuê: want to rent."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong_tro",
+      "distractors": [
+        "phòng trống",
+        "phòng trò"
+      ],
+      "explain": {
+        "fr": "phòng trọ : chambre en location. phòng trống : chambre vide.",
+        "en": "phòng trọ: rented room. phòng trống: vacant room."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_con_phong",
+      "explain": {
+        "fr": "còn et phòng descendent, không plat.",
+        "en": "còn and phòng fall, không level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_thue",
+      "c_thang_month",
+      "s_thue_bao_nhieu",
+      "c_phong_tro",
+      "s_con_phong"
+    ]
+  },
+  "reviewed": false
+}

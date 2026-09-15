@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u22.l06",
+  "unit": "vi-south.u22",
+  "title": {
+    "fr": "Kể chuyện",
+    "en": "Telling a story"
+  },
+  "goal": {
+    "fr": "Raconter une petite histoire en trois étapes.",
+    "en": "Tell a short story in three steps."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u22.l05"
+  ],
+  "concepts": [
+    "c_b_ke",
+    "c_b_chuyen",
+    "c_b_nghe",
+    "s_b_ke_tui_nghe"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ke_tui_nghe",
+      "distractors": [
+        "Kể em nghe đi!",
+        "Hỏi tui đi!"
+      ],
+      "explain": {
+        "fr": "kể … nghe : raconter à quelqu'un.",
+        "en": "kể … nghe: tell someone."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_ngay_xua"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ke",
+      "distractors": [
+        "kế",
+        "kè"
+      ],
+      "explain": {
+        "fr": "kể plonge : raconter. kế monte : à côté, suivant.",
+        "en": "kể dips: to tell. kế rises: next."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_ke",
+      "explain": {
+        "fr": "kể : hỏi.",
+        "en": "kể: hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_chuyen",
+      "distractors": [
+        "chuyến",
+        "chuyền"
+      ],
+      "explain": {
+        "fr": "chuyện tombe court : l'histoire. chuyến : le trajet.",
+        "en": "chuyện drops short: story. chuyến: trip."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Kể tui nghe đi!",
+      "tokens": [
+        "Kể",
+        "tui",
+        "nghe",
+        "đi",
+        "kế"
+      ],
+      "translation": {
+        "fr": "Raconte-moi !",
+        "en": "Tell me about it!"
+      },
+      "explain": {
+        "fr": "đi en fin de phrase : invite à agir.",
+        "en": "đi at the end: urges action."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hồi đó tui ở quê, rồi tui lên Sài Gòn.",
+      "tokens": [
+        "Hồi đó",
+        "tui",
+        "ở",
+        "quê",
+        "rồi",
+        "tui",
+        "lên",
+        "Sài Gòn",
+        "xuống"
+      ],
+      "translation": {
+        "fr": "À l'époque, je vivais au village, puis je suis monté(e) à Saïgon.",
+        "en": "Back then I lived in the village, then I moved up to Saigon."
+      },
+      "explain": {
+        "fr": "lên Sài Gòn : « monter » à Saïgon.",
+        "en": "lên Sài Gòn: 'go up' to Saigon."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Sau đó tui đi làm ở công ty.",
+      "tokens": [
+        "Sau đó",
+        "tui",
+        "đi làm",
+        "ở",
+        "công ty",
+        "trước"
+      ],
+      "translation": {
+        "fr": "Ensuite, j'ai travaillé dans une entreprise.",
+        "en": "After that I worked at a company."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_ke_tui_nghe",
+      "explain": {
+        "fr": "kể plonge, nghe plat, đi plat.",
+        "en": "kể dips, nghe level, đi level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_ke",
+      "c_b_chuyen",
+      "c_b_nghe",
+      "s_b_ke_tui_nghe"
+    ]
+  },
+  "reviewed": false
+}

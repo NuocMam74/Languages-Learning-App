@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_chich_ngua",
+  "title": {
+    "fr": "Chích ou tiêm ?",
+    "en": "Chích or tiêm?"
+  },
+  "body": {
+    "fr": "Pour une piqûre, le Sud dit chích ; le Nord, tiêm. Se faire vacciner : chích ngừa au Sud. À l'hôpital, apporte ton passeport et arrive tôt : les files d'attente commencent dès l'aube. Beaucoup de cliniques privées ont des médecins qui parlent anglais ou français.",
+    "en": "For a shot, the South says chích; the North, tiêm. Getting vaccinated: chích ngừa in the South. At a hospital, bring your passport and come early: queues start at dawn. Many private clinics have doctors who speak English or French."
+  },
+  "vi": "Bác sĩ ơi, em đau ở đây.",
+  "audio": "audio/cc_chich_ngua.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Chích ngừa » veut dire…",
+      "en": "'Chích ngừa' means…"
+    },
+    "options": [
+      {
+        "fr": "se faire vacciner",
+        "en": "get vaccinated"
+      },
+      {
+        "fr": "arrêter de fumer",
+        "en": "quit smoking"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

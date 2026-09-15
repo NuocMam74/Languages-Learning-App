@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_neu_mua_thi_o_nha",
+  "type": "structure",
+  "vi": "Nếu mưa thì tui ở nhà.",
+  "gloss": {
+    "fr": "S'il pleut, je reste à la maison.",
+    "en": "If it rains, I'll stay home."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_neu_mua_thi_o_nha_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_neu_mua_thi_o_nha_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

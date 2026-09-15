@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_nhan_zalo",
+  "type": "structure",
+  "vi": "Nhắn Zalo cho em nha.",
+  "gloss": {
+    "fr": "Envoie-moi un message sur Zalo.",
+    "en": "Message me on Zalo."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nhan_zalo_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nhan_zalo_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

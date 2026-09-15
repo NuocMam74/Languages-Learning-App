@@ -63,7 +63,10 @@ class DailyGoalOut(CamelModel):
 class MeOut(CamelModel):
     user: UserOut
     profile: ProfileOut
+    # Inscription du pack courant (dernier `pack_switched`, sinon vi-south).
     enrollment: EnrollmentOut | None
+    # Toutes les inscriptions (une par pack), par date d'inscription.
+    enrollments: list[EnrollmentOut]
     streak: StreakOut
     # Estimation 0–3 issue du test de placement (null tant qu'il n'a pas été passé).
     level_estimate: int | None

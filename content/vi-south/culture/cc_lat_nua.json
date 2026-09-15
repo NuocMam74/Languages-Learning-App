@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_lat_nua",
+  "title": {
+    "fr": "Lát nữa…",
+    "en": "Lát nữa…"
+  },
+  "body": {
+    "fr": "« Lát em gọi lại nha » : je te rappelle tout à l'heure. lát nữa et chút nữa sont élastiques : dix minutes ou le soir. Si c'est urgent, précise l'heure : « Mấy giờ anh gọi lại ? ». « Em đang bận » suffit pour s'excuser.",
+    "en": "'Lát em gọi lại nha': I'll call you back in a bit. lát nữa and chút nữa are elastic: ten minutes or tonight. If it's urgent, pin down a time: 'Mấy giờ anh gọi lại?'. 'Em đang bận' is enough to excuse yourself."
+  },
+  "vi": "Lát em gọi lại nha.",
+  "audio": "audio/cc_lat_nua.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Lát nữa » veut dire…",
+      "en": "'Lát nữa' means…"
+    },
+    "options": [
+      {
+        "fr": "tout à l'heure, sans heure précise",
+        "en": "in a while, no exact time"
+      },
+      {
+        "fr": "exactement dans cinq minutes",
+        "en": "in exactly five minutes"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_cho_coi_ho_chieu",
+  "type": "structure",
+  "vi": "Anh cho tôi coi hộ chiếu.",
+  "gloss": {
+    "fr": "Montrez-moi votre passeport (à un homme un peu plus âgé).",
+    "en": "Show me your passport (to a slightly older man)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_cho_coi_ho_chieu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_cho_coi_ho_chieu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "coi : regarder (Sud) ; au Nord, xem.",
+    "en": "coi: to look (South); North: xem."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_thiet_ha",
+  "type": "structure",
+  "vi": "Thiệt há?",
+  "gloss": {
+    "fr": "Ah bon, c'est vrai ?",
+    "en": "Really? Is that true?"
+  },
+  "northernEquivalent": "Thật hả?",
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_thiet_ha_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_thiet_ha_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "thiệt : vrai (Sud) ; au Nord, thật.",
+    "en": "thiệt: true (South); North: thật."
+  },
+  "reviewed": false
+}

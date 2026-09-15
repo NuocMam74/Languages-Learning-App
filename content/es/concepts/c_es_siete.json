@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_es_siete",
+  "type": "word",
+  "vi": "siete",
+  "gloss": {
+    "fr": "sept",
+    "en": "seven"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_siete_lucia.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_siete_lucia_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/numbers/n7.svg",
+  "reviewed": false
+}

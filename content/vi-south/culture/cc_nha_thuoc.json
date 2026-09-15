@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_nha_thuoc",
+  "title": {
+    "fr": "À la nhà thuốc",
+    "en": "At the nhà thuốc"
+  },
+  "body": {
+    "fr": "Les nhà thuốc sont partout, souvent ouvertes tard. Le pharmacien conseille directement : montre où tu as mal, décris tes symptômes. Au Nord, on dit aussi hiệu thuốc. Demande toujours : « Ngày uống mấy lần ? », combien de fois par jour.",
+    "en": "Nhà thuốc are everywhere, often open late. The pharmacist advises you directly: point to where it hurts, describe your symptoms. In the North you'll also hear hiệu thuốc. Always ask: 'Ngày uống mấy lần?', how many times a day."
+  },
+  "vi": "Ngày uống mấy lần?",
+  "audio": "audio/cc_nha_thuoc.opus",
+  "question": {
+    "prompt": {
+      "fr": "À la pharmacie, il faut demander…",
+      "en": "At the pharmacy, you should ask…"
+    },
+    "options": [
+      {
+        "fr": "combien de fois par jour le prendre",
+        "en": "how many times a day to take it"
+      },
+      {
+        "fr": "le prix du parking",
+        "en": "the parking fee"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

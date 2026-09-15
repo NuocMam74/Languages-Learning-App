@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_tam_tru",
+  "title": {
+    "fr": "Déclarer sa résidence",
+    "en": "Registering your stay"
+  },
+  "body": {
+    "fr": "Au Vietnam, un étranger doit être déclaré là où il dort : c'est le tạm trú. À l'hôtel, la réception s'en charge avec ton hộ chiếu. Chez l'habitant, ton hôte le fait en ligne ou au công an phường, le poste de police du quartier.",
+    "en": "In Vietnam, a foreigner must be registered where they sleep: that's tạm trú. At a hotel, reception does it with your hộ chiếu. When staying with locals, your host does it online or at the công an phường, the ward police station."
+  },
+  "vi": "Tui đi khai báo tạm trú.",
+  "audio": "audio/cc_b_tam_tru.opus",
+  "question": {
+    "prompt": {
+      "fr": "À l'hôtel, qui déclare ton tạm trú ?",
+      "en": "At a hotel, who registers your tạm trú?"
+    },
+    "options": [
+      {
+        "fr": "la réception",
+        "en": "reception"
+      },
+      {
+        "fr": "toi, au commissariat",
+        "en": "you, at the police station"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

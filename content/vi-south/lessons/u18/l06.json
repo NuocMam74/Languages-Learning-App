@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u18.l06",
+  "unit": "vi-south.u18",
+  "title": {
+    "fr": "Nghỉ phép",
+    "en": "Time off"
+  },
+  "goal": {
+    "fr": "Demander poliment un jour de congé.",
+    "en": "Politely ask for a day off."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u18.l05"
+  ],
+  "concepts": [
+    "c_b_nghi",
+    "c_b_nghi_phep",
+    "s_b_xin_nghi_phep",
+    "s_b_anh_cho_em_nghi",
+    "c_ngay",
+    "c_b_sep"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_nghi_phep",
+      "distractors": [
+        "c_b_may_tinh",
+        "c_b_dong_nghiep"
+      ],
+      "explain": {
+        "fr": "nghỉ phép : le congé.",
+        "en": "nghỉ phép: time off."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_nghi_phep_tet"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nghi",
+      "distractors": [
+        "nghi",
+        "nghị"
+      ],
+      "explain": {
+        "fr": "nghỉ plonge : se reposer, ne pas travailler.",
+        "en": "nghỉ dips: to rest, take time off."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_nghi",
+      "explain": {
+        "fr": "nghỉ : descends un peu, puis remonte (hỏi).",
+        "en": "nghỉ: dip a little, then rise (hỏi)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_xin_nghi_phep",
+      "distractors": [
+        "Em xin nghỉ phép hai ngày.",
+        "Em xin nghỉ phép ba tuần."
+      ],
+      "explain": {
+        "fr": "ba ngày : trois jours ; ba tuần : trois semaines.",
+        "en": "ba ngày: three days; ba tuần: three weeks."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em xin nghỉ phép ba ngày.",
+      "tokens": [
+        "Em",
+        "xin",
+        "nghỉ phép",
+        "ba",
+        "ngày",
+        "tuần"
+      ],
+      "translation": {
+        "fr": "Je demande trois jours de congé.",
+        "en": "I'd like to take three days off."
+      },
+      "explain": {
+        "fr": "xin + verbe : demander poliment la permission.",
+        "en": "xin + verb: politely ask permission."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh cho em nghỉ thứ sáu nha.",
+      "tokens": [
+        "Anh",
+        "cho",
+        "em",
+        "nghỉ",
+        "thứ sáu",
+        "nha",
+        "sáu"
+      ],
+      "translation": {
+        "fr": "Tu me laisses prendre vendredi, d'accord ?",
+        "en": "Can I take Friday off, okay?"
+      },
+      "explain": {
+        "fr": "cho em + verbe : « laisse-moi… ».",
+        "en": "cho em + verb: 'let me…'."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_sep",
+      "explain": {
+        "fr": "sếp : monte nettement.",
+        "en": "sếp: rise clearly."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_anh_cho_em_nghi",
+      "distractors": [
+        "Anh cho em nghỉ thứ bảy nha.",
+        "Chị cho em nghỉ thứ sáu nha."
+      ],
+      "explain": {
+        "fr": "thứ sáu : vendredi ; thứ bảy : samedi.",
+        "en": "thứ sáu: Friday; thứ bảy: Saturday."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_xin_nghi_phep",
+      "explain": {
+        "fr": "xin plat, nghỉ plonge, phép monte.",
+        "en": "xin level, nghỉ dips, phép rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_nghi",
+      "c_b_nghi_phep",
+      "s_b_xin_nghi_phep",
+      "s_b_anh_cho_em_nghi"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u20.l01",
+  "unit": "vi-south.u20",
+  "title": {
+    "fr": "Mời",
+    "en": "Inviting"
+  },
+  "goal": {
+    "fr": "Inviter quelqu'un et remercier poliment.",
+    "en": "Invite someone and thank them politely."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u19.l08"
+  ],
+  "concepts": [
+    "s_b_moi_di_dam_cuoi",
+    "c_b_dam_cuoi",
+    "s_b_da_con_cam_on",
+    "c_b_thiep_moi",
+    "c_moi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi",
+      "distractors": [
+        "mới",
+        "mơi"
+      ],
+      "explain": {
+        "fr": "mời descend : inviter.",
+        "en": "mời falls: to invite."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_dam_cuoi_phong_bi"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dam_cuoi",
+      "distractors": [
+        "c_b_dam_gio",
+        "c_b_li_xi",
+        "c_b_qua_gift"
+      ],
+      "explain": {
+        "fr": "đám cưới : le mariage.",
+        "en": "đám cưới: wedding."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thiep_moi",
+      "distractors": [
+        "thiếp mời",
+        "thiệp mới"
+      ],
+      "explain": {
+        "fr": "thiệp mời : le carton d'invitation.",
+        "en": "thiệp mời: invitation card."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mời chị đi đám cưới em nha.",
+      "tokens": [
+        "Mời",
+        "chị",
+        "đi",
+        "đám cưới",
+        "em",
+        "nha",
+        "mới"
+      ],
+      "translation": {
+        "fr": "Viens à mon mariage, s'il te plaît.",
+        "en": "Please come to my wedding."
+      },
+      "explain": {
+        "fr": "đi đám cưới : aller à un mariage.",
+        "en": "đi đám cưới: go to a wedding."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_da_con_cam_on",
+      "distractors": [
+        "Dạ, con xin lỗi.",
+        "Dạ, em cảm ơn."
+      ],
+      "explain": {
+        "fr": "con : face à la génération des parents ; em : face à un aîné proche.",
+        "en": "con: to your parents' generation; em: to a close elder."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, con cảm ơn cô.",
+      "tokens": [
+        "Dạ",
+        "con",
+        "cảm ơn",
+        "cô",
+        "có"
+      ],
+      "translation": {
+        "fr": "Merci, madame (à une femme de l'âge de tes parents).",
+        "en": "Thank you (to a woman your parents' age)."
+      },
+      "explain": {
+        "fr": "dạ en tête : poli et chaleureux.",
+        "en": "dạ first: polite and warm."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_moi",
+      "explain": {
+        "fr": "mời : huyền.",
+        "en": "mời: huyền."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_moi_di_dam_cuoi",
+      "distractors": [
+        "Mời anh đi đám cưới em nha.",
+        "Mời chị đi đám giỗ nha."
+      ],
+      "explain": {
+        "fr": "đám cưới : mariage ; đám giỗ : anniversaire de décès.",
+        "en": "đám cưới: wedding; đám giỗ: death anniversary."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_da_con_cam_on",
+      "explain": {
+        "fr": "dạ court, con plat, cảm plonge, ơn plat.",
+        "en": "dạ short, con level, cảm dips, ơn level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_b_moi_di_dam_cuoi",
+      "c_b_dam_cuoi",
+      "s_b_da_con_cam_on",
+      "c_b_thiep_moi"
+    ]
+  },
+  "reviewed": false
+}

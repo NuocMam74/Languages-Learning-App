@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_sep_anh_chi",
+  "title": {
+    "fr": "Appeler son chef",
+    "en": "Addressing your boss"
+  },
+  "body": {
+    "fr": "Au bureau, on appelle souvent son chef anh ou chị selon l'âge, ou simplement sếp. Les titres formels existent, mais restent rares dans les entreprises de Saïgon. On répond quand même par dạ. Entre collègues, les pronoms suivent l'âge, comme en famille.",
+    "en": "At the office, people often call their boss anh or chị depending on age, or simply sếp. Formal titles exist but are rare in Saigon companies. You still answer with dạ. Between colleagues, pronouns follow age, just like in a family."
+  },
+  "vi": "Dạ, em chào sếp.",
+  "audio": "audio/cc_b_sep_anh_chi.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour répondre poliment à ta cheffe, tu commences par…",
+      "en": "To answer your boss politely, you start with…"
+    },
+    "options": [
+      {
+        "fr": "dạ",
+        "en": "dạ"
+      },
+      {
+        "fr": "hông",
+        "en": "hông"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

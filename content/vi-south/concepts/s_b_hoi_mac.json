@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_hoi_mac",
+  "type": "structure",
+  "vi": "Hơi mắc, nhưng mà ngon.",
+  "gloss": {
+    "fr": "Un peu cher, mais c'est bon.",
+    "en": "A bit pricey, but tasty."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hoi_mac_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hoi_mac_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

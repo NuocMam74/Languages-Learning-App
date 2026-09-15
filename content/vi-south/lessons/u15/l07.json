@@ -1,0 +1,183 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u15.l07",
+  "unit": "vi-south.u15",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : téléphone et messages",
+    "en": "Review: phone and messages"
+  },
+  "goal": {
+    "fr": "Revoir les formules du téléphone et des messages.",
+    "en": "Go over phone and messaging phrases."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u15.l06"
+  ],
+  "concepts": [
+    "s_alo_em_nghe",
+    "c_goi",
+    "c_goi_pack",
+    "c_goi_salad",
+    "c_tin_nhan",
+    "c_dien_thoai",
+    "c_sach",
+    "s_het_pin"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_alo_em_nghe",
+      "distractors": [
+        "Alô, em nói.",
+        "Alô, em nghỉ."
+      ],
+      "explain": {
+        "fr": "em nghe : j'écoute. nghỉ : se reposer.",
+        "en": "em nghe: I'm listening. nghỉ: to rest."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "gọi",
+        "gói",
+        "gỏi"
+      ],
+      "audioConcepts": [
+        "c_goi",
+        "c_goi_pack",
+        "c_goi_salad"
+      ],
+      "explain": {
+        "fr": "gọi tombe court : appeler. gói monte : paquet. gỏi plonge : salade.",
+        "en": "gọi drops short: to call. gói rises: package. gỏi dips: salad."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em đang bận, lát em gọi lại nha.",
+      "tokens": [
+        "Em",
+        "đang",
+        "bận",
+        "lát",
+        "em",
+        "gọi lại",
+        "nha",
+        "bán"
+      ],
+      "translation": {
+        "fr": "Je suis occupé(e), je te rappelle tout à l'heure.",
+        "en": "I'm busy, I'll call you back in a bit."
+      },
+      "explain": {
+        "fr": "đang bận + lát gọi lại : la formule parfaite.",
+        "en": "đang bận + lát gọi lại: the perfect line."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tin_nhan",
+      "distractors": [
+        "c_dien_thoai",
+        "c_sach"
+      ],
+      "explain": {
+        "fr": "tin nhắn : le message.",
+        "en": "tin nhắn: text message."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhắn Zalo cho em nha.",
+      "tokens": [
+        "Nhắn",
+        "Zalo",
+        "cho",
+        "em",
+        "nha",
+        "gọi"
+      ],
+      "translation": {
+        "fr": "Envoie-moi un message sur Zalo.",
+        "en": "Message me on Zalo."
+      },
+      "explain": {
+        "fr": "nhắn + appli + cho + personne.",
+        "en": "nhắn + app + cho + person."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_nha",
+      "explain": {
+        "fr": "Sud : nha ; Nord : nhé.",
+        "en": "South: nha; North: nhé."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đợi em chút xíu nha.",
+      "tokens": [
+        "Anh",
+        "đợi",
+        "em",
+        "chút xíu",
+        "nha",
+        "đời"
+      ],
+      "translation": {
+        "fr": "Attends-moi une petite minute. (à un homme un peu plus âgé)",
+        "en": "Wait for me just a sec. (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "đợi + personne + chút xíu.",
+        "en": "đợi + person + chút xíu."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_het_pin",
+      "distractors": [
+        "Điện thoại em hết tiền rồi.",
+        "Điện thoại em còn pin."
+      ],
+      "explain": {
+        "fr": "hết pin : plus de batterie. còn : encore.",
+        "en": "hết pin: battery dead. còn: still some left."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị nhắn lại giùm em nha.",
+      "tokens": [
+        "Chị",
+        "nhắn",
+        "lại",
+        "giùm",
+        "em",
+        "nha",
+        "gọi"
+      ],
+      "translation": {
+        "fr": "Tu peux lui laisser un message de ma part ? (à une femme un peu plus âgée)",
+        "en": "Could you pass on a message for me? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "verbe + giùm + personne : faire pour quelqu'un.",
+        "en": "verb + giùm + person: do for someone."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

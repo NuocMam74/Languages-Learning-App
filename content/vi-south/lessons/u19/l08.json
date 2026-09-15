@@ -1,0 +1,191 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u19.l08",
+  "unit": "vi-south.u19",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : démarches",
+    "en": "Test: paperwork"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais te débrouiller au guichet.",
+    "en": "Show you can manage at the counter."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u19.l07"
+  ],
+  "concepts": [
+    "c_b_visa",
+    "c_b_giay_to",
+    "c_b_cong_an",
+    "c_b_phuong",
+    "c_b_the",
+    "c_b_tai_khoan",
+    "s_b_rut_tien",
+    "c_b_gium"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_visa",
+      "distractors": [
+        "c_b_ho_chieu",
+        "c_b_don"
+      ],
+      "explain": {
+        "fr": "visa.",
+        "en": "visa."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_to",
+      "distractors": [
+        "giây tờ",
+        "giấy tớ"
+      ],
+      "explain": {
+        "fr": "giấy tờ : les papiers.",
+        "en": "giấy tờ: papers."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Visa của tui sắp hết hạn.",
+      "tokens": [
+        "Visa",
+        "của",
+        "tui",
+        "sắp",
+        "hết hạn",
+        "hạn"
+      ],
+      "translation": {
+        "fr": "Mon visa expire bientôt.",
+        "en": "My visa is about to expire."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_cong_an",
+      "distractors": [
+        "c_b_dong_nghiep",
+        "c_bac_si"
+      ],
+      "explain": {
+        "fr": "công an : le policier.",
+        "en": "công an: police officer."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_phuong",
+      "distractors": [
+        "phượng",
+        "phương"
+      ],
+      "explain": {
+        "fr": "phường : le quartier.",
+        "en": "phường: ward."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh cho tôi coi hộ chiếu.",
+      "tokens": [
+        "Anh",
+        "cho",
+        "tôi",
+        "coi",
+        "hộ chiếu",
+        "visa"
+      ],
+      "translation": {
+        "fr": "Montrez-moi votre passeport.",
+        "en": "Show me your passport."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_the",
+      "distractors": [
+        "c_tien",
+        "c_b_don"
+      ],
+      "explain": {
+        "fr": "thẻ : la carte.",
+        "en": "thẻ: card."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_khoan",
+      "distractors": [
+        "tai khoản",
+        "tài khoan"
+      ],
+      "explain": {
+        "fr": "tài khoản : le compte.",
+        "en": "tài khoản: account."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_rut_tien",
+      "distractors": [
+        "Tui muốn gửi tiền.",
+        "Tui muốn đổi tiền."
+      ],
+      "explain": {
+        "fr": "rút tiền : retirer.",
+        "en": "rút tiền: withdraw."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ký tên ở đây.",
+      "tokens": [
+        "Ký",
+        "tên",
+        "ở",
+        "đây",
+        "kỳ"
+      ],
+      "translation": {
+        "fr": "Signez ici.",
+        "en": "Sign here."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_gium",
+      "explain": {
+        "fr": "giùm : huyền.",
+        "en": "giùm: huyền."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị photo giùm em hai bản nha.",
+      "tokens": [
+        "Chị",
+        "photo",
+        "giùm",
+        "em",
+        "hai",
+        "bản",
+        "nha",
+        "bàn"
+      ],
+      "translation": {
+        "fr": "Tu me fais deux photocopies, s'il te plaît ?",
+        "en": "Could you make me two copies?"
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

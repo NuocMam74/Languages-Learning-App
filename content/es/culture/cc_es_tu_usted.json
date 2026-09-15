@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_es_tu_usted",
+  "title": {
+    "fr": "Tú ou usted ?",
+    "en": "Tú or usted?"
+  },
+  "body": {
+    "fr": "Tú s'emploie avec les amis, la famille et les gens de ton âge. Usted marque le respect : une personne âgée, un client, parfois un inconnu. Dans le doute, commence par usted : on te proposera vite le tú.",
+    "en": "Tú is for friends, family and people your age. Usted shows respect: an older person, a customer, sometimes a stranger. When in doubt, start with usted: people will soon offer tú."
+  },
+  "vi": "¿Cómo se llama usted?",
+  "audio": "audio/cc_es_tu_usted.opus",
+  "question": {
+    "prompt": {
+      "fr": "À une grand-mère que tu ne connais pas, tu dis plutôt…",
+      "en": "To a grandmother you don't know, you'd rather say…"
+    },
+    "options": [
+      {
+        "fr": "tú",
+        "en": "tú"
+      },
+      {
+        "fr": "usted",
+        "en": "usted"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

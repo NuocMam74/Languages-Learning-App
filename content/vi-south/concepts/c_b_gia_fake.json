@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_gia_fake",
+  "type": "word",
+  "vi": "giả",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "faux ; (dans giả sử) supposer",
+    "en": "fake; (in giả sử) to suppose"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_gia_fake_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_gia_fake_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

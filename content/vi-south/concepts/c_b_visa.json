@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_visa",
+  "type": "word",
+  "vi": "visa",
+  "gloss": {
+    "fr": "visa",
+    "en": "visa"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_visa_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_visa_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/visa.svg",
+  "note": {
+    "fr": "On dit aussi thị thực, plus officiel.",
+    "en": "Also thị thực, more official."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,159 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u15.l06",
+  "unit": "vi-south.u15",
+  "title": {
+    "fr": "Un appel au travail",
+    "en": "A work call"
+  },
+  "goal": {
+    "fr": "Demander quelqu'un et laisser un message.",
+    "en": "Ask for someone and leave a message."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u15.l05"
+  ],
+  "concepts": [
+    "s_cho_em_gap",
+    "s_anh_minh_dang_hop",
+    "c_gium",
+    "s_nhan_lai_gium",
+    "c_ben_side",
+    "c_ky_su",
+    "c_bac_si",
+    "c_giao_vien",
+    "c_hop"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_gap",
+      "distractors": [
+        "Cho em gọi anh Minh.",
+        "Cho em gặp chị Minh."
+      ],
+      "explain": {
+        "fr": "Cho em gặp… : je voudrais parler à…",
+        "en": "Cho em gặp…: may I speak to…"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_goi_cong_viec"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_minh_dang_hop",
+      "distractors": [
+        "Anh Minh đang học.",
+        "Anh Minh sắp họp."
+      ],
+      "explain": {
+        "fr": "họp : la réunion. học : étudier.",
+        "en": "họp: meeting. học: to study."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gium",
+      "distractors": [
+        "giùn",
+        "chùm"
+      ],
+      "explain": {
+        "fr": "giùm descend : pour quelqu'un.",
+        "en": "giùm falls: on someone's behalf."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_on_behalf",
+      "explain": {
+        "fr": "Sud : giùm ; Nord : hộ.",
+        "en": "South: giùm; North: hộ."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị nhắn lại giùm em nha.",
+      "tokens": [
+        "Chị",
+        "nhắn",
+        "lại",
+        "giùm",
+        "em",
+        "nha",
+        "gọi"
+      ],
+      "translation": {
+        "fr": "Tu peux lui laisser un message de ma part ? (à une femme un peu plus âgée)",
+        "en": "Could you pass on a message for me? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "verbe + giùm + personne : faire pour quelqu'un.",
+        "en": "verb + giùm + person: do for someone."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ky_su",
+      "distractors": [
+        "c_bac_si",
+        "c_giao_vien"
+      ],
+      "explain": {
+        "fr": "kỹ sư : l'ingénieur(e).",
+        "en": "kỹ sư: engineer."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, em là Lan, bên công ty Sao Mai.",
+      "tokens": [
+        "Dạ",
+        "em",
+        "là",
+        "Lan",
+        "bên",
+        "công ty",
+        "Sao Mai",
+        "của"
+      ],
+      "translation": {
+        "fr": "Bonjour, c'est Lan, de la société Sao Mai.",
+        "en": "Hello, this is Lan from Sao Mai company."
+      },
+      "explain": {
+        "fr": "bên + entreprise : de chez…",
+        "en": "bên + company: from…"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_hop",
+      "explain": {
+        "fr": "họp tombe court (nặng).",
+        "en": "họp drops short (nặng)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cho_em_gap",
+      "explain": {
+        "fr": "gặp tombe court.",
+        "en": "gặp drops short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_cho_em_gap",
+      "s_anh_minh_dang_hop",
+      "c_gium",
+      "s_nhan_lai_gium",
+      "c_ben_side"
+    ]
+  },
+  "reviewed": false
+}

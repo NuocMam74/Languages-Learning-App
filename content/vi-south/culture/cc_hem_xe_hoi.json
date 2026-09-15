@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_hem_xe_hoi",
+  "title": {
+    "fr": "Hẻm xe hơi",
+    "en": "Hẻm xe hơi"
+  },
+  "body": {
+    "fr": "Dans les annonces immobilières du Sud, « hẻm xe hơi » est un argument : une voiture peut entrer dans la ruelle. Plus cher qu'une hẻm étroite, moins qu'une maison « mặt tiền », sur la rue. En échange, la ruelle est souvent plus yên tĩnh, moins ồn.",
+    "en": "In southern property ads, 'hẻm xe hơi' is a selling point: a car can drive into the alley. Pricier than a narrow hẻm, cheaper than a 'mặt tiền' house on the street. In return, an alley is often more yên tĩnh, less ồn."
+  },
+  "vi": "Nhà trong hẻm yên tĩnh hơn.",
+  "audio": "audio/cc_hem_xe_hoi.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Hẻm xe hơi » veut dire…",
+      "en": "'Hẻm xe hơi' means…"
+    },
+    "options": [
+      {
+        "fr": "une ruelle assez large pour une voiture",
+        "en": "an alley wide enough for a car"
+      },
+      {
+        "fr": "un parking payant",
+        "en": "a paid car park"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

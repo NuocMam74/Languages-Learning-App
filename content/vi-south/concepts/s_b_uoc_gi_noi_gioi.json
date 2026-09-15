@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_uoc_gi_noi_gioi",
+  "type": "structure",
+  "vi": "Ước gì tui nói giỏi tiếng Việt.",
+  "gloss": {
+    "fr": "Si seulement je parlais bien vietnamien.",
+    "en": "If only I spoke Vietnamese well."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_uoc_gi_noi_gioi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_uoc_gi_noi_gioi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

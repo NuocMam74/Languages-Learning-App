@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_giu_suc_khoe",
+  "type": "structure",
+  "vi": "Giữ sức khỏe nha.",
+  "gloss": {
+    "fr": "Prends soin de toi.",
+    "en": "Take care of yourself."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_giu_suc_khoe_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_giu_suc_khoe_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

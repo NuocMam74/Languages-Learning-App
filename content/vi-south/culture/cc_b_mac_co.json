@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_mac_co",
+  "title": {
+    "fr": "Mắc cỡ et dễ thương",
+    "en": "Mắc cỡ and dễ thương"
+  },
+  "body": {
+    "fr": "Mắc cỡ, c'est être gêné ou timide ; c'est aussi le nom de la sensitive, plante qui se referme quand on la touche. Dễ thương, « facile à aimer », veut dire mignon ou gentil : on le dit d'un enfant, d'un cadeau, ou d'une personne attentionnée.",
+    "en": "Mắc cỡ means shy or embarrassed; it's also the name of the sensitive plant, which folds up when touched. Dễ thương, 'easy to love', means cute or sweet: said of a child, a gift, or a thoughtful person."
+  },
+  "vi": "Dễ thương quá!",
+  "audio": "audio/cc_b_mac_co.opus",
+  "question": {
+    "prompt": {
+      "fr": "Dễ thương, pour un enfant, veut dire…",
+      "en": "Dễ thương, said of a child, means…"
+    },
+    "options": [
+      {
+        "fr": "mignon",
+        "en": "cute"
+      },
+      {
+        "fr": "bruyant",
+        "en": "noisy"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

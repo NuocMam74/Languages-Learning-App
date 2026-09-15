@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_moi_nguoi_thay_sao",
+  "type": "structure",
+  "vi": "Mọi người thấy sao?",
+  "gloss": {
+    "fr": "Qu'en pensez-vous, tout le monde ?",
+    "en": "What does everyone think?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_moi_nguoi_thay_sao_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_moi_nguoi_thay_sao_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

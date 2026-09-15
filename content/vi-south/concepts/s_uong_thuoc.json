@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_uong_thuoc",
+  "type": "structure",
+  "vi": "uống thuốc",
+  "gloss": {
+    "fr": "prendre un médicament",
+    "en": "to take medicine"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_uong_thuoc_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_uong_thuoc_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "On « boit » les médicaments : uống thuốc.",
+    "en": "Medicine is 'drunk': uống thuốc."
+  },
+  "reviewed": false
+}

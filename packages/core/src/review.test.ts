@@ -20,7 +20,7 @@ describe("buildReviewExercise", () => {
       expect(ex.options.map((o) => o.id)).toContain(ex.answerId);
       expect(evaluate(ex, { kind: "choice", optionId: ex.answerId })).toMatchObject({ correct: true, graded: true });
     }
-  });
+  }, 60_000); // parcourt tout le corpus : le délai suit sa taille
 
   it("est déterministe pour une même graine (reprise exacte)", () => {
     expect(buildReviewExercise(content, "c_ma_mom", "s1")).toEqual(buildReviewExercise(content, "c_ma_mom", "s1"));

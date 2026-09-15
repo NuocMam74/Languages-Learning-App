@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_chac",
+  "title": {
+    "fr": "Chắc, le mot prudent",
+    "en": "Chắc, the cautious word"
+  },
+  "body": {
+    "fr": "Chắc sert partout : « Chắc ảnh tới trễ », il sera sûrement en retard ; « Chắc vậy », sans doute. Il permet de donner une idée sans l'imposer, précieux quand on évite de contredire directement. Chắc chắn, en revanche, veut dire « certain ».",
+    "en": "Chắc is everywhere: 'Chắc ảnh tới trễ', he'll probably be late; 'Chắc vậy', probably. It lets you offer an idea without imposing it, handy when people avoid contradicting directly. Chắc chắn, however, means 'certain'."
+  },
+  "vi": "Chắc ảnh tới trễ.",
+  "audio": "audio/cc_b_chac.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Chắc vậy » veut dire…",
+      "en": "'Chắc vậy' means…"
+    },
+    "options": [
+      {
+        "fr": "Sans doute.",
+        "en": "Probably."
+      },
+      {
+        "fr": "Absolument pas.",
+        "en": "Absolutely not."
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

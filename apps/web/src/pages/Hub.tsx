@@ -1,16 +1,19 @@
-import { BADGE_CODES, localDay, type ContentIndex } from "@parlo/core";
+import { badgeCodesFor, localDay, type ContentIndex } from "@parlo/core";
+import { examLevels } from "../exams/exam-files.ts";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
 import { ChallengeCard } from "../challenges/ChallengeCard.tsx";
 import { ReminderPrompt } from "../notifications/Reminders.tsx";
 import { InstallHint } from "../components/InstallHint.tsx";
+import { LeagueHubLine } from "../leagues/LeagueWidgets.tsx";
 import { RiverPath } from "../components/RiverPath.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import type { Profile, Totals } from "../db.ts";
 import { l, plural, t } from "../i18n/index.ts";
 import { getBadges, getProfile, getTotals, hasWork, MAX_FREEZE_DAYS, planning, setFreeze, todaySeconds, type Planning } from "../learner.ts";
 import { localGreeting, remoteGreeting } from "../tutor.ts";
+import { HubTutor } from "../tutor/HubTutor.tsx";
 import { useOnline } from "../use-online.ts";
 
 interface HubState {
@@ -65,7 +68,10 @@ export function Hub({ content }: { content: ContentIndex }) {
     >
       <header className="flex items-start justify-between gap-3 pb-4">
         <div>
-          <p className="font-serif text-2xl">{l(content.pack.name)}</p>
+          {/* Changer de langue apprise (ADR 0006) : chaque pack garde sa progression. */}
+          <Link to="/langue" className="font-serif text-2xl" aria-label={`${l(content.pack.name)} — ${t("packs.change")}`} data-testid="hub-pack">
+            {l(content.pack.name)}
+          </Link>
           <p className="text-sm text-phu-sa">{accountStatus === "signed_in" ? t("session.hub.synced") : accountStatus === "expired" ? t("session.hub.expired") : t("hub.guest")}</p>
         </div>
         <Link to="/reglages" aria-label={t("settings.title")} className="grid size-11 shrink-0 place-items-center rounded-full text-phu-sa hover:bg-phu-sa/5">
@@ -81,6 +87,7 @@ export function Hub({ content }: { content: ContentIndex }) {
         <span className="text-phu-sa"> — </span>
         {greeting ?? localGreeting(new Date(), streak)}
       </p>
+      <HubTutor />
 
       <section className="flex flex-col gap-3 pb-5" aria-label={t("session.hub.progress")}>
         <p className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
@@ -107,6 +114,7 @@ export function Hub({ content }: { content: ContentIndex }) {
         </div>
 
         <FreezeControl frozenUntil={frozen ? streak.frozenUntil : null} onChange={() => void load()} />
+        <LeagueHubLine />
       </section>
 
       <ReminderPrompt />
@@ -120,14 +128,19 @@ export function Hub({ content }: { content: ContentIndex }) {
         )}
         <Link to="/badges" className="flex min-h-12 items-center justify-between border-t border-phu-sa/10 py-2 first:border-t-0">
           <span>{t("badges.title")}</span>
-          <span className="text-sm text-phu-sa">{t("badges.count", { n: badges, total: BADGE_CODES.length })}</span>
+          <span className="text-sm text-phu-sa">{t("badges.count", { n: badges, total: badgeCodesFor(content.pack).length })}</span>
         </Link>
         <Link to="/jeux" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
           {t("session.hub.games")}
         </Link>
-        <Link to="/examens" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
-          {t("exams.hub.entry")}
+        <Link to="/defis" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
+          {t("social.hub.challenges")}
         </Link>
+        {examLevels(content.pack.code).length > 0 && (
+          <Link to="/examens" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
+            {t("exams.hub.entry")}
+          </Link>
+        )}
       </nav>
 
       {!online && <p className="mt-4 rounded-xl bg-phu-sa/5 px-4 py-2 text-sm text-phu-sa">{t("hub.offline")}</p>}

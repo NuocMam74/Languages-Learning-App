@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_thich_lam",
+  "title": {
+    "fr": "Thích lắm !",
+    "en": "Thích lắm!"
+  },
+  "body": {
+    "fr": "Pour dire qu'on aime beaucoup : « Thích lắm ! » ou « Thích quá ! ». Pour refuser en douceur, on ajoute lắm : « Em không thích cay lắm », je n'aime pas trop le piquant. Au Sud, on entend souvent hông : « Hông thích ».",
+    "en": "To say you really like something: 'Thích lắm!' or 'Thích quá!'. To decline gently, add lắm: 'Em không thích cay lắm', I don't really like spicy food. In the South you often hear hông: 'Hông thích'."
+  },
+  "vi": "Thích lắm!",
+  "audio": "audio/cc_thich_lam.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Em không thích cay lắm » est…",
+      "en": "'Em không thích cay lắm' is…"
+    },
+    "options": [
+      {
+        "fr": "une façon douce de dire non",
+        "en": "a gentle way to say no"
+      },
+      {
+        "fr": "une façon de dire j'adore",
+        "en": "a way to say I love it"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

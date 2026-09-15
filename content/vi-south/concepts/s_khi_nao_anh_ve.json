@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_khi_nao_anh_ve",
+  "type": "structure",
+  "vi": "Khi nào anh về?",
+  "gloss": {
+    "fr": "Quand est-ce que tu rentres ? (à un homme un peu plus âgé)",
+    "en": "When are you going back? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_khi_nao_anh_ve_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_khi_nao_anh_ve_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

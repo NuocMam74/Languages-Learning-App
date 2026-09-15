@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u17.l04",
+  "unit": "vi-south.u17",
+  "title": {
+    "fr": "Chủ nhà",
+    "en": "The landlord"
+  },
+  "goal": {
+    "fr": "Parler caution, contrat et clés.",
+    "en": "Talk about deposit, contract and keys."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u17.l03"
+  ],
+  "concepts": [
+    "c_chu_nha",
+    "c_chu_owner",
+    "s_tien_coc",
+    "c_hop_dong",
+    "c_chia_khoa",
+    "c_dien_thoai",
+    "c_tien",
+    "c_chu"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_nha",
+      "distractors": [
+        "chú nhà",
+        "chủ nhật"
+      ],
+      "explain": {
+        "fr": "chủ nhà : propriétaire. chủ nhật : dimanche.",
+        "en": "chủ nhà: landlord. chủ nhật: Sunday."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_chu_nha"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chia_khoa",
+      "distractors": [
+        "c_dien_thoai",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "chìa khóa : la clé.",
+        "en": "chìa khóa: key."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tien_coc",
+      "distractors": [
+        "tiền cơm",
+        "tiền cộc"
+      ],
+      "explain": {
+        "fr": "tiền cọc : la caution. tiền cơm : l'argent des repas.",
+        "en": "tiền cọc: deposit. tiền cơm: food money."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tiền cọc là một tháng.",
+      "tokens": [
+        "Tiền cọc",
+        "là",
+        "một",
+        "tháng",
+        "tuần"
+      ],
+      "translation": {
+        "fr": "La caution, c'est un mois.",
+        "en": "The deposit is one month."
+      },
+      "explain": {
+        "fr": "Montant de la caution en mois de loyer.",
+        "en": "Deposit counted in months of rent."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hop_dong",
+      "distractors": [
+        "họp đồng",
+        "hộp đồng"
+      ],
+      "explain": {
+        "fr": "hợp đồng : le contrat. họp : la réunion. hộp : la boîte.",
+        "en": "hợp đồng: contract. họp: meeting. hộp: box."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh cho em chìa khóa nha.",
+      "tokens": [
+        "Anh",
+        "cho",
+        "em",
+        "chìa khóa",
+        "nha",
+        "chủ nhà"
+      ],
+      "translation": {
+        "fr": "Tu me donnes la clé ? (à un homme un peu plus âgé)",
+        "en": "Could you give me the key? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "cho + personne + objet : donner.",
+        "en": "cho + person + thing: to give."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chủ",
+        "chú"
+      ],
+      "audioConcepts": [
+        "c_chu_owner",
+        "c_chu"
+      ],
+      "explain": {
+        "fr": "chủ plonge : le patron. chú monte : l'oncle.",
+        "en": "chủ dips: owner. chú rises: uncle."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_chia_khoa",
+      "explain": {
+        "fr": "chìa descend, khóa monte.",
+        "en": "chìa falls, khóa rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_chu_nha",
+      "c_chu_owner",
+      "s_tien_coc",
+      "c_hop_dong",
+      "c_chia_khoa"
+    ]
+  },
+  "reviewed": false
+}

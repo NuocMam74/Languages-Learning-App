@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u18.l07",
+  "unit": "vi-south.u18",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : le travail",
+    "en": "Review: work"
+  },
+  "goal": {
+    "fr": "Revoir le bureau, les réunions, le salaire et les congés.",
+    "en": "Go over the office, meetings, salary and time off."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u18.l06"
+  ],
+  "concepts": [
+    "c_b_sep",
+    "s_b_may_gio_hop",
+    "c_b_ca_shift",
+    "c_ca_eggplant",
+    "c_ca_fish",
+    "c_b_may_tinh",
+    "c_b_ban_busy",
+    "s_b_xin_nghi_phep"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_sep",
+      "distractors": [
+        "c_b_dong_nghiep",
+        "c_b_nghi_phep"
+      ],
+      "explain": {
+        "fr": "sếp : le chef.",
+        "en": "sếp: boss."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_may_gio_hop",
+      "distractors": [
+        "Mấy giờ học vậy anh?",
+        "Mấy giờ họp vậy chị?"
+      ],
+      "explain": {
+        "fr": "họp : réunion.",
+        "en": "họp: meeting."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ca",
+        "cà",
+        "cá"
+      ],
+      "audioConcepts": [
+        "c_b_ca_shift",
+        "c_ca_eggplant",
+        "c_ca_fish"
+      ],
+      "explain": {
+        "fr": "ca plat, cà descend, cá monte.",
+        "en": "ca level, cà falls, cá rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cuối tháng mới lãnh lương.",
+      "tokens": [
+        "Cuối tháng",
+        "mới",
+        "lãnh",
+        "lương",
+        "lường"
+      ],
+      "translation": {
+        "fr": "On touche le salaire seulement en fin de mois.",
+        "en": "We only get paid at the end of the month."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_may_tinh",
+      "distractors": [
+        "c_dien_thoai",
+        "c_b_nghi_phep"
+      ],
+      "explain": {
+        "fr": "máy tính : l'ordinateur.",
+        "en": "máy tính: computer."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_ban_busy",
+      "explain": {
+        "fr": "bận : nặng.",
+        "en": "bận: nặng."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi, em tới trễ.",
+      "tokens": [
+        "Xin lỗi",
+        "em",
+        "tới",
+        "trễ",
+        "tối"
+      ],
+      "translation": {
+        "fr": "Pardon, je suis en retard.",
+        "en": "Sorry, I'm late."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_xin_nghi_phep",
+      "distractors": [
+        "Em xin nghỉ phép hai ngày.",
+        "Em xin nghỉ phép ba tuần."
+      ],
+      "explain": {
+        "fr": "nghỉ phép : congé.",
+        "en": "nghỉ phép: time off."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_may_gio_hop",
+      "explain": {
+        "fr": "mấy monte, giờ descend, họp court.",
+        "en": "mấy rises, giờ falls, họp short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

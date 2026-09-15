@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_ghien",
+  "title": {
+    "fr": "Ghiền !",
+    "en": "Ghiền!"
+  },
+  "body": {
+    "fr": "Au Sud, on est ghiền de tout ce qu'on adore : ghiền cà phê sữa đá, ghiền trà sữa, ghiền phim Hàn. Le mot est léger et affectueux. Au Nord, on dit nghiện, qui sonne plus sérieux. Et le durian ? Soit on est ghiền, soit on le ghét !",
+    "en": "In the South you're ghiền on anything you love: ghiền cà phê sữa đá, ghiền trà sữa, ghiền Korean dramas. The word is light and affectionate. The North says nghiện, which sounds more serious. And durian? You're either ghiền or you ghét it!"
+  },
+  "vi": "Anh ghiền cà phê sữa đá.",
+  "audio": "audio/cc_ghien.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, « ghiền cà phê » veut dire…",
+      "en": "In the South, 'ghiền cà phê' means…"
+    },
+    "options": [
+      {
+        "fr": "adorer le café, en toute légèreté",
+        "en": "loving coffee, lightheartedly"
+      },
+      {
+        "fr": "avoir un grave problème",
+        "en": "having a serious problem"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

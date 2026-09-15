@@ -10,7 +10,7 @@
 import { createSouthLinter, hasBlocking, type LexicalVariantEntry, type SouthLintFinding } from "@parlo/south-lint";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { listPacks, readPackFiles, rel } from "./lib/load-pack.ts";
+import { listPacks, packFeatures, readPackFiles, rel } from "./lib/load-pack.ts";
 
 const VI_KEYS = new Set(["vi", "target", "tokens", "pair", "distractors", "accepted", "answer", "options", "text", "source"]);
 const SKIP_KEYS = new Set(["northernEquivalent", "gloss", "title", "goal", "note", "explain", "body", "translation", "prompt", "label"]);
@@ -25,7 +25,16 @@ let total = 0;
 
 for (const code of listPacks()) {
   const files = readPackFiles(code);
-  if (!files.variants) continue;
+  // Module optionnel (ADR 0006) : seuls les packs à variantes régionales sont analysés.
+  if (!packFeatures(files).includes("lexical_variants")) {
+    console.log(`·  ${code} : pas de feature lexical_variants, garde régionale non applicable.`);
+    continue;
+  }
+  if (!files.variants) {
+    console.error(`✖  ${code} : feature lexical_variants déclarée mais lexical-variants.json absent ou illisible.`);
+    blocking = true;
+    continue;
+  }
   const lint = createSouthLinter((files.variants.data as { entries: LexicalVariantEntry[] }).entries);
 
   const hits: Hit[] = [];

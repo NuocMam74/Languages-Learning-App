@@ -1,0 +1,140 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u21.l01",
+  "unit": "vi-south.u21",
+  "title": {
+    "fr": "Ổng, bả, ảnh, chỉ",
+    "en": "Ổng, bả, ảnh, chỉ"
+  },
+  "goal": {
+    "fr": "Reconnaître les pronoms contractés du Sud.",
+    "en": "Recognise the contracted southern pronouns."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u20.l08"
+  ],
+  "concepts": [
+    "s_b_ong_di_dau_roi",
+    "c_ong",
+    "c_ong_he",
+    "c_ba_grandma",
+    "c_ba_she",
+    "c_anh_he",
+    "c_chi",
+    "c_chi_she"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_he",
+      "distractors": [
+        "ông",
+        "ống"
+      ],
+      "explain": {
+        "fr": "ổng plonge : lui (ông ấy). ông, plat : grand-père, monsieur.",
+        "en": "ổng dips: he (ông ấy). ông, level: grandfather, sir."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ong_ba_south"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ông",
+        "ổng"
+      ],
+      "audioConcepts": [
+        "c_ong",
+        "c_ong_he"
+      ],
+      "explain": {
+        "fr": "ông reste plat ; ổng plonge.",
+        "en": "ông stays level; ổng dips."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ong_ay",
+      "explain": {
+        "fr": "Sud, à l'oral : ổng ; ailleurs : ông ấy.",
+        "en": "Spoken South: ổng; elsewhere: ông ấy."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "bà",
+        "bả"
+      ],
+      "audioConcepts": [
+        "c_ba_grandma",
+        "c_ba_she"
+      ],
+      "explain": {
+        "fr": "bà descend : grand-mère. bả plonge : elle.",
+        "en": "bà falls: grandmother. bả dips: she."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ba_ay",
+      "explain": {
+        "fr": "Sud, à l'oral : bả ; ailleurs : bà ấy.",
+        "en": "Spoken South: bả; elsewhere: bà ấy."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ong_di_dau_roi",
+      "distractors": [
+        "Bả đi đâu rồi?",
+        "Ảnh đi đâu rồi?"
+      ],
+      "explain": {
+        "fr": "ổng : lui (âgé) ; bả : elle (âgée) ; ảnh : lui (jeune).",
+        "en": "ổng: he (older); bả: she (older); ảnh: he (younger)."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_anh_ay",
+      "explain": {
+        "fr": "Sud, à l'oral : ảnh ; ailleurs : anh ấy.",
+        "en": "Spoken South: ảnh; elsewhere: anh ấy."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chị",
+        "chỉ"
+      ],
+      "audioConcepts": [
+        "c_chi",
+        "c_chi_she"
+      ],
+      "explain": {
+        "fr": "chị tombe court : grande sœur. chỉ plonge : elle.",
+        "en": "chị drops short: older sister. chỉ dips: she."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_chi_ay",
+      "explain": {
+        "fr": "Sud, à l'oral : chỉ ; ailleurs : chị ấy.",
+        "en": "Spoken South: chỉ; elsewhere: chị ấy."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_b_ong_di_dau_roi"
+    ]
+  },
+  "reviewed": false
+}

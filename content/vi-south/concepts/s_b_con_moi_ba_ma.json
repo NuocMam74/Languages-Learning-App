@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_con_moi_ba_ma",
+  "type": "structure",
+  "vi": "Con mời ba má ăn cơm.",
+  "gloss": {
+    "fr": "Je vous en prie, papa, maman, mangez.",
+    "en": "Please eat, Dad, Mum (said before the meal)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_con_moi_ba_ma_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_con_moi_ba_ma_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

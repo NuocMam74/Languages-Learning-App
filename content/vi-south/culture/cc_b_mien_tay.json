@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_mien_tay",
+  "title": {
+    "fr": "Miền Tây, le delta",
+    "en": "Miền Tây, the Delta"
+  },
+  "body": {
+    "fr": "Pour les Saïgonnais, le delta du Mékong, c'est miền Tây, « l'Ouest ». Canaux, vergers, marchés flottants : on s'y déplace en ghe. Le parler y est encore plus chantant, avec des mots comme bông pour « fleur » ou giỡn pour « plaisanter ».",
+    "en": "For Saigon people, the Mekong Delta is miền Tây, 'the West'. Canals, orchards, floating markets: people get around by ghe. The speech there is even more sing-song, with words like bông for 'flower' or giỡn for 'to joke'."
+  },
+  "vi": "Tết này tui về miền Tây.",
+  "audio": "audio/cc_b_mien_tay.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour un Saïgonnais, miền Tây désigne…",
+      "en": "For someone from Saigon, miền Tây means…"
+    },
+    "options": [
+      {
+        "fr": "le delta du Mékong",
+        "en": "the Mekong Delta"
+      },
+      {
+        "fr": "Hanoï",
+        "en": "Hanoi"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

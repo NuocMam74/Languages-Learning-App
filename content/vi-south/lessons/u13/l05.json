@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u13.l05",
+  "unit": "vi-south.u13",
+  "title": {
+    "fr": "Vừa, mới : juste",
+    "en": "Vừa, mới: just now"
+  },
+  "goal": {
+    "fr": "Dire qu'on vient de faire quelque chose.",
+    "en": "Say you've just done something."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u13.l04"
+  ],
+  "concepts": [
+    "c_vua_just",
+    "c_hoi_nay",
+    "s_em_moi_toi",
+    "s_vua_an_xong",
+    "s_tuan_truoc"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_moi_toi",
+      "distractors": [
+        "Em sắp tới.",
+        "Em chưa tới."
+      ],
+      "explain": {
+        "fr": "mới tới : je viens d'arriver.",
+        "en": "mới tới: I've just arrived."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_hoi_nay"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_earlier",
+      "explain": {
+        "fr": "Sud : hồi nãy ; Nord : lúc nãy.",
+        "en": "South: hồi nãy; North: lúc nãy."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoi_nay",
+      "distractors": [
+        "hồi này",
+        "hỏi nãy"
+      ],
+      "explain": {
+        "fr": "hồi descend : tout à l'heure. hỏi : demander.",
+        "en": "hồi falls: a moment ago. hỏi: to ask."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_vua_just",
+      "explain": {
+        "fr": "vừa descend (huyền).",
+        "en": "vừa falls (huyền)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em vừa ăn xong.",
+      "tokens": [
+        "Em",
+        "vừa",
+        "ăn",
+        "xong",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "Je viens de finir de manger.",
+        "en": "I've just finished eating."
+      },
+      "explain": {
+        "fr": "vừa + verbe : venir de.",
+        "en": "vừa + verb: to have just."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tuan_truoc",
+      "distractors": [
+        "tuần sau",
+        "tuần tới"
+      ],
+      "explain": {
+        "fr": "tuần trước : la semaine dernière.",
+        "en": "tuần trước: last week."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hồi nãy chị gọi em.",
+      "tokens": [
+        "Hồi nãy",
+        "chị",
+        "gọi",
+        "em",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "Tout à l'heure, je t'ai appelé(e). (femme, à plus jeune)",
+        "en": "I called you a moment ago. (woman, to someone younger)"
+      },
+      "explain": {
+        "fr": "hồi nãy en tête de phrase.",
+        "en": "hồi nãy at the start."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_vua_an_xong",
+      "distractors": [
+        "Em vừa ăn xôi.",
+        "Em sắp ăn xong."
+      ],
+      "explain": {
+        "fr": "vừa… xong : venir de finir.",
+        "en": "vừa… xong: just finished."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_em_moi_toi",
+      "explain": {
+        "fr": "mới et tới montent tous les deux.",
+        "en": "mới and tới both rise."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_vua_just",
+      "c_hoi_nay",
+      "s_em_moi_toi",
+      "s_vua_an_xong",
+      "s_tuan_truoc"
+    ]
+  },
+  "reviewed": false
+}

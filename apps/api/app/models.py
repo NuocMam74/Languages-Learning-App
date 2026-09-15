@@ -342,3 +342,102 @@ class GamePlay(Base):
     duration_ms: Mapped[int] = mapped_column(Integer)
     local_date: Mapped[date] = mapped_column(Date)
     played_at: Mapped[datetime] = mapped_column(UTCDateTime(), index=True)
+
+
+# --- Phase 3 : conversation, ligues, défis entre amis, défi express ---------------------------
+
+
+class Conversation(Base):
+    """Conversation avec Cô Mai (`free` ou mini-jeu `doi_dap`). Purgée avec `tutor_messages` (90 j)."""
+
+    __tablename__ = "conversations"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    user_id: Mapped[str] = mapped_column(user_fk(), index=True)
+    course_id: Mapped[str] = mapped_column(String(64))
+    mode: Mapped[str] = mapped_column(String(16))
+    locale: Mapped[str] = mapped_column(String(8))
+    topic_lesson_id: Mapped[str | None] = mapped_column(String(128))
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow, index=True)
+    ended_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
+    fluency: Mapped[int | None] = mapped_column(Integer)
+    summary_json: Mapped[dict[str, str] | None] = mapped_column(JSON)
+
+
+class ConversationTurn(Base):
+    __tablename__ = "conversation_turns"
+    __table_args__ = (UniqueConstraint("conversation_id", "position"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    conversation_id: Mapped[str] = mapped_column(ForeignKey("conversations.id", ondelete="CASCADE"), index=True)
+    position: Mapped[int] = mapped_column(Integer)
+    role: Mapped[str] = mapped_column(String(16))  # user | assistant
+    text: Mapped[str] = mapped_column(Text)
+    glosses_json: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    # Correction douce (tour `user` seulement) : {original, corrected, explanation}.
+    correction_json: Mapped[dict[str, str] | None] = mapped_column(JSON)
+    response_ms: Mapped[int | None] = mapped_column(Integer)
+    # Tour `assistant` : « model » ou « fallback ».
+    source: Mapped[str | None] = mapped_column(String(16))
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+
+
+class LeagueGroup(Base):
+    """Groupe de ligue d'une semaine (lundi 00:00 UTC) dans une division 1 (entrée) à 5 (sommet)."""
+
+    __tablename__ = "league_groups"
+    __table_args__ = (UniqueConstraint("week_start", "division", "group_index"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    week_start: Mapped[date] = mapped_column(Date, index=True)
+    division: Mapped[int] = mapped_column(Integer)
+    group_index: Mapped[int] = mapped_column(Integer)
+
+
+class LeagueMember(Base):
+    __tablename__ = "league_members"
+
+    week_start: Mapped[date] = mapped_column(Date, primary_key=True)
+    user_id: Mapped[str] = mapped_column(user_fk(), primary_key=True, index=True)
+    group_id: Mapped[str] = mapped_column(ForeignKey("league_groups.id", ondelete="CASCADE"), index=True)
+    division: Mapped[int] = mapped_column(Integer)
+    # Figés au passage de semaine : classement final et issue (promoted | relegated | stayed).
+    final_xp: Mapped[int | None] = mapped_column(Integer)
+    final_rank: Mapped[int | None] = mapped_column(Integer)
+    outcome: Mapped[str | None] = mapped_column(String(16))
+
+
+class FriendChallenge(Base):
+    __tablename__ = "friend_challenges"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    kind: Mapped[str] = mapped_column(String(16))
+    invite_code: Mapped[str] = mapped_column(String(8), unique=True)
+    creator_id: Mapped[str] = mapped_column(user_fk(), index=True)
+    starts_at: Mapped[datetime] = mapped_column(UTCDateTime())
+    ends_at: Mapped[datetime] = mapped_column(UTCDateTime())
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+
+
+class FriendChallengeParticipant(Base):
+    __tablename__ = "friend_challenge_participants"
+
+    challenge_id: Mapped[str] = mapped_column(ForeignKey("friend_challenges.id", ondelete="CASCADE"), primary_key=True)
+    user_id: Mapped[str] = mapped_column(user_fk(), primary_key=True, index=True)
+    joined_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+
+
+class ExpressScore(Base):
+    """Score d'un défi express (60 s) : meilleur du jour et classement du jour par jeu."""
+
+    __tablename__ = "express_scores"
+    __table_args__ = (Index("ix_express_scores_game_local_date", "game", "local_date"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    user_id: Mapped[str] = mapped_column(user_fk(), index=True)
+    game: Mapped[str] = mapped_column(String(32))
+    score: Mapped[int] = mapped_column(Integer)
+    correct: Mapped[int] = mapped_column(Integer)
+    total: Mapped[int] = mapped_column(Integer)
+    local_date: Mapped[date] = mapped_column(Date)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)

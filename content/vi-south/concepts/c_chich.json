@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chich",
+  "type": "word",
+  "vi": "chích",
+  "tone": "sac",
+  "gloss": {
+    "fr": "piquer, faire une piqûre",
+    "en": "to inject, to give a shot"
+  },
+  "northernEquivalent": "tiêm",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chich_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chich_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "chích ngừa : se faire vacciner (Sud).",
+    "en": "chích ngừa: to get vaccinated (southern)."
+  },
+  "reviewed": false
+}

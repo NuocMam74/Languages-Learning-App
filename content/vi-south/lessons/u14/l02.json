@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u14.l02",
+  "unit": "vi-south.u14",
+  "title": {
+    "fr": "Ghét, ghiền",
+    "en": "Hate it, love it"
+  },
+  "goal": {
+    "fr": "Dire ce que tu détestes ou adores.",
+    "en": "Say what you hate or can't live without."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u14.l01"
+  ],
+  "concepts": [
+    "c_ghet",
+    "c_ghien",
+    "s_ghien_ca_phe",
+    "s_ghet_ket_xe",
+    "c_sau_rieng",
+    "c_chuoi",
+    "c_dua_hau"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ghet",
+      "distractors": [
+        "ghế",
+        "ghẹt"
+      ],
+      "explain": {
+        "fr": "ghét monte : détester. ghế : la chaise.",
+        "en": "ghét rises: to hate. ghế: chair."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ghien"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_addicted",
+      "explain": {
+        "fr": "Sud : ghiền ; Nord : nghiện.",
+        "en": "South: ghiền; North: nghiện."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ghien",
+      "distractors": [
+        "ghiến",
+        "ghế"
+      ],
+      "explain": {
+        "fr": "ghiền descend (huyền).",
+        "en": "ghiền falls (huyền)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ghiền cà phê sữa đá.",
+      "tokens": [
+        "Anh",
+        "ghiền",
+        "cà phê",
+        "sữa",
+        "đá",
+        "ghét"
+      ],
+      "translation": {
+        "fr": "Je suis accro au café glacé au lait. (homme, à plus jeune)",
+        "en": "I'm hooked on iced milk coffee. (man, to someone younger)"
+      },
+      "explain": {
+        "fr": "ghiền + nom : être accro à.",
+        "en": "ghiền + noun: to be hooked on."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ghet_ket_xe",
+      "distractors": [
+        "Em hết kẹt xe.",
+        "Em kẹt xe."
+      ],
+      "explain": {
+        "fr": "ghét : détester. hết : fini.",
+        "en": "ghét: to hate. hết: over, finished."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "c_chuoi",
+        "c_dua_hau"
+      ],
+      "explain": {
+        "fr": "sầu riêng : le durian, on l'adore ou on le déteste.",
+        "en": "sầu riêng: durian, you love it or hate it."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ghét sầu riêng.",
+      "tokens": [
+        "Em",
+        "ghét",
+        "sầu riêng",
+        "ghế"
+      ],
+      "translation": {
+        "fr": "Je déteste le durian.",
+        "en": "I hate durian."
+      },
+      "explain": {
+        "fr": "ghét + nom : détester.",
+        "en": "ghét + noun: to hate."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ghet",
+      "explain": {
+        "fr": "ghét monte (sắc).",
+        "en": "ghét rises (sắc)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_ghien_ca_phe",
+      "explain": {
+        "fr": "ghiền descend, cà descend, phê plat.",
+        "en": "ghiền falls, cà falls, phê level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ghet",
+      "c_ghien",
+      "s_ghien_ca_phe",
+      "s_ghet_ket_xe"
+    ]
+  },
+  "reviewed": false
+}

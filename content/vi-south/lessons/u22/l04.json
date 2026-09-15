@@ -1,0 +1,165 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u22.l04",
+  "unit": "vi-south.u22",
+  "title": {
+    "fr": "Lúc đó, sau đó",
+    "en": "At that moment, after that"
+  },
+  "goal": {
+    "fr": "Enchaîner les étapes d'un récit.",
+    "en": "Link the steps of a story."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u22.l03"
+  ],
+  "concepts": [
+    "c_b_luc_do",
+    "c_b_sau_do",
+    "c_b_bat_dau",
+    "s_b_luc_do_troi_mua",
+    "s_b_sau_do_tui_qua_phap",
+    "c_luc",
+    "c_mua_rain"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_luc_do_troi_mua",
+      "distractors": [
+        "Lúc đó trời nắng lắm.",
+        "Bây giờ trời mưa lớn lắm."
+      ],
+      "explain": {
+        "fr": "lúc đó : à ce moment-là ; nắng : ensoleillé.",
+        "en": "lúc đó: at that moment; nắng: sunny."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "c_troi",
+        "c_toi_evening"
+      ],
+      "explain": {
+        "fr": "mưa : la pluie.",
+        "en": "mưa: rain."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sau_do",
+      "distractors": [
+        "sáu đó",
+        "sau đây"
+      ],
+      "explain": {
+        "fr": "sau đó : ensuite. sáu : six.",
+        "en": "sau đó: after that. sáu: six."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Lúc đó trời mưa lớn lắm.",
+      "tokens": [
+        "Lúc đó",
+        "trời",
+        "mưa",
+        "lớn",
+        "lắm",
+        "lấm"
+      ],
+      "translation": {
+        "fr": "À ce moment-là, il pleuvait très fort.",
+        "en": "At that moment it was raining really hard."
+      },
+      "explain": {
+        "fr": "mưa lớn : forte pluie (Sud).",
+        "en": "mưa lớn: heavy rain (South)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_luc_do",
+      "distractors": [
+        "lục đó",
+        "lúc nào"
+      ],
+      "explain": {
+        "fr": "lúc đó : à ce moment-là ; lúc nào : quand ?",
+        "en": "lúc đó: at that time; lúc nào: when?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Sau đó tui qua Pháp.",
+      "tokens": [
+        "Sau đó",
+        "tui",
+        "qua",
+        "Pháp",
+        "sáu"
+      ],
+      "translation": {
+        "fr": "Ensuite, je suis parti(e) en France.",
+        "en": "After that I went to France."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_bat_dau",
+      "distractors": [
+        "bắt đâu",
+        "bất đầu"
+      ],
+      "explain": {
+        "fr": "bắt đầu : commencer.",
+        "en": "bắt đầu: to begin."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui bắt đầu học tiếng Việt năm ngoái.",
+      "tokens": [
+        "Tui",
+        "bắt đầu",
+        "học",
+        "tiếng Việt",
+        "năm ngoái",
+        "năm nay"
+      ],
+      "translation": {
+        "fr": "J'ai commencé le vietnamien l'an dernier.",
+        "en": "I started learning Vietnamese last year."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_luc",
+      "explain": {
+        "fr": "lúc : sắc.",
+        "en": "lúc: sắc."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_sau_do_tui_qua_phap",
+      "explain": {
+        "fr": "sau plat, đó monte, Pháp monte.",
+        "en": "sau level, đó rises, Pháp rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_luc_do",
+      "c_b_sau_do",
+      "c_b_bat_dau",
+      "s_b_luc_do_troi_mua",
+      "s_b_sau_do_tui_qua_phap"
+    ]
+  },
+  "reviewed": false
+}

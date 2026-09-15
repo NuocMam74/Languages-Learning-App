@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_hoi_nay",
+  "type": "word",
+  "vi": "hồi nãy",
+  "gloss": {
+    "fr": "tout à l'heure (passé)",
+    "en": "a moment ago"
+  },
+  "northernEquivalent": "lúc nãy",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hoi_nay_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hoi_nay_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "hồi = moment passé, très Sud : hồi nãy, hồi đó, hồi nhỏ.",
+    "en": "hồi = a past moment, very southern: hồi nãy, hồi đó, hồi nhỏ."
+  },
+  "reviewed": false
+}

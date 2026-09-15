@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_may_lanh",
+  "title": {
+    "fr": "Máy lạnh et tiền điện",
+    "en": "Máy lạnh and the power bill"
+  },
+  "body": {
+    "fr": "Au Sud, la clim se dit máy lạnh ; au Nord, điều hòa. Elle tourne beaucoup, et l'électricité coûte cher. En location, le chủ nhà facture souvent au kWh, qu'on appelle « số » : « Tiền điện tính riêng ». Demande le prix par số avant de signer.",
+    "en": "In the South air conditioning is máy lạnh; in the North, điều hòa. It runs a lot, and power isn't cheap. When renting, the chủ nhà often bills per kWh, called a 'số': 'Tiền điện tính riêng'. Ask the price per số before signing."
+  },
+  "vi": "Phòng có máy lạnh không?",
+  "audio": "audio/cc_may_lanh.opus",
+  "question": {
+    "prompt": {
+      "fr": "En location, l'électricité est souvent facturée…",
+      "en": "When renting, electricity is often billed…"
+    },
+    "options": [
+      {
+        "fr": "au kWh, à part",
+        "en": "per kWh, separately"
+      },
+      {
+        "fr": "jamais",
+        "en": "never"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

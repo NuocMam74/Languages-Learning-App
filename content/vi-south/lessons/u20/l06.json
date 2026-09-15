@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u20.l06",
+  "unit": "vi-south.u20",
+  "title": {
+    "fr": "Từ chối khéo",
+    "en": "Declining gracefully"
+  },
+  "goal": {
+    "fr": "Refuser poliment une invitation.",
+    "en": "Politely decline an invitation."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u20.l05"
+  ],
+  "concepts": [
+    "s_b_de_bua_khac",
+    "s_b_tiec_qua",
+    "c_b_tiec",
+    "c_b_tiec_party",
+    "s_b_dung_khach_sao",
+    "c_b_ban_busy"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_de_bua_khac",
+      "distractors": [
+        "Để bữa sau nha.",
+        "Để mai nha."
+      ],
+      "explain": {
+        "fr": "bữa khác : un autre jour ; bữa sau : la prochaine fois.",
+        "en": "bữa khác: another day; bữa sau: next time."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_tu_choi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tiec",
+      "distractors": [
+        "tiệc",
+        "tiêc"
+      ],
+      "explain": {
+        "fr": "tiếc monte : regretter. tiệc : la fête.",
+        "en": "tiếc rises: to regret. tiệc: party."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "tiếc",
+        "tiệc"
+      ],
+      "audioConcepts": [
+        "c_b_tiec",
+        "c_b_tiec_party"
+      ],
+      "explain": {
+        "fr": "tiếc monte : dommage. tiệc tombe court : la fête.",
+        "en": "tiếc rises: pity. tiệc drops short: party."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tiếc quá, em bận rồi.",
+      "tokens": [
+        "Tiếc",
+        "quá",
+        "em",
+        "bận",
+        "rồi",
+        "tiệc"
+      ],
+      "translation": {
+        "fr": "Dommage, je suis déjà pris(e).",
+        "en": "What a pity, I'm already busy."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_tiec",
+      "explain": {
+        "fr": "tiếc : monte.",
+        "en": "tiếc: rise."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Để bữa khác nha.",
+      "tokens": [
+        "Để",
+        "bữa",
+        "khác",
+        "nha",
+        "bưa"
+      ],
+      "translation": {
+        "fr": "Une autre fois, d'accord ?",
+        "en": "Another time, okay?"
+      },
+      "explain": {
+        "fr": "Refus doux : on repousse au lieu de dire non.",
+        "en": "Soft refusal: postpone rather than say no."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dung_khach_sao",
+      "distractors": [
+        "Đừng khách sạo!",
+        "Đừng ngại!"
+      ],
+      "explain": {
+        "fr": "khách sáo : faire des manières.",
+        "en": "khách sáo: standing on ceremony."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_de_bua_khac",
+      "explain": {
+        "fr": "để plonge, bữa plonge aussi au Sud, khác monte.",
+        "en": "để dips, bữa dips too in the South, khác rises."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_b_de_bua_khac",
+      "s_b_tiec_qua",
+      "c_b_tiec",
+      "c_b_tiec_party",
+      "s_b_dung_khach_sao"
+    ]
+  },
+  "reviewed": false
+}

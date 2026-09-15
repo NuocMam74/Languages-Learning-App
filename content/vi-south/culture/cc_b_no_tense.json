@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_no_tense",
+  "title": {
+    "fr": "Le passé sans conjugaison",
+    "en": "Past without conjugation"
+  },
+  "body": {
+    "fr": "Le verbe vietnamien ne change jamais. Pour parler du passé, on ajoute un repère : hôm qua, hồi nhỏ, năm ngoái. Đã devant le verbe et rồi en fin de phrase marquent que c'est fait. Souvent, le contexte suffit : « Hôm qua tui đi chợ ».",
+    "en": "Vietnamese verbs never change. To talk about the past, add a time marker: hôm qua, hồi nhỏ, năm ngoái. Đã before the verb and rồi at the end show it's done. Often context is enough: 'Hôm qua tui đi chợ'."
+  },
+  "vi": "Hôm qua tui đi chợ rồi về nhà.",
+  "audio": "audio/cc_b_no_tense.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour dire « je suis allé », le verbe đi…",
+      "en": "To say 'I went', the verb đi…"
+    },
+    "options": [
+      {
+        "fr": "ne change pas",
+        "en": "doesn't change"
+      },
+      {
+        "fr": "prend une terminaison",
+        "en": "takes an ending"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

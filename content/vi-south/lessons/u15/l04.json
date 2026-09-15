@@ -1,0 +1,136 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u15.l04",
+  "unit": "vi-south.u15",
+  "title": {
+    "fr": "Đợi chút nha",
+    "en": "Hold on"
+  },
+  "goal": {
+    "fr": "Faire patienter, à l'oral et par écrit.",
+    "en": "Ask someone to wait, spoken and written."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u15.l03"
+  ],
+  "concepts": [
+    "c_doi_wait",
+    "s_doi_chut_nha",
+    "s_doi_em_chut",
+    "c_gio",
+    "c_dien_thoai",
+    "c_tien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_doi_chut_nha",
+      "distractors": [
+        "Đội chút nha.",
+        "Đợi chị nha."
+      ],
+      "explain": {
+        "fr": "Đợi chút nha : un instant.",
+        "en": "Đợi chút nha: hold on."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_viet_tat"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_nha",
+      "explain": {
+        "fr": "Sud : nha ; Nord : nhé.",
+        "en": "South: nha; North: nhé."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_doi_wait",
+      "explain": {
+        "fr": "đợi : tombe court et bas (nặng).",
+        "en": "đợi: drops short and low (nặng)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_wait",
+      "distractors": [
+        "đời",
+        "đói"
+      ],
+      "explain": {
+        "fr": "đợi : attendre. đời : la vie. đói : avoir faim.",
+        "en": "đợi: to wait. đời: life. đói: hungry."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đợi em chút xíu nha.",
+      "tokens": [
+        "Anh",
+        "đợi",
+        "em",
+        "chút xíu",
+        "nha",
+        "đời"
+      ],
+      "translation": {
+        "fr": "Attends-moi une petite minute. (à un homme un peu plus âgé)",
+        "en": "Wait for me just a sec. (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "đợi + personne + chút xíu.",
+        "en": "đợi + person + chút xíu."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_doi_em_chut",
+      "distractors": [
+        "Anh gọi em chút xíu nha.",
+        "Em đợi anh chút xíu nha."
+      ],
+      "explain": {
+        "fr": "Qui attend qui ? Écoute l'ordre anh / em.",
+        "en": "Who waits for whom? Listen for the anh / em order."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_gio",
+      "distractors": [
+        "c_dien_thoai",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "giờ : l'heure.",
+        "en": "giờ: the time, hour."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_doi_chut_nha",
+      "explain": {
+        "fr": "đợi tombe court, chút monte.",
+        "en": "đợi drops short, chút rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_doi_wait",
+      "s_doi_chut_nha",
+      "s_doi_em_chut"
+    ]
+  },
+  "reviewed": false
+}

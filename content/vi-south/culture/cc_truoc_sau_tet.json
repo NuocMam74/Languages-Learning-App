@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_truoc_sau_tet",
+  "title": {
+    "fr": "Avant ou après le Tết",
+    "en": "Before or after Tết"
+  },
+  "body": {
+    "fr": "Au Vietnam, l'année tourne autour du Tết, le Nouvel An lunaire, fin janvier ou février. On dit volontiers « trước Tết » (avant) ou « sau Tết » (après) pour situer un projet. Juste avant, tout le monde est pressé ; juste après, beaucoup de choses restent fermées.",
+    "en": "In Vietnam the year revolves around Tết, the Lunar New Year, in late January or February. People say 'trước Tết' (before) or 'sau Tết' (after) to place a plan. Just before, everyone is rushing; just after, many things stay closed."
+  },
+  "vi": "Sau Tết em sẽ về.",
+  "audio": "audio/cc_truoc_sau_tet.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Sau Tết » veut dire…",
+      "en": "'Sau Tết' means…"
+    },
+    "options": [
+      {
+        "fr": "après le Nouvel An lunaire",
+        "en": "after Lunar New Year"
+      },
+      {
+        "fr": "le 1er janvier",
+        "en": "January 1st"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

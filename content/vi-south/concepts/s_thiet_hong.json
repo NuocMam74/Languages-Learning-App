@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_thiet_hong",
+  "type": "structure",
+  "vi": "Thiệt hông?",
+  "gloss": {
+    "fr": "Vraiment ? (familier, Sud)",
+    "en": "Really? (casual, southern)"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thiet_hong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thiet_hong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "thiệt = thật, hông = không, à l'oral du Sud.",
+    "en": "thiệt = thật, hông = không, in southern speech."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_tai_vi",
+  "type": "word",
+  "vi": "tại vì",
+  "gloss": {
+    "fr": "parce que",
+    "en": "because"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_tai_vi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_tai_vi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Très courant au Sud ; on dit aussi vì.",
+    "en": "Very common in the South; vì is also used."
+  },
+  "reviewed": false
+}

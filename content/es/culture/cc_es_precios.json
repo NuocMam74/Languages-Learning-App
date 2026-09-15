@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_es_precios",
+  "title": {
+    "fr": "Point ou virgule ?",
+    "en": "Point or comma?"
+  },
+  "body": {
+    "fr": "Au Mexique, un peso cinquante s'écrit 1.50, avec un point. En Argentine ou en Colombie, on écrit 1,50, avec une virgule. Les nombres se disent pourtant de la même façon partout.",
+    "en": "In Mexico, one peso fifty is written 1.50, with a point. In Argentina or Colombia, it is written 1,50, with a comma. The numbers are said the same way everywhere."
+  },
+  "vi": "Uno cincuenta.",
+  "audio": "audio/cc_es_precios.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Mexique, un peso cinquante s'écrit…",
+      "en": "In Mexico, one peso fifty is written…"
+    },
+    "options": [
+      {
+        "fr": "1.50",
+        "en": "1.50"
+      },
+      {
+        "fr": "1,50",
+        "en": "1,50"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

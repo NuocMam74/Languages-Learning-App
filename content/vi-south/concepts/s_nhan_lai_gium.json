@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_nhan_lai_gium",
+  "type": "structure",
+  "vi": "Chị nhắn lại giùm em nha.",
+  "gloss": {
+    "fr": "Tu peux lui laisser un message de ma part ? (à une femme un peu plus âgée)",
+    "en": "Could you pass on a message for me? (to a slightly older woman)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nhan_lai_gium_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nhan_lai_gium_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

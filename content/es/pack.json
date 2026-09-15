@@ -1,0 +1,41 @@
+{
+  "$schema": "../schema/pack.schema.json",
+  "code": "es",
+  "lang": "es",
+  "variant": "latam",
+  "name": {
+    "fr": "Espagnol (Amérique latine)",
+    "en": "Spanish (Latin America)"
+  },
+  "version": 1,
+  "script": "latin",
+  "direction": "ltr",
+  "features": [],
+  "voices": [
+    {
+      "id": "lucia_mx_f",
+      "label": "Lucía",
+      "gender": "f",
+      "accent": "Ciudad de México"
+    },
+    {
+      "id": "mateo_co_m",
+      "label": "Mateo",
+      "gender": "m",
+      "accent": "Bogotá"
+    }
+  ],
+  "interfaceLocales": [
+    "fr",
+    "en"
+  ],
+  "welcome": {
+    "vi": "¡Hola! ¿Aprendemos español juntos?",
+    "translation": {
+      "fr": "Bonjour ! On apprend l'espagnol ensemble ?",
+      "en": "Hello! Shall we learn Spanish together?"
+    },
+    "audio": "audio/welcome_lucia.opus",
+    "reviewed": false
+  }
+}

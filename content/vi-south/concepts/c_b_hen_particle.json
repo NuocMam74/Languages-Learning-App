@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_hen_particle",
+  "type": "word",
+  "vi": "hen",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "particule qui adoucit : « hein » (Sud)",
+    "en": "softening particle: 'eh' (South)"
+  },
+  "northernEquivalent": "nhé",
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_hen_particle_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_hen_particle_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

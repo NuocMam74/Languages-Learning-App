@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_alo_phone",
+  "title": {
+    "fr": "Alô ?",
+    "en": "Alô?"
+  },
+  "body": {
+    "fr": "Au Vietnam, on décroche avec « Alô », souvent suivi de « em nghe » ou « dạ ». On appelle plus volontiers qu'on n'écrit, même pour un détail, et on parle fort dans la rue. Numéro inconnu ? « Dạ, ai vậy ạ ? » : c'est de la part de qui ?",
+    "en": "In Vietnam you pick up with 'Alô', often followed by 'em nghe' or 'dạ'. People would rather call than text, even for small things, and talk loudly in the street. Unknown number? 'Dạ, ai vậy ạ?': who's calling?"
+  },
+  "vi": "Alô, em nghe.",
+  "audio": "audio/cc_alo_phone.opus",
+  "question": {
+    "prompt": {
+      "fr": "Un numéro inconnu t'appelle. Tu dis…",
+      "en": "An unknown number calls. You say…"
+    },
+    "options": [
+      {
+        "fr": "Dạ, ai vậy ạ ?",
+        "en": "Dạ, ai vậy ạ?"
+      },
+      {
+        "fr": "Em ăn cơm chưa ?",
+        "en": "Em ăn cơm chưa?"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

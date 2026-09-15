@@ -30,6 +30,14 @@ describe("défis de la semaine", () => {
     expect(challengeProgress(spec, items)).toBe(2);
   });
 
+  it("speaking_minutes : un tour de conversation = 20 s (comme l'API)", () => {
+    const spec: ChallengeSpec = { kind: "speaking_minutes", target: 10, unit: null, ...period };
+    const turn = () => makeEvent("conversation_turn", { conversationId: "c1", mode: "free", words: 6, responseMs: 4000, localDate: "2026-09-16" }, at("2026-09-16T08:00:00Z"));
+    const item = makeEvent("pronunciation_scored", { sessionId: null, conceptId: "c_com", score: 70, exerciseType: "speak_repeat" }, at("2026-09-16T08:00:00Z"));
+    expect(challengeProgress(spec, [turn(), turn(), item])).toBe(0); // 50 s
+    expect(challengeProgress(spec, [turn(), turn(), turn(), item, item])).toBe(1); // 80 s
+  });
+
   it("game_score : parties avec ratio ≥ 0.7", () => {
     const spec: ChallengeSpec = { kind: "game_score", target: 3, unit: null, ...period };
     const game = (correct: number, total: number) => makeEvent("game_played", { game: "cho_noi", correct, total, durationMs: 60_000, localDate: "2026-09-16" }, at("2026-09-16T08:00:00Z"));

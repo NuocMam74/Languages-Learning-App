@@ -1,0 +1,147 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u20.l04",
+  "unit": "vi-south.u20",
+  "title": {
+    "fr": "Đám giỗ",
+    "en": "Death anniversaries"
+  },
+  "goal": {
+    "fr": "Comprendre une invitation à un đám giỗ et savoir quoi apporter.",
+    "en": "Understand a đám giỗ invitation and know what to bring."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u20.l03"
+  ],
+  "concepts": [
+    "c_b_dam_gio",
+    "c_b_nhang",
+    "c_b_trai_cay",
+    "c_b_ban_tho",
+    "s_b_mai_nha_em_dam_gio"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dam_gio",
+      "distractors": [
+        "c_b_dam_cuoi",
+        "c_b_qua_gift"
+      ],
+      "explain": {
+        "fr": "đám giỗ : l'autel, l'encens, le repas des ancêtres.",
+        "en": "đám giỗ: altar, incense, the ancestors' meal."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_dam_gio"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nhang",
+      "distractors": [
+        "nháng",
+        "nhàng"
+      ],
+      "explain": {
+        "fr": "nhang : l'encens (Sud).",
+        "en": "nhang: incense (South)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_mai_nha_em_dam_gio",
+      "distractors": [
+        "Mai nhà em có đám cưới.",
+        "Mốt nhà em có đám giỗ."
+      ],
+      "explain": {
+        "fr": "mai : demain ; mốt : après-demain.",
+        "en": "mai: tomorrow; mốt: the day after."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Con đem trái cây tới.",
+      "tokens": [
+        "Con",
+        "đem",
+        "trái cây",
+        "tới",
+        "tối"
+      ],
+      "translation": {
+        "fr": "J'apporte des fruits.",
+        "en": "I'm bringing fruit."
+      },
+      "explain": {
+        "fr": "đem tới : apporter.",
+        "en": "đem tới: to bring."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_fruit_clf",
+      "explain": {
+        "fr": "Sud : trái ; Nord : quả.",
+        "en": "South: trái; North: quả."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ban_tho",
+      "distractors": [
+        "bàn thơ",
+        "bán thờ"
+      ],
+      "explain": {
+        "fr": "bàn thờ : l'autel des ancêtres.",
+        "en": "bàn thờ: ancestral altar."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mai nhà em có đám giỗ.",
+      "tokens": [
+        "Mai",
+        "nhà",
+        "em",
+        "có",
+        "đám giỗ",
+        "đám cưới"
+      ],
+      "translation": {
+        "fr": "Demain, il y a un đám giỗ chez moi.",
+        "en": "Tomorrow my family holds a đám giỗ."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_nhang",
+      "explain": {
+        "fr": "nhang : ngang.",
+        "en": "nhang: ngang."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_mai_nha_em_dam_gio",
+      "explain": {
+        "fr": "giỗ porte le ngã : au Sud, il sonne comme un hỏi.",
+        "en": "giỗ carries ngã: in the South it sounds like hỏi."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_dam_gio",
+      "c_b_nhang",
+      "c_b_trai_cay",
+      "c_b_ban_tho",
+      "s_b_mai_nha_em_dam_gio"
+    ]
+  },
+  "reviewed": false
+}

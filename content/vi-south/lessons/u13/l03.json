@@ -1,0 +1,173 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u13.l03",
+  "unit": "vi-south.u13",
+  "title": {
+    "fr": "Đang : en ce moment",
+    "en": "Đang: right now"
+  },
+  "goal": {
+    "fr": "Dire ce qui se passe maintenant.",
+    "en": "Say what's happening now."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u13.l02"
+  ],
+  "concepts": [
+    "c_dang",
+    "c_dang_bitter",
+    "c_roi_tangled",
+    "s_em_dang_lam",
+    "s_troi_dang_mua",
+    "c_mua_rain",
+    "c_troi",
+    "c_dem",
+    "c_roi",
+    "c_ca_phe",
+    "c_tra_tea",
+    "c_sua_milk"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "c_troi",
+        "c_dem"
+      ],
+      "explain": {
+        "fr": "mưa : la pluie.",
+        "en": "mưa: rain."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_troi_dang_mua",
+      "distractors": [
+        "Trời sắp mưa.",
+        "Trời hết mưa."
+      ],
+      "explain": {
+        "fr": "đang mưa : il pleut en ce moment.",
+        "en": "đang mưa: it's raining right now."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "rồi",
+        "rối"
+      ],
+      "audioConcepts": [
+        "c_roi",
+        "c_roi_tangled"
+      ],
+      "explain": {
+        "fr": "rồi descend : déjà. rối monte : emmêlé, compliqué.",
+        "en": "rồi falls: already. rối rises: tangled, confusing."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dang_bitter",
+      "distractors": [
+        "đang",
+        "dắng"
+      ],
+      "explain": {
+        "fr": "đắng : amer. đ bien fermé, pas d.",
+        "en": "đắng: bitter. A crisp đ, not d."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dang_lam",
+      "distractors": [
+        "Em sẽ làm việc.",
+        "Em đang làm gì?"
+      ],
+      "explain": {
+        "fr": "đang + verbe : être en train de.",
+        "en": "đang + verb: to be doing."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đang làm gì vậy?",
+      "tokens": [
+        "Anh",
+        "đang",
+        "làm",
+        "gì",
+        "vậy",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "Qu'est-ce que tu fais, là ? (à un homme un peu plus âgé)",
+        "en": "What are you doing right now? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Question très courante au téléphone.",
+        "en": "A very common question on the phone."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_dang",
+      "explain": {
+        "fr": "đang reste plat (ngang).",
+        "en": "đang stays level (ngang)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cà phê này đắng quá!",
+      "tokens": [
+        "Cà phê",
+        "này",
+        "đắng",
+        "quá",
+        "đang"
+      ],
+      "translation": {
+        "fr": "Ce café est trop amer !",
+        "en": "This coffee is so bitter!"
+      },
+      "explain": {
+        "fr": "adjectif + quá : trop, tellement.",
+        "en": "adjective + quá: so, too."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ca_phe",
+      "distractors": [
+        "c_tra_tea",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "cà phê : le café.",
+        "en": "cà phê: coffee."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_troi_dang_mua",
+      "explain": {
+        "fr": "trời descend, đang plat, mưa plat.",
+        "en": "trời falls, đang level, mưa level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_dang",
+      "c_dang_bitter",
+      "c_roi_tangled",
+      "s_em_dang_lam",
+      "s_troi_dang_mua"
+    ]
+  },
+  "reviewed": false
+}

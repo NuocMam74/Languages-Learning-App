@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u24.l06",
+  "unit": "vi-south.u24",
+  "title": {
+    "fr": "Bàn chuyện",
+    "en": "Discussing"
+  },
+  "goal": {
+    "fr": "Participer à une petite discussion entre amis.",
+    "en": "Take part in a small discussion among friends."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u24.l05"
+  ],
+  "concepts": [
+    "c_b_nghi_think",
+    "c_b_khac",
+    "s_b_tui_nghi_la",
+    "s_b_moi_nguoi_thay_sao",
+    "s_b_hue_nha",
+    "c_moi_nguoi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tui_nghi_la",
+      "distractors": [
+        "Tui nghĩ là anh đúng.",
+        "Tui nghĩ là chị sai."
+      ],
+      "explain": {
+        "fr": "tui nghĩ là : je pense que.",
+        "en": "tui nghĩ là: I think that."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_ban_tron"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_nghi_think",
+      "explain": {
+        "fr": "nghĩ : ngã. Au Sud, il sonne comme nghỉ (se reposer) : le contexte tranche.",
+        "en": "nghĩ: ngã. In the South it sounds like nghỉ (to rest): context decides."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_khac",
+      "distractors": [
+        "khắc",
+        "khạc"
+      ],
+      "explain": {
+        "fr": "khác monte : différent.",
+        "en": "khác rises: different."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui nghĩ là chị đúng.",
+      "tokens": [
+        "Tui",
+        "nghĩ",
+        "là",
+        "chị",
+        "đúng",
+        "đụng"
+      ],
+      "translation": {
+        "fr": "Je pense que tu as raison.",
+        "en": "I think you're right."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_moi_nguoi_thay_sao",
+      "distractors": [
+        "Mọi người thấy vui hông?",
+        "Anh thấy sao?"
+      ],
+      "explain": {
+        "fr": "mọi người : tout le monde.",
+        "en": "mọi người: everyone."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mỗi người một ý.",
+      "tokens": [
+        "Mỗi",
+        "người",
+        "một",
+        "ý",
+        "mọi"
+      ],
+      "translation": {
+        "fr": "Chacun son avis.",
+        "en": "Everyone has their own view."
+      },
+      "explain": {
+        "fr": "Expression toute faite pour clore un débat.",
+        "en": "Set phrase to close a debate."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hue_nha",
+      "distractors": [
+        "Thôi, về nha!",
+        "Thôi, huề hen!"
+      ],
+      "explain": {
+        "fr": "huề : match nul (Sud).",
+        "en": "huề: a draw (South)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_moi_nguoi_thay_sao",
+      "explain": {
+        "fr": "mọi court, người descend, thấy monte, sao plat.",
+        "en": "mọi short, người falls, thấy rises, sao level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_nghi_think",
+      "c_b_khac",
+      "s_b_tui_nghi_la",
+      "s_b_moi_nguoi_thay_sao",
+      "s_b_hue_nha"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_lau_floor",
+  "type": "word",
+  "vi": "lầu",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "étage (au-dessus du rez-de-chaussée)",
+    "en": "floor, storey (above ground)"
+  },
+  "northernEquivalent": "tầng",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_lau_floor_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_lau_floor_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/home/stairs.svg",
+  "note": {
+    "fr": "Au Sud, lầu 1 est le premier étage ; au Nord, on dirait tầng 2.",
+    "en": "In the South lầu 1 is the first floor up; in the North that's tầng 2."
+  },
+  "reviewed": false
+}

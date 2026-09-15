@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_sap_toi",
+  "title": {
+    "fr": "« Em sắp tới rồi ! »",
+    "en": "'Em sắp tới rồi!'"
+  },
+  "body": {
+    "fr": "sắp veut dire « sur le point de ». Au téléphone, « Em sắp tới rồi ! » peut vouloir dire deux minutes… ou vingt, kẹt xe oblige. Le Sud dit aussi « tới liền » : j'arrive tout de suite. Garde ton sourire et commande un cà phê en attendant.",
+    "en": "sắp means 'about to'. On the phone, 'Em sắp tới rồi!' can mean two minutes… or twenty, traffic permitting. The South also says 'tới liền': coming right away. Keep smiling and order a cà phê while you wait."
+  },
+  "vi": "Em sắp tới rồi!",
+  "audio": "audio/cc_sap_toi.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Em sắp tới rồi » veut dire…",
+      "en": "'Em sắp tới rồi' means…"
+    },
+    "options": [
+      {
+        "fr": "j'arrive bientôt",
+        "en": "I'm almost there"
+      },
+      {
+        "fr": "je suis déjà arrivé",
+        "en": "I've already arrived"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,196 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u14.l08",
+  "unit": "vi-south.u14",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : goûts et opinions",
+    "en": "Test: likes and opinions"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais dire ce que tu aimes et ce que tu penses.",
+    "en": "Show you can say what you like and think."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u14.l07"
+  ],
+  "concepts": [
+    "c_thich",
+    "s_do_qua",
+    "c_do_bad",
+    "c_do_dirty",
+    "c_dep",
+    "c_xau",
+    "s_tui_thay",
+    "s_thiet_hong",
+    "s_vay_ha"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thich",
+      "distractors": [
+        "thịt",
+        "thiếc"
+      ],
+      "explain": {
+        "fr": "thích monte : aimer. thịt tombe court : la viande.",
+        "en": "thích rises: to like. thịt drops short: meat."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em không thích ăn cay lắm.",
+      "tokens": [
+        "Em",
+        "không",
+        "thích",
+        "ăn",
+        "cay",
+        "lắm",
+        "ngọt"
+      ],
+      "translation": {
+        "fr": "Je n'aime pas trop le piquant.",
+        "en": "I don't really like spicy food."
+      },
+      "explain": {
+        "fr": "không thích… lắm : pas trop.",
+        "en": "không thích… lắm: not really."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ghiền cà phê sữa đá.",
+      "tokens": [
+        "Anh",
+        "ghiền",
+        "cà phê",
+        "sữa",
+        "đá",
+        "ghét"
+      ],
+      "translation": {
+        "fr": "Je suis accro au café glacé au lait. (homme, à plus jeune)",
+        "en": "I'm hooked on iced milk coffee. (man, to someone younger)"
+      },
+      "explain": {
+        "fr": "ghiền + nom : être accro à.",
+        "en": "ghiền + noun: to be hooked on."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_do_qua",
+      "distractors": [
+        "Ngon quá!",
+        "Dơ quá!"
+      ],
+      "explain": {
+        "fr": "dở : pas bon. dơ : sale.",
+        "en": "dở: not good. dơ: dirty."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "dở",
+        "dơ"
+      ],
+      "audioConcepts": [
+        "c_do_bad",
+        "c_do_dirty"
+      ],
+      "explain": {
+        "fr": "dở plonge : pas bon. dơ reste plat : sale.",
+        "en": "dở dips: not good. dơ stays level: dirty."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_dep",
+      "explain": {
+        "fr": "đẹp : tombe court et bas (nặng).",
+        "en": "đẹp: drops short and low (nặng)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tối nay mình đi coi phim nha.",
+      "tokens": [
+        "Tối nay",
+        "mình",
+        "đi",
+        "coi",
+        "phim",
+        "nha",
+        "hay"
+      ],
+      "translation": {
+        "fr": "Ce soir, on va voir un film ?",
+        "en": "Shall we go see a film tonight?"
+      },
+      "explain": {
+        "fr": "đi coi phim : aller au cinéma.",
+        "en": "đi coi phim: go to the movies."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xau",
+      "distractors": [
+        "sáu",
+        "xâu"
+      ],
+      "explain": {
+        "fr": "xấu : laid. sáu : six.",
+        "en": "xấu: ugly. sáu: six."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tui_thay",
+      "distractors": [
+        "Tui thầy…",
+        "Tôi thấy…"
+      ],
+      "explain": {
+        "fr": "tui : je (Sud, familier). thầy : le maître.",
+        "en": "tui: I (southern, casual). thầy: teacher."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_funny",
+      "explain": {
+        "fr": "Sud : mắc cười ; Nord : buồn cười.",
+        "en": "South: mắc cười; North: buồn cười."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thiet_hong",
+      "distractors": [
+        "Thiết hông?",
+        "Mệt hông?"
+      ],
+      "explain": {
+        "fr": "Thiệt hông ? : vraiment ? thiệt tombe court.",
+        "en": "Thiệt hông?: for real? thiệt drops short."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_vay_ha",
+      "explain": {
+        "fr": "vậy tombe court, hả plonge : ton surpris.",
+        "en": "vậy drops short, hả dips: a surprised tone."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

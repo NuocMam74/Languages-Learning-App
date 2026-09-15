@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ho_cough",
+  "type": "word",
+  "vi": "ho",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "tousser ; toux",
+    "en": "to cough"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ho_cough_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ho_cough_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/health/cough.svg",
+  "reviewed": false
+}

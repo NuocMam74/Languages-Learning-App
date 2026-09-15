@@ -1,0 +1,164 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u19.l05",
+  "unit": "vi-south.u19",
+  "title": {
+    "fr": "Điền đơn",
+    "en": "Filling in a form"
+  },
+  "goal": {
+    "fr": "Remplir un formulaire : nom, date de naissance, signature.",
+    "en": "Fill in a form: name, date of birth, signature."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u19.l04"
+  ],
+  "concepts": [
+    "c_b_dien_don",
+    "s_b_dien_vo_don",
+    "c_b_ky_sign",
+    "s_b_ky_ten_o_day",
+    "c_b_ngay_sinh",
+    "c_b_don"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dien_vo_don",
+      "distractors": [
+        "Anh điền vô giấy này nha.",
+        "Anh ký vô đơn này nha."
+      ],
+      "explain": {
+        "fr": "điền : remplir ; ký : signer.",
+        "en": "điền: fill in; ký: sign."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_don",
+      "distractors": [
+        "c_b_the",
+        "c_b_visa"
+      ],
+      "explain": {
+        "fr": "đơn : le formulaire.",
+        "en": "đơn: form."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dien_don",
+      "distractors": [
+        "điện đơn",
+        "điền đờn"
+      ],
+      "explain": {
+        "fr": "điền đơn : remplir un formulaire. điện : l'électricité.",
+        "en": "điền đơn: fill in a form. điện: electricity."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_don",
+      "explain": {
+        "fr": "đơn : reste plat, sans bouger.",
+        "en": "đơn: stay level, don't move."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ngay_sinh",
+      "distractors": [
+        "ngày xinh",
+        "ngay sinh"
+      ],
+      "explain": {
+        "fr": "ngày sinh : la date de naissance.",
+        "en": "ngày sinh: date of birth."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh điền vô đơn này nha.",
+      "tokens": [
+        "Anh",
+        "điền",
+        "vô",
+        "đơn",
+        "này",
+        "nha",
+        "điện"
+      ],
+      "translation": {
+        "fr": "Remplis ce formulaire, d'accord ?",
+        "en": "Fill in this form, okay?"
+      },
+      "explain": {
+        "fr": "vô : dans (Sud) ; au Nord, vào.",
+        "en": "vô: into (South); North: vào."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ky_sign",
+      "distractors": [
+        "kỳ",
+        "kỷ"
+      ],
+      "explain": {
+        "fr": "ký monte : signer. kỳ descend : période.",
+        "en": "ký rises: to sign. kỳ falls: period."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ký tên ở đây.",
+      "tokens": [
+        "Ký",
+        "tên",
+        "ở",
+        "đây",
+        "kỳ"
+      ],
+      "translation": {
+        "fr": "Signez ici.",
+        "en": "Sign here."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Họ tên, ngày sinh, rồi ký tên.",
+      "tokens": [
+        "Họ tên",
+        "ngày sinh",
+        "rồi",
+        "ký tên",
+        "tiền"
+      ],
+      "translation": {
+        "fr": "Nom, date de naissance, puis la signature.",
+        "en": "Full name, date of birth, then sign."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_ky_ten_o_day",
+      "explain": {
+        "fr": "ký monte, tên plat, ở plonge, đây plat.",
+        "en": "ký rises, tên level, ở dips, đây level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_dien_don",
+      "s_b_dien_vo_don",
+      "c_b_ky_sign",
+      "s_b_ky_ten_o_day",
+      "c_b_ngay_sinh"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_nhang",
+  "type": "word",
+  "vi": "nhang",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "bâtonnet d'encens",
+    "en": "incense stick"
+  },
+  "northernEquivalent": "hương",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_nhang_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_nhang_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : nhang ; au Nord : hương.",
+    "en": "South: nhang; North: hương."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_hoi_nay",
+  "title": {
+    "fr": "Hồi nãy, hồi đó",
+    "en": "Hồi nãy, hồi đó"
+  },
+  "body": {
+    "fr": "Pour « tout à l'heure » (dans le passé), le Sud dit hồi nãy ; le Nord, lúc nãy. hồi revient souvent : hồi đó (à l'époque), hồi nhỏ (quand j'étais petit). Attention, mới et vừa disent « venir de » : « Em mới tới », je viens d'arriver.",
+    "en": "For 'a moment ago', the South says hồi nãy; the North, lúc nãy. hồi comes up a lot: hồi đó (back then), hồi nhỏ (when I was little). Note that mới and vừa mean 'have just': 'Em mới tới', I've just arrived."
+  },
+  "vi": "Hồi nãy chị gọi em.",
+  "audio": "audio/cc_hoi_nay.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, « tout à l'heure (passé) » se dit…",
+      "en": "In the South, 'a moment ago' is…"
+    },
+    "options": [
+      {
+        "fr": "hồi nãy",
+        "en": "hồi nãy"
+      },
+      {
+        "fr": "tuần sau",
+        "en": "tuần sau"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

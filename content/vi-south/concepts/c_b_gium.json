@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_gium",
+  "type": "word",
+  "vi": "giùm",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "pour moi, à ma place (rendre service)",
+    "en": "for me (as a favour)"
+  },
+  "northernEquivalent": "hộ",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_gium_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_gium_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : làm giùm ; au Nord : làm hộ.",
+    "en": "South: làm giùm; North: làm hộ."
+  },
+  "reviewed": false
+}

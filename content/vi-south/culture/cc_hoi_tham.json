@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_hoi_tham",
+  "title": {
+    "fr": "Prendre des nouvelles",
+    "en": "Asking after someone"
+  },
+  "body": {
+    "fr": "Demander la santé des gens, c'est montrer qu'on tient à eux. Après une maladie : « Khỏe chưa ? ». Réponse : « Đỡ rồi », ça va mieux. On apporte des fruits ou du lait à un malade. Et on se quitte sur « Giữ sức khỏe nha ».",
+    "en": "Asking about someone's health shows you care. After an illness: 'Khỏe chưa?'. Answer: 'Đỡ rồi', I'm better. People bring fruit or milk to someone sick. And you part with 'Giữ sức khỏe nha'."
+  },
+  "vi": "Khỏe chưa?",
+  "audio": "audio/cc_hoi_tham.opus",
+  "question": {
+    "prompt": {
+      "fr": "On apporte volontiers à un malade…",
+      "en": "People often bring a sick person…"
+    },
+    "options": [
+      {
+        "fr": "des fruits ou du lait",
+        "en": "fruit or milk"
+      },
+      {
+        "fr": "des fleurs blanches",
+        "en": "white flowers"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

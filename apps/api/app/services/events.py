@@ -27,9 +27,11 @@ from app.models import (
 from app.schemas.events import (
     AnswerSubmitted,
     BadgeEarned,
+    ConversationTurnEvent,
     EventBatchResult,
     GamePlayed,
     LessonCompleted,
+    PackSwitched,
     ParloEvent,
     PlacementCompleted,
     PronunciationScored,
@@ -43,7 +45,7 @@ from app.schemas.events import (
 )
 from app.services import learner
 from app.services.badges import ensure_badge
-from app.services.content import Pack, course_code_of_lesson
+from app.services.content import Pack, course_code_of_concept, course_code_of_lesson
 from app.services.planner import next_lesson
 from app.services.srs import SrsCard, merge_cards
 from app.services.streak import Streak, record_activity
@@ -143,6 +145,31 @@ def _apply(db: Session, user_id: str, event: ParloEvent, packs: dict[str, Pack],
             _apply_streak_frozen(db, user_id, event)
         case GamePlayed():
             _apply_game_played(db, user_id, event)
+        case ConversationTurnEvent():
+            pass  # journalisé dans processed_events : statistiques et défi « parole » (1 tour = 20 s)
+        case PackSwitched():
+            _apply_pack_switched(db, user_id, event, packs)
+
+
+def _apply_pack_switched(db: Session, user_id: str, event: PackSwitched, packs: dict[str, Pack]) -> None:
+    # Le pack courant est lu depuis le dernier `pack_switched` journalisé (learner.primary_enrollment).
+    _enrollment_for(db, user_id, _pack_for(packs, event.payload.to_pack))
+
+
+def _session_pack(db: Session, user_id: str, session_id: str, packs: dict[str, Pack]) -> Pack | None:
+    """Pack d'une séance d'après ses réponses (id de leçon, sinon préfixe des concepts)."""
+    rows = db.execute(
+        select(Answer.lesson_id, Answer.concept_id).where(Answer.user_id == user_id, Answer.session_id == session_id)
+    ).all()
+    for lesson_id, _ in rows:
+        if lesson_id and course_code_of_lesson(lesson_id) in packs:
+            return packs[course_code_of_lesson(lesson_id)]
+    for _, concept_id in rows:
+        if concept_id:
+            code = course_code_of_concept(concept_id, packs.keys(), learner.DEFAULT_PACK)
+            if code in packs:
+                return packs[code]
+    return None
 
 
 def _apply_pronunciation_scored(db: Session, user_id: str, event: PronunciationScored) -> None:
@@ -329,8 +356,10 @@ def _apply_session_completed(db: Session, user_id: str, event: SessionCompleted,
     existing = db.get(StudySession, p.session_id)
     if existing is not None and existing.user_id != user_id:
         raise EventRejectedError("session_conflict")
-    enrollment = learner.primary_enrollment(db, user_id)
-    default = next(iter(packs.values()), None)
+    # XP portée par l'inscription du pack de la séance (réponses), sinon par l'inscription courante.
+    session_pack = _session_pack(db, user_id, p.session_id, packs)
+    enrollment = _enrollment_for(db, user_id, session_pack) if session_pack else learner.primary_enrollment(db, user_id)
+    default = packs.get(learner.DEFAULT_PACK) or next(iter(packs.values()), None)
     if enrollment is None and default is None:
         raise EventRejectedError("no_enrollment")
 

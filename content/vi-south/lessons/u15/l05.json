@@ -1,0 +1,167 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u15.l05",
+  "unit": "vi-south.u15",
+  "title": {
+    "fr": "Số điện thoại, hết pin",
+    "en": "Numbers and dead batteries"
+  },
+  "goal": {
+    "fr": "Demander un numéro et recharger ton téléphone.",
+    "en": "Ask for a number and charge your phone."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u15.l04"
+  ],
+  "concepts": [
+    "s_so_bao_nhieu",
+    "c_het",
+    "c_pin",
+    "s_het_pin",
+    "c_sac_pin"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_so_bao_nhieu",
+      "distractors": [
+        "Số nhà của chị là bao nhiêu?",
+        "Số điện thoại của chị đây."
+      ],
+      "explain": {
+        "fr": "số điện thoại : le numéro de téléphone. số nhà : le numéro de maison.",
+        "en": "số điện thoại: phone number. số nhà: house number."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_sac_nho"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_het",
+      "explain": {
+        "fr": "hết monte (sắc).",
+        "en": "hết rises (sắc)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Số điện thoại của chị là bao nhiêu?",
+      "tokens": [
+        "Số điện thoại",
+        "của",
+        "chị",
+        "là",
+        "bao nhiêu",
+        "mấy"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "Un numéro, c'est long : bao nhiêu.",
+        "en": "A phone number is long: bao nhiêu."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_pin",
+      "distractors": [
+        "bin",
+        "pín"
+      ],
+      "explain": {
+        "fr": "pin : la batterie, du français « pile ».",
+        "en": "pin: battery, from French 'pile'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_het_pin",
+      "distractors": [
+        "Điện thoại em hết tiền rồi.",
+        "Điện thoại em còn pin."
+      ],
+      "explain": {
+        "fr": "hết pin : plus de batterie. còn : encore.",
+        "en": "hết pin: battery dead. còn: still some left."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em sạc pin nhờ được không?",
+      "tokens": [
+        "Cho",
+        "em",
+        "sạc",
+        "pin",
+        "nhờ",
+        "được",
+        "không",
+        "gọi"
+      ],
+      "translation": {
+        "fr": "Je peux recharger mon téléphone chez vous ?",
+        "en": "Could I charge my phone here?"
+      },
+      "explain": {
+        "fr": "nhờ : avec ton aide, poli.",
+        "en": "nhờ: with your help, polite."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sac_pin",
+      "distractors": [
+        "sát pin",
+        "xạc pin"
+      ],
+      "explain": {
+        "fr": "sạc tombe court. s et x : le Sud les distingue.",
+        "en": "sạc drops short. s and x: the South keeps them apart."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Không chín không một hai ba.",
+      "tokens": [
+        "Không",
+        "chín",
+        "không",
+        "một",
+        "hai",
+        "ba",
+        "bảy"
+      ],
+      "translation": {
+        "fr": "Zéro neuf zéro un deux trois.",
+        "en": "Zero nine zero one two three."
+      },
+      "explain": {
+        "fr": "On dicte un numéro chiffre par chiffre.",
+        "en": "Phone numbers are read digit by digit."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_het_pin",
+      "explain": {
+        "fr": "hết monte, pin plat, rồi descend.",
+        "en": "hết rises, pin level, rồi falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_so_bao_nhieu",
+      "c_het",
+      "c_pin",
+      "s_het_pin",
+      "c_sac_pin"
+    ]
+  },
+  "reviewed": false
+}

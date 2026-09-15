@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_qua_gift",
+  "type": "word",
+  "vi": "quà",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "cadeau",
+    "en": "gift"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_qua_gift_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_qua_gift_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/gift.svg",
+  "reviewed": false
+}

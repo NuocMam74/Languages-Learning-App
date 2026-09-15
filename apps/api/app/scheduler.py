@@ -1,6 +1,6 @@
 """Tâches planifiées (APScheduler), démarrées avec l'application si `SCHEDULER_ENABLED=true`.
 
-- lundi 00:00 UTC : défi de la semaine ;
+- lundi 00:00 UTC : défi de la semaine, passage de semaine des ligues ;
 - toutes les heures (minute 0) : rappels push.
 Un seul processus doit activer le planificateur (sinon rappels en double) : en production, un conteneur
 dédié ou un seul worker uvicorn avec `SCHEDULER_ENABLED=true`.
@@ -14,7 +14,7 @@ from apscheduler.triggers.cron import CronTrigger
 from sqlalchemy.orm import Session, sessionmaker
 
 from app.config import Settings
-from app.services import challenges, push
+from app.services import challenges, leagues, push
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +24,13 @@ def generate_weekly_challenge(session_factory: sessionmaker[Session]) -> None:
         challenge = challenges.ensure_week_challenge(db, datetime.now(UTC))
         db.commit()
         logger.info("Défi de la semaine : %s (%s)", challenge.kind, challenge.id)
+
+
+def rollover_leagues(session_factory: sessionmaker[Session]) -> None:
+    with session_factory() as db:
+        placed = leagues.rollover(db, datetime.now(UTC))
+        db.commit()
+        logger.info("Ligues : %d membre(s) placé(s)", placed)
 
 
 def send_push_reminders(session_factory: sessionmaker[Session], settings: Settings) -> None:
@@ -41,6 +48,14 @@ def start_scheduler(settings: Settings, session_factory: sessionmaker[Session]) 
         CronTrigger(day_of_week="mon", hour=0, minute=0, timezone=UTC),
         args=[session_factory],
         id="weekly_challenge",
+        misfire_grace_time=3600,
+        coalesce=True,
+    )
+    scheduler.add_job(
+        rollover_leagues,
+        CronTrigger(day_of_week="mon", hour=0, minute=0, timezone=UTC),
+        args=[session_factory],
+        id="leagues_rollover",
         misfire_grace_time=3600,
         coalesce=True,
     )

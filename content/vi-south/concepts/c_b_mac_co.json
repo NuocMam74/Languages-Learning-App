@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_mac_co",
+  "type": "word",
+  "vi": "mắc cỡ",
+  "gloss": {
+    "fr": "gêné, timide",
+    "en": "shy, embarrassed"
+  },
+  "northernEquivalent": "xấu hổ",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_mac_co_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_mac_co_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Cây mắc cỡ : la sensitive, plante qui se replie au toucher.",
+    "en": "Cây mắc cỡ: the 'sensitive plant' that folds when touched."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_chuc_mung_nam_moi",
+  "type": "structure",
+  "vi": "Chúc mừng năm mới!",
+  "gloss": {
+    "fr": "Bonne année !",
+    "en": "Happy New Year!"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_chuc_mung_nam_moi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_chuc_mung_nam_moi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_di_dau_vay",
+  "type": "structure",
+  "vi": "Đi đâu vậy?",
+  "gloss": {
+    "fr": "Tu vas où comme ça ?",
+    "en": "Where are you off to?"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_di_dau_vay_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_di_dau_vay_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "À l'oral, vậy se prononce souvent « dzậy » ; on écrit vậy.",
+    "en": "Spoken vậy often sounds like 'dzậy'; it's written vậy."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u17.l02",
+  "unit": "vi-south.u17",
+  "title": {
+    "fr": "Lầu, hẻm",
+    "en": "Floors and alleys"
+  },
+  "goal": {
+    "fr": "Dire à quel étage et dans quelle ruelle tu habites.",
+    "en": "Say which floor and alley you live in."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u17.l01"
+  ],
+  "concepts": [
+    "c_lau_floor",
+    "c_lau_long",
+    "c_lau_hotpot",
+    "c_tang_tret",
+    "s_o_lau_hai",
+    "c_phong",
+    "c_nha_house"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_lau_floor",
+      "distractors": [
+        "c_phong",
+        "c_nha_house"
+      ],
+      "explain": {
+        "fr": "lầu : l'étage.",
+        "en": "lầu: floor, storey."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_lau_tang"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_floor",
+      "explain": {
+        "fr": "Sud : lầu ; Nord : tầng.",
+        "en": "South: lầu; North: tầng."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "lầu",
+        "lâu",
+        "lẩu"
+      ],
+      "audioConcepts": [
+        "c_lau_floor",
+        "c_lau_long",
+        "c_lau_hotpot"
+      ],
+      "explain": {
+        "fr": "lầu descend : l'étage. lâu plat : longtemps. lẩu plonge : la fondue.",
+        "en": "lầu falls: floor. lâu level: long time. lẩu dips: hot pot."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_lau_floor",
+      "explain": {
+        "fr": "lầu : descend doucement (huyền).",
+        "en": "lầu: falls gently (huyền)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_o_lau_hai",
+      "distractors": [
+        "Em ở lầu ba.",
+        "Em ở hẻm hai."
+      ],
+      "explain": {
+        "fr": "lầu hai : le deuxième étage.",
+        "en": "lầu hai: second floor."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà em ở trong hẻm, lầu hai.",
+      "tokens": [
+        "Nhà",
+        "em",
+        "ở",
+        "trong",
+        "hẻm",
+        "lầu",
+        "hai",
+        "lâu"
+      ],
+      "translation": {
+        "fr": "J'habite dans une ruelle, au deuxième étage.",
+        "en": "I live down an alley, on the second floor."
+      },
+      "explain": {
+        "fr": "Adresse du Sud : hẻm, puis lầu.",
+        "en": "A southern address: hẻm, then lầu."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tang_tret",
+      "distractors": [
+        "tăng trệt",
+        "tâng trệt"
+      ],
+      "explain": {
+        "fr": "tầng trệt : le rez-de-chaussée.",
+        "en": "tầng trệt: ground floor."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_alley",
+      "explain": {
+        "fr": "Sud : hẻm ; Nord : ngõ.",
+        "en": "South: hẻm; North: ngõ."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_o_lau_hai",
+      "explain": {
+        "fr": "lầu descend, hai reste plat.",
+        "en": "lầu falls, hai stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_lau_floor",
+      "c_lau_long",
+      "c_lau_hotpot",
+      "c_tang_tret",
+      "s_o_lau_hai"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_cho_em_gap",
+  "type": "structure",
+  "vi": "Cho em gặp anh Minh.",
+  "gloss": {
+    "fr": "Je voudrais parler à Minh. (au téléphone)",
+    "en": "May I speak to Minh? (on the phone)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cho_em_gap_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cho_em_gap_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u22.l07",
+  "unit": "vi-south.u22",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : raconter",
+    "en": "Review: storytelling"
+  },
+  "goal": {
+    "fr": "Revoir les repères du passé et les liens du récit.",
+    "en": "Go over past-time markers and story links."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u22.l06"
+  ],
+  "concepts": [
+    "c_troi",
+    "c_toi_evening",
+    "s_b_hoi_nho_tui_o_que",
+    "c_b_hoi_back",
+    "c_b_hoi_festival",
+    "c_b_nam_ngoai",
+    "c_mua_rain",
+    "c_b_lan",
+    "s_b_roi_sao_nua",
+    "s_b_sau_do_tui_qua_phap"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hoi_nho_tui_o_que",
+      "distractors": [
+        "Hồi nhỏ tui ở Sài Gòn.",
+        "Bây giờ tui ở dưới quê."
+      ],
+      "explain": {
+        "fr": "hồi nhỏ.",
+        "en": "hồi nhỏ."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "hồi",
+        "hội"
+      ],
+      "audioConcepts": [
+        "c_b_hoi_back",
+        "c_b_hoi_festival"
+      ],
+      "explain": {
+        "fr": "hồi descend, hội court.",
+        "en": "hồi falls, hội short."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hồi đó chưa có điện thoại.",
+      "tokens": [
+        "Hồi đó",
+        "chưa",
+        "có",
+        "điện thoại",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "À l'époque, il n'y avait pas encore de téléphone.",
+        "en": "Back then, there were no phones yet."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nam_ngoai",
+      "distractors": [
+        "năm ngoài",
+        "năm nay"
+      ],
+      "explain": {
+        "fr": "năm ngoái : l'an dernier.",
+        "en": "năm ngoái: last year."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "c_troi",
+        "c_toi_evening"
+      ],
+      "explain": {
+        "fr": "mưa.",
+        "en": "mưa."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Sau đó tui qua Pháp.",
+      "tokens": [
+        "Sau đó",
+        "tui",
+        "qua",
+        "Pháp",
+        "sáu"
+      ],
+      "translation": {
+        "fr": "Ensuite, je suis parti(e) en France.",
+        "en": "After that I went to France."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_lan",
+      "explain": {
+        "fr": "lần : huyền.",
+        "en": "lần: huyền."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_roi_sao_nua",
+      "distractors": [
+        "Rồi sao?",
+        "Còn gì nữa?"
+      ],
+      "explain": {
+        "fr": "Rồi sao nữa ? : et après ?",
+        "en": "Rồi sao nữa?: and then?"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_sau_do_tui_qua_phap",
+      "explain": {
+        "fr": "sau plat, Pháp monte.",
+        "en": "sau level, Pháp rises."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

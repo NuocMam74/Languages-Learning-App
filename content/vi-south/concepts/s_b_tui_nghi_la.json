@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_tui_nghi_la",
+  "type": "structure",
+  "vi": "Tui nghĩ là chị đúng.",
+  "gloss": {
+    "fr": "Je pense que tu as raison (à une femme un peu plus âgée).",
+    "en": "I think you're right (to a slightly older woman)."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_tui_nghi_la_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_tui_nghi_la_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

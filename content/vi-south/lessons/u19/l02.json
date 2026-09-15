@@ -1,0 +1,167 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u19.l02",
+  "unit": "vi-south.u19",
+  "title": {
+    "fr": "Gia hạn visa",
+    "en": "Extending a visa"
+  },
+  "goal": {
+    "fr": "Dire que ton visa expire et demander à le prolonger.",
+    "en": "Say your visa is expiring and ask to extend it."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u19.l01"
+  ],
+  "concepts": [
+    "c_b_het_han",
+    "c_b_muon",
+    "c_b_gia_han",
+    "s_b_visa_het_han",
+    "s_b_gia_han_visa",
+    "c_b_visa"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_visa_het_han",
+      "distractors": [
+        "Visa của tui mới hết hạn.",
+        "Hộ chiếu của tui sắp hết hạn."
+      ],
+      "explain": {
+        "fr": "sắp : bientôt ; mới : venir de.",
+        "en": "sắp: soon; mới: just."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_het_han",
+      "distractors": [
+        "hết hàn",
+        "hệt hạn"
+      ],
+      "explain": {
+        "fr": "hết hạn : expirer. hết monte, hạn tombe court.",
+        "en": "hết hạn: to expire. hết rises, hạn drops short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_muon",
+      "distractors": [
+        "mượn",
+        "muồn"
+      ],
+      "explain": {
+        "fr": "muốn monte : vouloir. mượn : emprunter.",
+        "en": "muốn rises: to want. mượn: to borrow."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_muon",
+      "explain": {
+        "fr": "muốn : sắc.",
+        "en": "muốn: sắc."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Visa của tui sắp hết hạn.",
+      "tokens": [
+        "Visa",
+        "của",
+        "tui",
+        "sắp",
+        "hết hạn",
+        "hạn"
+      ],
+      "translation": {
+        "fr": "Mon visa expire bientôt.",
+        "en": "My visa is about to expire."
+      },
+      "explain": {
+        "fr": "sắp + verbe : être sur le point de.",
+        "en": "sắp + verb: about to."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_han",
+      "distractors": [
+        "giá hạn",
+        "gia hàn"
+      ],
+      "explain": {
+        "fr": "gia hạn : prolonger.",
+        "en": "gia hạn: to extend."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui muốn gia hạn visa.",
+      "tokens": [
+        "Tui",
+        "muốn",
+        "gia hạn",
+        "visa",
+        "mượn"
+      ],
+      "translation": {
+        "fr": "Je veux prolonger mon visa.",
+        "en": "I want to extend my visa."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_visa",
+      "distractors": [
+        "c_b_ho_chieu",
+        "c_b_don"
+      ],
+      "explain": {
+        "fr": "visa.",
+        "en": "visa."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mấy ngày thì xong?",
+      "tokens": [
+        "Mấy",
+        "ngày",
+        "thì",
+        "xong",
+        "giờ"
+      ],
+      "translation": {
+        "fr": "Ce sera prêt en combien de jours ?",
+        "en": "How many days until it's ready?"
+      },
+      "explain": {
+        "fr": "xong : fini, prêt.",
+        "en": "xong: done, ready."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_gia_han_visa",
+      "explain": {
+        "fr": "muốn monte, gia plat, hạn court.",
+        "en": "muốn rises, gia level, hạn short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_het_han",
+      "c_b_muon",
+      "c_b_gia_han",
+      "s_b_visa_het_han",
+      "s_b_gia_han_visa"
+    ]
+  },
+  "reviewed": false
+}

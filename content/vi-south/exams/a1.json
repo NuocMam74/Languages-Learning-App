@@ -3,7 +3,7 @@
   "id": "vi-south.exam.a1",
   "level": "A1",
   "certificate": { "fr": "A1 Mở lời", "en": "A1 Mở lời" },
-  "requiresUnits": ["vi-south.u01", "vi-south.u02", "vi-south.u03", "vi-south.u04", "vi-south.u05", "vi-south.u06", "vi-south.u07", "vi-south.u08", "vi-south.u09", "vi-south.u10", "vi-south.u11"],
+  "requiresUnits": ["vi-south.u01", "vi-south.u02", "vi-south.u03", "vi-south.u04", "vi-south.u05", "vi-south.u06", "vi-south.u07", "vi-south.u08", "vi-south.u09", "vi-south.u10", "vi-south.u11", "vi-south.u12", "vi-south.u13", "vi-south.u14", "vi-south.u15", "vi-south.u16"],
   "durationMinutes": 15,
   "passThreshold": 0.75,
   "retryAfterHours": 48,
@@ -12,12 +12,12 @@
       "skill": "listening",
       "items": [
         { "step": { "type": "tone_minimal_pair", "pair": ["mười", "mươi"], "audioConcepts": ["c_muoi_ten", "c_muoi_tens"] } },
-        { "step": { "type": "listen_pick_image", "concept": "c_banh_mi", "distractors": ["c_pho", "c_com_tam"] } },
+        { "step": { "type": "tone_minimal_pair", "pair": ["đâu", "đầu"], "audioConcepts": ["c_dau_where", "c_dau_head"] } },
         { "step": { "type": "listen_pick_text", "concept": "s_hai_muoi_mot", "distractors": ["hai mươi bảy", "ba mươi mốt"] } },
         { "step": { "type": "tone_identify", "concept": "c_tre_late" } },
-        { "step": { "type": "listen_pick_text", "concept": "s_bao_nhieu_mot_ky", "distractors": ["Bao nhiêu một trái?", "Bao nhiêu tiền?"] } },
+        { "step": { "type": "listen_pick_text", "concept": "s_khi_nao_anh_ve", "distractors": ["Khi nào anh đi?", "Anh về khi nào?"] } },
         { "step": { "type": "tone_minimal_pair", "pair": ["tôi", "tối"], "audioConcepts": ["c_toi", "c_toi_evening"] } },
-        { "step": { "type": "listen_pick_image", "concept": "s_queo_phai", "distractors": ["s_queo_trai", "c_den_do"] } },
+        { "step": { "type": "listen_pick_image", "concept": "s_nhuc_dau", "distractors": ["s_dau_bung", "c_sot"] } },
         { "step": { "type": "listen_pick_text", "concept": "s_toi_roi", "distractors": ["Tối rồi.", "Tới đây."] } }
       ]
     },
@@ -25,11 +25,11 @@
       "skill": "reading",
       "items": [
         { "step": { "type": "spot_the_south", "variant": "lv_turn" } },
-        { "step": { "type": "build_sentence", "target": "Tôi là người Pháp.", "tokens": ["Tôi", "là", "người", "Pháp", "Việt"], "translation": { "fr": "Je suis français(e).", "en": "I'm French." } }, "silent": true },
+        { "step": { "type": "build_sentence", "target": "Tại sao em học tiếng Việt?", "tokens": ["Tại sao", "em", "học", "tiếng Việt", "vì"], "translation": { "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)", "en": "Why are you learning Vietnamese? (to someone younger)" } }, "silent": true },
         { "step": { "type": "listen_pick_text", "concept": "s_nguoi_nuoc_nao", "distractors": ["Chị là người Pháp?", "Chị tên gì?"] }, "silent": true },
         { "step": { "type": "spot_the_south", "variant": "lv_thousand" } },
         { "step": { "type": "build_sentence", "target": "Xoài bao nhiêu một ký?", "tokens": ["Xoài", "bao nhiêu", "một", "ký", "trái"], "translation": { "fr": "Combien le kilo de mangues ?", "en": "How much is a kilo of mangoes?" } }, "silent": true },
-        { "step": { "type": "spot_the_south", "variant": "lv_alley" } }
+        { "step": { "type": "spot_the_south", "variant": "lv_sick" } }
       ]
     },
     {
@@ -38,9 +38,9 @@
         { "step": { "type": "listen_pick_image", "concept": "c_benh_vien", "distractors": ["c_ngan_hang", "c_truong_hoc"] } },
         { "step": { "type": "listen_pick_image", "concept": "c_thom", "distractors": ["c_sau_rieng", "c_chuoi"] } },
         { "step": { "type": "build_sentence", "target": "Cho em một ly cà phê sữa đá.", "tokens": ["Cho", "em", "một", "ly", "cà phê", "sữa", "đá", "tô"], "translation": { "fr": "Un café glacé au lait, s'il te plaît.", "en": "An iced milk coffee, please." } } },
-        { "step": { "type": "listen_pick_image", "concept": "c_bac_si", "distractors": ["c_giao_vien", "c_sinh_vien"] } },
+        { "step": { "type": "listen_pick_image", "concept": "c_nha_thuoc", "distractors": ["c_benh_vien", "c_ngan_hang"] } },
         { "step": { "type": "build_sentence", "target": "Tới ngã tư thì quẹo trái.", "tokens": ["Tới", "ngã tư", "thì", "quẹo", "trái", "phải"], "translation": { "fr": "Au carrefour, tourne à gauche.", "en": "At the crossroads, turn left." } } },
-        { "step": { "type": "listen_pick_image", "concept": "c_chieu", "distractors": ["c_sang", "c_dem"] } }
+        { "step": { "type": "listen_pick_image", "concept": "c_tin_nhan", "distractors": ["c_dien_thoai", "c_sach"] } }
       ]
     },
     {
@@ -48,8 +48,8 @@
       "items": [
         { "step": { "type": "speak_repeat", "concept": "s_rat_vui_duoc_gap" } },
         { "step": { "type": "speak_repeat", "concept": "s_cho_em_to_pho" } },
-        { "step": { "type": "speak_repeat", "concept": "s_bot_cho_em" } },
-        { "step": { "type": "speak_repeat", "concept": "s_may_gio_roi" } },
+        { "step": { "type": "speak_repeat", "concept": "s_doi_chut_nha" } },
+        { "step": { "type": "tone_produce", "concept": "c_sot" } },
         { "step": { "type": "speak_repeat", "concept": "s_cho_em_xuong" } }
       ]
     }

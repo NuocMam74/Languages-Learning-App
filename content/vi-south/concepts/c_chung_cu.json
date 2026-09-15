@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chung_cu",
+  "type": "word",
+  "vi": "chung cư",
+  "gloss": {
+    "fr": "immeuble d'appartements",
+    "en": "apartment building"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chung_cu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chung_cu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/home/apartment.svg",
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_uoc_gi",
+  "title": {
+    "fr": "Ước gì…",
+    "en": "Ước gì…"
+  },
+  "body": {
+    "fr": "Ước gì exprime un souhait, souvent teinté de regret : « Ước gì tui được về quê ăn Tết ». On l'entend dans beaucoup de chansons. Au Tết, on formule aussi des vœux devant l'autel des ancêtres, pour la santé et la réussite de la famille.",
+    "en": "Ước gì expresses a wish, often tinged with regret: 'Ước gì tui được về quê ăn Tết'. You hear it in many songs. At Tết, people also make wishes before the ancestors' altar, for the family's health and success."
+  },
+  "vi": "Ước gì tui được về quê ăn Tết.",
+  "audio": "audio/cc_b_uoc_gi.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Ước gì » sert à exprimer…",
+      "en": "'Ước gì' is used to express…"
+    },
+    "options": [
+      {
+        "fr": "un souhait",
+        "en": "a wish"
+      },
+      {
+        "fr": "un ordre",
+        "en": "an order"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

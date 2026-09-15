@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_ke_chuyen",
+  "title": {
+    "fr": "Écouter les histoires des aînés",
+    "en": "Listening to elders' stories"
+  },
+  "body": {
+    "fr": "À table ou pendant un đám giỗ, les aînés racontent souvent « hồi đó » : les années difficiles, le premier xe máy, le village. Écouter est une marque de respect. Relance avec « Rồi sao nữa ? », « Et après ? » : tu feras plaisir.",
+    "en": "At the table or during a đám giỗ, elders often tell stories of 'hồi đó': the hard years, the first xe máy, the village. Listening is a sign of respect. Prompt them with 'Rồi sao nữa?', 'And then?': they'll be delighted."
+  },
+  "vi": "Rồi sao nữa?",
+  "audio": "audio/cc_b_ke_chuyen.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour relancer un récit, tu dis…",
+      "en": "To keep a story going, you say…"
+    },
+    "options": [
+      {
+        "fr": "Rồi sao nữa?",
+        "en": "Rồi sao nữa?"
+      },
+      {
+        "fr": "Thôi, cảm ơn.",
+        "en": "Thôi, cảm ơn."
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

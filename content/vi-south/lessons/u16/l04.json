@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u16.l04",
+  "unit": "vi-south.u16",
+  "title": {
+    "fr": "Nhà thuốc",
+    "en": "The pharmacy"
+  },
+  "goal": {
+    "fr": "Acheter un médicament et comprendre la posologie.",
+    "en": "Buy medicine and understand the dosage."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u16.l03"
+  ],
+  "concepts": [
+    "c_thuoc_medicine",
+    "c_nha_thuoc",
+    "s_uong_thuoc",
+    "s_ngay_may_lan",
+    "c_benh_vien",
+    "c_ngan_hang",
+    "c_tien",
+    "c_sach"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_thuoc",
+      "distractors": [
+        "c_benh_vien",
+        "c_ngan_hang"
+      ],
+      "explain": {
+        "fr": "nhà thuốc : la pharmacie.",
+        "en": "nhà thuốc: pharmacy."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_nha_thuoc"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_pharmacy",
+      "explain": {
+        "fr": "Sud : nhà thuốc ; Nord : hiệu thuốc.",
+        "en": "South: nhà thuốc; North: hiệu thuốc."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_thuoc_medicine",
+      "distractors": [
+        "c_tien",
+        "c_sach"
+      ],
+      "explain": {
+        "fr": "thuốc : le médicament.",
+        "en": "thuốc: medicine."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thuoc_medicine",
+      "distractors": [
+        "thuộc",
+        "thước"
+      ],
+      "explain": {
+        "fr": "thuốc monte. thước : la règle.",
+        "en": "thuốc rises. thước: ruler."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị bán cho em thuốc nhức đầu.",
+      "tokens": [
+        "Chị",
+        "bán",
+        "cho",
+        "em",
+        "thuốc",
+        "nhức đầu",
+        "bệnh"
+      ],
+      "translation": {
+        "fr": "Vends-moi un médicament contre le mal de tête. (à une femme un peu plus âgée)",
+        "en": "Could I have something for a headache? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "thuốc + symptôme : médicament contre…",
+        "en": "thuốc + symptom: medicine for…"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ngay_may_lan",
+      "distractors": [
+        "Ngày uống mấy ly?",
+        "Ngày mai mấy lần?"
+      ],
+      "explain": {
+        "fr": "mấy lần : combien de fois.",
+        "en": "mấy lần: how many times."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ngày uống mấy lần?",
+      "tokens": [
+        "Ngày",
+        "uống",
+        "mấy",
+        "lần",
+        "bao lâu"
+      ],
+      "translation": {
+        "fr": "Combien de fois par jour ?",
+        "en": "How many times a day?"
+      },
+      "explain": {
+        "fr": "Ngày… mấy lần : par jour.",
+        "en": "Ngày… mấy lần: per day."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_uong_thuoc",
+      "distractors": [
+        "uống nước",
+        "uống sữa"
+      ],
+      "explain": {
+        "fr": "uống thuốc : prendre un médicament.",
+        "en": "uống thuốc: take medicine."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_ngay_may_lan",
+      "explain": {
+        "fr": "mấy monte, lần descend.",
+        "en": "mấy rises, lần falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_thuoc_medicine",
+      "c_nha_thuoc",
+      "s_uong_thuoc",
+      "s_ngay_may_lan"
+    ]
+  },
+  "reviewed": false
+}

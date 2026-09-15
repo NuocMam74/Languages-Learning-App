@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_photo_gium",
+  "type": "structure",
+  "vi": "Chị photo giùm em hai bản nha.",
+  "gloss": {
+    "fr": "Tu me fais deux photocopies, s'il te plaît ? (à une femme un peu plus âgée)",
+    "en": "Could you make me two copies? (to a slightly older woman)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_photo_gium_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_photo_gium_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "photo : photocopier, au Sud.",
+    "en": "photo: to photocopy, in the South."
+  },
+  "reviewed": false
+}

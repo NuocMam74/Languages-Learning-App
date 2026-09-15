@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_lanh_luong",
+  "type": "structure",
+  "vi": "Cuối tháng mới lãnh lương.",
+  "gloss": {
+    "fr": "On touche le salaire seulement en fin de mois.",
+    "en": "We only get paid at the end of the month."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_lanh_luong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_lanh_luong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

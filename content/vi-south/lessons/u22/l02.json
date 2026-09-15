@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u22.l02",
+  "unit": "vi-south.u22",
+  "title": {
+    "fr": "Hồi đó",
+    "en": "Back then"
+  },
+  "goal": {
+    "fr": "Comparer autrefois et aujourd'hui.",
+    "en": "Compare the past and the present."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u22.l01"
+  ],
+  "concepts": [
+    "c_b_hoi_do",
+    "s_b_hoi_do_chua_co",
+    "c_b_ngay_xua",
+    "s_bay_gio",
+    "c_chua"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_do",
+      "distractors": [
+        "hồi nào",
+        "hỏi đó"
+      ],
+      "explain": {
+        "fr": "hồi đó : à l'époque. hồi nào : quand ?",
+        "en": "hồi đó: back then. hồi nào: when?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_no_tense"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hoi_do_chua_co",
+      "distractors": [
+        "Hồi đó có điện thoại rồi.",
+        "Bây giờ chưa có điện thoại."
+      ],
+      "explain": {
+        "fr": "chưa có : pas encore ; có rồi : déjà.",
+        "en": "chưa có: not yet; có rồi: already."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hồi đó chưa có điện thoại.",
+      "tokens": [
+        "Hồi đó",
+        "chưa",
+        "có",
+        "điện thoại",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "À l'époque, il n'y avait pas encore de téléphone.",
+        "en": "Back then, there were no phones yet."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bay_gio",
+      "distractors": [
+        "bây giở",
+        "bấy giờ"
+      ],
+      "explain": {
+        "fr": "bây giờ : maintenant.",
+        "en": "bây giờ: now."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ ai cũng có xe máy.",
+      "tokens": [
+        "Bây giờ",
+        "ai",
+        "cũng",
+        "có",
+        "xe máy",
+        "hồi đó"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, tout le monde a une moto.",
+        "en": "Nowadays everyone has a motorbike."
+      },
+      "explain": {
+        "fr": "ai cũng : tout le monde.",
+        "en": "ai cũng: everyone."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ngay_xua",
+      "distractors": [
+        "ngày xửa",
+        "ngay xưa"
+      ],
+      "explain": {
+        "fr": "ngày xưa : autrefois.",
+        "en": "ngày xưa: in the old days."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ngày xửa ngày xưa, có một ông vua.",
+      "tokens": [
+        "Ngày xửa",
+        "ngày xưa",
+        "có",
+        "một",
+        "ông vua",
+        "ông"
+      ],
+      "translation": {
+        "fr": "Il était une fois un roi.",
+        "en": "Once upon a time there was a king."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_chua",
+      "explain": {
+        "fr": "chưa : ngang.",
+        "en": "chưa: ngang."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_hoi_do_chua_co",
+      "explain": {
+        "fr": "chưa plat, có monte, điện thoại : court puis court.",
+        "en": "chưa level, có rises, điện thoại: short, short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_hoi_do",
+      "s_b_hoi_do_chua_co",
+      "c_b_ngay_xua"
+    ]
+  },
+  "reviewed": false
+}

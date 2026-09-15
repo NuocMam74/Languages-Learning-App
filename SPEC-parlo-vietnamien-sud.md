@@ -475,7 +475,7 @@ spécifiques déclarés dans `pack.json` (`features: ["tones"]` active le module
 - Génération PDF des diplômes : WeasyPrint ou Playwright, côté serveur
 - Professeur IA : endpoint proxy vers l'API Anthropic (modèle `claude-sonnet-4-6`), **streaming SSE**, clé en variable d'environnement, quotas par utilisateur
 - Tâches planifiées : rappels push, calcul des ligues, agrégats (APScheduler ou cron du PaaS)
-
+SSS
 **Infra**
 - Front sur Vercel/Cloudflare Pages ; API sur Railway/Fly.io ; contenu servi en statique depuis le CDN avec version (`/content/vi-south/v3/...`)
 - CI GitHub Actions : lint, types, tests, **validation des schémas de contenu**, `south-lint`, build, Lighthouse (budget perf mobile ≥ 90)

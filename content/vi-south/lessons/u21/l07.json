@@ -1,0 +1,134 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u21.l07",
+  "unit": "vi-south.u21",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : parler du Sud",
+    "en": "Review: southern speech"
+  },
+  "goal": {
+    "fr": "Revoir pronoms, particules et mots du delta.",
+    "en": "Go over pronouns, particles and delta words."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u21.l06"
+  ],
+  "concepts": [
+    "s_b_di_dau_vay",
+    "c_ong",
+    "c_ong_he",
+    "c_b_ghe",
+    "s_b_nho_nghen",
+    "s_b_de_thuong_qua"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_di_dau_vay",
+      "distractors": [
+        "Đi đâu đó?",
+        "Ở đâu vậy?"
+      ],
+      "explain": {
+        "fr": "Đi đâu vậy ?",
+        "en": "Đi đâu vậy?"
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ong_ay",
+      "explain": {
+        "fr": "ổng = ông ấy.",
+        "en": "ổng = ông ấy."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ông",
+        "ổng"
+      ],
+      "audioConcepts": [
+        "c_ong",
+        "c_ong_he"
+      ],
+      "explain": {
+        "fr": "ông plat, ổng plonge.",
+        "en": "ông level, ổng dips."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ghe",
+      "distractors": [
+        "c_b_bong",
+        "c_b_vuon"
+      ],
+      "explain": {
+        "fr": "ghe : le bateau.",
+        "en": "ghe: boat."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_anh_ay",
+      "explain": {
+        "fr": "ảnh = anh ấy.",
+        "en": "ảnh = anh ấy."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hổng có đâu!",
+      "tokens": [
+        "Hổng",
+        "có",
+        "đâu",
+        "đây"
+      ],
+      "translation": {
+        "fr": "Mais non, pas du tout !",
+        "en": "No way, not at all!"
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ainsi",
+      "explain": {
+        "fr": "Sud : vậy ; Nord : thế.",
+        "en": "South: vậy; North: thế."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_nho_nghen",
+      "distractors": [
+        "Nhớ nha!",
+        "Nhớ hen!"
+      ],
+      "explain": {
+        "fr": "Nhớ nghen !",
+        "en": "Nhớ nghen!"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_de_thuong_qua",
+      "explain": {
+        "fr": "dễ plonge au Sud, thương plat, quá monte.",
+        "en": "dễ dips in the South, thương level, quá rises."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

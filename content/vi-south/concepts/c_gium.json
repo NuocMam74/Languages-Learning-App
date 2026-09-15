@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_gium",
+  "type": "word",
+  "vi": "giùm",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "pour (quelqu'un), à la place de",
+    "en": "for (someone), on behalf of"
+  },
+  "northernEquivalent": "hộ",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gium_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gium_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : nhắn giùm, lấy giùm. On écrit aussi dùm.",
+    "en": "In the South: nhắn giùm, lấy giùm. Also written dùm."
+  },
+  "reviewed": false
+}

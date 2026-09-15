@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_benh_sick",
+  "type": "word",
+  "vi": "bệnh",
+  "tone": "nang",
+  "gloss": {
+    "fr": "maladie ; malade",
+    "en": "illness; sick"
+  },
+  "northernEquivalent": "ốm",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_benh_sick_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_benh_sick_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "À l'oral du Sud, on entend souvent « bịnh ». Attention : au Sud, ốm veut dire « maigre ».",
+    "en": "In southern speech you often hear 'bịnh'. Careful: in the South, ốm means 'skinny'."
+  },
+  "reviewed": false
+}

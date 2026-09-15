@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_dung_khach_sao",
+  "type": "structure",
+  "vi": "Đừng khách sáo!",
+  "gloss": {
+    "fr": "Ne fais pas de manières !",
+    "en": "Don't stand on ceremony!"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_dung_khach_sao_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_dung_khach_sao_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

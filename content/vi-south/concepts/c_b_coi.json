@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_coi",
+  "type": "word",
+  "vi": "coi",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "regarder, voir (Sud)",
+    "en": "to look, to watch (South)"
+  },
+  "northernEquivalent": "xem",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_coi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_coi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : coi phim ; au Nord : xem phim.",
+    "en": "South: coi phim; North: xem phim."
+  },
+  "reviewed": false
+}

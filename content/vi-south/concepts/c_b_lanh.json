@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_lanh",
+  "type": "word",
+  "vi": "lãnh",
+  "tone": "nga",
+  "gloss": {
+    "fr": "toucher, recevoir (un salaire)",
+    "en": "to receive (pay)"
+  },
+  "northernEquivalent": "lĩnh",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_lanh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_lanh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : lãnh lương ; au Nord : lĩnh lương.",
+    "en": "South: lãnh lương; North: lĩnh lương."
+  },
+  "reviewed": false
+}

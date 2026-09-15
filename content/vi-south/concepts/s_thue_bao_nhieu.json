@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_thue_bao_nhieu",
+  "type": "structure",
+  "vi": "Phòng này bao nhiêu một tháng?",
+  "gloss": {
+    "fr": "Cette chambre, c'est combien par mois ?",
+    "en": "How much is this room per month?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thue_bao_nhieu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thue_bao_nhieu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

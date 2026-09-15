@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_do_bad",
+  "type": "word",
+  "vi": "dở",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "pas bon, raté (goût, qualité)",
+    "en": "bad, not good (taste, quality)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_do_bad_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_do_bad_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, dở est le contraire de ngon et de hay : món này dở, phim dở.",
+    "en": "In the South dở is the opposite of ngon and hay: món này dở, phim dở."
+  },
+  "reviewed": false
+}

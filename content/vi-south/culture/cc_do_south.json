@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_do_south",
+  "title": {
+    "fr": "Dở, dơ : attention au ton",
+    "en": "Dở, dơ: mind the tone"
+  },
+  "body": {
+    "fr": "Au Sud, dở veut dire « pas bon » : un plat, un film, un travail raté. Sans ton, dơ veut dire « sale » (au Nord, bẩn). Pour rester poli devant un plat moyen, on dit plutôt « Cũng được » ou « hơi mặn », un peu salé.",
+    "en": "In the South, dở means 'not good': a dish, a film, a botched job. With no tone mark, dơ means 'dirty' (North: bẩn). To stay polite about a so-so dish, say 'Cũng được' or 'hơi mặn', a bit salty."
+  },
+  "vi": "Cũng được.",
+  "audio": "audio/cc_do_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "Devant un plat moyen chez quelqu'un, on dit…",
+      "en": "About a so-so dish at someone's home, you say…"
+    },
+    "options": [
+      {
+        "fr": "Cũng được.",
+        "en": "Cũng được."
+      },
+      {
+        "fr": "Dơ quá !",
+        "en": "Dơ quá!"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

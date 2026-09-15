@@ -1,0 +1,130 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "es.u01.l02",
+  "unit": "es.u01",
+  "title": {
+    "fr": "Me llamo…",
+    "en": "Me llamo…"
+  },
+  "goal": {
+    "fr": "Dire ton nom, demander celui de l'autre et répondre « enchanté ».",
+    "en": "Say your name, ask someone theirs and answer “nice to meet you”."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "es.u01.l01"
+  ],
+  "concepts": [
+    "c_es_yo",
+    "c_es_tu",
+    "c_es_soy",
+    "s_es_me_llamo",
+    "s_es_como_te_llamas",
+    "c_es_mucho_gusto"
+  ],
+  "steps": [
+    {
+      "type": "culture_card",
+      "ref": "cc_es_tu_usted"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_yo",
+      "distractors": [
+        "c_es_tu",
+        "c_es_hola"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_es_como_te_llamas",
+      "distractors": [
+        "¿Cómo estás?",
+        "Me llamo Ana."
+      ]
+    },
+    {
+      "type": "build_sentence",
+      "target": "Me llamo Ana.",
+      "tokens": [
+        "Me",
+        "llamo",
+        "Ana",
+        "soy",
+        "tú"
+      ],
+      "translation": {
+        "fr": "Je m'appelle Ana.",
+        "en": "My name is Ana."
+      },
+      "audioConcept": "s_es_me_llamo"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_mucho_gusto",
+      "distractors": [
+        "muchas gracias",
+        "buenas tardes"
+      ]
+    },
+    {
+      "type": "build_sentence",
+      "target": "¿Cómo te llamas?",
+      "tokens": [
+        "Cómo",
+        "te",
+        "llamas",
+        "me",
+        "yo"
+      ],
+      "translation": {
+        "fr": "Comment tu t'appelles ?",
+        "en": "What's your name?"
+      },
+      "audioConcept": "s_es_como_te_llamas",
+      "explain": {
+        "fr": "La question s'ouvre avec ¿ et se ferme avec ?.",
+        "en": "The question opens with ¿ and closes with ?."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_es_me_llamo"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Yo soy Pablo.",
+      "tokens": [
+        "Yo",
+        "soy",
+        "Pablo",
+        "tú",
+        "llamo"
+      ],
+      "translation": {
+        "fr": "Moi, je suis Pablo.",
+        "en": "I'm Pablo."
+      },
+      "explain": {
+        "fr": "Yo est souvent omis : « Soy Pablo » suffit.",
+        "en": "Yo is often dropped: “Soy Pablo” is enough."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_es_yo",
+      "c_es_tu",
+      "c_es_soy",
+      "s_es_me_llamo",
+      "s_es_como_te_llamas",
+      "c_es_mucho_gusto"
+    ]
+  },
+  "reviewed": false
+}

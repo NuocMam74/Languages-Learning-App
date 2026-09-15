@@ -129,6 +129,22 @@ class GamePlayedPayload(CamelModel):
     local_date: date
 
 
+class ConversationTurnPayload(CamelModel):
+    conversation_id: Annotated[str, Field(min_length=1, max_length=64)]
+    mode: Literal["free", "doi_dap"]
+    words: Annotated[int, Field(ge=0, le=1000)]
+    response_ms: NonNegative
+    local_date: date
+
+
+PackCode = Annotated[str, Field(min_length=1, max_length=64)]
+
+
+class PackSwitchedPayload(CamelModel):
+    from_pack: PackCode | None
+    to_pack: PackCode
+
+
 class SessionStarted(_BaseEvent):
     type: Literal["session_started"]
     payload: SessionStartedPayload
@@ -164,6 +180,16 @@ class GamePlayed(_BaseEvent):
     payload: GamePlayedPayload
 
 
+class ConversationTurnEvent(_BaseEvent):
+    type: Literal["conversation_turn"]
+    payload: ConversationTurnPayload
+
+
+class PackSwitched(_BaseEvent):
+    type: Literal["pack_switched"]
+    payload: PackSwitchedPayload
+
+
 class SessionCompleted(_BaseEvent):
     type: Literal["session_completed"]
     payload: SessionCompletedPayload
@@ -188,6 +214,8 @@ ParloEvent = Annotated[
     | PronunciationScored
     | StreakFrozen
     | GamePlayed
+    | ConversationTurnEvent
+    | PackSwitched
     | LessonCompleted
     | SessionCompleted,
     Field(discriminator="type"),

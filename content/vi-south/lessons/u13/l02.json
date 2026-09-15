@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u13.l02",
+  "unit": "vi-south.u13",
+  "title": {
+    "fr": "Chưa : pas encore",
+    "en": "Chưa: not yet"
+  },
+  "goal": {
+    "fr": "Demander si c'est déjà fait et répondre.",
+    "en": "Ask whether something is done and answer."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u13.l01"
+  ],
+  "concepts": [
+    "s_di_da_lat_chua",
+    "s_chua_xong",
+    "s_chua_bao_gio",
+    "c_lan",
+    "c_sau_rieng",
+    "c_xoai",
+    "c_thom"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_di_da_lat_chua",
+      "distractors": [
+        "Anh đi Đà Lạt không?",
+        "Anh đi Đà Lạt rồi."
+      ],
+      "explain": {
+        "fr": "… chưa ? : déjà ?",
+        "en": "… chưa?: yet? / ever?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_chua_answer"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chua_xong",
+      "distractors": [
+        "Xong rồi.",
+        "Chưa đi."
+      ],
+      "explain": {
+        "fr": "Chưa xong : pas encore fini.",
+        "en": "Chưa xong: not finished yet."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lan",
+      "distractors": [
+        "lăn",
+        "lận"
+      ],
+      "explain": {
+        "fr": "lần descend : la fois. lận : particule du Sud.",
+        "en": "lần falls: time (occurrence). lận: southern particle."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em chưa bao giờ ăn sầu riêng.",
+      "tokens": [
+        "Em",
+        "chưa bao giờ",
+        "ăn",
+        "sầu riêng",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      },
+      "explain": {
+        "fr": "chưa bao giờ + verbe : n'avoir jamais…",
+        "en": "chưa bao giờ + verb: to have never…"
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "c_xoai",
+        "c_thom"
+      ],
+      "explain": {
+        "fr": "sầu riêng : le durian.",
+        "en": "sầu riêng: durian."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chua_bao_gio",
+      "distractors": [
+        "chưa bao lâu",
+        "chưa bao nhiêu"
+      ],
+      "explain": {
+        "fr": "chưa bao giờ : jamais. chưa bao lâu : pas longtemps.",
+        "en": "chưa bao giờ: never. chưa bao lâu: not long."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ăn cơm tấm chưa?",
+      "tokens": [
+        "Anh",
+        "ăn",
+        "cơm tấm",
+        "chưa",
+        "không"
+      ],
+      "translation": {
+        "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
+        "en": "Have you tried cơm tấm? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "chưa en fin de question : déjà ?",
+        "en": "chưa at the end: yet? / ever?"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_chua_bao_gio",
+      "explain": {
+        "fr": "chưa plat, bao plat, giờ descend.",
+        "en": "chưa level, bao level, giờ falls."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_di_da_lat_chua",
+      "s_chua_xong",
+      "s_chua_bao_gio",
+      "c_lan"
+    ]
+  },
+  "reviewed": false
+}

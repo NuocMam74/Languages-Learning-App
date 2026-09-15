@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u15.l02",
+  "unit": "vi-south.u15",
+  "title": {
+    "fr": "Gọi lại",
+    "en": "Calling back"
+  },
+  "goal": {
+    "fr": "Dire que tu es occupé et que tu rappelles.",
+    "en": "Say you're busy and will call back."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u15.l01"
+  ],
+  "concepts": [
+    "s_goi_lai_nha",
+    "c_lat",
+    "c_goi_lai",
+    "s_em_dang_ban",
+    "c_ban_busy"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_goi_lai_nha",
+      "distractors": [
+        "Mai em gọi lại nha.",
+        "Lát em tới nha."
+      ],
+      "explain": {
+        "fr": "gọi lại : rappeler. lát : tout à l'heure.",
+        "en": "gọi lại: call back. lát: in a bit."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_lat_nua"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_busy",
+      "distractors": [
+        "bán",
+        "bạn"
+      ],
+      "explain": {
+        "fr": "bận : occupé. bán : vendre. bạn : ami.",
+        "en": "bận: busy. bán: to sell. bạn: friend."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_lat",
+      "explain": {
+        "fr": "lát monte (sắc).",
+        "en": "lát rises (sắc)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em đang bận, lát em gọi lại nha.",
+      "tokens": [
+        "Em",
+        "đang",
+        "bận",
+        "lát",
+        "em",
+        "gọi lại",
+        "nha",
+        "bán"
+      ],
+      "translation": {
+        "fr": "Je suis occupé(e), je te rappelle tout à l'heure.",
+        "en": "I'm busy, I'll call you back in a bit."
+      },
+      "explain": {
+        "fr": "đang bận + lát gọi lại : la formule parfaite.",
+        "en": "đang bận + lát gọi lại: the perfect line."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dang_ban",
+      "distractors": [
+        "Em đang bán.",
+        "Em hông bận."
+      ],
+      "explain": {
+        "fr": "bận tombe court.",
+        "en": "bận drops short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_lai",
+      "distractors": [
+        "gói lại",
+        "gọi lạ"
+      ],
+      "explain": {
+        "fr": "gọi lại : rappeler. gói lại : remballer.",
+        "en": "gọi lại: call back. gói lại: wrap up."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị gọi lại cho em nha.",
+      "tokens": [
+        "Chị",
+        "gọi lại",
+        "cho",
+        "em",
+        "nha",
+        "gói"
+      ],
+      "translation": {
+        "fr": "Rappelle-moi, d'accord ? (à une femme un peu plus âgée)",
+        "en": "Call me back, okay? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "gọi lại cho + personne.",
+        "en": "gọi lại cho + person."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_goi_lai_nha",
+      "explain": {
+        "fr": "gọi et lại tombent courts.",
+        "en": "gọi and lại drop short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_goi_lai_nha",
+      "c_lat",
+      "c_goi_lai",
+      "s_em_dang_ban",
+      "c_ban_busy"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,154 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u16.l05",
+  "unit": "vi-south.u16",
+  "title": {
+    "fr": "Bác sĩ, bệnh viện",
+    "en": "Doctor and hospital"
+  },
+  "goal": {
+    "fr": "Consulter et montrer où tu as mal.",
+    "en": "See a doctor and show where it hurts."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u16.l04"
+  ],
+  "concepts": [
+    "s_di_kham",
+    "c_kham",
+    "s_em_dau_o_day",
+    "c_chich",
+    "c_benh_vien",
+    "c_nha_thuoc",
+    "c_truong_hoc"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "c_nha_thuoc",
+        "c_truong_hoc"
+      ],
+      "explain": {
+        "fr": "bệnh viện : l'hôpital.",
+        "en": "bệnh viện: hospital."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_di_kham",
+      "distractors": [
+        "đi làm bệnh",
+        "đi thăm bệnh"
+      ],
+      "explain": {
+        "fr": "đi khám bệnh : consulter. thăm bệnh : rendre visite à un malade.",
+        "en": "đi khám bệnh: see a doctor. thăm bệnh: visit a sick person."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_chich_ngua"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_injection",
+      "explain": {
+        "fr": "Sud : chích ; Nord : tiêm.",
+        "en": "South: chích; North: tiêm."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dau_o_day",
+      "distractors": [
+        "Em đau ở đâu?",
+        "Em đâu ở đây."
+      ],
+      "explain": {
+        "fr": "đau ở đây : j'ai mal ici. đau ở đâu ? : où as-tu mal ?",
+        "en": "đau ở đây: it hurts here. đau ở đâu?: where does it hurt?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bác sĩ ơi, em đau ở đây.",
+      "tokens": [
+        "Bác sĩ",
+        "ơi",
+        "em",
+        "đau",
+        "ở",
+        "đây",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Docteur, j'ai mal ici.",
+        "en": "Doctor, it hurts here."
+      },
+      "explain": {
+        "fr": "Montre du doigt et dis ở đây.",
+        "en": "Point and say ở đây."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_kham",
+      "explain": {
+        "fr": "khám monte (sắc).",
+        "en": "khám rises (sắc)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em muốn đi khám bệnh.",
+      "tokens": [
+        "Em",
+        "muốn",
+        "đi",
+        "khám",
+        "bệnh",
+        "chích"
+      ],
+      "translation": {
+        "fr": "Je voudrais consulter un médecin.",
+        "en": "I'd like to see a doctor."
+      },
+      "explain": {
+        "fr": "muốn : vouloir.",
+        "en": "muốn: to want."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chich",
+      "distractors": [
+        "chít",
+        "trích"
+      ],
+      "explain": {
+        "fr": "chích : piquer. ch et tr restent distincts au Sud.",
+        "en": "chích: to give a shot. ch and tr stay distinct in the South."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_em_dau_o_day",
+      "explain": {
+        "fr": "đau plat, đây plat : une phrase calme.",
+        "en": "đau level, đây level: a calm sentence."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_di_kham",
+      "c_kham",
+      "s_em_dau_o_day",
+      "c_chich"
+    ]
+  },
+  "reviewed": false
+}

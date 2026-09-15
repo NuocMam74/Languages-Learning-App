@@ -1,0 +1,165 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u18.l05",
+  "unit": "vi-south.u18",
+  "title": {
+    "fr": "Ca làm, tăng ca",
+    "en": "Shifts and overtime"
+  },
+  "goal": {
+    "fr": "Dire ton équipe de travail et tes heures sup.",
+    "en": "Say which shift you work and when you do overtime."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u18.l04"
+  ],
+  "concepts": [
+    "c_b_ca_shift",
+    "c_b_tang_ca",
+    "s_b_tang_ca",
+    "s_b_lam_ca_sang",
+    "c_b_viec",
+    "c_sang",
+    "c_ca_eggplant",
+    "c_ca_fish"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_lam_ca_sang",
+      "distractors": [
+        "Tuần này em làm ca tối.",
+        "Tuần sau em làm ca sáng."
+      ],
+      "explain": {
+        "fr": "ca sáng : l'équipe du matin ; tuần này : cette semaine.",
+        "en": "ca sáng: morning shift; tuần này: this week."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ca",
+        "cà",
+        "cá"
+      ],
+      "audioConcepts": [
+        "c_b_ca_shift",
+        "c_ca_eggplant",
+        "c_ca_fish"
+      ],
+      "explain": {
+        "fr": "ca, plat : le poste de travail. cà descend, cá monte.",
+        "en": "ca, level: work shift. cà falls, cá rises."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sang",
+      "distractors": [
+        "c_toi_evening",
+        "c_trua"
+      ],
+      "explain": {
+        "fr": "sáng : le matin.",
+        "en": "sáng: morning."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tuần này em làm ca sáng.",
+      "tokens": [
+        "Tuần này",
+        "em",
+        "làm",
+        "ca",
+        "sáng",
+        "cá"
+      ],
+      "translation": {
+        "fr": "Cette semaine, je suis de l'équipe du matin.",
+        "en": "This week I'm on the morning shift."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tang_ca",
+      "distractors": [
+        "tăng cá",
+        "tằng ca"
+      ],
+      "explain": {
+        "fr": "tăng ca : faire des heures sup, « rallonger le poste ».",
+        "en": "tăng ca: overtime, 'extend the shift'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_nhau"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tối nay tui phải tăng ca.",
+      "tokens": [
+        "Tối nay",
+        "tui",
+        "phải",
+        "tăng ca",
+        "tới"
+      ],
+      "translation": {
+        "fr": "Ce soir, je dois faire des heures sup.",
+        "en": "Tonight I have to work overtime."
+      },
+      "explain": {
+        "fr": "phải + verbe : devoir.",
+        "en": "phải + verb: must."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_viec",
+      "distractors": [
+        "viếc",
+        "viềc"
+      ],
+      "explain": {
+        "fr": "việc tombe court : le travail, la tâche.",
+        "en": "việc drops short: work, task."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhiều việc quá!",
+      "tokens": [
+        "Nhiều",
+        "việc",
+        "quá",
+        "qua"
+      ],
+      "translation": {
+        "fr": "Tellement de travail !",
+        "en": "So much work!"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_tang_ca",
+      "explain": {
+        "fr": "tăng et ca restent plats.",
+        "en": "tăng and ca stay level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_ca_shift",
+      "c_b_tang_ca",
+      "s_b_tang_ca",
+      "s_b_lam_ca_sang",
+      "c_b_viec"
+    ]
+  },
+  "reviewed": false
+}

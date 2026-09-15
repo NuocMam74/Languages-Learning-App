@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u24.l07",
+  "unit": "vi-south.u24",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : donner son avis",
+    "en": "Review: opinions"
+  },
+  "goal": {
+    "fr": "Revoir avis, accord, nuances et justifications.",
+    "en": "Go over opinions, agreement, nuance and reasons."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u24.l06"
+  ],
+  "concepts": [
+    "s_b_theo_tui_ngon",
+    "c_b_dung_right",
+    "c_b_dung_bump",
+    "s_b_hoi_mac",
+    "c_b_kha",
+    "s_b_anh_thay_sao",
+    "s_b_tui_nghi_la"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_theo_tui_ngon",
+      "distractors": [
+        "Theo tui, quán này mắc hơn.",
+        "Theo chị, quán này ngon hơn."
+      ],
+      "explain": {
+        "fr": "theo tui.",
+        "en": "theo tui."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "đúng",
+        "đụng"
+      ],
+      "audioConcepts": [
+        "c_b_dung_right",
+        "c_b_dung_bump"
+      ],
+      "explain": {
+        "fr": "đúng monte, đụng court.",
+        "en": "đúng rises, đụng short."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em không đồng ý lắm.",
+      "tokens": [
+        "Em",
+        "không",
+        "đồng ý",
+        "lắm",
+        "lăm"
+      ],
+      "translation": {
+        "fr": "Je ne suis pas trop d'accord.",
+        "en": "I don't really agree."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hoi_mac",
+      "distractors": [
+        "Hơi mắc, nhưng mà dở.",
+        "Mắc lắm, nhưng mà ngon."
+      ],
+      "explain": {
+        "fr": "hơi mắc.",
+        "en": "hơi mắc."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_cher",
+      "explain": {
+        "fr": "Sud : mắc ; Nord : đắt.",
+        "en": "South: mắc; North: đắt."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tại vì kẹt xe nên em tới trễ.",
+      "tokens": [
+        "Tại vì",
+        "kẹt xe",
+        "nên",
+        "em",
+        "tới",
+        "trễ",
+        "nếu"
+      ],
+      "translation": {
+        "fr": "Je suis en retard parce qu'il y avait des bouchons.",
+        "en": "I'm late because of the traffic jam."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_kha",
+      "explain": {
+        "fr": "khá : sắc.",
+        "en": "khá: sắc."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_anh_thay_sao",
+      "distractors": [
+        "Chị thấy sao?",
+        "Anh thấy hông?"
+      ],
+      "explain": {
+        "fr": "Anh thấy sao ?",
+        "en": "Anh thấy sao?"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_tui_nghi_la",
+      "explain": {
+        "fr": "nghĩ plonge au Sud, đúng monte.",
+        "en": "nghĩ dips in the South, đúng rises."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

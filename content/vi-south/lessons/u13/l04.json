@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u13.l04",
+  "unit": "vi-south.u13",
+  "title": {
+    "fr": "Sẽ, sắp : bientôt",
+    "en": "Sẽ, sắp: soon"
+  },
+  "goal": {
+    "fr": "Parler de ce qui va arriver.",
+    "en": "Talk about what's coming."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u13.l03"
+  ],
+  "concepts": [
+    "c_se",
+    "c_sap",
+    "s_tuan_sau",
+    "s_sap_toi_roi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_sap_toi_roi",
+      "distractors": [
+        "Em tới rồi.",
+        "Em sắp tối rồi."
+      ],
+      "explain": {
+        "fr": "sắp tới : bientôt arrivé. tối : le soir.",
+        "en": "sắp tới: almost there. tối: evening."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_sap_toi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sap",
+      "distractors": [
+        "sập",
+        "xắp"
+      ],
+      "explain": {
+        "fr": "sắp monte, court.",
+        "en": "sắp rises, short."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_sap",
+      "explain": {
+        "fr": "sắp : monte vite, coupé net par le -p.",
+        "en": "sắp: rises fast, cut off by the -p."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_se",
+      "distractors": [
+        "se",
+        "sè"
+      ],
+      "explain": {
+        "fr": "sẽ : le futur.",
+        "en": "sẽ: future marker."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tuần sau em sẽ về Pháp.",
+      "tokens": [
+        "Tuần sau",
+        "em",
+        "sẽ",
+        "về",
+        "Pháp",
+        "đã"
+      ],
+      "translation": {
+        "fr": "La semaine prochaine, je rentre en France.",
+        "en": "Next week I'm going back to France."
+      },
+      "explain": {
+        "fr": "sẽ + verbe : futur.",
+        "en": "sẽ + verb: future."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tuan_sau",
+      "distractors": [
+        "tuần trước",
+        "tuần này"
+      ],
+      "explain": {
+        "fr": "tuần sau : la semaine prochaine.",
+        "en": "tuần sau: next week."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em sắp tới rồi.",
+      "tokens": [
+        "Em",
+        "sắp",
+        "tới",
+        "rồi",
+        "tối"
+      ],
+      "translation": {
+        "fr": "J'arrive bientôt.",
+        "en": "I'm almost there."
+      },
+      "explain": {
+        "fr": "sắp + verbe + rồi : c'est imminent.",
+        "en": "sắp + verb + rồi: it's imminent."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_sap_toi_roi",
+      "explain": {
+        "fr": "sắp et tới montent, rồi descend.",
+        "en": "sắp and tới rise, rồi falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_se",
+      "c_sap",
+      "s_tuan_sau",
+      "s_sap_toi_roi"
+    ]
+  },
+  "reviewed": false
+}

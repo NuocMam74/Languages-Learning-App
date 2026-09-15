@@ -1,10 +1,14 @@
 """Lecture des packs de contenu statiques depuis `CONTENT_DIR` (le contenu n'est pas en base, spec §11)."""
 
 import json
+import logging
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 # Fichiers jamais publiés (sources audio lourdes, ADR 0002).
 _EXCLUDED_SUFFIXES = {".wav"}
@@ -90,7 +94,12 @@ def load_packs(content_dir: Path) -> dict[str, Pack]:
         return packs
     for child in sorted(content_dir.iterdir()):
         if (child / "pack.json").is_file():
-            pack = _load_pack(child)
+            # Pack en cours d'écriture (curriculum absent, JSON invalide) : ignoré plutôt que de casser l'API.
+            try:
+                pack = _load_pack(child)
+            except (OSError, KeyError, TypeError, ValueError) as exc:
+                logger.warning("Pack ignoré (%s) : %s", child.name, exc)
+                continue
             packs[pack.code] = pack
     return packs
 
@@ -98,6 +107,32 @@ def load_packs(content_dir: Path) -> dict[str, Pack]:
 def course_code_of_lesson(lesson_id: str) -> str:
     """Les ids de leçon sont préfixés par le code du pack : `vi-south.u01.l01` → `vi-south`."""
     return lesson_id.split(".", 1)[0]
+
+
+def course_code_of_concept(concept_id: str, codes: Iterable[str], default: str) -> str:
+    """Pack d'un concept : `es_hola`, `c_es_hola`, `s_es_hola` → `es` si ce pack existe, sinon le pack par défaut.
+
+    Les concepts du premier pack (`c_ba`) ne portent pas de code ; ceux des packs suivants le portent, directement
+    (`<code>_`, contrat Phase 3 §5) ou après le préfixe de type d'une lettre (`c_<code>_`, convention du contenu).
+    """
+    for code in codes:
+        if code == default:
+            continue
+        if concept_id.startswith(f"{code}_") or (
+            len(concept_id) > 2 and concept_id[1] == "_" and concept_id[2:].startswith(f"{code}_")
+        ):
+            return code
+    return default
+
+
+def league_division_names(pack: Pack | None) -> list[dict[str, str]] | None:
+    """Noms des 5 divisions (`leagueDivisions` du pack.json, optionnel), ou None si absent/invalide."""
+    names = pack.raw.get("leagueDivisions") if pack is not None else None
+    if not isinstance(names, list) or len(names) != 5:
+        return None
+    if not all(isinstance(n, dict) and isinstance(n.get("fr"), str) and isinstance(n.get("en"), str) for n in names):
+        return None
+    return [{"fr": n["fr"], "en": n["en"]} for n in names]
 
 
 # --- Lecture détaillée (professeur IA) -----------------------------------------------------

@@ -7,7 +7,7 @@
 - Progression recalculée depuis les événements reçus dont `occurredAt` est dans la période (`challengeProgress`) :
   words_theme : mots (concepts `word` de `review.srsIntroduce`) des leçons de l'unité terminées dans la période ;
   streak_days : plus longue suite de `localDate` de `session_completed` ;
-  speaking_minutes : ⌊`pronunciation_scored` × 10 s / 60⌋ ;
+  speaking_minutes : ⌊(`pronunciation_scored` × 10 s + `conversation_turn` × 20 s) / 60⌋ ;
   lessons : `lesson_completed` ; game_score : `game_played` avec correct/total ≥ 0,7.
 - words_theme : unité = première unité publiée non terminée, figée pour l'utilisateur à la première lecture.
 - Réclamation : +50 XP et badge `challenge_<kind>`.
@@ -30,6 +30,8 @@ from app.services.engine import GAME_PASS_RATIO
 
 CLAIM_XP = 50
 SPEAKING_SECONDS_PER_ITEM = 10
+# Tour de conversation avec Cô Mai (`conversation_turn`, contrat Phase 3 §4).
+SPEAKING_SECONDS_PER_TURN = 20
 _NAMESPACE = uuid.UUID("0c6d1b0e-7f55-4b8a-9d3e-7061726c6f02")
 _WEEK = timedelta(days=7)
 
@@ -171,7 +173,8 @@ def compute_progress(db: Session, user_id: str, challenge: Challenge, pack: Pack
                     PronunciationScore.created_at < end,
                 )
             )
-            return int(items or 0) * SPEAKING_SECONDS_PER_ITEM // 60
+            turns = len(_payloads(db, user_id, "conversation_turn", start, end))
+            return (int(items or 0) * SPEAKING_SECONDS_PER_ITEM + turns * SPEAKING_SECONDS_PER_TURN) // 60
         case "lessons":
             return len(_payloads(db, user_id, "lesson_completed", start, end))
         case "game_score":

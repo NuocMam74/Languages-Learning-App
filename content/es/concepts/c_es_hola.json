@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_es_hola",
+  "type": "word",
+  "vi": "hola",
+  "gloss": {
+    "fr": "bonjour, salut",
+    "en": "hello, hi"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_hola_lucia.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_hola_lucia_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/greetings/hola.svg",
+  "examples": [
+    {
+      "vi": "¡Hola, Ana!",
+      "fr": "Salut, Ana !",
+      "en": "Hi, Ana!"
+    }
+  ],
+  "note": {
+    "fr": "Le h ne se prononce jamais : « ola ».",
+    "en": "The h is always silent: “ola”."
+  },
+  "reviewed": false
+}

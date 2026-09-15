@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_gia_su_trung_so",
+  "type": "structure",
+  "vi": "Giả sử trúng số, anh làm gì?",
+  "gloss": {
+    "fr": "Imagine que tu gagnes à la loterie : tu fais quoi ? (à un homme un peu plus âgé)",
+    "en": "Say you won the lottery: what would you do? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_gia_su_trung_so_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_gia_su_trung_so_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

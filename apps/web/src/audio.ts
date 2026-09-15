@@ -1,4 +1,4 @@
-import type { Concept, ContentIndex } from "@parlo/core";
+import type { Concept, ContentIndex, Pack } from "@parlo/core";
 import { mediaUrl } from "./content.ts";
 
 /**
@@ -30,13 +30,16 @@ function playFile(url: string): Promise<boolean> {
   );
 }
 
-function speak(text: string): boolean {
+function speak(text: string, pack: Pack): boolean {
   if (!("speechSynthesis" in window)) return false;
-  const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith("vi"));
-  // La voix vi-VN par défaut est souvent du Nord : on préfère une voix annoncée du Sud si elle existe.
-  const voice = voices.find((v) => /south|miền nam|sài gòn|saigon|hcm/i.test(v.name)) ?? voices[0];
+  const lang = pack.lang.toLowerCase();
+  const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().split(/[-_]/)[0] === lang);
+  // La voix par défaut d'une langue n'est pas forcément la variante du pack (vi-VN souvent du Nord) :
+  // on préfère une voix dont le nom évoque la variante ou l'accent des voix du pack (ADR 0006).
+  const hints = [pack.variant, ...pack.voices.map((v) => v.accent)].filter((h): h is string => Boolean(h)).map((h) => h.toLowerCase());
+  const voice = voices.find((v) => hints.some((h) => v.name.toLowerCase().includes(h))) ?? voices[0];
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "vi-VN";
+  utterance.lang = voice?.lang ?? pack.lang;
   if (voice) utterance.voice = voice;
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(utterance);
@@ -51,15 +54,15 @@ export async function playConcept(content: ContentIndex, concept: Concept, { spe
   const tracks = concept.audio.filter((a) => a.source === "native" || allowTts);
   const track = tracks.find((a) => a.speed === speed) ?? tracks.find((a) => a.speed === "natural");
   if (track && (await playFile(mediaUrl(content, track.src)))) return track.source;
-  return playText(concept.vi, allowTts);
+  return playText(content.pack, concept.vi, allowTts);
 }
 
 export async function playPath(content: ContentIndex, path: string | undefined, text: string, allowTts: boolean): Promise<PlaybackSource> {
   if (path && (await playFile(mediaUrl(content, path)))) return "native";
-  return playText(text, allowTts);
+  return playText(content.pack, text, allowTts);
 }
 
-function playText(text: string, allowTts: boolean): PlaybackSource {
-  if (allowTts && speak(text)) return "tts";
+function playText(pack: Pack, text: string, allowTts: boolean): PlaybackSource {
+  if (allowTts && speak(text, pack)) return "tts";
   return "missing";
 }

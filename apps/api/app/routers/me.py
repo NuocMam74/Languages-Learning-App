@@ -86,6 +86,7 @@ def get_me(
         ),
         profile=_profile_out(profile),
         enrollment=_enrollment_out(learner.primary_enrollment(db, user.id)),
+        enrollments=[out for e in learner.enrollments(db, user.id) if (out := _enrollment_out(e)) is not None],
         streak=StreakOut(
             current=streak.current,
             longest=streak.longest,
@@ -170,14 +171,34 @@ def srs_due(user: CurrentUser, db: DbDep, limit: Annotated[int, Query(ge=1, le=5
 
 
 @router.get("/session/next", response_model=SessionPlanOut)
-def session_next(user: CurrentUser, db: DbDep, packs: PacksDep) -> SessionPlanOut:
+def session_next(
+    user: CurrentUser,
+    db: DbDep,
+    packs: PacksDep,
+    pack_code: Annotated[
+        str | None, Query(alias="pack", max_length=64, description="Code du pack (défaut : courant)")
+    ] = None,
+) -> SessionPlanOut:
     profile = _profile(db, user)
-    enrollment = learner.primary_enrollment(db, user.id)
-    pack = packs.get(enrollment.course_id) if enrollment else None
+    if pack_code is not None:
+        pack = packs.get(pack_code)
+        if pack is None:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, detail=f"Cours inconnu : {pack_code}")
+        enrollment = db.get(Enrollment, (user.id, pack.code))
+        if enrollment is None:
+            # Pack choisi avant la synchronisation de `pack_switched` : inscription à la volée.
+            enrollment = learner.enroll(db, user.id, pack, path=None)
+            db.flush()
+    else:
+        enrollment = learner.primary_enrollment(db, user.id)
+        pack = packs.get(enrollment.course_id) if enrollment else None
     if enrollment is None or pack is None:
         raise HTTPException(status.HTTP_409_CONFLICT, detail="Aucune inscription à un cours disponible")
-    lesson = next_lesson(pack, pack.lessons, learner.unlocked_lessons(db, user.id, pack), learner.path_of(profile))
-    plan = plan_session(profile.daily_goal_min, learner.user_cards(db, user.id), lesson, datetime.now(UTC))
+    # Le parcours (motivation) ne s'applique qu'aux packs qui déclarent ce chemin.
+    path = learner.path_of(profile)
+    lesson = next_lesson(pack, pack.lessons, learner.unlocked_lessons(db, user.id, pack), path)
+    cards = learner.user_cards(db, user.id, pack.code, packs.keys())
+    plan = plan_session(profile.daily_goal_min, cards, lesson, datetime.now(UTC))
     db.commit()
     return SessionPlanOut(
         course_code=pack.code,

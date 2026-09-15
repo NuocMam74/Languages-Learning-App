@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_day_la_dong_nghiep",
+  "type": "structure",
+  "vi": "Đây là đồng nghiệp của tui.",
+  "gloss": {
+    "fr": "Voici mon/ma collègue.",
+    "en": "This is my colleague."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_day_la_dong_nghiep_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_day_la_dong_nghiep_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

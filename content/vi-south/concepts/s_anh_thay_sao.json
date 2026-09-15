@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_anh_thay_sao",
+  "type": "structure",
+  "vi": "Anh thấy sao?",
+  "gloss": {
+    "fr": "Tu en penses quoi ? (à un homme un peu plus âgé)",
+    "en": "What do you think? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_thay_sao_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_thay_sao_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

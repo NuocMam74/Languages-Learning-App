@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_coi",
+  "type": "word",
+  "vi": "coi",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "regarder (un film, la télé)",
+    "en": "to watch"
+  },
+  "northernEquivalent": "xem",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_coi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_coi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "coi est la forme orale du Sud ; xem se lit et s'entend aussi partout.",
+    "en": "coi is the southern spoken form; xem is also read and heard everywhere."
+  },
+  "reviewed": false
+}

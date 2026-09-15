@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_chung_nao",
+  "type": "structure",
+  "vi": "chừng nào",
+  "gloss": {
+    "fr": "quand ? (familier, Sud)",
+    "en": "when? (casual, southern)"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chung_nao_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chung_nao_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Très courant au Sud pour le futur : Chừng nào đi ? À reconnaître.",
+    "en": "Very common in the South for the future: Chừng nào đi? Learn to recognise it."
+  },
+  "reviewed": false
+}

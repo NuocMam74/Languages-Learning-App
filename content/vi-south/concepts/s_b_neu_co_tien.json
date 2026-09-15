@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_neu_co_tien",
+  "type": "structure",
+  "vi": "Nếu có nhiều tiền, tui sẽ mua nhà.",
+  "gloss": {
+    "fr": "Si j'avais beaucoup d'argent, j'achèterais une maison.",
+    "en": "If I had lots of money, I'd buy a house."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_neu_co_tien_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_neu_co_tien_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

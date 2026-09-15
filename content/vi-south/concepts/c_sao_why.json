@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_sao_why",
+  "type": "word",
+  "vi": "sao",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "pourquoi ? comment ?",
+    "en": "why? how?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_sao_why_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_sao_why_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, sao sert à tout : Sao vậy ? (qu'est-ce qui se passe ?), Anh thấy sao ? (tu en penses quoi ?).",
+    "en": "In the South sao does a lot: Sao vậy? (what's up?), Anh thấy sao? (what do you think?)."
+  },
+  "reviewed": false
+}

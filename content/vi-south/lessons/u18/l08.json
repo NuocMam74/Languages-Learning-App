@@ -1,0 +1,183 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u18.l08",
+  "unit": "vi-south.u18",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : le travail",
+    "en": "Test: work"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais parler de ton travail avec tes collègues.",
+    "en": "Show you can talk about your job with colleagues."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u18.l07"
+  ],
+  "concepts": [
+    "c_b_dong_nghiep",
+    "s_b_tui_lam_cong_ty",
+    "c_b_luong",
+    "c_b_nghi_phep",
+    "c_b_thang",
+    "c_hop",
+    "s_b_anh_cho_em_nghi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dong_nghiep",
+      "distractors": [
+        "c_b_sep",
+        "c_b_may_tinh"
+      ],
+      "explain": {
+        "fr": "đồng nghiệp : les collègues.",
+        "en": "đồng nghiệp: colleagues."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tui_lam_cong_ty",
+      "distractors": [
+        "Tui làm ở một trường Pháp.",
+        "Tui học ở một công ty Pháp."
+      ],
+      "explain": {
+        "fr": "làm ở : travailler à.",
+        "en": "làm ở: to work at."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em là nhân viên mới.",
+      "tokens": [
+        "Em",
+        "là",
+        "nhân viên",
+        "mới",
+        "mời"
+      ],
+      "translation": {
+        "fr": "Je suis le nouvel employé / la nouvelle employée.",
+        "en": "I'm the new employee."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_luong",
+      "distractors": [
+        "lường",
+        "lướng"
+      ],
+      "explain": {
+        "fr": "lương : le salaire.",
+        "en": "lương: salary."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_nghi_phep",
+      "distractors": [
+        "c_b_may_tinh",
+        "c_b_sep"
+      ],
+      "explain": {
+        "fr": "nghỉ phép : le congé.",
+        "en": "nghỉ phép: time off."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tối nay tui phải tăng ca.",
+      "tokens": [
+        "Tối nay",
+        "tui",
+        "phải",
+        "tăng ca",
+        "tới"
+      ],
+      "translation": {
+        "fr": "Ce soir, je dois faire des heures sup.",
+        "en": "Tonight I have to work overtime."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_thang",
+      "explain": {
+        "fr": "tháng : sắc.",
+        "en": "tháng: sắc."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hop",
+      "distractors": [
+        "hộp",
+        "học"
+      ],
+      "explain": {
+        "fr": "họp : la réunion.",
+        "en": "họp: meeting."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_late",
+      "explain": {
+        "fr": "Sud : trễ ; Nord : muộn.",
+        "en": "South: trễ; North: muộn."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Rất vui được làm việc với chị.",
+      "tokens": [
+        "Rất vui",
+        "được",
+        "làm việc",
+        "với",
+        "chị",
+        "cho"
+      ],
+      "translation": {
+        "fr": "Ravi(e) de travailler avec toi.",
+        "en": "Glad to work with you."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_anh_cho_em_nghi",
+      "distractors": [
+        "Anh cho em nghỉ thứ bảy nha.",
+        "Chị cho em nghỉ thứ sáu nha."
+      ],
+      "explain": {
+        "fr": "thứ sáu : vendredi.",
+        "en": "thứ sáu: Friday."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em xin nghỉ phép ba ngày.",
+      "tokens": [
+        "Em",
+        "xin",
+        "nghỉ phép",
+        "ba",
+        "ngày",
+        "tuần"
+      ],
+      "translation": {
+        "fr": "Je demande trois jours de congé.",
+        "en": "I'd like to take three days off."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

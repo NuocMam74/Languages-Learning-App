@@ -27,7 +27,8 @@ async function idbWrite(page: Page, kv: { key: string; value: unknown }[]) {
     await new Promise<void>((resolve, reject) => {
       const tx = idb.transaction(["kv", "snapshot"], "readwrite");
       for (const row of rows) tx.objectStore("kv").put(row);
-      tx.objectStore("snapshot").delete("current");
+      // Séance en cours : une ligne par pack depuis le schéma multi-pack (ADR 0006) — on les efface toutes.
+      tx.objectStore("snapshot").clear();
       tx.oncomplete = () => resolve();
       tx.onerror = () => reject(tx.error);
     });

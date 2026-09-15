@@ -1,0 +1,178 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u24.l08",
+  "unit": "vi-south.u24",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : donner son avis",
+    "en": "Test: opinions"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais donner un avis nuancé et le justifier.",
+    "en": "Show you can give and justify a nuanced opinion."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u24.l07"
+  ],
+  "concepts": [
+    "s_b_dung_roi",
+    "c_b_dong_y",
+    "c_b_sai",
+    "s_b_tai_sao_vay",
+    "s_b_moi_nguoi_thay_sao",
+    "c_b_dung_right",
+    "c_b_tai_vi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dung_roi",
+      "distractors": [
+        "Đụng rồi!",
+        "Sai rồi!"
+      ],
+      "explain": {
+        "fr": "Đúng rồi !",
+        "en": "Đúng rồi!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Theo tui, quán này ngon hơn.",
+      "tokens": [
+        "Theo tui",
+        "quán này",
+        "ngon",
+        "hơn",
+        "hơi"
+      ],
+      "translation": {
+        "fr": "À mon avis, ce resto est meilleur.",
+        "en": "In my opinion, this place is better."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dong_y",
+      "distractors": [
+        "đông ý",
+        "đồng ỷ"
+      ],
+      "explain": {
+        "fr": "đồng ý.",
+        "en": "đồng ý."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_sai",
+      "explain": {
+        "fr": "sai : ngang.",
+        "en": "sai: ngang."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hơi mắc, nhưng mà ngon.",
+      "tokens": [
+        "Hơi",
+        "mắc",
+        "nhưng mà",
+        "ngon",
+        "hỏi"
+      ],
+      "translation": {
+        "fr": "Un peu cher, mais c'est bon.",
+        "en": "A bit pricey, but tasty."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tai_sao_vay",
+      "distractors": [
+        "Tại sao hông?",
+        "Sao vậy?"
+      ],
+      "explain": {
+        "fr": "Tại sao vậy ?",
+        "en": "Tại sao vậy?"
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_cher",
+      "explain": {
+        "fr": "Sud : mắc ; Nord : đắt.",
+        "en": "South: mắc; North: đắt."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui đồng ý với chị.",
+      "tokens": [
+        "Tui",
+        "đồng ý",
+        "với",
+        "chị",
+        "cho"
+      ],
+      "translation": {
+        "fr": "Je suis d'accord avec toi.",
+        "en": "I agree with you."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_moi_nguoi_thay_sao",
+      "distractors": [
+        "Mọi người thấy vui hông?",
+        "Anh thấy sao?"
+      ],
+      "explain": {
+        "fr": "Mọi người thấy sao ?",
+        "en": "Mọi người thấy sao?"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_dung_right",
+      "explain": {
+        "fr": "đúng : sắc.",
+        "en": "đúng: sắc."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_vi",
+      "distractors": [
+        "tài vì",
+        "tại ví"
+      ],
+      "explain": {
+        "fr": "tại vì.",
+        "en": "tại vì."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui nghĩ là chị đúng.",
+      "tokens": [
+        "Tui",
+        "nghĩ",
+        "là",
+        "chị",
+        "đúng",
+        "đụng"
+      ],
+      "translation": {
+        "fr": "Je pense que tu as raison.",
+        "en": "I think you're right."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

@@ -4,6 +4,7 @@ uv run python -m app.maintenance purge-tutor     # quotidien : tutor_messages > 
 uv run python -m app.maintenance vapid-keys      # une fois : paire de clés VAPID pour Web Push (à mettre dans .env)
 uv run python -m app.maintenance push-reminders  # sans planificateur intégré : à lancer toutes les heures
 uv run python -m app.maintenance weekly-challenge  # sans planificateur intégré : chaque lundi 00:00 UTC
+uv run python -m app.maintenance leagues-rollover  # sans planificateur intégré : lundi 00:00 UTC (idempotent)
 """
 
 import base64
@@ -36,7 +37,7 @@ def main(argv: list[str]) -> int:
         print(f"VAPID_PUBLIC_KEY={public}")
         print(f"VAPID_PRIVATE_KEY={private}")
         return 0
-    if command not in (["purge-tutor"], ["push-reminders"], ["weekly-challenge"]):
+    if command not in (["purge-tutor"], ["push-reminders"], ["weekly-challenge"], ["leagues-rollover"]):
         print(__doc__)
         return 2
     settings = get_settings()
@@ -53,6 +54,10 @@ def main(argv: list[str]) -> int:
             from app.scheduler import send_push_reminders
 
             send_push_reminders(session_factory, settings)
+        elif command == ["leagues-rollover"]:
+            from app.scheduler import rollover_leagues
+
+            rollover_leagues(session_factory)
         else:
             from app.scheduler import generate_weekly_challenge
 

@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_chup_hinh",
+  "type": "word",
+  "vi": "chụp hình",
+  "gloss": {
+    "fr": "prendre une photo",
+    "en": "to take a photo"
+  },
+  "northernEquivalent": "chụp ảnh",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_chup_hinh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_chup_hinh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : hình (photo) ; au Nord : ảnh.",
+    "en": "South: hình (photo); North: ảnh."
+  },
+  "reviewed": false
+}

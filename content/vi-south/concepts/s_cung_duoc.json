@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_cung_duoc",
+  "type": "structure",
+  "vi": "Cũng được.",
+  "gloss": {
+    "fr": "Ça va, c'est correct.",
+    "en": "It's okay."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cung_duoc_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cung_duoc_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Manière polie de dire que c'est moyen.",
+    "en": "A polite way to say it's so-so."
+  },
+  "reviewed": false
+}

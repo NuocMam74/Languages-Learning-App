@@ -11,11 +11,17 @@ interface PrefsValue {
   locale: InterfaceLocale | null;
   /** Mode silencieux : pas de lecture automatique, transcriptions affichées (spec §13). */
   silent: boolean;
+  /**
+   * Dictée vocale du navigateur pour parler à Cô Mai. Désactivée par défaut : la reconnaissance
+   * vocale des navigateurs peut envoyer l'audio au service en ligne de leur éditeur (spec §14).
+   */
+  dictation: boolean;
 }
 
 interface PrefsState extends PrefsValue {
   setLocale: (locale: InterfaceLocale | null) => void;
   setSilent: (silent: boolean) => void;
+  setDictation: (dictation: boolean) => void;
 }
 
 const KEY = "parlo.prefs";
@@ -27,9 +33,10 @@ function read(): PrefsValue {
     return {
       locale: parsed.locale === "fr" || parsed.locale === "en" ? parsed.locale : null,
       silent: parsed.silent === true,
+      dictation: parsed.dictation === true,
     };
   } catch {
-    return { locale: null, silent: false };
+    return { locale: null, silent: false, dictation: false };
   }
 }
 
@@ -41,15 +48,21 @@ function write(value: PrefsValue): void {
   }
 }
 
+const pick = ({ locale, silent, dictation }: PrefsValue): PrefsValue => ({ locale, silent, dictation });
+
 export const usePrefs = create<PrefsState>((set, get) => ({
   ...read(),
   setLocale(locale) {
     set({ locale });
-    write({ locale, silent: get().silent });
+    write({ ...pick(get()), locale });
   },
   setSilent(silent) {
     set({ silent });
-    write({ locale: get().locale, silent });
+    write({ ...pick(get()), silent });
+  },
+  setDictation(dictation) {
+    set({ dictation });
+    write({ ...pick(get()), dictation });
   },
 }));
 
@@ -59,5 +72,5 @@ export function clearPrefs(): void {
   } catch {
     // rien à effacer
   }
-  usePrefs.setState({ locale: null, silent: false });
+  usePrefs.setState({ locale: null, silent: false, dictation: false });
 }

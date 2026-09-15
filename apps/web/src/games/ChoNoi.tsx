@@ -5,6 +5,7 @@ import {
   choNoiResult,
   choNoiRoundDeadlineMs,
   generateChoNoiRounds,
+  hasFeature,
   isChoNoiOver,
   startChoNoi,
   type ChoNoiOptions,
@@ -33,9 +34,9 @@ const MISS_PAUSE_MS = 1300;
 /** Sans mouvement : minuterie plus douce que la traversée. */
 const STATIC_TIME_FACTOR = 1.5;
 
-/** Pool jouable (audio natif exigé hors développement, §7.4) → manches. */
+/** Pool jouable (audio natif exigé hors développement pour un pack tonal, §7.4) → manches. */
 export function prepareChoNoi(content: ContentIndex, concepts: readonly Concept[], seed: string, options: Partial<ChoNoiOptions> = {}): ChoNoiRound[] {
-  const pool = choNoiPool(concepts, { requireNative: !ttsAllowed(true) });
+  const pool = choNoiPool(concepts, { requireNative: !ttsAllowed(hasFeature(content.pack, "tones")) });
   return generateChoNoiRounds(pool, seed, options, content.pack.toneSystem?.heardClasses);
 }
 
@@ -54,11 +55,16 @@ interface ChoNoiProps {
   resultActions: (result: ChoNoiResult, replay: () => void) => ReactNode;
   introExtra?: ReactNode;
   resultExtra?: ReactNode;
+  /**
+   * Mode chronométré (défi express) : affiche le temps de jeu restant
+   * (`options.durationMs`) au lieu du numéro de barque. Facultatif, absent = comportement habituel.
+   */
+  timed?: boolean;
 }
 
 type Phase = { name: "intro" } | { name: "playing" } | { name: "result"; result: ChoNoiResult };
 
-export function ChoNoi({ content, concepts, seed, options, onSkip, onStart, onFinish, resultActions, introExtra, resultExtra }: ChoNoiProps) {
+export function ChoNoi({ content, concepts, seed, options, onSkip, onStart, onFinish, resultActions, introExtra, resultExtra, timed = false }: ChoNoiProps) {
   const reduced = useReducedMotion();
   const [attempt, setAttempt] = useState(0);
   const [phase, setPhase] = useState<Phase>({ name: "intro" });
@@ -120,6 +126,7 @@ export function ChoNoi({ content, concepts, seed, options, onSkip, onStart, onFi
       content={content}
       rounds={rounds}
       durationMs={options?.durationMs}
+      timed={timed}
       reduced={reduced}
       onSkip={onSkip}
       onDone={(result) => {
@@ -146,10 +153,11 @@ interface Feedback {
   correct: boolean;
 }
 
-function ChoNoiPlay({ content, rounds, durationMs, reduced, onSkip, onDone }: {
+function ChoNoiPlay({ content, rounds, durationMs, timed, reduced, onSkip, onDone }: {
   content: ContentIndex;
   rounds: ChoNoiRound[];
   durationMs: number | undefined;
+  timed: boolean;
   reduced: boolean;
   onSkip: (() => void) | undefined;
   onDone: (result: ChoNoiResult) => void;
@@ -164,6 +172,7 @@ function ChoNoiPlay({ content, rounds, durationMs, reduced, onSkip, onDone }: {
   const clock = useRef({ game: 0, round: 0, frozen: true, index: 0, width: 360 });
   const boats = useRef(new Map<string, HTMLElement>());
   const timer = useRef<HTMLDivElement>(null);
+  const countdown = useRef<HTMLSpanElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const pending = useRef<number | undefined>(undefined);
   const onDoneRef = useRef(onDone);
@@ -250,6 +259,11 @@ function ChoNoiPlay({ content, rounds, durationMs, reduced, onSkip, onDone }: {
         }
         if (c.round >= deadlineOf(r)) resolveRef.current(null);
         paint(r, c.round, c.width);
+        const clockEl = countdown.current;
+        if (clockEl) {
+          const text = formatClock(game.current.durationMs - c.game);
+          if (clockEl.textContent !== text) clockEl.textContent = text;
+        }
       }
       raf = requestAnimationFrame(frame);
     };
@@ -296,7 +310,14 @@ function ChoNoiPlay({ content, rounds, durationMs, reduced, onSkip, onDone }: {
   return (
     <div className="flex flex-1 flex-col" data-testid="cho-noi" data-round={index} data-phase={feedback ? "feedback" : "boats"}>
       <div className="flex items-baseline justify-between gap-4 pb-2">
-        <p className="text-sm text-phu-sa">{t("games.choNoi.round", { i: index + 1, n: rounds.length })}</p>
+        {timed ? (
+          <p className="text-sm text-phu-sa">
+            <span className="sr-only">{t("social.express.timeLeft")} </span>
+            <span ref={countdown} role="timer" className="font-semibold tabular-nums text-muc">{formatClock(game.current.durationMs)}</span>
+          </p>
+        ) : (
+          <p className="text-sm text-phu-sa">{t("games.choNoi.round", { i: index + 1, n: rounds.length })}</p>
+        )}
         <p className="text-sm font-semibold text-ngoc">{t("games.choNoi.score", { n: points })}</p>
       </div>
 
@@ -386,6 +407,12 @@ function ChoNoiPlay({ content, rounds, durationMs, reduced, onSkip, onDone }: {
       </div>
     </div>
   );
+}
+
+/** « 0:42 » : temps de jeu restant, arrondi à la seconde supérieure. */
+function formatClock(ms: number): string {
+  const seconds = Math.max(0, Math.ceil(ms / 1000));
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 }
 
 type BoatState = "idle" | "right" | "wrongPick" | "reveal";

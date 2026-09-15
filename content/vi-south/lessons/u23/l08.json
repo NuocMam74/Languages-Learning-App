@@ -1,0 +1,186 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u23.l08",
+  "unit": "vi-south.u23",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : hypothèses",
+    "en": "Test: hypotheses"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais imaginer, supposer et souhaiter.",
+    "en": "Show you can imagine, suppose and wish."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u23.l07"
+  ],
+  "concepts": [
+    "c_tien",
+    "c_b_the",
+    "s_b_neu_ranh",
+    "c_b_ranh",
+    "c_b_co_le",
+    "c_b_ve_so",
+    "s_b_gia_su_trung_so",
+    "s_b_chac_hong",
+    "c_b_uoc"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_ranh",
+      "distractors": [
+        "Nếu rảnh thì gọi tui nha.",
+        "Nếu rảnh thì ghé nhà tui ăn cơm nha."
+      ],
+      "explain": {
+        "fr": "ghé … chơi.",
+        "en": "ghé … chơi."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_ranh",
+      "explain": {
+        "fr": "rảnh : hỏi.",
+        "en": "rảnh: hỏi."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nếu mưa thì tui ở nhà.",
+      "tokens": [
+        "Nếu",
+        "mưa",
+        "thì",
+        "tui",
+        "ở",
+        "nhà",
+        "mua"
+      ],
+      "translation": {
+        "fr": "S'il pleut, je reste à la maison.",
+        "en": "If it rains, I'll stay home."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_co_le",
+      "distractors": [
+        "cô lẽ",
+        "có lè"
+      ],
+      "explain": {
+        "fr": "có lẽ : peut-être.",
+        "en": "có lẽ: perhaps."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ve_so",
+      "distractors": [
+        "c_tien",
+        "c_b_the"
+      ],
+      "explain": {
+        "fr": "vé số.",
+        "en": "vé số."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chắc ảnh tới trễ.",
+      "tokens": [
+        "Chắc",
+        "ảnh",
+        "tới",
+        "trễ",
+        "tối"
+      ],
+      "translation": {
+        "fr": "Il va sûrement arriver en retard.",
+        "en": "He'll probably be late."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gia_su_trung_so",
+      "distractors": [
+        "Giả sử trúng số, chị làm gì?",
+        "Nếu trúng số, anh mua gì?"
+      ],
+      "explain": {
+        "fr": "giả sử.",
+        "en": "giả sử."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_anh_ay",
+      "explain": {
+        "fr": "ảnh = anh ấy.",
+        "en": "ảnh = anh ấy."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nếu có nhiều tiền, tui sẽ mua nhà.",
+      "tokens": [
+        "Nếu",
+        "có",
+        "nhiều",
+        "tiền",
+        "tui",
+        "sẽ",
+        "mua",
+        "nhà",
+        "mưa"
+      ],
+      "translation": {
+        "fr": "Si j'avais beaucoup d'argent, j'achèterais une maison.",
+        "en": "If I had lots of money, I'd buy a house."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chac_hong",
+      "distractors": [
+        "Chắc chưa?",
+        "Thiệt hông?"
+      ],
+      "explain": {
+        "fr": "Chắc hông ?",
+        "en": "Chắc hông?"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_uoc",
+      "explain": {
+        "fr": "ước : sắc.",
+        "en": "ước: sắc."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ước gì tui nói giỏi tiếng Việt.",
+      "tokens": [
+        "Ước gì",
+        "tui",
+        "nói",
+        "giỏi",
+        "tiếng Việt",
+        "giờ"
+      ],
+      "translation": {
+        "fr": "Si seulement je parlais bien vietnamien.",
+        "en": "If only I spoke Vietnamese well."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

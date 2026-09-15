@@ -1,0 +1,147 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u24.l04",
+  "unit": "vi-south.u24",
+  "title": {
+    "fr": "Hơi, khá, lắm",
+    "en": "A bit, fairly, very"
+  },
+  "goal": {
+    "fr": "Nuancer un jugement.",
+    "en": "Nuance a judgement."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u24.l03"
+  ],
+  "concepts": [
+    "c_b_kha",
+    "c_b_nhung_ma",
+    "s_b_hoi_mac",
+    "s_b_kha_ngon",
+    "c_b_hoi_slightly",
+    "c_mac_expensive"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hoi_mac",
+      "distractors": [
+        "Hơi mắc, nhưng mà dở.",
+        "Mắc lắm, nhưng mà ngon."
+      ],
+      "explain": {
+        "fr": "hơi : un peu ; dở : pas bon.",
+        "en": "hơi: a bit; dở: not good."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_kha",
+      "distractors": [
+        "khà",
+        "khạ"
+      ],
+      "explain": {
+        "fr": "khá monte : plutôt.",
+        "en": "khá rises: rather."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_kha",
+      "explain": {
+        "fr": "khá : sắc.",
+        "en": "khá: sắc."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hơi mắc, nhưng mà ngon.",
+      "tokens": [
+        "Hơi",
+        "mắc",
+        "nhưng mà",
+        "ngon",
+        "hỏi"
+      ],
+      "translation": {
+        "fr": "Un peu cher, mais c'est bon.",
+        "en": "A bit pricey, but tasty."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_cher",
+      "explain": {
+        "fr": "Sud : mắc ; Nord : đắt.",
+        "en": "South: mắc; North: đắt."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_kha_ngon",
+      "distractors": [
+        "Cũng hơi ngon.",
+        "Cũng khá ngọt."
+      ],
+      "explain": {
+        "fr": "khá ngon : plutôt bon ; ngọt : sucré.",
+        "en": "khá ngon: pretty good; ngọt: sweet."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Phim này khá hay.",
+      "tokens": [
+        "Phim",
+        "này",
+        "khá",
+        "hay",
+        "khà"
+      ],
+      "translation": {
+        "fr": "Ce film est plutôt bien.",
+        "en": "This film is pretty good."
+      },
+      "explain": {
+        "fr": "hay : intéressant, bien (film, livre).",
+        "en": "hay: interesting, good (film, book)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nhung_ma",
+      "distractors": [
+        "những mà",
+        "nhưng má"
+      ],
+      "explain": {
+        "fr": "nhưng mà : mais.",
+        "en": "nhưng mà: but."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_hoi_mac",
+      "explain": {
+        "fr": "hơi plat, mắc monte, ngon plat.",
+        "en": "hơi level, mắc rises, ngon level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_kha",
+      "c_b_nhung_ma",
+      "s_b_hoi_mac",
+      "s_b_kha_ngon"
+    ]
+  },
+  "reviewed": false
+}

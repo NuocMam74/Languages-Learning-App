@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_goi_cong_viec",
+  "title": {
+    "fr": "Un appel pro",
+    "en": "A work call"
+  },
+  "body": {
+    "fr": "Au travail, on se présente d'abord : « Dạ, em là Lan, bên công ty Sao Mai ». bên veut dire « du côté de ». Puis : « Cho em gặp anh Minh ». Absent ? « Chị nhắn lại giùm em nha ». giùm, très Sud, correspond à hộ au Nord.",
+    "en": "At work you introduce yourself first: 'Dạ, em là Lan, bên công ty Sao Mai'. bên means 'on the side of'. Then: 'Cho em gặp anh Minh'. Not there? 'Chị nhắn lại giùm em nha'. giùm, very southern, matches hộ in the North."
+  },
+  "vi": "Cho em gặp anh Minh.",
+  "audio": "audio/cc_goi_cong_viec.opus",
+  "question": {
+    "prompt": {
+      "fr": "Dans « bên công ty Sao Mai », bên veut dire…",
+      "en": "In 'bên công ty Sao Mai', bên means…"
+    },
+    "options": [
+      {
+        "fr": "de chez, du côté de",
+        "en": "from, on the side of"
+      },
+      {
+        "fr": "à côté de la porte",
+        "en": "next to the door"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

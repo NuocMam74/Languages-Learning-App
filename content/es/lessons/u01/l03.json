@@ -1,0 +1,118 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "es.u01.l03",
+  "unit": "es.u01",
+  "title": {
+    "fr": "Del uno al diez",
+    "en": "Del uno al diez"
+  },
+  "goal": {
+    "fr": "Reconnaître et dire les nombres de 1 à 10.",
+    "en": "Recognise and say the numbers 1 to 10."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "es.u01.l02"
+  ],
+  "concepts": [
+    "c_es_uno",
+    "c_es_dos",
+    "c_es_tres",
+    "c_es_cuatro",
+    "c_es_cinco",
+    "c_es_seis",
+    "c_es_siete",
+    "c_es_ocho",
+    "c_es_nueve",
+    "c_es_diez"
+  ],
+  "steps": [
+    {
+      "type": "culture_card",
+      "ref": "cc_es_precios"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_uno",
+      "distractors": [
+        "c_es_dos",
+        "c_es_tres"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_cinco",
+      "distractors": [
+        "c_es_cuatro",
+        "c_es_seis",
+        "c_es_siete"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_seis",
+      "distractors": [
+        "siete",
+        "tres"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_ocho",
+      "distractors": [
+        "c_es_nueve",
+        "c_es_diez"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_diez",
+      "distractors": [
+        "dos",
+        "doce"
+      ],
+      "explain": {
+        "fr": "Diez (10) finit par z, prononcé « s » en Amérique latine.",
+        "en": "Diez (10) ends in z, pronounced “s” in Latin America."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Uno, dos, tres.",
+      "tokens": [
+        "Uno",
+        "dos",
+        "tres",
+        "seis"
+      ],
+      "translation": {
+        "fr": "Un, deux, trois.",
+        "en": "One, two, three."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_es_siete"
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_es_uno",
+      "c_es_dos",
+      "c_es_tres",
+      "c_es_cuatro",
+      "c_es_cinco",
+      "c_es_seis",
+      "c_es_siete",
+      "c_es_ocho",
+      "c_es_nueve",
+      "c_es_diez"
+    ]
+  },
+  "reviewed": false
+}

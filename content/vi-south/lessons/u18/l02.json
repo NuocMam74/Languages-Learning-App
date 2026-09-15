@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u18.l02",
+  "unit": "vi-south.u18",
+  "title": {
+    "fr": "Nhân viên mới",
+    "en": "The new employee"
+  },
+  "goal": {
+    "fr": "Te présenter à tes nouveaux collègues.",
+    "en": "Introduce yourself to new colleagues."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u18.l01"
+  ],
+  "concepts": [
+    "s_b_em_la_nhan_vien_moi",
+    "s_b_day_la_dong_nghiep",
+    "s_b_rat_vui_lam_viec",
+    "c_lam_viec",
+    "c_moi",
+    "c_moi_just",
+    "c_b_dong_nghiep"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_la_nhan_vien_moi",
+      "distractors": [
+        "Em là nhân viên mời.",
+        "Anh là nhân viên mới."
+      ],
+      "explain": {
+        "fr": "mới monte : nouveau. mời descend : inviter.",
+        "en": "mới rises: new. mời falls: to invite."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_work_small_talk"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "mời",
+        "mới"
+      ],
+      "audioConcepts": [
+        "c_moi",
+        "c_moi_just"
+      ],
+      "explain": {
+        "fr": "mời descend : inviter. mới monte : nouveau.",
+        "en": "mời falls: to invite. mới rises: new."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_day_la_dong_nghiep",
+      "distractors": [
+        "Đây là đồng nghiệp của chị.",
+        "Đây là sếp của tui."
+      ],
+      "explain": {
+        "fr": "đồng nghiệp : collègue ; sếp : chef.",
+        "en": "đồng nghiệp: colleague; sếp: boss."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em là nhân viên mới.",
+      "tokens": [
+        "Em",
+        "là",
+        "nhân viên",
+        "mới",
+        "mời"
+      ],
+      "translation": {
+        "fr": "Je suis le nouvel employé / la nouvelle employée.",
+        "en": "I'm the new employee."
+      },
+      "explain": {
+        "fr": "mới après le nom : nouveau.",
+        "en": "mới after the noun: new."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam_viec",
+      "distractors": [
+        "làm viếc",
+        "lám việc"
+      ],
+      "explain": {
+        "fr": "làm việc : travailler.",
+        "en": "làm việc: to work."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Rất vui được làm việc với chị.",
+      "tokens": [
+        "Rất vui",
+        "được",
+        "làm việc",
+        "với",
+        "chị",
+        "cho"
+      ],
+      "translation": {
+        "fr": "Ravi(e) de travailler avec toi (à une femme un peu plus âgée).",
+        "en": "Glad to work with you (to a slightly older woman)."
+      },
+      "explain": {
+        "fr": "với + personne : avec.",
+        "en": "với + person: with."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dong_nghiep",
+      "distractors": [
+        "c_b_sep",
+        "c_sinh_vien"
+      ],
+      "explain": {
+        "fr": "đồng nghiệp : les collègues.",
+        "en": "đồng nghiệp: colleagues."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_rat_vui_lam_viec",
+      "explain": {
+        "fr": "vui reste plat, được et việc tombent court.",
+        "en": "vui stays level, được and việc drop short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_b_em_la_nhan_vien_moi",
+      "s_b_day_la_dong_nghiep",
+      "s_b_rat_vui_lam_viec"
+    ]
+  },
+  "reviewed": false
+}

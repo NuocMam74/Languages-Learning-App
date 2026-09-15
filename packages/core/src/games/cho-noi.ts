@@ -99,10 +99,13 @@ export function choNoiPool(concepts: readonly Concept[], { requireNative }: { re
  * Ce que l'oreille distingue : la base sans tons + la classe auditive de chaque
  * syllabe. Au Sud hỏi et ngã partagent une classe : « mả » et « mã » ont la même
  * clé et ne doivent jamais être opposés (§7.1).
+ * Pack sans système tonal (ADR 0006) : les accents écrits ne sont pas une information
+ * sonore fiable (es « si » / « sí »), deux formes qui ne diffèrent que par eux partagent
+ * la même clé — choix prudent : on ne les oppose jamais à l'oreille.
  */
 export function heardKey(text: string, heardClasses?: HeardClasses): string {
   const parts = syllables(text);
-  if (!heardClasses) return parts.join(" ");
+  if (!heardClasses) return parts.map((s) => stripTones(s)).join(" ");
   return parts.map((s) => `${stripTones(s)}:${heardClassOf(toneOf(s), heardClasses)}`).join(" ");
 }
 

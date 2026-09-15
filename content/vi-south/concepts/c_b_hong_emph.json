@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_hong_emph",
+  "type": "word",
+  "vi": "hổng",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "non, pas du tout (familier, appuyé, Sud)",
+    "en": "no, not at all (casual, emphatic, South)"
+  },
+  "northernEquivalent": "không",
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_hong_emph_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_hong_emph_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

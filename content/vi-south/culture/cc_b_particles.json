@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_particles",
+  "title": {
+    "fr": "Nha, nghen, hen",
+    "en": "Nha, nghen, hen"
+  },
+  "body": {
+    "fr": "Au Sud, une phrase finit rarement sèchement. On ajoute nha, nghen, nhen ou hen pour adoucir, proposer ou rappeler : « Nhớ nghen ! », « Mai gặp hen ». Ils jouent le rôle du nhé du Nord. Avec un aîné, commence aussi par dạ.",
+    "en": "In the South, a sentence rarely ends bluntly. People add nha, nghen, nhen or hen to soften, suggest or remind: 'Nhớ nghen!', 'Mai gặp hen'. They play the role of northern nhé. With an elder, also start with dạ."
+  },
+  "vi": "Nhớ nghen!",
+  "audio": "audio/cc_b_particles.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Nhớ nghen ! » veut dire…",
+      "en": "'Nhớ nghen!' means…"
+    },
+    "options": [
+      {
+        "fr": "N'oublie pas, hein !",
+        "en": "Don't forget, okay!"
+      },
+      {
+        "fr": "Je ne me souviens pas.",
+        "en": "I don't remember."
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

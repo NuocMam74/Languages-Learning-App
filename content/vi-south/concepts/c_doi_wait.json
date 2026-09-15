@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_doi_wait",
+  "type": "word",
+  "vi": "đợi",
+  "tone": "nang",
+  "gloss": {
+    "fr": "attendre",
+    "en": "to wait"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_doi_wait_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_doi_wait_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "đợi et chờ veulent dire la même chose.",
+    "en": "đợi and chờ mean the same thing."
+  },
+  "reviewed": false
+}

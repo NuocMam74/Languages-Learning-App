@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_co_le_mai_mua",
+  "type": "structure",
+  "vi": "Có lẽ mai trời mưa.",
+  "gloss": {
+    "fr": "Il pleuvra peut-être demain.",
+    "en": "It might rain tomorrow."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_co_le_mai_mua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_co_le_mai_mua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

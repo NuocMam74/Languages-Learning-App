@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tin_nhan",
+  "type": "word",
+  "vi": "tin nhắn",
+  "gloss": {
+    "fr": "message (SMS, Zalo)",
+    "en": "text message"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tin_nhan_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tin_nhan_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/message.svg",
+  "reviewed": false
+}

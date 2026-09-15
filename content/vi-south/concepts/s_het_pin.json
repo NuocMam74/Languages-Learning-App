@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_het_pin",
+  "type": "structure",
+  "vi": "Điện thoại em hết pin rồi.",
+  "gloss": {
+    "fr": "Mon téléphone n'a plus de batterie.",
+    "en": "My phone's battery is dead."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_het_pin_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_het_pin_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

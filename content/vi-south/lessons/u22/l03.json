@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u22.l03",
+  "unit": "vi-south.u22",
+  "title": {
+    "fr": "Hôm qua, năm ngoái",
+    "en": "Yesterday, last year"
+  },
+  "goal": {
+    "fr": "Situer un événement passé.",
+    "en": "Place an event in the past."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u22.l02"
+  ],
+  "concepts": [
+    "c_b_nam_ngoai",
+    "c_b_tuan_truoc",
+    "c_b_da_past",
+    "s_b_hom_qua_tui_di_cho",
+    "c_hom_qua",
+    "c_roi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nam_ngoai",
+      "distractors": [
+        "năm ngoài",
+        "năm nay"
+      ],
+      "explain": {
+        "fr": "năm ngoái : l'an dernier ; năm nay : cette année.",
+        "en": "năm ngoái: last year; năm nay: this year."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hom_qua_tui_di_cho",
+      "distractors": [
+        "Hôm nay tui đi chợ rồi về nhà.",
+        "Hôm qua tui đi làm rồi về nhà."
+      ],
+      "explain": {
+        "fr": "hôm qua : hier ; hôm nay : aujourd'hui.",
+        "en": "hôm qua: yesterday; hôm nay: today."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_da_past",
+      "explain": {
+        "fr": "đã porte le ngã : au Sud, il sonne comme un hỏi.",
+        "en": "đã carries ngã: in the South it sounds like hỏi."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Năm ngoái tui đã qua Việt Nam.",
+      "tokens": [
+        "Năm ngoái",
+        "tui",
+        "đã",
+        "qua",
+        "Việt Nam",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "L'an dernier, je suis venu(e) au Vietnam.",
+        "en": "Last year I came to Vietnam."
+      },
+      "explain": {
+        "fr": "đã devant le verbe : c'est passé.",
+        "en": "đã before the verb: it's past."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tuan_truoc",
+      "distractors": [
+        "tuần sau",
+        "tuần trược"
+      ],
+      "explain": {
+        "fr": "tuần trước : la semaine dernière ; tuần sau : la semaine prochaine.",
+        "en": "tuần trước: last week; tuần sau: next week."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tuần trước em về quê.",
+      "tokens": [
+        "Tuần trước",
+        "em",
+        "về",
+        "quê",
+        "sau"
+      ],
+      "translation": {
+        "fr": "La semaine dernière, je suis rentré(e) au pays.",
+        "en": "Last week I went back to my hometown."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi",
+      "distractors": [
+        "rối",
+        "rổi"
+      ],
+      "explain": {
+        "fr": "rồi en fin de phrase : c'est fait. Au milieu : puis.",
+        "en": "rồi at the end: done. In the middle: then."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm qua tui đi chợ rồi về nhà.",
+      "tokens": [
+        "Hôm qua",
+        "tui",
+        "đi",
+        "chợ",
+        "rồi",
+        "về",
+        "nhà",
+        "chờ"
+      ],
+      "translation": {
+        "fr": "Hier, je suis allé(e) au marché puis je suis rentré(e).",
+        "en": "Yesterday I went to the market, then went home."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_hom_qua_tui_di_cho",
+      "explain": {
+        "fr": "chợ tombe court, rồi et về descendent.",
+        "en": "chợ drops short, rồi and về fall."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_nam_ngoai",
+      "c_b_tuan_truoc",
+      "c_b_da_past",
+      "s_b_hom_qua_tui_di_cho"
+    ]
+  },
+  "reviewed": false
+}

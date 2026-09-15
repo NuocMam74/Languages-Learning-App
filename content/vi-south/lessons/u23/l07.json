@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u23.l07",
+  "unit": "vi-south.u23",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : hypothèses",
+    "en": "Review: hypotheses"
+  },
+  "goal": {
+    "fr": "Revoir conditions, probabilités et souhaits.",
+    "en": "Go over conditions, likelihood and wishes."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u23.l06"
+  ],
+  "concepts": [
+    "c_tien",
+    "c_b_the",
+    "s_b_neu_mua_thi_o_nha",
+    "c_b_ghe",
+    "c_b_ghe_by",
+    "c_b_ve_so",
+    "s_b_chac_tre",
+    "c_gia",
+    "c_b_gia_fake",
+    "c_b_gia_price",
+    "c_b_se_future",
+    "s_b_uoc_gi_noi_gioi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_mua_thi_o_nha",
+      "distractors": [
+        "Nếu mưa thì tui đi làm.",
+        "Hôm qua mưa nên tui ở nhà."
+      ],
+      "explain": {
+        "fr": "nếu… thì.",
+        "en": "nếu… thì."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ghe",
+        "ghé"
+      ],
+      "audioConcepts": [
+        "c_b_ghe",
+        "c_b_ghe_by"
+      ],
+      "explain": {
+        "fr": "ghe plat, ghé monte.",
+        "en": "ghe level, ghé rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nếu rảnh thì ghé nhà tui chơi nha.",
+      "tokens": [
+        "Nếu",
+        "rảnh",
+        "thì",
+        "ghé",
+        "nhà",
+        "tui",
+        "chơi",
+        "nha",
+        "ghe"
+      ],
+      "translation": {
+        "fr": "Si tu es libre, passe chez moi, d'accord ?",
+        "en": "If you're free, drop by my place, okay?"
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ve_so",
+      "distractors": [
+        "c_tien",
+        "c_b_the"
+      ],
+      "explain": {
+        "fr": "vé số.",
+        "en": "vé số."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chac_tre",
+      "distractors": [
+        "Chắc ảnh tới sớm.",
+        "Chắc chỉ tới trễ."
+      ],
+      "explain": {
+        "fr": "Chắc ảnh tới trễ.",
+        "en": "Chắc ảnh tới trễ."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "già",
+        "giả",
+        "giá"
+      ],
+      "audioConcepts": [
+        "c_gia",
+        "c_b_gia_fake",
+        "c_b_gia_price"
+      ],
+      "explain": {
+        "fr": "già descend, giả plonge, giá monte.",
+        "en": "già falls, giả dips, giá rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Có lẽ mai trời mưa.",
+      "tokens": [
+        "Có lẽ",
+        "mai",
+        "trời",
+        "mưa",
+        "mua"
+      ],
+      "translation": {
+        "fr": "Il pleuvra peut-être demain.",
+        "en": "It might rain tomorrow."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_se_future",
+      "explain": {
+        "fr": "sẽ : ngã (entendu comme hỏi au Sud).",
+        "en": "sẽ: ngã (heard as hỏi in the South)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_uoc_gi_noi_gioi",
+      "explain": {
+        "fr": "ước monte, giỏi plonge.",
+        "en": "ước rises, giỏi dips."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

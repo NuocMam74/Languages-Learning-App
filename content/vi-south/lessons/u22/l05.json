@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u22.l05",
+  "unit": "vi-south.u22",
+  "title": {
+    "fr": "Lần đầu",
+    "en": "The first time"
+  },
+  "goal": {
+    "fr": "Raconter une première fois.",
+    "en": "Tell about a first time."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u22.l04"
+  ],
+  "concepts": [
+    "c_b_lan",
+    "c_b_lan_dau",
+    "c_b_thay_see",
+    "c_b_hoi_slightly",
+    "s_b_lan_dau_toi_saigon",
+    "s_b_roi_sao_nua",
+    "c_sau_rieng"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_lan_dau_toi_saigon",
+      "distractors": [
+        "Lần đầu tui tới Hà Nội là năm 2015.",
+        "Lần sau tui tới Sài Gòn là năm 2015."
+      ],
+      "explain": {
+        "fr": "lần đầu : la première fois ; lần sau : la prochaine fois.",
+        "en": "lần đầu: the first time; lần sau: next time."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_ke_chuyen"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_lan",
+      "distractors": [
+        "lận",
+        "lấn"
+      ],
+      "explain": {
+        "fr": "lần descend : fois.",
+        "en": "lần falls: time (occurrence)."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_lan",
+      "explain": {
+        "fr": "lần : huyền, descends.",
+        "en": "lần: huyền, fall."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Lần đầu tui ăn sầu riêng.",
+      "tokens": [
+        "Lần đầu",
+        "tui",
+        "ăn",
+        "sầu riêng",
+        "lần"
+      ],
+      "translation": {
+        "fr": "C'est la première fois que je mange du durian.",
+        "en": "It's my first time eating durian."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thay_see",
+      "distractors": [
+        "thầy",
+        "thẩy"
+      ],
+      "explain": {
+        "fr": "thấy monte : voir, ressentir. thầy : le maître.",
+        "en": "thấy rises: to see, feel. thầy: teacher."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui thấy hơi sợ.",
+      "tokens": [
+        "Tui",
+        "thấy",
+        "hơi",
+        "sợ",
+        "thầy"
+      ],
+      "translation": {
+        "fr": "J'avais un peu peur.",
+        "en": "I felt a bit scared."
+      },
+      "explain": {
+        "fr": "thấy + sentiment : se sentir. hơi : un peu.",
+        "en": "thấy + feeling: to feel. hơi: a bit."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "c_xoai",
+        "c_chuoi"
+      ],
+      "explain": {
+        "fr": "sầu riêng : le durian.",
+        "en": "sầu riêng: durian."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Rồi sao nữa?",
+      "tokens": [
+        "Rồi",
+        "sao",
+        "nữa",
+        "sau"
+      ],
+      "translation": {
+        "fr": "Et après ?",
+        "en": "And then what?"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_roi_sao_nua",
+      "explain": {
+        "fr": "rồi descend, sao plat, nữa plonge au Sud.",
+        "en": "rồi falls, sao level, nữa dips in the South."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_lan",
+      "c_b_lan_dau",
+      "c_b_thay_see",
+      "c_b_hoi_slightly",
+      "s_b_lan_dau_toi_saigon",
+      "s_b_roi_sao_nua"
+    ]
+  },
+  "reviewed": false
+}

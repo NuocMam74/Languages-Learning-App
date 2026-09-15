@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_lam_ca_sang",
+  "type": "structure",
+  "vi": "Tuần này em làm ca sáng.",
+  "gloss": {
+    "fr": "Cette semaine, je suis de l'équipe du matin.",
+    "en": "This week I'm on the morning shift."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_lam_ca_sang_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_lam_ca_sang_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

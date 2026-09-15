@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_ghe",
+  "type": "word",
+  "vi": "ghe",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "bateau, barque (Sud)",
+    "en": "boat (South)"
+  },
+  "northernEquivalent": "thuyền",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_ghe_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_ghe_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/vehicles/boat.svg",
+  "reviewed": false
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u17.l05",
+  "unit": "vi-south.u17",
+  "title": {
+    "fr": "Tiền điện nước",
+    "en": "Utility bills"
+  },
+  "goal": {
+    "fr": "Comprendre ce qui est compris dans le loyer.",
+    "en": "Understand what the rent includes."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u17.l04"
+  ],
+  "concepts": [
+    "c_dien_electric",
+    "s_tien_dien",
+    "s_tien_nuoc",
+    "c_may_lanh",
+    "s_tinh_rieng",
+    "c_giuong",
+    "c_dien_thoai"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_may_lanh",
+      "distractors": [
+        "c_giuong",
+        "c_dien_thoai"
+      ],
+      "explain": {
+        "fr": "máy lạnh : le climatiseur.",
+        "en": "máy lạnh: air conditioner."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_may_lanh"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_aircon",
+      "explain": {
+        "fr": "Sud : máy lạnh ; Nord : điều hòa.",
+        "en": "South: máy lạnh; North: điều hòa."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tien_dien",
+      "distractors": [
+        "tiền điện thoại",
+        "tiền nhà"
+      ],
+      "explain": {
+        "fr": "tiền điện : l'électricité. tiền điện thoại : le forfait téléphone.",
+        "en": "tiền điện: power bill. tiền điện thoại: phone bill."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tien_nuoc",
+      "distractors": [
+        "tiền nhà",
+        "tiền nợ"
+      ],
+      "explain": {
+        "fr": "tiền nước : l'eau. tiền nhà : le loyer.",
+        "en": "tiền nước: water bill. tiền nhà: rent."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tiền điện nước tính riêng.",
+      "tokens": [
+        "Tiền",
+        "điện",
+        "nước",
+        "tính",
+        "riêng",
+        "nhà"
+      ],
+      "translation": {
+        "fr": "L'eau et l'électricité sont facturées à part.",
+        "en": "Water and electricity are charged separately."
+      },
+      "explain": {
+        "fr": "tính riêng : compté à part.",
+        "en": "tính riêng: charged separately."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_dien_electric",
+      "explain": {
+        "fr": "điện : tombe court et bas (nặng).",
+        "en": "điện: drops short and low (nặng)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Phòng có máy lạnh không?",
+      "tokens": [
+        "Phòng",
+        "có",
+        "máy lạnh",
+        "không",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "La chambre a la clim ?",
+        "en": "Does the room have air conditioning?"
+      },
+      "explain": {
+        "fr": "có… không ? : y a-t-il… ?",
+        "en": "có… không?: is there…?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tinh_rieng",
+      "distractors": [
+        "Tiền điện tính chung.",
+        "Tiền điện tính rồi."
+      ],
+      "explain": {
+        "fr": "riêng : à part. chung : en commun.",
+        "en": "riêng: separate. chung: shared."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_tinh_rieng",
+      "explain": {
+        "fr": "điện tombe court, riêng plat.",
+        "en": "điện drops short, riêng level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_dien_electric",
+      "s_tien_dien",
+      "s_tien_nuoc",
+      "c_may_lanh",
+      "s_tinh_rieng"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_lau_tang",
+  "title": {
+    "fr": "Lầu ou tầng ?",
+    "en": "Lầu or tầng?"
+  },
+  "body": {
+    "fr": "Au Sud, les étages se disent lầu, et le rez-de-chaussée tầng trệt. « Lầu 1 », c'est le premier étage au-dessus de la rue. Au Nord, on compte avec tầng et le rez-de-chaussée est tầng 1 : ton lầu 1 devient tầng 2. Vérifie avant de monter !",
+    "en": "In the South floors are lầu, and the ground floor is tầng trệt. 'Lầu 1' is the first floor above the street. In the North you count with tầng and the ground floor is tầng 1: your lầu 1 becomes tầng 2. Check before climbing!"
+  },
+  "vi": "Em ở lầu hai.",
+  "audio": "audio/cc_lau_tang.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, « lầu 1 », c'est…",
+      "en": "In the South, 'lầu 1' is…"
+    },
+    "options": [
+      {
+        "fr": "le premier étage au-dessus du rez-de-chaussée",
+        "en": "the first floor above ground level"
+      },
+      {
+        "fr": "le rez-de-chaussée",
+        "en": "the ground floor"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

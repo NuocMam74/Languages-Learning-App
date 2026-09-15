@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_es_tu",
+  "type": "word",
+  "vi": "tú",
+  "gloss": {
+    "fr": "toi, tu",
+    "en": "you (informal)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_tu_lucia.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "lucia_mx_f",
+      "src": "audio/c_es_tu_lucia_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/you.svg",
+  "note": {
+    "fr": "Avec l'accent, tú = toi. Sans accent, tu = ton, ta.",
+    "en": "With the accent, tú = you. Without it, tu = your."
+  },
+  "reviewed": false
+}

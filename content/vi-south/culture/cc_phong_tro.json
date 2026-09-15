@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_phong_tro",
+  "title": {
+    "fr": "Phòng trọ",
+    "en": "Phòng trọ"
+  },
+  "body": {
+    "fr": "Étudiants et jeunes travailleurs louent souvent une phòng trọ : une chambre simple, parfois avec salle de bain, dans une maison ou un petit bâtiment. On repère les panneaux « Cho thuê phòng » et on appelle le numéro. On visite, puis on demande : « Bao nhiêu một tháng ? ».",
+    "en": "Students and young workers often rent a phòng trọ: a simple room, sometimes with a bathroom, in a house or small building. You spot 'Cho thuê phòng' signs and call the number. You visit, then ask: 'Bao nhiêu một tháng?'."
+  },
+  "vi": "Còn phòng không?",
+  "audio": "audio/cc_phong_tro.opus",
+  "question": {
+    "prompt": {
+      "fr": "Un panneau « Cho thuê phòng » veut dire…",
+      "en": "A 'Cho thuê phòng' sign means…"
+    },
+    "options": [
+      {
+        "fr": "chambre à louer",
+        "en": "room for rent"
+      },
+      {
+        "fr": "chambre à vendre",
+        "en": "room for sale"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

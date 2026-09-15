@@ -20,6 +20,7 @@ import { completedLessons, recordGamePlayed } from "../learner.ts";
 import { BoatHull } from "./Boat.tsx";
 import { BuaCom, Dish } from "./BuaCom.tsx";
 import { ChoNoi } from "./ChoNoi.tsx";
+import { CardsArt, NhoMat, nhoMatStandalonePool } from "./NhoMat.tsx";
 import { useXeOmData } from "./xe-om-data.ts";
 import { XeOm } from "./XeOm.tsx";
 import { Scooter } from "./XeOmArt.tsx";
@@ -27,13 +28,14 @@ import { Scooter } from "./XeOmArt.tsx";
 /** Onglet « Jeux » (spec §5.6) : chaque mini-jeu jouable seul, avec son record. */
 
 /** Les 4 jeux du MVP, dans l'ordre de la spec. */
-const MVP_GAMES: GameId[] = ["cho_noi", "karaoke_tonal", "xe_om", "bua_com"];
+const MVP_GAMES: GameId[] = ["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "nho_mat"];
 
 /** Jeux jouables sur /jeux/:game : accroche et illustration de la carte. Les autres s'affichent « bientôt ». */
 const PLAYABLE: Partial<Record<GameId, { tagline: MessageKey; art: () => ReactNode }>> = {
   cho_noi: { tagline: "games.choNoi.tagline", art: () => <BoatHull className="w-24 shrink-0" /> },
   xe_om: { tagline: "games.xeOm.tagline", art: () => <Scooter className="size-20 shrink-0 rotate-90" /> },
   bua_com: { tagline: "games.buaCom.tagline", art: () => <Dish className="w-24 shrink-0" /> },
+  nho_mat: { tagline: "nhoMat.tagline", art: () => <CardsArt className="w-24 shrink-0" /> },
 };
 
 export const bestKey = (game: GameId) => `games.${game}.best`;
@@ -90,6 +92,13 @@ export function GamesPage() {
             </li>
           );
         })}
+        {/* Phase 3 : Đối đáp, conversation chronométrée avec Cô Mai (page propre, compte et réseau requis). */}
+        <li className="pb-4">
+          <Link to="/jeux/doi_dap" className="flex flex-col gap-1 rounded-2xl border-2 border-ngoc/25 px-5 py-5 text-muc" data-game="doi_dap">
+            <Vi size="vi">{t("game.doi_dap")}</Vi>
+            <span className="text-sm text-phu-sa">{t("tutor.doiDap.tagline")}</span>
+          </Link>
+        </li>
       </ul>
     </Screen>
   );
@@ -153,6 +162,7 @@ export function GamePlayPage({ content }: { content: ContentIndex }) {
         {id === "cho_noi" && <ChoNoiStandalone {...common} completed={completed} />}
         {id === "xe_om" && <XeOmStandalone {...common} />}
         {id === "bua_com" && <BuaComStandalone {...common} completed={completed} />}
+        {id === "nho_mat" && <NhoMatStandalone {...common} completed={completed} />}
       </main>
     </div>
   );
@@ -195,6 +205,17 @@ function BuaComStandalone({ completed, bestLine, seed, ...props }: StandalonePro
       {...props}
       makeRounds={makeRounds}
       introExtra={<p className="text-sm text-phu-sa">{pool.fromCompleted ? t("games.pool.completed") : t("games.pool.first")}{bestLine}</p>}
+    />
+  );
+}
+
+function NhoMatStandalone({ completed, bestLine, ...props }: StandaloneProps & { completed: ReadonlySet<string> }) {
+  const pool = useMemo(() => nhoMatStandalonePool(props.content, completed), [props.content, completed]);
+  return (
+    <NhoMat
+      {...props}
+      concepts={pool.concepts}
+      introExtra={<p className="text-sm text-phu-sa">{pool.fromCompleted ? t("nhoMat.pool.completed") : t("nhoMat.pool.first")}{bestLine}</p>}
     />
   );
 }

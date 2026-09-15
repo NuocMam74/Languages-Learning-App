@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u18.l04",
+  "unit": "vi-south.u18",
+  "title": {
+    "fr": "Lương",
+    "en": "Salary"
+  },
+  "goal": {
+    "fr": "Parler du salaire, du jour de paie et des primes.",
+    "en": "Talk about salary, payday and bonuses."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u18.l03"
+  ],
+  "concepts": [
+    "c_b_luong",
+    "c_b_lanh",
+    "c_b_thang",
+    "s_b_lanh_luong",
+    "c_b_thuong",
+    "c_tien",
+    "c_thuong"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_luong",
+      "distractors": [
+        "lường",
+        "lướng"
+      ],
+      "explain": {
+        "fr": "lương reste plat : le salaire.",
+        "en": "lương stays level: salary."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_luong_thang_13"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thang",
+      "distractors": [
+        "thắng",
+        "thang"
+      ],
+      "explain": {
+        "fr": "tháng monte : le mois. thang, plat : l'échelle.",
+        "en": "tháng rises: month. thang, level: ladder."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_lanh",
+      "explain": {
+        "fr": "lãnh porte le ngã : au Sud, il sonne comme un hỏi.",
+        "en": "lãnh carries ngã: in the South it sounds like hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_lanh_luong",
+      "distractors": [
+        "Cuối tháng mới lãnh thưởng.",
+        "Đầu tháng mới lãnh lương."
+      ],
+      "explain": {
+        "fr": "cuối tháng : fin du mois ; đầu tháng : début du mois.",
+        "en": "cuối tháng: end of month; đầu tháng: start of month."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cuối tháng mới lãnh lương.",
+      "tokens": [
+        "Cuối tháng",
+        "mới",
+        "lãnh",
+        "lương",
+        "lường"
+      ],
+      "translation": {
+        "fr": "On touche le salaire seulement en fin de mois.",
+        "en": "We only get paid at the end of the month."
+      },
+      "explain": {
+        "fr": "mới après un moment : « seulement alors ». Au Nord : lĩnh lương.",
+        "en": "mới after a time: 'only then'. North: lĩnh lương."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thuong",
+      "distractors": [
+        "thường",
+        "thương"
+      ],
+      "explain": {
+        "fr": "thưởng plonge : la prime. thường descend : d'habitude.",
+        "en": "thưởng dips: bonus. thường falls: usually."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tết có thưởng không anh?",
+      "tokens": [
+        "Tết",
+        "có",
+        "thưởng",
+        "không",
+        "anh",
+        "thường"
+      ],
+      "translation": {
+        "fr": "Il y a une prime au Tết ? (à un homme un peu plus âgé)",
+        "en": "Is there a Tết bonus? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_b_may_tinh",
+        "c_dien_thoai"
+      ],
+      "explain": {
+        "fr": "tiền : l'argent.",
+        "en": "tiền: money."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_lanh_luong",
+      "explain": {
+        "fr": "lãnh plonge, lương reste plat.",
+        "en": "lãnh dips, lương stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_luong",
+      "c_b_lanh",
+      "c_b_thang",
+      "s_b_lanh_luong",
+      "c_b_thuong"
+    ]
+  },
+  "reviewed": false
+}

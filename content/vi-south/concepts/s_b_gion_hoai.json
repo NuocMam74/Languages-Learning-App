@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_gion_hoai",
+  "type": "structure",
+  "vi": "Anh giỡn hoài!",
+  "gloss": {
+    "fr": "Tu blagues tout le temps ! (à un homme un peu plus âgé)",
+    "en": "You're always joking! (to a slightly older man)"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_gion_hoai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_gion_hoai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

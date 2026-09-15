@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_hoi_nho_tui_o_que",
+  "type": "structure",
+  "vi": "Hồi nhỏ tui ở dưới quê.",
+  "gloss": {
+    "fr": "Quand j'étais petit(e), je vivais à la campagne.",
+    "en": "As a child, I lived in the countryside."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hoi_nho_tui_o_que_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_hoi_nho_tui_o_que_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "dưới quê : « en bas », à la campagne, vu de Saïgon.",
+    "en": "dưới quê: 'down' in the countryside, seen from Saigon."
+  },
+  "reviewed": false
+}

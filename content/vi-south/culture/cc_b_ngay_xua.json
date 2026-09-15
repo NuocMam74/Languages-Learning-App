@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_ngay_xua",
+  "title": {
+    "fr": "Ngày xửa ngày xưa",
+    "en": "Once upon a time"
+  },
+  "body": {
+    "fr": "Les contes vietnamiens commencent par « Ngày xửa ngày xưa » : « il était une fois ». Les grands-parents racontent Tấm Cám ou la légende de la pastèque. Pas de conjugaison : ce sont hồi đó, rồi et sau đó qui font avancer le récit.",
+    "en": "Vietnamese tales begin with 'Ngày xửa ngày xưa': 'once upon a time'. Grandparents tell Tấm Cám or the legend of the watermelon. No conjugation: words like hồi đó, rồi and sau đó move the story along."
+  },
+  "vi": "Ngày xửa ngày xưa…",
+  "audio": "audio/cc_b_ngay_xua.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Ngày xửa ngày xưa » ouvre…",
+      "en": "'Ngày xửa ngày xưa' opens…"
+    },
+    "options": [
+      {
+        "fr": "un conte",
+        "en": "a tale"
+      },
+      {
+        "fr": "une recette",
+        "en": "a recipe"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_da_con_cam_on",
+  "type": "structure",
+  "vi": "Dạ, con cảm ơn.",
+  "gloss": {
+    "fr": "Merci (poli, à la génération des parents ou plus âgée).",
+    "en": "Thank you (polite, to your parents' generation or older)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_da_con_cam_on_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_da_con_cam_on_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

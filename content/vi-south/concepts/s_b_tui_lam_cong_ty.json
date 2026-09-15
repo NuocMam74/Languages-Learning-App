@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_tui_lam_cong_ty",
+  "type": "structure",
+  "vi": "Tui làm ở một công ty Pháp.",
+  "gloss": {
+    "fr": "Je travaille dans une entreprise française.",
+    "en": "I work for a French company."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_tui_lam_cong_ty_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_tui_lam_cong_ty_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

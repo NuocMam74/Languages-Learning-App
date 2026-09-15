@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_moi_an_com",
+  "title": {
+    "fr": "Inviter avant de manger",
+    "en": "Inviting before eating"
+  },
+  "body": {
+    "fr": "Avant le repas, les plus jeunes « invitent » les aînés : « Con mời ba má ăn cơm ». Personne ne commence avant. Ensuite, on te resservira sans cesse : pour refuser, dis « Dạ, con no rồi » avec un sourire.",
+    "en": "Before the meal, the younger ones 'invite' their elders: 'Con mời ba má ăn cơm'. Nobody starts before that. Then you'll be served again and again: to decline, say 'Dạ, con no rồi' with a smile."
+  },
+  "vi": "Con mời ba má ăn cơm.",
+  "audio": "audio/cc_b_moi_an_com.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au repas de famille, avant de manger…",
+      "en": "At a family meal, before eating…"
+    },
+    "options": [
+      {
+        "fr": "les plus jeunes invitent les aînés",
+        "en": "the younger ones invite the elders"
+      },
+      {
+        "fr": "chacun commence quand il veut",
+        "en": "everyone starts whenever they like"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

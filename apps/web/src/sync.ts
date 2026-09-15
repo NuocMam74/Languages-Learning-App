@@ -1,6 +1,7 @@
 import { emptyStreak, localDay } from "@parlo/core";
 import { ApiError, getMe, hasAccessToken, postEvents, refreshSession, type MeResponse } from "./api.ts";
 import { db, getKv, setKv, type Totals } from "./db.ts";
+import { activePackCode } from "./packs/active.ts";
 
 /**
  * Synchronisation de l'outbox (ADR 0004, spec §8.2).
@@ -122,15 +123,28 @@ export class SyncEngine {
   }
 }
 
+type Enrollment = NonNullable<MeResponse["enrollment"]>;
+
+/**
+ * Inscription du pack actif (ADR 0006) : l'API peut renvoyer plusieurs `enrollments`
+ * (course_id = code de pack) ; les totaux locaux d'un pack ne reprennent que les siens.
+ */
+function enrollmentsOf(me: MeResponse): Enrollment[] {
+  return (me as MeResponse & { enrollments?: Enrollment[] }).enrollments ?? (me.enrollment ? [me.enrollment] : []);
+}
+
 export async function applyServerState(me: MeResponse): Promise<void> {
   const d = db();
+  const pack = activePackCode();
+  const enrollments = enrollmentsOf(me);
+  const enrollment = enrollments.find((e) => e.courseCode === pack) ?? null;
   await d.transaction("rw", d.kv, async () => {
     const totals = await getKv<Totals>("totals", { xp: 0, streak: emptyStreak() });
     const local = totals.streak;
     // La déclaration « je pars quelques jours » reste locale tant que l'API ne la reçoit pas.
     const frozenUntil = [local.frozenUntil, me.streak.frozenUntil].filter((v): v is string => v !== null).sort().at(-1) ?? null;
     await setKv<Totals>("totals", {
-      xp: me.enrollment?.xpTotal ?? totals.xp,
+      xp: enrollment?.xpTotal ?? totals.xp,
       streak: {
         current: me.streak.current,
         longest: me.streak.longest,
@@ -144,7 +158,8 @@ export async function applyServerState(me: MeResponse): Promise<void> {
       const local = activity?.date === me.dailyGoal.localDate ? activity.seconds : 0;
       await setKv("activity", { date: me.dailyGoal.localDate, seconds: Math.max(local, me.dailyGoal.doneTodayMin * 60) });
     }
-    if (me.badges) {
+    // Badges du serveur : fusionnés dans le pack inscrit (pas dans une autre langue que l'apprenant commence).
+    if (me.badges && (enrollment || enrollments.length === 0)) {
       const localBadges = await getKv<{ code: string; earnedAt: string }[]>("badges", []);
       const known = new Set(localBadges.map((b) => b.code));
       await setKv("badges", [...localBadges, ...me.badges.filter((b) => !known.has(b.code))]);

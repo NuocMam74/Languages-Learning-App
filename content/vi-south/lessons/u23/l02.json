@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u23.l02",
+  "unit": "vi-south.u23",
+  "title": {
+    "fr": "Nếu rảnh…",
+    "en": "If you're free…"
+  },
+  "goal": {
+    "fr": "Proposer quelque chose sous condition.",
+    "en": "Suggest something with a condition."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u23.l01"
+  ],
+  "concepts": [
+    "c_b_ranh",
+    "c_b_ghe_by",
+    "c_b_choi",
+    "s_b_neu_ranh",
+    "c_b_ghe"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_ranh",
+      "distractors": [
+        "Nếu rảnh thì gọi tui nha.",
+        "Nếu rảnh thì ghé nhà tui ăn cơm nha."
+      ],
+      "explain": {
+        "fr": "ghé nhà … chơi : passer à la maison.",
+        "en": "ghé nhà … chơi: drop by the house."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ranh",
+      "distractors": [
+        "rành",
+        "ranh"
+      ],
+      "explain": {
+        "fr": "rảnh plonge : libre. rành descend : s'y connaître.",
+        "en": "rảnh dips: free. rành falls: to know well."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_ranh",
+      "explain": {
+        "fr": "rảnh : hỏi.",
+        "en": "rảnh: hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ghe_by",
+      "distractors": [
+        "ghe",
+        "ghè"
+      ],
+      "explain": {
+        "fr": "ghé monte : passer chez. ghe, plat : le bateau.",
+        "en": "ghé rises: drop by. ghe, level: boat."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ghe",
+        "ghé"
+      ],
+      "audioConcepts": [
+        "c_b_ghe",
+        "c_b_ghe_by"
+      ],
+      "explain": {
+        "fr": "ghe, plat : le bateau. ghé monte : passer chez.",
+        "en": "ghe, level: boat. ghé rises: drop by."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nếu rảnh thì ghé nhà tui chơi nha.",
+      "tokens": [
+        "Nếu",
+        "rảnh",
+        "thì",
+        "ghé",
+        "nhà",
+        "tui",
+        "chơi",
+        "nha",
+        "ghe"
+      ],
+      "translation": {
+        "fr": "Si tu es libre, passe chez moi, d'accord ?",
+        "en": "If you're free, drop by my place, okay?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_choi",
+      "distractors": [
+        "chới",
+        "chời"
+      ],
+      "explain": {
+        "fr": "chơi, plat : jouer, passer du bon temps.",
+        "en": "chơi, level: play, hang out."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mai em rảnh hông?",
+      "tokens": [
+        "Mai",
+        "em",
+        "rảnh",
+        "hông",
+        "bận"
+      ],
+      "translation": {
+        "fr": "Tu es libre demain ?",
+        "en": "Are you free tomorrow?"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_neu_ranh",
+      "explain": {
+        "fr": "rảnh plonge, ghé monte, chơi plat.",
+        "en": "rảnh dips, ghé rises, chơi level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_ranh",
+      "c_b_ghe_by",
+      "c_b_choi",
+      "s_b_neu_ranh"
+    ]
+  },
+  "reviewed": false
+}

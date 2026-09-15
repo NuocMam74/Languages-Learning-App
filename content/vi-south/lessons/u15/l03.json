@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u15.l03",
+  "unit": "vi-south.u15",
+  "title": {
+    "fr": "Nhắn tin, Zalo",
+    "en": "Texting, Zalo"
+  },
+  "goal": {
+    "fr": "Demander et envoyer un message.",
+    "en": "Ask for and send a message."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u15.l02"
+  ],
+  "concepts": [
+    "c_nhan_tin",
+    "c_tin_nhan",
+    "s_nhan_zalo",
+    "s_em_nhan_roi",
+    "c_dien_thoai",
+    "c_sach"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tin_nhan",
+      "distractors": [
+        "c_dien_thoai",
+        "c_sach"
+      ],
+      "explain": {
+        "fr": "tin nhắn : le message.",
+        "en": "tin nhắn: text message."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_zalo"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhan_tin",
+      "distractors": [
+        "nhận tin",
+        "nhắn tiền"
+      ],
+      "explain": {
+        "fr": "nhắn tin : envoyer un message. nhận : recevoir.",
+        "en": "nhắn tin: to text. nhận: to receive."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhắn Zalo cho em nha.",
+      "tokens": [
+        "Nhắn",
+        "Zalo",
+        "cho",
+        "em",
+        "nha",
+        "gọi"
+      ],
+      "translation": {
+        "fr": "Envoie-moi un message sur Zalo.",
+        "en": "Message me on Zalo."
+      },
+      "explain": {
+        "fr": "nhắn + appli + cho + personne.",
+        "en": "nhắn + app + cho + person."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_nhan_roi",
+      "distractors": [
+        "Em nhận rồi đó.",
+        "Em nhắn chưa?"
+      ],
+      "explain": {
+        "fr": "Em nhắn rồi đó : je t'ai écrit.",
+        "en": "Em nhắn rồi đó: I've texted you."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nhan_zalo",
+      "distractors": [
+        "Gọi Zalo cho em nha.",
+        "Nhắn tin cho anh nha."
+      ],
+      "explain": {
+        "fr": "nhắn : écrire. gọi : appeler.",
+        "en": "nhắn: to text. gọi: to call."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em thấy tin nhắn rồi.",
+      "tokens": [
+        "Em",
+        "thấy",
+        "tin nhắn",
+        "rồi",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "J'ai vu le message.",
+        "en": "I've seen the message."
+      },
+      "explain": {
+        "fr": "thấy : voir. rồi : c'est fait.",
+        "en": "thấy: to see. rồi: done."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tin_nhan",
+      "distractors": [
+        "tín nhắn",
+        "tin nhanh"
+      ],
+      "explain": {
+        "fr": "tin plat, nhắn monte.",
+        "en": "tin level, nhắn rises."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nhan_zalo",
+      "explain": {
+        "fr": "nhắn monte, nha plat.",
+        "en": "nhắn rises, nha level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_nhan_tin",
+      "c_tin_nhan",
+      "s_nhan_zalo",
+      "s_em_nhan_roi"
+    ]
+  },
+  "reviewed": false
+}

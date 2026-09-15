@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_doi_em_chut",
+  "type": "structure",
+  "vi": "Anh đợi em chút xíu nha.",
+  "gloss": {
+    "fr": "Attends-moi une petite minute. (à un homme un peu plus âgé)",
+    "en": "Wait for me just a sec. (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_doi_em_chut_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_doi_em_chut_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

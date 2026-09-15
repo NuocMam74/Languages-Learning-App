@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_anh_cho_em_nghi",
+  "type": "structure",
+  "vi": "Anh cho em nghỉ thứ sáu nha.",
+  "gloss": {
+    "fr": "Tu me laisses prendre vendredi, d'accord ? (à un chef un peu plus âgé)",
+    "en": "Can I take Friday off, okay? (to a slightly older boss)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_anh_cho_em_nghi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_anh_cho_em_nghi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

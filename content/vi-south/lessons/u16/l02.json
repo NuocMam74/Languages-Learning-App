@@ -1,0 +1,160 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u16.l02",
+  "unit": "vi-south.u16",
+  "title": {
+    "fr": "Đau, nhức",
+    "en": "Aches and pains"
+  },
+  "goal": {
+    "fr": "Dire où tu as mal.",
+    "en": "Say where it hurts."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u16.l01"
+  ],
+  "concepts": [
+    "c_dau_pain",
+    "c_dau_head",
+    "c_nhuc",
+    "s_nhuc_dau",
+    "s_dau_bung",
+    "c_ngu_sleep",
+    "c_dau_where"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "s_nhuc_dau",
+      "distractors": [
+        "s_dau_bung",
+        "c_ngu_sleep"
+      ],
+      "explain": {
+        "fr": "nhức đầu : mal de tête.",
+        "en": "nhức đầu: headache."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_dau_bung",
+      "distractors": [
+        "s_nhuc_dau",
+        "c_ngu_sleep"
+      ],
+      "explain": {
+        "fr": "đau bụng : mal au ventre.",
+        "en": "đau bụng: stomachache."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_nhuc_dau"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "đâu",
+        "đầu"
+      ],
+      "audioConcepts": [
+        "c_dau_where",
+        "c_dau_head"
+      ],
+      "explain": {
+        "fr": "đâu reste plat : où. đầu descend : la tête.",
+        "en": "đâu stays level: where. đầu falls: head."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_pain",
+      "distractors": [
+        "đâu",
+        "đậu"
+      ],
+      "explain": {
+        "fr": "đau : avoir mal. đâu : où.",
+        "en": "đau: to hurt. đâu: where."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_dau_head",
+      "explain": {
+        "fr": "đầu : descend doucement (huyền).",
+        "en": "đầu: falls gently (huyền)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em bị nhức đầu quá.",
+      "tokens": [
+        "Em",
+        "bị",
+        "nhức",
+        "đầu",
+        "quá",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "J'ai vraiment mal à la tête.",
+        "en": "I have a bad headache."
+      },
+      "explain": {
+        "fr": "bị nhức đầu : avoir mal à la tête.",
+        "en": "bị nhức đầu: to have a headache."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nhuc_dau",
+      "distractors": [
+        "nhức răng",
+        "nhắc đầu"
+      ],
+      "explain": {
+        "fr": "nhức răng : mal aux dents.",
+        "en": "nhức răng: toothache."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị đau bụng hả?",
+      "tokens": [
+        "Chị",
+        "đau",
+        "bụng",
+        "hả",
+        "đầu"
+      ],
+      "translation": {
+        "fr": "Tu as mal au ventre ? (à une femme un peu plus âgée)",
+        "en": "Does your stomach hurt? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "hả : particule de question, surprise.",
+        "en": "hả: question particle, surprise."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nhuc_dau",
+      "explain": {
+        "fr": "nhức monte, đầu descend.",
+        "en": "nhức rises, đầu falls."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_dau_pain",
+      "c_dau_head",
+      "c_nhuc",
+      "s_nhuc_dau",
+      "s_dau_bung"
+    ]
+  },
+  "reviewed": false
+}

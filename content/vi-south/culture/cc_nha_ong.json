@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_nha_ong",
+  "title": {
+    "fr": "La maison-tube",
+    "en": "The tube house"
+  },
+  "body": {
+    "fr": "À Saïgon, beaucoup de familles vivent dans une nhà ống, une « maison-tube » : étroite, profonde, sur plusieurs étages. Le rez-de-chaussée sert souvent de boutique ou de garage : on rentre les motos dans le salon le soir. Les chambres sont en haut.",
+    "en": "In Saigon many families live in a nhà ống, a 'tube house': narrow, deep, several floors high. The ground floor is often a shop or garage: motorbikes are wheeled into the living room at night. Bedrooms are upstairs."
+  },
+  "vi": "Nhà em có ba phòng ngủ.",
+  "audio": "audio/cc_nha_ong.opus",
+  "question": {
+    "prompt": {
+      "fr": "Le soir, dans une nhà ống, les motos dorment…",
+      "en": "At night in a nhà ống, the motorbikes sleep…"
+    },
+    "options": [
+      {
+        "fr": "dans le salon, au rez-de-chaussée",
+        "en": "in the ground-floor living room"
+      },
+      {
+        "fr": "sur le toit",
+        "en": "on the roof"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

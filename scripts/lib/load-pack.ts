@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import type { RawPackFiles } from "@parlo/core";
 
@@ -27,8 +27,17 @@ function jsonFilesIn(dir: string): string[] {
   });
 }
 
+/** Packs = dossiers de content/ qui ont un pack.json (un dossier en cours de création est ignoré). */
 export function listPacks(): string[] {
-  return readdirSync(CONTENT_ROOT).filter((name) => name !== "schema" && statSync(join(CONTENT_ROOT, name)).isDirectory());
+  return readdirSync(CONTENT_ROOT).filter(
+    (name) => name !== "schema" && statSync(join(CONTENT_ROOT, name)).isDirectory() && existsSync(join(CONTENT_ROOT, name, "pack.json")),
+  );
+}
+
+/** `features` du pack.json (vide si illisible) : pilote les modules optionnels (tons, variantes). */
+export function packFeatures(files: ReturnType<typeof readPackFiles>): string[] {
+  const features = (files.pack?.data as { features?: unknown } | undefined)?.features;
+  return Array.isArray(features) ? features.filter((f): f is string => typeof f === "string") : [];
 }
 
 /** Fichiers d'un pack groupés par nature, avec leur chemin (pour les messages d'erreur). */

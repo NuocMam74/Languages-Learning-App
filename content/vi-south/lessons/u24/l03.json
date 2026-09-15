@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u24.l03",
+  "unit": "vi-south.u24",
+  "title": {
+    "fr": "Đồng ý",
+    "en": "Agreeing"
+  },
+  "goal": {
+    "fr": "Dire que tu es d'accord, ou pas trop.",
+    "en": "Say you agree, or not really."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u24.l02"
+  ],
+  "concepts": [
+    "c_b_dong_y",
+    "s_b_dong_y",
+    "s_b_em_khong_dong_y_lam",
+    "s_b_chua_chac",
+    "c_lam"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_khong_dong_y_lam",
+      "distractors": [
+        "Em không chắc lắm.",
+        "Em đồng ý rồi."
+      ],
+      "explain": {
+        "fr": "không… lắm : pas trop.",
+        "en": "không… lắm: not really."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dong_y",
+      "distractors": [
+        "đông ý",
+        "đồng ỷ"
+      ],
+      "explain": {
+        "fr": "đồng descend, ý monte : être d'accord.",
+        "en": "đồng falls, ý rises: to agree."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui đồng ý với chị.",
+      "tokens": [
+        "Tui",
+        "đồng ý",
+        "với",
+        "chị",
+        "cho"
+      ],
+      "translation": {
+        "fr": "Je suis d'accord avec toi.",
+        "en": "I agree with you."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_hoi_kha_lam"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em không đồng ý lắm.",
+      "tokens": [
+        "Em",
+        "không",
+        "đồng ý",
+        "lắm",
+        "lăm"
+      ],
+      "translation": {
+        "fr": "Je ne suis pas trop d'accord.",
+        "en": "I don't really agree."
+      },
+      "explain": {
+        "fr": "không + verbe + lắm : adoucit le « non ».",
+        "en": "không + verb + lắm: softens the 'no'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chua_chac",
+      "distractors": [
+        "Chưa chắc chắn.",
+        "Chắc rồi."
+      ],
+      "explain": {
+        "fr": "Chưa chắc : pas sûr.",
+        "en": "Chưa chắc: not so sure."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_lam",
+      "explain": {
+        "fr": "lắm : sắc.",
+        "en": "lắm: sắc."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chưa chắc đâu anh.",
+      "tokens": [
+        "Chưa",
+        "chắc",
+        "đâu",
+        "anh",
+        "đây"
+      ],
+      "translation": {
+        "fr": "Pas si sûr (à un homme un peu plus âgé).",
+        "en": "Not so sure (to a slightly older man)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_em_khong_dong_y_lam",
+      "explain": {
+        "fr": "đồng descend, ý monte, lắm monte.",
+        "en": "đồng falls, ý rises, lắm rises."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_dong_y",
+      "s_b_dong_y",
+      "s_b_em_khong_dong_y_lam",
+      "s_b_chua_chac"
+    ]
+  },
+  "reviewed": false
+}

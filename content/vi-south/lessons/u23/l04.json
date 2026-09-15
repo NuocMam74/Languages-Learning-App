@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u23.l04",
+  "unit": "vi-south.u23",
+  "title": {
+    "fr": "Giả sử…",
+    "en": "Suppose…"
+  },
+  "goal": {
+    "fr": "Imaginer une situation.",
+    "en": "Imagine a situation."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u23.l03"
+  ],
+  "concepts": [
+    "c_b_gia_su",
+    "c_b_gia_fake",
+    "c_b_gia_price",
+    "c_b_ve_so",
+    "c_b_trung_so",
+    "s_b_gia_su_trung_so",
+    "c_gia",
+    "c_tien",
+    "c_b_the",
+    "c_b_ho_chieu"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ve_so",
+      "distractors": [
+        "c_tien",
+        "c_b_the",
+        "c_b_ho_chieu"
+      ],
+      "explain": {
+        "fr": "vé số : le billet de loterie.",
+        "en": "vé số: lottery ticket."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_ve_so"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "già",
+        "giả",
+        "giá"
+      ],
+      "audioConcepts": [
+        "c_gia",
+        "c_b_gia_fake",
+        "c_b_gia_price"
+      ],
+      "explain": {
+        "fr": "già descend : vieux. giả plonge : faux. giá monte : prix.",
+        "en": "già falls: old. giả dips: fake. giá rises: price."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_su",
+      "distractors": [
+        "giá sử",
+        "giả sự"
+      ],
+      "explain": {
+        "fr": "giả sử : supposons.",
+        "en": "giả sử: suppose."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gia_su_trung_so",
+      "distractors": [
+        "Giả sử trúng số, chị làm gì?",
+        "Nếu trúng số, anh mua gì?"
+      ],
+      "explain": {
+        "fr": "giả sử : imaginons ; làm gì : faire quoi.",
+        "en": "giả sử: suppose; làm gì: do what."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Giả sử trúng số, anh làm gì?",
+      "tokens": [
+        "Giả sử",
+        "trúng số",
+        "anh",
+        "làm",
+        "gì",
+        "giá"
+      ],
+      "translation": {
+        "fr": "Imagine que tu gagnes à la loterie : tu fais quoi ?",
+        "en": "Say you won the lottery: what would you do?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_trung_so",
+      "distractors": [
+        "trứng số",
+        "trúng sổ"
+      ],
+      "explain": {
+        "fr": "trúng số : gagner à la loterie. trứng : l'œuf.",
+        "en": "trúng số: win the lottery. trứng: egg."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_gia_price",
+      "explain": {
+        "fr": "giá : sắc.",
+        "en": "giá: sắc."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_gia_su_trung_so",
+      "explain": {
+        "fr": "giả plonge, trúng monte, gì descend.",
+        "en": "giả dips, trúng rises, gì falls."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_gia_su",
+      "c_b_gia_fake",
+      "c_b_gia_price",
+      "c_b_ve_so",
+      "c_b_trung_so",
+      "s_b_gia_su_trung_so"
+    ]
+  },
+  "reviewed": false
+}

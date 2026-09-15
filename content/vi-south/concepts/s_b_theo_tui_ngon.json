@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_theo_tui_ngon",
+  "type": "structure",
+  "vi": "Theo tui, quán này ngon hơn.",
+  "gloss": {
+    "fr": "À mon avis, ce resto est meilleur.",
+    "en": "In my opinion, this place is better."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_theo_tui_ngon_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_theo_tui_ngon_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_nhuc_dau",
+  "type": "structure",
+  "vi": "nhức đầu",
+  "gloss": {
+    "fr": "mal de tête",
+    "en": "headache"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nhuc_dau_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nhuc_dau_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/health/headache.svg",
+  "reviewed": false
+}

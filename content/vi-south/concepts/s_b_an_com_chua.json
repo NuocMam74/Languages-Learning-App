@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_an_com_chua",
+  "type": "structure",
+  "vi": "Ăn cơm chưa?",
+  "gloss": {
+    "fr": "Tu as mangé ? (salutation entre proches)",
+    "en": "Have you eaten? (greeting among close ones)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_an_com_chua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_an_com_chua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

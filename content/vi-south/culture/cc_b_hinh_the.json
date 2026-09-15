@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_hinh_the",
+  "title": {
+    "fr": "Photos et photocopies",
+    "en": "Photos and photocopies"
+  },
+  "body": {
+    "fr": "Au Sud, « prendre une photo » se dit chụp hình, et la photo d'identité, hình thẻ. Près des administrations, de petites boutiques font tout en dix minutes : photos, photocopies (on dit photo), et parfois de l'aide pour remplir le đơn.",
+    "en": "In the South, 'to take a photo' is chụp hình, and an ID photo is hình thẻ. Near government offices, small shops do it all in ten minutes: photos, photocopies (called photo), and sometimes help filling in the đơn."
+  },
+  "vi": "Chị photo giùm em hai bản nha.",
+  "audio": "audio/cc_b_hinh_the.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, « prendre une photo » se dit…",
+      "en": "In the South, 'to take a photo' is…"
+    },
+    "options": [
+      {
+        "fr": "chụp hình",
+        "en": "chụp hình"
+      },
+      {
+        "fr": "điền đơn",
+        "en": "điền đơn"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

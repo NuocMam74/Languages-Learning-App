@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_hinh_the",
+  "type": "word",
+  "vi": "hình thẻ",
+  "gloss": {
+    "fr": "photo d'identité",
+    "en": "ID photo"
+  },
+  "northernEquivalent": "ảnh thẻ",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_hinh_the_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_hinh_the_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

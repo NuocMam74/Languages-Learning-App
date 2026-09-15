@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_sot",
+  "type": "word",
+  "vi": "sốt",
+  "tone": "sac",
+  "gloss": {
+    "fr": "fièvre ; avoir de la fièvre",
+    "en": "fever"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_sot_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_sot_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/health/fever.svg",
+  "reviewed": false
+}

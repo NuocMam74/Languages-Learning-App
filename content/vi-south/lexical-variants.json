@@ -2,80 +2,1334 @@
   "$schema": "../schema/lexical-variants.schema.json",
   "version": 1,
   "entries": [
-    { "id": "lv_papa", "gloss": { "fr": "papa", "en": "dad" }, "south": ["ba"], "north": ["bố"], "severity": "error",
-      "exceptions": ["công bố", "tuyên bố", "phân bố", "bố trí", "bố thí", "bố cáo", "khủng bố"], "reviewed": false },
-    { "id": "lv_maman", "gloss": { "fr": "maman", "en": "mom" }, "south": ["má"], "north": ["mẹ"], "severity": "warning",
-      "exceptions": ["cha mẹ", "mẹ ruột", "mẹ chồng", "mẹ vợ", "mẹ kế"],
-      "note": { "fr": "« mẹ » s'entend aussi au Sud dans des composés ; signalé sans bloquer." }, "reviewed": false },
-    { "id": "lv_oui_poli", "gloss": { "fr": "oui (poli)", "en": "yes (polite)" }, "south": ["dạ"], "north": ["vâng"], "severity": "error", "reviewed": false },
-    { "id": "lv_bol", "gloss": { "fr": "bol", "en": "bowl" }, "south": ["chén"], "north": ["bát"], "severity": "error",
-      "exceptions": ["bát ngát", "bát phố", "bát giác", "bát quái"], "reviewed": false },
-    { "id": "lv_verre", "gloss": { "fr": "verre", "en": "glass" }, "south": ["ly"], "north": ["cốc"], "severity": "error", "reviewed": false },
-    { "id": "lv_cuillere", "gloss": { "fr": "cuillère", "en": "spoon" }, "south": ["muỗng"], "north": ["thìa"], "severity": "error", "reviewed": false },
-    { "id": "lv_assiette", "gloss": { "fr": "assiette", "en": "plate" }, "south": ["dĩa"], "north": ["đĩa"], "severity": "error",
-      "exceptions": ["đĩa bay", "ổ đĩa"], "reviewed": false },
-    { "id": "lv_porc", "gloss": { "fr": "porc", "en": "pork" }, "south": ["heo"], "north": ["lợn"], "severity": "error", "reviewed": false },
-    { "id": "lv_mais", "gloss": { "fr": "maïs", "en": "corn" }, "south": ["bắp"], "north": ["ngô"], "severity": "error",
-      "exceptions": ["ngô nghê"], "reviewed": false },
-    { "id": "lv_arachide", "gloss": { "fr": "arachide", "en": "peanut" }, "south": ["đậu phộng"], "north": ["lạc"], "severity": "error",
-      "exceptions": ["lạc đường", "lạc quan", "liên lạc", "câu lạc bộ", "lạc đề", "thất lạc", "lạc hậu", "bộ lạc", "lạc giọng"], "reviewed": false },
-    { "id": "lv_ananas", "gloss": { "fr": "ananas", "en": "pineapple" }, "south": ["thơm", "khóm"], "north": ["dứa"], "severity": "error", "reviewed": false },
-    { "id": "lv_fruit_clf", "gloss": { "fr": "fruit (classificateur)", "en": "fruit (classifier)" }, "south": ["trái"], "north": ["quả"], "severity": "error",
-      "exceptions": ["kết quả", "hiệu quả", "hậu quả", "quả thật", "quả nhiên", "quả quyết", "thành quả", "quả cảm"], "reviewed": false },
-    { "id": "lv_cher", "gloss": { "fr": "cher (prix)", "en": "expensive" }, "south": ["mắc"], "north": ["đắt"], "severity": "error",
-      "exceptions": ["đắt khách", "đắt hàng"], "reviewed": false },
-    { "id": "lv_chapeau", "gloss": { "fr": "chapeau", "en": "hat" }, "south": ["nón"], "north": ["mũ"], "severity": "error", "reviewed": false },
-    { "id": "lv_couverture", "gloss": { "fr": "couverture", "en": "blanket" }, "south": ["mền"], "north": ["chăn"], "severity": "error",
-      "exceptions": ["chăn nuôi", "chăn trâu", "chăn bò", "chăn dắt"], "reviewed": false },
-    { "id": "lv_voiture", "gloss": { "fr": "voiture", "en": "car" }, "south": ["xe hơi"], "north": ["ô tô"], "severity": "error", "reviewed": false },
-    { "id": "lv_avion", "gloss": { "fr": "avion", "en": "plane" }, "south": ["máy bay"], "north": ["máy bay"], "severity": "none", "reviewed": false },
-    { "id": "lv_stylo", "gloss": { "fr": "stylo", "en": "pen" }, "south": ["cây viết"], "north": ["bút"], "severity": "error",
-      "exceptions": ["bút danh", "bút pháp", "bút tích"], "reviewed": false },
-    { "id": "lv_ainsi", "gloss": { "fr": "ainsi / comme ça", "en": "like that" }, "south": ["vậy"], "north": ["thế"], "severity": "warning",
-      "exceptions": ["thế giới", "thay thế", "thế hệ", "thế kỷ", "tư thế", "lợi thế", "thế lực", "địa thế", "thế chấp", "thế mạnh", "xu thế"],
-      "note": { "fr": "« thế » a de nombreux sens hors « ainsi » : signalé sans bloquer." }, "reviewed": false },
-    { "id": "lv_gateau", "gloss": { "fr": "gâteau", "en": "cake" }, "south": ["bánh"], "north": ["bánh"], "severity": "none", "reviewed": false },
-    { "id": "lv_de_rien", "gloss": { "fr": "de rien", "en": "you're welcome" }, "south": ["không có chi"], "north": ["không có gì"], "severity": "warning",
-      "note": { "fr": "« không có gì » veut aussi dire « il n'y a rien » partout : signalé sans bloquer.", "en": "« không có gì » also means 'there is nothing' everywhere: flagged, not blocking." }, "reviewed": false },
-    { "id": "lv_sesame", "gloss": { "fr": "sésame", "en": "sesame" }, "south": ["mè"], "north": ["vừng"], "severity": "error", "reviewed": false },
-    { "id": "lv_aine", "gloss": { "fr": "frère / sœur aîné(e)", "en": "eldest brother / sister" }, "south": ["anh hai", "chị hai"], "north": ["anh cả", "chị cả"], "severity": "error",
-      "exceptions": ["anh cả nhà", "chị cả nhà", "anh cả đời", "chị cả đời", "anh cả ngày", "chị cả ngày"], "reviewed": false },
-    { "id": "lv_ong_ay", "gloss": { "fr": "lui (homme âgé)", "en": "he (older man)" }, "south": ["ổng"], "north": ["ông ấy"], "severity": "warning",
-      "note": { "fr": "« ông ấy » reste correct à l'écrit au Sud ; « ổng » est la forme orale : signalé sans bloquer.", "en": "« ông ấy » is still fine in southern writing; « ổng » is the spoken form: flagged, not blocking." }, "reviewed": false },
-    { "id": "lv_ba_ay", "gloss": { "fr": "elle (femme âgée)", "en": "she (older woman)" }, "south": ["bả"], "north": ["bà ấy"], "severity": "warning", "reviewed": false },
-    { "id": "lv_anh_ay", "gloss": { "fr": "lui (homme un peu plus âgé)", "en": "he (slightly older man)" }, "south": ["ảnh"], "north": ["anh ấy"], "severity": "warning", "reviewed": false },
-    { "id": "lv_chi_ay", "gloss": { "fr": "elle (femme un peu plus âgée)", "en": "she (slightly older woman)" }, "south": ["chỉ"], "north": ["chị ấy"], "severity": "warning", "reviewed": false },
-    { "id": "lv_thousand", "gloss": { "fr": "mille", "en": "thousand" }, "south": ["ngàn"], "north": ["nghìn"], "severity": "warning",
-      "note": { "fr": "« nghìn » est aussi la forme écrite standard, courante au Sud à l'écrit : signalé sans bloquer.", "en": "« nghìn » is also the standard written form, common in southern writing: flagged, not blocking." }, "reviewed": false },
-    { "id": "lv_linh", "gloss": { "fr": "« et » dans les nombres (105)", "en": "'and' in numbers (105)" }, "south": ["lẻ"], "north": ["linh"], "severity": "warning",
-      "exceptions": ["linh hồn", "tâm linh", "linh tinh", "linh động", "linh hoạt", "linh kiện", "linh thiêng", "thần linh", "linh mục", "linh vật", "linh cảm", "linh tính", "anh linh", "sinh linh", "linh chi", "linh ứng", "linh đình", "linh dương"],
-      "note": { "fr": "« linh » est aussi un prénom courant et entre dans de nombreux mots : signalé sans bloquer.", "en": "« linh » is also a common given name and appears in many words: flagged, not blocking." }, "reviewed": false },
-    { "id": "lv_lam_five", "gloss": { "fr": "cinq après une dizaine (15, 25…)", "en": "five after a tens word (15, 25…)" }, "south": ["lăm"], "north": ["nhăm"], "severity": "warning",
-      "exceptions": ["nhăm nhe", "nhăm nhăm", "nhăm nhắp"], "reviewed": false },
-    { "id": "lv_kilo", "gloss": { "fr": "kilo", "en": "kilo" }, "south": ["ký", "kí"], "north": ["cân"], "severity": "warning",
-      "exceptions": ["cân nặng", "cân bằng", "cân đối", "cân nhắc", "cái cân", "cân xứng", "cân não", "cân đo", "cân sức", "cân điện tử", "bàn cân", "lên cân", "xuống cân", "thừa cân", "giảm cân", "tăng cân"],
-      "note": { "fr": "« cân » veut aussi dire « peser » / « balance » partout : signalé sans bloquer.", "en": "« cân » also means 'to weigh' / 'scale' everywhere: flagged, not blocking." }, "reviewed": false },
-    { "id": "lv_turn", "gloss": { "fr": "tourner (à gauche, à droite)", "en": "to turn (left, right)" }, "south": ["quẹo"], "north": ["rẽ"], "severity": "warning",
-      "exceptions": ["chia rẽ", "rẽ ngôi", "rẽ nhánh", "ngã rẽ", "rẽ sóng"],
-      "note": { "fr": "« rẽ » s'entend aussi au Sud, notamment dans les applis de navigation : signalé sans bloquer.", "en": "« rẽ » is also heard in the South, notably in navigation apps: flagged, not blocking." }, "reviewed": false },
-    { "id": "lv_late", "gloss": { "fr": "en retard", "en": "late" }, "south": ["trễ"], "north": ["muộn"], "severity": "warning",
-      "exceptions": ["muộn màng", "hiếm muộn", "muộn phiền"], "reviewed": false },
-    { "id": "lv_alley", "gloss": { "fr": "ruelle", "en": "alley" }, "south": ["hẻm"], "north": ["ngõ"], "severity": "warning",
-      "exceptions": ["cửa ngõ", "ngõ lời", "ngõ hầu", "ngõ ngách"], "reviewed": false },
-    { "id": "lv_traffic_jam", "gloss": { "fr": "embouteillage", "en": "traffic jam" }, "south": ["kẹt xe"], "north": ["tắc đường", "tắc xe"], "severity": "warning", "reviewed": false },
-    { "id": "lv_park", "gloss": { "fr": "garer (un véhicule)", "en": "to park" }, "south": ["đậu xe"], "north": ["đỗ xe"], "severity": "warning", "reviewed": false }
+    {
+      "id": "lv_papa",
+      "gloss": {
+        "fr": "papa",
+        "en": "dad"
+      },
+      "south": [
+        "ba"
+      ],
+      "north": [
+        "bố"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "công bố",
+        "tuyên bố",
+        "phân bố",
+        "bố trí",
+        "bố thí",
+        "bố cáo",
+        "khủng bố"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_maman",
+      "gloss": {
+        "fr": "maman",
+        "en": "mom"
+      },
+      "south": [
+        "má"
+      ],
+      "north": [
+        "mẹ"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "cha mẹ",
+        "mẹ ruột",
+        "mẹ chồng",
+        "mẹ vợ",
+        "mẹ kế"
+      ],
+      "note": {
+        "fr": "« mẹ » s'entend aussi au Sud dans des composés ; signalé sans bloquer."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_oui_poli",
+      "gloss": {
+        "fr": "oui (poli)",
+        "en": "yes (polite)"
+      },
+      "south": [
+        "dạ"
+      ],
+      "north": [
+        "vâng"
+      ],
+      "severity": "error",
+      "reviewed": false
+    },
+    {
+      "id": "lv_bol",
+      "gloss": {
+        "fr": "bol",
+        "en": "bowl"
+      },
+      "south": [
+        "chén"
+      ],
+      "north": [
+        "bát"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "bát ngát",
+        "bát phố",
+        "bát giác",
+        "bát quái"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_verre",
+      "gloss": {
+        "fr": "verre",
+        "en": "glass"
+      },
+      "south": [
+        "ly"
+      ],
+      "north": [
+        "cốc"
+      ],
+      "severity": "error",
+      "reviewed": false
+    },
+    {
+      "id": "lv_cuillere",
+      "gloss": {
+        "fr": "cuillère",
+        "en": "spoon"
+      },
+      "south": [
+        "muỗng"
+      ],
+      "north": [
+        "thìa"
+      ],
+      "severity": "error",
+      "reviewed": false
+    },
+    {
+      "id": "lv_assiette",
+      "gloss": {
+        "fr": "assiette",
+        "en": "plate"
+      },
+      "south": [
+        "dĩa"
+      ],
+      "north": [
+        "đĩa"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "đĩa bay",
+        "ổ đĩa"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_porc",
+      "gloss": {
+        "fr": "porc",
+        "en": "pork"
+      },
+      "south": [
+        "heo"
+      ],
+      "north": [
+        "lợn"
+      ],
+      "severity": "error",
+      "reviewed": false
+    },
+    {
+      "id": "lv_mais",
+      "gloss": {
+        "fr": "maïs",
+        "en": "corn"
+      },
+      "south": [
+        "bắp"
+      ],
+      "north": [
+        "ngô"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "ngô nghê"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_arachide",
+      "gloss": {
+        "fr": "arachide",
+        "en": "peanut"
+      },
+      "south": [
+        "đậu phộng"
+      ],
+      "north": [
+        "lạc"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "lạc đường",
+        "lạc quan",
+        "liên lạc",
+        "câu lạc bộ",
+        "lạc đề",
+        "thất lạc",
+        "lạc hậu",
+        "bộ lạc",
+        "lạc giọng"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_ananas",
+      "gloss": {
+        "fr": "ananas",
+        "en": "pineapple"
+      },
+      "south": [
+        "thơm",
+        "khóm"
+      ],
+      "north": [
+        "dứa"
+      ],
+      "severity": "error",
+      "reviewed": false
+    },
+    {
+      "id": "lv_fruit_clf",
+      "gloss": {
+        "fr": "fruit (classificateur)",
+        "en": "fruit (classifier)"
+      },
+      "south": [
+        "trái"
+      ],
+      "north": [
+        "quả"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "kết quả",
+        "hiệu quả",
+        "hậu quả",
+        "quả thật",
+        "quả nhiên",
+        "quả quyết",
+        "thành quả",
+        "quả cảm"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_cher",
+      "gloss": {
+        "fr": "cher (prix)",
+        "en": "expensive"
+      },
+      "south": [
+        "mắc"
+      ],
+      "north": [
+        "đắt"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "đắt khách",
+        "đắt hàng"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_chapeau",
+      "gloss": {
+        "fr": "chapeau",
+        "en": "hat"
+      },
+      "south": [
+        "nón"
+      ],
+      "north": [
+        "mũ"
+      ],
+      "severity": "error",
+      "reviewed": false
+    },
+    {
+      "id": "lv_couverture",
+      "gloss": {
+        "fr": "couverture",
+        "en": "blanket"
+      },
+      "south": [
+        "mền"
+      ],
+      "north": [
+        "chăn"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "chăn nuôi",
+        "chăn trâu",
+        "chăn bò",
+        "chăn dắt"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_voiture",
+      "gloss": {
+        "fr": "voiture",
+        "en": "car"
+      },
+      "south": [
+        "xe hơi"
+      ],
+      "north": [
+        "ô tô"
+      ],
+      "severity": "error",
+      "reviewed": false
+    },
+    {
+      "id": "lv_avion",
+      "gloss": {
+        "fr": "avion",
+        "en": "plane"
+      },
+      "south": [
+        "máy bay"
+      ],
+      "north": [
+        "máy bay"
+      ],
+      "severity": "none",
+      "reviewed": false
+    },
+    {
+      "id": "lv_stylo",
+      "gloss": {
+        "fr": "stylo",
+        "en": "pen"
+      },
+      "south": [
+        "cây viết"
+      ],
+      "north": [
+        "bút"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "bút danh",
+        "bút pháp",
+        "bút tích"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_ainsi",
+      "gloss": {
+        "fr": "ainsi / comme ça",
+        "en": "like that"
+      },
+      "south": [
+        "vậy"
+      ],
+      "north": [
+        "thế"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "thế giới",
+        "thay thế",
+        "thế hệ",
+        "thế kỷ",
+        "tư thế",
+        "lợi thế",
+        "thế lực",
+        "địa thế",
+        "thế chấp",
+        "thế mạnh",
+        "xu thế"
+      ],
+      "note": {
+        "fr": "« thế » a de nombreux sens hors « ainsi » : signalé sans bloquer."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_gateau",
+      "gloss": {
+        "fr": "gâteau",
+        "en": "cake"
+      },
+      "south": [
+        "bánh"
+      ],
+      "north": [
+        "bánh"
+      ],
+      "severity": "none",
+      "reviewed": false
+    },
+    {
+      "id": "lv_de_rien",
+      "gloss": {
+        "fr": "de rien",
+        "en": "you're welcome"
+      },
+      "south": [
+        "không có chi"
+      ],
+      "north": [
+        "không có gì"
+      ],
+      "severity": "warning",
+      "note": {
+        "fr": "« không có gì » veut aussi dire « il n'y a rien » partout : signalé sans bloquer.",
+        "en": "« không có gì » also means 'there is nothing' everywhere: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_sesame",
+      "gloss": {
+        "fr": "sésame",
+        "en": "sesame"
+      },
+      "south": [
+        "mè"
+      ],
+      "north": [
+        "vừng"
+      ],
+      "severity": "error",
+      "reviewed": false
+    },
+    {
+      "id": "lv_aine",
+      "gloss": {
+        "fr": "frère / sœur aîné(e)",
+        "en": "eldest brother / sister"
+      },
+      "south": [
+        "anh hai",
+        "chị hai"
+      ],
+      "north": [
+        "anh cả",
+        "chị cả"
+      ],
+      "severity": "error",
+      "exceptions": [
+        "anh cả nhà",
+        "chị cả nhà",
+        "anh cả đời",
+        "chị cả đời",
+        "anh cả ngày",
+        "chị cả ngày"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_ong_ay",
+      "gloss": {
+        "fr": "lui (homme âgé)",
+        "en": "he (older man)"
+      },
+      "south": [
+        "ổng"
+      ],
+      "north": [
+        "ông ấy"
+      ],
+      "severity": "warning",
+      "note": {
+        "fr": "« ông ấy » reste correct à l'écrit au Sud ; « ổng » est la forme orale : signalé sans bloquer.",
+        "en": "« ông ấy » is still fine in southern writing; « ổng » is the spoken form: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_ba_ay",
+      "gloss": {
+        "fr": "elle (femme âgée)",
+        "en": "she (older woman)"
+      },
+      "south": [
+        "bả"
+      ],
+      "north": [
+        "bà ấy"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_anh_ay",
+      "gloss": {
+        "fr": "lui (homme un peu plus âgé)",
+        "en": "he (slightly older man)"
+      },
+      "south": [
+        "ảnh"
+      ],
+      "north": [
+        "anh ấy"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_chi_ay",
+      "gloss": {
+        "fr": "elle (femme un peu plus âgée)",
+        "en": "she (slightly older woman)"
+      },
+      "south": [
+        "chỉ"
+      ],
+      "north": [
+        "chị ấy"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_thousand",
+      "gloss": {
+        "fr": "mille",
+        "en": "thousand"
+      },
+      "south": [
+        "ngàn"
+      ],
+      "north": [
+        "nghìn"
+      ],
+      "severity": "warning",
+      "note": {
+        "fr": "« nghìn » est aussi la forme écrite standard, courante au Sud à l'écrit : signalé sans bloquer.",
+        "en": "« nghìn » is also the standard written form, common in southern writing: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_linh",
+      "gloss": {
+        "fr": "« et » dans les nombres (105)",
+        "en": "'and' in numbers (105)"
+      },
+      "south": [
+        "lẻ"
+      ],
+      "north": [
+        "linh"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "linh hồn",
+        "tâm linh",
+        "linh tinh",
+        "linh động",
+        "linh hoạt",
+        "linh kiện",
+        "linh thiêng",
+        "thần linh",
+        "linh mục",
+        "linh vật",
+        "linh cảm",
+        "linh tính",
+        "anh linh",
+        "sinh linh",
+        "linh chi",
+        "linh ứng",
+        "linh đình",
+        "linh dương"
+      ],
+      "note": {
+        "fr": "« linh » est aussi un prénom courant et entre dans de nombreux mots : signalé sans bloquer.",
+        "en": "« linh » is also a common given name and appears in many words: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_lam_five",
+      "gloss": {
+        "fr": "cinq après une dizaine (15, 25…)",
+        "en": "five after a tens word (15, 25…)"
+      },
+      "south": [
+        "lăm"
+      ],
+      "north": [
+        "nhăm"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "nhăm nhe",
+        "nhăm nhăm",
+        "nhăm nhắp"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_kilo",
+      "gloss": {
+        "fr": "kilo",
+        "en": "kilo"
+      },
+      "south": [
+        "ký",
+        "kí"
+      ],
+      "north": [
+        "cân"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "cân nặng",
+        "cân bằng",
+        "cân đối",
+        "cân nhắc",
+        "cái cân",
+        "cân xứng",
+        "cân não",
+        "cân đo",
+        "cân sức",
+        "cân điện tử",
+        "bàn cân",
+        "lên cân",
+        "xuống cân",
+        "thừa cân",
+        "giảm cân",
+        "tăng cân"
+      ],
+      "note": {
+        "fr": "« cân » veut aussi dire « peser » / « balance » partout : signalé sans bloquer.",
+        "en": "« cân » also means 'to weigh' / 'scale' everywhere: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_turn",
+      "gloss": {
+        "fr": "tourner (à gauche, à droite)",
+        "en": "to turn (left, right)"
+      },
+      "south": [
+        "quẹo"
+      ],
+      "north": [
+        "rẽ"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "chia rẽ",
+        "rẽ ngôi",
+        "rẽ nhánh",
+        "ngã rẽ",
+        "rẽ sóng"
+      ],
+      "note": {
+        "fr": "« rẽ » s'entend aussi au Sud, notamment dans les applis de navigation : signalé sans bloquer.",
+        "en": "« rẽ » is also heard in the South, notably in navigation apps: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_late",
+      "gloss": {
+        "fr": "en retard",
+        "en": "late"
+      },
+      "south": [
+        "trễ"
+      ],
+      "north": [
+        "muộn"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "muộn màng",
+        "hiếm muộn",
+        "muộn phiền"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_alley",
+      "gloss": {
+        "fr": "ruelle",
+        "en": "alley"
+      },
+      "south": [
+        "hẻm"
+      ],
+      "north": [
+        "ngõ"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "cửa ngõ",
+        "ngõ lời",
+        "ngõ hầu",
+        "ngõ ngách"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_traffic_jam",
+      "gloss": {
+        "fr": "embouteillage",
+        "en": "traffic jam"
+      },
+      "south": [
+        "kẹt xe"
+      ],
+      "north": [
+        "tắc đường",
+        "tắc xe"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_park",
+      "gloss": {
+        "fr": "garer (un véhicule)",
+        "en": "to park"
+      },
+      "south": [
+        "đậu xe"
+      ],
+      "north": [
+        "đỗ xe"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_earlier",
+      "gloss": {
+        "fr": "tout à l'heure (passé)",
+        "en": "a moment ago"
+      },
+      "south": [
+        "hồi nãy"
+      ],
+      "north": [
+        "lúc nãy",
+        "vừa nãy"
+      ],
+      "severity": "warning",
+      "note": {
+        "fr": "« lúc nãy » s'entend aussi au Sud : signalé sans bloquer.",
+        "en": "« lúc nãy » is also heard in the South: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_addicted",
+      "gloss": {
+        "fr": "être accro à",
+        "en": "to be hooked on"
+      },
+      "south": [
+        "ghiền"
+      ],
+      "north": [
+        "nghiện"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "cai nghiện",
+        "nghiện ma túy",
+        "người nghiện"
+      ],
+      "note": {
+        "fr": "« nghiện » reste le terme courant pour la drogue, partout.",
+        "en": "« nghiện » remains the usual word for drug addiction everywhere."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_dirty",
+      "gloss": {
+        "fr": "sale",
+        "en": "dirty"
+      },
+      "south": [
+        "dơ"
+      ],
+      "north": [
+        "bẩn"
+      ],
+      "severity": "warning",
+      "note": {
+        "fr": "« bẩn » se lit et se comprend aussi au Sud : signalé sans bloquer.",
+        "en": "« bẩn » is also read and understood in the South: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_watch",
+      "gloss": {
+        "fr": "regarder (film, télé)",
+        "en": "to watch (film, TV)"
+      },
+      "south": [
+        "coi"
+      ],
+      "north": [
+        "xem"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "xem xét",
+        "xem ra",
+        "xem như",
+        "xem thường",
+        "xem trọng",
+        "xem mắt",
+        "xem bói"
+      ],
+      "note": {
+        "fr": "« xem » est aussi courant au Sud, surtout à l'écrit : signalé sans bloquer.",
+        "en": "« xem » is also common in the South, especially in writing: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_funny",
+      "gloss": {
+        "fr": "drôle",
+        "en": "funny"
+      },
+      "south": [
+        "mắc cười"
+      ],
+      "north": [
+        "buồn cười"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_nha",
+      "gloss": {
+        "fr": "particule « d'accord ? »",
+        "en": "particle 'okay?'"
+      },
+      "south": [
+        "nha",
+        "nghen"
+      ],
+      "north": [
+        "nhé"
+      ],
+      "severity": "warning",
+      "note": {
+        "fr": "« nhé » s'entend aussi au Sud, notamment à l'écrit : signalé sans bloquer.",
+        "en": "« nhé » is also heard in the South, notably in writing: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_on_behalf",
+      "gloss": {
+        "fr": "pour (quelqu'un), à la place de",
+        "en": "for (someone), on behalf of"
+      },
+      "south": [
+        "giùm",
+        "dùm"
+      ],
+      "north": [
+        "hộ"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "căn hộ",
+        "hộ khẩu",
+        "hộ chiếu",
+        "bảo hộ",
+        "hộ gia đình",
+        "hộ lý",
+        "hộ tống",
+        "ủng hộ",
+        "hộ sinh",
+        "hộ tịch",
+        "cứu hộ",
+        "giám hộ",
+        "hộ vệ",
+        "hộ kinh doanh"
+      ],
+      "note": {
+        "fr": "« hộ » a de nombreux autres sens (căn hộ, hộ chiếu…) : signalé sans bloquer.",
+        "en": "« hộ » has many other meanings (căn hộ, hộ chiếu…): flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_sick",
+      "gloss": {
+        "fr": "malade",
+        "en": "sick"
+      },
+      "south": [
+        "bệnh"
+      ],
+      "north": [
+        "ốm"
+      ],
+      "severity": "warning",
+      "note": {
+        "fr": "Au Sud, « ốm » veut dire « maigre » : signalé sans bloquer.",
+        "en": "In the South « ốm » means 'skinny': flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_pharmacy",
+      "gloss": {
+        "fr": "pharmacie",
+        "en": "pharmacy"
+      },
+      "south": [
+        "nhà thuốc"
+      ],
+      "north": [
+        "hiệu thuốc"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_injection",
+      "gloss": {
+        "fr": "faire une piqûre",
+        "en": "to give a shot"
+      },
+      "south": [
+        "chích"
+      ],
+      "north": [
+        "tiêm"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "tiêm chủng",
+        "tiêm phòng",
+        "tiêm kích"
+      ],
+      "note": {
+        "fr": "« tiêm chủng » est le terme officiel partout : signalé sans bloquer.",
+        "en": "« tiêm chủng » is the official term everywhere: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_floor",
+      "gloss": {
+        "fr": "étage",
+        "en": "floor, storey"
+      },
+      "south": [
+        "lầu"
+      ],
+      "north": [
+        "tầng"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "tầng trệt",
+        "tầng hầm",
+        "tầng lớp",
+        "cao tầng",
+        "hạ tầng",
+        "tầng lửng",
+        "tầng mây",
+        "tầng ozon"
+      ],
+      "note": {
+        "fr": "Au Sud, lầu 1 = premier étage ; au Nord, tầng 2. « tầng trệt » (rez-de-chaussée) est courant au Sud.",
+        "en": "In the South lầu 1 = first floor up; in the North, tầng 2. « tầng trệt » (ground floor) is common in the South."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_aircon",
+      "gloss": {
+        "fr": "climatiseur",
+        "en": "air conditioner"
+      },
+      "south": [
+        "máy lạnh"
+      ],
+      "north": [
+        "điều hòa",
+        "máy điều hòa"
+      ],
+      "severity": "warning",
+      "note": {
+        "fr": "« điều hòa » se lit aussi au Sud dans les annonces : signalé sans bloquer.",
+        "en": "« điều hòa » also appears in southern listings: flagged, not blocking."
+      },
+      "reviewed": false
+    },
+    {
+      "id": "lv_receive_pay",
+      "gloss": {
+        "fr": "toucher (salaire)",
+        "en": "receive (pay)"
+      },
+      "south": [
+        "lãnh"
+      ],
+      "north": [
+        "lĩnh"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "lĩnh vực",
+        "thủ lĩnh",
+        "lĩnh hội"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_joke",
+      "gloss": {
+        "fr": "plaisanter",
+        "en": "joke"
+      },
+      "south": [
+        "giỡn"
+      ],
+      "north": [
+        "đùa"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_boat",
+      "gloss": {
+        "fr": "barque",
+        "en": "boat"
+      },
+      "south": [
+        "ghe"
+      ],
+      "north": [
+        "thuyền"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "thuyền trưởng"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_shy",
+      "gloss": {
+        "fr": "timide, gêné",
+        "en": "shy"
+      },
+      "south": [
+        "mắc cỡ"
+      ],
+      "north": [
+        "xấu hổ"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_always",
+      "gloss": {
+        "fr": "toujours, sans cesse",
+        "en": "all the time"
+      },
+      "south": [
+        "hoài"
+      ],
+      "north": [
+        "mãi"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "mãi mãi"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_true",
+      "gloss": {
+        "fr": "vrai",
+        "en": "true"
+      },
+      "south": [
+        "thiệt"
+      ],
+      "north": [
+        "thật"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "thật sự",
+        "sự thật",
+        "thành thật"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_flower",
+      "gloss": {
+        "fr": "fleur",
+        "en": "flower"
+      },
+      "south": [
+        "bông"
+      ],
+      "north": [
+        "hoa"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "Hoa Kỳ",
+        "hoa hậu",
+        "người Hoa",
+        "tiếng Hoa",
+        "hoa văn"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_incense",
+      "gloss": {
+        "fr": "encens",
+        "en": "incense"
+      },
+      "south": [
+        "nhang"
+      ],
+      "north": [
+        "hương"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "quê hương",
+        "hương vị",
+        "hương thơm"
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "lv_lucky_money",
+      "gloss": {
+        "fr": "étrennes du Têt",
+        "en": "lucky money"
+      },
+      "south": [
+        "lì xì"
+      ],
+      "north": [
+        "mừng tuổi"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_photo",
+      "gloss": {
+        "fr": "prendre en photo",
+        "en": "take a photo"
+      },
+      "south": [
+        "chụp hình"
+      ],
+      "north": [
+        "chụp ảnh"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_into",
+      "gloss": {
+        "fr": "entrer, dans",
+        "en": "into"
+      },
+      "south": [
+        "vô"
+      ],
+      "north": [
+        "vào"
+      ],
+      "severity": "warning",
+      "reviewed": false
+    },
+    {
+      "id": "lv_draw",
+      "gloss": {
+        "fr": "match nul",
+        "en": "draw (score)"
+      },
+      "south": [
+        "huề"
+      ],
+      "north": [
+        "hòa"
+      ],
+      "severity": "warning",
+      "exceptions": [
+        "hòa bình",
+        "điều hòa",
+        "cộng hòa",
+        "hòa nhạc",
+        "hòa hợp",
+        "hòa thuận"
+      ],
+      "reviewed": false
+    }
   ],
   "familiar": [
-    { "form": "hông", "standard": "không", "gloss": { "fr": "non / ne… pas (familier)", "en": "no / not (casual)" } },
-    { "form": "hổng", "standard": "không", "gloss": { "fr": "non / ne… pas (familier, appuyé)", "en": "no / not (casual, emphatic)" } },
-    { "form": "nghen", "standard": "nhé", "gloss": { "fr": "particule : « d'accord ? », « hein »", "en": "particle: 'okay?'" } },
-    { "form": "hen", "standard": "nhé", "gloss": { "fr": "particule : « hein », adoucit", "en": "particle: softener" } },
-    { "form": "há", "standard": "hả", "gloss": { "fr": "particule interrogative : « ah bon ? »", "en": "question particle: 'really?'" } },
-    { "form": "nè", "standard": "này", "gloss": { "fr": "particule : « tiens », « regarde »", "en": "particle: 'here', 'look'" } },
-    { "form": "đó", "standard": "đấy", "gloss": { "fr": "particule : « là », « hein »", "en": "particle: 'there'" } },
-    { "form": "nhiêu", "standard": "bao nhiêu", "gloss": { "fr": "combien ? (familier, au marché)", "en": "how much? (casual, at the market)" } },
-    { "form": "hăm", "standard": "hai mươi", "gloss": { "fr": "vingt (devant un chiffre : hăm mốt = 21)", "en": "twenty (before a digit: hăm mốt = 21)" } },
-    { "form": "băm", "standard": "ba mươi", "gloss": { "fr": "trente (devant un chiffre : băm hai = 32)", "en": "thirty (before a digit: băm hai = 32)" } },
-    { "form": "bữa nay", "standard": "hôm nay", "gloss": { "fr": "aujourd'hui (familier)", "en": "today (casual)" } }
+    {
+      "form": "hông",
+      "standard": "không",
+      "gloss": {
+        "fr": "non / ne… pas (familier)",
+        "en": "no / not (casual)"
+      }
+    },
+    {
+      "form": "hổng",
+      "standard": "không",
+      "gloss": {
+        "fr": "non / ne… pas (familier, appuyé)",
+        "en": "no / not (casual, emphatic)"
+      }
+    },
+    {
+      "form": "nghen",
+      "standard": "nhé",
+      "gloss": {
+        "fr": "particule : « d'accord ? », « hein »",
+        "en": "particle: 'okay?'"
+      }
+    },
+    {
+      "form": "hen",
+      "standard": "nhé",
+      "gloss": {
+        "fr": "particule : « hein », adoucit",
+        "en": "particle: softener"
+      }
+    },
+    {
+      "form": "há",
+      "standard": "hả",
+      "gloss": {
+        "fr": "particule interrogative : « ah bon ? »",
+        "en": "question particle: 'really?'"
+      }
+    },
+    {
+      "form": "nè",
+      "standard": "này",
+      "gloss": {
+        "fr": "particule : « tiens », « regarde »",
+        "en": "particle: 'here', 'look'"
+      }
+    },
+    {
+      "form": "đó",
+      "standard": "đấy",
+      "gloss": {
+        "fr": "particule : « là », « hein »",
+        "en": "particle: 'there'"
+      }
+    },
+    {
+      "form": "nhiêu",
+      "standard": "bao nhiêu",
+      "gloss": {
+        "fr": "combien ? (familier, au marché)",
+        "en": "how much? (casual, at the market)"
+      }
+    },
+    {
+      "form": "hăm",
+      "standard": "hai mươi",
+      "gloss": {
+        "fr": "vingt (devant un chiffre : hăm mốt = 21)",
+        "en": "twenty (before a digit: hăm mốt = 21)"
+      }
+    },
+    {
+      "form": "băm",
+      "standard": "ba mươi",
+      "gloss": {
+        "fr": "trente (devant un chiffre : băm hai = 32)",
+        "en": "thirty (before a digit: băm hai = 32)"
+      }
+    },
+    {
+      "form": "bữa nay",
+      "standard": "hôm nay",
+      "gloss": {
+        "fr": "aujourd'hui (familier)",
+        "en": "today (casual)"
+      }
+    },
+    {
+      "form": "thiệt",
+      "standard": "thật",
+      "gloss": {
+        "fr": "vrai, vraiment (familier)",
+        "en": "true, really (casual)"
+      }
+    },
+    {
+      "form": "chừng nào",
+      "standard": "khi nào",
+      "gloss": {
+        "fr": "quand ? (futur, familier)",
+        "en": "when? (future, casual)"
+      }
+    },
+    {
+      "form": "dzậy",
+      "standard": "vậy",
+      "gloss": {
+        "fr": "« vậy » à l'oral (ne s'écrit pas)",
+        "en": "spoken « vậy » (not written)"
+      }
+    },
+    {
+      "form": "dzô",
+      "standard": "vô",
+      "gloss": {
+        "fr": "« vô » à l'oral (ne s'écrit pas)",
+        "en": "spoken « vô » (not written)"
+      }
+    }
   ]
 }

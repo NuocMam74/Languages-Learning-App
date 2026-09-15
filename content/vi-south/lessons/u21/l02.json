@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u21.l02",
+  "unit": "vi-south.u21",
+  "title": {
+    "fr": "Hông, hổng",
+    "en": "Hông, hổng"
+  },
+  "goal": {
+    "fr": "Reconnaître les négations familières du Sud.",
+    "en": "Recognise casual southern negations."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u21.l01"
+  ],
+  "concepts": [
+    "c_b_hong_emph",
+    "c_b_biet",
+    "s_b_hong_biet",
+    "s_b_hong_co_dau",
+    "c_hong",
+    "c_khong"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hong_emph",
+      "distractors": [
+        "hông",
+        "hồng"
+      ],
+      "explain": {
+        "fr": "hổng plonge : non, appuyé. hông, plat : non, familier.",
+        "en": "hổng dips: no, emphatic. hông, level: no, casual."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_hong_south"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "hông",
+        "hổng"
+      ],
+      "audioConcepts": [
+        "c_hong",
+        "c_b_hong_emph"
+      ],
+      "explain": {
+        "fr": "hông reste plat ; hổng plonge et insiste.",
+        "en": "hông stays level; hổng dips and insists."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hong_biet",
+      "distractors": [
+        "Hông biết.",
+        "Hổng biết hả?"
+      ],
+      "explain": {
+        "fr": "Hổng biết : sais pas (appuyé).",
+        "en": "Hổng biết: dunno (emphatic)."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_b_hong_emph",
+      "explain": {
+        "fr": "hổng : descends un peu, puis remonte.",
+        "en": "hổng: dip a little, then rise."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hổng có đâu!",
+      "tokens": [
+        "Hổng",
+        "có",
+        "đâu",
+        "đây"
+      ],
+      "translation": {
+        "fr": "Mais non, pas du tout !",
+        "en": "No way, not at all!"
+      },
+      "explain": {
+        "fr": "đâu en fin de phrase renforce la négation.",
+        "en": "đâu at the end strengthens the negation."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_biet",
+      "distractors": [
+        "biệt",
+        "biêt"
+      ],
+      "explain": {
+        "fr": "biết monte : savoir.",
+        "en": "biết rises: to know."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_de_rien",
+      "explain": {
+        "fr": "Sud : không có chi ; Nord : không có gì.",
+        "en": "South: không có chi; North: không có gì."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, con không biết.",
+      "tokens": [
+        "Dạ",
+        "con",
+        "không",
+        "biết",
+        "hổng"
+      ],
+      "translation": {
+        "fr": "Non, je ne sais pas (poli, à un aîné).",
+        "en": "No, I don't know (polite, to an elder)."
+      },
+      "explain": {
+        "fr": "Avec un aîné : dạ + không, pas hổng.",
+        "en": "With an elder: dạ + không, not hổng."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_hong_biet",
+      "explain": {
+        "fr": "hổng plonge, biết monte.",
+        "en": "hổng dips, biết rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_hong_emph",
+      "c_b_biet",
+      "s_b_hong_biet",
+      "s_b_hong_co_dau"
+    ]
+  },
+  "reviewed": false
+}

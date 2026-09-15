@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_b_ve_mien_tay",
+  "type": "structure",
+  "vi": "Tết này tui về miền Tây.",
+  "gloss": {
+    "fr": "Ce Tết, je rentre dans le delta.",
+    "en": "This Tết I'm going back to the Mekong Delta."
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_ve_mien_tay_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_b_ve_mien_tay_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

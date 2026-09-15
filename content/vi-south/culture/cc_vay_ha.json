@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_vay_ha",
+  "title": {
+    "fr": "Vậy hả ? Thiệt hông ?",
+    "en": "Vậy hả? Thiệt hông?"
+  },
+  "body": {
+    "fr": "Une conversation du Sud est pleine de petites réactions : « Vậy hả ? » (ah bon ?), « Thiệt hông ? » (vraiment ?), « Đúng rồi ! » (exactement). Au Nord, on dirait « Thế à ? ». Les glisser montre que tu écoutes, et fait toujours sourire.",
+    "en": "Southern conversation is full of little reactions: 'Vậy hả?' (really?), 'Thiệt hông?' (for real?), 'Đúng rồi!' (exactly). In the North you'd hear 'Thế à?'. Dropping them in shows you're listening, and always gets a smile."
+  },
+  "vi": "Vậy hả?",
+  "audio": "audio/cc_vay_ha.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Vậy hả ? » veut dire…",
+      "en": "'Vậy hả?' means…"
+    },
+    "options": [
+      {
+        "fr": "ah bon ?",
+        "en": "really?"
+      },
+      {
+        "fr": "pourquoi ?",
+        "en": "why?"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,9 +1,14 @@
 import type { LessonId, LessonRun, ParloEvent, RawPackFiles, SessionRun, SrsCard, Streak } from "@parlo/core";
-import { Dexie, type EntityTable } from "dexie";
+import { Dexie, type EntityTable, type Transaction } from "dexie";
+import { activePackCode, DEFAULT_PACK, isPackScopedKey, packOfLesson, scopedKey } from "./packs/active.ts";
 
 /**
  * Stockage local (ADR 0004). Toute écriture d'état pédagogique passe par une
  * transaction qui écrit aussi l'événement correspondant dans `outbox`.
+ *
+ * Plusieurs packs (ADR 0006) : cartes SRS, progression de leçon, séance en cours et
+ * clés `kv` propres à une langue portent le code du pack ; l'outbox, le journal de
+ * synchronisation, le compte et les préférences restent communs.
  */
 
 export interface StoredPack {
@@ -13,8 +18,13 @@ export interface StoredPack {
   fetchedAt: string;
 }
 
+/** Carte SRS stockée : l'id de concept reste la clé (unique entre packs, vérifié en CI), `packCode` indexé. */
+export type StoredSrsCard = SrsCard & { packCode?: string };
+
 export interface LessonProgressRow {
   lessonId: LessonId;
+  /** Déduit de l'id de leçon s'il manque (hook de création). */
+  packCode?: string;
   status: "completed";
   bestScore: number;
   attempts: number;
@@ -51,11 +61,12 @@ export interface Totals {
 }
 
 /**
- * Séance en cours : réécrite après chaque réponse pour une reprise exacte.
+ * Séance en cours d'un pack : réécrite après chaque réponse pour une reprise exacte.
+ * `key` = code du pack (une séance en cours par langue ; « current » avant la version 3).
  * `session` couvre toute la séance ; `run` seul = snapshot de la Phase 0 (leçon).
  */
 export interface SessionSnapshot {
-  key: "current";
+  key: string;
   packCode: string;
   session?: SessionRun;
   run?: LessonRun;
@@ -67,9 +78,43 @@ export interface KeyValue<T = unknown> {
   value: T;
 }
 
+/** Clé `kv` globale du pack actif (langue apprise). */
+export const ACTIVE_PACK_KEY = "activePack";
+/** Clé du snapshot avant la version 3 du schéma (un seul pack). */
+export const LEGACY_SNAPSHOT_KEY = "current";
+
+/**
+ * Migration 2 → 3 : tout ce qui existait appartient au pack d'origine. Rien n'est supprimé :
+ * les lignes sont étiquetées (`packCode`) ou renommées (`kv` propres au pack, snapshot).
+ */
+export async function migrateToMultiPack(tx: Transaction): Promise<void> {
+  await tx.table<StoredSrsCard, string>("srsCards").toCollection().modify((card) => {
+    card.packCode ??= DEFAULT_PACK;
+  });
+  await tx.table<LessonProgressRow, string>("lessonProgress").toCollection().modify((row) => {
+    row.packCode ??= packOfLesson(row.lessonId);
+  });
+
+  const snapshots = tx.table<SessionSnapshot, string>("snapshot");
+  const legacy = await snapshots.get(LEGACY_SNAPSHOT_KEY);
+  if (legacy) {
+    const packCode = legacy.packCode || DEFAULT_PACK;
+    await snapshots.delete(LEGACY_SNAPSHOT_KEY);
+    await snapshots.put({ ...legacy, key: packCode, packCode });
+  }
+
+  const kv = tx.table<KeyValue, string>("kv");
+  const rows = await kv.toArray();
+  const scoped = rows.filter((r) => isPackScopedKey(r.key));
+  await kv.bulkDelete(scoped.map((r) => r.key));
+  await kv.bulkPut(scoped.map((r) => ({ key: scopedKey(r.key, DEFAULT_PACK), value: r.value })));
+  // Un apprenant existant garde sa langue.
+  if (rows.length > 0 && !rows.some((r) => r.key === ACTIVE_PACK_KEY)) await kv.put({ key: ACTIVE_PACK_KEY, value: DEFAULT_PACK });
+}
+
 export class ParloDB extends Dexie {
   packs!: EntityTable<StoredPack, "code">;
-  srsCards!: EntityTable<SrsCard, "conceptId">;
+  srsCards!: EntityTable<StoredSrsCard, "conceptId">;
   lessonProgress!: EntityTable<LessonProgressRow, "lessonId">;
   outbox!: EntityTable<OutboxRow, "id">;
   snapshot!: EntityTable<SessionSnapshot, "key">;
@@ -89,6 +134,24 @@ export class ParloDB extends Dexie {
     this.version(2).stores({
       syncLog: "++seq, at",
     });
+    // Phase 3 : plusieurs packs. Les clés primaires ne changent pas (ids uniques entre packs) :
+    // pas de recopie de table, seulement un index et une étiquette.
+    this.version(3)
+      .stores({
+        srsCards: "conceptId, due, state, packCode",
+        lessonProgress: "lessonId, packCode",
+      })
+      .upgrade(migrateToMultiPack);
+
+    // Toute écriture sans packCode (tests, modules qui ignorent les packs) est rattachée au bon pack.
+    this.srsCards.hook("creating", (_key, card) => {
+      card.packCode ??= activePackCode();
+    });
+    // Un `put` d'une carte sans étiquette (sortie du moteur SRS) ne doit pas effacer celle qui existe.
+    this.srsCards.hook("updating", (mods, _key, card) => (card.packCode && "packCode" in mods && !(mods as { packCode?: unknown }).packCode ? { packCode: card.packCode } : undefined));
+    this.lessonProgress.hook("creating", (_key, row) => {
+      row.packCode ??= packOfLesson(row.lessonId);
+    });
   }
 }
 
@@ -103,11 +166,18 @@ export function setDb(next: ParloDB | null): void {
   instance = next;
 }
 
+/** Les clés propres à une langue (profil, totaux, badges…) sont lues dans le pack actif. */
 export async function getKv<T>(key: string, fallback: T): Promise<T> {
-  const row = await db().kv.get(key);
+  const row = await db().kv.get(scopedKey(key));
   return row ? (row.value as T) : fallback;
 }
 
 export async function setKv<T>(key: string, value: T): Promise<void> {
-  await db().kv.put({ key, value });
+  await db().kv.put({ key: scopedKey(key), value });
+}
+
+/** Retire l'étiquette de stockage d'une carte (les événements portent la forme du contrat). */
+export function withoutPack(card: StoredSrsCard): SrsCard {
+  const { packCode: _packCode, ...rest } = card;
+  return rest;
 }

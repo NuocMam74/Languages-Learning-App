@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u12.l01",
+  "unit": "vi-south.u12",
+  "title": {
+    "fr": "Ai ? Gì ?",
+    "en": "Who? What?"
+  },
+  "goal": {
+    "fr": "Demander qui et quoi.",
+    "en": "Ask who and what."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u11.l08"
+  ],
+  "concepts": [
+    "s_cai_gi_vay",
+    "s_nguoi_do_la_ai",
+    "s_em_an_gi",
+    "c_hoi_ask",
+    "c_tra_loi",
+    "c_bac_si",
+    "c_giao_vien",
+    "c_sinh_vien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cai_gi_vay",
+      "distractors": [
+        "Cái này vậy?",
+        "Ai vậy?"
+      ],
+      "explain": {
+        "fr": "Cái gì vậy ? : c'est quoi ? gì = quoi.",
+        "en": "Cái gì vậy?: what's that? gì = what."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_question_word_end"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_do_la_ai",
+      "distractors": [
+        "Người đó là anh.",
+        "Người này là ai?"
+      ],
+      "explain": {
+        "fr": "ai = qui. đó : là-bas ; này : ici.",
+        "en": "ai = who. đó: over there; này: here."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bac_si",
+      "distractors": [
+        "c_giao_vien",
+        "c_sinh_vien"
+      ],
+      "explain": {
+        "fr": "Người đó là ai ? — Bác sĩ : le médecin.",
+        "en": "Người đó là ai? — Bác sĩ: the doctor."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Người đó là ai?",
+      "tokens": [
+        "Người",
+        "đó",
+        "là",
+        "ai",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Qui est cette personne ?",
+        "en": "Who is that person?"
+      },
+      "explain": {
+        "fr": "ai prend la place de la réponse : Người đó là chị Lan.",
+        "en": "ai takes the answer's place: Người đó là chị Lan."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_an_gi",
+      "distractors": [
+        "Em ăn gà?",
+        "Em uống gì?"
+      ],
+      "explain": {
+        "fr": "ăn gì : manger quoi. uống gì : boire quoi.",
+        "en": "ăn gì: eat what. uống gì: drink what."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tra_loi",
+      "distractors": [
+        "trả lại",
+        "tra lời"
+      ],
+      "explain": {
+        "fr": "trả lời : répondre. trả lại : rendre.",
+        "en": "trả lời: to answer. trả lại: to give back."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị hỏi gì?",
+      "tokens": [
+        "Chị",
+        "hỏi",
+        "gì",
+        "ai"
+      ],
+      "translation": {
+        "fr": "Tu demandes quoi ? (à une femme un peu plus âgée)",
+        "en": "What are you asking? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "hỏi + gì : demander quoi.",
+        "en": "hỏi + gì: ask what."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_hoi_ask",
+      "explain": {
+        "fr": "hỏi : la voix plonge puis remonte un peu.",
+        "en": "hỏi: the voice dips then rises a little."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cai_gi_vay",
+      "explain": {
+        "fr": "cái monte, gì descend, vậy tombe court.",
+        "en": "cái rises, gì falls, vậy drops short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_cai_gi_vay",
+      "s_nguoi_do_la_ai",
+      "s_em_an_gi",
+      "c_hoi_ask",
+      "c_tra_loi"
+    ]
+  },
+  "reviewed": false
+}

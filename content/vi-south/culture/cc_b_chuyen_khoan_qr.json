@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_chuyen_khoan_qr",
+  "title": {
+    "fr": "Payer par QR code",
+    "en": "Paying by QR code"
+  },
+  "body": {
+    "fr": "À Saïgon, même la vendeuse de bánh mì affiche souvent un QR code. On paie par chuyển khoản, un virement instantané depuis l'appli de sa banque. Pour ouvrir un tài khoản, la banque demande ton passeport et parfois ton visa : renseigne-toi avant.",
+    "en": "In Saigon, even the bánh mì seller often displays a QR code. People pay by chuyển khoản, an instant transfer from their banking app. To open a tài khoản, the bank asks for your passport and sometimes your visa: check beforehand."
+  },
+  "vi": "Chị chuyển khoản cho em nha.",
+  "audio": "audio/cc_b_chuyen_khoan_qr.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour payer un bánh mì, on peut souvent…",
+      "en": "To pay for a bánh mì, you can often…"
+    },
+    "options": [
+      {
+        "fr": "scanner un QR code",
+        "en": "scan a QR code"
+      },
+      {
+        "fr": "payer par chèque",
+        "en": "pay by cheque"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

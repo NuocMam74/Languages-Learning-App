@@ -61,6 +61,11 @@ Les tests utilisent une base SQLite temporaire et le contenu réel du dépôt ;
 | `GET /certificates` · `GET /certificates/{id}.pdf` · `GET /verify/{code}` (public) | Certificats PDF et vérification |
 | `GET /challenges/current` · `POST /challenges/{id}/claim` | Défi de la semaine (+50 XP, badge `challenge_<kind>`) |
 | `GET /push/vapid-public-key` (public) · `POST`/`DELETE /push/subscribe` | Rappels Web Push |
+| `POST /tutor/conversations` · `POST /tutor/conversations/{id}/messages` (SSE) · `GET …/{id}` · `POST …/{id}/end` | Conversation avec Cô Mai et Đối đáp (contrat `docs/contracts/phase3.md` §1) |
+| `GET /tutor/debrief/weekly?locale=` | Débriefing hebdomadaire (cache par semaine/langue, repli construit des données) |
+| `GET /leagues/me` | Ligue de la semaine (groupes de 30, divisions 1..5) |
+| `POST`/`GET /challenges/friends` · `POST /challenges/friends/join/{code}` | Défis entre amis (7 jours, 10 participants) |
+| `POST /challenges/express/scores` · `GET /share/express/{id}` (public) | Défi express : meilleur score et rang du jour, partage |
 | `GET /healthz` | Sonde |
 
 - `app/services/planner.py`, `streak.py`, `srs.py` : portages fidèles de `packages/core` (mêmes constantes).
@@ -70,6 +75,11 @@ Les tests utilisent une base SQLite temporaire et le contenu réel du dépôt ;
   formulations culpabilisantes) → une régénération corrective → repli préécrit (`source: "fallback"`) ;
   même repli sans `ANTHROPIC_API_KEY`, sur erreur/délai, ou quota `TUTOR_DAILY_QUOTA` atteint.
   Le client modèle est derrière `TutorLLM` (`app/services/tutor_llm.py`) : les tests n'appellent jamais le réseau.
+- Conversation (`app/services/conversation.py`) : flux du modèle tamponné par phrase, garde du Sud avant chaque
+  émission (régénération corrective une fois, puis `fallback`), vocabulaire limité aux concepts vus (+15 %),
+  gloses (contenu, sinon bloc JSON `[[META]]` du modèle), correction douce ; formule de fluidité en tête du module.
+- Plusieurs packs : inscription courante = dernier `pack_switched`, sinon `vi-south` ; les événements portent le
+  pack par l'id de leçon (`es.u01.l01`) ou de concept (`es_…`, `c_es_…`) ; `GET /me/session/next?pack=`.
 - Purge glissante (à planifier quotidiennement, cron ou tâche planifiée) :
   `uv run python -m app.maintenance purge-tutor` (messages > `TUTOR_RETENTION_DAYS`, cache expiré).
 - Badges : codes connus seulement (`streak_7`, `streak_30`, `first_lesson`, `unit_1_done`, `words_50`, `tone_ear`,
@@ -83,7 +93,7 @@ Les tests utilisent une base SQLite temporaire et le contenu réel du dépôt ;
   repli pur Python fpdf2 (Windows sans GTK). Polices OFL embarquées (`app/assets/fonts`). Stockage local
   (`MEDIA_DIR`) ou S3 (`STORAGE_BACKEND=s3`), PDF régénéré si absent.
 - Tâches planifiées (`app/scheduler.py`, `SCHEDULER_ENABLED=true` sur un seul processus) : défi du lundi
-  00:00 UTC, rappels push horaires. Sans planificateur intégré : `python -m app.maintenance weekly-challenge`
-  et `push-reminders` (cron). Clés VAPID : `uv run python -m app.maintenance vapid-keys`.
+  00:00 UTC, passage de semaine des ligues, rappels push horaires. Sans planificateur intégré : `python -m app.maintenance weekly-challenge`
+  et `push-reminders` (cron), `leagues-rollover` (lundi 00:00 UTC, idempotent). Clés VAPID : `uv run python -m app.maintenance vapid-keys`.
 - Nouvelle migration : `uv run alembic revision --autogenerate -m "..."`, puis remplacer
   `app.db.UTCDateTime()` par `sa.DateTime(timezone=True)` dans le fichier généré.

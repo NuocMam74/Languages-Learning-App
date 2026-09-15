@@ -1,0 +1,185 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u22.l08",
+  "unit": "vi-south.u22",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : raconter",
+    "en": "Test: storytelling"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais raconter un souvenir simple.",
+    "en": "Show you can tell a simple memory."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u22.l07"
+  ],
+  "concepts": [
+    "c_b_hoi_nho",
+    "s_b_hom_qua_tui_di_cho",
+    "c_b_da_past",
+    "s_b_luc_do_troi_mua",
+    "c_b_sau_do",
+    "c_sau_rieng",
+    "c_b_ke",
+    "s_b_ke_tui_nghe"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_nho",
+      "distractors": [
+        "hồi nhớ",
+        "hỏi nhỏ"
+      ],
+      "explain": {
+        "fr": "hồi nhỏ.",
+        "en": "hồi nhỏ."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hom_qua_tui_di_cho",
+      "distractors": [
+        "Hôm nay tui đi chợ rồi về nhà.",
+        "Hôm qua tui đi làm rồi về nhà."
+      ],
+      "explain": {
+        "fr": "hôm qua : hier.",
+        "en": "hôm qua: yesterday."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hồi nhỏ tui ở dưới quê.",
+      "tokens": [
+        "Hồi nhỏ",
+        "tui",
+        "ở",
+        "dưới",
+        "quê",
+        "hỏi"
+      ],
+      "translation": {
+        "fr": "Quand j'étais petit(e), je vivais à la campagne.",
+        "en": "As a child, I lived in the countryside."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_da_past",
+      "explain": {
+        "fr": "đã : ngã (entendu comme hỏi au Sud).",
+        "en": "đã: ngã (heard as hỏi in the South)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_luc_do_troi_mua",
+      "distractors": [
+        "Lúc đó trời nắng lắm.",
+        "Bây giờ trời mưa lớn lắm."
+      ],
+      "explain": {
+        "fr": "lúc đó.",
+        "en": "lúc đó."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Năm ngoái tui đã qua Việt Nam.",
+      "tokens": [
+        "Năm ngoái",
+        "tui",
+        "đã",
+        "qua",
+        "Việt Nam",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "L'an dernier, je suis venu(e) au Vietnam.",
+        "en": "Last year I came to Vietnam."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sau_do",
+      "distractors": [
+        "sáu đó",
+        "sau đây"
+      ],
+      "explain": {
+        "fr": "sau đó : ensuite.",
+        "en": "sau đó: after that."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "c_xoai",
+        "c_chuoi"
+      ],
+      "explain": {
+        "fr": "sầu riêng.",
+        "en": "sầu riêng."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Lần đầu tui ăn sầu riêng.",
+      "tokens": [
+        "Lần đầu",
+        "tui",
+        "ăn",
+        "sầu riêng",
+        "lần"
+      ],
+      "translation": {
+        "fr": "C'est la première fois que je mange du durian.",
+        "en": "It's my first time eating durian."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_ke",
+      "explain": {
+        "fr": "kể : hỏi.",
+        "en": "kể: hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ke_tui_nghe",
+      "distractors": [
+        "Kể em nghe đi!",
+        "Hỏi tui đi!"
+      ],
+      "explain": {
+        "fr": "Kể tui nghe đi !",
+        "en": "Kể tui nghe đi!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui bắt đầu học tiếng Việt năm ngoái.",
+      "tokens": [
+        "Tui",
+        "bắt đầu",
+        "học",
+        "tiếng Việt",
+        "năm ngoái",
+        "năm nay"
+      ],
+      "translation": {
+        "fr": "J'ai commencé le vietnamien l'an dernier.",
+        "en": "I started learning Vietnamese last year."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

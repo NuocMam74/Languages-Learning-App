@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_vuon",
+  "type": "word",
+  "vi": "vườn",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "jardin, verger",
+    "en": "garden, orchard"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_vuon_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_vuon_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/nature/orchard.svg",
+  "reviewed": false
+}

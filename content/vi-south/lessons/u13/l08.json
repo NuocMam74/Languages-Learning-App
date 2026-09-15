@@ -1,0 +1,211 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u13.l08",
+  "unit": "vi-south.u13",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : passé et futur",
+    "en": "Test: past and future"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais situer une action dans le temps.",
+    "en": "Show you can place an action in time."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u13.l07"
+  ],
+  "concepts": [
+    "c_da_past",
+    "s_di_da_lat_chua",
+    "s_em_dang_lam",
+    "c_se",
+    "c_hoi_nay",
+    "s_vua_an_xong",
+    "s_nam_sau_di_can_tho"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_past",
+      "distractors": [
+        "đá",
+        "đà"
+      ],
+      "explain": {
+        "fr": "đã : le passé. đá monte : la glace.",
+        "en": "đã: past marker. đá rises: ice."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm qua em đã đi chợ.",
+      "tokens": [
+        "Hôm qua",
+        "em",
+        "đã",
+        "đi",
+        "chợ",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "Hier, je suis allé(e) au marché.",
+        "en": "Yesterday I went to the market."
+      },
+      "explain": {
+        "fr": "đã se place juste avant le verbe.",
+        "en": "đã goes right before the verb."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_di_da_lat_chua",
+      "distractors": [
+        "Anh đi Đà Lạt không?",
+        "Anh đi Đà Lạt rồi."
+      ],
+      "explain": {
+        "fr": "… chưa ? : déjà ?",
+        "en": "… chưa?: yet? / ever?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ăn cơm tấm chưa?",
+      "tokens": [
+        "Anh",
+        "ăn",
+        "cơm tấm",
+        "chưa",
+        "không"
+      ],
+      "translation": {
+        "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
+        "en": "Have you tried cơm tấm? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "chưa en fin de question : déjà ?",
+        "en": "chưa at the end: yet? / ever?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dang_lam",
+      "distractors": [
+        "Em sẽ làm việc.",
+        "Em đang làm gì?"
+      ],
+      "explain": {
+        "fr": "đang + verbe : être en train de.",
+        "en": "đang + verb: to be doing."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đang làm gì vậy?",
+      "tokens": [
+        "Anh",
+        "đang",
+        "làm",
+        "gì",
+        "vậy",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "Qu'est-ce que tu fais, là ? (à un homme un peu plus âgé)",
+        "en": "What are you doing right now? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Question très courante au téléphone.",
+        "en": "A very common question on the phone."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_se",
+      "distractors": [
+        "se",
+        "sè"
+      ],
+      "explain": {
+        "fr": "sẽ : le futur.",
+        "en": "sẽ: future marker."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em sắp tới rồi.",
+      "tokens": [
+        "Em",
+        "sắp",
+        "tới",
+        "rồi",
+        "tối"
+      ],
+      "translation": {
+        "fr": "J'arrive bientôt.",
+        "en": "I'm almost there."
+      },
+      "explain": {
+        "fr": "sắp + verbe + rồi : c'est imminent.",
+        "en": "sắp + verb + rồi: it's imminent."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoi_nay",
+      "distractors": [
+        "hồi này",
+        "hỏi nãy"
+      ],
+      "explain": {
+        "fr": "hồi descend : tout à l'heure. hỏi : demander.",
+        "en": "hồi falls: a moment ago. hỏi: to ask."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_vua_an_xong",
+      "distractors": [
+        "Em vừa ăn xôi.",
+        "Em sắp ăn xong."
+      ],
+      "explain": {
+        "fr": "vừa… xong : venir de finir.",
+        "en": "vừa… xong: just finished."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Năm ngoái em đã tới Việt Nam.",
+      "tokens": [
+        "Năm ngoái",
+        "em",
+        "đã",
+        "tới",
+        "Việt Nam",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "L'année dernière, je suis venu(e) au Vietnam.",
+        "en": "Last year I came to Vietnam."
+      },
+      "explain": {
+        "fr": "Repère de temps en tête, puis đã.",
+        "en": "Time word first, then đã."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nam_sau_di_can_tho",
+      "explain": {
+        "fr": "Cần descend, Thơ reste plat.",
+        "en": "Cần falls, Thơ stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

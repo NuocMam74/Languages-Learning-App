@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u16.l01",
+  "unit": "vi-south.u16",
+  "title": {
+    "fr": "Bị bệnh",
+    "en": "Getting sick"
+  },
+  "goal": {
+    "fr": "Dire que tu es malade et souhaiter un bon rétablissement.",
+    "en": "Say you're sick and wish someone well."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u15.l08"
+  ],
+  "concepts": [
+    "c_benh_sick",
+    "c_bi",
+    "s_em_bi_benh",
+    "s_mau_khoe",
+    "c_bac_si",
+    "c_ky_su",
+    "c_giao_vien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_bi_benh",
+      "distractors": [
+        "Em hết bệnh rồi.",
+        "Em khỏe rồi."
+      ],
+      "explain": {
+        "fr": "bị bệnh : être malade. hết bệnh : guéri.",
+        "en": "bị bệnh: sick. hết bệnh: recovered."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_benh_om"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_sick",
+      "explain": {
+        "fr": "Sud : bệnh ; Nord : ốm.",
+        "en": "South: bệnh; North: ốm."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_benh_sick",
+      "distractors": [
+        "bênh",
+        "bến"
+      ],
+      "explain": {
+        "fr": "bệnh tombe court.",
+        "en": "bệnh drops short."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_bi",
+      "explain": {
+        "fr": "bị tombe court (nặng).",
+        "en": "bị drops short (nặng)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay em bị bệnh.",
+      "tokens": [
+        "Hôm nay",
+        "em",
+        "bị",
+        "bệnh",
+        "khỏe"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je suis malade.",
+        "en": "I'm sick today."
+      },
+      "explain": {
+        "fr": "bị + maladie.",
+        "en": "bị + illness."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bac_si",
+      "distractors": [
+        "c_ky_su",
+        "c_giao_vien"
+      ],
+      "explain": {
+        "fr": "bác sĩ : le médecin.",
+        "en": "bác sĩ: doctor."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mau_khoe",
+      "distractors": [
+        "Mau về nha!",
+        "Máu khỏe nha!"
+      ],
+      "explain": {
+        "fr": "mau : vite (Sud). máu : le sang.",
+        "en": "mau: quickly (southern). máu: blood."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh khỏe không?",
+      "tokens": [
+        "Anh",
+        "khỏe",
+        "không",
+        "bệnh"
+      ],
+      "translation": {
+        "fr": "Tu vas bien ? (à un homme un peu plus âgé)",
+        "en": "Are you well? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "khỏe không ? : ça va ?",
+        "en": "khỏe không?: how are you?"
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_mau_khoe",
+      "explain": {
+        "fr": "mau plat, khỏe plonge.",
+        "en": "mau level, khỏe dips."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_benh_sick",
+      "c_bi",
+      "s_em_bi_benh",
+      "s_mau_khoe"
+    ]
+  },
+  "reviewed": false
+}

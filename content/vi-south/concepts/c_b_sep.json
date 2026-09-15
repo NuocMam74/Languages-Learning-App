@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_b_sep",
+  "type": "word",
+  "vi": "sếp",
+  "tone": "sac",
+  "gloss": {
+    "fr": "patron, chef (au travail)",
+    "en": "boss"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_sep_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_b_sep_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/boss.svg",
+  "note": {
+    "fr": "Familier mais très courant au bureau, même pour s'adresser à son chef.",
+    "en": "Casual but very common at the office, even to address your boss."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_goi_salad",
+  "type": "word",
+  "vi": "gỏi",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "salade (gỏi cuốn, gỏi gà)",
+    "en": "salad (gỏi cuốn, gỏi gà)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_goi_salad_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_goi_salad_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

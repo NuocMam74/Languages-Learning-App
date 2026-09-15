@@ -1,0 +1,221 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u15.l08",
+  "unit": "vi-south.u15",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : téléphone et messages",
+    "en": "Test: phone and messages"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais gérer un appel et un message.",
+    "en": "Show you can handle a call and a message."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u15.l07"
+  ],
+  "concepts": [
+    "c_dien_thoai",
+    "c_sach",
+    "c_tien",
+    "s_ai_vay_a",
+    "s_goi_lai_nha",
+    "c_nhan_tin",
+    "s_doi_chut_nha",
+    "c_doi_wait",
+    "s_anh_minh_dang_hop"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_sach",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "điện thoại : le téléphone.",
+        "en": "điện thoại: phone."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ai_vay_a",
+      "distractors": [
+        "Dạ, gì vậy ạ?",
+        "Dạ, đi đâu ạ?"
+      ],
+      "explain": {
+        "fr": "ai vậy ạ ? : c'est qui ? (poli)",
+        "en": "ai vậy ạ?: who is it? (polite)"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_goi_lai_nha",
+      "distractors": [
+        "Mai em gọi lại nha.",
+        "Lát em tới nha."
+      ],
+      "explain": {
+        "fr": "gọi lại : rappeler. lát : tout à l'heure.",
+        "en": "gọi lại: call back. lát: in a bit."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em đang bận, lát em gọi lại nha.",
+      "tokens": [
+        "Em",
+        "đang",
+        "bận",
+        "lát",
+        "em",
+        "gọi lại",
+        "nha",
+        "bán"
+      ],
+      "translation": {
+        "fr": "Je suis occupé(e), je te rappelle tout à l'heure.",
+        "en": "I'm busy, I'll call you back in a bit."
+      },
+      "explain": {
+        "fr": "đang bận + lát gọi lại : la formule parfaite.",
+        "en": "đang bận + lát gọi lại: the perfect line."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhan_tin",
+      "distractors": [
+        "nhận tin",
+        "nhắn tiền"
+      ],
+      "explain": {
+        "fr": "nhắn tin : envoyer un message. nhận : recevoir.",
+        "en": "nhắn tin: to text. nhận: to receive."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhắn Zalo cho em nha.",
+      "tokens": [
+        "Nhắn",
+        "Zalo",
+        "cho",
+        "em",
+        "nha",
+        "gọi"
+      ],
+      "translation": {
+        "fr": "Envoie-moi un message sur Zalo.",
+        "en": "Message me on Zalo."
+      },
+      "explain": {
+        "fr": "nhắn + appli + cho + personne.",
+        "en": "nhắn + app + cho + person."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_doi_chut_nha",
+      "distractors": [
+        "Đội chút nha.",
+        "Đợi chị nha."
+      ],
+      "explain": {
+        "fr": "Đợi chút nha : un instant.",
+        "en": "Đợi chút nha: hold on."
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_doi_wait",
+      "explain": {
+        "fr": "đợi : tombe court et bas (nặng).",
+        "en": "đợi: drops short and low (nặng)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Số điện thoại của chị là bao nhiêu?",
+      "tokens": [
+        "Số điện thoại",
+        "của",
+        "chị",
+        "là",
+        "bao nhiêu",
+        "mấy"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "Un numéro, c'est long : bao nhiêu.",
+        "en": "A phone number is long: bao nhiêu."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em sạc pin nhờ được không?",
+      "tokens": [
+        "Cho",
+        "em",
+        "sạc",
+        "pin",
+        "nhờ",
+        "được",
+        "không",
+        "gọi"
+      ],
+      "translation": {
+        "fr": "Je peux recharger mon téléphone chez vous ?",
+        "en": "Could I charge my phone here?"
+      },
+      "explain": {
+        "fr": "nhờ : avec ton aide, poli.",
+        "en": "nhờ: with your help, polite."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_minh_dang_hop",
+      "distractors": [
+        "Anh Minh đang học.",
+        "Anh Minh sắp họp."
+      ],
+      "explain": {
+        "fr": "họp : la réunion. học : étudier.",
+        "en": "họp: meeting. học: to study."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, em là Lan, bên công ty Sao Mai.",
+      "tokens": [
+        "Dạ",
+        "em",
+        "là",
+        "Lan",
+        "bên",
+        "công ty",
+        "Sao Mai",
+        "của"
+      ],
+      "translation": {
+        "fr": "Bonjour, c'est Lan, de la société Sao Mai.",
+        "en": "Hello, this is Lan from Sao Mai company."
+      },
+      "explain": {
+        "fr": "bên + entreprise : de chez…",
+        "en": "bên + company: from…"
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

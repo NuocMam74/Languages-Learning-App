@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_luong_thang_13",
+  "title": {
+    "fr": "Le 13e mois",
+    "en": "The 13th-month pay"
+  },
+  "body": {
+    "fr": "Beaucoup d'entreprises versent un « lương tháng 13 », un 13e mois, avant le Tết, parfois avec une prime. C'est le moment où l'on rentre au pays natal, les bras chargés de cadeaux. Changer d'emploi juste après le Tết est d'ailleurs très courant.",
+    "en": "Many companies pay a 'lương tháng 13', a 13th month, before Tết, sometimes with a bonus. It's when people go back to their hometown, arms full of gifts. Changing jobs right after Tết is also very common."
+  },
+  "vi": "lương tháng 13",
+  "audio": "audio/cc_b_luong_thang_13.opus",
+  "question": {
+    "prompt": {
+      "fr": "Le lương tháng 13 est versé en général…",
+      "en": "The lương tháng 13 is usually paid…"
+    },
+    "options": [
+      {
+        "fr": "avant le Tết",
+        "en": "before Tết"
+      },
+      {
+        "fr": "en plein été",
+        "en": "in midsummer"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_hoi_kha_lam",
+  "title": {
+    "fr": "Doser : hơi, khá, lắm",
+    "en": "Measuring: hơi, khá, lắm"
+  },
+  "body": {
+    "fr": "Hơi, « un peu », est souvent négatif : hơi mắc, un peu cher. Khá, « plutôt », est souvent positif : khá ngon. Lắm, après l'adjectif, veut dire « très ». « Không… lắm » adoucit : không thích lắm, pas trop. Ces petits mots évitent les jugements tranchés.",
+    "en": "Hơi, 'a bit', is often negative: hơi mắc, a bit pricey. Khá, 'rather', is often positive: khá ngon. Lắm, after the adjective, means 'very'. 'Không… lắm' softens: không thích lắm, not really. These little words avoid blunt judgements."
+  },
+  "vi": "Hơi mắc, nhưng mà ngon.",
+  "audio": "audio/cc_b_hoi_kha_lam.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Hơi mắc » veut dire…",
+      "en": "'Hơi mắc' means…"
+    },
+    "options": [
+      {
+        "fr": "un peu cher",
+        "en": "a bit pricey"
+      },
+      {
+        "fr": "pas cher du tout",
+        "en": "not expensive at all"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u21.l03",
+  "unit": "vi-south.u21",
+  "title": {
+    "fr": "Nha, nghen, hen",
+    "en": "Nha, nghen, hen"
+  },
+  "goal": {
+    "fr": "Adoucir tes phrases avec les particules du Sud.",
+    "en": "Soften your sentences with southern particles."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u21.l02"
+  ],
+  "concepts": [
+    "c_b_nghen",
+    "c_b_nhen",
+    "c_b_hen_particle",
+    "c_b_nho_remember",
+    "s_b_nho_nghen",
+    "s_b_mai_gap_hen",
+    "c_hen"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_nho_nghen",
+      "distractors": [
+        "Nhớ nha!",
+        "Nhớ hen!"
+      ],
+      "explain": {
+        "fr": "nha, hen, nghen : même rôle, nuances différentes. Ici : nghen.",
+        "en": "nha, hen, nghen: same role, different shades. Here: nghen."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_b_particles"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "hen",
+        "hẹn"
+      ],
+      "audioConcepts": [
+        "c_b_hen_particle",
+        "c_hen"
+      ],
+      "explain": {
+        "fr": "hen, plat : particule. hẹn, court : rendez-vous.",
+        "en": "hen, level: particle. hẹn, short: appointment."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nho_remember",
+      "distractors": [
+        "nhỏ",
+        "nhờ"
+      ],
+      "explain": {
+        "fr": "nhớ monte : se souvenir. nhỏ plonge : petit.",
+        "en": "nhớ rises: to remember. nhỏ dips: small."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhớ nghen!",
+      "tokens": [
+        "Nhớ",
+        "nghen",
+        "nhỏ"
+      ],
+      "translation": {
+        "fr": "N'oublie pas, hein !",
+        "en": "Don't forget, okay!"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_mai_gap_hen",
+      "distractors": [
+        "Mai gặp nghen.",
+        "Mốt gặp hen."
+      ],
+      "explain": {
+        "fr": "mai : demain ; mốt : après-demain.",
+        "en": "mai: tomorrow; mốt: the day after."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mai gặp hen.",
+      "tokens": [
+        "Mai",
+        "gặp",
+        "hen",
+        "hẹn"
+      ],
+      "translation": {
+        "fr": "À demain, hein.",
+        "en": "See you tomorrow, eh."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_b_nho_remember",
+      "explain": {
+        "fr": "nhớ : sắc.",
+        "en": "nhớ: sắc."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em về nhen.",
+      "tokens": [
+        "Em",
+        "về",
+        "nhen",
+        "vê"
+      ],
+      "translation": {
+        "fr": "Bon, j'y vais !",
+        "en": "Right, I'm off!"
+      },
+      "explain": {
+        "fr": "về + particule : pour prendre congé.",
+        "en": "về + particle: to take your leave."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_b_nho_nghen",
+      "explain": {
+        "fr": "nhớ monte, nghen reste plat.",
+        "en": "nhớ rises, nghen stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_b_nghen",
+      "c_b_nhen",
+      "c_b_hen_particle",
+      "c_b_nho_remember",
+      "s_b_nho_nghen",
+      "s_b_mai_gap_hen"
+    ]
+  },
+  "reviewed": false
+}

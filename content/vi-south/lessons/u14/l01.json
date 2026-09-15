@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u14.l01",
+  "unit": "vi-south.u14",
+  "title": {
+    "fr": "Thích : j'aime",
+    "en": "Thích: I like"
+  },
+  "goal": {
+    "fr": "Dire ce que tu aimes et demander.",
+    "en": "Say what you like and ask others."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u13.l08"
+  ],
+  "concepts": [
+    "c_thich",
+    "s_thich_pho_khong",
+    "s_thich_lam",
+    "s_ca_phe_sua_da",
+    "s_tra_da",
+    "c_sua_milk"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "s_ca_phe_sua_da",
+      "distractors": [
+        "s_tra_da",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "cà phê sữa đá : le café glacé au lait.",
+        "en": "cà phê sữa đá: iced milk coffee."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thich",
+      "distractors": [
+        "thịt",
+        "thiếc"
+      ],
+      "explain": {
+        "fr": "thích monte : aimer. thịt tombe court : la viande.",
+        "en": "thích rises: to like. thịt drops short: meat."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_thich_lam"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em thích cà phê sữa đá.",
+      "tokens": [
+        "Em",
+        "thích",
+        "cà phê",
+        "sữa",
+        "đá",
+        "trà"
+      ],
+      "translation": {
+        "fr": "J'aime le café glacé au lait.",
+        "en": "I like iced milk coffee."
+      },
+      "explain": {
+        "fr": "thích + nom : aimer quelque chose.",
+        "en": "thích + noun: to like something."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thich_pho_khong",
+      "distractors": [
+        "Anh có thích phở chưa?",
+        "Anh có ăn phở không?"
+      ],
+      "explain": {
+        "fr": "có thích… không ? : aimes-tu… ?",
+        "en": "có thích… không?: do you like…?"
+      }
+    },
+    {
+      "type": "tone_produce",
+      "concept": "c_thich",
+      "explain": {
+        "fr": "thích : monte (sắc), bref à cause du -ch.",
+        "en": "thích: rises (sắc), short because of the -ch."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thich_lam",
+      "distractors": [
+        "Thích lám!",
+        "Thích làm!"
+      ],
+      "explain": {
+        "fr": "lắm monte : beaucoup. làm descend : faire.",
+        "en": "lắm rises: a lot. làm falls: to do."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em không thích ăn cay lắm.",
+      "tokens": [
+        "Em",
+        "không",
+        "thích",
+        "ăn",
+        "cay",
+        "lắm",
+        "ngọt"
+      ],
+      "translation": {
+        "fr": "Je n'aime pas trop le piquant.",
+        "en": "I don't really like spicy food."
+      },
+      "explain": {
+        "fr": "không thích… lắm : pas trop.",
+        "en": "không thích… lắm: not really."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_thich_pho_khong",
+      "explain": {
+        "fr": "phở plonge, không reste plat.",
+        "en": "phở dips, không stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_thich",
+      "s_thich_pho_khong",
+      "s_thich_lam"
+    ]
+  },
+  "reviewed": false
+}

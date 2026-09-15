@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_do_dirty",
+  "type": "word",
+  "vi": "dơ",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "sale",
+    "en": "dirty"
+  },
+  "northernEquivalent": "bẩn",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_do_dirty_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_do_dirty_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

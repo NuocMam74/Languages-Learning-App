@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_b_neu_thi",
+  "title": {
+    "fr": "Nếu… thì…",
+    "en": "Nếu… thì…"
+  },
+  "body": {
+    "fr": "Pas de conditionnel à conjuguer : nếu pose la condition, thì annonce la suite. « Nếu mưa thì tui ở nhà. » À l'oral, on laisse souvent tomber nếu ou thì : « Mưa thì ở nhà ». Le contexte dit si c'est réel ou imaginaire.",
+    "en": "No conditional to conjugate: nếu sets the condition, thì introduces the result. 'Nếu mưa thì tui ở nhà.' In speech, nếu or thì is often dropped: 'Mưa thì ở nhà'. Context tells whether it's real or imagined."
+  },
+  "vi": "Nếu mưa thì tui ở nhà.",
+  "audio": "audio/cc_b_neu_thi.opus",
+  "question": {
+    "prompt": {
+      "fr": "Dans « Nếu mưa thì tui ở nhà », thì introduit…",
+      "en": "In 'Nếu mưa thì tui ở nhà', thì introduces…"
+    },
+    "options": [
+      {
+        "fr": "la conséquence",
+        "en": "the result"
+      },
+      {
+        "fr": "la condition",
+        "en": "the condition"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

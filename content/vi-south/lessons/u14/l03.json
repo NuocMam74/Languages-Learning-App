@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u14.l03",
+  "unit": "vi-south.u14",
+  "title": {
+    "fr": "Ngon, dở",
+    "en": "Tasty, not tasty"
+  },
+  "goal": {
+    "fr": "Juger un plat, poliment.",
+    "en": "Judge a dish, politely."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u14.l02"
+  ],
+  "concepts": [
+    "c_do_bad",
+    "c_do_dirty",
+    "s_do_qua",
+    "s_cung_duoc",
+    "c_hoi_slightly",
+    "c_pho",
+    "c_com_tam",
+    "c_banh_mi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_do_qua",
+      "distractors": [
+        "Ngon quá!",
+        "Dơ quá!"
+      ],
+      "explain": {
+        "fr": "dở : pas bon. dơ : sale.",
+        "en": "dở: not good. dơ: dirty."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_do_south"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "dở",
+        "dơ"
+      ],
+      "audioConcepts": [
+        "c_do_bad",
+        "c_do_dirty"
+      ],
+      "explain": {
+        "fr": "dở plonge : pas bon. dơ reste plat : sale.",
+        "en": "dở dips: not good. dơ stays level: dirty."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_dirty",
+      "explain": {
+        "fr": "Sud : dơ ; Nord : bẩn.",
+        "en": "South: dơ; North: bẩn."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cung_duoc",
+      "distractors": [
+        "Cũng vậy.",
+        "Không được."
+      ],
+      "explain": {
+        "fr": "Cũng được : ça va, c'est correct.",
+        "en": "Cũng được: it's okay."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Món này hơi dở.",
+      "tokens": [
+        "Món",
+        "này",
+        "hơi",
+        "dở",
+        "dơ"
+      ],
+      "translation": {
+        "fr": "Ce plat n'est pas terrible.",
+        "en": "This dish isn't great."
+      },
+      "explain": {
+        "fr": "hơi + adjectif : un peu. Plus doux que dở quá.",
+        "en": "hơi + adjective: a bit. Softer than dở quá."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_pho",
+      "distractors": [
+        "c_com_tam",
+        "c_banh_mi"
+      ],
+      "explain": {
+        "fr": "phở : la soupe de nouilles.",
+        "en": "phở: noodle soup."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Phở ở đây ngon lắm.",
+      "tokens": [
+        "Phở",
+        "ở đây",
+        "ngon",
+        "lắm",
+        "dở"
+      ],
+      "translation": {
+        "fr": "Le phở ici est très bon.",
+        "en": "The phở here is really good."
+      },
+      "explain": {
+        "fr": "ngon lắm : très bon.",
+        "en": "ngon lắm: really tasty."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cung_duoc",
+      "explain": {
+        "fr": "cũng et được : deux tons qui cassent.",
+        "en": "cũng and được: two broken tones."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_do_bad",
+      "c_do_dirty",
+      "s_do_qua",
+      "s_cung_duoc",
+      "c_hoi_slightly"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,6 +1,6 @@
 import { ContentError, seededRandom, shuffle, type ChoiceOption, type Exercise } from "./engine.ts";
 import { heardClassOf, normalizeAnswer, stripTones, syllables, toneOf } from "./text.ts";
-import type { Concept, ConceptId, ContentIndex } from "./types.ts";
+import { hasFeature, type Concept, type ConceptId, type ContentIndex } from "./types.ts";
 
 /**
  * Exercices de révision construits à partir d'un concept seul (blocs Réveil et
@@ -34,8 +34,14 @@ function orderedCandidates(content: ContentIndex, target: Concept, known: Readon
   return [...knownOnes, ...rest];
 }
 
-/** Distracteurs textuels : variantes tonales d'abord (le vrai piège), puis concepts du même type. */
+/**
+ * Distracteurs textuels. Pack tonal : variantes tonales d'abord (le vrai piège), puis
+ * concepts du même type. Pack sans tons : les accents écrits ne distinguent pas
+ * forcément des sons (es : « si » / « sí »), donc jamais deux formes qui ne diffèrent
+ * que par ces marques dans un exercice d'écoute.
+ */
 function textDistractors(content: ContentIndex, target: Concept, known: ReadonlySet<ConceptId>, rand: () => number): string[] {
+  const tonal = hasFeature(content.pack, "tones");
   const norm = normalizeAnswer(target.vi);
   const base = stripTones(norm);
   const seen = new Set([norm]);
@@ -46,8 +52,8 @@ function textDistractors(content: ContentIndex, target: Concept, known: Readonly
     seen.add(n);
     out.push(c.vi);
   };
-  orderedCandidates(content, target, known, rand, (c) => stripTones(normalizeAnswer(c.vi)) === base).forEach(take);
-  orderedCandidates(content, target, known, rand, (c) => c.type === target.type).forEach(take);
+  if (tonal) orderedCandidates(content, target, known, rand, (c) => stripTones(normalizeAnswer(c.vi)) === base).forEach(take);
+  orderedCandidates(content, target, known, rand, (c) => c.type === target.type && (tonal || stripTones(normalizeAnswer(c.vi)) !== base)).forEach(take);
   return out;
 }
 
@@ -68,6 +74,7 @@ function imageDistractors(content: ContentIndex, target: Concept, known: Readonl
 
 function toneFeasible(content: ContentIndex, target: Concept, allowTtsTone: boolean): boolean {
   return (
+    hasFeature(content.pack, "tones") &&
     content.pack.toneSystem !== undefined &&
     target.type === "word" &&
     syllables(target.vi).length === 1 &&
