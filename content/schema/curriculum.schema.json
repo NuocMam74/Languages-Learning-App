@@ -3,22 +3,51 @@
   "$id": "https://parlo.app/schema/curriculum.schema.json",
   "title": "Cursus (graphe de leçons)",
   "type": "object",
-  "required": ["pack", "blocks", "units", "paths"],
+  "required": [
+    "pack",
+    "blocks",
+    "units",
+    "paths"
+  ],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
-    "pack": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
+    "pack": {
+      "type": "string"
+    },
     "blocks": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "title", "units"],
+        "required": [
+          "id",
+          "title",
+          "units"
+        ],
         "additionalProperties": false,
         "properties": {
-          "id": { "type": "string", "pattern": "^b[0-9]$" },
-          "title": { "$ref": "common.schema.json#/$defs/localized" },
-          "units": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/unitId" } },
-          "certificate": { "enum": ["A0", "A1", "A2"] }
+          "id": {
+            "type": "string",
+            "pattern": "^b[0-9]$"
+          },
+          "title": {
+            "$ref": "common.schema.json#/$defs/localized"
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/unitId"
+            }
+          },
+          "certificate": {
+            "enum": [
+              "A0",
+              "A1",
+              "A2"
+            ]
+          }
         }
       }
     },
@@ -26,14 +55,52 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "title", "lessons", "status"],
+        "required": [
+          "id",
+          "title",
+          "lessons",
+          "status"
+        ],
         "additionalProperties": false,
         "properties": {
-          "id": { "$ref": "common.schema.json#/$defs/unitId" },
-          "title": { "$ref": "common.schema.json#/$defs/localized" },
-          "status": { "enum": ["available", "planned"] },
-          "tags": { "type": "array", "items": { "enum": ["family", "travel", "work", "culture", "core"] } },
-          "lessons": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/lessonId" } }
+          "id": {
+            "$ref": "common.schema.json#/$defs/unitId"
+          },
+          "title": {
+            "$ref": "common.schema.json#/$defs/localized"
+          },
+          "status": {
+            "enum": [
+              "available",
+              "planned"
+            ]
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "family",
+                "travel",
+                "work",
+                "culture",
+                "core"
+              ]
+            }
+          },
+          "lessons": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/lessonId"
+            }
+          },
+          "requires": {
+            "description": "Unités dont le test doit être réussi (ou sauté au placement) pour débloquer celle-ci. Défaut : unité précédente dans la liste. Contrat parcours §2.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "$ref": "common.schema.json#/$defs/unitId"
+            }
+          }
         }
       }
     },
@@ -42,11 +109,23 @@
       "type": "object",
       "additionalProperties": {
         "type": "object",
-        "required": ["boostTags"],
+        "required": [
+          "boostTags"
+        ],
         "additionalProperties": false,
         "properties": {
-          "boostTags": { "type": "array", "items": { "type": "string" } },
-          "extraUnits": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/unitId" } }
+          "boostTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "extraUnits": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/unitId"
+            }
+          }
         }
       }
     }

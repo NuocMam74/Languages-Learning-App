@@ -167,6 +167,32 @@
       "items": {
         "$ref": "common.schema.json#/$defs/localized"
       }
+    },
+    "levelNames": {
+      "description": "Noms des niveaux de profil : 10 tranches de 5 niveaux (1–5, 6–10…, 46–50). Contrat parcours §3.",
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "$ref": "common.schema.json#/$defs/localized"
+      }
+    },
+    "tutor": {
+      "description": "Persona du professeur IA propre au pack ; absente = professeur indisponible pour ce pack.",
+      "type": "object",
+      "required": [
+        "name",
+        "persona"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "persona": {
+          "$ref": "common.schema.json#/$defs/localized"
+        }
+      }
     }
   }
 }

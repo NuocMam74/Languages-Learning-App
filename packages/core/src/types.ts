@@ -104,6 +104,8 @@ export interface Unit {
   title: Localized;
   status: "available" | "planned";
   tags?: string[];
+  /** Unités à réussir avant celle-ci (défaut : la précédente). */
+  requires?: UnitId[];
   lessons: LessonId[];
 }
 
@@ -131,6 +133,10 @@ export interface Pack {
   welcome?: { vi: string; translation: Localized; audio?: string; reviewed: boolean };
   /** Noms des 5 divisions de ligue, de l'entrée au sommet. */
   leagueDivisions?: Localized[];
+  /** 10 noms de tranches de niveaux (1–5, 6–10…). */
+  levelNames?: Localized[];
+  /** Persona du professeur IA ; absente = indisponible pour ce pack. */
+  tutor?: { name: string; persona: Localized };
   comingSoon?: boolean;
 }
 
