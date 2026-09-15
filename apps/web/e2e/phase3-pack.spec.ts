@@ -39,7 +39,27 @@ test("espagnol hors ligne, retour au vietnamien intact, les deux progressions pe
   const viXp = await hubXp(page);
   expect(viXp).not.toBe("0 XP");
 
-  // 2. Changer de langue depuis le hub : l'espagnol est sélectionnable (plus « bientôt »).
+  // 2. Pack `es` en préparation (comingSoon, contrat phase5 §5) : visible pour un compte editor seulement.
+  //    Compte connu localement (rôles lus sur /me), session expirée : aucune synchronisation pendant le test.
+  await page.route("**/api/**", (route) => route.fulfill({ status: 401, contentType: "application/json", body: JSON.stringify({ detail: "unauthorized" }) }));
+  await page.getByTestId("hub-pack").click();
+  await expect(page.getByRole("radio", { name: esName })).toHaveCount(0);
+  await page.evaluate(async () => {
+    const idb = await new Promise<IDBDatabase>((resolve, reject) => {
+      const req = indexedDB.open("parlo");
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+    await new Promise<void>((resolve, reject) => {
+      const tx = idb.transaction("kv", "readwrite");
+      tx.objectStore("kv").put({ key: "account", value: { email: "ed@parlo.app", displayName: "Ed", locale: "fr", linkedAt: new Date().toISOString(), roles: ["learner", "editor"] } });
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+    idb.close();
+  });
+  await page.goto("/");
+  await expect(page.getByTestId("hub-pack")).toBeVisible();
   await page.getByTestId("hub-pack").click();
   await expect(page.getByRole("heading", { name: "Quelle langue veux-tu parler ?" })).toBeVisible();
   const esRadio = page.getByRole("radio", { name: esName });

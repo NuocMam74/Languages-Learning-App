@@ -71,6 +71,8 @@ export interface SessionSnapshot {
   session?: SessionRun;
   run?: LessonRun;
   savedAt: string;
+  /** Version du contenu du pack au démarrage de la séance (contrat phase5 §6). */
+  contentVersion?: number;
 }
 
 export interface KeyValue<T = unknown> {

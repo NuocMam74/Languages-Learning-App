@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { nextLesson, planSession, RECAP_SECONDS, REVIEW_ITEM_SECONDS, OVERRUN_TOLERANCE } from "./session.ts";
+import { isLessonUnlocked, isUnitAvailable, isUnitTestPassed, nextLesson, planSession, RECAP_SECONDS, REVIEW_ITEM_SECONDS, OVERRUN_TOLERANCE, unitRequires } from "./session.ts";
 import { newCard, review, type SrsCard } from "./srs.ts";
 import { loadPack } from "./testing/pack.ts";
 import type { Curriculum } from "./types.ts";
@@ -65,17 +65,37 @@ describe("nextLesson", () => {
     expect(nextLesson(content.curriculum, content.lessons, all, null)).toBeNull();
   });
 
-  it("le parcours du profil remonte les unités taguées", () => {
-    const lessons = new Map(content.lessons);
-    const base = content.lessons.get("vi-south.u01.l01")!;
-    lessons.set("vi-south.u04.l01", { ...base, id: "vi-south.u04.l01", unit: "vi-south.u04", prerequisites: [] });
-    const curriculum: Curriculum = {
-      ...content.curriculum,
-      units: content.curriculum.units.map((u) =>
-        u.id === "vi-south.u04" ? { ...u, status: "available" as const, lessons: ["vi-south.u04.l01"] } : u,
-      ),
-    };
-    expect(nextLesson(curriculum, lessons, new Set(), "travel")?.id).toBe("vi-south.u01.l01");
-    expect(nextLesson(curriculum, lessons, new Set(), "family")?.id).toBe("vi-south.u04.l01");
+  it("le parcours du profil trie les unités disponibles : famille, voyage, travail changent réellement l'ordre", () => {
+    // Socle u01→u02→u03 réussi : u04 (famille), u05 (travail), u06 (voyage) deviennent disponibles.
+    const done = new Set(["vi-south.u01", "vi-south.u02", "vi-south.u03"].flatMap((u) => content.curriculum.units.find((x) => x.id === u)!.lessons));
+    expect(nextLesson(content.curriculum, content.lessons, new Set(), "family")?.id).toBe("vi-south.u01.l01");
+    expect(nextLesson(content.curriculum, content.lessons, done, "family")?.id).toBe("vi-south.u04.l01");
+    expect(nextLesson(content.curriculum, content.lessons, done, "work")?.id).toBe("vi-south.u05.l01");
+    expect(nextLesson(content.curriculum, content.lessons, done, "travel")?.id).toBe("vi-south.u06.l01");
+    expect(nextLesson(content.curriculum, content.lessons, done, null)?.id).toBe("vi-south.u04.l01");
+  });
+
+  it("test d'unité terminé sous le seuil : l'unité suivante reste fermée, le test est reproposé", () => {
+    const u01 = content.curriculum.units[0]!;
+    const test = u01.lessons.find((id) => content.lessons.get(id)?.kind === "unit_test")!;
+    const completed = new Set(u01.lessons);
+    const failed = new Set(u01.lessons.filter((id) => id !== test));
+    expect(nextLesson(content.curriculum, content.lessons, completed, null, failed)?.id).toBe(test);
+    expect(isUnitAvailable(content.curriculum, content.lessons, "vi-south.u02", { completed, passed: failed })).toBe(false);
+    expect(nextLesson(content.curriculum, content.lessons, completed, null, completed)?.id).toBe("vi-south.u02.l01");
+    expect(isUnitTestPassed(0.7)).toBe(true);
+    expect(isUnitTestPassed(0.69)).toBe(false);
+  });
+
+  it("graphe : requires explicite ou unité précédente, prérequis inter-unités ignorés, garde des leçons", () => {
+    expect(unitRequires(content.curriculum, "vi-south.u10")).toEqual(["vi-south.u05", "vi-south.u06"]);
+    const noRequires: Curriculum = { ...content.curriculum, units: content.curriculum.units.map(({ requires: _r, ...u }) => u) };
+    expect(unitRequires(noRequires, "vi-south.u02")).toEqual(["vi-south.u01"]);
+    expect(unitRequires(noRequires, "vi-south.u01")).toEqual([]);
+    const none = { completed: new Set<string>() };
+    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u01.l01", none)).toBe(true);
+    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u24.l08", none)).toBe(false);
+    const u01Test = content.curriculum.units[0]!.lessons.find((id) => content.lessons.get(id)?.kind === "unit_test")!;
+    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u02.l01", { completed: new Set([u01Test]) })).toBe(true);
   });
 });

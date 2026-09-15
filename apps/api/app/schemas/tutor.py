@@ -18,8 +18,17 @@ class TutorReplyOut(CamelModel):
 
 
 class WhyRequest(CamelModel):
-    lesson_id: Annotated[str, Field(min_length=1, max_length=128)]
+    # null : item de révision hors leçon → explication générique du contenu (jamais d'erreur, contrat parcours §5).
+    lesson_id: Annotated[str, Field(min_length=1, max_length=128)] | None
     step_index: Annotated[int, Field(ge=0, le=1000)]
     given: Annotated[str, Field(max_length=200)]
     expected: Annotated[str, Field(max_length=200)]
     locale: TutorLocale = "fr"
+
+
+class TutorStatusOut(CamelModel):
+    """`GET /tutor/status?pack=` (contrat parcours §5)."""
+
+    available: bool
+    reason: Literal["no_model", "pack_unsupported"] | None
+    persona_name: str | None

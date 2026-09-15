@@ -1,13 +1,16 @@
-import { BADGE_CODES, nextLesson, sessionItemsDone, sessionItemsRemaining, type ContentIndex, type SessionPhase } from "@parlo/core";
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { BADGE_CODES, levelForXp, nextLesson, sessionItemsDone, sessionItemsRemaining, TONAL_STEP_TYPES, UNIT_TEST_PASS_SCORE, type ContentIndex, type Exercise, type SessionPhase } from "@parlo/core";
+import { useEffect, useRef, useState } from "react";
+import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { useAccount } from "../account.ts";
+import { playConcept, ttsAllowed } from "../audio.ts";
 import { BadgeIcon } from "../components/BadgeIcon.tsx";
 import { ExerciseView } from "../components/exercises.tsx";
+import { levelLabel, LevelLine } from "../components/LevelLine.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
+import { playCorrectSound } from "../feedback-sound.ts";
 import { l, t, type MessageKey } from "../i18n/index.ts";
-import { getPlacement, getProfile, completedLessons } from "../learner.ts";
-import { lessonsBefore } from "@parlo/core";
+import { getProfile, progressState } from "../learner.ts";
+import { usePrefs } from "../prefs.ts";
 import { useSession } from "../session-store.ts";
 import { askWhy, type WhyAnswer } from "../tutor.ts";
 
@@ -25,21 +28,35 @@ const PHASE_LABEL: Partial<Record<SessionPhase["kind"], MessageKey>> = {
 export function SessionPage({ content, mode }: { content: ContentIndex; mode: "daily" | "review" | "lesson" }) {
   const { lessonId = "" } = useParams();
   const navigate = useNavigate();
-  const { status, run, phase, exercise, feedback, recap, error, open, answer, next } = useSession();
+  const { status, run, phase, exercise, feedback, recap, error, open, answer, next, remedial } = useSession();
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     void open(content, mode === "lesson" ? { source: "lesson", lessonId } : { source: mode });
-  }, [content, mode, lessonId, open]);
+  }, [content, mode, lessonId, open, attempt]);
 
   useEffect(() => {
     if (status === "feedback" && feedback?.correct) {
+      playCorrectSound();
       const id = setTimeout(() => void next(), CORRECT_PAUSE_MS);
       return () => clearTimeout(id);
     }
   }, [status, feedback, next]);
 
   if (status === "error") return <Screen><p className="text-son-mai">{error}</p></Screen>;
-  if (status === "done" && recap) return <Recap content={content} onDone={() => navigate("/")} />;
+  if (status === "locked") return <Navigate to="/" replace state={{ notice: "locked" }} />;
+  if (status === "empty") {
+    const review = mode === "review";
+    return (
+      <Screen action={<Button onClick={() => navigate("/", { replace: true })}>{t("recap.next")}</Button>}>
+        <div className="flex flex-1 flex-col justify-center gap-4" data-testid="session-empty">
+          <h1 className="font-serif text-2xl">{t(review ? "journey.empty.title" : "journey.empty.dailyTitle")}</h1>
+          <p className="text-lg text-phu-sa">{t(review ? "journey.empty.body" : "journey.empty.dailyBody")}</p>
+        </div>
+      </Screen>
+    );
+  }
+  if (status === "done" && recap) return <Recap content={content} onDone={() => navigate("/")} onRetry={() => setAttempt((n) => n + 1)} />;
   if (!run || !exercise || !phase) return <Screen><div /></Screen>;
 
   const done = sessionItemsDone(run);
@@ -76,21 +93,50 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
       {lesson && lessonStart && <p className="mt-1 text-sm text-phu-sa">{l(lesson.goal)}</p>}
 
       {nudgeConcept && status === "answering" && (
-        <aside className="mt-4 rounded-2xl bg-nghe/15 px-4 py-3 text-sm">{t("lesson.tutorNudge", { word: nudgeConcept.vi })}</aside>
+        <aside className="mt-4 rounded-2xl bg-nghe/15 px-4 py-3 text-sm" data-testid="tutor-nudge">
+          {t("lesson.tutorNudge", { word: nudgeConcept.vi })}
+          {remedial && <span className="mt-1 block font-semibold">{t("journey.easier")}</span>}
+        </aside>
       )}
 
       <main className="flex flex-1 flex-col pt-6">
-        <ExerciseView key={`${phase.kind}:${done}`} exercise={exercise} content={content} onAnswer={(r) => void answer(r)} locked={status !== "answering"} />
+        <ExerciseView key={`${phase.kind}:${done}:${remedial ?? ""}`} exercise={exercise} content={content} onAnswer={(r) => void answer(r)} locked={status !== "answering"} />
       </main>
 
-      {status === "feedback" && feedback && <Feedback />}
+      {status === "feedback" && feedback && <Feedback content={content} />}
     </div>
   );
 }
 
-function Feedback() {
-  const { feedback, exercise, run, phase, given, next } = useSession();
+/** Audio de l'exercice (réécoute après une erreur, spec §4.5). */
+function exerciseAudio(exercise: Exercise) {
+  switch (exercise.type) {
+    case "listen_pick_image":
+    case "listen_pick_text":
+    case "tone_identify":
+      return exercise.audio;
+    case "tone_minimal_pair":
+    case "build_sentence":
+      return exercise.audio;
+    default:
+      return null;
+  }
+}
+
+function Feedback({ content }: { content: ContentIndex }) {
+  const { feedback, exercise, run, phase, given, next, remedial } = useSession();
+  const silent = usePrefs((s) => s.silent);
   const [why, setWhy] = useState<WhyAnswer | "loading" | null>(null);
+  const replayed = useRef(false);
+
+  // Erreur : la bonne réponse se fait réentendre (sauf mode silencieux).
+  useEffect(() => {
+    if (!feedback || feedback.correct || !exercise || silent || replayed.current) return;
+    replayed.current = true;
+    const audio = exerciseAudio(exercise);
+    if (audio) void playConcept(content, audio, { allowTts: ttsAllowed(TONAL_STEP_TYPES.has(exercise.type as never)) });
+  }, [feedback, exercise, silent, content]);
+
   if (!feedback || !exercise || !run || !phase) return null;
 
   const expectedOption = "options" in exercise && "answerId" in exercise ? exercise.options.find((o) => o.id === exercise.answerId) : undefined;
@@ -132,7 +178,7 @@ function Feedback() {
           )}
           {feedback.explain && <p>{l(feedback.explain)}</p>}
 
-          {why === null && (
+          {why === null && !remedial && (
             <button type="button" onClick={() => void ask()} className="min-h-11 self-start text-left font-semibold text-ngoc underline-offset-4 hover:underline">
               {t("tutor.why")}
             </button>
@@ -141,7 +187,13 @@ function Feedback() {
           {why !== null && why !== "loading" && (
             <p className="border-l-4 border-nghe pl-3 text-sm" aria-live="polite">
               <span className="font-semibold">{t("tutor.name")} : </span>
-              {why.kind === "tutor" ? why.text : t(feedback.explain ? "tutor.why.offline" : "tutor.why.offlineNoExplain")}
+              {why.kind === "tutor"
+                ? why.text
+                : why.kind === "unavailable"
+                  ? feedback.explain
+                    ? l(feedback.explain)
+                    : t("journey.why.fallback")
+                  : t(feedback.explain ? "tutor.why.offline" : "tutor.why.offlineNoExplain")}
             </p>
           )}
 
@@ -153,26 +205,49 @@ function Feedback() {
   );
 }
 
-function Recap({ content, onDone }: { content: ContentIndex; onDone: () => void }) {
+function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: () => void; onRetry: () => void }) {
   const recap = useSession((s) => s.recap);
   const account = useAccount((s) => s.status);
   const [nextTitle, setNextTitle] = useState<string | null>(null);
 
   useEffect(() => {
-    void Promise.all([getProfile(), completedLessons(), getPlacement()]).then(([profile, completed, placement]) => {
-      const unlocked = new Set([...completed, ...(placement ? lessonsBefore(content.curriculum, placement.entryLessonId) : [])]);
-      const upcoming = nextLesson(content.curriculum, content.lessons, unlocked, profile.motivation);
+    void Promise.all([getProfile(), progressState(content)]).then(([profile, progress]) => {
+      const upcoming = nextLesson(content.curriculum, content.lessons, progress.unlocked, profile.motivation, progress.passed);
       setNextTitle(upcoming ? l(upcoming.title) : null);
     });
   }, [content]);
 
   if (!recap) return null;
   const concepts = (ids: readonly string[]) => ids.flatMap((id) => content.concepts.get(id) ?? []);
-  const learned = concepts(recap.learned);
+  const learned = concepts(recap.canSay);
   const reviewed = concepts(recap.reviewed);
   const title: MessageKey = recap.source === "lesson" ? "recap.title" : recap.source === "review" ? "session.recap.reviewTitle" : "session.recap.title";
   const offerAccount = recap.firstLesson && account === "guest";
   const badges = BADGE_CODES.filter((code) => recap.badges.includes(code));
+  const before = levelForXp(recap.xpBefore).value;
+  const after = levelLabel(content.pack, recap.xpAfter);
+  const levelUp = after.value > before;
+
+  // Test d'unité sous le seuil : écran « Presque ! Refais le test » (contrat phase5 §2).
+  if (recap.unitTest && !recap.unitTest.passed) {
+    const lessonId = recap.unitTest.lessonId;
+    return (
+      <Screen
+        action={
+          <div className="flex flex-col gap-2">
+            <Button onClick={onRetry} data-lesson={lessonId}>{t("journey.unitTest.retry")}</Button>
+            <Button variant="quiet" onClick={onDone}>{t("recap.next")}</Button>
+          </div>
+        }
+      >
+        <div className="flex flex-1 flex-col justify-center gap-5" data-testid="unit-test-failed">
+          <h1 className="font-serif text-2xl">{t("journey.unitTest.almost")}</h1>
+          <p className="text-lg">{t("journey.unitTest.almostBody", { pass: Math.round(UNIT_TEST_PASS_SCORE * 100), n: Math.round(recap.unitTest.score * 100) })}</p>
+          {recap.xp > 0 && <p className="text-lg font-semibold text-ngoc">{t("recap.xp", { n: recap.xp })}</p>}
+        </div>
+      </Screen>
+    );
+  }
 
   return (
     <Screen action={<Button onClick={onDone}>{t("recap.next")}</Button>}>
@@ -182,6 +257,17 @@ function Recap({ content, onDone }: { content: ContentIndex; onDone: () => void 
           <span className="text-vi font-semibold text-ngoc motion-safe:animate-[rise_600ms_ease-out]">{t("recap.xp", { n: recap.xp })}</span>
           <span className="text-lg text-phu-sa">{t("recap.streak", { n: recap.streak.current })}</span>
         </div>
+
+        {levelUp ? (
+          <section className="flex flex-col gap-1 rounded-2xl bg-nghe/20 px-5 py-4 motion-safe:animate-[rise_700ms_ease-out]" aria-live="polite" data-testid="level-up">
+            <p className="font-serif text-2xl">{t("journey.level.up", { n: after.value })}</p>
+            {after.name && <p className="text-lg">{t("journey.level.upName", { name: after.name })}</p>}
+          </section>
+        ) : (
+          <LevelLine pack={content.pack} xp={recap.xpAfter} />
+        )}
+
+        {recap.unitTest?.passed && <p className="border-l-4 border-ngoc pl-3 font-medium" data-testid="unit-test-passed">{t("journey.unitTest.passed")}</p>}
 
         {learned.length > 0 && (
           <section>

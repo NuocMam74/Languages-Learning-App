@@ -11,6 +11,8 @@ class FileStorage(Protocol):
 
     def load(self, key: str) -> bytes | None: ...
 
+    def delete(self, key: str) -> None: ...
+
 
 class LocalStorage:
     def __init__(self, root: Path) -> None:
@@ -30,6 +32,9 @@ class LocalStorage:
     def load(self, key: str) -> bytes | None:
         path = self._path(key)
         return path.read_bytes() if path.is_file() else None
+
+    def delete(self, key: str) -> None:
+        self._path(key).unlink(missing_ok=True)
 
 
 class S3Storage:
@@ -52,6 +57,9 @@ class S3Storage:
             return None
         body: bytes = obj["Body"].read()
         return body
+
+    def delete(self, key: str) -> None:
+        self.client.delete_object(Bucket=self.bucket, Key=self.prefix + key)
 
 
 def make_storage(settings: Settings) -> FileStorage:

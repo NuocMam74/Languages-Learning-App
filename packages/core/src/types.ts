@@ -148,6 +148,11 @@ export interface ContentIndex {
   concepts: ReadonlyMap<ConceptId, Concept>;
   culture: ReadonlyMap<string, CultureCard>;
   variants?: LexicalVariants;
+  /**
+   * Médias présents (contrat phase5 §1). Absent = inconnu (contenu lu sur disque en test) : tout est
+   * considéré disponible. Le client le reçoit toujours avec le bundle.
+   */
+  mediaIndex?: ReadonlySet<string>;
 }
 
 /**

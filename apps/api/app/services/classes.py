@@ -31,6 +31,8 @@ from app.models import (
 from app.services.content import Pack, concept_documents
 from app.services.friends import CROCKFORD_ALPHABET
 from app.services.leagues import week_bounds, week_start_date, xp_between
+from app.services.learner import streak_of
+from app.services.streak import displayed_current
 
 CODE_LENGTH = 6
 MAX_STUDENTS = 60
@@ -142,36 +144,28 @@ def _completed_by_user(db: Session, user_ids: list[str], pack_code: str) -> dict
     return done
 
 
-def _last_active(db: Session, user_id: str) -> date | None:
-    row = db.execute(
-        select(func.max(StudySession.local_date), func.max(StudySession.ended_at)).where(
-            StudySession.user_id == user_id
-        )
-    ).one()
-    local, ended = row
-    if local is not None:
-        return local  # type: ignore[no-any-return]
-    if ended is not None:
-        return (ended if isinstance(ended, datetime) else datetime.fromisoformat(str(ended))).date()
-    return None
+def _as_date(value: object) -> date | None:
+    if value is None:
+        return None
+    if isinstance(value, datetime):
+        return value.date()
+    if isinstance(value, date):
+        return value
+    return datetime.fromisoformat(str(value)).date()
 
 
-def weak_concepts(db: Session, user_id: str, pack: Pack | None, now: datetime) -> list[dict[str, object]]:
-    """Concepts au plus fort taux d'erreur sur 30 jours (≥ 3 réponses, taux > 0), 5 au plus."""
-    totals: dict[str, int] = defaultdict(int)
-    wrong: dict[str, int] = defaultdict(int)
+def _last_active_by_user(db: Session, user_ids: list[str]) -> dict[str, date | None]:
     rows = db.execute(
-        select(Answer.concept_id, Answer.concept_ids, Answer.correct).where(
-            Answer.user_id == user_id, Answer.created_at >= now - WEAK_WINDOW
-        )
+        select(StudySession.user_id, func.max(StudySession.local_date), func.max(StudySession.ended_at))
+        .where(StudySession.user_id.in_(user_ids))
+        .group_by(StudySession.user_id)
     )
-    for concept_id, concept_ids, correct in rows:
-        ids = [c for c in (concept_ids or []) if isinstance(c, str)] or ([concept_id] if concept_id else [])
-        for cid in dict.fromkeys(ids):
-            totals[cid] += 1
-            if not correct:
-                wrong[cid] += 1
-    docs = concept_documents(pack) if pack is not None else {}
+    return {user_id: _as_date(local) or _as_date(ended) for user_id, local, ended in rows}
+
+
+def _weak_from_counts(
+    totals: dict[str, int], wrong: dict[str, int], docs: dict[str, dict[str, object]]
+) -> list[dict[str, object]]:
     candidates = [
         (wrong[cid] / n, n, cid)
         for cid, n in totals.items()
@@ -184,21 +178,61 @@ def weak_concepts(db: Session, user_id: str, pack: Pack | None, now: datetime) -
     ]
 
 
+def weak_concepts_by_user(
+    db: Session, user_ids: list[str], pack: Pack | None, now: datetime
+) -> dict[str, list[dict[str, object]]]:
+    """Concepts au plus fort taux d'erreur sur 30 jours (≥ 3 réponses, taux > 0), 5 au plus, par élève."""
+    totals: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    wrong: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    if user_ids:
+        rows = db.execute(
+            select(Answer.user_id, Answer.concept_id, Answer.concept_ids, Answer.correct).where(
+                Answer.user_id.in_(user_ids), Answer.created_at >= now - WEAK_WINDOW
+            )
+        )
+        for user_id, concept_id, concept_ids, correct in rows:
+            ids = [c for c in (concept_ids or []) if isinstance(c, str)] or ([concept_id] if concept_id else [])
+            for cid in dict.fromkeys(ids):
+                totals[user_id][cid] += 1
+                if not correct:
+                    wrong[user_id][cid] += 1
+    docs = concept_documents(pack) if pack is not None else {}
+    return {uid: _weak_from_counts(totals[uid], wrong[uid], docs) for uid in user_ids}
+
+
+def weak_concepts(db: Session, user_id: str, pack: Pack | None, now: datetime) -> list[dict[str, object]]:
+    return weak_concepts_by_user(db, [user_id], pack, now)[user_id]
+
+
+def exam_results_by_user(db: Session, user_ids: list[str], pack_code: str) -> dict[str, list[dict[str, object]]]:
+    """Dernière tentative soumise par niveau, par élève."""
+    latest: dict[str, dict[str, dict[str, object]]] = defaultdict(dict)
+    if user_ids:
+        rows = db.execute(
+            select(ExamAttempt.user_id, Exam.level, ExamAttempt.passed, ExamAttempt.score_json)
+            .join(Exam, Exam.id == ExamAttempt.exam_id)
+            .where(
+                ExamAttempt.user_id.in_(user_ids),
+                Exam.course_id == pack_code,
+                ExamAttempt.submitted_at.is_not(None),
+            )
+            .order_by(ExamAttempt.submitted_at)
+        )
+        for user_id, level, passed, score in rows:
+            latest[user_id][level] = {
+                "level": level,
+                "passed": bool(passed),
+                "global": float((score or {}).get("global", 0.0)),
+            }
+    return {uid: [latest[uid][k] for k in sorted(latest[uid])] for uid in user_ids}
+
+
 def exam_results(db: Session, user_id: str, pack_code: str) -> list[dict[str, object]]:
-    """Dernière tentative soumise par niveau."""
-    rows = db.execute(
-        select(Exam.level, ExamAttempt.passed, ExamAttempt.score_json, ExamAttempt.submitted_at)
-        .join(Exam, Exam.id == ExamAttempt.exam_id)
-        .where(ExamAttempt.user_id == user_id, Exam.course_id == pack_code, ExamAttempt.submitted_at.is_not(None))
-        .order_by(ExamAttempt.submitted_at)
-    )
-    latest: dict[str, dict[str, object]] = {}
-    for level, passed, score, _ in rows:
-        latest[level] = {"level": level, "passed": bool(passed), "global": float((score or {}).get("global", 0.0))}
-    return [latest[k] for k in sorted(latest)]
+    return exam_results_by_user(db, [user_id], pack_code)[user_id]
 
 
 def students_progress(db: Session, klass: SchoolClass, pack: Pack | None, now: datetime) -> list[StudentProgress]:
+    """Tableau de bord : un nombre constant de requêtes, quel que soit le nombre d'élèves."""
     members = db.execute(
         select(User.id, User.display_name, ClassMember.joined_at)
         .join(ClassMember, ClassMember.user_id == User.id)
@@ -208,22 +242,33 @@ def students_progress(db: Session, klass: SchoolClass, pack: Pack | None, now: d
     completed = _completed_by_user(db, user_ids, klass.pack_code)
     start, end = week_bounds(week_start_date(now))
     xp = xp_between(db, user_ids, start, end)
+    streaks = {r.user_id: r for r in db.scalars(select(StreakRow).where(StreakRow.user_id.in_(user_ids)))}
+    enrollments = {
+        e.user_id: e
+        for e in db.scalars(
+            select(Enrollment).where(Enrollment.user_id.in_(user_ids), Enrollment.course_id == klass.pack_code)
+        )
+    }
+    last_active = _last_active_by_user(db, user_ids)
+    weak = weak_concepts_by_user(db, user_ids, pack, now)
+    exams = exam_results_by_user(db, user_ids, klass.pack_code)
+    today = now.date()
     out = []
     for m in sorted(members, key=lambda r: (r.display_name.casefold(), r.id)):
-        streak = db.get(StreakRow, m.id)
-        enrollment = db.get(Enrollment, (m.id, klass.pack_code))
+        streak = streaks.get(m.id)
+        enrollment = enrollments.get(m.id)
         out.append(
             StudentProgress(
                 id=m.id,
                 display_name=m.display_name,
                 joined_at=m.joined_at,
-                last_active_date=_last_active(db, m.id),
-                streak=streak.current if streak else 0,
+                last_active_date=last_active.get(m.id),
+                streak=displayed_current(streak_of(streak), today) if streak else 0,
                 xp_week=xp.get(m.id, 0),
                 lessons_completed=len(completed.get(m.id, set())),
                 current_lesson_id=enrollment.current_lesson_id if enrollment else None,
-                weak_concepts=weak_concepts(db, m.id, pack, now),
-                exams=exam_results(db, m.id, klass.pack_code),
+                weak_concepts=weak[m.id],
+                exams=exams[m.id],
             )
         )
     return out

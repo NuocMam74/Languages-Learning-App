@@ -1,4 +1,5 @@
 import { seededRandom, shuffle } from "../engine.ts";
+import { hasNativeAudio, type MediaIndex } from "../media.ts";
 import { heardClassOf, normalizeAnswer, stripTones, syllables, toneOf } from "../text.ts";
 import type { Concept, ConceptId, Tone } from "../types.ts";
 
@@ -84,12 +85,12 @@ type HeardClasses = readonly (readonly Tone[])[];
  * natif (en production, jamais de synthèse vocale pour un exercice de tons, §7.4).
  * Les doublons d'écriture sont retirés (deux barques « má » seraient ambiguës).
  */
-export function choNoiPool(concepts: readonly Concept[], { requireNative }: { requireNative: boolean }): Concept[] {
+export function choNoiPool(concepts: readonly Concept[], { requireNative, media = null }: { requireNative: boolean; media?: MediaIndex | null }): Concept[] {
   const seen = new Set<string>();
   return concepts.filter((c) => {
     const key = normalizeAnswer(c.vi);
     if (!key || seen.has(key)) return false;
-    if (requireNative && !c.audio.some((a) => a.source === "native")) return false;
+    if (requireNative && !hasNativeAudio(c, media)) return false;
     seen.add(key);
     return true;
   });

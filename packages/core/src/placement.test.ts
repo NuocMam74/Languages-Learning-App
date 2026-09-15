@@ -7,13 +7,14 @@ import {
   lessonsBefore,
   nextPlacementItem,
   placementCards,
+  playablePlacement,
   resolveEntryLesson,
   scorePlacement,
   type PlacementAnswer,
   type PlacementSpec,
 } from "./placement.ts";
 import { loadPack } from "./testing/pack.ts";
-import type { ContentIndex, Lesson } from "./types.ts";
+import type { ContentIndex } from "./types.ts";
 
 const content = loadPack();
 const spec = JSON.parse(readFileSync(join(import.meta.dirname, "..", "..", "..", "content", "vi-south", "placement.json"), "utf8")) as PlacementSpec;
@@ -103,30 +104,28 @@ describe("point d'entrée", () => {
     expect(resolveEntryLesson(content, 0)?.id).toBe("vi-south.u01.l01");
   });
 
-  it("niveau ≥ 1 sans unité 2 publiée → leçon disponible suivante", () => {
-    const withoutU2: ContentIndex = {
-      ...content,
-      curriculum: { ...content.curriculum, units: content.curriculum.units.map((u, i) => (i === 1 ? { ...u, status: "planned" as const, lessons: [] } : u)) },
-    };
-    const entry = resolveEntryLesson(withoutU2, 2);
-    expect(entry?.id).toBe(withoutU2.curriculum.units[0]!.lessons[1]);
+  it("niveaux 0..3 → début de u01 / u03 / u05 / u07 ; les unités antérieures sont sautées", () => {
+    expect([0, 1, 2, 3].map((lv) => resolveEntryLesson(content, lv)?.id)).toEqual(["vi-south.u01.l01", "vi-south.u03.l01", "vi-south.u05.l01", "vi-south.u07.l01"]);
+    const skipped = lessonsBefore(content.curriculum, "vi-south.u03.l01");
+    expect(skipped).toEqual([...content.curriculum.units[0]!.lessons, ...content.curriculum.units[1]!.lessons]);
+    expect(lessonsBefore(content.curriculum, "vi-south.u01.l01")).toEqual([]);
   });
 
-  it("niveau ≥ 1 avec unité 2 publiée → sa première leçon", () => {
-    const base = content.lessons.get("vi-south.u01.l01")!;
-    const u2l1: Lesson = { ...base, id: "vi-south.u02.l01", unit: "vi-south.u02", prerequisites: ["vi-south.u01.l03"] };
-    const lessons = new Map(content.lessons);
-    lessons.set(u2l1.id, u2l1);
-    const withU2: ContentIndex = {
+  it("unité cible non publiée → première unité publiée de numéro supérieur ; au-delà de la fin → dernière", () => {
+    const withoutU3: ContentIndex = {
       ...content,
-      lessons,
-      curriculum: {
-        ...content.curriculum,
-        units: content.curriculum.units.map((u) => (u.id === "vi-south.u02" ? { ...u, status: "available" as const, lessons: [u2l1.id, ...u.lessons.filter((id) => id !== u2l1.id)] } : u)),
-      },
+      curriculum: { ...content.curriculum, units: content.curriculum.units.map((u) => (u.id === "vi-south.u03" ? { ...u, status: "planned" as const } : u)) },
     };
-    expect(resolveEntryLesson(withU2, 1)?.id).toBe("vi-south.u02.l01");
-    expect(lessonsBefore(withU2.curriculum, "vi-south.u02.l01")).toEqual(expect.arrayContaining(["vi-south.u01.l01", "vi-south.u01.l03"]));
-    expect(lessonsBefore(withU2.curriculum, "vi-south.u01.l01")).toEqual([]);
+    expect(resolveEntryLesson(withoutU3, 1)?.id).toBe("vi-south.u04.l01");
+    const short: ContentIndex = { ...content, curriculum: { ...content.curriculum, units: content.curriculum.units.slice(0, 2) } };
+    expect(resolveEntryLesson(short, 3)?.id).toBe("vi-south.u02.l01");
+  });
+
+  it("items jouables : sans audio natif, les items de ton sont retirés ; moins de 6 → pas de placement", () => {
+    const silent: ContentIndex = { ...content, mediaIndex: new Set() };
+    const playable = playablePlacement(silent, spec);
+    expect(playable?.items.every((i) => i.skill !== "tone")).toBe(true);
+    expect(playablePlacement(silent, { ...spec, items: spec.items.filter((i) => i.skill === "tone").concat(spec.items.filter((i) => i.skill !== "tone").slice(0, 5)) })).toBeNull();
+    expect(playablePlacement(silent, spec, { toneFallback: true })?.items).toHaveLength(spec.items.length);
   });
 });

@@ -1,12 +1,13 @@
-import { badgeCodesFor, localDay, type ContentIndex } from "@parlo/core";
+import { badgeCodesFor, isChallengeBadge, localDay, streakAt, type ContentIndex } from "@parlo/core";
 import { examLevels } from "../exams/exam-files.ts";
 import { lazy, Suspense, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
 import { ChallengeCard } from "../challenges/ChallengeCard.tsx";
 import { ReminderPrompt } from "../notifications/Reminders.tsx";
 import { InstallHint } from "../components/InstallHint.tsx";
 import { LeagueHubLine } from "../leagues/LeagueWidgets.tsx";
+import { LevelLine } from "../components/LevelLine.tsx";
 import { RiverPath } from "../components/RiverPath.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import type { Profile, Totals } from "../db.ts";
@@ -34,11 +35,14 @@ export function Hub({ content }: { content: ContentIndex }) {
   const accountStatus = useAccount((s) => s.status);
   const [state, setState] = useState<HubState | null>(null);
   const [greeting, setGreeting] = useState<string | null>(null);
+  const location = useLocation();
+  const notice = (location.state as { notice?: string } | null)?.notice ?? null;
 
   const load = async () => {
     const profile = await getProfile();
     const [totals, plan, badges, seconds] = await Promise.all([getTotals(), planning(content, profile), getBadges(), todaySeconds()]);
-    setState({ profile, totals, plan, badges: badges.length, seconds });
+    const applicable = new Set<string>(badgeCodesFor(content.pack));
+    setState({ profile, totals, plan, badges: badges.filter((b) => applicable.has(b.code) || isChallengeBadge(b.code)).length, seconds });
   };
 
   useEffect(() => {
@@ -52,7 +56,9 @@ export function Hub({ content }: { content: ContentIndex }) {
   if (!state) return <Screen><div /></Screen>;
 
   const { profile, totals, plan, badges, seconds } = state;
-  const { streak, xp } = totals;
+  const { xp } = totals;
+  // Série à la lecture (contrat phase5 §3) : 0 si des jours manqués ne sont pas couverts.
+  const streak = streakAt(totals.streak, localDay(new Date()));
   const minutes = Math.max(1, Math.round(plan.daily.estimatedSeconds / 60));
   const doneMin = Math.floor(seconds / 60);
   const goalRatio = Math.min(1, seconds / (profile.dailyGoalMin * 60));
@@ -85,6 +91,11 @@ export function Hub({ content }: { content: ContentIndex }) {
         </Link>
       </header>
 
+      {notice === "locked" && (
+        <p role="status" className="mb-4 rounded-xl bg-nghe/15 px-4 py-2 text-sm" data-testid="hub-notice">{t("journey.locked")}</p>
+      )}
+      <VerifyEmailBanner />
+
       <p className="mb-5 border-l-4 border-nghe pl-3" data-testid="tutor-greeting">
         <span className="font-semibold">{t("tutor.name")}</span>
         <span className="text-phu-sa"> — </span>
@@ -116,6 +127,7 @@ export function Hub({ content }: { content: ContentIndex }) {
           </div>
         </div>
 
+        <LevelLine pack={content.pack} xp={xp} />
         <FreezeControl frozenUntil={frozen ? streak.frozenUntil : null} onChange={() => void load()} />
         <LeagueHubLine />
       </section>
@@ -136,7 +148,7 @@ export function Hub({ content }: { content: ContentIndex }) {
         )}
         <Link to="/badges" className="flex min-h-12 items-center justify-between border-t border-phu-sa/10 py-2 first:border-t-0">
           <span>{t("badges.title")}</span>
-          <span className="text-sm text-phu-sa">{t("badges.count", { n: badges, total: badgeCodesFor(content.pack).length })}</span>
+          <span className="text-sm text-phu-sa">{t("badges.count", { n: badges, total: Math.max(badges, badgeCodesFor(content.pack).length) })}</span>
         </Link>
         <Link to="/jeux" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
           {t("session.hub.games")}
@@ -157,7 +169,7 @@ export function Hub({ content }: { content: ContentIndex }) {
       </div>
 
       <h2 className="mt-6 mb-2 text-phu-sa">{t("hub.path")}</h2>
-      <RiverPath content={content} completed={plan.completed} unlocked={plan.unlocked} current={plan.next?.id ?? null} />
+      <RiverPath content={content} completed={plan.completed} unlocked={plan.open} current={plan.next?.id ?? null} />
       {!plan.next && <p className="py-6 text-center text-phu-sa">{t("hub.done")}</p>}
     </Screen>
   );
@@ -209,6 +221,33 @@ function FreezeControl({ frozenUntil, onChange }: { frozenUntil: string | null; 
           {t("common.cancel")}
         </button>
       </div>
+    </div>
+  );
+}
+
+/** Bandeau « vérifie ton email » (contrat phase5 §4) avec renvoi du lien. */
+function VerifyEmailBanner() {
+  const account = useAccount((s) => s.account);
+  const status = useAccount((s) => s.status);
+  const resend = useAccount((s) => s.resendVerification);
+  const [state, setState] = useState<"idle" | "busy" | "sent" | "error">("idle");
+  if (status !== "signed_in" || !account || account.emailVerified !== false) return null;
+  return (
+    <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl bg-ngoc-sang px-4 py-2 text-sm" data-testid="verify-banner">
+      <span>{state === "sent" ? t("journey.verify.resent") : t("journey.verify.banner")}</span>
+      {state !== "sent" && (
+        <button
+          type="button"
+          disabled={state === "busy"}
+          className="min-h-11 font-semibold text-ngoc"
+          onClick={() => {
+            setState("busy");
+            void resend().then(() => setState("sent"), () => setState("error"));
+          }}
+        >
+          {t("journey.verify.resend")}
+        </button>
+      )}
     </div>
   );
 }

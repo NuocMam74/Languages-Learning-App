@@ -25,7 +25,28 @@ function packVersion(code: string): number {
 }
 
 function bundle(code: string): string {
-  return JSON.stringify(toRaw(readPackFiles(code)));
+  return JSON.stringify({ ...toRaw(readPackFiles(code)), ...bundleExtras(code) });
+}
+
+const readOptionalJson = (path: string): unknown => (existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : undefined);
+
+/**
+ * Contrat phase5 §1 et §6 : index des médias présents, examens, placement et données de jeux
+ * dans le bundle (le client les relit après une mise à jour du contenu, sans rebuild).
+ */
+function bundleExtras(code: string): Record<string, unknown> {
+  const root = join(CONTENT_ROOT, code);
+  const examsDir = join(root, "exams");
+  const exams = existsSync(examsDir)
+    ? readdirSync(examsDir).filter((n) => n.endsWith(".json")).sort().map((n) => readOptionalJson(join(examsDir, n)))
+    : [];
+  const xeOm = readOptionalJson(join(root, "games", "xe_om.json"));
+  return {
+    mediaIndex: mediaFiles(code).map((file) => relative(root, file).split(sep).join("/")).sort(),
+    exams,
+    placement: readOptionalJson(join(root, "placement.json")) ?? null,
+    games: xeOm ? { xe_om: xeOm } : {},
+  };
 }
 
 function mediaFiles(code: string): string[] {

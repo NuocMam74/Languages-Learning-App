@@ -36,6 +36,12 @@ def answer(session_id: str = "s1") -> dict[str, Any]:
 
 
 def session_completed(session_id: str, local_date: str, xp: int = 30, when: datetime | None = None) -> dict[str, Any]:
+    if when is None:
+        # Sans horodatage explicite : maintenant si le jour local est plausible (±1 jour), sinon midi UTC de ce jour
+        # (le serveur rejette un `localDate` à plus d'un jour de `occurredAt`).
+        now = datetime.now(UTC)
+        day = datetime.fromisoformat(local_date).replace(tzinfo=UTC)
+        when = now if abs((day.date() - now.date()).days) <= 1 else min(day + timedelta(hours=12), now)
     return event(
         "session_completed",
         {"sessionId": session_id, "xpGained": xp, "itemsCount": 8, "durationMs": 360000, "localDate": local_date},
@@ -58,8 +64,9 @@ def card(reps: int, last_review: str | None, stability: float = 3.0, due: str = 
     }
 
 
-def me(client: TestClient, auth: dict[str, str]) -> dict[str, Any]:
-    body: dict[str, Any] = client.get("/me", headers=auth).json()
+def me(client: TestClient, auth: dict[str, str], local_date: str | None = None) -> dict[str, Any]:
+    url = f"/me?localDate={local_date}" if local_date else "/me"
+    body: dict[str, Any] = client.get(url, headers=auth).json()
     return body
 
 
@@ -108,7 +115,9 @@ def test_same_session_completed_twice_with_new_event_id_no_double_xp(client: Tes
 def test_future_and_invalid_events_rejected(client: TestClient, auth: dict[str, str]) -> None:
     now = datetime.now(UTC)
     future = session_completed("s-f", "2026-09-20", when=now + timedelta(hours=25))
-    near_future = session_completed("s-n", "2026-09-14", when=now + timedelta(hours=23))
+    near_future = session_completed(
+        "s-n", (now + timedelta(hours=23)).date().isoformat(), when=now + timedelta(hours=23)
+    )
     bad = answer()
     bad["payload"]["exerciseType"] = "not_a_type"
     wrong_version = answer()
@@ -221,25 +230,28 @@ def test_streak_consecutive_days_and_gap_covered_by_freeze(client: TestClient, a
             for i in range(10)
         ],
     )
-    streak = me(client, auth)["streak"]
+    streak = me(client, auth, "2026-08-10")["streak"]
     assert streak["current"] == 10
     assert streak["freezesAvailable"] == 1
     assert streak["lastActiveDate"] == "2026-08-10"
 
     # Un jour manqué (11 août), séance le 12 : la protection est consommée, la série continue.
     post(client, auth, [session_completed("d12", "2026-08-12", when=datetime(2026, 8, 12, 18, tzinfo=UTC))])
-    streak = me(client, auth)["streak"]
+    streak = me(client, auth, "2026-08-12")["streak"]
     assert streak == {
         "current": 11,
         "longest": 11,
         "lastActiveDate": "2026-08-12",
         "freezesAvailable": 0,
         "frozenUntil": None,
+        "frozenFrom": None,
     }
+    # Lecture un mois plus tard : série affichée à 0 (jours manqués non couverts), stockée intacte.
+    assert me(client, auth, "2026-09-12")["streak"]["current"] == 0
 
     # Deux jours manqués sans protection : la série repart à 1.
     post(client, auth, [session_completed("d15", "2026-08-15", when=datetime(2026, 8, 15, 18, tzinfo=UTC))])
-    streak = me(client, auth)["streak"]
+    streak = me(client, auth, "2026-08-15")["streak"]
     assert (streak["current"], streak["longest"]) == (1, 11)
     assert me(client, auth)["enrollment"]["xpTotal"] == 30 * 12
 
@@ -248,7 +260,7 @@ def test_events_processed_in_occurred_at_order(client: TestClient, auth: dict[st
     later = session_completed("o2", "2026-08-02", when=datetime(2026, 8, 2, tzinfo=UTC))
     earlier = session_completed("o1", "2026-08-01", when=datetime(2026, 8, 1, tzinfo=UTC))
     post(client, auth, [later, earlier])
-    assert me(client, auth)["streak"]["current"] == 2
+    assert me(client, auth, "2026-08-02")["streak"]["current"] == 2
 
 
 def test_answer_row_is_stored(client: TestClient, auth: dict[str, str]) -> None:

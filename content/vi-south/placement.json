@@ -8,24 +8,31 @@
     { "id": "pt_ba_grandma", "skill": "tone", "difficulty": 2, "concept": "c_ba_grandma" },
     { "id": "pt_da", "skill": "tone", "difficulty": 2, "concept": "c_da" },
     { "id": "pt_ma_tomb", "skill": "tone", "difficulty": 3, "concept": "c_ma_tomb" },
+    { "id": "pt_mot_high", "skill": "tone", "difficulty": 3, "concept": "c_mot_high" },
 
     { "id": "pc_chao_anh", "skill": "comprehension", "difficulty": 1, "concept": "s_chao_anh", "distractors": ["c_cam_on", "s_day_la", "c_ma_ghost"] },
     { "id": "pc_cam_on", "skill": "comprehension", "difficulty": 1, "concept": "c_cam_on", "distractors": ["c_chao", "c_da", "c_toi"] },
-    { "id": "pc_day_la", "skill": "comprehension", "difficulty": 2, "concept": "s_day_la", "distractors": ["s_chao_anh", "c_cam_on", "c_da"] },
-    { "id": "pc_da", "skill": "comprehension", "difficulty": 2, "concept": "c_da", "distractors": ["c_cam_on", "c_toi", "c_chao"] },
-    { "id": "pc_chi", "skill": "comprehension", "difficulty": 3, "concept": "c_chi", "distractors": ["c_anh", "c_em", "c_ba_grandma"] },
-    { "id": "pc_em", "skill": "comprehension", "difficulty": 3, "concept": "c_em", "distractors": ["c_anh", "c_chi", "c_toi"] },
+    { "id": "pc_da", "skill": "comprehension", "difficulty": 1, "concept": "c_da", "distractors": ["c_cam_on", "c_toi", "c_chao"] },
+    { "id": "pc_chi", "skill": "comprehension", "difficulty": 2, "concept": "c_chi", "distractors": ["c_anh", "c_em", "c_ba_grandma"] },
+    { "id": "pc_em_may_tuoi", "skill": "comprehension", "difficulty": 2, "concept": "s_em_may_tuoi", "distractors": ["s_ban_ten_gi", "s_ai_vay", "s_con_chao_co"] },
+    { "id": "pc_ba_noi", "skill": "comprehension", "difficulty": 2, "concept": "s_ba_noi", "distractors": ["s_ong_ngoai", "c_ong_ba", "c_vo"] },
+    { "id": "pc_co_anh_chi_em", "skill": "comprehension", "difficulty": 3, "concept": "s_co_anh_chi_em_khong", "distractors": ["s_co_vo_chua", "s_em_may_tuoi", "s_nha_toi_co"] },
+    { "id": "pc_lam_nghe_gi", "skill": "comprehension", "difficulty": 3, "concept": "s_anh_lam_nghe_gi", "distractors": ["s_anh_ten_gi", "s_anh_o_dau", "s_chi_lam_o_dau"] },
+    { "id": "pc_nguoi_nuoc_nao", "skill": "comprehension", "difficulty": 3, "concept": "s_nguoi_nuoc_nao", "distractors": ["s_chi_ten_gi", "s_chi_lam_o_dau", "s_rat_vui_duoc_gap"] },
+    { "id": "pc_bao_nhieu_tuoi", "skill": "comprehension", "difficulty": 3, "concept": "s_anh_bao_nhieu_tuoi", "distractors": ["s_anh_ten_gi", "s_anh_o_dau", "s_anh_lam_nghe_gi"] },
 
     { "id": "pv_ba", "skill": "vocab", "difficulty": 1, "concept": "c_ba", "distractors": ["c_ma_mom", "c_ba_grandma"] },
     { "id": "pv_anh", "skill": "vocab", "difficulty": 2, "concept": "c_anh", "distractors": ["c_chi", "c_em"] },
-    { "id": "pv_toi", "skill": "vocab", "difficulty": 2, "concept": "c_toi", "distractors": ["c_chi", "c_em"] },
-    { "id": "pv_ma_seedling", "skill": "vocab", "difficulty": 3, "concept": "c_ma_seedling", "distractors": ["c_ma_ghost", "c_ma_but", "c_ma_mom"] }
+    { "id": "pv_vo", "skill": "vocab", "difficulty": 2, "concept": "c_vo", "distractors": ["c_chong", "c_con"] },
+    { "id": "pv_ma_seedling", "skill": "vocab", "difficulty": 3, "concept": "c_ma_seedling", "distractors": ["c_ma_ghost", "c_ma_but", "c_ma_mom"] },
+    { "id": "pv_bac_si", "skill": "vocab", "difficulty": 3, "concept": "c_bac_si", "distractors": ["c_giao_vien", "c_ky_su"] },
+    { "id": "pv_bay_seven", "skill": "vocab", "difficulty": 3, "concept": "c_bay_seven", "distractors": ["c_bon", "c_sau_six"] }
   ],
   "levels": [
     { "level": 0, "minScore": 0 },
-    { "level": 1, "minScore": 0.45 },
-    { "level": 2, "minScore": 0.7 },
-    { "level": 3, "minScore": 0.9 }
+    { "level": 1, "minScore": 0.35 },
+    { "level": 2, "minScore": 0.55 },
+    { "level": 3, "minScore": 0.8 }
   ],
   "reviewed": false
 }

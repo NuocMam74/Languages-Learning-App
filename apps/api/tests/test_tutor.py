@@ -112,7 +112,7 @@ def test_greeting_uses_context_and_is_cached(client: TestClient, auth: dict[str,
     assert len(llm.calls) == 1
 
     system, turns = llm.calls[0]
-    assert system == system_prompt(PACK.directory)  # prompt système figé, sans donnée variable
+    assert system == system_prompt(PACK)  # prompt système figé, sans donnée variable
     prompt = turns[0].content
     assert '"Lan"' in prompt
     lesson = lesson_document(PACK, "vi-south.u01.l01")
@@ -294,7 +294,7 @@ def test_purge_tutor_data(client: TestClient, auth: dict[str, str]) -> None:
 
 
 def test_system_prompt_is_static_and_lists_southern_forms() -> None:
-    prompt = system_prompt(PACK.directory)
+    prompt = system_prompt(PACK)
     assert "Southern Vietnamese only" in prompt
     assert "say ba (never bố)" in prompt
     assert str(datetime.now(UTC).year) not in prompt

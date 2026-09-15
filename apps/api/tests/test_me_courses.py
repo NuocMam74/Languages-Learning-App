@@ -21,6 +21,9 @@ def test_me_fresh_user(client: TestClient, auth: dict[str, str]) -> None:
         "leaguesEnabled": True,
         "timezone": None,
         "notificationsEnabled": False,
+        "entourage": None,
+        "selfLevel": None,
+        "interfaceLocale": "fr",
     }
     assert me["enrollment"]["courseCode"] == "vi-south"
     assert me["enrollment"]["xpTotal"] == 0
@@ -32,7 +35,10 @@ def test_me_fresh_user(client: TestClient, auth: dict[str, str]) -> None:
         "lastActiveDate": None,
         "freezesAvailable": 0,
         "frozenUntil": None,
+        "frozenFrom": None,
     }
+    assert me["user"]["emailVerified"] is False
+    assert me["level"] == {"value": 1, "name": me["level"]["name"], "xpIntoLevel": 0, "xpForNext": 100}
 
 
 def test_patch_profile(client: TestClient, auth: dict[str, str]) -> None:
@@ -57,7 +63,9 @@ def test_patch_profile_validation(client: TestClient, auth: dict[str, str]) -> N
     assert client.patch("/me/profile", headers=auth, json={"reminderHour": 24}).status_code == 422
     assert client.patch("/me/profile", headers=auth, json={"motivation": "money"}).status_code == 422
     assert client.patch("/me/profile", headers=auth, json={"pathVariant": "nope"}).status_code == 422
-    assert client.patch("/me/profile", headers=auth, json={"unknown": 1}).status_code == 422
+    # Champ inconnu (client plus récent) : ignoré, jamais bloquant pour la synchronisation du profil.
+    assert client.patch("/me/profile", headers=auth, json={"unknown": 1}).status_code == 200
+    assert client.patch("/me/profile", headers=auth, json={"entourage": "boss"}).status_code == 422
     assert client.patch("/me/profile", headers=auth, json={"timezone": "Mars/Olympus"}).status_code == 422
     assert client.patch("/me/profile", headers=auth, json={"notificationsEnabled": None}).status_code == 422
 

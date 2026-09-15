@@ -1,11 +1,13 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
+import { ApiError, getServerExport } from "../api.ts";
 import { Screen } from "../components/ui.tsx";
-import type { Profile } from "../db.ts";
+import { db, type Profile } from "../db.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
 import { deleteLocalData, exportLocalData, getProfile, saveProfile } from "../learner.ts";
 import { clearPrefs, usePrefs } from "../prefs.ts";
+import { syncInterfaceLocale, syncProfileChange } from "../profile-sync.ts";
 import { ReminderSettings } from "../notifications/Reminders.tsx";
 import { LeagueSettings } from "../leagues/LeagueWidgets.tsx";
 import { PackSettings } from "../packs/PackSettings.tsx";
@@ -89,7 +91,29 @@ export default function Settings() {
     if (!profile) return;
     const next = { ...profile, ...patch };
     setProfile(next);
-    void saveProfile(next);
+    // Chaque changement part au serveur (contrat phase5 §4), hors ligne compris (file).
+    void saveProfile(next).then(() => syncProfileChange(profile, next));
+  };
+
+  const changeLocale = (value: "fr" | "en" | null) => {
+    setLocale(value);
+    void syncInterfaceLocale(value);
+  };
+
+  const signedIn = status === "signed_in" || status === "expired";
+  const [exportError, setExportError] = useState(false);
+  const exportData = async () => {
+    setExportError(false);
+    const device = await exportLocalData();
+    let account: unknown = null;
+    if (status === "signed_in") {
+      try {
+        account = await getServerExport();
+      } catch {
+        setExportError(true);
+      }
+    }
+    download(`parlo-export-${device.exportedAt.slice(0, 10)}.json`, account ? { app: "parlo", exportedAt: device.exportedAt, account, device } : device);
   };
 
   const wipe = async () => {
@@ -138,7 +162,7 @@ export default function Settings() {
 
       <Section title={t("settings.display")}>
         <p className="text-sm text-phu-sa">{t("settings.locale")}</p>
-        <Segmented label={t("settings.locale")} value={locale ?? "auto"} options={[{ value: "auto", label: t("settings.locale.auto") }, { value: "fr", label: "Français" }, { value: "en", label: "English" }]} onChange={(v) => setLocale(v === "fr" || v === "en" ? v : null)} />
+        <Segmented label={t("settings.locale")} value={locale ?? "auto"} options={[{ value: "auto", label: t("settings.locale.auto") }, { value: "fr", label: "Français" }, { value: "en", label: "English" }]} onChange={(v) => changeLocale(v === "fr" || v === "en" ? v : null)} />
         <Switch label={t("settings.silent")} hint={t("settings.silent.hint")} checked={silent} onChange={setSilent} />
         <Switch label={t("tutor.dictation.setting")} hint={t("tutor.dictation.hint")} checked={dictation} onChange={setDictation} />
       </Section>
@@ -150,7 +174,10 @@ export default function Settings() {
             {status === "expired" && (
               <Link to="/connexion" className="min-h-11 self-start py-2 font-semibold text-ngoc">{t("settings.account.relogin")}</Link>
             )}
-            <button type="button" onClick={() => void signOut()} className="min-h-11 self-start font-semibold text-ngoc">{t("settings.account.logout")}</button>
+            <LogoutControl onSignOut={async () => {
+              await signOut();
+              window.location.assign("/");
+            }} />
           </>
         ) : (
           <>
@@ -168,10 +195,12 @@ export default function Settings() {
       <StudioLink />
 
       <Section title={t("settings.data")}>
-        <button type="button" className="min-h-11 self-start font-semibold text-ngoc" onClick={() => void exportLocalData().then((data) => download(`parlo-export-${data.exportedAt.slice(0, 10)}.json`, data))}>
-          {t("settings.export")}
+        <button type="button" className="min-h-11 self-start font-semibold text-ngoc" data-testid="export-data" onClick={() => void exportData()}>
+          {t(signedIn ? "journey.export.account" : "journey.export.device")}
         </button>
-        <p className="text-sm text-phu-sa">{t("settings.export.note")}</p>
+        <p className="text-sm text-phu-sa">{t("journey.export.note")}</p>
+        {exportError && <p role="alert" className="text-sm text-son-mai">{t("journey.export.error")}</p>}
+        {signedIn && <DeleteAccount />}
         {!confirmDelete ? (
           <button type="button" className="min-h-11 self-start font-semibold text-son-mai" onClick={() => setConfirmDelete(true)}>
             {t("settings.delete")}
@@ -190,5 +219,110 @@ export default function Settings() {
         )}
       </Section>
     </Screen>
+  );
+}
+
+function LogoutControl({ onSignOut }: { onSignOut: () => Promise<void> }) {
+  const [confirming, setConfirming] = useState(false);
+  const [pending, setPending] = useState(0);
+  const [busy, setBusy] = useState(false);
+
+  const open = async () => {
+    setPending(await db().outbox.count());
+    setConfirming(true);
+  };
+
+  if (!confirming) {
+    return <button type="button" onClick={() => void open()} className="min-h-11 self-start font-semibold text-ngoc">{t("settings.account.logout")}</button>;
+  }
+  return (
+    <div className="flex flex-col gap-3 border-l-4 border-nghe pl-3" role="alertdialog" aria-labelledby="logout-title" data-testid="logout-confirm">
+      <p id="logout-title" className="font-semibold">{t("journey.logout.confirmTitle")}</p>
+      <p className="text-sm">{t("journey.logout.confirmBody")}</p>
+      {pending > 0 && <p className="text-sm text-son-mai">{t("journey.logout.pending", { n: pending })}</p>}
+      <div className="flex flex-wrap gap-4">
+        <button
+          type="button"
+          disabled={busy}
+          className="min-h-11 rounded-xl bg-ngoc px-4 font-semibold text-nuoc"
+          onClick={() => {
+            setBusy(true);
+            void onSignOut().finally(() => setBusy(false));
+          }}
+        >
+          {busy ? t("journey.logout.busy") : t("journey.logout.confirm")}
+        </button>
+        <button type="button" className="min-h-11 text-ngoc" onClick={() => setConfirming(false)}>{t("common.cancel")}</button>
+      </div>
+    </div>
+  );
+}
+
+/** Suppression du compte (RGPD, contrat phase5 §4) : mot de passe, ou « SUPPRIMER » pour un compte sans mot de passe. */
+function DeleteAccount() {
+  const deleteAccount = useAccount((s) => s.deleteAccount);
+  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState<"password" | "typed">("password");
+  const [password, setPassword] = useState("");
+  const [typed, setTyped] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<MessageKey | null>(null);
+
+  const submit = async (e: FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setBusy(true);
+    try {
+      await deleteAccount(mode === "password" ? { password } : { confirm: "SUPPRIMER" });
+      clearPrefs();
+      window.location.assign("/");
+    } catch (err) {
+      // Compte OAuth sans mot de passe : le serveur demande la confirmation écrite.
+      if (err instanceof ApiError && (err.status === 400 || err.status === 422) && mode === "password" && /confirm/i.test(err.detail)) {
+        setMode("typed");
+      } else if (err instanceof ApiError && (err.status === 401 || err.status === 403)) {
+        setError("journey.deleteAccount.wrongPassword");
+      } else {
+        setError("journey.deleteAccount.error");
+      }
+      setBusy(false);
+    }
+  };
+
+  if (!open) {
+    return (
+      <button type="button" className="min-h-11 self-start font-semibold text-son-mai" onClick={() => setOpen(true)}>
+        {t("journey.deleteAccount")}
+      </button>
+    );
+  }
+  const ready = mode === "password" ? password.length > 0 : typed.trim() === "SUPPRIMER";
+  return (
+    <form onSubmit={(e) => void submit(e)} className="flex flex-col gap-3 border-l-4 border-son-mai pl-3" data-testid="delete-account">
+      <p className="font-semibold">{t("journey.deleteAccount")}</p>
+      <p className="text-sm">{t("journey.deleteAccount.body")}</p>
+      {mode === "password" ? (
+        <label className="flex flex-col gap-1">
+          <span className="font-medium">{t("journey.deleteAccount.password")}</span>
+          <input type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className="min-h-12 rounded-xl border-2 border-phu-sa/20 bg-white px-4 text-lg" />
+        </label>
+      ) : (
+        <label className="flex flex-col gap-1">
+          <span className="font-medium">{t("journey.deleteAccount.typeLabel")}</span>
+          <span className="text-sm text-phu-sa">{t("journey.deleteAccount.typeHint")}</span>
+          <input value={typed} onChange={(e) => setTyped(e.target.value)} autoCapitalize="characters" className="min-h-12 rounded-xl border-2 border-phu-sa/20 bg-white px-4 text-lg" />
+        </label>
+      )}
+      {mode === "password" && (
+        <button type="button" className="min-h-11 self-start text-sm text-ngoc" onClick={() => setMode("typed")}>{t("journey.deleteAccount.typeHint")}</button>
+      )}
+      {error && <p role="alert" className="text-son-mai">{t(error)}</p>}
+      <div className="flex flex-wrap gap-4">
+        <button type="submit" disabled={!ready || busy} className="min-h-11 rounded-xl bg-son-mai px-4 font-semibold text-white disabled:opacity-50">
+          {t("journey.deleteAccount.submit")}
+        </button>
+        <button type="button" className="min-h-11 text-ngoc" onClick={() => setOpen(false)}>{t("common.cancel")}</button>
+      </div>
+    </form>
   );
 }

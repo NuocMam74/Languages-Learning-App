@@ -1,4 +1,5 @@
 export * from "./types.ts";
+export * from "./media.ts";
 export * from "./text.ts";
 export * from "./srs.ts";
 export * from "./session.ts";

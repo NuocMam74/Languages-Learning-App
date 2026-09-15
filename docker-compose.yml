@@ -25,7 +25,25 @@ services:
     command: ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers"]
     environment:
       DATABASE_URL: postgresql+psycopg://parlo:parlo@db:5432/parlo
+      # ENV=production refuse un JWT_SECRET par défaut ou de moins de 32 caractères.
+      ENV: ${ENV:-development}
       JWT_SECRET: ${JWT_SECRET:-dev-insecure-change-me-dev-insecure-change-me}
+      # IP client réelle derrière le proxy (Vite en dev, reverse proxy en prod) pour la limitation de débit.
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-172.16.0.0/12}
+      # Comptes : e-mails (console = journal de l'API) et OAuth (fournisseurs proposés seulement si configurés).
+      EMAIL_BACKEND: ${EMAIL_BACKEND:-console}
+      EMAIL_FROM: ${EMAIL_FROM:-Parlo <no-reply@parlo.app>}
+      SMTP_HOST: ${SMTP_HOST:-localhost}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      PUBLIC_API_URL: ${PUBLIC_API_URL:-http://localhost:8000}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      APPLE_CLIENT_ID: ${APPLE_CLIENT_ID:-}
+      APPLE_TEAM_ID: ${APPLE_TEAM_ID:-}
+      APPLE_KEY_ID: ${APPLE_KEY_ID:-}
+      APPLE_PRIVATE_KEY: ${APPLE_PRIVATE_KEY:-}
       CONTENT_DIR: /content
       SERVE_CONTENT: "true"
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}

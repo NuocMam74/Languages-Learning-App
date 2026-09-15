@@ -22,9 +22,13 @@ def vapid_public_key(settings: SettingsDep) -> VapidKeyOut:
 def subscribe(body: PushSubscribeIn, user: CurrentUser, db: DbDep) -> Response:
     if not push.valid_timezone(body.timezone):
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, detail=f"Fuseau inconnu : {body.timezone}")
-    push.upsert_subscription(
-        db, user, body.endpoint, body.keys.model_dump(), reminder_hour=body.reminder_hour, timezone=body.timezone
-    )
+    try:
+        push.upsert_subscription(
+            db, user, body.endpoint, body.keys.model_dump(), reminder_hour=body.reminder_hour, timezone=body.timezone
+        )
+    except push.SubscriptionOwnershipError as exc:
+        db.rollback()
+        raise HTTPException(status.HTTP_409_CONFLICT, detail="endpoint_taken") from exc
     profile = db.get(Profile, user.id)
     if profile is None:
         profile = Profile(user_id=user.id, daily_goal_min=10, leagues_enabled=True)

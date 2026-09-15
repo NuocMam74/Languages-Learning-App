@@ -31,8 +31,6 @@ import unicodedata
 from collections.abc import Iterator, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from functools import lru_cache
-from pathlib import Path
 from typing import Any, Literal
 
 from sqlalchemy import func, select
@@ -49,7 +47,14 @@ from app.services.content import (
     lesson_document,
     localized,
 )
-from app.services.tutor import _FORBIDDEN_PHRASINGS, _LANGUAGE_NAME, lint_south, model_calls_today, system_prompt
+from app.services.tutor import (
+    _FORBIDDEN_PHRASINGS,
+    _LANGUAGE_NAME,
+    lint_south,
+    model_calls_today,
+    system_prompt,
+    tutor_name,
+)
 from app.services.tutor_llm import ChatTurn, TutorCompletion, TutorLLM, TutorLLMError
 from app.south_lint import tokenize
 
@@ -87,10 +92,9 @@ meanings. "correction" is null when the learner's last message is fine, otherwis
 interface language"}}. This metadata block is the only exception to the plain-text rule; never mention it."""
 
 
-@lru_cache(maxsize=8)
-def conversation_system_prompt(pack_directory: Path) -> str:
-    """Prompt système statique du mode conversation (préfixe stable pour le cache de prompt)."""
-    return system_prompt(pack_directory) + _CONVERSATION_RULES
+def conversation_system_prompt(pack: Pack) -> str:
+    """Prompt système statique du mode conversation (préfixe stable pour le cache de prompt, par version)."""
+    return system_prompt(pack) + _CONVERSATION_RULES
 
 
 class ConversationError(Exception):
@@ -216,14 +220,14 @@ class TurnState:
         return self.fallback_text if self.fallback else " ".join(self.sentences)
 
 
-def fallback_text(locale: str, reason: FallbackReason) -> str:
+def fallback_text(locale: str, reason: FallbackReason, name: str = "Cô Mai") -> str:
     if reason == "quota":
         if locale == "en":
-            return "Cô Mai is resting, come back tomorrow. Meanwhile, your daily session is ready."
-        return "Cô Mai se repose, reviens demain. En attendant, ta séance du jour est prête."
+            return f"{name} is resting, come back tomorrow. Meanwhile, your daily session is ready."
+        return f"{name} se repose, reviens demain. En attendant, ta séance du jour est prête."
     if locale == "en":
-        return "Cô Mai is looking for her words… Shall we try again with another sentence?"
-    return "Cô Mai cherche ses mots… On réessaie avec une autre phrase ?"
+        return f"{name} is looking for the right words… Shall we try again with another sentence?"
+    return f"{name} cherche ses mots… On réessaie avec une autre phrase ?"
 
 
 class _NorthernFormError(Exception):
@@ -368,7 +372,7 @@ class TurnRunner:
     def _attempt(self, turns: list[ChatTurn]) -> Iterator[TurnEvent]:
         """Un appel en flux. Lève `_NorthernFormError` ou `TutorLLMError` ; texte brut dans `self.raw`."""
         assert self.llm is not None  # noqa: S101
-        system = conversation_system_prompt(self.req.pack.directory)
+        system = conversation_system_prompt(self.req.pack)
         raw = ""
         consumed = 0
         completion: TutorCompletion | None = None
@@ -471,7 +475,7 @@ class TurnRunner:
 
     def _fallback(self, reason: FallbackReason) -> TurnEvent:
         self.state.fallback = reason
-        self.state.fallback_text = fallback_text(self.req.locale, reason)
+        self.state.fallback_text = fallback_text(self.req.locale, reason, tutor_name(self.req.pack) or "Cô Mai")
         self.state.glosses = []
         self.state.correction = None
         return TurnEvent("fallback", {"text": self.state.fallback_text, "reason": reason})
@@ -551,8 +555,8 @@ def build_prompt(
 def conversation_pack(db: Session, user: User, packs: dict[str, Pack], settings: Settings) -> Pack:
     enrollment = learner.primary_enrollment(db, user.id)
     pack = packs.get(enrollment.course_id if enrollment else settings.default_course)
-    # Cô Mai est une persona du vietnamien : les autres packs n'ont pas (encore) de professeur.
-    if pack is None or pack.raw.get("lang") != "vi":
+    # Persona propre au pack (`pack.tutor`) : sans persona, pas de conversation (contrat parcours §5).
+    if pack is None or pack.tutor is None:
         raise ConversationError("tutor_unavailable")
     return pack
 
@@ -659,7 +663,7 @@ def prepare_turn(
     if conversation.mode == "doi_dap" and count >= DOI_DAP_TURNS:
         raise ConversationError("conversation_complete")
     pack = packs.get(conversation.course_id)
-    if pack is None:
+    if pack is None or pack.tutor is None:
         raise ConversationError("tutor_unavailable")
     history = turns_of(db, conversation.id)
     text = unicodedata.normalize("NFC", text).strip()

@@ -1,7 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { PlaybackSource } from "../audio.ts";
 import { t } from "../i18n/index.ts";
 import { usePrefs } from "../prefs.ts";
+
+/**
+ * Transcriptions du mode silencieux autorisées ? false pendant un examen (blanc ou certifiant) :
+ * elles donneraient la réponse des items d'écoute (contrat phase5 §1).
+ */
+export const TranscriptsAllowed = createContext(true);
 
 interface Props {
   play: (speed: "natural" | "slow") => Promise<PlaybackSource>;
@@ -17,6 +23,7 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
   const [source, setSource] = useState<PlaybackSource | null>(null);
   const played = useRef(false);
   const silent = usePrefs((s) => s.silent);
+  const transcripts = useContext(TranscriptsAllowed);
 
   const run = async (speed: "natural" | "slow") => setSource(await play(speed));
 
@@ -51,7 +58,7 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
       </div>
       {source === "tts" && <p className="text-sm text-phu-sa/70">{t("audio.tts")}</p>}
       {source === "missing" && <p className="text-sm text-son-mai">{t("audio.missing")}</p>}
-      {silent && transcript && (
+      {silent && transcripts && transcript && (
         <p className="text-center text-lg" data-testid="transcript">
           <span className="sr-only">{t("settings.silent.transcript")} </span>
           {transcript}

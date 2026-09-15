@@ -11,10 +11,11 @@ from app.services.content import load_packs
 from tests.conftest import event, register
 from tests.test_events import me, post, session_completed
 
-LAST_LESSON = sorted(load_packs(REPO_ROOT / "content")["vi-south"].lessons)[-1]
+ENTRY_U05 = "vi-south.u05.l01"
+assert ENTRY_U05 in load_packs(REPO_ROOT / "content")["vi-south"].lessons
 
 
-def placement(entry: str = LAST_LESSON, level: int = 2) -> dict[str, Any]:
+def placement(entry: str = ENTRY_U05, level: int = 2) -> dict[str, Any]:
     return event(
         "placement_completed",
         {"levelEstimate": level, "entryLessonId": entry, "correct": 7, "total": 10, "knownConceptIds": ["c_ba"]},
@@ -32,7 +33,8 @@ def test_placement_sets_level_and_entry_lesson(client: TestClient, auth: dict[st
     state = me(client, auth)
     assert state["levelEstimate"] == 2
     assert state["profile"]["levelEstimate"] == "2"
-    assert state["enrollment"]["currentLessonId"] == LAST_LESSON
+    # Niveau 2 → début de u05 ; u01–u04 sautées (contrat parcours §2).
+    assert state["enrollment"]["currentLessonId"] == ENTRY_U05
 
 
 def test_placement_unlocks_lessons_before_entry_even_after_progress(client: TestClient, auth: dict[str, str]) -> None:
@@ -80,20 +82,24 @@ def test_daily_goal_from_local_date(client: TestClient, auth: dict[str, str]) ->
     assert fresh["doneTodayMin"] == 0
 
     now = datetime.now(UTC)
+    # Jours locaux plausibles (±1 jour de la date UTC de l'événement) : fuseau à l'est de l'UTC.
+    today = (now + timedelta(hours=10)).date()
+    yesterday = today - timedelta(days=1)
+    tomorrow = today + timedelta(days=1)
     post(
         client,
         auth,
         [
-            session_completed("d1", "2030-01-02", when=now - timedelta(minutes=30)),  # 6 min
-            session_completed("d2", "2030-01-02", when=now - timedelta(minutes=5)),  # 6 min
-            session_completed("d0", "2030-01-01", when=now - timedelta(hours=2)),
+            session_completed("d1", today.isoformat(), when=now - timedelta(minutes=30)),  # 6 min
+            session_completed("d2", today.isoformat(), when=now - timedelta(minutes=5)),  # 6 min
+            session_completed("d0", yesterday.isoformat(), when=now - timedelta(hours=2)),
         ],
     )
     # Sans paramètre : jour local de la dernière séance récente.
-    assert me(client, auth)["dailyGoal"] == {"targetMin": 10, "doneTodayMin": 12.0, "localDate": "2030-01-02"}
+    assert me(client, auth)["dailyGoal"] == {"targetMin": 10, "doneTodayMin": 12.0, "localDate": today.isoformat()}
     # Paramètre explicite du client.
-    assert client.get("/me?localDate=2030-01-01", headers=auth).json()["dailyGoal"]["doneTodayMin"] == 6.0
-    assert client.get("/me?localDate=2030-01-03", headers=auth).json()["dailyGoal"]["doneTodayMin"] == 0
+    assert client.get(f"/me?localDate={yesterday}", headers=auth).json()["dailyGoal"]["doneTodayMin"] == 6.0
+    assert client.get(f"/me?localDate={tomorrow}", headers=auth).json()["dailyGoal"]["doneTodayMin"] == 0
 
 
 def test_guest_outbox_replayed_after_register(client: TestClient) -> None:

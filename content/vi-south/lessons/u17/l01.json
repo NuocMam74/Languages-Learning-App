@@ -12,7 +12,7 @@
   },
   "estimatedMinutes": 5,
   "prerequisites": [
-    "vi-south.u16.l08"
+    "vi-south.u11.l08"
   ],
   "concepts": [
     "c_phong",

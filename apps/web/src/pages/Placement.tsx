@@ -16,7 +16,7 @@ import { ExerciseView } from "../components/exercises.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import { l, t, type MessageKey } from "../i18n/index.ts";
 import { getProfile, savePlacement } from "../learner.ts";
-import { loadPlacement } from "../packs/placement.ts";
+import { playablePlacementFor } from "../packs/placement.ts";
 
 
 type Stage = { kind: "intro" } | { kind: "test"; startedAt: number } | { kind: "saving" } | { kind: "result"; result: PlacementResult; entry: Lesson | null };
@@ -24,16 +24,16 @@ type Stage = { kind: "intro" } | { kind: "test"; startedAt: number } | { kind: "
 /** Mini-test de placement, optionnel (spec §4.1.4). */
 export default function Placement({ content }: { content: ContentIndex }) {
   const navigate = useNavigate();
-  const [spec, setSpec] = useState<PlacementSpec | null>(null);
+  // Items jouables seulement (tons sans audio natif retirés) ; moins de 6 → placement passé (contrat phase5 §1).
+  const [spec] = useState<PlacementSpec | null>(() => playablePlacementFor(content));
   const [stage, setStage] = useState<Stage>({ kind: "intro" });
   const [answers, setAnswers] = useState<PlacementAnswer[]>([]);
   const [remaining, setRemaining] = useState(0);
   const seed = useRef(`placement:${Date.now()}`);
 
   useEffect(() => {
-    // Fichier facultatif du pack, découvert au build (packs/placement.ts).
-    void loadPlacement(content.pack.code).then(setSpec, () => setSpec(null));
-  }, [content]);
+    if (!spec) void skip();
+  }, []);
 
   const skip = async () => {
     const profile = await getProfile();

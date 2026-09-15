@@ -8,6 +8,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 API_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = API_DIR.parents[1]
 
+DEFAULT_JWT_SECRET = "dev-insecure-change-me-dev-insecure-change-me"  # noqa: S105  (dev uniquement)
+MIN_PRODUCTION_SECRET_LENGTH = 32
+
+
+class InsecureConfigurationError(RuntimeError):
+    """Configuration refusée en production (secret JWT par défaut ou trop court)."""
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
@@ -18,8 +25,11 @@ class Settings(BaseSettings):
 
     database_url: str = f"sqlite:///{(API_DIR / 'parlo.db').as_posix()}"
 
+    # « production » : démarrage refusé avec un JWT_SECRET par défaut ou trop court (contrat parcours §4).
+    env: str = "development"
+
     # Secret de signature des JWT : à fournir impérativement hors développement.
-    jwt_secret: str = "dev-insecure-change-me-dev-insecure-change-me"  # noqa: S105  (dev uniquement)
+    jwt_secret: str = DEFAULT_JWT_SECRET
     access_token_ttl_seconds: int = 15 * 60
     refresh_token_ttl_days: int = 30
     refresh_cookie_name: str = "parlo_refresh"
@@ -29,6 +39,34 @@ class Settings(BaseSettings):
     # Nombre de requêtes autorisées par IP et par route /auth/* sur la fenêtre glissante.
     auth_rate_limit: int = 20
     auth_rate_window_seconds: int = 60
+    # Proxys de confiance (IP ou CIDR, séparés par des virgules) : l'IP client réelle est lue dans
+    # X-Forwarded-For seulement quand la connexion vient de l'un d'eux.
+    trusted_proxies: str = ""
+
+    # --- Comptes : e-mails transactionnels, OAuth ----------------------------------------------
+    # « console » (journal + mémoire, dev/tests) ou « smtp ».
+    email_backend: str = "console"
+    email_from: str = "Parlo <no-reply@parlo.app>"
+    smtp_host: str = "localhost"
+    smtp_port: int = 587
+    smtp_username: str | None = None
+    smtp_password: str | None = None
+    smtp_starttls: bool = True
+    smtp_ssl: bool = False
+    password_reset_ttl_minutes: int = 60
+    email_verify_ttl_hours: int = 72
+    # URL publique de l'API (callbacks OAuth : {PUBLIC_API_URL}/auth/oauth/{id}/callback).
+    public_api_url: str = "http://localhost:8000"
+    google_client_id: str | None = None
+    google_client_secret: str | None = None
+    google_discovery_url: str = "https://accounts.google.com/.well-known/openid-configuration"
+    apple_client_id: str | None = None
+    apple_team_id: str | None = None
+    apple_key_id: str | None = None
+    # Clé privée ES256 (PEM, « \n » échappés acceptés).
+    apple_private_key: str | None = None
+    apple_issuer: str = "https://appleid.apple.com"
+    oauth_http_timeout_seconds: float = 10.0
 
     content_dir: Path = REPO_ROOT / "content"
     # Gabarit d'URL du contenu ; {code} et {version} sont substitués.
@@ -87,6 +125,24 @@ class Settings(BaseSettings):
     studio_validator_timeout_seconds: float = 180.0
     # Taille maximale d'un enregistrement téléversé (octets).
     studio_audio_max_bytes: int = 20 * 1024 * 1024
+
+    @property
+    def is_production(self) -> bool:
+        return self.env.strip().lower() in ("production", "prod")
+
+    def check_production_safety(self) -> None:
+        """Lève InsecureConfigurationError en production si le secret JWT est faible."""
+        if not self.is_production:
+            return
+        if self.jwt_secret == DEFAULT_JWT_SECRET or len(self.jwt_secret) < MIN_PRODUCTION_SECRET_LENGTH:
+            raise InsecureConfigurationError(
+                f"JWT_SECRET doit être défini (≥ {MIN_PRODUCTION_SECRET_LENGTH} caractères, "
+                "différent de la valeur par défaut) quand ENV=production"
+            )
+
+    @property
+    def trusted_proxy_list(self) -> list[str]:
+        return [p.strip() for p in self.trusted_proxies.split(",") if p.strip()]
 
     @property
     def cors_origin_list(self) -> list[str]:

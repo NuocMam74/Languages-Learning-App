@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BADGE_CODES, countKnownWords, evaluateBadges, pushToneResult, TONE_EAR_WINDOW, type BadgeInput } from "./badges.ts";
+import { BADGE_CODES, countKnownWords, evaluateBadges, isChallengeBadge, NO_NORTH_WINDOW, pushSouthResult, pushToneResult, TONE_EAR_WINDOW, type BadgeInput } from "./badges.ts";
 import { newCard, review } from "./srs.ts";
 import { emptyStreak } from "./streak.ts";
 import { loadPack } from "./testing/pack.ts";
@@ -17,8 +17,39 @@ const base = (patch: Partial<BadgeInput> = {}): BadgeInput => ({
 });
 
 describe("badges", () => {
-  it("les 6 codes de la Phase 1", () => {
-    expect(BADGE_CODES).toEqual(["first_lesson", "streak_7", "streak_30", "unit_1_done", "words_50", "tone_ear"]);
+  it("codes : Phase 1 + contrat phase5 §3", () => {
+    expect(BADGE_CODES).toEqual([
+      "first_lesson", "streak_7", "streak_30", "streak_100", "streak_365", "unit_1_done", "words_50", "words_500", "tone_ear",
+      "no_north_accent", "culture_explorer", "culture_unit",
+    ]);
+  });
+
+  it("séries de 100 et 365 jours, 500 mots", () => {
+    const streak = { ...emptyStreak(), current: 3, longest: 365 };
+    expect(evaluateBadges(base({ streak, knownWords: 500 }), new Set())).toEqual(["streak_7", "streak_30", "streak_100", "streak_365", "words_50", "words_500"]);
+  });
+
+  it("sans accent du Nord : ≥ 95 % sur les 30 derniers spot_the_south (fenêtre pleine)", () => {
+    const ok = Array.from({ length: NO_NORTH_WINDOW }, (_, i) => i !== 0);
+    expect(evaluateBadges(base({ southLog: ok.slice(1) }), new Set())).toEqual([]);
+    expect(evaluateBadges(base({ southLog: [true, ...ok.slice(1)] }), new Set())).toEqual(["no_north_accent"]);
+    expect(evaluateBadges(base({ southLog: [false, false, ...ok.slice(2)] }), new Set())).toEqual([]);
+    let log: boolean[] = [];
+    for (let i = 0; i < 40; i++) log = pushSouthResult(log, true);
+    expect(log).toHaveLength(NO_NORTH_WINDOW);
+  });
+
+  it("culture : 20 cartes réussies, test d'une unité taguée culture réussi", () => {
+    expect(evaluateBadges(base({ cultureCardsPassed: 19 }), new Set())).toEqual([]);
+    expect(evaluateBadges(base({ cultureCardsPassed: 20 }), new Set())).toEqual(["culture_explorer"]);
+    const cultureUnit = content.curriculum.units.find((u) => u.tags?.includes("culture"))!;
+    expect(evaluateBadges(base({ passedUnits: new Set(["vi-south.u01"]) }), new Set())).toEqual([]);
+    expect(evaluateBadges(base({ passedUnits: new Set([cultureUnit.id]) }), new Set())).toEqual(["culture_unit"]);
+  });
+
+  it("badges de défi : serveur seulement, reconnus par leur préfixe", () => {
+    expect(isChallengeBadge("challenge_words_theme")).toBe(true);
+    expect(isChallengeBadge("streak_7")).toBe(false);
   });
 
   it("rien pour un nouvel utilisateur", () => {

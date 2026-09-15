@@ -1,4 +1,10 @@
-"""Lecture des packs de contenu statiques depuis `CONTENT_DIR` (le contenu n'est pas en base, spec §11)."""
+"""Lecture des packs de contenu statiques depuis `CONTENT_DIR` (le contenu n'est pas en base, spec §11).
+
+Caches indexés par version (contrat parcours §4) : la liste des packs est relue dès que la signature des
+`pack.json` (date de modification, taille) ou des dossiers de médias change — une publication du studio, qui
+incrémente `pack.version`, invalide donc les caches de **tous** les workers, pas seulement de celui qui publie.
+Les documents détaillés (leçons, concepts) sont mis en cache par (dossier, version).
+"""
 
 import json
 import logging
@@ -12,6 +18,9 @@ logger = logging.getLogger(__name__)
 
 # Fichiers jamais publiés (sources audio lourdes, ADR 0002) ; les dossiers `_…` (ex. `_review/`) non plus.
 _EXCLUDED_SUFFIXES = {".wav"}
+# Index des médias (contrat parcours §1) : mêmes dossiers et extensions que apps/web/vite-plugin-content.ts.
+MEDIA_DIRS = ("audio", "pitch", "img")
+MEDIA_EXTENSIONS = frozenset({".json", ".opus", ".m4a", ".webp", ".png", ".svg"})
 
 
 @dataclass(frozen=True)
@@ -20,6 +29,7 @@ class Lesson:
     unit: str
     estimated_minutes: float
     prerequisites: tuple[str, ...]
+    kind: str = "lesson"
 
 
 @dataclass(frozen=True)
@@ -28,9 +38,11 @@ class Unit:
     status: str
     tags: tuple[str, ...]
     lessons: tuple[str, ...]
+    # Unités requises (`curriculum.units[].requires`) ; None = défaut (unité précédente dans la liste).
+    requires: tuple[str, ...] | None = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, eq=False)
 class Pack:
     code: str
     version: int
@@ -39,6 +51,8 @@ class Pack:
     units: tuple[Unit, ...]
     paths: dict[str, tuple[str, ...]]
     lessons: dict[str, Lesson] = field(default_factory=dict)
+    # Chemins relatifs des médias présents dans le pack (`audio/…`, `pitch/…`, `img/…`).
+    media_index: frozenset[str] = frozenset()
 
     def files(self) -> list[str]:
         """Chemins relatifs (POSIX) de tous les fichiers publiables du pack, triés."""
@@ -50,9 +64,34 @@ class Pack:
             and not p.relative_to(self.directory).parts[0].startswith("_")
         )
 
+    @property
+    def tutor(self) -> dict[str, Any] | None:
+        """Persona du professeur IA (`pack.tutor` : {name, persona}) ; None = professeur indisponible."""
+        tutor = self.raw.get("tutor")
+        if isinstance(tutor, dict) and isinstance(tutor.get("name"), str) and tutor["name"].strip():
+            return tutor
+        return None
+
+    @property
+    def coming_soon(self) -> bool:
+        return self.raw.get("comingSoon") is True
+
 
 def _read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def scan_media(directory: Path) -> frozenset[str]:
+    """Médias présents sous `directory` (dossiers audio/, pitch/, img/), chemins relatifs POSIX."""
+    out: set[str] = set()
+    for sub in MEDIA_DIRS:
+        root = directory / sub
+        if not root.is_dir():
+            continue
+        for path in root.rglob("*"):
+            if path.is_file() and path.suffix.lower() in MEDIA_EXTENSIONS:
+                out.add(path.relative_to(directory).as_posix())
+    return frozenset(out)
 
 
 def _load_pack(directory: Path) -> Pack:
@@ -64,6 +103,7 @@ def _load_pack(directory: Path) -> Pack:
             status=u["status"],
             tags=tuple(u.get("tags", [])),
             lessons=tuple(u["lessons"]),
+            requires=tuple(u["requires"]) if isinstance(u.get("requires"), list) else None,
         )
         for u in curriculum["units"]
     )
@@ -76,6 +116,7 @@ def _load_pack(directory: Path) -> Pack:
             unit=data["unit"],
             estimated_minutes=data["estimatedMinutes"],
             prerequisites=tuple(data.get("prerequisites", [])),
+            kind=str(data.get("kind", "lesson")),
         )
     return Pack(
         code=raw["code"],
@@ -85,15 +126,39 @@ def _load_pack(directory: Path) -> Pack:
         units=units,
         paths=paths,
         lessons=lessons,
+        media_index=scan_media(directory),
     )
 
 
-@lru_cache
-def load_packs(content_dir: Path) -> dict[str, Pack]:
-    """Packs présents dans `content_dir` (un sous-dossier contenant `pack.json`), mis en cache."""
+def _stat_key(path: Path) -> tuple[int, int] | None:
+    try:
+        st = path.stat()
+    except OSError:
+        return None
+    return (st.st_mtime_ns, st.st_size)
+
+
+def content_signature(content_dir: Path) -> tuple[Any, ...]:
+    """Signature bon marché du contenu : pack.json, curriculum.json et dossiers de médias de chaque pack."""
+    sig: list[Any] = []
+    for child in sorted(content_dir.iterdir()):
+        pack_file = child / "pack.json"
+        if not pack_file.is_file():
+            continue
+        sig.append(
+            (
+                child.name,
+                _stat_key(pack_file),
+                _stat_key(child / "curriculum.json"),
+                tuple(_stat_key(child / sub) for sub in MEDIA_DIRS),
+            )
+        )
+    return tuple(sig)
+
+
+@lru_cache(maxsize=8)
+def _load_packs(content_dir: Path, signature: tuple[Any, ...]) -> dict[str, Pack]:
     packs: dict[str, Pack] = {}
-    if not content_dir.is_dir():
-        return packs
     for child in sorted(content_dir.iterdir()):
         if (child / "pack.json").is_file():
             # Pack en cours d'écriture (curriculum absent, JSON invalide) : ignoré plutôt que de casser l'API.
@@ -104,6 +169,19 @@ def load_packs(content_dir: Path) -> dict[str, Pack]:
                 continue
             packs[pack.code] = pack
     return packs
+
+
+def load_packs(content_dir: Path) -> dict[str, Pack]:
+    """Packs présents dans `content_dir` (un sous-dossier contenant `pack.json`), en cache par signature."""
+    if not content_dir.is_dir():
+        return {}
+    return _load_packs(content_dir, content_signature(content_dir))
+
+
+def clear_caches() -> None:
+    _load_packs.cache_clear()
+    _lesson_documents.cache_clear()
+    _concept_documents.cache_clear()
 
 
 def course_code_of_lesson(lesson_id: str) -> str:
@@ -137,11 +215,21 @@ def league_division_names(pack: Pack | None) -> list[dict[str, str]] | None:
     return [{"fr": n["fr"], "en": n["en"]} for n in names]
 
 
-# --- Lecture détaillée (professeur IA) -----------------------------------------------------
+def level_names(pack: Pack | None) -> list[dict[str, str]] | None:
+    """`pack.levelNames` : 10 noms localisés (un par tranche de 5 niveaux), ou None si absent/invalide."""
+    names = pack.raw.get("levelNames") if pack is not None else None
+    if not isinstance(names, list) or len(names) != 10:
+        return None
+    if not all(isinstance(n, dict) and isinstance(n.get("fr"), str) and isinstance(n.get("en"), str) for n in names):
+        return None
+    return [{"fr": n["fr"], "en": n["en"]} for n in names]
 
 
-@lru_cache(maxsize=256)
-def _lesson_documents(directory: Path) -> dict[str, dict[str, Any]]:
+# --- Lecture détaillée (professeur IA, examens, bundle) ------------------------------------
+
+
+@lru_cache(maxsize=32)
+def _lesson_documents(directory: Path, version: int) -> dict[str, dict[str, Any]]:
     docs: dict[str, dict[str, Any]] = {}
     for lesson_file in sorted((directory / "lessons").rglob("*.json")):
         data = _read_json(lesson_file)
@@ -150,7 +238,7 @@ def _lesson_documents(directory: Path) -> dict[str, dict[str, Any]]:
 
 
 @lru_cache(maxsize=16)
-def _concept_documents(directory: Path) -> dict[str, dict[str, Any]]:
+def _concept_documents(directory: Path, version: int) -> dict[str, dict[str, Any]]:
     docs: dict[str, dict[str, Any]] = {}
     concepts_dir = directory / "concepts"
     if concepts_dir.is_dir():
@@ -162,12 +250,16 @@ def _concept_documents(directory: Path) -> dict[str, dict[str, Any]]:
 
 def lesson_document(pack: Pack, lesson_id: str) -> dict[str, Any] | None:
     """JSON complet d'une leçon (titre, objectif, étapes), ou None."""
-    return _lesson_documents(pack.directory).get(lesson_id)
+    return _lesson_documents(pack.directory, pack.version).get(lesson_id)
+
+
+def lesson_documents(pack: Pack) -> dict[str, dict[str, Any]]:
+    return _lesson_documents(pack.directory, pack.version)
 
 
 def concept_documents(pack: Pack) -> dict[str, dict[str, Any]]:
     """Concepts du pack indexés par id (forme `vi`, glose, note, ton…)."""
-    return _concept_documents(pack.directory)
+    return _concept_documents(pack.directory, pack.version)
 
 
 def localized(value: Any, locale: str) -> str | None:

@@ -131,7 +131,7 @@ def test_streams_checked_sentences_glosses_and_correction(client: TestClient, au
         ("done", {"turn": 1, "remainingToday": 28}),
     ]
     system, turns = llm.calls[-1]
-    assert system == conv.conversation_system_prompt(PACK.directory)
+    assert system == conv.conversation_system_prompt(PACK)
     prompt = turns[0].content
     assert "chào" in prompt and "tôi" in prompt  # vocabulaire vu injecté
     assert '"Chào cô!"' in prompt and "Dạ, chào Lan!" in prompt  # message et historique comme données

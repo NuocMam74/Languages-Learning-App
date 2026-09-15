@@ -13,10 +13,12 @@ Skill = Literal["listening", "reading", "vocabulary", "speaking"]
 
 
 class ExamScores(CamelModel):
-    listening: float
-    reading: float
-    vocabulary: float
-    speaking: float
+    """Null : compétence sans item noté (médias manquants), exclue de la règle « chaque compétence ≥ 0,5 »."""
+
+    listening: float | None
+    reading: float | None
+    vocabulary: float | None
+    speaking: float | None
 
 
 class LastAttemptOut(CamelModel):
@@ -24,6 +26,7 @@ class LastAttemptOut(CamelModel):
     submitted_at: datetime
     passed: bool
     scores: ExamScores
+    global_: Annotated[float | None, Field(alias="global")] = None
 
 
 class ExamOut(CamelModel):
@@ -35,6 +38,8 @@ class ExamOut(CamelModel):
     unlocked: bool
     last_attempt: LastAttemptOut | None
     next_attempt_at: datetime | None
+    # « media_missing » : moins de 15 items notables faute d'audio natif / de référence F0 (contrat parcours §1).
+    unavailable_reason: Literal["media_missing"] | None = None
 
 
 class ExamItemRef(CamelModel):

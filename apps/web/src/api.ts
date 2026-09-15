@@ -1,4 +1,4 @@
-import type { ExerciseResponse, ParloEvent } from "@parlo/core";
+import type { ExerciseResponse, Localized, ParloEvent, SrsCard } from "@parlo/core";
 
 /**
  * Client HTTP de l'API Parlo.
@@ -232,16 +232,27 @@ export async function logout(): Promise<void> {
 
 // --- /me ----------------------------------------------------------------------
 
+export interface LevelDto {
+  value: number;
+  name: Localized | null;
+  xpIntoLevel: number;
+  xpForNext: number;
+}
+
 export interface MeResponse {
-  user: { id: string; email: string | null; displayName: string; locale: string; createdAt: string; isGuest: boolean };
+  user: { id: string; email: string | null; displayName: string; locale: string; createdAt: string; isGuest: boolean; emailVerified?: boolean };
   profile: { motivation: string | null; dailyGoalMin: number; reminderHour: number | null; levelEstimate: string | null; pathVariant: string | null };
   enrollment: { courseCode: string; xpTotal: number; level: number; currentLessonId: string | null } | null;
   streak: { current: number; longest: number; lastActiveDate: string | null; freezesAvailable: number; frozenUntil: string | null };
   levelEstimate?: number | null;
   badges?: { code: string; earnedAt: string }[];
   dailyGoal?: { targetMin: number; doneTodayMin: number; localDate: string };
+  /** Toutes les inscriptions (une par pack). */
+  enrollments?: NonNullable<MeResponse["enrollment"]>[];
   /** Phase 4 : rôles (`learner` implicite, `reviewer`, `editor`, `teacher`, `admin`) — docs/contracts/phase4.md §0. */
   roles?: string[];
+  /** Contrat phase5 §3. */
+  level?: LevelDto;
 }
 
 /** `localDate` : jour local de l'apprenant (série, objectif du jour). */
@@ -287,8 +298,10 @@ export interface ExamSummary {
   requiresUnits: string[];
   durationMinutes: number;
   unlocked: boolean;
-  lastAttempt: { id: string; submittedAt: string; passed: boolean; scores: ExamScoresDto } | null;
+  lastAttempt: { id: string; submittedAt: string; passed: boolean; scores: ExamScoresDto; global?: number } | null;
   nextAttemptAt: string | null;
+  /** Contrat phase5 §1 : moins de 15 items notables faute de médias. */
+  unavailableReason?: "media_missing" | null;
 }
 
 export interface ExamStart {
@@ -374,6 +387,69 @@ export interface ProfilePatch {
   notificationsEnabled?: boolean;
   /** Phase 3 : ligues (docs/contracts/phase3.md §2). */
   leaguesEnabled?: boolean;
+  /** Contrat phase5 §4 : réponses d'onboarding et réglages. */
+  motivation?: string | null;
+  entourage?: string | null;
+  selfLevel?: string | null;
+  dailyGoalMin?: number;
+  pathVariant?: string | null;
+  interfaceLocale?: string | null;
 }
 
 export const patchProfile = (patch: ProfilePatch) => request<unknown>("/me/profile", { method: "PATCH", body: patch });
+
+// --- Contrat phase5 : restauration, comptes, RGPD, Cô Mai ------------------------
+
+export interface MeStateDto {
+  profile: Partial<MeResponse["profile"]> & {
+    entourage?: string | null;
+    selfLevel?: string | null;
+    reminder?: string | null;
+    onboardedAt?: string | null;
+  } | null;
+  placement: { levelEstimate: number; entryLessonId: string } | null;
+  lessonProgress: { lessonId: string; bestScore: number; attempts: number; completedAt: string }[];
+  srsCards: SrsCard[];
+  badges: { code: string; earnedAt: string }[];
+  streak: MeResponse["streak"] & { frozenFrom?: string | null };
+  xpTotal: number;
+  level?: LevelDto;
+  /** Le compte est inscrit à ce pack : onboarding et placement ne sont pas reproposés. */
+  enrolled?: boolean;
+}
+
+export const getMeState = (pack: string) => request<MeStateDto>(`/me/state?pack=${encodeURIComponent(pack)}`);
+
+export const forgotPassword = (email: string) => request<void>("/auth/password/forgot", { method: "POST", body: { email }, auth: false });
+export const resetPassword = (token: string, password: string) => request<void>("/auth/password/reset", { method: "POST", body: { token, password }, auth: false });
+export const verifyEmail = (token: string) => request<void>("/auth/email/verify", { method: "POST", body: { token }, auth: false });
+export const resendVerification = () => request<void>("/auth/email/resend", { method: "POST" });
+
+export interface OAuthProvider {
+  id: "google" | "apple";
+  name: string;
+}
+
+export const getOAuthProviders = () => request<OAuthProvider[]>("/auth/oauth/providers", { auth: false });
+export const oauthStartUrl = (provider: string, next: string) => `${base}/auth/oauth/${encodeURIComponent(provider)}/start?next=${encodeURIComponent(next)}`;
+
+export const getServerExport = () => request<unknown>("/me/export");
+export const deleteAccount = (body: { password: string } | { confirm: "SUPPRIMER" }) => request<void>("/me", { method: "DELETE", body });
+
+export interface TutorStatusDto {
+  available: boolean;
+  reason: "no_model" | "pack_unsupported" | null;
+  personaName: string | null;
+}
+
+export const getTutorStatus = (pack: string) =>
+  request<TutorStatusDto>(`/tutor/status?pack=${encodeURIComponent(pack)}`, { auth: hasAccessToken() });
+
+/** Résultat d'une tentative déjà soumise (409 already_submitted) : route facultative, sinon null. */
+export async function getExamAttemptResult(attemptId: string): Promise<ExamSubmitResult | null> {
+  try {
+    return await request<ExamSubmitResult>(`/exams/attempts/${encodeURIComponent(attemptId)}`);
+  } catch {
+    return null;
+  }
+}

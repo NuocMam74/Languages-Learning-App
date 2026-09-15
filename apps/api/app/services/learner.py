@@ -18,9 +18,11 @@ from app.models import (
     User,
     UserBadge,
 )
+from app.services import progression
 from app.services.content import Pack, course_code_of_concept
-from app.services.planner import next_lesson
+from app.services.levels import LevelInfo, level_info
 from app.services.srs import SrsCard
+from app.services.streak import Streak, displayed_current
 
 LEAGUE_OPT_OUT_MOTIVATIONS = frozenset({"family", "roots"})
 
@@ -35,7 +37,7 @@ def create_learner(db: Session, user: User, pack: Pack | None) -> None:
 
 def enroll(db: Session, user_id: str, pack: Pack, path: str | None) -> Enrollment:
     enrollment = Enrollment(user_id=user_id, course_id=pack.code, xp_total=0, level=1)
-    lesson = next_lesson(pack, pack.lessons, set(), path)
+    lesson = progression.next_lesson(pack, pack.lessons, progression.ProgressState(), path)
     enrollment.current_lesson_id = lesson.id if lesson else None
     db.add(enrollment)
     return enrollment
@@ -95,23 +97,30 @@ def completed_lessons(db: Session, user_id: str) -> set[str]:
     )
 
 
-def lessons_before(pack: Pack, lesson_id: str) -> list[str]:
-    """Leçons situées avant `lesson_id` dans l'ordre du cursus — portage de `lessonsBefore` (placement.ts)."""
-    ordered = [lid for unit in pack.units for lid in unit.lessons]
-    try:
-        idx = ordered.index(lesson_id)
-    except ValueError:
-        return []
-    return ordered[:idx]
+def progress_state(db: Session, user_id: str, pack: Pack) -> progression.ProgressState:
+    """Ensembles `completed`/`passed` du pack : meilleurs scores + leçons sautées au placement (comme le client)."""
+    rows = db.execute(
+        select(LessonProgress.lesson_id, LessonProgress.score).where(
+            LessonProgress.user_id == user_id,
+            LessonProgress.status == "completed",
+            LessonProgress.lesson_id.like(f"{pack.code}.%"),
+        )
+    ).all()
+    profile = db.get(Profile, user_id)
+    entry = profile.placement_entry_lesson_id if profile is not None else None
+    return progression.progress_from(pack, {r.lesson_id: float(r.score or 0.0) for r in rows}, entry)
 
 
 def unlocked_lessons(db: Session, user_id: str, pack: Pack) -> set[str]:
-    """Leçons terminées + sautées grâce au test de placement : sert aux prérequis (comme `planning` du client)."""
-    unlocked = completed_lessons(db, user_id)
-    profile = db.get(Profile, user_id)
-    if profile is not None and profile.placement_entry_lesson_id:
-        unlocked.update(lessons_before(pack, profile.placement_entry_lesson_id))
-    return unlocked
+    """Leçons terminées + leçons sautées grâce au test de placement."""
+    return set(progress_state(db, user_id, pack).completed)
+
+
+def next_lesson_for(db: Session, user_id: str, pack: Pack, profile: Profile | None) -> str | None:
+    lesson = progression.next_lesson(
+        pack, pack.lessons, progress_state(db, user_id, pack), path_of(profile) if profile else None
+    )
+    return lesson.id if lesson else None
 
 
 def to_card(row: SrsCardRow) -> SrsCard:
@@ -157,6 +166,41 @@ def get_streak(db: Session, user_id: str) -> StreakRow:
         row = StreakRow(user_id=user_id, current=0, longest=0, freezes_available=0)
         db.add(row)
     return row
+
+
+def streak_of(row: StreakRow) -> Streak:
+    return Streak(
+        current=row.current or 0,
+        longest=row.longest or 0,
+        last_active_date=row.last_active_date,
+        freezes_available=row.freezes_available or 0,
+        frozen_until=row.frozen_until,
+        frozen_from=row.frozen_from,
+    )
+
+
+def store_streak(row: StreakRow, streak: Streak) -> None:
+    row.current = streak.current
+    row.longest = streak.longest
+    row.last_active_date = streak.last_active_date
+    row.freezes_available = streak.freezes_available
+    row.frozen_until = streak.frozen_until
+    row.frozen_from = streak.frozen_from
+
+
+def displayed_streak(db: Session, user_id: str, today: date) -> int:
+    """Série affichée le jour local `today` (0 si les jours manqués ne sont pas couverts)."""
+    row = db.get(StreakRow, user_id)
+    return displayed_current(streak_of(row), today) if row is not None else 0
+
+
+def level_of(enrollment: Enrollment | None, pack: Pack | None) -> LevelInfo:
+    return level_info(enrollment.xp_total if enrollment else 0, pack)
+
+
+def add_xp(enrollment: Enrollment, xp: int) -> None:
+    enrollment.xp_total = (enrollment.xp_total or 0) + xp
+    enrollment.level = level_info(enrollment.xp_total, None).value
 
 
 def level_estimate(profile: Profile) -> int | None:

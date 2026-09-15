@@ -58,3 +58,60 @@ export function reviewConcept(
   const rating = deriveRating(input);
   return { card: review(card, rating, now), xp: input.correct ? XP_REVIEW : 0 };
 }
+
+// ---------------------------------------------------------------------------
+// Plafonds d'une séance (contrat phase5 §3) — mêmes bornes côté API : valeurs écrêtées, jamais rejetées.
+
+export const MAX_SESSION_ITEMS = 200;
+export const MAX_SESSION_DURATION_MS = 4 * 3_600_000;
+export const MAX_SESSION_XP = 1000;
+
+export function capSessionTotals(input: { xpGained: number; itemsCount: number; durationMs: number }): { xpGained: number; itemsCount: number; durationMs: number } {
+  const itemsCount = Math.max(0, Math.min(MAX_SESSION_ITEMS, Math.round(input.itemsCount)));
+  const durationMs = Math.max(0, Math.min(MAX_SESSION_DURATION_MS, Math.round(input.durationMs)));
+  const xpGained = Math.max(0, Math.min(MAX_SESSION_XP, 15 * itemsCount + 50, Math.round(input.xpGained)));
+  return { xpGained, itemsCount, durationMs };
+}
+
+/** Durée bornée (lesson_completed, game_played…). */
+export function capDurationMs(ms: number): number {
+  return Math.max(0, Math.min(MAX_SESSION_DURATION_MS, Math.round(ms)));
+}
+
+// ---------------------------------------------------------------------------
+// Niveaux de profil 1–50 (contrat phase5 §3)
+
+export const MAX_PROFILE_LEVEL = 50;
+/** Tranche de niveaux par nom (1–5, 6–10…). */
+export const LEVELS_PER_NAME = 5;
+
+/** XP cumulée requise pour atteindre le niveau L : 25·(L−1)·(L+2). */
+export function xpForLevel(level: number): number {
+  const l = Math.max(1, Math.min(MAX_PROFILE_LEVEL, Math.floor(level)));
+  return 25 * (l - 1) * (l + 2);
+}
+
+export interface ProfileLevel {
+  value: number;
+  /** XP gagnée depuis le début du niveau. */
+  xpIntoLevel: number;
+  /** XP du niveau courant au suivant (0 au niveau maximal). */
+  xpForNext: number;
+}
+
+export function levelForXp(xpTotal: number): ProfileLevel {
+  const xp = Math.max(0, Math.floor(xpTotal));
+  let value = 1;
+  while (value < MAX_PROFILE_LEVEL && xp >= xpForLevel(value + 1)) value++;
+  return {
+    value,
+    xpIntoLevel: xp - xpForLevel(value),
+    xpForNext: value < MAX_PROFILE_LEVEL ? xpForLevel(value + 1) - xpForLevel(value) : 0,
+  };
+}
+
+/** Nom de la tranche d'un niveau (`pack.levelNames[⌊(L−1)/5⌋]`), null si le pack n'en fournit pas. */
+export function levelName<T>(levelNames: readonly T[] | undefined, level: number): T | null {
+  const index = Math.floor((Math.max(1, Math.min(MAX_PROFILE_LEVEL, level)) - 1) / LEVELS_PER_NAME);
+  return levelNames?.[index] ?? null;
+}

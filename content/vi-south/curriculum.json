@@ -95,6 +95,7 @@
       "tags": [
         "core"
       ],
+      "requires": [],
       "lessons": [
         "vi-south.u01.l01",
         "vi-south.u01.l02",
@@ -116,6 +117,9 @@
       "status": "available",
       "tags": [
         "core"
+      ],
+      "requires": [
+        "vi-south.u01"
       ],
       "lessons": [
         "vi-south.u02.l01",
@@ -139,6 +143,9 @@
         "core",
         "family"
       ],
+      "requires": [
+        "vi-south.u02"
+      ],
       "lessons": [
         "vi-south.u03.l01",
         "vi-south.u03.l02",
@@ -160,6 +167,9 @@
       "status": "available",
       "tags": [
         "family"
+      ],
+      "requires": [
+        "vi-south.u03"
       ],
       "lessons": [
         "vi-south.u04.l01",
@@ -183,6 +193,9 @@
         "core",
         "work"
       ],
+      "requires": [
+        "vi-south.u03"
+      ],
       "lessons": [
         "vi-south.u05.l01",
         "vi-south.u05.l02",
@@ -205,6 +218,9 @@
         "core",
         "travel"
       ],
+      "requires": [
+        "vi-south.u03"
+      ],
       "lessons": [
         "vi-south.u06.l01",
         "vi-south.u06.l02",
@@ -226,6 +242,9 @@
       "tags": [
         "travel"
       ],
+      "requires": [
+        "vi-south.u06"
+      ],
       "lessons": [
         "vi-south.u07.l01",
         "vi-south.u07.l02",
@@ -246,6 +265,9 @@
       "status": "available",
       "tags": [
         "travel"
+      ],
+      "requires": [
+        "vi-south.u06"
       ],
       "lessons": [
         "vi-south.u08.l01",
@@ -269,6 +291,9 @@
         "core",
         "work"
       ],
+      "requires": [
+        "vi-south.u06"
+      ],
       "lessons": [
         "vi-south.u09.l01",
         "vi-south.u09.l02",
@@ -289,6 +314,10 @@
       "status": "available",
       "tags": [
         "travel"
+      ],
+      "requires": [
+        "vi-south.u05",
+        "vi-south.u06"
       ],
       "lessons": [
         "vi-south.u10.l01",
@@ -311,6 +340,9 @@
       "tags": [
         "travel"
       ],
+      "requires": [
+        "vi-south.u10"
+      ],
       "lessons": [
         "vi-south.u11.l01",
         "vi-south.u11.l02",
@@ -331,6 +363,12 @@
       "status": "available",
       "tags": [
         "core"
+      ],
+      "requires": [
+        "vi-south.u04",
+        "vi-south.u07",
+        "vi-south.u09",
+        "vi-south.u10"
       ],
       "lessons": [
         "vi-south.u12.l01",
@@ -353,6 +391,11 @@
       "tags": [
         "core"
       ],
+      "requires": [
+        "vi-south.u08",
+        "vi-south.u11",
+        "vi-south.u12"
+      ],
       "lessons": [
         "vi-south.u13.l01",
         "vi-south.u13.l02",
@@ -373,6 +416,10 @@
       "status": "available",
       "tags": [
         "core"
+      ],
+      "requires": [
+        "vi-south.u08",
+        "vi-south.u12"
       ],
       "lessons": [
         "vi-south.u14.l01",
@@ -396,6 +443,10 @@
         "work",
         "core"
       ],
+      "requires": [
+        "vi-south.u05",
+        "vi-south.u09"
+      ],
       "lessons": [
         "vi-south.u15.l01",
         "vi-south.u15.l02",
@@ -417,6 +468,10 @@
       "tags": [
         "travel",
         "core"
+      ],
+      "requires": [
+        "vi-south.u10",
+        "vi-south.u12"
       ],
       "lessons": [
         "vi-south.u16.l01",
@@ -440,6 +495,11 @@
         "work",
         "travel"
       ],
+      "requires": [
+        "vi-south.u08",
+        "vi-south.u11",
+        "vi-south.u12"
+      ],
       "lessons": [
         "vi-south.u17.l01",
         "vi-south.u17.l02",
@@ -460,6 +520,10 @@
       "status": "available",
       "tags": [
         "work"
+      ],
+      "requires": [
+        "vi-south.u13",
+        "vi-south.u15"
       ],
       "lessons": [
         "vi-south.u18.l01",
@@ -483,6 +547,10 @@
         "travel",
         "work"
       ],
+      "requires": [
+        "vi-south.u17",
+        "vi-south.u18"
+      ],
       "lessons": [
         "vi-south.u19.l01",
         "vi-south.u19.l02",
@@ -504,6 +572,11 @@
       "tags": [
         "family",
         "culture"
+      ],
+      "requires": [
+        "vi-south.u04",
+        "vi-south.u14",
+        "vi-south.u18"
       ],
       "lessons": [
         "vi-south.u20.l01",
@@ -527,6 +600,10 @@
         "culture",
         "family"
       ],
+      "requires": [
+        "vi-south.u11",
+        "vi-south.u14"
+      ],
       "lessons": [
         "vi-south.u21.l01",
         "vi-south.u21.l02",
@@ -549,6 +626,10 @@
         "core",
         "family"
       ],
+      "requires": [
+        "vi-south.u13",
+        "vi-south.u20"
+      ],
       "lessons": [
         "vi-south.u22.l01",
         "vi-south.u22.l02",
@@ -569,6 +650,11 @@
       "status": "available",
       "tags": [
         "core"
+      ],
+      "requires": [
+        "vi-south.u19",
+        "vi-south.u21",
+        "vi-south.u22"
       ],
       "lessons": [
         "vi-south.u23.l01",
@@ -591,6 +677,10 @@
       "tags": [
         "core",
         "work"
+      ],
+      "requires": [
+        "vi-south.u21",
+        "vi-south.u23"
       ],
       "lessons": [
         "vi-south.u24.l01",

@@ -14,6 +14,7 @@ from app.services.planner import (
     plan_session,
     review_day_threshold,
 )
+from app.services.progression import ProgressState, progress_from
 from app.services.srs import SrsCard
 from app.services.streak import Streak, record_activity
 from tests.conftest import event
@@ -148,9 +149,12 @@ def test_plan_warmup_review_cap_and_lesson() -> None:
 
 
 def test_next_lesson_follows_prerequisites() -> None:
-    assert next_lesson(PACK, PACK.lessons, set(), None).id == "vi-south.u01.l01"  # type: ignore[union-attr]
-    assert next_lesson(PACK, PACK.lessons, {"vi-south.u01.l01"}, "family").id == "vi-south.u01.l02"  # type: ignore[union-attr]
-    assert next_lesson(PACK, PACK.lessons, set(PACK.lessons), None) is None
+    def done(ids: set[str]) -> ProgressState:
+        return progress_from(PACK, dict.fromkeys(ids, 1.0))
+
+    assert next_lesson(PACK, PACK.lessons, done(set()), None).id == "vi-south.u01.l01"  # type: ignore[union-attr]
+    assert next_lesson(PACK, PACK.lessons, done({"vi-south.u01.l01"}), "family").id == "vi-south.u01.l02"  # type: ignore[union-attr]
+    assert next_lesson(PACK, PACK.lessons, done(set(PACK.lessons)), None) is None
 
 
 def test_session_next_honors_placement_entry(client: TestClient, auth: dict[str, str]) -> None:

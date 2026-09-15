@@ -48,6 +48,52 @@ const MOTIFS: Record<BadgeCode, ReactElement> = {
       <path d="M22 38h20M24 44h16" />
     </g>
   ),
+  // Cent jours : trois vagues sous le nombre.
+  streak_100: (
+    <g>
+      <path d="M14 44c4-6 8-6 12 0s8 6 12 0 8-6 12 0" />
+      <text x="32" y="33" textAnchor="middle" fontSize="13" fontWeight="700" stroke="none" fill="currentColor">100</text>
+    </g>
+  ),
+  // Un an : le soleil au-dessus du fleuve.
+  streak_365: (
+    <g>
+      <circle cx="32" cy="26" r="8" />
+      <path d="M32 12v4M20 16l3 3M44 16l-3 3M16 26h4M44 26h4" />
+      <path d="M12 46c6 3 11 3 17 0s11-3 17 0 6 2 6 2" />
+    </g>
+  ),
+  // Une barque pleine de mots : 500 mots.
+  words_500: (
+    <g>
+      <path d="M12 36h40l-7 10H19z" />
+      <path d="M20 36v-8h8v8M30 36V24h8v12M40 36v-6h6v6" />
+    </g>
+  ),
+  // Sud : une feuille de cocotier et une flèche vers le bas.
+  no_north_accent: (
+    <g>
+      <path d="M32 14v30" />
+      <path d="M24 36l8 8 8-8" />
+      <path d="M32 20c-6-4-12-3-16 0M32 20c6-4 12-3 16 0" />
+    </g>
+  ),
+  // Une lanterne : explorateur de culture.
+  culture_explorer: (
+    <g>
+      <path d="M32 12v5" />
+      <path d="M22 22h20l3 10-3 10H22l-3-10z" />
+      <path d="M26 42v6M38 42v6M28 22v20M36 22v20" />
+    </g>
+  ),
+  // Un chapeau conique : unité culturelle réussie.
+  culture_unit: (
+    <g>
+      <path d="M12 40L32 18l20 22z" />
+      <path d="M18 40c4 6 24 6 28 0" />
+      <path d="M26 30h12" />
+    </g>
+  ),
   // Une oreille et un contour tonal.
   tone_ear: (
     <g>
@@ -58,13 +104,21 @@ const MOTIFS: Record<BadgeCode, ReactElement> = {
   ),
 };
 
-export function BadgeIcon({ code, earned, size = 64 }: { code: BadgeCode; earned: boolean; size?: number }) {
+/** Défi de la semaine (badges `challenge_*` du serveur) : un fanion. */
+const CHALLENGE_MOTIF = (
+  <g>
+    <path d="M22 50V14" />
+    <path d="M22 16h22l-5 8 5 8H22" />
+  </g>
+);
+
+export function BadgeIcon({ code, earned, size = 64 }: { code: BadgeCode | string; earned: boolean; size?: number }) {
   return (
     <svg viewBox="0 0 64 64" width={size} height={size} aria-hidden className={earned ? "text-nuoc" : "text-phu-sa/40"}>
       <circle cx="32" cy="32" r="30" fill={earned ? "var(--color-son-mai)" : "var(--color-ngoc-sang)"} />
       <circle cx="32" cy="32" r="26" fill="none" stroke={earned ? "var(--color-nghe)" : "currentColor"} strokeWidth="1.5" strokeDasharray={earned ? undefined : "3 4"} />
       <g fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-        {MOTIFS[code]}
+        {(MOTIFS as Record<string, ReactElement>)[code] ?? CHALLENGE_MOTIF}
       </g>
     </svg>
   );

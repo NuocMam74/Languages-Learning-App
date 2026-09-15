@@ -1,5 +1,5 @@
 import { isDue, isMastered, type SrsCard } from "./srs.ts";
-import type { ConceptId, Curriculum, Lesson, LessonId } from "./types.ts";
+import type { ConceptId, Curriculum, Lesson, LessonId, Unit, UnitId } from "./types.ts";
 
 /**
  * Planification d'une séance (spec §4.3) :
@@ -83,31 +83,101 @@ export function planSession({ targetMinutes, cards, nextLesson, now }: PlanInput
   return { blocks, estimatedSeconds: used };
 }
 
+/** Score minimal (meilleur score) d'un test d'unité réussi (contrat phase5 §2). */
+export const UNIT_TEST_PASS_SCORE = 0.7;
+
+export function isUnitTestPassed(bestScore: number): boolean {
+  return bestScore >= UNIT_TEST_PASS_SCORE - 1e-9;
+}
+
+export interface ProgressSets {
+  /** Leçons terminées (ou sautées au placement). */
+  completed: ReadonlySet<LessonId>;
+  /** Tests d'unité réussis (ou sautés au placement). Défaut : `completed`. */
+  passed?: ReadonlySet<LessonId>;
+}
+
+/** Unités requises : `requires` explicite, sinon l'unité précédente dans la liste. */
+export function unitRequires(curriculum: Curriculum, unitId: UnitId): UnitId[] {
+  const index = curriculum.units.findIndex((u) => u.id === unitId);
+  const unit = curriculum.units[index];
+  if (!unit) return [];
+  if (unit.requires) return [...unit.requires];
+  const previous = curriculum.units[index - 1];
+  return previous ? [previous.id] : [];
+}
+
+/** Test(s) d'unité (`kind: "unit_test"`) ; sans test, toutes les leçons de l'unité en tiennent lieu. */
+function unitGate(unit: Unit, lessons: ReadonlyMap<LessonId, Lesson>): { tests: LessonId[]; all: LessonId[] } {
+  return { tests: unit.lessons.filter((id) => lessons.get(id)?.kind === "unit_test"), all: unit.lessons };
+}
+
+/** Unité réussie : chaque test d'unité réussi (sans test : toutes les leçons terminées). */
+export function isUnitPassed(curriculum: Curriculum, lessons: ReadonlyMap<LessonId, Lesson>, unitId: UnitId, progress: ProgressSets): boolean {
+  const unit = curriculum.units.find((u) => u.id === unitId);
+  if (!unit || unit.lessons.length === 0) return false;
+  const passed = progress.passed ?? progress.completed;
+  const { tests, all } = unitGate(unit, lessons);
+  return tests.length > 0 ? tests.every((id) => passed.has(id)) : all.every((id) => progress.completed.has(id));
+}
+
+/** Unité disponible : publiée, et chaque unité requise existante réussie (ou sautée au placement). */
+export function isUnitAvailable(curriculum: Curriculum, lessons: ReadonlyMap<LessonId, Lesson>, unitId: UnitId, progress: ProgressSets): boolean {
+  const unit = curriculum.units.find((u) => u.id === unitId);
+  if (!unit || unit.status !== "available") return false;
+  return unitRequires(curriculum, unitId).every(
+    (req) => !curriculum.units.some((u) => u.id === req) || isUnitPassed(curriculum, lessons, req, progress),
+  );
+}
+
+/** Leçon faite pour le parcours : terminée, et réussie s'il s'agit d'un test d'unité. */
+function lessonDone(lesson: Lesson, progress: ProgressSets): boolean {
+  if (!progress.completed.has(lesson.id)) return false;
+  return lesson.kind !== "unit_test" || (progress.passed ?? progress.completed).has(lesson.id);
+}
+
 /**
- * Prochaine leçon disponible : toutes ses conditions remplies, non terminée,
- * dans une unité publiée. Le parcours du profil (famille, voyage…) trie les
- * unités par tags : un seul corpus, plusieurs chemins (spec §6.2).
+ * Leçon ouverte : unité disponible et prérequis intra-unité terminés (les prérequis
+ * inter-unités sont ignorés : le graphe d'unités les remplace).
+ */
+export function isLessonUnlocked(curriculum: Curriculum, lessons: ReadonlyMap<LessonId, Lesson>, lessonId: LessonId, progress: ProgressSets): boolean {
+  const lesson = lessons.get(lessonId);
+  if (!lesson) return false;
+  if (progress.completed.has(lessonId)) return true;
+  const unit = curriculum.units.find((u) => u.lessons.includes(lessonId));
+  if (!unit || !isUnitAvailable(curriculum, lessons, unit.id, progress)) return false;
+  const inUnit = new Set(unit.lessons);
+  return lesson.prerequisites.every((p) => !inUnit.has(p) || progress.completed.has(p));
+}
+
+/**
+ * Prochaine leçon : dans les unités disponibles (graphe `requires`), la première leçon non faite
+ * dont les prérequis intra-unité sont remplis. Le parcours du profil (famille, voyage…) trie les
+ * unités disponibles par tags : un seul corpus, plusieurs chemins (spec §6.2). Un test d'unité
+ * terminé sous le seuil reste à refaire.
  */
 export function nextLesson(
   curriculum: Curriculum,
   lessons: ReadonlyMap<LessonId, Lesson>,
   completed: ReadonlySet<LessonId>,
   path: string | null,
+  passed?: ReadonlySet<LessonId>,
 ): Lesson | null {
+  const progress: ProgressSets = passed ? { completed, passed } : { completed };
   const boost = new Set(path ? (curriculum.paths[path]?.boostTags ?? []) : []);
   const units = curriculum.units
     .map((unit, order) => ({ unit, order, boosted: (unit.tags ?? []).some((t) => boost.has(t)) }))
-    .filter(({ unit }) => unit.status === "available");
+    .filter(({ unit }) => isUnitAvailable(curriculum, lessons, unit.id, progress));
 
-  // Unités boostées d'abord ; les prérequis empêchent de sauter le socle.
+  // Unités boostées d'abord parmi les disponibles : le graphe empêche de sauter le socle.
   units.sort((a, b) => Number(b.boosted) - Number(a.boosted) || a.order - b.order);
 
   for (const { unit } of units) {
+    const inUnit = new Set(unit.lessons);
     for (const lessonId of unit.lessons) {
-      if (completed.has(lessonId)) continue;
       const lesson = lessons.get(lessonId);
-      if (!lesson) continue;
-      if (lesson.prerequisites.every((p) => completed.has(p))) return lesson;
+      if (!lesson || lessonDone(lesson, progress)) continue;
+      if (lesson.prerequisites.every((p) => !inUnit.has(p) || completed.has(p))) return lesson;
     }
   }
   return null;

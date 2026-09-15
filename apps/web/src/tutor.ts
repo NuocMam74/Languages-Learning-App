@@ -1,7 +1,8 @@
 import { localDay, type Streak } from "@parlo/core";
-import { getTutorGreeting, hasAccessToken, postTutorWhy, type WhyInput } from "./api.ts";
+import { getTutorGreeting, hasAccessToken, NetworkError, postTutorWhy, type WhyInput } from "./api.ts";
 import { getKv, setKv } from "./db.ts";
 import { getLocale, t } from "./i18n/index.ts";
+import { tutorUnavailable } from "./tutor/status.ts";
 
 /**
  * Cô Mai dans l'interface (spec §5.7, Phase 1) : salutation du hub et
@@ -42,14 +43,16 @@ export async function remoteGreeting(now = new Date()): Promise<string | null> {
   }
 }
 
-export type WhyAnswer = { kind: "tutor"; text: string } | { kind: "offline" };
+/** `unavailable` : pas de modèle, ou réponse impossible — repli silencieux sur l'explication du contenu (contrat phase5 §5). */
+export type WhyAnswer = { kind: "tutor"; text: string } | { kind: "offline" } | { kind: "unavailable" };
 
 export async function askWhy(input: Omit<WhyInput, "locale">): Promise<WhyAnswer> {
+  if (tutorUnavailable()) return { kind: "unavailable" };
   if (!hasAccessToken() || !navigator.onLine) return { kind: "offline" };
   try {
     const { text } = await postTutorWhy({ ...input, locale: getLocale() });
-    return text.trim() ? { kind: "tutor", text } : { kind: "offline" };
-  } catch {
-    return { kind: "offline" };
+    return text.trim() ? { kind: "tutor", text } : { kind: "unavailable" };
+  } catch (error) {
+    return error instanceof NetworkError ? { kind: "offline" } : { kind: "unavailable" };
   }
 }

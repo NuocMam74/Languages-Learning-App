@@ -91,5 +91,24 @@
       "fr": "Cửu Long",
       "en": "Cửu Long"
     }
-  ]
+  ],
+  "levelNames": [
+    { "fr": "Xuồng ba lá", "en": "Xuồng ba lá" },
+    { "fr": "Ghe chèo", "en": "Ghe chèo" },
+    { "fr": "Bến đò", "en": "Bến đò" },
+    { "fr": "Ghe bẹo", "en": "Ghe bẹo" },
+    { "fr": "Chợ nổi", "en": "Chợ nổi" },
+    { "fr": "Cù lao", "en": "Cù lao" },
+    { "fr": "Ghe bầu", "en": "Ghe bầu" },
+    { "fr": "Vàm sông", "en": "Vàm sông" },
+    { "fr": "Sông Tiền", "en": "Sông Tiền" },
+    { "fr": "Mê Kông", "en": "Mê Kông" }
+  ],
+  "tutor": {
+    "name": "Cô Mai",
+    "persona": {
+      "fr": "Cô Mai est professeure, originaire de Cần Thơ et installée à Hô Chi Minh-Ville. Chaleureuse, directe et un brin taquine, elle t'explique tout en français et glisse dạ, nghen et há dans ses répliques en vietnamien.",
+      "en": "Cô Mai is a teacher from Cần Thơ who lives in Ho Chi Minh City. Warm, direct and a little teasing, she explains everything in English and sprinkles dạ, nghen and há into her Vietnamese replies."
+    }
+  }
 }

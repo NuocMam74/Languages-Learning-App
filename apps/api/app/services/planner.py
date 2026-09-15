@@ -5,12 +5,14 @@ La durée annoncée est un plafond : les révisions en trop glissent au lendemai
 """
 
 import math
-from collections.abc import Collection, Mapping, Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
+from app.services import progression
 from app.services.content import Lesson, Pack
+from app.services.progression import ProgressState
 from app.services.srs import SrsCard, is_due, is_mastered
 
 WARMUP_SECONDS = 30
@@ -87,32 +89,6 @@ def plan_session(
     return SessionPlan(blocks=blocks, estimated_seconds=used)
 
 
-def next_lesson(
-    pack: Pack,
-    lessons: Mapping[str, Lesson],
-    completed: Collection[str],
-    path: str | None,
-) -> Lesson | None:
-    """Prochaine leçon disponible : prérequis remplis, non terminée, dans une unité publiée.
-
-    Le parcours du profil trie les unités par tags : un seul corpus, plusieurs chemins (spec §6.2).
-    """
-    boost = set(pack.paths.get(path, ())) if path else set()
-    units = [
-        (unit, order, any(t in boost for t in unit.tags))
-        for order, unit in enumerate(pack.units)
-        if unit.status == "available"
-    ]
-    # Unités boostées d'abord ; les prérequis empêchent de sauter le socle.
-    units.sort(key=lambda u: (not u[2], u[1]))
-
-    for unit, _order, _boosted in units:
-        for lesson_id in unit.lessons:
-            if lesson_id in completed:
-                continue
-            lesson = lessons.get(lesson_id)
-            if lesson is None:
-                continue
-            if all(p in completed for p in lesson.prerequisites):
-                return lesson
-    return None
+def next_lesson(pack: Pack, lessons: Mapping[str, Lesson], state: ProgressState, path: str | None) -> Lesson | None:
+    """`nextLesson` (session.ts) : voir app/services/progression.py (graphe d'unités, tests d'unité, placement)."""
+    return progression.next_lesson(pack, lessons, state, path)

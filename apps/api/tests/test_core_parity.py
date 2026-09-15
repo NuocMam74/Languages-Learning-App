@@ -1,21 +1,26 @@
-"""Parité avec packages/core : aléa, texte, moteur d'exercices (graine d'examen), planificateur.
+"""Parité avec packages/core : aléa, texte, moteur d'exercices (graine d'examen), planificateur, règles du parcours.
 
 Fixtures produites par `npx tsx apps/api/tests/fixtures/generate_core_fixtures.ts` (voir l'en-tête du script).
 """
 
 import json
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
 import pytest
 
 from app.config import REPO_ROOT
-from app.services import exams
+from app.services import exams, progression
+from app.services.badges import BadgeInput, evaluate_badges
 from app.services.content import Lesson, load_packs
 from app.services.engine import evaluate, seeded_random
+from app.services.events import cap_session
+from app.services.levels import level_info
+from app.services.media import ALL_MEDIA
 from app.services.planner import plan_session
 from app.services.srs import SrsCard
+from app.services.streak import Streak, displayed_current, record_activity
 from app.services.text import compare_answer, normalize_answer
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -58,7 +63,8 @@ def test_exam_exercises_match_core(case: dict[str, Any]) -> None:
 
 @pytest.mark.parametrize("case", PARITY["grades"], ids=lambda c: f"{c['seed'][:8]}-{len(c['answers'])}")
 def test_exam_grading_matches_core(case: dict[str, Any]) -> None:
-    result = exams.grade(PACK, EXAM_SPEC, case["seed"], case["answers"])
+    # `mediaIndex` null côté core (pack lu sur disque) : tous les médias déclarés sont présents.
+    result = exams.grade(PACK, EXAM_SPEC, case["seed"], case["answers"], ALL_MEDIA)
     assert result.passed == case["passed"]
     assert result.global_score == pytest.approx(case["global"])
     assert result.scores == pytest.approx(case["scores"])
@@ -97,3 +103,99 @@ def test_planner_matches_core() -> None:
             now,
         )
         assert {"blocks": plan.blocks, "estimatedSeconds": plan.estimated_seconds} == case["output"], spec
+
+
+# --- Contrat parcours : médias et notation, graphe d'unités, placement, plafonds, niveaux, série, badges ---------
+
+
+MEDIA_EXAM = exams.parse_exam(
+    {
+        **EXAM,
+        "sections": [
+            {
+                **section,
+                "items": [
+                    {**item, "step": {**item["step"], "pitchRef": PARITY["mediaGrades"]["pitchRef"]}}
+                    if item["step"]["type"] == "speak_repeat"
+                    else item
+                    for item in section["items"]
+                ],
+            }
+            for section in EXAM["sections"]
+        ],
+    }
+)
+
+
+@pytest.mark.parametrize("case", PARITY["mediaGrades"]["cases"], ids=lambda c: f"{c['name']}-{len(c['answers'])}")
+def test_media_aware_grading_matches_core(case: dict[str, Any]) -> None:
+    index = ALL_MEDIA if case["media"] is None else frozenset(case["media"])
+    graded = exams.graded_refs(PACK, MEDIA_EXAM, index)
+    assert [{"section": s, "index": i, "graded": (s, i) in graded} for s, i in MEDIA_EXAM.items()] == case["graded"]
+    assert len(graded) == case["gradedItems"]
+    assert exams.unavailable_reason(PACK, MEDIA_EXAM, index) == case["unavailableReason"]
+    result = exams.grade(PACK, MEDIA_EXAM, case["seed"], case["answers"], index)
+    assert result.passed == case["passed"]
+    assert result.global_score == pytest.approx(case["global"])
+    assert result.scores == pytest.approx(case["scores"])
+    assert result.gaps == case["gaps"]
+
+
+def test_unit_graph_and_placement_match_core() -> None:
+    fixture = PARITY["progression"]
+    for entry in fixture["entries"]:
+        lesson = progression.resolve_entry_lesson(PACK, entry["level"])
+        assert (lesson.id if lesson else None) == entry["lessonId"], entry
+    for case in fixture["cases"]:
+        state = progression.ProgressState(frozenset(case["completed"]), frozenset(case["passed"]))
+        lesson = progression.next_lesson(PACK, PACK.lessons, state, case["path"])
+        assert (lesson.id if lesson else None) == case["next"], case["name"]
+        assert [u.id for u in PACK.units if progression.is_unit_passed(PACK, u, state)] == case["passedUnits"]
+
+
+def test_session_caps_and_levels_match_core() -> None:
+    for case in PARITY["caps"]:
+        i = case["input"]
+        items, xp, duration = cap_session(i["itemsCount"], i["xpGained"], i["durationMs"])
+        assert {"itemsCount": items, "xpGained": xp, "durationMs": duration} == case["output"], case
+    for case in PARITY["levels"]:
+        info = level_info(case["xp"], None)
+        assert {"value": info.value, "xpIntoLevel": info.xp_into_level, "xpForNext": info.xp_for_next} == case[
+            "level"
+        ], case
+
+
+def _streak(raw: dict[str, Any]) -> Streak:
+    def day(value: str | None) -> date | None:
+        return date.fromisoformat(value) if value else None
+
+    return Streak(
+        current=raw["current"],
+        longest=raw["longest"],
+        last_active_date=day(raw["lastActiveDate"]),
+        freezes_available=raw["freezesAvailable"],
+        frozen_until=day(raw["frozenUntil"]),
+        frozen_from=day(raw.get("frozenFrom")),
+    )
+
+
+def test_streak_rules_match_core() -> None:
+    for case in PARITY["streaks"]:
+        streak = _streak(case["streak"])
+        today = date.fromisoformat(case["day"])
+        assert record_activity(streak, today) == _streak(case["recorded"]), case
+        assert displayed_current(streak, today) == case["displayed"], case
+
+
+def test_badges_match_core() -> None:
+    for case in PARITY["badges"]:
+        data = BadgeInput(
+            pack=PACK,
+            progress=progression.ProgressState(frozenset(case["completed"]), frozenset(case["passed"])),
+            streak=_streak(case["streak"]),
+            known_words=case["knownWords"],
+            tone_log=case["toneLog"],
+            south_log=case["southLog"],
+            culture_cards_passed=case["cultureCardsPassed"],
+        )
+        assert evaluate_badges(data, set()) == case["earned"], case["name"]

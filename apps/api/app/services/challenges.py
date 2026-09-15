@@ -6,7 +6,7 @@
   lecture si le planificateur est désactivé.
 - Progression recalculée depuis les événements reçus dont `occurredAt` est dans la période (`challengeProgress`) :
   words_theme : mots (concepts `word` de `review.srsIntroduce`) des leçons de l'unité terminées dans la période ;
-  streak_days : plus longue suite de `localDate` de `session_completed` ;
+  streak_days : plus longue suite de jours locaux de séances terminées (non vides) ;
   speaking_minutes : ⌊(`pronunciation_scored` × 10 s + `conversation_turn` × 20 s) / 60⌋ ;
   lessons : `lesson_completed` ; game_score : `game_played` avec correct/total ≥ 0,7.
 - words_theme : unité = première unité publiée non terminée, figée pour l'utilisateur à la première lecture.
@@ -22,7 +22,15 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from app.models import Challenge, ChallengeProgress, GamePlay, ProcessedEvent, PronunciationScore, UserBadge
+from app.models import (
+    Challenge,
+    ChallengeProgress,
+    GamePlay,
+    ProcessedEvent,
+    PronunciationScore,
+    StudySession,
+    UserBadge,
+)
 from app.services import learner
 from app.services.badges import ensure_badge
 from app.services.content import Pack, concept_documents, course_code_of_lesson, lesson_document
@@ -158,12 +166,17 @@ def compute_progress(db: Session, user_id: str, challenge: Challenge, pack: Pack
             }
             return len(learned)
         case "streak_days":
-            days = set()
-            for p in _payloads(db, user_id, "session_completed", start, end):
-                try:
-                    days.add(date.fromisoformat(p["localDate"]))
-                except (KeyError, TypeError, ValueError):
-                    continue
+            # Séances terminées (non vides) : une séance vide acceptée sans effet ne compte pas.
+            days = set(
+                db.scalars(
+                    select(StudySession.local_date).where(
+                        StudySession.user_id == user_id,
+                        StudySession.ended_at >= start,
+                        StudySession.ended_at < end,
+                        StudySession.local_date.is_not(None),
+                    )
+                )
+            )
             return longest_run(days)
         case "speaking_minutes":
             items = db.scalar(
@@ -218,7 +231,7 @@ def claim(db: Session, user_id: str, challenge: Challenge, packs: dict[str, Pack
     row.claimed_at = now
     enrollment = learner.primary_enrollment(db, user_id)
     if enrollment is not None:
-        enrollment.xp_total += CLAIM_XP
+        learner.add_xp(enrollment, CLAIM_XP)
     badge = ensure_badge(db, f"challenge_{challenge.kind}", server_awarded=True)
     if badge is not None and db.get(UserBadge, (user_id, badge.id)) is None:
         db.add(UserBadge(user_id=user_id, badge_id=badge.id, earned_at=now))

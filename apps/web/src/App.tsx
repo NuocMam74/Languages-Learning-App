@@ -3,7 +3,7 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useState, type ReactNo
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { useAccount } from "./account.ts";
 import { Button, Screen } from "./components/ui.tsx";
-import { loadPack } from "./content.ts";
+import { checkContentUpdate, loadPack } from "./content.ts";
 import type { Profile } from "./db.ts";
 import { t } from "./i18n/index.ts";
 import { currentSession, getProfile, sessionPath } from "./learner.ts";
@@ -15,7 +15,9 @@ import { Welcome } from "./pages/Welcome.tsx";
 import { GamePlayPage, GamesPage } from "./games/GamesPage.tsx";
 import { usePrefs } from "./prefs.ts";
 import { startExpressQueue } from "./social/express-store.ts";
-import { startSync } from "./sync.ts";
+import { restoreOnStart, STATE_RESTORED_EVENT } from "./restore.ts";
+import { ACCOUNT_UPDATED_EVENT, startSync } from "./sync.ts";
+import { useTutorStatus } from "./tutor/status.ts";
 
 /** Pages de démonstration des composants (spec §16) : développement uniquement, absentes du build. */
 const DemoPage = import.meta.env.DEV ? lazy(() => import("./demo/DemoPage.tsx")) : null;
@@ -24,6 +26,9 @@ const DemoPage = import.meta.env.DEV ? lazy(() => import("./demo/DemoPage.tsx"))
 const LanguageChoice = lazy(() => import("./pages/LanguageChoice.tsx"));
 const Placement = lazy(() => import("./pages/Placement.tsx"));
 const AccountPage = lazy(() => import("./pages/Account.tsx"));
+const ForgotPasswordPage = lazy(() => import("./pages/AccountRecovery.tsx").then((m) => ({ default: m.ForgotPasswordPage })));
+const ResetPasswordPage = lazy(() => import("./pages/AccountRecovery.tsx").then((m) => ({ default: m.ResetPasswordPage })));
+const VerifyEmailPage = lazy(() => import("./pages/AccountRecovery.tsx").then((m) => ({ default: m.VerifyEmailPage })));
 const Settings = lazy(() => import("./pages/Settings.tsx"));
 const Badges = lazy(() => import("./pages/Badges.tsx"));
 // Phase 2 : examens, certificats, rappels.
@@ -69,6 +74,12 @@ export function App() {
     setFailed(false);
     // Langue apprise enregistrée d'abord (ADR 0006) : contenu, profil et progression sont ceux de ce pack.
     loadActivePack()
+      .then(async () => {
+        // Contenu publié depuis le build (contrat phase5 §6) : vérifié en ligne, sans bloquer longtemps le démarrage.
+        await Promise.race([checkContentUpdate().catch(() => "none"), new Promise((resolve) => setTimeout(resolve, 2500))]);
+        // Nouvel appareil d'un compte connecté : progression restaurée avant d'afficher le parcours (contrat phase5 §4).
+        await restoreOnStart().catch(() => false);
+      })
       .then(() => Promise.all([loadPack(), getProfile()]))
       .then(async ([content, profile]) => {
         const session = await currentSession(content);
@@ -77,11 +88,24 @@ export function App() {
           window.history.replaceState(null, "", sessionPath(session));
         }
         setBoot({ content, profile });
+        void useTutorStatus.getState().refresh({ packHasTutor: Boolean(content.pack.tutor) });
       })
       .catch(() => setFailed(true));
   }, []);
 
   useEffect(start, [start]);
+
+  useEffect(() => {
+    // Progression restaurée depuis le compte (connexion, OAuth) : on relit contenu et profil.
+    const onRestored = () => start();
+    const onAccount = () => void useAccount.getState().reload();
+    window.addEventListener(STATE_RESTORED_EVENT, onRestored);
+    window.addEventListener(ACCOUNT_UPDATED_EVENT, onAccount);
+    return () => {
+      window.removeEventListener(STATE_RESTORED_EVENT, onRestored);
+      window.removeEventListener(ACCOUNT_UPDATED_EVENT, onAccount);
+    };
+  }, [start]);
 
   useEffect(() => {
     void useAccount.getState().init();
@@ -126,9 +150,12 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/lecon/:lessonId", element: <SessionPage content={content} mode="lesson" /> },
         { path: "/compte", element: later(<AccountPage mode="register" />) },
         { path: "/connexion", element: later(<AccountPage mode="login" />) },
+        { path: "/compte/mot-de-passe-oublie", element: later(<ForgotPasswordPage />) },
+        { path: "/compte/reinitialiser", element: later(<ResetPasswordPage />) },
+        { path: "/compte/verifier", element: later(<VerifyEmailPage />) },
         { path: "/reglages", element: later(<Settings />) },
-        { path: "/badges", element: later(<Badges />) },
-        { path: "/jeux", element: <GamesPage /> },
+        { path: "/badges", element: later(<Badges content={content} />) },
+        { path: "/jeux", element: <GamesPage content={content} /> },
         { path: "/jeux/karaoke_tonal", element: later(<KaraokePage content={content} />) },
         { path: "/jeux/doi_dap", element: later(<DoiDapPage content={content} />) },
         { path: "/co-mai", element: later(<TutorStartPage />) },

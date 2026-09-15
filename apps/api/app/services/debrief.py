@@ -104,7 +104,7 @@ def collect(db: Session, user: User, pack: Pack | None, locale: str, now: dateti
         sessions=int(sessions[0] or 0),
         minutes=round(int(sessions[1] or 0) / 60_000),
         xp=int(sessions[2] or 0),
-        streak=learner.get_streak(db, user.id).current,
+        streak=learner.displayed_streak(db, user.id, learner.current_local_date(db, user.id, now)),
         weak=weak,
         next_lesson=(localized(next_doc.get("title"), locale) if next_doc else None),
         daily_goal_min=profile.daily_goal_min if profile else 10,
@@ -222,7 +222,12 @@ def weekly_debrief(
     pack = packs.get(enrollment.course_id if enrollment else settings.default_course)
     data = collect(db, user, pack, locale, now)
     values = None
-    if llm is not None and pack is not None and model_calls_today(db, user.id, now) < settings.tutor_daily_quota:
+    if (
+        llm is not None
+        and pack is not None
+        and pack.tutor is not None
+        and model_calls_today(db, user.id, now) < settings.tutor_daily_quota
+    ):
         text = _generate(
             db, llm, pack, user.id, _prompt(user, data, locale), DEBRIEF_MAX_TOKENS, DEBRIEF_MAX_CHARS, now
         )

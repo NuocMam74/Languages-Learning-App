@@ -22,7 +22,8 @@ export default function LanguageChoice({ content }: { content: ContentIndex }) {
   const [selected, setSelected] = useState(content.pack.code);
   const [busy, setBusy] = useState(false);
   const [interest, setInterest] = useState<Record<string, boolean>>({});
-  const comingSoon = ANNOUNCED.filter((code) => !isAvailablePack(code));
+  // Pack en préparation masqué (contrat phase5 §5) : il reste annoncé « bientôt ».
+  const comingSoon = ANNOUNCED.filter((code) => !isAvailablePack(code) || !choices.some((c) => c.code === code));
 
   useEffect(() => {
     void getLanguageInterest().then(setInterest);

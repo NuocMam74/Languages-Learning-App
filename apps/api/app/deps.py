@@ -11,9 +11,11 @@ from app.config import Settings
 from app.models import User
 from app.services.auth import decode_access_token
 from app.services.content import Pack, load_packs
+from app.services.email import EmailSender
 from app.services.exams import ExamSpec, load_exams
+from app.services.oauth import OAuthClient
 from app.services.pdf import PdfRenderer
-from app.services.rate_limit import RateLimiter
+from app.services.rate_limit import RateLimiter, client_ip
 from app.services.storage import FileStorage
 
 
@@ -51,6 +53,18 @@ def get_storage(request: Request) -> FileStorage:
     return storage
 
 
+def get_email_sender(request: Request) -> EmailSender:
+    sender: EmailSender = request.app.state.email_sender
+    return sender
+
+
+def get_oauth_client(request: Request) -> OAuthClient:
+    client: OAuthClient = request.app.state.oauth_client
+    return client
+
+
+EmailDep = Annotated[EmailSender, Depends(get_email_sender)]
+OAuthDep = Annotated[OAuthClient, Depends(get_oauth_client)]
 ExamsDep = Annotated[dict[str, dict[str, ExamSpec]], Depends(get_exams)]
 PdfRendererDep = Annotated[PdfRenderer, Depends(get_pdf_renderer)]
 StorageDep = Annotated[FileStorage, Depends(get_storage)]
@@ -80,10 +94,21 @@ def current_user(
 CurrentUser = Annotated[User, Depends(current_user)]
 
 
+def request_client_ip(request: Request) -> str:
+    """IP client réelle (X-Forwarded-For lu seulement derrière un proxy de TRUSTED_PROXIES)."""
+    return client_ip(
+        request.client.host if request.client else None,
+        request.headers.get("x-forwarded-for"),
+        request.app.state.trusted_networks,
+    )
+
+
 def auth_rate_limit(request: Request) -> None:
     limiter: RateLimiter = request.app.state.auth_rate_limiter
-    client = request.client.host if request.client else "unknown"
-    if not limiter.hit(f"{client}:{request.url.path}"):
+    route = request.scope.get("route")
+    # Gabarit de route (et non chemin brut) : `/auth/oauth/<aléatoire>` ne crée pas une clé par requête.
+    path = getattr(route, "path", None) or request.url.path
+    if not limiter.hit(f"{request_client_ip(request)}:{path}"):
         raise HTTPException(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS, detail="Trop de tentatives, réessaie plus tard"
         )

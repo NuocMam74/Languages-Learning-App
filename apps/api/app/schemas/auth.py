@@ -26,3 +26,21 @@ class TokenResponse(CamelModel):
     access_token: str
     token_type: Literal["bearer"] = "bearer"  # noqa: S105
     expires_in: int
+
+
+class PasswordForgotRequest(CamelModel):
+    email: str = Field(min_length=3, max_length=320)
+
+
+class PasswordResetRequest(CamelModel):
+    token: str = Field(min_length=10, max_length=256)
+    password: str = Field(min_length=10, max_length=256)
+
+
+class EmailVerifyRequest(CamelModel):
+    token: str = Field(min_length=10, max_length=256)
+
+
+class OAuthProviderOut(CamelModel):
+    id: Literal["google", "apple"]
+    name: str

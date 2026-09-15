@@ -320,11 +320,16 @@ export interface LessonRun {
 export const MAX_ATTEMPTS = 2;
 export const TUTOR_NUDGE_AFTER = 3;
 
-export function startLesson(lesson: Lesson, sessionId: string, now: Date): LessonRun {
+/**
+ * `playable` : étapes à jouer (indices d'origine) ; les autres sont retirées de la séance, ni affichées
+ * ni notées (contrat phase5 §1, étapes tonales sans audio natif). Défaut : toutes.
+ */
+export function startLesson(lesson: Lesson, sessionId: string, now: Date, playable?: readonly number[]): LessonRun {
+  const keep = playable ? new Set(playable) : null;
   return {
     sessionId,
     lessonId: lesson.id,
-    queue: lesson.steps.map((_, stepIndex) => ({ stepIndex, attempt: 1 })),
+    queue: lesson.steps.flatMap((_, stepIndex) => (keep && !keep.has(stepIndex) ? [] : [{ stepIndex, attempt: 1 }])),
     cursor: 0,
     results: [],
     errorStreaks: {},

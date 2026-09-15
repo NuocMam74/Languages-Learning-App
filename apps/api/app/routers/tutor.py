@@ -20,7 +20,7 @@ from app.schemas.phase3 import (
     TurnOut,
     WeeklyDebriefOut,
 )
-from app.schemas.tutor import TutorLocale, TutorReplyOut, WhyRequest
+from app.schemas.tutor import TutorLocale, TutorReplyOut, TutorStatusOut, WhyRequest
 from app.services import conversation, debrief, tutor
 from app.services.rate_limit import RateLimiter
 from app.services.tutor_llm import TutorLLM
@@ -42,6 +42,26 @@ def get_tutor_llm(request: Request) -> TutorLLM | None:
 TutorLLMDep = Annotated[TutorLLM | None, Depends(get_tutor_llm)]
 
 router = APIRouter(prefix="/tutor", tags=["tutor"], dependencies=[Depends(tutor_rate_limit)])
+
+
+# Disponibilité du professeur : publique (l'invité aussi doit savoir si la conversation est proposée).
+status_router = APIRouter(prefix="/tutor", tags=["tutor"])
+
+
+@status_router.get("/status", response_model=TutorStatusOut)
+def status_of_tutor(
+    settings: SettingsDep,
+    packs: PacksDep,
+    llm: TutorLLMDep,
+    pack_code: Annotated[str | None, Query(alias="pack", max_length=64)] = None,
+) -> TutorStatusOut:
+    """Disponibilité du professeur pour un pack (contrat parcours §5) ; défaut : pack par défaut."""
+    pack_code = pack_code or settings.default_course
+    pack = packs.get(pack_code)
+    if pack is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Cours inconnu : {pack_code}")
+    result = tutor.tutor_status(llm, pack)
+    return TutorStatusOut(available=result.available, reason=result.reason, persona_name=result.persona_name)
 
 
 def _out(reply: tutor.TutorReply) -> TutorReplyOut:

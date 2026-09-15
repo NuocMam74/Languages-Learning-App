@@ -1,10 +1,16 @@
 import { expect, test, type Page } from "@playwright/test";
+import { declareAllMedia } from "./media.ts";
 
 /**
  * Onglet « Jeux » : Chợ nổi jouable seul (spec §5.6). Mouvement réduit émulé :
  * les barques ne dérivent pas, les choix sont statiques → test déterministe.
  */
-test.use({ reducedMotion: "reduce" });
+test.use({ reducedMotion: "reduce", serviceWorkers: "block" });
+
+// Chợ nổi (pack tonal) exige l'audio natif : le build n'en a pas encore, l'index des médias est complété (voir media.ts).
+test.beforeEach(async ({ page }) => {
+  await declareAllMedia(page);
+});
 
 test("Chợ nổi se joue jusqu'au résultat et garde le record", async ({ page }) => {
   await page.goto("/jeux");

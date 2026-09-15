@@ -3,7 +3,7 @@
   "id": "vi-south.exam.a0",
   "level": "A0",
   "certificate": { "fr": "A0 Bén rễ", "en": "A0 Bén rễ" },
-  "requiresUnits": ["vi-south.u01", "vi-south.u02", "vi-south.u03", "vi-south.u04"],
+  "requiresUnits": ["vi-south.u01", "vi-south.u02", "vi-south.u03", "vi-south.u04", "vi-south.u05", "vi-south.u06"],
   "durationMinutes": 15,
   "passThreshold": 0.75,
   "retryAfterHours": 48,
@@ -17,7 +17,7 @@
         { "step": { "type": "listen_pick_text", "concept": "c_chao", "distractors": ["cháo", "chạo"] } },
         { "step": { "type": "tone_minimal_pair", "pair": ["chợ", "chờ"], "audioConcepts": ["c_cho_market", "c_cho_wait"] } },
         { "step": { "type": "listen_pick_image", "concept": "c_co_aunt", "distractors": ["c_chi", "c_ba_grandma"] } },
-        { "step": { "type": "listen_pick_text", "concept": "s_em_may_tuoi", "distractors": ["Anh mấy tuổi?", "Chị mấy tuổi?"] } },
+        { "step": { "type": "listen_pick_text", "concept": "s_mot_tram_le_nam", "distractors": ["một trăm lẻ bốn", "một ngàn lẻ năm"] } },
         { "step": { "type": "tone_minimal_pair", "pair": ["con", "còn"], "audioConcepts": ["c_con", "c_con_and"] } }
       ]
     },
@@ -25,7 +25,7 @@
       "skill": "reading",
       "items": [
         { "step": { "type": "spot_the_south", "variant": "lv_papa" } },
-        { "step": { "type": "listen_pick_text", "concept": "c_cam_on", "distractors": ["cam ơn", "cạm ơn"] }, "silent": true },
+        { "step": { "type": "build_sentence", "target": "Anh làm nghề gì?", "tokens": ["Anh", "làm", "nghề", "gì", "ở"], "translation": { "fr": "Tu fais quel métier ? (à un homme un peu plus âgé)", "en": "What do you do? (to a slightly older man)" } }, "silent": true },
         { "step": { "type": "build_sentence", "target": "Anh khỏe không?", "tokens": ["Anh", "khỏe", "không", "cũng"], "translation": { "fr": "Tu vas bien ? (à un homme un peu plus âgé)", "en": "How are you? (to a slightly older man)" } }, "silent": true },
         { "step": { "type": "spot_the_south", "variant": "lv_fruit_clf" } },
         { "step": { "type": "listen_pick_text", "concept": "s_ba_noi", "distractors": ["bà ngoại", "ba nội"] }, "silent": true },
@@ -40,7 +40,7 @@
         { "step": { "type": "build_sentence", "target": "Đây là vợ tôi.", "tokens": ["Đây", "là", "vợ", "tôi", "chồng"], "translation": { "fr": "Voici ma femme.", "en": "This is my wife." } } },
         { "step": { "type": "listen_pick_image", "concept": "c_cho_dog", "distractors": ["c_meo", "c_ga_chicken"] } },
         { "step": { "type": "build_sentence", "target": "Mời bác uống trà.", "tokens": ["Mời", "bác", "uống", "trà", "ăn"], "translation": { "fr": "Je vous en prie, prenez du thé (à un aîné).", "en": "Please have some tea (to an elder)." } } },
-        { "step": { "type": "listen_pick_image", "concept": "c_trai_fruit", "distractors": ["c_che_dessert", "c_rau"] } }
+        { "step": { "type": "listen_pick_image", "concept": "c_bac_si", "distractors": ["c_giao_vien", "c_ky_su"] } }
       ]
     },
     {

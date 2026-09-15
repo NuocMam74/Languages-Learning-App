@@ -44,7 +44,7 @@ export function isAvailablePack(code: unknown): code is string {
 }
 
 /** Clés `kv` propres à une langue : profil (onboarding), totaux, badges, placement, records… */
-const PACK_SCOPED_KEYS: ReadonlySet<string> = new Set(["profile", "totals", "badges", "placement", "toneLog"]);
+const PACK_SCOPED_KEYS: ReadonlySet<string> = new Set(["profile", "totals", "badges", "placement", "toneLog", "southLog", "cultureCards"]);
 const PACK_SCOPED_PREFIXES = ["games.", "karaoke.", "exams."] as const;
 
 export function isPackScopedKey(key: string): boolean {

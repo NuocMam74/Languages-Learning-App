@@ -1,9 +1,15 @@
 import {
   BADGE_CODES,
+  capDurationMs,
+  capSessionTotals,
   completeLesson,
   countKnownWords,
   emptyStreak,
   evaluateBadges,
+  isEmptySession,
+  isLessonUnlocked,
+  isUnitPassed,
+  isUnitTestPassed,
   lessonsBefore,
   lessonScore,
   localDay,
@@ -13,6 +19,7 @@ import {
   nextLesson,
   placementCards,
   planSession,
+  pushSouthResult,
   pushToneResult,
   recordActivity,
   recordResult,
@@ -43,8 +50,10 @@ import {
   type SessionSource,
   type SrsCard,
   type Streak,
+  type UnitId,
 } from "@parlo/core";
 import { db, getKv, LEGACY_SNAPSHOT_KEY, setDb, setKv, withoutPack, type ParloDB, type Profile, type SessionSnapshot, type StoredSrsCard, type Totals } from "./db.ts";
+import { playableSteps } from "./media.ts";
 import { activePackCode, scopedKey } from "./packs/active.ts";
 
 /**
@@ -68,7 +77,8 @@ const DEFAULT_TOTALS: Totals = { xp: 0, streak: emptyStreak() };
 export const MAX_FREEZE_DAYS = 14;
 
 export interface EarnedBadge {
-  code: BadgeCode;
+  /** Code de badge du pack, ou badge de défi `challenge_*` attribué par le serveur. */
+  code: BadgeCode | (string & {});
   earnedAt: string;
 }
 
@@ -131,7 +141,10 @@ async function setPackKv<T>(d: ParloDB, pack: string, key: string, value: T): Pr
 }
 
 async function writeSnapshot(d: ParloDB, pack: string, session: SessionRun, now: Date): Promise<void> {
-  await d.snapshot.put({ key: pack, packCode: pack, session, savedAt: now.toISOString() });
+  await d.snapshot.put({
+    key: pack, packCode: pack, session, savedAt: now.toISOString(),
+    ...(session.contentVersion !== undefined ? { contentVersion: session.contentVersion } : {}),
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -141,6 +154,10 @@ export interface Planning {
   completed: Set<LessonId>;
   /** Terminées + sautées grâce au placement : sert aux prérequis. */
   unlocked: Set<LessonId>;
+  /** Tests d'unité réussis (meilleur score ≥ 0,7) + leçons sautées au placement. */
+  passed: Set<LessonId>;
+  /** Leçons ouvertes (graphe d'unités, prérequis intra-unité) : carte du parcours et garde de lien profond. */
+  open: Set<LessonId>;
   cards: SrsCard[];
   next: Lesson | null;
   daily: SessionPlan;
@@ -148,20 +165,50 @@ export interface Planning {
   dueCount: number;
 }
 
+export interface ProgressState {
+  completed: Set<LessonId>;
+  unlocked: Set<LessonId>;
+  passed: Set<LessonId>;
+}
+
+/** Progression du pack : terminées, sautées au placement, tests d'unité réussis (contrat phase5 §2). */
+export async function progressState(content: ContentIndex, d: ParloDB = db()): Promise<ProgressState> {
+  const pack = content.pack.code;
+  const [rows, placement] = await Promise.all([
+    d.lessonProgress.where("packCode").equals(pack).toArray(),
+    packKv<PlacementRecord | null>(d, pack, "placement", null),
+  ]);
+  const skipped = placement ? lessonsBefore(content.curriculum, placement.entryLessonId) : [];
+  const completed = new Set(rows.map((r) => r.lessonId));
+  const unlocked = new Set([...completed, ...skipped]);
+  const passed = new Set([
+    ...rows.filter((r) => content.lessons.get(r.lessonId)?.kind !== "unit_test" || isUnitTestPassed(r.bestScore)).map((r) => r.lessonId),
+    ...skipped,
+  ]);
+  return { completed, unlocked, passed };
+}
+
+export function openLessons(content: ContentIndex, progress: ProgressState): Set<LessonId> {
+  const sets = { completed: progress.unlocked, passed: progress.passed };
+  return new Set([...content.lessons.keys()].filter((id) => isLessonUnlocked(content.curriculum, content.lessons, id, sets)));
+}
+
+/** Garde de lien profond : la leçon est-elle ouverte ? */
+export async function isLessonOpen(content: ContentIndex, lessonId: LessonId): Promise<boolean> {
+  const progress = await progressState(content);
+  return isLessonUnlocked(content.curriculum, content.lessons, lessonId, { completed: progress.unlocked, passed: progress.passed });
+}
+
 export async function planning(content: ContentIndex, profile: Profile, now = new Date()): Promise<Planning> {
   const pack = content.pack.code;
-  const [completed, cards, placement] = await Promise.all([
-    completedLessons(pack),
-    packCards(pack),
-    packKv<PlacementRecord | null>(db(), pack, "placement", null),
-  ]);
-  const unlocked = new Set([...completed, ...(placement ? lessonsBefore(content.curriculum, placement.entryLessonId) : [])]);
-  const next = nextLesson(content.curriculum, content.lessons, unlocked, profile.motivation);
+  const [progress, cards] = await Promise.all([progressState(content), packCards(pack)]);
+  const { completed, unlocked, passed } = progress;
+  const next = nextLesson(content.curriculum, content.lessons, unlocked, profile.motivation, passed);
   const daily = planSession({ targetMinutes: profile.dailyGoalMin, cards, nextLesson: next, now });
   const review = planSession({ targetMinutes: profile.dailyGoalMin, cards, nextLesson: null, now });
   const reviewBlock = review.blocks.find((b) => b.kind === "review");
   const dueCount = reviewBlock?.kind === "review" ? reviewBlock.conceptIds.length + reviewBlock.deferred : 0;
-  return { completed, unlocked, cards, next, daily, review, dueCount };
+  return { completed, unlocked, passed, open: openLessons(content, progress), cards, next, daily, review, dueCount };
 }
 
 /** Une séance a-t-elle quelque chose à faire (au-delà du bilan) ? */
@@ -206,6 +253,20 @@ export function sessionPath(run: SessionRun): string {
   return run.source === "review" ? "/revision" : "/seance";
 }
 
+/**
+ * Y a-t-il quelque chose à faire ? `empty` : révision sans carte due ou séance du jour sans travail,
+ * et aucune séance correspondante à reprendre — l'écran « Rien à réviser » remplace la séance, donc
+ * ni XP ni jour de série (contrat phase5 §3).
+ */
+export async function sessionAvailability(content: ContentIndex, request: SessionRequest, now = new Date()): Promise<"resume" | "work" | "empty"> {
+  const saved = await readSnapshot(db(), content.pack.code);
+  const resumed = saved ? sessionOf(saved, content) : null;
+  if (resumed && matches(resumed, request)) return "resume";
+  if (request.source === "lesson") return "work";
+  const plans = await planning(content, await getProfile(), now);
+  return hasWork(request.source === "daily" ? plans.daily : plans.review) ? "work" : "empty";
+}
+
 /** Reprend la séance sauvegardée si elle correspond à la demande, sinon en démarre une. */
 export async function openSession(content: ContentIndex, request: SessionRequest, now = new Date()): Promise<SessionRun> {
   const d = db();
@@ -234,7 +295,8 @@ export async function openSession(content: ContentIndex, request: SessionRequest
     const sessionId = uuidv7(now);
     const source: SessionSource = request.source;
     const known = (plans?.cards ?? []).map((c) => c.conceptId);
-    const run = startSessionRun({ plan, sessionId, source, lesson, known, now });
+    const playable = lesson ? playableSteps(content, lesson) : undefined;
+    const run = startSessionRun({ plan, sessionId, source, lesson, known, now, contentVersion: content.pack.version, ...(playable ? { playable } : {}) });
     const event = makeEvent("session_started", { sessionId, source, plannedSeconds: plan.estimatedSeconds }, now);
     await writeSnapshot(d, content.pack.code, run, now);
     await d.outbox.put(toOutbox(event));
@@ -294,6 +356,15 @@ export async function submitSessionAnswer(
       const log = await packKv<boolean[]>(d, pack, "toneLog", []);
       await setPackKv(d, pack, "toneLog", pushToneResult(log, evaluation.correct));
     }
+    // Badges « Sans accent du Nord » et « Explorateur de culture » (contrat phase5 §3).
+    if (evaluation.graded && exerciseType === "spot_the_south") {
+      const log = await packKv<boolean[]>(d, pack, "southLog", []);
+      await setPackKv(d, pack, "southLog", pushSouthResult(log, evaluation.correct));
+    }
+    if (exercise.type === "culture_card" && evaluation.correct) {
+      const cards = await packKv<string[]>(d, pack, "cultureCards", []);
+      if (!cards.includes(exercise.card.id)) await setPackKv(d, pack, "cultureCards", [...cards, exercise.card.id]);
+    }
     await writeSnapshot(d, pack, next, now);
     await d.outbox.bulkPut(events.map(toOutbox));
     return next;
@@ -329,7 +400,7 @@ export async function saveLessonPart(content: ContentIndex, run: SessionRun, now
       attempts: (progress?.attempts ?? 0) + 1,
       completedAt: now.toISOString(),
     });
-    events.push(makeEvent("lesson_completed", { sessionId: run.sessionId, lessonId: lesson.id, score, durationMs: now.getTime() - Date.parse(lessonRun.startedAt) }, now));
+    events.push(makeEvent("lesson_completed", { sessionId: run.sessionId, lessonId: lesson.id, score, durationMs: capDurationMs(now.getTime() - Date.parse(lessonRun.startedAt)) }, now));
 
     const next: SessionRun = { ...run, lessonSaved: true, learned: outcome.learned, xp: run.xp + outcome.xp };
     await d.outbox.bulkPut(events.map(toOutbox));
@@ -351,6 +422,15 @@ export interface SessionRecap {
   badges: BadgeCode[];
   /** Première leçon jamais terminée : moment de proposer un compte (spec §4.1.6). */
   firstLesson: boolean;
+  /** Séance vide : ni XP, ni série, ni session_completed. */
+  empty: boolean;
+  /** Concepts nouveaux réussis pendant la leçon (« Ce que tu sais dire »). */
+  canSay: ConceptId[];
+  /** Test d'unité : score de cette tentative et réussite (seuil 0,7). */
+  unitTest: { lessonId: LessonId; score: number; passed: boolean } | null;
+  /** XP totale avant / après (montée de niveau). */
+  xpBefore: number;
+  xpAfter: number;
 }
 
 /** Bilan : XP, série, minutes du jour, badges, session_completed. */
@@ -360,32 +440,51 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
 
   return d.transaction("rw", [d.srsCards, d.lessonProgress, d.kv, d.outbox, d.snapshot], async () => {
     const pack = content.pack.code;
-    const durationMs = Math.max(0, now.getTime() - Date.parse(saved.startedAt));
-    const xp = saved.xp + XP_SESSION_BONUS;
+    const lesson = saved.lesson ? content.lessons.get(saved.lesson.lessonId) : undefined;
+    const lessonCompleted = saved.lessonSaved && lesson !== undefined;
+    const empty = isEmptySession(saved, lessonCompleted);
     const totals = await packKv<Totals>(d, pack, "totals", DEFAULT_TOTALS);
     const today = localDay(now);
-    const streak = recordActivity(totals.streak, today);
-    await setPackKv(d, pack, "totals", { xp: totals.xp + xp, streak } satisfies Totals);
-
-    const activity = ((await d.kv.get("activity"))?.value as DailyActivity | undefined) ?? { date: today, seconds: 0 };
-    // Une séance oubliée ouverte ne compte pas des heures : plafond à deux fois la durée prévue.
-    const seconds = Math.min(durationMs / 1000, Math.max(saved.plan.estimatedSeconds * 2, 60));
-    await d.kv.put({ key: "activity", value: { date: today, seconds: (activity.date === today ? activity.seconds : 0) + seconds } satisfies DailyActivity });
-
     const itemsCount = saved.reviewResults.length + (saved.lesson?.results.length ?? 0);
-    const events: ParloEvent[] = [
-      makeEvent("session_completed", { sessionId: saved.sessionId, xpGained: xp, itemsCount, durationMs, localDate: today }, now),
-    ];
+    const capped = capSessionTotals({ xpGained: saved.xp + XP_SESSION_BONUS, itemsCount, durationMs: now.getTime() - Date.parse(saved.startedAt) });
+    const xp = empty ? 0 : capped.xpGained;
+    const streak = empty ? totals.streak : recordActivity(totals.streak, today);
+    const events: ParloEvent[] = [];
 
-    const completed = new Set((await d.lessonProgress.where("packCode").equals(pack).toArray()).map((r) => r.lessonId));
+    if (!empty) {
+      await setPackKv(d, pack, "totals", { xp: totals.xp + xp, streak } satisfies Totals);
+      const activity = ((await d.kv.get("activity"))?.value as DailyActivity | undefined) ?? { date: today, seconds: 0 };
+      // Une séance oubliée ouverte ne compte pas des heures : plafond à deux fois la durée prévue.
+      const seconds = Math.min(capped.durationMs / 1000, Math.max(saved.plan.estimatedSeconds * 2, 60));
+      await d.kv.put({ key: "activity", value: { date: today, seconds: (activity.date === today ? activity.seconds : 0) + seconds } satisfies DailyActivity });
+      events.push(makeEvent("session_completed", { sessionId: saved.sessionId, xpGained: xp, itemsCount: capped.itemsCount, durationMs: capped.durationMs, localDate: today }, now));
+    }
+
+    const rows = await d.lessonProgress.where("packCode").equals(pack).toArray();
+    const completed = new Set(rows.map((r) => r.lessonId));
+    const placement = await packKv<PlacementRecord | null>(d, pack, "placement", null);
+    const skipped = placement ? lessonsBefore(content.curriculum, placement.entryLessonId) : [];
+    const passed = new Set([...rows.filter((r) => content.lessons.get(r.lessonId)?.kind !== "unit_test" || isUnitTestPassed(r.bestScore)).map((r) => r.lessonId), ...skipped]);
+    const passedUnits = new Set<UnitId>(
+      content.curriculum.units.filter((u) => isUnitPassed(content.curriculum, content.lessons, u.id, { completed: new Set([...completed, ...skipped]), passed })).map((u) => u.id),
+    );
     const cards = await packCards(pack, d);
     const words = new Set([...content.concepts.values()].filter((c) => c.type === "word").map((c) => c.id));
-    const toneLog = await packKv<boolean[]>(d, pack, "toneLog", []);
-    const earned = await packKv<EarnedBadge[]>(d, pack, "badges", []);
-    const fresh = evaluateBadges(
-      { curriculum: content.curriculum, completedLessons: completed, streak, knownWords: countKnownWords(cards, words), toneLog, features: content.pack.features },
-      new Set(earned.map((b) => b.code)),
-    );
+    const [toneLog, southLog, cultureCards, earned] = await Promise.all([
+      packKv<boolean[]>(d, pack, "toneLog", []),
+      packKv<boolean[]>(d, pack, "southLog", []),
+      packKv<string[]>(d, pack, "cultureCards", []),
+      packKv<EarnedBadge[]>(d, pack, "badges", []),
+    ]);
+    const fresh = empty
+      ? []
+      : evaluateBadges(
+          {
+            curriculum: content.curriculum, completedLessons: completed, streak, knownWords: countKnownWords(cards, words), toneLog, southLog,
+            cultureCardsPassed: cultureCards.length, passedUnits, features: content.pack.features,
+          },
+          new Set(earned.map((b) => b.code)),
+        );
     if (fresh.length > 0) {
       await setPackKv(d, pack, "badges", [...earned, ...fresh.map((code) => ({ code, earnedAt: now.toISOString() }))]);
       for (const code of fresh) events.push(makeEvent("badge_earned", { badgeCode: code }, now));
@@ -394,21 +493,31 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
     await d.outbox.bulkPut(events.map(toOutbox));
     await d.snapshot.delete(pack);
     if ((await d.snapshot.get(LEGACY_SNAPSHOT_KEY))?.packCode === pack) await d.snapshot.delete(LEGACY_SNAPSHOT_KEY);
-    // Compteur local : les rappels ne sont proposés qu'après la 3e séance (spec §5.8).
-    const sessionsCompleted = ((await d.kv.get("sessionsCompleted"))?.value as number | undefined) ?? 0;
-    await d.kv.put({ key: "sessionsCompleted", value: sessionsCompleted + 1 });
+    if (!empty) {
+      // Compteur local : les rappels ne sont proposés qu'après la 3e séance (spec §5.8).
+      const sessionsCompleted = ((await d.kv.get("sessionsCompleted"))?.value as number | undefined) ?? 0;
+      await d.kv.put({ key: "sessionsCompleted", value: sessionsCompleted + 1 });
+    }
 
     const lessonId = saved.lesson?.lessonId ?? null;
+    const lessonResults = saved.lesson?.results ?? [];
+    const answeredWell = new Set(lessonResults.filter((r) => r.graded && r.correct).flatMap((r) => r.conceptIds));
+    const score = saved.lesson ? lessonScore(saved.lesson) : 0;
     return {
       source: saved.source,
       lessonId,
       xp,
       learned: saved.learned,
+      canSay: saved.learned.filter((id) => answeredWell.has(id)),
       reviewed: [...new Set(saved.reviewResults.filter((r) => r.graded && r.block === "review").map((r) => r.conceptId))],
       reviewedWell: reviewedConcepts(saved),
       streak,
       badges: fresh,
       firstLesson: lessonId !== null && completed.size === 1 && (await d.lessonProgress.get(lessonId))?.attempts === 1,
+      empty,
+      unitTest: lesson?.kind === "unit_test" && lessonId ? { lessonId, score, passed: isUnitTestPassed(score) } : null,
+      xpBefore: totals.xp,
+      xpAfter: totals.xp + xp,
     };
   });
 }
@@ -455,12 +564,12 @@ export async function setFreeze(days: number, now = new Date()): Promise<Streak>
     const n = Math.max(0, Math.min(MAX_FREEZE_DAYS, Math.round(days)));
     const until = new Date(now);
     until.setDate(until.getDate() + n);
-    const streak: Streak = { ...totals.streak, frozenUntil: n === 0 ? null : localDay(until) };
-    await setPackKv(d, pack, "totals", { ...totals, streak } satisfies Totals);
-    // Synchronisé (contrat phase2 §1). Annulation : gel ramené au dernier jour actif, qui ne couvre aucune absence.
     const localDate = localDay(now);
-    const frozenUntil = streak.frozenUntil ?? totals.streak.lastActiveDate ?? localDate;
-    await d.outbox.put(toOutbox(makeEvent("streak_frozen", { frozenUntil, localDate }, now)));
+    // Le gel ne couvre que les jours à partir de la déclaration (contrat phase5 §3).
+    const streak: Streak = n === 0 ? { ...totals.streak, frozenUntil: null, frozenFrom: null } : { ...totals.streak, frozenUntil: localDay(until), frozenFrom: localDate };
+    await setPackKv(d, pack, "totals", { ...totals, streak } satisfies Totals);
+    // Synchronisé ; annulation = frozenUntil null (accepté par l'API).
+    await d.outbox.put(toOutbox(makeEvent("streak_frozen", { frozenUntil: streak.frozenUntil, localDate }, now)));
     return streak;
   });
 }
@@ -494,7 +603,7 @@ export async function recordGamePlayed(game: GamePlayed["game"], result: { corre
     game,
     correct: Math.max(0, Math.round(result.correct)),
     total: Math.round(result.total),
-    durationMs: Math.max(0, Math.round(durationMs)),
+    durationMs: capDurationMs(durationMs),
     localDate: localDay(now),
   }, now);
   await db().outbox.put(toOutbox(event));
@@ -534,4 +643,18 @@ export async function deleteLocalData(): Promise<void> {
   const d = db();
   await d.delete();
   setDb(null);
+}
+
+/**
+ * Déconnexion (contrat phase5 §4) : efface les données d'apprentissage de ce compte sur l'appareil
+ * (progression, cartes, outbox, séance en cours, réglages de pack) ; packs en cache et langue
+ * active conservés. Aucune fuite vers le compte suivant.
+ */
+export async function clearLearningData(): Promise<void> {
+  const d = db();
+  await d.transaction("rw", [d.srsCards, d.lessonProgress, d.outbox, d.snapshot, d.syncLog, d.kv], async () => {
+    await Promise.all([d.srsCards.clear(), d.lessonProgress.clear(), d.outbox.clear(), d.snapshot.clear(), d.syncLog.clear()]);
+    const keys = (await d.kv.toCollection().primaryKeys()).filter((key) => key !== "activePack");
+    await d.kv.bulkDelete(keys);
+  });
 }

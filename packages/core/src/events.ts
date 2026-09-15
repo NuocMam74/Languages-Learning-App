@@ -52,8 +52,11 @@ export type ParloEvent =
   | BaseEvent<"badge_earned", { badgeCode: string }>
   /** Score de prononciation seul — jamais l'audio (spec §11, §14). */
   | BaseEvent<"pronunciation_scored", { sessionId: string | null; conceptId: ConceptId; score: number; exerciseType: StepType }>
-  /** « Je pars quelques jours » : série gelée jusqu'au jour local inclus. */
-  | BaseEvent<"streak_frozen", { frozenUntil: string; localDate: string }>
+  /**
+   * « Je pars quelques jours » : série gelée jusqu'au jour local inclus, à partir de `localDate`
+   * (jour de la déclaration = frozenFrom). `frozenUntil: null` annule le gel (contrat phase5 §3).
+   */
+  | BaseEvent<"streak_frozen", { frozenUntil: string | null; localDate: string }>
   /** Partie de mini-jeu hors leçon (onglet Jeux, défi express). */
   | BaseEvent<"game_played", { game: GameId; correct: number; total: number; durationMs: number; localDate: string }>
   /** Tour de conversation avec Cô Mai (texte ou voix) — jamais le contenu du message. */

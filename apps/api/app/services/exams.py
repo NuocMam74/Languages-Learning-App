@@ -2,7 +2,11 @@
 
 - Fichiers `CONTENT_DIR/<pack>/exams/*.json` (schéma `content/schema/exam.schema.json`), lus à la demande ;
   un dossier absent ou un fichier invalide n'empêche pas les autres examens d'être servis.
-- Ouvert quand le test d'unité (`kind: unit_test`) de chaque unité requise est terminé ou sauté grâce au placement.
+- Ouvert quand le test d'unité (`kind: unit_test`) de chaque unité requise est **réussi** (meilleur score ≥ 0,7)
+  ou que l'unité a été sautée grâce au placement (contrat parcours §2).
+- Médias (contrat parcours §1) : un item oral sans référence F0 et un item d'écoute tonal sans audio natif ne sont
+  pas notés (retirés du dénominateur) ; une compétence sans item noté a un score null et est exclue de la règle
+  « chaque compétence ≥ 0,5 ». Moins de 15 items notés : examen indisponible (`media_missing`).
 - Une tentative soumise verrouille l'examen `retryAfterHours` ; une tentative expire après
   `durationMinutes` + 2 min de grâce.
 - Le serveur note : il reconstruit chaque exercice avec la graine de la tentative (identique au client)
@@ -21,7 +25,8 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.models import ExamAttempt
-from app.services.content import Pack, lesson_document
+from app.services import progression
+from app.services.content import Pack, concept_documents
 from app.services.engine import (
     SPEAK_PASS_SCORE,
     ContentError,
@@ -31,6 +36,7 @@ from app.services.engine import (
     evaluate,
     lesson_concepts_for_units,
 )
+from app.services.media import exam_item_graded
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +44,9 @@ SKILLS = ("listening", "reading", "vocabulary", "speaking")
 SPEECH_TYPES = frozenset({"speak_repeat", "tone_produce"})
 GRACE = timedelta(minutes=2)
 MIN_SKILL_SCORE = 0.5
+# En dessous, l'examen est « indisponible pour le moment » (médias manquants).
+MIN_GRADED_ITEMS = 15
+MEDIA_MISSING = "media_missing"
 # Tolérance de comparaison flottante (EPSILON de exams.ts).
 EPSILON = 1e-9
 
@@ -111,20 +120,17 @@ def unit_test_lessons(pack: Pack, unit_id: str) -> list[str]:
     unit = next((u for u in pack.units if u.id == unit_id), None)
     if unit is None:
         return []
-    tests = [lid for lid in unit.lessons if (lesson_document(pack, lid) or {}).get("kind") == "unit_test"]
+    tests = progression.unit_test_lessons(pack, unit)
     return tests or [lid for lid in unit.lessons if lid in pack.lessons]
 
 
 def is_unlocked(db: Session, user_id: str, pack: Pack, exam: ExamSpec) -> bool:
-    """Même règle que `isExamUnlocked` (core) : tests d'unité terminés ou sautés grâce au placement."""
-    from app.services.learner import unlocked_lessons  # import local : learner dépend du planificateur
+    """Tests d'unité réussis (≥ 0,7) ou unités sautées grâce au placement, pour chaque unité requise."""
+    from app.services.learner import progress_state  # import local : learner dépend du planificateur
 
-    completed = unlocked_lessons(db, user_id, pack)
-    for unit_id in exam.requires_units:
-        required = unit_test_lessons(pack, unit_id)
-        if not required or not all(lid in completed for lid in required):
-            return False
-    return True
+    if not exam.requires_units:
+        return False
+    return progression.done_units(pack, progress_state(db, user_id, pack), exam.requires_units)
 
 
 def last_submitted(db: Session, user_id: str, exam_id: str) -> ExamAttempt | None:
@@ -172,8 +178,24 @@ def is_expired(attempt: ExamAttempt, now: datetime) -> bool:
 class GradeResult:
     passed: bool
     global_score: float
-    scores: dict[str, float]
+    scores: dict[str, float | None]
     gaps: list[dict[str, Any]]
+    graded_items: int = 0
+
+
+def graded_refs(pack: Pack, exam: ExamSpec, index: frozenset[str] | set[str]) -> set[tuple[str, int]]:
+    """Items notés compte tenu des médias présents (§1)."""
+    concepts = concept_documents(pack)
+    return {
+        (section["skill"], i)
+        for section in exam.sections
+        for i, item in enumerate(section["items"])
+        if exam_item_graded(item["step"], concepts, index)
+    }
+
+
+def unavailable_reason(pack: Pack, exam: ExamSpec, index: frozenset[str] | set[str]) -> str | None:
+    return MEDIA_MISSING if len(graded_refs(pack, exam, index)) < MIN_GRADED_ITEMS else None
 
 
 def build_items(pack: Pack, exam: ExamSpec, seed: str) -> dict[tuple[str, int], Exercise]:
@@ -201,8 +223,16 @@ def item_correct(exercise: Exercise, response: dict[str, Any] | None) -> bool:
     return result.graded and result.correct
 
 
-def grade(pack: Pack, exam: ExamSpec, seed: str, answers: list[dict[str, Any]]) -> GradeResult:
+def grade(
+    pack: Pack,
+    exam: ExamSpec,
+    seed: str,
+    answers: list[dict[str, Any]],
+    index: frozenset[str] | set[str] | None = None,
+) -> GradeResult:
+    """Note une tentative ; `index` = médias présents (défaut : ceux du pack publié)."""
     exercises = build_items(pack, exam, seed)
+    graded = graded_refs(pack, exam, pack.media_index if index is None else index)
     by_item: dict[tuple[str, int], dict[str, Any]] = {}
     for answer in answers:
         by_item[(answer["section"], answer["index"])] = answer["response"]  # la dernière réponse compte
@@ -210,25 +240,29 @@ def grade(pack: Pack, exam: ExamSpec, seed: str, answers: list[dict[str, Any]]) 
     totals = dict.fromkeys(SKILLS, 0)
     rights = dict.fromkeys(SKILLS, 0)
     wrong_concepts: dict[str, dict[str, None]] = {}
-    for (skill, index), exercise in exercises.items():
+    for (skill, item_index), exercise in exercises.items():
+        if (skill, item_index) not in graded:
+            continue  # média manquant : item non noté, hors dénominateur
         totals[skill] += 1
-        if item_correct(exercise, by_item.get((skill, index))):
+        if item_correct(exercise, by_item.get((skill, item_index))):
             rights[skill] += 1
         else:
             bucket = wrong_concepts.setdefault(skill, {})
             for cid in exercise.concept_ids:
                 bucket.setdefault(cid, None)
 
-    scores = {skill: rights[skill] / totals[skill] if totals[skill] else 0.0 for skill in SKILLS}
+    scores: dict[str, float | None] = {
+        skill: rights[skill] / totals[skill] if totals[skill] else None for skill in SKILLS
+    }
     total_items = sum(totals.values())
     global_score = sum(rights.values()) / total_items if total_items else 0.0
     passed = (
         total_items > 0
         and global_score >= exam.pass_threshold - EPSILON
-        and all(scores[skill] >= MIN_SKILL_SCORE - EPSILON for skill in SKILLS if totals[skill])
+        and all((score or 0.0) >= MIN_SKILL_SCORE - EPSILON for score in scores.values() if score is not None)
     )
     gaps = [{"skill": skill, "conceptIds": list(wrong_concepts[skill])} for skill in SKILLS if skill in wrong_concepts]
-    return GradeResult(passed=passed, global_score=global_score, scores=scores, gaps=gaps)
+    return GradeResult(passed=passed, global_score=global_score, scores=scores, gaps=gaps, graded_items=total_items)
 
 
 __all__ = [
@@ -240,10 +274,12 @@ __all__ = [
     "build_items",
     "expires_at",
     "grade",
+    "graded_refs",
     "is_expired",
     "is_unlocked",
     "last_submitted",
     "load_exams",
     "next_attempt_at",
     "parse_exam",
+    "unavailable_reason",
 ]

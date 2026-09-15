@@ -5,14 +5,28 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 
 from app.config import Settings, get_settings
 from app.db import make_engine, make_session_factory
-from app.routers import admin, auth, challenges, classes, courses, exams, leagues, me, push, social, studio, tutor
-from app.services.content import load_packs
+from app.routers import (
+    admin,
+    auth,
+    challenges,
+    classes,
+    content,
+    courses,
+    exams,
+    leagues,
+    me,
+    push,
+    social,
+    studio,
+    tutor,
+)
+from app.services.email import make_email_sender
+from app.services.oauth import OAuthClient
 from app.services.pdf import make_renderer
-from app.services.rate_limit import InMemorySlidingWindow
+from app.services.rate_limit import InMemorySlidingWindow, parse_networks
 from app.services.storage import make_storage
 from app.services.studio import make_validator
 from app.services.tutor_llm import AnthropicTutorLLM, TutorLLM
@@ -20,6 +34,8 @@ from app.services.tutor_llm import AnthropicTutorLLM, TutorLLM
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
+    # Production : refus de démarrer avec un secret JWT par défaut ou trop court.
+    settings.check_production_safety()
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
@@ -33,6 +49,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         finally:
             if scheduler is not None:
                 scheduler.shutdown(wait=False)
+            app.state.oauth_client.http.close()
 
     app = FastAPI(title="Parlo API", version="0.4.0", root_path=settings.normalized_root_path, lifespan=lifespan)
 
@@ -42,6 +59,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.session_factory = make_session_factory(engine)
     app.state.auth_rate_limiter = InMemorySlidingWindow(settings.auth_rate_limit, settings.auth_rate_window_seconds)
     app.state.tutor_rate_limiter = InMemorySlidingWindow(settings.tutor_rate_limit, settings.tutor_rate_window_seconds)
+    app.state.trusted_networks = parse_networks(settings.trusted_proxy_list)
+    app.state.email_sender = make_email_sender(settings)
+    app.state.oauth_client = OAuthClient(settings)
     # Sans clé : pas de client, les endpoints /tutor/* servent les messages préécrits.
     tutor_llm: TutorLLM | None = None
     if settings.anthropic_api_key:
@@ -63,6 +83,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(auth.router)
     app.include_router(me.router)
     app.include_router(courses.router)
+    app.include_router(tutor.status_router)
     app.include_router(tutor.router)
     app.include_router(exams.router)
     app.include_router(social.router)
@@ -78,13 +99,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return {"status": "ok"}
 
     if settings.serve_content:
-        # Développement : sert le contenu aux URLs du manifeste (en prod : CDN).
-        for pack in load_packs(settings.content_dir).values():
-            app.mount(
-                f"/content/{pack.code}/v{pack.version}",
-                StaticFiles(directory=pack.directory),
-                name=f"content-{pack.code}",
-            )
+        # Contenu aux URLs du manifeste (en prod : CDN), toujours à la version publiée courante.
+        app.include_router(content.router)
 
     return app
 

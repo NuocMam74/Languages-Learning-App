@@ -1,13 +1,14 @@
-import type { Concept, ContentIndex, Pack } from "@parlo/core";
+import { contentMedia, type Concept, type ContentIndex, type Pack } from "@parlo/core";
 import { mediaUrl } from "./content.ts";
+import { TONE_FALLBACK } from "./media.ts";
 
 /**
  * Lecture audio (spec §7.4).
  * - Priorité à l'audio natif. La version lente est un fichier dédié, étiré
  *   hors ligne sans changer la hauteur : on ne touche JAMAIS à playbackRate.
- * - La synthèse vocale n'est qu'un repli, jamais pour les tons, et signalée.
- *   En développement (audio pas encore enregistré) elle est tolérée partout,
- *   avec un marqueur visible.
+ * - La synthèse vocale n'est qu'un repli, jamais pour les tons (sauf build de bêta
+ *   `VITE_TTS_TONE_FALLBACK=true`, contrat phase5 §1), et toujours signalée.
+ * - Seuls les fichiers présents dans l'index des médias du bundle sont demandés.
  */
 
 export type PlaybackSource = "native" | "tts" | "missing";
@@ -47,18 +48,23 @@ function speak(text: string, pack: Pack): boolean {
 }
 
 export function ttsAllowed(isToneExercise: boolean): boolean {
-  return import.meta.env.DEV || !isToneExercise;
+  return TONE_FALLBACK || !isToneExercise;
 }
 
+const indexed = (content: ContentIndex, path: string) => {
+  const media = contentMedia(content);
+  return media === null || media.has(path);
+};
+
 export async function playConcept(content: ContentIndex, concept: Concept, { speed = "natural", allowTts }: PlayOptions): Promise<PlaybackSource> {
-  const tracks = concept.audio.filter((a) => a.source === "native" || allowTts);
+  const tracks = concept.audio.filter((a) => (a.source === "native" || allowTts) && indexed(content, a.src));
   const track = tracks.find((a) => a.speed === speed) ?? tracks.find((a) => a.speed === "natural");
   if (track && (await playFile(mediaUrl(content, track.src)))) return track.source;
   return playText(content.pack, concept.vi, allowTts);
 }
 
 export async function playPath(content: ContentIndex, path: string | undefined, text: string, allowTts: boolean): Promise<PlaybackSource> {
-  if (path && (await playFile(mediaUrl(content, path)))) return "native";
+  if (path && indexed(content, path) && (await playFile(mediaUrl(content, path)))) return "native";
   return playText(content.pack, text, allowTts);
 }
 

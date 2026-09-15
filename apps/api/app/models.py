@@ -11,6 +11,7 @@ from typing import Any
 
 from sqlalchemy import (
     JSON,
+    BigInteger,
     Boolean,
     Date,
     Float,
@@ -55,6 +56,8 @@ class User(Base):
     is_guest: Mapped[bool] = mapped_column(Boolean, default=False)
     apple_sub: Mapped[str | None] = mapped_column(String(255), unique=True)
     google_sub: Mapped[str | None] = mapped_column(String(255), unique=True)
+    # Adresse confirmée par le lien reçu par e-mail (ou fournisseur OAuth qui l'atteste).
+    email_verified_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
     # Rôles attribués (contrat Phase 4 §0) parmi reviewer, editor, teacher, admin ; `learner` est implicite.
     roles: Mapped[list[str]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
 
@@ -70,6 +73,22 @@ class RefreshToken(Base):
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
     expires_at: Mapped[datetime] = mapped_column(UTCDateTime())
     revoked_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
+    # Rotation : id du jeton successeur (fenêtre de grâce de 30 s ; distingue rotation et révocation).
+    replaced_by_id: Mapped[str | None] = mapped_column(String(36))
+
+
+class AuthToken(Base):
+    """Jeton à usage unique envoyé par e-mail (réinitialisation du mot de passe, vérification), stocké haché."""
+
+    __tablename__ = "auth_tokens"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    user_id: Mapped[str] = mapped_column(user_fk(), index=True)
+    purpose: Mapped[str] = mapped_column(String(16))  # password_reset | email_verify
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+    expires_at: Mapped[datetime] = mapped_column(UTCDateTime())
+    used_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
 
 
 class Profile(Base):
@@ -82,6 +101,13 @@ class Profile(Base):
     level_estimate: Mapped[str | None] = mapped_column(String(16))
     path_variant: Mapped[str | None] = mapped_column(String(32))
     leagues_enabled: Mapped[bool] = mapped_column(Boolean, default=True)
+    # Vrai quand l'utilisateur a choisi explicitement (sinon la valeur suit la motivation, spec §5.3).
+    leagues_enabled_explicit: Mapped[bool] = mapped_column(Boolean, default=False, server_default=false())
+    # Réponses d'onboarding (contrat parcours §4).
+    entourage: Mapped[str | None] = mapped_column(String(16))
+    self_level: Mapped[str | None] = mapped_column(String(16))
+    # Jour local du dernier rappel push envoyé : un rappel par utilisateur et par jour.
+    last_reminded_on: Mapped[date | None] = mapped_column(Date)
     # Fuseau IANA (rappels push, jour local côté serveur).
     timezone: Mapped[str | None] = mapped_column(String(64))
     notifications_enabled: Mapped[bool] = mapped_column(Boolean, default=False, server_default=false())
@@ -112,7 +138,7 @@ class Enrollment(Base):
     course_id: Mapped[str] = mapped_column(String(64), primary_key=True)
     started_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
     current_lesson_id: Mapped[str | None] = mapped_column(String(128))
-    xp_total: Mapped[int] = mapped_column(Integer, default=0)
+    xp_total: Mapped[int] = mapped_column(BigInteger, default=0)
     level: Mapped[int] = mapped_column(Integer, default=1)
 
 
@@ -147,6 +173,7 @@ class Answer(Base):
     """Journal des réponses, en ajout seul (ADR 0003). `id` = id de l'événement client."""
 
     __tablename__ = "answers"
+    __table_args__ = (Index("ix_answers_user_id_created_at", "user_id", "created_at"),)
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True)
     user_id: Mapped[str] = mapped_column(user_fk(), index=True)
@@ -159,23 +186,24 @@ class Answer(Base):
     concept_ids: Mapped[list[str]] = mapped_column(JSON, default=list)
     correct: Mapped[bool] = mapped_column(Boolean)
     near_miss: Mapped[bool] = mapped_column(Boolean, default=False)
-    response_ms: Mapped[int] = mapped_column(Integer)
+    response_ms: Mapped[int] = mapped_column(BigInteger)
     attempt: Mapped[int] = mapped_column(Integer, default=1)
     created_at: Mapped[datetime] = mapped_column(UTCDateTime())
 
 
 class StudySession(Base):
     __tablename__ = "sessions"
+    __table_args__ = (Index("ix_sessions_user_id_ended_at", "user_id", "ended_at"),)
 
     id: Mapped[str] = mapped_column(String(64), primary_key=True)  # sessionId client
     user_id: Mapped[str] = mapped_column(user_fk(), index=True)
     started_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
     ended_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
-    xp_gained: Mapped[int] = mapped_column(Integer, default=0)
+    xp_gained: Mapped[int] = mapped_column(BigInteger, default=0)
     items_count: Mapped[int] = mapped_column(Integer, default=0)
     source: Mapped[str | None] = mapped_column(String(16))
-    planned_seconds: Mapped[int | None] = mapped_column(Integer)
-    duration_ms: Mapped[int | None] = mapped_column(Integer)
+    planned_seconds: Mapped[int | None] = mapped_column(BigInteger)
+    duration_ms: Mapped[int | None] = mapped_column(BigInteger)
     # Jour local de l'utilisateur (payload `localDate` de session_completed) : objectif quotidien.
     local_date: Mapped[date | None] = mapped_column(Date)
 
@@ -189,6 +217,8 @@ class StreakRow(Base):
     last_active_date: Mapped[date | None] = mapped_column(Date)
     freezes_available: Mapped[int] = mapped_column(Integer, default=0)
     frozen_until: Mapped[date | None] = mapped_column(Date)
+    # Jour local de la déclaration du gel : seuls les jours ≥ frozen_from sont couverts.
+    frozen_from: Mapped[date | None] = mapped_column(Date)
 
 
 class ProcessedEvent(Base):
@@ -274,6 +304,7 @@ class ExamAttempt(Base):
 
 class Certificate(Base):
     __tablename__ = "certificates"
+    __table_args__ = (Index("ix_certificates_user_id_level", "user_id", "level"),)
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
     user_id: Mapped[str] = mapped_column(user_fk(), index=True)
@@ -354,7 +385,7 @@ class GamePlay(Base):
     game: Mapped[str] = mapped_column(String(32))
     correct: Mapped[int] = mapped_column(Integer)
     total: Mapped[int] = mapped_column(Integer)
-    duration_ms: Mapped[int] = mapped_column(Integer)
+    duration_ms: Mapped[int] = mapped_column(BigInteger)
     local_date: Mapped[date] = mapped_column(Date)
     played_at: Mapped[datetime] = mapped_column(UTCDateTime(), index=True)
 
@@ -391,7 +422,7 @@ class ConversationTurn(Base):
     glosses_json: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
     # Correction douce (tour `user` seulement) : {original, corrected, explanation}.
     correction_json: Mapped[dict[str, str] | None] = mapped_column(JSON)
-    response_ms: Mapped[int | None] = mapped_column(Integer)
+    response_ms: Mapped[int | None] = mapped_column(BigInteger)
     # Tour `assistant` : « model » ou « fallback ».
     source: Mapped[str | None] = mapped_column(String(16))
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
@@ -417,7 +448,7 @@ class LeagueMember(Base):
     group_id: Mapped[str] = mapped_column(ForeignKey("league_groups.id", ondelete="CASCADE"), index=True)
     division: Mapped[int] = mapped_column(Integer)
     # Figés au passage de semaine : classement final et issue (promoted | relegated | stayed).
-    final_xp: Mapped[int | None] = mapped_column(Integer)
+    final_xp: Mapped[int | None] = mapped_column(BigInteger)
     final_rank: Mapped[int | None] = mapped_column(Integer)
     outcome: Mapped[str | None] = mapped_column(String(16))
 

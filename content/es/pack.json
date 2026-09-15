@@ -8,6 +8,7 @@
     "en": "Spanish (Latin America)"
   },
   "version": 1,
+  "comingSoon": true,
   "script": "latin",
   "direction": "ltr",
   "features": [],

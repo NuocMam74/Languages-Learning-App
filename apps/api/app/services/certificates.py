@@ -58,12 +58,14 @@ def issue_certificate(
     course_id: str,
     exam: ExamSpec,
     attempt: ExamAttempt,
-    scores: dict[str, float],
+    scores: dict[str, float | None],
     now: datetime,
 ) -> Certificate:
-    """Un certificat par niveau et par utilisateur : une nouvelle réussite renvoie le certificat existant."""
+    """Un certificat par (utilisateur, pack, niveau) : une nouvelle réussite renvoie le certificat existant."""
     existing = db.scalar(
-        select(Certificate).where(Certificate.user_id == user.id, Certificate.level == exam.level).limit(1)
+        select(Certificate)
+        .where(Certificate.user_id == user.id, Certificate.course_id == course_id, Certificate.level == exam.level)
+        .limit(1)
     )
     if existing is not None:
         return existing

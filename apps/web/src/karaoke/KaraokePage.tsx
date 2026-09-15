@@ -1,4 +1,4 @@
-import type { Concept, ContentIndex } from "@parlo/core";
+import type { ContentIndex } from "@parlo/core";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Screen, Vi } from "../components/ui.tsx";
@@ -6,7 +6,10 @@ import { getKv, setKv } from "../db.ts";
 import { l, t } from "../i18n/index.ts";
 import { completedLessons } from "../learner.ts";
 import { KaraokeExercise } from "./KaraokeExercise.tsx";
+import { karaokeCandidates, type Candidate } from "./candidates.ts";
 import { loadReference } from "./reference.ts";
+
+export { karaokeCandidates };
 
 /**
  * Karaoké tonal seul (onglet Jeux, /jeux/karaoke_tonal) : phrases des leçons terminées qui ont
@@ -14,35 +17,6 @@ import { loadReference } from "./reference.ts";
  */
 
 const BEST_KEY = "karaoke.best";
-const MAX_CANDIDATES = 40;
-
-interface Candidate {
-  concept: Concept;
-  pitchRef: string | null;
-}
-
-/** Concepts dont le contenu déclare une courbe (champ `pitch`, `pitchRef` d'étape, tone_produce), dans l'ordre du parcours. */
-export function karaokeCandidates(content: ContentIndex, completed: ReadonlySet<string>): { known: Candidate[]; all: Candidate[] } {
-  const seen = new Map<string, Candidate>();
-  const known = new Set<string>();
-  const lessonIds = content.curriculum.units.flatMap((u) => u.lessons);
-  for (const lessonId of [...new Set([...lessonIds, ...content.lessons.keys()])]) {
-    const lesson = content.lessons.get(lessonId);
-    if (!lesson) continue;
-    for (const step of lesson.steps) {
-      if (step.type !== "speak_repeat" && step.type !== "tone_produce") continue;
-      const concept = content.concepts.get(step.concept);
-      if (!concept) continue;
-      const pitchRef = step.type === "speak_repeat" ? (step.pitchRef ?? concept.pitch ?? null) : (concept.pitch ?? null);
-      if (!pitchRef && step.type === "speak_repeat") continue;
-      if (!seen.has(concept.id)) seen.set(concept.id, { concept, pitchRef });
-      if (completed.has(lesson.id)) known.add(concept.id);
-    }
-  }
-  for (const concept of content.concepts.values()) if (concept.pitch && !seen.has(concept.id)) seen.set(concept.id, { concept, pitchRef: concept.pitch });
-  const all = [...seen.values()].slice(0, MAX_CANDIDATES);
-  return { known: all.filter((c) => known.has(c.concept.id)), all };
-}
 
 export default function KaraokePage({ content }: { content: ContentIndex }) {
   const [pool, setPool] = useState<{ items: Candidate[]; fromKnown: boolean } | null>(null);

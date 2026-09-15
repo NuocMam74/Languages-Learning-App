@@ -2,14 +2,20 @@
 
 - Idempotent sur l'id d'événement : un id déjà traité est rapporté « accepté » sans être réappliqué.
 - Événement daté de plus de 24 h dans le futur : rejeté (horloge aberrante).
-- Lot traité par `occurredAt` croissant, dans une seule transaction.
+- `localDate` à plus d'un jour de la date UTC de `occurredAt` : rejeté (`invalid: local_date`).
+- Lot traité par `occurredAt` croissant, dans une transaction ; chaque événement dans un SAVEPOINT : une erreur
+  inattendue annule cet événement seul et le rejette (`server_error`) au lieu de faire échouer le lot (§4).
+- Plafonds (§3) : `itemsCount` ≤ 200, durées ≤ 4 h, `xpGained` ≤ min(1000, 15·itemsCount + 50) — écrêtés.
+- Séance vide (aucun item noté ni leçon terminée) : acceptée sans effet (ni XP, ni jour de série).
 """
 
-from datetime import UTC, datetime, timedelta
+import logging
+from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
 from pydantic import ValidationError
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models import (
@@ -44,15 +50,35 @@ from app.schemas.events import (
     event_adapter,
 )
 from app.services import learner
+from app.services import streak as streak_rules
 from app.services.badges import ensure_badge
 from app.services.content import Pack, course_code_of_concept, course_code_of_lesson
-from app.services.planner import next_lesson
 from app.services.srs import SrsCard, merge_cards
-from app.services.streak import Streak, record_activity
+
+logger = logging.getLogger(__name__)
 
 MAX_CLOCK_SKEW = timedelta(hours=24)
 # « Je pars quelques jours » : gel de série limité à 14 jours après le jour local de la demande.
 MAX_FREEZE_DAYS = 14
+# `localDate` accepté à ±1 jour de la date UTC de `occurredAt` (fuseaux de −12 h à +14 h).
+MAX_LOCAL_DATE_DRIFT_DAYS = 1
+# Plafonds serveur (contrat parcours §3) : valeurs écrêtées, jamais rejetées.
+MAX_ITEMS_PER_SESSION = 200
+MAX_DURATION_MS = 4 * 3600 * 1000
+MAX_SESSION_XP = 1000
+XP_PER_ITEM_CAP = 15
+XP_CAP_BONUS = 50
+
+
+def cap_duration_ms(value: float) -> int:
+    return min(MAX_DURATION_MS, max(0, round(value)))
+
+
+def cap_session(items_count: int, xp_gained: int, duration_ms: float) -> tuple[int, int, int]:
+    """(items, xp, durée) écrêtés : items ≤ 200, xp ≤ min(1000, 15·items + 50), durée ≤ 4 h."""
+    items = min(MAX_ITEMS_PER_SESSION, max(0, items_count))
+    xp = min(max(0, xp_gained), min(MAX_SESSION_XP, XP_PER_ITEM_CAP * items + XP_CAP_BONUS))
+    return items, xp, cap_duration_ms(duration_ms)
 
 
 class EventRejectedError(Exception):
@@ -100,27 +126,63 @@ def process_batch(
         if event.occurred_at > now + MAX_CLOCK_SKEW:
             rejected.append(RejectedEvent(id=event_id, reason="occurred_at_in_future"))
             continue
+        if not local_date_plausible(event):
+            rejected.append(RejectedEvent(id=event_id, reason="invalid: local_date"))
+            continue
         try:
-            _apply(db, user_id, event, packs, now)
+            with db.begin_nested():
+                _apply(db, user_id, event, packs, now)
+                db.add(
+                    ProcessedEvent(
+                        id=event_id,
+                        user_id=user_id,
+                        type=event.type,
+                        occurred_at=event.occurred_at,
+                        received_at=now,
+                        payload_json=raw,
+                    )
+                )
+                db.flush()
         except EventRejectedError as exc:
             rejected.append(RejectedEvent(id=event_id, reason=str(exc)))
             continue
-        db.add(
-            ProcessedEvent(
-                id=event_id,
-                user_id=user_id,
-                type=event.type,
-                occurred_at=event.occurred_at,
-                received_at=now,
-                payload_json=raw,
-            )
-        )
+        except IntegrityError:
+            # Même événement enregistré en parallèle par une autre requête : déjà traité.
+            owner = db.scalar(select(ProcessedEvent.user_id).where(ProcessedEvent.id == event_id))
+            if owner is not None:
+                existing[event_id] = owner
+                reason = None if owner == user_id else "id_conflict"
+            else:
+                logger.exception("Événement %s (%s) : erreur d'intégrité", event_id, event.type)
+                reason = "server_error"
+            if reason is None:
+                accepted.append(event_id)
+            else:
+                rejected.append(RejectedEvent(id=event_id, reason=reason))
+            continue
+        except Exception:
+            logger.exception("Événement %s (%s) : erreur serveur, rejeté seul", event_id, event.type)
+            rejected.append(RejectedEvent(id=event_id, reason="server_error"))
+            continue
         existing[event_id] = user_id  # doublon à l'intérieur du même lot
         accepted.append(event_id)
-        db.flush()
 
     db.commit()
     return EventBatchResult(accepted=accepted, rejected=rejected)
+
+
+def event_local_date(event: ParloEvent) -> date | None:
+    value = getattr(event.payload, "local_date", None)
+    return value if isinstance(value, date) else None
+
+
+def local_date_plausible(event: ParloEvent) -> bool:
+    """`localDate` à au plus un jour de la date UTC de `occurredAt`."""
+    local = event_local_date(event)
+    if local is None:
+        return True
+    utc_day = event.occurred_at.astimezone(UTC).date()
+    return abs((local - utc_day).days) <= MAX_LOCAL_DATE_DRIFT_DAYS
 
 
 def _apply(db: Session, user_id: str, event: ParloEvent, packs: dict[str, Pack], now: datetime) -> None:
@@ -183,11 +245,14 @@ def _apply_pronunciation_scored(db: Session, user_id: str, event: PronunciationS
 
 def _apply_streak_frozen(db: Session, user_id: str, event: StreakFrozen) -> None:
     p = event.payload
-    if p.frozen_until < p.local_date:
-        raise EventRejectedError("invalid: payload.frozenUntil: before localDate")
-    if p.frozen_until > p.local_date + timedelta(days=MAX_FREEZE_DAYS):
-        raise EventRejectedError(f"invalid: payload.frozenUntil: more than {MAX_FREEZE_DAYS} days after localDate")
-    learner.get_streak(db, user_id).frozen_until = p.frozen_until
+    if p.frozen_until is not None:
+        if p.frozen_until < p.local_date:
+            raise EventRejectedError("invalid: payload.frozenUntil: before localDate")
+        if p.frozen_until > p.local_date + timedelta(days=MAX_FREEZE_DAYS):
+            raise EventRejectedError(f"invalid: payload.frozenUntil: more than {MAX_FREEZE_DAYS} days after localDate")
+    row = learner.get_streak(db, user_id)
+    # Gel daté du jour de la déclaration (pas de réparation rétroactive) ; null = annulation.
+    learner.store_streak(row, streak_rules.freeze(learner.streak_of(row), p.local_date, p.frozen_until))
 
 
 def _apply_game_played(db: Session, user_id: str, event: GamePlayed) -> None:
@@ -201,7 +266,7 @@ def _apply_game_played(db: Session, user_id: str, event: GamePlayed) -> None:
             game=p.game,
             correct=p.correct,
             total=p.total,
-            duration_ms=round(p.duration_ms),
+            duration_ms=cap_duration_ms(p.duration_ms),
             local_date=p.local_date,
             played_at=event.occurred_at,
         )
@@ -224,10 +289,9 @@ def _apply_placement_completed(db: Session, user_id: str, event: PlacementComple
     profile.placement_entry_lesson_id = p.entry_lesson_id
     db.flush()
 
-    # Comme le client : les leçons situées avant le point d'entrée sont ouvertes (prérequis remplis).
+    # Comme le client : les unités situées avant celle du point d'entrée sont sautées (débloquées).
     enrollment = _enrollment_for(db, user_id, pack)
-    lesson = next_lesson(pack, pack.lessons, learner.unlocked_lessons(db, user_id, pack), learner.path_of(profile))
-    enrollment.current_lesson_id = lesson.id if lesson else None
+    enrollment.current_lesson_id = learner.next_lesson_for(db, user_id, pack, profile)
 
 
 def _apply_badge_earned(db: Session, user_id: str, event: BadgeEarned) -> None:
@@ -255,7 +319,7 @@ def _apply_answer(db: Session, user_id: str, event: AnswerSubmitted) -> None:
             concept_ids=list(p.concept_ids),
             correct=p.correct,
             near_miss=p.near_miss,
-            response_ms=round(p.response_ms),
+            response_ms=cap_duration_ms(p.response_ms),
             attempt=p.attempt,
             created_at=event.occurred_at,
         )
@@ -325,11 +389,8 @@ def _apply_lesson_completed(db: Session, user_id: str, event: LessonCompleted, p
     )
     db.flush()
 
-    profile = db.get(Profile, user_id)
-    path = learner.path_of(profile) if profile else None
     enrollment = _enrollment_for(db, user_id, pack)
-    lesson = next_lesson(pack, pack.lessons, learner.unlocked_lessons(db, user_id, pack), path)
-    enrollment.current_lesson_id = lesson.id if lesson else None
+    enrollment.current_lesson_id = learner.next_lesson_for(db, user_id, pack, db.get(Profile, user_id))
 
 
 def _session_row(db: Session, user_id: str, session_id: str) -> StudySession:
@@ -347,7 +408,7 @@ def _apply_session_started(db: Session, user_id: str, event: SessionStarted) -> 
     row = _session_row(db, user_id, p.session_id)
     row.started_at = event.occurred_at
     row.source = p.source
-    row.planned_seconds = round(p.planned_seconds)
+    row.planned_seconds = min(MAX_DURATION_MS // 1000, round(p.planned_seconds))
 
 
 def _apply_session_completed(db: Session, user_id: str, event: SessionCompleted, packs: dict[str, Pack]) -> None:
@@ -363,35 +424,39 @@ def _apply_session_completed(db: Session, user_id: str, event: SessionCompleted,
     if enrollment is None and default is None:
         raise EventRejectedError("no_enrollment")
 
+    if existing is not None and existing.ended_at is not None:
+        return  # séance déjà terminée (renvoi sous un autre id) : ni double XP, ni réécriture
+
+    items, xp, duration_ms = cap_session(p.items_count, p.xp_gained, p.duration_ms)
+    if items == 0 and not _session_has_completed_lesson(db, user_id, p.session_id, event.occurred_at):
+        return  # séance vide : aucun XP, pas de séance terminée, pas de jour de série
+
     if enrollment is None and default is not None:
         enrollment = _enrollment_for(db, user_id, default)
+    assert enrollment is not None  # noqa: S101
     row = _session_row(db, user_id, p.session_id)
-    already_completed = row.ended_at is not None
     row.ended_at = event.occurred_at
-    row.xp_gained = p.xp_gained
-    row.items_count = p.items_count
-    row.duration_ms = round(p.duration_ms)
+    row.xp_gained = xp
+    row.items_count = items
+    row.duration_ms = duration_ms
     row.local_date = p.local_date
     if row.started_at is None:
-        row.started_at = event.occurred_at - timedelta(milliseconds=p.duration_ms)
-    if already_completed:
-        return  # même séance renvoyée sous un autre id d'événement : pas de double XP
+        row.started_at = event.occurred_at - timedelta(milliseconds=duration_ms)
 
-    enrollment.xp_total += p.xp_gained
-
+    learner.add_xp(enrollment, xp)
     streak_row = learner.get_streak(db, user_id)
-    updated = record_activity(
-        Streak(
-            current=streak_row.current,
-            longest=streak_row.longest,
-            last_active_date=streak_row.last_active_date,
-            freezes_available=streak_row.freezes_available,
-            frozen_until=streak_row.frozen_until,
-        ),
-        p.local_date,
+    learner.store_streak(streak_row, streak_rules.record_activity(learner.streak_of(streak_row), p.local_date))
+
+
+def _session_has_completed_lesson(db: Session, user_id: str, session_id: str, until: datetime) -> bool:
+    """Une leçon terminée pendant la séance (`lesson_completed` de même sessionId, déjà traité)."""
+    since = until - timedelta(milliseconds=MAX_DURATION_MS) - MAX_CLOCK_SKEW
+    payloads = db.scalars(
+        select(ProcessedEvent.payload_json).where(
+            ProcessedEvent.user_id == user_id,
+            ProcessedEvent.type == "lesson_completed",
+            ProcessedEvent.occurred_at >= since,
+            ProcessedEvent.occurred_at <= until,
+        )
     )
-    streak_row.current = updated.current
-    streak_row.longest = updated.longest
-    streak_row.last_active_date = updated.last_active_date
-    streak_row.freezes_available = updated.freezes_available
-    streak_row.frozen_until = updated.frozen_until
+    return any((raw or {}).get("payload", {}).get("sessionId") == session_id for raw in payloads)

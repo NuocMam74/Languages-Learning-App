@@ -1,5 +1,6 @@
 import type { ChoiceOption, ContentIndex, ExamAnswer, ExamQuestion, Exercise, ExerciseResponse } from "@parlo/core";
 import { useEffect, useRef, useState } from "react";
+import { TranscriptsAllowed } from "../components/AudioButton.tsx";
 import { ExerciseView } from "../components/exercises.tsx";
 import { Button, Vi } from "../components/ui.tsx";
 import { l, t, type MessageKey } from "../i18n/index.ts";
@@ -105,7 +106,9 @@ export function ExamRunner({ content, questions, deadline, initialAnswers = [], 
       )}
 
       <main className="flex flex-1 flex-col pt-6">
-        <QuestionView key={`${question.section}:${question.index}`} question={question} content={content} onAnswer={answer} />
+        <TranscriptsAllowed.Provider value={false}>
+          <QuestionView key={`${question.section}:${question.index}`} question={question} content={content} onAnswer={answer} />
+        </TranscriptsAllowed.Provider>
       </main>
     </div>
   );

@@ -43,6 +43,8 @@ export interface SessionRun {
   learned: ConceptId[];
   xp: number;
   startedAt: string;
+  /** Version du pack au démarrage : la reprise reste possible après une mise à jour du contenu. */
+  contentVersion?: number;
 }
 
 export type SessionPhase =
@@ -58,8 +60,12 @@ export function startSessionRun(input: {
   lesson: Lesson | null;
   known: readonly ConceptId[];
   now: Date;
+  /** Étapes jouables de la leçon (voir playableStepIndexes) ; défaut : toutes. */
+  playable?: readonly number[];
+  /** Version du contenu au démarrage (contrat phase5 §6). */
+  contentVersion?: number;
 }): SessionRun {
-  const { plan, sessionId, source, lesson, known, now } = input;
+  const { plan, sessionId, source, lesson, known, now, playable, contentVersion } = input;
   const reviewQueue: ReviewItem[] = [];
   let hasNew = false;
   for (const block of plan.blocks) {
@@ -76,11 +82,12 @@ export function startSessionRun(input: {
     reviewCursor: 0,
     reviewResults: [],
     knownAtStart: [...known],
-    lesson: hasNew && lesson ? startLesson(lesson, sessionId, now) : null,
+    lesson: hasNew && lesson ? startLesson(lesson, sessionId, now, playable) : null,
     lessonSaved: false,
     learned: [],
     xp: 0,
     startedAt: now.toISOString(),
+    ...(contentVersion !== undefined ? { contentVersion } : {}),
   };
 }
 
@@ -140,4 +147,17 @@ export function sessionItemsRemaining(run: SessionRun): number {
 /** Concepts révisés avec succès (premier essai) pendant la séance. */
 export function reviewedConcepts(run: SessionRun): ConceptId[] {
   return [...new Set(run.reviewResults.filter((r) => r.attempt === 1 && r.graded && r.correct).map((r) => r.conceptId))];
+}
+
+/** Items notés de la séance (révisions + étapes de leçon). */
+export function sessionGradedItems(run: SessionRun): number {
+  return run.reviewResults.filter((r) => r.graded).length + (run.lesson?.results.filter((r) => r.graded).length ?? 0);
+}
+
+/**
+ * Séance vide (contrat phase5 §3) : aucun item noté ni leçon terminée → ni XP, ni session_completed,
+ * ni jour de série. `lessonCompleted` : la partie leçon a été enregistrée.
+ */
+export function isEmptySession(run: SessionRun, lessonCompleted: boolean = run.lessonSaved): boolean {
+  return sessionGradedItems(run) === 0 && !lessonCompleted;
 }

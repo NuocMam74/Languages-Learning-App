@@ -59,7 +59,8 @@ clientsClaim();
 cleanupOutdatedCaches();
 // Écrit tel quel : workbox-build cherche la chaîne « self.__WB_MANIFEST » pour injecter le précache.
 precacheAndRoute(self.__WB_MANIFEST);
-registerRoute(new NavigationRoute(createHandlerBoundToURL("/index.html")));
+// Les navigations vers l'API (démarrage OAuth, redirections du serveur) ne sont jamais servies par l'app.
+registerRoute(new NavigationRoute(createHandlerBoundToURL("/index.html"), { denylist: [/^\/api\//] }));
 
 registerRoute(
   ({ url }) => url.pathname.startsWith("/content/") && url.pathname.endsWith(".json"),

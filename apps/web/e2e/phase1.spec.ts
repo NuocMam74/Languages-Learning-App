@@ -59,7 +59,9 @@ test("séance du jour : révisions dues, nouvelle leçon, mise en pratique, bila
   await playUntil(page, /Séance terminée/);
   await expect(page.getByText(/^\+\d+ XP$/)).toBeVisible();
   await expect(page.getByText(/^Révisé aujourd'hui \(\d\)/)).toBeVisible();
-  await expect(page.getByText("Ce que tu sais dire de plus qu'hier :")).toBeVisible();
+  // « Ce que tu sais dire » ne liste que les concepts réussis (contrat phase5) : les réponses du parcours sont prises au hasard.
+  const canSay = page.getByText("Ce que tu sais dire de plus qu'hier :");
+  if (await canSay.isVisible()) await expect(canSay.locator("xpath=following-sibling::ul/li").first()).toBeVisible();
   await expect(page.getByText("Premier embarcadère")).toBeVisible();
 
   await page.getByRole("button", { name: "Retour au parcours" }).click();
@@ -108,7 +110,9 @@ test("création de compte après la première leçon : migration de l'invité ve
   await page.getByRole("link", { name: "Créer un compte" }).click();
 
   await expect(page.getByRole("heading", { name: "Créer ton compte" })).toBeVisible();
-  await expect(page.getByRole("button", { name: /Continuer avec Google/ })).toBeDisabled();
+  // Aucun fournisseur OAuth configuré (GET /auth/oauth/providers en 404) : aucun bouton (contrat phase5 §4).
+  await expect(page.getByTestId("oauth-providers")).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Mot de passe oublié ?" })).toHaveCount(0);
   await page.getByLabel("Prénom ou pseudo").fill("Lan");
   await page.getByLabel("Email").fill("lan@parlo.app");
   await page.getByLabel("Mot de passe").fill("mot-de-passe-solide");

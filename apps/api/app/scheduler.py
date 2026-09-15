@@ -1,7 +1,9 @@
 """Tâches planifiées (APScheduler), démarrées avec l'application si `SCHEDULER_ENABLED=true`.
 
 - lundi 00:00 UTC : défi de la semaine, passage de semaine des ligues ;
-- toutes les heures (minute 0) : rappels push.
+- toutes les heures (minute 0) : rappels push ;
+- chaque jour 03:30 UTC : purge des données de Cô Mai de plus de TUTOR_RETENTION_DAYS jours (90 par défaut)
+  et des entrées de cache expirées.
 Un seul processus doit activer le planificateur (sinon rappels en double) : en production, un conteneur
 dédié ou un seul worker uvicorn avec `SCHEDULER_ENABLED=true`.
 """
@@ -14,7 +16,8 @@ from apscheduler.triggers.cron import CronTrigger
 from sqlalchemy.orm import Session, sessionmaker
 
 from app.config import Settings
-from app.services import challenges, leagues, push
+from app.services import challenges, leagues, push, tutor
+from app.services.content import load_packs
 
 logger = logging.getLogger(__name__)
 
@@ -37,8 +40,14 @@ def send_push_reminders(session_factory: sessionmaker[Session], settings: Settin
     if not settings.vapid_private_key:
         return
     with session_factory() as db:
-        report = push.send_due_reminders(db, push.webpush_sender(settings))
+        report = push.send_due_reminders(db, push.webpush_sender(settings), packs=load_packs(settings.content_dir))
         logger.info("Rappels push : %s", report)
+
+
+def purge_tutor(session_factory: sessionmaker[Session], settings: Settings) -> None:
+    with session_factory() as db:
+        messages, cache = tutor.purge_tutor_data(db, retention_days=settings.tutor_retention_days)
+        logger.info("Purge Cô Mai : %d message(s), %d entrée(s) de cache", messages, cache)
 
 
 def start_scheduler(settings: Settings, session_factory: sessionmaker[Session]) -> BackgroundScheduler:
@@ -65,6 +74,14 @@ def start_scheduler(settings: Settings, session_factory: sessionmaker[Session]) 
         args=[session_factory, settings],
         id="push_reminders",
         misfire_grace_time=900,
+        coalesce=True,
+    )
+    scheduler.add_job(
+        purge_tutor,
+        CronTrigger(hour=3, minute=30, timezone=UTC),
+        args=[session_factory, settings],
+        id="tutor_purge",
+        misfire_grace_time=6 * 3600,
         coalesce=True,
     )
     scheduler.start()

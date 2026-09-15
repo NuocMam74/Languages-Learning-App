@@ -6,7 +6,8 @@ import { Screen } from "../components/ui.tsx";
 import type { Profile } from "../db.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
 import { DEFAULT_PROFILE, saveProfile } from "../learner.ts";
-import { hasPlacement } from "../packs/placement.ts";
+import { playablePlacementFor } from "../packs/placement.ts";
+import { syncProfileChange } from "../profile-sync.ts";
 
 /** 5 questions, une par écran, réponses en gros boutons (spec §4.1.3). */
 
@@ -46,10 +47,12 @@ export function Onboarding({ content, onDone }: { content: ContentIndex; onDone:
     }
     const final = { ...updated, onboardedAt: new Date().toISOString() };
     await saveProfile(final);
+    // Compte déjà connecté (autre langue, nouvel appareil) : réponses envoyées au serveur (contrat phase5 §4).
+    void syncProfileChange(null, final).catch(() => undefined);
     onDone(final);
     // Mini-test de placement optionnel (spec §4.1.4), puis première leçon avant tout compte (§4.1.5).
-    // Seulement si le pack fournit un placement.json (facultatif, ADR 0006).
-    const placement = hasPlacement(content.pack.code) && content.lessons.size > 0;
+    // Seulement si le pack fournit un placement.json avec au moins 6 items jouables (contrat phase5 §1).
+    const placement = playablePlacementFor(content) !== null && content.lessons.size > 0;
     const first = nextLesson(content.curriculum, content.lessons, new Set(), final.motivation);
     navigate(placement ? "/placement" : first ? `/lecon/${first.id}` : "/", { replace: true });
   };

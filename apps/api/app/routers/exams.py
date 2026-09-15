@@ -27,6 +27,7 @@ from app.services import certificates, exams, learner
 from app.services.content import Pack
 from app.services.engine import ContentError
 from app.services.exams import ExamSpec
+from app.services.media import media_index
 
 router = APIRouter(tags=["exams"])
 
@@ -42,8 +43,13 @@ def _user_pack(db: Session, user: User, packs: dict[str, Pack], default_course: 
 
 
 def _scores(raw: dict[str, Any] | None) -> ExamScores:
+    """Score null : compétence sans item noté (médias manquants, contrat parcours §1)."""
     raw = raw or {}
-    return ExamScores(**{skill: float(raw.get(skill, 0.0)) for skill in exams.SKILLS})
+    values: dict[str, float | None] = {}
+    for skill in exams.SKILLS:
+        value = raw.get(skill, 0.0)
+        values[skill] = None if value is None else float(value)
+    return ExamScores(**values)
 
 
 def _find_exam(
@@ -63,6 +69,7 @@ def list_exams(
     if pack is None:
         return []
     now = _now()
+    index = media_index(pack, settings.studio_media_dir)
     out: list[ExamOut] = []
     for exam in all_exams.get(pack.code, {}).values():
         last = exams.last_submitted(db, user.id, exam.id)
@@ -79,10 +86,12 @@ def list_exams(
                     submitted_at=last.submitted_at,
                     passed=bool(last.passed),
                     scores=_scores((last.score_json or {}).get("scores")),
+                    global_=(last.score_json or {}).get("global"),
                 )
                 if last is not None and last.submitted_at is not None
                 else None,
                 next_attempt_at=exams.next_attempt_at(exam, last, now),
+                unavailable_reason=exams.unavailable_reason(pack, exam, index),
             )
         )
     return out
@@ -99,11 +108,15 @@ def _start_out(exam: ExamSpec, attempt: ExamAttempt) -> ExamStartOut:
 
 
 @router.post("/exams/{exam_id}/start", response_model=ExamStartOut, status_code=status.HTTP_201_CREATED)
-def start_exam(exam_id: str, user: CurrentUser, db: DbDep, packs: PacksDep, all_exams: ExamsDep) -> Any:
+def start_exam(
+    exam_id: str, user: CurrentUser, db: DbDep, packs: PacksDep, all_exams: ExamsDep, settings: SettingsDep
+) -> Any:
     pack, exam = _find_exam(all_exams, packs, exam_id)
     now = _now()
     if not exams.is_unlocked(db, user.id, pack, exam):
         raise HTTPException(status.HTTP_403_FORBIDDEN, detail="locked_units")
+    if exams.unavailable_reason(pack, exam, media_index(pack, settings.studio_media_dir)) is not None:
+        raise HTTPException(status.HTTP_409_CONFLICT, detail=exams.MEDIA_MISSING)
     locked_until = exams.next_attempt_at(exam, exams.last_submitted(db, user.id, exam.id), now)
     if locked_until is not None:
         return JSONResponse(
@@ -161,14 +174,19 @@ def submit_exam(
 
     answers = [a.model_dump(by_alias=True) for a in body.answers]
     try:
-        result = exams.grade(pack, exam, attempt.id, answers)
+        result = exams.grade(pack, exam, attempt.id, answers, media_index(pack, settings.studio_media_dir))
     except ContentError as exc:
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, detail="exam_unavailable") from exc
 
     attempt.submitted_at = now
     attempt.passed = result.passed
     attempt.answers_json = answers
-    attempt.score_json = {"global": result.global_score, "scores": result.scores, "gaps": result.gaps}
+    attempt.score_json = {
+        "global": result.global_score,
+        "scores": result.scores,
+        "gaps": result.gaps,
+        "gradedItems": result.graded_items,
+    }
 
     certificate_ref: CertificateRef | None = None
     if result.passed:
@@ -184,6 +202,27 @@ def submit_exam(
         scores=_scores(result.scores),
         gaps=[GapOut(skill=g["skill"], concept_ids=g["conceptIds"]) for g in result.gaps],
         certificate=certificate_ref,
+    )
+
+
+@router.get("/exams/attempts/{attempt_id}", response_model=ExamResultOut)
+def attempt_result(attempt_id: str, user: CurrentUser, db: DbDep) -> ExamResultOut:
+    """Résultat d'une tentative déjà soumise (client qui a perdu la réponse de `submit`)."""
+    attempt = db.get(ExamAttempt, attempt_id)
+    if attempt is None or attempt.user_id != user.id:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="attempt_not_found")
+    if attempt.submitted_at is None:
+        raise HTTPException(status.HTTP_409_CONFLICT, detail="not_submitted")
+    score = attempt.score_json or {}
+    certificate = db.scalar(select(Certificate).where(Certificate.attempt_id == attempt.id).limit(1))
+    return ExamResultOut(
+        passed=bool(attempt.passed),
+        global_=float(score.get("global", 0.0)),
+        scores=_scores(score.get("scores")),
+        gaps=[GapOut(skill=g["skill"], concept_ids=g["conceptIds"]) for g in score.get("gaps", [])],
+        certificate=CertificateRef(id=certificate.id, verification_code=certificate.verification_code)
+        if certificate is not None
+        else None,
     )
 
 

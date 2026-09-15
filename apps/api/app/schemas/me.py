@@ -3,12 +3,15 @@
 from datetime import date, datetime
 from typing import Annotated, Any, Literal
 
-from pydantic import Field
+from pydantic import ConfigDict, Field
 
 from app.schemas import CamelModel
 
 Motivation = Literal["family", "travel", "work", "roots", "curiosity"]
 DailyGoal = Literal[5, 10, 15, 20]
+Entourage = Literal["nobody", "partner", "parents", "colleagues"]
+SelfLevel = Literal["none", "words", "understand", "speak"]
+InterfaceLocale = Literal["fr", "en"]
 
 
 class UserOut(CamelModel):
@@ -18,6 +21,8 @@ class UserOut(CamelModel):
     locale: str
     created_at: datetime
     is_guest: bool
+    # Adresse confirmée (lien reçu par e-mail ou fournisseur OAuth qui l'atteste).
+    email_verified: bool
 
 
 class ProfileOut(CamelModel):
@@ -29,6 +34,9 @@ class ProfileOut(CamelModel):
     leagues_enabled: bool
     timezone: str | None
     notifications_enabled: bool
+    entourage: Entourage | None
+    self_level: SelfLevel | None
+    interface_locale: str
 
 
 class EnrollmentOut(CamelModel):
@@ -45,6 +53,17 @@ class StreakOut(CamelModel):
     last_active_date: date | None
     freezes_available: int
     frozen_until: date | None
+    # Jour local de la déclaration du gel (seuls les jours ≥ frozenFrom sont couverts).
+    frozen_from: date | None
+
+
+class LevelOut(CamelModel):
+    """Niveau de profil 1–50 (contrat parcours §3)."""
+
+    value: int
+    name: dict[str, str]
+    xp_into_level: int
+    xp_for_next: int
 
 
 class BadgeOut(CamelModel):
@@ -74,9 +93,14 @@ class MeOut(CamelModel):
     daily_goal: DailyGoalOut
     # Contrat Phase 4 §0 : `learner` (implicite) puis reviewer | editor | teacher | admin.
     roles: list[str]
+    # Niveau de profil du pack courant (XP de son inscription).
+    level: LevelOut
 
 
 class ProfilePatch(CamelModel):
+    # Champs inconnus ignorés : un client plus récent ne doit pas voir sa synchronisation du profil refusée.
+    model_config = ConfigDict(extra="ignore")
+
     motivation: Motivation | None = None
     daily_goal_min: DailyGoal | None = None
     reminder_hour: Annotated[int, Field(ge=0, le=23)] | None = None
@@ -85,6 +109,9 @@ class ProfilePatch(CamelModel):
     # Fuseau IANA (ex. « Europe/Paris ») ; null efface.
     timezone: Annotated[str, Field(min_length=1, max_length=64)] | None = None
     notifications_enabled: bool | None = None
+    entourage: Entourage | None = None
+    self_level: SelfLevel | None = None
+    interface_locale: InterfaceLocale | None = None
 
 
 class SrsCardOut(CamelModel):
@@ -111,6 +138,40 @@ class SessionPlanOut(CamelModel):
     estimated_seconds: int | float
 
 
+class PlacementOut(CamelModel):
+    level_estimate: int
+    entry_lesson_id: str
+
+
+class LessonProgressOut(CamelModel):
+    lesson_id: str
+    best_score: float
+    attempts: int
+    completed_at: datetime | None
+
+
+class StateOut(CamelModel):
+    """`GET /me/state?pack=` : restauration d'un appareil (contrat parcours §4)."""
+
+    profile: ProfileOut
+    placement: PlacementOut | None
+    lesson_progress: list[LessonProgressOut]
+    srs_cards: list[SrsCardOut]
+    badges: list[BadgeOut]
+    streak: StreakOut
+    xp_total: int
+    level: LevelOut
+    # Le compte est inscrit à ce pack : onboarding et placement ne sont pas reproposés.
+    enrolled: bool
+
+
+class DeleteMeIn(CamelModel):
+    """Mot de passe (compte e-mail) ou `confirm: "SUPPRIMER"` (compte sans mot de passe, OAuth)."""
+
+    password: Annotated[str, Field(min_length=1, max_length=256)] | None = None
+    confirm: Annotated[str, Field(max_length=32)] | None = None
+
+
 class CourseOut(CamelModel):
     code: str
     lang: str
@@ -127,3 +188,6 @@ class ManifestOut(CamelModel):
     version: int
     base_url: str
     files: list[str]
+    # Médias présents (contrat parcours §1).
+    media_index: list[str]
+    coming_soon: bool

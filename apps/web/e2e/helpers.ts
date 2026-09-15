@@ -13,8 +13,10 @@ export async function onboard(page: Page, minutes = "5 min") {
     const choice = i === 3 ? page.getByRole("button", { name: minutes, exact: true }) : page.locator("main button").first();
     await choice.click();
   }
-  await expect(page.getByRole("heading", { name: "Un mini-test de 90 secondes ?" })).toBeVisible();
-  await page.getByRole("button", { name: /^Passer/ }).click();
+  // Le placement n'est proposé que si assez d'items ont leur audio natif (contrat parcours §1).
+  const placement = page.getByRole("heading", { name: "Un mini-test de 90 secondes ?" });
+  await expect(placement.or(page.locator('[data-testid="lesson"]'))).toBeVisible();
+  if (await placement.isVisible()) await page.getByRole("button", { name: /^Passer/ }).click();
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
 }
 

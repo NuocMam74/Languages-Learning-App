@@ -35,7 +35,7 @@ StepType = Literal[
 # Miroir de `GameId` (packages/core/src/types.ts).
 GameId = Literal["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "doi_dap", "nho_mat"]
 
-NonNegative = Annotated[float, Field(ge=0)]
+NonNegative = Annotated[float, Field(ge=0, le=1e15)]
 Id = Annotated[str, Field(min_length=1, max_length=128)]
 SessionId = Annotated[str, Field(min_length=1, max_length=64)]
 
@@ -90,8 +90,9 @@ class LessonCompletedPayload(CamelModel):
 
 class SessionCompletedPayload(CamelModel):
     session_id: SessionId
-    xp_gained: Annotated[int, Field(ge=0, le=100_000)]
-    items_count: Annotated[int, Field(ge=0)]
+    # Écrêtés côté serveur (contrat parcours §3) : itemsCount ≤ 200, xp ≤ min(1000, 15·items + 50), durée ≤ 4 h.
+    xp_gained: Annotated[int, Field(ge=0, le=10**12)]
+    items_count: Annotated[int, Field(ge=0, le=10**12)]
     duration_ms: NonNegative
     local_date: date
 
@@ -117,7 +118,8 @@ class PronunciationScoredPayload(CamelModel):
 
 
 class StreakFrozenPayload(CamelModel):
-    frozen_until: date
+    # null : annulation du gel (contrat parcours §3).
+    frozen_until: date | None
     local_date: date
 
 

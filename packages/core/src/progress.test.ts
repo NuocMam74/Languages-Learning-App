@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { recordResult, startLesson, type LessonRun, type StepResult } from "./engine.ts";
-import { completeLesson, conceptRating, XP_NEW_ITEM } from "./progress.ts";
+import { capSessionTotals, completeLesson, conceptRating, levelForXp, levelName, XP_NEW_ITEM, xpForLevel } from "./progress.ts";
 import { newCard, review } from "./srs.ts";
 import { loadPack } from "./testing/pack.ts";
 
@@ -40,5 +40,33 @@ describe("progress", () => {
     // garde-fou d'intégration entre engine et progress
     const run = startLesson(l03, "s", NOW);
     expect(recordResult(run, { type: "unsupported", stepIndex: 0, conceptIds: ["c_ba"], explain: null, stepType: "fill_gap" }, { correct: true, nearMiss: false, graded: false, expected: "", explain: null }, 1).results[0]?.conceptIds).toEqual(["c_ba"]);
+  });
+});
+
+describe("niveaux de profil et plafonds (contrat phase5 §3)", () => {
+  it("XP requise : 25·(L−1)·(L+2)", () => {
+    expect(xpForLevel(1)).toBe(0);
+    expect(xpForLevel(2)).toBe(100);
+    expect(xpForLevel(50)).toBe(63_700);
+    expect(levelForXp(0)).toEqual({ value: 1, xpIntoLevel: 0, xpForNext: 100 });
+    expect(levelForXp(99).value).toBe(1);
+    expect(levelForXp(100)).toEqual({ value: 2, xpIntoLevel: 0, xpForNext: 150 });
+    expect(levelForXp(710).value).toBe(5);
+    expect(levelForXp(1_000_000)).toEqual({ value: 50, xpIntoLevel: 1_000_000 - 63_700, xpForNext: 0 });
+  });
+
+  it("nom par tranche de 5 niveaux", () => {
+    const names = Array.from({ length: 10 }, (_, i) => `n${i}`);
+    expect(levelName(names, 1)).toBe("n0");
+    expect(levelName(names, 5)).toBe("n0");
+    expect(levelName(names, 6)).toBe("n1");
+    expect(levelName(names, 50)).toBe("n9");
+    expect(levelName(undefined, 3)).toBeNull();
+  });
+
+  it("plafonds : écrêtage, jamais de rejet", () => {
+    expect(capSessionTotals({ xpGained: 5000, itemsCount: 500, durationMs: 30 * 86_400_000 })).toEqual({ xpGained: 1000, itemsCount: 200, durationMs: 4 * 3_600_000 });
+    expect(capSessionTotals({ xpGained: 200, itemsCount: 2, durationMs: 60_000 })).toEqual({ xpGained: 80, itemsCount: 2, durationMs: 60_000 });
+    expect(capSessionTotals({ xpGained: 20, itemsCount: 0, durationMs: -5 })).toEqual({ xpGained: 20, itemsCount: 0, durationMs: 0 });
   });
 });

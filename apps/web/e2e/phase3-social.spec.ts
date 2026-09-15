@@ -1,5 +1,6 @@
 import { expect, test, type Page, type Route } from "@playwright/test";
 import { onboard } from "./helpers.ts";
+import { declareAllMedia } from "./media.ts";
 
 /**
  * Phase 3 — social (spec §5.2, §5.3, §5.6.6) : ligue (classement simulé, garde-fou
@@ -210,55 +211,60 @@ test("défi entre amis : invitation en invité → création de compte → retou
   await expect(page.getByTestId("friend-challenge")).toHaveCount(2);
 });
 
-test("défi express : 60 s de Chợ nổi (mouvement réduit), score envoyé, rang du jour, image et page de partage", async ({ page }) => {
-  test.setTimeout(200_000);
-  const calls = await mockApi(page, { signedIn: true });
-  await page.addInitScript(() => {
-    // Partage natif indisponible : l'image se télécharge (testable).
-    Object.defineProperty(navigator, "canShare", { value: undefined, configurable: true });
+// Chợ nổi (pack tonal) exige l'audio natif : index des médias complété, service worker bloqué pour l'interception.
+test.describe(() => {
+  test.use({ serviceWorkers: "block" });
+  test("défi express : 60 s de Chợ nổi (mouvement réduit), score envoyé, rang du jour, image et page de partage", async ({ page }) => {
+    test.setTimeout(200_000);
+    const calls = await mockApi(page, { signedIn: true });
+    await declareAllMedia(page);
+    await page.addInitScript(() => {
+      // Partage natif indisponible : l'image se télécharge (testable).
+      Object.defineProperty(navigator, "canShare", { value: undefined, configurable: true });
+    });
+    await page.goto("/bienvenue");
+    await idbWrite(page, [{ key: "account", value: ACCOUNT }]);
+
+    await page.goto("/defis");
+    await page.getByRole("link", { name: "Jouer le défi express" }).click();
+    await expect(page).toHaveURL(/\/express$/);
+    await expect(page.getByText("Score = réponses justes × 10 + bonus de vitesse. Rejouable autant que tu veux.")).toBeVisible();
+    await page.getByRole("button", { name: "Jouer", exact: true }).click();
+
+    const timer = page.getByRole("timer");
+    await expect(timer).toHaveText(/^[01]:\d\d$/);
+    // Quelques barques touchées vite, puis le temps de jeu s'écoule jusqu'à la fermeture du marché.
+    for (let i = 0; i < 4; i++) {
+      const game = page.locator('[data-testid="cho-noi"][data-round]');
+      await expect(game).toHaveAttribute("data-phase", "boats");
+      const round = await game.getAttribute("data-round");
+      await page.getByRole("button", { name: /^Barque : / }).first().click();
+      await expect(game).not.toHaveAttribute("data-round", round ?? "", { timeout: 5_000 });
+    }
+    await expect(page.getByRole("heading", { name: "Le marché ferme" })).toBeVisible({ timeout: 150_000 });
+
+    await expect(page.getByText("Meilleur score : 150 points")).toBeVisible();
+    await expect(page.getByText("3e aujourd'hui")).toBeVisible();
+    const post = calls.find((c) => c.path === "/challenges/express/scores");
+    const body = post?.body as { game: string; score: number; correct: number; total: number; localDate: string };
+    expect(body.game).toBe("cho_noi");
+    expect(body.total).toBeGreaterThanOrEqual(4);
+    expect(body.score).toBeGreaterThanOrEqual(body.correct * 10);
+    expect(body.localDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    await expect.poll(async () => (await outboxGames(page)).filter((g) => g === "cho_noi").length).toBe(1);
+
+    const download = page.waitForEvent("download");
+    await page.getByRole("button", { name: "Partager mon score" }).click();
+    const file = await download;
+    expect(file.suggestedFilename()).toBe("parlo-defi-express.png");
+
+    await page.getByRole("link", { name: "Voir la page de partage" }).click();
+    await expect(page).toHaveURL(/\/partage\/sh-42$/);
+    await expect(page.getByTestId("share")).toHaveAttribute("data-state", "ok");
+    await expect(page.getByText("137 points")).toBeVisible();
+    await expect(page.getByText("Lan Nguyễn au Chợ nổi")).toBeVisible();
+    await expect(page.getByRole("link", { name: "Essayer Parlo" })).toBeVisible();
   });
-  await page.goto("/bienvenue");
-  await idbWrite(page, [{ key: "account", value: ACCOUNT }]);
-
-  await page.goto("/defis");
-  await page.getByRole("link", { name: "Jouer le défi express" }).click();
-  await expect(page).toHaveURL(/\/express$/);
-  await expect(page.getByText("Score = réponses justes × 10 + bonus de vitesse. Rejouable autant que tu veux.")).toBeVisible();
-  await page.getByRole("button", { name: "Jouer", exact: true }).click();
-
-  const timer = page.getByRole("timer");
-  await expect(timer).toHaveText(/^[01]:\d\d$/);
-  // Quelques barques touchées vite, puis le temps de jeu s'écoule jusqu'à la fermeture du marché.
-  for (let i = 0; i < 4; i++) {
-    const game = page.locator('[data-testid="cho-noi"][data-round]');
-    await expect(game).toHaveAttribute("data-phase", "boats");
-    const round = await game.getAttribute("data-round");
-    await page.getByRole("button", { name: /^Barque : / }).first().click();
-    await expect(game).not.toHaveAttribute("data-round", round ?? "", { timeout: 5_000 });
-  }
-  await expect(page.getByRole("heading", { name: "Le marché ferme" })).toBeVisible({ timeout: 150_000 });
-
-  await expect(page.getByText("Meilleur score : 150 points")).toBeVisible();
-  await expect(page.getByText("3e aujourd'hui")).toBeVisible();
-  const post = calls.find((c) => c.path === "/challenges/express/scores");
-  const body = post?.body as { game: string; score: number; correct: number; total: number; localDate: string };
-  expect(body.game).toBe("cho_noi");
-  expect(body.total).toBeGreaterThanOrEqual(4);
-  expect(body.score).toBeGreaterThanOrEqual(body.correct * 10);
-  expect(body.localDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-  await expect.poll(async () => (await outboxGames(page)).filter((g) => g === "cho_noi").length).toBe(1);
-
-  const download = page.waitForEvent("download");
-  await page.getByRole("button", { name: "Partager mon score" }).click();
-  const file = await download;
-  expect(file.suggestedFilename()).toBe("parlo-defi-express.png");
-
-  await page.getByRole("link", { name: "Voir la page de partage" }).click();
-  await expect(page).toHaveURL(/\/partage\/sh-42$/);
-  await expect(page.getByTestId("share")).toHaveAttribute("data-state", "ok");
-  await expect(page.getByText("137 points")).toBeVisible();
-  await expect(page.getByText("Lan Nguyễn au Chợ nổi")).toBeVisible();
-  await expect(page.getByRole("link", { name: "Essayer Parlo" })).toBeVisible();
 });
 
 test("Nhớ mặt : grille 4×4, cartes ≥ 44 px, paires image ↔ son jusqu'au résultat, game_played", async ({ page }) => {

@@ -92,7 +92,7 @@ class CertificateDocument:
     level: str
     certificate_name: str
     issued_on: date
-    scores: dict[str, float]
+    scores: dict[str, float | None]
     verification_code: str
     verify_url: str
     locale: str = "fr"
@@ -204,9 +204,11 @@ class Fpdf2Renderer:
         y = 148
         for i, skill in enumerate(SKILL_ORDER):
             x = left + i * col_w
-            value = max(0.0, min(1.0, doc.scores.get(skill, 0.0)))
+            raw = doc.scores.get(skill)
+            value = max(0.0, min(1.0, raw)) if raw is not None else 0.0
             text(y, labels[skill], "Sans", "", 10, PHU_SA, x=x, w=col_w - 6)
-            text(y + 7, f"{round(value * 100)} %", "Sans", "B", 16, MUC, x=x, w=col_w - 6)
+            shown = f"{round(value * 100)} %" if raw is not None else "—"
+            text(y + 7, shown, "Sans", "B", 16, MUC, x=x, w=col_w - 6)
             pdf.set_fill_color(*_rgb("#D9E3DE"))
             pdf.rect(x, y + 18, col_w - 10, 1.6, style="F")
             pdf.set_fill_color(*_rgb(NGOC))
@@ -250,9 +252,18 @@ def certificate_html(doc: CertificateDocument) -> str:
     e = html.escape
     labels = doc.labels
     font = FONTS_DIR.as_uri()
+
+    def pct(skill: str) -> str:
+        raw = doc.scores.get(skill)
+        return "—" if raw is None else f"{round(raw * 100)} %"
+
+    def width(skill: str) -> float:
+        raw = doc.scores.get(skill)
+        return 0.0 if raw is None else max(0.0, min(1.0, raw)) * 100
+
     skills = "".join(
-        f'<div class="skill"><span>{e(labels[s])}</span><strong>{round(doc.scores.get(s, 0.0) * 100)} %</strong>'
-        f'<i><b style="width:{max(0.0, min(1.0, doc.scores.get(s, 0.0))) * 100:.1f}%"></b></i></div>'
+        f'<div class="skill"><span>{e(labels[s])}</span><strong>{pct(s)}</strong>'
+        f'<i><b style="width:{width(s):.1f}%"></b></i></div>'
         for s in SKILL_ORDER
     )
     motto = f'<p class="motto">{e(doc.motto)}</p>' if doc.motto else ""

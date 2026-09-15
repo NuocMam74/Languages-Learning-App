@@ -1,6 +1,7 @@
 import {
   buildExam,
   EXAM_ITEM_COUNT,
+  examAvailability,
   gradeExam,
   isExamUnlocked,
   lessonsForConcepts,
@@ -13,10 +14,10 @@ import {
   type ExamGrade,
   type ExamQuestion,
 } from "@parlo/core";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useAccount } from "../account.ts";
-import { ApiError, getExams, NetworkError, startExam, submitExam, type ExamSubmitResult, type ExamSummary } from "../api.ts";
+import { ApiError, getExamAttemptResult, getExams, NetworkError, startExam, submitExam, type ExamSubmitResult, type ExamSummary } from "../api.ts";
 import { CertificateReady } from "../certificates/CertificatePages.tsx";
 import { BackHeader } from "./BackHeader.tsx";
 import { Button, Screen } from "../components/ui.tsx";
@@ -47,6 +48,8 @@ interface Row {
   unlocked: boolean;
   next: Date | null;
   last: LocalAttempt | null;
+  /** Moins de 15 items notables faute de médias (contrat phase5 §1). */
+  unavailable: boolean;
 }
 
 export function ExamsPage({ content }: { content: ContentIndex }) {
@@ -65,7 +68,8 @@ export function ExamsPage({ content }: { content: ContentIndex }) {
           const local = attempts[exam.id] ?? null;
           const last: LocalAttempt | null = remote?.lastAttempt ? { submittedAt: remote.lastAttempt.submittedAt, passed: remote.lastAttempt.passed, scores: remote.lastAttempt.scores } : local;
           const next = remote ? (remote.nextAttemptAt ? new Date(remote.nextAttemptAt) : null) : nextExamAttemptAt(exam, last?.submittedAt ?? null);
-          return { exam, unlocked: remote?.unlocked ?? isExamUnlocked(content.curriculum, exam, done, content.lessons), next: next && next.getTime() > Date.now() ? next : null, last };
+          const unavailable = remote?.unavailableReason ? remote.unavailableReason === "media_missing" : examAvailability(content, exam).unavailableReason !== null;
+          return { exam, unlocked: remote?.unlocked ?? isExamUnlocked(content.curriculum, exam, done, content.lessons), next: next && next.getTime() > Date.now() ? next : null, last, unavailable };
         }),
       );
     })();
@@ -75,7 +79,7 @@ export function ExamsPage({ content }: { content: ContentIndex }) {
     <Screen top={<BackHeader title={t("exams.title")} />}>
       <p className="pb-4 text-phu-sa">{t("exams.intro")}</p>
       <div className="flex flex-col">
-        {rows?.map(({ exam, unlocked, next, last }) => {
+        {rows?.map(({ exam, unlocked, next, last, unavailable }) => {
           const slug = exam.level.toLowerCase();
           const units = exam.requiresUnits.map((u) => l(content.curriculum.units.find((x) => x.id === u)?.title) || u).join(", ");
           return (
@@ -84,10 +88,11 @@ export function ExamsPage({ content }: { content: ContentIndex }) {
                 <h2 lang="vi" className="font-serif text-2xl">{l(exam.certificate)}</h2>
                 <span className={`text-sm ${unlocked ? "text-ngoc" : "text-phu-sa"}`}>{unlocked ? t("exams.unlocked") : null}</span>
               </div>
-              {!unlocked && <p className="text-sm text-phu-sa">{t("exams.locked", { units })}</p>}
+              {unavailable && <p className="text-sm text-phu-sa" data-testid="exam-unavailable">{t("journey.exam.unavailable")}</p>}
+              {!unavailable && !unlocked && <p className="text-sm text-phu-sa">{t("exams.locked", { units })}</p>}
               {last && <p className="text-sm text-phu-sa">{t(last.passed ? "exams.lastPassed" : "exams.lastFailed", { date: formatDate(last.submittedAt) })}</p>}
               {next && <p className="text-sm text-phu-sa">{t("exams.nextAttempt", { date: formatDateTime(next) })}</p>}
-              <div className="flex flex-col gap-1">
+              <div className={`flex flex-col gap-1 ${unavailable ? "hidden" : ""}`}>
                 <Link to={`/examens/${slug}/blanc`} className="flex min-h-12 flex-col justify-center">
                   <span className="font-semibold text-ngoc">{t("exams.mock")}</span>
                   <span className="text-sm text-phu-sa">{t("exams.mock.hint")}</span>
@@ -121,6 +126,9 @@ export function MockExamPage({ content }: { content: ContentIndex }) {
 
   if (exam === undefined) return <Screen><div /></Screen>;
   if (exam === null) return <Screen top={<BackHeader title={t("exams.title")} to="/examens" />}><p>{t("exams.error.generic")}</p></Screen>;
+  if (examAvailability(content, exam).unavailableReason) {
+    return <Screen top={<BackHeader title={t("exams.mock")} to="/examens" />}><p data-testid="exam-unavailable">{t("journey.exam.unavailable")}</p></Screen>;
+  }
 
   if (stage === "run") {
     return (
@@ -207,21 +215,24 @@ export function RealExamPage({ content }: { content: ContentIndex }) {
   const [stage, setStage] = useState<RealStage>({ kind: "intro" });
   const [error, setError] = useState<string | null>(null);
 
-  // Reprise d'une tentative en cours (rechargement de la page).
-  useEffect(() => {
-    if (!exam) return;
-    void getOngoingAttempt().then((ongoing) => {
-      if (!ongoing || ongoing.examId !== exam.id) return;
-      if (Date.parse(ongoing.expiresAt) <= Date.now()) {
-        setStage({ kind: "submitting", attempt: ongoing, questions: buildExam(content, exam, ongoing.seed, ongoing.items), answers: ongoing.answers, error: null });
-        return;
-      }
-      setStage({ kind: "run", attempt: ongoing, questions: buildExam(content, exam, ongoing.seed, ongoing.items) });
-    });
-  }, [content, exam]);
+  /** Une seule soumission à la fois : la fin du temps et le dernier « Valider » ne doivent pas s'additionner. */
+  const submitting = useRef(false);
+
+  /** Tentative déjà soumise (409 already_submitted) : on affiche son résultat au lieu d'une erreur. */
+  const resultOf = async (attemptId: string, examId: string): Promise<ExamSubmitResult | null> => {
+    const direct = await getExamAttemptResult(attemptId);
+    if (direct) return direct;
+    const summary = (await getExams().catch(() => [] as ExamSummary[])).find((e) => e.id === examId);
+    const last = summary?.lastAttempt;
+    if (!last) return null;
+    const values = Object.values(last.scores).filter((v): v is number => typeof v === "number");
+    const global = last.global ?? (values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : 0);
+    return { passed: last.passed, global, scores: last.scores, gaps: [], certificate: null };
+  };
 
   const submit = async (attempt: OngoingAttempt, questions: ExamQuestion[], answers: ExamAnswer[]) => {
-    if (!exam) return;
+    if (!exam || submitting.current) return;
+    submitting.current = true;
     setStage({ kind: "submitting", attempt, questions, answers, error: null });
     try {
       const result = await submitExam(attempt.attemptId, answers);
@@ -229,6 +240,18 @@ export function RealExamPage({ content }: { content: ContentIndex }) {
       await saveLocalAttempt(exam.id, { submittedAt: new Date().toISOString(), passed: result.passed, scores: result.scores });
       setStage({ kind: "result", result });
     } catch (e) {
+      if (e instanceof ApiError && e.status === 409 && e.detail === "already_submitted") {
+        await saveOngoingAttempt(null);
+        const result = await resultOf(attempt.attemptId, exam.id);
+        if (result) {
+          await saveLocalAttempt(exam.id, { submittedAt: new Date().toISOString(), passed: result.passed, scores: result.scores });
+          setStage({ kind: "result", result });
+        } else {
+          setStage({ kind: "intro" });
+          setError(t("exams.error.generic"));
+        }
+        return;
+      }
       if (e instanceof ApiError && (e.status === 410 || e.status === 409 || e.status === 404)) {
         await saveOngoingAttempt(null);
         setStage({ kind: "intro" });
@@ -236,13 +259,27 @@ export function RealExamPage({ content }: { content: ContentIndex }) {
         return;
       }
       setStage({ kind: "submitting", attempt, questions, answers, error: e instanceof NetworkError ? t("exams.error.network") : t("exams.error.generic") });
+    } finally {
+      submitting.current = false;
     }
   };
 
+  // Reprise d'une tentative en cours (rechargement de la page) ; soumission automatique seulement si elle a expiré.
+  const resumed = useRef(false);
   useEffect(() => {
-    if (stage.kind === "submitting" && stage.error === null && online) void submit(stage.attempt, stage.questions, stage.answers);
-    // Soumission automatique uniquement à l'entrée dans l'état (reprise d'une tentative expirée).
-  }, [stage.kind]);
+    if (!exam || resumed.current) return;
+    resumed.current = true;
+    void getOngoingAttempt().then((ongoing) => {
+      if (!ongoing || ongoing.examId !== exam.id) return;
+      const questions = buildExam(content, exam, ongoing.seed, ongoing.items);
+      if (Date.parse(ongoing.expiresAt) <= Date.now()) {
+        if (navigator.onLine) void submit(ongoing, questions, ongoing.answers);
+        else setStage({ kind: "submitting", attempt: ongoing, questions, answers: ongoing.answers, error: t("exams.error.network") });
+        return;
+      }
+      setStage({ kind: "run", attempt: ongoing, questions });
+    });
+  }, [content, exam]);
 
   if (exam === undefined) return <Screen><div /></Screen>;
   if (exam === null) return <Screen top={<BackHeader title={t("exams.title")} to="/examens" />}><p>{t("exams.error.generic")}</p></Screen>;

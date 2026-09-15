@@ -1,10 +1,15 @@
 """Inscription, connexion, rotation du refresh, déconnexion, limitation de débit."""
 
+from datetime import timedelta
+
 from fastapi.testclient import TestClient
+from sqlalchemy import select
 
 from app.config import Settings
 from app.db import Base
 from app.main import create_app
+from app.models import RefreshToken
+from app.services.auth import hash_token
 from tests.conftest import PASSWORD, register
 
 COOKIE = "parlo_refresh"
@@ -71,12 +76,17 @@ def test_refresh_rotates_and_detects_reuse(client: TestClient) -> None:
     assert second and second != first
     assert client.get("/me", headers={"Authorization": f"Bearer {res.json()['accessToken']}"}).status_code == 200
 
-    # Rejouer l'ancien jeton : refusé, et toute la famille de jetons est révoquée.
+    # Rejouer l'ancien jeton hors de la fenêtre de grâce : refusé, toute la famille de jetons est révoquée.
+    with client.app.state.session_factory() as db:  # type: ignore[attr-defined]
+        row = db.scalar(select(RefreshToken).where(RefreshToken.token_hash == hash_token(first)))
+        assert row is not None and row.revoked_at is not None
+        row.revoked_at -= timedelta(minutes=5)
+        db.commit()
     client.cookies.clear()
-    client.cookies.set(COOKIE, first, domain="testserver", path="/auth")
+    client.cookies.set(COOKIE, first, domain="testserver.local", path="/auth")
     assert client.post("/auth/refresh").status_code == 401
     client.cookies.clear()
-    client.cookies.set(COOKIE, second, domain="testserver", path="/auth")
+    client.cookies.set(COOKIE, second, domain="testserver.local", path="/auth")
     assert client.post("/auth/refresh").status_code == 401
 
 
@@ -91,14 +101,14 @@ def test_logout_revokes_refresh_token(client: TestClient) -> None:
     res = client.post("/auth/logout")
     assert res.status_code == 204
     assert not client.cookies.get(COOKIE)
-    client.cookies.set(COOKIE, token, domain="testserver", path="/auth")
+    client.cookies.set(COOKIE, token, domain="testserver.local", path="/auth")
     assert client.post("/auth/refresh").status_code == 401
 
 
-def test_oauth_not_implemented(client: TestClient) -> None:
-    res = client.get("/auth/oauth/google")
-    assert res.status_code == 501
-    assert "Phase 1" in res.json()["detail"]
+def test_oauth_unconfigured_providers_are_hidden(client: TestClient) -> None:
+    assert client.get("/auth/oauth/providers").json() == []
+    assert client.get("/auth/oauth/google/start", follow_redirects=False).status_code == 404
+    assert client.get("/auth/oauth/apple/callback", follow_redirects=False).status_code == 404
 
 
 def test_me_requires_auth(client: TestClient) -> None:

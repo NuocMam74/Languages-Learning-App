@@ -10,7 +10,8 @@ import { cachedDebrief, fetchDebrief } from "./debrief.ts";
 
 /** Bilan de la semaine : ce qui progresse, ce qui coince, l'objectif (spec §5.7). */
 export default function DebriefPage() {
-  const access = useTutorAccess();
+  // Le bilan a un repli lisible sans modèle : il ne dépend pas de la disponibilité de la conversation.
+  const access = useTutorAccess({ conversation: false });
   const [debrief, setDebrief] = useState<WeeklyDebrief | null | undefined>(undefined);
   const [failed, setFailed] = useState(false);
 

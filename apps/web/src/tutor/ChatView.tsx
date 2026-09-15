@@ -259,7 +259,17 @@ export function Composer({ onSend, disabled, placeholder, extra }: {
 }
 
 /** Écran d'explication : invité (compte requis) ou hors ligne. */
-export function TutorGate({ reason, children }: { reason: "guest" | "expired" | "offline"; children?: ReactNode }) {
+export function TutorGate({ reason, children }: { reason: "guest" | "expired" | "offline" | "soon"; children?: ReactNode }) {
+  if (reason === "soon") {
+    return (
+      <div className="flex flex-1 flex-col justify-center gap-4" data-testid="tutor-gate" data-reason={reason}>
+        <p className="font-serif text-2xl">{t("tutor.name")}</p>
+        <p className="text-lg">{t("journey.tutor.soon")}</p>
+        <p className="text-phu-sa">{t("journey.tutor.soonHint")}</p>
+        {children}
+      </div>
+    );
+  }
   return (
     <div className="flex flex-1 flex-col justify-center gap-4" data-testid="tutor-gate" data-reason={reason}>
       <p className="font-serif text-2xl">{t("tutor.name")}</p>
@@ -270,8 +280,8 @@ export function TutorGate({ reason, children }: { reason: "guest" | "expired" | 
   );
 }
 
-export function GateActions({ reason }: { reason: "guest" | "expired" | "offline" }) {
-  if (reason === "offline") return null;
+export function GateActions({ reason }: { reason: "guest" | "expired" | "offline" | "soon" }) {
+  if (reason === "offline" || reason === "soon") return null;
   return (
     <Link
       to={reason === "expired" ? "/connexion" : "/compte"}

@@ -423,9 +423,8 @@ def _media_candidates(refs: Iterable[str]) -> set[str]:
 
 
 def clear_content_caches() -> None:
-    content_service.load_packs.cache_clear()
-    content_service._lesson_documents.cache_clear()
-    content_service._concept_documents.cache_clear()
+    """Hygiène mémoire du worker qui publie ; les autres workers voient la nouvelle version par signature."""
+    content_service.clear_caches()
 
 
 def publish(
@@ -476,15 +475,15 @@ def publish(
             _atomic_write(target, payload)
             written.append(f"{pack.code}/{rel}")
 
-    version = pack.version
-    if written:
-        pack_file = pack.directory / "pack.json"
-        pack_data = _read_json(pack_file)
-        version = pack.version + 1
-        pack_data["version"] = version
-        _atomic_write(pack_file, serialize_document("pack", "pack.json", pack_data))
-        if f"{pack.code}/pack.json" not in written:
-            written.append(f"{pack.code}/pack.json")
+    # Chaque publication incrémente la version du pack (contrat parcours §4) : clients et caches serveur (indexés
+    # par version, dans tous les workers) voient le changement.
+    pack_file = pack.directory / "pack.json"
+    pack_data = _read_json(pack_file)
+    version = max(int(pack_data.get("version", pack.version)), pack.version) + 1
+    pack_data["version"] = version
+    _atomic_write(pack_file, serialize_document("pack", "pack.json", pack_data))
+    if f"{pack.code}/pack.json" not in written:
+        written.append(f"{pack.code}/pack.json")
 
     for draft in selected:
         db.delete(draft)

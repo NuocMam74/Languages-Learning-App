@@ -2,6 +2,7 @@ import {
   answerChoNoi,
   choNoiBoatProgress,
   choNoiPool,
+  contentMedia,
   choNoiResult,
   choNoiRoundDeadlineMs,
   generateChoNoiRounds,
@@ -36,7 +37,8 @@ const STATIC_TIME_FACTOR = 1.5;
 
 /** Pool jouable (audio natif exigé hors développement pour un pack tonal, §7.4) → manches. */
 export function prepareChoNoi(content: ContentIndex, concepts: readonly Concept[], seed: string, options: Partial<ChoNoiOptions> = {}): ChoNoiRound[] {
-  const pool = choNoiPool(concepts, { requireNative: !ttsAllowed(hasFeature(content.pack, "tones")) });
+  // Pack tonal : items sans audio natif présent retirés (sauf repli de synthèse, contrat phase5 §1).
+  const pool = choNoiPool(concepts, { requireNative: !ttsAllowed(hasFeature(content.pack, "tones")), media: contentMedia(content) });
   return generateChoNoiRounds(pool, seed, options, content.pack.toneSystem?.heardClasses);
 }
 

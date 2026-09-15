@@ -5,6 +5,8 @@ import type { Exercise, ExerciseResponse } from "./engine.ts";
 import {
   buildExam,
   checkExam,
+  EXAM_MIN_GRADED_ITEMS,
+  examAvailability,
   EXAM_ITEM_COUNT,
   examItemRefs,
   flatIndexOf,
@@ -18,6 +20,7 @@ import {
   type ExamQuestion,
 } from "./exams.ts";
 import { loadPack } from "./testing/pack.ts";
+import type { ContentIndex } from "./types.ts";
 
 const content = loadPack();
 const exam = JSON.parse(readFileSync(join(import.meta.dirname, "..", "..", "..", "content", "vi-south", "exams", "a0.json"), "utf8")) as ExamFile;
@@ -105,20 +108,24 @@ describe("examens : notation §2.2", () => {
     expect(grade.gaps).toEqual([]);
   });
 
-  it("global pondéré par le nombre d'items", () => {
-    // 6 fautes d'écoute sur 8 : 19/25 = 0.76 global, mais écoute 0.25 < 0.5 → échec.
+  // Oraux sans courbe F0 déclarée : non notés (contrat phase5 §1) → dénominateur = items notés.
+  const gradedCount = questions.filter((q) => q.graded).length;
+
+  it("global pondéré par le nombre d'items notés", () => {
+    // 6 fautes d'écoute sur 8 : global élevé, mais écoute 0.25 < 0.5 → échec.
     let wrong = 0;
     const grade = gradeExam(exam, questions, answersFor(questions, (q) => (q.section === "listening" && wrong++ < 6 ? { kind: "skip" } : right(q.exercise))));
-    expect(grade.global).toBeCloseTo(19 / 25);
+    expect(grade.global).toBeCloseTo((gradedCount - 6) / gradedCount);
     expect(grade.scores.listening).toBeCloseTo(2 / 8);
     expect(grade.passed).toBe(false);
     expect(grade.gaps.map((g) => g.skill)).toEqual(["listening"]);
   });
 
-  it("seuil global : 18/25 échoue même si chaque compétence ≥ 0.5", () => {
-    const misses = new Set(["listening:0", "listening:1", "reading:0", "reading:1", "vocabulary:0", "vocabulary:1", "speaking:0"]);
+  it("seuil global : sous 75 % échoue même si chaque compétence ≥ 0.5", () => {
+    const misses = new Set(["listening:0", "listening:1", "reading:0", "reading:1", "vocabulary:0", "vocabulary:1"]);
     const grade = gradeExam(exam, questions, answersFor(questions, (q) => (misses.has(`${q.section}:${q.index}`) ? { kind: "skip" } : right(q.exercise))));
-    expect(grade.global).toBeCloseTo(18 / 25);
+    expect(grade.global).toBeCloseTo((gradedCount - 6) / gradedCount);
+    expect(grade.global).toBeLessThan(exam.passThreshold);
     expect(Object.values(grade.scores).every((s) => (s ?? 0) >= 0.5)).toBe(true);
     expect(grade.passed).toBe(false);
   });
@@ -144,6 +151,40 @@ describe("examens : notation §2.2", () => {
     const grade = gradeExam(exam, questions, answersFor(questions).slice(0, 20));
     expect(grade.scores.speaking).toBe(0);
     expect(grade.gaps.find((g) => g.skill === "speaking")?.conceptIds.length).toBeGreaterThan(0);
+  });
+});
+
+describe("examens : médias absents (contrat phase5 §1)", () => {
+  const media = (paths: string[]): ContentIndex => ({ ...content, mediaIndex: new Set(paths) });
+
+  it("oral sans courbe F0 et écoute tonale sans audio natif : non notés, compétence vide exclue", () => {
+    const silent = media([]);
+    const questions = buildExam(silent, exam, "seed");
+    const ungraded = questions.filter((q) => !q.graded);
+    expect(ungraded.every((q) => q.section === "speaking" || ["tone_identify", "tone_minimal_pair"].includes(q.stepType))).toBe(true);
+    expect(ungraded.filter((q) => q.section === "speaking")).toHaveLength(5);
+    const grade = gradeExam(exam, questions, answersFor(questions));
+    expect(grade.scores.speaking).toBeNull();
+    expect(grade.passed).toBe(true);
+    expect(grade.global).toBe(1);
+    // Même règle à l'examen blanc.
+    expect(gradeExam(exam, questions, answersFor(questions), { allowUngradedSpeech: true })).toEqual(grade);
+    // Un oral répondu reste non noté.
+    const speech = answersFor(questions, (q) => (q.section === "speaking" ? { kind: "speech", score: 10 } : right(q.exercise)));
+    expect(gradeExam(exam, questions, speech).scores.speaking).toBeNull();
+  });
+
+  it("courbe présente dans l'index : l'oral est noté", () => {
+    const questions = buildExam(media(["pitch/s_chao_anh.json"]), exam, "seed");
+    expect(questions.filter((q) => q.section === "speaking" && q.graded)).toHaveLength(1);
+  });
+
+  it("disponibilité : moins de 15 items notés → indisponible (media_missing)", () => {
+    const silent = examAvailability(media([]), exam);
+    expect(silent.gradedItems).toBe(buildExam(media([]), exam, "x").filter((q) => q.graded).length);
+    expect(silent.unavailableReason).toBe(silent.gradedItems < EXAM_MIN_GRADED_ITEMS ? "media_missing" : null);
+    const small: ExamFile = { ...exam, sections: exam.sections.map((s) => ({ ...s, items: s.skill === "reading" ? [] : s.items })) };
+    expect(examAvailability(media([]), small).unavailableReason).toBe("media_missing");
   });
 });
 

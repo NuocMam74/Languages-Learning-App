@@ -4,6 +4,7 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { extractContour, serializePitchReference, toPitchReference } from "../../../packages/core/src/pitch/index.ts";
+import { declareAllMedia } from "./media.ts";
 
 /**
  * Karaoké tonal en navigateur réel (SPEC §8.3, critère Phase 2 §15).
@@ -68,6 +69,8 @@ test.afterAll(() => rmSync(dir, { recursive: true, force: true }));
 
 async function openKaraoke(page: Page) {
   const json = referenceJson();
+  // Entrée karaoké masquée sans courbe présente (contrat phase5 §1) : les courbes déclarées sont ajoutées à l'index des médias.
+  await declareAllMedia(page, { audio: false });
   await page.route("**/content/vi-south/v*/pitch/s_chao_anh.json", (route) => route.fulfill({ contentType: "application/json", body: json }));
   await page.goto("/jeux");
   await page.getByRole("link", { name: /Karaoké tonal|Karaoke/ }).click();

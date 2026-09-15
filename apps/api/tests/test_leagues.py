@@ -108,10 +108,12 @@ def test_rollover_promotes_relegates_and_regroups(client: TestClient) -> None:
         assert leagues.rollover(db, now) == 0  # idempotent
 
         previous = {m.user_id: m for m in db.scalars(select(LeagueMember).where(LeagueMember.week_start < week))}
-        assert [previous[ids[i]].final_rank for i in (11, 0)] == [1, 12]
+        # L'utilisateur qui a désactivé les ligues est retiré du classement final (ni rang ni issue).
+        assert [previous[ids[i]].final_rank for i in (11, 0)] == [1, 11]
+        assert previous[ids[6]].final_rank is None
         assert previous[ids[11]].final_xp == 110
         outcomes: dict[str, Any] = {uid: m.outcome for uid, m in previous.items()}
-        assert [outcomes[ids[i]] for i in range(12)] == ["relegated"] * 5 + ["stayed"] * 2 + ["promoted"] * 5
+        assert [outcomes[ids[i]] for i in range(12)] == ["relegated"] * 5 + ["stayed", None] + ["promoted"] * 5
 
         current = {
             m.user_id: m.division for m in db.scalars(select(LeagueMember).where(LeagueMember.week_start == week))

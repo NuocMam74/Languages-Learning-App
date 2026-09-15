@@ -1,6 +1,6 @@
 import { ContentError, seededRandom, shuffle, type Exercise } from "./engine.ts";
+import { contentMedia, hasNativeAudio, type PlayableOptions } from "./media.ts";
 import { buildReviewExercise } from "./review.ts";
-import { nextLesson } from "./session.ts";
 import { newCard, review, type SrsCard } from "./srs.ts";
 import type { ConceptId, ContentIndex, Curriculum, Lesson, LessonId } from "./types.ts";
 
@@ -63,6 +63,22 @@ export function nextPlacementItem(spec: PlacementSpec, answers: readonly Placeme
     if (!best || Math.abs(item.difficulty - wanted) < Math.abs(best.difficulty - wanted)) best = item;
   }
   return best;
+}
+
+/** Le placement n'est proposé qu'à partir de ce nombre d'items jouables (contrat phase5 §1). */
+export const PLACEMENT_MIN_PLAYABLE_ITEMS = 6;
+
+/** Item jouable : un item de ton exige l'audio natif (sauf repli de synthèse). */
+export function isPlacementItemPlayable(content: ContentIndex, item: PlacementItem, options: PlayableOptions = {}): boolean {
+  if (item.skill !== "tone" || options.toneFallback) return true;
+  const concept = content.concepts.get(item.concept);
+  return concept !== undefined && hasNativeAudio(concept, options.media === undefined ? contentMedia(content) : options.media);
+}
+
+/** Spécification réduite aux items jouables ; null si moins de PLACEMENT_MIN_PLAYABLE_ITEMS (placement passé). */
+export function playablePlacement(content: ContentIndex, spec: PlacementSpec, options: PlayableOptions = {}): PlacementSpec | null {
+  const items = spec.items.filter((i) => isPlacementItemPlayable(content, i, options));
+  return items.length >= PLACEMENT_MIN_PLAYABLE_ITEMS ? { ...spec, items } : null;
 }
 
 export function buildPlacementExercise(content: ContentIndex, item: PlacementItem, seed: string, stepIndex = 0): Exercise {
@@ -145,25 +161,28 @@ export function scorePlacement(spec: PlacementSpec, answers: readonly PlacementA
   return { levelEstimate, correct, total: spec.slots.length, score, knownConceptIds: known };
 }
 
-/** Leçons existantes d'une unité publiée, dans l'ordre du cursus. */
-function unitLessons(curriculum: Curriculum, lessons: ReadonlyMap<LessonId, Lesson>, unitIndex: number): Lesson[] {
-  const unit = curriculum.units[unitIndex];
-  if (!unit || unit.status !== "available") return [];
-  return unit.lessons.flatMap((id) => lessons.get(id) ?? []);
+/** Unité d'entrée par niveau estimé 0..3 (contrat phase5 §2) : numéro d'unité cible. */
+export const PLACEMENT_ENTRY_UNITS = [1, 3, 5, 7] as const;
+
+/** Numéro d'une unité (`vi-south.u05` → 5), sinon sa position (1-based) dans le cursus. */
+function unitNumber(unitId: string, position: number): number {
+  const match = /u(\d+)$/.exec(unitId);
+  return match ? Number(match[1]) : position + 1;
 }
 
 /**
- * Point d'entrée : niveau 0 → première leçon ; niveau ≥ 1 → première leçon de
- * la 2e unité si elle est publiée, sinon la leçon disponible suivante.
+ * Point d'entrée : niveau 0..3 → début de u01 / u03 / u05 / u07, première unité publiée (avec
+ * leçons) de numéro ≥ cible. Aucune unité assez loin : la dernière unité publiée. Les unités
+ * antérieures sont « sautées » (voir lessonsBefore). `path` est conservé pour compatibilité.
  */
-export function resolveEntryLesson(content: ContentIndex, levelEstimate: number, path: string | null = null): Lesson | null {
-  const first = nextLesson(content.curriculum, content.lessons, new Set(), path);
-  if (levelEstimate <= 0 || !first) return first;
-  const unit2 = unitLessons(content.curriculum, content.lessons, 1)[0];
-  if (unit2) return unit2;
-  const ordered = content.curriculum.units.flatMap((_, i) => unitLessons(content.curriculum, content.lessons, i));
-  const idx = ordered.findIndex((l) => l.id === first.id);
-  return ordered[idx + 1] ?? first;
+export function resolveEntryLesson(content: ContentIndex, levelEstimate: number, _path: string | null = null): Lesson | null {
+  const level = Math.max(0, Math.min(PLACEMENT_ENTRY_UNITS.length - 1, Math.floor(levelEstimate)));
+  const target = PLACEMENT_ENTRY_UNITS[level] ?? 1;
+  const units = content.curriculum.units
+    .map((unit, position) => ({ unit, number: unitNumber(unit.id, position), first: unit.lessons.map((id) => content.lessons.get(id)).find((l) => l !== undefined) }))
+    .filter((u): u is typeof u & { first: Lesson } => u.unit.status === "available" && u.first !== undefined);
+  const entry = units.find((u) => u.number >= target) ?? units.at(-1);
+  return entry?.first ?? null;
 }
 
 /** Leçons situées avant `lessonId` dans l'ordre du cursus (sautées par le placement). */

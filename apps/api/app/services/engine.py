@@ -78,7 +78,8 @@ class ContentIndex:
 
 
 @lru_cache(maxsize=16)
-def _variants(directory: Path) -> list[dict[str, Any]]:
+def _variants(directory: Path, version: int) -> list[dict[str, Any]]:
+    """Variantes lexicales en cache par (dossier, version du pack) : une publication les invalide partout."""
     path = directory / "lexical-variants.json"
     if not path.is_file():
         return []
@@ -90,7 +91,7 @@ def content_index(pack: Pack) -> ContentIndex:
     tone_system = pack.raw.get("toneSystem") or {}
     return ContentIndex(
         concepts=concept_documents(pack),
-        variants=_variants(pack.directory),
+        variants=_variants(pack.directory, pack.version),
         heard_classes=tone_system.get("heardClasses"),
     )
 

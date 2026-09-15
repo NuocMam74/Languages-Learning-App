@@ -24,6 +24,8 @@ import { CardsArt, NhoMat, nhoMatStandalonePool } from "./NhoMat.tsx";
 import { useXeOmData } from "./xe-om-data.ts";
 import { XeOm } from "./XeOm.tsx";
 import { Scooter } from "./XeOmArt.tsx";
+import { karaokeCandidates } from "../karaoke/KaraokePage.tsx";
+import { useTutorStatus } from "../tutor/status.ts";
 
 /** Onglet « Jeux » (spec §5.6) : chaque mini-jeu jouable seul, avec son record. */
 
@@ -40,8 +42,11 @@ const PLAYABLE: Partial<Record<GameId, { tagline: MessageKey; art: () => ReactNo
 
 export const bestKey = (game: GameId) => `games.${game}.best`;
 
-export function GamesPage() {
+export function GamesPage({ content }: { content: ContentIndex }) {
   const [bests, setBests] = useState<Partial<Record<GameId, GameBest | null>> | undefined>(undefined);
+  const tutorAvailable = useTutorStatus((s) => s.available);
+  // Karaoké tonal : entrée masquée tant qu'aucune courbe de référence n'est présente (contrat phase5 §1).
+  const karaoke = useMemo(() => karaokeCandidates(content, new Set()).all.length > 0, [content]);
   useEffect(() => {
     const ids = MVP_GAMES.filter((id) => PLAYABLE[id]);
     void Promise.all(ids.map((id) => getKv<GameBest | null>(bestKey(id), null))).then((values) =>
@@ -58,6 +63,7 @@ export function GamesPage() {
           const name = t(`game.${id}` as MessageKey);
           // Karaoké tonal : page propre (apps/web/src/karaoke), route /jeux/karaoke_tonal.
           if (id === "karaoke_tonal") {
+            if (!karaoke) return null;
             return (
               <li key={id} className="pb-4">
                 <Link to="/jeux/karaoke_tonal" className="flex flex-col gap-1 rounded-2xl border-2 border-ngoc px-5 py-5 text-muc">
@@ -93,12 +99,19 @@ export function GamesPage() {
           );
         })}
         {/* Phase 3 : Đối đáp, conversation chronométrée avec Cô Mai (page propre, compte et réseau requis). */}
-        <li className="pb-4">
-          <Link to="/jeux/doi_dap" className="flex flex-col gap-1 rounded-2xl border-2 border-ngoc/25 px-5 py-5 text-muc" data-game="doi_dap">
-            <Vi size="vi">{t("game.doi_dap")}</Vi>
-            <span className="text-sm text-phu-sa">{t("tutor.doiDap.tagline")}</span>
-          </Link>
-        </li>
+        {tutorAvailable === false ? (
+          <li className="flex items-baseline justify-between border-t border-phu-sa/10 py-4 text-phu-sa/60" data-game="doi_dap">
+            <Vi size="2xl">{t("game.doi_dap")}</Vi>
+            <span className="text-sm">{t("journey.games.soon")}</span>
+          </li>
+        ) : (
+          <li className="pb-4">
+            <Link to="/jeux/doi_dap" className="flex flex-col gap-1 rounded-2xl border-2 border-ngoc/25 px-5 py-5 text-muc" data-game="doi_dap">
+              <Vi size="vi">{t("game.doi_dap")}</Vi>
+              <span className="text-sm text-phu-sa">{t("tutor.doiDap.tagline")}</span>
+            </Link>
+          </li>
+        )}
       </ul>
     </Screen>
   );

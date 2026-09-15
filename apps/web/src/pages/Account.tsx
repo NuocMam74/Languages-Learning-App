@@ -1,13 +1,14 @@
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router";
 import { useAccount } from "../account.ts";
-import { ApiError, NetworkError } from "../api.ts";
+import { ApiError, getOAuthProviders, NetworkError, oauthStartUrl, type OAuthProvider } from "../api.ts";
 import { Button, Screen } from "../components/ui.tsx";
 import { getLocale, t, type MessageKey } from "../i18n/index.ts";
 
 /**
- * Création de compte et connexion (spec §4.1.6, §14). Email + mot de passe ;
- * Google et Apple annoncés, pas encore actifs. L'invité peut continuer sans compte.
+ * Création de compte et connexion (spec §4.1.6, §14). Email + mot de passe ; boutons OAuth
+ * seulement pour les fournisseurs configurés côté serveur (contrat phase5 §4). L'invité peut
+ * continuer sans compte.
  */
 
 export const PASSWORD_MIN = 10;
@@ -35,13 +36,30 @@ function Field({ id, label, hint, children }: { id: string; label: string; hint?
 
 const inputClass = "min-h-12 rounded-xl border-2 border-phu-sa/20 bg-white px-4 text-lg focus:border-ngoc focus:outline-none";
 
-function ProviderButtons() {
+/** Fournisseurs OAuth configurés (`GET /auth/oauth/providers`) ; aucun bouton sinon. */
+function ProviderButtons({ next }: { next: string | null }) {
+  const [providers, setProviders] = useState<OAuthProvider[]>([]);
+  useEffect(() => {
+    let live = true;
+    if (!navigator.onLine) return;
+    void getOAuthProviders().then(
+      (list) => live && setProviders(Array.isArray(list) ? list.filter((p) => p && (p.id === "google" || p.id === "apple")) : []),
+      () => undefined,
+    );
+    return () => {
+      live = false;
+    };
+  }, []);
+  if (providers.length === 0) return null;
+  // Retour sur /compte?oauth=ok&next=… : le cookie de refresh est posé par le serveur.
+  const back = `/compte${next ? `?next=${encodeURIComponent(next)}` : ""}`;
   return (
-    <div className="flex flex-col gap-2">
-      {(["google", "apple"] as const).map((p) => (
-        <button key={p} type="button" disabled className="min-h-12 rounded-2xl border-2 border-phu-sa/15 px-5 text-phu-sa">
-          {t(`account.provider.${p}`)} · {t("account.provider.soon")}
-        </button>
+    <div className="flex flex-col gap-2" data-testid="oauth-providers">
+      <p className="text-center text-sm text-phu-sa">{t("journey.oauth.or")}</p>
+      {providers.map((p) => (
+        <a key={p.id} href={oauthStartUrl(p.id, next ?? "/")} data-return={back} className="grid min-h-12 place-items-center rounded-2xl border-2 border-ngoc px-5 font-semibold text-ngoc">
+          {t("journey.oauth.continue", { name: p.name })}
+        </a>
       ))}
     </div>
   );
@@ -54,7 +72,8 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
   const rawNext = params.get("next");
   const next = rawNext && rawNext.startsWith("/") && !rawNext.startsWith("//") ? rawNext : null;
   const withNext = (path: string) => (next ? `${path}?next=${encodeURIComponent(next)}` : path);
-  const { createAccount, signIn } = useAccount();
+  const { createAccount, signIn, completeOAuth } = useAccount();
+  const oauth = params.get("oauth");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -63,6 +82,23 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<MessageKey | null>(null);
   const [done, setDone] = useState(false);
+
+  // Retour d'un fournisseur OAuth : /compte?oauth=ok&next=… (contrat phase5 §4).
+  useEffect(() => {
+    if (!oauth) return;
+    if (oauth !== "ok") {
+      setError("journey.oauth.failed" as MessageKey);
+      return;
+    }
+    setBusy(true);
+    void completeOAuth().then((ok) => {
+      setBusy(false);
+      if (!ok) setError("journey.oauth.failed" as MessageKey);
+      // Progression restaurée : rechargement pour relire profil et parcours.
+      else if (next) window.location.assign(next);
+      else setDone(true);
+    });
+  }, [oauth]);
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -75,8 +111,11 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
     try {
       if (mode === "register") await createAccount({ email: email.trim(), password, displayName: displayName.trim(), locale });
       else await signIn(email.trim(), password);
-      if (next) navigate(next, { replace: true });
-      else setDone(true);
+      // Connexion : la progression du compte vient d'être restaurée, l'app se recharge pour la relire.
+      if (next) {
+        if (mode === "login") window.location.assign(next);
+        else navigate(next, { replace: true });
+      } else setDone(true);
     } catch (err) {
       setError(errorKey(err, mode));
     } finally {
@@ -86,7 +125,7 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
 
   if (done) {
     return (
-      <Screen action={<Button onClick={() => navigate("/", { replace: true })}>{t("recap.next")}</Button>}>
+      <Screen action={<Button onClick={() => (mode === "login" || oauth ? window.location.assign("/") : navigate("/", { replace: true }))}>{t("recap.next")}</Button>}>
         <div className="flex flex-1 flex-col justify-center gap-3" role="status">
           <h1 className="font-serif text-2xl">{t(mode === "register" ? "account.done.register" : "account.done.login")}</h1>
           <p className="text-phu-sa">{t("account.done.synced")}</p>
@@ -154,8 +193,12 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
         </Button>
       </form>
 
+      {!register && (
+        <Link to="/compte/mot-de-passe-oublie" className="mt-3 grid min-h-11 place-items-center font-semibold text-ngoc">{t("journey.forgot.link")}</Link>
+      )}
+
       <div className="mt-6 flex flex-col gap-4">
-        <ProviderButtons />
+        <ProviderButtons next={next} />
         {register ? (
           <>
             <Link to={withNext("/connexion")} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.toLogin")}</Link>

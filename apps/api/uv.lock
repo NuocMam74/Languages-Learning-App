@@ -749,6 +749,7 @@ dependencies = [
     { name = "boto3" },
     { name = "fastapi" },
     { name = "fpdf2" },
+    { name = "httpx" },
     { name = "psycopg", extra = ["binary"] },
     { name = "pydantic", extra = ["email"] },
     { name = "pydantic-settings" },
@@ -763,7 +764,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "httpx" },
     { name = "pypdf" },
     { name = "pytest" },
     { name = "ruff" },
@@ -778,6 +778,7 @@ requires-dist = [
     { name = "boto3", specifier = ">=1.43.93" },
     { name = "fastapi", specifier = ">=0.115" },
     { name = "fpdf2", specifier = ">=2.8.8" },
+    { name = "httpx", specifier = ">=0.27" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2" },
     { name = "pydantic", extras = ["email"], specifier = ">=2.8" },
     { name = "pydantic-settings", specifier = ">=2.4" },
@@ -792,7 +793,6 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "httpx", specifier = ">=0.27" },
     { name = "pypdf", specifier = ">=6.18.1" },
     { name = "pytest", specifier = ">=8.3" },
     { name = "ruff", specifier = ">=0.6" },

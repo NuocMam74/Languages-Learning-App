@@ -1,10 +1,14 @@
 import {
   buildExercise,
+  buildReviewExercise,
+  contentMedia,
   currentItem,
   evaluate,
+  reviewFormats,
   reviewSeed,
   sessionPhase,
-  buildReviewExercise,
+  TUTOR_NUDGE_AFTER,
+  type ConceptId,
   type ContentIndex,
   type Evaluation,
   type Exercise,
@@ -15,14 +19,15 @@ import {
 import { create } from "zustand";
 import { ttsAllowed } from "./audio.ts";
 import { l, toneLabel } from "./i18n/index.ts";
-import { finishSession, openSession, saveLessonPart, submitSessionAnswer, type SessionRecap, type SessionRequest } from "./learner.ts";
+import { finishSession, isLessonOpen, openSession, saveLessonPart, sessionAvailability, submitSessionAnswer, type SessionRecap, type SessionRequest } from "./learner.ts";
+import { syncEngine } from "./sync.ts";
 
 /**
  * État de la séance en cours (éphémère, en mémoire). La source de vérité
  * durable est le snapshot IndexedDB écrit à chaque réponse.
  */
 
-type Status = "idle" | "loading" | "answering" | "feedback" | "done" | "error";
+type Status = "idle" | "loading" | "answering" | "feedback" | "done" | "error" | "empty" | "locked";
 
 interface SessionState {
   status: Status;
@@ -36,6 +41,13 @@ interface SessionState {
   given: string;
   recap: SessionRecap | null;
   error: string | null;
+  /**
+   * Exercice plus facile proposé après 3 erreurs d'affilée sur un concept (spec §4.5) :
+   * entraînement non noté, hors file de la leçon.
+   */
+  remedial: ConceptId | null;
+  /** Concept pour lequel l'exercice plus facile sera proposé au prochain « Continuer ». */
+  pendingRemedial: ConceptId | null;
   open: (content: ContentIndex, request: SessionRequest) => Promise<void>;
   answer: (response: ExerciseResponse) => Promise<void>;
   next: () => Promise<void>;
@@ -63,6 +75,20 @@ export function exerciseFor(content: ContentIndex, run: SessionRun, phase: Sessi
   }
 }
 
+/** Exercice plus facile sur un concept : image si possible, sinon choix entre 2 options. null si rien de plus simple. */
+export function easierExercise(content: ContentIndex, run: SessionRun, conceptId: ConceptId): Exercise | null {
+  const known = run.knownAtStart;
+  const media = contentMedia(content);
+  const formats = reviewFormats(content, conceptId, { known, media });
+  const hint = formats.includes("listen_pick_image") ? "listen_pick_image" : formats.includes("listen_pick_text") ? "listen_pick_text" : undefined;
+  if (!hint && formats.length > 0) return null;
+  try {
+    return buildReviewExercise(content, conceptId, `${run.sessionId}:easier:${conceptId}`, hint, { known, media, maxOptions: 2, allowTtsTone: false, stepIndex: -1 });
+  } catch {
+    return null;
+  }
+}
+
 export function givenText(exercise: Exercise, response: ExerciseResponse): string {
   if (response.kind === "choice" && "options" in exercise) {
     const option = exercise.options.find((o) => o.id === response.optionId);
@@ -86,11 +112,14 @@ export const useSession = create<SessionState>((set, get) => {
         continue;
       }
       if (phase.kind === "recap") {
-        set({ status: "loading", run });
-        set({ recap: await finishSession(content, run), status: "done", feedback: null, exercise: null, phase });
+        set({ status: "loading", run, remedial: null, pendingRemedial: null });
+        const recap = await finishSession(content, run);
+        set({ recap, status: "done", feedback: null, exercise: null, phase });
+        // Fin de séance : l'outbox part tout de suite (contrat phase5 §4).
+        void syncEngine.flush({ force: true }).catch(() => undefined);
         return;
       }
-      set({ run, phase, exercise: exerciseFor(content, run, phase), feedback: null, given: "", shownAt: performance.now(), status: "answering" });
+      set({ run, phase, exercise: exerciseFor(content, run, phase), feedback: null, given: "", shownAt: performance.now(), status: "answering", remedial: null });
       return;
     }
   }
@@ -106,10 +135,22 @@ export const useSession = create<SessionState>((set, get) => {
     given: "",
     recap: null,
     error: null,
+    remedial: null,
+    pendingRemedial: null,
 
     async open(content, request) {
-      set({ status: "loading", content, run: null, exercise: null, recap: null, feedback: null, error: null });
+      set({ status: "loading", content, run: null, exercise: null, recap: null, feedback: null, error: null, remedial: null, pendingRemedial: null });
       try {
+        const availability = await sessionAvailability(content, request);
+        if (availability === "empty") {
+          set({ status: "empty" });
+          return;
+        }
+        // Garde de lien profond : une leçon non débloquée renvoie au hub (contrat phase5 §2).
+        if (request.source === "lesson" && availability !== "resume" && !(await isLessonOpen(content, request.lessonId))) {
+          set({ status: "locked" });
+          return;
+        }
         await advance(content, await openSession(content, request));
       } catch (e) {
         set({ status: "error", error: e instanceof Error ? e.message : String(e) });
@@ -117,26 +158,41 @@ export const useSession = create<SessionState>((set, get) => {
     },
 
     async answer(response) {
-      const { content, run, exercise, shownAt, status } = get();
+      const { content, run, exercise, shownAt, status, remedial } = get();
       if (!content || !run || !exercise || status !== "answering") return;
       const evaluation = evaluate(exercise, response);
+      if (remedial) {
+        // Entraînement : ni événement ni SRS, seulement le retour.
+        set({ feedback: { ...evaluation, graded: true }, given: givenText(exercise, response), status: "feedback" });
+        return;
+      }
       const next = await submitSessionAnswer(content, run, exercise, evaluation, performance.now() - shownAt);
       // Réussite : on enchaîne sans écran intermédiaire (spec §4.5). Non noté : idem.
       if (!evaluation.graded) {
         await advance(content, next);
         return;
       }
-      set({ run: next, feedback: evaluation, given: givenText(exercise, response), status: "feedback" });
+      const nudge = next.lesson?.tutorNudge ?? null;
+      const pendingRemedial = !evaluation.correct && nudge && next.lesson?.errorStreaks[nudge] === TUTOR_NUDGE_AFTER ? nudge : null;
+      set({ run: next, feedback: evaluation, given: givenText(exercise, response), status: "feedback", pendingRemedial });
     },
 
     async next() {
-      const { content, run } = get();
+      const { content, run, pendingRemedial, remedial } = get();
       if (!content || !run) return;
+      if (pendingRemedial && !remedial) {
+        const easier = easierExercise(content, run, pendingRemedial);
+        if (easier) {
+          set({ exercise: easier, remedial: pendingRemedial, pendingRemedial: null, feedback: null, given: "", shownAt: performance.now(), status: "answering" });
+          return;
+        }
+      }
+      set({ pendingRemedial: null });
       await advance(content, run);
     },
 
     reset() {
-      set({ status: "idle", run: null, phase: null, exercise: null, feedback: null, recap: null, error: null });
+      set({ status: "idle", run: null, phase: null, exercise: null, feedback: null, recap: null, error: null, remedial: null, pendingRemedial: null });
     },
   };
 });

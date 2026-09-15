@@ -204,11 +204,12 @@ def test_publish(sclient: TestClient, content_dir: Path, fake_validator: FakeVal
         assert publication.files == ["es/concepts/c_es_adios.json", "es/pack.json"]
         assert db.scalars(select(ContentDraft)).all() == []
 
-    # Brouillon identique au publié : rien d'écrit, version inchangée.
+    # Brouillon identique au publié : aucun document réécrit, mais chaque publication incrémente la version
+    # (contrat parcours §4 : caches serveur et clients indexés par version).
     same = sclient.get(url, headers=headers).json()["published"]
     sclient.put(url, headers=headers, json={"data": same, "baseUpdatedAt": None})
     again = sclient.post(f"/studio/packs/{PACK}/publish", headers=headers, json=body)
-    assert again.json() == {"written": [], "packVersion": version + 1}
+    assert again.json() == {"written": ["es/pack.json"], "packVersion": version + 2}
 
 
 def test_publish_disabled(settings: Settings, content_dir: Path, tmp_path: Path) -> None:

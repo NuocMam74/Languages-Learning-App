@@ -67,5 +67,11 @@ export async function claim(view: ChallengeView, now = new Date()): Promise<{ cl
   const result = await claimChallenge(view.challenge.id);
   const cached = await getKv<Challenge[] | null>(CACHE_KEY, null);
   if (cached) await setKv(CACHE_KEY, cached.map((c) => (c.id === view.challenge.id ? { ...c, claimedAt: result.claimedAt } : c)));
+  // Badge de défi attribué par le serveur : visible tout de suite sur la page Badges (contrat phase5 §3).
+  const badgeCode = (view.challenge as Challenge & { badgeCode?: string }).badgeCode;
+  if (badgeCode) {
+    const badges = await getKv<{ code: string; earnedAt: string }[]>("badges", []);
+    if (!badges.some((b) => b.code === badgeCode)) await setKv("badges", [...badges, { code: badgeCode, earnedAt: result.claimedAt }]);
+  }
   return result;
 }

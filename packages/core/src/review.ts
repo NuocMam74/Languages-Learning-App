@@ -1,5 +1,6 @@
 import { ContentError, seededRandom, shuffle, type ChoiceOption, type Exercise } from "./engine.ts";
 import { heardClassOf, normalizeAnswer, stripTones, syllables, toneOf } from "./text.ts";
+import { contentMedia, hasNativeAudio as hasIndexedNativeAudio, type MediaIndex } from "./media.ts";
 import { hasFeature, type Concept, type ConceptId, type ContentIndex } from "./types.ts";
 
 /**
@@ -20,12 +21,15 @@ export interface ReviewOptions {
    * en production : jamais de TTS pour un exercice de tons (spec §7.4).
    */
   allowTtsTone?: boolean;
+  /** Médias présents (défaut : ceux du contenu). */
+  media?: MediaIndex | null;
+  /** Nombre maximal d'options (cible comprise) : 2 pour un exercice plus facile après 3 erreurs. */
+  maxOptions?: number;
 }
 
 /** Nombre maximal d'options proposées (cible comprise). */
 export const REVIEW_MAX_OPTIONS = 4;
 
-const hasNativeAudio = (c: Concept) => c.audio.some((a) => a.source === "native");
 
 function orderedCandidates(content: ContentIndex, target: Concept, known: ReadonlySet<ConceptId>, rand: () => number, keep: (c: Concept) => boolean): Concept[] {
   const others = [...content.concepts.values()].filter((c) => c.id !== target.id && keep(c));
@@ -40,7 +44,7 @@ function orderedCandidates(content: ContentIndex, target: Concept, known: Readon
  * forcément des sons (es : « si » / « sí »), donc jamais deux formes qui ne diffèrent
  * que par ces marques dans un exercice d'écoute.
  */
-function textDistractors(content: ContentIndex, target: Concept, known: ReadonlySet<ConceptId>, rand: () => number): string[] {
+function textDistractors(content: ContentIndex, target: Concept, known: ReadonlySet<ConceptId>, rand: () => number, max = REVIEW_MAX_OPTIONS): string[] {
   const tonal = hasFeature(content.pack, "tones");
   const norm = normalizeAnswer(target.vi);
   const base = stripTones(norm);
@@ -48,7 +52,7 @@ function textDistractors(content: ContentIndex, target: Concept, known: Readonly
   const out: string[] = [];
   const take = (c: Concept) => {
     const n = normalizeAnswer(c.vi);
-    if (seen.has(n) || out.length >= REVIEW_MAX_OPTIONS - 1) return;
+    if (seen.has(n) || out.length >= max - 1) return;
     seen.add(n);
     out.push(c.vi);
   };
@@ -57,13 +61,13 @@ function textDistractors(content: ContentIndex, target: Concept, known: Readonly
   return out;
 }
 
-function imageDistractors(content: ContentIndex, target: Concept, known: ReadonlySet<ConceptId>, rand: () => number): Concept[] {
+function imageDistractors(content: ContentIndex, target: Concept, known: ReadonlySet<ConceptId>, rand: () => number, max = REVIEW_MAX_OPTIONS): Concept[] {
   const norm = normalizeAnswer(target.vi);
   const images = new Set([target.image]);
   const texts = new Set([norm]);
   const out: Concept[] = [];
   for (const c of orderedCandidates(content, target, known, rand, (c) => c.type === target.type && c.image !== undefined)) {
-    if (out.length >= REVIEW_MAX_OPTIONS - 1) break;
+    if (out.length >= max - 1) break;
     if (images.has(c.image) || texts.has(normalizeAnswer(c.vi))) continue;
     images.add(c.image);
     texts.add(normalizeAnswer(c.vi));
@@ -72,13 +76,13 @@ function imageDistractors(content: ContentIndex, target: Concept, known: Readonl
   return out;
 }
 
-function toneFeasible(content: ContentIndex, target: Concept, allowTtsTone: boolean): boolean {
+function toneFeasible(content: ContentIndex, target: Concept, allowTtsTone: boolean, media: MediaIndex | null): boolean {
   return (
     hasFeature(content.pack, "tones") &&
     content.pack.toneSystem !== undefined &&
     target.type === "word" &&
     syllables(target.vi).length === 1 &&
-    (allowTtsTone || hasNativeAudio(target))
+    (allowTtsTone || hasIndexedNativeAudio(target, media))
   );
 }
 
@@ -90,7 +94,7 @@ export function reviewFormats(content: ContentIndex, conceptId: ConceptId, opts:
   const rand = seededRandom("formats");
   const formats: ReviewFormat[] = [];
   if (textDistractors(content, target, known, rand).length >= 1) formats.push("listen_pick_text");
-  if (toneFeasible(content, target, opts.allowTtsTone ?? false)) formats.push("tone_identify");
+  if (toneFeasible(content, target, opts.allowTtsTone ?? false, opts.media === undefined ? contentMedia(content) : opts.media)) formats.push("tone_identify");
   if (target.image && imageDistractors(content, target, known, rand).length >= 2) formats.push("listen_pick_image");
   return formats;
 }
@@ -108,6 +112,7 @@ export function buildReviewExercise(
   const stepIndex = opts.stepIndex ?? 0;
   const rand = seededRandom(`${seed}:review:${conceptId}`);
   const explain = target.note ?? null;
+  const max = Math.max(2, Math.min(REVIEW_MAX_OPTIONS, opts.maxOptions ?? REVIEW_MAX_OPTIONS));
 
   const feasible = reviewFormats(content, conceptId, opts);
   const format: ReviewFormat | null =
@@ -115,7 +120,7 @@ export function buildReviewExercise(
 
   switch (format) {
     case "listen_pick_text": {
-      const texts = shuffle([target.vi, ...textDistractors(content, target, known, rand)], rand);
+      const texts = shuffle([target.vi, ...textDistractors(content, target, known, rand, max)], rand);
       const options: ChoiceOption[] = texts.map((text, i) => ({ id: `t${i}`, text }));
       const answerId = options.find((o) => o.text === target.vi)?.id ?? "";
       return { type: "listen_pick_text", stepIndex, conceptIds: [target.id], explain, audio: target, options, answerId };
@@ -129,7 +134,7 @@ export function buildReviewExercise(
     }
 
     case "listen_pick_image": {
-      const all = shuffle([target, ...imageDistractors(content, target, known, rand)], rand);
+      const all = shuffle([target, ...imageDistractors(content, target, known, rand, max)], rand);
       const options = all.map((c) => ({ id: c.id, conceptId: c.id, text: c.vi, ...(c.image ? { image: c.image } : {}) }));
       return { type: "listen_pick_image", stepIndex, conceptIds: [target.id], explain, audio: target, options, answerId: target.id };
     }
@@ -143,7 +148,7 @@ export function buildReviewExercise(
         return true;
       });
       if (others.length === 0) throw new ContentError(`Impossible de réviser ${conceptId} : aucun autre concept`);
-      const picks = shuffle([target, ...others.slice(0, REVIEW_MAX_OPTIONS - 1)], rand);
+      const picks = shuffle([target, ...others.slice(0, max - 1)], rand);
       const options = picks.map((c, i) => ({ id: `g${i}`, label: c.gloss }));
       const answerId = `g${picks.indexOf(target)}`;
       return { type: "listen_pick_text", stepIndex, conceptIds: [target.id], explain, audio: target, options, answerId };

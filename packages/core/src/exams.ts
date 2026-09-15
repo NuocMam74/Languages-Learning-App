@@ -1,5 +1,6 @@
 import { checkLessonStep, type ContentIssue } from "./content-checks.ts";
 import { buildExercise, evaluate, SPEAK_PASS_SCORE, type Exercise, type ExerciseResponse } from "./engine.ts";
+import { contentMedia, stepPitchPath, tonalStepHasNativeAudio, type MediaIndex } from "./media.ts";
 import type { ConceptId, ContentIndex, Curriculum, Lesson, LessonId, LessonStep, Localized, StepType, UnitId } from "./types.ts";
 
 /**
@@ -20,6 +21,8 @@ export const EXAM_ITEM_COUNT = 25;
 export const EXAM_MIN_SECTION_ITEMS = 4;
 /** Chaque compétence doit atteindre au moins ce score pour réussir. */
 export const EXAM_MIN_SKILL_SCORE = 0.5;
+/** En dessous de ce nombre d'items notés, l'examen est « indisponible pour le moment » (contrat phase5 §1). */
+export const EXAM_MIN_GRADED_ITEMS = 15;
 /** Grâce serveur après la durée officielle (contrat §2.3). */
 export const EXAM_GRACE_MINUTES = 2;
 
@@ -58,6 +61,8 @@ export interface ExamQuestion extends ExamItemRef {
   flatIndex: number;
   stepType: StepType;
   silent: boolean;
+  /** false : item non noté faute de média (oral sans courbe F0, écoute tonale sans audio natif). */
+  graded: boolean;
   exercise: Exercise;
 }
 
@@ -97,6 +102,34 @@ export const EXAM_SECTION_STEPS: Record<ExamSkill, ReadonlySet<StepType>> = {
   vocabulary: new Set(["listen_pick_image", "build_sentence"]),
   speaking: new Set(["speak_repeat", "tone_produce"]),
 };
+
+// ---------------------------------------------------------------------------
+// Médias (contrat phase5 §1) — identique au serveur
+
+/**
+ * Item noté : un oral (`speak_repeat`, `tone_produce`) exige sa courbe F0 de référence ; une écoute
+ * tonale (`tone_identify`, `tone_minimal_pair`) exige l'audio natif. Le repli de synthèse du client
+ * ne change jamais la notation d'un examen.
+ */
+export function isExamStepGraded(content: ContentIndex, step: ExamStep, media: MediaIndex | null = contentMedia(content)): boolean {
+  if (SPEECH_STEPS.has(step.type)) {
+    const path = stepPitchPath(content, step);
+    return path !== null && (media === null || media.has(path));
+  }
+  return tonalStepHasNativeAudio(content, step, media);
+}
+
+export type ExamUnavailableReason = "media_missing";
+
+export interface ExamAvailability {
+  gradedItems: number;
+  unavailableReason: ExamUnavailableReason | null;
+}
+
+export function examAvailability(content: ContentIndex, exam: ExamFile, media: MediaIndex | null = contentMedia(content)): ExamAvailability {
+  const gradedItems = exam.sections.reduce((n, s) => n + s.items.filter((i) => isExamStepGraded(content, i.step, media)).length, 0);
+  return { gradedItems, unavailableReason: gradedItems < EXAM_MIN_GRADED_ITEMS ? "media_missing" : null };
+}
 
 // ---------------------------------------------------------------------------
 // Construction
@@ -154,7 +187,10 @@ export function buildExam(content: ContentIndex, exam: ExamFile, seed: string, r
     const flatIndex = flatIndexOf(exam, ref);
     const item = exam.sections.find((s) => s.skill === ref.section)?.items[ref.index];
     if (flatIndex < 0 || !item) return [];
-    return [{ ...ref, flatIndex, stepType: item.step.type, silent: item.silent === true, exercise: buildExercise(content, lesson, flatIndex, seed) }];
+    return [{
+      ...ref, flatIndex, stepType: item.step.type, silent: item.silent === true, graded: isExamStepGraded(content, item.step),
+      exercise: buildExercise(content, lesson, flatIndex, seed),
+    }];
   });
 }
 
@@ -168,6 +204,8 @@ export interface GradeOptions {
 
 export function gradeItem(question: ExamQuestion, answer: ExamAnswer | undefined, options: GradeOptions = {}): ExamItemResult {
   const base = { section: question.section, index: question.index, conceptIds: question.exercise.conceptIds };
+  // Média absent : retiré du dénominateur (examen blanc et certifiant).
+  if (question.graded === false) return { ...base, correct: false, graded: false };
   if (!answer) return { ...base, correct: false, graded: true };
   const { response } = answer;
 
@@ -202,7 +240,8 @@ export function gradeExam(exam: ExamFile, questions: readonly ExamQuestion[], an
   }
 
   const global = graded === 0 ? 0 : correct / graded;
-  const skillsOk = EXAM_SKILLS.every((s) => scores[s] === null ? options.allowUngradedSpeech === true && s === "speaking" : (scores[s] ?? 0) >= EXAM_MIN_SKILL_SCORE - EPSILON);
+  // Une compétence sans item noté (score null) est exclue de la règle « chaque compétence ≥ 0,5 ».
+  const skillsOk = EXAM_SKILLS.every((s) => scores[s] === null || (scores[s] ?? 0) >= EXAM_MIN_SKILL_SCORE - EPSILON);
   return { passed: graded > 0 && global >= exam.passThreshold - EPSILON && skillsOk, global, scores, gaps, items };
 }
 

@@ -4,6 +4,8 @@
 - XP de la semaine = somme des `xpGained` des séances terminées dans la semaine (`sessions.ended_at`)
   + XP des défis réclamés dans la semaine (`challenge_progress.claimed_at` × 50).
 - Divisions 1 (entrée) à 5 (sommet). Classement : XP décroissante, puis nom affiché, puis id (déterministe).
+- Les utilisateurs qui ont désactivé les ligues (`leaguesEnabled = false`) n'apparaissent dans aucun classement
+  et ne reçoivent pas d'issue (ni promotion ni relégation).
 - Passage de semaine (`rollover`, tâche du lundi 00:00 UTC ou `python -m app.maintenance leagues-rollover`) :
   1. classement final de la semaine écoulée figé sur `league_members` ; dans chaque groupe, les 5 premiers
      (avec XP > 0) montent, les 5 derniers (hors promus) descendent, bornés à 1..5 ;
@@ -80,16 +82,22 @@ def xp_between(db: Session, user_ids: list[str], start: datetime, end: datetime)
     return totals
 
 
+def _rank(rows: list[tuple[str, str]], xp: dict[str, int]) -> list[Standing]:
+    ordered = sorted(rows, key=lambda r: (-xp.get(r[0], 0), r[1].casefold(), r[0]))
+    return [Standing(i + 1, user_id, name, xp.get(user_id, 0)) for i, (user_id, name) in enumerate(ordered)]
+
+
 def group_standings(db: Session, group_id: str, week: date) -> list[Standing]:
+    """Classement d'un groupe, sans les membres qui ont désactivé les ligues."""
     rows = db.execute(
         select(LeagueMember.user_id, User.display_name)
         .join(User, User.id == LeagueMember.user_id)
-        .where(LeagueMember.group_id == group_id)
+        .join(Profile, Profile.user_id == LeagueMember.user_id)
+        .where(LeagueMember.group_id == group_id, Profile.leagues_enabled.is_(True))
     ).all()
     start, end = week_bounds(week)
     xp = xp_between(db, [r.user_id for r in rows], start, end)
-    ordered = sorted(rows, key=lambda r: (-xp[r.user_id], r.display_name.casefold(), r.user_id))
-    return [Standing(i + 1, r.user_id, r.display_name, xp[r.user_id]) for i, r in enumerate(ordered)]
+    return _rank([(r.user_id, r.display_name) for r in rows], xp)
 
 
 def outcome_for(rank: int, size: int, xp: int) -> str:
@@ -106,15 +114,29 @@ def next_division(division: int, outcome: str | None) -> int:
 
 
 def _finalize_week(db: Session, week: date) -> None:
-    for group in db.scalars(select(LeagueGroup).where(LeagueGroup.week_start == week)):
-        standings = group_standings(db, group.id, week)
-        for s in standings:
-            member = db.get(LeagueMember, (week, s.user_id))
-            if member is None:
-                continue
-            member.final_xp = s.xp
-            member.final_rank = s.rank
-            member.outcome = outcome_for(s.rank, len(standings), s.xp)
+    """Classement final de tous les groupes de la semaine en trois requêtes (membres, XP, défis)."""
+    rows = db.execute(
+        select(LeagueMember, User.display_name, Profile.leagues_enabled)
+        .join(User, User.id == LeagueMember.user_id)
+        .outerjoin(Profile, Profile.user_id == LeagueMember.user_id)
+        .where(LeagueMember.week_start == week)
+    ).all()
+    if not rows:
+        return
+    start, end = week_bounds(week)
+    xp = xp_between(db, [m.user_id for m, _, enabled in rows if enabled], start, end)
+    groups: dict[str, list[tuple[LeagueMember, str]]] = {}
+    for member, name, enabled in rows:
+        if enabled:
+            groups.setdefault(member.group_id, []).append((member, name))
+    for members in groups.values():
+        by_user = {m.user_id: m for m, _ in members}
+        standings = _rank([(m.user_id, name) for m, name in members], xp)
+        for st in standings:
+            member = by_user[st.user_id]
+            member.final_xp = st.xp
+            member.final_rank = st.rank
+            member.outcome = outcome_for(st.rank, len(standings), st.xp)
 
 
 def _sort_key(week: date, user_id: str) -> str:
@@ -144,6 +166,20 @@ def _active_enabled_users(db: Session, start: datetime, end: datetime) -> list[s
     )
 
 
+def last_divisions(db: Session, user_ids: list[str], before: date) -> dict[str, int]:
+    """`last_division` pour plusieurs utilisateurs en une requête (par paquets)."""
+    latest: dict[str, LeagueMember] = {}
+    for i in range(0, len(user_ids), 500):
+        chunk = user_ids[i : i + 500]
+        for member in db.scalars(
+            select(LeagueMember).where(LeagueMember.user_id.in_(chunk), LeagueMember.week_start < before)
+        ):
+            current = latest.get(member.user_id)
+            if current is None or member.week_start > current.week_start:
+                latest[member.user_id] = member
+    return {uid: next_division(m.division, m.outcome) for uid, m in latest.items()}
+
+
 def rollover(db: Session, now: datetime) -> int:
     """Forme les groupes de la semaine de `now` (idempotent). Retourne le nombre de membres placés."""
     week = week_start_date(now)
@@ -155,9 +191,10 @@ def rollover(db: Session, now: datetime) -> int:
 
     prev_start, prev_end = week_bounds(previous)
     by_division: dict[int, list[str]] = {}
-    for user_id in _active_enabled_users(db, prev_start, prev_end):
-        division = last_division(db, user_id, week) or MIN_DIVISION
-        by_division.setdefault(division, []).append(user_id)
+    active = _active_enabled_users(db, prev_start, prev_end)
+    divisions = last_divisions(db, active, week)
+    for user_id in active:
+        by_division.setdefault(divisions.get(user_id, MIN_DIVISION), []).append(user_id)
 
     placed = 0
     for division in sorted(by_division):
