@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { PitchCapture, gradeSpeech, withSingleSyllable } from "./capture.ts";
+import { MIN_TAKE_COVERAGE, PitchCapture, gradeSpeech, gradeTake, withSingleSyllable } from "./capture.ts";
 import { contourFromFrames, extractContour, toPitchReference, type PitchReference } from "./contour.ts";
 import { scorePronunciation } from "./score.ts";
 import { StreamingPitchTracker } from "./streaming.ts";
@@ -45,58 +45,119 @@ const nativeReference = toPitchReference(
   ["huyen", "ngang"],
 );
 
+/** Même pipeline, avec les trames seulement (sans note). */
+function capture(signal: Float32Array) {
+  const c = new PitchCapture();
+  const tracker = new StreamingPitchTracker({ sampleRate: SR });
+  for (let i = 0; i < signal.length && c.phase !== "done"; i += 128) for (const f of tracker.push(signal.subarray(i, i + 128))) c.push(f);
+  return c;
+}
+
+const quiet = (rms = 0.001): PitchFrame => ({ f0: null, confidence: 0.1, rms, time: 0 });
+const voiced = (f0 = 200): PitchFrame => ({ f0, confidence: 0.95, rms: 0.1, time: 0 });
+const pushN = (c: PitchCapture, frame: PitchFrame, n: number) => {
+  for (let i = 0; i < n; i++) c.push(frame);
+};
+
 describe("PitchCapture (découpage de la prise)", () => {
-  it("s'arrête après 1,2 s de silence qui suit la parole", () => {
-    const { capture } = recordAndScore(phrase({ base: 120, tempo: 1, seed: 1, jitter: 0.01, noise: 0.002, gain: 1, lead: 0.4 }), nativeReference);
-    expect(capture.stopReason).toBe("silence");
+  it("s'arrête après 1,2 s de silence qui suit la parole ; trames retenues depuis l'attaque", () => {
+    const { capture: c } = recordAndScore(phrase({ base: 120, tempo: 1, seed: 1, jitter: 0.01, noise: 0.002, gain: 1, lead: 0.4 }), nativeReference);
+    expect(c.stopReason).toBe("silence");
+    expect(c.rejectedOnsets).toBe(0);
     // arrêt ≈ 0,4 (tête) + 0,74 (parole) + 1,2 (silence) s, à la trame près (fenêtre et lissage compris).
-    expect(capture.elapsedMs).toBeGreaterThan(2200);
-    expect(capture.elapsedMs).toBeLessThan(2600);
-    expect(capture.live.length).toBe(capture.frames.length);
-    expect(capture.live.some((p) => p.st !== null)).toBe(true);
+    expect(c.elapsedMs).toBeGreaterThan(2200);
+    expect(c.elapsedMs).toBeLessThan(2600);
+    // Prise = ~100 ms de calme + parole + silence final : pas les 0,4 s de tête.
+    expect(c.takeMs).toBeLessThan(c.elapsedMs - 250);
+    expect(c.live.length).toBe(c.frames.length);
+    expect(c.live.some((p) => p.st !== null)).toBe(true);
   });
 
-  it("s'arrête à 6 s au plus si personne ne parle, sans parole entendue", () => {
-    const capture = new PitchCapture();
+  it("personne ne parle : fin après 6 s d'attente, rien entendu", () => {
+    const c = new PitchCapture();
     let n = 0;
-    while (capture.push({ f0: null, confidence: 0, rms: 0.001, time: n * 0.01 }) !== "done") n++;
-    expect(capture.stopReason).toBe("max");
-    expect(capture.elapsedMs).toBe(6000);
-    expect(capture.heardSpeech).toBe(false);
+    while (c.push(quiet()) !== "done") n++;
+    expect(c.stopReason).toBe("max");
+    expect(c.elapsedMs).toBe(6000);
+    expect(c.heardSpeech).toBe(false);
+    expect(c.frames).toHaveLength(0);
   });
 
-  it("démarre sur du calme : armée tout de suite", () => {
-    const capture = new PitchCapture();
-    capture.push({ f0: null, confidence: 0, rms: 0.0005, time: 0 });
-    expect(capture.phase).toBe("waiting");
-    capture.push({ f0: 200, confidence: 0.95, rms: 0.1, time: 0.01 });
-    expect(capture.phase).toBe("speaking");
-    expect(capture.frames).toHaveLength(2);
+  it("parole qui commence après le toucher (≥ 100 ms de calme réel) : prise dès l'attaque, avec 100 ms de calme avant", () => {
+    const c = new PitchCapture();
+    pushN(c, quiet(), 12);
+    c.push(voiced());
+    expect(c.phase).toBe("speaking");
+    expect(c.frames).toHaveLength(11);
+    expect(c.frames.at(-1)?.f0).toBe(200);
   });
 
-  it("ignore une voix déjà en cours au départ (fin de l'audio natif) jusqu'à 250 ms de calme", () => {
-    const capture = new PitchCapture();
-    const voiced = (i: number): PitchFrame => ({ f0: 200, confidence: 0.95, rms: 0.1, time: i * 0.01 });
-    for (let i = 0; i < 30; i++) capture.push(voiced(i));
-    expect(capture.phase).toBe("arming");
-    expect(capture.frames).toHaveLength(0);
-    for (let i = 0; i < 24; i++) capture.push({ f0: null, confidence: 0, rms: 0.0005, time: 0 });
-    expect(capture.phase).toBe("arming");
-    capture.push({ f0: null, confidence: 0, rms: 0.0005, time: 0 });
-    expect(capture.phase).toBe("waiting");
-    capture.push(voiced(40));
-    expect(capture.phase).toBe("speaking");
+  it("voix déjà en cours au toucher : ignorée ; une pause de 150 ms ne suffit pas, 200 ms oui", () => {
+    const c = new PitchCapture();
+    pushN(c, voiced(), 30);
+    expect(c.phase).toBe("waiting");
+    expect(c.rejectedOnsets).toBe(1);
+    pushN(c, quiet(), 15);
+    pushN(c, voiced(), 10);
+    expect(c.phase).toBe("waiting");
+    expect(c.frames).toHaveLength(0);
+    pushN(c, quiet(), 20);
+    c.push(voiced(180));
+    expect(c.phase).toBe("speaking");
+    expect(c.frames.at(-1)?.f0).toBe(180);
+  });
+
+  it("flux qui démarre sur des zéros numériques puis en pleine phrase : pas de prise tronquée", () => {
+    const c = new PitchCapture();
+    pushN(c, quiet(0), 30); // micro pas encore ouvert : énergie strictement nulle
+    pushN(c, voiced(), 20); // fin de phrase
+    expect(c.phase).toBe("waiting");
+    pushN(c, quiet(), 25);
+    c.push(voiced());
+    expect(c.phase).toBe("speaking");
+  });
+
+  it("prise commencée au milieu d'une phrase qui boucle : on attend la phrase suivante, même note", () => {
+    const one = phrase({ base: 120, tempo: 1, seed: 3, jitter: 0.004, noise: 0.002, gain: 1, lead: 0.3 });
+    const full = recordAndScore(one, nativeReference);
+    // Début au milieu du « chào » (0,3 s de tête + 0,15 s), puis la boucle recommence.
+    const cut = concat(one.subarray(Math.round(0.45 * SR)), one);
+    const late = recordAndScore(cut, nativeReference);
+    expect(late.capture.rejectedOnsets).toBe(1);
+    expect(late.capture.stopReason).toBe("silence");
+    expect(Math.abs(late.result.score - full.result.score)).toBeLessThan(5);
   });
 
   it("affichage en direct normalisé par la médiane glissante : 2 × F0 = +12 st", () => {
-    const capture = new PitchCapture();
-    capture.push({ f0: null, confidence: 0, rms: 0, time: 0 });
-    for (let i = 0; i < 20; i++) capture.push({ f0: 150, confidence: 0.95, rms: 0.1, time: 0 });
-    capture.push({ f0: 300, confidence: 0.95, rms: 0.1, time: 0 });
-    expect(capture.live.at(-1)?.st).toBeCloseTo(12, 5);
+    const c = new PitchCapture();
+    pushN(c, quiet(), 12);
+    pushN(c, voiced(150), 20);
+    c.push(voiced(300));
+    expect(c.live.at(-1)?.st).toBeCloseTo(12, 5);
   });
 });
 
+describe("gradeTake (prise partielle)", () => {
+  it("une fin de phrase seule (< 40 % de la durée voisée de référence) n'est pas notée", () => {
+    const one = phrase({ base: 120, tempo: 1, seed: 5, jitter: 0.004, noise: 0.002, gain: 1, lead: 0.3 });
+    const full = contourFromFrames(capture(one).frames);
+    const good = gradeTake(full, nativeReference, "repeat", 60);
+    expect(good.grade.partial).toBeUndefined();
+    expect(good.grade.score).toBeGreaterThanOrEqual(80);
+    expect(good.grade.coverage).toBeGreaterThan(0.8);
+
+    // Seulement les 200 dernières ms voisées.
+    const voicedIdx = full.st.flatMap((v, i) => (v === null ? [] : [i]));
+    const keepFrom = voicedIdx[voicedIdx.length - 20]!;
+    const tail = { hopMs: full.hopMs, st: full.st.map((v, i) => (i >= keepFrom ? v : null)) };
+    const partial = gradeTake(tail, nativeReference, "repeat", 60);
+    expect(partial.grade).toMatchObject({ score: null, partial: true });
+    expect(partial.grade.coverage).toBeLessThan(MIN_TAKE_COVERAGE);
+    expect(partial.result).toBeNull();
+
+    expect(gradeTake({ hopMs: 10, st: [null, null] }, nativeReference, "repeat", 60).grade).toMatchObject({ score: null, coverage: 0 });
+  });
+});
 describe("gradeSpeech", () => {
   it("tone_produce : un défaut de forme plafonne sous le seuil ; speak_repeat garde le score", () => {
     const sacRef = withSingleSyllable(

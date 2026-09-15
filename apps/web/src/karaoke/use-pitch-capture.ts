@@ -18,6 +18,8 @@ export interface Take {
   heardSpeech: boolean;
   stopReason: CaptureStopReason | null;
   durationMs: number;
+  /** Attaques ignorées (voix déjà en cours au toucher). */
+  rejectedOnsets: number;
 }
 
 export type MicPermission = "granted" | "denied" | "prompt" | "unknown";
@@ -36,7 +38,8 @@ export async function micPermission(): Promise<MicPermission> {
   }
 }
 
-const HARD_TIMEOUT_MS = 7000;
+/** Filet de sécurité si les trames n'arrivent plus : attente d'attaque (6 s) + prise (6 s) + marge. */
+const HARD_TIMEOUT_MS = 13_000;
 
 interface Running {
   stream: MediaStream;
@@ -49,6 +52,8 @@ interface Running {
 export function usePitchCapture<R>(analyze: (take: Take) => R) {
   const [state, setState] = useState<CaptureState>(() => (captureSupported() ? "idle" : "unsupported"));
   const [result, setResult] = useState<R | null>(null);
+  /** Nombre de prises lancées (micro ouvert), pour l'interface et les tests. */
+  const [takes, setTakes] = useState(0);
   /** Prise en cours : lue à chaque image par le tracé en direct (pas de rendu React par trame). */
   const capture = useRef<PitchCapture | null>(null);
   const ctx = useRef<AudioContext | null>(null);
@@ -81,7 +86,7 @@ export function usePitchCapture<R>(analyze: (take: Take) => R) {
       // On laisse le navigateur peindre « analyse » avant le calcul (DTW : quelques ms).
       setTimeout(() => {
         if (!mounted.current) return;
-        const take: Take = { frames: c.frames, heardSpeech: c.heardSpeech, stopReason: c.stopReason, durationMs: c.elapsedMs };
+        const take: Take = { frames: c.frames, heardSpeech: c.heardSpeech, stopReason: c.stopReason, durationMs: c.takeMs, rejectedOnsets: c.rejectedOnsets };
         setResult(analyzeRef.current(take));
         setState("done");
       }, 16);
@@ -138,6 +143,7 @@ export function usePitchCapture<R>(analyze: (take: Take) => R) {
       running.current = { stream, source, node, sink, timer };
       // Micro coupé par le système (autre appli, casque débranché) : on clôt la prise.
       for (const track of stream.getTracks()) track.addEventListener("ended", () => complete("manual"));
+      setTakes((n) => n + 1);
       setState("recording");
     } catch {
       for (const track of stream.getTracks()) track.stop();
@@ -166,5 +172,5 @@ export function usePitchCapture<R>(analyze: (take: Take) => R) {
     };
   }, [release]);
 
-  return { state, result, capture, start, stop, reset };
+  return { state, result, capture, takes, start, stop, reset };
 }

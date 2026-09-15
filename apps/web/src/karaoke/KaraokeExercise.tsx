@@ -1,5 +1,5 @@
 import { SPEAK_PASS_SCORE, type Concept, type ContentIndex, type Tone } from "@parlo/core";
-import { contourFromFrames, gradeSpeech, scorePronunciation, toneHint, withSingleSyllable, type PitchReference, type SpeechGrade } from "@parlo/core/pitch";
+import { contourFromFrames, gradeTake, toneHint, withSingleSyllable, type PitchReference, type SpeechGrade } from "@parlo/core/pitch";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { playConcept, ttsAllowed } from "../audio.ts";
 import { AudioButton } from "../components/AudioButton.tsx";
@@ -65,10 +65,10 @@ export function KaraokeExercise({ content, concept, pitchRef, mode, tone, locked
 
   const analyze = (take: Take): Analysis => {
     if (!reference || !take.heardSpeech) return { grade: { score: null, raw: 0, hints: [], toneOk: false }, aligned: null };
+    // Note sur la partie voisée ; une prise partielle (début ou fin de phrase perdus) est refusée, pas notée.
     const contour = contourFromFrames(take.frames);
-    const result = scorePronunciation(contour, reference);
-    const grade = gradeSpeech(result, mode, SPEAK_PASS_SCORE);
-    return { grade, aligned: result.voiced ? { userSt: contour.st, path: result.path, offset: result.offset } : null };
+    const { grade, result } = gradeTake(contour, reference, mode, SPEAK_PASS_SCORE);
+    return { grade, aligned: result?.voiced ? { userSt: contour.st, path: result.path, offset: result.offset } : null };
   };
 
   const mic = usePitchCapture(analyze);
@@ -151,6 +151,7 @@ export function KaraokeExercise({ content, concept, pitchRef, mode, tone, locked
     mic.state === "requesting" ? t("karaoke.requesting")
     : mic.state === "recording" ? t(capturePhase === "speaking" ? "karaoke.speaking" : "karaoke.listening")
     : mic.state === "processing" ? t("karaoke.processing")
+    : done && grade?.partial ? t("karaoke.partial")
     : done && grade?.score === null ? t("karaoke.notHeard")
     : "";
 
@@ -175,7 +176,7 @@ export function KaraokeExercise({ content, concept, pitchRef, mode, tone, locked
 
   return (
     <Frame heading={heading} stage={stage} action={action}>
-      <div className="flex flex-col gap-4 pt-4" data-testid="karaoke" data-state={mic.state}>
+      <div className="flex flex-col gap-4 pt-4" data-testid="karaoke" data-state={mic.state} data-takes={mic.takes} data-take={done ? (grade?.partial ? "partial" : grade?.score == null ? "not-heard" : "scored") : undefined}>
         <KaraokePlot
           reference={reference}
           labels={labels}
@@ -213,6 +214,7 @@ function ScoreResult({ grade, mode, labels, best, attempts }: { grade: SpeechGra
       <p
         data-testid="karaoke-score"
         data-score={score}
+        data-coverage={grade.coverage?.toFixed(2)}
         aria-label={t("karaoke.score", { n: score })}
         className={`text-vi-xl font-semibold tabular-nums motion-safe:animate-[rise_500ms_ease-out] ${good ? "text-ngoc" : "text-son-mai"}`}
       >
