@@ -27,6 +27,8 @@ class ProfileOut(CamelModel):
     level_estimate: str | None
     path_variant: str | None
     leagues_enabled: bool
+    timezone: str | None
+    notifications_enabled: bool
 
 
 class EnrollmentOut(CamelModel):
@@ -75,6 +77,9 @@ class ProfilePatch(CamelModel):
     reminder_hour: Annotated[int, Field(ge=0, le=23)] | None = None
     path_variant: Annotated[str, Field(min_length=1, max_length=32)] | None = None
     leagues_enabled: bool | None = None
+    # Fuseau IANA (ex. « Europe/Paris ») ; null efface.
+    timezone: Annotated[str, Field(min_length=1, max_length=64)] | None = None
+    notifications_enabled: bool | None = None
 
 
 class SrsCardOut(CamelModel):

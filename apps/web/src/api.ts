@@ -1,4 +1,4 @@
-import type { ParloEvent } from "@parlo/core";
+import type { ExerciseResponse, ParloEvent } from "@parlo/core";
 
 /**
  * Client HTTP de l'API Parlo.
@@ -12,6 +12,8 @@ export class ApiError extends Error {
   constructor(
     readonly status: number,
     readonly detail: string,
+    /** Corps JSON de l'erreur (ex. 409 retry_locked → nextAttemptAt), null sinon. */
+    readonly body: unknown = null,
   ) {
     super(`HTTP ${status}: ${detail}`);
   }
@@ -91,9 +93,26 @@ export async function request<T>(path: string, { method = "GET", body, auth = tr
   if (auth && res.status === 401 && !refreshed && (await refreshAccess())) {
     res = await send(path, build());
   }
-  if (!res.ok) throw new ApiError(res.status, await detailOf(res));
+  if (!res.ok) {
+    const errorBody: unknown = await res.clone().json().catch(() => null);
+    throw new ApiError(res.status, await detailOf(res), errorBody);
+  }
   if (res.status === 204) return undefined as T;
   return (await res.json()) as T;
+}
+
+/** Téléchargement binaire authentifié (PDF de certificat). */
+export async function requestBlob(path: string): Promise<Blob> {
+  const build = (): RequestInit => ({ method: "GET", headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {} });
+  let refreshed = false;
+  if (!accessToken) {
+    if (!(await refreshAccess())) throw new ApiError(401, "not_authenticated");
+    refreshed = true;
+  }
+  let res = await send(path, build());
+  if (res.status === 401 && !refreshed && (await refreshAccess())) res = await send(path, build());
+  if (!res.ok) throw new ApiError(res.status, await detailOf(res));
+  return res.blob();
 }
 
 interface TokenResponse {
@@ -200,3 +219,104 @@ export interface WhyInput {
 }
 
 export const postTutorWhy = (input: WhyInput) => request<TutorText>("/tutor/why", { method: "POST", body: input });
+
+// --- Phase 2 : examens, certificats, défis, push (docs/contracts/phase2.md) ------
+
+export type ExamSkillName = "listening" | "reading" | "vocabulary" | "speaking";
+export type ExamScoresDto = Record<ExamSkillName, number>;
+
+export interface ExamSummary {
+  id: string;
+  level: string;
+  certificate: { fr: string } & Partial<Record<string, string>>;
+  requiresUnits: string[];
+  durationMinutes: number;
+  unlocked: boolean;
+  lastAttempt: { id: string; submittedAt: string; passed: boolean; scores: ExamScoresDto } | null;
+  nextAttemptAt: string | null;
+}
+
+export interface ExamStart {
+  attemptId: string;
+  seed: string;
+  startedAt: string;
+  expiresAt: string;
+  items: { section: ExamSkillName; index: number }[];
+}
+
+export interface ExamSubmitAnswer {
+  section: ExamSkillName;
+  index: number;
+  response: ExerciseResponse;
+  responseMs: number;
+}
+
+export interface ExamSubmitResult {
+  passed: boolean;
+  global: number;
+  scores: ExamScoresDto;
+  gaps: { skill: ExamSkillName; conceptIds: string[] }[];
+  certificate: { id: string; verificationCode: string } | null;
+}
+
+export interface CertificateDto {
+  id: string;
+  level: string;
+  issuedAt: string;
+  verificationCode: string;
+  pdfUrl: string;
+  shareImageUrl: string;
+}
+
+export interface VerifyResult {
+  valid: boolean;
+  displayName: string;
+  level: string;
+  certificate: { fr: string } & Partial<Record<string, string>>;
+  issuedAt: string;
+  scores: ExamScoresDto;
+}
+
+export const getExams = () => request<ExamSummary[]>("/exams");
+export const startExam = (examId: string) => request<ExamStart>(`/exams/${encodeURIComponent(examId)}/start`, { method: "POST" });
+export const submitExam = (attemptId: string, answers: readonly ExamSubmitAnswer[]) =>
+  request<ExamSubmitResult>(`/exams/attempts/${encodeURIComponent(attemptId)}/submit`, { method: "POST", body: { answers } });
+export const getCertificates = () => request<CertificateDto[]>("/certificates");
+export const getCertificatePdf = (id: string) => requestBlob(`/certificates/${encodeURIComponent(id)}.pdf`);
+export const verifyCertificate = (code: string) => request<VerifyResult>(`/verify/${encodeURIComponent(code)}`, { auth: false });
+
+export interface ChallengeDto {
+  id: string;
+  kind: "words_theme" | "streak_days" | "speaking_minutes" | "lessons" | "game_score";
+  title: { fr: string } & Partial<Record<string, string>>;
+  target: number;
+  unit: string | null;
+  progress: number;
+  completedAt: string | null;
+  claimedAt: string | null;
+  periodStart: string;
+  periodEnd: string;
+  badgeCode: string;
+}
+
+export const getCurrentChallenges = () => request<ChallengeDto[]>("/challenges/current");
+export const claimChallenge = (id: string) => request<{ claimedAt: string; xp: number }>(`/challenges/${encodeURIComponent(id)}/claim`, { method: "POST" });
+
+export interface PushSubscriptionInput {
+  endpoint: string;
+  keys: { p256dh: string; auth: string };
+  reminderHour: number;
+  timezone: string;
+}
+
+export const getVapidKey = () => request<{ key: string }>("/push/vapid-public-key", { auth: false });
+export const subscribePush = (input: PushSubscriptionInput) => request<void>("/push/subscribe", { method: "POST", body: input });
+export const unsubscribePush = (endpoint: string) => request<void>("/push/subscribe", { method: "DELETE", body: { endpoint } });
+
+export interface ProfilePatch {
+  reminderHour?: number | null;
+  timezone?: string;
+  notificationsEnabled?: boolean;
+}
+
+export const patchProfile = (patch: ProfilePatch) => request<unknown>("/me/profile", { method: "PATCH", body: patch });

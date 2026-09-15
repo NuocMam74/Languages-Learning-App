@@ -32,6 +32,9 @@ StepType = Literal[
     "game",
 ]
 
+# Miroir de `GameId` (packages/core/src/types.ts).
+GameId = Literal["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "doi_dap", "nho_mat"]
+
 NonNegative = Annotated[float, Field(ge=0)]
 Id = Annotated[str, Field(min_length=1, max_length=128)]
 SessionId = Annotated[str, Field(min_length=1, max_length=64)]
@@ -106,6 +109,26 @@ class BadgeEarnedPayload(CamelModel):
     badge_code: Annotated[str, Field(min_length=1, max_length=64)]
 
 
+class PronunciationScoredPayload(CamelModel):
+    session_id: SessionId | None
+    concept_id: Id
+    score: Annotated[float, Field(ge=0, le=100)]
+    exercise_type: StepType
+
+
+class StreakFrozenPayload(CamelModel):
+    frozen_until: date
+    local_date: date
+
+
+class GamePlayedPayload(CamelModel):
+    game: GameId
+    correct: Annotated[int, Field(ge=0)]
+    total: Annotated[int, Field(ge=0)]
+    duration_ms: NonNegative
+    local_date: date
+
+
 class SessionStarted(_BaseEvent):
     type: Literal["session_started"]
     payload: SessionStartedPayload
@@ -124,6 +147,21 @@ class SrsCardUpdated(_BaseEvent):
 class LessonCompleted(_BaseEvent):
     type: Literal["lesson_completed"]
     payload: LessonCompletedPayload
+
+
+class PronunciationScored(_BaseEvent):
+    type: Literal["pronunciation_scored"]
+    payload: PronunciationScoredPayload
+
+
+class StreakFrozen(_BaseEvent):
+    type: Literal["streak_frozen"]
+    payload: StreakFrozenPayload
+
+
+class GamePlayed(_BaseEvent):
+    type: Literal["game_played"]
+    payload: GamePlayedPayload
 
 
 class SessionCompleted(_BaseEvent):
@@ -147,6 +185,9 @@ ParloEvent = Annotated[
     | SrsCardUpdated
     | PlacementCompleted
     | BadgeEarned
+    | PronunciationScored
+    | StreakFrozen
+    | GamePlayed
     | LessonCompleted
     | SessionCompleted,
     Field(discriminator="type"),

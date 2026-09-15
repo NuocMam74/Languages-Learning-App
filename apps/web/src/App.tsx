@@ -24,6 +24,14 @@ const Placement = lazy(() => import("./pages/Placement.tsx"));
 const AccountPage = lazy(() => import("./pages/Account.tsx"));
 const Settings = lazy(() => import("./pages/Settings.tsx"));
 const Badges = lazy(() => import("./pages/Badges.tsx"));
+// Phase 2 : examens, certificats, rappels.
+const ExamsPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.ExamsPage })));
+const MockExamPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.MockExamPage })));
+const RealExamPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.RealExamPage })));
+const CertificatesPage = lazy(() => import("./certificates/CertificatePages.tsx").then((m) => ({ default: m.CertificatesPage })));
+const VerifyPage = lazy(() => import("./certificates/CertificatePages.tsx").then((m) => ({ default: m.VerifyPage })));
+const KaraokePage = lazy(() => import("./karaoke/KaraokePage.tsx"));
+const RemindersPage = lazy(() => import("./notifications/Reminders.tsx").then((m) => ({ default: m.RemindersPage })));
 
 const later = (node: ReactNode) => <Suspense fallback={null}>{node}</Suspense>;
 
@@ -94,7 +102,14 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/reglages", element: later(<Settings />) },
         { path: "/badges", element: later(<Badges />) },
         { path: "/jeux", element: <GamesPage /> },
+        { path: "/jeux/karaoke_tonal", element: later(<KaraokePage content={content} />) },
         { path: "/jeux/:game", element: <GamePlayPage content={content} /> },
+        { path: "/examens", element: later(<ExamsPage content={content} />) },
+        { path: "/examens/:level", element: later(<RealExamPage content={content} />) },
+        { path: "/examens/:level/blanc", element: later(<MockExamPage content={content} />) },
+        { path: "/certificats", element: later(<CertificatesPage content={content} />) },
+        { path: "/verifier/:code", element: later(<VerifyPage />) },
+        { path: "/rappels", element: later(<RemindersPage />) },
         ...(DemoPage
           ? [
               { path: "/demo", element: <Suspense fallback={null}><DemoPage content={content} /></Suspense> },

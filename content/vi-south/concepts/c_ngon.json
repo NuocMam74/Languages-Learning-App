@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ngon",
+  "type": "word",
+  "vi": "ngon",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "bon (au goût)",
+    "en": "tasty"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ngon_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ngon_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

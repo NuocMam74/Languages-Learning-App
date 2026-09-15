@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u10.l04",
+  "unit": "vi-south.u10",
+  "title": {
+    "fr": "Bên trái, bên phải",
+    "en": "Left and right"
+  },
+  "goal": {
+    "fr": "Situer un lieu : à gauche, à droite, à côté, en face.",
+    "en": "Place something: left, right, next to, opposite."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u10.l03"
+  ],
+  "concepts": [
+    "c_ben_trai",
+    "c_ben_phai",
+    "c_ke_ben",
+    "c_doi_dien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ben_trai",
+      "distractors": [
+        "c_ben_phai",
+        "c_nha_house"
+      ],
+      "explain": {
+        "fr": "bên trái : à gauche.",
+        "en": "bên trái: on the left."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_trai_phai"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ben_phai",
+      "distractors": [
+        "c_ben_trai",
+        "c_ga_station"
+      ],
+      "explain": {
+        "fr": "bên phải : à droite.",
+        "en": "bên phải: on the right."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ke_ben",
+      "distractors": [
+        "kế bến",
+        "ghế bên"
+      ],
+      "explain": {
+        "fr": "kế bên : à côté. ghế : la chaise.",
+        "en": "kế bên: next to. ghế: chair."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_dien",
+      "distractors": [
+        "đổi diện",
+        "đôi diện"
+      ],
+      "explain": {
+        "fr": "đối monte, diện tombe court : en face.",
+        "en": "đối rises, diện drops short: opposite."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ngân hàng ở bên trái.",
+      "tokens": [
+        "Ngân hàng",
+        "ở",
+        "bên",
+        "trái",
+        "phải"
+      ],
+      "translation": {
+        "fr": "La banque est à gauche.",
+        "en": "The bank is on the left."
+      },
+      "explain": {
+        "fr": "ở bên trái : se trouver à gauche.",
+        "en": "ở bên trái: to be on the left."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Quán cà phê ở kế bên chợ.",
+      "tokens": [
+        "Quán cà phê",
+        "ở",
+        "kế bên",
+        "chợ",
+        "trái"
+      ],
+      "translation": {
+        "fr": "Le café est à côté du marché.",
+        "en": "The café is next to the market."
+      },
+      "explain": {
+        "fr": "kế bên + lieu : à côté de. Pas besoin de « de ».",
+        "en": "kế bên + place: next to. No word for 'of' needed."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cây xăng ở đối diện ngân hàng.",
+      "tokens": [
+        "Cây xăng",
+        "ở",
+        "đối diện",
+        "ngân hàng",
+        "bên"
+      ],
+      "translation": {
+        "fr": "La station-service est en face de la banque.",
+        "en": "The petrol station is opposite the bank."
+      },
+      "explain": {
+        "fr": "đối diện + lieu : en face de.",
+        "en": "đối diện + place: opposite."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_ben_phai",
+      "explain": {
+        "fr": "bên plat, phải plonge.",
+        "en": "bên level, phải dips."
+      }
+    },
+    {
+      "type": "game",
+      "game": "xe_om",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ben_trai",
+      "c_ben_phai",
+      "c_ke_ben",
+      "c_doi_dien"
+    ]
+  },
+  "reviewed": false
+}

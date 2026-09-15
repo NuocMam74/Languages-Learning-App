@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ve",
+  "type": "word",
+  "vi": "về",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "rentrer, revenir",
+    "en": "to go back, to return home"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ve_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ve_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, v se prononce souvent comme un « y ».",
+    "en": "In the South, v is often pronounced like 'y'."
+  },
+  "reviewed": false
+}

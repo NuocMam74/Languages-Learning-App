@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_work_small_talk",
+  "title": {
+    "fr": "« Tu fais quoi dans la vie ? »",
+    "en": "'What do you do?'"
+  },
+  "body": {
+    "fr": "« Anh làm nghề gì ? » arrive très vite après le prénom et l'âge. Ce n'est pas indiscret : le métier aide à situer la personne. Ne sois pas surpris si l'on te demande ensuite ton salaire : tu peux répondre par un sourire et une plaisanterie.",
+    "en": "'Anh làm nghề gì?' comes very soon after name and age. It isn't nosy: a job helps place a person. Don't be surprised if your salary comes up next: a smile and a joke are a fine answer."
+  },
+  "vi": "Anh làm nghề gì?",
+  "audio": "audio/cc_work_small_talk.opus",
+  "question": {
+    "prompt": {
+      "fr": "On te demande ton métier dès la première rencontre. C'est…",
+      "en": "You're asked about your job at the first meeting. That's…"
+    },
+    "options": [
+      {
+        "fr": "normal, pour faire connaissance",
+        "en": "normal, a way to get acquainted"
+      },
+      {
+        "fr": "très impoli",
+        "en": "very rude"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

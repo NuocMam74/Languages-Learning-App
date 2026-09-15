@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_pho",
+  "type": "word",
+  "vi": "phở",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "phở (soupe de nouilles de riz)",
+    "en": "phở (rice noodle soup)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_pho_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_pho_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/pho.svg",
+  "note": {
+    "fr": "Au Sud, le phở arrive avec une assiette d'herbes fraîches et de pousses de soja.",
+    "en": "In the South, phở comes with a plate of fresh herbs and bean sprouts."
+  },
+  "reviewed": false
+}

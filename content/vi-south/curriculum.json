@@ -4,7 +4,7 @@
   "blocks": [
     { "id": "b0", "title": { "fr": "L'oreille", "en": "The ear" }, "units": ["vi-south.u01", "vi-south.u02"] },
     { "id": "b1", "title": { "fr": "Moi et toi", "en": "Me and you" }, "units": ["vi-south.u03", "vi-south.u04", "vi-south.u05", "vi-south.u06"], "certificate": "A0" },
-    { "id": "b2", "title": { "fr": "Le quotidien", "en": "Everyday life" }, "units": [] },
+    { "id": "b2", "title": { "fr": "Le quotidien", "en": "Everyday life" }, "units": ["vi-south.u07", "vi-south.u08", "vi-south.u09", "vi-south.u10", "vi-south.u11"] },
     { "id": "b3", "title": { "fr": "Échanger", "en": "Exchanging" }, "units": [], "certificate": "A1" },
     { "id": "b4", "title": { "fr": "Vivre là-bas", "en": "Living there" }, "units": [] },
     { "id": "b5", "title": { "fr": "Raconter", "en": "Telling stories" }, "units": [], "certificate": "A2" }
@@ -76,8 +76,118 @@
         "vi-south.u04.l08"
       ]
     },
-    { "id": "vi-south.u05", "title": { "fr": "Se présenter", "en": "Introductions" }, "status": "planned", "tags": ["core", "work"], "lessons": [] },
-    { "id": "vi-south.u06", "title": { "fr": "Les chiffres", "en": "Numbers" }, "status": "planned", "tags": ["core", "travel"], "lessons": [] }
+    {
+      "id": "vi-south.u05",
+      "title": { "fr": "Se présenter", "en": "Introductions" },
+      "status": "available",
+      "tags": ["core", "work"],
+      "lessons": [
+        "vi-south.u05.l01",
+        "vi-south.u05.l02",
+        "vi-south.u05.l03",
+        "vi-south.u05.l04",
+        "vi-south.u05.l05",
+        "vi-south.u05.l06",
+        "vi-south.u05.l07",
+        "vi-south.u05.l08"
+      ]
+    },
+    {
+      "id": "vi-south.u06",
+      "title": { "fr": "Les chiffres", "en": "Numbers" },
+      "status": "available",
+      "tags": ["core", "travel"],
+      "lessons": [
+        "vi-south.u06.l01",
+        "vi-south.u06.l02",
+        "vi-south.u06.l03",
+        "vi-south.u06.l04",
+        "vi-south.u06.l05",
+        "vi-south.u06.l06",
+        "vi-south.u06.l07",
+        "vi-south.u06.l08"
+      ]
+    },
+    {
+      "id": "vi-south.u07",
+      "title": { "fr": "Manger et boire", "en": "Eating and drinking" },
+      "status": "available",
+      "tags": ["travel"],
+      "lessons": [
+        "vi-south.u07.l01",
+        "vi-south.u07.l02",
+        "vi-south.u07.l03",
+        "vi-south.u07.l04",
+        "vi-south.u07.l05",
+        "vi-south.u07.l06",
+        "vi-south.u07.l07",
+        "vi-south.u07.l08"
+      ]
+    },
+    {
+      "id": "vi-south.u08",
+      "title": { "fr": "Marché et prix", "en": "Market and prices" },
+      "status": "available",
+      "tags": ["travel"],
+      "lessons": [
+        "vi-south.u08.l01",
+        "vi-south.u08.l02",
+        "vi-south.u08.l03",
+        "vi-south.u08.l04",
+        "vi-south.u08.l05",
+        "vi-south.u08.l06",
+        "vi-south.u08.l07",
+        "vi-south.u08.l08"
+      ]
+    },
+    {
+      "id": "vi-south.u09",
+      "title": { "fr": "Temps et heures", "en": "Time and hours" },
+      "status": "available",
+      "tags": ["core", "work"],
+      "lessons": [
+        "vi-south.u09.l01",
+        "vi-south.u09.l02",
+        "vi-south.u09.l03",
+        "vi-south.u09.l04",
+        "vi-south.u09.l05",
+        "vi-south.u09.l06",
+        "vi-south.u09.l07",
+        "vi-south.u09.l08"
+      ]
+    },
+    {
+      "id": "vi-south.u10",
+      "title": { "fr": "Lieux", "en": "Places" },
+      "status": "available",
+      "tags": ["travel"],
+      "lessons": [
+        "vi-south.u10.l01",
+        "vi-south.u10.l02",
+        "vi-south.u10.l03",
+        "vi-south.u10.l04",
+        "vi-south.u10.l05",
+        "vi-south.u10.l06",
+        "vi-south.u10.l07",
+        "vi-south.u10.l08"
+      ]
+    },
+    {
+      "id": "vi-south.u11",
+      "title": { "fr": "Se déplacer", "en": "Getting around" },
+      "status": "available",
+      "tags": ["travel"],
+      "lessons": [
+        "vi-south.u11.l01",
+        "vi-south.u11.l02",
+        "vi-south.u11.l03",
+        "vi-south.u11.l04",
+        "vi-south.u11.l05",
+        "vi-south.u11.l06",
+        "vi-south.u11.l07",
+        "vi-south.u11.l08"
+      ]
+    }
   ],
   "paths": {
     "family": { "boostTags": ["family"] },

@@ -1,0 +1,162 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u09.l03",
+  "unit": "vi-south.u09",
+  "title": {
+    "fr": "Hôm nay, hôm qua, ngày mai",
+    "en": "Today, yesterday, tomorrow"
+  },
+  "goal": {
+    "fr": "Dire quand se passe une action.",
+    "en": "Say when something happens."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u09.l02"
+  ],
+  "concepts": [
+    "c_hom_nay",
+    "c_ngay_mai",
+    "c_hom_qua",
+    "c_ngay",
+    "c_tuan"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hom_nay",
+      "distractors": [
+        "hôm qua",
+        "hôm nào"
+      ],
+      "explain": {
+        "fr": "hôm nay : aujourd'hui. hôm qua : hier.",
+        "en": "hôm nay: today. hôm qua: yesterday."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ngay",
+      "explain": {
+        "fr": "ngày descend (huyền) : le jour.",
+        "en": "ngày falls (huyền): day."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngay_mai",
+      "distractors": [
+        "ngày mại",
+        "ngay mai"
+      ],
+      "explain": {
+        "fr": "ngày descend, mai reste plat : demain.",
+        "en": "ngày falls, mai stays level: tomorrow."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hom_qua",
+      "distractors": [
+        "hôm nay",
+        "hôm quá"
+      ],
+      "explain": {
+        "fr": "hôm qua : hier. qua reste plat.",
+        "en": "hôm qua: yesterday. qua stays level."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay tôi đi chợ.",
+      "tokens": [
+        "Hôm nay",
+        "tôi",
+        "đi",
+        "chợ",
+        "hôm qua"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je vais au marché.",
+        "en": "Today I'm going to the market."
+      },
+      "explain": {
+        "fr": "Pas de conjugaison : le mot de temps en tête suffit.",
+        "en": "No conjugation: the time word up front is enough."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tuan",
+      "distractors": [
+        "tuấn",
+        "tuân"
+      ],
+      "explain": {
+        "fr": "tuần descend : la semaine. Tuấn : un prénom.",
+        "en": "tuần falls: week. Tuấn: a first name."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm qua tôi ăn phở.",
+      "tokens": [
+        "Hôm qua",
+        "tôi",
+        "ăn",
+        "phở",
+        "ngày mai"
+      ],
+      "translation": {
+        "fr": "Hier, j'ai mangé un phở.",
+        "en": "Yesterday I had phở."
+      },
+      "explain": {
+        "fr": "hôm qua marque le passé ; le verbe ne change pas.",
+        "en": "hôm qua marks the past; the verb doesn't change."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mai gặp lại nha.",
+      "tokens": [
+        "Mai",
+        "gặp",
+        "lại",
+        "nha",
+        "qua"
+      ],
+      "translation": {
+        "fr": "À demain !",
+        "en": "See you tomorrow!"
+      },
+      "explain": {
+        "fr": "Au Sud, mai tout court veut souvent dire « demain ».",
+        "en": "In the South, plain mai often means 'tomorrow'."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_ngay_mai",
+      "explain": {
+        "fr": "ngày descend, mai reste plat.",
+        "en": "ngày falls, mai stays level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_hom_nay",
+      "c_ngay_mai",
+      "c_hom_qua",
+      "c_ngay",
+      "c_tuan"
+    ]
+  },
+  "reviewed": false
+}

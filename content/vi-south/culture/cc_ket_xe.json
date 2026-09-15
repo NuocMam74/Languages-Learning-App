@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_ket_xe",
+  "title": {
+    "fr": "Kẹt xe !",
+    "en": "Kẹt xe!"
+  },
+  "body": {
+    "fr": "Aux heures de pointe, le matin et en fin d'après-midi, Saïgon se fige : kẹt xe ! Au Nord, on dit tắc đường. Les motos se faufilent partout. Le casque, nón bảo hiểm, est obligatoire, même pour deux minutes de trajet. Prévois toujours de la marge.",
+    "en": "At rush hour, morning and late afternoon, Saigon grinds to a halt: kẹt xe! In the North it's tắc đường. Motorbikes squeeze through everywhere. A helmet, nón bảo hiểm, is compulsory, even for a two-minute ride. Always leave extra time."
+  },
+  "vi": "Kẹt xe quá!",
+  "audio": "audio/cc_ket_xe.opus",
+  "question": {
+    "prompt": {
+      "fr": "À moto, le casque est…",
+      "en": "On a motorbike, a helmet is…"
+    },
+    "options": [
+      {
+        "fr": "obligatoire",
+        "en": "compulsory"
+      },
+      {
+        "fr": "seulement conseillé",
+        "en": "only recommended"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

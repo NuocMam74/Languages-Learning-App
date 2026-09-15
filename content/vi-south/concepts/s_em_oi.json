@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_em_oi",
+  "type": "structure",
+  "vi": "Em ơi!",
+  "gloss": {
+    "fr": "S'il te plaît ! (pour appeler un serveur plus jeune)",
+    "en": "Excuse me! (to call a younger server)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_em_oi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_em_oi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

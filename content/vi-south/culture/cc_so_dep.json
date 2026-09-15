@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_so_dep",
+  "title": {
+    "fr": "Số đẹp, les « beaux numéros »",
+    "en": "Số đẹp, 'beautiful numbers'"
+  },
+  "body": {
+    "fr": "Certains numéros sont appelés số đẹp, « beaux numéros » : chiffres répétés, suites faciles à retenir, beaucoup de 9. Numéros de téléphone et plaques d'immatriculation de ce genre se vendent plus cher. Le 9 a la réputation de porter chance.",
+    "en": "Some numbers are called số đẹp, 'beautiful numbers': repeated digits, easy sequences, lots of 9s. Phone numbers and licence plates like these sell for more. The number 9 is said to bring luck."
+  },
+  "vi": "Số điện thoại này đẹp quá!",
+  "audio": "audio/cc_so_dep.opus",
+  "question": {
+    "prompt": {
+      "fr": "Un « số đẹp », c'est…",
+      "en": "A 'số đẹp' is…"
+    },
+    "options": [
+      {
+        "fr": "un numéro jugé beau ou chanceux",
+        "en": "a number seen as beautiful or lucky"
+      },
+      {
+        "fr": "un numéro gratuit",
+        "en": "a free number"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

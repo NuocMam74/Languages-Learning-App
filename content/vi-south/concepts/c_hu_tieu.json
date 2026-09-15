@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_hu_tieu",
+  "type": "word",
+  "vi": "hủ tiếu",
+  "gloss": {
+    "fr": "hủ tiếu (soupe de nouilles du Sud)",
+    "en": "hủ tiếu (southern noodle soup)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hu_tieu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hu_tieu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "On voit aussi l'orthographe hủ tíu.",
+    "en": "The spelling hủ tíu is also seen."
+  },
+  "reviewed": false
+}

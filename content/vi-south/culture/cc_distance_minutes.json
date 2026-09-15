@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_distance_minutes",
+  "title": {
+    "fr": "C'est loin ? En minutes de moto",
+    "en": "Is it far? In motorbike minutes"
+  },
+  "body": {
+    "fr": "Demande « Có xa không ? » : on te répondra rarement en kilomètres, plutôt en minutes de moto. Et pour situer un lieu, on cite un repère connu, le chợ, une chùa, une cây xăng, bien plus souvent qu'un nom de rue.",
+    "en": "Ask 'Có xa không?': people rarely answer in kilometres, more often in minutes by motorbike. And to place somewhere, they name a well-known landmark, the chợ, a chùa, a cây xăng, far more often than a street name."
+  },
+  "vi": "Không xa lắm, chạy xe mười phút.",
+  "audio": "audio/cc_distance_minutes.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour indiquer un lieu, on cite souvent…",
+      "en": "To give directions, people often mention…"
+    },
+    "options": [
+      {
+        "fr": "un repère connu",
+        "en": "a well-known landmark"
+      },
+      {
+        "fr": "les coordonnées GPS",
+        "en": "GPS coordinates"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

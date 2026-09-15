@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_cho_em_to_pho",
+  "type": "structure",
+  "vi": "Cho em một tô phở.",
+  "gloss": {
+    "fr": "Un bol de phở, s'il te plaît.",
+    "en": "A bowl of phở, please."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cho_em_to_pho_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cho_em_to_pho_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Cho em… : la façon simple et polie de commander quand on est plus jeune.",
+    "en": "Cho em…: the simple, polite way to order when you're younger."
+  },
+  "reviewed": false
+}

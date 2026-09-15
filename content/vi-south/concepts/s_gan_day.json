@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_gan_day",
+  "type": "structure",
+  "vi": "gần đây",
+  "gloss": {
+    "fr": "près d'ici",
+    "en": "nearby"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_gan_day_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_gan_day_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

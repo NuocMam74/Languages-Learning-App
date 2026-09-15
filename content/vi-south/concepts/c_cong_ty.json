@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_cong_ty",
+  "type": "word",
+  "vi": "công ty",
+  "gloss": {
+    "fr": "entreprise, société",
+    "en": "company"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_cong_ty_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_cong_ty_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

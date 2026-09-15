@@ -1,8 +1,9 @@
-"""Catalogue des badges de la Phase 1 (spec §5.4).
+"""Catalogue des badges (spec §5.4, §5.2).
 
-Les badges sont décernés côté client (événement `badge_earned`) ; le serveur n'accepte que les codes
-connus. Les lignes `badges` sont créées par la migration 0002 et, à défaut (tests, base créée par
-`create_all`), à la volée avec le même identifiant déterministe.
+Les badges de la Phase 1 sont décernés côté client (événement `badge_earned`) ; le serveur n'accepte que
+les codes connus. Les badges des défis de la semaine (`challenge_<kind>`) sont décernés par le serveur seul,
+à la réclamation du défi. Les lignes `badges` sont créées par les migrations 0002 et 0003 et, à défaut
+(tests, base créée par `create_all`), à la volée avec le même identifiant déterministe.
 """
 
 import uuid
@@ -20,7 +21,7 @@ _BADGE_NAMESPACE = uuid.UUID("5b0f6f7e-2c1a-4d4e-9a4b-7061726c6f00")
 @dataclass(frozen=True)
 class BadgeDef:
     code: str
-    family: str  # assiduity | competence | culture
+    family: str  # assiduity | competence | culture | challenge
     criteria: dict[str, Any]
 
 
@@ -37,14 +38,24 @@ PHASE1_BADGES: dict[str, BadgeDef] = {
 }
 
 
+CHALLENGE_KINDS = ("words_theme", "streak_days", "speaking_minutes", "lessons", "game_score")
+
+CHALLENGE_BADGES: dict[str, BadgeDef] = {
+    f"challenge_{kind}": BadgeDef(f"challenge_{kind}", "challenge", {"challengeKind": kind}) for kind in CHALLENGE_KINDS
+}
+
+
 def badge_id(code: str) -> str:
     """Identifiant stable d'un badge (identique dans la migration et à la création à la volée)."""
     return str(uuid.uuid5(_BADGE_NAMESPACE, code))
 
 
-def ensure_badge(db: Session, code: str) -> Badge | None:
-    """Ligne `badges` du code connu (créée si absente) ; None si le code est inconnu."""
-    definition = PHASE1_BADGES.get(code)
+def ensure_badge(db: Session, code: str, *, server_awarded: bool = False) -> Badge | None:
+    """Ligne `badges` du code connu (créée si absente) ; None si le code est inconnu.
+
+    `server_awarded` ouvre aussi les badges décernés par le serveur (refusés dans `badge_earned`).
+    """
+    definition = PHASE1_BADGES.get(code) or (CHALLENGE_BADGES.get(code) if server_awarded else None)
     if definition is None:
         return None
     row = db.scalar(select(Badge).where(Badge.code == code))

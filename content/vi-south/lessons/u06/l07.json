@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u06.l07",
+  "unit": "vi-south.u06",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : les chiffres",
+    "en": "Review: numbers"
+  },
+  "goal": {
+    "fr": "Revoir les chiffres, l'âge et les grands nombres.",
+    "en": "Go over digits, age and big numbers."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u06.l06"
+  ],
+  "concepts": [
+    "c_sau_six",
+    "c_muoi_ten",
+    "c_muoi_tens",
+    "s_muoi_lam",
+    "c_ngan",
+    "c_mot_one",
+    "c_mot_high",
+    "s_anh_bao_nhieu_tuoi",
+    "s_so_dien_thoai"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_six",
+      "distractors": [
+        "sau",
+        "sàu"
+      ],
+      "explain": {
+        "fr": "sáu monte : six.",
+        "en": "sáu rises: six."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "mười",
+        "mươi"
+      ],
+      "audioConcepts": [
+        "c_muoi_ten",
+        "c_muoi_tens"
+      ],
+      "explain": {
+        "fr": "mười descend, mươi reste plat.",
+        "en": "mười falls, mươi stays level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_muoi_lam",
+      "distractors": [
+        "mười năm",
+        "mươi lăm"
+      ],
+      "explain": {
+        "fr": "mười lăm : quinze.",
+        "en": "mười lăm: fifteen."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị hai mươi lăm tuổi.",
+      "tokens": [
+        "Chị",
+        "hai",
+        "mươi",
+        "lăm",
+        "tuổi",
+        "năm"
+      ],
+      "translation": {
+        "fr": "Elle a vingt-cinq ans.",
+        "en": "She's twenty-five."
+      },
+      "explain": {
+        "fr": "lăm après mươi.",
+        "en": "lăm after mươi."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_thousand",
+      "explain": {
+        "fr": "Sud : ngàn ; Nord : nghìn.",
+        "en": "South: ngàn; North: nghìn."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan",
+      "distractors": [
+        "ngán",
+        "ngạn"
+      ],
+      "explain": {
+        "fr": "ngàn : mille.",
+        "en": "ngàn: thousand."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "một",
+        "mốt"
+      ],
+      "audioConcepts": [
+        "c_mot_one",
+        "c_mot_high"
+      ],
+      "explain": {
+        "fr": "một tombe court, mốt monte.",
+        "en": "một drops short, mốt rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh bao nhiêu tuổi?",
+      "tokens": [
+        "Anh",
+        "bao nhiêu",
+        "tuổi",
+        "mấy"
+      ],
+      "translation": {
+        "fr": "Tu as quel âge ? (à un homme un peu plus âgé)",
+        "en": "How old are you? (to a slightly older man)"
+      },
+      "audioConcept": "s_anh_bao_nhieu_tuoi",
+      "explain": {
+        "fr": "bao nhiêu pour un adulte.",
+        "en": "bao nhiêu for an adult."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_so_dien_thoai",
+      "explain": {
+        "fr": "số monte, điện et thoại tombent court.",
+        "en": "số rises, điện and thoại drop short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

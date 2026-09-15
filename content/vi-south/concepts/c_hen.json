@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_hen",
+  "type": "word",
+  "vi": "hẹn",
+  "tone": "nang",
+  "gloss": {
+    "fr": "rendez-vous ; donner rendez-vous",
+    "en": "appointment; to arrange to meet"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hen_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hen_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

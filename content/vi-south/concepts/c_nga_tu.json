@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nga_tu",
+  "type": "word",
+  "vi": "ngã tư",
+  "gloss": {
+    "fr": "carrefour",
+    "en": "crossroads"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nga_tu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nga_tu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "À trois branches : ngã ba.",
+    "en": "With three branches: ngã ba."
+  },
+  "reviewed": false
+}

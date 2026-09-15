@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_bon",
+  "type": "word",
+  "vi": "bốn",
+  "tone": "sac",
+  "gloss": {
+    "fr": "quatre",
+    "en": "four"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_bon_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_bon_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Après une dizaine, on dit souvent tư : hai mươi tư (24).",
+    "en": "After a tens word, tư is common: hai mươi tư (24)."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,160 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u05.l04",
+  "unit": "vi-south.u05",
+  "title": {
+    "fr": "Les métiers",
+    "en": "Jobs"
+  },
+  "goal": {
+    "fr": "Demander le métier de quelqu'un et dire le tien.",
+    "en": "Ask what someone does and say what you do."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u05.l03"
+  ],
+  "concepts": [
+    "s_anh_lam_nghe_gi",
+    "c_bac_si",
+    "c_giao_vien",
+    "c_sinh_vien",
+    "c_ky_su",
+    "c_nhan_vien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bac_si",
+      "distractors": [
+        "c_giao_vien",
+        "c_sinh_vien"
+      ],
+      "explain": {
+        "fr": "bác sĩ : le médecin.",
+        "en": "bác sĩ: doctor."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_work_small_talk"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sinh_vien",
+      "distractors": [
+        "c_bac_si",
+        "c_ky_su"
+      ],
+      "explain": {
+        "fr": "sinh viên : l'étudiant, à l'université.",
+        "en": "sinh viên: university student."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_lam_nghe_gi",
+      "distractors": [
+        "Anh tên gì?",
+        "Anh ở đâu?"
+      ],
+      "explain": {
+        "fr": "làm nghề gì ? : « faire quel métier ? ».",
+        "en": "làm nghề gì?: 'do which job?'."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ky_su",
+      "distractors": [
+        "c_giao_vien",
+        "c_bac_si"
+      ],
+      "explain": {
+        "fr": "kỹ sư : l'ingénieur.",
+        "en": "kỹ sư: engineer."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "giáo viện",
+        "giao viên"
+      ],
+      "explain": {
+        "fr": "giáo monte, viên reste plat : l'enseignant.",
+        "en": "giáo rises, viên stays level: teacher."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi là kỹ sư.",
+      "tokens": [
+        "Tôi",
+        "là",
+        "kỹ sư",
+        "bác sĩ"
+      ],
+      "translation": {
+        "fr": "Je suis ingénieur(e).",
+        "en": "I'm an engineer."
+      },
+      "explain": {
+        "fr": "là + métier, sans article : tôi là kỹ sư.",
+        "en": "là + job, no article: tôi là kỹ sư."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhan_vien",
+      "distractors": [
+        "nhân viện",
+        "nhan viên"
+      ],
+      "explain": {
+        "fr": "nhân viên : l'employé. Les deux syllabes restent hautes et plates.",
+        "en": "nhân viên: employee. Both syllables stay high and level."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị tôi là bác sĩ.",
+      "tokens": [
+        "Chị",
+        "tôi",
+        "là",
+        "bác sĩ",
+        "giáo viên",
+        "của"
+      ],
+      "translation": {
+        "fr": "Ma grande sœur est médecin.",
+        "en": "My older sister is a doctor."
+      },
+      "explain": {
+        "fr": "chị tôi : « ma grande sœur », le possesseur après.",
+        "en": "chị tôi: 'my older sister', owner after."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_anh_lam_nghe_gi",
+      "explain": {
+        "fr": "làm et nghề descendent, gì descend aussi : trois tons graves.",
+        "en": "làm and nghề fall, gì falls too: three low tones."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_anh_lam_nghe_gi",
+      "c_bac_si",
+      "c_giao_vien",
+      "c_sinh_vien",
+      "c_ky_su",
+      "c_nhan_vien"
+    ]
+  },
+  "reviewed": false
+}

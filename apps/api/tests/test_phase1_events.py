@@ -35,16 +35,17 @@ def test_placement_sets_level_and_entry_lesson(client: TestClient, auth: dict[st
     assert state["enrollment"]["currentLessonId"] == LAST_LESSON
 
 
-def test_placement_does_not_move_learner_with_completed_lessons(client: TestClient, auth: dict[str, str]) -> None:
+def test_placement_unlocks_lessons_before_entry_even_after_progress(client: TestClient, auth: dict[str, str]) -> None:
+    """Comme le client (`planning`) : les leçons avant le point d'entrée comptent comme ouvertes."""
     done = event(
         "lesson_completed", {"sessionId": "s1", "lessonId": "vi-south.u01.l01", "score": 1, "durationMs": 1000}
     )
     post(client, auth, [done])
-    current = me(client, auth)["enrollment"]["currentLessonId"]
-    post(client, auth, [placement(level=3)])
+    assert me(client, auth)["enrollment"]["currentLessonId"] == "vi-south.u01.l02"
+    post(client, auth, [placement(entry="vi-south.u03.l01", level=3)])
     state = me(client, auth)
     assert state["levelEstimate"] == 3
-    assert state["enrollment"]["currentLessonId"] == current
+    assert state["enrollment"]["currentLessonId"] == "vi-south.u03.l01"
 
 
 def test_placement_rejections(client: TestClient, auth: dict[str, str]) -> None:

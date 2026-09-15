@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_hom_qua",
+  "type": "word",
+  "vi": "hôm qua",
+  "gloss": {
+    "fr": "hier",
+    "en": "yesterday"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hom_qua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_hom_qua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

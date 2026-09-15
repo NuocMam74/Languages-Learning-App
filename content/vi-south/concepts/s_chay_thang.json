@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_chay_thang",
+  "type": "structure",
+  "vi": "chạy thẳng",
+  "gloss": {
+    "fr": "aller tout droit (en véhicule)",
+    "en": "go straight (driving)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chay_thang_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chay_thang_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/signs/straight.svg",
+  "reviewed": false
+}

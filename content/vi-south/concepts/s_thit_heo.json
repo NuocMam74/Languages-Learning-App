@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_thit_heo",
+  "type": "structure",
+  "vi": "thịt heo",
+  "gloss": {
+    "fr": "viande de porc",
+    "en": "pork"
+  },
+  "register": "neutral",
+  "northernEquivalent": "thịt lợn",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thit_heo_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thit_heo_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

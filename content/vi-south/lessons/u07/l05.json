@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u07.l05",
+  "unit": "vi-south.u07",
+  "title": {
+    "fr": "Tính tiền ! L'addition",
+    "en": "Tính tiền! The bill"
+  },
+  "goal": {
+    "fr": "Demander l'addition et proposer de payer.",
+    "en": "Ask for the bill and offer to pay."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u07.l04"
+  ],
+  "concepts": [
+    "s_tinh_tien",
+    "c_tien",
+    "c_no_full",
+    "c_roi",
+    "s_de_anh_tra"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tinh_tien",
+      "distractors": [
+        "Em ơi, cho thêm chén.",
+        "Em ơi, ít cay thôi."
+      ],
+      "explain": {
+        "fr": "tính tiền : l'addition.",
+        "en": "tính tiền: the bill."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_who_pays"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_sach",
+        "c_dien_thoai"
+      ],
+      "explain": {
+        "fr": "tiền : l'argent.",
+        "en": "tiền: money."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "tiện",
+        "tiến"
+      ],
+      "explain": {
+        "fr": "tiền descend : l'argent. tiện tombe court : pratique.",
+        "en": "tiền falls: money. tiện drops short: convenient."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_no_full",
+      "distractors": [
+        "nó",
+        "nỏ"
+      ],
+      "explain": {
+        "fr": "no, plat : rassasié. nó monte : lui, elle (familier).",
+        "en": "no, level: full. nó rises: he, she (casual)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, em no rồi.",
+      "tokens": [
+        "Dạ",
+        "em",
+        "no",
+        "rồi",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      },
+      "explain": {
+        "fr": "rồi en fin de phrase : « c'est fait, déjà ».",
+        "en": "rồi at the end: 'done, already'."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_roi",
+      "explain": {
+        "fr": "rồi descend (huyền).",
+        "en": "rồi falls (huyền)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_de_anh_tra",
+      "distractors": [
+        "Để em trả.",
+        "Để anh tính."
+      ],
+      "explain": {
+        "fr": "để anh trả : c'est anh qui paie.",
+        "en": "để anh trả: anh is paying."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay để anh trả.",
+      "tokens": [
+        "Hôm nay",
+        "để",
+        "anh",
+        "trả",
+        "tiền"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, c'est moi qui paie. (homme, à plus jeune)",
+        "en": "Today it's on me. (man, to someone younger)"
+      },
+      "explain": {
+        "fr": "để + personne + verbe : « laisse (quelqu'un) faire ».",
+        "en": "để + person + verb: 'let (someone) do it'."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_tinh_tien",
+      "c_tien",
+      "c_no_full",
+      "c_roi",
+      "s_de_anh_tra"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_com_tam",
+  "type": "word",
+  "vi": "cơm tấm",
+  "gloss": {
+    "fr": "riz brisé (souvent au porc grillé)",
+    "en": "broken rice (often with grilled pork)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_com_tam_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_com_tam_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/com_tam.svg",
+  "reviewed": false
+}

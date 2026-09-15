@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u07.l07",
+  "unit": "vi-south.u07",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : manger et boire",
+    "en": "Review: eating and drinking"
+  },
+  "goal": {
+    "fr": "Revoir plats, boissons, vaisselle et addition.",
+    "en": "Go over dishes, drinks, tableware and the bill."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u07.l06"
+  ],
+  "concepts": [
+    "c_pho",
+    "s_tra_da",
+    "c_muong",
+    "c_cay",
+    "s_cho_em_to_pho"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_pho",
+      "distractors": [
+        "c_com_tam",
+        "c_banh_mi"
+      ],
+      "explain": {
+        "fr": "phở : la soupe de nouilles.",
+        "en": "phở: noodle soup."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tra_da",
+      "distractors": [
+        "trà đà",
+        "trà sữa"
+      ],
+      "explain": {
+        "fr": "trà đá : le thé glacé.",
+        "en": "trà đá: iced tea."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_assiette",
+      "explain": {
+        "fr": "Sud : dĩa ; Nord : đĩa.",
+        "en": "South: dĩa; North: đĩa."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_muong",
+      "distractors": [
+        "c_dua",
+        "c_dia_plate"
+      ],
+      "explain": {
+        "fr": "muỗng : la cuillère.",
+        "en": "muỗng: spoon."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em một ly cà phê sữa đá.",
+      "tokens": [
+        "Cho",
+        "em",
+        "một",
+        "ly",
+        "cà phê",
+        "sữa",
+        "đá",
+        "tô"
+      ],
+      "translation": {
+        "fr": "Un café glacé au lait, s'il te plaît.",
+        "en": "An iced milk coffee, please."
+      },
+      "explain": {
+        "fr": "một ly + boisson.",
+        "en": "một ly + drink."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cay",
+      "distractors": [
+        "cày",
+        "cây"
+      ],
+      "explain": {
+        "fr": "cay : piquant.",
+        "en": "cay: spicy."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_cuillere",
+      "explain": {
+        "fr": "Sud : muỗng ; Nord : thìa.",
+        "en": "South: muỗng; North: thìa."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, em no rồi.",
+      "tokens": [
+        "Dạ",
+        "em",
+        "no",
+        "rồi",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      },
+      "explain": {
+        "fr": "no rồi : rassasié.",
+        "en": "no rồi: full."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cho_em_to_pho",
+      "explain": {
+        "fr": "tô plat, phở plonge.",
+        "en": "tô level, phở dips."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

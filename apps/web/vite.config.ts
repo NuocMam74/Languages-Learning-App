@@ -33,31 +33,14 @@ export default defineConfig({
           { src: "/icons/icon-maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
         ],
       },
-      workbox: {
+      // Service worker écrit à la main (Phase 2 : notifications push) ; la stratégie de cache
+      // (précache, SWR, audio LRU, images) vit dans src/sw.ts.
+      strategies: "injectManifest",
+      srcDir: "src",
+      filename: "sw.ts",
+      injectManifest: {
         // App shell + contenu JSON des packs embarqués : la première leçon marche hors ligne dès l'installation.
         globPatterns: ["**/*.{js,css,html,svg,png,woff2}", "content/**/bundle.json"],
-        navigateFallback: "/index.html",
-        runtimeCaching: [
-          {
-            urlPattern: ({ url }) => url.pathname.startsWith("/content/") && url.pathname.endsWith(".json"),
-            handler: "StaleWhileRevalidate",
-            options: { cacheName: "content-v1" },
-          },
-          {
-            urlPattern: ({ url }) => /^\/content\/.+\.(opus|m4a)$/.test(url.pathname),
-            handler: "CacheFirst",
-            options: {
-              cacheName: "audio-v1",
-              rangeRequests: true,
-              expiration: { maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 90, purgeOnQuotaError: true },
-            },
-          },
-          {
-            urlPattern: ({ url }) => /^\/content\/.+\.(webp|png|svg)$/.test(url.pathname),
-            handler: "CacheFirst",
-            options: { cacheName: "images-v1", expiration: { maxEntries: 500, purgeOnQuotaError: true } },
-          },
-        ],
       },
       devOptions: { enabled: false },
     }),

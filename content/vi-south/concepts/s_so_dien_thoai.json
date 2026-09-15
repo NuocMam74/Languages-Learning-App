@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_so_dien_thoai",
+  "type": "structure",
+  "vi": "số điện thoại",
+  "gloss": {
+    "fr": "numéro de téléphone",
+    "en": "phone number"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_so_dien_thoai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_so_dien_thoai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

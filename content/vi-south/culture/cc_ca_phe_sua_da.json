@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_ca_phe_sua_da",
+  "title": {
+    "fr": "Cà phê sữa đá",
+    "en": "Cà phê sữa đá"
+  },
+  "body": {
+    "fr": "Le cà phê sữa đá, c'est Saïgon dans un verre : café fort qui coule goutte à goutte d'un phin, lait concentré sucré, beaucoup de glace. On le boit lentement, assis sur un petit tabouret au bord du trottoir. Souvent, un trà đá gratuit l'accompagne.",
+    "en": "Cà phê sữa đá is Saigon in a glass: strong coffee dripping from a phin filter, sweetened condensed milk, lots of ice. You sip it slowly on a low stool by the pavement. A free trà đá often comes with it."
+  },
+  "vi": "Cho em một ly cà phê sữa đá.",
+  "audio": "audio/cc_ca_phe_sua_da.opus",
+  "question": {
+    "prompt": {
+      "fr": "Dans un cà phê sữa đá, le lait est…",
+      "en": "In cà phê sữa đá, the milk is…"
+    },
+    "options": [
+      {
+        "fr": "concentré et sucré",
+        "en": "condensed and sweetened"
+      },
+      {
+        "fr": "frais",
+        "en": "fresh"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

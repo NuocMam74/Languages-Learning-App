@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_queo_phai",
+  "type": "structure",
+  "vi": "quẹo phải",
+  "gloss": {
+    "fr": "tourner à droite",
+    "en": "turn right"
+  },
+  "register": "neutral",
+  "northernEquivalent": "rẽ phải",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_queo_phai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_queo_phai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/signs/turn_right.svg",
+  "reviewed": false
+}

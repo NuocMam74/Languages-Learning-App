@@ -6,7 +6,14 @@ from fastapi.testclient import TestClient
 
 from app.config import REPO_ROOT
 from app.services.content import Lesson, load_packs
-from app.services.planner import next_lesson, plan_session
+from app.services.planner import (
+    OVERRUN_TOLERANCE,
+    RECAP_SECONDS,
+    REVIEW_ITEM_SECONDS,
+    next_lesson,
+    plan_session,
+    review_day_threshold,
+)
 from app.services.srs import SrsCard
 from app.services.streak import Streak, record_activity
 from tests.conftest import event
@@ -74,23 +81,67 @@ def test_session_next_uses_progress_cards_and_goal(client: TestClient, auth: dic
     ]
     assert plan["estimatedSeconds"] == 20 + 15 + lesson_seconds
 
-    # Objectif 5 min (300 s, toléré 360 s) : la leçon de 5 min tient, il ne reste aucun budget de révision.
+    # Objectif 5 min (300 s, toléré 360 s) : la leçon de 5 min tient, la révision prend la marge de tolérance.
     assert lesson_seconds == 300
     client.patch("/me/profile", headers=auth, json={"dailyGoalMin": 5})
     plan = client.get("/me/session/next", headers=auth).json()
-    assert plan["blocks"] == [{"kind": "new", "lessonId": "vi-south.u01.l02"}, {"kind": "recap"}]
+    assert [b["kind"] for b in plan["blocks"]] == ["review", "new", "recap"]
+    assert plan["estimatedSeconds"] <= 300 * (1 + OVERRUN_TOLERANCE)
 
 
-def test_plan_session_warmup_review_cap_and_lesson() -> None:
+def due_cards(n: int) -> list[SrsCard]:
+    return [make_card(f"c_x{i}", due_in_days=-1 - i / 1000, state="learning") for i in range(n)]
+
+
+LESSON_5 = Lesson(id="vi-south.u01.l01", unit="vi-south.u01", estimated_minutes=5, prerequisites=())
+
+
+# --- Miroir de packages/core/src/session.test.ts ---------------------------------------------
+
+
+def test_plan_new_user_first_lesson_then_recap() -> None:
+    plan = plan_session(5, [], LESSON_5, NOW)
+    assert plan.blocks == [{"kind": "new", "lessonId": "vi-south.u01.l01"}, {"kind": "recap"}]
+
+
+def test_plan_never_exceeds_tolerance() -> None:
+    for minutes in (5, 10, 15, 20):
+        for due in (0, 3, 40, 300):
+            plan = plan_session(minutes, due_cards(due), LESSON_5, NOW)
+            assert plan.estimated_seconds <= minutes * 60 * (1 + OVERRUN_TOLERANCE)
+
+
+def test_plan_5_min_few_reviews_before_lesson() -> None:
+    plan = plan_session(5, due_cards(3), LESSON_5, NOW)
+    assert [b["kind"] for b in plan.blocks] == ["review", "new", "recap"]
+    assert plan.estimated_seconds <= 300 * (1 + OVERRUN_TOLERANCE)
+
+
+def test_plan_review_day_without_new() -> None:
+    assert review_day_threshold(120) == 8
+    assert review_day_threshold(300) == 10
+    assert review_day_threshold(1200) == 40
+    plan = plan_session(5, due_cards(12), LESSON_5, NOW)
+    assert [b["kind"] for b in plan.blocks] == ["review", "recap"]
+
+
+def test_plan_extra_reviews_deferred() -> None:
+    plan = plan_session(5, due_cards(100), None, NOW)
+    review = next(b for b in plan.blocks if b["kind"] == "review")
+    assert len(review["conceptIds"]) == (300 - RECAP_SECONDS) // REVIEW_ITEM_SECONDS
+    assert review["deferred"] == 100 - len(review["conceptIds"])
+
+
+def test_plan_warmup_review_cap_and_lesson() -> None:
     mastered = [make_card(f"m{i}", due_in_days=10, stability=10 + i) for i in range(4)]
-    due = [make_card(f"d{i}", due_in_days=-i) for i in range(40)]
+    due = [make_card(f"d{i}", due_in_days=-i) for i in range(12)]
     lesson = Lesson(id="L", unit="U", estimated_minutes=6, prerequisites=())
     plan = plan_session(10, [*mastered, *due], lesson, NOW)
     warmup, review, new, recap = plan.blocks
     assert warmup == {"kind": "warmup", "conceptIds": ["m3", "m2", "m1"]}
-    # 600 − 20 − 30 − 360 = 190 s → 12 révisions, les plus en retard d'abord.
-    assert review["conceptIds"] == [f"d{i}" for i in range(39, 27, -1)]
-    assert review["deferred"] == 28
+    # 12 < seuil 20 : leçon incluse ; 720 − 20 − 30 − 360 = 310 s → 20 révisions possibles, 12 dues.
+    assert review["conceptIds"] == [f"d{i}" for i in range(11, -1, -1)]
+    assert review["deferred"] == 0
     assert new == {"kind": "new", "lessonId": "L"}
     assert recap == {"kind": "recap"}
     assert plan.estimated_seconds == 20 + 30 + 12 * 15 + 360
@@ -99,8 +150,21 @@ def test_plan_session_warmup_review_cap_and_lesson() -> None:
 def test_next_lesson_follows_prerequisites() -> None:
     assert next_lesson(PACK, PACK.lessons, set(), None).id == "vi-south.u01.l01"  # type: ignore[union-attr]
     assert next_lesson(PACK, PACK.lessons, {"vi-south.u01.l01"}, "family").id == "vi-south.u01.l02"  # type: ignore[union-attr]
-    done = {"vi-south.u01.l01", "vi-south.u01.l02", "vi-south.u01.l03"}
-    assert next_lesson(PACK, PACK.lessons, done, None) is None
+    assert next_lesson(PACK, PACK.lessons, set(PACK.lessons), None) is None
+
+
+def test_session_next_honors_placement_entry(client: TestClient, auth: dict[str, str]) -> None:
+    entry = "vi-south.u02.l01"
+    placement = event(
+        "placement_completed",
+        {"levelEstimate": 1, "entryLessonId": entry, "correct": 5, "total": 8, "knownConceptIds": []},
+    )
+    client.post("/me/events", headers=auth, json={"events": [placement]})
+    plan = client.get("/me/session/next", headers=auth).json()
+    assert {"kind": "new", "lessonId": entry} in plan["blocks"]
+    done = event("lesson_completed", {"sessionId": "s", "lessonId": entry, "score": 1, "durationMs": 1})
+    client.post("/me/events", headers=auth, json={"events": [done]})
+    assert client.get("/me", headers=auth).json()["enrollment"]["currentLessonId"] == "vi-south.u02.l02"
 
 
 def test_record_activity_rules() -> None:

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_xe_om_grab",
+  "title": {
+    "fr": "Xe ôm et applis",
+    "en": "Xe ôm and apps"
+  },
+  "body": {
+    "fr": "Le xe ôm est un taxi-moto : tu montes derrière le chauffeur. Aujourd'hui, on le réserve surtout par appli, comme Grab, avec le prix affiché d'avance. Avec un chauffeur de rue, fixe le prix avant de partir. Le chauffeur te prête un casque.",
+    "en": "A xe ôm is a motorbike taxi: you ride behind the driver. These days it's mostly booked through apps like Grab, with the price shown upfront. With a street driver, agree the price before setting off. The driver lends you a helmet."
+  },
+  "vi": "Anh chở em ra chợ nha.",
+  "audio": "audio/cc_xe_om_grab.opus",
+  "question": {
+    "prompt": {
+      "fr": "Avec un xe ôm de rue, le prix se fixe…",
+      "en": "With a street xe ôm, the price is agreed…"
+    },
+    "options": [
+      {
+        "fr": "avant de partir",
+        "en": "before setting off"
+      },
+      {
+        "fr": "à l'arrivée",
+        "en": "on arrival"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

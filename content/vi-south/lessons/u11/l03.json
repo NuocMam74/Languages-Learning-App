@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u11.l03",
+  "unit": "vi-south.u11",
+  "title": {
+    "fr": "Quẹo trái, quẹo phải",
+    "en": "Turn left, turn right"
+  },
+  "goal": {
+    "fr": "Indiquer au chauffeur où tourner.",
+    "en": "Tell the driver where to turn."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u11.l02"
+  ],
+  "concepts": [
+    "c_queo",
+    "s_queo_trai",
+    "s_queo_phai",
+    "c_nga_tu",
+    "c_den_do"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "s_queo_trai",
+      "distractors": [
+        "s_queo_phai",
+        "c_den_do"
+      ],
+      "explain": {
+        "fr": "quẹo trái : tourner à gauche.",
+        "en": "quẹo trái: turn left."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_queo_re"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_queo_phai",
+      "distractors": [
+        "s_queo_trai",
+        "c_xe_buyt"
+      ],
+      "explain": {
+        "fr": "quẹo phải : tourner à droite.",
+        "en": "quẹo phải: turn right."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_turn",
+      "explain": {
+        "fr": "Sud : quẹo ; Nord et GPS : rẽ.",
+        "en": "South: quẹo; North and GPS: rẽ."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_queo",
+      "explain": {
+        "fr": "quẹo tombe court (nặng).",
+        "en": "quẹo drops short (nặng)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nga_tu",
+      "distractors": [
+        "ngã ba",
+        "ngày tư"
+      ],
+      "explain": {
+        "fr": "ngã tư : carrefour à quatre branches ; ngã ba : à trois.",
+        "en": "ngã tư: four-way crossroads; ngã ba: three-way."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_den_do",
+      "distractors": [
+        "s_queo_trai",
+        "c_cay_xang"
+      ],
+      "explain": {
+        "fr": "đèn đỏ : le feu rouge.",
+        "en": "đèn đỏ: red light."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tới ngã tư thì quẹo trái.",
+      "tokens": [
+        "Tới",
+        "ngã tư",
+        "thì",
+        "quẹo",
+        "trái",
+        "phải"
+      ],
+      "translation": {
+        "fr": "Au carrefour, tourne à gauche.",
+        "en": "At the crossroads, turn left."
+      },
+      "explain": {
+        "fr": "Tới + lieu + thì… : « arrivé à…, alors… ».",
+        "en": "Tới + place + thì…: 'when you reach…, then…'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Quẹo phải ở cây xăng.",
+      "tokens": [
+        "Quẹo",
+        "phải",
+        "ở",
+        "cây xăng",
+        "trái"
+      ],
+      "translation": {
+        "fr": "Tourne à droite à la station-service.",
+        "en": "Turn right at the petrol station."
+      },
+      "explain": {
+        "fr": "ở + repère : l'endroit où tourner.",
+        "en": "ở + landmark: where to turn."
+      }
+    },
+    {
+      "type": "game",
+      "game": "xe_om",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_queo",
+      "s_queo_trai",
+      "s_queo_phai",
+      "c_nga_tu",
+      "c_den_do"
+    ]
+  },
+  "reviewed": false
+}

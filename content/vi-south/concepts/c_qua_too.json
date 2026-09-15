@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_qua_too",
+  "type": "word",
+  "vi": "quá",
+  "tone": "sac",
+  "gloss": {
+    "fr": "trop ; tellement",
+    "en": "too; so"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_qua_too_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_qua_too_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Après l'adjectif : mắc quá (trop cher), ngon quá (tellement bon).",
+    "en": "After the adjective: mắc quá (too expensive), ngon quá (so tasty)."
+  },
+  "reviewed": false
+}

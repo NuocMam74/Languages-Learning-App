@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_bao_nhieu_mot_ky",
+  "type": "structure",
+  "vi": "Bao nhiêu một ký?",
+  "gloss": {
+    "fr": "Combien le kilo ?",
+    "en": "How much per kilo?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bao_nhieu_mot_ky_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bao_nhieu_mot_ky_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

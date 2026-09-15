@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chut_xiu",
+  "type": "word",
+  "vi": "chút xíu",
+  "gloss": {
+    "fr": "un tout petit peu",
+    "en": "a tiny bit"
+  },
+  "register": "familiar",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chut_xiu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chut_xiu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Très courant au Sud. Plus neutre : một chút.",
+    "en": "Very common in the South. More neutral: một chút."
+  },
+  "reviewed": false
+}

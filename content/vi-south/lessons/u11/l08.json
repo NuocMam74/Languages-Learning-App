@@ -1,0 +1,198 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u11.l08",
+  "unit": "vi-south.u11",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : se déplacer",
+    "en": "Test: getting around"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais te déplacer et guider un chauffeur à Saïgon.",
+    "en": "Show you can get around and guide a driver in Saigon."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u11.l07"
+  ],
+  "concepts": [
+    "c_xe_hoi",
+    "c_xe_may",
+    "s_queo_trai",
+    "c_queo",
+    "s_dung_lai",
+    "c_nga_tu",
+    "s_bao_lau",
+    "c_non_bao_hiem"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_hoi",
+      "distractors": [
+        "c_xe_buyt",
+        "c_may_bay"
+      ],
+      "explain": {
+        "fr": "xe hơi : la voiture.",
+        "en": "xe hơi: car."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_may",
+      "distractors": [
+        "xe mây",
+        "xe mấy"
+      ],
+      "explain": {
+        "fr": "xe máy : la moto.",
+        "en": "xe máy: motorbike."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh chở em ra chợ Bến Thành nha.",
+      "tokens": [
+        "Anh",
+        "chở",
+        "em",
+        "ra",
+        "chợ",
+        "Bến Thành",
+        "nha",
+        "chờ"
+      ],
+      "translation": {
+        "fr": "Emmène-moi au marché Bến Thành, d'accord ? (à un homme un peu plus âgé)",
+        "en": "Take me to Bến Thành market, okay? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "chở : emmener.",
+        "en": "chở: give a ride."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_queo_trai",
+      "distractors": [
+        "s_queo_phai",
+        "c_den_do"
+      ],
+      "explain": {
+        "fr": "quẹo trái : à gauche.",
+        "en": "quẹo trái: left."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_queo",
+      "explain": {
+        "fr": "quẹo : nặng.",
+        "en": "quẹo: nặng."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_dung_lai",
+      "distractors": [
+        "s_chay_thang",
+        "s_queo_phai"
+      ],
+      "explain": {
+        "fr": "dừng lại : stop.",
+        "en": "dừng lại: stop."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tới rồi, cho em xuống đây.",
+      "tokens": [
+        "Tới",
+        "rồi",
+        "cho",
+        "em",
+        "xuống",
+        "đây",
+        "lên"
+      ],
+      "translation": {
+        "fr": "On est arrivés, déposez-moi ici.",
+        "en": "We're here, drop me off here."
+      },
+      "explain": {
+        "fr": "cho em xuống : je descends.",
+        "en": "cho em xuống: let me off."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nga_tu",
+      "distractors": [
+        "ngã ba",
+        "ngày tư"
+      ],
+      "explain": {
+        "fr": "ngã tư : le carrefour.",
+        "en": "ngã tư: crossroads."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bao_lau",
+      "distractors": [
+        "bao nhiêu",
+        "bao giờ"
+      ],
+      "explain": {
+        "fr": "bao lâu : combien de temps.",
+        "en": "bao lâu: how long."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_traffic_jam",
+      "explain": {
+        "fr": "Sud : kẹt xe ; Nord : tắc đường.",
+        "en": "South: kẹt xe; North: tắc đường."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_non_bao_hiem",
+      "distractors": [
+        "c_xe_dap",
+        "c_den_do"
+      ],
+      "explain": {
+        "fr": "nón bảo hiểm : le casque.",
+        "en": "nón bảo hiểm: helmet."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh chạy chậm lại được không?",
+      "tokens": [
+        "Anh",
+        "chạy",
+        "chậm",
+        "lại",
+        "được",
+        "không",
+        "nhanh"
+      ],
+      "translation": {
+        "fr": "Tu peux rouler moins vite ? (à un homme un peu plus âgé)",
+        "en": "Can you ride more slowly? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "… được không ? : poliment.",
+        "en": "… được không?: politely."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u06.l02",
+  "unit": "vi-south.u06",
+  "title": {
+    "fr": "De six à dix",
+    "en": "Six to ten"
+  },
+  "goal": {
+    "fr": "Compter jusqu'à dix.",
+    "en": "Count to ten."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u06.l01"
+  ],
+  "concepts": [
+    "c_sau_six",
+    "c_bay_seven",
+    "c_tam_eight",
+    "c_chin_nine",
+    "c_muoi_ten"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_six",
+      "distractors": [
+        "sau",
+        "sàu"
+      ],
+      "explain": {
+        "fr": "sáu monte : six. sau, plat : après.",
+        "en": "sáu rises: six. sau, level: after."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_so_dep"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_bay_seven",
+      "explain": {
+        "fr": "bảy porte le hỏi. Au Sud, hỏi et ngã sonnent pareil.",
+        "en": "bảy carries hỏi. In the South, hỏi and ngã sound the same."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tam_eight",
+      "distractors": [
+        "tắm",
+        "tấm"
+      ],
+      "explain": {
+        "fr": "tám : huit. tắm, avec ă, veut dire « se laver ».",
+        "en": "tám: eight. tắm, with ă, means 'to bathe'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chin_nine",
+      "distractors": [
+        "chìn",
+        "chinh"
+      ],
+      "explain": {
+        "fr": "chín monte : neuf. Il veut aussi dire « mûr » ou « cuit ».",
+        "en": "chín rises: nine. It also means 'ripe' or 'cooked'."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_muoi_ten",
+      "explain": {
+        "fr": "mười descend (huyền) : dix.",
+        "en": "mười falls (huyền): ten."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em tôi mười tuổi.",
+      "tokens": [
+        "Em",
+        "tôi",
+        "mười",
+        "tuổi",
+        "mươi"
+      ],
+      "translation": {
+        "fr": "Mon petit frère a dix ans.",
+        "en": "My little brother is ten."
+      },
+      "explain": {
+        "fr": "Pour l'âge : nombre + tuổi, sans verbe.",
+        "en": "For age: number + tuổi, no verb."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bay_seven",
+      "distractors": [
+        "bay",
+        "bày"
+      ],
+      "explain": {
+        "fr": "bảy plonge : sept. bay, plat : voler.",
+        "en": "bảy dips: seven. bay, level: to fly."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_sau_six",
+      "explain": {
+        "fr": "sáu monte nettement.",
+        "en": "sáu rises clearly."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_sau_six",
+      "c_bay_seven",
+      "c_tam_eight",
+      "c_chin_nine",
+      "c_muoi_ten"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,154 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u11.l07",
+  "unit": "vi-south.u11",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : se déplacer",
+    "en": "Review: getting around"
+  },
+  "goal": {
+    "fr": "Revoir véhicules, directions et trajets.",
+    "en": "Go over vehicles, directions and trips."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u11.l06"
+  ],
+  "concepts": [
+    "c_xe_om",
+    "s_queo_phai",
+    "s_toi_roi",
+    "c_cho_carry",
+    "c_cho_market",
+    "c_cho_wait",
+    "s_cho_em_xuong"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_om",
+      "distractors": [
+        "c_xe_buyt",
+        "c_xe_dap"
+      ],
+      "explain": {
+        "fr": "xe ôm : le taxi-moto.",
+        "en": "xe ôm: motorbike taxi."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_voiture",
+      "explain": {
+        "fr": "Sud : xe hơi ; Nord : ô tô.",
+        "en": "South: xe hơi; North: ô tô."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_queo_phai",
+      "distractors": [
+        "s_queo_trai",
+        "c_xe_buyt"
+      ],
+      "explain": {
+        "fr": "quẹo phải : à droite.",
+        "en": "quẹo phải: right."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tới ngã tư thì quẹo trái.",
+      "tokens": [
+        "Tới",
+        "ngã tư",
+        "thì",
+        "quẹo",
+        "trái",
+        "phải"
+      ],
+      "translation": {
+        "fr": "Au carrefour, tourne à gauche.",
+        "en": "At the crossroads, turn left."
+      },
+      "explain": {
+        "fr": "Tới… thì quẹo…",
+        "en": "Tới… thì quẹo…"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_toi_roi",
+      "distractors": [
+        "Tối rồi.",
+        "Tới đây."
+      ],
+      "explain": {
+        "fr": "Tới rồi : on est arrivés.",
+        "en": "Tới rồi: we're here."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_turn",
+      "explain": {
+        "fr": "Sud : quẹo ; Nord : rẽ.",
+        "en": "South: quẹo; North: rẽ."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đi xe buýt mất bao lâu?",
+      "tokens": [
+        "Đi",
+        "xe buýt",
+        "mất",
+        "bao lâu",
+        "bao nhiêu"
+      ],
+      "translation": {
+        "fr": "Ça prend combien de temps en bus ?",
+        "en": "How long does it take by bus?"
+      },
+      "explain": {
+        "fr": "mất bao lâu : combien de temps.",
+        "en": "mất bao lâu: how long."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chở",
+        "chợ",
+        "chờ"
+      ],
+      "audioConcepts": [
+        "c_cho_carry",
+        "c_cho_market",
+        "c_cho_wait"
+      ],
+      "explain": {
+        "fr": "chở plonge, chợ court, chờ descend.",
+        "en": "chở dips, chợ short, chờ falls."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cho_em_xuong",
+      "explain": {
+        "fr": "xuống monte, đây reste plat.",
+        "en": "xuống rises, đây stays level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

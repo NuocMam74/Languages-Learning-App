@@ -1,0 +1,140 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u11.l01",
+  "unit": "vi-south.u11",
+  "title": {
+    "fr": "Xe máy, xe buýt, xe hơi",
+    "en": "Motorbike, bus, car"
+  },
+  "goal": {
+    "fr": "Nommer les moyens de transport.",
+    "en": "Name means of transport."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u10.l08"
+  ],
+  "concepts": [
+    "c_xe_may",
+    "c_xe_buyt",
+    "c_xe_hoi",
+    "c_may_bay",
+    "c_xe_dap"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_buyt",
+      "distractors": [
+        "c_xe_hoi",
+        "c_xe_may"
+      ],
+      "explain": {
+        "fr": "xe buýt : le bus.",
+        "en": "xe buýt: bus."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_xe_may_city"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_hoi",
+      "distractors": [
+        "c_xe_buyt",
+        "c_may_bay"
+      ],
+      "explain": {
+        "fr": "xe hơi : la voiture, au Sud.",
+        "en": "xe hơi: car, in the South."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_voiture",
+      "explain": {
+        "fr": "Sud : xe hơi ; Nord : ô tô.",
+        "en": "South: xe hơi; North: ô tô."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_may_bay",
+      "distractors": [
+        "c_xe_dap",
+        "c_xe_buyt"
+      ],
+      "explain": {
+        "fr": "máy bay : l'avion, « la machine qui vole ».",
+        "en": "máy bay: plane, 'the flying machine'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_may",
+      "distractors": [
+        "xe mây",
+        "xe mấy"
+      ],
+      "explain": {
+        "fr": "xe máy : la moto. máy monte.",
+        "en": "xe máy: motorbike. máy rises."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_dap",
+      "distractors": [
+        "c_xe_may",
+        "c_xe_hoi"
+      ],
+      "explain": {
+        "fr": "xe đạp : le vélo. đạp = pédaler.",
+        "en": "xe đạp: bicycle. đạp = to pedal."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi đi làm bằng xe máy.",
+      "tokens": [
+        "Tôi",
+        "đi làm",
+        "bằng",
+        "xe máy",
+        "với"
+      ],
+      "translation": {
+        "fr": "Je vais au travail en moto.",
+        "en": "I go to work by motorbike."
+      },
+      "explain": {
+        "fr": "bằng + véhicule : « en… ».",
+        "en": "bằng + vehicle: 'by…'."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_xe_may",
+      "explain": {
+        "fr": "xe plat, máy monte.",
+        "en": "xe level, máy rises."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_xe_may",
+      "c_xe_buyt",
+      "c_xe_hoi",
+      "c_may_bay",
+      "c_xe_dap"
+    ]
+  },
+  "reviewed": false
+}

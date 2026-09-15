@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_bot_cho_em",
+  "type": "structure",
+  "vi": "Bớt cho em đi chị.",
+  "gloss": {
+    "fr": "Fais-moi un prix (à une vendeuse un peu plus âgée).",
+    "en": "Give me a discount (to a slightly older saleswoman)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bot_cho_em_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bot_cho_em_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

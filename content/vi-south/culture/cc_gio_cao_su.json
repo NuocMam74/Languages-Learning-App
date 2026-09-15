@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_gio_cao_su",
+  "title": {
+    "fr": "Giờ cao su, l'heure élastique",
+    "en": "Giờ cao su, rubber time"
+  },
+  "body": {
+    "fr": "On parle en riant de giờ cao su, « l'heure en caoutchouc » : entre amis, un rendez-vous s'étire volontiers de quinze ou trente minutes. Au travail et pour les rendez-vous officiels, en revanche, on attend de toi la ponctualité.",
+    "en": "People joke about giờ cao su, 'rubber time': among friends, a meeting time easily stretches by fifteen or thirty minutes. At work and for official appointments, though, you're expected to be on time."
+  },
+  "vi": "Mấy giờ rồi?",
+  "audio": "audio/cc_gio_cao_su.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Giờ cao su », c'est…",
+      "en": "'Giờ cao su' is…"
+    },
+    "options": [
+      {
+        "fr": "une heure élastique, pas précise",
+        "en": "a stretchy, imprecise time"
+      },
+      {
+        "fr": "l'heure du déjeuner",
+        "en": "lunchtime"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -14,6 +14,12 @@ dependencies = [
     "argon2-cffi>=23.1",
     "pyjwt>=2.9",
     "anthropic>=1.5.0",
+    "weasyprint>=70.0",
+    "fpdf2>=2.8.8",
+    "apscheduler>=3.11.3",
+    "pywebpush>=2.5.0",
+    "tzdata>=2026.4",
+    "boto3>=1.43.93",
 ]
 
 [dependency-groups]
@@ -21,6 +27,7 @@ dev = [
     "pytest>=8.3",
     "httpx>=0.27",
     "ruff>=0.6",
+    "pypdf>=6.18.1",
 ]
 
 [tool.uv]

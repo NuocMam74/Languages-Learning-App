@@ -1,0 +1,159 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u07.l04",
+  "unit": "vi-south.u07",
+  "title": {
+    "fr": "Commander au quán",
+    "en": "Ordering at a quán"
+  },
+  "goal": {
+    "fr": "Appeler le serveur, commander et dire que c'est bon.",
+    "en": "Call the server, order and say it's good."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u07.l03"
+  ],
+  "concepts": [
+    "s_em_oi",
+    "c_mon",
+    "c_cay",
+    "c_it",
+    "c_ngon",
+    "s_ngon_qua"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_oi",
+      "distractors": [
+        "Anh ơi!",
+        "Chị ơi!"
+      ],
+      "explain": {
+        "fr": "em ơi : pour un serveur plus jeune.",
+        "en": "em ơi: for a younger server."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_calling_waiter"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cay",
+      "distractors": [
+        "cày",
+        "cây"
+      ],
+      "explain": {
+        "fr": "cay, plat : piquant. cày descend : labourer.",
+        "en": "cay, level: spicy. cày falls: to plough."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_mon",
+      "explain": {
+        "fr": "món monte (sắc) : le plat.",
+        "en": "món rises (sắc): dish."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngon",
+      "distractors": [
+        "ngọn",
+        "ngón"
+      ],
+      "explain": {
+        "fr": "ngon, plat : bon. ngón monte : le doigt.",
+        "en": "ngon, level: tasty. ngón rises: finger."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi, cho anh một tô hủ tiếu.",
+      "tokens": [
+        "Em ơi",
+        "cho",
+        "anh",
+        "một",
+        "tô",
+        "hủ tiếu",
+        "chén"
+      ],
+      "translation": {
+        "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
+        "en": "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+      },
+      "explain": {
+        "fr": "Face à un serveur plus jeune, le client dit anh ou chị pour « je ».",
+        "en": "With a younger server, the customer says anh or chị for 'I'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_it",
+      "distractors": [
+        "ịt",
+        "ỉt"
+      ],
+      "explain": {
+        "fr": "ít monte : peu.",
+        "en": "ít rises: little."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ít cay thôi nha em.",
+      "tokens": [
+        "Ít",
+        "cay",
+        "thôi",
+        "nha",
+        "em",
+        "ngon"
+      ],
+      "translation": {
+        "fr": "Pas trop piquant, s'il te plaît.",
+        "en": "Not too spicy, please."
+      },
+      "explain": {
+        "fr": "ít cay = « peu piquant ». thôi nha adoucit la demande.",
+        "en": "ít cay = 'a little spicy'. thôi nha softens the request."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ngon_qua",
+      "distractors": [
+        "Ngon lắm!",
+        "Không ngon."
+      ],
+      "explain": {
+        "fr": "Ngon quá ! : l'exclamation. Ngon lắm ! : « très bon ».",
+        "en": "Ngon quá!: the exclamation. Ngon lắm!: 'very good'."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_ngon_qua",
+      "explain": {
+        "fr": "ngon plat, quá monte avec entrain.",
+        "en": "ngon level, quá rises with enthusiasm."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_em_oi",
+      "c_mon",
+      "c_cay",
+      "c_it",
+      "c_ngon",
+      "s_ngon_qua"
+    ]
+  },
+  "reviewed": false
+}

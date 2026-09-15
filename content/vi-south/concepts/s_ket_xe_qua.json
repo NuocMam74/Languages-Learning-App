@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_ket_xe_qua",
+  "type": "structure",
+  "vi": "Kẹt xe quá!",
+  "gloss": {
+    "fr": "Quel embouteillage !",
+    "en": "What a traffic jam!"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ket_xe_qua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ket_xe_qua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

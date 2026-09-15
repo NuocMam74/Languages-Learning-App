@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_bang_tuoi",
+  "type": "structure",
+  "vi": "bằng tuổi",
+  "gloss": {
+    "fr": "du même âge",
+    "en": "the same age"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bang_tuoi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bang_tuoi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Tụi mình bằng tuổi nhau.",
+      "fr": "On a le même âge.",
+      "en": "We're the same age."
+    }
+  ],
+  "reviewed": false
+}

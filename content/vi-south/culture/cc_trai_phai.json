@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_trai_phai",
+  "title": {
+    "fr": "Trái, phải : double sens",
+    "en": "Trái, phải: double meanings"
+  },
+  "body": {
+    "fr": "trái veut dire « gauche », mais aussi « fruit » : trái xoài. phải veut dire « droite », mais aussi « juste » et « devoir » : Phải rồi ! = « C'est ça ! ». Le contexte tranche. Pour « à côté », le Sud dit volontiers kế bên.",
+    "en": "trái means 'left', and also 'fruit': trái xoài. phải means 'right', and also 'correct' and 'must': Phải rồi! = 'That's right!'. Context decides. For 'next to', the South happily says kế bên."
+  },
+  "vi": "Ngân hàng ở bên trái.",
+  "audio": "audio/cc_trai_phai.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Phải rồi ! » veut dire…",
+      "en": "'Phải rồi!' means…"
+    },
+    "options": [
+      {
+        "fr": "C'est ça !",
+        "en": "That's right!"
+      },
+      {
+        "fr": "À droite !",
+        "en": "To the right!"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

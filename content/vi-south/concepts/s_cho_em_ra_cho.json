@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_cho_em_ra_cho",
+  "type": "structure",
+  "vi": "Anh chở em ra chợ nha.",
+  "gloss": {
+    "fr": "Emmène-moi au marché, d'accord ? (à un homme un peu plus âgé)",
+    "en": "Take me to the market, okay? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cho_em_ra_cho_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cho_em_ra_cho_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

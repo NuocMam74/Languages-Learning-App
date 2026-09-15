@@ -1,0 +1,147 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u06.l06",
+  "unit": "vi-south.u06",
+  "title": {
+    "fr": "Ton numéro de téléphone",
+    "en": "Your phone number"
+  },
+  "goal": {
+    "fr": "Demander et donner un numéro de téléphone.",
+    "en": "Ask for and give a phone number."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u06.l05"
+  ],
+  "concepts": [
+    "c_dien_thoai",
+    "s_so_dien_thoai",
+    "s_cho_em_xin_so",
+    "c_goi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_sach",
+        "c_ghe"
+      ],
+      "explain": {
+        "fr": "điện thoại : le téléphone.",
+        "en": "điện thoại: phone."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_zalo"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_so_dien_thoai",
+      "distractors": [
+        "sổ điện thoại",
+        "số điện thoái"
+      ],
+      "explain": {
+        "fr": "số điện thoại : le numéro de téléphone.",
+        "en": "số điện thoại: phone number."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_goi",
+      "explain": {
+        "fr": "gọi tombe court (nặng) : appeler.",
+        "en": "gọi drops short (nặng): to call."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh gọi cho em nha.",
+      "tokens": [
+        "Anh",
+        "gọi",
+        "cho",
+        "em",
+        "nha",
+        "số"
+      ],
+      "translation": {
+        "fr": "Appelle-moi, d'accord ? (à un homme un peu plus âgé)",
+        "en": "Call me, okay? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "gọi cho + personne : appeler quelqu'un. nha adoucit, très Sud.",
+        "en": "gọi cho + person: to call someone. nha softens, very southern."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_xin_so",
+      "distractors": [
+        "Cho em xin lỗi nha.",
+        "Cho anh xin số điện thoại nha."
+      ],
+      "explain": {
+        "fr": "cho em xin : c'est em qui demande, poliment.",
+        "en": "cho em xin: em is the one asking, politely."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Số điện thoại của chị là bao nhiêu?",
+      "tokens": [
+        "Số điện thoại",
+        "của",
+        "chị",
+        "là",
+        "bao nhiêu",
+        "mấy"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "Pour un numéro, on demande là bao nhiêu ?",
+        "en": "For a number you ask là bao nhiêu?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "điện thoải",
+        "diện thoại"
+      ],
+      "explain": {
+        "fr": "điện, avec đ, tombe court ; thoại aussi.",
+        "en": "điện, with đ, drops short; so does thoại."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cho_em_xin_so",
+      "explain": {
+        "fr": "Phrase douce : nha reste plat et léger.",
+        "en": "A soft sentence: nha stays level and light."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_dien_thoai",
+      "s_so_dien_thoai",
+      "s_cho_em_xin_so",
+      "c_goi"
+    ]
+  },
+  "reviewed": false
+}

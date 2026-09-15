@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_muong",
+  "type": "word",
+  "vi": "muỗng",
+  "tone": "nga",
+  "gloss": {
+    "fr": "cuillère",
+    "en": "spoon"
+  },
+  "register": "neutral",
+  "northernEquivalent": "thìa",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_muong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_muong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/spoon.svg",
+  "reviewed": false
+}

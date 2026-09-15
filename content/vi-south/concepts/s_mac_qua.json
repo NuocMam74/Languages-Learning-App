@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_mac_qua",
+  "type": "structure",
+  "vi": "Mắc quá!",
+  "gloss": {
+    "fr": "C'est trop cher !",
+    "en": "Too expensive!"
+  },
+  "register": "neutral",
+  "northernEquivalent": "Đắt quá!",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_mac_qua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_mac_qua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

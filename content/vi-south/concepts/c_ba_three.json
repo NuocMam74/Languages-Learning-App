@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ba_three",
+  "type": "word",
+  "vi": "ba",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "trois",
+    "en": "three"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ba_three_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ba_three_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Même mot que ba, « papa » : seul le contexte les distingue.",
+    "en": "Same word as ba, 'dad': only context tells them apart."
+  },
+  "reviewed": false
+}

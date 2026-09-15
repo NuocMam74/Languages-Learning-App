@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u07.l02",
+  "unit": "vi-south.u07",
+  "title": {
+    "fr": "Cà phê sữa đá, trà đá",
+    "en": "Cà phê sữa đá, trà đá"
+  },
+  "goal": {
+    "fr": "Commander une boisson dans un café du Sud.",
+    "en": "Order a drink at a southern café."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u07.l01"
+  ],
+  "concepts": [
+    "c_ca_phe",
+    "s_ca_phe_sua_da",
+    "c_da_ice",
+    "s_tra_da",
+    "c_ly",
+    "c_nuoc_mia"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "s_ca_phe_sua_da",
+      "distractors": [
+        "s_tra_da",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "cà phê sữa đá : café, lait concentré, glace.",
+        "en": "cà phê sữa đá: coffee, condensed milk, ice."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ca_phe_sua_da"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_da_ice",
+      "explain": {
+        "fr": "đá monte (sắc) : la glace.",
+        "en": "đá rises (sắc): ice."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ca_phe",
+      "distractors": [
+        "c_tra_tea",
+        "s_ca_phe_sua_da"
+      ],
+      "explain": {
+        "fr": "cà phê : le café, ici dans son phin.",
+        "en": "cà phê: coffee, here in its phin filter."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc_mia",
+      "distractors": [
+        "nước mìa",
+        "nước mắm"
+      ],
+      "explain": {
+        "fr": "nước mía : le jus de canne. mía monte.",
+        "en": "nước mía: sugarcane juice. mía rises."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ly",
+      "distractors": [
+        "c_to_bowl",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "ly : le verre, au Sud.",
+        "en": "ly: glass, in the South."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em một ly cà phê sữa đá.",
+      "tokens": [
+        "Cho",
+        "em",
+        "một",
+        "ly",
+        "cà phê",
+        "sữa",
+        "đá",
+        "tô"
+      ],
+      "translation": {
+        "fr": "Un café glacé au lait, s'il te plaît.",
+        "en": "An iced milk coffee, please."
+      },
+      "explain": {
+        "fr": "Pour une boisson : một ly + boisson.",
+        "en": "For a drink: một ly + drink."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_verre",
+      "explain": {
+        "fr": "Sud : ly ; Nord : cốc.",
+        "en": "South: ly; North: cốc."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tra_da",
+      "distractors": [
+        "trà đà",
+        "trà sữa"
+      ],
+      "explain": {
+        "fr": "trà đá : le thé glacé. trà sữa : le thé au lait.",
+        "en": "trà đá: iced tea. trà sữa: milk tea."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_ca_phe_sua_da",
+      "explain": {
+        "fr": "cà descend, phê plat, sữa plonge, đá monte.",
+        "en": "cà falls, phê level, sữa dips, đá rises."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ca_phe",
+      "s_ca_phe_sua_da",
+      "c_da_ice",
+      "s_tra_da",
+      "c_ly",
+      "c_nuoc_mia"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_an_sang",
+  "title": {
+    "fr": "Le petit-déjeuner dehors",
+    "en": "Breakfast out"
+  },
+  "body": {
+    "fr": "Beaucoup de Saïgonnais prennent le petit-déjeuner dehors, avant le travail : un hủ tiếu, un bánh mì, un dĩa cơm tấm, avec un cà phê. Les étals ouvrent dès l'aube et beaucoup ferment en milieu de matinée. Qui arrive tard trouve la marmite vide !",
+    "en": "Many Saigonese eat breakfast out before work: hủ tiếu, bánh mì, a plate of cơm tấm, with a cà phê. Stalls open at dawn and many close by mid-morning. Arrive late and the pot is empty!"
+  },
+  "vi": "Sáng nay em ăn bánh mì.",
+  "audio": "audio/cc_an_sang.opus",
+  "question": {
+    "prompt": {
+      "fr": "Les étals du petit-déjeuner ferment souvent…",
+      "en": "Breakfast stalls often close…"
+    },
+    "options": [
+      {
+        "fr": "en milieu de matinée",
+        "en": "by mid-morning"
+      },
+      {
+        "fr": "à minuit",
+        "en": "at midnight"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

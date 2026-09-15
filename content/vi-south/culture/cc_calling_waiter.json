@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_calling_waiter",
+  "title": {
+    "fr": "Em ơi ! Appeler le serveur",
+    "en": "Em ơi! Calling the server"
+  },
+  "body": {
+    "fr": "Dans un quán, n'attends pas qu'on vienne à ta table : on appelle. Lève la main et dis « Em ơi ! » si le serveur est plus jeune, « Anh ơi ! » ou « Chị ơi ! » s'il est plus âgé. Ce n'est pas impoli, c'est l'usage.",
+    "en": "In a quán, don't wait for someone to come to your table: you call out. Raise your hand and say 'Em ơi!' if the server is younger, 'Anh ơi!' or 'Chị ơi!' if older. It isn't rude, it's how it's done."
+  },
+  "vi": "Em ơi, cho anh một ly trà đá.",
+  "audio": "audio/cc_calling_waiter.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour appeler une jeune serveuse, tu dis…",
+      "en": "To call a young waitress, you say…"
+    },
+    "options": [
+      {
+        "fr": "Em ơi !",
+        "en": "Em ơi!"
+      },
+      {
+        "fr": "Bà ơi !",
+        "en": "Bà ơi!"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

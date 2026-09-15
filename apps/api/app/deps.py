@@ -11,7 +11,10 @@ from app.config import Settings
 from app.models import User
 from app.services.auth import decode_access_token
 from app.services.content import Pack, load_packs
+from app.services.exams import ExamSpec, load_exams
+from app.services.pdf import PdfRenderer
 from app.services.rate_limit import RateLimiter
+from app.services.storage import FileStorage
 
 
 def get_settings(request: Request) -> Settings:
@@ -31,6 +34,26 @@ def get_packs(settings: Annotated[Settings, Depends(get_settings)]) -> dict[str,
 SettingsDep = Annotated[Settings, Depends(get_settings)]
 DbDep = Annotated[Session, Depends(get_db)]
 PacksDep = Annotated[dict[str, Pack], Depends(get_packs)]
+
+
+def get_exams(packs: PacksDep) -> dict[str, dict[str, ExamSpec]]:
+    """Examens par code de pack (relus à chaque requête : le contenu peut être publié sans redémarrage)."""
+    return {code: load_exams(pack) for code, pack in packs.items()}
+
+
+def get_pdf_renderer(request: Request) -> PdfRenderer:
+    renderer: PdfRenderer = request.app.state.pdf_renderer
+    return renderer
+
+
+def get_storage(request: Request) -> FileStorage:
+    storage: FileStorage = request.app.state.storage
+    return storage
+
+
+ExamsDep = Annotated[dict[str, dict[str, ExamSpec]], Depends(get_exams)]
+PdfRendererDep = Annotated[PdfRenderer, Depends(get_pdf_renderer)]
+StorageDep = Annotated[FileStorage, Depends(get_storage)]
 
 _bearer = HTTPBearer(auto_error=False)
 

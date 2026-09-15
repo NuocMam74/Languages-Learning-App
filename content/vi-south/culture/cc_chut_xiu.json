@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_chut_xiu",
+  "title": {
+    "fr": "Chút xíu, et les sourires",
+    "en": "Chút xíu, and the smiles"
+  },
+  "body": {
+    "fr": "Dis « Tôi nói tiếng Việt chút xíu » et les visages s'illuminent. Au Sud, chút xíu veut dire « un tout petit peu ». L'effort compte énormément : on ralentira pour toi, on répétera, et on te complimentera souvent, même pour trois mots.",
+    "en": "Say 'Tôi nói tiếng Việt chút xíu' and faces light up. In the South chút xíu means 'a tiny bit'. The effort matters a lot: people will slow down, repeat, and often compliment you, even for three words."
+  },
+  "vi": "Tôi nói tiếng Việt chút xíu.",
+  "audio": "audio/cc_chut_xiu.opus",
+  "question": {
+    "prompt": {
+      "fr": "chút xíu veut dire…",
+      "en": "chút xíu means…"
+    },
+    "options": [
+      {
+        "fr": "un tout petit peu",
+        "en": "a tiny bit"
+      },
+      {
+        "fr": "beaucoup",
+        "en": "a lot"
+      },
+      {
+        "fr": "pas du tout",
+        "en": "not at all"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

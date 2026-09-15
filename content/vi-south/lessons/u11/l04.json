@@ -1,0 +1,175 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u11.l04",
+  "unit": "vi-south.u11",
+  "title": {
+    "fr": "Chạy thẳng, dừng lại",
+    "en": "Go straight, stop"
+  },
+  "goal": {
+    "fr": "Guider jusqu'à l'arrivée et descendre.",
+    "en": "Guide the driver to the end and get off."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u11.l03"
+  ],
+  "concepts": [
+    "s_chay_thang",
+    "s_di_thang",
+    "s_dung_lai",
+    "s_cho_em_xuong",
+    "s_toi_roi",
+    "c_cau_bridge"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "s_chay_thang",
+      "distractors": [
+        "s_dung_lai",
+        "s_queo_trai"
+      ],
+      "explain": {
+        "fr": "chạy thẳng : tout droit (en roulant).",
+        "en": "chạy thẳng: straight on (driving)."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_dung_lai",
+      "distractors": [
+        "s_chay_thang",
+        "s_queo_phai"
+      ],
+      "explain": {
+        "fr": "dừng lại : s'arrêter.",
+        "en": "dừng lại: stop."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_di_thang",
+      "distractors": [
+        "đi thang",
+        "đi thắng"
+      ],
+      "explain": {
+        "fr": "đi thẳng : tout droit. thẳng plonge.",
+        "en": "đi thẳng: straight on. thẳng dips."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_xuong",
+      "distractors": [
+        "Cho em lên đây.",
+        "Cho em xuống kia."
+      ],
+      "explain": {
+        "fr": "xuống : descendre. lên : monter.",
+        "en": "xuống: get off. lên: get on."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cau_bridge",
+      "distractors": [
+        "câu",
+        "cậu"
+      ],
+      "explain": {
+        "fr": "cầu descend : le pont. cậu : l'oncle maternel.",
+        "en": "cầu falls: bridge. cậu: maternal uncle."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh chạy thẳng qua cầu nha.",
+      "tokens": [
+        "Anh",
+        "chạy",
+        "thẳng",
+        "qua",
+        "cầu",
+        "nha",
+        "quẹo"
+      ],
+      "translation": {
+        "fr": "Va tout droit et passe le pont, d'accord ?",
+        "en": "Go straight over the bridge, okay?"
+      },
+      "explain": {
+        "fr": "chạy thẳng : très Sud pour un véhicule ; đi thẳng marche partout.",
+        "en": "chạy thẳng: very southern for a vehicle; đi thẳng works everywhere."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_toi_roi",
+      "distractors": [
+        "Tối rồi.",
+        "Tới đây."
+      ],
+      "explain": {
+        "fr": "Tới rồi : on est arrivés. Tối rồi : il fait nuit.",
+        "en": "Tới rồi: we're here. Tối rồi: it's evening."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tới rồi, cho em xuống đây.",
+      "tokens": [
+        "Tới",
+        "rồi",
+        "cho",
+        "em",
+        "xuống",
+        "đây",
+        "lên"
+      ],
+      "translation": {
+        "fr": "On est arrivés, déposez-moi ici.",
+        "en": "We're here, drop me off here."
+      },
+      "explain": {
+        "fr": "cho em xuống : « laisse-moi descendre ».",
+        "en": "cho em xuống: 'let me get off'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dừng lại ở trường học.",
+      "tokens": [
+        "Dừng lại",
+        "ở",
+        "trường học",
+        "chạy"
+      ],
+      "translation": {
+        "fr": "Arrête-toi à l'école.",
+        "en": "Stop at the school."
+      },
+      "explain": {
+        "fr": "dừng lại ở + lieu : s'arrêter à.",
+        "en": "dừng lại ở + place: stop at."
+      }
+    },
+    {
+      "type": "game",
+      "game": "xe_om",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_chay_thang",
+      "s_di_thang",
+      "s_dung_lai",
+      "s_cho_em_xuong",
+      "s_toi_roi",
+      "c_cau_bridge"
+    ]
+  },
+  "reviewed": false
+}

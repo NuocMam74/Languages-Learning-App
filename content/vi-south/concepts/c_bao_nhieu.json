@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_bao_nhieu",
+  "type": "word",
+  "vi": "bao nhiêu",
+  "gloss": {
+    "fr": "combien",
+    "en": "how much, how many"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_bao_nhieu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_bao_nhieu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Pour un nombre qui peut être grand (âge d'un adulte, prix). Pour un petit nombre : mấy.",
+    "en": "For a number that may be large (an adult's age, a price). For a small number: mấy."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ket_xe",
+  "type": "word",
+  "vi": "kẹt xe",
+  "gloss": {
+    "fr": "embouteillage",
+    "en": "traffic jam"
+  },
+  "register": "neutral",
+  "northernEquivalent": "tắc đường",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ket_xe_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ket_xe_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

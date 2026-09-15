@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chua_sour",
+  "type": "word",
+  "vi": "chua",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "acide, aigre",
+    "en": "sour"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chua_sour_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chua_sour_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "canh chua",
+      "fr": "soupe aigre (au tamarin)",
+      "en": "sour soup (with tamarind)"
+    }
+  ],
+  "reviewed": false
+}

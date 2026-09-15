@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_le",
+  "type": "word",
+  "vi": "lẻ",
+  "tone": "hoi",
+  "gloss": {
+    "fr": "« et » entre la centaine et les unités (105 = một trăm lẻ năm)",
+    "en": "'and' between hundreds and units (105 = một trăm lẻ năm)"
+  },
+  "register": "neutral",
+  "northernEquivalent": "linh",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_le_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_le_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : một trăm lẻ năm ; au Nord : một trăm linh năm.",
+    "en": "South: một trăm lẻ năm; North: một trăm linh năm."
+  },
+  "reviewed": false
+}

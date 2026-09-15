@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_thit",
+  "type": "word",
+  "vi": "thịt",
+  "tone": "nang",
+  "gloss": {
+    "fr": "viande",
+    "en": "meat"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_thit_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_thit_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/meat.svg",
+  "reviewed": false
+}

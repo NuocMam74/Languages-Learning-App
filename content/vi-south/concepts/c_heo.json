@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_heo",
+  "type": "word",
+  "vi": "heo",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "porc, cochon",
+    "en": "pig, pork"
+  },
+  "register": "neutral",
+  "northernEquivalent": "lợn",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_heo_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_heo_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/animals/pig.svg",
+  "note": {
+    "fr": "Au Sud : heo ; au Nord : lợn.",
+    "en": "South: heo; North: lợn."
+  },
+  "reviewed": false
+}

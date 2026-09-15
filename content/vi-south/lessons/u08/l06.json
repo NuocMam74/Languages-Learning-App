@@ -1,0 +1,163 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u08.l06",
+  "unit": "vi-south.u08",
+  "title": {
+    "fr": "Payer et la monnaie",
+    "en": "Paying and change"
+  },
+  "goal": {
+    "fr": "Payer, refuser poliment et comprendre la monnaie rendue.",
+    "en": "Pay, politely decline and understand your change."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u08.l05"
+  ],
+  "concepts": [
+    "c_tra_pay",
+    "c_thoi",
+    "s_thoi_cam_on",
+    "s_thoi_tien"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thoi_cam_on",
+      "distractors": [
+        "Dạ, cảm ơn chị.",
+        "Thôi, xin lỗi chị."
+      ],
+      "explain": {
+        "fr": "Thôi, cảm ơn : « non merci », poliment.",
+        "en": "Thôi, cảm ơn: 'no thanks', politely."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_thoi_tien"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_thoi",
+      "explain": {
+        "fr": "thôi reste plat (ngang).",
+        "en": "thôi stays level (ngang)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tra_pay",
+      "distractors": [
+        "trà",
+        "trá"
+      ],
+      "explain": {
+        "fr": "trả plonge : payer. trà descend : le thé.",
+        "en": "trả dips: to pay. trà falls: tea."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em trả tiền nha chị.",
+      "tokens": [
+        "Em",
+        "trả",
+        "tiền",
+        "nha",
+        "chị",
+        "trà"
+      ],
+      "translation": {
+        "fr": "Je vous paie, d'accord ? (à une vendeuse un peu plus âgée)",
+        "en": "Let me pay you, okay? (to a slightly older saleswoman)"
+      },
+      "explain": {
+        "fr": "trả tiền : payer. nha adoucit.",
+        "en": "trả tiền: to pay. nha softens."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thoi_tien",
+      "distractors": [
+        "thời tiết",
+        "thôi tiền"
+      ],
+      "explain": {
+        "fr": "thối tiền : rendre la monnaie. thời tiết : la météo.",
+        "en": "thối tiền: give change. thời tiết: the weather."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị thối lại cho em hai chục.",
+      "tokens": [
+        "Chị",
+        "thối",
+        "lại",
+        "cho",
+        "em",
+        "hai",
+        "chục",
+        "trả"
+      ],
+      "translation": {
+        "fr": "Tu me rends vingt mille. (à une vendeuse un peu plus âgée)",
+        "en": "You give me twenty thousand back. (to a slightly older saleswoman)"
+      },
+      "explain": {
+        "fr": "thối lại cho em : « rends-moi la monnaie ».",
+        "en": "thối lại cho em: 'give me the change'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thoi",
+      "distractors": [
+        "thối",
+        "thời"
+      ],
+      "explain": {
+        "fr": "thôi, plat : ça suffit. thối monte : rendre la monnaie.",
+        "en": "thôi, level: that's enough. thối rises: give change."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Thôi, cảm ơn chị.",
+      "tokens": [
+        "Thôi",
+        "cảm ơn",
+        "chị",
+        "thối"
+      ],
+      "translation": {
+        "fr": "Non merci. (à une femme un peu plus âgée)",
+        "en": "No thanks. (to a slightly older woman)"
+      },
+      "audioConcept": "s_thoi_cam_on",
+      "explain": {
+        "fr": "thôi en tête : on décline avec douceur.",
+        "en": "thôi first: a gentle way to decline."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_thoi_cam_on",
+      "explain": {
+        "fr": "thôi plat, cảm plonge, ơn plat, chị tombe court.",
+        "en": "thôi level, cảm dips, ơn level, chị drops short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_tra_pay",
+      "c_thoi",
+      "s_thoi_cam_on",
+      "s_thoi_tien"
+    ]
+  },
+  "reviewed": false
+}

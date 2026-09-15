@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u05.l07",
+  "unit": "vi-south.u05",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : se présenter",
+    "en": "Review: introductions"
+  },
+  "goal": {
+    "fr": "Revoir nom, pays, métier et petites phrases utiles.",
+    "en": "Go over name, country, job and handy phrases."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u05.l06"
+  ],
+  "concepts": [
+    "c_bac_si",
+    "s_anh_ten_gi",
+    "c_moi",
+    "c_moi_just",
+    "s_nguoi_phap",
+    "c_cong_ty",
+    "c_hieu",
+    "s_rat_vui_duoc_gap"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bac_si",
+      "distractors": [
+        "c_ky_su",
+        "c_sinh_vien"
+      ],
+      "explain": {
+        "fr": "bác sĩ : le médecin.",
+        "en": "bác sĩ: doctor."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_ten_gi",
+      "distractors": [
+        "Chị tên gì?",
+        "Anh ở đâu?"
+      ],
+      "explain": {
+        "fr": "Anh tên gì ? : le nom.",
+        "en": "Anh tên gì?: the name."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "mời",
+        "mới"
+      ],
+      "audioConcepts": [
+        "c_moi",
+        "c_moi_just"
+      ],
+      "explain": {
+        "fr": "mời descend, mới monte.",
+        "en": "mời falls, mới rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_phap",
+      "distractors": [
+        "người Việt",
+        "người Mỹ"
+      ],
+      "explain": {
+        "fr": "người Pháp : Français(e).",
+        "en": "người Pháp: French person."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi là người Pháp.",
+      "tokens": [
+        "Tôi",
+        "là",
+        "người",
+        "Pháp",
+        "Việt"
+      ],
+      "translation": {
+        "fr": "Je suis français(e).",
+        "en": "I'm French."
+      },
+      "explain": {
+        "fr": "người + pays.",
+        "en": "người + country."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cong_ty",
+      "distractors": [
+        "công tý",
+        "cộng ty"
+      ],
+      "explain": {
+        "fr": "công ty : l'entreprise.",
+        "en": "công ty: company."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi mới qua Việt Nam.",
+      "tokens": [
+        "Tôi",
+        "mới",
+        "qua",
+        "Việt Nam",
+        "mời"
+      ],
+      "translation": {
+        "fr": "Je viens d'arriver au Vietnam.",
+        "en": "I just came to Vietnam."
+      },
+      "explain": {
+        "fr": "mới + verbe = venir de.",
+        "en": "mới + verb = just."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_hieu",
+      "explain": {
+        "fr": "hiểu : hỏi, comme un ngã au Sud.",
+        "en": "hiểu: hỏi, like ngã in the South."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_rat_vui_duoc_gap",
+      "explain": {
+        "fr": "rất monte, gặp tombe court.",
+        "en": "rất rises, gặp drops short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

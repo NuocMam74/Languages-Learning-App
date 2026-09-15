@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ruoi",
+  "type": "word",
+  "vi": "rưỡi",
+  "tone": "nga",
+  "gloss": {
+    "fr": "et demie",
+    "en": "half past"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ruoi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ruoi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "hai giờ rưỡi",
+      "fr": "deux heures et demie",
+      "en": "half past two"
+    }
+  ],
+  "reviewed": false
+}

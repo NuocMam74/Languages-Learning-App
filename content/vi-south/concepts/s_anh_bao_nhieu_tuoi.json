@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_anh_bao_nhieu_tuoi",
+  "type": "structure",
+  "vi": "Anh bao nhiêu tuổi?",
+  "gloss": {
+    "fr": "Tu as quel âge ? (à un homme un peu plus âgé)",
+    "en": "How old are you? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_bao_nhieu_tuoi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_bao_nhieu_tuoi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

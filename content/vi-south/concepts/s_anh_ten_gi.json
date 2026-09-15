@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_anh_ten_gi",
+  "type": "structure",
+  "vi": "Anh tên gì?",
+  "gloss": {
+    "fr": "Comment tu t'appelles ? (à un homme un peu plus âgé)",
+    "en": "What's your name? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_ten_gi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_ten_gi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "On remplace anh par chị, em, cô… selon la personne.",
+    "en": "Swap anh for chị, em, cô… depending on who you ask."
+  },
+  "reviewed": false
+}

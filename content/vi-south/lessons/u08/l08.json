@@ -1,0 +1,190 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u08.l08",
+  "unit": "vi-south.u08",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : marché et prix",
+    "en": "Test: market and prices"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais acheter au marché à la manière du Sud.",
+    "en": "Show you can shop at the market the southern way."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u08.l07"
+  ],
+  "concepts": [
+    "c_dong",
+    "c_re",
+    "c_chuoi",
+    "s_bao_nhieu_mot_ky",
+    "c_bap",
+    "s_thoi_cam_on",
+    "c_mua_buy"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dong",
+      "distractors": [
+        "đông",
+        "động"
+      ],
+      "explain": {
+        "fr": "đồng : la monnaie.",
+        "en": "đồng: the currency."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_re",
+      "explain": {
+        "fr": "rẻ : hỏi.",
+        "en": "rẻ: hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chuoi",
+      "distractors": [
+        "c_xoai",
+        "c_thom"
+      ],
+      "explain": {
+        "fr": "chuối : la banane.",
+        "en": "chuối: banana."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ananas",
+      "explain": {
+        "fr": "Sud : thơm ; Nord : dứa.",
+        "en": "South: thơm; North: dứa."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em mua hai trái xoài.",
+      "tokens": [
+        "Em",
+        "mua",
+        "hai",
+        "trái",
+        "xoài",
+        "con"
+      ],
+      "translation": {
+        "fr": "J'achète deux mangues.",
+        "en": "I'm buying two mangoes."
+      },
+      "explain": {
+        "fr": "trái devant les fruits.",
+        "en": "trái before fruit."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bao_nhieu_mot_ky",
+      "distractors": [
+        "Bao nhiêu một trái?",
+        "Bao nhiêu tiền?"
+      ],
+      "explain": {
+        "fr": "bao nhiêu một ký ? : prix au kilo.",
+        "en": "bao nhiêu một ký?: price per kilo."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị bán cho em một ký thịt heo.",
+      "tokens": [
+        "Chị",
+        "bán",
+        "cho",
+        "em",
+        "một",
+        "ký",
+        "thịt heo",
+        "bò"
+      ],
+      "translation": {
+        "fr": "Vends-moi un kilo de porc, s'il te plaît.",
+        "en": "Sell me a kilo of pork, please."
+      },
+      "explain": {
+        "fr": "bán cho em : vends-moi.",
+        "en": "bán cho em: sell me."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bap",
+      "distractors": [
+        "c_trung",
+        "c_xoai"
+      ],
+      "explain": {
+        "fr": "bắp : le maïs.",
+        "en": "bắp: corn."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_kilo",
+      "explain": {
+        "fr": "Sud : ký ; Nord : cân.",
+        "en": "South: ký; North: cân."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thoi_cam_on",
+      "distractors": [
+        "Dạ, cảm ơn chị.",
+        "Thôi, xin lỗi chị."
+      ],
+      "explain": {
+        "fr": "Thôi, cảm ơn : non merci.",
+        "en": "Thôi, cảm ơn: no thanks."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, năm chục ngàn.",
+      "tokens": [
+        "Dạ",
+        "năm",
+        "chục",
+        "ngàn",
+        "trăm"
+      ],
+      "translation": {
+        "fr": "Cinquante mille (đồng).",
+        "en": "Fifty thousand (đồng)."
+      },
+      "explain": {
+        "fr": "năm chục ngàn : 50 000.",
+        "en": "năm chục ngàn: 50,000."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_buy",
+      "distractors": [
+        "mưa",
+        "múa"
+      ],
+      "explain": {
+        "fr": "mua : acheter.",
+        "en": "mua: to buy."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

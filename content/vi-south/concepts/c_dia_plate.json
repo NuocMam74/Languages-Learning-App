@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_dia_plate",
+  "type": "word",
+  "vi": "dĩa",
+  "tone": "nga",
+  "gloss": {
+    "fr": "assiette",
+    "en": "plate"
+  },
+  "register": "neutral",
+  "northernEquivalent": "đĩa",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_dia_plate_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_dia_plate_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/plate.svg",
+  "note": {
+    "fr": "Au Sud : dĩa, avec d ; au Nord : đĩa.",
+    "en": "South: dĩa, with d; North: đĩa."
+  },
+  "reviewed": false
+}

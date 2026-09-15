@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_chua_visit",
+  "title": {
+    "fr": "Visiter une chùa",
+    "en": "Visiting a chùa"
+  },
+  "body": {
+    "fr": "Les chùa, pagodes bouddhistes, sont ouvertes à tous. Porte une tenue qui couvre épaules et genoux, retire tes chaussures avant d'entrer dans le sanctuaire et parle doucement. Beaucoup de familles y vont les jours de pleine lune et au Tết.",
+    "en": "Chùa, Buddhist pagodas, are open to everyone. Wear clothes covering shoulders and knees, take your shoes off before entering the shrine and speak softly. Many families go on full-moon days and at Tết."
+  },
+  "vi": "Chùa ở đâu vậy anh?",
+  "audio": "audio/cc_chua_visit.opus",
+  "question": {
+    "prompt": {
+      "fr": "Avant d'entrer dans le sanctuaire d'une chùa, tu…",
+      "en": "Before entering a chùa's shrine, you…"
+    },
+    "options": [
+      {
+        "fr": "retires tes chaussures",
+        "en": "take off your shoes"
+      },
+      {
+        "fr": "mets un chapeau",
+        "en": "put on a hat"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_cho_em_xin_so",
+  "type": "structure",
+  "vi": "Cho em xin số điện thoại nha.",
+  "gloss": {
+    "fr": "Tu me donnes ton numéro ? (poli, à plus âgé)",
+    "en": "Can I have your phone number? (polite, to someone older)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cho_em_xin_so_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cho_em_xin_so_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "cho em xin… = « permets-moi de demander… ». nha adoucit, très Sud.",
+    "en": "cho em xin… = 'let me ask for…'. nha softens it, very southern."
+  },
+  "reviewed": false
+}

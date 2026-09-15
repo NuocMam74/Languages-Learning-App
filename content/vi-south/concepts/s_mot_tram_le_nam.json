@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_mot_tram_le_nam",
+  "type": "structure",
+  "vi": "một trăm lẻ năm",
+  "gloss": {
+    "fr": "cent cinq",
+    "en": "one hundred and five"
+  },
+  "register": "neutral",
+  "northernEquivalent": "một trăm linh năm",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_mot_tram_le_nam_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_mot_tram_le_nam_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_non_bao_hiem",
+  "type": "word",
+  "vi": "nón bảo hiểm",
+  "gloss": {
+    "fr": "casque (de moto)",
+    "en": "(motorbike) helmet"
+  },
+  "register": "neutral",
+  "northernEquivalent": "mũ bảo hiểm",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_non_bao_hiem_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_non_bao_hiem_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/helmet.svg",
+  "reviewed": false
+}

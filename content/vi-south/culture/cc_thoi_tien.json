@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_thoi_tien",
+  "title": {
+    "fr": "Thối tiền : la monnaie",
+    "en": "Thối tiền: the change"
+  },
+  "body": {
+    "fr": "Au Sud, rendre la monnaie se dit thối tiền, ou thối lại. Au Nord, on dit trả lại tiền. Ailleurs, thối évoque surtout « pourri » : ce double sens amuse les voyageurs. Prépare des petits billets pour les vendeurs de rue, qui manquent souvent de monnaie.",
+    "en": "In the South, giving change is thối tiền, or thối lại. In the North it's trả lại tiền. Elsewhere thối mostly suggests 'rotten': the double meaning amuses travellers. Keep small notes for street vendors, who are often short of change."
+  },
+  "vi": "Chị thối lại cho em hai chục.",
+  "audio": "audio/cc_thoi_tien.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, « thối tiền » veut dire…",
+      "en": "In the South, 'thối tiền' means…"
+    },
+    "options": [
+      {
+        "fr": "rendre la monnaie",
+        "en": "to give change"
+      },
+      {
+        "fr": "de l'argent sale",
+        "en": "dirty money"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,147 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u09.l04",
+  "unit": "vi-south.u09",
+  "title": {
+    "fr": "Thứ hai… chủ nhật",
+    "en": "Monday… Sunday"
+  },
+  "goal": {
+    "fr": "Dire les jours de la semaine.",
+    "en": "Say the days of the week."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u09.l03"
+  ],
+  "concepts": [
+    "c_thu",
+    "s_thu_hai",
+    "s_thu_bay",
+    "c_chu_nhat",
+    "s_hom_nay_thu_may"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hom_nay_thu_may",
+      "distractors": [
+        "Hôm nay ngày mấy?",
+        "Hôm nay mấy giờ?"
+      ],
+      "explain": {
+        "fr": "thứ mấy ? : quel jour de la semaine. ngày mấy ? : quelle date.",
+        "en": "thứ mấy?: which weekday. ngày mấy?: which date."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_weekdays"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thu_hai",
+      "distractors": [
+        "thứ ba",
+        "thư hai"
+      ],
+      "explain": {
+        "fr": "thứ hai : lundi. thứ ba : mardi.",
+        "en": "thứ hai: Monday. thứ ba: Tuesday."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_thu",
+      "explain": {
+        "fr": "thứ monte (sắc).",
+        "en": "thứ rises (sắc)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_nhat",
+      "distractors": [
+        "chủ nhà",
+        "thứ nhất"
+      ],
+      "explain": {
+        "fr": "chủ nhật : dimanche. chủ nhà : le propriétaire.",
+        "en": "chủ nhật: Sunday. chủ nhà: landlord."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay thứ bảy.",
+      "tokens": [
+        "Hôm nay",
+        "thứ",
+        "bảy",
+        "chủ nhật",
+        "ngày"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, c'est samedi.",
+        "en": "Today is Saturday."
+      },
+      "explain": {
+        "fr": "On dit simplement hôm nay thứ bảy.",
+        "en": "You simply say hôm nay thứ bảy."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thu_bay",
+      "distractors": [
+        "thứ sáu",
+        "thứ hai"
+      ],
+      "explain": {
+        "fr": "thứ bảy : samedi. thứ sáu : vendredi.",
+        "en": "thứ bảy: Saturday. thứ sáu: Friday."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chủ nhật tôi ở nhà.",
+      "tokens": [
+        "Chủ nhật",
+        "tôi",
+        "ở",
+        "nhà",
+        "thứ"
+      ],
+      "translation": {
+        "fr": "Dimanche, je reste à la maison.",
+        "en": "On Sunday I stay home."
+      },
+      "explain": {
+        "fr": "Le jour en tête, puis la phrase.",
+        "en": "The day first, then the sentence."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_hom_nay_thu_may",
+      "explain": {
+        "fr": "thứ et mấy montent tous les deux.",
+        "en": "thứ and mấy both rise."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_thu",
+      "s_thu_hai",
+      "s_thu_bay",
+      "c_chu_nhat",
+      "s_hom_nay_thu_may"
+    ]
+  },
+  "reviewed": false
+}

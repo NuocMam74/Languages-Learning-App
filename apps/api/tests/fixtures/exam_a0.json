@@ -1,0 +1,361 @@
+{
+  "id": "vi-south.exam.a0",
+  "level": "A0",
+  "certificate": {
+    "fr": "A0 Bén rễ",
+    "en": "A0 Bén rễ"
+  },
+  "requiresUnits": [
+    "vi-south.u01",
+    "vi-south.u02",
+    "vi-south.u03",
+    "vi-south.u04"
+  ],
+  "durationMinutes": 15,
+  "passThreshold": 0.75,
+  "retryAfterHours": 48,
+  "sections": [
+    {
+      "skill": "listening",
+      "items": [
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_anh",
+            "distractors": [
+              "c_chi",
+              "c_em"
+            ],
+            "explain": {
+              "fr": "anh : un homme un peu plus âgé que toi.",
+              "en": "anh: a man slightly older than you."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_ca_fish",
+            "distractors": [
+              "c_ga_chicken",
+              "c_ca_eggplant"
+            ],
+            "explain": {
+              "fr": "cá monte : le poisson.",
+              "en": "cá rises: fish."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "c_ma_mom",
+            "distractors": [
+              "ma",
+              "mà",
+              "mạ"
+            ],
+            "explain": {
+              "fr": "L'accent aigu (má) note le ton qui monte.",
+              "en": "The acute accent (má) marks the rising tone."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "s_khong_co_chi",
+            "distractors": [
+              "Không sao.",
+              "Xin lỗi."
+            ],
+            "explain": {
+              "fr": "Không có chi : « il n'y a pas de quoi », la réponse du Sud à cảm ơn.",
+              "en": "Không có chi: 'it's nothing', the southern reply to cảm ơn."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "tone_identify",
+            "concept": "c_ma_mom"
+          }
+        },
+        {
+          "step": {
+            "type": "tone_identify",
+            "concept": "c_ba_grandma"
+          }
+        },
+        {
+          "step": {
+            "type": "tone_minimal_pair",
+            "pair": [
+              "ma",
+              "má"
+            ],
+            "audioConcepts": [
+              "c_ma_ghost",
+              "c_ma_mom"
+            ],
+            "explain": {
+              "fr": "ma reste plat ; má monte. Fantôme contre maman.",
+              "en": "ma stays flat; má rises. Ghost versus mom."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "tone_minimal_pair",
+            "pair": [
+              "ba",
+              "bà"
+            ],
+            "audioConcepts": [
+              "c_ba",
+              "c_ba_grandma"
+            ],
+            "explain": {
+              "fr": "Ton plat contre ton descendant : papa contre grand-mère.",
+              "en": "Flat versus falling: dad versus grandma."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "skill": "reading",
+      "items": [
+        {
+          "step": {
+            "type": "spot_the_south",
+            "variant": "lv_papa"
+          }
+        },
+        {
+          "step": {
+            "type": "spot_the_south",
+            "variant": "lv_maman",
+            "explain": {
+              "fr": "Au Sud, maman se dit má ; mẹ est surtout du Nord.",
+              "en": "In the South mom is má; mẹ is mostly northern."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "build_sentence",
+            "target": "Chào chị.",
+            "tokens": [
+              "Chào",
+              "chị",
+              "anh"
+            ],
+            "translation": {
+              "fr": "Bonjour (à une femme un peu plus âgée).",
+              "en": "Hello (to a slightly older woman)."
+            },
+            "explain": {
+              "fr": "Chào + la personne. Pour une femme un peu plus âgée : chị.",
+              "en": "Chào + the person. For a slightly older woman: chị."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "build_sentence",
+            "target": "Dạ, không phải.",
+            "tokens": [
+              "Dạ",
+              "không",
+              "phải",
+              "có"
+            ],
+            "translation": {
+              "fr": "Non, ce n'est pas ça (poliment).",
+              "en": "No, that's not it (politely)."
+            },
+            "explain": {
+              "fr": "không phải = « ce n'est pas ça ». Dạ garde la politesse, même pour dire non.",
+              "en": "không phải = 'that's not it'. Dạ keeps it polite, even when saying no."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "c_chao",
+            "distractors": [
+              "cháo",
+              "chạo"
+            ],
+            "explain": {
+              "fr": "chào descend (accent grave). cháo, avec le ton qui monte, c'est la soupe de riz !",
+              "en": "chào falls (grave accent). cháo, rising, is rice porridge!"
+            }
+          },
+          "silent": true
+        },
+        {
+          "step": {
+            "type": "listen_pick_text",
+            "concept": "c_ca_eggplant",
+            "distractors": [
+              "cá",
+              "ca"
+            ],
+            "explain": {
+              "fr": "cà, accent grave : le ton descend.",
+              "en": "cà, grave accent: the tone falls."
+            }
+          },
+          "silent": true
+        }
+      ]
+    },
+    {
+      "skill": "vocabulary",
+      "items": [
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_chi",
+            "distractors": [
+              "c_anh",
+              "c_em"
+            ],
+            "explain": {
+              "fr": "chị : une femme un peu plus âgée que toi.",
+              "en": "chị: a woman slightly older than you."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_ba",
+            "distractors": [
+              "c_ma_mom",
+              "c_ba_grandma"
+            ],
+            "explain": {
+              "fr": "ba, ton plat : papa.",
+              "en": "ba, level tone: dad."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "listen_pick_image",
+            "concept": "c_mua_rain",
+            "distractors": [
+              "c_to_bowl",
+              "c_bo_beef"
+            ],
+            "explain": {
+              "fr": "mưa : ư se dit lèvres étirées, sans les arrondir.",
+              "en": "mưa: ư is said with spread, unrounded lips."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "build_sentence",
+            "target": "Đây là ba tôi.",
+            "tokens": [
+              "Đây",
+              "là",
+              "ba",
+              "tôi",
+              "má",
+              "bà"
+            ],
+            "translation": {
+              "fr": "Voici mon père.",
+              "en": "This is my dad."
+            },
+            "audioConcept": "s_day_la",
+            "explain": {
+              "fr": "Đây là… = « voici… ». Pas de verbe être conjugué, et le possesseur vient après : ba tôi.",
+              "en": "Đây là… = 'this is…'. No conjugation, and the owner comes after: ba tôi."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "build_sentence",
+            "target": "Dạ, khỏe lắm.",
+            "tokens": [
+              "Dạ",
+              "khỏe",
+              "lắm",
+              "cũng"
+            ],
+            "translation": {
+              "fr": "Très bien (poliment).",
+              "en": "Very well (politely)."
+            },
+            "explain": {
+              "fr": "lắm vient après l'adjectif : khỏe lắm.",
+              "en": "lắm comes after the adjective: khỏe lắm."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "skill": "speaking",
+      "items": [
+        {
+          "step": {
+            "type": "speak_repeat",
+            "concept": "c_ma_mom"
+          }
+        },
+        {
+          "step": {
+            "type": "speak_repeat",
+            "concept": "s_khong_phai",
+            "explain": {
+              "fr": "không reste plat, phải plonge puis remonte.",
+              "en": "không stays level, phải dips then rises."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "speak_repeat",
+            "concept": "c_mua_rain",
+            "explain": {
+              "fr": "Étire les lèvres pour ư, puis ouvre sur a.",
+              "en": "Spread your lips for ư, then open onto a."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "speak_repeat",
+            "concept": "c_an_eat",
+            "explain": {
+              "fr": "Au Sud, ăn finit presque en « ng » : laisse la bouche ouverte.",
+              "en": "In the South, ăn ends almost in 'ng': keep your mouth open."
+            }
+          }
+        },
+        {
+          "step": {
+            "type": "tone_produce",
+            "concept": "c_oi"
+          }
+        },
+        {
+          "step": {
+            "type": "tone_produce",
+            "concept": "c_vui"
+          }
+        }
+      ]
+    }
+  ],
+  "reviewed": false
+}

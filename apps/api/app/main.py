@@ -1,20 +1,39 @@
 """Point d'entrée FastAPI : `uvicorn app.main:app`."""
 
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from app.config import Settings, get_settings
 from app.db import make_engine, make_session_factory
-from app.routers import auth, courses, me, tutor
+from app.routers import auth, challenges, courses, exams, me, push, tutor
 from app.services.content import load_packs
+from app.services.pdf import make_renderer
 from app.services.rate_limit import InMemorySlidingWindow
+from app.services.storage import make_storage
 from app.services.tutor_llm import AnthropicTutorLLM, TutorLLM
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
-    app = FastAPI(title="Parlo API", version="0.1.0", root_path=settings.normalized_root_path)
+
+    @asynccontextmanager
+    async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+        scheduler = None
+        if settings.scheduler_enabled:
+            from app.scheduler import start_scheduler
+
+            scheduler = start_scheduler(settings, app.state.session_factory)
+        try:
+            yield
+        finally:
+            if scheduler is not None:
+                scheduler.shutdown(wait=False)
+
+    app = FastAPI(title="Parlo API", version="0.2.0", root_path=settings.normalized_root_path, lifespan=lifespan)
 
     engine = make_engine(settings.database_url)
     app.state.settings = settings
@@ -27,6 +46,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     if settings.anthropic_api_key:
         tutor_llm = AnthropicTutorLLM(settings.anthropic_api_key, settings.tutor_model, settings.tutor_timeout_seconds)
     app.state.tutor_llm = tutor_llm
+    app.state.pdf_renderer = make_renderer(settings.pdf_renderer)
+    app.state.storage = make_storage(settings)
 
     app.add_middleware(
         CORSMiddleware,
@@ -40,6 +61,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(me.router)
     app.include_router(courses.router)
     app.include_router(tutor.router)
+    app.include_router(exams.router)
+    app.include_router(challenges.router)
+    app.include_router(push.router)
 
     @app.get("/healthz", tags=["ops"])
     def healthz() -> dict[str, str]:

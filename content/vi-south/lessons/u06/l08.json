@@ -1,0 +1,196 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u06.l08",
+  "unit": "vi-south.u06",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : les chiffres",
+    "en": "Test: numbers"
+  },
+  "goal": {
+    "fr": "Montrer que tu comprends et dis les nombres du quotidien.",
+    "en": "Show you understand and say everyday numbers."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u06.l07"
+  ],
+  "concepts": [
+    "c_ba_three",
+    "c_chin_nine",
+    "c_bay_seven",
+    "s_hai_muoi_mot",
+    "s_anh_bao_nhieu_tuoi",
+    "s_mot_tram_le_nam",
+    "c_dien_thoai",
+    "c_chuc"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_three",
+      "distractors": [
+        "bà",
+        "bá"
+      ],
+      "explain": {
+        "fr": "ba : trois.",
+        "en": "ba: three."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chin_nine",
+      "distractors": [
+        "chìn",
+        "chinh"
+      ],
+      "explain": {
+        "fr": "chín : neuf.",
+        "en": "chín: nine."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_bay_seven",
+      "explain": {
+        "fr": "bảy : hỏi.",
+        "en": "bảy: hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hai_muoi_mot",
+      "distractors": [
+        "hai mươi bảy",
+        "ba mươi mốt"
+      ],
+      "explain": {
+        "fr": "hai mươi mốt : 21.",
+        "en": "hai mươi mốt: 21."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Lớp tôi có ba mươi tư người.",
+      "tokens": [
+        "Lớp",
+        "tôi",
+        "có",
+        "ba",
+        "mươi",
+        "tư",
+        "người",
+        "mười"
+      ],
+      "translation": {
+        "fr": "Ma classe compte trente-quatre personnes.",
+        "en": "My class has thirty-four people."
+      },
+      "explain": {
+        "fr": "ba mươi tư : 34.",
+        "en": "ba mươi tư: 34."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_bao_nhieu_tuoi",
+      "distractors": [
+        "Em mấy tuổi?",
+        "Anh tên gì?"
+      ],
+      "explain": {
+        "fr": "bao nhiêu tuổi ? : l'âge d'un adulte.",
+        "en": "bao nhiêu tuổi?: an adult's age."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Năm nay tôi ba mươi tuổi.",
+      "tokens": [
+        "Năm nay",
+        "tôi",
+        "ba",
+        "mươi",
+        "tuổi",
+        "mười"
+      ],
+      "translation": {
+        "fr": "Cette année, j'ai trente ans.",
+        "en": "This year I'm thirty."
+      },
+      "explain": {
+        "fr": "năm nay : cette année.",
+        "en": "năm nay: this year."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mot_tram_le_nam",
+      "distractors": [
+        "một trăm năm",
+        "một trăm lẻ lăm"
+      ],
+      "explain": {
+        "fr": "một trăm lẻ năm : 105.",
+        "en": "một trăm lẻ năm: 105."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_linh",
+      "explain": {
+        "fr": "Sud : lẻ ; Nord : linh.",
+        "en": "South: lẻ; North: linh."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_sach",
+        "c_ghe"
+      ],
+      "explain": {
+        "fr": "điện thoại : le téléphone.",
+        "en": "điện thoại: phone."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Số điện thoại của chị là bao nhiêu?",
+      "tokens": [
+        "Số điện thoại",
+        "của",
+        "chị",
+        "là",
+        "bao nhiêu",
+        "mấy"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "là bao nhiêu ? pour un numéro.",
+        "en": "là bao nhiêu? for a number."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chuc",
+      "distractors": [
+        "chúc",
+        "chức"
+      ],
+      "explain": {
+        "fr": "chục : la dizaine.",
+        "en": "chục: a group of ten."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

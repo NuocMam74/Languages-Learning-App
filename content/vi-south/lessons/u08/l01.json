@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u08.l01",
+  "unit": "vi-south.u08",
+  "title": {
+    "fr": "Bao nhiêu ? Combien ?",
+    "en": "Bao nhiêu? How much?"
+  },
+  "goal": {
+    "fr": "Demander un prix et comprendre la réponse.",
+    "en": "Ask a price and understand the answer."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u07.l08"
+  ],
+  "concepts": [
+    "c_mua_buy",
+    "c_ban_sell",
+    "c_nay",
+    "s_cai_nay_bao_nhieu",
+    "c_dong",
+    "c_ban_friend",
+    "c_ban_table"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cai_nay_bao_nhieu",
+      "distractors": [
+        "Cái này của ai?",
+        "Cái này là gì?"
+      ],
+      "explain": {
+        "fr": "bao nhiêu ? : le prix. là gì ? : « qu'est-ce que c'est ? ».",
+        "en": "bao nhiêu?: the price. là gì?: 'what is it?'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_prices_chuc"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "bán",
+        "bạn",
+        "bàn"
+      ],
+      "audioConcepts": [
+        "c_ban_sell",
+        "c_ban_friend",
+        "c_ban_table"
+      ],
+      "explain": {
+        "fr": "bán monte : vendre. bạn tombe court : l'ami. bàn descend : la table.",
+        "en": "bán rises: to sell. bạn drops short: friend. bàn falls: table."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_buy",
+      "distractors": [
+        "mưa",
+        "múa"
+      ],
+      "explain": {
+        "fr": "mua : acheter. mưa, avec ư : la pluie. múa monte : danser.",
+        "en": "mua: to buy. mưa, with ư: rain. múa rises: to dance."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_nay",
+      "explain": {
+        "fr": "này descend (huyền) : ceci.",
+        "en": "này falls (huyền): this."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị bán cái này bao nhiêu?",
+      "tokens": [
+        "Chị",
+        "bán",
+        "cái",
+        "này",
+        "bao nhiêu",
+        "mua"
+      ],
+      "translation": {
+        "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
+        "en": "How much are you selling this for? (to a slightly older saleswoman)"
+      },
+      "explain": {
+        "fr": "bán + objet + bao nhiêu ? : la question typique du marché.",
+        "en": "bán + item + bao nhiêu?: the typical market question."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dong",
+      "distractors": [
+        "đông",
+        "động"
+      ],
+      "explain": {
+        "fr": "đồng descend : la monnaie. đông, plat : bondé ; l'est.",
+        "en": "đồng falls: the currency. đông, level: crowded; east."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ, năm chục ngàn.",
+      "tokens": [
+        "Dạ",
+        "năm",
+        "chục",
+        "ngàn",
+        "trăm"
+      ],
+      "translation": {
+        "fr": "Cinquante mille (đồng).",
+        "en": "Fifty thousand (đồng)."
+      },
+      "explain": {
+        "fr": "On compte en chục ngàn : năm chục ngàn = 50 000.",
+        "en": "People count in chục ngàn: năm chục ngàn = 50,000."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cai_nay_bao_nhieu",
+      "explain": {
+        "fr": "cái monte, này descend, bao nhiêu reste plat.",
+        "en": "cái rises, này falls, bao nhiêu stays level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_mua_buy",
+      "c_ban_sell",
+      "c_nay",
+      "s_cai_nay_bao_nhieu",
+      "c_dong"
+    ]
+  },
+  "reviewed": false
+}

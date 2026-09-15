@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_xe_om",
+  "type": "word",
+  "vi": "xe ôm",
+  "gloss": {
+    "fr": "moto-taxi",
+    "en": "motorbike taxi"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xe_om_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xe_om_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/vehicles/xe_om.svg",
+  "note": {
+    "fr": "Littéralement « la moto où l'on s'accroche ».",
+    "en": "Literally 'the hug bike'."
+  },
+  "reviewed": false
+}

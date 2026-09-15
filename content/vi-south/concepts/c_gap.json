@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_gap",
+  "type": "word",
+  "vi": "gặp",
+  "tone": "nang",
+  "gloss": {
+    "fr": "rencontrer, voir (quelqu'un)",
+    "en": "to meet, to see (someone)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gap_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gap_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Hẹn gặp lại anh.",
+      "fr": "À bientôt (à un homme un peu plus âgé).",
+      "en": "See you (to a slightly older man)."
+    }
+  ],
+  "reviewed": false
+}

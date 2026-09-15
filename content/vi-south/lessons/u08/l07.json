@@ -1,0 +1,162 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u08.l07",
+  "unit": "vi-south.u08",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : marché et prix",
+    "en": "Review: market and prices"
+  },
+  "goal": {
+    "fr": "Revoir prix, marchandage, fruits et poids.",
+    "en": "Go over prices, haggling, fruit and weights."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u08.l06"
+  ],
+  "concepts": [
+    "s_cai_nay_bao_nhieu",
+    "c_thom",
+    "s_nua_ky",
+    "c_heo",
+    "c_ban_sell",
+    "c_ban_friend",
+    "c_ban_table",
+    "s_mac_qua"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cai_nay_bao_nhieu",
+      "distractors": [
+        "Cái này của ai?",
+        "Cái này là gì?"
+      ],
+      "explain": {
+        "fr": "bao nhiêu ? : le prix.",
+        "en": "bao nhiêu?: the price."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_cher",
+      "explain": {
+        "fr": "Sud : mắc ; Nord : đắt.",
+        "en": "South: mắc; North: đắt."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_thom",
+      "distractors": [
+        "c_sau_rieng",
+        "c_chuoi"
+      ],
+      "explain": {
+        "fr": "thơm : l'ananas.",
+        "en": "thơm: pineapple."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mắc quá, bớt cho em đi chị.",
+      "tokens": [
+        "Mắc",
+        "quá",
+        "bớt",
+        "cho",
+        "em",
+        "đi",
+        "chị",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "C'est trop cher, fais-moi un prix.",
+        "en": "It's too expensive, give me a discount."
+      },
+      "explain": {
+        "fr": "bớt : baisser le prix.",
+        "en": "bớt: lower the price."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nua_ky",
+      "distractors": [
+        "nửa kỳ",
+        "một ký"
+      ],
+      "explain": {
+        "fr": "nửa ký : 500 g.",
+        "en": "nửa ký: 500 g."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_heo",
+      "distractors": [
+        "c_bo_beef",
+        "c_ga_chicken"
+      ],
+      "explain": {
+        "fr": "heo : le porc.",
+        "en": "heo: pork."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em lấy nửa ký chuối.",
+      "tokens": [
+        "Em",
+        "lấy",
+        "nửa",
+        "ký",
+        "chuối",
+        "trái"
+      ],
+      "translation": {
+        "fr": "Je prends un demi-kilo de bananes.",
+        "en": "I'll take half a kilo of bananas."
+      },
+      "explain": {
+        "fr": "lấy : je prends.",
+        "en": "lấy: I'll take."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "bán",
+        "bạn",
+        "bàn"
+      ],
+      "audioConcepts": [
+        "c_ban_sell",
+        "c_ban_friend",
+        "c_ban_table"
+      ],
+      "explain": {
+        "fr": "bán monte, bạn tombe court, bàn descend.",
+        "en": "bán rises, bạn drops short, bàn falls."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_mac_qua",
+      "explain": {
+        "fr": "mắc et quá montent tous les deux.",
+        "en": "mắc and quá both rise."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

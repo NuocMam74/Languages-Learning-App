@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_hu_tieu_com_tam",
+  "title": {
+    "fr": "Hủ tiếu et cơm tấm",
+    "en": "Hủ tiếu and cơm tấm"
+  },
+  "body": {
+    "fr": "Le phở vient du Nord, mais Saïgon l'a adopté, avec herbes fraîches et pousses de soja. Deux plats sont bien du Sud : le hủ tiếu, soupe de nouilles souvent mangée le matin, et le cơm tấm, riz brisé au porc grillé qu'on trouve à toute heure.",
+    "en": "Phở comes from the North, but Saigon adopted it, with fresh herbs and bean sprouts. Two dishes are truly southern: hủ tiếu, a noodle soup often eaten in the morning, and cơm tấm, broken rice with grilled pork, found at any hour."
+  },
+  "vi": "Cho em một dĩa cơm tấm.",
+  "audio": "audio/cc_hu_tieu_com_tam.opus",
+  "question": {
+    "prompt": {
+      "fr": "Le cơm tấm, c'est…",
+      "en": "Cơm tấm is…"
+    },
+    "options": [
+      {
+        "fr": "du riz brisé au porc grillé",
+        "en": "broken rice with grilled pork"
+      },
+      {
+        "fr": "une soupe de nouilles",
+        "en": "a noodle soup"
+      },
+      {
+        "fr": "un sandwich",
+        "en": "a sandwich"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

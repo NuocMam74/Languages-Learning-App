@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_zalo",
+  "title": {
+    "fr": "Ton numéro, et Zalo",
+    "en": "Your number, and Zalo"
+  },
+  "body": {
+    "fr": "Au Vietnam, on échange son numéro très vite, et presque tout le monde utilise Zalo, une messagerie liée au numéro de téléphone. On dicte le numéro chiffre par chiffre : không chín không… Pour garder le contact : « Cho em xin số điện thoại nha ».",
+    "en": "In Vietnam people swap numbers quickly, and almost everyone uses Zalo, a messaging app tied to your phone number. Numbers are read out digit by digit: không chín không… To keep in touch: 'Cho em xin số điện thoại nha'."
+  },
+  "vi": "Cho em xin số điện thoại nha.",
+  "audio": "audio/cc_zalo.opus",
+  "question": {
+    "prompt": {
+      "fr": "On dicte un numéro de téléphone…",
+      "en": "A phone number is read out…"
+    },
+    "options": [
+      {
+        "fr": "chiffre par chiffre",
+        "en": "digit by digit"
+      },
+      {
+        "fr": "par milliers",
+        "en": "in thousands"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

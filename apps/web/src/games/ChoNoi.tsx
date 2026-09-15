@@ -46,6 +46,8 @@ interface ChoNoiProps {
   options?: Partial<ChoNoiOptions>;
   /** Passer le jeu (séance) : absent en jeu libre. */
   onSkip?: () => void;
+  /** Appelé au début de chaque partie (Jouer, Rejouer). */
+  onStart?: () => void;
   /** Appelé une fois à la fin de chaque partie. */
   onFinish?: (result: ChoNoiResult) => void;
   /** Actions de l'écran de résultat ; `replay` relance une partie. */
@@ -56,7 +58,7 @@ interface ChoNoiProps {
 
 type Phase = { name: "intro" } | { name: "playing" } | { name: "result"; result: ChoNoiResult };
 
-export function ChoNoi({ content, concepts, seed, options, onSkip, onFinish, resultActions, introExtra, resultExtra }: ChoNoiProps) {
+export function ChoNoi({ content, concepts, seed, options, onSkip, onStart, onFinish, resultActions, introExtra, resultExtra }: ChoNoiProps) {
   const reduced = useReducedMotion();
   const [attempt, setAttempt] = useState(0);
   const [phase, setPhase] = useState<Phase>({ name: "intro" });
@@ -75,7 +77,7 @@ export function ChoNoi({ content, concepts, seed, options, onSkip, onFinish, res
       <GameLayout
         action={
           <div className="flex flex-col gap-2">
-            <Button onClick={() => setPhase({ name: "playing" })}>{t("games.play")}</Button>
+            <Button onClick={() => { onStart?.(); setPhase({ name: "playing" }); }}>{t("games.play")}</Button>
             {onSkip && <Button variant="quiet" onClick={onSkip}>{t("games.skipIntro")}</Button>}
           </div>
         }
@@ -94,6 +96,7 @@ export function ChoNoi({ content, concepts, seed, options, onSkip, onFinish, res
   if (phase.name === "result") {
     const { result } = phase;
     const replay = () => {
+      onStart?.();
       setAttempt((a) => a + 1);
       setPhase({ name: "playing" });
     };

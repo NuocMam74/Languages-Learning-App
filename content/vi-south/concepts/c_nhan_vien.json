@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nhan_vien",
+  "type": "word",
+  "vi": "nhân viên",
+  "gloss": {
+    "fr": "employé(e), membre du personnel",
+    "en": "employee, staff member"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nhan_vien_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nhan_vien_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Chị Lan là nhân viên văn phòng.",
+      "fr": "Lan est employée de bureau.",
+      "en": "Lan is an office worker."
+    }
+  ],
+  "reviewed": false
+}

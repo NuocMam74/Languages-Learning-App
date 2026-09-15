@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_khong_zero",
+  "type": "word",
+  "vi": "không",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "zéro",
+    "en": "zero"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_khong_zero_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_khong_zero_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Le même mot que « non » : le contexte suffit.",
+    "en": "The same word as 'no': context makes it clear."
+  },
+  "reviewed": false
+}

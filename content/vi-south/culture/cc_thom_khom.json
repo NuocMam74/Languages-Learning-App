@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_thom_khom",
+  "title": {
+    "fr": "Thơm, khóm et sầu riêng",
+    "en": "Thơm, khóm and durian"
+  },
+  "body": {
+    "fr": "Au Sud, l'ananas a deux noms : thơm, qui veut aussi dire « parfumé », et khóm, très entendu dans le delta. Au Nord, on dit dứa. Quant au durian, sầu riêng, il se sent de loin : beaucoup d'hôtels l'interdisent dans les chambres !",
+    "en": "In the South the pineapple has two names: thơm, which also means 'fragrant', and khóm, often heard in the Delta. In the North it's dứa. As for durian, sầu riêng, you smell it from afar: many hotels ban it from rooms!"
+  },
+  "vi": "Em mua một trái thơm.",
+  "audio": "audio/cc_thom_khom.opus",
+  "question": {
+    "prompt": {
+      "fr": "À Saïgon, trái thơm, c'est…",
+      "en": "In Saigon, trái thơm is…"
+    },
+    "options": [
+      {
+        "fr": "l'ananas",
+        "en": "pineapple"
+      },
+      {
+        "fr": "la mangue",
+        "en": "mango"
+      },
+      {
+        "fr": "le durian",
+        "en": "durian"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

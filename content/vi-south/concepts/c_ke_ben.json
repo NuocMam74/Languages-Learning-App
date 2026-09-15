@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ke_ben",
+  "type": "word",
+  "vi": "kế bên",
+  "gloss": {
+    "fr": "à côté (de)",
+    "en": "next to"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ke_ben_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ke_ben_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Très courant au Sud. On entend aussi bên cạnh.",
+    "en": "Very common in the South. You also hear bên cạnh."
+  },
+  "reviewed": false
+}

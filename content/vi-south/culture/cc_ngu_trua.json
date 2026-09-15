@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_ngu_trua",
+  "title": {
+    "fr": "Tôt le matin, sieste à midi",
+    "en": "Early mornings, a nap at noon"
+  },
+  "body": {
+    "fr": "Au Sud, la journée commence tôt, souvent vers six heures, pour profiter de la fraîcheur. Après le déjeuner, beaucoup font une sieste, ngủ trưa : au bureau, certains dorment sur un lit pliant. Évite d'appeler quelqu'un juste après midi.",
+    "en": "In the South the day starts early, often around six, to enjoy the cool. After lunch many people take a nap, ngủ trưa: at the office some sleep on a folding bed. Avoid calling someone just after noon."
+  },
+  "vi": "Em ngủ trưa một chút.",
+  "audio": "audio/cc_ngu_trua.opus",
+  "question": {
+    "prompt": {
+      "fr": "Ngủ trưa, c'est…",
+      "en": "Ngủ trưa is…"
+    },
+    "options": [
+      {
+        "fr": "la sieste après le déjeuner",
+        "en": "the nap after lunch"
+      },
+      {
+        "fr": "la grasse matinée",
+        "en": "sleeping in"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

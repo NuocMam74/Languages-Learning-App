@@ -39,7 +39,15 @@ describe("buildReviewExercise", () => {
   it("privilégie les concepts connus comme distracteurs", () => {
     const ex = buildReviewExercise(content, "c_toi", "k", "listen_pick_text", { known: ["c_anh", "c_chi", "c_em"] });
     if (ex.type !== "listen_pick_text") throw new Error(ex.type);
-    expect(new Set(ex.options.map((o) => o.text))).toEqual(new Set(["tôi", "anh", "chị", "em"]));
+    const texts = ex.options.map((o) => o.text ?? "");
+    expect(texts).toContain("tôi");
+    // Chaque distracteur est soit un concept connu, soit un voisin tonal (même base sans ton) :
+    // le corpus grandit, le test ne doit pas figer une liste exacte.
+    const known = new Set(["anh", "chị", "em"]);
+    for (const text of texts.filter((t) => t !== "tôi")) {
+      expect(known.has(text) || stripTones(text) === stripTones("tôi")).toBe(true);
+    }
+    expect(texts.filter((t) => known.has(t)).length).toBeGreaterThanOrEqual(2);
   });
 
   it("tone_identify seulement pour un mot d'une syllabe", () => {

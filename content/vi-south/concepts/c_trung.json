@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_trung",
+  "type": "word",
+  "vi": "trứng",
+  "tone": "sac",
+  "gloss": {
+    "fr": "œuf",
+    "en": "egg"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_trung_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_trung_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/egg.svg",
+  "reviewed": false
+}

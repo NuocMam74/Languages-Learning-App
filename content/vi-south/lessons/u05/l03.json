@@ -1,0 +1,165 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u05.l03",
+  "unit": "vi-south.u05",
+  "title": {
+    "fr": "Tu habites où ?",
+    "en": "Where do you live?"
+  },
+  "goal": {
+    "fr": "Dire où tu vis et depuis quand tu es au Vietnam.",
+    "en": "Say where you live and that you just arrived in Vietnam."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u05.l02"
+  ],
+  "concepts": [
+    "c_song_live",
+    "c_qua_come",
+    "c_moi_just",
+    "c_thanh_pho",
+    "s_anh_o_dau",
+    "c_moi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_o_dau",
+      "distractors": [
+        "Anh đi đâu?",
+        "Anh ở đây?"
+      ],
+      "explain": {
+        "fr": "ở đâu ? : où habites-tu, où es-tu ? đi đâu ? : où vas-tu ?",
+        "en": "ở đâu?: where do you live, where are you? đi đâu?: where are you going?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_saigon_names"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "mời",
+        "mới"
+      ],
+      "audioConcepts": [
+        "c_moi",
+        "c_moi_just"
+      ],
+      "explain": {
+        "fr": "mời descend : inviter. mới monte : venir de, nouveau.",
+        "en": "mời falls: to invite. mới rises: just, new."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_song_live",
+      "distractors": [
+        "sông",
+        "sóng"
+      ],
+      "explain": {
+        "fr": "sống monte : vivre. sông, plat : le fleuve.",
+        "en": "sống rises: to live. sông, level: river."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi sống ở Paris.",
+      "tokens": [
+        "Tôi",
+        "sống",
+        "ở",
+        "Paris",
+        "sông"
+      ],
+      "translation": {
+        "fr": "J'habite à Paris.",
+        "en": "I live in Paris."
+      },
+      "explain": {
+        "fr": "sống ở + lieu : habiter à. On dit aussi simplement tôi ở Paris.",
+        "en": "sống ở + place: to live in. You can also just say tôi ở Paris."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thanh_pho",
+      "distractors": [
+        "thanh phố",
+        "thành phó"
+      ],
+      "explain": {
+        "fr": "thành descend, phố monte : la ville.",
+        "en": "thành falls, phố rises: city."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi mới qua Việt Nam.",
+      "tokens": [
+        "Tôi",
+        "mới",
+        "qua",
+        "Việt Nam",
+        "mời"
+      ],
+      "translation": {
+        "fr": "Je viens d'arriver au Vietnam.",
+        "en": "I just came to Vietnam."
+      },
+      "explain": {
+        "fr": "mới devant le verbe = « venir de ». qua = venir d'un pays à l'autre.",
+        "en": "mới before the verb = 'just'. qua = to come from one country to another."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_qua_come",
+      "explain": {
+        "fr": "qua reste plat (ngang).",
+        "en": "qua stays level (ngang)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ở thành phố nào?",
+      "tokens": [
+        "Anh",
+        "ở",
+        "thành phố",
+        "nào",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Tu habites dans quelle ville ? (à un homme un peu plus âgé)",
+        "en": "Which city do you live in? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Comme nước nào : thành phố nào = « quelle ville ».",
+        "en": "Like nước nào: thành phố nào = 'which city'."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_anh_o_dau",
+      "explain": {
+        "fr": "anh plat, ở plonge, đâu reste plat.",
+        "en": "anh level, ở dips, đâu stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_song_live",
+      "c_qua_come",
+      "c_moi_just",
+      "c_thanh_pho",
+      "s_anh_o_dau"
+    ]
+  },
+  "reviewed": false
+}

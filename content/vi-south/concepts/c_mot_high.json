@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_mot_high",
+  "type": "word",
+  "vi": "mốt",
+  "tone": "sac",
+  "gloss": {
+    "fr": "un (après une dizaine : 21, 31…)",
+    "en": "one (after a tens word: 21, 31…)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mot_high_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_mot_high_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "hai mươi mốt = 21. Mais 11 reste mười một.",
+    "en": "hai mươi mốt = 21. But 11 stays mười một."
+  },
+  "reviewed": false
+}

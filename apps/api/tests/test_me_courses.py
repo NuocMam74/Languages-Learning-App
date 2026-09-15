@@ -19,6 +19,8 @@ def test_me_fresh_user(client: TestClient, auth: dict[str, str]) -> None:
         "levelEstimate": None,
         "pathVariant": None,
         "leaguesEnabled": True,
+        "timezone": None,
+        "notificationsEnabled": False,
     }
     assert me["enrollment"]["courseCode"] == "vi-south"
     assert me["enrollment"]["xpTotal"] == 0
@@ -56,6 +58,18 @@ def test_patch_profile_validation(client: TestClient, auth: dict[str, str]) -> N
     assert client.patch("/me/profile", headers=auth, json={"motivation": "money"}).status_code == 422
     assert client.patch("/me/profile", headers=auth, json={"pathVariant": "nope"}).status_code == 422
     assert client.patch("/me/profile", headers=auth, json={"unknown": 1}).status_code == 422
+    assert client.patch("/me/profile", headers=auth, json={"timezone": "Mars/Olympus"}).status_code == 422
+    assert client.patch("/me/profile", headers=auth, json={"notificationsEnabled": None}).status_code == 422
+
+
+def test_patch_profile_timezone_and_notifications(client: TestClient, auth: dict[str, str]) -> None:
+    body = client.patch(
+        "/me/profile", headers=auth, json={"timezone": "Asia/Ho_Chi_Minh", "notificationsEnabled": True}
+    ).json()
+    assert (body["timezone"], body["notificationsEnabled"]) == ("Asia/Ho_Chi_Minh", True)
+    profile = client.get("/me", headers=auth).json()["profile"]
+    assert (profile["timezone"], profile["notificationsEnabled"]) == ("Asia/Ho_Chi_Minh", True)
+    assert client.patch("/me/profile", headers=auth, json={"timezone": None}).json()["timezone"] is None
 
 
 def test_courses_and_manifest(client: TestClient) -> None:

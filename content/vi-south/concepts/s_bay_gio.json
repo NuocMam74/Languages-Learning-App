@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_bay_gio",
+  "type": "structure",
+  "vi": "bây giờ",
+  "gloss": {
+    "fr": "maintenant",
+    "en": "now"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bay_gio_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_bay_gio_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "À l'oral, souvent raccourci en giờ : Giờ đi nha !",
+    "en": "In speech often shortened to giờ: Giờ đi nha!"
+  },
+  "reviewed": false
+}

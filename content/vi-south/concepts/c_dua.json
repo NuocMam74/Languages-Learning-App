@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_dua",
+  "type": "word",
+  "vi": "đũa",
+  "tone": "nga",
+  "gloss": {
+    "fr": "baguettes",
+    "en": "chopsticks"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_dua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_dua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/chopsticks.svg",
+  "note": {
+    "fr": "Une paire : một đôi đũa.",
+    "en": "A pair: một đôi đũa."
+  },
+  "reviewed": false
+}

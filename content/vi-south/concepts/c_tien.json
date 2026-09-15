@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tien",
+  "type": "word",
+  "vi": "tiền",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "argent",
+    "en": "money"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tien_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tien_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/money.svg",
+  "reviewed": false
+}

@@ -2,6 +2,8 @@ import { BADGE_CODES, localDay, type ContentIndex } from "@parlo/core";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
+import { ChallengeCard } from "../challenges/ChallengeCard.tsx";
+import { ReminderPrompt } from "../notifications/Reminders.tsx";
 import { InstallHint } from "../components/InstallHint.tsx";
 import { RiverPath } from "../components/RiverPath.tsx";
 import { Button, Screen } from "../components/ui.tsx";
@@ -107,6 +109,9 @@ export function Hub({ content }: { content: ContentIndex }) {
         <FreezeControl frozenUntil={frozen ? streak.frozenUntil : null} onChange={() => void load()} />
       </section>
 
+      <ReminderPrompt />
+      <ChallengeCard content={content} />
+
       <nav className="flex flex-col border-y border-phu-sa/10" aria-label={t("session.hub.more")}>
         {plan.dueCount > 0 && (
           <Link to="/revision" className="flex min-h-12 items-center justify-between py-2 font-medium text-ngoc">
@@ -119,6 +124,9 @@ export function Hub({ content }: { content: ContentIndex }) {
         </Link>
         <Link to="/jeux" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
           {t("session.hub.games")}
+        </Link>
+        <Link to="/examens" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
+          {t("exams.hub.entry")}
         </Link>
       </nav>
 

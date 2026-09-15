@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_truong_hoc",
+  "type": "word",
+  "vi": "trường học",
+  "gloss": {
+    "fr": "école",
+    "en": "school"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_truong_hoc_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_truong_hoc_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/places/school.svg",
+  "note": {
+    "fr": "On dit souvent trường tout court.",
+    "en": "Often just trường."
+  },
+  "reviewed": false
+}

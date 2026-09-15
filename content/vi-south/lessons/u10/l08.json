@@ -1,0 +1,213 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u10.l08",
+  "unit": "vi-south.u10",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : les lieux",
+    "en": "Test: places"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais demander ton chemin et situer un lieu.",
+    "en": "Show you can ask the way and locate a place."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u10.l07"
+  ],
+  "concepts": [
+    "c_benh_vien",
+    "c_chua_pagoda",
+    "c_san_bay",
+    "c_gan",
+    "c_cay_xang",
+    "c_ben_phai",
+    "c_hem",
+    "c_sau_six",
+    "c_sau_after"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "c_ngan_hang",
+        "c_truong_hoc"
+      ],
+      "explain": {
+        "fr": "bệnh viện : l'hôpital.",
+        "en": "bệnh viện: hospital."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua_pagoda",
+      "distractors": [
+        "chua",
+        "chưa"
+      ],
+      "explain": {
+        "fr": "chùa : la pagode.",
+        "en": "chùa: pagoda."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_san_bay",
+      "distractors": [
+        "c_khach_san",
+        "c_ga_station"
+      ],
+      "explain": {
+        "fr": "sân bay : l'aéroport.",
+        "en": "sân bay: airport."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi, khách sạn ở đâu vậy anh?",
+      "tokens": [
+        "Xin lỗi",
+        "khách sạn",
+        "ở",
+        "đâu",
+        "vậy",
+        "anh",
+        "đây"
+      ],
+      "translation": {
+        "fr": "Pardon, où est l'hôtel ? (à un homme un peu plus âgé)",
+        "en": "Excuse me, where's the hotel? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "lieu + ở đâu ?",
+        "en": "place + ở đâu?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gan",
+      "distractors": [
+        "gân",
+        "gắn"
+      ],
+      "explain": {
+        "fr": "gần : près.",
+        "en": "gần: near."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cay_xang",
+      "distractors": [
+        "c_quan_ca_phe",
+        "c_benh_vien"
+      ],
+      "explain": {
+        "fr": "cây xăng : la station-service.",
+        "en": "cây xăng: petrol station."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ben_phai",
+      "distractors": [
+        "c_ben_trai",
+        "c_ga_station"
+      ],
+      "explain": {
+        "fr": "bên phải : à droite.",
+        "en": "bên phải: right."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cây xăng ở đối diện ngân hàng.",
+      "tokens": [
+        "Cây xăng",
+        "ở",
+        "đối diện",
+        "ngân hàng",
+        "bên"
+      ],
+      "translation": {
+        "fr": "La station-service est en face de la banque.",
+        "en": "The petrol station is opposite the bank."
+      },
+      "explain": {
+        "fr": "đối diện : en face.",
+        "en": "đối diện: opposite."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hem",
+      "distractors": [
+        "hèm",
+        "hém"
+      ],
+      "explain": {
+        "fr": "hẻm : la ruelle.",
+        "en": "hẻm: alley."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Địa chỉ của anh là gì?",
+      "tokens": [
+        "Địa chỉ",
+        "của",
+        "anh",
+        "là",
+        "gì",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton adresse ? (à un homme un peu plus âgé)",
+        "en": "What's your address? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "địa chỉ : l'adresse.",
+        "en": "địa chỉ: address."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "sáu",
+        "sau"
+      ],
+      "audioConcepts": [
+        "c_sau_six",
+        "c_sau_after"
+      ],
+      "explain": {
+        "fr": "sáu monte, sau plat.",
+        "en": "sáu rises, sau level."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tiệm phở ở sau chợ.",
+      "tokens": [
+        "Tiệm phở",
+        "ở",
+        "sau",
+        "chợ",
+        "sáu"
+      ],
+      "translation": {
+        "fr": "Le restaurant de phở est derrière le marché.",
+        "en": "The phở shop is behind the market."
+      },
+      "explain": {
+        "fr": "sau : derrière.",
+        "en": "sau: behind."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

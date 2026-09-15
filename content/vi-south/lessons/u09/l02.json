@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u09.l02",
+  "unit": "vi-south.u09",
+  "title": {
+    "fr": "Sáng, trưa, chiều, tối",
+    "en": "Morning, noon, afternoon, evening"
+  },
+  "goal": {
+    "fr": "Situer l'heure dans la journée.",
+    "en": "Place a time within the day."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u09.l01"
+  ],
+  "concepts": [
+    "c_sang",
+    "c_trua",
+    "c_chieu",
+    "c_toi_evening",
+    "c_dem",
+    "c_toi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sang",
+      "distractors": [
+        "c_trua",
+        "c_toi_evening"
+      ],
+      "explain": {
+        "fr": "sáng : le matin.",
+        "en": "sáng: morning."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ngu_trua"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chieu",
+      "distractors": [
+        "c_sang",
+        "c_dem"
+      ],
+      "explain": {
+        "fr": "chiều : l'après-midi, jusqu'au coucher du soleil.",
+        "en": "chiều: afternoon, until sunset."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "tôi",
+        "tối"
+      ],
+      "audioConcepts": [
+        "c_toi",
+        "c_toi_evening"
+      ],
+      "explain": {
+        "fr": "tôi, plat : je. tối monte : le soir.",
+        "en": "tôi, level: I. tối rises: evening."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dem",
+      "distractors": [
+        "c_toi_evening",
+        "c_trua"
+      ],
+      "explain": {
+        "fr": "đêm : la nuit.",
+        "en": "đêm: night."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trua",
+      "distractors": [
+        "trừa",
+        "trứa"
+      ],
+      "explain": {
+        "fr": "trưa, plat : midi.",
+        "en": "trưa, level: noon."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chín giờ tối rồi.",
+      "tokens": [
+        "Chín",
+        "giờ",
+        "tối",
+        "rồi",
+        "sáng"
+      ],
+      "translation": {
+        "fr": "Il est déjà neuf heures du soir.",
+        "en": "It's already nine in the evening."
+      },
+      "explain": {
+        "fr": "Le moment suit l'heure : chín giờ tối = 21 h.",
+        "en": "The part of day follows the hour: chín giờ tối = 9 pm."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chieu",
+      "distractors": [
+        "chiêu",
+        "chiếu"
+      ],
+      "explain": {
+        "fr": "chiều descend : l'après-midi. chiếu monte : la natte.",
+        "en": "chiều falls: afternoon. chiếu rises: sleeping mat."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mười hai giờ trưa.",
+      "tokens": [
+        "Mười hai",
+        "giờ",
+        "trưa",
+        "tối"
+      ],
+      "translation": {
+        "fr": "Midi.",
+        "en": "Twelve noon."
+      },
+      "explain": {
+        "fr": "12 h : mười hai giờ trưa.",
+        "en": "12 pm: mười hai giờ trưa."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_toi_evening",
+      "explain": {
+        "fr": "tối monte nettement, ne le confonds pas avec tôi.",
+        "en": "tối rises clearly, don't mix it up with tôi."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_sang",
+      "c_trua",
+      "c_chieu",
+      "c_toi_evening",
+      "c_dem"
+    ]
+  },
+  "reviewed": false
+}

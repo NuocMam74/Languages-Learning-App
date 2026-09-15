@@ -1,0 +1,144 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u08.l03",
+  "unit": "vi-south.u08",
+  "title": {
+    "fr": "Trái cây : les fruits",
+    "en": "Trái cây: fruit"
+  },
+  "goal": {
+    "fr": "Nommer les fruits du marché, avec les mots du Sud.",
+    "en": "Name market fruit, with southern words."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u08.l02"
+  ],
+  "concepts": [
+    "c_xoai",
+    "c_chuoi",
+    "c_thom",
+    "c_sau_rieng",
+    "c_dua_hau"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chuoi",
+      "distractors": [
+        "c_xoai",
+        "c_thom"
+      ],
+      "explain": {
+        "fr": "chuối : la banane.",
+        "en": "chuối: banana."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_thom_khom"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_thom",
+      "distractors": [
+        "c_sau_rieng",
+        "c_chuoi"
+      ],
+      "explain": {
+        "fr": "thơm : l'ananas, au Sud.",
+        "en": "thơm: pineapple, in the South."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_ananas",
+      "explain": {
+        "fr": "Sud : thơm ou khóm ; Nord : dứa.",
+        "en": "South: thơm or khóm; North: dứa."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "c_dua_hau",
+        "c_thom"
+      ],
+      "explain": {
+        "fr": "sầu riêng : le durian.",
+        "en": "sầu riêng: durian."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xoai",
+      "distractors": [
+        "xoái",
+        "xoại"
+      ],
+      "explain": {
+        "fr": "xoài descend : la mangue.",
+        "en": "xoài falls: mango."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dua_hau",
+      "distractors": [
+        "c_dua_coconut",
+        "c_xoai"
+      ],
+      "explain": {
+        "fr": "dưa hấu : la pastèque.",
+        "en": "dưa hấu: watermelon."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em mua hai trái xoài.",
+      "tokens": [
+        "Em",
+        "mua",
+        "hai",
+        "trái",
+        "xoài",
+        "con"
+      ],
+      "translation": {
+        "fr": "J'achète deux mangues.",
+        "en": "I'm buying two mangoes."
+      },
+      "explain": {
+        "fr": "trái : le classificateur des fruits au Sud.",
+        "en": "trái: the fruit classifier in the South."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_fruit_clf",
+      "explain": {
+        "fr": "Sud : trái ; Nord : quả.",
+        "en": "South: trái; North: quả."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_sau_rieng",
+      "explain": {
+        "fr": "sầu descend, riêng reste plat.",
+        "en": "sầu falls, riêng stays level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_xoai",
+      "c_chuoi",
+      "c_thom",
+      "c_sau_rieng",
+      "c_dua_hau"
+    ]
+  },
+  "reviewed": false
+}

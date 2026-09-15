@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_tinh_tien",
+  "type": "structure",
+  "vi": "Em ơi, tính tiền.",
+  "gloss": {
+    "fr": "L'addition, s'il te plaît.",
+    "en": "The bill, please."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_tinh_tien_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_tinh_tien_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "tính tiền = « calculer l'argent ».",
+    "en": "tính tiền = 'count up the money'."
+  },
+  "reviewed": false
+}

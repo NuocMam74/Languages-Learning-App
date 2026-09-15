@@ -5,8 +5,11 @@
  * volontairement : `northernEquivalent`, le fichier lexical-variants.json,
  * les textes localisés ({ fr, en }, langue d'interface) et les étapes
  * `spot_the_south` (qui montrent la forme du Nord à dessein).
+ * Couvre aussi exams/, games/ et placement.json.
  */
 import { createSouthLinter, hasBlocking, type LexicalVariantEntry, type SouthLintFinding } from "@parlo/south-lint";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { listPacks, readPackFiles, rel } from "./lib/load-pack.ts";
 
 const VI_KEYS = new Set(["vi", "target", "tokens", "pair", "distractors", "accepted", "answer", "options", "text", "source"]);
@@ -42,7 +45,14 @@ for (const code of listPacks()) {
       }
     }
   };
-  const all = [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture];
+  // Examens et données de mini-jeux : mêmes règles (instructions de Xe ôm, items d'examen…).
+  const extra = ["exams", "games", "placement.json"].flatMap((name) => {
+    const path = join(files.root, name);
+    if (!existsSync(path)) return [];
+    const paths = name.endsWith(".json") ? [path] : readdirSync(path).filter((f) => f.endsWith(".json")).map((f) => join(path, f));
+    return paths.map((p) => ({ path: p, data: JSON.parse(readFileSync(p, "utf8")) as unknown }));
+  });
+  const all = [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture, ...extra];
   for (const f of all) walk(f.data, rel(f.path), "", false);
 
   for (const h of hits) {

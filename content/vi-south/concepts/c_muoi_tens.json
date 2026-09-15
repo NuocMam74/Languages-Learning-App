@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_muoi_tens",
+  "type": "word",
+  "vi": "mươi",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "dizaine (dans 20 à 90)",
+    "en": "tens (in 20 to 90)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_muoi_tens_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_muoi_tens_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "mươi, sans accent, suit un chiffre : hai mươi (20), ba mươi (30).",
+    "en": "mươi, level tone, follows a digit: hai mươi (20), ba mươi (30)."
+  },
+  "reviewed": false
+}

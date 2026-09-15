@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_who_pays",
+  "title": {
+    "fr": "Qui paie ?",
+    "en": "Who pays?"
+  },
+  "body": {
+    "fr": "Entre amis, on partage rarement l'addition. Souvent, l'aîné, celui qui invite ou celui qui gagne le plus paie pour tout le monde, et chacun proteste un peu : « Để anh trả ! ». La prochaine fois, ce sera ton tour. Le pourboire n'est pas obligatoire.",
+    "en": "Among friends the bill is rarely split. Often the eldest, the host or the one who earns most pays for everyone, and everyone protests a little: 'Để anh trả!'. Next time it'll be your turn. Tipping isn't required."
+  },
+  "vi": "Để anh trả.",
+  "audio": "audio/cc_who_pays.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au restaurant entre amis, en général…",
+      "en": "At a restaurant with friends, usually…"
+    },
+    "options": [
+      {
+        "fr": "une personne paie pour tous",
+        "en": "one person pays for everyone"
+      },
+      {
+        "fr": "chacun paie sa part exacte",
+        "en": "everyone pays their exact share"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

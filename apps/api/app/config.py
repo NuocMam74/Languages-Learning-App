@@ -54,6 +54,27 @@ class Settings(BaseSettings):
     tutor_timeout_seconds: float = 15.0
     tutor_retention_days: int = 90
 
+    # --- Phase 2 ---------------------------------------------------------------------------
+    # URL publique de la PWA : lien de vérification imprimé sur les certificats ({PUBLIC_WEB_URL}/verifier/{code}).
+    public_web_url: str = "http://localhost:5173"
+    # Stockage des certificats PDF : « local » (MEDIA_DIR) ou « s3 » (compatible S3, boto3).
+    storage_backend: str = "local"
+    media_dir: Path = API_DIR / "media"
+    s3_bucket: str | None = None
+    s3_prefix: str = "certificates/"
+    s3_endpoint_url: str | None = None
+    s3_region: str | None = None
+    # Rendu PDF : « auto » (WeasyPrint si ses bibliothèques système sont présentes, sinon fpdf2),
+    # « weasyprint » ou « fpdf2 ».
+    pdf_renderer: str = "auto"
+    # Tâches planifiées (défi de la semaine le lundi 00:00 UTC, rappels push horaires).
+    # Un seul processus doit les activer.
+    scheduler_enabled: bool = False
+    # Web Push (VAPID) : `uv run python -m app.maintenance vapid-keys` pour générer une paire.
+    vapid_public_key: str | None = None
+    vapid_private_key: str | None = None
+    vapid_subject: str = "mailto:contact@parlo.app"
+
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]

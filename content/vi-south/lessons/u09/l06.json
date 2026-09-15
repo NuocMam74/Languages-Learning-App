@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u09.l06",
+  "unit": "vi-south.u09",
+  "title": {
+    "fr": "Mes journées",
+    "en": "My days"
+  },
+  "goal": {
+    "fr": "Raconter tes horaires habituels.",
+    "en": "Describe your usual schedule."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u09.l05"
+  ],
+  "concepts": [
+    "c_luc",
+    "s_luc_may_gio",
+    "c_thuong",
+    "c_di_lam",
+    "c_ve"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_luc_may_gio",
+      "distractors": [
+        "Mấy giờ rồi?",
+        "Lúc nào?"
+      ],
+      "explain": {
+        "fr": "Lúc mấy giờ ? : à quelle heure (précise) ?",
+        "en": "Lúc mấy giờ?: at what (exact) time?"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_an_sang"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_luc",
+      "explain": {
+        "fr": "lúc monte (sắc).",
+        "en": "lúc rises (sắc)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thuong",
+      "distractors": [
+        "thương",
+        "thưởng"
+      ],
+      "explain": {
+        "fr": "thường descend : d'habitude. thương, plat : aimer tendrement.",
+        "en": "thường falls: usually. thương, level: to love dearly."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi thường đi làm lúc bảy giờ sáng.",
+      "tokens": [
+        "Tôi",
+        "thường",
+        "đi làm",
+        "lúc",
+        "bảy",
+        "giờ",
+        "sáng",
+        "tối"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      },
+      "explain": {
+        "fr": "thường avant le verbe ; lúc + heure = « à ».",
+        "en": "thường before the verb; lúc + time = 'at'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ve",
+      "distractors": [
+        "vế",
+        "vẻ"
+      ],
+      "explain": {
+        "fr": "về descend : rentrer.",
+        "en": "về falls: to go home."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mấy giờ anh về nhà?",
+      "tokens": [
+        "Mấy giờ",
+        "anh",
+        "về",
+        "nhà",
+        "đi"
+      ],
+      "translation": {
+        "fr": "Tu rentres à la maison à quelle heure ? (à un homme un peu plus âgé)",
+        "en": "What time do you get home? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "về nhà : rentrer à la maison.",
+        "en": "về nhà: to go home."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_di_lam",
+      "distractors": [
+        "đi học",
+        "đi chơi"
+      ],
+      "explain": {
+        "fr": "đi làm : aller travailler. đi học : aller à l'école.",
+        "en": "đi làm: go to work. đi học: go to school."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chiều nay tôi về sớm.",
+      "tokens": [
+        "Chiều nay",
+        "tôi",
+        "về",
+        "sớm",
+        "trễ"
+      ],
+      "translation": {
+        "fr": "Cet après-midi, je rentre tôt.",
+        "en": "This afternoon I'm going home early."
+      },
+      "explain": {
+        "fr": "chiều nay : cet après-midi ; tối nay : ce soir.",
+        "en": "chiều nay: this afternoon; tối nay: this evening."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_luc",
+      "s_luc_may_gio",
+      "c_thuong",
+      "c_di_lam",
+      "c_ve"
+    ]
+  },
+  "reviewed": false
+}

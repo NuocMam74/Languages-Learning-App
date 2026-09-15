@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u10.l01",
+  "unit": "vi-south.u10",
+  "title": {
+    "fr": "Les lieux de la ville",
+    "en": "Places in town"
+  },
+  "goal": {
+    "fr": "Nommer les lieux importants d'un quartier.",
+    "en": "Name the key places in a neighbourhood."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u09.l08"
+  ],
+  "concepts": [
+    "c_truong_hoc",
+    "c_benh_vien",
+    "c_chua_pagoda",
+    "c_cong_vien",
+    "c_ngan_hang"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_truong_hoc",
+      "distractors": [
+        "c_benh_vien",
+        "c_chua_pagoda"
+      ],
+      "explain": {
+        "fr": "trường học : l'école.",
+        "en": "trường học: school."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_chua_visit"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "c_ngan_hang",
+        "c_truong_hoc"
+      ],
+      "explain": {
+        "fr": "bệnh viện : l'hôpital.",
+        "en": "bệnh viện: hospital."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua_pagoda",
+      "distractors": [
+        "chua",
+        "chưa"
+      ],
+      "explain": {
+        "fr": "chùa descend : la pagode. chua, plat : acide.",
+        "en": "chùa falls: pagoda. chua, level: sour."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cong_vien",
+      "distractors": [
+        "c_chua_pagoda",
+        "c_cho_market"
+      ],
+      "explain": {
+        "fr": "công viên : le parc.",
+        "en": "công viên: park."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "ngân hạng",
+        "ngăn hàng"
+      ],
+      "explain": {
+        "fr": "ngân plat, hàng descend : la banque.",
+        "en": "ngân level, hàng falls: bank."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "c_benh_vien",
+        "c_cong_vien"
+      ],
+      "explain": {
+        "fr": "ngân hàng : la banque.",
+        "en": "ngân hàng: bank."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị tôi làm ở bệnh viện.",
+      "tokens": [
+        "Chị",
+        "tôi",
+        "làm",
+        "ở",
+        "bệnh viện",
+        "trường học"
+      ],
+      "translation": {
+        "fr": "Ma grande sœur travaille à l'hôpital.",
+        "en": "My older sister works at the hospital."
+      },
+      "explain": {
+        "fr": "làm ở + lieu : travailler à.",
+        "en": "làm ở + place: to work at."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_benh_vien",
+      "explain": {
+        "fr": "bệnh et viện tombent court tous les deux.",
+        "en": "bệnh and viện both drop short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_truong_hoc",
+      "c_benh_vien",
+      "c_chua_pagoda",
+      "c_cong_vien",
+      "c_ngan_hang"
+    ]
+  },
+  "reviewed": false
+}

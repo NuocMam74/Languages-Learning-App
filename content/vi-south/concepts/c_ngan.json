@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ngan",
+  "type": "word",
+  "vi": "ngàn",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "mille",
+    "en": "thousand"
+  },
+  "register": "neutral",
+  "northernEquivalent": "nghìn",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ngan_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ngan_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : ngàn ; au Nord : nghìn.",
+    "en": "South: ngàn; North: nghìn."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_xe_buyt",
+  "type": "word",
+  "vi": "xe buýt",
+  "gloss": {
+    "fr": "bus",
+    "en": "bus"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xe_buyt_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xe_buyt_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/vehicles/bus.svg",
+  "reviewed": false
+}

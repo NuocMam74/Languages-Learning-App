@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_tre_hen",
+  "title": {
+    "fr": "Trễ : en retard, à la sudiste",
+    "en": "Trễ: late, the southern way"
+  },
+  "body": {
+    "fr": "Au Sud, « en retard » se dit trễ ; au Nord, muộn. Si tu vas être en retard, préviens par message, puis excuse-toi en arrivant : « Xin lỗi, em tới trễ ». Attention : au Sud, trễ (en retard) et trẻ (jeune) se prononcent pareil.",
+    "en": "In the South 'late' is trễ; in the North, muộn. If you'll be late, send a message, then apologise when you arrive: 'Xin lỗi, em tới trễ'. Careful: in the South trễ (late) and trẻ (young) sound the same."
+  },
+  "vi": "Xin lỗi, em tới trễ.",
+  "audio": "audio/cc_tre_hen.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, « tới trễ » veut dire…",
+      "en": "In the South, 'tới trễ' means…"
+    },
+    "options": [
+      {
+        "fr": "arriver en retard",
+        "en": "to arrive late"
+      },
+      {
+        "fr": "arriver en avance",
+        "en": "to arrive early"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_hom_nay_thu_may",
+  "type": "structure",
+  "vi": "Hôm nay thứ mấy?",
+  "gloss": {
+    "fr": "On est quel jour aujourd'hui ?",
+    "en": "What day is it today?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_hom_nay_thu_may_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_hom_nay_thu_may_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

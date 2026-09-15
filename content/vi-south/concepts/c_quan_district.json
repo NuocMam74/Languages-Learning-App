@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_quan_district",
+  "type": "word",
+  "vi": "quận",
+  "tone": "nang",
+  "gloss": {
+    "fr": "arrondissement (district urbain)",
+    "en": "(urban) district"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_quan_district_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_quan_district_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Quận 1",
+      "fr": "le 1er arrondissement",
+      "en": "District 1"
+    }
+  ],
+  "reviewed": false
+}

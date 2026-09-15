@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u05.l02",
+  "unit": "vi-south.u05",
+  "title": {
+    "fr": "Người Pháp, người Việt",
+    "en": "Người Pháp, người Việt"
+  },
+  "goal": {
+    "fr": "Dire d'où tu viens et demander la nationalité de quelqu'un.",
+    "en": "Say where you're from and ask someone's nationality."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u05.l01"
+  ],
+  "concepts": [
+    "c_nguoi",
+    "c_phap",
+    "s_nguoi_phap",
+    "s_nguoi_viet",
+    "s_nguoi_nuoc_nao",
+    "c_viet_kieu"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_phap",
+      "distractors": [
+        "người Việt",
+        "người Mỹ"
+      ],
+      "explain": {
+        "fr": "người Pháp : un Français, une Française.",
+        "en": "người Pháp: a French person."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_viet_kieu"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_nguoi",
+      "explain": {
+        "fr": "người descend (huyền) : la personne.",
+        "en": "người falls (huyền): person."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phap",
+      "distractors": [
+        "Phạp",
+        "Phap"
+      ],
+      "explain": {
+        "fr": "Pháp monte : la France.",
+        "en": "Pháp rises: France."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_nuoc_nao",
+      "distractors": [
+        "Chị là người Pháp?",
+        "Chị tên gì?"
+      ],
+      "explain": {
+        "fr": "người nước nào ? = « personne de quel pays ? ».",
+        "en": "người nước nào? = 'person from which country?'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi là người Pháp.",
+      "tokens": [
+        "Tôi",
+        "là",
+        "người",
+        "Pháp",
+        "Việt"
+      ],
+      "translation": {
+        "fr": "Je suis français(e).",
+        "en": "I'm French."
+      },
+      "explain": {
+        "fr": "người + pays : la nationalité, sans accord de genre.",
+        "en": "người + country: nationality, no gender agreement."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_viet_kieu",
+      "distractors": [
+        "Việt Nam",
+        "tiếng Việt"
+      ],
+      "explain": {
+        "fr": "Việt kiều : un Vietnamien de l'étranger.",
+        "en": "Việt kiều: an overseas Vietnamese."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị là người nước nào?",
+      "tokens": [
+        "Chị",
+        "là",
+        "người",
+        "nước",
+        "nào",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Tu es de quel pays ? (à une femme un peu plus âgée)",
+        "en": "Where are you from? (to a slightly older woman)"
+      },
+      "audioConcept": "s_nguoi_nuoc_nao",
+      "explain": {
+        "fr": "nào = « quel » : il suit le nom, nước nào.",
+        "en": "nào = 'which': it follows the noun, nước nào."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nguoi_viet",
+      "explain": {
+        "fr": "người descend, Việt tombe court.",
+        "en": "người falls, Việt drops short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_nguoi",
+      "c_phap",
+      "s_nguoi_phap",
+      "s_nguoi_viet",
+      "s_nguoi_nuoc_nao",
+      "c_viet_kieu"
+    ]
+  },
+  "reviewed": false
+}

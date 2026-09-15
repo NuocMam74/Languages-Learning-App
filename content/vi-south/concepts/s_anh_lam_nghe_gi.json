@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_anh_lam_nghe_gi",
+  "type": "structure",
+  "vi": "Anh làm nghề gì?",
+  "gloss": {
+    "fr": "Tu fais quel métier ? (à un homme un peu plus âgé)",
+    "en": "What do you do? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_lam_nghe_gi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_anh_lam_nghe_gi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Plus court et très courant : Anh làm gì?",
+    "en": "Shorter and very common: Anh làm gì?"
+  },
+  "reviewed": false
+}

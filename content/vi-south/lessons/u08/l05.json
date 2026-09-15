@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u08.l05",
+  "unit": "vi-south.u08",
+  "title": {
+    "fr": "Thịt heo, trứng, bắp",
+    "en": "Pork, eggs, corn"
+  },
+  "goal": {
+    "fr": "Acheter viande, œufs et maïs avec les mots du Sud.",
+    "en": "Buy meat, eggs and corn with southern words."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u08.l04"
+  ],
+  "concepts": [
+    "c_thit",
+    "c_heo",
+    "s_thit_heo",
+    "c_trung",
+    "c_bap"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_heo",
+      "distractors": [
+        "c_bo_beef",
+        "c_ga_chicken"
+      ],
+      "explain": {
+        "fr": "heo : le cochon, le porc.",
+        "en": "heo: pig, pork."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_trung",
+      "distractors": [
+        "c_bap",
+        "c_ca_fish"
+      ],
+      "explain": {
+        "fr": "trứng : l'œuf.",
+        "en": "trứng: egg."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_porc",
+      "explain": {
+        "fr": "Sud : heo ; Nord : lợn.",
+        "en": "South: heo; North: lợn."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thit_heo",
+      "distractors": [
+        "thịt bò",
+        "thịt gà"
+      ],
+      "explain": {
+        "fr": "thịt + animal : la viande. thịt heo : le porc.",
+        "en": "thịt + animal: meat. thịt heo: pork."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_thit",
+      "explain": {
+        "fr": "thịt tombe court (nặng).",
+        "en": "thịt drops short (nặng)."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bap",
+      "distractors": [
+        "c_trung",
+        "c_xoai"
+      ],
+      "explain": {
+        "fr": "bắp : le maïs.",
+        "en": "bắp: corn."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_mais",
+      "explain": {
+        "fr": "Sud : bắp ; Nord : ngô.",
+        "en": "South: bắp; North: ngô."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị bán cho em một ký thịt heo.",
+      "tokens": [
+        "Chị",
+        "bán",
+        "cho",
+        "em",
+        "một",
+        "ký",
+        "thịt heo",
+        "bò"
+      ],
+      "translation": {
+        "fr": "Vends-moi un kilo de porc, s'il te plaît.",
+        "en": "Sell me a kilo of pork, please."
+      },
+      "explain": {
+        "fr": "bán cho em : « vends-moi ». La quantité avant le produit.",
+        "en": "bán cho em: 'sell me'. Quantity before the product."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Trứng gà bao nhiêu một chục?",
+      "tokens": [
+        "Trứng",
+        "gà",
+        "bao nhiêu",
+        "một",
+        "chục",
+        "ký"
+      ],
+      "translation": {
+        "fr": "Combien la dizaine d'œufs de poule ?",
+        "en": "How much for ten chicken eggs?"
+      },
+      "explain": {
+        "fr": "Les œufs se vendent souvent par dizaine : một chục trứng.",
+        "en": "Eggs are often sold by ten: một chục trứng."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_thit",
+      "c_heo",
+      "s_thit_heo",
+      "c_trung",
+      "c_bap"
+    ]
+  },
+  "reviewed": false
+}

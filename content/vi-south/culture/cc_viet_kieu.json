@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_viet_kieu",
+  "title": {
+    "fr": "Việt kiều",
+    "en": "Việt kiều"
+  },
+  "body": {
+    "fr": "Việt kiều désigne les Vietnamiens établis à l'étranger et leurs enfants. Beaucoup de familles ont quitté le Sud après 1975 et parlent encore le vietnamien de Saïgon. Si tu as des racines vietnamiennes, on te demandera peut-être, avec curiosité : « Em là Việt kiều hả ? ».",
+    "en": "Việt kiều means Vietnamese people living abroad and their children. Many families left the South after 1975 and still speak Saigon Vietnamese. If you have Vietnamese roots, people may ask you, out of curiosity: 'Em là Việt kiều hả?'."
+  },
+  "vi": "Em là Việt kiều hả?",
+  "audio": "audio/cc_viet_kieu.opus",
+  "question": {
+    "prompt": {
+      "fr": "Việt kiều désigne…",
+      "en": "Việt kiều means…"
+    },
+    "options": [
+      {
+        "fr": "les Vietnamiens de l'étranger",
+        "en": "Vietnamese people abroad"
+      },
+      {
+        "fr": "les touristes",
+        "en": "tourists"
+      },
+      {
+        "fr": "les habitants du Nord",
+        "en": "people from the North"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

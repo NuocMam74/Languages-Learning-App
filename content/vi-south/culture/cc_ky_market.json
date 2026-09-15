@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_ky_market",
+  "title": {
+    "fr": "Au kilo : một ký, nửa ký",
+    "en": "By the kilo: một ký, nửa ký"
+  },
+  "body": {
+    "fr": "Au marché, fruits, légumes et viande se vendent au kilo : một ký, nửa ký. Au Nord, on dit plutôt cân. La vendeuse pèse devant toi, souvent sur une petite balance à aiguille, puis annonce le prix. Tu peux aussi acheter les gros fruits à l'unité.",
+    "en": "At the market fruit, vegetables and meat are sold by the kilo: một ký, nửa ký. In the North people say cân. The seller weighs in front of you, often on a small dial scale, then gives the price. Big fruit can also be bought by the piece."
+  },
+  "vi": "Em lấy nửa ký chuối.",
+  "audio": "audio/cc_ky_market.opus",
+  "question": {
+    "prompt": {
+      "fr": "nửa ký, c'est…",
+      "en": "nửa ký is…"
+    },
+    "options": [
+      {
+        "fr": "500 g",
+        "en": "500 g"
+      },
+      {
+        "fr": "100 g",
+        "en": "100 g"
+      },
+      {
+        "fr": "2 kg",
+        "en": "2 kg"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

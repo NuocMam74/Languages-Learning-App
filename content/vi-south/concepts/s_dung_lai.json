@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_dung_lai",
+  "type": "structure",
+  "vi": "dừng lại",
+  "gloss": {
+    "fr": "s'arrêter",
+    "en": "to stop"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_dung_lai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_dung_lai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/signs/stop.svg",
+  "reviewed": false
+}

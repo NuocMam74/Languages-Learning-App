@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_prices_chuc",
+  "title": {
+    "fr": "Des prix pleins de zéros",
+    "en": "Prices full of zeros"
+  },
+  "body": {
+    "fr": "Les prix vietnamiens ont beaucoup de zéros. Au marché, on compte en dizaines de milliers : năm chục ngàn = 50 000 đồng, et souvent on dit juste năm chục. Sur les étiquettes, tu verras 50k ou 50.000đ. Les pièces ne circulent presque plus : tout se paie en billets.",
+    "en": "Vietnamese prices have lots of zeros. At the market people count in tens of thousands: năm chục ngàn = 50,000 đồng, often just năm chục. On labels you'll see 50k or 50.000đ. Coins have almost disappeared: everything is paid in notes."
+  },
+  "vi": "Dạ, năm chục ngàn.",
+  "audio": "audio/cc_prices_chuc.opus",
+  "question": {
+    "prompt": {
+      "fr": "« Năm chục » au marché, c'est souvent…",
+      "en": "'Năm chục' at the market is usually…"
+    },
+    "options": [
+      {
+        "fr": "50 000 đồng",
+        "en": "50,000 đồng"
+      },
+      {
+        "fr": "50 đồng",
+        "en": "50 đồng"
+      },
+      {
+        "fr": "500 đồng",
+        "en": "500 đồng"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

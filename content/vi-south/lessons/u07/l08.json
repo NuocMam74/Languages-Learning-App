@@ -1,0 +1,196 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u07.l08",
+  "unit": "vi-south.u07",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : manger et boire",
+    "en": "Test: eating and drinking"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais commander, manger et payer à la manière du Sud.",
+    "en": "Show you can order, eat and pay the southern way."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u07.l07"
+  ],
+  "concepts": [
+    "c_com_tam",
+    "c_hu_tieu",
+    "s_ca_phe_sua_da",
+    "c_chen",
+    "s_em_oi",
+    "s_tinh_tien",
+    "c_ngot",
+    "c_nuoc_mam"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_com_tam",
+      "distractors": [
+        "c_pho",
+        "c_banh_mi"
+      ],
+      "explain": {
+        "fr": "cơm tấm : le riz brisé.",
+        "en": "cơm tấm: broken rice."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hu_tieu",
+      "distractors": [
+        "hú tiếu",
+        "hủ tiều"
+      ],
+      "explain": {
+        "fr": "hủ tiếu : la soupe du Sud.",
+        "en": "hủ tiếu: southern noodle soup."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_ca_phe_sua_da",
+      "distractors": [
+        "s_tra_da",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "cà phê sữa đá : le café glacé au lait.",
+        "en": "cà phê sữa đá: iced milk coffee."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_verre",
+      "explain": {
+        "fr": "Sud : ly ; Nord : cốc.",
+        "en": "South: ly; North: cốc."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chen",
+      "distractors": [
+        "c_dia_plate",
+        "c_to_bowl"
+      ],
+      "explain": {
+        "fr": "chén : le petit bol.",
+        "en": "chén: small bowl."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em thêm một cái chén.",
+      "tokens": [
+        "Cho",
+        "em",
+        "thêm",
+        "một",
+        "cái",
+        "chén",
+        "ly"
+      ],
+      "translation": {
+        "fr": "Un bol de plus, s'il te plaît.",
+        "en": "One more bowl, please."
+      },
+      "explain": {
+        "fr": "thêm : en plus.",
+        "en": "thêm: extra."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_oi",
+      "distractors": [
+        "Anh ơi!",
+        "Chị ơi!"
+      ],
+      "explain": {
+        "fr": "em ơi : serveur plus jeune.",
+        "en": "em ơi: younger server."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi, cho anh một tô hủ tiếu.",
+      "tokens": [
+        "Em ơi",
+        "cho",
+        "anh",
+        "một",
+        "tô",
+        "hủ tiếu",
+        "chén"
+      ],
+      "translation": {
+        "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
+        "en": "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+      },
+      "explain": {
+        "fr": "anh = « je » face à plus jeune.",
+        "en": "anh = 'I' with someone younger."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tinh_tien",
+      "distractors": [
+        "Em ơi, cho thêm chén.",
+        "Em ơi, ít cay thôi."
+      ],
+      "explain": {
+        "fr": "tính tiền : l'addition.",
+        "en": "tính tiền: the bill."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ngot",
+      "explain": {
+        "fr": "ngọt tombe court (nặng).",
+        "en": "ngọt drops short (nặng)."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nuoc_mam",
+      "distractors": [
+        "c_ot",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "nước mắm : la sauce de poisson.",
+        "en": "nước mắm: fish sauce."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ăn phở hay hủ tiếu?",
+      "tokens": [
+        "Anh",
+        "ăn",
+        "phở",
+        "hay",
+        "hủ tiếu",
+        "và"
+      ],
+      "translation": {
+        "fr": "Tu prends un phở ou un hủ tiếu ? (à un homme un peu plus âgé)",
+        "en": "Phở or hủ tiếu? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "hay = « ou » (question).",
+        "en": "hay = 'or' (question)."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u10.l05",
+  "unit": "vi-south.u10",
+  "title": {
+    "fr": "Đường, hẻm : les adresses",
+    "en": "Streets, alleys: addresses"
+  },
+  "goal": {
+    "fr": "Comprendre et donner une adresse à Saïgon.",
+    "en": "Understand and give a Saigon address."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u10.l04"
+  ],
+  "concepts": [
+    "c_duong_street",
+    "c_hem",
+    "c_dia_chi",
+    "s_so_nha",
+    "c_quan_district"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hem",
+      "distractors": [
+        "hèm",
+        "hém"
+      ],
+      "explain": {
+        "fr": "hẻm plonge : la ruelle.",
+        "en": "hẻm dips: alley."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_hem_address"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_alley",
+      "explain": {
+        "fr": "Sud : hẻm ; Nord : ngõ.",
+        "en": "South: hẻm; North: ngõ."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_duong_street",
+      "distractors": [
+        "đương",
+        "đướng"
+      ],
+      "explain": {
+        "fr": "đường descend : la rue (et le sucre !).",
+        "en": "đường falls: street (and sugar!)."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_quan_district",
+      "explain": {
+        "fr": "quận tombe court (nặng) : l'arrondissement.",
+        "en": "quận drops short (nặng): district."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dia_chi",
+      "distractors": [
+        "địa chì",
+        "dịa chỉ"
+      ],
+      "explain": {
+        "fr": "địa chỉ : l'adresse. chỉ plonge.",
+        "en": "địa chỉ: address. chỉ dips."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà tôi ở hẻm năm mươi, đường Lê Lợi.",
+      "tokens": [
+        "Nhà",
+        "tôi",
+        "ở",
+        "hẻm",
+        "năm mươi",
+        "đường",
+        "Lê Lợi",
+        "quận"
+      ],
+      "translation": {
+        "fr": "J'habite ruelle 50, rue Lê Lợi.",
+        "en": "I live in alley 50, Lê Lợi street."
+      },
+      "explain": {
+        "fr": "Du plus petit au plus grand : hẻm, puis đường, puis quận.",
+        "en": "From smallest to largest: hẻm, then đường, then quận."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_so_nha",
+      "distractors": [
+        "sổ nhà",
+        "số nhỏ"
+      ],
+      "explain": {
+        "fr": "số nhà : le numéro de la maison.",
+        "en": "số nhà: house number."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Địa chỉ của anh là gì?",
+      "tokens": [
+        "Địa chỉ",
+        "của",
+        "anh",
+        "là",
+        "gì",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton adresse ? (à un homme un peu plus âgé)",
+        "en": "What's your address? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Pour une adresse : là gì ?",
+        "en": "For an address: là gì?"
+      }
+    },
+    {
+      "type": "game",
+      "game": "xe_om",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_duong_street",
+      "c_hem",
+      "c_dia_chi",
+      "s_so_nha",
+      "c_quan_district"
+    ]
+  },
+  "reviewed": false
+}

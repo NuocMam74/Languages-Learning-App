@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_song_live",
+  "type": "word",
+  "vi": "sống",
+  "tone": "sac",
+  "gloss": {
+    "fr": "vivre, habiter",
+    "en": "to live"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_song_live_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_song_live_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Tôi sống ở Paris.",
+      "fr": "J'habite à Paris.",
+      "en": "I live in Paris."
+    }
+  ],
+  "reviewed": false
+}

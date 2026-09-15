@@ -1,0 +1,206 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u09.l08",
+  "unit": "vi-south.u09",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : temps et heures",
+    "en": "Test: time and hours"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais parler de l'heure, des jours et des horaires.",
+    "en": "Show you can talk about time, days and schedules."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u09.l07"
+  ],
+  "concepts": [
+    "c_gio",
+    "s_bay_gio",
+    "c_dem",
+    "c_ngay_mai",
+    "s_hom_nay_thu_may",
+    "c_chu_nhat",
+    "c_som",
+    "c_ruoi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_gio",
+      "distractors": [
+        "c_dien_thoai",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "giờ : l'heure.",
+        "en": "giờ: hour."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bay_gio",
+      "distractors": [
+        "bảy giờ",
+        "mấy giờ"
+      ],
+      "explain": {
+        "fr": "bây giờ : maintenant.",
+        "en": "bây giờ: now."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bảy giờ mười lăm phút.",
+      "tokens": [
+        "Bảy",
+        "giờ",
+        "mười",
+        "lăm",
+        "phút",
+        "rưỡi"
+      ],
+      "translation": {
+        "fr": "Sept heures quinze.",
+        "en": "A quarter past seven."
+      },
+      "explain": {
+        "fr": "giờ puis phút.",
+        "en": "giờ then phút."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dem",
+      "distractors": [
+        "c_toi_evening",
+        "c_trua"
+      ],
+      "explain": {
+        "fr": "đêm : la nuit.",
+        "en": "đêm: night."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngay_mai",
+      "distractors": [
+        "ngày mại",
+        "ngay mai"
+      ],
+      "explain": {
+        "fr": "ngày mai : demain.",
+        "en": "ngày mai: tomorrow."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm qua tôi ăn phở.",
+      "tokens": [
+        "Hôm qua",
+        "tôi",
+        "ăn",
+        "phở",
+        "ngày mai"
+      ],
+      "translation": {
+        "fr": "Hier, j'ai mangé un phở.",
+        "en": "Yesterday I had phở."
+      },
+      "explain": {
+        "fr": "hôm qua : le passé.",
+        "en": "hôm qua: the past."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hom_nay_thu_may",
+      "distractors": [
+        "Hôm nay ngày mấy?",
+        "Hôm nay mấy giờ?"
+      ],
+      "explain": {
+        "fr": "thứ mấy ? : quel jour.",
+        "en": "thứ mấy?: which day."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_nhat",
+      "distractors": [
+        "chủ nhà",
+        "thứ nhất"
+      ],
+      "explain": {
+        "fr": "chủ nhật : dimanche.",
+        "en": "chủ nhật: Sunday."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi, tôi tới trễ.",
+      "tokens": [
+        "Xin lỗi",
+        "tôi",
+        "tới",
+        "trễ",
+        "sớm"
+      ],
+      "translation": {
+        "fr": "Désolé(e), je suis en retard.",
+        "en": "Sorry, I'm late."
+      },
+      "explain": {
+        "fr": "tới trễ : en retard.",
+        "en": "tới trễ: late."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_som",
+      "distractors": [
+        "xóm",
+        "sờm"
+      ],
+      "explain": {
+        "fr": "sớm : tôt.",
+        "en": "sớm: early."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi thường đi làm lúc bảy giờ sáng.",
+      "tokens": [
+        "Tôi",
+        "thường",
+        "đi làm",
+        "lúc",
+        "bảy",
+        "giờ",
+        "sáng",
+        "tối"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      },
+      "explain": {
+        "fr": "lúc + heure.",
+        "en": "lúc + time."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ruoi",
+      "explain": {
+        "fr": "rưỡi : ngã, comme un hỏi au Sud.",
+        "en": "rưỡi: ngã, like hỏi in the South."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

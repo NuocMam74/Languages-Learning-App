@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_sweet_south",
+  "title": {
+    "fr": "Le Sud, côté sucré",
+    "en": "The South's sweet side"
+  },
+  "body": {
+    "fr": "La cuisine du Sud a la réputation d'être plus sucrée : un peu de sucre dans le bouillon, dans les sauces, jusque dans le nước mắm dilué qui accompagne presque tout. Le delta du Mékong fournit en abondance canne à sucre, noix de coco et fruits.",
+    "en": "Southern cooking is known for being sweeter: a little sugar in the broth, the sauces, even in the diluted nước mắm served with almost everything. The Mekong Delta supplies plenty of sugarcane, coconuts and fruit."
+  },
+  "vi": "Món này ngọt quá!",
+  "audio": "audio/cc_sweet_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "Par rapport au Nord, la cuisine du Sud est réputée plus…",
+      "en": "Compared with the North, southern food is known as more…"
+    },
+    "options": [
+      {
+        "fr": "sucrée",
+        "en": "sweet"
+      },
+      {
+        "fr": "amère",
+        "en": "bitter"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

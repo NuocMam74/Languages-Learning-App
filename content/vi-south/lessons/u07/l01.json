@@ -1,0 +1,157 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u07.l01",
+  "unit": "vi-south.u07",
+  "title": {
+    "fr": "Phở, hủ tiếu, cơm tấm",
+    "en": "Phở, hủ tiếu, cơm tấm"
+  },
+  "goal": {
+    "fr": "Reconnaître les plats de rue du Sud et en commander un.",
+    "en": "Recognise southern street dishes and order one."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u06.l08"
+  ],
+  "concepts": [
+    "c_pho",
+    "c_hu_tieu",
+    "c_com_tam",
+    "c_banh_mi",
+    "s_cho_em_to_pho"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_pho",
+      "distractors": [
+        "c_com_tam",
+        "c_banh_mi"
+      ],
+      "explain": {
+        "fr": "phở : la soupe de nouilles de riz.",
+        "en": "phở: rice noodle soup."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_hu_tieu_com_tam"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_pho",
+      "explain": {
+        "fr": "phở porte le hỏi : il plonge puis remonte.",
+        "en": "phở carries hỏi: it dips then rises."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_com_tam",
+      "distractors": [
+        "c_pho",
+        "c_banh_mi"
+      ],
+      "explain": {
+        "fr": "cơm tấm : le riz brisé.",
+        "en": "cơm tấm: broken rice."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hu_tieu",
+      "distractors": [
+        "hú tiếu",
+        "hủ tiều"
+      ],
+      "explain": {
+        "fr": "hủ plonge, tiếu monte.",
+        "en": "hủ dips, tiếu rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_to_pho",
+      "distractors": [
+        "Cho em một tô hủ tiếu.",
+        "Cho em một dĩa cơm tấm."
+      ],
+      "explain": {
+        "fr": "tô phở : le grand bol de phở.",
+        "en": "tô phở: a big bowl of phở."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em một tô phở.",
+      "tokens": [
+        "Cho",
+        "em",
+        "một",
+        "tô",
+        "phở",
+        "cái"
+      ],
+      "translation": {
+        "fr": "Un bol de phở, s'il te plaît.",
+        "en": "A bowl of phở, please."
+      },
+      "audioConcept": "s_cho_em_to_pho",
+      "explain": {
+        "fr": "Cho em + nombre + contenant + plat : la commande de base.",
+        "en": "Cho em + number + container + dish: the basic order."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "c_com_tam",
+        "c_pho"
+      ],
+      "explain": {
+        "fr": "bánh mì : le sandwich baguette.",
+        "en": "bánh mì: baguette sandwich."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ăn phở hay hủ tiếu?",
+      "tokens": [
+        "Anh",
+        "ăn",
+        "phở",
+        "hay",
+        "hủ tiếu",
+        "và"
+      ],
+      "translation": {
+        "fr": "Tu prends un phở ou un hủ tiếu ? (à un homme un peu plus âgé)",
+        "en": "Phở or hủ tiếu? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "hay = « ou » dans une question.",
+        "en": "hay = 'or' in a question."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cho_em_to_pho",
+      "explain": {
+        "fr": "tô reste plat, phở plonge à la fin.",
+        "en": "tô stays level, phở dips at the end."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_pho",
+      "c_hu_tieu",
+      "c_com_tam",
+      "c_banh_mi",
+      "s_cho_em_to_pho"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u08.l02",
+  "unit": "vi-south.u08",
+  "title": {
+    "fr": "Mắc quá ! Marchander",
+    "en": "Mắc quá! Haggling"
+  },
+  "goal": {
+    "fr": "Dire que c'est cher et demander une réduction.",
+    "en": "Say it's expensive and ask for a discount."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u08.l01"
+  ],
+  "concepts": [
+    "c_re",
+    "c_qua_too",
+    "s_mac_qua",
+    "c_bot",
+    "s_bot_cho_em"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mac_qua",
+      "distractors": [
+        "Rẻ quá!",
+        "Ngon quá!"
+      ],
+      "explain": {
+        "fr": "Mắc quá ! : trop cher ! Rẻ quá ! : pas cher du tout !",
+        "en": "Mắc quá!: too expensive! Rẻ quá!: so cheap!"
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_haggling"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_cher",
+      "explain": {
+        "fr": "Sud : mắc ; Nord : đắt.",
+        "en": "South: mắc; North: đắt."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_re",
+      "distractors": [
+        "rè",
+        "ré"
+      ],
+      "explain": {
+        "fr": "rẻ plonge : bon marché. ré monte, rè descend.",
+        "en": "rẻ dips: cheap. ré rises, rè falls."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_re",
+      "explain": {
+        "fr": "rẻ porte le hỏi ; au Sud, rẻ et rễ (la racine) sonnent pareil.",
+        "en": "rẻ carries hỏi; in the South rẻ and rễ (root) sound alike."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bot",
+      "distractors": [
+        "bợt",
+        "bọt"
+      ],
+      "explain": {
+        "fr": "bớt monte : baisser le prix. bọt : la mousse.",
+        "en": "bớt rises: lower the price. bọt: foam."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mắc quá, bớt cho em đi chị.",
+      "tokens": [
+        "Mắc",
+        "quá",
+        "bớt",
+        "cho",
+        "em",
+        "đi",
+        "chị",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "C'est trop cher, fais-moi un prix.",
+        "en": "It's too expensive, give me a discount."
+      },
+      "explain": {
+        "fr": "đi en fin de phrase pousse gentiment à agir.",
+        "en": "đi at the end gently urges action."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_qua_too",
+      "distractors": [
+        "quà",
+        "quạ"
+      ],
+      "explain": {
+        "fr": "quá monte : trop. quà descend : le cadeau. quạ : le corbeau.",
+        "en": "quá rises: too. quà falls: gift. quạ: crow."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cái này rẻ quá!",
+      "tokens": [
+        "Cái",
+        "này",
+        "rẻ",
+        "quá",
+        "mắc"
+      ],
+      "translation": {
+        "fr": "Celui-ci est vraiment pas cher !",
+        "en": "This one is so cheap!"
+      },
+      "explain": {
+        "fr": "quá après l'adjectif : « trop » ou « tellement ».",
+        "en": "quá after the adjective: 'too' or 'so'."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_bot_cho_em",
+      "explain": {
+        "fr": "bớt monte, cho et em plats, đi plat, chị tombe court.",
+        "en": "bớt rises, cho and em level, đi level, chị drops short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_re",
+      "c_qua_too",
+      "s_mac_qua",
+      "c_bot",
+      "s_bot_cho_em"
+    ]
+  },
+  "reviewed": false
+}

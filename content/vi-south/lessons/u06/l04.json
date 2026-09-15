@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u06.l04",
+  "unit": "vi-south.u06",
+  "title": {
+    "fr": "Tu as quel âge ?",
+    "en": "How old are you?"
+  },
+  "goal": {
+    "fr": "Demander l'âge d'un adulte et dire le tien.",
+    "en": "Ask an adult's age and give yours."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u06.l03"
+  ],
+  "concepts": [
+    "c_bao_nhieu",
+    "s_anh_bao_nhieu_tuoi",
+    "c_nam_nay",
+    "s_bang_tuoi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_bao_nhieu_tuoi",
+      "distractors": [
+        "Em mấy tuổi?",
+        "Anh tên gì?"
+      ],
+      "explain": {
+        "fr": "bao nhiêu tuổi ? : pour un adulte. mấy tuổi ? : pour un enfant.",
+        "en": "bao nhiêu tuổi?: for an adult. mấy tuổi?: for a child."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_tuoi_ta"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bao_nhieu",
+      "distractors": [
+        "bao nhiều",
+        "báo nhiêu"
+      ],
+      "explain": {
+        "fr": "bao et nhiêu restent plats tous les deux.",
+        "en": "bao and nhiêu both stay level."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Năm nay tôi ba mươi tuổi.",
+      "tokens": [
+        "Năm nay",
+        "tôi",
+        "ba",
+        "mươi",
+        "tuổi",
+        "mười"
+      ],
+      "translation": {
+        "fr": "Cette année, j'ai trente ans.",
+        "en": "This year I'm thirty."
+      },
+      "explain": {
+        "fr": "năm nay se met souvent en tête de phrase.",
+        "en": "năm nay often opens the sentence."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_nay",
+      "distractors": [
+        "nắm nay",
+        "năm nãy"
+      ],
+      "explain": {
+        "fr": "năm nay : deux syllabes plates, « cette année ».",
+        "en": "năm nay: two level syllables, 'this year'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh bao nhiêu tuổi?",
+      "tokens": [
+        "Anh",
+        "bao nhiêu",
+        "tuổi",
+        "mấy"
+      ],
+      "translation": {
+        "fr": "Tu as quel âge ? (à un homme un peu plus âgé)",
+        "en": "How old are you? (to a slightly older man)"
+      },
+      "audioConcept": "s_anh_bao_nhieu_tuoi",
+      "explain": {
+        "fr": "À un adulte, bao nhiêu est plus poli que mấy.",
+        "en": "With an adult, bao nhiêu is more polite than mấy."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bang_tuoi",
+      "distractors": [
+        "bao nhiêu tuổi",
+        "mấy tuổi"
+      ],
+      "explain": {
+        "fr": "bằng tuổi : du même âge.",
+        "en": "bằng tuổi: the same age."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tụi mình bằng tuổi nhau.",
+      "tokens": [
+        "Tụi",
+        "mình",
+        "bằng",
+        "tuổi",
+        "nhau",
+        "mấy"
+      ],
+      "translation": {
+        "fr": "On a le même âge.",
+        "en": "We're the same age."
+      },
+      "explain": {
+        "fr": "Même âge : pas d'aîné ni de cadet, on se dit bạn, mình, tui.",
+        "en": "Same age: no elder or younger, so bạn, mình, tui."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_anh_bao_nhieu_tuoi",
+      "explain": {
+        "fr": "Tout reste plat jusqu'à tuổi, qui plonge.",
+        "en": "Everything stays level until tuổi, which dips."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_bao_nhieu",
+      "s_anh_bao_nhieu_tuoi",
+      "c_nam_nay",
+      "s_bang_tuoi"
+    ]
+  },
+  "reviewed": false
+}

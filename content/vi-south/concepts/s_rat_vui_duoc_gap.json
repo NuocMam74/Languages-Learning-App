@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_rat_vui_duoc_gap",
+  "type": "structure",
+  "vi": "Rất vui được gặp chị.",
+  "gloss": {
+    "fr": "Ravi(e) de te rencontrer (à une femme un peu plus âgée).",
+    "en": "Nice to meet you (to a slightly older woman)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_rat_vui_duoc_gap_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_rat_vui_duoc_gap_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "rất = « très », devant l'adjectif. Plus décontracté : Vui được gặp chị.",
+    "en": "rất = 'very', before the adjective. More casual: Vui được gặp chị."
+  },
+  "reviewed": false
+}

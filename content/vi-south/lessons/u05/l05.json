@@ -1,0 +1,154 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u05.l05",
+  "unit": "vi-south.u05",
+  "title": {
+    "fr": "Au travail",
+    "en": "At work"
+  },
+  "goal": {
+    "fr": "Dire où tu travailles et pour quelle entreprise.",
+    "en": "Say where you work and for which company."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u05.l04"
+  ],
+  "concepts": [
+    "c_lam_viec",
+    "c_cong_ty",
+    "c_van_phong",
+    "s_chi_lam_o_dau",
+    "c_danh_thiep"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chi_lam_o_dau",
+      "distractors": [
+        "Chị làm nghề gì?",
+        "Chị ở đâu?"
+      ],
+      "explain": {
+        "fr": "làm ở đâu ? : « travailler où ? ».",
+        "en": "làm ở đâu?: 'work where?'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_business_card"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cong_ty",
+      "distractors": [
+        "công tý",
+        "cộng ty"
+      ],
+      "explain": {
+        "fr": "công ty : deux syllabes plates, l'entreprise.",
+        "en": "công ty: two level syllables, company."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam_viec",
+      "distractors": [
+        "làm viếc",
+        "lám việc"
+      ],
+      "explain": {
+        "fr": "làm descend, việc tombe court : travailler.",
+        "en": "làm falls, việc drops short: to work."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi làm việc cho một công ty Pháp.",
+      "tokens": [
+        "Tôi",
+        "làm việc",
+        "cho",
+        "một",
+        "công ty",
+        "Pháp",
+        "ở"
+      ],
+      "translation": {
+        "fr": "Je travaille pour une entreprise française.",
+        "en": "I work for a French company."
+      },
+      "explain": {
+        "fr": "La nationalité suit le nom : công ty Pháp. cho = « pour ».",
+        "en": "Nationality follows the noun: công ty Pháp. cho = 'for'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_van_phong",
+      "distractors": [
+        "văn phỏng",
+        "vân phòng"
+      ],
+      "explain": {
+        "fr": "văn plat, phòng descend : le bureau.",
+        "en": "văn level, phòng falls: office."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_danh_thiep",
+      "distractors": [
+        "danh thiệp",
+        "dành thiếp"
+      ],
+      "explain": {
+        "fr": "danh plat, thiếp monte : la carte de visite.",
+        "en": "danh level, thiếp rises: business card."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh làm ở văn phòng nào?",
+      "tokens": [
+        "Anh",
+        "làm",
+        "ở",
+        "văn phòng",
+        "nào",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Tu travailles dans quel bureau ? (à un homme un peu plus âgé)",
+        "en": "Which office do you work at? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "làm tout seul suffit souvent pour « travailler ».",
+        "en": "Plain làm is often enough for 'to work'."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_chi_lam_o_dau",
+      "explain": {
+        "fr": "chị tombe court, làm descend, ở plonge, đâu plat.",
+        "en": "chị drops short, làm falls, ở dips, đâu level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_lam_viec",
+      "c_cong_ty",
+      "c_van_phong",
+      "s_chi_lam_o_dau",
+      "c_danh_thiep"
+    ]
+  },
+  "reviewed": false
+}

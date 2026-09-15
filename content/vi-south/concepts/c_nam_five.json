@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nam_five",
+  "type": "word",
+  "vi": "năm",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "cinq ; année",
+    "en": "five; year"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nam_five_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nam_five_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Après mười ou mươi, năm devient lăm : mười lăm (15).",
+    "en": "After mười or mươi, năm becomes lăm: mười lăm (15)."
+  },
+  "reviewed": false
+}

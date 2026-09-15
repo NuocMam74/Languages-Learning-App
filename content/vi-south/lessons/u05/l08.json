@@ -1,0 +1,206 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u05.l08",
+  "unit": "vi-south.u05",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : se présenter",
+    "en": "Test: introductions"
+  },
+  "goal": {
+    "fr": "Montrer que tu sais te présenter et poser les questions de base.",
+    "en": "Show you can introduce yourself and ask the basic questions."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u05.l07"
+  ],
+  "concepts": [
+    "c_giao_vien",
+    "c_ho_surname",
+    "s_nguoi_nuoc_nao",
+    "c_song_live",
+    "c_ky_su",
+    "s_chi_lam_o_dau",
+    "c_chut_xiu",
+    "c_gap"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "c_bac_si",
+        "c_sinh_vien"
+      ],
+      "explain": {
+        "fr": "giáo viên : l'enseignant.",
+        "en": "giáo viên: teacher."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_surname",
+      "distractors": [
+        "hồ",
+        "hò"
+      ],
+      "explain": {
+        "fr": "họ : le nom de famille.",
+        "en": "họ: family name."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_nuoc_nao",
+      "distractors": [
+        "Chị là người Pháp?",
+        "Chị tên gì?"
+      ],
+      "explain": {
+        "fr": "người nước nào ? : quel pays ?",
+        "en": "người nước nào?: which country?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi họ Nguyễn, tên là Lan.",
+      "tokens": [
+        "Tôi",
+        "họ",
+        "Nguyễn",
+        "tên",
+        "là",
+        "Lan",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Mon nom de famille est Nguyễn, mon prénom Lan.",
+        "en": "My family name is Nguyễn, my given name Lan."
+      },
+      "explain": {
+        "fr": "họ puis tên.",
+        "en": "họ then tên."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_song_live",
+      "distractors": [
+        "sông",
+        "sóng"
+      ],
+      "explain": {
+        "fr": "sống : vivre.",
+        "en": "sống: to live."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ở thành phố nào?",
+      "tokens": [
+        "Anh",
+        "ở",
+        "thành phố",
+        "nào",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Tu habites dans quelle ville ? (à un homme un peu plus âgé)",
+        "en": "Which city do you live in? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "thành phố nào : quelle ville.",
+        "en": "thành phố nào: which city."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ky_su",
+      "distractors": [
+        "c_giao_vien",
+        "c_bac_si"
+      ],
+      "explain": {
+        "fr": "kỹ sư : l'ingénieur.",
+        "en": "kỹ sư: engineer."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chi_lam_o_dau",
+      "distractors": [
+        "Chị làm nghề gì?",
+        "Chị ở đâu?"
+      ],
+      "explain": {
+        "fr": "làm ở đâu ? : travailler où ?",
+        "en": "làm ở đâu?: work where?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi làm việc cho một công ty Pháp.",
+      "tokens": [
+        "Tôi",
+        "làm việc",
+        "cho",
+        "một",
+        "công ty",
+        "Pháp",
+        "ở"
+      ],
+      "translation": {
+        "fr": "Je travaille pour une entreprise française.",
+        "en": "I work for a French company."
+      },
+      "explain": {
+        "fr": "công ty Pháp : l'adjectif suit.",
+        "en": "công ty Pháp: adjective follows."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chut_xiu",
+      "distractors": [
+        "chút xiu",
+        "chụt xíu"
+      ],
+      "explain": {
+        "fr": "chút xíu : un tout petit peu.",
+        "en": "chút xíu: a tiny bit."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi, tôi không hiểu.",
+      "tokens": [
+        "Xin lỗi",
+        "tôi",
+        "không",
+        "hiểu",
+        "học"
+      ],
+      "translation": {
+        "fr": "Pardon, je ne comprends pas.",
+        "en": "Sorry, I don't understand."
+      },
+      "explain": {
+        "fr": "không + verbe.",
+        "en": "không + verb."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_gap",
+      "explain": {
+        "fr": "gặp tombe court (nặng).",
+        "en": "gặp drops short (nặng)."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

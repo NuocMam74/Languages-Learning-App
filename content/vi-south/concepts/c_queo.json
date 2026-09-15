@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_queo",
+  "type": "word",
+  "vi": "quẹo",
+  "tone": "nang",
+  "gloss": {
+    "fr": "tourner (Sud)",
+    "en": "to turn (South)"
+  },
+  "register": "neutral",
+  "northernEquivalent": "rẽ",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_queo_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_queo_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : quẹo ; au Nord et dans les applis GPS : rẽ.",
+    "en": "South: quẹo; North and GPS apps: rẽ."
+  },
+  "reviewed": false
+}

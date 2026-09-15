@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_hai_muoi_mot",
+  "type": "structure",
+  "vi": "hai mươi mốt",
+  "gloss": {
+    "fr": "vingt et un",
+    "en": "twenty-one"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_hai_muoi_mot_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_hai_muoi_mot_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, on entend aussi la forme courte hăm mốt.",
+    "en": "In the South you also hear the short form hăm mốt."
+  },
+  "reviewed": false
+}

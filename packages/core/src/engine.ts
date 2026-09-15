@@ -46,6 +46,8 @@ export type Exercise =
   | (ExerciseBase & { type: "spot_the_south"; entry: LexicalVariantEntry; options: ChoiceOption[]; answerId: string })
   | (ExerciseBase & { type: "build_sentence"; target: string; translation: Localized; audio: Concept | null; tokens: ChoiceOption[] })
   | (ExerciseBase & { type: "speak_repeat"; concept: Concept; pitchRef: string | null })
+  /** Produire le mot avec le bon ton (une syllabe) : noté par la courbe de hauteur, comme speak_repeat. */
+  | (ExerciseBase & { type: "tone_produce"; concept: Concept; tone: Tone; pitchRef: string | null })
   | (ExerciseBase & { type: "game"; game: GameId; conceptIds: ConceptId[] })
   | (ExerciseBase & { type: "unsupported"; stepType: StepType });
 
@@ -68,7 +70,7 @@ export interface Evaluation {
   explain: Localized | null;
 }
 
-/** Score de prononciation (0–100) à partir duquel speak_repeat est réussi. */
+/** Score de prononciation (0–100) à partir duquel speak_repeat / tone_produce est réussi. */
 export const SPEAK_PASS_SCORE = 60;
 export const GAME_PASS_RATIO = 0.7;
 
@@ -195,6 +197,14 @@ function buildFromStep(content: ContentIndex, lesson: Lesson, step: LessonStep, 
       };
     }
 
+    case "tone_produce": {
+      const concept = requireConcept(content, step.concept);
+      return {
+        type: step.type, stepIndex, conceptIds: [concept.id], explain: step.explain ?? concept.note ?? null,
+        concept, tone: concept.tone ?? toneOf(concept.vi), pitchRef: concept.pitch ?? null,
+      };
+    }
+
     case "game": {
       const pool = step.conceptPool === "lesson" || step.conceptPool === "unit" || step.conceptPool === "known"
         ? lesson.concepts
@@ -257,7 +267,8 @@ export function evaluate(exercise: Exercise, response: ExerciseResponse): Evalua
       };
     }
 
-    case "speak_repeat": {
+    case "speak_repeat":
+    case "tone_produce": {
       if (response.kind !== "speech") return { ...ungraded(exercise.concept.vi), correct: false };
       // Micro refusé ou indisponible : l'exercice devient de l'écoute, sans note.
       if (response.score === null) return ungraded(exercise.concept.vi);

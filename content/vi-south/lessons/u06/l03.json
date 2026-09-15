@@ -1,0 +1,163 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u06.l03",
+  "unit": "vi-south.u06",
+  "title": {
+    "fr": "Mười, mươi, mốt, lăm",
+    "en": "Mười, mươi, mốt, lăm"
+  },
+  "goal": {
+    "fr": "Dire les nombres de 11 à 99, avec leurs petites transformations.",
+    "en": "Say numbers from 11 to 99, with their little changes."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u06.l02"
+  ],
+  "concepts": [
+    "c_muoi_tens",
+    "c_mot_high",
+    "c_lam_five",
+    "s_muoi_lam",
+    "s_hai_muoi_mot",
+    "c_muoi_ten",
+    "c_mot_one"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_muoi_lam",
+      "distractors": [
+        "mười năm",
+        "mươi lăm"
+      ],
+      "explain": {
+        "fr": "Après mười, năm devient lăm : mười lăm = 15. mười năm = « dix ans ».",
+        "en": "After mười, năm becomes lăm: mười lăm = 15. mười năm = 'ten years'."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_numbers_south"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "mười",
+        "mươi"
+      ],
+      "audioConcepts": [
+        "c_muoi_ten",
+        "c_muoi_tens"
+      ],
+      "explain": {
+        "fr": "mười descend : dix. mươi, plat : les dizaines (hai mươi).",
+        "en": "mười falls: ten. mươi, level: tens (hai mươi)."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "một",
+        "mốt"
+      ],
+      "audioConcepts": [
+        "c_mot_one",
+        "c_mot_high"
+      ],
+      "explain": {
+        "fr": "một tombe court : un. mốt monte : le un après une dizaine.",
+        "en": "một drops short: one. mốt rises: the one after a tens word."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hai_muoi_mot",
+      "distractors": [
+        "hai mươi bảy",
+        "ba mươi mốt"
+      ],
+      "explain": {
+        "fr": "hai mươi mốt : 21. ba mươi mốt : 31.",
+        "en": "hai mươi mốt: 21. ba mươi mốt: 31."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị hai mươi lăm tuổi.",
+      "tokens": [
+        "Chị",
+        "hai",
+        "mươi",
+        "lăm",
+        "tuổi",
+        "năm"
+      ],
+      "translation": {
+        "fr": "Elle a vingt-cinq ans.",
+        "en": "She's twenty-five."
+      },
+      "explain": {
+        "fr": "25 = hai mươi lăm : năm devient lăm après mươi.",
+        "en": "25 = hai mươi lăm: năm becomes lăm after mươi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam_five",
+      "distractors": [
+        "lắm",
+        "lầm"
+      ],
+      "explain": {
+        "fr": "lăm, plat : le cinq après une dizaine. lắm monte : très.",
+        "en": "lăm, level: five after a tens word. lắm rises: very."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Lớp tôi có ba mươi tư người.",
+      "tokens": [
+        "Lớp",
+        "tôi",
+        "có",
+        "ba",
+        "mươi",
+        "tư",
+        "người",
+        "mười"
+      ],
+      "translation": {
+        "fr": "Ma classe compte trente-quatre personnes.",
+        "en": "My class has thirty-four people."
+      },
+      "explain": {
+        "fr": "Après mươi, quatre se dit souvent tư : ba mươi tư.",
+        "en": "After mươi, four is often tư: ba mươi tư."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_hai_muoi_mot",
+      "explain": {
+        "fr": "hai plat, mươi plat, mốt monte à la fin.",
+        "en": "hai level, mươi level, mốt rises at the end."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_muoi_tens",
+      "c_mot_high",
+      "c_lam_five",
+      "s_muoi_lam",
+      "s_hai_muoi_mot"
+    ]
+  },
+  "reviewed": false
+}

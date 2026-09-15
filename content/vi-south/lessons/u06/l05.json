@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u06.l05",
+  "unit": "vi-south.u06",
+  "title": {
+    "fr": "Cent, mille : ngàn et lẻ",
+    "en": "Hundreds and thousands: ngàn and lẻ"
+  },
+  "goal": {
+    "fr": "Dire les centaines et les milliers à la manière du Sud.",
+    "en": "Say hundreds and thousands the southern way."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u06.l04"
+  ],
+  "concepts": [
+    "c_tram",
+    "c_ngan",
+    "c_le",
+    "s_mot_tram_le_nam",
+    "c_chuc"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tram",
+      "distractors": [
+        "trầm",
+        "trạm"
+      ],
+      "explain": {
+        "fr": "trăm, plat : cent. trạm tombe court : la station.",
+        "en": "trăm, level: hundred. trạm drops short: station."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ngan_nghin"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan",
+      "distractors": [
+        "ngán",
+        "ngạn"
+      ],
+      "explain": {
+        "fr": "ngàn descend : mille. ngán monte : en avoir assez !",
+        "en": "ngàn falls: thousand. ngán rises: to be fed up!"
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_thousand",
+      "explain": {
+        "fr": "Au Sud : một ngàn ; au Nord : một nghìn.",
+        "en": "South: một ngàn; North: một nghìn."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mot_tram_le_nam",
+      "distractors": [
+        "một trăm năm",
+        "một trăm lẻ lăm"
+      ],
+      "explain": {
+        "fr": "105 : trăm + lẻ + năm. Sans lẻ, một trăm năm s'entend comme 150 à l'oral.",
+        "en": "105: trăm + lẻ + năm. Without lẻ, một trăm năm is heard as 150 in speech."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_linh",
+      "explain": {
+        "fr": "Au Sud : lẻ ; au Nord : linh.",
+        "en": "South: lẻ; North: linh."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_le",
+      "explain": {
+        "fr": "lẻ porte le hỏi : au Sud, il sonne comme un ngã.",
+        "en": "lẻ carries hỏi: in the South it sounds like ngã."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà tôi số một trăm lẻ tám.",
+      "tokens": [
+        "Nhà",
+        "tôi",
+        "số",
+        "một",
+        "trăm",
+        "lẻ",
+        "tám",
+        "mười"
+      ],
+      "translation": {
+        "fr": "J'habite au numéro 108.",
+        "en": "I live at number 108."
+      },
+      "explain": {
+        "fr": "số + nombre = le numéro. 108 = một trăm lẻ tám.",
+        "en": "số + number = the number. 108 = một trăm lẻ tám."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chuc",
+      "distractors": [
+        "chúc",
+        "chức"
+      ],
+      "explain": {
+        "fr": "chục tombe court : la dizaine. chúc monte : souhaiter.",
+        "en": "chục drops short: a group of ten. chúc rises: to wish."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_mot_tram_le_nam",
+      "explain": {
+        "fr": "trăm plat, lẻ plonge, năm plat.",
+        "en": "trăm level, lẻ dips, năm level."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_tram",
+      "c_ngan",
+      "c_le",
+      "s_mot_tram_le_nam",
+      "c_chuc"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u09.l01",
+  "unit": "vi-south.u09",
+  "title": {
+    "fr": "Mấy giờ rồi ?",
+    "en": "Mấy giờ rồi?"
+  },
+  "goal": {
+    "fr": "Demander et dire l'heure.",
+    "en": "Ask and tell the time."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u08.l08"
+  ],
+  "concepts": [
+    "c_gio",
+    "s_may_gio_roi",
+    "c_phut",
+    "s_bay_gio",
+    "c_ruoi"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_gio",
+      "distractors": [
+        "c_dien_thoai",
+        "c_tien"
+      ],
+      "explain": {
+        "fr": "giờ : l'heure, la montre.",
+        "en": "giờ: hour, clock."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_gio_cao_su"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_may_gio_roi",
+      "distractors": [
+        "Mấy tuổi rồi?",
+        "Mấy giờ rưỡi?"
+      ],
+      "explain": {
+        "fr": "Mấy giờ rồi ? : quelle heure est-il (déjà) ?",
+        "en": "Mấy giờ rồi?: what time is it (now)?"
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ruoi",
+      "explain": {
+        "fr": "rưỡi porte le ngã : au Sud, il sonne comme un hỏi.",
+        "en": "rưỡi carries ngã: in the South it sounds like hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phut",
+      "distractors": [
+        "phụt",
+        "phùt"
+      ],
+      "explain": {
+        "fr": "phút monte : la minute.",
+        "en": "phút rises: minute."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ là ba giờ rưỡi.",
+      "tokens": [
+        "Bây giờ",
+        "là",
+        "ba",
+        "giờ",
+        "rưỡi",
+        "phút"
+      ],
+      "translation": {
+        "fr": "Il est trois heures et demie.",
+        "en": "It's half past three."
+      },
+      "explain": {
+        "fr": "rưỡi se place après giờ : ba giờ rưỡi.",
+        "en": "rưỡi goes after giờ: ba giờ rưỡi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bay_gio",
+      "distractors": [
+        "bảy giờ",
+        "mấy giờ"
+      ],
+      "explain": {
+        "fr": "bây giờ : maintenant. bảy giờ : sept heures.",
+        "en": "bây giờ: now. bảy giờ: seven o'clock."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bảy giờ mười lăm phút.",
+      "tokens": [
+        "Bảy",
+        "giờ",
+        "mười",
+        "lăm",
+        "phút",
+        "rưỡi"
+      ],
+      "translation": {
+        "fr": "Sept heures quinze.",
+        "en": "A quarter past seven."
+      },
+      "explain": {
+        "fr": "giờ puis phút : bảy giờ mười lăm (phút).",
+        "en": "giờ then phút: bảy giờ mười lăm (phút)."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_may_gio_roi",
+      "explain": {
+        "fr": "mấy monte, giờ et rồi descendent.",
+        "en": "mấy rises, giờ and rồi fall."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_gio",
+      "s_may_gio_roi",
+      "c_phut",
+      "s_bay_gio",
+      "c_ruoi"
+    ]
+  },
+  "reviewed": false
+}

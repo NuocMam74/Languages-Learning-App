@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_names_order",
+  "title": {
+    "fr": "Le prénom à la fin",
+    "en": "The given name comes last"
+  },
+  "body": {
+    "fr": "Au Vietnam, le nom de famille vient d'abord : Nguyễn Thị Lan. Mais on appelle les gens par le dernier mot, le prénom : chị Lan, jamais chị Nguyễn. Près de quatre Vietnamiens sur dix s'appellent Nguyễn : sans le prénom, impossible de s'y retrouver.",
+    "en": "In Vietnam the family name comes first: Nguyễn Thị Lan. But people are called by the last word, the given name: chị Lan, never chị Nguyễn. Nearly four in ten Vietnamese are named Nguyễn: without the given name, you'd never find anyone."
+  },
+  "vi": "Chị tên gì?",
+  "audio": "audio/cc_names_order.opus",
+  "question": {
+    "prompt": {
+      "fr": "Nguyễn Thị Lan est un peu plus âgée que toi. Tu l'appelles…",
+      "en": "Nguyễn Thị Lan is a little older than you. You call her…"
+    },
+    "options": [
+      {
+        "fr": "chị Nguyễn",
+        "en": "chị Nguyễn"
+      },
+      {
+        "fr": "chị Lan",
+        "en": "chị Lan"
+      },
+      {
+        "fr": "chị Thị",
+        "en": "chị Thị"
+      }
+    ],
+    "answer": 1
+  },
+  "reviewed": false
+}

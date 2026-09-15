@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_haggling",
+  "title": {
+    "fr": "Marchander, avec le sourire",
+    "en": "Haggling, with a smile"
+  },
+  "body": {
+    "fr": "Marchander est normal pour les vêtements et les souvenirs, beaucoup moins pour les fruits et légumes vendus au poids. Souris, propose un prix, dis « Bớt cho em đi chị ». Si la vendeuse refuse, pas de drame : remercie et continue. Au supermarché, les prix sont fixes.",
+    "en": "Haggling is normal for clothes and souvenirs, much less for fruit and vegetables sold by weight. Smile, suggest a price, say 'Bớt cho em đi chị'. If the seller says no, no drama: thank her and move on. Supermarket prices are fixed."
+  },
+  "vi": "Mắc quá, bớt cho em đi chị.",
+  "audio": "audio/cc_haggling.opus",
+  "question": {
+    "prompt": {
+      "fr": "Où marchande-t-on le moins ?",
+      "en": "Where do you haggle least?"
+    },
+    "options": [
+      {
+        "fr": "au supermarché",
+        "en": "at the supermarket"
+      },
+      {
+        "fr": "au stand de souvenirs",
+        "en": "at the souvenir stall"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

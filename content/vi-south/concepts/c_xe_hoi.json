@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_xe_hoi",
+  "type": "word",
+  "vi": "xe hơi",
+  "gloss": {
+    "fr": "voiture",
+    "en": "car"
+  },
+  "register": "neutral",
+  "northernEquivalent": "ô tô",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xe_hoi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xe_hoi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/vehicles/car.svg",
+  "note": {
+    "fr": "Au Sud : xe hơi ; au Nord : ô tô.",
+    "en": "South: xe hơi; North: ô tô."
+  },
+  "reviewed": false
+}

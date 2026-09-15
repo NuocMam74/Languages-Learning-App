@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_tuoi_ta",
+  "title": {
+    "fr": "L'âge « à la vietnamienne »",
+    "en": "Age, the Vietnamese way"
+  },
+  "body": {
+    "fr": "Les aînés comptent parfois l'âge traditionnel, tuổi ta : on a déjà un an à la naissance, et chacun prend une année au Tết, le Nouvel An lunaire. Si une grand-mère annonce un ou deux ans de plus que sur ses papiers, personne ne se trompe.",
+    "en": "Elders sometimes count the traditional age, tuổi ta: you're already one at birth, and everyone gains a year at Tết, the Lunar New Year. If a grandmother says she's a year or two older than her papers show, nobody is wrong."
+  },
+  "vi": "Năm nay bà bao nhiêu tuổi?",
+  "audio": "audio/cc_tuoi_ta.opus",
+  "question": {
+    "prompt": {
+      "fr": "Avec tuổi ta, un bébé a à la naissance…",
+      "en": "With tuổi ta, a newborn is…"
+    },
+    "options": [
+      {
+        "fr": "un an",
+        "en": "one year old"
+      },
+      {
+        "fr": "zéro an",
+        "en": "zero years old"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

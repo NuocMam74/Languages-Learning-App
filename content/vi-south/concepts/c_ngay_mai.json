@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ngay_mai",
+  "type": "word",
+  "vi": "ngày mai",
+  "gloss": {
+    "fr": "demain",
+    "en": "tomorrow"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ngay_mai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ngay_mai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, on dit très souvent mai tout court.",
+    "en": "In the South people very often just say mai."
+  },
+  "reviewed": false
+}

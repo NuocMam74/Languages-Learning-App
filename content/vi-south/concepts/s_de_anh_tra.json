@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_de_anh_tra",
+  "type": "structure",
+  "vi": "Để anh trả.",
+  "gloss": {
+    "fr": "Laisse, c'est moi qui paie (homme, à plus jeune).",
+    "en": "Let me pay (man, to someone younger)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_de_anh_tra_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_de_anh_tra_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

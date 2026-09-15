@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u05.l01",
+  "unit": "vi-south.u05",
+  "title": {
+    "fr": "Tên gì ? Les prénoms",
+    "en": "Tên gì? Names"
+  },
+  "goal": {
+    "fr": "Demander et donner ton nom, et saluer une nouvelle rencontre.",
+    "en": "Ask and give your name, and greet someone new."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u04.l08"
+  ],
+  "concepts": [
+    "c_ho_surname",
+    "s_anh_ten_gi",
+    "s_chi_ten_gi",
+    "c_gap",
+    "s_rat_vui_duoc_gap"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_ten_gi",
+      "distractors": [
+        "Chị tên gì?",
+        "Anh ở đâu?"
+      ],
+      "explain": {
+        "fr": "Anh tên gì ? : on commence par la personne à qui l'on parle.",
+        "en": "Anh tên gì?: you start with the person you're talking to."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_names_order"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_surname",
+      "distractors": [
+        "hồ",
+        "hò"
+      ],
+      "explain": {
+        "fr": "họ tombe court : le nom de famille. hồ descend : le lac.",
+        "en": "họ drops short: family name. hồ falls: lake."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_gap",
+      "explain": {
+        "fr": "gặp tombe court (nặng) : rencontrer.",
+        "en": "gặp drops short (nặng): to meet."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chi_ten_gi",
+      "distractors": [
+        "Anh tên gì?",
+        "Em tên gì?"
+      ],
+      "explain": {
+        "fr": "chị : une femme un peu plus âgée que toi.",
+        "en": "chị: a woman a little older than you."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi họ Nguyễn, tên là Lan.",
+      "tokens": [
+        "Tôi",
+        "họ",
+        "Nguyễn",
+        "tên",
+        "là",
+        "Lan",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Mon nom de famille est Nguyễn, mon prénom Lan.",
+        "en": "My family name is Nguyễn, my given name Lan."
+      },
+      "explain": {
+        "fr": "On dit tôi họ Nguyễn sans là ; tên là Lan, ou plus court, tên Lan.",
+        "en": "You say tôi họ Nguyễn without là; tên là Lan, or just tên Lan."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_rat_vui_duoc_gap",
+      "distractors": [
+        "Rất vui được gặp anh.",
+        "Hẹn gặp lại chị."
+      ],
+      "explain": {
+        "fr": "À la fin, chị : on parle à une femme un peu plus âgée.",
+        "en": "At the end, chị: you're talking to a slightly older woman."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị tên gì vậy?",
+      "tokens": [
+        "Chị",
+        "tên",
+        "gì",
+        "vậy",
+        "ai"
+      ],
+      "translation": {
+        "fr": "Comment tu t'appelles ? (à une femme un peu plus âgée)",
+        "en": "What's your name? (to a slightly older woman)"
+      },
+      "explain": {
+        "fr": "vậy en fin de question adoucit, très naturel au Sud.",
+        "en": "vậy at the end softens the question, very natural in the South."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_rat_vui_duoc_gap",
+      "explain": {
+        "fr": "rất monte, vui reste plat, gặp tombe court.",
+        "en": "rất rises, vui stays level, gặp drops short."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ho_surname",
+      "s_anh_ten_gi",
+      "s_chi_ten_gi",
+      "c_gap",
+      "s_rat_vui_duoc_gap"
+    ]
+  },
+  "reviewed": false
+}

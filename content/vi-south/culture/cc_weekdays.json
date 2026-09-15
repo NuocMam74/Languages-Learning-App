@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_weekdays",
+  "title": {
+    "fr": "Des jours qui se comptent",
+    "en": "Days you count"
+  },
+  "body": {
+    "fr": "Les jours de la semaine se comptent : thứ hai, « le deuxième », est lundi, thứ ba mardi, et ainsi de suite jusqu'à thứ bảy, samedi. Mercredi se dit thứ tư, jamais thứ bốn. Le dimanche a son propre nom : chủ nhật.",
+    "en": "Weekdays are counted: thứ hai, 'the second', is Monday, thứ ba Tuesday, and so on up to thứ bảy, Saturday. Wednesday is thứ tư, never thứ bốn. Sunday has its own name: chủ nhật."
+  },
+  "vi": "Hôm nay thứ mấy?",
+  "audio": "audio/cc_weekdays.opus",
+  "question": {
+    "prompt": {
+      "fr": "Thứ hai, c'est…",
+      "en": "Thứ hai is…"
+    },
+    "options": [
+      {
+        "fr": "lundi",
+        "en": "Monday"
+      },
+      {
+        "fr": "mardi",
+        "en": "Tuesday"
+      },
+      {
+        "fr": "dimanche",
+        "en": "Sunday"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

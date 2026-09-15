@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u07.l06",
+  "unit": "vi-south.u07",
+  "title": {
+    "fr": "Sucré, salé, piquant",
+    "en": "Sweet, salty, spicy"
+  },
+  "goal": {
+    "fr": "Parler du goût et demander un condiment.",
+    "en": "Talk about taste and ask for a condiment."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u07.l05"
+  ],
+  "concepts": [
+    "c_ngot",
+    "c_man",
+    "c_chua_sour",
+    "c_nuoc_mam",
+    "c_ot"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ot",
+      "distractors": [
+        "c_nuoc_mam",
+        "c_rau"
+      ],
+      "explain": {
+        "fr": "ớt : le piment.",
+        "en": "ớt: chili."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_sweet_south"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ngot",
+      "explain": {
+        "fr": "ngọt tombe court (nặng) : sucré.",
+        "en": "ngọt drops short (nặng): sweet."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_man",
+      "distractors": [
+        "màn",
+        "măn"
+      ],
+      "explain": {
+        "fr": "mặn tombe court : salé. màn descend : le rideau.",
+        "en": "mặn drops short: salty. màn falls: curtain."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nuoc_mam",
+      "distractors": [
+        "c_ot",
+        "c_sua_milk"
+      ],
+      "explain": {
+        "fr": "nước mắm : la sauce de poisson.",
+        "en": "nước mắm: fish sauce."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua_sour",
+      "distractors": [
+        "chùa",
+        "chưa"
+      ],
+      "explain": {
+        "fr": "chua, plat : acide. chùa descend : la pagode.",
+        "en": "chua, level: sour. chùa falls: pagoda."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Canh chua ngon lắm.",
+      "tokens": [
+        "Canh",
+        "chua",
+        "ngon",
+        "lắm",
+        "ngọt"
+      ],
+      "translation": {
+        "fr": "La soupe aigre est très bonne.",
+        "en": "The sour soup is really good."
+      },
+      "explain": {
+        "fr": "canh chua : soupe aigre du Sud. lắm après l'adjectif = très.",
+        "en": "canh chua: southern sour soup. lắm after the adjective = very."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em thêm nước mắm.",
+      "tokens": [
+        "Cho",
+        "em",
+        "thêm",
+        "nước mắm",
+        "ớt",
+        "ly"
+      ],
+      "translation": {
+        "fr": "Encore un peu de sauce de poisson, s'il te plaît.",
+        "en": "A bit more fish sauce, please."
+      },
+      "explain": {
+        "fr": "thêm + chose : en redemander.",
+        "en": "thêm + thing: ask for more."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_nuoc_mam",
+      "explain": {
+        "fr": "nước et mắm montent tous les deux.",
+        "en": "nước and mắm both rise."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ngot",
+      "c_man",
+      "c_chua_sour",
+      "c_nuoc_mam",
+      "c_ot"
+    ]
+  },
+  "reviewed": false
+}

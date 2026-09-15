@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_moi_just",
+  "type": "word",
+  "vi": "mới",
+  "tone": "sac",
+  "gloss": {
+    "fr": "venir de (faire) ; nouveau",
+    "en": "just (done); new"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_moi_just_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_moi_just_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Devant le verbe : tôi mới qua = « je viens d'arriver ». Ne pas confondre avec mời (inviter).",
+    "en": "Before a verb: tôi mới qua = 'I just arrived'. Don't mix it up with mời (to invite)."
+  },
+  "reviewed": false
+}

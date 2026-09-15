@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_numbers_south",
+  "title": {
+    "fr": "Mốt, lăm, tư : les nombres qui changent",
+    "en": "Mốt, lăm, tư: numbers that change"
+  },
+  "body": {
+    "fr": "Après une dizaine, certains chiffres changent : 21 se dit hai mươi mốt, 25 hai mươi lăm, 24 souvent hai mươi tư. Au Sud, on raccourcit aussi à l'oral : hăm mốt pour 21, băm hai pour 32. Apprends les formes longues, reconnais les courtes.",
+    "en": "After a tens word some digits change: 21 is hai mươi mốt, 25 hai mươi lăm, 24 often hai mươi tư. In the South speech also shortens them: hăm mốt for 21, băm hai for 32. Learn the long forms, recognise the short ones."
+  },
+  "vi": "Em hai mươi mốt tuổi.",
+  "audio": "audio/cc_numbers_south.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, tu entends « hăm mốt ». C'est…",
+      "en": "In the South you hear 'hăm mốt'. That's…"
+    },
+    "options": [
+      {
+        "fr": "21",
+        "en": "21"
+      },
+      {
+        "fr": "31",
+        "en": "31"
+      },
+      {
+        "fr": "12",
+        "en": "12"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

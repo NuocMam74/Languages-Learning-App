@@ -57,6 +57,10 @@ Les tests utilisent une base SQLite temporaire et le contenu réel du dépôt ;
 | `GET /me/srs/due?limit=` · `GET /me/session/next` | Cartes dues, plan de séance |
 | `GET /tutor/greeting?locale=fr\|en&localDate=` | Salutation de Cô Mai → `{text, cached, source}` (cache 12 h) |
 | `POST /tutor/why` | `{lessonId, stepIndex, given, expected, locale}` → `{text, cached, source}` (cache partagé) |
+| `GET /exams` · `POST /exams/{id}/start` · `POST /exams/attempts/{id}/submit` | Examens A0/A1 (contrat `docs/contracts/phase2.md` §2), notation serveur |
+| `GET /certificates` · `GET /certificates/{id}.pdf` · `GET /verify/{code}` (public) | Certificats PDF et vérification |
+| `GET /challenges/current` · `POST /challenges/{id}/claim` | Défi de la semaine (+50 XP, badge `challenge_<kind>`) |
+| `GET /push/vapid-public-key` (public) · `POST`/`DELETE /push/subscribe` | Rappels Web Push |
 | `GET /healthz` | Sonde |
 
 - `app/services/planner.py`, `streak.py`, `srs.py` : portages fidèles de `packages/core` (mêmes constantes).
@@ -70,5 +74,16 @@ Les tests utilisent une base SQLite temporaire et le contenu réel du dépôt ;
   `uv run python -m app.maintenance purge-tutor` (messages > `TUTOR_RETENTION_DAYS`, cache expiré).
 - Badges : codes connus seulement (`streak_7`, `streak_30`, `first_lesson`, `unit_1_done`, `words_50`, `tone_ear`,
   voir `app/services/badges.py` et la migration 0002) ; code inconnu → rejet `unknown_badge`.
+- Examens (`app/services/exams.py`, `engine.py`, `text.py`) : portage de `buildExam`/`gradeExam`, `buildExercise`,
+  `evaluate` et de l'aléa déterministe de `packages/core`. Graine d'un item : `${attemptId}:${examId}:${rang}`.
+  Parité vérifiée par `tests/test_core_parity.py` sur `tests/fixtures/core_parity.json` ; à régénérer depuis la
+  racine après toute modification de engine/text/session/exams/challenges :
+  `npx tsx apps/api/tests/fixtures/generate_core_fixtures.ts`.
+- Certificats PDF (`app/services/pdf.py`) : WeasyPrint en production (Pango installé dans l'image Docker),
+  repli pur Python fpdf2 (Windows sans GTK). Polices OFL embarquées (`app/assets/fonts`). Stockage local
+  (`MEDIA_DIR`) ou S3 (`STORAGE_BACKEND=s3`), PDF régénéré si absent.
+- Tâches planifiées (`app/scheduler.py`, `SCHEDULER_ENABLED=true` sur un seul processus) : défi du lundi
+  00:00 UTC, rappels push horaires. Sans planificateur intégré : `python -m app.maintenance weekly-challenge`
+  et `push-reminders` (cron). Clés VAPID : `uv run python -m app.maintenance vapid-keys`.
 - Nouvelle migration : `uv run alembic revision --autogenerate -m "..."`, puis remplacer
   `app.db.UTCDateTime()` par `sa.DateTime(timezone=True)` dans le fichier généré.

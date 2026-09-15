@@ -350,6 +350,9 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
 
     await d.outbox.bulkPut(events.map(toOutbox));
     await d.snapshot.delete("current");
+    // Compteur local : les rappels ne sont proposés qu'après la 3e séance (spec §5.8).
+    const sessionsCompleted = ((await d.kv.get("sessionsCompleted"))?.value as number | undefined) ?? 0;
+    await d.kv.put({ key: "sessionsCompleted", value: sessionsCompleted + 1 });
 
     const lessonId = saved.lesson?.lessonId ?? null;
     return {
@@ -402,15 +405,54 @@ export async function savePlacement(content: ContentIndex, spec: PlacementSpec, 
 /** « Je pars quelques jours » : gèle la série jusqu'à `days` jours (0 = annuler). */
 export async function setFreeze(days: number, now = new Date()): Promise<Streak> {
   const d = db();
-  return d.transaction("rw", d.kv, async () => {
+  return d.transaction("rw", d.kv, d.outbox, async () => {
     const totals = ((await d.kv.get("totals"))?.value as Totals | undefined) ?? DEFAULT_TOTALS;
     const n = Math.max(0, Math.min(MAX_FREEZE_DAYS, Math.round(days)));
     const until = new Date(now);
     until.setDate(until.getDate() + n);
     const streak: Streak = { ...totals.streak, frozenUntil: n === 0 ? null : localDay(until) };
     await d.kv.put({ key: "totals", value: { ...totals, streak } satisfies Totals });
+    // Synchronisé (contrat phase2 §1). Annulation : gel ramené au dernier jour actif, qui ne couvre aucune absence.
+    const localDate = localDay(now);
+    const frozenUntil = streak.frozenUntil ?? totals.streak.lastActiveDate ?? localDate;
+    await d.outbox.put(toOutbox(makeEvent("streak_frozen", { frozenUntil, localDate }, now)));
     return streak;
   });
+}
+
+// ---------------------------------------------------------------------------
+// Prononciation (karaoké tonal) : le score seul, jamais l'audio (spec §8.3, §14)
+
+export interface PronunciationRecord {
+  sessionId: string | null;
+  conceptId: ConceptId;
+  score: number;
+  exerciseType: "speak_repeat" | "tone_produce";
+}
+
+/** Écrit `pronunciation_scored` dans l'outbox pour chaque prise notée. */
+export async function recordPronunciation(record: PronunciationRecord, now = new Date()): Promise<void> {
+  const score = Math.max(0, Math.min(100, Math.round(record.score)));
+  const event = makeEvent("pronunciation_scored", { ...record, score }, now);
+  await db().outbox.put(toOutbox(event));
+}
+
+// ---------------------------------------------------------------------------
+// Mini-jeux hors séance (onglet Jeux) : game_played, avec le jour local
+
+type GamePlayed = Extract<ParloEvent, { type: "game_played" }>["payload"];
+
+/** Écrit `game_played` dans l'outbox pour une partie libre terminée (les parties de séance passent par answer_submitted). */
+export async function recordGamePlayed(game: GamePlayed["game"], result: { correct: number; total: number }, durationMs: number, now = new Date()): Promise<void> {
+  if (result.total <= 0) return;
+  const event = makeEvent("game_played", {
+    game,
+    correct: Math.max(0, Math.round(result.correct)),
+    total: Math.round(result.total),
+    durationMs: Math.max(0, Math.round(durationMs)),
+    localDate: localDay(now),
+  }, now);
+  await db().outbox.put(toOutbox(event));
 }
 
 export async function todaySeconds(now = new Date()): Promise<number> {

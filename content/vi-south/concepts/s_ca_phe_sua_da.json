@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_ca_phe_sua_da",
+  "type": "structure",
+  "vi": "cà phê sữa đá",
+  "gloss": {
+    "fr": "café au lait concentré glacé",
+    "en": "iced coffee with condensed milk"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ca_phe_sua_da_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_ca_phe_sua_da_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/iced_coffee.svg",
+  "note": {
+    "fr": "Sans lait : cà phê đen đá. On abrège souvent en « sữa đá ».",
+    "en": "Without milk: cà phê đen đá. Often shortened to 'sữa đá'."
+  },
+  "reviewed": false
+}

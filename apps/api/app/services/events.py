@@ -15,9 +15,11 @@ from sqlalchemy.orm import Session
 from app.models import (
     Answer,
     Enrollment,
+    GamePlay,
     LessonProgress,
     ProcessedEvent,
     Profile,
+    PronunciationScore,
     SrsCardRow,
     StudySession,
     UserBadge,
@@ -26,14 +28,17 @@ from app.schemas.events import (
     AnswerSubmitted,
     BadgeEarned,
     EventBatchResult,
+    GamePlayed,
     LessonCompleted,
     ParloEvent,
     PlacementCompleted,
+    PronunciationScored,
     RejectedEvent,
     SessionCompleted,
     SessionStarted,
     SrsCardIn,
     SrsCardUpdated,
+    StreakFrozen,
     event_adapter,
 )
 from app.services import learner
@@ -44,6 +49,8 @@ from app.services.srs import SrsCard, merge_cards
 from app.services.streak import Streak, record_activity
 
 MAX_CLOCK_SKEW = timedelta(hours=24)
+# « Je pars quelques jours » : gel de série limité à 14 jours après le jour local de la demande.
+MAX_FREEZE_DAYS = 14
 
 
 class EventRejectedError(Exception):
@@ -130,6 +137,48 @@ def _apply(db: Session, user_id: str, event: ParloEvent, packs: dict[str, Pack],
             _apply_placement_completed(db, user_id, event, packs)
         case BadgeEarned():
             _apply_badge_earned(db, user_id, event)
+        case PronunciationScored():
+            _apply_pronunciation_scored(db, user_id, event)
+        case StreakFrozen():
+            _apply_streak_frozen(db, user_id, event)
+        case GamePlayed():
+            _apply_game_played(db, user_id, event)
+
+
+def _apply_pronunciation_scored(db: Session, user_id: str, event: PronunciationScored) -> None:
+    p = event.payload
+    db.add(
+        PronunciationScore(
+            id=str(event.id), user_id=user_id, concept_id=p.concept_id, score=p.score, created_at=event.occurred_at
+        )
+    )
+
+
+def _apply_streak_frozen(db: Session, user_id: str, event: StreakFrozen) -> None:
+    p = event.payload
+    if p.frozen_until < p.local_date:
+        raise EventRejectedError("invalid: payload.frozenUntil: before localDate")
+    if p.frozen_until > p.local_date + timedelta(days=MAX_FREEZE_DAYS):
+        raise EventRejectedError(f"invalid: payload.frozenUntil: more than {MAX_FREEZE_DAYS} days after localDate")
+    learner.get_streak(db, user_id).frozen_until = p.frozen_until
+
+
+def _apply_game_played(db: Session, user_id: str, event: GamePlayed) -> None:
+    p = event.payload
+    if p.correct > p.total:
+        raise EventRejectedError("invalid: payload.correct: greater than total")
+    db.add(
+        GamePlay(
+            id=str(event.id),
+            user_id=user_id,
+            game=p.game,
+            correct=p.correct,
+            total=p.total,
+            duration_ms=round(p.duration_ms),
+            local_date=p.local_date,
+            played_at=event.occurred_at,
+        )
+    )
 
 
 def _apply_placement_completed(db: Session, user_id: str, event: PlacementCompleted, packs: dict[str, Pack]) -> None:
@@ -145,11 +194,13 @@ def _apply_placement_completed(db: Session, user_id: str, event: PlacementComple
         profile = Profile(user_id=user_id, daily_goal_min=10, leagues_enabled=True)
         db.add(profile)
     profile.level_estimate = str(p.level_estimate)
+    profile.placement_entry_lesson_id = p.entry_lesson_id
+    db.flush()
 
+    # Comme le client : les leçons situées avant le point d'entrée sont ouvertes (prérequis remplis).
     enrollment = _enrollment_for(db, user_id, pack)
-    # Le test de placement ne déplace le point d'entrée que tant qu'aucune leçon n'est terminée.
-    if not learner.completed_lessons(db, user_id):
-        enrollment.current_lesson_id = p.entry_lesson_id
+    lesson = next_lesson(pack, pack.lessons, learner.unlocked_lessons(db, user_id, pack), learner.path_of(profile))
+    enrollment.current_lesson_id = lesson.id if lesson else None
 
 
 def _apply_badge_earned(db: Session, user_id: str, event: BadgeEarned) -> None:
@@ -250,7 +301,7 @@ def _apply_lesson_completed(db: Session, user_id: str, event: LessonCompleted, p
     profile = db.get(Profile, user_id)
     path = learner.path_of(profile) if profile else None
     enrollment = _enrollment_for(db, user_id, pack)
-    lesson = next_lesson(pack, pack.lessons, learner.completed_lessons(db, user_id), path)
+    lesson = next_lesson(pack, pack.lessons, learner.unlocked_lessons(db, user_id, pack), path)
     enrollment.current_lesson_id = lesson.id if lesson else None
 
 

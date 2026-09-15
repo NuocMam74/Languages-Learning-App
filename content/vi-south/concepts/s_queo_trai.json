@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_queo_trai",
+  "type": "structure",
+  "vi": "quẹo trái",
+  "gloss": {
+    "fr": "tourner à gauche",
+    "en": "turn left"
+  },
+  "register": "neutral",
+  "northernEquivalent": "rẽ trái",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_queo_trai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_queo_trai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/signs/turn_left.svg",
+  "reviewed": false
+}

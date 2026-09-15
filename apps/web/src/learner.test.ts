@@ -62,6 +62,7 @@ function answerFor(ex: Exercise, right = true): ExerciseResponse {
       return { kind: "tokens", optionIds: ids };
     }
     case "speak_repeat":
+    case "tone_produce":
       return { kind: "speech", score: null };
     case "game":
     case "unsupported":

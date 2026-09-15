@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ho_surname",
+  "type": "word",
+  "vi": "họ",
+  "tone": "nang",
+  "gloss": {
+    "fr": "nom de famille",
+    "en": "family name"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ho_surname_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ho_surname_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Tôi họ Trần.",
+      "fr": "Mon nom de famille est Trần.",
+      "en": "My family name is Trần."
+    }
+  ],
+  "note": {
+    "fr": "Le nom de famille vient en premier : Nguyễn Thị Lan → họ Nguyễn, tên Lan.",
+    "en": "The family name comes first: Nguyễn Thị Lan → họ Nguyễn, tên Lan."
+  },
+  "reviewed": false
+}

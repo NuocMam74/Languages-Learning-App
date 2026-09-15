@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chen",
+  "type": "word",
+  "vi": "chén",
+  "tone": "sac",
+  "gloss": {
+    "fr": "petit bol (à riz)",
+    "en": "small (rice) bowl"
+  },
+  "register": "neutral",
+  "northernEquivalent": "bát",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chen_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chen_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/chen.svg",
+  "note": {
+    "fr": "Au Sud : chén ; au Nord : bát. Le grand bol à soupe : tô.",
+    "en": "South: chén; North: bát. The big soup bowl: tô."
+  },
+  "reviewed": false
+}

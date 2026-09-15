@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nuoc_mam",
+  "type": "word",
+  "vi": "nước mắm",
+  "gloss": {
+    "fr": "sauce de poisson",
+    "en": "fish sauce"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nuoc_mam_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nuoc_mam_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/fish_sauce.svg",
+  "reviewed": false
+}

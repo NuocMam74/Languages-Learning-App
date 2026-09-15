@@ -2,7 +2,9 @@ import type { ChoiceOption, ContentIndex, Exercise, ExerciseResponse } from "@pa
 import { useState, type ReactNode } from "react";
 import { playConcept, playPath, ttsAllowed } from "../audio.ts";
 import { mediaUrl } from "../content.ts";
-import { GameExercise } from "../games/GameExercise.tsx";
+import { GameExercise, SESSION_GAMES } from "../games/GameExercise.tsx";
+import { KaraokeExercise } from "../karaoke/KaraokeExercise.tsx";
+import { useSession } from "../session-store.ts";
 import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { AudioButton } from "./AudioButton.tsx";
 import { Button, Vi } from "./ui.tsx";
@@ -33,9 +35,10 @@ export function ExerciseView({ exercise, content, onAnswer, locked }: { exercise
     case "build_sentence":
       return <BuildSentenceView exercise={exercise} {...common} />;
     case "speak_repeat":
-      return <SpeakRepeatView exercise={exercise} {...common} />;
+    case "tone_produce":
+      return <SpeechView exercise={exercise} {...common} />;
     case "game":
-      if (exercise.game === "cho_noi") return <GameExercise exercise={exercise} {...common} />;
+      if (SESSION_GAMES.has(exercise.game)) return <GameExercise exercise={exercise} {...common} />;
       return <Placeholder message={t("ex.game.soon", { name: t(`game.${exercise.game}` as MessageKey) })} onAnswer={onAnswer} />;
     case "unsupported":
       return <Placeholder message={t("ex.unsupported")} onAnswer={onAnswer} />;
@@ -249,28 +252,23 @@ function BuildSentenceView({ exercise, content, onAnswer, locked }: ViewProps<"b
 
 // --- Répéter --------------------------------------------------------------------
 
-function SpeakRepeatView({ exercise, content, onAnswer, locked }: ViewProps<"speak_repeat">) {
-  const { concept } = exercise;
+function SpeechView({ exercise, content, onAnswer, locked }: ViewProps<"speak_repeat" | "tone_produce">) {
+  // Karaoké tonal (spec §8.3) : sans courbe de référence ou sans micro, l'exercice reste de l'écoute non notée.
+  const sessionId = useSession((s) => s.run?.sessionId ?? null);
+  const tone = exercise.type === "tone_produce";
   return (
-    <Layout
-      prompt={t("ex.speakRepeat")}
-      stage={<AudioButton play={(speed) => playConcept(content, concept, { speed, allowTts: ttsAllowed(exercise.pitchRef !== null) })} />}
-      action={
-        // Phase 0 : pas encore d'analyse F0 (karaoké tonal en phase 2) → non noté, micro non demandé.
-        <Button disabled={locked} onClick={() => onAnswer({ kind: "speech", score: null })}>
-          {t("ex.speakRepeat.done")}
-        </Button>
-      }
-    >
-      <div className="flex flex-col items-center gap-3 text-center">
-        <Vi size="vi-xl">{concept.vi}</Vi>
-        <p className="text-phu-sa">{l(concept.gloss)}</p>
-        <p className="mt-6 text-sm text-phu-sa/70">{t("ex.speakRepeat.soon")}</p>
-      </div>
-    </Layout>
+    <KaraokeExercise
+      content={content}
+      concept={exercise.concept}
+      pitchRef={exercise.pitchRef}
+      mode={tone ? "tone" : "repeat"}
+      {...(tone ? { tone: exercise.tone } : {})}
+      locked={locked}
+      sessionId={sessionId}
+      onSubmit={(score) => onAnswer({ kind: "speech", score })}
+    />
   );
 }
-
 function Placeholder({ message, onAnswer }: { message: string; onAnswer: (r: ExerciseResponse) => void }) {
   return (
     <Layout prompt="" action={<Button onClick={() => onAnswer({ kind: "skip" })}>{t("lesson.continue")}</Button>}>

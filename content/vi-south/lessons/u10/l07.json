@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u10.l07",
+  "unit": "vi-south.u10",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : les lieux",
+    "en": "Review: places"
+  },
+  "goal": {
+    "fr": "Revoir les lieux et les mots pour les situer.",
+    "en": "Go over places and the words to locate them."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u10.l06"
+  ],
+  "concepts": [
+    "c_cong_vien",
+    "s_co_xa_khong",
+    "c_ben_trai",
+    "c_ke_ben",
+    "c_cho_market",
+    "c_cho_wait",
+    "s_nha_ve_sinh_o_dau"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cong_vien",
+      "distractors": [
+        "c_chua_pagoda",
+        "c_cho_market"
+      ],
+      "explain": {
+        "fr": "công viên : le parc.",
+        "en": "công viên: park."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_co_xa_khong",
+      "distractors": [
+        "Có gần không?",
+        "Có mắc không?"
+      ],
+      "explain": {
+        "fr": "Có xa không ? : c'est loin ?",
+        "en": "Có xa không?: is it far?"
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ben_trai",
+      "distractors": [
+        "c_ben_phai",
+        "c_nha_house"
+      ],
+      "explain": {
+        "fr": "bên trái : à gauche.",
+        "en": "bên trái: left."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Gần đây có chợ không?",
+      "tokens": [
+        "Gần đây",
+        "có",
+        "chợ",
+        "không",
+        "xa"
+      ],
+      "translation": {
+        "fr": "Il y a un marché près d'ici ?",
+        "en": "Is there a market nearby?"
+      },
+      "explain": {
+        "fr": "Gần đây có… không ?",
+        "en": "Gần đây có… không?"
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_alley",
+      "explain": {
+        "fr": "Sud : hẻm ; Nord : ngõ.",
+        "en": "South: hẻm; North: ngõ."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ke_ben",
+      "distractors": [
+        "kế bến",
+        "ghế bên"
+      ],
+      "explain": {
+        "fr": "kế bên : à côté.",
+        "en": "kế bên: next to."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Quán cà phê ở kế bên chợ.",
+      "tokens": [
+        "Quán cà phê",
+        "ở",
+        "kế bên",
+        "chợ",
+        "trái"
+      ],
+      "translation": {
+        "fr": "Le café est à côté du marché.",
+        "en": "The café is next to the market."
+      },
+      "explain": {
+        "fr": "kế bên + lieu.",
+        "en": "kế bên + place."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chợ",
+        "chờ"
+      ],
+      "audioConcepts": [
+        "c_cho_market",
+        "c_cho_wait"
+      ],
+      "explain": {
+        "fr": "chợ court, chờ descend.",
+        "en": "chợ short, chờ falls."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nha_ve_sinh_o_dau",
+      "explain": {
+        "fr": "Garde ở bien plongeant.",
+        "en": "Keep ở dipping."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_nguoi_nuoc_nao",
+  "type": "structure",
+  "vi": "Chị là người nước nào?",
+  "gloss": {
+    "fr": "Tu es de quel pays ? (à une femme un peu plus âgée)",
+    "en": "Where are you from? (to a slightly older woman)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nguoi_nuoc_nao_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_nguoi_nuoc_nao_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "nước = « pays » (et « eau ») ; nào = « quel ».",
+    "en": "nước = 'country' (and 'water'); nào = 'which'."
+  },
+  "reviewed": false
+}

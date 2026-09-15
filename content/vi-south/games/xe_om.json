@@ -1,0 +1,165 @@
+{
+  "$schema": "../../schema/game-xe-om.schema.json",
+  "version": 1,
+  "reviewed": false,
+  "maps": [
+    {
+      "id": "quan_1",
+      "cols": 5,
+      "rows": 7,
+      "canals": [[0, 3], [1, 3], [2, 3], [3, 3]],
+      "landmarks": [
+        { "id": "cho", "block": [1, 1], "vi": "chợ", "gloss": { "fr": "le marché", "en": "the market" }, "icon": "market" },
+        { "id": "truong", "block": [3, 0], "vi": "trường học", "gloss": { "fr": "l'école", "en": "the school" }, "icon": "school" },
+        { "id": "pho", "block": [0, 2], "vi": "tiệm phở", "gloss": { "fr": "la boutique de phở", "en": "the phở shop" }, "icon": "pho" },
+        { "id": "cong_vien", "block": [2, 2], "vi": "công viên", "gloss": { "fr": "le parc", "en": "the park" }, "icon": "park" },
+        { "id": "chua", "block": [3, 4], "vi": "chùa", "gloss": { "fr": "la pagode", "en": "the pagoda" }, "icon": "pagoda" },
+        { "id": "benh_vien", "block": [0, 5], "vi": "bệnh viện", "gloss": { "fr": "l'hôpital", "en": "the hospital" }, "icon": "hospital" },
+        { "id": "ca_phe", "block": [2, 5], "vi": "quán cà phê", "gloss": { "fr": "le café", "en": "the café" }, "icon": "cafe" }
+      ]
+    },
+    {
+      "id": "cho_lon",
+      "cols": 5,
+      "rows": 7,
+      "canals": [[2, 1], [2, 2], [2, 3], [2, 4]],
+      "landmarks": [
+        { "id": "nha_ga", "block": [0, 0], "vi": "nhà ga", "gloss": { "fr": "la gare", "en": "the train station" }, "icon": "station" },
+        { "id": "cong_vien", "block": [1, 1], "vi": "công viên", "gloss": { "fr": "le parc", "en": "the park" }, "icon": "park" },
+        { "id": "cay_xang", "block": [3, 0], "vi": "cây xăng", "gloss": { "fr": "la station-service", "en": "the gas station" }, "icon": "gas" },
+        { "id": "cho", "block": [0, 3], "vi": "chợ", "gloss": { "fr": "le marché", "en": "the market" }, "icon": "market" },
+        { "id": "truong", "block": [3, 3], "vi": "trường học", "gloss": { "fr": "l'école", "en": "the school" }, "icon": "school" },
+        { "id": "benh_vien", "block": [1, 5], "vi": "bệnh viện", "gloss": { "fr": "l'hôpital", "en": "the hospital" }, "icon": "hospital" },
+        { "id": "ca_phe", "block": [3, 5], "vi": "quán cà phê", "gloss": { "fr": "le café", "en": "the café" }, "icon": "cafe" }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "r01_cho",
+      "map": "quan_1",
+      "level": 1,
+      "start": { "at": [0, 0], "heading": "E" },
+      "concepts": ["s_chay_thang", "s_queo_phai", "c_queo", "s_dung_lai", "c_cho_market"],
+      "instructions": [
+        { "vi": "Chạy thẳng nha.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Quẹo phải.", "action": "right", "gloss": { "fr": "Tourne à droite.", "en": "Turn right." } },
+        { "vi": "Dừng lại ở chợ.", "action": "stop", "landmark": "cho", "gloss": { "fr": "Arrête-toi au marché.", "en": "Stop at the market." } }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "r02_chua",
+      "map": "quan_1",
+      "level": 1,
+      "start": { "at": [2, 6], "heading": "N" },
+      "concepts": ["s_di_thang", "s_queo_phai", "c_queo", "s_dung_lai", "c_chua_pagoda"],
+      "instructions": [
+        { "vi": "Đi thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Quẹo phải nghen.", "action": "right", "gloss": { "fr": "Tourne à droite, d'accord ?", "en": "Turn right, okay?" } },
+        { "vi": "Dừng lại ở chùa.", "action": "stop", "landmark": "chua", "gloss": { "fr": "Arrête-toi à la pagode.", "en": "Stop at the pagoda." } }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "r03_truong",
+      "map": "cho_lon",
+      "level": 2,
+      "start": { "at": [4, 6], "heading": "N" },
+      "concepts": ["s_chay_thang", "s_queo_phai", "s_queo_trai", "c_queo", "s_dung_lai", "c_truong_hoc", "c_quan_ca_phe"],
+      "instructions": [
+        { "vi": "Chạy thẳng nha.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Quẹo trái ở quán cà phê.", "action": "left", "landmark": "ca_phe", "gloss": { "fr": "Tourne à gauche au café.", "en": "Turn left at the café." } },
+        { "vi": "Quẹo phải.", "action": "right", "gloss": { "fr": "Tourne à droite.", "en": "Turn right." } },
+        { "vi": "Dừng lại ở trường học.", "action": "stop", "landmark": "truong", "gloss": { "fr": "Arrête-toi à l'école.", "en": "Stop at the school." } }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "r04_cong_vien",
+      "map": "quan_1",
+      "level": 2,
+      "start": { "at": [4, 6], "heading": "W" },
+      "concepts": ["s_chay_thang", "s_di_thang", "s_queo_phai", "c_queo", "s_dung_lai", "c_cau_bridge", "c_cong_vien", "c_quan_ca_phe"],
+      "instructions": [
+        { "vi": "Đi thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Quẹo phải ở quán cà phê.", "action": "right", "landmark": "ca_phe", "gloss": { "fr": "Tourne à droite au café.", "en": "Turn right at the café." } },
+        { "vi": "Chạy thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Chạy thẳng qua cầu.", "action": "straight", "gloss": { "fr": "Tout droit, passe le pont.", "en": "Go straight over the bridge." } },
+        { "vi": "Dừng lại ở công viên.", "action": "stop", "landmark": "cong_vien", "gloss": { "fr": "Arrête-toi au parc.", "en": "Stop at the park." } }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "r05_cho_truong",
+      "map": "cho_lon",
+      "level": 3,
+      "start": { "at": [0, 6], "heading": "N" },
+      "concepts": ["s_chay_thang", "s_di_thang", "s_queo_phai", "c_queo", "s_dung_lai", "c_cau_bridge", "c_toi_arrive", "c_cho_market", "c_truong_hoc"],
+      "instructions": [
+        { "vi": "Chạy thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Chạy thẳng nữa.", "action": "straight", "gloss": { "fr": "Encore tout droit.", "en": "Keep going straight." } },
+        { "vi": "Tới chợ thì quẹo phải.", "action": "right", "landmark": "cho", "gloss": { "fr": "Au marché, tourne à droite.", "en": "At the market, turn right." } },
+        { "vi": "Đi thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Chạy thẳng qua cầu nha.", "action": "straight", "gloss": { "fr": "Tout droit, passe le pont.", "en": "Go straight over the bridge." } },
+        { "vi": "Dừng lại ở trường học.", "action": "stop", "landmark": "truong", "gloss": { "fr": "Arrête-toi à l'école.", "en": "Stop at the school." } }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "r06_benh_vien_cong_vien",
+      "map": "quan_1",
+      "level": 3,
+      "start": { "at": [0, 6], "heading": "N" },
+      "concepts": ["s_chay_thang", "s_di_thang", "s_queo_phai", "s_queo_trai", "c_queo", "s_dung_lai", "c_cau_bridge", "c_toi_arrive", "c_cho_market", "c_cong_vien", "c_benh_vien"],
+      "instructions": [
+        { "vi": "Chạy thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Quẹo phải ở bệnh viện.", "action": "right", "landmark": "benh_vien", "gloss": { "fr": "Tourne à droite à l'hôpital.", "en": "Turn right at the hospital." } },
+        { "vi": "Rồi quẹo trái.", "action": "left", "gloss": { "fr": "Puis tourne à gauche.", "en": "Then turn left." } },
+        { "vi": "Chạy thẳng qua cầu.", "action": "straight", "gloss": { "fr": "Tout droit, passe le pont.", "en": "Go straight over the bridge." } },
+        { "vi": "Đi thẳng nữa.", "action": "straight", "gloss": { "fr": "Encore tout droit.", "en": "Keep going straight." } },
+        { "vi": "Tới chợ quẹo phải nghen.", "action": "right", "landmark": "cho", "gloss": { "fr": "Au marché, tourne à droite, d'accord ?", "en": "At the market, turn right, okay?" } },
+        { "vi": "Dừng lại ở công viên.", "action": "stop", "landmark": "cong_vien", "gloss": { "fr": "Arrête-toi au parc.", "en": "Stop at the park." } }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "r07_ga_benh_vien",
+      "map": "cho_lon",
+      "level": 4,
+      "start": { "at": [4, 0], "heading": "W" },
+      "concepts": ["s_chay_thang", "s_di_thang", "s_queo_phai", "s_queo_trai", "c_queo", "s_dung_lai", "c_toi_arrive", "c_cho_market", "c_cong_vien", "c_benh_vien", "c_cay_xang"],
+      "instructions": [
+        { "vi": "Chạy thẳng, qua cây xăng.", "action": "straight", "landmark": "cay_xang", "gloss": { "fr": "Tout droit, passe la station-service.", "en": "Go straight, past the gas station." } },
+        { "vi": "Quẹo trái.", "action": "left", "gloss": { "fr": "Tourne à gauche.", "en": "Turn left." } },
+        { "vi": "Quẹo phải.", "action": "right", "gloss": { "fr": "Tourne à droite.", "en": "Turn right." } },
+        { "vi": "Tới công viên thì rẽ trái.", "action": "left", "landmark": "cong_vien", "gloss": { "fr": "Au parc, tourne à gauche.", "en": "At the park, turn left." } },
+        { "vi": "Quẹo phải nha.", "action": "right", "gloss": { "fr": "Tourne à droite.", "en": "Turn right." } },
+        { "vi": "Quẹo trái.", "action": "left", "gloss": { "fr": "Tourne à gauche.", "en": "Turn left." } },
+        { "vi": "Chạy thẳng, ngang qua chợ.", "action": "straight", "landmark": "cho", "gloss": { "fr": "Tout droit, en passant devant le marché.", "en": "Go straight, past the market." } },
+        { "vi": "Đi thẳng nữa.", "action": "straight", "gloss": { "fr": "Encore tout droit.", "en": "Keep going straight." } },
+        { "vi": "Dừng lại ở bệnh viện.", "action": "stop", "landmark": "benh_vien", "gloss": { "fr": "Arrête-toi à l'hôpital.", "en": "Stop at the hospital." } }
+      ],
+      "reviewed": false
+    },
+    {
+      "id": "r08_truong_ca_phe",
+      "map": "quan_1",
+      "level": 4,
+      "start": { "at": [4, 0], "heading": "S" },
+      "concepts": ["s_chay_thang", "s_di_thang", "s_queo_phai", "s_queo_trai", "c_queo", "s_dung_lai", "c_cau_bridge", "s_toi_roi", "c_toi_arrive", "c_cho_market", "c_chua_pagoda", "c_truong_hoc", "c_quan_ca_phe"],
+      "instructions": [
+        { "vi": "Chạy thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Quẹo phải ở trường học.", "action": "right", "landmark": "truong", "gloss": { "fr": "Tourne à droite à l'école.", "en": "Turn right at the school." } },
+        { "vi": "Đi thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Tới chợ thì quẹo trái.", "action": "left", "landmark": "cho", "gloss": { "fr": "Au marché, tourne à gauche.", "en": "At the market, turn left." } },
+        { "vi": "Chạy thẳng.", "action": "straight", "gloss": { "fr": "Tout droit.", "en": "Go straight." } },
+        { "vi": "Chạy thẳng qua cầu nghen.", "action": "straight", "gloss": { "fr": "Tout droit, passe le pont.", "en": "Go straight over the bridge." } },
+        { "vi": "Quẹo trái.", "action": "left", "gloss": { "fr": "Tourne à gauche.", "en": "Turn left." } },
+        { "vi": "Quẹo phải ở chùa.", "action": "right", "landmark": "chua", "gloss": { "fr": "Tourne à droite à la pagode.", "en": "Turn right at the pagoda." } },
+        { "vi": "Tới rồi, dừng lại ở quán cà phê.", "action": "stop", "landmark": "ca_phe", "gloss": { "fr": "On y est : arrête-toi au café.", "en": "We're here: stop at the café." } }
+      ],
+      "reviewed": false
+    }
+  ]
+}

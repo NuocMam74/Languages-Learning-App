@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_xe_buyt_metro",
+  "title": {
+    "fr": "Bus et métro à Saïgon",
+    "en": "Bus and metro in Saigon"
+  },
+  "body": {
+    "fr": "Le xe buýt est très bon marché ; sur beaucoup de lignes, on achète son vé à bord. Depuis fin 2024, une première ligne de métro relie le centre, près du chợ Bến Thành, à l'est de la ville. Pour la plupart des trajets, les habitants restent pourtant fidèles à la moto.",
+    "en": "The xe buýt is very cheap; on many lines you buy your vé on board. Since late 2024 a first metro line links the centre, near chợ Bến Thành, to the east of the city. For most trips, though, locals stick to their motorbikes."
+  },
+  "vi": "Đi xe buýt mất bao lâu?",
+  "audio": "audio/cc_xe_buyt_metro.opus",
+  "question": {
+    "prompt": {
+      "fr": "Sur beaucoup de lignes de bus, le vé s'achète…",
+      "en": "On many bus lines, the vé is bought…"
+    },
+    "options": [
+      {
+        "fr": "à bord",
+        "en": "on board"
+      },
+      {
+        "fr": "seulement en ligne",
+        "en": "online only"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

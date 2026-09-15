@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_da_ice",
+  "type": "word",
+  "vi": "đá",
+  "tone": "sac",
+  "gloss": {
+    "fr": "glace, glaçons ; pierre",
+    "en": "ice; stone"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_da_ice_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_da_ice_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/ice.svg",
+  "reviewed": false
+}

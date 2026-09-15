@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_chi_lam_o_dau",
+  "type": "structure",
+  "vi": "Chị làm ở đâu?",
+  "gloss": {
+    "fr": "Tu travailles où ? (à une femme un peu plus âgée)",
+    "en": "Where do you work? (to a slightly older woman)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chi_lam_o_dau_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chi_lam_o_dau_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

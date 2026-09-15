@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_noi_cham_duoc_khong",
+  "type": "structure",
+  "vi": "Anh nói chậm lại được không?",
+  "gloss": {
+    "fr": "Tu peux parler plus lentement ? (à un homme un peu plus âgé)",
+    "en": "Can you speak more slowly? (to a slightly older man)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_noi_cham_duoc_khong_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_noi_cham_duoc_khong_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "… được không ? = « est-ce possible ? » : la façon polie de demander un service.",
+    "en": "… được không? = 'is that possible?': the polite way to ask a favour."
+  },
+  "reviewed": false
+}

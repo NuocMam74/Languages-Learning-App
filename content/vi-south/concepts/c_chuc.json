@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chuc",
+  "type": "word",
+  "vi": "chục",
+  "tone": "nang",
+  "gloss": {
+    "fr": "dizaine",
+    "en": "ten (a group of ten)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chuc_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chuc_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au marché, hai chục ngàn = 20 000 đồng ; on abrège souvent en hai chục.",
+    "en": "At the market, hai chục ngàn = 20,000 đồng; often shortened to hai chục."
+  },
+  "reviewed": false
+}

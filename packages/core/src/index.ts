@@ -11,6 +11,8 @@ export * from "./review.ts";
 export * from "./session-run.ts";
 export * from "./badges.ts";
 export * from "./placement.ts";
+export * from "./exams.ts";
+export * from "./challenges.ts";
 export * from "./games/index.ts";
 export { buildContentIndex, type RawPackFiles } from "./content-index.ts";
 export * as pitch from "./pitch/index.ts";

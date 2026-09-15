@@ -1,0 +1,169 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u10.l06",
+  "unit": "vi-south.u10",
+  "title": {
+    "fr": "Devant, derrière, entre",
+    "en": "In front, behind, between"
+  },
+  "goal": {
+    "fr": "Situer précisément un lieu par rapport à un autre.",
+    "en": "Place one location precisely relative to another."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u10.l05"
+  ],
+  "concepts": [
+    "c_truoc",
+    "c_sau_after",
+    "c_giua",
+    "c_trong",
+    "c_sau_six"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_truoc",
+      "distractors": [
+        "chước",
+        "trúc"
+      ],
+      "explain": {
+        "fr": "trước : devant. Le Sud distingue bien tr et ch.",
+        "en": "trước: in front. The South keeps tr and ch distinct."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "sáu",
+        "sau"
+      ],
+      "audioConcepts": [
+        "c_sau_six",
+        "c_sau_after"
+      ],
+      "explain": {
+        "fr": "sáu monte : six. sau, plat : derrière, après.",
+        "en": "sáu rises: six. sau, level: behind, after."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giua",
+      "distractors": [
+        "giũa",
+        "gió"
+      ],
+      "explain": {
+        "fr": "giữa : entre. gió : le vent.",
+        "en": "giữa: between. gió: wind."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_trong",
+      "explain": {
+        "fr": "trong reste plat (ngang).",
+        "en": "trong stays level (ngang)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tiệm phở ở sau chợ.",
+      "tokens": [
+        "Tiệm phở",
+        "ở",
+        "sau",
+        "chợ",
+        "sáu"
+      ],
+      "translation": {
+        "fr": "Le restaurant de phở est derrière le marché.",
+        "en": "The phở shop is behind the market."
+      },
+      "explain": {
+        "fr": "sau + lieu : derrière. tiệm : la boutique, au Sud.",
+        "en": "sau + place: behind. tiệm: shop, in the South."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Trường học ở giữa công viên và bệnh viện.",
+      "tokens": [
+        "Trường học",
+        "ở",
+        "giữa",
+        "công viên",
+        "và",
+        "bệnh viện",
+        "trong"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
+      },
+      "explain": {
+        "fr": "giữa A và B : entre A et B.",
+        "en": "giữa A và B: between A and B."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trong",
+      "distractors": [
+        "trông",
+        "chong"
+      ],
+      "explain": {
+        "fr": "trong : dans. trông, avec ô : regarder, garder.",
+        "en": "trong: inside. trông, with ô: to look after."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh chờ em ở trước khách sạn nha.",
+      "tokens": [
+        "Anh",
+        "chờ",
+        "em",
+        "ở",
+        "trước",
+        "khách sạn",
+        "nha",
+        "chợ"
+      ],
+      "translation": {
+        "fr": "Attends-moi devant l'hôtel, d'accord ?",
+        "en": "Wait for me in front of the hotel, okay?"
+      },
+      "explain": {
+        "fr": "chờ : attendre ; chợ : le marché. Attention au ton.",
+        "en": "chờ: to wait; chợ: market. Mind the tone."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_truoc",
+      "explain": {
+        "fr": "trước monte, avec un tr bien net.",
+        "en": "trước rises, with a crisp tr."
+      }
+    },
+    {
+      "type": "game",
+      "game": "xe_om",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_truoc",
+      "c_sau_after",
+      "c_giua",
+      "c_trong"
+    ]
+  },
+  "reviewed": false
+}

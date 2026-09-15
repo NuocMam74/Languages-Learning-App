@@ -61,6 +61,25 @@ def completed_lessons(db: Session, user_id: str) -> set[str]:
     )
 
 
+def lessons_before(pack: Pack, lesson_id: str) -> list[str]:
+    """Leçons situées avant `lesson_id` dans l'ordre du cursus — portage de `lessonsBefore` (placement.ts)."""
+    ordered = [lid for unit in pack.units for lid in unit.lessons]
+    try:
+        idx = ordered.index(lesson_id)
+    except ValueError:
+        return []
+    return ordered[:idx]
+
+
+def unlocked_lessons(db: Session, user_id: str, pack: Pack) -> set[str]:
+    """Leçons terminées + sautées grâce au test de placement : sert aux prérequis (comme `planning` du client)."""
+    unlocked = completed_lessons(db, user_id)
+    profile = db.get(Profile, user_id)
+    if profile is not None and profile.placement_entry_lesson_id:
+        unlocked.update(lessons_before(pack, profile.placement_entry_lesson_id))
+    return unlocked
+
+
 def to_card(row: SrsCardRow) -> SrsCard:
     return SrsCard(
         concept_id=row.concept_id,

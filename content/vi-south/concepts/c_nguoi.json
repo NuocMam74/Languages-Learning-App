@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nguoi",
+  "type": "word",
+  "vi": "người",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "personne, gens",
+    "en": "person, people"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nguoi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nguoi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "người + pays = la nationalité : người Pháp, người Việt.",
+    "en": "người + country = nationality: người Pháp, người Việt."
+  },
+  "reviewed": false
+}

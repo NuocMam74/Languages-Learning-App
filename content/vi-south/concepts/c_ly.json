@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ly",
+  "type": "word",
+  "vi": "ly",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "verre",
+    "en": "glass"
+  },
+  "register": "neutral",
+  "northernEquivalent": "cốc",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ly_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ly_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/glass.svg",
+  "note": {
+    "fr": "Au Sud : ly ; au Nord : cốc.",
+    "en": "South: ly; North: cốc."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_thom",
+  "type": "word",
+  "vi": "thơm",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "ananas ; parfumé",
+    "en": "pineapple; fragrant"
+  },
+  "register": "neutral",
+  "northernEquivalent": "dứa",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_thom_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_thom_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/pineapple.svg",
+  "note": {
+    "fr": "Au Sud : trái thơm ou trái khóm ; au Nord : quả dứa.",
+    "en": "South: trái thơm or trái khóm; North: quả dứa."
+  },
+  "reviewed": false
+}

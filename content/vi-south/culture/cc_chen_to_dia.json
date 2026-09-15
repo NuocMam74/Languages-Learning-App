@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_chen_to_dia",
+  "title": {
+    "fr": "Chén, tô, dĩa, muỗng",
+    "en": "Chén, tô, dĩa, muỗng"
+  },
+  "body": {
+    "fr": "À table, le Sud a ses mots : chén pour le petit bol de riz, tô pour le grand bol de soupe, dĩa pour l'assiette, muỗng pour la cuillère. Au Nord, tu entendras bát, đĩa et thìa. On mange le riz dans son chén, porté près de la bouche, avec des đũa.",
+    "en": "At the table the South has its own words: chén for the small rice bowl, tô for the big soup bowl, dĩa for the plate, muỗng for the spoon. In the North you'll hear bát, đĩa and thìa. Rice is eaten from your chén, held close to your mouth, with đũa."
+  },
+  "vi": "Cho em thêm một cái chén nha.",
+  "audio": "audio/cc_chen_to_dia.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour un phở, on te sert…",
+      "en": "For a phở, you're served…"
+    },
+    "options": [
+      {
+        "fr": "un tô",
+        "en": "a tô"
+      },
+      {
+        "fr": "un chén",
+        "en": "a chén"
+      },
+      {
+        "fr": "un dĩa",
+        "en": "a dĩa"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

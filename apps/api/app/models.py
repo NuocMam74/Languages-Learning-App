@@ -9,7 +9,7 @@ import uuid
 from datetime import UTC, date, datetime
 from typing import Any
 
-from sqlalchemy import JSON, Boolean, Date, Float, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy import JSON, Boolean, Date, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint, false
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db import Base, UTCDateTime
@@ -67,6 +67,11 @@ class Profile(Base):
     level_estimate: Mapped[str | None] = mapped_column(String(16))
     path_variant: Mapped[str | None] = mapped_column(String(32))
     leagues_enabled: Mapped[bool] = mapped_column(Boolean, default=True)
+    # Fuseau IANA (rappels push, jour local côté serveur).
+    timezone: Mapped[str | None] = mapped_column(String(64))
+    notifications_enabled: Mapped[bool] = mapped_column(Boolean, default=False, server_default=false())
+    # Point d'entrée du dernier test de placement : les leçons situées avant sont ouvertes (comme côté client).
+    placement_entry_lesson_id: Mapped[str | None] = mapped_column(String(128))
 
 
 # --- Parcours ------------------------------------------------------------------------------
@@ -175,6 +180,8 @@ class ProcessedEvent(Base):
     """Événement brut reçu : clé d'idempotence et journal de rejeu."""
 
     __tablename__ = "processed_events"
+    # Défis de la semaine : événements d'un type sur une période.
+    __table_args__ = (Index("ix_processed_events_user_type_occurred", "user_id", "type", "occurred_at"),)
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True)
     user_id: Mapped[str] = mapped_column(user_fk(), index=True)
@@ -204,6 +211,9 @@ class ChallengeProgress(Base):
     challenge_id: Mapped[str] = mapped_column(ForeignKey("challenges.id", ondelete="CASCADE"), primary_key=True)
     progress: Mapped[int] = mapped_column(Integer, default=0)
     completed_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
+    claimed_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
+    # words_theme : unité courante de l'utilisateur, figée à la première lecture du défi.
+    unit_id: Mapped[str | None] = mapped_column(String(128))
 
 
 class Badge(Base):
@@ -242,6 +252,9 @@ class ExamAttempt(Base):
     submitted_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
     score_json: Mapped[dict[str, Any] | None] = mapped_column(JSON)
     passed: Mapped[bool | None] = mapped_column(Boolean)
+    expires_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
+    # Réponses brutes soumises (audit de la notation).
+    answers_json: Mapped[list[dict[str, Any]] | None] = mapped_column(JSON)
 
 
 class Certificate(Base):
@@ -252,7 +265,14 @@ class Certificate(Base):
     level: Mapped[str] = mapped_column(String(4))
     issued_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
     verification_code: Mapped[str] = mapped_column(String(32), unique=True)
+    # Clé de stockage du PDF (disque local ou S3), pas une URL publique.
     pdf_url: Mapped[str | None] = mapped_column(String(512))
+    course_id: Mapped[str | None] = mapped_column(String(64))
+    attempt_id: Mapped[str | None] = mapped_column(ForeignKey("exam_attempts.id", ondelete="SET NULL"))
+    # Figés à la délivrance : un certificat ne change pas si le profil change.
+    display_name: Mapped[str | None] = mapped_column(String(80))
+    certificate_name: Mapped[dict[str, str] | None] = mapped_column(JSON)
+    scores_json: Mapped[dict[str, float] | None] = mapped_column(JSON)
 
 
 class TutorMessage(Base):
@@ -291,6 +311,10 @@ class PushSubscription(Base):
     endpoint: Mapped[str] = mapped_column(String(1024))
     keys_json: Mapped[dict[str, Any]] = mapped_column(JSON)
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+    reminder_hour: Mapped[int | None] = mapped_column(Integer)
+    timezone: Mapped[str | None] = mapped_column(String(64))
+    # Jour local du dernier rappel envoyé : une notification par jour au plus.
+    last_notified_on: Mapped[date | None] = mapped_column(Date)
 
 
 class PronunciationScore(Base):
@@ -303,3 +327,18 @@ class PronunciationScore(Base):
     concept_id: Mapped[str] = mapped_column(String(128))
     score: Mapped[float] = mapped_column(Float)
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+
+
+class GamePlay(Base):
+    """Partie de mini-jeu hors leçon (`game_played`) : progression des défis, aucune XP serveur."""
+
+    __tablename__ = "game_plays"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True)  # id de l'événement client
+    user_id: Mapped[str] = mapped_column(user_fk(), index=True)
+    game: Mapped[str] = mapped_column(String(32))
+    correct: Mapped[int] = mapped_column(Integer)
+    total: Mapped[int] = mapped_column(Integer)
+    duration_ms: Mapped[int] = mapped_column(Integer)
+    local_date: Mapped[date] = mapped_column(Date)
+    played_at: Mapped[datetime] = mapped_column(UTCDateTime(), index=True)

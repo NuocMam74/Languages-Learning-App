@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_thoi_cam_on",
+  "type": "structure",
+  "vi": "Thôi, cảm ơn chị.",
+  "gloss": {
+    "fr": "Non merci (à une femme un peu plus âgée).",
+    "en": "No thanks (to a slightly older woman)."
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thoi_cam_on_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thoi_cam_on_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u06.l01",
+  "unit": "vi-south.u06",
+  "title": {
+    "fr": "De zéro à cinq",
+    "en": "Zero to five"
+  },
+  "goal": {
+    "fr": "Compter jusqu'à cinq et reconnaître les chiffres à l'oreille.",
+    "en": "Count to five and recognise digits by ear."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u05.l08"
+  ],
+  "concepts": [
+    "c_khong_zero",
+    "c_ba_three",
+    "c_bon",
+    "c_nam_five",
+    "c_so",
+    "c_ba_grandma"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_three",
+      "distractors": [
+        "bà",
+        "bá"
+      ],
+      "explain": {
+        "fr": "ba, plat : trois (et papa, même mot).",
+        "en": "ba, level: three (and dad, same word)."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_bon",
+      "explain": {
+        "fr": "bốn monte (sắc) : quatre.",
+        "en": "bốn rises (sắc): four."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_five",
+      "distractors": [
+        "nằm",
+        "nắm"
+      ],
+      "explain": {
+        "fr": "năm, plat : cinq. nằm descend : être allongé.",
+        "en": "năm, level: five. nằm falls: to lie down."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "ba",
+        "bà"
+      ],
+      "audioConcepts": [
+        "c_ba_three",
+        "c_ba_grandma"
+      ],
+      "explain": {
+        "fr": "ba plat : trois. bà descend : grand-mère.",
+        "en": "ba level: three. bà falls: grandmother."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khong_zero",
+      "distractors": [
+        "khóng",
+        "khộng"
+      ],
+      "explain": {
+        "fr": "không : zéro, le même mot que « non ».",
+        "en": "không: zero, the same word as 'no'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà tôi có bốn người.",
+      "tokens": [
+        "Nhà",
+        "tôi",
+        "có",
+        "bốn",
+        "người",
+        "năm"
+      ],
+      "translation": {
+        "fr": "Nous sommes quatre à la maison.",
+        "en": "There are four of us at home."
+      },
+      "explain": {
+        "fr": "Le nombre se place directement devant le nom : bốn người.",
+        "en": "The number goes right before the noun: bốn người."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_so",
+      "distractors": [
+        "sổ",
+        "sơ"
+      ],
+      "explain": {
+        "fr": "số monte : nombre, numéro. sổ plonge : le cahier.",
+        "en": "số rises: number. sổ dips: notebook."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi có ba con cá.",
+      "tokens": [
+        "Tôi",
+        "có",
+        "ba",
+        "con",
+        "cá",
+        "bà"
+      ],
+      "translation": {
+        "fr": "J'ai trois poissons.",
+        "en": "I have three fish."
+      },
+      "explain": {
+        "fr": "Nombre + con + animal, comme hai con mèo.",
+        "en": "Number + con + animal, like hai con mèo."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_nam_five",
+      "explain": {
+        "fr": "năm reste haut et plat, sans monter.",
+        "en": "năm stays high and level, without rising."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_khong_zero",
+      "c_ba_three",
+      "c_bon",
+      "c_nam_five",
+      "c_so"
+    ]
+  },
+  "reviewed": false
+}

@@ -74,6 +74,13 @@ export function checkContent(content: ContentIndex, opts: { production?: boolean
 
 type Report = (where: string, message: string) => void;
 
+/** Contrôle d'une étape hors de son fichier de leçon (examens : leçon synthétique). */
+export function checkLessonStep(content: ContentIndex, lesson: Lesson, step: LessonStep, where: string): ContentIssue[] {
+  const issues: ContentIssue[] = [];
+  checkStep(content, lesson, step, where, (w, message) => issues.push({ level: "error", where: w, message }), (w, message) => issues.push({ level: "warning", where: w, message }));
+  return issues;
+}
+
 function checkStep(content: ContentIndex, lesson: Lesson, step: LessonStep, where: string, err: Report, warn: Report) {
   const needConcept = (id: string) => {
     if (!content.concepts.has(id)) err(where, `Concept inconnu : ${id}`);

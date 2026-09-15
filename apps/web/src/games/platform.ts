@@ -57,7 +57,13 @@ const warmed = new Map<string, HTMLAudioElement>();
 export function preloadConceptAudio(content: ContentIndex, concept: Concept): void {
   const track = concept.audio.find((a) => a.speed === "natural") ?? concept.audio[0];
   if (!track || typeof Audio === "undefined") return;
-  const url = mediaUrl(content, track.src);
+  preloadMedia(content, track.src);
+}
+
+/** Précharge un fichier audio du pack par son chemin (consignes de Xe ôm…). */
+export function preloadMedia(content: ContentIndex, path: string | undefined): void {
+  if (!path || typeof Audio === "undefined") return;
+  const url = mediaUrl(content, path);
   if (warmed.has(url)) return;
   const audio = new Audio();
   audio.preload = "auto";

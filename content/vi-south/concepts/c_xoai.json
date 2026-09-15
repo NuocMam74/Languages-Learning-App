@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_xoai",
+  "type": "word",
+  "vi": "xoài",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "mangue",
+    "en": "mango"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xoai_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_xoai_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/food/mango.svg",
+  "examples": [
+    {
+      "vi": "trái xoài",
+      "fr": "une mangue",
+      "en": "a mango"
+    }
+  ],
+  "reviewed": false
+}

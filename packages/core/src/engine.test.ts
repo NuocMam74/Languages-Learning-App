@@ -6,6 +6,7 @@ import {
   isFinished,
   lessonScore,
   recordResult,
+  SPEAK_PASS_SCORE,
   startLesson,
   TUTOR_NUDGE_AFTER,
   type Exercise,
@@ -35,6 +36,7 @@ function rightAnswer(ex: Exercise): ExerciseResponse {
       return { kind: "tokens", optionIds: ids };
     }
     case "speak_repeat":
+    case "tone_produce":
       return { kind: "speech", score: 85 };
     case "game":
       return { kind: "game", correct: 9, total: 10 };
@@ -48,7 +50,7 @@ function rightAnswer(ex: Exercise): ExerciseResponse {
 function wrongAnswer(ex: Exercise): ExerciseResponse {
   if ("answerId" in ex) return { kind: "choice", optionId: ex.options.find((o) => o.id !== ex.answerId)?.id ?? "x" };
   if (ex.type === "build_sentence") return { kind: "tokens", optionIds: [] };
-  if (ex.type === "speak_repeat") return { kind: "speech", score: 10 };
+  if (ex.type === "speak_repeat" || ex.type === "tone_produce") return { kind: "speech", score: 10 };
   return { kind: "skip" };
 }
 
@@ -108,6 +110,36 @@ describe("evaluate", () => {
     const idx = l03.steps.findIndex((s) => s.type === "speak_repeat");
     const ex = buildExercise(content, l03, idx, "x");
     expect(evaluate(ex, { kind: "speech", score: null })).toMatchObject({ correct: true, graded: false });
+  });
+
+  it("speak_repeat noté : seuil SPEAK_PASS_SCORE, presque juste dans les 15 points", () => {
+    const idx = l03.steps.findIndex((s) => s.type === "speak_repeat");
+    const ex = buildExercise(content, l03, idx, "x");
+    expect(evaluate(ex, { kind: "speech", score: SPEAK_PASS_SCORE })).toMatchObject({ correct: true, graded: true });
+    expect(evaluate(ex, { kind: "speech", score: SPEAK_PASS_SCORE - 10 })).toMatchObject({ correct: false, nearMiss: true, graded: true });
+  });
+
+  describe("tone_produce", () => {
+    const base = lesson("vi-south.u01.l01");
+    const toneLesson: Lesson = { ...base, steps: [{ type: "tone_produce", concept: "c_ma_mom" }] };
+    const ex = buildExercise(content, toneLesson, 0, "x");
+
+    it("se construit (plus « unsupported ») avec le ton écrit du concept", () => {
+      expect(ex).toMatchObject({ type: "tone_produce", conceptIds: ["c_ma_mom"], tone: "sac", pitchRef: null });
+      if (ex.type !== "tone_produce") throw new Error("type inattendu");
+      expect(ex.concept.vi).toBe("má");
+    });
+
+    it("évalué comme speak_repeat : score ≥ SPEAK_PASS_SCORE", () => {
+      expect(evaluate(ex, { kind: "speech", score: 92 })).toMatchObject({ correct: true, graded: true, expected: "má" });
+      expect(evaluate(ex, { kind: "speech", score: SPEAK_PASS_SCORE - 1 })).toMatchObject({ correct: false, nearMiss: true, graded: true });
+      expect(evaluate(ex, { kind: "speech", score: 5 })).toMatchObject({ correct: false, nearMiss: false, graded: true });
+    });
+
+    it("micro refusé : non noté ; mauvaise forme de réponse : fausse", () => {
+      expect(evaluate(ex, { kind: "speech", score: null })).toMatchObject({ correct: true, graded: false });
+      expect(evaluate(ex, { kind: "choice", optionId: "x" })).toMatchObject({ correct: false, graded: false });
+    });
   });
 
   it("carte culture : jamais notée", () => {

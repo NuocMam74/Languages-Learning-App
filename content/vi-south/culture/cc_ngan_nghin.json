@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_ngan_nghin",
+  "title": {
+    "fr": "Ngàn et lẻ : l'accent des nombres",
+    "en": "Ngàn and lẻ: numbers with an accent"
+  },
+  "body": {
+    "fr": "Au Sud, « mille » se dit ngàn : một ngàn, hai ngàn. Au Nord, nghìn. Pour 105, le Sud dit một trăm lẻ năm, le Nord một trăm linh năm. Tout le monde se comprend, mais ces petits mots trahissent tout de suite d'où l'on vient.",
+    "en": "In the South 'thousand' is ngàn: một ngàn, hai ngàn. In the North, nghìn. For 105 the South says một trăm lẻ năm, the North một trăm linh năm. Everyone understands both, but these little words instantly show where you're from."
+  },
+  "vi": "Một trăm lẻ năm ngàn.",
+  "audio": "audio/cc_ngan_nghin.opus",
+  "question": {
+    "prompt": {
+      "fr": "Tu entends « hai ngàn » à Cần Thơ. C'est…",
+      "en": "You hear 'hai ngàn' in Cần Thơ. That's…"
+    },
+    "options": [
+      {
+        "fr": "2 000",
+        "en": "2,000"
+      },
+      {
+        "fr": "200",
+        "en": "200"
+      },
+      {
+        "fr": "20 000",
+        "en": "20,000"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

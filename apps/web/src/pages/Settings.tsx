@@ -6,6 +6,7 @@ import type { Profile } from "../db.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
 import { deleteLocalData, exportLocalData, getProfile, saveProfile } from "../learner.ts";
 import { clearPrefs, usePrefs } from "../prefs.ts";
+import { ReminderSettings } from "../notifications/Reminders.tsx";
 
 /** Réglages (spec §4.1.6, §13, §14) : profil, affichage, compte, données. */
 
@@ -118,6 +119,10 @@ export default function Settings() {
           <Segmented label={t("settings.path")} value={profile.motivation} options={motivations.map((m) => ({ value: m, label: t(`onboarding.why.${m}` as MessageKey) }))} onChange={(v) => update({ motivation: v })} />
         </Section>
       )}
+
+      <Section title={t("notif.settings.title")}>
+        <ReminderSettings />
+      </Section>
 
       <Section title={t("settings.display")}>
         <p className="text-sm text-phu-sa">{t("settings.locale")}</p>

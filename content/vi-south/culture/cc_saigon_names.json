@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_saigon_names",
+  "title": {
+    "fr": "Sài Gòn ou Hồ Chí Minh ?",
+    "en": "Sài Gòn or Hồ Chí Minh?"
+  },
+  "body": {
+    "fr": "Le nom officiel est Thành phố Hồ Chí Minh, abrégé TP.HCM. Dans la conversation, beaucoup disent encore Sài Gòn, surtout pour parler du centre. Tu verras les deux sur les enseignes, les bus et les billets de train : les deux désignent bien la même ville.",
+    "en": "The official name is Thành phố Hồ Chí Minh, shortened to TP.HCM. In conversation many people still say Sài Gòn, especially for the centre. You'll see both on shop signs, buses and train tickets: they are the same city."
+  },
+  "vi": "Tôi sống ở Sài Gòn.",
+  "audio": "audio/cc_saigon_names.opus",
+  "question": {
+    "prompt": {
+      "fr": "Sài Gòn et TP.HCM, c'est…",
+      "en": "Sài Gòn and TP.HCM are…"
+    },
+    "options": [
+      {
+        "fr": "la même ville",
+        "en": "the same city"
+      },
+      {
+        "fr": "deux villes voisines",
+        "en": "two neighbouring cities"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_business_card",
+  "title": {
+    "fr": "La carte à deux mains",
+    "en": "The card with both hands"
+  },
+  "body": {
+    "fr": "Au travail, on échange sa danh thiếp dès la première rencontre. Tends-la et reçois-la à deux mains, en regardant la personne, puis lis-la avant de la ranger. Les deux mains montrent le respect, comme lorsqu'on sert à boire à un aîné.",
+    "en": "At work, people exchange a danh thiếp at the first meeting. Give and receive it with both hands, looking at the person, then read it before putting it away. Both hands show respect, just like pouring a drink for an elder."
+  },
+  "vi": "Dạ, danh thiếp của em.",
+  "audio": "audio/cc_business_card.opus",
+  "question": {
+    "prompt": {
+      "fr": "Pour offrir ta carte de visite, tu la tends…",
+      "en": "To offer your business card, you hold it out…"
+    },
+    "options": [
+      {
+        "fr": "à deux mains",
+        "en": "with both hands"
+      },
+      {
+        "fr": "d'une main, rapidement",
+        "en": "with one hand, quickly"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

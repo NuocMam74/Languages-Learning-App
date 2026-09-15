@@ -1,0 +1,164 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u11.l02",
+  "unit": "vi-south.u11",
+  "title": {
+    "fr": "Xe ôm et Grab",
+    "en": "Xe ôm and Grab"
+  },
+  "goal": {
+    "fr": "Prendre un taxi-moto et dire où tu vas.",
+    "en": "Take a motorbike taxi and say where you're going."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u11.l01"
+  ],
+  "concepts": [
+    "c_xe_om",
+    "c_dat",
+    "c_cho_carry",
+    "s_di_dau",
+    "s_cho_em_ra_cho",
+    "c_cho_market",
+    "c_cho_wait"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_om",
+      "distractors": [
+        "c_xe_buyt",
+        "c_xe_dap"
+      ],
+      "explain": {
+        "fr": "xe ôm : le taxi-moto.",
+        "en": "xe ôm: motorbike taxi."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_xe_om_grab"
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "chở",
+        "chợ",
+        "chờ"
+      ],
+      "audioConcepts": [
+        "c_cho_carry",
+        "c_cho_market",
+        "c_cho_wait"
+      ],
+      "explain": {
+        "fr": "chở plonge : emmener. chợ tombe court, chờ descend.",
+        "en": "chở dips: give a ride. chợ drops short, chờ falls."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dat",
+      "distractors": [
+        "đất",
+        "đạt"
+      ],
+      "explain": {
+        "fr": "đặt : réserver. đất monte : la terre.",
+        "en": "đặt: to book. đất rises: earth."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_di_dau",
+      "distractors": [
+        "Em ở đâu?",
+        "Anh đi đâu?"
+      ],
+      "explain": {
+        "fr": "đi đâu ? : où vas-tu ? ở đâu ? : où es-tu ?",
+        "en": "đi đâu?: where are you going? ở đâu?: where are you?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh chở em ra chợ Bến Thành nha.",
+      "tokens": [
+        "Anh",
+        "chở",
+        "em",
+        "ra",
+        "chợ",
+        "Bến Thành",
+        "nha",
+        "chờ"
+      ],
+      "translation": {
+        "fr": "Emmène-moi au marché Bến Thành, d'accord ? (à un homme un peu plus âgé)",
+        "en": "Take me to Bến Thành market, okay? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "chở + personne + ra/tới + lieu : emmener quelqu'un.",
+        "en": "chở + person + ra/tới + place: to give someone a ride."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_cho_carry",
+      "explain": {
+        "fr": "chở porte le hỏi : il plonge.",
+        "en": "chở carries hỏi: it dips."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em đặt Grab rồi.",
+      "tokens": [
+        "Em",
+        "đặt",
+        "Grab",
+        "rồi",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "J'ai déjà réservé un Grab.",
+        "en": "I've already booked a Grab."
+      },
+      "explain": {
+        "fr": "đặt + service : réserver. rồi : c'est fait.",
+        "en": "đặt + service: to book. rồi: done."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_om",
+      "distractors": [
+        "xe ốm",
+        "xe ổm"
+      ],
+      "explain": {
+        "fr": "ôm, plat : serrer dans ses bras. ốm monte : malade.",
+        "en": "ôm, level: to hug. ốm rises: sick."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_cho_em_ra_cho",
+      "explain": {
+        "fr": "chở plonge, chợ tombe court : deux tons différents.",
+        "en": "chở dips, chợ drops short: two different tones."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_xe_om",
+      "c_dat",
+      "c_cho_carry",
+      "s_di_dau",
+      "s_cho_em_ra_cho"
+    ]
+  },
+  "reviewed": false
+}

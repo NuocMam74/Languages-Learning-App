@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ky_su",
+  "type": "word",
+  "vi": "kỹ sư",
+  "gloss": {
+    "fr": "ingénieur(e)",
+    "en": "engineer"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ky_su_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ky_su_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/people/engineer.svg",
+  "note": {
+    "fr": "On voit aussi l'orthographe kĩ sư.",
+    "en": "The spelling kĩ sư is also seen."
+  },
+  "reviewed": false
+}

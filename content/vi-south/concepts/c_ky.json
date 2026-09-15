@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_ky",
+  "type": "word",
+  "vi": "ký",
+  "tone": "sac",
+  "gloss": {
+    "fr": "kilo",
+    "en": "kilo"
+  },
+  "register": "neutral",
+  "northernEquivalent": "cân",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ky_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_ky_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "De ký lô. On voit aussi l'orthographe kí. Au Nord : cân.",
+    "en": "From ký lô. The spelling kí is also seen. North: cân."
+  },
+  "reviewed": false
+}

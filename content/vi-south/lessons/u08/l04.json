@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u08.l04",
+  "unit": "vi-south.u08",
+  "title": {
+    "fr": "Một ký, nửa ký",
+    "en": "Một ký, nửa ký"
+  },
+  "goal": {
+    "fr": "Acheter au poids et demander le prix au kilo.",
+    "en": "Buy by weight and ask the price per kilo."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u08.l03"
+  ],
+  "concepts": [
+    "c_ky",
+    "c_nua",
+    "s_nua_ky",
+    "s_bao_nhieu_mot_ky",
+    "c_lay"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nua_ky",
+      "distractors": [
+        "nửa kỳ",
+        "một ký"
+      ],
+      "explain": {
+        "fr": "nửa ký : un demi-kilo.",
+        "en": "nửa ký: half a kilo."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ky_market"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ky",
+      "explain": {
+        "fr": "ký monte (sắc) : le kilo.",
+        "en": "ký rises (sắc): kilo."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nua",
+      "distractors": [
+        "nưa",
+        "nứa"
+      ],
+      "explain": {
+        "fr": "nửa plonge : la moitié. nứa monte : une sorte de bambou.",
+        "en": "nửa dips: half. nứa rises: a kind of bamboo."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_kilo",
+      "explain": {
+        "fr": "Sud : ký ; Nord : cân.",
+        "en": "South: ký; North: cân."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bao_nhieu_mot_ky",
+      "distractors": [
+        "Bao nhiêu một trái?",
+        "Bao nhiêu tiền?"
+      ],
+      "explain": {
+        "fr": "một ký : le prix au kilo. một trái : à la pièce.",
+        "en": "một ký: price per kilo. một trái: per piece."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xoài bao nhiêu một ký?",
+      "tokens": [
+        "Xoài",
+        "bao nhiêu",
+        "một",
+        "ký",
+        "trái"
+      ],
+      "translation": {
+        "fr": "Combien le kilo de mangues ?",
+        "en": "How much is a kilo of mangoes?"
+      },
+      "explain": {
+        "fr": "Produit + bao nhiêu một ký ? À l'oral, nhiêu suffit souvent.",
+        "en": "Product + bao nhiêu một ký? In speech, nhiêu is often enough."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lay",
+      "distractors": [
+        "lầy",
+        "lây"
+      ],
+      "explain": {
+        "fr": "lấy monte : prendre. lây, plat : contaminer.",
+        "en": "lấy rises: to take. lây, level: to spread (a disease)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em lấy nửa ký chuối.",
+      "tokens": [
+        "Em",
+        "lấy",
+        "nửa",
+        "ký",
+        "chuối",
+        "trái"
+      ],
+      "translation": {
+        "fr": "Je prends un demi-kilo de bananes.",
+        "en": "I'll take half a kilo of bananas."
+      },
+      "explain": {
+        "fr": "Pour acheter, on dit lấy : « je prends ».",
+        "en": "To buy, say lấy: 'I'll take'."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_ky",
+      "c_nua",
+      "s_nua_ky",
+      "s_bao_nhieu_mot_ky",
+      "c_lay"
+    ]
+  },
+  "reviewed": false
+}

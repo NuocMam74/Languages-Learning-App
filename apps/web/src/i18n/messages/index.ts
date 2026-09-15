@@ -11,5 +11,9 @@ import * as placement from "./placement.ts";
 import * as session from "./session.ts";
 import * as settings from "./settings.ts";
 import * as tutor from "./tutor.ts";
+import * as exams from "./exams.ts";
+import * as challenges from "./challenges.ts";
+import * as notifications from "./notifications.ts";
+import * as karaoke from "./karaoke.ts";
 
-export const modules = [base, games, session, account, badges, placement, settings, tutor] as const;
+export const modules = [base, games, session, account, badges, placement, settings, tutor, exams, challenges, notifications, karaoke] as const;

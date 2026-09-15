@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u11.l06",
+  "unit": "vi-south.u11",
+  "title": {
+    "fr": "Casque et bouchons",
+    "en": "Helmets and traffic jams"
+  },
+  "goal": {
+    "fr": "Parler de la circulation et de la sécurité.",
+    "en": "Talk about traffic and safety."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u11.l05"
+  ],
+  "concepts": [
+    "c_non_bao_hiem",
+    "c_ket_xe",
+    "s_ket_xe_qua",
+    "c_can_than"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_non_bao_hiem",
+      "distractors": [
+        "c_xe_dap",
+        "c_den_do"
+      ],
+      "explain": {
+        "fr": "nón bảo hiểm : le casque.",
+        "en": "nón bảo hiểm: helmet."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_ket_xe"
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_chapeau",
+      "explain": {
+        "fr": "Sud : nón ; Nord : mũ.",
+        "en": "South: nón; North: mũ."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ket_xe",
+      "distractors": [
+        "két xe",
+        "kẹp xe"
+      ],
+      "explain": {
+        "fr": "kẹt xe : l'embouteillage. kẹt tombe court.",
+        "en": "kẹt xe: traffic jam. kẹt drops short."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_traffic_jam",
+      "explain": {
+        "fr": "Sud : kẹt xe ; Nord : tắc đường.",
+        "en": "South: kẹt xe; North: tắc đường."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ket_xe_qua",
+      "distractors": [
+        "Mắc quá!",
+        "Kẹt xe rồi."
+      ],
+      "explain": {
+        "fr": "Kẹt xe quá ! : quel bouchon !",
+        "en": "Kẹt xe quá!: what a jam!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Giờ này kẹt xe lắm.",
+      "tokens": [
+        "Giờ này",
+        "kẹt xe",
+        "lắm",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "À cette heure-ci, ça bouchonne beaucoup.",
+        "en": "At this time of day the traffic is bad."
+      },
+      "explain": {
+        "fr": "giờ này : « à cette heure-ci ».",
+        "en": "giờ này: 'at this hour'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_can_than",
+      "distractors": [
+        "cần thận",
+        "cẩn thân"
+      ],
+      "explain": {
+        "fr": "cẩn plonge, thận tombe court : prudent.",
+        "en": "cẩn dips, thận drops short: careful."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đội nón bảo hiểm vô nha.",
+      "tokens": [
+        "Anh",
+        "đội",
+        "nón bảo hiểm",
+        "vô",
+        "nha",
+        "xe"
+      ],
+      "translation": {
+        "fr": "Mets ton casque, d'accord ? (à un homme un peu plus âgé)",
+        "en": "Put your helmet on, okay? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "đội : porter sur la tête. vô = vào, très Sud.",
+        "en": "đội: to wear on the head. vô = vào, very southern."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_can_than",
+      "explain": {
+        "fr": "cẩn plonge, thận tombe court.",
+        "en": "cẩn dips, thận drops short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_non_bao_hiem",
+      "c_ket_xe",
+      "s_ket_xe_qua",
+      "c_can_than"
+    ]
+  },
+  "reviewed": false
+}

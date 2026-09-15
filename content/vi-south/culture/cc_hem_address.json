@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_hem_address",
+  "title": {
+    "fr": "Saïgon, ville de hẻm",
+    "en": "Saigon, city of alleys"
+  },
+  "body": {
+    "fr": "Saïgon est un labyrinthe de hẻm, ruelles où passent motos et vendeurs ambulants. Les adresses le montrent : 123/4 Lê Lợi désigne la maison 4 dans la ruelle qui part du numéro 123. Plus il y a de barres obliques, plus on s'enfonce. Au Nord, on dit ngõ.",
+    "en": "Saigon is a maze of hẻm, alleys full of motorbikes and street vendors. Addresses show it: 123/4 Lê Lợi means house 4 in the alley branching off number 123. The more slashes, the deeper you go. In the North it's ngõ."
+  },
+  "vi": "Nhà em ở trong hẻm.",
+  "audio": "audio/cc_hem_address.opus",
+  "question": {
+    "prompt": {
+      "fr": "À Saïgon, l'adresse 123/4 indique…",
+      "en": "In Saigon, the address 123/4 means…"
+    },
+    "options": [
+      {
+        "fr": "une maison dans une ruelle",
+        "en": "a house in an alley"
+      },
+      {
+        "fr": "le 4e étage du numéro 123",
+        "en": "the 4th floor of number 123"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

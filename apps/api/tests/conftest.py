@@ -29,6 +29,14 @@ def settings(tmp_path: Path) -> Settings:
         anthropic_api_key=None,
         tutor_rate_limit=1000,
         root_path="",
+        media_dir=tmp_path / "media",
+        storage_backend="local",
+        # Rendu pur Python partout (WeasyPrint exige Pango, absent sous Windows) ; WeasyPrint testé à part.
+        pdf_renderer="fpdf2",
+        public_web_url="https://parlo.test",
+        scheduler_enabled=False,
+        vapid_public_key=None,
+        vapid_private_key=None,
     )
 
 

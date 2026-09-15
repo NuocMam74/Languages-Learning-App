@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_cai_nay_bao_nhieu",
+  "type": "structure",
+  "vi": "Cái này bao nhiêu?",
+  "gloss": {
+    "fr": "Ça coûte combien ?",
+    "en": "How much is this?"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cai_nay_bao_nhieu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cai_nay_bao_nhieu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "À l'oral on entend aussi : Cái này nhiêu?",
+    "en": "In speech you also hear: Cái này nhiêu?"
+  },
+  "reviewed": false
+}

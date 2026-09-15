@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_gio",
+  "type": "word",
+  "vi": "giờ",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "heure",
+    "en": "hour, o'clock"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gio_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_gio_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/things/clock.svg",
+  "reviewed": false
+}

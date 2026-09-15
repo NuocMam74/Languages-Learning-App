@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chieu",
+  "type": "word",
+  "vi": "chiều",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "après-midi",
+    "en": "afternoon"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chieu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chieu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "image": "img/nature/sunset.svg",
+  "reviewed": false
+}

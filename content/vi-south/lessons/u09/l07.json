@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u09.l07",
+  "unit": "vi-south.u09",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : temps et heures",
+    "en": "Review: time and hours"
+  },
+  "goal": {
+    "fr": "Revoir l'heure, les jours et les rendez-vous.",
+    "en": "Go over time, days and appointments."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u09.l06"
+  ],
+  "concepts": [
+    "c_chieu",
+    "s_may_gio_roi",
+    "c_toi",
+    "c_toi_evening",
+    "c_hom_qua",
+    "c_thuong",
+    "s_luc_may_gio"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chieu",
+      "distractors": [
+        "c_sang",
+        "c_dem"
+      ],
+      "explain": {
+        "fr": "chiều : l'après-midi.",
+        "en": "chiều: afternoon."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_may_gio_roi",
+      "distractors": [
+        "Mấy tuổi rồi?",
+        "Mấy giờ rưỡi?"
+      ],
+      "explain": {
+        "fr": "Mấy giờ rồi ? : l'heure.",
+        "en": "Mấy giờ rồi?: the time."
+      }
+    },
+    {
+      "type": "tone_minimal_pair",
+      "pair": [
+        "tôi",
+        "tối"
+      ],
+      "audioConcepts": [
+        "c_toi",
+        "c_toi_evening"
+      ],
+      "explain": {
+        "fr": "tôi plat, tối monte.",
+        "en": "tôi level, tối rises."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ là ba giờ rưỡi.",
+      "tokens": [
+        "Bây giờ",
+        "là",
+        "ba",
+        "giờ",
+        "rưỡi",
+        "phút"
+      ],
+      "translation": {
+        "fr": "Il est trois heures et demie.",
+        "en": "It's half past three."
+      },
+      "explain": {
+        "fr": "rưỡi après giờ.",
+        "en": "rưỡi after giờ."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hom_qua",
+      "distractors": [
+        "hôm nay",
+        "hôm quá"
+      ],
+      "explain": {
+        "fr": "hôm qua : hier.",
+        "en": "hôm qua: yesterday."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_late",
+      "explain": {
+        "fr": "Sud : trễ ; Nord : muộn.",
+        "en": "South: trễ; North: muộn."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay thứ bảy.",
+      "tokens": [
+        "Hôm nay",
+        "thứ",
+        "bảy",
+        "chủ nhật",
+        "ngày"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, c'est samedi.",
+        "en": "Today is Saturday."
+      },
+      "explain": {
+        "fr": "hôm nay + jour.",
+        "en": "hôm nay + day."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thuong",
+      "distractors": [
+        "thương",
+        "thưởng"
+      ],
+      "explain": {
+        "fr": "thường : d'habitude.",
+        "en": "thường: usually."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_luc_may_gio",
+      "explain": {
+        "fr": "lúc et mấy montent, giờ descend.",
+        "en": "lúc and mấy rise, giờ falls."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

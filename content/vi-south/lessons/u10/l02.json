@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u10.l02",
+  "unit": "vi-south.u10",
+  "title": {
+    "fr": "… ở đâu ? Où est… ?",
+    "en": "… ở đâu? Where is…?"
+  },
+  "goal": {
+    "fr": "Demander où se trouve un lieu et comprendre « ici ».",
+    "en": "Ask where a place is and understand 'here'."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u10.l01"
+  ],
+  "concepts": [
+    "s_nha_ve_sinh_o_dau",
+    "c_nha_ve_sinh",
+    "c_khach_san",
+    "c_san_bay",
+    "c_day_here"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_ve_sinh_o_dau",
+      "distractors": [
+        "Nhà vệ sinh ở đây.",
+        "Khách sạn ở đâu?"
+      ],
+      "explain": {
+        "fr": "ở đâu ? : où ? ở đây : ici.",
+        "en": "ở đâu?: where? ở đây: here."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_khach_san",
+      "distractors": [
+        "c_nha_house",
+        "c_benh_vien"
+      ],
+      "explain": {
+        "fr": "khách sạn : l'hôtel.",
+        "en": "khách sạn: hotel."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_ve_sinh",
+      "distractors": [
+        "c_khach_san",
+        "c_san_bay"
+      ],
+      "explain": {
+        "fr": "nhà vệ sinh : les toilettes.",
+        "en": "nhà vệ sinh: toilet."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_day_here",
+      "distractors": [
+        "đâu",
+        "đầy"
+      ],
+      "explain": {
+        "fr": "đây, plat : ici. đâu : où ? đầy descend : plein.",
+        "en": "đây, level: here. đâu: where? đầy falls: full."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_san_bay",
+      "distractors": [
+        "c_khach_san",
+        "c_ga_station"
+      ],
+      "explain": {
+        "fr": "sân bay : l'aéroport.",
+        "en": "sân bay: airport."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi, khách sạn ở đâu vậy anh?",
+      "tokens": [
+        "Xin lỗi",
+        "khách sạn",
+        "ở",
+        "đâu",
+        "vậy",
+        "anh",
+        "đây"
+      ],
+      "translation": {
+        "fr": "Pardon, où est l'hôtel ? (à un homme un peu plus âgé)",
+        "en": "Excuse me, where's the hotel? (to a slightly older man)"
+      },
+      "explain": {
+        "fr": "Lieu + ở đâu ? ; vậy anh adoucit la question.",
+        "en": "Place + ở đâu?; vậy anh softens the question."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_day_here",
+      "explain": {
+        "fr": "đây reste plat (ngang).",
+        "en": "đây stays level (ngang)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà vệ sinh ở đây.",
+      "tokens": [
+        "Nhà vệ sinh",
+        "ở",
+        "đây",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Les toilettes sont ici.",
+        "en": "The toilet is here."
+      },
+      "explain": {
+        "fr": "Même structure pour répondre : lieu + ở đây.",
+        "en": "Same structure to answer: place + ở đây."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_nha_ve_sinh_o_dau",
+      "explain": {
+        "fr": "nhà descend, vệ tombe court, sinh plat, ở plonge, đâu plat.",
+        "en": "nhà falls, vệ drops short, sinh level, ở dips, đâu level."
+      }
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_nha_ve_sinh_o_dau",
+      "c_nha_ve_sinh",
+      "c_khach_san",
+      "c_san_bay",
+      "c_day_here"
+    ]
+  },
+  "reviewed": false
+}

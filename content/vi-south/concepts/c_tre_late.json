@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tre_late",
+  "type": "word",
+  "vi": "trễ",
+  "tone": "nga",
+  "gloss": {
+    "fr": "en retard, tard",
+    "en": "late"
+  },
+  "register": "neutral",
+  "northernEquivalent": "muộn",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tre_late_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tre_late_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud : trễ ; au Nord : muộn. Au Sud, trễ sonne comme trẻ (jeune).",
+    "en": "South: trễ; North: muộn. In the South trễ sounds like trẻ (young)."
+  },
+  "reviewed": false
+}

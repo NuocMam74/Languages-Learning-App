@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_lam_five",
+  "type": "word",
+  "vi": "lăm",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "cinq (après une dizaine : 15, 25…)",
+    "en": "five (after a tens word: 15, 25…)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_lam_five_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_lam_five_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false
+}

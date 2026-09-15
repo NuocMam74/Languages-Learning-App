@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_xe_may_city",
+  "title": {
+    "fr": "La ville des motos",
+    "en": "City of motorbikes"
+  },
+  "body": {
+    "fr": "Hô Chi Minh-Ville compte des millions de xe máy : on y va au travail, à l'école, au marché, parfois à quatre sur la même moto. À Saïgon, xe tout court désigne souvent la moto. La voiture se dit xe hơi au Sud, ô tô au Nord.",
+    "en": "Ho Chi Minh City has millions of xe máy: people ride them to work, school and market, sometimes four on one bike. In Saigon, plain xe often means the motorbike. A car is xe hơi in the South, ô tô in the North."
+  },
+  "vi": "Tôi đi làm bằng xe máy.",
+  "audio": "audio/cc_xe_may_city.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, la voiture se dit…",
+      "en": "In the South, a car is…"
+    },
+    "options": [
+      {
+        "fr": "xe hơi",
+        "en": "xe hơi"
+      },
+      {
+        "fr": "xe đạp",
+        "en": "xe đạp"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/culture.schema.json",
+  "id": "cc_queo_re",
+  "title": {
+    "fr": "Quẹo ou rẽ ?",
+    "en": "Quẹo or rẽ?"
+  },
+  "body": {
+    "fr": "Pour « tourner », le Sud dit quẹo : quẹo trái, quẹo phải. Le Nord dit rẽ, et c'est aussi le mot des applis de navigation : tu l'entendras donc partout. Dis quẹo à ton chauffeur, et il saura d'où vient ton vietnamien.",
+    "en": "For 'turn', the South says quẹo: quẹo trái, quẹo phải. The North says rẽ, which is also what navigation apps say, so you'll hear it everywhere. Say quẹo to your driver and he'll know where your Vietnamese comes from."
+  },
+  "vi": "Tới ngã tư thì quẹo trái.",
+  "audio": "audio/cc_queo_re.opus",
+  "question": {
+    "prompt": {
+      "fr": "Au Sud, un chauffeur dit surtout…",
+      "en": "In the South, a driver mostly says…"
+    },
+    "options": [
+      {
+        "fr": "quẹo phải",
+        "en": "quẹo phải"
+      },
+      {
+        "fr": "rẽ phải",
+        "en": "rẽ phải"
+      }
+    ],
+    "answer": 0
+  },
+  "reviewed": false
+}

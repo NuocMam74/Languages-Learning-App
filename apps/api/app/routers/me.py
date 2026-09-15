@@ -24,6 +24,7 @@ from app.schemas.me import (
 from app.services import learner
 from app.services.events import process_batch
 from app.services.planner import next_lesson, plan_session
+from app.services.push import valid_timezone
 
 router = APIRouter(prefix="/me", tags=["me"])
 
@@ -45,6 +46,8 @@ def _profile_out(p: Profile) -> ProfileOut:
         level_estimate=p.level_estimate,
         path_variant=p.path_variant,
         leagues_enabled=p.leagues_enabled,
+        timezone=p.timezone,
+        notifications_enabled=bool(p.notifications_enabled),
     )
 
 
@@ -126,6 +129,16 @@ def patch_profile(body: ProfilePatch, user: CurrentUser, db: DbDep, packs: Packs
         if body.leagues_enabled is None:
             raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, detail="leaguesEnabled ne peut pas être null")
         profile.leagues_enabled = body.leagues_enabled
+    if "timezone" in fields:
+        if body.timezone is not None and not valid_timezone(body.timezone):
+            raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, detail=f"Fuseau inconnu : {body.timezone}")
+        profile.timezone = body.timezone
+    if "notifications_enabled" in fields:
+        if body.notifications_enabled is None:
+            raise HTTPException(
+                status.HTTP_422_UNPROCESSABLE_CONTENT, detail="notificationsEnabled ne peut pas être null"
+            )
+        profile.notifications_enabled = body.notifications_enabled
 
     db.commit()
     return _profile_out(profile)
@@ -163,7 +176,7 @@ def session_next(user: CurrentUser, db: DbDep, packs: PacksDep) -> SessionPlanOu
     pack = packs.get(enrollment.course_id) if enrollment else None
     if enrollment is None or pack is None:
         raise HTTPException(status.HTTP_409_CONFLICT, detail="Aucune inscription à un cours disponible")
-    lesson = next_lesson(pack, pack.lessons, learner.completed_lessons(db, user.id), learner.path_of(profile))
+    lesson = next_lesson(pack, pack.lessons, learner.unlocked_lessons(db, user.id, pack), learner.path_of(profile))
     plan = plan_session(profile.daily_goal_min, learner.user_cards(db, user.id), lesson, datetime.now(UTC))
     db.commit()
     return SessionPlanOut(

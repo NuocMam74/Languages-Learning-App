@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_qua_come",
+  "type": "word",
+  "vi": "qua",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "venir, passer (d'un pays à un autre)",
+    "en": "to come over (to a country)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_qua_come_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_qua_come_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, qua s'emploie beaucoup pour les voyages : qua Pháp, qua Việt Nam.",
+    "en": "In the South qua is common for travel: qua Pháp, qua Việt Nam."
+  },
+  "reviewed": false
+}

@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u07.l03",
+  "unit": "vi-south.u07",
+  "title": {
+    "fr": "Chén, dĩa, muỗng, đũa",
+    "en": "Chén, dĩa, muỗng, đũa"
+  },
+  "goal": {
+    "fr": "Nommer la vaisselle du Sud et en demander davantage.",
+    "en": "Name southern tableware and ask for more."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u07.l02"
+  ],
+  "concepts": [
+    "c_chen",
+    "c_dia_plate",
+    "c_muong",
+    "c_dua",
+    "c_them"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chen",
+      "distractors": [
+        "c_dia_plate",
+        "c_to_bowl"
+      ],
+      "explain": {
+        "fr": "chén : le petit bol à riz.",
+        "en": "chén: small rice bowl."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_chen_to_dia"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_muong",
+      "distractors": [
+        "c_dua",
+        "c_dia_plate"
+      ],
+      "explain": {
+        "fr": "muỗng : la cuillère.",
+        "en": "muỗng: spoon."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_bol",
+      "explain": {
+        "fr": "Sud : chén ; Nord : bát.",
+        "en": "South: chén; North: bát."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dua",
+      "distractors": [
+        "c_muong",
+        "c_chen"
+      ],
+      "explain": {
+        "fr": "đũa : les baguettes.",
+        "en": "đũa: chopsticks."
+      }
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_dua",
+      "explain": {
+        "fr": "đũa porte le ngã : au Sud, il sonne comme un hỏi.",
+        "en": "đũa carries ngã: in the South it sounds like hỏi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dia_plate",
+      "distractors": [
+        "dìa",
+        "dịa"
+      ],
+      "explain": {
+        "fr": "dĩa : l'assiette. Au Sud, d se prononce « y ».",
+        "en": "dĩa: plate. In the South, d sounds like 'y'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em thêm một cái chén.",
+      "tokens": [
+        "Cho",
+        "em",
+        "thêm",
+        "một",
+        "cái",
+        "chén",
+        "ly"
+      ],
+      "translation": {
+        "fr": "Un bol de plus, s'il te plaît.",
+        "en": "One more bowl, please."
+      },
+      "explain": {
+        "fr": "thêm devant la quantité : « en plus ».",
+        "en": "thêm before the quantity: 'extra'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_them",
+      "distractors": [
+        "thềm",
+        "thệm"
+      ],
+      "explain": {
+        "fr": "thêm, plat : en plus. thềm descend : le seuil.",
+        "en": "thêm, level: extra. thềm falls: doorstep."
+      }
+    },
+    {
+      "type": "game",
+      "game": "bua_com",
+      "conceptPool": "lesson"
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_chen",
+      "c_dia_plate",
+      "c_muong",
+      "c_dua",
+      "c_them"
+    ]
+  },
+  "reviewed": false
+}

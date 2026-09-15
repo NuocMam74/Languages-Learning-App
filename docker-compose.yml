@@ -34,8 +34,15 @@ services:
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
       TUTOR_MODEL: ${TUTOR_MODEL:-claude-sonnet-4-6}
       TUTOR_DAILY_QUOTA: ${TUTOR_DAILY_QUOTA:-30}
+      # Phase 2 : certificats, défis, rappels push
+      PUBLIC_WEB_URL: ${PUBLIC_WEB_URL:-http://localhost:5173}
+      SCHEDULER_ENABLED: ${SCHEDULER_ENABLED:-true}
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-mailto:contact@parlo.app}
     volumes:
       - ./content:/content:ro
+      - media:/data/media
     ports:
       - "8000:8000"
     depends_on:
@@ -60,4 +67,5 @@ services:
 
 volumes:
   pgdata:
+  media:
   web_node_modules:

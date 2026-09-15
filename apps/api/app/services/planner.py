@@ -22,6 +22,11 @@ REVIEW_ITEM_SECONDS = 15
 OVERRUN_TOLERANCE = 0.2
 
 
+def review_day_threshold(budget_seconds: float) -> int:
+    """Nombre de révisions dues à partir duquel la séance ne propose pas de nouveau (la moitié du budget)."""
+    return max(8, math.floor((budget_seconds * 0.5) / REVIEW_ITEM_SECONDS))
+
+
 @dataclass(frozen=True)
 class SessionPlan:
     blocks: list[dict[str, Any]]
@@ -51,12 +56,18 @@ def plan_session(
         used += WARMUP_SECONDS
 
     lesson_seconds = next_lesson.estimated_minutes * 60 if next_lesson else 0
+    # Trop de révisions en retard : journée de révision, pas de nouveau (sinon le SRS n'est jamais servi
+    # quand la leçon remplit à elle seule l'objectif de 5 min).
+    review_day = len(due) >= review_day_threshold(budget)
     # Le nouveau n'entre que s'il tient dans le budget (avec tolérance), ou s'il n'y a rien à réviser.
     include_lesson = next_lesson is not None and (
-        len(due) == 0 or used + lesson_seconds <= budget * (1 + OVERRUN_TOLERANCE)
+        len(due) == 0 or (not review_day and used + lesson_seconds <= budget * (1 + OVERRUN_TOLERANCE))
     )
 
-    review_budget = max(0, budget - used - (lesson_seconds if include_lesson else 0))
+    # Avec une leçon, les révisions prennent la marge de tolérance ; seules, elles tiennent dans l'objectif.
+    review_budget = (
+        max(0, budget * (1 + OVERRUN_TOLERANCE) - used - lesson_seconds) if include_lesson else max(0, budget - used)
+    )
     review_count = min(len(due), math.floor(review_budget / REVIEW_ITEM_SECONDS))
     if review_count > 0:
         blocks.append(

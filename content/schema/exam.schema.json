@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/exam.schema.json",
+  "title": "Examen de certificat (spec §5.5, docs/contracts/phase2.md §2)",
+  "description": "25 items répartis en 4 compétences. Chaque item est une étape de leçon (sans carte culture ni mini-jeu).",
+  "type": "object",
+  "required": ["id", "level", "certificate", "requiresUnits", "durationMinutes", "passThreshold", "retryAfterHours", "sections", "reviewed"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z]{2,3}(-[a-z]+)?\\.exam\\.a[0-2]$" },
+    "level": { "enum": ["A0", "A1", "A2"] },
+    "certificate": { "$ref": "common.schema.json#/$defs/localized" },
+    "requiresUnits": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/unitId" } },
+    "durationMinutes": { "type": "integer", "minimum": 5, "maximum": 60 },
+    "passThreshold": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "retryAfterHours": { "type": "integer", "minimum": 0, "maximum": 720 },
+    "sections": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/section" }
+    },
+    "reviewed": { "$ref": "common.schema.json#/$defs/reviewed" }
+  },
+  "$defs": {
+    "skill": { "enum": ["listening", "reading", "vocabulary", "speaking"] },
+    "section": {
+      "type": "object",
+      "required": ["skill", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "skill": { "$ref": "#/$defs/skill" },
+        "items": { "type": "array", "minItems": 4, "items": { "$ref": "#/$defs/item" } }
+      }
+    },
+    "item": {
+      "type": "object",
+      "required": ["step"],
+      "additionalProperties": false,
+      "properties": {
+        "step": {
+          "allOf": [
+            { "$ref": "lesson.schema.json#/$defs/step" },
+            {
+              "not": {
+                "type": "object",
+                "required": ["type"],
+                "properties": { "type": { "enum": ["culture_card", "game"] } }
+              }
+            }
+          ]
+        },
+        "silent": { "const": true, "description": "Pas d'audio : lecture pure." }
+      }
+    }
+  }
+}

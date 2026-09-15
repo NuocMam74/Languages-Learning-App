@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u05.l06",
+  "unit": "vi-south.u05",
+  "title": {
+    "fr": "Parler un peu vietnamien",
+    "en": "Speaking a little Vietnamese"
+  },
+  "goal": {
+    "fr": "Dire que tu apprends le vietnamien et demander de parler lentement.",
+    "en": "Say you're learning Vietnamese and ask people to speak slowly."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u05.l05"
+  ],
+  "concepts": [
+    "c_noi_speak",
+    "c_hoc",
+    "c_hieu",
+    "c_chut_xiu",
+    "s_noi_cham_duoc_khong"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_noi_speak",
+      "distractors": [
+        "nổi",
+        "nôi"
+      ],
+      "explain": {
+        "fr": "nói monte : parler. nôi, plat : le berceau.",
+        "en": "nói rises: to speak. nôi, level: cradle."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_chut_xiu"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_hieu",
+      "explain": {
+        "fr": "hiểu porte le hỏi. Au Sud, hỏi et ngã sonnent pareil.",
+        "en": "hiểu carries hỏi. In the South, hỏi and ngã sound the same."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoc",
+      "distractors": [
+        "hóc",
+        "hộc"
+      ],
+      "explain": {
+        "fr": "học tombe court : apprendre.",
+        "en": "học drops short: to learn."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi nói tiếng Việt chút xíu.",
+      "tokens": [
+        "Tôi",
+        "nói",
+        "tiếng Việt",
+        "chút xíu",
+        "không"
+      ],
+      "translation": {
+        "fr": "Je parle un tout petit peu vietnamien.",
+        "en": "I speak a tiny bit of Vietnamese."
+      },
+      "explain": {
+        "fr": "chút xíu se place en fin de phrase.",
+        "en": "chút xíu goes at the end of the sentence."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_noi_cham_duoc_khong",
+      "distractors": [
+        "Anh nói lại được không?",
+        "Anh nói tiếng Việt không?"
+      ],
+      "explain": {
+        "fr": "chậm lại = « plus lentement ». nói lại = « redire ».",
+        "en": "chậm lại = 'more slowly'. nói lại = 'say again'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi, tôi không hiểu.",
+      "tokens": [
+        "Xin lỗi",
+        "tôi",
+        "không",
+        "hiểu",
+        "học"
+      ],
+      "translation": {
+        "fr": "Pardon, je ne comprends pas.",
+        "en": "Sorry, I don't understand."
+      },
+      "explain": {
+        "fr": "không devant le verbe = négation : không hiểu.",
+        "en": "không before the verb = negation: không hiểu."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chut_xiu",
+      "distractors": [
+        "chút xiu",
+        "chụt xíu"
+      ],
+      "explain": {
+        "fr": "chút et xíu montent tous les deux.",
+        "en": "chút and xíu both rise."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi đang học tiếng Việt.",
+      "tokens": [
+        "Tôi",
+        "đang",
+        "học",
+        "tiếng Việt",
+        "hiểu"
+      ],
+      "translation": {
+        "fr": "J'apprends le vietnamien (en ce moment).",
+        "en": "I'm learning Vietnamese."
+      },
+      "explain": {
+        "fr": "đang devant le verbe = action en cours.",
+        "en": "đang before the verb = ongoing action."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_noi_cham_duoc_khong",
+      "explain": {
+        "fr": "Phrase longue : garde chậm bien bas et court.",
+        "en": "Long sentence: keep chậm low and short."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_noi_speak",
+      "c_hoc",
+      "c_hieu",
+      "c_chut_xiu",
+      "s_noi_cham_duoc_khong"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u09.l05",
+  "unit": "vi-south.u09",
+  "title": {
+    "fr": "Hẹn : rendez-vous et retard",
+    "en": "Hẹn: appointments and being late"
+  },
+  "goal": {
+    "fr": "Fixer un rendez-vous et t'excuser d'être en retard.",
+    "en": "Set a meeting time and apologise for being late."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [
+    "vi-south.u09.l04"
+  ],
+  "concepts": [
+    "c_hen",
+    "c_hop",
+    "c_som",
+    "c_tre_late",
+    "c_toi_arrive"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tre_late",
+      "distractors": [
+        "trè",
+        "tré"
+      ],
+      "explain": {
+        "fr": "trễ plonge : en retard.",
+        "en": "trễ dips: late."
+      }
+    },
+    {
+      "type": "culture_card",
+      "ref": "cc_tre_hen"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_tre_late",
+      "explain": {
+        "fr": "trễ porte le ngã ; au Sud, trễ (en retard) et trẻ (jeune) sonnent pareil.",
+        "en": "trễ carries ngã; in the South trễ (late) and trẻ (young) sound alike."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hop",
+      "distractors": [
+        "hộp",
+        "hớp"
+      ],
+      "explain": {
+        "fr": "họp tombe court : la réunion. hộp : la boîte.",
+        "en": "họp drops short: meeting. hộp: box."
+      }
+    },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_late",
+      "explain": {
+        "fr": "Sud : trễ ; Nord : muộn.",
+        "en": "South: trễ; North: muộn."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi, tôi tới trễ.",
+      "tokens": [
+        "Xin lỗi",
+        "tôi",
+        "tới",
+        "trễ",
+        "sớm"
+      ],
+      "translation": {
+        "fr": "Désolé(e), je suis en retard.",
+        "en": "Sorry, I'm late."
+      },
+      "explain": {
+        "fr": "tới trễ : arriver en retard. Au Sud, tới plutôt que đến.",
+        "en": "tới trễ: to arrive late. In the South, tới rather than đến."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_som",
+      "distractors": [
+        "xóm",
+        "sờm"
+      ],
+      "explain": {
+        "fr": "sớm, avec s : tôt. xóm, avec x : le hameau.",
+        "en": "sớm, with s: early. xóm, with x: hamlet."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mấy giờ mình họp?",
+      "tokens": [
+        "Mấy giờ",
+        "mình",
+        "họp",
+        "hẹn",
+        "bao nhiêu"
+      ],
+      "translation": {
+        "fr": "On a réunion à quelle heure ?",
+        "en": "What time is our meeting?"
+      },
+      "explain": {
+        "fr": "mấy giờ ? : à quelle heure ?",
+        "en": "mấy giờ?: at what time?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hen",
+      "distractors": [
+        "hen",
+        "hèn"
+      ],
+      "explain": {
+        "fr": "hẹn tombe court : le rendez-vous. hen, plat : particule du Sud.",
+        "en": "hẹn drops short: appointment. hen, level: southern particle."
+      }
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "c_toi_arrive",
+      "explain": {
+        "fr": "tới monte : arriver.",
+        "en": "tới rises: to arrive."
+      }
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_hen",
+      "c_hop",
+      "c_som",
+      "c_tre_late",
+      "c_toi_arrive"
+    ]
+  },
+  "reviewed": false
+}

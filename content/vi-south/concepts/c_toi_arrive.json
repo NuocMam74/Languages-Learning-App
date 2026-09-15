@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_toi_arrive",
+  "type": "word",
+  "vi": "tới",
+  "tone": "sac",
+  "gloss": {
+    "fr": "arriver, venir ; jusqu'à",
+    "en": "to arrive, to come; until"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_toi_arrive_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_toi_arrive_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, tới est plus courant que đến à l'oral.",
+    "en": "In the South, tới is more common than đến in speech."
+  },
+  "reviewed": false
+}
