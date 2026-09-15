@@ -9,7 +9,20 @@ import uuid
 from datetime import UTC, date, datetime
 from typing import Any
 
-from sqlalchemy import JSON, Boolean, Date, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint, false
+from sqlalchemy import (
+    JSON,
+    Boolean,
+    Date,
+    Float,
+    ForeignKey,
+    Index,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+    false,
+    text,
+)
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db import Base, UTCDateTime
@@ -42,6 +55,8 @@ class User(Base):
     is_guest: Mapped[bool] = mapped_column(Boolean, default=False)
     apple_sub: Mapped[str | None] = mapped_column(String(255), unique=True)
     google_sub: Mapped[str | None] = mapped_column(String(255), unique=True)
+    # Rôles attribués (contrat Phase 4 §0) parmi reviewer, editor, teacher, admin ; `learner` est implicite.
+    roles: Mapped[list[str]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
 
 
 class RefreshToken(Base):
@@ -440,4 +455,84 @@ class ExpressScore(Base):
     correct: Mapped[int] = mapped_column(Integer)
     total: Mapped[int] = mapped_column(Integer)
     local_date: Mapped[date] = mapped_column(Date)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+
+
+# --- Phase 4 : studio de contenu, espace enseignant -------------------------------------------
+
+
+class ContentDraft(Base):
+    """Brouillon d'un document de contenu (le publié reste le fichier JSON de CONTENT_DIR, ADR 0002)."""
+
+    __tablename__ = "content_drafts"
+    __table_args__ = (UniqueConstraint("pack_code", "kind", "doc_id"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    pack_code: Mapped[str] = mapped_column(String(64))
+    kind: Mapped[str] = mapped_column(String(32))
+    doc_id: Mapped[str] = mapped_column(String(128))
+    data: Mapped[dict[str, Any]] = mapped_column(JSON)
+    updated_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+    updated_by: Mapped[str | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+
+
+class ContentPublication(Base):
+    __tablename__ = "content_publications"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    pack_code: Mapped[str] = mapped_column(String(64), index=True)
+    user_id: Mapped[str | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+    message: Mapped[str] = mapped_column(Text)
+    files: Mapped[list[str]] = mapped_column(JSON, default=list)
+    pack_version: Mapped[int] = mapped_column(Integer)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+
+
+class ContentReview(Base):
+    """Verdict de relecture native (approve | changes) sur un document."""
+
+    __tablename__ = "content_reviews"
+    __table_args__ = (Index("ix_content_reviews_pack_kind_doc", "pack_code", "kind", "doc_id"),)
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    pack_code: Mapped[str] = mapped_column(String(64))
+    kind: Mapped[str] = mapped_column(String(32))
+    doc_id: Mapped[str] = mapped_column(String(128))
+    reviewer_id: Mapped[str | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+    verdict: Mapped[str] = mapped_column(String(16))
+    comment: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+
+
+class SchoolClass(Base):
+    __tablename__ = "classes"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    teacher_id: Mapped[str] = mapped_column(user_fk(), index=True)
+    name: Mapped[str] = mapped_column(String(80))
+    pack_code: Mapped[str] = mapped_column(String(64))
+    join_code: Mapped[str] = mapped_column(String(6), unique=True)
+    created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+
+
+class ClassMember(Base):
+    """Élève d'une classe ; `consent_at` = consentement explicite au partage de sa progression (§14)."""
+
+    __tablename__ = "class_members"
+
+    class_id: Mapped[str] = mapped_column(ForeignKey("classes.id", ondelete="CASCADE"), primary_key=True)
+    user_id: Mapped[str] = mapped_column(user_fk(), primary_key=True, index=True)
+    joined_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)
+    consent_at: Mapped[datetime] = mapped_column(UTCDateTime())
+
+
+class Assignment(Base):
+    __tablename__ = "assignments"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    class_id: Mapped[str] = mapped_column(ForeignKey("classes.id", ondelete="CASCADE"), index=True)
+    title: Mapped[str] = mapped_column(String(120))
+    lesson_ids: Mapped[list[str]] = mapped_column(JSON)
+    unit_id: Mapped[str | None] = mapped_column(String(128))
+    due_date: Mapped[date | None] = mapped_column(Date)
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow)

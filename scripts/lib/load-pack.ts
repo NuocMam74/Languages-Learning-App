@@ -1,8 +1,14 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
-import { join, relative } from "node:path";
+import { join, relative, resolve } from "node:path";
 import type { RawPackFiles } from "@parlo/core";
 
-export const CONTENT_ROOT = join(import.meta.dirname, "..", "..", "content");
+/** Racine du contenu (défaut : content/ du dépôt). Liaison ES vivante : `setContentRoot` la remplace pour tous les importeurs. */
+export let CONTENT_ROOT = join(import.meta.dirname, "..", "..", "content");
+
+/** Change la racine du contenu (ex. `validate-content.ts --root <dir>` sur une copie temporaire du studio). */
+export function setContentRoot(dir: string): void {
+  CONTENT_ROOT = resolve(dir);
+}
 
 export interface JsonFile {
   path: string;

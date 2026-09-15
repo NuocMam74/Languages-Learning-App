@@ -72,6 +72,8 @@ class MeOut(CamelModel):
     level_estimate: int | None
     badges: list[BadgeOut]
     daily_goal: DailyGoalOut
+    # Contrat Phase 4 §0 : `learner` (implicite) puis reviewer | editor | teacher | admin.
+    roles: list[str]
 
 
 class ProfilePatch(CamelModel):

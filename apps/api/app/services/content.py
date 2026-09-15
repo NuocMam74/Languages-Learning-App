@@ -10,7 +10,7 @@ from typing import Any
 
 logger = logging.getLogger(__name__)
 
-# Fichiers jamais publiés (sources audio lourdes, ADR 0002).
+# Fichiers jamais publiés (sources audio lourdes, ADR 0002) ; les dossiers `_…` (ex. `_review/`) non plus.
 _EXCLUDED_SUFFIXES = {".wav"}
 
 
@@ -45,7 +45,9 @@ class Pack:
         return sorted(
             p.relative_to(self.directory).as_posix()
             for p in self.directory.rglob("*")
-            if p.is_file() and p.suffix.lower() not in _EXCLUDED_SUFFIXES
+            if p.is_file()
+            and p.suffix.lower() not in _EXCLUDED_SUFFIXES
+            and not p.relative_to(self.directory).parts[0].startswith("_")
         )
 
 

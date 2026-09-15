@@ -75,6 +75,19 @@ class Settings(BaseSettings):
     vapid_private_key: str | None = None
     vapid_subject: str = "mailto:contact@parlo.app"
 
+    # --- Phase 4 : studio de contenu -----------------------------------------------------------
+    # Publication (écriture des fichiers dans CONTENT_DIR) : désactivée par défaut, à n'activer que sur une
+    # instance qui travaille sur un dépôt (l'équipe relit le diff et committe).
+    studio_publish_enabled: bool = False
+    # Médias produits par le studio (audio traité, courbes F0) avant publication : <dir>/<pack>/audio|pitch.
+    studio_media_dir: Path = API_DIR / "studio-media"
+    # Validateur de la CI + garde du Sud, lancé depuis STUDIO_VALIDATOR_CWD ; `--root <dir> --json` est ajouté.
+    studio_validator_cmd: str = "npx tsx scripts/validate-content.ts --with-south-lint"
+    studio_validator_cwd: Path = REPO_ROOT
+    studio_validator_timeout_seconds: float = 180.0
+    # Taille maximale d'un enregistrement téléversé (octets).
+    studio_audio_max_bytes: int = 20 * 1024 * 1024
+
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]

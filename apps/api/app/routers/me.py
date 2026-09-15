@@ -6,7 +6,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
-from app.deps import CurrentUser, DbDep, PacksDep
+from app.deps import CurrentUser, DbDep, PacksDep, user_roles
 from app.models import Enrollment, Profile, User
 from app.schemas.events import EventBatch, EventBatchResult
 from app.schemas.me import (
@@ -101,6 +101,7 @@ def get_me(
             done_today_min=learner.minutes_done_on(db, user.id, today),
             local_date=today,
         ),
+        roles=user_roles(user),
     )
 
 

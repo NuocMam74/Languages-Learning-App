@@ -9,6 +9,8 @@ import { clearPrefs, usePrefs } from "../prefs.ts";
 import { ReminderSettings } from "../notifications/Reminders.tsx";
 import { LeagueSettings } from "../leagues/LeagueWidgets.tsx";
 import { PackSettings } from "../packs/PackSettings.tsx";
+import { ClassesSettings } from "../classes/ClassesSettings.tsx";
+import { StudioLink } from "../studio/StudioLink.tsx";
 
 /** Réglages (spec §4.1.6, §13, §14) : profil, affichage, compte, données. */
 
@@ -160,6 +162,10 @@ export default function Settings() {
           </>
         )}
       </Section>
+
+      <ClassesSettings />
+
+      <StudioLink />
 
       <Section title={t("settings.data")}>
         <button type="button" className="min-h-11 self-start font-semibold text-ngoc" onClick={() => void exportLocalData().then((data) => download(`parlo-export-${data.exportedAt.slice(0, 10)}.json`, data))}>

@@ -1,6 +1,6 @@
 """Dépendances FastAPI : configuration, session de base, utilisateur authentifié, packs, limitation."""
 
-from collections.abc import Iterator
+from collections.abc import Callable, Iterator
 from typing import Annotated
 
 from fastapi import Depends, HTTPException, Request, status
@@ -87,3 +87,30 @@ def auth_rate_limit(request: Request) -> None:
         raise HTTPException(
             status_code=status.HTTP_429_TOO_MANY_REQUESTS, detail="Trop de tentatives, réessaie plus tard"
         )
+
+
+# --- Rôles (contrat Phase 4 §0) ------------------------------------------------------------
+
+ROLES = ("learner", "reviewer", "editor", "teacher", "admin")
+GRANTABLE_ROLES = ("reviewer", "editor", "teacher", "admin")
+
+
+def user_roles(user: User) -> list[str]:
+    """Rôles effectifs : `learner` (implicite) puis les rôles attribués, dans l'ordre de ROLES."""
+    granted = set(user.roles or [])
+    return ["learner", *(r for r in GRANTABLE_ROLES if r in granted)]
+
+
+def require_roles(*roles: str) -> Callable[[User], User]:
+    """Dépendance : l'utilisateur doit avoir l'un des rôles (`admin` passe partout). 403 sinon."""
+    unknown = set(roles) - set(ROLES)
+    if unknown:
+        raise ValueError(f"Rôles inconnus : {sorted(unknown)}")
+
+    def dependency(user: CurrentUser) -> User:
+        granted = set(user_roles(user))
+        if "admin" in granted or granted & set(roles):
+            return user
+        raise HTTPException(status.HTTP_403_FORBIDDEN, detail="forbidden_role")
+
+    return dependency

@@ -1,0 +1,102 @@
+{
+  "vi-south.u03": [
+    "« con » pour s'adresser à des personnes de l'âge des parents ou grands-parents (« Con chào cô/ông ») présenté comme usuel au Sud, « cháu » comme forme du Nord.",
+    "« ạ » est-il vraiment moins fréquent que « dạ » au Sud ? « Dạ, con cảm ơn cô ạ » sonne-t-il naturel ?"
+  ],
+  "vi-south.u04": [
+    "Carte des oncles et tantes : le frère ou la sœur AÎNÉ(E) de la mère est-il encore cậu/dì au Sud, ou bác ? Idem dượng, thím, mợ.",
+    "Rangs de naissance : anh ba = 2e enfant, tư = 3e ; « tư, pas bốn » pour le rang.",
+    "Usage courant de tui, tụi mình, ông xã / bà xã."
+  ],
+  "cc_anh_hai_south": [
+    "La carte évite volontairement toute explication d'origine du « hai » : à valider."
+  ],
+  "vi-south.u02": [
+    "s/x et tr/ch sont-ils vraiment distingués à Saïgon aujourd'hui ? (formulation atténuée en « souvent »)",
+    "-n prononcé -ng et -t prononcé -c, quasi-fusion mắt/mắc : affirmations peut-être trop générales.",
+    "Distracteurs rares ou limites : xà, cơn, gia đinh, họ tên / hàng họ, mời người, « ổng bả » comme distracteur de ông bà."
+  ],
+  "vi-south.u06": [
+    "« một trăm năm » entendu comme 150 (explication de u06.l05) ; « hai chục » = 20 000 đ ; « Trứng gà bao nhiêu một chục ? » (un chục n'est peut-être pas 10 pour les fruits dans le delta).",
+    "Contractions hăm / băm."
+  ],
+  "vi-south.u08": [
+    "« thối tiền / thối lại » pour rendre la monnaie ; « Bớt cho em đi chị ».",
+    "Orthographe ký/kí, kỹ sư/kĩ sư, hủ tiếu/hủ tíu.",
+    "L'entrée ký/cân doit-elle exister (« cân » = peser partout) ?"
+  ],
+  "vi-south.u07": [
+    "Naturel : « Ít cay thôi nha em. » ; « trà đá » vraiment offert dans les petits restaurants de Saïgon ? « cà » seul pour aubergine."
+  ],
+  "vi-south.u11": [
+    "Naturel : « Anh đội nón bảo hiểm vô nha. », « Anh chạy chậm lại được không? ». quẹo/rẽ en avertissement plutôt qu'en erreur ?"
+  ],
+  "vi-south.u05": [
+    "Naturel : « Tôi mới qua Việt Nam. », « Tụi mình bằng tuổi nhau. », « Tôi tên Lan », « Em mấy tuổi ? » réservé aux enfants."
+  ],
+  "vi-south.u10": [
+    "« Nhà tôi ở hẻm năm mươi, đường Lê Lợi. » ; format d'adresse 123/4."
+  ],
+  "vi-south.u09": [
+    "« Mai gặp lại nha » (mai = demain)."
+  ],
+  "_culture_facts_u05_u11": [
+    "~40 % des Vietnamiens s'appellent Nguyễn ; métro de Saïgon ouvert fin 2024 ; cuisine du Sud plus sucrée ; tuổi ta."
+  ],
+  "_distractors": [
+    "Distracteurs pièges qui ne sont pas de vrais mots (ex. « Phạp », « ịt », « thệm ») : garder ou remplacer par de vrais mots ?",
+    "Pièges d'écoute : « Tui thầy…/Tôi thấy… », « khỉ nào », « sáu Tết », « tăng trệt / tâng trệt »."
+  ],
+  "cc_khi_nao_bao_gio": [
+    "Règle : khi nào/bao giờ en tête = futur, en fin = passé ; chừng nào (futur) et hồi nào (passé) comme formes du Sud."
+  ],
+  "cc_benh_om": [
+    "« ốm » signifie-t-il vraiment « maigre » au Sud ? « bịnh » comme forme orale ?"
+  ],
+  "lv_sick": [
+    "Même question que cc_benh_om ; déclenche un avertissement sur le distracteur « xe ốm » (u11.l02)."
+  ],
+  "cc_lau_tang": [
+    "Décompte des étages au Sud : lầu 1 = tầng 2, « tầng trệt » pour le rez-de-chaussée ; « hẻm xe hơi » dans les annonces."
+  ],
+  "c_lau_floor": [
+    "Voir cc_lau_tang."
+  ],
+  "vi-south.u14": [
+    "giùm/hộ, coi/xem, nha/nhé, chích/tiêm : vraie répartition Sud/Nord ? listes d'exceptions à vérifier."
+  ],
+  "vi-south.u16": [
+    "Naturel : « Em bị sốt với ho. » ; faits : cạo gió, pharmaciens qui conseillent directement."
+  ],
+  "vi-south.u15": [
+    "Naturel : « Cho em sạc pin nhờ được không? », « Dạ, em là Lan, bên công ty Sao Mai. »"
+  ],
+  "vi-south.u17": [
+    "Faits : électricité facturée au « số », propriétaire qui ferme le portail la nuit."
+  ],
+  "vi-south.u12": [
+    "Paires dở/dơ, gọi/gói/gỏi, lầu/lâu/lẩu, chủ/chú, rồi/rối ; vérifier les tone_identify sur des mots hỏi.",
+    "Naturel : « Anh ăn cơm tấm chưa? »"
+  ],
+  "vi-south.u21": [
+    "Naturel et particule : « Em về nhen. », « Mai gặp hen. », « Thiệt há? », « Anh giỡn hoài! », « Con nhỏ dễ thương quá! »"
+  ],
+  "vi-south.u19": [
+    "Registre : « Anh cho tôi coi hộ chiếu. » (agent) et « Chị photo giùm em hai bản nha. »"
+  ],
+  "cc_b_ve_so": [
+    "Tirages quotidiens de vé số tournant par province : à vérifier."
+  ],
+  "cc_b_tam_tru": [
+    "Déclaration de tạm trú par les hôtels : à vérifier."
+  ],
+  "vi-south.u18": [
+    "13e mois de salaire ; toast « Một, hai, ba, dô! » ; naturel : « Tết có thưởng không anh? », « Cuối tháng mới lãnh lương. »"
+  ],
+  "vi-south.u23": [
+    "Naturel : « Nếu tui là anh, tui sẽ đi Grab. »"
+  ],
+  "vi-south.u20": [
+    "Concept « hội » (fête) ajouté pour la paire hồi/hội ; « mưa lớn » comme forme du Sud ; « đám giỗ » vs « giỗ »; « Mình đi ghe ra chợ nổi hen. »"
+  ]
+}

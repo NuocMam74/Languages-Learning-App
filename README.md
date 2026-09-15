@@ -33,13 +33,13 @@ COOKIE_SECURE=false uv run uvicorn app.main:app --reload
 ## Structure
 
 ```
-apps/web/             PWA React + Vite (Dexie, service worker Workbox)
-apps/api/             FastAPI + SQLAlchemy + Alembic
-packages/core/        types, moteur d'exercices, FSRS, planificateur de séance, série
+apps/web/             PWA React + Vite (Dexie, service worker Workbox) — apprenant, studio (/studio), enseignant (/prof)
+apps/api/             FastAPI + SQLAlchemy + Alembic — comptes, synchro, Cô Mai, examens, ligues, studio, classes
+packages/core/        types, moteur d'exercices, FSRS, séance, série, badges, examens, défis, jeux, hauteur tonale (pitch/)
 packages/south-lint/  garde du Sud : détecte les formes lexicales du Nord
-content/              packs de langue en JSON + schémas (aucun contenu dans le code)
-scripts/              validation du contenu
-docs/ADR/             décisions d'architecture
+content/              packs vi-south (24 unités, examens A0–A2) et es (preuve d'extensibilité) + schémas
+scripts/              validation du contenu, garde du Sud, pipeline audio (scripts/audio)
+docs/                 ADR, contrats par phase, décision d'abonnement, guide audio
 ```
 
 ## Vérifier
@@ -49,6 +49,10 @@ npm run check                        # types + tests + schémas de contenu + sou
 npm run build                        # build PWA (service worker compris)
 cd apps/web && PW_CHANNEL=msedge npx playwright test   # parcours critiques (Chrome/Edge installé)
 cd apps/api && uv run pytest -q
+
+# Intégration réelle PWA + API (API sur :8000 avec ROOT_PATH=/api, `vite` sur :5173)
+cd apps/web && PARLO_INTEGRATION=1 npx playwright test e2e/integration*.spec.ts
+# (integration-studio.spec.ts exige aussi STUDIO_PUBLISH_ENABLED=true et PARLO_CONTENT_DIR = CONTENT_DIR de l'API)
 ```
 
 Le contenu se valide avec `npm run content:validate` (ajouter `-- --production` pour refuser le
@@ -56,10 +60,22 @@ contenu non relu et les médias manquants). Voir [CONTENT.md](CONTENT.md) pour l
 
 ## État d'avancement
 
-**Phase 0 — fondations : livrée.** Critère d'acceptation vérifié par
-[apps/web/e2e/guest-offline.spec.ts](apps/web/e2e/guest-offline.spec.ts) : un invité termine une leçon
-hors ligne, et sa progression est conservée après un redémarrage à froid.
+Toutes les phases de la spécification (§15) sont implémentées et testées ; chaque critère d'acceptation
+vérifiable sans matériel est couvert par un test e2e ou d'intégration réelle.
 
-Pas encore fait (Phase 1 et suivantes) : enregistrements audio natifs, synchronisation de l'outbox
-vers l'API et écrans de compte, test de placement, écran de choix de langue, mini-jeu Chợ nổi,
-professeur IA, karaoké tonal, pages de démonstration par composant d'exercice.
+| Phase | Livré | Vérification |
+|---|---|---|
+| 0 Fondations | monorepo, schémas, moteur, PWA hors ligne, mode invité | `e2e/guest-offline.spec.ts` |
+| 1 MVP | séance du jour + SRS, placement, comptes et synchro, badges, Cô Mai (accueil, « pourquoi ? »), Chợ nổi, unités 1–4 | `phase1.spec.ts`, `integration.spec.ts`, Lighthouse mobile 91 / a11y 100 |
+| 2 Motivation et voix | karaoké tonal (F0 + DTW), Xe ôm, Bữa cơm, défis, push, gel de série, examens A0/A1 + certificats vérifiables, unités 5–11 | `karaoke.spec.ts` (écart < 10 pts), `phase2-exams.spec.ts`, `integration-exam.spec.ts` |
+| 3 Social et échelle | conversation Cô Mai (SSE, texte/voix), Đối đáp, bilan hebdo, ligues, défis entre amis/express, Nhớ mặt, unités 12–24, A2, pack `es` | `phase3-*.spec.ts`, `integration-social.spec.ts` |
+| 4 Ouverture | studio de contenu (éditeurs, validation, aperçu, relecture native, audio + F0, publication), espace enseignant | `phase4-*.spec.ts`, `integration-studio.spec.ts` |
+
+### Reste à faire hors code
+
+- **Voix natives du Sud** : aucun enregistrement n'existe ; en production les exercices de tons restent muets.
+  Liste à enregistrer : `npm run audio:list` ; procédure : [docs/AUDIO.md](docs/AUDIO.md) ; import via le studio.
+- **Relecture native** de tout le corpus (`reviewed: false`), doutes prioritaires dans `content/vi-south/_review/doubts.json`.
+- **Modèle économique** à arbitrer : [docs/decisions/abonnement.md](docs/decisions/abonnement.md) (rien n'est codé côté paiement).
+- **Non vérifiable ici** : image Docker et Postgres réel, envoi push réel, iOS/Safari et vrais téléphones, appels réels au modèle
+  (clé `ANTHROPIC_API_KEY` absente : Cô Mai répond par ses messages de repli), calibration du karaoké sur de vraies voix.

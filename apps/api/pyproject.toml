@@ -20,6 +20,7 @@ dependencies = [
     "pywebpush>=2.5.0",
     "tzdata>=2026.4",
     "boto3>=1.43.93",
+    "python-multipart>=0.0.20",
 ]
 
 [dependency-groups]

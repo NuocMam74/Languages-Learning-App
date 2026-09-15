@@ -17,5 +17,6 @@ import * as notifications from "./notifications.ts";
 import * as karaoke from "./karaoke.ts";
 import * as social from "./social.ts";
 import * as packs from "./packs.ts";
+import * as classes from "./classes.ts";
 
-export const modules = [base, games, session, account, badges, placement, settings, tutor, exams, challenges, notifications, karaoke, social, packs] as const;
+export const modules = [base, games, session, account, badges, placement, settings, tutor, exams, challenges, notifications, karaoke, social, packs, classes] as const;

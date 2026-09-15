@@ -70,7 +70,7 @@ async function detailOf(res: Response): Promise<string> {
 }
 
 interface RequestOptions {
-  method?: "GET" | "POST" | "PATCH" | "DELETE";
+  method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
   body?: unknown;
   /** false : route publique (auth), pas de jeton ni de rafraîchissement. */
   auth?: boolean;
@@ -113,6 +113,23 @@ export async function requestBlob(path: string): Promise<Blob> {
   if (res.status === 401 && !refreshed && (await refreshAccess())) res = await send(path, build());
   if (!res.ok) throw new ApiError(res.status, await detailOf(res));
   return res.blob();
+}
+
+/** Envoi multipart authentifié (Phase 4 : audio du studio). Le navigateur pose lui-même le Content-Type (boundary). */
+export async function requestForm<T>(path: string, form: FormData, method: "POST" | "PUT" = "POST"): Promise<T> {
+  const build = (): RequestInit => ({ method, headers: { Accept: "application/json", ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}) }, body: form });
+  let refreshed = false;
+  if (!accessToken) {
+    if (!(await refreshAccess())) throw new ApiError(401, "not_authenticated");
+    refreshed = true;
+  }
+  let res = await send(path, build());
+  if (res.status === 401 && !refreshed && (await refreshAccess())) res = await send(path, build());
+  if (!res.ok) {
+    const errorBody: unknown = await res.clone().json().catch(() => null);
+    throw new ApiError(res.status, await detailOf(res), errorBody);
+  }
+  return (await res.json()) as T;
 }
 
 /**
@@ -223,6 +240,8 @@ export interface MeResponse {
   levelEstimate?: number | null;
   badges?: { code: string; earnedAt: string }[];
   dailyGoal?: { targetMin: number; doneTodayMin: number; localDate: string };
+  /** Phase 4 : rôles (`learner` implicite, `reviewer`, `editor`, `teacher`, `admin`) — docs/contracts/phase4.md §0. */
+  roles?: string[];
 }
 
 /** `localDate` : jour local de l'apprenant (série, objectif du jour). */

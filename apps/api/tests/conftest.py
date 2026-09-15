@@ -1,5 +1,6 @@
 """Fixtures : application sur une base SQLite temporaire, contenu réel du dépôt."""
 
+import shutil
 import uuid
 from collections.abc import Iterator
 from datetime import UTC, datetime
@@ -14,6 +15,8 @@ from app.db import Base
 from app.main import create_app
 
 PASSWORD = "correct-horse-battery"
+# Pack copié en dossier temporaire pour les tests du studio (petit, écrit par la publication).
+STUDIO_PACK = "es"
 
 
 @pytest.fixture
@@ -77,3 +80,46 @@ def event(type_: str, payload: dict[str, Any], occurred_at: datetime | None = No
         "schemaVersion": 1,
         "payload": payload,
     }
+
+
+def user_id_of(client: TestClient, headers: dict[str, str]) -> str:
+    res = client.get("/me", headers=headers)
+    assert res.status_code == 200, res.text
+    user_id: str = res.json()["user"]["id"]
+    return user_id
+
+
+def grant_roles(client: TestClient, headers: dict[str, str], *roles: str) -> str:
+    """Attribue des rôles directement en base (contrat Phase 4 §0) ; renvoie l'id de l'utilisateur."""
+    from app.models import User
+
+    user_id = user_id_of(client, headers)
+    with client.app.state.session_factory() as db:  # type: ignore[attr-defined]
+        user = db.get(User, user_id)
+        assert user is not None
+        user.roles = list(roles)
+        db.commit()
+    return user_id
+
+
+# --- Studio (Phase 4) : contenu temporaire ---------------------------------------------------
+
+
+@pytest.fixture
+def content_dir(tmp_path: Path) -> Path:
+    root = tmp_path / "content"
+    shutil.copytree(REPO_ROOT / "content" / "schema", root / "schema")
+    shutil.copytree(REPO_ROOT / "content" / STUDIO_PACK, root / STUDIO_PACK)
+    return root
+
+
+@pytest.fixture
+def studio_settings(settings: Settings, content_dir: Path, tmp_path: Path) -> Settings:
+    return settings.model_copy(
+        update={
+            "content_dir": content_dir,
+            "studio_media_dir": tmp_path / "studio-media",
+            "studio_publish_enabled": True,
+            "default_course": STUDIO_PACK,
+        }
+    )

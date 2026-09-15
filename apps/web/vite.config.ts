@@ -41,6 +41,9 @@ export default defineConfig({
       injectManifest: {
         // App shell + contenu JSON des packs embarqués : la première leçon marche hors ligne dès l'installation.
         globPatterns: ["**/*.{js,css,html,svg,png,woff2}", "content/**/bundle.json"],
+        // Outils internes (studio, espace enseignant) : chargés à la demande, jamais précachés chez les apprenants.
+        // globIgnores remplace les exclusions par défaut du plugin : on les reprend (sinon le service worker se précache lui-même).
+        globIgnores: ["**/node_modules/**/*", "sw.js", "workbox-*.js", "**/StudioApp-*.js", "**/TeacherPages-*.js"],
       },
       devOptions: { enabled: false },
     }),

@@ -40,9 +40,18 @@ services:
       VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
       VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
       VAPID_SUBJECT: ${VAPID_SUBJECT:-mailto:contact@parlo.app}
+      # Phase 4 : studio de contenu. La publication écrit dans CONTENT_DIR : pour l'activer, monter ./content
+      # en lecture-écriture (retirer « :ro »), puis relire le diff et committer.
+      STUDIO_PUBLISH_ENABLED: ${STUDIO_PUBLISH_ENABLED:-false}
+      STUDIO_VALIDATOR_CMD: ${STUDIO_VALIDATOR_CMD:-npx tsx scripts/validate-content.ts --with-south-lint}
+      STUDIO_VALIDATOR_CWD: /repo
     volumes:
       - ./content:/content:ro
       - media:/data/media
+      - studio_media:/data/studio-media
+      # Validateur du studio : dépôt (scripts/, packages/) et node_modules Linux installés par le service web.
+      - ./:/repo:ro
+      - web_node_modules:/repo/node_modules:ro
     ports:
       - "8000:8000"
     depends_on:
@@ -68,4 +77,5 @@ services:
 volumes:
   pgdata:
   media:
+  studio_media:
   web_node_modules:

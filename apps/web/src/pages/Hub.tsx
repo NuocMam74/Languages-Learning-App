@@ -1,6 +1,6 @@
 import { badgeCodesFor, localDay, type ContentIndex } from "@parlo/core";
 import { examLevels } from "../exams/exam-files.ts";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
 import { ChallengeCard } from "../challenges/ChallengeCard.tsx";
@@ -15,6 +15,9 @@ import { getBadges, getProfile, getTotals, hasWork, MAX_FREEZE_DAYS, planning, s
 import { localGreeting, remoteGreeting } from "../tutor.ts";
 import { HubTutor } from "../tutor/HubTutor.tsx";
 import { useOnline } from "../use-online.ts";
+
+/** Phase 4 : devoir de classe (chargé seulement pour un compte connecté). */
+const HubAssignmentCard = lazy(() => import("../classes/HubAssignmentCard.tsx"));
 
 interface HubState {
   profile: Profile;
@@ -118,6 +121,11 @@ export function Hub({ content }: { content: ContentIndex }) {
       </section>
 
       <ReminderPrompt />
+      {accountStatus === "signed_in" && online && (
+        <Suspense fallback={null}>
+          <HubAssignmentCard content={content} completed={plan.completed} />
+        </Suspense>
+      )}
       <ChallengeCard content={content} />
 
       <nav className="flex flex-col border-y border-phu-sa/10" aria-label={t("session.hub.more")}>

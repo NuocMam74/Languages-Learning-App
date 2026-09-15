@@ -4,7 +4,11 @@
  *   2. contrôles sémantiques (@parlo/core checkContent)
  *   3. présence des médias référencés (avertissement tant que l'audio de travail n'existe pas)
  *
- * Usage : npm run content:validate [-- --production] [-- --strict-media]
+ * Usage : npm run content:validate [-- --production] [-- --strict-media] [-- --root <dir>] [-- --json]
+ *   --root <dir> : racine du contenu à valider (défaut : content/ du dépôt) — copie superposée du studio (contrat phase4 §1)
+ *   --with-south-lint : ajoute la garde du Sud (erreurs bloquantes et avertissements) — utilisé par le studio
+ *   --json       : sortie machine sur stdout `{"errors":[{where,message}],"warnings":[{where,message}]}` ;
+ *                  code de sortie inchangé (1 s'il y a des erreurs)
  */
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -12,10 +16,26 @@ import { Ajv2020 } from "ajv/dist/2020.js";
 import { buildContentIndex, checkContent, checkExam, checkPlacement, type ContentIssue, type ExamFile, type PlacementSpec } from "@parlo/core";
 import { checkXeOmData, type XeOmData } from "@parlo/core";
 import { createSouthLinter, hasBlocking, type LexicalVariantEntry } from "@parlo/south-lint";
-import { CONTENT_ROOT, listPacks, packFeatures, readPackFiles, rel, toRaw, type JsonFile } from "./lib/load-pack.ts";
+import { southLintPack } from "./lib/south-lint-pack.ts";
+import { CONTENT_ROOT, listPacks, packFeatures, readPackFiles, rel, setContentRoot, toRaw, type JsonFile } from "./lib/load-pack.ts";
 
 const production = process.argv.includes("--production");
 const strictMedia = process.argv.includes("--strict-media") || production;
+const jsonOutput = process.argv.includes("--json");
+const withSouthLint = process.argv.includes("--with-south-lint");
+const rootArg = (() => {
+  const i = process.argv.indexOf("--root");
+  if (i >= 0) {
+    const value = process.argv[i + 1];
+    if (!value || value.startsWith("--")) throw new Error("--root exige un dossier");
+    return value;
+  }
+  return process.argv.find((a) => a.startsWith("--root="))?.slice("--root=".length);
+})();
+if (rootArg) {
+  if (!existsSync(rootArg)) throw new Error(`--root : dossier introuvable : ${rootArg}`);
+  setContentRoot(rootArg);
+}
 
 // strictRequired désactivé : les textes localisés exigent "fr" via additionalProperties.
 const ajv = new Ajv2020({ allErrors: true, strict: true, strictRequired: false, discriminator: true });
@@ -142,15 +162,34 @@ for (const code of listPacks()) {
   }
 }
 
+if (withSouthLint) {
+  for (const code of listPacks()) {
+    const result = southLintPack(code);
+    if (result.status === "missing_variants") report("error", code, "feature lexical_variants déclarée mais lexical-variants.json absent");
+    if (result.status !== "linted") continue;
+    for (const h of result.hits) {
+      report(h.severity === "error" ? "error" : "warning", `${h.file} ${h.path}`, `« ${h.found} » est une forme du Nord → ${h.suggestions.join(" / ")}`);
+    }
+  }
+}
+
 const errors = issues.filter((i) => i.level === "error");
 const warnings = issues.filter((i) => i.level === "warning");
-const unreviewed = warnings.filter((w) => w.message.includes("non relue"));
-for (const w of warnings.filter((w) => !unreviewed.includes(w))) console.warn(`⚠  ${w.where} — ${w.message}`);
-if (unreviewed.length > 0) console.warn(`⚠  ${unreviewed.length} leçon(s) non relue(s) par un locuteur natif (reviewed: false)`);
-for (const e of errors) console.error(`✖  ${e.where} — ${e.message}`);
 
-if (errors.length > 0) {
-  console.error(`\n${errors.length} erreur(s) de contenu.`);
-  process.exit(1);
+if (jsonOutput) {
+  const plain = (list: ContentIssue[]) => list.map(({ where, message }) => ({ where, message }));
+  process.stdout.write(`${JSON.stringify({ errors: plain(errors), warnings: plain(warnings) })}\n`);
+  // exitCode plutôt que exit() : sur un tube (Windows), exit() pourrait tronquer la sortie JSON.
+  process.exitCode = errors.length > 0 ? 1 : 0;
+} else {
+  const unreviewed = warnings.filter((w) => w.message.includes("non relue"));
+  for (const w of warnings.filter((w) => !unreviewed.includes(w))) console.warn(`⚠  ${w.where} — ${w.message}`);
+  if (unreviewed.length > 0) console.warn(`⚠  ${unreviewed.length} leçon(s) non relue(s) par un locuteur natif (reviewed: false)`);
+  for (const e of errors) console.error(`✖  ${e.where} — ${e.message}`);
+
+  if (errors.length > 0) {
+    console.error(`\n${errors.length} erreur(s) de contenu.`);
+    process.exit(1);
+  }
+  console.log(`✔  Contenu valide (${warnings.length} avertissement(s)).`);
 }
-console.log(`✔  Contenu valide (${warnings.length} avertissement(s)).`);

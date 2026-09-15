@@ -45,6 +45,13 @@ const ChallengesPage = lazy(() => import("./social/FriendsPages.tsx").then((m) =
 const JoinChallengePage = lazy(() => import("./social/FriendsPages.tsx").then((m) => ({ default: m.JoinChallengePage })));
 const ExpressPage = lazy(() => import("./social/ExpressPages.tsx").then((m) => ({ default: m.ExpressPage })));
 const SharePage = lazy(() => import("./social/ExpressPages.tsx").then((m) => ({ default: m.SharePage })));
+// Phase 4 : espace enseignant (rôle teacher) et classes côté élève.
+const TeacherHomePage = lazy(() => import("./teacher/TeacherPages.tsx").then((m) => ({ default: m.TeacherHomePage })));
+const TeacherClassPage = lazy(() => import("./teacher/TeacherPages.tsx").then((m) => ({ default: m.ClassPage })));
+const JoinClassPage = lazy(() => import("./classes/ClassesPages.tsx").then((m) => ({ default: m.JoinClassPage })));
+const MyClassesPage = lazy(() => import("./classes/ClassesPages.tsx").then((m) => ({ default: m.MyClassesPage })));
+// Phase 4 : studio de contenu (reviewer, editor, admin) ; garde des rôles dans le chunk du studio.
+const StudioApp = lazy(() => import("./studio/StudioApp.tsx"));
 
 const later = (node: ReactNode) => <Suspense fallback={null}>{node}</Suspense>;
 
@@ -140,6 +147,11 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/:lang/defi/:code", element: later(<JoinChallengePage />) },
         { path: "/express", element: later(<ExpressPage content={content} />) },
         { path: "/partage/:id", element: later(<SharePage />) },
+        { path: "/prof", element: later(<TeacherHomePage />) },
+        { path: "/prof/classes/:id", element: later(<TeacherClassPage />) },
+        { path: "/classe/:code", element: later(<JoinClassPage />) },
+        { path: "/mes-classes", element: later(<MyClassesPage content={content} />) },
+        { path: "/studio/*", element: later(<StudioApp />) },
         ...(DemoPage
           ? [
               { path: "/demo", element: <Suspense fallback={null}><DemoPage content={content} /></Suspense> },
