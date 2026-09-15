@@ -56,6 +56,10 @@ export type ParloEvent =
   | BaseEvent<"streak_frozen", { frozenUntil: string; localDate: string }>
   /** Partie de mini-jeu hors leçon (onglet Jeux, défi express). */
   | BaseEvent<"game_played", { game: GameId; correct: number; total: number; durationMs: number; localDate: string }>
+  /** Tour de conversation avec Cô Mai (texte ou voix) — jamais le contenu du message. */
+  | BaseEvent<"conversation_turn", { conversationId: string; mode: "free" | "doi_dap"; words: number; responseMs: number; localDate: string }>
+  /** Changement de langue apprise (plusieurs packs). */
+  | BaseEvent<"pack_switched", { fromPack: string | null; toPack: string }>
   | BaseEvent<"lesson_completed", { sessionId: string; lessonId: LessonId; score: number; durationMs: number }>
   | BaseEvent<
       "session_completed",
