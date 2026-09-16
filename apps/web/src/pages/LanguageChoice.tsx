@@ -14,7 +14,8 @@ import { usePackChoices } from "../packs/use-packs.ts";
  * (onboarding propre à ce pack s'il n'a pas encore été fait). Les langues annoncées
  * sans pack restent « bientôt » avec « Me prévenir », stocké localement.
  */
-const ANNOUNCED = ["vi-north", "th", "km", "es"] as const;
+// Langues annoncées (signal produit). L'espagnol reste une preuve d'extensibilité interne : pas annoncé.
+const ANNOUNCED = ["vi-north", "th", "km"] as const;
 
 export default function LanguageChoice({ content }: { content: ContentIndex }) {
   const navigate = useNavigate();

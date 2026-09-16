@@ -65,6 +65,7 @@ export function readPackFiles(code: string) {
     lessons: group("lessons"),
     concepts: group("concepts"),
     culture: group("culture"),
+    dialogues: group("dialogues"),
   };
 }
 
@@ -76,8 +77,58 @@ export function toRaw(files: ReturnType<typeof readPackFiles>): RawPackFiles {
     lessons: files.lessons.map((f) => f.data as RawPackFiles["lessons"][number]),
     concepts: files.concepts.map((f) => f.data as RawPackFiles["concepts"][number]),
     culture: files.culture.map((f) => f.data as RawPackFiles["culture"][number]),
+    dialogues: files.dialogues.map((f) => f.data as NonNullable<RawPackFiles["dialogues"]>[number]),
     ...(files.variants ? { variants: files.variants.data as NonNullable<RawPackFiles["variants"]> } : {}),
   };
+}
+
+// ---------------------------------------------------------------------------
+// Bundle servi (contrat phase5 §1 et §6) et découpage core + unités (audit mobile P1 #6)
+
+/** Dossiers et extensions des médias publiés : identiques à apps/api/app/services/content.py. */
+export const MEDIA_DIRS = ["audio", "pitch", "img"] as const;
+export const MEDIA_EXTENSIONS: ReadonlySet<string> = new Set([".json", ".opus", ".m4a", ".webp", ".png", ".svg"]);
+
+/** Fichiers médias présents d'un pack (chemins absolus). */
+export function mediaFiles(code: string): string[] {
+  const walk = (dir: string): string[] =>
+    existsSync(dir)
+      ? readdirSync(dir).flatMap((name) => {
+          const full = join(dir, name);
+          if (statSync(full).isDirectory()) return walk(full);
+          const dot = name.lastIndexOf(".");
+          return dot >= 0 && MEDIA_EXTENSIONS.has(name.slice(dot).toLowerCase()) ? [full] : [];
+        })
+      : [];
+  return MEDIA_DIRS.flatMap((d) => walk(join(CONTENT_ROOT, code, d)));
+}
+
+const readOptionalJson = (path: string): unknown => (existsSync(path) ? readJson(path) : undefined);
+
+/** Tout le JSON d'un pack tel que servi dans `bundle.json` : fichiers + examens, placement, jeux, index des médias. */
+export function readPackBundle(code: string): RawPackFiles {
+  const root = join(CONTENT_ROOT, code);
+  const examsDir = join(root, "exams");
+  const exams = existsSync(examsDir)
+    ? readdirSync(examsDir).filter((n) => n.endsWith(".json")).sort().map((n) => readJson(join(examsDir, n)))
+    : [];
+  const xeOm = readOptionalJson(join(root, "games", "xe_om.json"));
+  return {
+    ...toRaw(readPackFiles(code)),
+    mediaIndex: mediaFiles(code).map((file) => relative(root, file).split("\\").join("/")).sort(),
+    exams: exams as NonNullable<RawPackFiles["exams"]>,
+    placement: (readOptionalJson(join(root, "placement.json")) ?? null) as NonNullable<RawPackFiles["placement"]> | null,
+    games: (xeOm ? { xe_om: xeOm } : {}) as NonNullable<RawPackFiles["games"]>,
+  };
+}
+
+/** Taille (octets) d'un média du pack ; 0 s'il est absent. */
+export function packMediaSize(code: string, path: string): number {
+  try {
+    return statSync(join(CONTENT_ROOT, code, path)).size;
+  } catch {
+    return 0;
+  }
 }
 
 export const rel = (path: string) => relative(join(CONTENT_ROOT, ".."), path).replaceAll("\\", "/");

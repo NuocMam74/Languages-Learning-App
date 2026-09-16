@@ -13,8 +13,26 @@ export interface PackChoice {
 /** Rôles qui voient les packs en préparation (`comingSoon`, contrat phase5 §5). */
 const PREVIEW_ROLES: ReadonlySet<string> = new Set(["editor", "admin"]);
 
+/**
+ * Aperçu des packs en préparation : réservé aux rôles editor/admin, ou activé à la main
+ * (`?packs=preview`, mémorisé). Le développement seul ne suffit pas : un pack en préparation
+ * ne doit jamais apparaître à un apprenant, même sur un serveur de développement.
+ */
+const PREVIEW_FLAG = "parlo.previewPacks";
+
+function previewFlag(): boolean {
+  try {
+    const asked = new URLSearchParams(window.location.search).get("packs");
+    if (asked === "preview") localStorage.setItem(PREVIEW_FLAG, "1");
+    if (asked === "off") localStorage.removeItem(PREVIEW_FLAG);
+    return localStorage.getItem(PREVIEW_FLAG) === "1";
+  } catch {
+    return false;
+  }
+}
+
 export function canPreviewPacks(roles: readonly string[] | undefined): boolean {
-  return import.meta.env.DEV || (roles ?? []).some((r) => PREVIEW_ROLES.has(r));
+  return previewFlag() || (roles ?? []).some((r) => PREVIEW_ROLES.has(r));
 }
 
 /**

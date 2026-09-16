@@ -1,11 +1,17 @@
 import type { Localized, Tone } from "@parlo/core";
 import { localize } from "@parlo/core";
 import { usePrefs } from "../prefs.ts";
-import { modules } from "./messages/index.ts";
+import type { modules } from "./messages/index.ts";
 
 /**
  * Chaînes d'interface uniquement. Le contenu pédagogique vient des packs
  * (ADR 0002) ; rien ici ne doit enseigner la langue.
+ *
+ * Chargement découpé (audit mobile P1 #6) : chaque fichier de messages/ est importé par langue
+ * (`?lang=fr` / `?lang=en`, vite-plugin-i18n.ts n'en garde qu'une). Les domaines du premier
+ * affichage (accueil, hub, séance) sont en français dans le bundle initial ; les autres domaines,
+ * et l'anglais, arrivent par `ensureMessages()` avant d'afficher l'écran qui les utilise.
+ * `t()` reste synchrone.
  */
 
 type Module = (typeof modules)[number];
@@ -14,20 +20,138 @@ type UnionToIntersection<U> = (U extends unknown ? (x: U) => void : never) exten
 type Fr = UnionToIntersection<FrOf<Module>>;
 
 export type MessageKey = keyof Fr & string;
+export type AppLocale = "fr" | "en";
+type Table = Partial<Record<MessageKey, string>>;
 
-const fr = Object.assign({}, ...modules.map((m) => m.fr)) as Record<MessageKey, string>;
-const en = Object.assign({}, ...modules.map((m) => ("en" in m ? m.en : {}))) as Partial<Record<MessageKey, string>>;
+// Premier affichage : Welcome, Onboarding, Hub (et ses cartes), séance. Liste littérale (import.meta.glob).
+const bootFr = import.meta.glob(
+  [
+    "./messages/base.ts",
+    "./messages/session.ts",
+    "./messages/journey.ts",
+    "./messages/badges.ts",
+    "./messages/exams.ts",
+    "./messages/packs.ts",
+    "./messages/settings.ts",
+    "./messages/social.ts",
+    "./messages/tutor.ts",
+    "./messages/notifications.ts",
+    "./messages/challenges.ts",
+    "./messages/mobile.ts",
+    "./messages/offline.ts",
+  ],
+  { eager: true, query: { lang: "fr" }, import: "fr" },
+) as Record<string, Table>;
 
-const dictionaries: Record<string, Partial<Record<MessageKey, string>>> = { fr, en };
+const lazyFr = import.meta.glob(
+  [
+    "./messages/*.ts",
+    "!./messages/index.ts",
+    "!./messages/studio.ts",
+    "!./messages/base.ts",
+    "!./messages/session.ts",
+    "!./messages/journey.ts",
+    "!./messages/badges.ts",
+    "!./messages/exams.ts",
+    "!./messages/packs.ts",
+    "!./messages/settings.ts",
+    "!./messages/social.ts",
+    "!./messages/tutor.ts",
+    "!./messages/notifications.ts",
+    "!./messages/challenges.ts",
+    "!./messages/mobile.ts",
+    "!./messages/offline.ts",
+  ],
+  { query: { lang: "fr" }, import: "fr" },
+) as Record<string, () => Promise<Table>>;
 
-export function getLocale(): "fr" | "en" {
+const lazyEn = import.meta.glob(["./messages/*.ts", "!./messages/index.ts", "!./messages/studio.ts"], { query: { lang: "en" }, import: "en" }) as Record<
+  string,
+  () => Promise<Table | undefined>
+>;
+
+const domainOf = (path: string) => path.replace(/^.*\/([^/]+)\.ts$/, "$1");
+
+const fr: Table = Object.assign({}, ...Object.values(bootFr));
+const en: Table = {};
+const dictionaries: Record<AppLocale, Table> = { fr, en };
+/** Domaines chargés par langue. */
+const ready: Record<AppLocale, Set<string>> = { fr: new Set(Object.keys(bootFr).map(domainOf)), en: new Set() };
+const inflight = new Map<string, Promise<void>>();
+
+function loadDomain(locale: AppLocale, path: string): Promise<void> {
+  const domain = domainOf(path);
+  if (ready[locale].has(domain)) return Promise.resolve();
+  const key = `${locale}:${domain}`;
+  const running = inflight.get(key);
+  if (running) return running;
+  const loader = locale === "fr" ? lazyFr[path] : lazyEn[path];
+  if (!loader) return Promise.resolve();
+  const task = loader()
+    .then((table) => {
+      Object.assign(dictionaries[locale], table ?? {});
+      ready[locale].add(domain);
+    })
+    .finally(() => inflight.delete(key));
+  inflight.set(key, task);
+  return task;
+}
+
+/** Domaines de l'écran d'accueil et du hub (chargés en anglais avant le premier rendu si besoin). */
+const BOOT_PATHS = Object.keys(bootFr);
+
+/**
+ * Charge les chaînes d'une langue : `"boot"` (premier affichage) ou `"all"` (tout écran chargé à la
+ * demande). Le français, langue de repli, est toujours complété aussi.
+ */
+export function ensureMessages(scope: "boot" | "all" = "all", locale: AppLocale = getLocale()): Promise<void> {
+  const enPaths = scope === "boot" ? Object.keys(lazyEn).filter((p) => BOOT_PATHS.includes(p)) : Object.keys(lazyEn);
+  const frPaths = scope === "boot" ? [] : Object.keys(lazyFr);
+  return Promise.all([...frPaths.map((p) => loadDomain("fr", p)), ...(locale === "en" ? enPaths.map((p) => loadDomain("en", p)) : [])]).then(() => undefined);
+}
+
+/** Les chaînes nécessaires sont-elles déjà là (pas d'attente, pas de clignotement) ? */
+export function messagesReady(scope: "boot" | "all" = "all", locale: AppLocale = getLocale()): boolean {
+  const frOk = scope === "boot" || Object.keys(lazyFr).every((p) => ready.fr.has(domainOf(p)));
+  const enOk = locale !== "en" || (scope === "boot" ? BOOT_PATHS : Object.keys(lazyEn)).every((p) => ready.en.has(domainOf(p)));
+  return frOk && enOk;
+}
+
+export function getLocale(): AppLocale {
   const chosen = usePrefs.getState().locale;
   if (chosen) return chosen;
-  return navigator.language.toLowerCase().startsWith("fr") ? "fr" : navigator.language ? "en" : "fr";
+  // Français par défaut (public visé) ; l'anglais ne s'applique qu'à un appareil anglophone,
+  // et reste de toute façon choisissable à la main (accueil et réglages).
+  return navigator.language?.toLowerCase().startsWith("en") ? "en" : "fr";
 }
+
+/**
+ * Langue du document = langue d'interface (lecteurs d'écran : voix anglaise en anglais). index.html fixe
+ * `lang="fr"` ; appliqué au démarrage et à chaque changement de langue. Le texte appris garde son propre `lang`.
+ */
+function applyDocumentLocale(): void {
+  if (typeof document === "undefined") return;
+  const root = document.documentElement;
+  const locale = getLocale();
+  if (root.lang !== locale) root.lang = locale;
+  if (root.dir !== "ltr") root.dir = "ltr";
+}
+applyDocumentLocale();
+usePrefs.subscribe(applyDocumentLocale);
+
+let warned = false;
 
 export function t(key: MessageKey, vars: Record<string, string | number> = {}, locale = getLocale()): string {
   const template = dictionaries[locale]?.[key] ?? fr[key];
+  if (template === undefined) {
+    // Domaine pas encore chargé : jamais la clé brute à l'écran ; tout est chargé pour la suite.
+    void ensureMessages("all", locale);
+    if (import.meta.env.DEV && !warned) {
+      warned = true;
+      console.warn(`[i18n] « ${key} » affichée avant le chargement de son domaine : appeler ensureMessages() avant l'écran.`);
+    }
+    return "";
+  }
   return template.replace(/\{(\w+)\}/g, (_, name: string) => String(vars[name] ?? `{${name}}`));
 }
 

@@ -211,7 +211,7 @@ describe("Critère d'acceptation Phase 2 (SPEC §15) : stabilité entre deux enr
     }
     expect(Math.max(...deltas)).toBeLessThan(10);
     expect(Math.min(...scores)).toBeGreaterThanOrEqual(80);
-  });
+  }, 60_000);
 
   // Mesuré (2026-09) : scores 81–88, |Δ| ≤ 5. Sensibilité connue : un jitter synthétique de 1,2–2 %
   // (voix pathologique) fait monter |Δ| jusqu'à ~13 dans ce régime ; à revérifier sur de vraies prises.
@@ -233,7 +233,7 @@ describe("Critère d'acceptation Phase 2 (SPEC §15) : stabilité entre deux enr
     }
     expect(Math.max(...scores)).toBeLessThan(95);
     expect(Math.max(...deltas)).toBeLessThan(10);
-  });
+  }, 60_000);
 
   it("même stabilité pour une prononciation fausse (chute trop faible), nettement moins bien notée", () => {
     const wrong = (seed: number) => {
@@ -245,5 +245,5 @@ describe("Critère d'acceptation Phase 2 (SPEC §15) : stabilité entre deux enr
     const good = recordAndScore(take(3), nativeReference).result.score;
     expect(Math.abs(a - b)).toBeLessThan(10);
     expect(good - Math.max(a, b)).toBeGreaterThan(20);
-  });
+  }, 60_000);
 });

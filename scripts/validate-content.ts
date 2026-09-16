@@ -95,6 +95,7 @@ for (const code of listPacks()) {
   files.lessons.forEach((f) => validate("lesson.schema.json", f, rel(f.path)));
   files.concepts.forEach((f) => validate("concept.schema.json", f, rel(f.path)));
   files.culture.forEach((f) => validate("culture.schema.json", f, rel(f.path)));
+  files.dialogues.forEach((f) => validate("dialogue.schema.json", f, rel(f.path)));
 
   // Les contrôles sémantiques supposent des fichiers conformes aux schémas (ceux de ce pack).
   if (errorCount() > errorsBefore) continue;
@@ -155,7 +156,7 @@ for (const code of listPacks()) {
   }
 
   const media = new Set<string>();
-  [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture, ...exams, ...games].forEach((f) => collectMedia(f.data, media));
+  [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture, ...files.dialogues, ...exams, ...games].forEach((f) => collectMedia(f.data, media));
   const missing = [...media].filter((m) => !existsSync(join(files.root, m)));
   if (missing.length > 0) {
     report(strictMedia ? "error" : "warning", code, `${missing.length} média(s) référencé(s) absent(s), ex. ${missing.slice(0, 3).join(", ")}`);

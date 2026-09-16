@@ -39,6 +39,7 @@ function answer(ex: Exercise, right: boolean): ExerciseResponse {
   if (ex.type === "speak_repeat" || ex.type === "tone_produce") return { kind: "speech", score: right ? 90 : 10 };
   if (ex.type === "game" || ex.type === "unsupported") return { kind: "skip" };
   if (ex.type === "build_sentence") return { kind: "tokens", optionIds: right ? [] : [ex.tokens[0]!.id] };
+  if (!("answerId" in ex)) return { kind: "skip" }; // types sans QCM (texte, paires, dialogue) : non joués ici
   return { kind: "choice", optionId: right ? ex.answerId : (ex.options.find((o) => o.id !== ex.answerId)?.id ?? "") };
 }
 

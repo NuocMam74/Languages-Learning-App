@@ -68,7 +68,9 @@ function answerFor(ex: Exercise, right = true): ExerciseResponse {
     case "unsupported":
       return { kind: "skip" };
     default:
-      return { kind: "choice", optionId: right ? ex.answerId : (ex.options.find((o) => o.id !== ex.answerId)?.id ?? "") };
+      if (!("answerId" in ex)) return { kind: "skip" }; // types sans QCM (texte, paires, dialogue) : non joués ici
+      if (!("answerId" in ex)) return { kind: "skip" }; // types sans QCM (texte, paires, dialogue) : non joués ici
+  return { kind: "choice", optionId: right ? ex.answerId : (ex.options.find((o) => o.id !== ex.answerId)?.id ?? "") };
   }
 }
 

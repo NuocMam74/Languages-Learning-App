@@ -8,10 +8,14 @@ export const STEP_TYPES: readonly StepType[] = [
   "listen_pick_image",
   "listen_pick_text",
   "listen_transcribe",
+  "listen_gist",
   "tone_identify",
   "tone_minimal_pair",
   "tone_produce",
   "speak_repeat",
+  "speak_answer",
+  "speak_roleplay",
+  "dialogue_choice",
   "match_pairs",
   "build_sentence",
   "fill_gap",
@@ -55,6 +59,26 @@ export function stepTemplate(type: StepType, previous?: LessonStep): LessonStep 
       return { type, variant: "" };
     case "game":
       return { type, game: "cho_noi", conceptPool: "lesson" };
+    case "listen_gist":
+      return { type, dialogue: "" };
+    case "speak_answer":
+      return { type, prompt: "", translation: { fr: "" }, accepted: [concept].filter(Boolean) as string[] };
+    case "speak_roleplay":
+      return { type, situation: { fr: "" }, prompts: [{ cue: { fr: "" }, concept }, { cue: { fr: "" }, concept }] };
+    case "dialogue_choice":
+      return {
+        type,
+        // `next` absent sur le dernier tour = fin du dialogue.
+        turns: [1, 2, 3].map((n) => ({
+          id: `t${n}`,
+          vi: "",
+          translation: { fr: "" },
+          replies: [
+            { id: `t${n}a`, vi: "", best: true, ...(n < 3 ? { next: `t${n + 1}` } : {}) },
+            { id: `t${n}b`, vi: "", best: false, ...(n < 3 ? { next: `t${n + 1}` } : {}) },
+          ],
+        })),
+      };
   }
 }
 
