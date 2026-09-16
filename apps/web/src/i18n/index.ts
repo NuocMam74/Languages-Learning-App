@@ -120,9 +120,9 @@ export function messagesReady(scope: "boot" | "all" = "all", locale: AppLocale =
 export function getLocale(): AppLocale {
   const chosen = usePrefs.getState().locale;
   if (chosen) return chosen;
-  // Français par défaut (public visé) ; l'anglais ne s'applique qu'à un appareil anglophone,
-  // et reste de toute façon choisissable à la main (accueil et réglages).
-  return navigator.language?.toLowerCase().startsWith("en") ? "en" : "fr";
+  // Français par défaut, quelle que soit la langue de l'appareil (public visé : francophone).
+  // L'anglais ne s'active que par choix explicite (bascule de l'accueil ou réglages), mémorisé.
+  return "fr";
 }
 
 /**
