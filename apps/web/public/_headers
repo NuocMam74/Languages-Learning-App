@@ -20,6 +20,10 @@
   Cache-Control: no-cache
 
 # Coquille de l'app et manifeste : revalidés, ils sont minuscules et pointent vers les assets hachés.
+# La règle porte sur « / » : un accès direct à /index.html est redirigé vers la racine.
+/
+  Cache-Control: no-cache
+
 /index.html
   Cache-Control: no-cache
 

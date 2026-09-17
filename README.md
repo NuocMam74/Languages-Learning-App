@@ -74,20 +74,30 @@ Réglages de l'hébergeur :
 | Dossier publié | `apps/web/dist` |
 | Node | 24 |
 
-Les deux fichiers d'hébergement sont versionnés dans `apps/web/public/` et copiés dans le build ;
-**Cloudflare Pages et Netlify les lisent tels quels**, sans configuration supplémentaire :
+Le déploiement passe par **Cloudflare Workers (Static Assets)** :
 
-- `_redirects` — repli monopage (`/missions`, `/atelier`… sont de vraies URL) et **404 franc sur
-  `/api/*`** (corps : `no-api.json`, volontairement nommé hors du préfixe `/api`) : sans lui,
-  l'appel de rafraîchissement recevrait `index.html` en 200 et l'app se croirait hors ligne en
-  permanence.
-- `_headers` — `assets/` et `content/` immuables (noms hachés, versions dans le chemin), `sw.js` et
-  `index.html` revalidés à chaque fois, sinon les mises à jour n'arrivent jamais.
+- [apps/web/wrangler.jsonc](apps/web/wrangler.jsonc) — la config. Le dépôt étant un monorepo npm,
+  `wrangler deploy` lancé à la racine ne sait pas quoi déployer (« application detection logic has
+  been run in the root of a workspace ») : il faut donc pointer la config explicitement.
+- [apps/web/worker.js](apps/web/worker.js) — trois rôles, écrits en clair plutôt que déduits d'un
+  `not_found_handling` : **404 JSON franc sur `/api/*`** (sans quoi l'appel de rafraîchissement
+  recevrait `index.html` en 200 et l'app se croirait hors ligne en permanence), **repli monopage**,
+  et `sw.js` servi en `no-cache`.
+- [apps/web/public/_headers](apps/web/public/_headers) — `assets/` et `content/` immuables (noms
+  hachés, version dans le chemin), coquille et manifeste revalidés.
 
-Publication automatique à chaque push sur `main` :
-[.github/workflows/deploy.yml](.github/workflows/deploy.yml) (inerte tant que la variable
-`CLOUDFLARE_PROJECT_NAME` n'est pas définie ; les secrets attendus sont documentés en tête).
-Sinon, un `npx wrangler pages deploy apps/web/dist` manuel suffit.
+Réglages côté Cloudflare, en plus du build :
+
+| | |
+|---|---|
+| Deploy command | `npx wrangler deploy --config apps/web/wrangler.jsonc` |
+
+Vérifié en local avec `npx wrangler dev --config apps/web/wrangler.jsonc` : `/`, `/missions`,
+`/atelier`, `/recompenses`, `/jeux/lo_to` rendent l'app en `text/html`, `/api/*` renvoie
+`{"detail":"api_unavailable"}` en 404, `content/` est immuable et `sw.js` en `no-cache`.
+
+Sur un hébergeur de type Netlify, le même résultat s'obtient avec un fichier `_redirects`
+(`/api/*  /no-api.json  404` puis `/*  /index.html  200`) au lieu du Worker.
 
 **Deux contraintes à respecter :** l'app doit être servie à la **racine d'un domaine** (Vite n'a pas
 de `base`, le routeur pas de `basename` — un sous-chemin la casse), et en **HTTPS** (sans quoi pas

@@ -1,0 +1,28 @@
+{
+  // Déploiement de la PWA sur Cloudflare Workers (Static Assets) — scénario A du README.
+  //
+  // Le dépôt est un monorepo npm : sans ce fichier, `wrangler deploy` lancé à la racine ne sait pas
+  // quelle application déployer (« application detection logic has been run in the root of a
+  // workspace »). D'où la commande de déploiement à régler côté Cloudflare :
+  //
+  //     npx wrangler deploy --config apps/web/wrangler.jsonc
+  //
+  // Les chemins ci-dessous sont relatifs à ce fichier, pas au répertoire de travail.
+  "name": "parlo",
+  "main": "worker.js",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // `none` : la couche d'assets ne fabrique aucun repli toute seule. Le repli monopage et le 404
+    // de `/api/*` sont écrits explicitement dans worker.js — un seul endroit à lire pour savoir
+    // ce que répond une URL inconnue.
+    "not_found_handling": "none",
+    // `sw.js` passe par le Worker avant la couche d'assets : c'est le seul fichier dont un
+    // en-tête de cache trop long casserait l'app (une version périmée ne s'annoncerait jamais),
+    // et le support de `_headers` sur Workers Static Assets ne se vérifie pas hors ligne.
+    "run_worker_first": ["/sw.js"]
+  },
+  // Pas de télémétrie depuis la CI.
+  "send_metrics": false
+}

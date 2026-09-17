@@ -1,6 +1,8 @@
 node_modules/
 dist/
 dev-dist/
+# État local de `wrangler dev` (miniflare) : jamais versionné.
+.wrangler/
 coverage/
 test-results/
 playwright-report/
