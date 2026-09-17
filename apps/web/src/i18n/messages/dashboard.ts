@@ -65,12 +65,6 @@ export const fr = {
   "dashboard.deepLink.confirm": "Passer au {name}",
   "dashboard.deepLink.cancel": "Rester sur ma langue",
 
-  // Onglet « Réviser » en attendant la bibliothèque (contrat phase8 §2)
-  "review.soon.title": "Ta bibliothèque arrive",
-  "review.soon.body": "Tous les mots, les explications et les leçons déjà vus seront réunis ici, consultables hors ligne. En attendant, tes révisions du jour t'attendent.",
-  "review.soon.due": "Réviser mes mots du jour",
-  "review.soon.path": "Voir mon parcours",
-
   // États
   "dashboard.offline": "Hors ligne : tu vois ta progression enregistrée sur cet appareil.",
   "dashboard.loading": "Chargement de ta progression",
@@ -134,11 +128,6 @@ export const en: Record<keyof typeof fr, string> = {
   "dashboard.deepLink.body": "Opening this link changes the language you're learning. Your progress in the other language stays untouched.",
   "dashboard.deepLink.confirm": "Switch to {name}",
   "dashboard.deepLink.cancel": "Stay on my language",
-
-  "review.soon.title": "Your library is on its way",
-  "review.soon.body": "Every word, explanation and lesson you've seen will live here, readable offline. In the meantime, today's reviews are waiting for you.",
-  "review.soon.due": "Review today's words",
-  "review.soon.path": "See my path",
 
   "dashboard.offline": "Offline: you're seeing the progress saved on this device.",
   "dashboard.loading": "Loading your progress",

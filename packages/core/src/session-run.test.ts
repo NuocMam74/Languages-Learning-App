@@ -3,7 +3,7 @@ import { buildExercise, currentItem, evaluate, recordResult, type Exercise, type
 import { XP_REVIEW } from "./progress.ts";
 import { buildReviewExercise } from "./review.ts";
 import { planSession } from "./session.ts";
-import { recordReviewResult, reviewSeed, sessionItemsDone, sessionPhase, startSessionRun } from "./session-run.ts";
+import { isPracticeRun, recordReviewResult, reviewSeed, sessionItemsDone, sessionPhase, startSessionRun } from "./session-run.ts";
 import { newCard, review } from "./srs.ts";
 import { loadPack } from "./testing/pack.ts";
 
@@ -62,5 +62,31 @@ describe("déroulé de séance", () => {
   it("survit à un aller-retour JSON", () => {
     const run = startSessionRun({ plan, sessionId: "s", source: "daily", lesson: l01, known: [], now: NOW });
     expect(JSON.parse(JSON.stringify(run))).toEqual(run);
+  });
+});
+
+describe("mode entraînement (contrat phase8 §2)", () => {
+  const plan = planSession({ targetMinutes: 10, cards: [], nextLesson: l01, now: NOW });
+
+  it("une séance ordinaire n'a pas de mode : le champ reste absent", () => {
+    const run = startSessionRun({ plan, sessionId: "s", source: "lesson", lesson: l01, known: [], now: NOW });
+    expect("mode" in run).toBe(false);
+    expect(isPracticeRun(run)).toBe(false);
+    // Snapshot écrit avant le contrat phase8 : relu comme une séance ordinaire.
+    expect(isPracticeRun(JSON.parse(JSON.stringify(run)) as typeof run)).toBe(false);
+  });
+
+  it("marque la séance et survit à un aller-retour JSON", () => {
+    const run = startSessionRun({ plan, sessionId: "p", source: "lesson", lesson: l01, known: [], now: NOW, mode: "practice" });
+    expect(run.mode).toBe("practice");
+    expect(isPracticeRun(run)).toBe(true);
+    expect(JSON.parse(JSON.stringify(run))).toEqual(run);
+  });
+
+  it("ne change rien au déroulé : mêmes étapes, même file", () => {
+    const normal = startSessionRun({ plan, sessionId: "s", source: "lesson", lesson: l01, known: [], now: NOW });
+    const practice = startSessionRun({ plan, sessionId: "s", source: "lesson", lesson: l01, known: [], now: NOW, mode: "practice" });
+    expect({ ...practice, mode: undefined }).toEqual({ ...normal, mode: undefined });
+    expect(sessionPhase(practice, content).kind).toBe(sessionPhase(normal, content).kind);
   });
 });

@@ -10,6 +10,7 @@ import { Button, Screen, Vi } from "../components/ui.tsx";
 import { playCorrectSound } from "../feedback-sound.ts";
 import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { getProfile, progressState } from "../learner.ts";
+import { LessonNoteBlock } from "../notes/NoteBlock.tsx";
 import { usePrefs } from "../prefs.ts";
 import { useSession } from "../session-store.ts";
 import { askWhy, type WhyAnswer } from "../tutor.ts";
@@ -24,9 +25,14 @@ const PHASE_LABEL: Partial<Record<SessionPhase["kind"], MessageKey>> = {
   practice: "session.block.practice",
 };
 
-/** Séance du jour (/seance), révision seule (/revision) ou leçon choisie sur la carte (/lecon/:id). */
-export function SessionPage({ content, mode }: { content: ContentIndex; mode: "daily" | "review" | "lesson" }) {
+/**
+ * Séance du jour (/seance), révision seule (/revision), leçon choisie sur la carte (/lecon/:id),
+ * ou leçon rejouée en entraînement depuis « Réviser » (/lecon/:id/entrainement, contrat phase8 §2 :
+ * mêmes exercices, le SRS reçoit les réponses, mais ni XP ni progression recomptées).
+ */
+export function SessionPage({ content, mode }: { content: ContentIndex; mode: "daily" | "review" | "lesson" | "practice" }) {
   const { lessonId = "" } = useParams();
+  const practice = mode === "practice";
   const navigate = useNavigate();
   const { status, run, phase, exercise, feedback, recap, error, open, answer, next, remedial } = useSession();
   const [attempt, setAttempt] = useState(0);
@@ -37,7 +43,7 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   const [chosenId, setChosenId] = useState<string | null>(null);
 
   useEffect(() => {
-    void open(content, mode === "lesson" ? { source: "lesson", lessonId } : { source: mode });
+    void open(content, mode === "lesson" || mode === "practice" ? { source: "lesson", lessonId, ...(mode === "practice" ? { practice: true } : {}) } : { source: mode });
   }, [content, mode, lessonId, open, attempt]);
 
   useEffect(() => {
@@ -47,6 +53,9 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
       return () => clearTimeout(id);
     }
   }, [status, feedback, next]);
+
+  // Entraînement : on revient dans la bibliothèque, pas sur le parcours.
+  const backTo = practice ? "/reviser/lecons" : "/apprendre";
 
   if (status === "error") return <Screen><p className="text-son-mai">{error}</p></Screen>;
   if (status === "locked") return <Navigate to="/apprendre" replace state={{ notice: "locked" }} />;
@@ -61,7 +70,7 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
       </Screen>
     );
   }
-  if (status === "done" && recap) return <Recap content={content} onDone={() => navigate("/apprendre")} onRetry={() => setAttempt((n) => n + 1)} />;
+  if (status === "done" && recap) return <Recap content={content} onDone={() => navigate(backTo)} onRetry={() => setAttempt((n) => n + 1)} />;
   if (!run || !exercise || !phase) return <Screen><div /></Screen>;
 
   const done = sessionItemsDone(run);
@@ -82,7 +91,7 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
       style={status === "feedback" && feedback && !feedback.correct && sheetHeight > 0 ? { paddingBottom: sheetHeight } : undefined}
     >
       <header className="flex items-center gap-4">
-        <button type="button" onClick={() => navigate("/apprendre")} aria-label={t("lesson.quit")} className="grid size-11 shrink-0 place-items-center rounded-full text-phu-sa">
+        <button type="button" onClick={() => navigate(backTo)} aria-label={t("lesson.quit")} className="grid size-11 shrink-0 place-items-center rounded-full text-phu-sa">
           <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
         <div
@@ -96,6 +105,9 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
           <div className="h-full rounded-full bg-ngoc transition-[width] duration-500" style={{ width: `${(done / total) * 100}%` }} />
         </div>
       </header>
+      {practice && (
+        <p className="mt-3 rounded-xl bg-nghe/15 px-3 py-1.5 text-sm" data-testid="practice-banner">{t("review.practice.banner")}</p>
+      )}
       {label && <p className="mt-3 text-sm font-medium text-ngoc">{t(label)}</p>}
       {lesson && lessonStart && <p className="mt-1 text-sm text-phu-sa">{l(lesson.goal)}</p>}
 
@@ -312,6 +324,20 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
   }, [content]);
 
   if (!recap) return null;
+
+  // Entraînement (contrat phase8 §2) : ni XP, ni série, ni leçon recomptée — le bilan le dit franchement.
+  if (recap.practice) {
+    return (
+      <Screen action={<Button onClick={onDone}>{t("review.practice.back")}</Button>}>
+        <div className="flex flex-1 flex-col justify-center gap-4" data-testid="practice-recap">
+          <h1 className="font-serif text-2xl">{t("review.practice.doneTitle")}</h1>
+          <p className="text-lg text-phu-sa">{t("review.practice.doneBody")}</p>
+          {recap.lessonId && <LessonNoteBlock lessonId={recap.lessonId} />}
+        </div>
+      </Screen>
+    );
+  }
+
   const concepts = (ids: readonly string[]) => ids.flatMap((id) => content.concepts.get(id) ?? []);
   const learned = concepts(recap.canSay);
   const reviewed = concepts(recap.reviewed);
@@ -400,6 +426,9 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
             </ul>
           </section>
         )}
+
+        {/* Note personnelle sur la leçon qu'on vient de faire (contrat phase8 §3). */}
+        {recap.lessonId && <LessonNoteBlock lessonId={recap.lessonId} />}
 
         {nextTitle && (
           <p className="text-phu-sa">

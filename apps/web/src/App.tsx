@@ -40,8 +40,9 @@ const ResetPasswordPage = lazy(() => import("./pages/AccountRecovery.tsx").then(
 const VerifyEmailPage = lazy(() => import("./pages/AccountRecovery.tsx").then((m) => ({ default: m.VerifyEmailPage })));
 const Settings = lazy(() => import("./pages/Settings.tsx"));
 const ProfilePage = lazy(() => import("./profile/ProfilePage.tsx"));
-/** Onglet « Réviser » (contrat phase8 §4) : écran d'attente tant que la bibliothèque n'existe pas. */
-const ReviewSoon = lazy(() => import("./dashboard/ReviewSoon.tsx"));
+/** Onglet « Réviser » (contrat phase8 §2, §4) : la bibliothèque de tout ce qui a été vu, et les notes. */
+const ReviewPage = lazy(() => import("./review/ReviewPage.tsx"));
+const NotesPage = lazy(() => import("./notes/NotesPage.tsx"));
 const Badges = lazy(() => import("./pages/Badges.tsx"));
 // Phase 2 : examens, certificats, rappels.
 const ExamsPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.ExamsPage })));
@@ -212,7 +213,12 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         // Le parcours de la langue active : tout ce qui existait sur l'ancien accueil.
         { path: "/apprendre", element: onboarded ? <Hub content={content} /> : <Navigate to="/bienvenue" replace /> },
         { path: "/profil", element: later(<ProfilePage content={content} />) },
-        { path: "/reviser", element: later(<ReviewSoon />) },
+        // Bibliothèque « Réviser » : les explications et les cartes culture vivent dans les unités,
+        // donc celles de la progression sont chargées avant le rendu (au mieux : hors ligne, les
+        // unités absentes n'apportent rien et ne cassent rien).
+        { path: "/reviser", element: later(<WithUnits content={content}><ReviewPage content={content} /></WithUnits>) },
+        { path: "/reviser/:section", element: later(<WithUnits content={content}><ReviewPage content={content} /></WithUnits>) },
+        { path: "/notes", element: later(<WithUnits content={content}><NotesPage content={content} /></WithUnits>) },
         { path: "/bienvenue", element: <Welcome content={content} /> },
         { path: "/langue", element: later(<LanguageChoice content={content} />) },
         { path: "/onboarding", element: later(<Onboarding content={content} onDone={onProfile} />) },
@@ -221,6 +227,9 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/revision", element: later(<SessionPage content={content} mode="review" />) },
         // Lien profond vers une leçon d'une autre langue : confirmation, bascule, puis la leçon (contrat phase7 §1).
         { path: "/lecon/:lessonId", element: later(<DeepLinkGuard><SessionPage content={content} mode="lesson" /></DeepLinkGuard>) },
+        // Rejouer une leçon terminée en entraînement (contrat phase8 §2). Sous `/lecon/` : c'est un
+        // écran de concentration comme un autre (navigation basse masquée, reprise de séance).
+        { path: "/lecon/:lessonId/entrainement", element: later(<DeepLinkGuard><SessionPage content={content} mode="practice" /></DeepLinkGuard>) },
         { path: "/compte", element: later(<AccountPage mode="register" />) },
         { path: "/connexion", element: later(<AccountPage mode="login" />) },
         { path: "/compte/mot-de-passe-oublie", element: later(<ForgotPasswordPage />) },

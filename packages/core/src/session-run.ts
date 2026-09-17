@@ -28,9 +28,23 @@ export interface ReviewResult extends ReviewItem {
   responseMs: number;
 }
 
+/**
+ * Mode d'une séance (contrat phase8 §2). `practice` : on rejoue une leçon **déjà terminée** depuis la
+ * bibliothèque « Réviser ». Le déroulé est identique, mais les conséquences ne le sont pas :
+ *   - le SRS reçoit bien les réponses (c'est l'intérêt de refaire la leçon) ;
+ *   - la progression n'est pas recomptée : ni `lessonProgress`, ni XP, ni série, ni badges ;
+ *   - côté événements : `session_started` et `answer_submitted` comme d'habitude (ce qui s'est
+ *     vraiment passé), mais **ni `lesson_completed` ni `session_completed`** — ce sont eux que le
+ *     serveur agrège (XP, ligue, série, leçons acquises) et les émettre, fût-ce à 0, compterait
+ *     une seconde fois une leçon déjà acquise.
+ */
+export type SessionMode = "normal" | "practice";
+
 export interface SessionRun {
   sessionId: string;
   source: SessionSource;
+  /** Absent = `normal` (toutes les séances écrites avant le contrat phase8). */
+  mode?: SessionMode;
   plan: SessionPlan;
   reviewQueue: ReviewItem[];
   reviewCursor: number;
@@ -53,6 +67,11 @@ export type SessionPhase =
   | { kind: "save_lesson"; lesson: LessonRun }
   | { kind: "recap" };
 
+/** Séance d'entraînement : on rejoue sans rien recompter (contrat phase8 §2). */
+export function isPracticeRun(run: Pick<SessionRun, "mode">): boolean {
+  return run.mode === "practice";
+}
+
 export function startSessionRun(input: {
   plan: SessionPlan;
   sessionId: string;
@@ -60,12 +79,14 @@ export function startSessionRun(input: {
   lesson: Lesson | null;
   known: readonly ConceptId[];
   now: Date;
+  /** Défaut : `normal`. */
+  mode?: SessionMode;
   /** Étapes jouables de la leçon (voir playableStepIndexes) ; défaut : toutes. */
   playable?: readonly number[];
   /** Version du contenu au démarrage (contrat phase5 §6). */
   contentVersion?: number;
 }): SessionRun {
-  const { plan, sessionId, source, lesson, known, now, playable, contentVersion } = input;
+  const { plan, sessionId, source, lesson, known, now, playable, contentVersion, mode } = input;
   const reviewQueue: ReviewItem[] = [];
   let hasNew = false;
   for (const block of plan.blocks) {
@@ -77,6 +98,7 @@ export function startSessionRun(input: {
   return {
     sessionId,
     source,
+    ...(mode && mode !== "normal" ? { mode } : {}),
     plan,
     reviewQueue,
     reviewCursor: 0,

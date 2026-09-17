@@ -8,6 +8,7 @@ import {
   evaluateBadges,
   isEmptySession,
   isLessonUnlocked,
+  isPracticeRun,
   isUnitPassed,
   isUnitTestPassed,
   lessonsBefore,
@@ -226,7 +227,11 @@ export function hasWork(plan: SessionPlan): boolean {
 // ---------------------------------------------------------------------------
 // Séance
 
-export type SessionRequest = { source: "daily" } | { source: "review" } | { source: "lesson"; lessonId: LessonId };
+/**
+ * `practice` : rejouer une leçon déjà terminée depuis la bibliothèque « Réviser » (contrat phase8 §2).
+ * Même déroulé, mais la progression n'est pas recomptée — voir `SessionMode` dans @parlo/core.
+ */
+export type SessionRequest = { source: "daily" } | { source: "review" } | { source: "lesson"; lessonId: LessonId; practice?: boolean };
 
 function lessonPlan(lesson: Lesson): SessionPlan {
   return { blocks: [{ kind: "new", lessonId: lesson.id }, { kind: "recap" }], estimatedSeconds: lesson.estimatedMinutes * 60 };
@@ -245,8 +250,11 @@ function sessionOf(snapshot: SessionSnapshot, content: ContentIndex): SessionRun
 }
 
 function matches(run: SessionRun, request: SessionRequest): boolean {
-  if (request.source === "lesson") return run.source === "lesson" && run.lesson?.lessonId === request.lessonId;
-  return run.source === request.source;
+  // Une séance d'entraînement et la même leçon « pour de vrai » ne se reprennent pas l'une l'autre.
+  if (request.source === "lesson") {
+    return run.source === "lesson" && run.lesson?.lessonId === request.lessonId && isPracticeRun(run) === (request.practice === true);
+  }
+  return run.source === request.source && !isPracticeRun(run);
 }
 
 export async function currentSession(content: ContentIndex): Promise<SessionRun | null> {
@@ -256,7 +264,8 @@ export async function currentSession(content: ContentIndex): Promise<SessionRun 
 
 /** Chemin de reprise d'une séance sauvegardée. */
 export function sessionPath(run: SessionRun): string {
-  if (run.source === "lesson" && run.lesson) return `/lecon/${run.lesson.lessonId}`;
+  // Une leçon rejouée en entraînement reprend sur sa propre route (contrat phase8 §2).
+  if (run.source === "lesson" && run.lesson) return `/lecon/${run.lesson.lessonId}${isPracticeRun(run) ? "/entrainement" : ""}`;
   return run.source === "review" ? "/revision" : "/seance";
 }
 
@@ -326,7 +335,11 @@ export async function openSession(content: ContentIndex, request: SessionRequest
     const source: SessionSource = request.source;
     const known = (plans?.cards ?? []).map((c) => c.conceptId);
     const playable = lesson ? playableSteps(content, lesson) : undefined;
-    const run = startSessionRun({ plan, sessionId, source, lesson, known, now, contentVersion: content.pack.version, ...(playable ? { playable } : {}) });
+    const practice = request.source === "lesson" && request.practice === true;
+    const run = startSessionRun({
+      plan, sessionId, source, lesson, known, now, contentVersion: content.pack.version,
+      ...(playable ? { playable } : {}), ...(practice ? { mode: "practice" as const } : {}),
+    });
     const event = makeEvent("session_started", { sessionId, source, plannedSeconds: plan.estimatedSeconds }, now);
     await writeSnapshot(d, content.pack.code, run, now);
     await d.outbox.put(toOutbox(event));
@@ -377,6 +390,17 @@ export async function submitSessionAnswer(
             correct: evaluation.correct, nearMiss: evaluation.nearMiss, responseMs: Math.round(responseMs), attempt: item.attempt,
           }, now),
         );
+        // Entraînement (contrat phase8 §2) : la leçon ne sera pas réenregistrée, mais le SRS profite
+        // quand même des réponses — noté au premier essai, sans jamais créer de carte (les concepts
+        // d'une leçon déjà terminée en ont une ; en introduire ici doublerait la leçon).
+        if (isPracticeRun(run) && item.attempt === 1) {
+          for (const conceptId of exercise.conceptIds) {
+            const prior = await d.srsCards.get(conceptId);
+            if (!prior) continue;
+            const { card } = reviewConcept(withoutPack(prior), { correct: evaluation.correct, nearMiss: evaluation.nearMiss, responseMs, format: exerciseType }, now);
+            events.push(makeEvent("srs_card_updated", { card: await putCard(d, pack, card) }, now));
+          }
+        }
       }
     } else {
       return run;
@@ -413,6 +437,13 @@ export async function saveLessonPart(content: ContentIndex, run: SessionRun, now
   const lesson = lessonRun ? content.lessons.get(lessonRun.lessonId) : undefined;
   if (!lessonRun || !lesson || run.lessonSaved) return run;
   const d = db();
+  // Entraînement (contrat phase8 §2) : rien à enregistrer — ni carte réintroduite, ni tentative de plus,
+  // ni `lesson_completed`. Le SRS a déjà reçu chaque réponse (submitSessionAnswer).
+  if (isPracticeRun(run)) {
+    const next: SessionRun = { ...run, lessonSaved: true };
+    await writeSnapshot(d, content.pack.code, next, now);
+    return next;
+  }
 
   return d.transaction("rw", [d.srsCards, d.lessonProgress, d.outbox, d.snapshot], async () => {
     const pack = content.pack.code;
@@ -460,6 +491,8 @@ export interface SessionRecap {
   firstLesson: boolean;
   /** Séance vide : ni XP, ni série, ni session_completed. */
   empty: boolean;
+  /** Leçon rejouée en entraînement (contrat phase8 §2) : rien n'a été recompté. */
+  practice: boolean;
   /** Concepts nouveaux réussis pendant la leçon (« Ce que tu sais dire »). */
   canSay: ConceptId[];
   /** Test d'unité : score de cette tentative et réussite (seuil 0,7). */
@@ -477,8 +510,12 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
   return d.transaction("rw", [d.srsCards, d.lessonProgress, d.kv, d.outbox, d.snapshot], async () => {
     const pack = content.pack.code;
     const lesson = saved.lesson ? content.lessons.get(saved.lesson.lessonId) : undefined;
-    const lessonCompleted = saved.lessonSaved && lesson !== undefined;
-    const empty = isEmptySession(saved, lessonCompleted);
+    const practice = isPracticeRun(saved);
+    const lessonCompleted = !practice && saved.lessonSaved && lesson !== undefined;
+    // Entraînement (contrat phase8 §2) : traité comme une séance vide pour les totaux — ni XP, ni
+    // série, ni minutes, ni badges, ni `session_completed`. Les `answer_submitted` et les
+    // `srs_card_updated` déjà écrits disent honnêtement ce qui s'est passé.
+    const empty = practice || isEmptySession(saved, lessonCompleted);
     const totals = await packKv<Totals>(d, pack, "totals", DEFAULT_TOTALS);
     const today = localDay(now);
     const itemsCount = saved.reviewResults.length + (saved.lesson?.results.length ?? 0);
@@ -549,12 +586,35 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       reviewedWell: reviewedConcepts(saved),
       streak,
       badges: fresh,
-      firstLesson: lessonId !== null && completed.size === 1 && (await d.lessonProgress.get(lessonId))?.attempts === 1,
+      firstLesson: !practice && lessonId !== null && completed.size === 1 && (await d.lessonProgress.get(lessonId))?.attempts === 1,
       empty,
-      unitTest: lesson?.kind === "unit_test" && lessonId ? { lessonId, score, passed: isUnitTestPassed(score) } : null,
+      practice,
+      // Un test d'unité rejoué en entraînement ne se réussit ni ne se rate : il est déjà acquis.
+      unitTest: !practice && lesson?.kind === "unit_test" && lessonId ? { lessonId, score, passed: isUnitTestPassed(score) } : null,
       xpBefore: totals.xp,
       xpAfter: totals.xp + xp,
     };
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Bibliothèque « Réviser » (contrat phase8 §2)
+
+/**
+ * « Revoir maintenant » : rend un concept dû tout de suite, sans toucher à son historique FSRS
+ * (stabilité, difficulté, répétitions, rechutes). Un concept encore sans carte en reçoit une, déjà
+ * échue — `isDue` ignore l'état `new`, donc la carte forcée passe en `learning`.
+ * Écrit la carte et son `srs_card_updated` dans la même transaction, comme toute écriture d'état.
+ */
+export async function forceDue(conceptId: ConceptId, pack: string = activePackCode(), now = new Date()): Promise<SrsCard> {
+  const d = db();
+  return d.transaction("rw", [d.srsCards, d.outbox], async () => {
+    const prior = await d.srsCards.get(conceptId);
+    const base = prior ? withoutPack(prior) : newCard(conceptId, now);
+    const card: SrsCard = { ...base, due: now.toISOString(), state: base.state === "new" ? "learning" : base.state };
+    const saved = await putCard(d, pack, card);
+    await d.outbox.put(toOutbox(makeEvent("srs_card_updated", { card: saved }, now)));
+    return saved;
   });
 }
 
@@ -670,10 +730,12 @@ export async function todaySeconds(now = new Date()): Promise<number> {
 
 export async function exportLocalData(now = new Date()) {
   const d = db();
-  const [srsCards, lessonProgress, outbox, snapshot, kv, syncLog] = await Promise.all([
-    d.srsCards.toArray(), d.lessonProgress.toArray(), d.outbox.toArray(), d.snapshot.toArray(), d.kv.toArray(), d.syncLog.toArray(),
+  // `notes` : local seulement, jamais synchronisé — mais il fait partie des données de l'appareil,
+  // donc de l'export RGPD (contrat phase8 §3).
+  const [srsCards, lessonProgress, outbox, snapshot, kv, syncLog, notes] = await Promise.all([
+    d.srsCards.toArray(), d.lessonProgress.toArray(), d.outbox.toArray(), d.snapshot.toArray(), d.kv.toArray(), d.syncLog.toArray(), d.notes.toArray(),
   ]);
-  return { app: "parlo", exportedAt: now.toISOString(), badgeCodes: BADGE_CODES, tables: { srsCards, lessonProgress, outbox, snapshot, kv, syncLog } };
+  return { app: "parlo", exportedAt: now.toISOString(), badgeCodes: BADGE_CODES, tables: { srsCards, lessonProgress, outbox, snapshot, kv, syncLog, notes } };
 }
 
 export async function deleteLocalData(): Promise<void> {
@@ -689,8 +751,11 @@ export async function deleteLocalData(): Promise<void> {
  */
 export async function clearLearningData(): Promise<void> {
   const d = db();
-  await d.transaction("rw", [d.srsCards, d.lessonProgress, d.outbox, d.snapshot, d.syncLog, d.kv], async () => {
-    await Promise.all([d.srsCards.clear(), d.lessonProgress.clear(), d.outbox.clear(), d.snapshot.clear(), d.syncLog.clear()]);
+  // Les notes personnelles ne partent jamais au serveur (contrat phase8 §3) : elles ne peuvent pas
+  // être restaurées, mais les laisser les montrerait au compte suivant — on les efface (l'export de
+  // la page Notes est là pour les emporter avant de se déconnecter).
+  await d.transaction("rw", [d.srsCards, d.lessonProgress, d.outbox, d.snapshot, d.syncLog, d.kv, d.notes], async () => {
+    await Promise.all([d.srsCards.clear(), d.lessonProgress.clear(), d.outbox.clear(), d.snapshot.clear(), d.syncLog.clear(), d.notes.clear()]);
     const keys = (await d.kv.toCollection().primaryKeys()).filter((key) => key !== "activePack");
     await d.kv.bulkDelete(keys);
   });

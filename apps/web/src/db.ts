@@ -112,6 +112,24 @@ export interface KeyValue<T = unknown> {
   value: T;
 }
 
+/** Élément auquel une note personnelle est attachée (contrat phase8 §3). */
+export type NoteTargetKind = "concept" | "lesson" | "dialogue" | "culture" | "free";
+
+/**
+ * Note personnelle (contrat phase8 §3) : locale, propre à une langue, **jamais envoyée au serveur**
+ * (minimisation, spec §14). Incluse dans l'export local (RGPD) et dans l'export de la page Notes.
+ * Une note libre n'a pas de cible (`targetId: null`).
+ */
+export interface NoteRow {
+  id: string;
+  packCode: string;
+  targetKind: NoteTargetKind;
+  targetId: string | null;
+  text: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 /** Clé `kv` globale du pack actif (langue apprise). */
 export const ACTIVE_PACK_KEY = "activePack";
 /** Clé du snapshot avant la version 3 du schéma (un seul pack). */
@@ -156,6 +174,7 @@ export class ParloDB extends Dexie {
   syncLog!: EntityTable<SyncLogRow, "seq">;
   units!: EntityTable<StoredUnit, "key">;
   offlineUnits!: EntityTable<OfflineUnitRow, "key">;
+  notes!: EntityTable<NoteRow, "id">;
 
   constructor(name = "parlo") {
     super(name);
@@ -183,6 +202,11 @@ export class ParloDB extends Dexie {
     this.version(4).stores({
       units: "key, [code+version], code",
       offlineUnits: "key, code, lastUsedAt",
+    });
+    // Notes personnelles (contrat phase8 §3) : table nouvelle, aucune table existante n'est touchée
+    // (Dexie ne recopie que les tables citées) — rien à migrer, rien à perdre.
+    this.version(5).stores({
+      notes: "id, packCode, [packCode+targetKind+targetId], [packCode+updatedAt], updatedAt",
     });
 
     // Toute écriture sans packCode (tests, modules qui ignorent les packs) est rattachée au bon pack.
