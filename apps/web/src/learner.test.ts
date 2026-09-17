@@ -59,7 +59,16 @@ function answerFor(ex: Exercise, right = true): ExerciseResponse {
         ids.push(tok.id);
         i += tok.text.split(" ").length;
       }
-      return { kind: "tokens", optionIds: ids };
+      if (right) return { kind: "tokens", optionIds: ids };
+      // Réponse fausse : un autre ordre que la cible. Les jetons peuvent se répéter (« tôi » deux
+      // fois), donc on ne suppose pas qu'un échange suffit — on prend le premier ordre qui ne
+      // reconstitue pas la phrase. `build_sentence` est un format de révision depuis la phase 9 :
+      // sans ce cas, le helper répondait juste alors qu'on lui demandait de se tromper, et les
+      // tests devenaient intermittents (le format est tiré au hasard par séance).
+      const text = (order: string[]) => order.map((id) => ex.tokens.find((t) => t.id === id)?.text ?? "").join(" ");
+      const swapped = ids.length > 1 ? [ids[1]!, ids[0]!, ...ids.slice(2)] : ids;
+      const wrong = [swapped, [...ids].reverse()].find((order) => text(order) !== ex.target) ?? ids;
+      return { kind: "tokens", optionIds: wrong };
     }
     case "speak_repeat":
     case "tone_produce":
