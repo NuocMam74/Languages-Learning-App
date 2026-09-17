@@ -159,8 +159,9 @@ existants n'ont pas changé de structure : ils héritent du thème par les jeton
 5. **`prefers-reduced-motion`** : la barre de temps de Lô tô continue d'avancer — c'est une
    information, pas une décoration. Elle est mise à jour par intervalle, jamais par animation CSS.
 6. **Déploiement statique** : le repli monopage, le 404 de `/api/*` et l'en-tête de `sw.js` sont
-   portés par `apps/web/worker.js` (Cloudflare Workers Static Assets), vérifiés avec
-   `wrangler dev`. La couche d'assets redirige `/index.html` vers `/` : le repli doit donc
+   portés par `apps/web/worker.js` (Cloudflare Workers Static Assets), configurés par le
+   `wrangler.jsonc` **de la racine** — nécessaire pour que la commande de déploiement par défaut
+   fonctionne dans un monorepo npm — et vérifiés avec `wrangler dev`. La couche d'assets redirige `/index.html` vers `/` : le repli doit donc
    récupérer la racine, sinon la page arrive vide et sans `Content-Type`.
 7. **Pas de nouvelle capture e2e** : `apps/web/e2e/` n'a pas été étendu à ces écrans (Playwright non
    exécuté ici). Les tests unitaires couvrent la logique et l'accessibilité de la carte de

@@ -76,9 +76,11 @@ Réglages de l'hébergeur :
 
 Le déploiement passe par **Cloudflare Workers (Static Assets)** :
 
-- [apps/web/wrangler.jsonc](apps/web/wrangler.jsonc) — la config. Le dépôt étant un monorepo npm,
-  `wrangler deploy` lancé à la racine ne sait pas quoi déployer (« application detection logic has
-  been run in the root of a workspace ») : il faut donc pointer la config explicitement.
+- [wrangler.jsonc](wrangler.jsonc) — la config, **à la racine du dépôt** : `wrangler deploy` la
+  trouve tout seul, donc la commande de déploiement par défaut de Cloudflare suffit. Placée dans
+  `apps/web/`, il fallait un `--config` explicite, sans quoi wrangler tentait de détecter
+  l'application et échouait (« application detection logic has been run in the root of a
+  workspace »), le dépôt étant un monorepo npm.
 - [apps/web/worker.js](apps/web/worker.js) — trois rôles, écrits en clair plutôt que déduits d'un
   `not_found_handling` : **404 JSON franc sur `/api/*`** (sans quoi l'appel de rafraîchissement
   recevrait `index.html` en 200 et l'app se croirait hors ligne en permanence), **repli monopage**,
@@ -86,13 +88,11 @@ Le déploiement passe par **Cloudflare Workers (Static Assets)** :
 - [apps/web/public/_headers](apps/web/public/_headers) — `assets/` et `content/` immuables (noms
   hachés, version dans le chemin), coquille et manifeste revalidés.
 
-Réglages côté Cloudflare, en plus du build :
+Rien d'autre à régler côté Cloudflare : la commande de déploiement par défaut (`npx wrangler
+deploy`) fonctionne telle quelle. Le `name` de la config doit en revanche être **identique** au nom
+du Worker, sinon le déploiement crée un second Worker à côté.
 
-| | |
-|---|---|
-| Deploy command | `npx wrangler deploy --config apps/web/wrangler.jsonc` |
-
-Vérifié en local avec `npx wrangler dev --config apps/web/wrangler.jsonc` : `/`, `/missions`,
+Vérifié en local avec `npx wrangler dev` : `/`, `/missions`,
 `/atelier`, `/recompenses`, `/jeux/lo_to` rendent l'app en `text/html`, `/api/*` renvoie
 `{"detail":"api_unavailable"}` en 404, `content/` est immuable et `sw.js` en `no-cache`.
 

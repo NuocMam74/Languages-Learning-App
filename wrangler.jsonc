@@ -1,21 +1,21 @@
 {
   // Déploiement de la PWA sur Cloudflare Workers (Static Assets) — scénario A du README.
   //
-  // Le dépôt est un monorepo npm : sans ce fichier, `wrangler deploy` lancé à la racine ne sait pas
-  // quelle application déployer (« application detection logic has been run in the root of a
-  // workspace »). D'où la commande de déploiement à régler côté Cloudflare :
+  // Ce fichier vit **à la racine du dépôt**, exprès : `wrangler deploy` le trouve alors tout seul,
+  // et la commande de déploiement par défaut de Cloudflare fonctionne sans réglage. Placé dans
+  // apps/web/, il fallait un `--config` explicite, sans quoi wrangler tentait de détecter
+  // l'application et échouait (« application detection logic has been run in the root of a
+  // workspace »), le dépôt étant un monorepo npm.
   //
-  //     npx wrangler deploy --config apps/web/wrangler.jsonc
-  //
-  // Les chemins ci-dessous sont relatifs à ce fichier, pas au répertoire de travail.
+  // Les chemins ci-dessous sont relatifs à ce fichier, donc à la racine.
   // Doit être **identique** au nom du Worker sur Cloudflare, sinon le déploiement échoue ou crée
   // un second Worker à côté. Cloudflare dérive ce nom du dépôt Git, en minuscules et avec des
   // tirets : dépôt « Languages-Learning-App » → Worker « languages-learning-app ».
   "name": "languages-learning-app",
-  "main": "worker.js",
+  "main": "apps/web/worker.js",
   "compatibility_date": "2026-09-01",
   "assets": {
-    "directory": "./dist",
+    "directory": "./apps/web/dist",
     "binding": "ASSETS",
     // `none` : la couche d'assets ne fabrique aucun repli toute seule. Le repli monopage et le 404
     // de `/api/*` sont écrits explicitement dans worker.js — un seul endroit à lire pour savoir
