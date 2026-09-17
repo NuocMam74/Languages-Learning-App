@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildPlacementExercise,
   checkPlacement,
+  isPlacementItemPlayable,
   lessonsBefore,
   nextPlacementItem,
   placementCards,
@@ -121,11 +122,30 @@ describe("point d'entrée", () => {
     expect(resolveEntryLesson(short, 3)?.id).toBe("vi-south.u02.l01");
   });
 
-  it("items jouables : sans audio natif, les items de ton sont retirés ; moins de 6 → pas de placement", () => {
+  it("sans aucun enregistrement, il n'y a pas de placement du tout", () => {
+    // Le placement est un test d'écoute : muet, il se répond au hasard et saute des unités
+    // entières (spec §4.1.4). Aucune famille d'items n'échappe à la règle.
     const silent: ContentIndex = { ...content, mediaIndex: new Set() };
-    const playable = playablePlacement(silent, spec);
-    expect(playable?.items.every((i) => i.skill !== "tone")).toBe(true);
-    expect(playablePlacement(silent, { ...spec, items: spec.items.filter((i) => i.skill === "tone").concat(spec.items.filter((i) => i.skill !== "tone").slice(0, 5)) })).toBeNull();
+    expect(playablePlacement(silent, spec)).toBeNull();
+    for (const skill of ["tone", "comprehension", "vocab"] as const) {
+      const item = spec.items.find((i) => i.skill === skill);
+      expect(item, `aucun item ${skill} dans le pack`).toBeDefined();
+      expect(isPlacementItemPlayable(silent, item!)).toBe(false);
+    }
+    // Build de bêta : la synthèse est acceptée partout, le test redevient jouable.
     expect(playablePlacement(silent, spec, { toneFallback: true })?.items).toHaveLength(spec.items.length);
+  });
+
+  it("avec les enregistrements, seuls les items sans audio tombent", () => {
+    const audio = new Set(
+      spec.items.flatMap((i) => content.concepts.get(i.concept)?.audio.filter((a) => a.source === "native").map((a) => a.src) ?? []),
+    );
+    const heard: ContentIndex = { ...content, mediaIndex: audio };
+    expect(playablePlacement(heard, spec)?.items).toHaveLength(spec.items.length);
+    // Un seul concept muet : son item disparaît, les autres restent.
+    const first = spec.items[0]!;
+    const missing = new Set([...audio].filter((src) => !(content.concepts.get(first.concept)?.audio ?? []).some((a) => a.src === src)));
+    const partial = playablePlacement({ ...content, mediaIndex: missing }, spec);
+    expect(partial?.items.some((i) => i.id === first.id)).toBe(false);
   });
 });

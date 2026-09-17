@@ -68,9 +68,24 @@ export function nextPlacementItem(spec: PlacementSpec, answers: readonly Placeme
 /** Le placement n'est proposé qu'à partir de ce nombre d'items jouables (contrat phase5 §1). */
 export const PLACEMENT_MIN_PLAYABLE_ITEMS = 6;
 
-/** Item jouable : un item de ton exige l'audio natif (sauf repli de synthèse). */
+/**
+ * Item jouable : il exige un **enregistrement natif**, quelle que soit sa compétence.
+ *
+ * Le placement est « audio uniquement » (spec §4.1.4) : ses trois familles d'items sont des
+ * exercices d'écoute (`tone_identify`, `listen_pick_text`, `listen_pick_image`, toujours avec
+ * `audio`). La synthèse vocale est un repli acceptable pour *réviser* un mot déjà rencontré ; elle
+ * ne peut pas servir à **situer** quelqu'un qui n'a encore rien appris.
+ *
+ * Auparavant seuls les items de ton exigeaient l'audio. Conséquence observée sur l'app déployée
+ * (aucun enregistrement livré) : un test d'écoute muet, répondu au hasard, qui plaçait l'apprenant
+ * plusieurs unités plus loin — et `lessonsBefore` comptait alors toutes les leçons sautées comme
+ * réussies, y compris des tests d'unité que personne n'avait passés.
+ *
+ * `toneFallback` (build de bêta, `VITE_TTS_TONE_FALLBACK`) accepte la synthèse partout : c'est un
+ * choix explicite pour rendre l'app jouable avant les enregistrements.
+ */
 export function isPlacementItemPlayable(content: ContentIndex, item: PlacementItem, options: PlayableOptions = {}): boolean {
-  if (item.skill !== "tone" || options.toneFallback) return true;
+  if (options.toneFallback) return true;
   const concept = content.concepts.get(item.concept);
   return concept !== undefined && hasNativeAudio(concept, options.media === undefined ? contentMedia(content) : options.media);
 }
