@@ -3,6 +3,7 @@ import { localDay } from "@parlo/core";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useAccount } from "../account.ts";
+import { Icon } from "../design/index.ts";
 import { t } from "../i18n/index.ts";
 import { useOnline } from "../use-online.ts";
 import { assignmentProgress, featuredAssignment, nextLesson } from "./assignments.ts";
@@ -36,12 +37,16 @@ export default function HubAssignmentCard({ content, completed }: { content: Con
     : t("classes.hub.cardNoDue", { title: assignment.title, done, total });
 
   return (
+    // Rangée du hub, pas une bannière : même surface que les autres cartes, même hauteur qu'avant
+    // (l'emplacement du hub mesure ce bloc). Les icônes sont muettes : le libellé reste seul à parler.
     <Link
       to={next ? `/lecon/${encodeURIComponent(next)}` : "/mes-classes"}
-      className="mb-5 flex min-h-12 items-center border-l-4 border-ngoc py-1 pl-4 font-semibold text-ngoc"
+      className="mb-5 flex min-h-12 items-center gap-3 rounded-card border border-ngoc/25 bg-surface px-4 py-1 font-semibold text-ngoc transition-[background-color,transform] hover:bg-ngoc-sang/40 motion-safe:active:scale-[.99]"
       data-testid="hub-assignment"
     >
-      {text}
+      <Icon name="notebook" size={20} />
+      <span className="min-w-0 flex-1">{text}</span>
+      <Icon name="chevronRight" size={18} className="opacity-60" />
     </Link>
   );
 }

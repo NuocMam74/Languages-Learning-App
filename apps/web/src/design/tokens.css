@@ -1,0 +1,164 @@
+/*
+ * Système de design — jetons (contrat phase8 §1, spec §13).
+ *
+ * Source unique des surfaces, de la profondeur, des rayons et du mouvement. Les six valeurs
+ * nommées de la palette restent dans app.css : ici on ne fait que **poser les rôles** qui
+ * manquaient (surface, ligne, ombre, rayon par famille) pour qu'aucun écran ne soit un mur blanc.
+ *
+ * Interdits maintenus : dégradés décoratifs, majuscules espacées, cartes identiques empilées.
+ */
+
+@theme {
+  /* Surfaces : blanc cassé posé sur le fond nước, jamais du blanc pur (il « troue » la page). */
+  --color-surface: #fdfefd;
+  --color-surface-2: #f7faf8;
+  /* Bandeau de section forte : jade plein, texte nước. */
+  --color-surface-ngoc: #0e5e55;
+  /* Encart de rappel / récompense : curcuma très dilué (AA avec mực). */
+  --color-surface-nghe: #fbf1dd;
+  /* Encart d'alerte douce : laque très diluée. */
+  --color-surface-son-mai: #fbeeec;
+  /*
+   * Curcuma **écrit** : `nghệ` pur (#E5A21B) ne donne que 2,2:1 sur une surface claire — il éclaire
+   * une icône ou un aplat, jamais un texte. Cette variante cuite tient AA (5,9:1) sans changer la
+   * famille de couleur. Les six valeurs nommées de la palette (§13) restent inchangées.
+   */
+  --color-nghe-ecrit: #8a5a00;
+  /* Bordure unique, 1 px : mực à 8 %. */
+  --color-line: #14201e14;
+  --color-line-strong: #14201e26;
+
+  /* Un rayon par famille (contrat §1). */
+  --radius-card: 20px;
+  --radius-chip: 12px;
+  --radius-field: 14px;
+
+  /* Une seule ombre douce : la profondeur se lit, elle ne se voit pas. */
+  --shadow-card: 0 1px 1px rgb(20 32 30 / 0.03), 0 10px 24px -16px rgb(20 32 30 / 0.28);
+  --shadow-raised: 0 2px 3px rgb(20 32 30 / 0.05), 0 18px 36px -20px rgb(20 32 30 / 0.34);
+  --shadow-sheet: 0 -8px 30px rgb(20 32 30 / 0.12);
+
+  /* Échelle d'espacement : multiples de 4 px, pas d'exception inventée écran par écran. */
+  --spacing-gutter: 1.25rem;
+  --spacing-block: 1.5rem;
+  --spacing-section: 2rem;
+
+  /* Durées : une seule référence pour les remplissages et les entrées. */
+  --ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+  /*
+   * Texture d'eau (contrat §1) : un motif de rides tracé une fois, à 4 % d'opacité, posé derrière
+   * tout le contenu. Couche `fixed` : elle ne participe pas au flux, ne décale rien (CLS = 0) et ne
+   * coûte qu'une image de 0,3 ko en data-URI (aucune requête réseau, hors ligne compris).
+   */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%230E5E55' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 120px 60px;
+  }
+  /* Texte vietnamien en serif : les diacritiques empilés respirent mieux avec un peu d'avance optique. */
+  [data-target-text] {
+    letter-spacing: -0.005em;
+  }
+}
+
+/*
+ * Mouvement (contrat §1) : utile, court, jamais bloquant. Tout est déclaré ici et n'est *appliqué*
+ * que sous `motion-safe:` côté composants ; la règle globale de `app.css` neutralise le reste.
+ */
+
+/* Remplissage d'une barre ou d'un anneau : 400 ms, une seule fois, à l'arrivée de la valeur. */
+@keyframes parlo-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Entrée en cascade d'une carte (≤ 6 éléments, ≤ 40 ms d'écart) : `--parlo-stagger` porte le retard. */
+@keyframes parlo-enter {
+  from {
+    transform: translateY(0.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Flamme de série au gain d'un jour : une respiration, pas une boucle. */
+@keyframes parlo-flame {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.4;
+  }
+  55% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Squelette : une lueur qui traverse, moins agressive qu'un clignotement d'opacité. */
+@keyframes parlo-shimmer {
+  from {
+    background-position: -120% 0;
+  }
+  to {
+    background-position: 220% 0;
+  }
+}
+
+@utility parlo-enter {
+  animation: parlo-enter 320ms var(--ease-out-soft) both;
+  animation-delay: var(--parlo-stagger, 0ms);
+}
+
+@utility parlo-fill {
+  transform-origin: left center;
+  animation: parlo-fill 400ms var(--ease-out-soft) both;
+}
+
+@utility parlo-flame {
+  animation: parlo-flame 520ms var(--ease-out-soft) both;
+}
+
+@utility parlo-shimmer {
+  background-image: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 0.55) 50%, transparent 100%);
+  background-size: 60% 100%;
+  background-repeat: no-repeat;
+  animation: parlo-shimmer 1400ms linear infinite;
+}
+
+/*
+ * Transition d'écran (`document.startViewTransition`, design/motion.ts) : un fondu très court.
+ * Aucun déplacement — un glissement latéral se lit comme une erreur quand on revient en arrière.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+  body::before {
+    opacity: 0.03;
+  }
+}

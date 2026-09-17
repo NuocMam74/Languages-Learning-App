@@ -87,7 +87,7 @@ export function MatchPairsView({ exercise, content, onAnswer, locked }: Props) {
           : state === "wrong" ? "border-son-mai bg-son-mai/10"
           : chosen ? "border-nghe bg-nghe/15"
           : n >= 0 ? "border-ngoc bg-ngoc-sang"
-          : "border-phu-sa/15 bg-white/70";
+          : "border-line-strong bg-surface";
         return (
           <li key={option.id}>
             <button
@@ -98,7 +98,7 @@ export function MatchPairsView({ exercise, content, onAnswer, locked }: Props) {
               data-pair={n >= 0 ? n + 1 : undefined}
               data-state={state ?? undefined}
               onClick={() => tap(side, option)}
-              className={`flex min-h-16 w-full items-center gap-3 rounded-2xl border-2 px-3 py-3 text-left transition-colors ${colors}`}
+              className={`flex min-h-16 w-full items-center gap-3 rounded-card border-2 px-3 py-3 text-left transition-colors ${colors}`}
             >
               <span
                 className={`grid size-7 shrink-0 place-items-center rounded-full text-sm font-semibold ${n >= 0 ? "bg-ngoc text-nuoc" : "bg-phu-sa/10 text-transparent"}`}

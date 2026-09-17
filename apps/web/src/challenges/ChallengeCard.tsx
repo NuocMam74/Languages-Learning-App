@@ -1,6 +1,7 @@
 import type { ContentIndex } from "@parlo/core";
 import { useEffect, useState } from "react";
 import { useAccount } from "../account.ts";
+import { Card, Icon, ProgressBar } from "../design/index.ts";
 import { getLocale, l, t, type MessageKey } from "../i18n/index.ts";
 import { useOnline } from "../use-online.ts";
 import { claim, loadChallenge, type ChallengeView } from "./challenge-store.ts";
@@ -43,33 +44,47 @@ export function ChallengeCard({ content, onClaimed }: { content: ContentIndex; o
   };
 
   return (
-    <section className="mb-5 flex flex-col gap-2 border-l-4 border-nghe py-1 pl-4" aria-label={t("challenges.label")} data-testid="challenge">
-      <p className="text-sm text-phu-sa">{t("challenges.label")} · {t("challenges.until", { date: end })}</p>
-      <p className="font-semibold">{title}</p>
-      <div className="flex items-center gap-3">
-        <div
-          className="h-2.5 flex-1 overflow-hidden rounded-full bg-phu-sa/10"
-          role="progressbar"
-          aria-label={title}
-          aria-valuemin={0}
-          aria-valuemax={challenge.target}
-          aria-valuenow={Math.min(progress, challenge.target)}
-        >
-          <div className={`h-full rounded-full ${done ? "bg-nghe" : "bg-ngoc"}`} style={{ width: `${Math.min(1, progress / Math.max(1, challenge.target)) * 100}%` }} />
+    // Carte de rappel du hub : curcuma dilué, jamais un bandeau pleine largeur qui crie. Elle vit
+    // dans un `Slot` qui réserve sa hauteur — pas d'animation d'entrée ici (elle fausserait la mesure).
+    <section className="mb-5" aria-label={t("challenges.label")} data-testid="challenge">
+      <Card tone="notice" className="flex flex-col gap-1.5">
+        <p className="flex items-center gap-1.5 text-sm text-phu-sa">
+          <Icon name="trophy" size={16} className="text-nghe" />
+          {t("challenges.label")} · {t("challenges.until", { date: end })}
+        </p>
+        <p className="font-semibold">{title}</p>
+        <div className="flex items-center gap-3">
+          <ProgressBar
+            className="flex-1"
+            value={progress}
+            max={challenge.target}
+            label={title}
+            tone={done ? "nghe" : "ngoc"}
+          />
+          <span className="shrink-0 text-sm tabular-nums text-phu-sa">{t("challenges.progress", { done: Math.min(progress, challenge.target), target: challenge.target })}</span>
         </div>
-        <span className="text-sm tabular-nums text-phu-sa">{t("challenges.progress", { done: Math.min(progress, challenge.target), target: challenge.target })}</span>
-      </div>
-      {done && !claimed && (
-        canClaimNow ? (
-          <button type="button" disabled={busy} onClick={() => void onClaim()} className="min-h-11 self-start rounded-xl bg-ngoc px-4 font-semibold text-nuoc disabled:bg-phu-sa/25">
-            {busy ? t("challenges.claiming") : t("challenges.claim")}
-          </button>
-        ) : (
-          <p className="text-sm text-phu-sa">{t("challenges.claimOffline")}</p>
-        )
-      )}
-      {claimed && <p className="text-sm font-semibold text-ngoc" role="status">{xp ? t("challenges.claimedXp", { n: xp }) : t("challenges.claimed")}</p>}
-      {error && <p role="alert" className="text-sm text-son-mai">{t("exams.error.generic")}</p>}
+        {done && !claimed && (
+          canClaimNow ? (
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => void onClaim()}
+              className="min-h-11 self-start rounded-chip bg-ngoc px-4 font-semibold text-nuoc transition-[background-color,transform] motion-safe:active:scale-[.98] disabled:bg-phu-sa/25"
+            >
+              {busy ? t("challenges.claiming") : t("challenges.claim")}
+            </button>
+          ) : (
+            <p className="text-sm text-phu-sa">{t("challenges.claimOffline")}</p>
+          )
+        )}
+        {claimed && (
+          <p className="flex items-center gap-1.5 text-sm font-semibold text-ngoc" role="status">
+            <Icon name="check" size={16} />
+            {xp ? t("challenges.claimedXp", { n: xp }) : t("challenges.claimed")}
+          </p>
+        )}
+        {error && <p role="alert" className="text-sm text-son-mai">{t("exams.error.generic")}</p>}
+      </Card>
     </section>
   );
 }

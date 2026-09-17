@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
 import { BackHeader } from "../exams/BackHeader.tsx";
 import { Button, Screen } from "../components/ui.tsx";
+import { Icon } from "../design/index.ts";
 import { t } from "../i18n/index.ts";
 import { getProfile } from "../learner.ts";
 import { useOnline } from "../use-online.ts";
@@ -18,7 +19,7 @@ function HourSelect({ value, onChange, disabled }: { value: number; onChange: (h
         value={value}
         disabled={disabled}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="min-h-11 rounded-xl border-2 border-phu-sa/15 bg-white/70 px-3"
+        className="min-h-11 rounded-field border-2 border-line-strong bg-surface px-3"
       >
         {HOURS.map((h) => (
           <option key={h} value={h}>{t("notif.settings.hourValue", { h })}</option>
@@ -88,7 +89,7 @@ export function ReminderSettings({ initial = null }: { initial?: ReminderState |
           onClick={() => void apply(!state.enabled, state.hour)}
           className={`relative h-8 w-14 shrink-0 rounded-full transition-colors before:absolute before:-inset-2 disabled:opacity-50 ${state.enabled ? "bg-ngoc" : "bg-phu-sa/30"}`}
         >
-          <span className={`absolute top-1 left-1 size-6 rounded-full bg-white transition-transform ${state.enabled ? "translate-x-6" : ""}`} />
+          <span className={`absolute top-1 left-1 size-6 rounded-full bg-surface transition-transform ${state.enabled ? "translate-x-6" : ""}`} />
         </button>
       </div>
       <HourSelect
@@ -113,11 +114,11 @@ export function ReminderPrompt() {
 
   if (!show) return null;
   return (
-    <aside className="mb-5 flex flex-col gap-2 border-l-4 border-ngoc py-1 pl-4" data-testid="reminder-prompt">
-      <p className="font-semibold">{t("notif.prompt.title")}</p>
+    <aside className="mb-5 flex flex-col gap-2 rounded-card border border-nghe/30 bg-surface-nghe px-4 py-4" data-testid="reminder-prompt">
+      <p className="flex items-center gap-2 font-semibold"><Icon name="bell" size={18} className="text-nghe" />{t("notif.prompt.title")}</p>
       <p className="text-sm text-phu-sa">{t("notif.prompt.body")}</p>
       <div className="flex gap-4">
-        <Link to="/rappels" className="grid min-h-11 place-items-center rounded-xl bg-ngoc px-4 font-semibold text-nuoc">{t("notif.prompt.yes")}</Link>
+        <Link to="/rappels" className="grid min-h-11 place-items-center rounded-chip bg-ngoc px-4 font-semibold text-nuoc transition-transform motion-safe:active:scale-[.98]">{t("notif.prompt.yes")}</Link>
         <button type="button" className="min-h-11 text-ngoc" onClick={() => void markRemindersAsked().then(() => setShow(false))}>{t("notif.prompt.no")}</button>
       </div>
     </aside>
@@ -174,7 +175,7 @@ export function RemindersPage() {
       <div className="flex flex-col gap-5 pt-4">
         <h2 className="font-serif text-2xl">{t("notif.page.title")}</h2>
         <p>{t("notif.page.body")}</p>
-        <p className="border-l-4 border-nghe pl-3 italic">
+        <p className="rounded-card bg-surface-nghe px-4 py-3 italic">
           <span className="font-semibold not-italic">{t("tutor.name")} : </span>
           {t("notif.page.example")}
         </p>

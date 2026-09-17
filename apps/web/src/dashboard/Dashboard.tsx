@@ -1,13 +1,13 @@
 import { levelForXp, levelName, type ContentIndex } from "@parlo/core";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState, type CSSProperties } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
 import { Slot } from "../components/Slot.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import { VerifyEmailBanner } from "../components/VerifyEmailBanner.tsx";
+import { Avatar, Card, DeltaDawn, Icon, Illustration, ProgressRing, SectionTitle, Skeleton } from "../design/index.ts";
 import { getLocale, l, plural, t } from "../i18n/index.ts";
 import { currentSession, sessionPath } from "../learner.ts";
-import { Avatar } from "../profile/Avatar.tsx";
 import { readDisplayName } from "../profile/identity.ts";
 import { activePackCode } from "../packs/active.ts";
 import { isOnboarded, switchPack } from "../packs/switch.ts";
@@ -30,6 +30,10 @@ const DashboardCertificate = lazy(() => import("./Motivation.tsx").then((m) => (
 /**
  * Accueil (contrat phase7 §2) : **jamais spécifique à une langue**. Un compte, ses langues, sa
  * reprise, son élan. Tout vient d'IndexedDB (lisible hors ligne) ; le serveur ne fait que compléter.
+ *
+ * Hiérarchie (contrat phase8 §1) : une seule carte porte l'écran — « Reprendre » (ou l'invitation
+ * du premier jour). Les langues sont une liste homogène, la motivation un rayon discret. Jamais
+ * deux cartes identiques empilées.
  *
  * Anti-CLS : les résumés déjà calculés s'affichent au premier rendu, et chaque bloc garde sa
  * hauteur pendant la lecture (l'audit mobile avait mesuré des sauts de mise en page ici).
@@ -122,9 +126,9 @@ export function Dashboard({ content }: { content: ContentIndex }) {
 
       {/* 3. Mes langues */}
       <section aria-labelledby="dash-langs" className="pb-6">
-        <h2 id="dash-langs" className="pb-2 text-phu-sa">{t("dashboard.languages.title")}</h2>
+        <SectionTitle id="dash-langs" icon="globe" className="pb-2">{t("dashboard.languages.title")}</SectionTitle>
         <ul className="flex flex-col gap-2" data-testid="dashboard-languages">
-          {codes.map((code) => (
+          {codes.map((code, i) => (
             <li key={code}>
               <LanguageCard
                 summary={summaries?.find((s) => s.code === code) ?? null}
@@ -132,19 +136,21 @@ export function Dashboard({ content }: { content: ContentIndex }) {
                 fallbackName={choices.find((c) => c.code === code)?.name ?? null}
                 active={code === active}
                 disabled={busy}
+                index={i}
                 onOpen={() => void open(code, "/apprendre")}
               />
             </li>
           ))}
         </ul>
-        <Link to="/langue" className="mt-3 flex min-h-11 items-center font-semibold text-ngoc" data-testid="dashboard-add-language">
+        <Link to="/langue" className="mt-3 flex min-h-11 items-center gap-2 font-semibold text-ngoc" data-testid="dashboard-add-language">
+          <Icon name="plus" size={18} />
           {t("dashboard.languages.add")}
         </Link>
       </section>
 
       {/* 4. Motivation — cartes courtes, masquées si vides. */}
-      <section aria-labelledby="dash-motivation" className="flex flex-col border-t border-phu-sa/10 pt-5">
-        <h2 id="dash-motivation" className="pb-2 text-phu-sa">{t("dashboard.motivation.title")}</h2>
+      <section aria-labelledby="dash-motivation" className="flex flex-col gap-2 border-t border-line pt-5">
+        <SectionTitle id="dash-motivation" icon="flame" className="pb-1">{t("dashboard.motivation.title")}</SectionTitle>
         <Slot id={`dash-challenge-${accountStatus}`} fallback={accountStatus === "signed_in" && online ? 132 : 0}>
           <OptionalChunk>
             <Suspense fallback={null}><ChallengeCard content={content} /></Suspense>
@@ -189,14 +195,19 @@ export function Dashboard({ content }: { content: ContentIndex }) {
       </section>
 
       {/* 5. Cô Mai — entrée conversation / bilan, pour la langue active seulement. */}
-      <section className="border-t border-phu-sa/10 pt-5">
+      <section className="mt-5 border-t border-line pt-5">
         <OptionalChunk>
           <Suspense fallback={null}><HubTutor /></Suspense>
         </OptionalChunk>
       </section>
 
       {/* 6. Hors ligne et installation. */}
-      {!online && <p className="mb-4 rounded-xl bg-phu-sa/5 px-4 py-2 text-sm text-phu-sa" data-testid="dashboard-offline">{t("dashboard.offline")}</p>}
+      {!online && (
+        <p className="mt-4 mb-4 flex items-center gap-2 rounded-chip bg-surface-2 px-4 py-2.5 text-sm text-phu-sa" data-testid="dashboard-offline">
+          <Icon name="offline" size={16} />
+          {t("dashboard.offline")}
+        </p>
+      )}
       {started && (
         <Slot id="dash-install">
           <div className="empty:hidden">
@@ -222,91 +233,114 @@ function Header({ name, level, tier, xp, streak, loading }: { name: string | nul
     <header className="flex min-h-[4.5rem] items-start justify-between gap-3 pb-5" data-testid="dashboard-header">
       <div className="min-w-0">
         <p className="truncate text-lg font-semibold">{t(greetingKey(new Date()), { name: name ?? t("dashboard.guest") })}</p>
-        <p className="flex flex-wrap items-baseline gap-x-4 text-sm" data-testid="dashboard-totals" data-level={level}>
+        <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm" data-testid="dashboard-totals" data-level={level}>
           <span className="font-semibold">
             {t("journey.level.label", { n: level })}
             {tier && <span className="font-normal text-phu-sa"> · {tier}</span>}
           </span>
-          <span className="font-semibold text-ngoc">{t("dashboard.xp", { n: loading ? 0 : xp })}</span>
-          <span className="text-phu-sa">{streak > 0 ? plural("dashboard.streak", "dashboard.streak.plural", streak) : t("dashboard.streak.none")}</span>
+          {loading ? (
+            <Skeleton className="h-4 w-16" />
+          ) : (
+            <span className="font-semibold text-ngoc tabular-nums">{t("dashboard.xp", { n: xp })}</span>
+          )}
+          <span className="flex items-center gap-1 text-phu-sa">
+            {streak > 0 && <Icon name="flame" size={15} className="text-son-mai motion-safe:parlo-flame" />}
+            {streak > 0 ? plural("dashboard.streak", "dashboard.streak.plural", streak) : t("dashboard.streak.none")}
+          </span>
         </p>
       </div>
       <div className="flex shrink-0 items-center gap-1">
         <Link to="/profil" aria-label={t("dashboard.openProfile")} data-testid="dashboard-avatar" className="grid min-h-11 place-items-center">
           <Avatar name={name} />
         </Link>
-        <Link to="/reglages" aria-label={t("settings.title")} className="grid size-11 place-items-center rounded-full text-phu-sa hover:bg-phu-sa/5">
-          <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <circle cx="12" cy="12" r="3" />
-            <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" />
-          </svg>
+        <Link
+          to="/reglages"
+          aria-label={t("settings.title")}
+          className="grid size-11 place-items-center rounded-full text-phu-sa transition-[background-color,transform] hover:bg-phu-sa/8 motion-safe:active:scale-[.98]"
+        >
+          <Icon name="settings" strokeWidth={1.8} />
         </Link>
       </div>
     </header>
   );
 }
 
-/** Première ouverture : une invitation, pas un tableau vide (contrat §1). */
+/** Première ouverture : une invitation, pas un tableau vide (contrat §1). Le delta ouvre l'écran. */
 function FirstRun({ signedIn }: { signedIn: boolean }) {
   return (
-    <section className="mb-6 flex min-h-[9rem] flex-col gap-2 border-l-4 border-nghe pl-4" data-testid="dashboard-first">
+    <Card tone="feature" as="section" className="mb-6 flex min-h-[9rem] flex-col items-center gap-2 text-center" data-testid="dashboard-first">
+      <Illustration className="max-w-[15rem] motion-safe:parlo-enter">
+        <DeltaDawn />
+      </Illustration>
       <h2 className="font-serif text-2xl">{t("dashboard.first.title")}</h2>
-      <p className="text-phu-sa">{t("dashboard.first.body")}</p>
+      <p className="text-phu-sa text-balance">{t("dashboard.first.body")}</p>
       {!signedIn && <p className="text-sm text-phu-sa">{t("dashboard.first.guest")}</p>}
-    </section>
+    </Card>
   );
 }
 
 /** Carte « Reprendre » : la langue utilisée en dernier, sa prochaine leçon, son unité en cours. */
 function ResumeCard({ summary }: { summary: PackSummary | null }) {
   const unit = summary?.unit ?? null;
-  const ratio = unit && unit.total > 0 ? Math.min(1, unit.done / unit.total) : 0;
+  const done = unit?.done ?? 0;
+  const total = unit?.total ?? 0;
   return (
-    <section
-      className="mb-6 flex min-h-[10.5rem] flex-col gap-2 rounded-2xl border-2 border-ngoc/25 bg-white/70 px-5 py-4"
+    <Card
+      tone="feature"
+      as="section"
+      className="mb-6 flex min-h-[10.5rem] flex-col gap-2"
       aria-labelledby="dash-resume"
       data-testid="dashboard-resume"
       data-pack={summary?.code}
     >
-      <h2 id="dash-resume" className="text-sm text-phu-sa">{t("dashboard.resume.title")}</h2>
-      <p className="font-serif text-2xl" data-testid="dashboard-resume-pack">{summary?.name ? l(summary.name) : (summary?.code ?? "")}</p>
-      {summary?.nextLesson ? (
-        <p data-testid="dashboard-next-lesson">
-          <span className="font-semibold">{l(summary.nextLesson.title)}</span>
-          <span className="text-phu-sa"> · {t("dashboard.minutes", { n: summary.nextLesson.minutes })}</span>
-        </p>
-      ) : (
-        <p className="text-phu-sa">{summary ? t("dashboard.resume.done") : ""}</p>
-      )}
-      {/* Seule animation orchestrée de l'écran (spec §13). */}
-      <div className="flex items-center gap-3">
-        <div
-          className="h-2.5 flex-1 overflow-hidden rounded-full bg-phu-sa/10"
-          role="progressbar"
-          aria-label={unit ? l(unit.title) : t("dashboard.resume.title")}
-          aria-valuemin={0}
-          aria-valuemax={unit?.total ?? 1}
-          aria-valuenow={unit?.done ?? 0}
-        >
-          <div className="h-full rounded-full bg-ngoc transition-[width] duration-700 motion-reduce:transition-none" style={{ width: `${ratio * 100}%` }} />
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <h2 id="dash-resume" className="text-sm text-phu-sa">{t("dashboard.resume.title")}</h2>
+          <p className="font-serif text-2xl leading-tight" data-testid="dashboard-resume-pack">{summary?.name ? l(summary.name) : (summary?.code ?? "")}</p>
+          {summary?.nextLesson ? (
+            <p className="pt-1" data-testid="dashboard-next-lesson">
+              <span className="font-semibold">{l(summary.nextLesson.title)}</span>
+              <span className="flex items-center gap-1.5 text-sm text-phu-sa">
+                <Icon name="clock" size={14} />
+                {t("dashboard.minutes", { n: summary.nextLesson.minutes })}
+              </span>
+            </p>
+          ) : (
+            <p className="pt-1 text-phu-sa">{summary ? t("dashboard.resume.done") : ""}</p>
+          )}
         </div>
-        {unit && <span className="shrink-0 text-sm text-phu-sa">{t("dashboard.resume.unitProgress", { done: unit.done, total: unit.total })}</span>}
+        {/* Seule animation orchestrée de l'écran (spec §13) : l'anneau de l'unité se remplit. */}
+        {unit && (
+          <ProgressRing
+            value={done}
+            max={Math.max(1, total)}
+            size={76}
+            label={t("dashboard.resume.unitProgress", { done, total })}
+            data-testid="dashboard-unit-ring"
+          >
+            {/* Chiffres nus au centre : lisibles à 76 px et identiques dans toutes les langues. */}
+            <span className="text-lg font-semibold tabular-nums">{done}<span className="text-phu-sa">/{total}</span></span>
+          </ProgressRing>
+        )}
       </div>
+      {unit && <p className="truncate text-sm text-phu-sa">{l(unit.title)}</p>}
       {summary && summary.dueCount > 0 && (
-        <Link to="/revision" className="flex min-h-11 items-center font-semibold text-ngoc" data-testid="dashboard-due">
+        <Link to="/revision" className="flex min-h-11 items-center gap-2 font-semibold text-ngoc" data-testid="dashboard-due">
+          <Icon name="cards" size={18} />
           {plural("dashboard.resume.due", "dashboard.resume.due.plural", summary.dueCount)}
         </Link>
       )}
-    </section>
+    </Card>
   );
 }
 
-function LanguageCard({ summary, code, fallbackName, active, disabled, onOpen }: {
+function LanguageCard({ summary, code, fallbackName, active, disabled, index, onOpen }: {
   summary: PackSummary | null;
   code: string;
   fallbackName: ReturnType<typeof usePackChoices>[number]["name"];
   active: boolean;
   disabled: boolean;
+  index: number;
   onOpen: () => void;
 }) {
   const name = summary?.name ?? fallbackName;
@@ -321,22 +355,25 @@ function LanguageCard({ summary, code, fallbackName, active, disabled, onOpen }:
       data-pack={code}
       data-active={active || undefined}
       aria-label={t("dashboard.lang.open", { name: label })}
-      className={`flex min-h-[5.25rem] w-full flex-col gap-1 rounded-2xl border-2 px-5 py-3 text-left ${active ? "border-ngoc bg-ngoc-sang/60" : "border-phu-sa/15 bg-white/70"}`}
+      style={{ "--parlo-stagger": `${Math.min(index, 5) * 40}ms` } as CSSProperties}
+      className={`flex min-h-[5.25rem] w-full flex-col gap-1 rounded-card border px-5 py-3 text-left transition-transform motion-safe:parlo-enter motion-safe:active:scale-[.99] ${
+        active ? "border-ngoc/40 bg-ngoc-sang/50 shadow-card" : "border-line bg-surface"
+      }`}
     >
-      <span className="flex items-baseline justify-between gap-3">
+      <span className="flex items-center justify-between gap-3">
         <span className="font-serif text-lg">{label}</span>
-        {active && <span className="shrink-0 text-sm text-phu-sa">{t("dashboard.lang.active")}</span>}
+        {active && <span className="shrink-0 rounded-chip bg-ngoc px-2 py-0.5 text-sm font-medium text-nuoc">{t("dashboard.lang.active")}</span>}
       </span>
       {summary === null ? (
-        <span className="text-sm text-phu-sa">{t("dashboard.loading")}</span>
+        <Skeleton className="h-4 w-2/3" />
       ) : summary.contentMissing ? (
         <span className="text-sm text-phu-sa">{t("dashboard.lang.unavailable")}</span>
       ) : summary.started ? (
         <>
-          <span className="flex flex-wrap gap-x-4 text-sm">
-            <span className="font-semibold">{t("dashboard.lang.lessons", { done: summary.lessonsDone, total: summary.lessonsTotal })}</span>
-            <span className="text-phu-sa">{plural("dashboard.lang.units", "dashboard.lang.units.plural", summary.unitsPassed)}</span>
-            <span className="text-phu-sa">{t("dashboard.xp", { n: summary.xp })}</span>
+          <span className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            <span className="font-semibold tabular-nums">{t("dashboard.lang.lessons", { done: summary.lessonsDone, total: summary.lessonsTotal })}</span>
+            <span className="text-phu-sa tabular-nums">{plural("dashboard.lang.units", "dashboard.lang.units.plural", summary.unitsPassed)}</span>
+            <span className="text-phu-sa tabular-nums">{t("dashboard.xp", { n: summary.xp })}</span>
           </span>
           <span className="text-sm text-phu-sa">{date ? t("dashboard.lang.lastActive", { date }) : ""}</span>
         </>

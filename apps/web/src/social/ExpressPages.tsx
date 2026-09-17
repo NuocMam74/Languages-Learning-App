@@ -5,7 +5,7 @@ import { useAccount } from "../account.ts";
 import { ApiError } from "../api.ts";
 import { shareImage } from "../certificates/share-image.ts";
 import { Button, Screen } from "../components/ui.tsx";
-import { BackHeader } from "../exams/BackHeader.tsx";
+import { Card, Chip, EmptyState, Icon, PageHeader, Skeleton } from "../design/index.ts";
 import { ChoNoi } from "../games/ChoNoi.tsx";
 import { gamePool } from "../games/GamesPage.tsx";
 import { getLocale, t, type MessageKey } from "../i18n/index.ts";
@@ -49,7 +49,17 @@ export function ExpressPage({ content }: { content: ContentIndex }) {
   }, [status, online]);
 
   const pool = useMemo(() => (completed ? gamePool(content, completed) : null), [content, completed]);
-  if (!pool) return <Screen><p className="my-auto text-center text-phu-sa">{t("games.loading")}</p></Screen>;
+  if (!pool) {
+    return (
+      <Screen>
+        <p className="pb-3 text-phu-sa" role="status">{t("games.loading")}</p>
+        <div className="flex flex-col gap-3" aria-hidden>
+          <Skeleton className="h-40 w-full" rounded="card" />
+          <Skeleton className="h-14 w-full" rounded="card" />
+        </div>
+      </Screen>
+    );
+  }
 
   const onStart = () => {
     startedAt.current = Date.now();
@@ -110,7 +120,7 @@ export function ExpressPage({ content }: { content: ContentIndex }) {
 
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]" data-testid="express" data-posting={posting.status}>
-      <BackHeader title={t("social.express.title")} to="/defis" />
+      <PageHeader title={t("social.express.title")} back="/defis" backLabel={t("common.back")} />
       <main className="flex flex-1 flex-col pt-2">
         <ChoNoi
           content={content}
@@ -121,26 +131,32 @@ export function ExpressPage({ content }: { content: ContentIndex }) {
           onStart={onStart}
           onFinish={onFinish}
           introExtra={
-            <div className="flex flex-col gap-1 border-l-4 border-nghe pl-3">
-              <p className="font-semibold">{t("social.express.tagline")}</p>
+            <Card tone="notice" className="flex flex-col gap-2">
+              <p className="flex items-center gap-2 font-semibold">
+                <Icon name="flame" size={18} className="text-nghe" />
+                {t("social.express.tagline")}
+              </p>
               <p className="text-sm text-phu-sa">{t("social.express.rules")}</p>
-              {localBest > 0 && <p className="text-sm text-phu-sa">{t("social.express.localBest", { n: localBest })}</p>}
-            </div>
+              {localBest > 0 && <Chip tone="outline" icon="star" className="self-start">{t("social.express.localBest", { n: localBest })}</Chip>}
+            </Card>
           }
           resultExtra={
-            <div className="flex flex-col gap-1" data-testid="express-result">
+            <div className="flex flex-col gap-2" data-testid="express-result">
               {posting.status === "posted" && (
-                <>
+                <Card tone="raised" className="flex flex-col gap-1">
                   <p className="font-semibold text-ngoc">{t("social.express.best", { n: posting.result.best })}</p>
                   <p className="text-phu-sa">
                     {posting.result.rankToday !== null ? t("social.express.rank", { rank: ordinal(posting.result.rankToday, getLocale()) }) : t("social.express.noRank")}
                   </p>
-                </>
+                </Card>
               )}
               {posting.status !== "posted" && localBest > 0 && <p className="font-semibold text-ngoc">{t("social.express.best", { n: localBest })}</p>}
               {line && <p className="text-sm text-phu-sa" role="status">{t(line.key, line.vars)}</p>}
               {shareId && (
-                <Link to={`/partage/${encodeURIComponent(shareId)}`} className="min-h-11 self-start py-2 font-semibold text-ngoc">{t("social.express.sharePage")}</Link>
+                <Link to={`/partage/${encodeURIComponent(shareId)}`} className="flex min-h-11 items-center gap-1.5 self-start rounded-chip px-2 py-2 font-semibold text-ngoc hover:bg-ngoc/8">
+                  <Icon name="share" size={18} />
+                  {t("social.express.sharePage")}
+                </Link>
               )}
               {shareError && <p role="alert" className="text-sm text-son-mai">{t("social.error")}</p>}
             </div>
@@ -175,22 +191,38 @@ export function SharePage() {
   const gameName = (game: string) => (game === "cho_noi" ? t("game.cho_noi") : game);
 
   return (
-    <Screen action={<Link to="/" className="grid min-h-14 place-items-center rounded-2xl bg-ngoc px-6 text-lg font-semibold text-nuoc">{t("social.share.cta")}</Link>}>
+    <Screen
+      action={
+        <Link
+          to="/"
+          className="grid min-h-14 place-items-center rounded-card bg-ngoc px-6 text-lg font-semibold text-nuoc shadow-card transition-[background-color,transform] hover:bg-ngoc/90 motion-safe:active:scale-[.98]"
+        >
+          {t("social.share.cta")}
+        </Link>
+      }
+    >
       <div className="flex flex-1 flex-col gap-5 pt-6" data-testid="share" data-state={state.kind}>
         <div>
           <p className="font-serif text-xl text-ngoc">Parlo</p>
           <h1 className="font-serif text-2xl">{t("social.share.title")}</h1>
         </div>
-        {state.kind === "loading" && <p className="text-phu-sa">{t("social.share.loading")}</p>}
-        {state.kind === "notFound" && <p className="border-l-4 border-phu-sa/30 pl-3 text-lg">{t("social.share.notFound")}</p>}
-        {state.kind === "error" && <p className="text-phu-sa">{t("social.error")}</p>}
+        {state.kind === "loading" && (
+          <>
+            <p className="text-phu-sa" role="status">{t("social.share.loading")}</p>
+            <Skeleton className="h-52 w-full" rounded="card" />
+          </>
+        )}
+        {state.kind === "notFound" && <EmptyState art="page" title={t("social.share.notFound")} />}
+        {state.kind === "error" && <EmptyState art="page" title={t("social.error")} />}
         {state.kind === "ok" && (
-          <article className="flex flex-col gap-3 border-y-2 border-double border-ngoc py-8 text-center">
+          // Le score est l'objet de la page : une seule carte, centrée, et le seul mouvement de l'écran.
+          <Card as="article" tone="feature" className="flex flex-col items-center gap-3 text-center motion-safe:parlo-enter">
+            <Icon name="trophy" size={32} className="text-nghe" />
             <p lang="vi" className="font-serif text-vi italic text-ngoc">{gameName(state.share.game)}</p>
-            <p className="font-serif text-vi-xl font-semibold motion-safe:animate-[rise_600ms_ease-out]">{t("social.share.score", { n: state.share.score })}</p>
+            <p className="font-serif text-vi-xl font-semibold">{t("social.share.score", { n: state.share.score })}</p>
             <p className="text-lg">{t("social.share.by", { name: state.share.displayName, game: gameName(state.share.game) })}</p>
             <p className="text-sm text-phu-sa">{new Date(state.share.createdAt).toLocaleDateString(getLocale(), { day: "numeric", month: "long", year: "numeric" })}</p>
-          </article>
+          </Card>
         )}
         <p className="text-sm text-phu-sa">{t("social.share.about")}</p>
       </div>

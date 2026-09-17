@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { playConcept, ttsAllowed, type PlaybackSource } from "../audio.ts";
 import { Vi } from "../components/ui.tsx";
+import { Chip, Icon, IconButton, type ChipTone } from "../design/index.ts";
 import { l, t, toneLabel } from "../i18n/index.ts";
 import { forceDue } from "../learner.ts";
 import { NoteBlock } from "../notes/NoteBlock.tsx";
-import { Chip } from "./ui.tsx";
 import { daysUntilDue, type LibraryState, type SeenConcept } from "./library.ts";
 
 /**
@@ -15,11 +15,15 @@ import { daysUntilDue, type LibraryState, type SeenConcept } from "./library.ts"
  * liste : on reste sur place, sans perdre sa recherche ni sa position.
  */
 
-const CHIP_TONE: Record<LibraryState, "new" | "due" | "hard" | "mastered" | "neutral"> = {
-  new: "new",
-  due: "due",
-  hard: "hard",
-  mastered: "mastered",
+/**
+ * Un ton de jeton par état, du plus actionnable au plus rassurant : ce qui réclame un geste
+ * aujourd'hui est plein (`solid`), ce qui est acquis est jade tenu, ce qui coince est laque.
+ */
+const CHIP_TONE: Record<LibraryState, ChipTone> = {
+  new: "nghe",
+  due: "solid",
+  hard: "son-mai",
+  mastered: "ngoc",
   scheduled: "neutral",
 };
 
@@ -50,19 +54,21 @@ export function WordRow({ content, entry, concept, open, onToggle, now }: {
   now: Date;
 }) {
   return (
-    <li className="border-b border-phu-sa/10 last:border-b-0" data-testid="word" data-concept={concept.id} data-state={entry.state}>
+    <li data-testid="word" data-concept={concept.id} data-state={entry.state}>
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
         aria-label={t("review.vocab.open", { word: concept.vi })}
-        className="flex min-h-14 w-full items-center justify-between gap-3 py-2.5 text-left"
+        className="flex min-h-14 w-full items-center gap-3 py-3 text-left"
       >
-        <span className="flex min-w-0 flex-col">
+        <span className="flex min-w-0 flex-1 flex-col">
           <Vi size="2xl">{concept.vi}</Vi>
           <span className="truncate text-phu-sa">{l(concept.gloss)}</span>
         </span>
         <Chip tone={CHIP_TONE[entry.state]}>{stateLabel(entry, now)}</Chip>
+        {/* Simple affordance : la flèche pivote, rien ne se déplace autour (aucun recalcul de page). */}
+        <Icon name="chevronDown" size={20} className={`text-phu-sa motion-safe:transition-transform motion-safe:duration-200 ${open ? "rotate-180" : ""}`} />
       </button>
       {open && <WordDetail content={content} entry={entry} concept={concept} />}
     </li>
@@ -82,26 +88,16 @@ function WordDetail({ content, entry, concept }: { content: ContentIndex; entry:
 
   return (
     <div className="flex flex-col gap-3 pb-4" data-testid="word-detail">
-      <div className="flex flex-wrap items-center gap-3">
-        <button type="button" onClick={() => play("natural")} aria-label={t("audio.play")} data-testid="word-play" className="grid size-12 place-items-center rounded-full bg-ngoc text-nuoc">
-          <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
-            <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor" />
-            <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" />
-          </svg>
-        </button>
-        <button type="button" onClick={() => play("slow")} aria-label={t("audio.slow")} data-testid="word-play-slow" className="grid size-12 place-items-center rounded-full border-2 border-ngoc/30 text-ngoc">
-          <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="M4 15c0-4 3-7 7-7s7 3 7 7z" />
-            <path d="M18 13.5h1.5a1.5 1.5 0 0 0 0-3H18M6 15l-1 3M16 15l1 3M8 11l3 4 3-4" />
-          </svg>
-        </button>
+      <div className="flex flex-wrap items-center gap-2">
+        <IconButton icon="sound" label={t("audio.play")} tone="solid" onClick={() => play("natural")} data-testid="word-play" />
+        <IconButton icon="slow" label={t("audio.slow")} tone="ngoc" onClick={() => play("slow")} data-testid="word-play-slow" className="border-2 border-ngoc/25" />
         {concept.tone && <span className="text-sm text-phu-sa">{t("review.vocab.tone")} · {toneLabel([concept.tone])}</span>}
       </div>
       {source === "tts" && <p className="text-sm text-phu-sa/80">{t("audio.tts")}</p>}
       {source === "missing" && <p className="text-sm text-son-mai">{t("audio.missing")}</p>}
 
       {example && (
-        <p className="flex flex-col gap-0.5">
+        <p className="flex flex-col gap-0.5 rounded-field bg-surface-2 px-3 py-2">
           <span className="text-sm text-phu-sa">{t("review.vocab.example")}</span>
           <Vi>{example.vi}</Vi>
           <span className="text-phu-sa">{l({ fr: example.fr, ...(example.en ? { en: example.en } : {}) })}</span>
@@ -115,7 +111,7 @@ function WordDetail({ content, entry, concept }: { content: ContentIndex; entry:
         </p>
       )}
 
-      {concept.note && <p className="border-l-4 border-ngoc-sang pl-3 text-sm">{l(concept.note)}</p>}
+      {concept.note && <p className="rounded-field border-l-4 border-ngoc-sang bg-surface-2 px-3 py-2 text-sm">{l(concept.note)}</p>}
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         {!forced && entry.state !== "due" && (
@@ -123,15 +119,24 @@ function WordDetail({ content, entry, concept }: { content: ContentIndex; entry:
             type="button"
             data-testid="word-force-due"
             onClick={() => void forceDue(concept.id, content.pack.code).then(() => setForced(true))}
-            className="min-h-11 rounded-xl border-2 border-ngoc px-4 font-semibold text-ngoc"
+            className="inline-flex min-h-11 items-center gap-2 rounded-field border-2 border-ngoc px-4 font-semibold text-ngoc"
           >
+            <Icon name="refresh" size={18} />
             {t("review.vocab.forceDue")}
           </button>
         )}
         {(forced || entry.state === "due") && (
           <>
-            {forced && <span role="status" className="text-sm font-medium text-ngoc" data-testid="word-forced">{t("review.vocab.forced")}</span>}
-            <Link to="/revision" className="min-h-11 py-2 font-semibold text-ngoc" data-testid="word-go-review">{t("review.vocab.goReview")}</Link>
+            {forced && (
+              <span role="status" className="inline-flex items-center gap-1.5 text-sm font-medium text-ngoc" data-testid="word-forced">
+                <Icon name="check" size={16} />
+                {t("review.vocab.forced")}
+              </span>
+            )}
+            <Link to="/revision" className="inline-flex min-h-11 items-center gap-2 font-semibold text-ngoc" data-testid="word-go-review">
+              <Icon name="play" size={18} />
+              {t("review.vocab.goReview")}
+            </Link>
           </>
         )}
       </div>

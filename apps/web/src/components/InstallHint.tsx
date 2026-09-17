@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Icon } from "../design/index.ts";
 import { t } from "../i18n/index.ts";
 import { installPrompt, isIos, isIosSafari, isStandalone, onInstallPrompt, type BeforeInstallPromptEvent } from "../pwa/install.ts";
 
@@ -52,12 +53,12 @@ export function InstallHint() {
 
   const body = deferred ? t("install.android") : isIosSafari() ? t("install.ios") : t("mobile.install.iosOther");
   return (
-    <aside className="flex flex-col gap-3 border-l-4 border-nghe py-1 pl-4" data-testid="install-hint" data-variant={deferred ? "prompt" : isIosSafari() ? "ios-safari" : "ios-other"}>
-      <p className="font-semibold">{t("install.title")}</p>
+    <aside className="flex flex-col gap-3 rounded-card border border-nghe/30 bg-surface-nghe px-4 py-4" data-testid="install-hint" data-variant={deferred ? "prompt" : isIosSafari() ? "ios-safari" : "ios-other"}>
+      <p className="flex items-center gap-2 font-semibold"><Icon name="download" size={18} className="text-nghe" />{t("install.title")}</p>
       <p className="text-sm text-phu-sa">{body}</p>
       <div className="flex gap-4">
         {deferred && (
-          <button type="button" className="min-h-11 rounded-xl bg-ngoc px-4 font-semibold text-nuoc" onClick={() => void deferred.prompt().then(dismiss)}>
+          <button type="button" className="min-h-11 rounded-chip bg-ngoc px-4 font-semibold text-nuoc transition-transform motion-safe:active:scale-[.98]" onClick={() => void deferred.prompt().then(dismiss)}>
             {t("install.cta")}
           </button>
         )}

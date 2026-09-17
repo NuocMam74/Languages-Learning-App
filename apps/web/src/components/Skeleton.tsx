@@ -6,7 +6,9 @@ import { ensureMessages, messagesReady } from "../i18n/index.ts";
  * le chargement d'un écran à la demande ou d'une unité de contenu. Aucune donnée, aucun texte.
  */
 
-const bar = "rounded-full bg-phu-sa/10 motion-safe:animate-pulse";
+// Une lueur qui traverse (design/tokens.css), plus calme qu'un clignotement d'opacité.
+const bar = "rounded-full bg-phu-sa/10 motion-safe:parlo-shimmer";
+const card = "rounded-card bg-phu-sa/10 motion-safe:parlo-shimmer";
 
 export function ScreenSkeleton({ label = "Parlo" }: { label?: string }) {
   return (
@@ -19,7 +21,7 @@ export function ScreenSkeleton({ label = "Parlo" }: { label?: string }) {
     >
       <div className={`h-8 w-2/5 ${bar}`} />
       <div className={`h-4 w-3/5 ${bar}`} />
-      <div className={`mt-4 h-20 w-full rounded-2xl ${bar}`} />
+      <div className={`mt-4 h-20 w-full ${card}`} />
       <div className={`h-3 w-full ${bar}`} />
       <div className={`h-3 w-4/5 ${bar}`} />
       <div className="mt-6 flex flex-col items-center gap-10">
@@ -37,8 +39,8 @@ export function ExerciseSkeleton() {
     <div className="flex flex-1 flex-col gap-4" role="status" aria-busy="true" data-testid="exercise-skeleton">
       <div className={`h-5 w-1/2 ${bar}`} />
       <div className={`mx-auto my-6 size-24 ${bar}`} />
-      <div className={`h-16 w-full rounded-2xl ${bar}`} />
-      <div className={`h-16 w-full rounded-2xl ${bar}`} />
+      <div className={`h-16 w-full ${card}`} />
+      <div className={`h-16 w-full ${card}`} />
     </div>
   );
 }

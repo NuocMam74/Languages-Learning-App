@@ -2,6 +2,7 @@ import type { Localized } from "@parlo/core";
 import { usePrefs } from "../prefs.ts";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router";
+import { Card, EmptyState, Icon, SectionTitle } from "../design/index.ts";
 import { l, t } from "../i18n/index.ts";
 import { lookupGloss, segmentSentence, type Glossary } from "./glossary.ts";
 import { micGranted, speakVietnamese, speechInputSupported, speechOutputSupported, useDictation } from "./speech.ts";
@@ -63,6 +64,15 @@ function withAttachedPunctuation(segments: readonly { text: string; key: string 
   return out;
 }
 
+/**
+ * Les deux bulles ne se distinguent pas par une nuance mais par leur **nature** : Cô Mai parle
+ * depuis une surface posée (blanc cassé, filet fin), l'apprenant depuis un jade dilué. Le rayon
+ * généreux vient du système ; seul le coin côté épaule est rentré, pour que la bulle « sorte » de
+ * son côté. Le vietnamien reste l'objet visuel : serif, grand, interligne large.
+ */
+const BUBBLE_TUTOR = "rounded-card rounded-tl-md border border-line bg-surface px-4 py-3 shadow-card";
+const BUBBLE_LEARNER = "rounded-card rounded-tr-md bg-ngoc-sang px-4 py-3 text-muc";
+
 function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage; glossaries: Glossary[]; speakable: boolean }) {
   const [open, setOpen] = useState<{ key: string; text: string } | null>(null);
   const resting = message.fallback === "quota";
@@ -71,9 +81,12 @@ function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage
 
   return (
     <div className="flex max-w-[88%] scroll-mt-4 flex-col items-start gap-1.5 self-start" data-testid="tutor-message" data-fallback={message.fallback ?? undefined}>
-      <span className="text-sm font-semibold text-ngoc">{t("tutor.name")}</span>
+      <span className="flex items-center gap-1.5 text-sm font-semibold text-ngoc">
+        <Icon name="tutor" size={16} />
+        {t("tutor.name")}
+      </span>
       {resting && message.sentences.length === 0 && (
-        <p className="rounded-2xl rounded-tl-md bg-phu-sa/5 px-4 py-2.5 text-lg">{t("tutor.chat.resting")}</p>
+        <p className={`${BUBBLE_TUTOR} text-lg`}>{t("tutor.chat.resting")}</p>
       )}
       {message.sentences.map((sentence, i) => {
         const vi = looksVietnamese(sentence) || segmentSentence(sentence, ...glossaries).some((s) => s.key);
@@ -81,7 +94,7 @@ function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage
           <p
             key={i}
             {...(vi ? { lang: "vi" } : {})}
-            className={`rounded-2xl rounded-tl-md px-4 py-2.5 ${message.fallback ? "bg-phu-sa/5" : "bg-ngoc-sang"} ${vi ? "font-serif text-[1.3rem] leading-[1.55]" : "text-lg"}`}
+            className={`${BUBBLE_TUTOR} ${message.fallback ? "opacity-80" : ""} ${vi ? "font-serif text-[1.3rem] leading-[1.55]" : "text-lg"}`}
           >
             {vi && !message.fallback
               ? withAttachedPunctuation(segmentSentence(sentence, ...glossaries)).map((seg, j) =>
@@ -109,7 +122,7 @@ function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage
         );
       })}
       {open && gloss && (
-        <p className="border-l-4 border-nghe pl-3" role="status" data-testid="gloss">
+        <p role="status" data-testid="gloss" className="rounded-chip border border-nghe/30 bg-surface-nghe px-3 py-2">
           <span lang="vi" className="font-serif text-lg">{open.text}</span>
           <span className="text-phu-sa"> — </span>
           {l(gloss)}
@@ -118,7 +131,8 @@ function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage
       {resting && <p className="text-sm text-phu-sa">{t("tutor.chat.restingHint")}</p>}
       {speakable && viText && !message.fallback && speechOutputSupported() && (
         <p className="flex items-center gap-2 text-sm text-phu-sa">
-          <button type="button" className="min-h-11 font-semibold text-ngoc" onClick={() => speakVietnamese(viText)}>
+          <button type="button" className="flex min-h-11 items-center gap-1.5 rounded-chip px-2 font-semibold text-ngoc hover:bg-ngoc/8" onClick={() => speakVietnamese(viText)}>
+            <Icon name="sound" size={18} />
             {t("tutor.chat.listen")}
           </button>
           <span className="text-phu-sa/80">{t("audio.tts")}</span>
@@ -133,11 +147,12 @@ function UserMessage({ message, onRetry }: { message: ChatMessage; onRetry?: (m:
   const vi = looksVietnamese(text);
   return (
     <div className="flex max-w-[88%] flex-col items-end gap-1.5 self-end" data-testid="user-message">
-      <p {...(vi ? { lang: "vi" } : {})} className={`rounded-2xl rounded-tr-md bg-ngoc px-4 py-2.5 text-nuoc ${vi ? "font-serif text-[1.3rem] leading-[1.55]" : "text-lg"}`}>
+      <p {...(vi ? { lang: "vi" } : {})} className={`${BUBBLE_LEARNER} ${vi ? "font-serif text-[1.3rem] leading-[1.55]" : "text-lg"}`}>
         {text}
       </p>
       {message.correction && (
-        <div className="max-w-full border-r-4 border-nghe pr-3 text-right" data-testid="correction">
+        // La correction n'est pas une erreur : curcuma dilué, pas de laque (spec §5.8).
+        <div className="max-w-full rounded-chip border border-nghe/30 bg-surface-nghe px-3 py-2 text-right" data-testid="correction">
           <p className="text-sm text-phu-sa">{t("tutor.chat.better")}</p>
           <p lang="vi" className="font-serif text-lg">{message.correction.corrected}</p>
           {message.correction.explanation && <p className="text-sm">{message.correction.explanation}</p>}
@@ -147,7 +162,8 @@ function UserMessage({ message, onRetry }: { message: ChatMessage; onRetry?: (m:
         <p className="flex items-center gap-3 text-sm text-son-mai" role="alert">
           {t("tutor.chat.failed")}
           {onRetry && (
-            <button type="button" className="min-h-11 font-semibold text-ngoc" onClick={() => onRetry(message)}>
+            <button type="button" className="flex min-h-11 items-center gap-1.5 rounded-chip px-2 font-semibold text-ngoc hover:bg-ngoc/8" onClick={() => onRetry(message)}>
+              <Icon name="refresh" size={18} />
               {t("tutor.chat.retry")}
             </button>
           )}
@@ -157,12 +173,13 @@ function UserMessage({ message, onRetry }: { message: ChatMessage; onRetry?: (m:
   );
 }
 
+/** Cô Mai réfléchit : jamais une bulle vide — trois points qui respirent, dans sa propre bulle. */
 function Typing() {
   return (
-    <div className="flex items-center gap-2 self-start rounded-2xl rounded-tl-md bg-ngoc-sang px-4 py-3" data-testid="typing">
+    <div className={`flex items-center gap-2 self-start ${BUBBLE_TUTOR}`} data-testid="typing">
       <span className="sr-only">{t("tutor.chat.typing")}</span>
       {[0, 1, 2].map((i) => (
-        <span key={i} aria-hidden className="size-2 rounded-full bg-ngoc/60 motion-safe:animate-pulse" style={{ animationDelay: `${i * 180}ms` }} />
+        <span key={i} aria-hidden className="size-2.5 rounded-full bg-ngoc/50 motion-safe:animate-pulse" style={{ animationDelay: `${i * 180}ms` }} />
       ))}
     </div>
   );
@@ -212,22 +229,26 @@ export function Composer({ onSend, disabled, placeholder, extra, onFocus }: {
   };
 
   return (
-    <div className="sticky bottom-0 flex flex-col gap-2 bg-nuoc pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]" data-testid="composer">
+    // Filet fin plutôt qu'une ombre : le fil de discussion passe dessous sans qu'on l'écrase.
+    <div className="sticky bottom-0 flex flex-col gap-2 border-t border-line bg-nuoc pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]" data-testid="composer">
       {extra}
       {explain && (
-        <div className="flex flex-col gap-2 border-l-4 border-nghe pl-3" data-testid="mic-permission">
-          <p className="font-semibold">{t("tutor.voice.title")}</p>
+        <Card tone="notice" className="flex flex-col gap-2" data-testid="mic-permission">
+          <p className="flex items-center gap-2 font-semibold">
+            <Icon name="mic" size={18} className="text-nghe" />
+            {t("tutor.voice.title")}
+          </p>
           <p>{t("tutor.voice.body")}</p>
           <p className="text-sm text-phu-sa">{t("tutor.voice.privacy")}</p>
           <div className="flex gap-4">
-            <button type="button" className="min-h-11 rounded-xl bg-ngoc px-4 font-semibold text-nuoc" onClick={() => void mic()}>
+            <button type="button" className="min-h-11 rounded-chip bg-ngoc px-4 font-semibold text-nuoc transition-transform motion-safe:active:scale-[.98]" onClick={() => void mic()}>
               {t("tutor.voice.allow")}
             </button>
-            <button type="button" className="min-h-11 text-ngoc" onClick={() => setExplain(false)}>
+            <button type="button" className="min-h-11 rounded-chip px-3 font-semibold text-ngoc" onClick={() => setExplain(false)}>
               {t("tutor.voice.later")}
             </button>
           </div>
-        </div>
+        </Card>
       )}
       {dictation.state === "listening" && <p className="text-sm text-ngoc" role="status">{t("tutor.voice.listening")}</p>}
       {dictation.state === "denied" && <p className="text-sm text-phu-sa" role="status">{t("tutor.voice.denied")}</p>}
@@ -261,7 +282,7 @@ export function Composer({ onSend, disabled, placeholder, extra, onFocus }: {
               submit();
             }
           }}
-          className="max-h-32 min-h-12 min-w-0 flex-1 resize-none rounded-2xl border-2 border-phu-sa/15 bg-white px-4 py-2.5 font-serif text-lg leading-normal placeholder:truncate placeholder:text-base placeholder:text-phu-sa/80 focus:border-ngoc focus:outline-none"
+          className="max-h-32 min-h-12 min-w-0 flex-1 resize-none rounded-field border border-line-strong bg-surface px-4 py-2.5 font-serif text-lg leading-normal shadow-card placeholder:truncate placeholder:text-base placeholder:text-phu-sa/80 focus:border-ngoc focus:outline-none"
         />
         {canDictate && (
           <button
@@ -269,46 +290,36 @@ export function Composer({ onSend, disabled, placeholder, extra, onFocus }: {
             onClick={() => void mic()}
             aria-label={dictation.state === "listening" ? t("tutor.voice.stop") : t("tutor.voice.start")}
             aria-pressed={dictation.state === "listening"}
-            className={`grid size-12 shrink-0 place-items-center rounded-full border-2 ${dictation.state === "listening" ? "border-son-mai bg-son-mai text-nuoc" : "border-ngoc/30 text-ngoc"}`}
+            className={`grid size-12 shrink-0 place-items-center rounded-full border-2 transition-[background-color,transform] motion-safe:active:scale-[.98] ${dictation.state === "listening" ? "border-son-mai bg-son-mai text-nuoc" : "border-ngoc/30 text-ngoc hover:bg-ngoc/8"}`}
           >
-            <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
-              <rect x="9" y="3" width="6" height="11" rx="3" />
-              <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21" />
-            </svg>
+            <Icon name="mic" />
           </button>
         )}
         <button
           type="submit"
           disabled={disabled || !text.trim()}
           aria-label={t("tutor.chat.send")}
-          className="grid size-12 shrink-0 place-items-center rounded-full bg-ngoc text-nuoc disabled:bg-phu-sa/25 disabled:text-phu-sa/60"
+          className="grid size-12 shrink-0 place-items-center rounded-full bg-ngoc text-nuoc shadow-card transition-[background-color,transform] motion-safe:active:scale-[.98] disabled:bg-phu-sa/25 disabled:text-phu-sa/60 disabled:shadow-none"
         >
-          <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="M5 12h13M13 6l6 6-6 6" />
-          </svg>
+          <Icon name="send" size={22} />
         </button>
       </form>
     </div>
   );
 }
 
-/** Écran d'explication : invité (compte requis) ou hors ligne. */
+/**
+ * Écran d'explication : invité (compte requis), hors ligne, ou Cô Mai pas encore là. Une barque
+ * amarrée plutôt qu'un mur de texte — l'attente se regarde, elle ne se subit pas.
+ */
 export function TutorGate({ reason, children }: { reason: "guest" | "expired" | "offline" | "soon"; children?: ReactNode }) {
-  if (reason === "soon") {
-    return (
-      <div className="flex flex-1 flex-col justify-center gap-4" data-testid="tutor-gate" data-reason={reason}>
-        <p className="font-serif text-2xl">{t("tutor.name")}</p>
-        <p className="text-lg">{t("journey.tutor.soon")}</p>
-        <p className="text-phu-sa">{t("journey.tutor.soonHint")}</p>
-        {children}
-      </div>
-    );
-  }
+  const soon = reason === "soon";
+  const title = t(soon ? "journey.tutor.soon" : reason === "offline" ? "tutor.gate.offline" : "tutor.gate.account");
+  const body = soon ? t("journey.tutor.soonHint") : reason === "offline" ? null : t("tutor.gate.why");
   return (
     <div className="flex flex-1 flex-col justify-center gap-4" data-testid="tutor-gate" data-reason={reason}>
-      <p className="font-serif text-2xl">{t("tutor.name")}</p>
-      <p className="text-lg">{t(reason === "offline" ? "tutor.gate.offline" : "tutor.gate.account")}</p>
-      {reason !== "offline" && <p className="text-phu-sa">{t("tutor.gate.why")}</p>}
+      <SectionTitle tone="strong" icon="tutor">{t("tutor.name")}</SectionTitle>
+      <EmptyState art="boat" title={title} {...(body ? { body } : {})} />
       {children}
     </div>
   );
@@ -319,7 +330,7 @@ export function GateActions({ reason }: { reason: "guest" | "expired" | "offline
   return (
     <Link
       to={reason === "expired" ? "/connexion" : "/compte"}
-      className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-ngoc px-6 text-lg font-semibold text-nuoc hover:bg-ngoc/90"
+      className="flex min-h-14 w-full items-center justify-center rounded-card bg-ngoc px-6 text-lg font-semibold text-nuoc shadow-card transition-[background-color,transform] hover:bg-ngoc/90 motion-safe:active:scale-[.98]"
     >
       {t(reason === "expired" ? "tutor.gate.login" : "tutor.gate.create")}
     </Link>

@@ -61,7 +61,7 @@ export function FillGapView({ exercise, onAnswer, locked }: Props) {
                 data-option-id={option.id}
                 disabled={locked}
                 onClick={() => setChosen(selected ? null : option.id)}
-                className={`min-h-14 rounded-2xl border-2 px-5 transition-colors ${selected ? "border-ngoc bg-ngoc-sang" : "border-phu-sa/15 bg-white/70"}`}
+                className={`min-h-14 rounded-card border-2 px-5 transition-colors ${selected ? "border-ngoc bg-ngoc-sang" : "border-line-strong bg-surface"}`}
               >
                 <Vi size="2xl">{option.text}</Vi>
               </button>

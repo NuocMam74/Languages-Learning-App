@@ -98,7 +98,7 @@ export function DialogueChoiceView({ exercise, content, onAnswer, locked }: Prop
     <Frame
       prompt={exercise.situation ? l(exercise.situation) : t("exercise.dialogue.prompt")}
       stage={
-        <div className="flex flex-col gap-2 rounded-2xl bg-white/70 px-4 py-3" data-testid="dialogue-turn" data-turn={turn.id}>
+        <div className="flex flex-col gap-2 rounded-card bg-surface px-4 py-3" data-testid="dialogue-turn" data-turn={turn.id}>
           <p className="text-sm font-semibold text-phu-sa">{speaker}</p>
           <button type="button" className="text-left" onClick={() => void playDialogue(content, [turn], () => undefined)}>
             <Vi size="vi">{turn.vi}</Vi>
@@ -132,7 +132,7 @@ export function DialogueChoiceView({ exercise, content, onAnswer, locked }: Prop
           ))}
         </div>
         {pending?.feedback && (
-          <p className="rounded-2xl bg-nghe/15 px-4 py-3" role="status" data-testid="dialogue-feedback">
+          <p className="rounded-card bg-nghe/15 px-4 py-3" role="status" data-testid="dialogue-feedback">
             {l(pending.feedback)}
           </p>
         )}

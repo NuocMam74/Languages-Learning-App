@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAccount } from "../account.ts";
+import { Icon } from "../design/index.ts";
 import { t } from "../i18n/index.ts";
 
 /**
@@ -13,8 +14,8 @@ export function VerifyEmailBanner() {
   const [state, setState] = useState<"idle" | "busy" | "sent" | "error">("idle");
   if (status !== "signed_in" || !account || account.emailVerified !== false) return null;
   return (
-    <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl bg-ngoc-sang px-4 py-2 text-sm" data-testid="verify-banner">
-      <span>{state === "sent" ? t("journey.verify.resent") : t("journey.verify.banner")}</span>
+    <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-card border border-ngoc/20 bg-ngoc-sang px-4 py-2.5 text-sm" data-testid="verify-banner">
+      <span className="flex items-center gap-2"><Icon name="info" size={16} className="text-ngoc" />{state === "sent" ? t("journey.verify.resent") : t("journey.verify.banner")}</span>
       {state !== "sent" && (
         <button
           type="button"

@@ -7,6 +7,7 @@ import { BadgeIcon } from "../components/BadgeIcon.tsx";
 import { ExerciseView } from "../components/exercises.tsx";
 import { levelLabel, LevelLine } from "../components/LevelLine.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
+import { Card, CountUp, EmptyState, Icon, IconButton, ProgressBar, ProgressRing, SectionTitle, Sheet, staggerStyle } from "../design/index.ts";
 import { playCorrectSound } from "../feedback-sound.ts";
 import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { getProfile, progressState } from "../learner.ts";
@@ -57,15 +58,27 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   // Entraînement : on revient dans la bibliothèque, pas sur le parcours.
   const backTo = practice ? "/reviser/lecons" : "/apprendre";
 
-  if (status === "error") return <Screen><p className="text-son-mai">{error}</p></Screen>;
+  if (status === "error") {
+    return (
+      <Screen action={<Button onClick={() => setAttempt((n) => n + 1)}>{t("error.retry")}</Button>}>
+        <Card tone="alert" className="my-auto flex items-start gap-3">
+          <Icon name="alert" size={20} className="mt-0.5 shrink-0 text-son-mai" />
+          <p className="text-son-mai">{error}</p>
+        </Card>
+      </Screen>
+    );
+  }
   if (status === "locked") return <Navigate to="/apprendre" replace state={{ notice: "locked" }} />;
   if (status === "empty") {
     const review = mode === "review";
     return (
       <Screen action={<Button onClick={() => navigate("/apprendre", { replace: true })}>{t("recap.next")}</Button>}>
-        <div className="flex flex-1 flex-col justify-center gap-4" data-testid="session-empty">
-          <h1 className="font-serif text-2xl">{t(review ? "journey.empty.title" : "journey.empty.dailyTitle")}</h1>
-          <p className="text-lg text-phu-sa">{t(review ? "journey.empty.body" : "journey.empty.dailyBody")}</p>
+        <div className="flex flex-1 flex-col justify-center" data-testid="session-empty">
+          <EmptyState
+            art="boat"
+            title={t(review ? "journey.empty.title" : "journey.empty.dailyTitle")}
+            body={t(review ? "journey.empty.body" : "journey.empty.dailyBody")}
+          />
         </div>
       </Screen>
     );
@@ -91,31 +104,32 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
       style={status === "feedback" && feedback && !feedback.correct && sheetHeight > 0 ? { paddingBottom: sheetHeight } : undefined}
     >
       <header className="flex items-center gap-4">
-        <button type="button" onClick={() => navigate(backTo)} aria-label={t("lesson.quit")} className="grid size-11 shrink-0 place-items-center rounded-full text-phu-sa">
-          <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M6 6l12 12M18 6L6 18" /></svg>
-        </button>
-        <div
-          className="h-3 flex-1 overflow-hidden rounded-full bg-phu-sa/10"
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={total}
-          aria-valuenow={done}
-          aria-label={t("lesson.progress", { i: done + 1, n: total })}
-        >
-          <div className="h-full rounded-full bg-ngoc transition-[width] duration-500" style={{ width: `${(done / total) * 100}%` }} />
-        </div>
+        <IconButton icon="close" label={t("lesson.quit")} onClick={() => navigate(backTo)} className="-ml-2" />
+        {/* La barre de séance se remplit seule : c'est le seul mouvement pendant qu'on répond. */}
+        <ProgressBar value={done} max={total} label={t("lesson.progress", { i: done + 1, n: total })} className="h-3 flex-1" />
       </header>
       {practice && (
-        <p className="mt-3 rounded-xl bg-nghe/15 px-3 py-1.5 text-sm" data-testid="practice-banner">{t("review.practice.banner")}</p>
+        <p className="mt-3 flex items-center gap-2 rounded-chip bg-surface-nghe px-3 py-1.5 text-sm" data-testid="practice-banner">
+          <Icon name="refresh" size={15} />
+          {t("review.practice.banner")}
+        </p>
       )}
-      {label && <p className="mt-3 text-sm font-medium text-ngoc">{t(label)}</p>}
+      {label && (
+        <p className="mt-3 flex items-center gap-2 text-sm font-medium text-ngoc">
+          <span className="h-4 w-1 rounded-full bg-ngoc" aria-hidden />
+          {t(label)}
+        </p>
+      )}
       {lesson && lessonStart && <p className="mt-1 text-sm text-phu-sa">{l(lesson.goal)}</p>}
 
       {nudgeConcept && status === "answering" && (
-        <aside className="mt-4 rounded-2xl bg-nghe/15 px-4 py-3 text-sm" data-testid="tutor-nudge">
-          {t("lesson.tutorNudge", { word: nudgeConcept.vi })}
-          {remedial && <span className="mt-1 block font-semibold">{t("journey.easier")}</span>}
-        </aside>
+        <Card tone="notice" as="aside" className="mt-4 flex items-start gap-2.5 py-3 text-sm" data-testid="tutor-nudge">
+          <Icon name="tutor" size={18} className="mt-0.5 shrink-0 text-nghe" />
+          <span>
+            {t("lesson.tutorNudge", { word: nudgeConcept.vi })}
+            {remedial && <span className="mt-1 block font-semibold">{t("journey.easier")}</span>}
+          </span>
+        </Card>
       )}
 
       <main className="flex flex-1 flex-col pt-6">
@@ -255,20 +269,25 @@ function Feedback({ content, onHeight, chosenId }: { content: ContentIndex; onHe
   };
 
   return (
-    <div
+    <Sheet
       ref={sheet}
       role="status"
+      tone={feedback.correct ? "ngoc" : "surface"}
       data-testid="feedback-sheet"
-      className={`fixed inset-x-0 bottom-0 z-10 mx-auto flex max-h-[70dvh] max-w-[720px] flex-col rounded-t-3xl pt-5 pr-[max(1.25rem,env(safe-area-inset-right))] pb-[max(1.25rem,env(safe-area-inset-bottom))] pl-[max(1.25rem,env(safe-area-inset-left))] short:max-h-[55dvh] short:pt-3 short:pb-[max(0.75rem,env(safe-area-inset-bottom))] ${
-        feedback.correct ? "bg-ngoc text-nuoc" : "bg-white text-muc shadow-[0_-8px_30px_rgb(20_32_30/0.12)]"
-      }`}
+      className="max-h-[70dvh] short:max-h-[55dvh] short:pt-3 short:pb-[max(0.75rem,env(safe-area-inset-bottom))]"
     >
       {expectedId && !feedback.correct && (
         // Bonne réponse surlignée dans la liste, l'option choisie (fausse) en rouge.
         <style>{`${chosenId && chosenId !== expectedId ? `[data-testid="lesson"] [data-option-id="${cssId(chosenId)}"]{border-color:var(--color-son-mai);background-color:color-mix(in srgb,var(--color-son-mai) 8%,white)}` : ""}[data-testid="lesson"] [data-option-id="${cssId(expectedId)}"]{border-color:var(--color-ngoc);background-color:var(--color-ngoc-sang);box-shadow:0 0 0 2px var(--color-ngoc)}`}</style>
       )}
       {feedback.correct ? (
-        <p className="text-2xl font-semibold motion-safe:animate-[rise_300ms_ease-out]">{t("lesson.correct")}</p>
+        // Le moment héroïque de la séance : la feuille jade monte, la coche se pose avec elle.
+        <p className="flex items-center gap-3 text-2xl font-semibold motion-safe:animate-[rise_300ms_ease-out]">
+          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-nuoc/20">
+            <Icon name="check" size={22} strokeWidth={3} />
+          </span>
+          {t("lesson.correct")}
+        </p>
       ) : (
         <div className="flex min-h-0 flex-col gap-3 short:grid short:grid-cols-[minmax(0,1fr)_auto] short:items-end short:gap-x-6">
           <div className="-mx-1 flex min-h-0 flex-col gap-3 overflow-y-auto overscroll-contain px-1 short:max-h-[calc(55dvh-1.5rem)] short:gap-1">
@@ -290,7 +309,7 @@ function Feedback({ content, onHeight, chosenId }: { content: ContentIndex; onHe
             )}
             {why === "loading" && <p className="min-h-11 text-sm text-phu-sa">{t("tutor.thinking")}</p>}
             {why !== null && why !== "loading" && (
-              <p className="border-l-4 border-nghe pl-3 text-sm" aria-live="polite">
+              <p className="rounded-field bg-surface-nghe px-3 py-2 text-sm" aria-live="polite">
                 <span className="font-semibold">{t("tutor.name")} : </span>
                 {why.kind === "tutor"
                   ? why.text
@@ -307,7 +326,24 @@ function Feedback({ content, onHeight, chosenId }: { content: ContentIndex; onHe
           <Button className="shrink-0 short:w-auto" onClick={() => void next()}>{t("lesson.continue")}</Button>
         </div>
       )}
-    </div>
+    </Sheet>
+  );
+}
+
+/**
+ * XP du bilan, compté à l'écran (contrat phase8 §1). La chaîne traduite garde son ordre et son
+ * unité (« 40 XP », « +40 XP ») : seul le nombre qu'elle contient est remplacé par le compteur.
+ */
+function XpCount({ xp }: { xp: number }) {
+  const text = t("recap.xp", { n: xp });
+  const [before, ...after] = text.split(String(xp));
+  if (after.length === 0) return <>{text}</>;
+  return (
+    <>
+      {before}
+      <CountUp to={xp} />
+      {after.join(String(xp))}
+    </>
   );
 }
 
@@ -371,57 +407,87 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
 
   return (
     <Screen action={<Button onClick={onDone}>{t("recap.next")}</Button>}>
-      <div className="flex flex-1 flex-col gap-8 pt-8">
+      <div className="flex flex-1 flex-col gap-6 pt-6">
         <h1 className="font-serif text-2xl">{t(title)}</h1>
-        <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-          <span className="text-vi font-semibold text-ngoc motion-safe:animate-[rise_600ms_ease-out]">{t("recap.xp", { n: recap.xp })}</span>
-          <span className="text-lg text-phu-sa">{t("recap.streak", { n: recap.streak.current })}</span>
-        </div>
+
+        {/* Le moment héroïque du bilan : l'XP se compte, la série s'allume. */}
+        <Card tone="raised" className="flex items-center justify-between gap-4 py-5">
+          <p className="flex flex-col">
+            <span className="text-vi font-semibold text-ngoc">
+              <XpCount xp={recap.xp} />
+            </span>
+            <span className="flex items-center gap-1.5 text-lg text-phu-sa">
+              {recap.streak.current > 0 && <Icon name="flame" size={18} className="text-son-mai motion-safe:parlo-flame" />}
+              {t("recap.streak", { n: recap.streak.current })}
+            </span>
+          </p>
+          {recap.unitTest && (
+            <ProgressRing
+              value={Math.round(recap.unitTest.score * 100)}
+              max={100}
+              size={84}
+              tone={recap.unitTest.passed ? "ngoc" : "nghe"}
+              label={t("journey.unitTest.passed")}
+            >
+              <span className="text-lg font-semibold tabular-nums">{Math.round(recap.unitTest.score * 100)}%</span>
+            </ProgressRing>
+          )}
+        </Card>
 
         {levelUp ? (
-          <section className="flex flex-col gap-1 rounded-2xl bg-nghe/20 px-5 py-4 motion-safe:animate-[rise_700ms_ease-out]" aria-live="polite" data-testid="level-up">
+          <Card tone="notice" as="section" className="flex flex-col gap-1 motion-safe:animate-[rise_700ms_ease-out]" aria-live="polite" data-testid="level-up">
+            <Icon name="star" size={22} className="text-nghe" />
             <p className="font-serif text-2xl">{t("journey.level.up", { n: after.value })}</p>
             {after.name && <p className="text-lg">{t("journey.level.upName", { name: after.name })}</p>}
-          </section>
+          </Card>
         ) : (
           <LevelLine pack={content.pack} xp={recap.xpAfter} />
         )}
 
-        {recap.unitTest?.passed && <p className="border-l-4 border-ngoc pl-3 font-medium" data-testid="unit-test-passed">{t("journey.unitTest.passed")}</p>}
+        {recap.unitTest?.passed && (
+          <p className="flex items-center gap-2 font-medium text-ngoc" data-testid="unit-test-passed">
+            <Icon name="check" size={18} strokeWidth={3} />
+            {t("journey.unitTest.passed")}
+          </p>
+        )}
 
         {learned.length > 0 && (
           <section>
-            <h2 className="mb-3 text-phu-sa">{t("session.recap.canSay")}</h2>
-            <ul className="flex flex-col gap-3">
-              {learned.map((c) => (
-                <li key={c.id} className="flex items-baseline justify-between gap-4 border-b border-phu-sa/10 pb-2">
+            <SectionTitle icon="star" className="mb-3">{t("session.recap.canSay")}</SectionTitle>
+            <Card tone="plain" as="ul" className="flex flex-col gap-3 py-3">
+              {learned.map((c, i) => (
+                <li
+                  key={c.id}
+                  style={staggerStyle(i)}
+                  className="flex items-baseline justify-between gap-4 border-b border-line pb-2 last:border-b-0 last:pb-0 motion-safe:parlo-enter"
+                >
                   <Vi size="2xl">{c.vi}</Vi>
                   <span className="text-right text-phu-sa">{l(c.gloss)}</span>
                 </li>
               ))}
-            </ul>
+            </Card>
           </section>
         )}
 
         {reviewed.length > 0 && (
           <section>
-            <h2 className="mb-2 text-phu-sa">{t("session.recap.reviewed", { n: reviewed.length })}</h2>
+            <SectionTitle icon="cards" className="mb-2">{t("session.recap.reviewed", { n: reviewed.length })}</SectionTitle>
             <p lang="vi" className="font-serif text-lg">{reviewed.map((c) => c.vi).join(" · ")}</p>
           </section>
         )}
 
         {badges.length > 0 && (
           <section aria-live="polite">
-            <h2 className="mb-3 text-phu-sa">{t("badges.recap.earned")}</h2>
+            <SectionTitle icon="trophy" className="mb-3">{t("badges.recap.earned")}</SectionTitle>
             <ul className="flex flex-col gap-3">
-              {badges.map((code) => (
-                <li key={code} className="flex items-center gap-4">
+              {badges.map((code, i) => (
+                <Card key={code} as="li" tone="notice" stagger={i} className="flex items-center gap-4 py-3">
                   <BadgeIcon code={code} earned size={56} />
                   <div>
                     <p className="font-semibold">{t(`badges.${code}.name` as MessageKey)}</p>
                     <p className="text-sm text-phu-sa">{t(`badges.${code}.desc` as MessageKey)}</p>
                   </div>
-                </li>
+                </Card>
               ))}
             </ul>
           </section>
@@ -431,20 +497,24 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
         {recap.lessonId && <LessonNoteBlock lessonId={recap.lessonId} />}
 
         {nextTitle && (
-          <p className="text-phu-sa">
+          <p className="flex items-center gap-2 text-phu-sa">
+            <Icon name="boat" size={18} />
             {t("session.recap.nextStep")} <span className="font-medium text-muc">{nextTitle}</span>
           </p>
         )}
 
         {offerAccount && (
-          <section className="flex flex-col gap-3 border-l-4 border-nghe py-1 pl-4">
+          <Card tone="notice" as="section" className="flex flex-col gap-3">
             <p className="font-semibold">{t("account.offer.title")}</p>
             <p className="text-sm text-phu-sa">{t("account.offer.body")}</p>
-            <Link to="/compte" className="grid min-h-12 place-items-center rounded-2xl border-2 border-ngoc px-5 font-semibold text-ngoc">
+            <Link
+              to="/compte"
+              className="grid min-h-12 place-items-center rounded-card border-2 border-ngoc bg-surface px-5 font-semibold text-ngoc transition-transform motion-safe:active:scale-[.98]"
+            >
               {t("account.offer.cta")}
             </Link>
             <p className="text-sm text-phu-sa">{t("account.offer.guestWarning")}</p>
-          </section>
+          </Card>
         )}
       </div>
     </Screen>

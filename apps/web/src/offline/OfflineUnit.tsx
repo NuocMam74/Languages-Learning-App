@@ -1,6 +1,7 @@
 import { type ContentIndex, type UnitId } from "@parlo/core";
 import { useEffect, useState } from "react";
 import { offlineKey } from "../db.ts";
+import { Icon, ProgressBar } from "../design/index.ts";
 import { getLocale, l, t } from "../i18n/index.ts";
 import { useOnline } from "../use-online.ts";
 import { downloadUnit, removeOfflineUnit, unitSize, useOffline } from "./downloads.ts";
@@ -50,7 +51,7 @@ export function OfflineUnit({ content, unitId, current = false, protect = [], sh
   };
 
   return (
-    <div className="flex flex-col gap-1" data-testid="offline-unit" data-unit={unitId} data-state={state}>
+    <div className="mb-3 flex flex-col gap-1 rounded-field bg-surface-2 px-4 py-3" data-testid="offline-unit" data-unit={unitId} data-state={state}>
       {showTitle && unit && (
         <p className="font-medium">
           {l(unit.title)}
@@ -60,14 +61,17 @@ export function OfflineUnit({ content, unitId, current = false, protect = [], sh
       {state === "downloading" ? (
         <div className="flex flex-col gap-1" aria-live="polite">
           <p className="text-sm text-phu-sa">{t("offline.unit.downloading", { done: progress?.done ?? 0, total: progress?.total ?? 1 })}</p>
-          <div className="h-2 overflow-hidden rounded-full bg-phu-sa/10" role="progressbar" aria-valuemin={0} aria-valuemax={progress?.total ?? 1} aria-valuenow={progress?.done ?? 0}>
-            <div className="h-full rounded-full bg-ngoc transition-[width]" style={{ width: `${((progress?.done ?? 0) / Math.max(1, progress?.total ?? 1)) * 100}%` }} />
-          </div>
+          <ProgressBar
+            value={progress?.done ?? 0}
+            max={progress?.total ?? 1}
+            size="sm"
+            label={t("offline.unit.downloading", { done: progress?.done ?? 0, total: progress?.total ?? 1 })}
+          />
         </div>
       ) : state === "ready" ? (
         <p className="flex flex-wrap items-center gap-x-4 text-sm">
           <span className="text-ngoc">
-            <svg viewBox="0 0 24 24" className="mr-1 inline size-4 align-[-2px]" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+            <Icon name="check" size={16} strokeWidth={3} className="mr-1 inline align-[-3px]" />
             {t("offline.unit.ready", { size: formatBytes(row?.bytes || size, locale) })}
           </span>
           <button type="button" className="min-h-11 font-semibold text-ngoc" disabled={busy} onClick={() => void removeOfflineUnit(code, unitId)}>

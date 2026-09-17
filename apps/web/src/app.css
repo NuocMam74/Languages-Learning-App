@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* Système de design (contrat phase8 §1) : surfaces, profondeur, rayons, texture d'eau, mouvement. */
+@import "./design/tokens.css";
 /* Sous-ensembles latin + vietnamien seulement : moins de précache hors ligne. */
 @import "@fontsource/be-vietnam-pro/latin-400.css";
 @import "@fontsource/be-vietnam-pro/vietnamese-400.css";

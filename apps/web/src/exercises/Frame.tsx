@@ -31,7 +31,7 @@ export function Choice({ id, selected, disabled, onSelect, children, state }: {
     state === "right" ? "border-ngoc bg-ngoc-sang"
     : state === "wrong" ? "border-son-mai bg-son-mai/10"
     : selected ? "border-ngoc bg-ngoc-sang"
-    : "border-phu-sa/15 bg-white/70";
+    : "border-line-strong bg-surface";
   return (
     <button
       type="button"
@@ -41,7 +41,7 @@ export function Choice({ id, selected, disabled, onSelect, children, state }: {
       data-state={state ?? undefined}
       disabled={disabled === true}
       onClick={onSelect}
-      className={`flex min-h-16 w-full items-center gap-3 rounded-2xl border-2 px-4 py-3 text-left transition-colors ${colors}`}
+      className={`flex min-h-16 w-full items-center gap-3 rounded-card border-2 px-4 py-3 text-left transition-[background-color,border-color,transform] motion-safe:active:scale-[.98] ${colors}`}
     >
       {children}
     </button>

@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router";
 import { ApiError } from "../api.ts";
 import { Button, Screen } from "../components/ui.tsx";
 import { getKv, setKv } from "../db.ts";
+import { Card, Chip, DeltaDawn, EmptyState, Icon, Illustration, Skeleton } from "../design/index.ts";
 import { getLocale, plural, t } from "../i18n/index.ts";
 import { useTutorAccess } from "./access.ts";
 import { Composer, GateActions, MessageList, TutorGate } from "./ChatView.tsx";
@@ -13,6 +14,11 @@ import { glossesFrom, messagesFromDto, messagesFromStart, useConversation, type 
 /** Conversation libre guidée avec Cô Mai (spec §5.7, contrat phase 3 §1). */
 
 const LAST_KEY = "tutor.lastConversation";
+
+/** Un lien qui porte l'action principale se lit comme le bouton plein du bas (contrat §1). */
+const PRIMARY_LINK =
+  "flex min-h-14 w-full items-center justify-center rounded-card bg-ngoc px-6 text-lg font-semibold text-nuoc shadow-card transition-[background-color,transform] hover:bg-ngoc/90 motion-safe:active:scale-[.98]";
+
 interface LastConversation {
   id: string;
   date: string;
@@ -24,10 +30,8 @@ const openings = new Map<string, ConversationStart>();
 /** « Retour au parcours » : depuis Cô Mai, on revient sur le parcours de la langue (contrat phase7 §1). */
 export function BackHome() {
   return (
-    <Link to="/apprendre" className="-ml-2 flex min-h-11 items-center gap-1 self-start px-2 text-ngoc">
-      <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <path d="M15 5l-7 7 7 7" />
-      </svg>
+    <Link to="/apprendre" className="-ml-2 flex min-h-11 items-center gap-1 self-start rounded-chip px-2 text-ngoc hover:bg-ngoc/8">
+      <Icon name="chevronLeft" size={20} />
       {t("tutor.back")}
     </Link>
   );
@@ -55,7 +59,7 @@ export function TutorStartPage() {
     }
   };
 
-  if (access === "loading") return <Screen top={<BackHome />}><div /></Screen>;
+  if (access === "loading") return <Screen top={<BackHome />}><TutorSkeleton /></Screen>;
   if (access !== "ok") {
     return (
       <Screen top={<BackHome />} action={<GateActions reason={access} />}>
@@ -81,13 +85,35 @@ export function TutorStartPage() {
       }
     >
       <div className="flex flex-1 flex-col justify-center gap-4" data-testid="tutor-start">
-        <h1 className="font-serif text-2xl">{t("tutor.start.title")}</h1>
-        <p className="text-lg">{t("tutor.start.body")}</p>
-        <p className="text-phu-sa">{t("tutor.start.rules")}</p>
-        {state === "resting" && <p className="border-l-4 border-nghe pl-3" role="status">{t("tutor.chat.resting")} {t("tutor.chat.restingHint")}</p>}
-        {state === "error" && <p className="text-son-mai" role="alert">{t("tutor.start.error")}</p>}
+        {/* Seul moment héroïque de l'écran : le delta au lever du jour, posé une fois avant la conversation. */}
+        <Card tone="feature" className="flex flex-col gap-3">
+          <Illustration className="mx-auto max-w-[15rem]"><DeltaDawn /></Illustration>
+          <h1 className="font-serif text-2xl leading-tight">{t("tutor.start.title")}</h1>
+          <p className="text-lg">{t("tutor.start.body")}</p>
+        </Card>
+        <p className="flex items-start gap-2 text-phu-sa">
+          <Icon name="info" size={18} className="mt-1 text-ngoc" />
+          {t("tutor.start.rules")}
+        </p>
+        {state === "resting" && (
+          <div role="status"><Card tone="notice">{t("tutor.chat.resting")} {t("tutor.chat.restingHint")}</Card></div>
+        )}
+        {state === "error" && (
+          <div role="alert"><Card tone="alert" className="text-son-mai">{t("tutor.start.error")}</Card></div>
+        )}
       </div>
     </Screen>
+  );
+}
+
+/** Lecture d'IndexedDB ou attente du serveur : des barres, jamais un écran blanc (contrat §1). */
+function TutorSkeleton() {
+  return (
+    <div className="flex flex-col gap-3 py-4" aria-hidden>
+      <Skeleton className="h-40 w-full" rounded="card" />
+      <Skeleton className="h-5 w-3/4" />
+      <Skeleton className="h-5 w-1/2" />
+    </div>
   );
 }
 
@@ -122,7 +148,7 @@ export function ConversationPage({ content }: { content: ContentIndex }) {
     };
   }, [access, conversationId, loaded]);
 
-  if (access === "loading") return <Screen top={<BackHome />}><div /></Screen>;
+  if (access === "loading") return <Screen top={<BackHome />}><TutorSkeleton /></Screen>;
   if (access !== "ok") {
     return (
       <Screen top={<BackHome />} action={<GateActions reason={access} />}>
@@ -132,12 +158,21 @@ export function ConversationPage({ content }: { content: ContentIndex }) {
   }
   if (failed) {
     return (
-      <Screen top={<BackHome />} action={<Link to="/co-mai" className="flex min-h-14 items-center justify-center rounded-2xl bg-ngoc text-lg font-semibold text-nuoc">{t("tutor.chat.new")}</Link>}>
-        <p className="my-auto text-center text-lg text-phu-sa" role="alert">{t("tutor.chat.loadError")}</p>
+      <Screen top={<BackHome />} action={<Link to="/co-mai" className={PRIMARY_LINK}>{t("tutor.chat.new")}</Link>}>
+        <div className="my-auto" role="alert">
+          <EmptyState art="page" title={t("tutor.chat.loadError")} />
+        </div>
       </Screen>
     );
   }
-  if (!loaded) return <Screen top={<BackHome />}><p className="my-auto text-center text-phu-sa">{t("tutor.thinking")}</p></Screen>;
+  if (!loaded) {
+    return (
+      <Screen top={<BackHome />}>
+        <p className="pb-3 text-phu-sa" role="status">{t("tutor.thinking")}</p>
+        <TutorSkeleton />
+      </Screen>
+    );
+  }
   return <Chat key={conversationId} conversationId={conversationId} content={content} loaded={loaded} />;
 }
 
@@ -152,9 +187,10 @@ function Chat({ conversationId, content, loaded }: { conversationId: string; con
       <header className="flex items-center justify-between gap-3">
         <BackHome />
         {chat.remaining !== null && (
-          <span className="text-sm text-phu-sa" data-testid="quota">
+          // Jeton, pas une mention grise perdue : le quota est un état, il se lit d'un coup d'œil.
+          <Chip tone="outline" data-testid="quota">
             {plural("tutor.chat.remaining", "tutor.chat.remaining.plural", chat.remaining)}
-          </span>
+          </Chip>
         )}
       </header>
       <main className="flex flex-1 flex-col pt-2 pb-4">
@@ -170,11 +206,11 @@ function Chat({ conversationId, content, loaded }: { conversationId: string; con
         />
       </main>
       {closed ? (
-        <div className="sticky bottom-0 flex flex-col gap-2 bg-nuoc pt-3 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+        <div className="sticky bottom-0 flex flex-col gap-2 border-t border-line bg-nuoc pt-3 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
           {chat.resting ? (
-            <Link to="/revision" className="flex min-h-14 items-center justify-center rounded-2xl bg-ngoc text-lg font-semibold text-nuoc">{t("tutor.chat.review")}</Link>
+            <Link to="/revision" className={PRIMARY_LINK}>{t("tutor.chat.review")}</Link>
           ) : (
-            <Link to="/co-mai" className="flex min-h-14 items-center justify-center rounded-2xl bg-ngoc text-lg font-semibold text-nuoc">{t("tutor.chat.new")}</Link>
+            <Link to="/co-mai" className={PRIMARY_LINK}>{t("tutor.chat.new")}</Link>
           )}
         </div>
       ) : (

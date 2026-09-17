@@ -4,12 +4,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Screen } from "../components/ui.tsx";
 import type { Profile } from "../db.ts";
+import { Icon, ProgressBar, staggerStyle } from "../design/index.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
 import { DEFAULT_PROFILE, saveProfile } from "../learner.ts";
 import { playablePlacementFor } from "../packs/placement.ts";
 import { syncProfileChange } from "../profile-sync.ts";
 
-/** 5 questions, une par écran, réponses en gros boutons (spec §4.1.3). */
+/**
+ * 5 questions, une par écran, réponses en gros boutons (spec §4.1.3).
+ *
+ * C'est la première impression (contrat phase8 §1) : une question en serif, des réponses assez
+ * grandes pour le pouce, et une barre qui avance d'une question à l'autre — le seul mouvement
+ * héroïque de l'écran. Les réponses restent les **premiers boutons de la page** : rien ne
+ * s'intercale entre la question et le geste.
+ */
 
 interface Question<K extends keyof Profile> {
   field: K;
@@ -60,30 +68,47 @@ export function Onboarding({ content, onDone }: { content: ContentIndex; onDone:
   return (
     <Screen
       top={
-        <div className="flex items-center gap-3 pt-2">
-          {index > 0 && (
-            <button type="button" onClick={() => setIndex(index - 1)} className="grid size-11 place-items-center text-phu-sa" aria-label={t("common.back")}>
-              <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M15 5l-7 7 7 7" /></svg>
-            </button>
-          )}
-          <p className="text-sm text-phu-sa">{t("onboarding.step", { i: index + 1, n: QUESTIONS.length })}</p>
+        <div className="flex flex-col gap-2 pt-2">
+          <div className="flex min-h-11 items-center gap-3">
+            {index > 0 && (
+              <button
+                type="button"
+                onClick={() => setIndex(index - 1)}
+                className="-ml-2 grid size-11 shrink-0 place-items-center rounded-full text-phu-sa transition-[background-color,transform] hover:bg-phu-sa/8 motion-safe:active:scale-[.98]"
+                aria-label={t("common.back")}
+              >
+                <Icon name="chevronLeft" />
+              </button>
+            )}
+            <p className="text-sm text-phu-sa">{t("onboarding.step", { i: index + 1, n: QUESTIONS.length })}</p>
+          </div>
+          {/* La barre avance d'un cran par question : on voit combien il reste, sans compter. */}
+          <ProgressBar value={index + 1} max={QUESTIONS.length} size="sm" label={t("onboarding.step", { i: index + 1, n: QUESTIONS.length })} />
         </div>
       }
     >
-      <h1 className="mt-6 font-serif text-2xl">{t(question.title)}</h1>
-      <div className="mt-auto flex flex-col gap-3 pb-6">
-        {question.options.map((option) => (
-          <button
-            key={String(option.value)}
-            type="button"
-            onClick={() => void choose(option.value)}
-            className={`min-h-16 rounded-2xl border-2 px-5 text-left text-lg transition-colors ${
-              profile[question.field] === option.value ? "border-ngoc bg-ngoc-sang" : "border-phu-sa/15 bg-white/70 hover:border-ngoc/40"
-            }`}
-          >
-            {option.label}
-          </button>
-        ))}
+      {/* `key` sur la question : chaque écran rejoue son entrée, la précédente ne traîne pas. */}
+      <div key={index} className="flex flex-1 flex-col">
+        <h1 className="mt-6 font-serif text-2xl text-balance motion-safe:parlo-enter">{t(question.title)}</h1>
+        <div className="mt-auto flex flex-col gap-2.5 pb-6">
+          {question.options.map((option, i) => {
+            const chosen = profile[question.field] === option.value;
+            return (
+              <button
+                key={String(option.value)}
+                type="button"
+                onClick={() => void choose(option.value)}
+                style={staggerStyle(i)}
+                className={`flex min-h-16 w-full items-center gap-3 rounded-card border px-5 py-3 text-left text-lg transition-[background-color,border-color,transform] motion-safe:parlo-enter motion-safe:active:scale-[.99] ${
+                  chosen ? "border-2 border-ngoc bg-ngoc-sang font-semibold" : "border-line bg-surface shadow-card hover:border-ngoc/40"
+                }`}
+              >
+                <span className="min-w-0 flex-1">{option.label}</span>
+                {chosen && <Icon name="check" size={20} className="text-ngoc" strokeWidth={2.5} />}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </Screen>
   );

@@ -3,12 +3,17 @@ import { Link, useNavigate, useSearchParams } from "react-router";
 import { useAccount } from "../account.ts";
 import { ApiError, getOAuthProviders, NetworkError, oauthStartUrl, type OAuthProvider } from "../api.ts";
 import { Button, Screen } from "../components/ui.tsx";
+import { Card, Icon } from "../design/index.ts";
 import { getLocale, t, type MessageKey } from "../i18n/index.ts";
 
 /**
  * Création de compte et connexion (spec §4.1.6, §14). Email + mot de passe ; boutons OAuth
  * seulement pour les fournisseurs configurés côté serveur (contrat phase5 §4). L'invité peut
  * continuer sans compte.
+ *
+ * Écran calme (contrat phase8 §1) : le formulaire tient dans une seule carte, les champs font
+ * 16 px au moins (pas de zoom iOS), et une erreur se pose dans une carte en laque diluée —
+ * jamais du rouge nu sur du blanc.
  */
 
 export const PASSWORD_MIN = 10;
@@ -34,7 +39,17 @@ function Field({ id, label, hint, children }: { id: string; label: string; hint?
   );
 }
 
-const inputClass = "min-h-12 rounded-xl border-2 border-phu-sa/20 bg-white px-4 text-lg focus:border-ngoc focus:outline-none";
+const inputClass = "min-h-12 rounded-field border border-line-strong bg-surface px-4 text-lg focus:border-ngoc focus:outline-none";
+
+/** Erreur de formulaire : carte en laque diluée, icône à gauche, le message reste le `role="alert"`. */
+function FormError({ children }: { children: ReactNode }) {
+  return (
+    <Card tone="alert" className="flex items-start gap-3">
+      <Icon name="alert" size={20} className="mt-0.5 shrink-0 text-son-mai" />
+      <p role="alert" className="min-w-0 flex-1 font-medium text-son-mai">{children}</p>
+    </Card>
+  );
+}
 
 /** Fournisseurs OAuth configurés (`GET /auth/oauth/providers`) ; aucun bouton sinon. */
 function ProviderButtons({ next }: { next: string | null }) {
@@ -57,7 +72,12 @@ function ProviderButtons({ next }: { next: string | null }) {
     <div className="flex flex-col gap-2" data-testid="oauth-providers">
       <p className="text-center text-sm text-phu-sa">{t("journey.oauth.or")}</p>
       {providers.map((p) => (
-        <a key={p.id} href={oauthStartUrl(p.id, next ?? "/")} data-return={back} className="grid min-h-12 place-items-center rounded-2xl border-2 border-ngoc px-5 font-semibold text-ngoc">
+        <a
+          key={p.id}
+          href={oauthStartUrl(p.id, next ?? "/")}
+          data-return={back}
+          className="grid min-h-12 place-items-center rounded-card border-2 border-ngoc bg-surface px-5 font-semibold text-ngoc transition-[background-color,transform] hover:bg-ngoc-sang/50 motion-safe:active:scale-[.98]"
+        >
           {t("journey.oauth.continue", { name: p.name })}
         </a>
       ))}
@@ -126,9 +146,13 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
   if (done) {
     return (
       <Screen action={<Button onClick={() => (mode === "login" || oauth ? window.location.assign("/apprendre") : navigate("/apprendre", { replace: true }))}>{t("recap.next")}</Button>}>
-        <div className="flex flex-1 flex-col justify-center gap-3" role="status">
-          <h1 className="font-serif text-2xl">{t(mode === "register" ? "account.done.register" : "account.done.login")}</h1>
-          <p className="text-phu-sa">{t("account.done.synced")}</p>
+        <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center" role="status">
+          {/* Médaillon jade : la seule image de l'écran, et le seul mouvement. */}
+          <span className="grid size-20 place-items-center rounded-full bg-ngoc-sang text-ngoc motion-safe:parlo-flame">
+            <Icon name="check" size={40} strokeWidth={2.5} />
+          </span>
+          <h1 className="font-serif text-2xl text-balance">{t(mode === "register" ? "account.done.register" : "account.done.login")}</h1>
+          <p className="text-phu-sa text-balance">{t("account.done.synced")}</p>
         </div>
       </Screen>
     );
@@ -145,58 +169,65 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
       }
       top={
         <div className="pt-2">
-          <button type="button" onClick={() => navigate(-1)} className="grid size-11 place-items-center text-phu-sa" aria-label={t("common.back")}>
-            <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M15 5l-7 7 7 7" /></svg>
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="-ml-2 grid size-11 place-items-center rounded-full text-phu-sa transition-[background-color,transform] hover:bg-phu-sa/8 motion-safe:active:scale-[.98]"
+            aria-label={t("common.back")}
+          >
+            <Icon name="chevronLeft" />
           </button>
         </div>
       }
     >
-      <h1 className="mt-2 font-serif text-2xl">{t(register ? "account.register.title" : "account.login.title")}</h1>
-      {register && <p className="mt-2 text-phu-sa">{t("account.register.why")}</p>}
+      <h1 className="mt-2 font-serif text-2xl text-balance">{t(register ? "account.register.title" : "account.login.title")}</h1>
+      {register && <p className="mt-2 text-phu-sa text-balance">{t("account.register.why")}</p>}
 
-      <form id="account-form" onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-5" noValidate={false}>
-        {register && (
-          <Field id="acc-name" label={t("account.field.name")}>
-            <input id="acc-name" className={inputClass} value={displayName} onChange={(e) => setDisplayName(e.target.value)} required maxLength={80} autoComplete="nickname" autoCapitalize="words" autoCorrect="off" spellCheck={false} enterKeyHint="next" />
-          </Field>
-        )}
-        <Field id="acc-email" label={t("account.field.email")}>
-          <input id="acc-email" type="email" className={inputClass} value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete={register ? "email" : "username"} inputMode="email" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="next" />
-        </Field>
-        <Field id="acc-password" label={t("account.field.password")} {...(register ? { hint: t("account.field.passwordHint", { n: PASSWORD_MIN }) } : {})}>
-          <input
-            id="acc-password"
-            type="password"
-            className={inputClass}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={register ? PASSWORD_MIN : 1}
-            autoComplete={register ? "new-password" : "current-password"}
-            autoCapitalize="off"
-            autoCorrect="off"
-            spellCheck={false}
-            enterKeyHint={register ? "next" : "go"}
-            aria-describedby={register ? "acc-password-hint" : undefined}
-          />
-        </Field>
-        {register && (
-          <>
-            <Field id="acc-locale" label={t("account.field.locale")}>
-              <select id="acc-locale" className={inputClass} value={locale} onChange={(e) => setLocale(e.target.value === "en" ? "en" : "fr")}>
-                <option value="fr">Français</option>
-                <option value="en">English</option>
-              </select>
+      <form id="account-form" onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-4" noValidate={false}>
+        <Card tone="raised" className="flex flex-col gap-5">
+          {register && (
+            <Field id="acc-name" label={t("account.field.name")}>
+              <input id="acc-name" className={inputClass} value={displayName} onChange={(e) => setDisplayName(e.target.value)} required maxLength={80} autoComplete="nickname" autoCapitalize="words" autoCorrect="off" spellCheck={false} enterKeyHint="next" />
             </Field>
-            <label className="flex min-h-11 items-start gap-3">
-              <input type="checkbox" checked={ageOk} onChange={(e) => setAgeOk(e.target.checked)} className="mt-1 size-6 shrink-0 accent-ngoc" />
-              <span>{t("account.field.age")}</span>
-            </label>
-            <p className="text-sm text-phu-sa">{t("account.privacy")}</p>
-          </>
-        )}
+          )}
+          <Field id="acc-email" label={t("account.field.email")}>
+            <input id="acc-email" type="email" className={inputClass} value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete={register ? "email" : "username"} inputMode="email" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="next" />
+          </Field>
+          <Field id="acc-password" label={t("account.field.password")} {...(register ? { hint: t("account.field.passwordHint", { n: PASSWORD_MIN }) } : {})}>
+            <input
+              id="acc-password"
+              type="password"
+              className={inputClass}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength={register ? PASSWORD_MIN : 1}
+              autoComplete={register ? "new-password" : "current-password"}
+              autoCapitalize="off"
+              autoCorrect="off"
+              spellCheck={false}
+              enterKeyHint={register ? "next" : "go"}
+              aria-describedby={register ? "acc-password-hint" : undefined}
+            />
+          </Field>
+          {register && (
+            <>
+              <Field id="acc-locale" label={t("account.field.locale")}>
+                <select id="acc-locale" className={inputClass} value={locale} onChange={(e) => setLocale(e.target.value === "en" ? "en" : "fr")}>
+                  <option value="fr">Français</option>
+                  <option value="en">English</option>
+                </select>
+              </Field>
+              <label className="flex min-h-11 items-start gap-3">
+                <input type="checkbox" checked={ageOk} onChange={(e) => setAgeOk(e.target.checked)} className="mt-1 size-6 shrink-0 accent-ngoc" />
+                <span>{t("account.field.age")}</span>
+              </label>
+              <p className="text-sm text-phu-sa">{t("account.privacy")}</p>
+            </>
+          )}
+        </Card>
 
-        {error && <p role="alert" className="font-medium text-son-mai">{t(error)}</p>}
+        {error && <FormError>{t(error)}</FormError>}
       </form>
 
       {!register && (
@@ -208,7 +239,7 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
         {register ? (
           <>
             <Link to={withNext("/connexion")} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.toLogin")}</Link>
-            <div className="border-t border-phu-sa/10 pt-4">
+            <div className="border-t border-line pt-4">
               <Link to="/apprendre" className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.guest.continue")}</Link>
               <p className="text-center text-sm text-phu-sa">{t("account.offer.guestWarning")}</p>
             </div>

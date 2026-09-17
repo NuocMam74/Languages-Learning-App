@@ -1,10 +1,11 @@
 import type { ContentIndex } from "@parlo/core";
 import { useEffect, useMemo, useState } from "react";
 import { Screen, Vi } from "../components/ui.tsx";
+import { Card, Chip, EmptyState, Icon } from "../design/index.ts";
 import type { NoteRow } from "../db.ts";
 import { getLocale, l, plural, t } from "../i18n/index.ts";
 import { matchesSearch } from "../review/library.ts";
-import { EmptyState, LibraryHeader } from "../review/ui.tsx";
+import { LibraryHeader, SEARCH_CLASS } from "../review/ui.tsx";
 import { downloadText, exportFilename, notesJson, notesMarkdown, type NoteExportItem } from "./export.ts";
 import { NoteEditor } from "./NoteEditor.tsx";
 import { noteSources, type NoteSource } from "./source.ts";
@@ -68,22 +69,22 @@ export default function NotesPage({ content }: { content: ContentIndex }) {
       <p className="text-sm text-phu-sa">{t("review.notes.intro")}</p>
 
       {notes.length > 0 && (
-        <>
-          <label className="mt-4 flex flex-col gap-1 text-sm text-phu-sa">
+        <Card tone="quiet" className="mt-4 flex flex-col gap-3">
+          <label className="flex flex-col gap-1 text-sm text-phu-sa">
             {t("review.notes.search")}
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               data-testid="notes-search"
-              className="min-h-12 w-full rounded-xl border-2 border-phu-sa/15 bg-white/80 px-4 text-base text-muc"
+              className={SEARCH_CLASS}
               autoComplete="off"
               autoCapitalize="off"
               spellCheck={false}
             />
           </label>
 
-          <div className="mt-3 flex flex-wrap items-center gap-2" role="radiogroup" aria-label={t("review.notes.sort")}>
+          <div className="flex flex-wrap items-center gap-2" role="radiogroup" aria-label={t("review.notes.sort")}>
             {(["date", "target"] as const).map((value) => (
               <button
                 key={value}
@@ -92,26 +93,38 @@ export default function NotesPage({ content }: { content: ContentIndex }) {
                 aria-checked={sort === value}
                 onClick={() => setSort(value)}
                 data-testid={`notes-sort-${value}`}
-                className={`min-h-11 rounded-xl border-2 px-4 ${sort === value ? "border-ngoc bg-ngoc-sang font-semibold" : "border-phu-sa/15 bg-white/70"}`}
+                className={`inline-flex min-h-11 items-center gap-2 rounded-chip px-4 transition-colors ${
+                  sort === value ? "bg-ngoc text-nuoc font-semibold" : "border border-line-strong bg-surface text-phu-sa"
+                }`}
               >
+                <Icon name={value === "date" ? "calendar" : "cards"} size={16} />
                 {t(value === "date" ? "review.notes.sort.date" : "review.notes.sort.target")}
               </button>
             ))}
           </div>
 
-          <p className="mt-3 text-sm text-phu-sa" data-testid="notes-count">{plural("review.count.notes", "review.count.notes.plural", shown.length)}</p>
-        </>
+          <Chip tone="neutral" icon="notebook" className="self-start" data-testid="notes-count">
+            {plural("review.count.notes", "review.count.notes.plural", shown.length)}
+          </Chip>
+        </Card>
       )}
 
       {notes.length === 0 ? (
         <div className="mt-4">
           <EmptyState
-            testId="notes-empty"
+            data-testid="notes-empty"
+            art="notebook"
             title={t("review.notes.empty.title")}
             body={t("review.notes.empty.body")}
             action={
               editing === "new" ? undefined : (
-                <button type="button" onClick={() => setEditing("new")} className="min-h-11 font-semibold text-ngoc" data-testid="notes-new">
+                <button
+                  type="button"
+                  onClick={() => setEditing("new")}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-card bg-ngoc px-5 font-semibold text-nuoc"
+                  data-testid="notes-new"
+                >
+                  <Icon name="plus" size={18} />
                   {t("review.notes.addFree")}
                 </button>
               )
@@ -120,7 +133,7 @@ export default function NotesPage({ content }: { content: ContentIndex }) {
         </div>
       ) : shown.length === 0 ? (
         <div className="mt-4">
-          <EmptyState testId="notes-no-match" title={t("review.notes.noMatch.title")} body={t("review.notes.noMatch.body")} />
+          <EmptyState data-testid="notes-no-match" art="page" title={t("review.notes.noMatch.title")} body={t("review.notes.noMatch.body")} />
         </div>
       ) : (
         <ul className="mt-4 flex flex-col gap-3">
@@ -128,7 +141,7 @@ export default function NotesPage({ content }: { content: ContentIndex }) {
             const source = sourceOf(note);
             const target: NoteTarget = { kind: note.targetKind, id: note.targetId };
             return (
-              <li key={note.id} className="flex flex-col gap-2 rounded-2xl border border-phu-sa/10 bg-white/70 px-4 py-3" data-testid="note" data-kind={note.targetKind}>
+              <Card as="li" tone="plain" className="flex flex-col gap-2" key={note.id} data-testid="note" data-kind={note.targetKind}>
                 {/* Le mot en serif, son sens dessous : on ne répète pas « mot — sens » en double. */}
                 <div className="flex flex-col gap-0.5" data-testid="note-source">
                   {source.vi ? (
@@ -150,17 +163,23 @@ export default function NotesPage({ content }: { content: ContentIndex }) {
                   />
                 ) : (
                   <>
-                    <p className="break-words" data-testid="note-text">{note.text}</p>
+                    <p className="rounded-field border-l-4 border-nghe bg-surface-nghe px-3 py-2 break-words" data-testid="note-text">{note.text}</p>
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <span className="text-sm text-phu-sa">{t("review.notes.updated", { date: formatDate(note.updatedAt) })}</span>
-                      <span className="flex gap-4">
-                        <button type="button" onClick={() => setEditing(note.id)} className="min-h-11 font-semibold text-ngoc" data-testid="note-edit">{t("review.notes.edit")}</button>
-                        <button type="button" onClick={() => void remove(note.id)} className="min-h-11 font-semibold text-son-mai" data-testid="note-delete-direct">{t("review.notes.delete")}</button>
+                      <span className="flex gap-3">
+                        <button type="button" onClick={() => setEditing(note.id)} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-ngoc" data-testid="note-edit">
+                          <Icon name="pencil" size={16} />
+                          {t("review.notes.edit")}
+                        </button>
+                        <button type="button" onClick={() => void remove(note.id)} className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-son-mai" data-testid="note-delete-direct">
+                          <Icon name="trash" size={16} />
+                          {t("review.notes.delete")}
+                        </button>
                       </span>
                     </div>
                   </>
                 )}
-              </li>
+              </Card>
             );
           })}
         </ul>
@@ -172,34 +191,57 @@ export default function NotesPage({ content }: { content: ContentIndex }) {
         </div>
       )}
 
+      {notes.length > 0 && editing !== "new" && (
+        <button
+          type="button"
+          onClick={() => setEditing("new")}
+          className="mt-5 inline-flex min-h-12 items-center gap-2 self-start rounded-card border-2 border-ngoc px-5 font-semibold text-ngoc"
+          data-testid="notes-new"
+        >
+          <Icon name="plus" size={18} />
+          {t("review.notes.addFree")}
+        </button>
+      )}
+
+      {/* Sortie des notes : trois gestes de même poids, séparés du contenu par un simple filet. */}
       {notes.length > 0 && (
-        <section className="mt-7 flex flex-col gap-3 border-t border-phu-sa/10 pt-5">
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <button type="button" onClick={() => downloadText(exportFilename(exportedAt, "md"), markdown(), "text/markdown")} className="min-h-11 font-semibold text-ngoc" data-testid="notes-export-md">
+        <section className="mt-7 flex flex-col gap-3 border-t border-line pt-5">
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => downloadText(exportFilename(exportedAt, "md"), markdown(), "text/markdown")}
+              className="inline-flex min-h-11 items-center gap-2 rounded-chip border border-line-strong bg-surface px-4 font-semibold text-ngoc"
+              data-testid="notes-export-md"
+            >
+              <Icon name="download" size={18} />
               {t("review.notes.export.md")}
             </button>
             <button
               type="button"
               onClick={() => downloadText(exportFilename(exportedAt, "json"), `${JSON.stringify(notesJson(items, { packCode: content.pack.code, exportedAt }), null, 2)}\n`, "application/json")}
-              className="min-h-11 font-semibold text-ngoc"
+              className="inline-flex min-h-11 items-center gap-2 rounded-chip border border-line-strong bg-surface px-4 font-semibold text-ngoc"
               data-testid="notes-export-json"
             >
+              <Icon name="download" size={18} />
               {t("review.notes.export.json")}
             </button>
-            <button type="button" onClick={copy} className="min-h-11 font-semibold text-ngoc" data-testid="notes-copy">{t("review.notes.copy")}</button>
+            <button
+              type="button"
+              onClick={copy}
+              className="inline-flex min-h-11 items-center gap-2 rounded-chip border border-line-strong bg-surface px-4 font-semibold text-ngoc"
+              data-testid="notes-copy"
+            >
+              <Icon name="copy" size={18} />
+              {t("review.notes.copy")}
+            </button>
           </div>
           {copied && (
-            <p role="status" className={`text-sm ${copied === "ok" ? "text-ngoc" : "text-son-mai"}`} data-testid="notes-copied">
+            <p role="status" className={`flex items-center gap-1.5 text-sm ${copied === "ok" ? "text-ngoc" : "text-son-mai"}`} data-testid="notes-copied">
+              <Icon name={copied === "ok" ? "check" : "alert"} size={16} />
               {t(copied === "ok" ? "review.notes.copied" : "review.notes.copyFailed")}
             </p>
           )}
         </section>
-      )}
-
-      {notes.length > 0 && editing !== "new" && (
-        <button type="button" onClick={() => setEditing("new")} className="mt-5 min-h-11 self-start font-semibold text-ngoc" data-testid="notes-new">
-          {t("review.notes.addFree")}
-        </button>
       )}
     </Screen>
   );

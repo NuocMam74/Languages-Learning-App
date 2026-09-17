@@ -13,14 +13,16 @@ import {
   type ExamFile,
   type ExamGrade,
   type ExamQuestion,
+  type LessonId,
 } from "@parlo/core";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useAccount } from "../account.ts";
 import { ApiError, getExamAttemptResult, getExams, NetworkError, startExam, submitExam, type ExamSubmitResult, type ExamSummary } from "../api.ts";
 import { CertificateReady } from "../certificates/CertificatePages.tsx";
 import { BackHeader } from "./BackHeader.tsx";
 import { Button, Screen } from "../components/ui.tsx";
+import { Card, Chip, Diploma, EmptyState, Icon, Illustration, ProgressRing, Skeleton, type IconName } from "../design/index.ts";
 import { getLocale, l, t } from "../i18n/index.ts";
 import { useOnline } from "../use-online.ts";
 import { doneLessons, getLocalAttempts, getOngoingAttempt, loadExam, loadExams, saveLocalAttempt, saveOngoingAttempt, type LocalAttempt, type OngoingAttempt } from "./exam-files.ts";
@@ -50,6 +52,40 @@ interface Row {
   last: LocalAttempt | null;
   /** Moins de 15 items notables faute de médias (contrat phase5 §1). */
   unavailable: boolean;
+  /** Part des unités requises déjà validées : l'anneau dit « il te reste ça », pas « c'est fermé ». */
+  ready: number;
+}
+
+/** Même règle que `isExamUnlocked` (tests d'unité s'il y en a, sinon toutes les leçons), en fraction. */
+function readiness(content: ContentIndex, exam: ExamFile, done: ReadonlySet<LessonId>): number {
+  if (exam.requiresUnits.length === 0) return 1;
+  const parts = exam.requiresUnits.map((unitId) => {
+    const unit = content.curriculum.units.find((u) => u.id === unitId);
+    if (!unit || unit.lessons.length === 0) return 0;
+    const tests = unit.lessons.filter((id) => content.lessons.get(id)?.kind === "unit_test");
+    const required = tests.length > 0 ? tests : unit.lessons;
+    return required.filter((id) => done.has(id)).length / required.length;
+  });
+  return parts.reduce((a, b) => a + b, 0) / parts.length;
+}
+
+/** Une entrée de carte : pictogramme, libellé, chevron — même gabarit pour le blanc et le certifiant. */
+function ExamLink({ to, icon, label, hint, tone }: { to: string; icon: IconName; label: string; hint?: string; tone: "ngoc" | "nghe" }) {
+  return (
+    <Link
+      to={to}
+      className="-mx-2 flex min-h-12 items-center gap-3 rounded-field px-2 py-2 transition-colors hover:bg-phu-sa/5"
+    >
+      <span className={`grid size-9 shrink-0 place-items-center rounded-full ${tone === "ngoc" ? "bg-ngoc-sang text-ngoc" : "bg-surface-nghe text-muc"}`}>
+        <Icon name={icon} size={18} />
+      </span>
+      <span className="flex min-w-0 flex-1 flex-col">
+        <span className="font-semibold text-ngoc">{label}</span>
+        {hint && <span className="text-sm text-phu-sa">{hint}</span>}
+      </span>
+      <Icon name="chevronRight" size={20} className="text-phu-sa/50" />
+    </Link>
+  );
 }
 
 export function ExamsPage({ content }: { content: ContentIndex }) {
@@ -69,51 +105,141 @@ export function ExamsPage({ content }: { content: ContentIndex }) {
           const last: LocalAttempt | null = remote?.lastAttempt ? { submittedAt: remote.lastAttempt.submittedAt, passed: remote.lastAttempt.passed, scores: remote.lastAttempt.scores } : local;
           const next = remote ? (remote.nextAttemptAt ? new Date(remote.nextAttemptAt) : null) : nextExamAttemptAt(exam, last?.submittedAt ?? null);
           const unavailable = remote?.unavailableReason ? remote.unavailableReason === "media_missing" : examAvailability(content, exam).unavailableReason !== null;
-          return { exam, unlocked: remote?.unlocked ?? isExamUnlocked(content.curriculum, exam, done, content.lessons), next: next && next.getTime() > Date.now() ? next : null, last, unavailable };
+          return {
+            exam,
+            unlocked: remote?.unlocked ?? isExamUnlocked(content.curriculum, exam, done, content.lessons),
+            next: next && next.getTime() > Date.now() ? next : null,
+            last,
+            unavailable,
+            ready: readiness(content, exam, done),
+          };
         }),
       );
     })();
   }, [content, status, online]);
 
+  // Une seule carte porte l'écran : le premier palier ouvert et pas encore réussi. Si tout est
+  // réussi — ou tout fermé — aucune n'est mise en avant (deux « feature » se neutralisent, §1).
+  const featured = rows?.findIndex((r) => r.unlocked && !r.unavailable && !r.last?.passed) ?? -1;
+  const firstMock = rows?.find((r) => !r.unavailable)?.exam.level.toLowerCase() ?? null;
+  const noAttempt = rows !== null && rows.every((r) => r.last === null);
+
   return (
     <Screen top={<BackHeader title={t("exams.title")} />}>
       <p className="pb-4 text-phu-sa">{t("exams.intro")}</p>
-      <div className="flex flex-col">
-        {rows?.map(({ exam, unlocked, next, last, unavailable }) => {
+
+      {rows === null && (
+        <div className="flex flex-col gap-3">
+          {[0, 1, 2].map((i) => (
+            <Skeleton key={i} rounded="card" className="h-40" />
+          ))}
+        </div>
+      )}
+
+      {rows !== null && noAttempt && (
+        <EmptyState
+          art="diploma"
+          compact={rows.length > 0}
+          className="mb-5"
+          title={t("exams.empty.title")}
+          body={t("exams.empty.body")}
+          action={
+            firstMock ? (
+              <Link to={`/examens/${firstMock}/blanc`} className="inline-flex min-h-11 items-center gap-2 rounded-chip px-3 font-semibold text-ngoc">
+                <Icon name="play" size={18} />
+                {t("exams.mock")}
+              </Link>
+            ) : undefined
+          }
+        />
+      )}
+
+      <ul className="flex flex-col gap-3">
+        {rows?.map(({ exam, unlocked, next, last, unavailable, ready }, i) => {
           const slug = exam.level.toLowerCase();
           const units = exam.requiresUnits.map((u) => l(content.curriculum.units.find((x) => x.id === u)?.title) || u).join(", ");
           return (
-            <section key={exam.id} className="flex flex-col gap-3 border-t border-phu-sa/10 py-5 first:border-t-0" data-testid={`exam-${slug}`}>
-              <div className="flex items-baseline justify-between gap-4">
-                <h2 lang="vi" className="font-serif text-2xl">{l(exam.certificate)}</h2>
-                <span className={`text-sm ${unlocked ? "text-ngoc" : "text-phu-sa"}`}>{unlocked ? t("exams.unlocked") : null}</span>
+            <Card
+              key={exam.id}
+              as="li"
+              tone={i === featured ? "feature" : unlocked ? "plain" : "quiet"}
+              stagger={i}
+              className="flex flex-col gap-3"
+              data-testid={`exam-${slug}`}
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex min-w-0 flex-1 flex-col gap-2">
+                  <h2 lang="vi" className="font-serif text-2xl">{l(exam.certificate)}</h2>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {unlocked && <Chip tone="ngoc" icon="check" className="max-w-full">{t("exams.unlocked")}</Chip>}
+                    {last && (
+                      // `max-w-full` : une date longue revient à la ligne dans le jeton au lieu de déborder de la carte.
+                      <Chip tone={last.passed ? "solid" : "neutral"} icon={last.passed ? "trophy" : "clock"} className="max-w-full">
+                        {t(last.passed ? "exams.lastPassed" : "exams.lastFailed", { date: formatDate(last.submittedAt) })}
+                      </Chip>
+                    )}
+                  </div>
+                </div>
+                {/* L'anneau remplace le mot « verrouillé » : on voit le chemin qu'il reste. */}
+                <ProgressRing value={unlocked ? 1 : ready} size={56} label={t("exams.readiness")} tone={unlocked ? "ngoc" : "nghe"}>
+                  <Icon name={unlocked ? "check" : "lock"} size={20} className={unlocked ? "text-ngoc" : "text-phu-sa"} />
+                </ProgressRing>
               </div>
+
               {unavailable && <p className="text-sm text-phu-sa" data-testid="exam-unavailable">{t("journey.exam.unavailable")}</p>}
               {!unavailable && !unlocked && <p className="text-sm text-phu-sa">{t("exams.locked", { units })}</p>}
-              {last && <p className="text-sm text-phu-sa">{t(last.passed ? "exams.lastPassed" : "exams.lastFailed", { date: formatDate(last.submittedAt) })}</p>}
               {next && <p className="text-sm text-phu-sa">{t("exams.nextAttempt", { date: formatDateTime(next) })}</p>}
-              <div className={`flex flex-col gap-1 ${unavailable ? "hidden" : ""}`}>
-                <Link to={`/examens/${slug}/blanc`} className="flex min-h-12 flex-col justify-center">
-                  <span className="font-semibold text-ngoc">{t("exams.mock")}</span>
-                  <span className="text-sm text-phu-sa">{t("exams.mock.hint")}</span>
-                </Link>
-                {unlocked && !next && (
-                  <Link to={`/examens/${slug}`} className="flex min-h-12 items-center font-semibold text-ngoc">
-                    {t("exams.real")}
-                  </Link>
-                )}
-              </div>
-            </section>
+
+              {!unavailable && (
+                <div className="flex flex-col gap-1 border-t border-line pt-2">
+                  <ExamLink to={`/examens/${slug}/blanc`} icon="play" tone="ngoc" label={t("exams.mock")} hint={t("exams.mock.hint")} />
+                  {unlocked && !next && <ExamLink to={`/examens/${slug}`} icon="diploma" tone="nghe" label={t("exams.real")} />}
+                </div>
+              )}
+            </Card>
           );
         })}
-      </div>
-      <Link to="/certificats" className="mt-2 flex min-h-12 items-center border-t border-phu-sa/10 font-medium">{t("exams.certificates")}</Link>
+      </ul>
+
+      <Link
+        to="/certificats"
+        className="mt-4 flex min-h-12 items-center gap-3 rounded-card border border-line bg-surface px-5 py-3 font-medium transition-colors hover:bg-surface-2"
+      >
+        <Icon name="diploma" size={20} className="text-ngoc" />
+        <span className="min-w-0 flex-1">{t("exams.certificates")}</span>
+        <Icon name="chevronRight" size={20} className="text-phu-sa/50" />
+      </Link>
     </Screen>
   );
 }
 
 // ---------------------------------------------------------------------------
 // /examens/:level/blanc — 100 % local
+
+/** Lecture du fichier d'examen : un squelette au gabarit de l'écran, jamais une page blanche (§1). */
+function ExamLoading({ title }: { title: string }) {
+  return (
+    <Screen top={<BackHeader title={title} to="/examens" />}>
+      <div className="flex flex-col gap-4">
+        <Skeleton rounded="card" className="h-48" />
+        <Skeleton className="h-4 w-2/3" />
+        <Skeleton rounded="card" className="h-44" />
+      </div>
+    </Screen>
+  );
+}
+
+/** Examen introuvable ou non notable : l'écran le dit dans une carte, pas dans une ligne perdue. */
+function ExamProblem({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <Screen top={<BackHeader title={title} to="/examens" />}>
+      <Card tone="alert" className="flex items-start gap-3">
+        <Icon name="alert" className="mt-0.5 shrink-0 text-son-mai" />
+        {children}
+      </Card>
+    </Screen>
+  );
+}
 
 export function MockExamPage({ content }: { content: ContentIndex }) {
   const navigate = useNavigate();
@@ -124,10 +250,14 @@ export function MockExamPage({ content }: { content: ContentIndex }) {
   const [grade, setGrade] = useState<ExamGrade | null>(null);
   const questions = useMemo(() => (exam ? buildExam(content, exam, seed) : []), [content, exam, seed]);
 
-  if (exam === undefined) return <Screen><div /></Screen>;
-  if (exam === null) return <Screen top={<BackHeader title={t("exams.title")} to="/examens" />}><p>{t("exams.error.generic")}</p></Screen>;
+  if (exam === undefined) return <ExamLoading title={t("exams.mock")} />;
+  if (exam === null) return <ExamProblem title={t("exams.title")}><p>{t("exams.error.generic")}</p></ExamProblem>;
   if (examAvailability(content, exam).unavailableReason) {
-    return <Screen top={<BackHeader title={t("exams.mock")} to="/examens" />}><p data-testid="exam-unavailable">{t("journey.exam.unavailable")}</p></Screen>;
+    return (
+      <ExamProblem title={t("exams.mock")}>
+        <p data-testid="exam-unavailable">{t("journey.exam.unavailable")}</p>
+      </ExamProblem>
+    );
   }
 
   if (stage === "run") {
@@ -176,22 +306,41 @@ export function MockExamPage({ content }: { content: ContentIndex }) {
 }
 
 function ExplainList({ exam, mock }: { exam: ExamFile; mock: boolean }) {
-  const items = [
-    t("exams.explain.duration", { n: exam.durationMinutes, items: exam.sections.reduce((n, s) => n + s.items.length, 0) || EXAM_ITEM_COUNT }),
-    t("exams.explain.skills"),
-    mock ? t("exams.mock.explain") : t("exams.explain.once", { hours: exam.retryAfterHours }),
-    t("exams.explain.mic"),
-    t("exams.explain.noFeedback"),
+  const items: { icon: IconName; text: string }[] = [
+    { icon: "clock", text: t("exams.explain.duration", { n: exam.durationMinutes, items: exam.sections.reduce((n, s) => n + s.items.length, 0) || EXAM_ITEM_COUNT }) },
+    { icon: "target", text: t("exams.explain.skills") },
+    { icon: "refresh", text: mock ? t("exams.mock.explain") : t("exams.explain.once", { hours: exam.retryAfterHours }) },
+    { icon: "mic", text: t("exams.explain.mic") },
+    { icon: "info", text: t("exams.explain.noFeedback") },
   ];
   return (
-    <div className="flex flex-col gap-5 pt-2">
-      <p lang="vi" className="font-serif text-vi text-ngoc">{l(exam.certificate)}</p>
-      <h2 className="font-semibold">{t("exams.explain.title")}</h2>
-      <ul className="flex flex-col gap-3">
-        {items.map((text) => (
-          <li key={text} className="border-l-4 border-ngoc-sang pl-3">{text}</li>
-        ))}
-      </ul>
+    <div className="flex flex-col gap-5">
+      {/* Le seul moment héroïque de l'écran : le diplôme visé se pose avant les règles du jeu. */}
+      <Card tone="feature" className="flex flex-col items-center gap-2 text-center motion-safe:parlo-enter">
+        <Illustration className="max-w-[11rem]">
+          <Diploma />
+        </Illustration>
+        <p lang="vi" className="font-serif text-vi leading-tight text-ngoc">{l(exam.certificate)}</p>
+      </Card>
+      <div className="flex flex-col gap-3">
+        <h2 className="flex items-center gap-2 font-serif text-lg">
+          <Icon name="info" size={20} className="text-ngoc" />
+          {t("exams.explain.title")}
+        </h2>
+        {/* Une seule carte de regroupement : cinq cartes identiques empilées seraient un mur (§1). */}
+        <Card tone="quiet">
+          <ul className="flex flex-col divide-y divide-line">
+            {items.map(({ icon, text }) => (
+              <li key={text} className="flex items-start gap-3 py-3 first:pt-0 last:pb-0">
+                <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-surface text-ngoc">
+                  <Icon name={icon} size={18} />
+                </span>
+                <span className="min-w-0 flex-1">{text}</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      </div>
     </div>
   );
 }
@@ -281,8 +430,8 @@ export function RealExamPage({ content }: { content: ContentIndex }) {
     });
   }, [content, exam]);
 
-  if (exam === undefined) return <Screen><div /></Screen>;
-  if (exam === null) return <Screen top={<BackHeader title={t("exams.title")} to="/examens" />}><p>{t("exams.error.generic")}</p></Screen>;
+  if (exam === undefined) return <ExamLoading title={t("exams.real")} />;
+  if (exam === null) return <ExamProblem title={t("exams.title")}><p>{t("exams.error.generic")}</p></ExamProblem>;
 
   const begin = async () => {
     setError(null);
@@ -322,7 +471,17 @@ export function RealExamPage({ content }: { content: ContentIndex }) {
     case "submitting":
       return (
         <Screen action={stage.error ? <Button disabled={!online} onClick={() => void submit(stage.attempt, stage.questions, stage.answers)}>{t("exams.retrySubmit")}</Button> : undefined}>
-          <p className="my-auto text-center text-lg" role="status">{stage.error ?? t("exams.run.submitting")}</p>
+          <div className="my-auto flex flex-col items-center gap-5 text-center">
+            <p className="text-lg" role="status">{stage.error ?? t("exams.run.submitting")}</p>
+            {/* L'envoi n'est pas un écran vide : trois lignes de squelette disent que ça travaille. */}
+            {!stage.error && (
+              <div className="flex w-full max-w-[18rem] flex-col items-center gap-2">
+                <Skeleton className="h-3 w-full" />
+                <Skeleton className="h-3 w-4/5" />
+                <Skeleton className="h-3 w-3/5" />
+              </div>
+            )}
+          </div>
         </Screen>
       );
     case "result": {
@@ -370,9 +529,24 @@ export function RealExamPage({ content }: { content: ContentIndex }) {
           }
         >
           <ExplainList exam={exam} mock={false} />
-          {blocked && <p className="mt-5 border-l-4 border-nghe pl-3">{blocked}</p>}
-          {status !== "signed_in" && <Link to="/compte" className="mt-2 min-h-11 self-start py-2 font-semibold text-ngoc">{t("account.offer.cta")}</Link>}
-          {error && <p role="alert" className="mt-5 border-l-4 border-son-mai pl-3">{error}</p>}
+          {blocked && (
+            <Card tone="notice" className="mt-5 flex items-start gap-3">
+              <Icon name="info" className="mt-0.5 shrink-0 text-muc" />
+              <p className="min-w-0 flex-1">{blocked}</p>
+            </Card>
+          )}
+          {status !== "signed_in" && (
+            <Link to="/compte" className="mt-2 flex min-h-11 items-center gap-2 self-start font-semibold text-ngoc">
+              {t("account.offer.cta")}
+              <Icon name="chevronRight" size={18} />
+            </Link>
+          )}
+          {error && (
+            <Card tone="alert" className="mt-5 flex items-start gap-3">
+              <Icon name="alert" className="mt-0.5 shrink-0 text-son-mai" />
+              <p role="alert" className="min-w-0 flex-1">{error}</p>
+            </Card>
+          )}
         </Screen>
       );
     }

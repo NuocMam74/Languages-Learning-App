@@ -5,6 +5,7 @@ import { BackHeader } from "../exams/BackHeader.tsx";
 import { useAccount } from "../account.ts";
 import { ApiError, getCertificatePdf, getCertificates, verifyCertificate, type CertificateDto, type VerifyResult } from "../api.ts";
 import { Button, Screen } from "../components/ui.tsx";
+import { Card, Diploma, EmptyState, Icon, Illustration, Skeleton } from "../design/index.ts";
 import { loadExam, splitCertificateName } from "../exams/exam-files.ts";
 import { getLocale, l, t, type MessageKey } from "../i18n/index.ts";
 import { useOnline } from "../use-online.ts";
@@ -68,14 +69,25 @@ export function CertificateActions({ content, certificate }: { content: ContentI
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex flex-wrap gap-x-6">
-        <button type="button" disabled={busy !== null} onClick={() => void pdf()} className="min-h-11 font-semibold text-ngoc disabled:text-phu-sa/60">
-          {busy === "pdf" ? t("cert.pdf.loading") : t("cert.pdf")}
-        </button>
-        <button type="button" disabled={busy !== null} onClick={() => void share()} className="min-h-11 font-semibold text-ngoc disabled:text-phu-sa/60">
-          {busy === "share" ? t("cert.share.loading") : t("cert.share")}
-        </button>
-      </div>
+      {/* Deux gestes, deux boutons pleine largeur : emporter le diplôme doit être évident. */}
+      <Button
+        variant="outline"
+        disabled={busy !== null}
+        onClick={() => void pdf()}
+        className="flex items-center justify-center gap-2 disabled:border-line-strong disabled:text-phu-sa/60"
+      >
+        <Icon name="download" size={20} />
+        {busy === "pdf" ? t("cert.pdf.loading") : t("cert.pdf")}
+      </Button>
+      <Button
+        variant="outline"
+        disabled={busy !== null}
+        onClick={() => void share()}
+        className="flex items-center justify-center gap-2 disabled:border-line-strong disabled:text-phu-sa/60"
+      >
+        <Icon name="share" size={20} />
+        {busy === "share" ? t("cert.share.loading") : t("cert.share")}
+      </Button>
       {error && <p role="alert" className="text-sm text-son-mai">{error}</p>}
     </div>
   );
@@ -89,11 +101,20 @@ export function CertificateReady({ content, certificate, onDone }: { content: Co
   }, [content, certificate.level]);
   return (
     <Screen action={<Button onClick={onDone}>{t("exams.result.home")}</Button>}>
-      <div className="flex flex-1 flex-col gap-6 pt-10" data-testid="certificate-ready">
-        <p lang="vi" className="font-serif text-vi text-ngoc motion-safe:animate-[rise_600ms_ease-out]">{t("cert.congrats")}</p>
-        <p className="text-lg">{t("cert.congratsBody", { name })}</p>
+      <div className="flex flex-1 flex-col gap-5 pt-4" data-testid="certificate-ready">
+        {/* Seul moment héroïque de l'écran : le diplôme se pose, le reste ne bouge pas. */}
+        <Illustration className="mx-auto max-w-[15rem] motion-safe:parlo-enter">
+          <Diploma />
+        </Illustration>
+        <div className="flex flex-col gap-1 text-center">
+          <p lang="vi" className="font-serif text-vi leading-tight text-ngoc">{t("cert.congrats")}</p>
+          <p className="text-lg text-balance">{t("cert.congratsBody", { name })}</p>
+        </div>
         <CertificateCard content={content} certificate={certificate} />
-        <Link to="/certificats" className="min-h-11 self-start py-2 font-semibold text-ngoc">{t("exams.certificates")}</Link>
+        <Link to="/certificats" className="flex min-h-11 items-center justify-center gap-2 font-semibold text-ngoc">
+          {t("exams.certificates")}
+          <Icon name="chevronRight" size={18} />
+        </Link>
       </div>
     </Screen>
   );
@@ -113,17 +134,18 @@ function CertificateCard({ content, certificate }: { content: ContentIndex; cert
     void certificateName(content.pack.code, certificate.level).then(setName);
   }, [content, certificate.level]);
   return (
-    <article className="flex flex-col gap-4 border-y-2 border-double border-ngoc py-5" data-testid="certificate">
+    // Un objet qu'on garde : surface décollée du fond, sceau, air autour — pas une ligne de liste.
+    <Card as="article" tone="raised" className="flex flex-col gap-5" data-testid="certificate">
       <div className="flex items-center gap-4">
         <Seal level={certificate.level} />
-        <div>
+        <div className="min-w-0 flex-1">
           <p lang="vi" className="font-serif text-2xl italic text-ngoc">{name}</p>
           <p className="text-sm text-phu-sa">{t("cert.issued", { date: formatDate(certificate.issuedAt) })}</p>
           <p className="text-sm text-phu-sa">{t("cert.code", { code: certificate.verificationCode })}</p>
         </div>
       </div>
       <CertificateActions content={content} certificate={certificate} />
-    </article>
+    </Card>
   );
 }
 
@@ -139,11 +161,44 @@ export function CertificatesPage({ content }: { content: ContentIndex }) {
   }, [status, online]);
 
   let body: ReactNode;
-  if (status !== "signed_in") body = <p className="text-phu-sa">{t("exams.real.account")}</p>;
-  else if (!online || failed) body = <p className="text-phu-sa">{t(online ? "exams.error.generic" : "cert.offline")}</p>;
-  else if (!list) body = null;
-  else if (list.length === 0) body = <p className="text-phu-sa">{t("cert.empty")}</p>;
-  else body = <div className="flex flex-col gap-6">{list.map((c) => <CertificateCard key={c.id} content={content} certificate={c} />)}</div>;
+  if (status !== "signed_in") {
+    body = (
+      <Card tone="notice" className="flex items-start gap-3">
+        <Icon name="user" className="mt-0.5 shrink-0 text-muc" />
+        <p className="min-w-0 flex-1">{t("exams.real.account")}</p>
+      </Card>
+    );
+  } else if (!online || failed) {
+    body = (
+      <Card tone="alert" className="flex items-start gap-3">
+        <Icon name={online ? "alert" : "offline"} className="mt-0.5 shrink-0 text-son-mai" />
+        <p className="min-w-0 flex-1">{t(online ? "exams.error.generic" : "cert.offline")}</p>
+      </Card>
+    );
+  } else if (!list) {
+    // Lecture de l'API : le gabarit d'un certificat, pas un écran qui attend en blanc.
+    body = (
+      <div className="flex flex-col gap-5">
+        <Skeleton rounded="card" className="h-52" />
+        <Skeleton rounded="card" className="h-52" />
+      </div>
+    );
+  } else if (list.length === 0) {
+    body = (
+      <EmptyState
+        art="diploma"
+        title={t("cert.empty")}
+        action={
+          <Link to="/examens" className="inline-flex min-h-11 items-center gap-2 rounded-chip px-3 font-semibold text-ngoc">
+            <Icon name="diploma" size={18} />
+            {t("exams.title")}
+          </Link>
+        }
+      />
+    );
+  } else {
+    body = <div className="flex flex-col gap-5">{list.map((c) => <CertificateCard key={c.id} content={content} certificate={c} />)}</div>;
+  }
 
   return (
     <Screen top={<BackHeader title={t("cert.title")} to="/examens" />}>
@@ -172,13 +227,26 @@ export function VerifyPage() {
           <h1 className="font-serif text-2xl">{t("cert.verify.title")}</h1>
           <p className="text-sm text-phu-sa tabular-nums">{code}</p>
         </div>
-        {state.kind === "loading" && <p className="text-phu-sa">{t("cert.verify.loading")}</p>}
-        {state.kind === "invalid" && <p className="border-l-4 border-son-mai pl-3 text-lg">{t("cert.verify.invalid")}</p>}
+        {state.kind === "loading" && (
+          <div className="flex flex-col gap-3">
+            <Skeleton className="h-4 w-1/2" />
+            <Skeleton rounded="card" className="h-56" />
+            <p className="text-phu-sa" role="status">{t("cert.verify.loading")}</p>
+          </div>
+        )}
+        {state.kind === "invalid" && (
+          <Card tone="alert" className="flex items-start gap-3">
+            <Icon name="alert" className="mt-0.5 shrink-0 text-son-mai" />
+            <p className="min-w-0 flex-1 text-lg">{t("cert.verify.invalid")}</p>
+          </Card>
+        )}
         {state.kind === "error" && <p className="text-phu-sa">{t("cert.verify.error")}</p>}
         {state.kind === "valid" && (
-          <article className="flex flex-col gap-5 border-y-2 border-double border-ngoc py-6">
+          <Card as="article" tone="raised" className="flex flex-col gap-5">
             <p className="flex items-center gap-3 text-lg font-semibold text-ngoc">
-              <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ngoc-sang">
+                <Icon name="check" size={20} />
+              </span>
               {t("cert.verify.valid")}
             </p>
             <div className="flex items-center gap-4">
@@ -197,14 +265,14 @@ export function VerifyPage() {
               <h2 className="mb-2 text-phu-sa">{t("cert.verify.scores")}</h2>
               <ul className="flex flex-col gap-1">
                 {EXAM_SKILLS.map((skill) => (
-                  <li key={skill} className="flex justify-between border-b border-phu-sa/10 pb-1">
+                  <li key={skill} className="flex justify-between border-b border-line pb-1">
                     <span>{t(`exams.skill.${skill}` as MessageKey)}</span>
                     <span className="font-semibold tabular-nums">{Math.round((state.result.scores[skill] ?? 0) * 100)} %</span>
                   </li>
                 ))}
               </ul>
             </div>
-          </article>
+          </Card>
         )}
         <p className="text-sm text-phu-sa">{t("cert.verify.about")}</p>
       </div>

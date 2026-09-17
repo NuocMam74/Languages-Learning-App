@@ -17,6 +17,7 @@ export const fr = {
 
   // Niveau et série
   "profile.level.title": "Niveau",
+  "profile.stat.xp": "XP",
   "profile.streak.title": "Série",
   "profile.streak.current": "{n} jour d'affilée",
   "profile.streak.current.plural": "{n} jours d'affilée",
@@ -81,6 +82,7 @@ export const en: Record<keyof typeof fr, string> = {
   "profile.guestCta": "Create my account",
 
   "profile.level.title": "Level",
+  "profile.stat.xp": "XP",
   "profile.streak.title": "Streak",
   "profile.streak.current": "{n} day in a row",
   "profile.streak.current.plural": "{n} days in a row",

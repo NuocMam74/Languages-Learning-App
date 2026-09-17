@@ -2,6 +2,8 @@ import type { ContentIndex } from "@parlo/core";
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router";
 import { Screen } from "../components/ui.tsx";
+import { Skeleton } from "../design/index.ts";
+import { t } from "../i18n/index.ts";
 import NotesPage from "../notes/NotesPage.tsx";
 import { useNotes } from "../notes/store.ts";
 import { Dialogues } from "./Dialogues.tsx";
@@ -35,7 +37,19 @@ export default function ReviewPage({ content }: { content: ContentIndex }) {
 
   // Section inconnue dans l'URL : on revient à la bibliothèque plutôt que d'afficher un vide.
   if (section !== undefined && !isSection(section)) return <Navigate to="/reviser" replace />;
-  if (!data) return <Screen><div data-testid="review-loading" /></Screen>;
+  // Lecture d'IndexedDB : on montre la forme de la bibliothèque, jamais un écran vide (contrat §1).
+  if (!data)
+    return (
+      <Screen>
+        <div className="flex flex-col gap-3 pt-2" data-testid="review-loading" role="status" aria-label={t("review.loading")}>
+          <Skeleton className="h-8 w-44" />
+          <Skeleton className="h-4 w-64" />
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Skeleton key={i} rounded="card" className="h-16 w-full" />
+          ))}
+        </div>
+      </Screen>
+    );
 
   switch (section) {
     case "vocabulaire":

@@ -2,6 +2,7 @@ import { badgeCodesFor, isChallengeBadge, isExamUnlocked, type ContentIndex, typ
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { BadgeIcon } from "../components/BadgeIcon.tsx";
+import { Icon } from "../design/index.ts";
 import { doneLessons, loadExams, splitCertificateName } from "../exams/exam-files.ts";
 import { l, t, type MessageKey } from "../i18n/index.ts";
 import { getBadges, type EarnedBadge } from "../learner.ts";
@@ -43,7 +44,7 @@ export function DashboardBadges({ pack }: { pack: Pack }) {
         ))}
         <span className="text-sm text-phu-sa">{t("dashboard.badges.recent")}</span>
       </span>
-      <Link to="/badges" className="flex min-h-11 shrink-0 items-center font-semibold text-ngoc">
+      <Link to="/badges" className="flex min-h-11 shrink-0 items-center gap-1 font-semibold text-ngoc">
         {t("dashboard.badges.all")}
       </Link>
     </section>
@@ -74,9 +75,16 @@ export function DashboardCertificate({ content }: { content: ContentIndex }) {
 
   if (!next) return null;
   return (
-    <Link to="/examens" className="flex min-h-12 flex-col justify-center border-l-4 border-ngoc py-1 pl-4" data-testid="dashboard-certificate">
-      <span className="text-sm text-phu-sa">{t("dashboard.certificate.title")}</span>
-      <span className="font-semibold text-ngoc">{t("dashboard.certificate.ready", { name: next.name })}</span>
+    <Link
+      to="/examens"
+      className="flex min-h-12 items-center gap-3 rounded-card border border-nghe/30 bg-surface-nghe px-4 py-2 transition-transform motion-safe:active:scale-[.99]"
+      data-testid="dashboard-certificate"
+    >
+      <Icon name="diploma" size={22} className="text-nghe" />
+      <span className="flex min-w-0 flex-col">
+        <span className="text-sm text-phu-sa">{t("dashboard.certificate.title")}</span>
+        <span className="font-semibold text-ngoc">{t("dashboard.certificate.ready", { name: next.name })}</span>
+      </span>
     </Link>
   );
 }

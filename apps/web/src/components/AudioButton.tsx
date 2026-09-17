@@ -56,7 +56,7 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
           </button>
         )}
       </div>
-      {source === "tts" && <p className="text-sm text-phu-sa/80">{t("audio.tts")}</p>}
+      {source === "tts" && <p className="text-sm text-phu-sa">{t("audio.tts")}</p>}
       {source === "missing" && <p className="text-sm text-son-mai">{t("audio.missing")}</p>}
       {/* Lecture automatique refusée (iOS sans geste) : invitation, pas une erreur. */}
       {source === "blocked" && <p className="text-sm font-semibold text-ngoc" data-testid="audio-tap">{t("mobile.audio.tapToListen")}</p>}

@@ -1,5 +1,6 @@
 import type { ContentIndex, LessonId } from "@parlo/core";
 import { Link } from "react-router";
+import { Icon } from "../design/index.ts";
 import { l } from "../i18n/index.ts";
 
 /**
@@ -67,16 +68,16 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
             <span
               className={`grid place-items-center rounded-full ${
                 planned
-                  ? "size-6 border-4 border-phu-sa/15 bg-nuoc"
+                  ? "size-6 border-4 border-line-strong bg-surface"
                   : isCurrent
-                    ? "size-20 border-4 border-nghe bg-ngoc text-nuoc"
+                    ? "size-20 border-4 border-nghe bg-ngoc text-nuoc shadow-raised ring-[6px] ring-nghe/25"
                     : done
-                      ? "size-14 border-4 border-ngoc bg-ngoc text-nuoc"
-                      : "size-14 border-4 border-phu-sa/15 bg-nuoc text-phu-sa/80"
+                      ? "size-14 border-4 border-ngoc bg-ngoc text-nuoc shadow-card"
+                      : "size-14 border-4 border-line-strong bg-surface text-phu-sa"
               }`}
             >
               {planned ? null : done ? (
-                <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+                <Icon name="check" size={24} strokeWidth={3} />
               ) : (
                 <span className="font-serif text-xl">{i + 1}</span>
               )}
@@ -84,11 +85,11 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
           );
 
           return (
-            <li key={node.id} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${left}%`, top: yOf(i) }}>
+            <li key={node.id} className="absolute -translate-x-1/2 -translate-y-1/2 transition-transform motion-safe:active:scale-[.97]" style={{ left: `${left}%`, top: yOf(i) }}>
               {locked || !node.lesson ? <div aria-disabled>{dot}</div> : <Link to={`/lecon/${node.id}`} aria-label={l(node.lesson.title)}>{dot}</Link>}
               <div className={`absolute top-1/2 -translate-y-1/2 break-words ${labelSide}`} style={{ width: labelWidth }}>
                 {showUnit && <p className="text-xs text-phu-sa">{l(node.unit.title)}</p>}
-                <p className={`text-sm leading-snug ${locked ? "text-phu-sa/80" : "font-medium"}`}>{node.lesson ? l(node.lesson.title) : ""}</p>
+                <p className={`text-sm leading-snug ${locked ? "text-phu-sa" : "font-medium"}`}>{node.lesson ? l(node.lesson.title) : ""}</p>
               </div>
             </li>
           );

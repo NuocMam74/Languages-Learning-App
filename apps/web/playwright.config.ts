@@ -6,6 +6,8 @@ import { defineConfig, devices } from "@playwright/test";
  * Local : PW_CHANNEL=msedge (ou chrome) évite de télécharger un navigateur.
  */
 const channel = process.env.PW_CHANNEL;
+// Port dédié aux tests : 5173 et 8000 restent à la personne qui développe (PW_PORT=4901 en revue design).
+const port = Number(process.env.PW_PORT ?? 4173);
 
 export default defineConfig({
   testDir: "e2e",
@@ -13,7 +15,7 @@ export default defineConfig({
   fullyParallel: false,
   reporter: "list",
   use: {
-    baseURL: "http://localhost:4173",
+    baseURL: `http://localhost:${port}`,
     ...devices["Pixel 7"],
     locale: "fr-FR",
     ...(channel ? { channel } : {}),
@@ -21,8 +23,8 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   webServer: {
-    command: "npx vite build && npx vite preview --port 4173 --strictPort",
-    url: "http://localhost:4173",
+    command: `npx vite build && npx vite preview --port ${port} --strictPort`,
+    url: `http://localhost:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
   },

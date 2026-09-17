@@ -125,7 +125,7 @@ export function VietnameseInput({ value, onChange, onSubmit, label, disabled = f
           spellCheck={false}
           lang={target ? (activePackLang() ?? undefined) : undefined}
           data-testid="answer-input"
-          className={`min-h-14 w-full rounded-2xl border-2 border-phu-sa/20 bg-white/80 px-4 text-lg disabled:text-phu-sa/70 ${target ? "font-serif" : ""}`}
+          className={`min-h-14 w-full rounded-card border-2 border-phu-sa/20 bg-surface px-4 text-lg disabled:text-phu-sa/70 ${target ? "font-serif" : ""}`}
         />
       </label>
 
@@ -142,7 +142,7 @@ export function VietnameseInput({ value, onChange, onSubmit, label, disabled = f
                 title={key.preview ?? undefined}
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => apply(key.id)}
-                className="min-h-11 rounded-xl border-2 border-phu-sa/15 bg-white/70 font-serif text-lg disabled:border-dashed disabled:bg-transparent disabled:text-phu-sa/35"
+                className="min-h-11 rounded-xl border-2 border-line-strong bg-surface font-serif text-lg disabled:border-dashed disabled:bg-transparent disabled:text-phu-sa/35"
               >
                 {key.label}
               </button>

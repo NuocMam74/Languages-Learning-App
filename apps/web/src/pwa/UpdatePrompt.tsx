@@ -31,17 +31,17 @@ export function UpdatePrompt() {
       <div
         role="status"
         data-testid="update-prompt"
-        className="pointer-events-auto flex w-full flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl bg-muc py-1.5 pr-2 pl-4 text-nuoc shadow-[0_8px_30px_rgb(20_32_30/0.25)] motion-safe:animate-[rise_300ms_ease-out]"
+        className="pointer-events-auto flex w-full flex-wrap items-center gap-x-3 gap-y-1 rounded-card bg-muc py-1.5 pr-2 pl-4 text-nuoc shadow-raised motion-safe:animate-[rise_300ms_ease-out]"
       >
         <p className="min-w-0 flex-1 font-semibold">{t("mobile.update.available")}</p>
         <div className="flex items-center gap-1">
-          <button type="button" className="min-h-11 rounded-xl px-3 text-nuoc/85" onClick={() => setLater(true)}>
+          <button type="button" className="min-h-11 rounded-chip px-3 text-nuoc" onClick={() => setLater(true)}>
             {t("mobile.update.later")}
           </button>
           <button
             type="button"
             disabled={busy}
-            className="min-h-11 rounded-xl bg-nghe px-4 font-semibold text-muc"
+            className="min-h-11 rounded-chip bg-nghe px-4 font-semibold text-muc transition-transform motion-safe:active:scale-[.98]"
             onClick={() => {
               setBusy(true);
               void apply().catch(() => window.location.reload());

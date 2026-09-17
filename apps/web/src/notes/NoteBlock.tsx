@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Icon } from "../design/index.ts";
 import { t } from "../i18n/index.ts";
 import { NoteEditor } from "./NoteEditor.tsx";
 import { useNotes, type NoteTarget } from "./store.ts";
@@ -33,9 +34,10 @@ export function NoteBlock({ target, testId = "note-block" }: { target: NoteTarge
             onDelete={() => void remove(note.id).then(() => setEditing(null))}
           />
         ) : (
-          <div key={note.id} className="flex items-start justify-between gap-3 rounded-2xl border-l-4 border-nghe bg-nghe/10 px-3 py-2" data-testid="note-item">
+          <div key={note.id} className="flex items-start justify-between gap-3 rounded-field border-l-4 border-nghe bg-surface-nghe px-3 py-2" data-testid="note-item">
             <p className="min-w-0 break-words" data-testid="note-text">{note.text}</p>
-            <button type="button" onClick={() => setEditing(note.id)} className="min-h-11 shrink-0 text-sm font-semibold text-ngoc" data-testid="note-edit">
+            <button type="button" onClick={() => setEditing(note.id)} className="inline-flex min-h-11 shrink-0 items-center gap-1.5 text-sm font-semibold text-ngoc" data-testid="note-edit">
+              <Icon name="pencil" size={16} />
               {t("review.notes.edit")}
             </button>
           </div>
@@ -45,7 +47,8 @@ export function NoteBlock({ target, testId = "note-block" }: { target: NoteTarge
       {editing === "new" ? (
         <NoteEditor onSave={(text) => void save({ target, text }).then(() => setEditing(null))} onCancel={() => setEditing(null)} />
       ) : (
-        <button type="button" onClick={() => setEditing("new")} className="min-h-11 self-start text-left font-semibold text-ngoc" data-testid="note-add">
+        <button type="button" onClick={() => setEditing("new")} className="inline-flex min-h-11 items-center gap-1.5 self-start text-left font-semibold text-ngoc" data-testid="note-add">
+          <Icon name="plus" size={18} />
           {t("review.notes.add")}
         </button>
       )}

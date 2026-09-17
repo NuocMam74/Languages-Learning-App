@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ProgressBar as DesignProgressBar } from "../design/index.ts";
 import { getLocale, t } from "../i18n/index.ts";
 import { dueWhen } from "./assignments.ts";
 
@@ -17,11 +18,15 @@ export function whenLabel(dueDate: string, today: string): string {
   }
 }
 
-/** Petits éléments partagés par l'espace enseignant et les classes côté élève. */
+/**
+ * Petits éléments partagés par l'espace enseignant et les classes côté élève. Ils ne réinventent
+ * rien : ils nomment, une seule fois, les habillages du système de design (champ, lien, action).
+ */
 
-export const inputClass = "min-h-12 w-full rounded-xl border-2 border-phu-sa/20 bg-white px-4 text-lg focus:border-ngoc focus:outline-none";
-export const linkButton = "min-h-11 self-start py-2 font-semibold text-ngoc";
-export const primaryLink = "grid min-h-14 place-items-center rounded-2xl bg-ngoc px-6 text-lg font-semibold text-nuoc";
+export const inputClass = "min-h-12 w-full rounded-field border border-line-strong bg-surface px-4 text-lg focus:border-ngoc focus:outline-none";
+export const linkButton = "flex min-h-11 items-center gap-1.5 self-start rounded-chip px-2 py-2 font-semibold text-ngoc hover:bg-ngoc/8";
+export const primaryLink =
+  "grid min-h-14 place-items-center rounded-card bg-ngoc px-6 text-lg font-semibold text-nuoc shadow-card transition-[background-color,transform] hover:bg-ngoc/90 motion-safe:active:scale-[.98]";
 
 export function Explain({ text, children }: { text: string; children?: ReactNode }) {
   return (
@@ -35,25 +40,31 @@ export function Explain({ text, children }: { text: string; children?: ReactNode
 /** Confirmation en ligne (pas de fenêtre modale) : destructif en laque, annulation discrète. */
 export function Confirm({ id, text, confirmLabel, onConfirm, onCancel, busy = false }: { id: string; text: string; confirmLabel: string; onConfirm: () => void; onCancel: () => void; busy?: boolean }) {
   return (
-    <div className="flex flex-col gap-3 border-l-4 border-son-mai pl-3 print:hidden" role="alertdialog" aria-labelledby={id}>
-      <p id={id}>{text}</p>
-      <div className="flex flex-wrap gap-4">
-        <button type="button" disabled={busy} className="min-h-11 rounded-xl bg-son-mai px-4 font-semibold text-white disabled:opacity-60" onClick={onConfirm}>
-          {confirmLabel}
-        </button>
-        <button type="button" className="min-h-11 text-ngoc" onClick={onCancel}>
-          {t("common.cancel")}
-        </button>
+    <div className="rounded-card border border-son-mai/25 bg-surface-son-mai px-5 py-4 print:hidden" role="alertdialog" aria-labelledby={id}>
+      <div className="flex flex-col gap-3">
+        <p id={id}>{text}</p>
+        <div className="flex flex-wrap gap-4">
+          <button
+            type="button"
+            disabled={busy}
+            className="min-h-11 rounded-chip bg-son-mai px-4 font-semibold text-nuoc transition-transform motion-safe:active:scale-[.98] disabled:opacity-60"
+            onClick={onConfirm}
+          >
+            {confirmLabel}
+          </button>
+          <button type="button" className="min-h-11 rounded-chip px-3 font-semibold text-ngoc hover:bg-ngoc/8" onClick={onCancel}>
+            {t("common.cancel")}
+          </button>
+        </div>
       </div>
     </div>
   );
 }
 
+/**
+ * Barre d'avancement d'un devoir. Elle délègue au système de design (remplissage 400 ms, nom
+ * accessible obligatoire) et n'ajoute qu'un filet visible à l'impression du tableau de classe.
+ */
 export function ProgressBar({ label, value, max, done = false }: { label: string; value: number; max: number; done?: boolean }) {
-  const ratio = max > 0 ? Math.min(1, Math.max(0, value / max)) : 0;
-  return (
-    <div className="h-2.5 overflow-hidden rounded-full bg-phu-sa/10 print:border print:border-phu-sa/40" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={max} aria-valuenow={Math.min(value, max)}>
-      <div className={`h-full rounded-full ${done ? "bg-nghe" : "bg-ngoc"}`} style={{ width: `${ratio * 100}%` }} />
-    </div>
-  );
+  return <DesignProgressBar label={label} value={value} max={max} tone={done ? "nghe" : "ngoc"} className="print:border print:border-phu-sa/40" />;
 }

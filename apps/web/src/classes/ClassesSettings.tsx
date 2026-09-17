@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useAccount } from "../account.ts";
+import { Icon, SectionTitle } from "../design/index.ts";
 import { t } from "../i18n/index.ts";
 import { fetchRoles } from "../teacher/teacher-api.ts";
 import { useOnline } from "../use-online.ts";
@@ -27,12 +28,26 @@ export function ClassesSettings() {
   }, [status, online]);
 
   if (!teacher && !student) return null;
+  // Deux entrées au plus : des rangées posées sur une surface, pas deux liens nus côte à côte.
+  const row = "flex min-h-12 items-center gap-3 rounded-card border border-line bg-surface px-4 py-2 font-semibold text-ngoc transition-[background-color] hover:bg-ngoc-sang/40";
   return (
-    <section className="flex flex-col gap-3 border-t border-phu-sa/10 py-5" data-testid="classes-settings">
-      <h2 className="font-semibold">{t("classes.settings.title")}</h2>
-      <div className="flex flex-wrap gap-x-6">
-        {teacher && <Link to="/prof" className="min-h-11 py-2 font-semibold text-ngoc">{t("classes.settings.teacher")}</Link>}
-        {student && <Link to="/mes-classes" className="min-h-11 py-2 font-semibold text-ngoc">{t("classes.settings.mine")}</Link>}
+    <section className="flex flex-col gap-3 border-t border-line py-5" data-testid="classes-settings">
+      <SectionTitle icon="diploma">{t("classes.settings.title")}</SectionTitle>
+      <div className="flex flex-col gap-2">
+        {teacher && (
+          <Link to="/prof" className={row}>
+            <Icon name="users" size={20} />
+            <span className="min-w-0 flex-1">{t("classes.settings.teacher")}</span>
+            <Icon name="chevronRight" size={18} className="opacity-60" />
+          </Link>
+        )}
+        {student && (
+          <Link to="/mes-classes" className={row}>
+            <Icon name="notebook" size={20} />
+            <span className="min-w-0 flex-1">{t("classes.settings.mine")}</span>
+            <Icon name="chevronRight" size={18} className="opacity-60" />
+          </Link>
+        )}
       </div>
     </section>
   );

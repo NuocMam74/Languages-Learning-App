@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { TranscriptsAllowed } from "../components/AudioButton.tsx";
 import { ExerciseView } from "../components/exercises.tsx";
 import { Button, Vi } from "../components/ui.tsx";
+import { Card, Chip, IconButton, ProgressBar } from "../design/index.ts";
 import { l, t, type MessageKey } from "../i18n/index.ts";
 
 /**
@@ -73,36 +74,42 @@ export function ExamRunner({ content, questions, deadline, initialAnswers = [], 
       data-section={question.section}
       className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]"
     >
-      <header className="flex items-center gap-4">
-        <button type="button" onClick={() => setConfirmQuit(true)} aria-label={t("exams.run.quit")} className="grid size-11 place-items-center rounded-full text-phu-sa">
-          <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M6 6l12 12M18 6L6 18" /></svg>
-        </button>
-        <div
-          className="h-3 flex-1 overflow-hidden rounded-full bg-phu-sa/10"
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={questions.length}
-          aria-valuenow={index}
-          aria-label={t("exams.run.progress", { i: index + 1, n: questions.length })}
+      <header className="flex items-center gap-3">
+        <IconButton icon="close" label={t("exams.run.quit")} onClick={() => setConfirmQuit(true)} className="-ml-2" />
+        <ProgressBar
+          className="flex-1"
+          value={index}
+          max={questions.length}
+          label={t("exams.run.progress", { i: index + 1, n: questions.length })}
+        />
+        {/* Le temps ne clignote pas : il change simplement de ton sous la dernière minute. */}
+        <span
+          role="timer"
+          aria-label={t("exams.run.time")}
+          className={`min-w-14 rounded-chip px-2 py-1 text-right font-semibold tabular-nums ${low ? "bg-surface-son-mai text-son-mai" : "text-phu-sa"}`}
         >
-          <div className="h-full rounded-full bg-ngoc transition-[width] duration-500" style={{ width: `${(index / questions.length) * 100}%` }} />
-        </div>
-        <span role="timer" aria-label={t("exams.run.time")} className={`min-w-14 text-right font-semibold tabular-nums ${low ? "text-son-mai" : "text-phu-sa"}`}>
           {formatClock(remaining)}
         </span>
       </header>
-      <p className="mt-3 text-sm font-medium text-ngoc">
-        {t(`exams.skill.${question.section}` as MessageKey)} · {t("exams.run.progress", { i: index + 1, n: questions.length })}
-      </p>
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <Chip tone="ngoc">{t(`exams.skill.${question.section}` as MessageKey)}</Chip>
+        <span className="text-sm text-phu-sa">{t("exams.run.progress", { i: index + 1, n: questions.length })}</span>
+      </div>
 
       {confirmQuit && (
-        <div role="alertdialog" aria-labelledby="quit-title" className="mt-4 flex flex-col gap-3 border-l-4 border-son-mai pl-3">
-          <p id="quit-title">{t("exams.run.quitConfirm")}</p>
-          <div className="flex gap-4">
-            <button type="button" className="min-h-11 rounded-xl bg-son-mai px-4 font-semibold text-white" onClick={onQuit}>{t("exams.run.quitYes")}</button>
-            <button type="button" className="min-h-11 font-semibold text-ngoc" onClick={() => setConfirmQuit(false)}>{t("exams.run.stay")}</button>
+        <Card tone="alert" className="mt-4">
+          <div role="alertdialog" aria-labelledby="quit-title" className="flex flex-col gap-3">
+            <p id="quit-title">{t("exams.run.quitConfirm")}</p>
+            <div className="flex flex-wrap gap-3">
+              <button type="button" className="min-h-11 rounded-chip bg-son-mai px-4 font-semibold text-nuoc transition-transform motion-safe:active:scale-[.98]" onClick={onQuit}>
+                {t("exams.run.quitYes")}
+              </button>
+              <button type="button" className="min-h-11 rounded-chip px-4 font-semibold text-ngoc transition-colors hover:bg-phu-sa/5" onClick={() => setConfirmQuit(false)}>
+                {t("exams.run.stay")}
+              </button>
+            </div>
           </div>
-        </div>
+        </Card>
       )}
 
       <main className="flex flex-1 flex-col pt-6">
@@ -137,7 +144,7 @@ function SilentPickView({ exercise, onAnswer }: { exercise: Extract<Exercise, { 
             role="radio"
             aria-checked={selected === option.id}
             onClick={() => setSelected(option.id)}
-            className={`flex min-h-16 items-center justify-center rounded-2xl border-2 px-4 py-3 ${selected === option.id ? "border-ngoc bg-ngoc-sang" : "border-phu-sa/15 bg-white/70"}`}
+            className={`flex min-h-16 items-center justify-center rounded-card border-2 px-4 py-3 transition-[background-color,border-color,transform] motion-safe:active:scale-[.98] ${selected === option.id ? "border-ngoc bg-ngoc-sang" : "border-line-strong bg-surface"}`}
           >
             <Vi size="2xl">{option.text}</Vi>
           </button>

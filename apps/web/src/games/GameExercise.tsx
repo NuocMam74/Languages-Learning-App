@@ -14,7 +14,7 @@ import { Button } from "../components/ui.tsx";
 import { t } from "../i18n/index.ts";
 import { BuaCom } from "./BuaCom.tsx";
 import { ChoNoi } from "./ChoNoi.tsx";
-import { GameLayout } from "./GameShell.tsx";
+import { GameEmpty, GameLayout, GameLoading } from "./GameShell.tsx";
 import { useXeOmData } from "./xe-om-data.ts";
 import { XeOm } from "./XeOm.tsx";
 
@@ -80,17 +80,12 @@ function XeOmExercise({ content, concepts, seed, onSkip, resultActions }: Exerci
   if (data === undefined) {
     return (
       <GameLayout testId="xe-om">
-        <p className="grid flex-1 place-items-center text-phu-sa">{t("games.loading")}</p>
+        <GameLoading />
       </GameLayout>
     );
   }
-  if (data === null) {
-    return (
-      <GameLayout testId="xe-om" action={<Button onClick={onSkip}>{t("games.continue")}</Button>}>
-        <p className="grid flex-1 place-items-center text-center text-lg text-phu-sa">{t("games.xeOm.empty")}</p>
-      </GameLayout>
-    );
-  }
+  // Même état vide que hors séance (illustration + phrase) : un seul dessin pour un seul cas.
+  if (data === null) return <GameEmpty testId="xe-om" message={t("games.xeOm.empty")} onSkip={onSkip} />;
   return <XeOm content={content} data={data} pickRoutes={pickRoutes} onSkip={onSkip} resultActions={resultActions} />;
 }
 

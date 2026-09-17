@@ -217,8 +217,8 @@ function OptionButton({ option, content, image, tone, selected, disabled, onSele
       data-option-id={option.id}
       disabled={disabled}
       onClick={onSelect}
-      className={`flex min-h-16 items-center justify-center rounded-2xl border-2 px-4 py-3 text-left transition-colors ${
-        selected ? "border-ngoc bg-ngoc-sang" : "border-phu-sa/15 bg-white/70"
+      className={`flex min-h-16 items-center justify-center rounded-card border-2 px-4 py-3 text-left transition-[background-color,border-color,transform,box-shadow] motion-safe:active:scale-[.98] ${
+        selected ? "border-ngoc bg-ngoc-sang shadow-card" : "border-line-strong bg-surface"
       } ${image ? "aspect-square flex-col" : ""}`}
     >
       {image && option.image && !imageFailed ? (
@@ -246,7 +246,7 @@ function CultureCardView({ exercise, content, onAnswer, locked }: ViewProps<"cul
       <Layout prompt={l(card.title)} action={<Button onClick={() => setAsking(true)}>{t("lesson.continue")}</Button>}>
         <article className="flex flex-col gap-6 pt-4">
           {card.vi && (
-            <div className="flex flex-col items-start gap-4 border-l-4 border-nghe pl-4">
+            <div className="flex flex-col items-start gap-4 rounded-card bg-surface-nghe px-4 py-4">
               <Vi>{card.vi}</Vi>
               <AudioButton play={() => playPath(content, card.audio, card.vi ?? "", ttsAllowed(false))} large={false} withSlow={false} />
             </div>
@@ -297,9 +297,9 @@ function BuildSentenceView({ exercise, content, onAnswer, locked }: ViewProps<"b
           <p className="text-lg">{l(exercise.translation)}</p>
         </div>
 
-        <div className="flex min-h-20 flex-wrap content-start gap-2 border-b-2 border-phu-sa/20 pb-3" aria-live="polite">
+        <div className="flex min-h-20 flex-wrap content-start gap-2 border-b-2 border-line-strong pb-3" aria-live="polite">
           {picked.map((id, i) => (
-            <button key={id} type="button" disabled={locked} onClick={() => setPicked(picked.filter((_, k) => k !== i))} className="rounded-xl bg-ngoc px-4 py-2 text-nuoc">
+            <button key={id} type="button" disabled={locked} onClick={() => setPicked(picked.filter((_, k) => k !== i))} className="rounded-chip bg-ngoc px-4 py-2 text-nuoc transition-transform motion-safe:active:scale-[.98]">
               <Vi size="2xl">{byId.get(id)?.text}</Vi>
             </button>
           ))}
@@ -314,7 +314,7 @@ function BuildSentenceView({ exercise, content, onAnswer, locked }: ViewProps<"b
                 type="button"
                 disabled={used || locked}
                 onClick={() => setPicked([...picked, tok.id])}
-                className={`rounded-xl border-2 px-4 py-2 ${used ? "border-dashed border-phu-sa/20 text-transparent" : "border-phu-sa/20 bg-white/70"}`}
+                className={`rounded-xl border-2 px-4 py-2 ${used ? "border-dashed border-phu-sa/20 text-transparent" : "border-line-strong bg-surface"}`}
               >
                 <Vi size="2xl">{tok.text}</Vi>
               </button>

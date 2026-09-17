@@ -31,7 +31,7 @@ export function SpeakAnswerView({ exercise, content, onAnswer, locked }: Props<"
 
   return (
     <div className="flex flex-1 flex-col">
-      <section className="flex flex-col items-center gap-2 rounded-2xl bg-white/70 px-4 py-3 text-center" data-testid="speak-question">
+      <section className="flex flex-col items-center gap-2 rounded-card bg-surface px-4 py-3 text-center" data-testid="speak-question">
         <Vi size="vi">{exercise.prompt}</Vi>
         <p className="text-phu-sa">{l(exercise.translation)}</p>
         <AudioButton
@@ -77,7 +77,7 @@ export function SpeakRoleplayView({ exercise, content, onAnswer, locked }: Props
 
   return (
     <div className="flex flex-1 flex-col" data-testid="roleplay" data-step={index + 1} data-total={exercise.prompts.length}>
-      <section className="flex flex-col gap-1 rounded-2xl bg-white/70 px-4 py-3">
+      <section className="flex flex-col gap-1 rounded-card bg-surface px-4 py-3">
         <p className="text-sm font-semibold text-ngoc">{t("exercise.speak.roleplayStep", { i: index + 1, n: exercise.prompts.length })}</p>
         <p className="text-lg">{l(exercise.situation)}</p>
         <p className="text-phu-sa">{l(prompt.cue)}</p>
