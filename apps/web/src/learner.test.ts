@@ -27,6 +27,7 @@ import {
   getTotals,
   openSession,
   planning,
+  markSessionTaught,
   saveLessonPart,
   saveProfile,
   savePlacement,
@@ -102,6 +103,12 @@ async function play(content: ContentIndex, start: SessionRun, n = Infinity, righ
     if (phase.kind === "recap") break;
     if (phase.kind === "save_lesson") {
       run = await saveLessonPart(content, run);
+      continue;
+    }
+    // Fiche de découverte (contrat phase10 §1) : on la lit, comme l'apprenant, sans qu'elle compte
+    // pour un item.
+    if (phase.kind === "teach") {
+      run = await markSessionTaught(content, run);
       continue;
     }
     const ex = exerciseFor(content, run, phase)!;

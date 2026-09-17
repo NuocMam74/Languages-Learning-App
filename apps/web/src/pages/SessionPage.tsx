@@ -5,6 +5,7 @@ import { useAccount } from "../account.ts";
 import { playConcept, ttsAllowed } from "../audio.ts";
 import { BadgeIcon } from "../components/BadgeIcon.tsx";
 import { ExerciseView } from "../components/exercises.tsx";
+import { LessonIntro } from "../exercises/LessonIntro.tsx";
 import { levelLabel, LevelLine } from "../components/LevelLine.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
 import { Card, CountUp, EmptyState, Icon, IconButton, ProgressBar, ProgressRing, SectionTitle, Sheet, staggerStyle } from "../design/index.ts";
@@ -35,7 +36,7 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   const { lessonId = "" } = useParams();
   const practice = mode === "practice";
   const navigate = useNavigate();
-  const { status, run, phase, exercise, feedback, recap, error, open, answer, next, remedial } = useSession();
+  const { status, run, phase, exercise, feedback, recap, error, open, answer, next, taught, remedial } = useSession();
   const [attempt, setAttempt] = useState(0);
   // Hauteur de la feuille de correction : le contenu est rembourré d'autant pour rester lisible dessous.
   const [sheetHeight, setSheetHeight] = useState(0);
@@ -89,6 +90,11 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
     );
   }
   if (status === "done" && recap) return <Recap content={content} onDone={() => navigate(backTo)} onRetry={() => setAttempt((n) => n + 1)} />;
+  // Découverte (contrat phase10 §1) : on présente la leçon avant de la faire pratiquer. Placée
+  // avant la garde ci-dessous, qui exige un exercice — la fiche n'en est pas un.
+  if (phase?.kind === "teach" && run) {
+    return <LessonIntro content={content} lesson={content.lessons.get(phase.lesson.lessonId)} conceptIds={phase.conceptIds} onStart={() => void taught()} />;
+  }
   if (!run || !exercise || !phase) return <Screen><div /></Screen>;
 
   const done = sessionItemsDone(run);

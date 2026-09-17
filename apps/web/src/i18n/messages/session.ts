@@ -27,6 +27,17 @@ export const fr = {
   "session.freeze.confirm": "Mettre en pause",
   "session.freeze.active": "Série en pause jusqu'au {date}.",
   "session.freeze.cancel": "Je suis de retour",
+  // Fiche de découverte (contrat phase10 §1) : on présente avant de faire pratiquer.
+  "intro.eyebrow": "Avant de pratiquer",
+  "intro.title": "Ce que tu vas apprendre",
+  "intro.words": "{n} mot",
+  "intro.words.plural": "{n} mots",
+  "intro.listen": "Écouter {word}",
+  "intro.position": "Mot {i} sur {n}",
+  "intro.northern": "Au Nord on dirait : {word}",
+  "intro.notes": "À retenir",
+  "intro.hint": "Écoute chaque mot autant de fois que tu veux. Les exercices reprennent les mêmes.",
+  "intro.start": "Commencer les exercices",
 } as const;
 
 export const en: Record<keyof typeof fr, string> = {
@@ -57,4 +68,14 @@ export const en: Record<keyof typeof fr, string> = {
   "session.freeze.confirm": "Pause my streak",
   "session.freeze.active": "Streak paused until {date}.",
   "session.freeze.cancel": "I'm back",
+  "intro.eyebrow": "Before you practise",
+  "intro.title": "What you are about to learn",
+  "intro.words": "{n} word",
+  "intro.words.plural": "{n} words",
+  "intro.listen": "Listen to {word}",
+  "intro.position": "Word {i} of {n}",
+  "intro.northern": "Up North they would say: {word}",
+  "intro.notes": "Worth remembering",
+  "intro.hint": "Listen to each word as often as you like. The exercises use these same words.",
+  "intro.start": "Start the exercises",
 };

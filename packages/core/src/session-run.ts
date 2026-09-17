@@ -54,6 +54,11 @@ export interface SessionRun {
   lesson: LessonRun | null;
   /** La partie leçon a été enregistrée (cartes SRS, progression). */
   lessonSaved: boolean;
+  /**
+   * La fiche de découverte a été vue (contrat phase10 §1). Absent = pas encore vue, donc les
+   * séances écrites avant ce contrat la montrent une fois à la reprise — sans conséquence.
+   */
+  taught?: boolean;
   learned: ConceptId[];
   xp: number;
   startedAt: string;
@@ -63,6 +68,12 @@ export interface SessionRun {
 
 export type SessionPhase =
   | { kind: "warmup" | "review"; item: ReviewItem; index: number }
+  /**
+   * Découverte : on **présente** ce que la leçon introduit avant de le faire pratiquer (contrat
+   * phase10 §1). Ce n'est pas un item — elle ne compte ni dans la barre de progression, ni dans le
+   * SRS, ni dans les événements.
+   */
+  | { kind: "teach"; lesson: LessonRun; conceptIds: ConceptId[] }
   | { kind: "new" | "practice"; lesson: LessonRun }
   | { kind: "save_lesson"; lesson: LessonRun }
   | { kind: "recap" };
@@ -113,11 +124,37 @@ export function startSessionRun(input: {
   };
 }
 
+/**
+ * Ce que la fiche de découverte présente : les concepts que la leçon introduit et que l'apprenant
+ * n'a pas déjà rencontrés. Vide = rien à présenter (leçon de révision, test d'unité) : la phase est
+ * alors sautée, on ne fait pas lire une fiche pour rien. L'entraînement, lui, est écarté en amont
+ * par `sessionPhase`.
+ */
+export function conceptsToTeach(run: SessionRun, content: ContentIndex): ConceptId[] {
+  if (!run.lesson) return [];
+  const known = new Set(run.knownAtStart);
+  const lesson = content.lessons.get(run.lesson.lessonId);
+  return (lesson?.review.srsIntroduce ?? []).filter((id) => !known.has(id) && content.concepts.has(id));
+}
+
+/** La fiche de découverte a été vue : on passe aux exercices. */
+export function markTaught(run: SessionRun): SessionRun {
+  return run.taught ? run : { ...run, taught: true };
+}
+
 export function sessionPhase(run: SessionRun, content: ContentIndex): SessionPhase {
   const item = run.reviewQueue[run.reviewCursor];
   if (item) return { kind: item.block, item, index: run.reviewCursor };
   if (run.lesson && !run.lessonSaved) {
     if (isFinished(run.lesson)) return { kind: "save_lesson", lesson: run.lesson };
+    // Découverte avant pratique, une seule fois, et après le réveil et le rappel espacé : l'ordre
+    // de la séance reste celui de la spec §4.3, la présentation s'insère en tête du bloc « Nouveau ».
+    // Jamais en entraînement (contrat phase8 §2) : on y rejoue une leçon déjà terminée pour
+    // s'exercer, pas pour découvrir — présenter la fiche serait un contresens.
+    if (!run.taught && !isPracticeRun(run)) {
+      const conceptIds = conceptsToTeach(run, content);
+      if (conceptIds.length > 0) return { kind: "teach", lesson: run.lesson, conceptIds };
+    }
     const step = currentItem(run.lesson);
     const type = step ? content.lessons.get(run.lesson.lessonId)?.steps[step.stepIndex]?.type : undefined;
     return { kind: type === "game" ? "practice" : "new", lesson: run.lesson };

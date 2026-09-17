@@ -15,6 +15,7 @@ import {
   lessonScore,
   localDay,
   makeEvent,
+  markTaught,
   mergeCards,
   newCard,
   nextLesson,
@@ -434,6 +435,19 @@ export async function submitSessionAnswer(
 }
 
 /** Fin de la partie « Nouveau » : cartes SRS, progression de leçon, lesson_completed. */
+/**
+ * Fiche de découverte vue (contrat phase10 §1) : enregistré dans le snapshot comme n'importe quelle
+ * avancée de séance, pour qu'une reprise ne la remontre pas. Aucun événement : rien ne s'est passé
+ * côté pédagogie, on a seulement lu.
+ */
+export async function markSessionTaught(content: ContentIndex, run: SessionRun, now = new Date()): Promise<SessionRun> {
+  const next = markTaught(run);
+  if (next === run) return run;
+  const d = db();
+  await writeSnapshot(d, content.pack.code, next, now);
+  return next;
+}
+
 export async function saveLessonPart(content: ContentIndex, run: SessionRun, now = new Date()): Promise<SessionRun> {
   const lessonRun: LessonRun | null = run.lesson;
   const lesson = lessonRun ? content.lessons.get(lessonRun.lessonId) : undefined;

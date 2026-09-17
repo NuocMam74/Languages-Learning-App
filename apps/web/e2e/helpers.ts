@@ -22,6 +22,13 @@ export async function onboard(page: Page, minutes = "5 min") {
 
 /** Répond à l'item affiché, juste ou non : la séance doit aller au bilan quoi qu'il arrive. */
 export async function playOneStep(page: Page, finished: RegExp): Promise<"done" | "step"> {
+  // Fiche de découverte (contrat phase10 §1) : une séance qui introduit du nouveau s'ouvre sur la
+  // présentation des mots. Elle n'est pas un item — on la lit et on passe aux exercices.
+  const intro = page.getByTestId("lesson-intro");
+  if (await intro.isVisible().catch(() => false)) {
+    await page.getByTestId("intro-start").click();
+    return "step";
+  }
   const heading = page.getByRole("heading", { name: finished });
   const session = page.locator('[data-testid="lesson"][data-status="answering"], [data-testid="lesson"][data-status="feedback"]');
   await expect(heading.or(session)).toBeVisible();

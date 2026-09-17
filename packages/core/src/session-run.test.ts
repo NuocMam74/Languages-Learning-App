@@ -3,7 +3,7 @@ import { buildExercise, currentItem, evaluate, recordResult, type Exercise, type
 import { XP_REVIEW } from "./progress.ts";
 import { buildReviewExercise } from "./review.ts";
 import { planSession } from "./session.ts";
-import { isPracticeRun, recordReviewResult, reviewSeed, sessionItemsDone, sessionPhase, startSessionRun } from "./session-run.ts";
+import { conceptsToTeach, isPracticeRun, markTaught, recordReviewResult, reviewSeed, sessionItemsDone, sessionPhase, startSessionRun } from "./session-run.ts";
 import { newCard, review } from "./srs.ts";
 import { loadPack } from "./testing/pack.ts";
 
@@ -36,6 +36,18 @@ describe("déroulé de séance", () => {
       run = recordReviewResult(run, ex, evaluate(ex, choice(ex, true)), 1000);
     }
     expect(run.xp).toBe(XP_REVIEW); // seul le premier essai réussi rapporte
+
+    // Découverte (contrat phase10 §1) : la leçon se présente avant de se pratiquer, une fois,
+    // après le réveil et le rappel espacé. Ce n'est pas un item : rien n'est noté, et la barre de
+    // progression ne bouge pas.
+    expect(phase.kind).toBe("teach");
+    if (phase.kind !== "teach") throw new Error(phase.kind);
+    expect(phase.conceptIds).toEqual(conceptsToTeach(run, content));
+    expect(phase.conceptIds.length).toBeGreaterThan(0);
+    const doneBefore = sessionItemsDone(run);
+    run = markTaught(run);
+    expect(sessionItemsDone(run)).toBe(doneBefore);
+    phase = sessionPhase(run, content);
     expect(phase.kind).toBe("new");
 
     const kinds = new Set<string>();
@@ -83,10 +95,15 @@ describe("mode entraînement (contrat phase8 §2)", () => {
     expect(JSON.parse(JSON.stringify(run))).toEqual(run);
   });
 
-  it("ne change rien au déroulé : mêmes étapes, même file", () => {
+  it("ne change rien aux étapes ni à la file, et saute la découverte", () => {
     const normal = startSessionRun({ plan, sessionId: "s", source: "lesson", lesson: l01, known: [], now: NOW });
     const practice = startSessionRun({ plan, sessionId: "s", source: "lesson", lesson: l01, known: [], now: NOW, mode: "practice" });
     expect({ ...practice, mode: undefined }).toEqual({ ...normal, mode: undefined });
-    expect(sessionPhase(practice, content).kind).toBe(sessionPhase(normal, content).kind);
+    // Seule différence de déroulé : on rejoue une leçon déjà terminée pour s'exercer, pas pour la
+    // découvrir — la fiche serait un contresens (contrat phase10 §1).
+    expect(sessionPhase(normal, content).kind).toBe("teach");
+    expect(sessionPhase(practice, content).kind).toBe("new");
+    // Une fois la fiche lue, les deux déroulés se rejoignent exactement.
+    expect(sessionPhase(markTaught(normal), content).kind).toBe("new");
   });
 });

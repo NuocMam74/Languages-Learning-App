@@ -21,7 +21,7 @@ import { create } from "zustand";
 import { ttsAllowed } from "./audio.ts";
 import { UnitUnavailableError } from "./content.ts";
 import { l, t, toneLabel } from "./i18n/index.ts";
-import { finishSession, isLessonOpen, openSession, saveLessonPart, sessionAvailability, submitSessionAnswer, type SessionRecap, type SessionRequest } from "./learner.ts";
+import { finishSession, isLessonOpen, markSessionTaught, openSession, saveLessonPart, sessionAvailability, submitSessionAnswer, type SessionRecap, type SessionRequest } from "./learner.ts";
 import { celebrate } from "./rewards/celebrate.ts";
 import { awardSession } from "./rewards/store.ts";
 import { syncEngine } from "./sync.ts";
@@ -55,10 +55,13 @@ interface SessionState {
   open: (content: ContentIndex, request: SessionRequest) => Promise<void>;
   answer: (response: ExerciseResponse) => Promise<void>;
   next: () => Promise<void>;
+  /** Fiche de découverte lue : on passe aux exercices (contrat phase10 §1). */
+  taught: () => Promise<void>;
   reset: () => void;
 }
 
 export function exerciseFor(content: ContentIndex, run: SessionRun, phase: SessionPhase): Exercise | null {
+  // `teach` n'a pas d'exercice : c'est une présentation, l'écran la rend depuis `phase.conceptIds`.
   switch (phase.kind) {
     case "warmup":
     case "review":
@@ -220,6 +223,12 @@ export const useSession = create<SessionState>((set, get) => {
       const nudge = next.lesson?.tutorNudge ?? null;
       const pendingRemedial = !evaluation.correct && nudge && next.lesson?.errorStreaks[nudge] === TUTOR_NUDGE_AFTER ? nudge : null;
       set({ run: next, feedback: evaluation, given: givenText(exercise, response), status: "feedback", pendingRemedial });
+    },
+
+    async taught() {
+      const { content, run, phase } = get();
+      if (!content || !run || phase?.kind !== "teach") return;
+      await advance(content, await markSessionTaught(content, run));
     },
 
     async next() {

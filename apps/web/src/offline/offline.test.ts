@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { readPackBundle } from "../../../../scripts/lib/load-pack.ts";
 import { checkContentUpdate, ensureUnits, loadPack, UnitUnavailableError } from "../content.ts";
 import { offlineKey, ParloDB, setDb, unitKey } from "../db.ts";
-import { openSession, saveLessonPart, submitSessionAnswer } from "../learner.ts";
+import { markSessionTaught, openSession, saveLessonPart, submitSessionAnswer } from "../learner.ts";
 import { exerciseFor } from "../session-store.ts";
 import { downloadUnit, enforceOfflineQuota, removeOfflineUnit, unitSize } from "./downloads.ts";
 
@@ -45,6 +45,12 @@ async function playSome(content: ContentIndex, start: SessionRun, n: number): Pr
     if (phase.kind === "recap") break;
     if (phase.kind === "save_lesson") {
       run = await saveLessonPart(content, run);
+      continue;
+    }
+    // Fiche de découverte (contrat phase10 §1) : on la lit, comme l'apprenant, sans qu'elle compte
+    // pour un item.
+    if (phase.kind === "teach") {
+      run = await markSessionTaught(content, run);
       continue;
     }
     const ex = exerciseFor(content, run, phase)!;
@@ -199,6 +205,10 @@ describe("unités hors ligne : taille, téléchargement, quota LRU", () => {
     setDb(new ParloDB(name));
     const content = await loadPack("vi-south", offline);
     const run = await openSession(content, { source: "lesson", lessonId: "vi-south.u03.l01" });
-    expect(exerciseFor(content, run, sessionPhase(run, content))).not.toBeNull();
+    // La séance s'ouvre sur la fiche de découverte (contrat phase10 §1) ; ce qui compte ici est que
+    // le contenu de l'unité soit bien là, donc que l'exercice suivant se construise hors ligne.
+    expect(sessionPhase(run, content).kind).toBe("teach");
+    const started = await markSessionTaught(content, run);
+    expect(exerciseFor(content, started, sessionPhase(started, content))).not.toBeNull();
   });
 });

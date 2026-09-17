@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { readPackFiles, toRaw } from "../../../../scripts/lib/load-pack.ts";
 import { loadPack } from "../content.ts";
 import { db, ParloDB, setDb } from "../db.ts";
-import { finishSession, getTotals, openSession, packCards, saveLessonPart, sessionPath, submitSessionAnswer } from "../learner.ts";
+import { finishSession, getTotals, markSessionTaught, openSession, packCards, saveLessonPart, sessionPath, submitSessionAnswer } from "../learner.ts";
 import { exerciseFor } from "../session-store.ts";
 
 /**
@@ -60,6 +60,12 @@ async function play(content: ContentIndex, start: SessionRun): Promise<SessionRu
     if (phase.kind === "recap") return run;
     if (phase.kind === "save_lesson") {
       run = await saveLessonPart(content, run);
+      continue;
+    }
+    // Fiche de découverte (contrat phase10 §1) : la première séance, normale, la présente ; la
+    // reprise en entraînement la saute d'elle-même — c'est ce que vérifie le test suivant.
+    if (phase.kind === "teach") {
+      run = await markSessionTaught(content, run);
       continue;
     }
     const ex = exerciseFor(content, run, phase);
