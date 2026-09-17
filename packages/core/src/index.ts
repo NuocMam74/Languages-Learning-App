@@ -14,6 +14,7 @@ export * from "./badges.ts";
 export * from "./skills.ts";
 export * from "./placement.ts";
 export * from "./exams.ts";
+export * from "./worlds.ts";
 export * from "./challenges.ts";
 export * from "./games/index.ts";
 export * from "./rewards/index.ts";

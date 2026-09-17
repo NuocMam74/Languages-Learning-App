@@ -138,6 +138,7 @@ async function grantRewards(content: ContentIndex, recap: SessionRecap): Promise
     bestStreak: recap.bestStreak,
     knownWords: recap.knownWords,
     pack: content.pack,
+    worlds: recap.worlds,
     day: recap.localDate,
   });
   celebrate(celebrations);

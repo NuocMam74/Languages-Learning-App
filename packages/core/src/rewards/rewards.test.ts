@@ -45,6 +45,7 @@ import {
   wardrobeContext,
   wardrobeItem,
   weekStart,
+  worldRewardItem,
   type CountersJournal,
   type MissionKind,
   type WardrobeContext,
@@ -275,7 +276,7 @@ describe("xu", () => {
 });
 
 describe("atelier", () => {
-  const base: WardrobeContext = { level: 1, trophies: new Set(), sets: new Set(), purchased: new Set() };
+  const base: WardrobeContext = { level: 1, trophies: new Set(), sets: new Set(), purchased: new Set(), worlds: new Set() };
 
   it("chaque pièce a un emplacement connu et un identifiant unique", () => {
     expect(new Set(WARDROBE.map((item) => item.id)).size).toBe(WARDROBE.length);
@@ -324,6 +325,16 @@ describe("atelier", () => {
     expect(sanitizeOutfit({ hat: "non_la" }, { ...base, level: 3 }).hat).toBe("non_la");
     // Une pièce rangée dans le mauvais emplacement est refusée, pas déplacée.
     expect(sanitizeOutfit({ hat: "ao_dai" }, { ...base, level: 20 }).hat).toBeUndefined();
+  });
+
+  it("chaque monde offre un fond, et un seul", () => {
+    for (const world of ["b0", "b1", "b2", "b3", "b4", "b5"]) {
+      const reward = worldRewardItem(world);
+      expect(reward, world).not.toBeNull();
+      expect(reward!.slot).toBe("backdrop");
+      expect(itemState(reward!, base)).toBe("locked");
+      expect(itemState(reward!, { ...base, worlds: new Set([world]) })).toBe("owned");
+    }
   });
 
   it("annonce ce qui vient d'être débloqué", () => {

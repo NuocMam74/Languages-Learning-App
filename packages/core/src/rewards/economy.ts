@@ -32,6 +32,13 @@ export function coinsForGame(input: { correct: number; total: number; points: nu
   return Math.min(COINS_GAME_MAX, 3 + (input.won ? 8 : 0) + Math.floor(Math.max(0, input.points) / 50));
 }
 
+/**
+ * Monde du cursus terminé (contrat phase11 §3) : la plus grande boucle de progression de l'app, donc
+ * la plus grosse récompense — des xu, un coffre de jade, et le paysage du monde pour l'atelier.
+ */
+export const WORLD_COMPLETION_COINS = 300;
+export const WORLD_COMPLETION_CHEST: ChestTier = "jade";
+
 export interface LevelReward {
   coins: number;
   chest: ChestTier | null;

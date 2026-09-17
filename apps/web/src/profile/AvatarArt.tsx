@@ -54,6 +54,72 @@ const BACKDROPS: Record<string, ReactElement> = {
       <path d="M40 74v36M80 74v36" opacity="0.6" />
     </g>
   ),
+
+  // --- Paysages des mondes terminés (contrat phase11 §3) : un fond par monde traversé.
+  // Rumeur du fleuve (monde 1) : l'eau, et le son qui en monte.
+  tieng_song: (
+    <g stroke="var(--color-ngoc)" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.6">
+      <path d="M10 88q12-7 24 0t24 0t24 0t24 0" />
+      <path d="M18 100q12-7 24 0t24 0t24 0" />
+      <path d="M46 40a18 18 0 0 1 28 0M54 50a10 10 0 0 1 12 0" opacity="0.8" />
+    </g>
+  ),
+  // Devant la maison (monde 2) : un seuil, une porte ouverte.
+  hien_nha: (
+    <g stroke="var(--color-ngoc)" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.6">
+      <path d="M18 54 60 26l42 28" />
+      <path d="M28 54v44h64V54" />
+      <path d="M48 98V70h24v28" fill="var(--color-nghe)" fillOpacity="0.25" />
+      <path d="M8 108h104" />
+    </g>
+  ),
+  // Ruelle (monde 3) : deux murs qui se rapprochent, des fils au-dessus.
+  hem_pho: (
+    <g stroke="var(--color-ngoc)" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.55">
+      <path d="M6 24v84M114 24v84" />
+      <path d="M30 40v68M90 40v68" opacity="0.7" />
+      <path d="M6 30q54 14 108 0M6 46q54 12 108 0" opacity="0.6" />
+      <circle cx="60" cy="38" r="3" fill="var(--color-nghe)" stroke="none" />
+    </g>
+  ),
+  // Terrasse de café (monde 4) : un guéridon, un verre, un tabouret.
+  quan_ca_phe: (
+    <g stroke="var(--color-ngoc)" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.6">
+      <path d="M34 66h26l-3 20H37zM47 86v16M38 102h18" />
+      <path d="M72 74h16v14H72zM74 88v12M86 88v12" />
+      <path d="M8 108h104" />
+      <path d="M40 60c2-6 2-10 0-14" opacity="0.8" />
+    </g>
+  ),
+  // Gare routière (monde 5) : un car de nuit, phares allumés.
+  ben_xe: (
+    <g stroke="var(--color-ngoc)" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.6">
+      <path d="M20 50h62v38H20z" />
+      <path d="M82 60h16l8 12v16H82" />
+      <path d="M28 58h16v12H28M52 58h16v12H52" opacity="0.8" />
+      <circle cx="38" cy="94" r="7" />
+      <circle cx="92" cy="94" r="7" />
+      <circle cx="104" cy="74" r="3" fill="var(--color-nghe)" stroke="none" />
+    </g>
+  ),
+  // Nuit de récits (monde 6) : des lanternes suspendues sous les étoiles.
+  dem_ke_chuyen: (
+    <g>
+      <g fill="var(--color-nghe)" opacity="0.75">
+        <circle cx="22" cy="24" r="2" />
+        <circle cx="96" cy="18" r="2.4" />
+        <circle cx="66" cy="14" r="1.8" />
+      </g>
+      <g stroke="var(--color-nghe)" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.85">
+        <path d="M0 34q60 16 120 0" />
+        <path d="M34 36v8M34 44h-6l-2 10 2 10h12l2-10-2-10h-6M34 64v6" />
+        <path d="M84 40v8M84 48h-5l-2 8 2 8h10l2-8-2-8h-5M84 64v6" />
+      </g>
+      <g stroke="var(--color-ngoc)" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.45">
+        <path d="M12 102q12-7 24 0t24 0t24 0t24 0" />
+      </g>
+    </g>
+  ),
   // La nuit étoilée : quelques points et un croissant.
   sao_dem: (
     <g>

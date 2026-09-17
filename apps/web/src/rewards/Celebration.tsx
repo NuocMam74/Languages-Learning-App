@@ -1,4 +1,4 @@
-import { collectionRewardItem, trophyByCode, wardrobeItem } from "@parlo/core";
+import { collectionRewardItem, trophyByCode, wardrobeItem, worldRewardItem } from "@parlo/core";
 import { useEffect, useRef, type ReactNode } from "react";
 import { Button } from "../components/ui.tsx";
 import { Card, Icon } from "../design/index.ts";
@@ -79,6 +79,16 @@ function copyFor(celebration: Celebration): Copy {
         body: t(`mission.${celebration.missionKind}.label` as MessageKey),
         art: <Icon name="target" size={56} className="text-ngoc" />,
       };
+    case "world": {
+      // Le paysage du monde s'ouvre dans l'atelier : c'est lui qu'on montre, pas une icône générique.
+      const unlocked = worldRewardItem(celebration.world);
+      return {
+        title: t("reward.world.title", { name: celebration.name ? l(celebration.name) : "" }),
+        body: unlocked ? t("reward.world.bodyItem", { name: t(`wardrobe.item.${unlocked.id}.name` as MessageKey) }) : t("reward.world.body"),
+        art: unlocked ? <WardrobePreview slot={unlocked.slot} itemId={unlocked.id} size={80} /> : <Icon name="trophy" size={56} className="text-nghe" />,
+        fanfare: true,
+      };
+    }
     case "coins":
       return {
         title: t("reward.coins.title", { n: celebration.coins }),

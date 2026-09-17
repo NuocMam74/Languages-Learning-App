@@ -193,7 +193,19 @@ export function Hub({ content }: { content: ContentIndex }) {
       )}
 
       {/* La carte du parcours est l'élément mémorable (spec §13) : un bandeau jade l'annonce. */}
-      <SectionTitle tone="banner" icon="boat" className="mb-3">{t("hub.path")}</SectionTitle>
+      <SectionTitle
+        tone="banner"
+        icon="boat"
+        className="mb-3"
+        action={
+          <Link to="/mondes" className="flex min-h-11 items-center gap-1 pr-1 font-semibold text-nuoc" data-testid="hub-worlds">
+            {t("worlds.title")}
+            <Icon name="chevronRight" size={18} />
+          </Link>
+        }
+      >
+        {t("hub.path")}
+      </SectionTitle>
       {/* Unité en cours disponible hors ligne (spec §8.1) ; toutes les unités : Réglages → Hors ligne. */}
       {plan.next && <Suspense fallback={null}><OfflineUnit content={content} unitId={plan.next.unit} current /></Suspense>}
       <RiverPath content={content} completed={plan.completed} passed={plan.passed} unlocked={plan.open} current={plan.next?.id ?? null} />

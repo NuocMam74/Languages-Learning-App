@@ -2,6 +2,7 @@ import {
   BADGE_CODES,
   capDurationMs,
   capSessionTotals,
+  completedWorlds,
   completeLesson,
   countKnownWords,
   emptyStreak,
@@ -42,6 +43,7 @@ import {
   type BadgeCode,
   type ConceptId,
   type Counters,
+  type Localized,
   type ContentIndex,
   type Evaluation,
   type Exercise,
@@ -537,6 +539,11 @@ export interface SessionRecap {
   /** Mots connus et meilleure série, pour les paliers de trophées. */
   knownWords: number;
   bestStreak: number;
+  /**
+   * Mondes du cursus terminés à cet instant (contrat phase11 §3). La liste complète, pas le delta :
+   * c'est `rewards/store.ts` qui sait lesquels étaient déjà fêtés.
+   */
+  worlds: { id: string; title: Localized }[];
 }
 
 /** Bilan : XP, série, minutes du jour, badges, session_completed. */
@@ -637,6 +644,8 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       localDate: today,
       knownWords,
       bestStreak: Math.max(streak.current, streak.longest),
+      worlds: completedWorlds(content.curriculum, content.lessons, { completed: new Set([...completed, ...skipped]), passed })
+        .map((id) => ({ id, title: content.curriculum.blocks.find((b) => b.id === id)?.title ?? { fr: id } })),
     };
   });
 }

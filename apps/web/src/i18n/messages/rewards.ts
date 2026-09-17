@@ -141,6 +141,16 @@ export const fr = {
   "wardrobe.item.vien_son_mai.name": "Cadre de laque",
   "wardrobe.item.vien_ngoc.name": "Cadre de jade",
   "wardrobe.item.vien_vang.name": "Cadre doré",
+  // Monde terminé (contrat phase11 §3)
+  "reward.world.title": "Monde terminé : {name}",
+  "reward.world.body": "Tu as traversé tout un monde.",
+  "reward.world.bodyItem": "Tu as traversé tout un monde — et son paysage, « {name} », s'ouvre dans l'atelier.",
+  "wardrobe.item.tieng_song.name": "Rumeur du fleuve",
+  "wardrobe.item.hien_nha.name": "Devant la maison",
+  "wardrobe.item.hem_pho.name": "Ruelle de Saïgon",
+  "wardrobe.item.quan_ca_phe.name": "Terrasse de café",
+  "wardrobe.item.ben_xe.name": "Gare routière",
+  "wardrobe.item.dem_ke_chuyen.name": "Nuit de récits",
 } as const;
 
 export const en: Record<keyof typeof fr, string> = {
@@ -273,4 +283,13 @@ export const en: Record<keyof typeof fr, string> = {
   "wardrobe.item.vien_son_mai.name": "Lacquer frame",
   "wardrobe.item.vien_ngoc.name": "Jade frame",
   "wardrobe.item.vien_vang.name": "Golden frame",
+  "reward.world.title": "World complete: {name}",
+  "reward.world.body": "You crossed a whole world.",
+  "reward.world.bodyItem": "You crossed a whole world — and its landscape, “{name}”, is now open in the workshop.",
+  "wardrobe.item.tieng_song.name": "Murmur of the river",
+  "wardrobe.item.hien_nha.name": "In front of the house",
+  "wardrobe.item.hem_pho.name": "Saigon alley",
+  "wardrobe.item.quan_ca_phe.name": "Café terrace",
+  "wardrobe.item.ben_xe.name": "Bus station",
+  "wardrobe.item.dem_ke_chuyen.name": "Night of stories",
 };

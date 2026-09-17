@@ -11,7 +11,7 @@ import { l, t } from "../i18n/index.ts";
 const STEP_Y = 112;
 const AMPLITUDE = 26; // % de la largeur
 
-export function RiverPath({ content, completed, passed = completed, current, unlocked = completed }: {
+export function RiverPath({ content, completed, passed = completed, current, unlocked = completed, unitIds }: {
   content: ContentIndex;
   completed: ReadonlySet<LessonId>;
   /**
@@ -23,8 +23,13 @@ export function RiverPath({ content, completed, passed = completed, current, unl
   current: LessonId | null;
   /** Leçons ouvertes sans être terminées (sautées grâce au test de placement). */
   unlocked?: ReadonlySet<LessonId>;
+  /**
+   * Unités à dessiner (contrat phase11 §2) : celles d'un monde quand on est entré dedans. Par
+   * défaut, tout le cursus — le même fleuve, simplement tronçonné.
+   */
+  unitIds?: readonly string[];
 }) {
-  const units = content.curriculum.units;
+  const units = unitIds ? content.curriculum.units.filter((u) => unitIds.includes(u.id)) : content.curriculum.units;
   // Unité courante dépliée ; les unités suivantes restent visibles mais repliées et grisées (spec §4.2).
   const withCurrent = units.findIndex((u) => current !== null && u.lessons.includes(current));
   const lastTouched = units.reduce((acc, u, i) => (u.lessons.some((id) => completed.has(id) || unlocked.has(id)) ? i : acc), -1);

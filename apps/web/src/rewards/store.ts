@@ -26,6 +26,8 @@ import {
   SET_COMPLETION_COINS,
   streakChest,
   wardrobeContext,
+  WORLD_COMPLETION_CHEST,
+  WORLD_COMPLETION_COINS,
   wardrobeItem,
   type ChestTier,
   type CollectionSet,
@@ -73,6 +75,8 @@ export interface RewardsData {
   collectibles: FoundCollectible[];
   /** Pièces d'atelier achetées en xu. */
   purchased: string[];
+  /** Mondes du cursus terminés (contrat phase11 §3) : chacun offre son paysage. */
+  worlds: string[];
   outfit: Outfit;
   /** Compteurs cumulés depuis toujours (trophées). */
   totals: Counters;
@@ -94,6 +98,7 @@ export const emptyRewards = (): RewardsData => ({
   trophies: [],
   collectibles: [],
   purchased: [],
+  worlds: [],
   outfit: { ...DEFAULT_OUTFIT },
   totals: {},
   journal: {},
@@ -123,6 +128,7 @@ export function normalizeRewards(raw: unknown): RewardsData {
     trophies: dated<EarnedTrophy>(source.trophies, "code"),
     collectibles: dated<FoundCollectible>(source.collectibles, "id"),
     purchased: strings(source.purchased),
+    worlds: strings(source.worlds),
     // La tenue est nettoyée à l'affichage (`sanitizeOutfit`) : ici on garde ce qui a été choisi.
     outfit: typeof source.outfit === "object" && source.outfit !== null ? (source.outfit as Outfit) : { ...DEFAULT_OUTFIT },
     totals: normalizeCounters(source.totals),
@@ -161,10 +167,12 @@ export type Celebration =
   | { kind: "set"; set: CollectionSet }
   | { kind: "wardrobe"; itemId: string }
   | { kind: "mission"; period: Mission["period"]; missionKind: MissionKind }
+  /** Monde du cursus terminé (contrat phase11 §3) ; `name` vient du contenu, pas de l'i18n. */
+  | { kind: "world"; world: string; name: Localized | null }
   | { kind: "coins"; coins: number };
 
 /** Ordre d'apparition (contrat §5) : le plus rare d'abord, la monnaie en dernier. */
-const CELEBRATION_ORDER: Celebration["kind"][] = ["mission", "level", "trophy", "collectible", "set", "wardrobe", "coins"];
+const CELEBRATION_ORDER: Celebration["kind"][] = ["world", "mission", "level", "trophy", "collectible", "set", "wardrobe", "coins"];
 
 const sortCelebrations = (list: Celebration[]): Celebration[] =>
   [...list].sort((a, b) => CELEBRATION_ORDER.indexOf(a.kind) - CELEBRATION_ORDER.indexOf(b.kind));
@@ -189,6 +197,11 @@ export interface ActivityInput {
   knownWords?: number;
   /** Noms de niveaux du pack, pour la carte « niveau gagné ». */
   pack?: Pack;
+  /**
+   * Mondes terminés à cet instant (contrat phase11 §3) : les nouveaux sont fêtés et récompensés.
+   * Le titre vient du cursus — c'est le contenu qui nomme les mondes, pas l'interface.
+   */
+  worlds?: readonly { id: string; title: Localized }[];
 }
 
 const context = (data: RewardsData): WardrobeContext =>
@@ -197,6 +210,7 @@ const context = (data: RewardsData): WardrobeContext =>
     trophies: data.trophies.map((t) => t.code),
     collectibles: data.collectibles.map((c) => c.id),
     purchased: data.purchased,
+    worlds: data.worlds,
   });
 
 /**
@@ -231,6 +245,17 @@ export async function awardActivity(input: ActivityInput, now = new Date()): Pro
     coins += reward.coins;
     if (reward.chest) chests.push(reward.chest);
     celebrations.push({ kind: "level", level: gained, name: input.pack ? levelName(input.pack.levelNames, gained) : null });
+  }
+
+  // Mondes terminés : la plus grande boucle de l'app, donc la plus grosse récompense — et le
+  // paysage du monde s'ouvre dans l'atelier (par différence, comme les autres pièces).
+  const knownWorlds = new Set(before.worlds);
+  for (const world of input.worlds ?? []) {
+    if (knownWorlds.has(world.id)) continue;
+    data.worlds = [...data.worlds, world.id];
+    coins += WORLD_COMPLETION_COINS;
+    chests.push(WORLD_COMPLETION_CHEST);
+    celebrations.push({ kind: "world", world: world.id, name: world.title });
   }
 
   // Jalon de série : un coffre, jamais un reproche quand il n'y en a pas.
@@ -286,6 +311,7 @@ export async function awardSession(input: {
   bestStreak: number;
   knownWords: number;
   pack: Pack;
+  worlds?: readonly { id: string; title: Localized }[];
   day?: string;
   level?: number;
 }, now = new Date()): Promise<Celebration[]> {
@@ -293,6 +319,7 @@ export async function awardSession(input: {
     {
       ...(input.day === undefined ? {} : { day: input.day }),
       ...(input.level === undefined ? {} : { level: input.level }),
+      ...(input.worlds === undefined ? {} : { worlds: input.worlds }),
       counters: input.counters,
       coins: coinsForSession({ xp: input.xp, perfect: input.perfect }),
       streakDays: input.streakDays,

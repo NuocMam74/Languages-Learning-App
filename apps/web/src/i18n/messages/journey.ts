@@ -78,6 +78,17 @@ export const fr = {
   "journey.exam.unavailable": "Indisponible pour le moment : les enregistrements natifs nécessaires ne sont pas encore prêts.",
   "journey.exam.notGradedMedia": "Certains items ne sont pas notés tant que leurs enregistrements natifs manquent.",
   "journey.lesson.redo": "{title} — à refaire : il reste une erreur",
+  // Mondes (contrat phase11 §2)
+  "worlds.title": "Mondes",
+  "worlds.intro": "Six mondes à traverser, dans l'ordre. Chacun se referme sur son épreuve.",
+  "worlds.number": "Monde {n}",
+  "worlds.progress": "{done} leçons réussies sur {total}",
+  "worlds.units": "{n} unité",
+  "worlds.units.plural": "{n} unités",
+  "worlds.certificate": "Examen {level}",
+  "worlds.exam": "Passer l'examen {level}",
+  "worlds.complete": "Terminé",
+  "worlds.locked": "Termine le monde précédent pour ouvrir celui-ci.",
 } as const;
 
 export const en: Record<keyof typeof fr, string> = {
@@ -151,4 +162,14 @@ export const en: Record<keyof typeof fr, string> = {
   "journey.exam.unavailable": "Unavailable for now: the native recordings it needs aren't ready yet.",
   "journey.exam.notGradedMedia": "Some items aren't graded while their native recordings are missing.",
   "journey.lesson.redo": "{title} — to redo: one mistake left",
+  "worlds.title": "Worlds",
+  "worlds.intro": "Six worlds to cross, in order. Each one closes on its own trial.",
+  "worlds.number": "World {n}",
+  "worlds.progress": "{done} of {total} lessons passed",
+  "worlds.units": "{n} unit",
+  "worlds.units.plural": "{n} units",
+  "worlds.certificate": "{level} exam",
+  "worlds.exam": "Take the {level} exam",
+  "worlds.complete": "Complete",
+  "worlds.locked": "Finish the previous world to open this one.",
 };

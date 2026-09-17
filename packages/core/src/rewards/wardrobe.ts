@@ -23,6 +23,8 @@ export type Unlock =
   | { kind: "level"; level: number }
   | { kind: "trophy"; code: string }
   | { kind: "collection"; set: CollectionSet }
+  /** Monde du cursus terminé (contrat phase11 §3) : le paysage du monde qu'on vient de finir. */
+  | { kind: "world"; world: string }
   /** Achetable en xu dès qu'on en a assez. */
   | { kind: "shop"; price: number };
 
@@ -40,6 +42,13 @@ export const WARDROBE: readonly WardrobeItem[] = [
   { id: "cho_noi", slot: "backdrop", rarity: "rare", unlock: { kind: "level", level: 10 } },
   { id: "ruong", slot: "backdrop", rarity: "rare", unlock: { kind: "shop", price: 150 } },
   { id: "sao_dem", slot: "backdrop", rarity: "legendary", unlock: { kind: "trophy", code: "missions_t3" } },
+  // Un fond par monde terminé : on porte le paysage de ce qu'on a traversé.
+  { id: "tieng_song", slot: "backdrop", rarity: "rare", unlock: { kind: "world", world: "b0" } },
+  { id: "hien_nha", slot: "backdrop", rarity: "rare", unlock: { kind: "world", world: "b1" } },
+  { id: "hem_pho", slot: "backdrop", rarity: "rare", unlock: { kind: "world", world: "b2" } },
+  { id: "quan_ca_phe", slot: "backdrop", rarity: "rare", unlock: { kind: "world", world: "b3" } },
+  { id: "ben_xe", slot: "backdrop", rarity: "rare", unlock: { kind: "world", world: "b4" } },
+  { id: "dem_ke_chuyen", slot: "backdrop", rarity: "legendary", unlock: { kind: "world", world: "b5" } },
 
   // Compagnon — à côté, jamais devant le visage.
   { id: "ca_vang", slot: "companion", rarity: "common", unlock: { kind: "level", level: 6 } },
@@ -77,6 +86,11 @@ const BY_ID = new Map(WARDROBE.map((item) => [item.id, item]));
 export const wardrobeItem = (id: string | undefined | null): WardrobeItem | null => (id ? (BY_ID.get(id) ?? null) : null);
 export const itemsOfSlot = (slot: WardrobeSlot): WardrobeItem[] => WARDROBE.filter((item) => item.slot === slot);
 
+/** Pièce offerte par un monde terminé (contrat phase11 §3). */
+export function worldRewardItem(world: string): WardrobeItem | null {
+  return WARDROBE.find((item) => item.unlock.kind === "world" && item.unlock.world === world) ?? null;
+}
+
 /** Pièce offerte par une collection complète (contrat §2). */
 export function collectionRewardItem(set: CollectionSet): WardrobeItem | null {
   return WARDROBE.find((item) => item.unlock.kind === "collection" && item.unlock.set === set) ?? null;
@@ -94,17 +108,26 @@ export interface WardrobeContext {
   sets: ReadonlySet<CollectionSet>;
   /** Pièces achetées en xu. */
   purchased: ReadonlySet<string>;
+  /** Mondes du cursus terminés (contrat phase11 §3). */
+  worlds: ReadonlySet<string>;
 }
 
-export const emptyWardrobeContext = (): WardrobeContext => ({ level: 1, trophies: new Set(), sets: new Set(), purchased: new Set() });
+export const emptyWardrobeContext = (): WardrobeContext => ({ level: 1, trophies: new Set(), sets: new Set(), purchased: new Set(), worlds: new Set() });
 
 /** Contexte de déblocage lu depuis l'état stocké (tolère des données anciennes ou tronquées). */
-export function wardrobeContext(input: { level?: number; trophies?: Iterable<string>; collectibles?: Iterable<string>; purchased?: Iterable<string> }): WardrobeContext {
+export function wardrobeContext(input: {
+  level?: number;
+  trophies?: Iterable<string>;
+  collectibles?: Iterable<string>;
+  purchased?: Iterable<string>;
+  worlds?: Iterable<string>;
+}): WardrobeContext {
   return {
     level: Math.max(1, Math.floor(input.level ?? 1)),
     trophies: new Set(input.trophies ?? []),
     sets: new Set(completedSets(new Set(input.collectibles ?? []))),
     purchased: new Set(input.purchased ?? []),
+    worlds: new Set(input.worlds ?? []),
   };
 }
 
@@ -120,6 +143,8 @@ export function itemState(item: WardrobeItem, ctx: WardrobeContext): ItemState {
       return ctx.trophies.has(item.unlock.code) ? "owned" : "locked";
     case "collection":
       return ctx.sets.has(item.unlock.set) ? "owned" : "locked";
+    case "world":
+      return ctx.worlds.has(item.unlock.world) ? "owned" : "locked";
     case "shop":
       return ctx.purchased.has(item.id) ? "owned" : "buyable";
   }
