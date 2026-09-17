@@ -3,7 +3,7 @@ import { buildExercise, currentItem, evaluate, recordResult, type Exercise, type
 import { XP_REVIEW } from "./progress.ts";
 import { buildReviewExercise } from "./review.ts";
 import { planSession } from "./session.ts";
-import { conceptsToTeach, isPracticeRun, markTaught, recordReviewResult, reviewSeed, sessionItemsDone, sessionPhase, startSessionRun } from "./session-run.ts";
+import { conceptsToTeach, isPracticeRun, markTaught, recordReviewResult, reviewSeed, sessionItemsDone, sessionMisses, sessionPhase, startSessionRun, type SessionRun } from "./session-run.ts";
 import { newCard, review } from "./srs.ts";
 import { loadPack } from "./testing/pack.ts";
 
@@ -105,5 +105,50 @@ describe("mode entraînement (contrat phase8 §2)", () => {
     expect(sessionPhase(practice, content).kind).toBe("new");
     // Une fois la fiche lue, les deux déroulés se rejoignent exactement.
     expect(sessionPhase(markTaught(normal), content).kind).toBe("new");
+  });
+});
+
+describe("ce qui a résisté (contrat phase13 §1)", () => {
+  const cards = ["c_ba", "c_anh"].map((id) => review(newCard(id, PAST), "good", PAST));
+  const plan = planSession({ targetMinutes: 10, cards, nextLesson: l01, now: NOW });
+
+  /** Séance jouée en décidant, item par item, si la réponse est juste. */
+  function playWith(right: (index: number) => boolean): SessionRun {
+    let run = startSessionRun({ plan, sessionId: "m", source: "daily", lesson: l01, known: [], now: NOW });
+    for (let i = 0; i < 60; i++) {
+      const phase = sessionPhase(run, content);
+      if (phase.kind === "recap" || phase.kind === "save_lesson") break;
+      if (phase.kind === "teach") {
+        run = markTaught(run);
+        continue;
+      }
+      if (phase.kind === "review" || phase.kind === "warmup") {
+        const ex = buildReviewExercise(content, phase.item.conceptId, reviewSeed(run, phase.index));
+        run = recordReviewResult(run, ex, evaluate(ex, choice(ex, right(i))), 1000);
+        continue;
+      }
+      const step = buildExercise(content, l01, currentItem(run.lesson!)!.stepIndex, run.sessionId);
+      run = { ...run, lesson: recordResult(run.lesson!, step, evaluate(step, choice(step, right(i))), 500) };
+    }
+    return run;
+  }
+
+  it("tout juste : rien n'a résisté", () => {
+    expect(sessionMisses(playWith(() => true))).toEqual({ missed: [], recovered: [] });
+  });
+
+  it("tout faux : les concepts notés sont listés, aucun rattrapé", () => {
+    const misses = sessionMisses(playWith(() => false));
+    expect(misses.missed.length).toBeGreaterThan(0);
+    expect(misses.recovered).toEqual([]);
+    // Jamais deux fois le même mot, même croisé en rappel puis en leçon.
+    expect(new Set(misses.missed).size).toBe(misses.missed.length);
+  });
+
+  it("raté puis réussi : compté comme rattrapé, pas comme résistant", () => {
+    // Le premier item est raté ; son réessai, lui, est réussi (spec §3.3 : l'item revient).
+    const misses = sessionMisses(playWith((i) => i !== 0));
+    expect(misses.recovered.length).toBeGreaterThan(0);
+    for (const id of misses.recovered) expect(misses.missed).not.toContain(id);
   });
 });

@@ -396,6 +396,8 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
   const concepts = (ids: readonly string[]) => ids.flatMap((id) => content.concepts.get(id) ?? []);
   const learned = concepts(recap.canSay);
   const reviewed = concepts(recap.reviewed);
+  const missed = concepts(recap.missed);
+  const recovered = concepts(recap.recovered);
   const title: MessageKey = recap.source === "lesson" ? "recap.title" : recap.source === "review" ? "session.recap.reviewTitle" : "session.recap.title";
   const offerAccount = recap.firstLesson && account === "guest";
   const badges = BADGE_CODES.filter((code) => recap.badges.includes(code));
@@ -486,6 +488,44 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
               ))}
             </Card>
           </section>
+        )}
+
+        {/*
+          * Ce qui a résisté (contrat phase13 §1). Placé après « Ce que tu sais dire » : on félicite
+          * d'abord, on nomme ensuite — et jamais comme une sanction. Le SRS les ramène de lui-même,
+          * donc la phrase le dit plutôt que de laisser croire à une perte.
+          */}
+        {missed.length > 0 && (
+          <section data-testid="recap-missed">
+            <SectionTitle icon="refresh" className="mb-3">{t("session.recap.missed", { n: missed.length })}</SectionTitle>
+            <Card tone="notice" as="ul" className="flex flex-col gap-3 py-3">
+              {missed.map((c, i) => (
+                <li
+                  key={c.id}
+                  style={staggerStyle(i)}
+                  className="flex items-center justify-between gap-3 border-b border-nghe/20 pb-2 last:border-b-0 last:pb-0 motion-safe:parlo-enter"
+                >
+                  <span className="flex min-w-0 flex-col">
+                    <Vi size="2xl">{c.vi}</Vi>
+                    <span className="text-sm text-phu-sa">{l(c.gloss)}</span>
+                  </span>
+                  <IconButton
+                    icon="sound"
+                    label={t("intro.listen", { word: c.vi })}
+                    onClick={() => void playConcept(content, c, { allowTts: ttsAllowed(false) })}
+                  />
+                </li>
+              ))}
+            </Card>
+            <p className="pt-2 text-sm text-phu-sa">{t("session.recap.missed.hint")}</p>
+          </section>
+        )}
+
+        {recovered.length > 0 && (
+          <p className="flex items-start gap-2 text-sm text-phu-sa" data-testid="recap-recovered">
+            <Icon name="check" size={16} strokeWidth={3} className="mt-0.5 shrink-0 text-ngoc" />
+            {t("session.recap.recovered", { n: recovered.length, words: recovered.map((c) => c.vi).join(", ") })}
+          </p>
         )}
 
         {reviewed.length > 0 && (

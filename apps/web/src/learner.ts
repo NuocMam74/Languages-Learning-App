@@ -35,6 +35,7 @@ import {
   reviewedConcepts,
   scorePlacement,
   sessionCounters,
+  sessionMisses,
   sessionPhase,
   startSessionRun,
   TONE_EXERCISE_TYPES,
@@ -523,6 +524,12 @@ export interface SessionRecap {
   practice: boolean;
   /** Concepts nouveaux réussis pendant la leçon (« Ce que tu sais dire »). */
   canSay: ConceptId[];
+  /**
+   * Ce qui a résisté (contrat phase13 §1) : les concepts ratés et pas rattrapés, et ceux ratés
+   * puis réussis. Sans eux, on termine une séance sans savoir sur quoi on a buté.
+   */
+  missed: ConceptId[];
+  recovered: ConceptId[];
   /** Test d'unité : score de cette tentative et réussite (seuil 0,7). */
   unitTest: { lessonId: LessonId; score: number; passed: boolean } | null;
   /** XP totale avant / après (montée de niveau). */
@@ -627,6 +634,7 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       xp,
       learned: saved.learned,
       canSay: saved.learned.filter((id) => answeredWell.has(id)),
+      ...sessionMisses(saved),
       reviewed: [...new Set(saved.reviewResults.filter((r) => r.graded && r.block === "review").map((r) => r.conceptId))],
       reviewedWell: reviewedConcepts(saved),
       streak,

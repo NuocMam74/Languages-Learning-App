@@ -38,6 +38,10 @@ export const fr = {
   "intro.notes": "À retenir",
   "intro.hint": "Écoute chaque mot autant de fois que tu veux. Les exercices reprennent les mêmes.",
   "intro.start": "Commencer les exercices",
+  // Ce qui a résisté (contrat phase13 §1) : nommé, jamais reproché.
+  "session.recap.missed": "Ce qui a résisté ({n})",
+  "session.recap.missed.hint": "Pas de souci : ils reviennent d'eux-mêmes dans tes prochaines révisions.",
+  "session.recap.recovered": "{n} rattrapés en cours de route : {words}",
 } as const;
 
 export const en: Record<keyof typeof fr, string> = {
@@ -78,4 +82,7 @@ export const en: Record<keyof typeof fr, string> = {
   "intro.notes": "Worth remembering",
   "intro.hint": "Listen to each word as often as you like. The exercises use these same words.",
   "intro.start": "Start the exercises",
+  "session.recap.missed": "What gave you trouble ({n})",
+  "session.recap.missed.hint": "No worries: they come back on their own in your next reviews.",
+  "session.recap.recovered": "{n} picked back up along the way: {words}",
 };

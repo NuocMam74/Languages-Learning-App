@@ -1,11 +1,12 @@
-import type { ContentIndex, UnitId } from "@parlo/core";
+import { isDue, type ContentIndex, type UnitId } from "@parlo/core";
 import { useMemo, useState } from "react";
 import { Link } from "react-router";
 import { Screen } from "../components/ui.tsx";
-import { Card, Chip, EmptyState } from "../design/index.ts";
+import { Card, Chip, EmptyState, Icon } from "../design/index.ts";
 import { l, plural, t, type MessageKey } from "../i18n/index.ts";
+import { forceDue } from "../learner.ts";
 import type { LibraryData } from "./data.ts";
-import { LIBRARY_FILTERS, matchesFilter, matchesSearch, seenUnits, type LibraryFilter } from "./library.ts";
+import { LIBRARY_FILTERS, matchesFilter, matchesSearch, seenUnits, type LibraryFilter, type SeenConcept } from "./library.ts";
 import { enter, Field, GroupTitle, LibraryHeader, SEARCH_CLASS, SELECT_CLASS } from "./ui.tsx";
 import { WordRow } from "./WordCard.tsx";
 
@@ -107,9 +108,12 @@ export function Vocabulary({ content, data }: { content: ContentIndex; data: Lib
             </div>
           </Card>
 
-          <Chip tone="neutral" icon="cards" className="mt-3 self-start" data-testid="vocab-count">
-            {plural("review.count.words", "review.count.words.plural", shown.length)}
-          </Chip>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <Chip tone="neutral" icon="cards" data-testid="vocab-count">
+              {plural("review.count.words", "review.count.words.plural", shown.length)}
+            </Chip>
+            <ReviewThese content={content} entries={shown} />
+          </div>
 
           {shown.length === 0 ? (
             <div className="mt-3">
@@ -162,5 +166,53 @@ export function Vocabulary({ content, data }: { content: ContentIndex; data: Lib
         </>
       )}
     </Screen>
+  );
+}
+
+/**
+ * Reprendre en bloc les mots affichés (contrat phase13 §2).
+ *
+ * Le « revoir maintenant » existait déjà, mais mot par mot : reprendre trente mots difficiles
+ * demandait trente gestes. Ici, un seul — puis la séance de révision les sert.
+ *
+ * Deux garde-fous :
+ *  - on ne force que les mots **pas déjà dus** : les autres sont déjà dans la file ;
+ *  - on plafonne à BULK_FORCE_MAX, sinon une liste de 400 mots noierait la séance du jour et
+ *    l'apprenant se retrouverait devant une file impossible (l'inverse du but).
+ */
+const BULK_FORCE_MAX = 20;
+
+function ReviewThese({ content, entries }: { content: ContentIndex; entries: readonly SeenConcept[] }) {
+  const [done, setDone] = useState(0);
+  const [busy, setBusy] = useState(false);
+  const now = new Date();
+  // Déjà dû = déjà dans la file : le forcer ne changerait rien.
+  const candidates = entries.filter((entry) => entry.card === null || !isDue(entry.card, now)).slice(0, BULK_FORCE_MAX);
+  if (candidates.length === 0 && done === 0) return null;
+
+  if (done > 0) {
+    return (
+      <Link to="/revision" className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc" data-testid="vocab-bulk-go">
+        <Icon name="refresh" size={16} />
+        {t("review.vocab.forceDue.go", { n: done })}
+      </Link>
+    );
+  }
+  return (
+    <button
+      type="button"
+      disabled={busy}
+      data-testid="vocab-bulk"
+      onClick={() => {
+        setBusy(true);
+        void Promise.all(candidates.map((entry) => forceDue(entry.conceptId, content.pack.code)))
+          .then(() => setDone(candidates.length))
+          .finally(() => setBusy(false));
+      }}
+      className="flex min-h-11 items-center gap-1.5 rounded-chip border border-line-strong px-3 text-sm font-semibold text-ngoc transition-transform disabled:opacity-60 motion-safe:active:scale-[.98]"
+    >
+      <Icon name="refresh" size={15} />
+      {t("review.vocab.forceDue.all", { n: candidates.length })}
+    </button>
   );
 }

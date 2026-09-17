@@ -162,6 +162,41 @@ export function sessionPhase(run: SessionRun, content: ContentIndex): SessionPha
   return { kind: "recap" };
 }
 
+export interface SessionMisses {
+  /**
+   * Concepts ratés et **pas rattrapés** avant la fin de la séance. Ce sont eux que le bilan doit
+   * nommer : sans ça, on termine une séance sans savoir ce qui a résisté.
+   */
+  missed: ConceptId[];
+  /** Ratés puis réussis avant la fin : l'essentiel du travail d'une séance, et ça se dit. */
+  recovered: ConceptId[];
+}
+
+/**
+ * Ce qui a résisté pendant la séance (contrat phase13 §1), vu concept par concept — pas étape par
+ * étape : un même mot croisé en rappel espacé puis dans la leçon ne se compte qu'une fois.
+ *
+ * Les items non notés sont ignorés (carte culture sans question, production orale sans courbe,
+ * mini-jeu passé) : ils ne peuvent ni résister ni être rattrapés.
+ */
+export function sessionMisses(run: SessionRun): SessionMisses {
+  const seen: ConceptId[] = [];
+  const wrong = new Set<ConceptId>();
+  const right = new Set<ConceptId>();
+  const note = (conceptIds: readonly ConceptId[], correct: boolean) => {
+    for (const id of conceptIds) {
+      if (!wrong.has(id) && !right.has(id)) seen.push(id);
+      (correct ? right : wrong).add(id);
+    }
+  };
+  for (const result of run.reviewResults) if (result.graded) note([result.conceptId], result.correct);
+  for (const result of run.lesson?.results ?? []) if (result.graded) note(result.conceptIds, result.correct);
+  return {
+    missed: seen.filter((id) => wrong.has(id) && !right.has(id)),
+    recovered: seen.filter((id) => wrong.has(id) && right.has(id)),
+  };
+}
+
 export const REVIEW_MAX_ATTEMPTS = 2;
 
 /** Graine d'un exercice de révision : même séance + même position = même exercice. */

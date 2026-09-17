@@ -129,6 +129,8 @@ export const fr = {
   "review.notes.source.lesson": "Leçon : {title}",
   "review.notes.source.free": "Note libre",
   "review.notes.source.unknown": "Élément indisponible",
+  "review.vocab.forceDue.all": "Revoir ces {n} mots maintenant",
+  "review.vocab.forceDue.go": "{n} mots remis dans ta file — commencer",
 } as const;
 
 export const en: Record<keyof typeof fr, string> = {
@@ -254,4 +256,6 @@ export const en: Record<keyof typeof fr, string> = {
   "review.notes.source.lesson": "Lesson: {title}",
   "review.notes.source.free": "Free note",
   "review.notes.source.unknown": "Item unavailable",
+  "review.vocab.forceDue.all": "Review these {n} words now",
+  "review.vocab.forceDue.go": "{n} words back in your queue — start",
 };
