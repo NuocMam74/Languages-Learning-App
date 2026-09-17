@@ -121,22 +121,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Cà phê này đắng quá!",
-      "tokens": [
-        "Cà phê",
-        "này",
-        "đắng",
-        "quá",
-        "đang"
+      "type": "fill_gap",
+      "text": "Trời ___ mưa.",
+      "answer": "đang",
+      "options": [
+        "đang",
+        "đáng",
+        "đăng"
       ],
       "translation": {
-        "fr": "Ce café est trop amer !",
-        "en": "This coffee is so bitter!"
+        "fr": "Il pleut en ce moment.",
+        "en": "It's raining right now."
       },
       "explain": {
-        "fr": "adjectif + quá : trop, tellement.",
-        "en": "adjective + quá: so, too."
+        "fr": "đang = en train de. đáng = mériter, đăng = publier.",
+        "en": "đang = in the middle of. đáng = to deserve, đăng = to post."
       }
     },
     {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Screen } from "../components/ui.tsx";
-import { t } from "../i18n/index.ts";
+import { getLocale, t } from "../i18n/index.ts";
 import { useTutorAccess } from "./access.ts";
 import { GateActions, TutorGate } from "./ChatView.tsx";
 import type { WeeklyDebrief } from "./client.ts";
@@ -65,7 +65,7 @@ export default function DebriefPage() {
     );
   }
 
-  const week = new Date(`${debrief.weekStart.slice(0, 10)}T12:00:00`).toLocaleDateString(undefined, { day: "numeric", month: "long" });
+  const week = new Date(`${debrief.weekStart.slice(0, 10)}T12:00:00`).toLocaleDateString(getLocale(), { day: "numeric", month: "long" });
   const sections = [
     { title: t("tutor.debrief.progress"), text: debrief.progress, accent: "border-ngoc" },
     { title: t("tutor.debrief.struggles"), text: debrief.struggles, accent: "border-son-mai" },

@@ -103,24 +103,23 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị là người nước nào?",
-      "tokens": [
-        "Chị",
-        "là",
-        "người",
-        "nước",
-        "nào",
-        "gì"
-      ],
-      "translation": {
-        "fr": "Tu es de quel pays ? (à une femme un peu plus âgée)",
-        "en": "Where are you from? (to a slightly older woman)"
+      "type": "translate_to_fr",
+      "source": "Chị là người nước nào?",
+      "accepted": {
+        "fr": [
+          "Tu es de quel pays ?",
+          "Vous êtes de quel pays ?",
+          "De quel pays es-tu ?",
+          "Tu viens de quel pays ?"
+        ],
+        "en": [
+          "What country are you from?",
+          "Where are you from?"
+        ]
       },
-      "audioConcept": "s_nguoi_nuoc_nao",
       "explain": {
-        "fr": "nào = « quel » : il suit le nom, nước nào.",
-        "en": "nào = 'which': it follows the noun, nước nào."
+        "fr": "nước = pays (et aussi eau) ; nào = quel.",
+        "en": "nước = country (and water); nào = which."
       }
     },
     {

@@ -11,7 +11,11 @@ import { TONE_FALLBACK } from "./media.ts";
  * - Seuls les fichiers présents dans l'index des médias du bundle sont demandés.
  */
 
-export type PlaybackSource = "native" | "tts" | "missing";
+/**
+ * `blocked` : le navigateur refuse la lecture sans geste de l'utilisateur (iOS au lancement à froid,
+ * NotAllowedError) — ce n'est pas un fichier manquant, il suffit de toucher le bouton.
+ */
+export type PlaybackSource = "native" | "tts" | "missing" | "blocked";
 
 export interface PlayOptions {
   speed?: "natural" | "slow";
@@ -21,14 +25,22 @@ export interface PlayOptions {
 
 let current: HTMLAudioElement | null = null;
 
-function playFile(url: string): Promise<boolean> {
+type FileOutcome = "played" | "blocked" | "failed";
+
+function playFile(url: string): Promise<FileOutcome> {
   current?.pause();
   const audio = new Audio(url);
   current = audio;
   return audio.play().then(
-    () => true,
-    () => false,
+    () => "played" as const,
+    (error: unknown) => (error instanceof DOMException && error.name === "NotAllowedError" ? "blocked" : "failed"),
   );
+}
+
+/** Aucun geste encore sur la page (lancement à froid) : la synthèse vocale serait muette elle aussi. */
+function noUserActivation(): boolean {
+  const activation = (navigator as Navigator & { userActivation?: { hasBeenActive: boolean } }).userActivation;
+  return activation !== undefined && !activation.hasBeenActive;
 }
 
 function speak(text: string, pack: Pack): boolean {
@@ -59,16 +71,25 @@ const indexed = (content: ContentIndex, path: string) => {
 export async function playConcept(content: ContentIndex, concept: Concept, { speed = "natural", allowTts }: PlayOptions): Promise<PlaybackSource> {
   const tracks = concept.audio.filter((a) => (a.source === "native" || allowTts) && indexed(content, a.src));
   const track = tracks.find((a) => a.speed === speed) ?? tracks.find((a) => a.speed === "natural");
-  if (track && (await playFile(mediaUrl(content, track.src)))) return track.source;
+  if (track) {
+    const outcome = await playFile(mediaUrl(content, track.src));
+    if (outcome === "played") return track.source;
+    if (outcome === "blocked") return "blocked";
+  }
   return playText(content.pack, concept.vi, allowTts);
 }
 
 export async function playPath(content: ContentIndex, path: string | undefined, text: string, allowTts: boolean): Promise<PlaybackSource> {
-  if (path && indexed(content, path) && (await playFile(mediaUrl(content, path)))) return "native";
+  if (path && indexed(content, path)) {
+    const outcome = await playFile(mediaUrl(content, path));
+    if (outcome === "played") return "native";
+    if (outcome === "blocked") return "blocked";
+  }
   return playText(content.pack, text, allowTts);
 }
 
 function playText(pack: Pack, text: string, allowTts: boolean): PlaybackSource {
+  if (allowTts && noUserActivation()) return "blocked";
   if (allowTts && speak(text, pack)) return "tts";
   return "missing";
 }

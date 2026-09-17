@@ -25,7 +25,12 @@
     "c_mua_rain",
     "c_b_lan",
     "s_b_roi_sao_nua",
-    "s_b_sau_do_tui_qua_phap"
+    "s_b_sau_do_tui_qua_phap",
+    "c_b_hoi_nho",
+    "c_b_hoi_do",
+    "c_b_ngay_xua",
+    "c_b_luc_do",
+    "c_b_sau_do"
   ],
   "steps": [
     {
@@ -95,19 +100,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Sau đó tui qua Pháp.",
-      "tokens": [
-        "Sau đó",
-        "tui",
-        "qua",
-        "Pháp",
-        "sáu"
-      ],
-      "translation": {
-        "fr": "Ensuite, je suis parti(e) en France.",
-        "en": "After that I went to France."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_hoi_nho",
+        "c_b_hoi_do",
+        "c_b_ngay_xua",
+        "c_b_luc_do",
+        "c_b_sau_do"
+      ]
     },
     {
       "type": "tone_identify",
@@ -115,6 +115,14 @@
       "explain": {
         "fr": "lần : huyền.",
         "en": "lần: huyền."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_ke_chuyen_hoi_nho",
+      "explain": {
+        "fr": "Le lieu est donné à la deuxième réplique.",
+        "en": "The place is given in the second line."
       }
     },
     {

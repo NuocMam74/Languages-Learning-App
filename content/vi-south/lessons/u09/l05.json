@@ -98,22 +98,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Mấy giờ mình họp?",
-      "tokens": [
-        "Mấy giờ",
-        "mình",
-        "họp",
-        "hẹn",
-        "bao nhiêu"
+      "type": "fill_gap",
+      "text": "Mình hẹn ___ mấy giờ?",
+      "answer": "lúc",
+      "options": [
+        "lúc",
+        "lục",
+        "lúa"
       ],
       "translation": {
-        "fr": "On a réunion à quelle heure ?",
-        "en": "What time is our meeting?"
+        "fr": "On se donne rendez-vous à quelle heure ?",
+        "en": "What time shall we meet?"
       },
       "explain": {
-        "fr": "mấy giờ ? : à quelle heure ?",
-        "en": "mấy giờ?: at what time?"
+        "fr": "lúc introduit un moment. lục = fouiller, lúa = le riz sur pied.",
+        "en": "lúc introduces a time. lục = to rummage, lúa = rice plant."
       }
     },
     {

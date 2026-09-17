@@ -86,25 +86,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Nhà em ở trong hẻm, lầu hai.",
-      "tokens": [
-        "Nhà",
-        "em",
-        "ở",
-        "trong",
-        "hẻm",
+      "type": "fill_gap",
+      "text": "Em ở ___ hai.",
+      "answer": "lầu",
+      "options": [
         "lầu",
-        "hai",
-        "lâu"
+        "lâu",
+        "lẩu"
       ],
       "translation": {
-        "fr": "J'habite dans une ruelle, au deuxième étage.",
-        "en": "I live down an alley, on the second floor."
+        "fr": "J'habite au deuxième étage.",
+        "en": "I live on the second floor."
       },
       "explain": {
-        "fr": "Adresse du Sud : hẻm, puis lầu.",
-        "en": "A southern address: hẻm, then lầu."
+        "fr": "lầu = étage (Sud), lâu = longtemps, lẩu = la fondue.",
+        "en": "lầu = floor (Southern), lâu = a long time, lẩu = hotpot."
       }
     },
     {

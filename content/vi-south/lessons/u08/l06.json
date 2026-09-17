@@ -18,7 +18,8 @@
     "c_tra_pay",
     "c_thoi",
     "s_thoi_cam_on",
-    "s_thoi_tien"
+    "s_thoi_tien",
+    "c_tien"
   ],
   "steps": [
     {
@@ -124,22 +125,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Thôi, cảm ơn chị.",
-      "tokens": [
-        "Thôi",
-        "cảm ơn",
-        "chị",
-        "thối"
-      ],
-      "translation": {
-        "fr": "Non merci. (à une femme un peu plus âgée)",
-        "en": "No thanks. (to a slightly older woman)"
-      },
-      "audioConcept": "s_thoi_cam_on",
+      "type": "listen_transcribe",
+      "concept": "c_tien",
       "explain": {
-        "fr": "thôi en tête : on décline avec douceur.",
-        "en": "thôi first: a gentle way to decline."
+        "fr": "tiền : ton huyền, la voix descend.",
+        "en": "tiền: huyền tone, the voice falls."
       }
     },
     {

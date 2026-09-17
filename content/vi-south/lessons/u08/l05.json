@@ -19,7 +19,10 @@
     "c_heo",
     "s_thit_heo",
     "c_trung",
-    "c_bap"
+    "c_bap",
+    "s_bao_nhieu_mot_ky",
+    "s_mac_qua",
+    "s_nua_ky"
   ],
   "steps": [
     {
@@ -117,23 +120,37 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Trứng gà bao nhiêu một chục?",
-      "tokens": [
-        "Trứng",
-        "gà",
-        "bao nhiêu",
-        "một",
-        "chục",
-        "ký"
-      ],
-      "translation": {
-        "fr": "Combien la dizaine d'œufs de poule ?",
-        "en": "How much for ten chicken eggs?"
+      "type": "speak_roleplay",
+      "situation": {
+        "fr": "Au marché : tu achètes un demi-kilo de porc.",
+        "en": "At the market: you buy half a kilo of pork."
       },
+      "prompts": [
+        {
+          "cue": {
+            "fr": "Demande le prix du kilo.",
+            "en": "Ask the price per kilo."
+          },
+          "concept": "s_bao_nhieu_mot_ky"
+        },
+        {
+          "cue": {
+            "fr": "Dis que c'est trop cher.",
+            "en": "Say it's too expensive."
+          },
+          "concept": "s_mac_qua"
+        },
+        {
+          "cue": {
+            "fr": "Demande un demi-kilo.",
+            "en": "Ask for half a kilo."
+          },
+          "concept": "s_nua_ky"
+        }
+      ],
       "explain": {
-        "fr": "Les œufs se vendent souvent par dizaine : một chục trứng.",
-        "en": "Eggs are often sold by ten: một chục trứng."
+        "fr": "Au Sud : heo, pas lợn ; ký, pas cân.",
+        "en": "In the South: heo, not lợn; ký, not cân."
       }
     },
     {

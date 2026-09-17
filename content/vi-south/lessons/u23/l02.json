@@ -113,18 +113,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Mai em rảnh hông?",
-      "tokens": [
-        "Mai",
-        "em",
-        "rảnh",
-        "hông",
-        "bận"
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "Si tu es libre, passe chez moi.",
+        "en": "If you're free, drop by my place."
+      },
+      "accepted": [
+        "Nếu rảnh thì ghé nhà tui chơi nha.",
+        "Nếu rảnh thì ghé nhà tui chơi.",
+        "Rảnh thì ghé nhà tui chơi nha.",
+        "Nếu rảnh thì ghé nhà tôi chơi nha."
       ],
-      "translation": {
-        "fr": "Tu es libre demain ?",
-        "en": "Are you free tomorrow?"
+      "explain": {
+        "fr": "ghé… chơi = passer sans raison précise : très courant.",
+        "en": "ghé… chơi = drop by for no particular reason: very common."
       }
     },
     {

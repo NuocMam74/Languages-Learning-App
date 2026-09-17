@@ -99,23 +99,101 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Rất vui được làm việc với chị.",
-      "tokens": [
-        "Rất vui",
-        "được",
-        "làm việc",
-        "với",
-        "chị",
-        "cho"
-      ],
-      "translation": {
-        "fr": "Ravi(e) de travailler avec toi (à une femme un peu plus âgée).",
-        "en": "Glad to work with you (to a slightly older woman)."
+      "type": "dialogue_choice",
+      "situation": {
+        "fr": "Premier jour au bureau : un collègue plus âgé vient te saluer.",
+        "en": "First day at the office: an older colleague comes to greet you."
       },
+      "turns": [
+        {
+          "id": "t1",
+          "vi": "Chào em, em là nhân viên mới hả?",
+          "translation": {
+            "fr": "Bonjour, c'est toi la nouvelle recrue ?",
+            "en": "Hi, are you the new hire?"
+          },
+          "replies": [
+            {
+              "id": "r1a",
+              "vi": "Dạ, em mới vô làm hôm qua. Em tên Marie.",
+              "next": "t2",
+              "best": true,
+              "feedback": {
+                "fr": "On répond « dạ », puis on se présente.",
+                "en": "Answer 'dạ', then introduce yourself."
+              }
+            },
+            {
+              "id": "r1b",
+              "vi": "Ừ, đúng rồi.",
+              "next": "t2",
+              "feedback": {
+                "fr": "« Ừ » vers un aîné, ça ne passe pas.",
+                "en": "'Ừ' to someone older doesn't go down well."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "vi": "Anh tên Nam. Rất vui được làm việc với em.",
+          "translation": {
+            "fr": "Moi c'est Nam. Ravi de travailler avec toi.",
+            "en": "I'm Nam. Glad to be working with you."
+          },
+          "replies": [
+            {
+              "id": "r2a",
+              "vi": "Dạ, em cũng rất vui được làm việc với anh.",
+              "next": "t3",
+              "best": true,
+              "feedback": {
+                "fr": "On renvoie la politesse mot pour mot : c'est attendu.",
+                "en": "Mirroring the politeness word for word is expected."
+              }
+            },
+            {
+              "id": "r2b",
+              "vi": "Ok anh.",
+              "next": "t3",
+              "feedback": {
+                "fr": "Trop familier pour un premier jour.",
+                "en": "Too casual for a first day."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "vi": "Mấy giờ họp em biết chưa?",
+          "translation": {
+            "fr": "Tu sais à quelle heure est la réunion ?",
+            "en": "Do you know what time the meeting is?"
+          },
+          "replies": [
+            {
+              "id": "r3a",
+              "vi": "Dạ chưa, mấy giờ họp vậy anh?",
+              "best": true,
+              "feedback": {
+                "fr": "Dire qu'on ne sait pas et demander : naturel.",
+                "en": "Saying you don't know and asking: natural."
+              }
+            },
+            {
+              "id": "r3b",
+              "vi": "Em biết rồi.",
+              "feedback": {
+                "fr": "Mentir pour ne pas déranger crée un problème plus tard.",
+                "en": "Bluffing to avoid bothering people backfires later."
+              }
+            }
+          ]
+        }
+      ],
       "explain": {
-        "fr": "với + personne : avec.",
-        "en": "với + person: with."
+        "fr": "Au bureau, dạ ouvre presque toutes les réponses.",
+        "en": "At the office, dạ opens nearly every answer."
       }
     },
     {

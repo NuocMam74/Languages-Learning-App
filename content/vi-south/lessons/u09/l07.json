@@ -22,7 +22,10 @@
     "c_toi_evening",
     "c_hom_qua",
     "c_thuong",
-    "s_luc_may_gio"
+    "s_luc_may_gio",
+    "c_sang",
+    "c_trua",
+    "c_dem"
   ],
   "steps": [
     {
@@ -105,23 +108,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Hôm nay thứ bảy.",
-      "tokens": [
-        "Hôm nay",
-        "thứ",
-        "bảy",
-        "chủ nhật",
-        "ngày"
-      ],
-      "translation": {
-        "fr": "Aujourd'hui, c'est samedi.",
-        "en": "Today is Saturday."
-      },
-      "explain": {
-        "fr": "hôm nay + jour.",
-        "en": "hôm nay + day."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_sang",
+        "c_trua",
+        "c_chieu",
+        "c_toi_evening",
+        "c_dem"
+      ]
     },
     {
       "type": "listen_pick_text",
@@ -133,6 +127,14 @@
       "explain": {
         "fr": "thường : d'habitude.",
         "en": "thường: usually."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_hen_gio",
+      "explain": {
+        "fr": "Deux heures sont proposées : c'est la seconde qui compte.",
+        "en": "Two times are proposed: the second one is the answer."
       }
     },
     {

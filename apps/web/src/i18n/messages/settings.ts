@@ -24,7 +24,7 @@ export const fr = {
   "settings.delete.confirm": "Effacer",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "settings.title": "Settings",
   "settings.profile": "Profile",
   "settings.goal": "Daily goal",

@@ -125,8 +125,8 @@ function Workspace({ roles }: { roles: string[] }) {
         </nav>
       </header>
 
-      <div className="grid flex-1 gap-6 py-4 lg:grid-cols-[20rem_minmax(0,1fr)]">
-        <aside className={`${atHome ? "block" : "hidden"} lg:block lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto lg:pr-2`}>
+      <div className="grid flex-1 grid-cols-[minmax(0,1fr)] gap-6 py-4 lg:grid-cols-[20rem_minmax(0,1fr)]">
+        <aside className={`${atHome ? "block" : "hidden"} min-w-0 lg:block lg:max-h-[calc(100dvh-6rem)] lg:overflow-y-auto lg:pr-2`}>
           <Tree code={pack} />
         </aside>
         <main className={`${atHome ? "hidden lg:block" : "block"} min-w-0`}>

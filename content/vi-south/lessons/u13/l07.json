@@ -20,7 +20,12 @@
     "c_roi",
     "c_roi_tangled",
     "s_sap_toi_roi",
-    "s_chua_xong"
+    "s_chua_xong",
+    "c_da_past",
+    "c_dang",
+    "c_se",
+    "c_sap",
+    "c_vua_just"
   ],
   "steps": [
     {
@@ -110,23 +115,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em vừa ăn xong.",
-      "tokens": [
-        "Em",
-        "vừa",
-        "ăn",
-        "xong",
-        "sẽ"
-      ],
-      "translation": {
-        "fr": "Je viens de finir de manger.",
-        "en": "I've just finished eating."
-      },
-      "explain": {
-        "fr": "vừa + verbe : venir de.",
-        "en": "vừa + verb: to have just."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_da_past",
+        "c_dang",
+        "c_se",
+        "c_sap",
+        "c_vua_just"
+      ]
     },
     {
       "type": "listen_pick_text",

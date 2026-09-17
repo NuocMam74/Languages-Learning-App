@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/dialogue.schema.json",
+  "title": "Dialogue",
+  "description": "Dialogue court (~15 s) enregistré, support de l'exercice listen_gist. Un fichier par dialogue dans <pack>/dialogues/.",
+  "type": "object",
+  "required": ["id", "title", "turns", "reviewed"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^dlg_[a-z0-9_]+$" },
+    "title": { "$ref": "common.schema.json#/$defs/localized" },
+    "turns": {
+      "description": "8 répliques au maximum (vérifié par le validateur) : au-delà, ce n'est plus un dialogue de 15 s.",
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 8,
+      "items": { "$ref": "#/$defs/turn" }
+    },
+    "question": {
+      "description": "Question de compréhension globale, obligatoire pour servir un listen_gist.",
+      "$ref": "#/$defs/question"
+    },
+    "reviewed": { "$ref": "common.schema.json#/$defs/reviewed" }
+  },
+  "$defs": {
+    "turn": {
+      "type": "object",
+      "required": ["speaker", "vi", "translation"],
+      "additionalProperties": false,
+      "properties": {
+        "speaker": { "type": "string", "minLength": 1, "description": "Qui parle (« Cô Mai », « Anh Nam »…)." },
+        "vi": { "$ref": "common.schema.json#/$defs/viText" },
+        "translation": { "$ref": "common.schema.json#/$defs/localized" },
+        "audio": { "$ref": "common.schema.json#/$defs/mediaPath" }
+      }
+    },
+    "question": {
+      "type": "object",
+      "required": ["prompt", "options", "answer"],
+      "additionalProperties": false,
+      "properties": {
+        "prompt": { "$ref": "common.schema.json#/$defs/localized" },
+        "options": { "type": "array", "minItems": 2, "maxItems": 4, "items": { "$ref": "common.schema.json#/$defs/localized" } },
+        "answer": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "explain": { "$ref": "common.schema.json#/$defs/localized" }
+      }
+    }
+  }
+}

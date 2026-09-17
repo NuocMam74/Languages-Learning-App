@@ -123,21 +123,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Không xa lắm.",
-      "tokens": [
-        "Không",
-        "xa",
-        "lắm",
-        "gần"
+      "type": "fill_gap",
+      "text": "Chợ có ___ đây hông?",
+      "answer": "gần",
+      "options": [
+        "gần",
+        "cần",
+        "gắn"
       ],
       "translation": {
-        "fr": "Pas très loin.",
-        "en": "Not very far."
+        "fr": "Le marché est près d'ici ?",
+        "en": "Is the market near here?"
       },
       "explain": {
-        "fr": "không … lắm : « pas très ».",
-        "en": "không … lắm: 'not very'."
+        "fr": "gần = près. cần = avoir besoin, gắn = fixer.",
+        "en": "gần = near. cần = to need, gắn = to attach."
       }
     },
     {

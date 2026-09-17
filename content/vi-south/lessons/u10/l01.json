@@ -99,23 +99,22 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị tôi làm ở bệnh viện.",
-      "tokens": [
-        "Chị",
-        "tôi",
-        "làm",
-        "ở",
-        "bệnh viện",
-        "trường học"
-      ],
-      "translation": {
-        "fr": "Ma grande sœur travaille à l'hôpital.",
-        "en": "My older sister works at the hospital."
+      "type": "translate_to_fr",
+      "source": "Nhà vệ sinh ở đâu?",
+      "accepted": {
+        "fr": [
+          "Où sont les toilettes ?",
+          "Les toilettes sont où ?",
+          "C'est où, les toilettes ?"
+        ],
+        "en": [
+          "Where is the toilet?",
+          "Where are the toilets?"
+        ]
       },
       "explain": {
-        "fr": "làm ở + lieu : travailler à.",
-        "en": "làm ở + place: to work at."
+        "fr": "ở đâu se place toujours à la fin.",
+        "en": "ở đâu always goes at the end."
       }
     },
     {

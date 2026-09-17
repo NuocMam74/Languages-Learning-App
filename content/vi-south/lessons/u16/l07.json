@@ -25,7 +25,12 @@
     "c_benh_vien",
     "c_ngan_hang",
     "s_em_dau_o_day",
-    "s_khoe_chua"
+    "s_khoe_chua",
+    "c_sot",
+    "c_ho_cough",
+    "c_met",
+    "c_dau_pain",
+    "c_thuoc_medicine"
   ],
   "steps": [
     {
@@ -96,23 +101,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Ngày uống mấy lần?",
-      "tokens": [
-        "Ngày",
-        "uống",
-        "mấy",
-        "lần",
-        "bao lâu"
-      ],
-      "translation": {
-        "fr": "Combien de fois par jour ?",
-        "en": "How many times a day?"
-      },
-      "explain": {
-        "fr": "Ngày… mấy lần : par jour.",
-        "en": "Ngày… mấy lần: per day."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_sot",
+        "c_ho_cough",
+        "c_met",
+        "c_dau_pain",
+        "c_thuoc_medicine"
+      ]
     },
     {
       "type": "listen_pick_text",
@@ -124,6 +120,14 @@
       "explain": {
         "fr": "đau ở đây : j'ai mal ici. đau ở đâu ? : où as-tu mal ?",
         "en": "đau ở đây: it hurts here. đau ở đâu?: where does it hurt?"
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_di_kham_benh",
+      "explain": {
+        "fr": "La posologie est donnée à l'avant-dernière réplique.",
+        "en": "The dosage comes in the second-to-last line."
       }
     },
     {

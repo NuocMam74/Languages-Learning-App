@@ -120,22 +120,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị đau bụng hả?",
-      "tokens": [
-        "Chị",
-        "đau",
-        "bụng",
-        "hả",
-        "đầu"
-      ],
-      "translation": {
-        "fr": "Tu as mal au ventre ? (à une femme un peu plus âgée)",
-        "en": "Does your stomach hurt? (to a slightly older woman)"
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "J'ai mal à la tête.",
+        "en": "I have a headache."
       },
+      "accepted": [
+        "Em bị nhức đầu.",
+        "Tôi bị nhức đầu.",
+        "Em nhức đầu.",
+        "Tui bị nhức đầu."
+      ],
       "explain": {
-        "fr": "hả : particule de question, surprise.",
-        "en": "hả: question particle, surprise."
+        "fr": "nhức pour une douleur sourde (tête, dents) ; đau pour le reste.",
+        "en": "nhức for a dull ache (head, teeth); đau otherwise."
       }
     },
     {

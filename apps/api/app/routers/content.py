@@ -1,63 +1,43 @@
 """`/content/{code}/…` : contenu servi par l'API (développement, ou sans CDN) — contrat parcours §1 et §6.
 
 Contrairement à un montage statique figé au démarrage, ces routes lisent la version **publiée courante** :
-après une publication du studio, `latest.json` et `bundle.json` reflètent la nouvelle version dans tous les workers.
+après une publication du studio, `latest.json`, `core.json`, les unités et `bundle.json` reflètent la nouvelle
+version dans tous les workers. Mêmes fichiers que le plugin Vite (`apps/web/vite-plugin-content.ts`) :
 - `latest.json` : `{code, version}` ;
-- `v{version}/bundle.json` : tout le JSON du pack (+ examens, placement, jeux) et `mediaIndex` ;
+- `v{version}/core.json` : hub et planification (index des leçons et concepts, examens, placement, jeux, tailles) ;
+- `v{version}/units/{unitId}.json` : leçons complètes d'une unité (à la demande, hors ligne explicite) ;
+- `v{version}/bundle.json` : tout le JSON du pack (anciens clients, gardé une version) ;
 - `v{version}/<chemin>` : fichiers du pack (médias).
 """
 
-import json
 from pathlib import Path
-from typing import Any
 
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import FileResponse, JSONResponse
 
-from app.config import Settings
 from app.deps import PacksDep, SettingsDep
-from app.services.content import Pack, concept_documents, lesson_documents
-from app.services.media import media_index
+from app.services.content import Pack
+from app.services.content_split import build_bundle, pack_split
+
+__all__ = ["build_bundle", "router"]
 
 router = APIRouter(prefix="/content", tags=["content"], include_in_schema=False)
 
 _NO_CACHE = {"Cache-Control": "no-cache"}
 
 
-def _read_json(path: Path) -> Any:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def _json_files(directory: Path) -> list[Any]:
-    if not directory.is_dir():
-        return []
-    return [_read_json(p) for p in sorted(directory.rglob("*.json"))]
-
-
-def build_bundle(pack: Pack, settings: Settings) -> dict[str, Any]:
-    """Même forme que `toRaw` (scripts/lib/load-pack.ts) + examens, placement, jeux et index des médias."""
-    root = pack.directory
-    bundle: dict[str, Any] = {
-        "pack": _read_json(root / "pack.json"),
-        "curriculum": _read_json(root / "curriculum.json"),
-        "lessons": list(lesson_documents(pack).values()),
-        "concepts": list(concept_documents(pack).values()),
-        "culture": _json_files(root / "culture"),
-    }
-    if (root / "lexical-variants.json").is_file():
-        bundle["variants"] = _read_json(root / "lexical-variants.json")
-    bundle["exams"] = _json_files(root / "exams")
-    bundle["placement"] = _read_json(root / "placement.json") if (root / "placement.json").is_file() else None
-    games_dir = root / "games"
-    bundle["games"] = {p.stem: _read_json(p) for p in sorted(games_dir.glob("*.json"))} if games_dir.is_dir() else {}
-    bundle["mediaIndex"] = sorted(media_index(pack, settings.studio_media_dir))
-    return bundle
-
-
 def _pack(packs: dict[str, Pack], code: str) -> Pack:
     pack = packs.get(code)
     if pack is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="unknown_course")
+    return pack
+
+
+def _current(packs: dict[str, Pack], code: str, version: int) -> Pack:
+    pack = _pack(packs, code)
+    if version != pack.version:
+        # Une version périmée n'est plus construite : le client relit latest.json.
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="stale_version")
     return pack
 
 
@@ -69,11 +49,23 @@ def latest(code: str, packs: PacksDep) -> JSONResponse:
 
 @router.get("/{code}/v{version}/bundle.json")
 def bundle(code: str, version: int, packs: PacksDep, settings: SettingsDep) -> JSONResponse:
-    pack = _pack(packs, code)
-    if version != pack.version:
-        # Une version périmée n'est plus construite : le client relit latest.json.
-        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="stale_version")
+    pack = _current(packs, code, version)
     return JSONResponse(build_bundle(pack, settings), headers=_NO_CACHE)
+
+
+@router.get("/{code}/v{version}/core.json")
+def core(code: str, version: int, packs: PacksDep, settings: SettingsDep) -> JSONResponse:
+    pack = _current(packs, code, version)
+    return JSONResponse(pack_split(pack, settings)[0], headers=_NO_CACHE)
+
+
+@router.get("/{code}/v{version}/units/{unit_id}.json")
+def unit(code: str, version: int, unit_id: str, packs: PacksDep, settings: SettingsDep) -> JSONResponse:
+    pack = _current(packs, code, version)
+    found = pack_split(pack, settings)[1].get(unit_id)
+    if found is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="unknown_unit")
+    return JSONResponse(found, headers=_NO_CACHE)
 
 
 @router.get("/{code}/v{version}/{path:path}")

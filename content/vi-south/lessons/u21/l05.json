@@ -117,17 +117,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh giỡn hoài!",
-      "tokens": [
-        "Anh",
-        "giỡn",
-        "hoài",
-        "hỏi"
-      ],
-      "translation": {
-        "fr": "Tu blagues tout le temps !",
-        "en": "You're always joking!"
+      "type": "listen_transcribe",
+      "concept": "c_b_de_thuong",
+      "explain": {
+        "fr": "dễ thương : mignon, gentil. Très fréquent au Sud.",
+        "en": "dễ thương: cute, sweet. Very common in the South."
       }
     },
     {

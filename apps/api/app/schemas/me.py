@@ -112,6 +112,8 @@ class ProfilePatch(CamelModel):
     entourage: Entourage | None = None
     self_level: SelfLevel | None = None
     interface_locale: InterfaceLocale | None = None
+    # Nom affiché : vit sur l'utilisateur, pas sur le profil ; accepté ici car le client synchronise tout ensemble.
+    display_name: Annotated[str, Field(min_length=1, max_length=80)] | None = None
 
 
 class SrsCardOut(CamelModel):

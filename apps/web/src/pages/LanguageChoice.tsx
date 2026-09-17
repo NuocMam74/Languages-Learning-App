@@ -43,10 +43,10 @@ export default function LanguageChoice({ content }: { content: ContentIndex }) {
       await switchPack(selected);
       const onboarded = await isOnboarded(selected);
       if (selected === content.pack.code) {
-        navigate(onboarded ? "/" : "/onboarding");
+        navigate(onboarded ? "/apprendre" : "/onboarding");
       } else {
         // Nouveau contenu, nouvelles données : on repart d'un démarrage propre (marche hors ligne, service worker).
-        window.location.assign(onboarded ? "/" : "/onboarding");
+        window.location.assign(onboarded ? "/apprendre" : "/onboarding");
       }
     } catch {
       setBusy(false);

@@ -104,22 +104,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Thành phố này đẹp quá!",
-      "tokens": [
-        "Thành phố",
-        "này",
-        "đẹp",
-        "quá",
-        "xấu"
-      ],
-      "translation": {
-        "fr": "Cette ville est vraiment belle !",
-        "en": "This city is so beautiful!"
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "Ce film est super !",
+        "en": "This film is great!"
       },
+      "accepted": [
+        "Phim này hay quá!",
+        "Phim này hay lắm!",
+        "Phim hay quá!",
+        "Phim này hay quá."
+      ],
       "explain": {
-        "fr": "đẹp quá : tellement beau.",
-        "en": "đẹp quá: so beautiful."
+        "fr": "hay = intéressant, bien (pour un film, un livre) ; ngon = bon au goût.",
+        "en": "hay = good, interesting (film, book); ngon = tasty."
       }
     },
     {

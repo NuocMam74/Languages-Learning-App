@@ -71,7 +71,7 @@ export function ExamRunner({ content, questions, deadline, initialAnswers = [], 
       data-testid="exam"
       data-index={index}
       data-section={question.section}
-      className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] md:max-w-[720px]"
+      className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]"
     >
       <header className="flex items-center gap-4">
         <button type="button" onClick={() => setConfirmQuit(true)} aria-label={t("exams.run.quit")} className="grid size-11 place-items-center rounded-full text-phu-sa">

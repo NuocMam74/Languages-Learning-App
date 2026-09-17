@@ -114,19 +114,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị chuyển khoản cho em nha.",
-      "tokens": [
-        "Chị",
-        "chuyển khoản",
-        "cho",
-        "em",
-        "nha",
-        "không"
-      ],
-      "translation": {
-        "fr": "Paie-moi par virement, d'accord ? (à une femme un peu plus âgée)",
-        "en": "Pay me by transfer, okay? (to a slightly older woman)"
+      "type": "translate_to_fr",
+      "source": "Em muốn mở tài khoản.",
+      "accepted": {
+        "fr": [
+          "Je voudrais ouvrir un compte.",
+          "Je veux ouvrir un compte.",
+          "J'aimerais ouvrir un compte."
+        ],
+        "en": [
+          "I'd like to open an account."
+        ]
+      },
+      "explain": {
+        "fr": "muốn = vouloir ; la politesse vient du pronom, pas du verbe.",
+        "en": "muốn = to want; politeness comes from the pronoun, not the verb."
       }
     },
     {

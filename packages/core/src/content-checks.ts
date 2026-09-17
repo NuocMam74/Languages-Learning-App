@@ -1,5 +1,18 @@
+import { GAP } from "./engine.ts";
 import { heardClassOf, isToneMinimalPair, normalizeAnswer, toneOf } from "./text.ts";
-import { hasFeature, TONAL_STEP_TYPES, type ContentIndex, type Lesson, type LessonStep } from "./types.ts";
+import {
+  DIALOGUE_CHOICE_MAX_TURNS,
+  DIALOGUE_CHOICE_MIN_TURNS,
+  DIALOGUE_MAX_TURNS,
+  hasFeature,
+  ROLEPLAY_MAX_PROMPTS,
+  ROLEPLAY_MIN_PROMPTS,
+  TONAL_STEP_TYPES,
+  type ContentIndex,
+  type Lesson,
+  type LessonStep,
+  type LocalizedQuestion,
+} from "./types.ts";
 
 /**
  * Contrôles sémantiques du contenu, au-delà des schémas JSON :
@@ -70,7 +83,42 @@ export function checkContent(content: ContentIndex, opts: { production?: boolean
     if (card.question.answer >= card.question.options.length) err(card.id, `Réponse hors des options`);
   }
 
+  checkDialogues(content, opts, err, warn);
+
   return issues;
+}
+
+/** Contrôles des dialogues (contrat phase6 §3) : longueur, traductions, question, audio. */
+function checkDialogues(content: ContentIndex, opts: { production?: boolean }, err: Report, warn: Report) {
+  for (const dialogue of content.dialogues.values()) {
+    const where = dialogue.id;
+    if (dialogue.turns.length === 0) err(where, `Dialogue sans réplique`);
+    if (dialogue.turns.length > DIALOGUE_MAX_TURNS) {
+      err(where, `${dialogue.turns.length} répliques (max ${DIALOGUE_MAX_TURNS} : un dialogue de 15 s)`);
+    }
+    dialogue.turns.forEach((turn, i) => {
+      const at = `${where} réplique ${i + 1}`;
+      if (turn.speaker.trim() === "") err(at, `Locuteur vide`);
+      if (turn.vi.trim() === "") err(at, `Réplique vide`);
+      if ((turn.translation.fr ?? "").trim() === "") err(at, `Traduction française manquante`);
+      if (turn.audio !== undefined && !mediaPresent(content, turn.audio)) err(at, `Audio absent du pack : ${turn.audio}`);
+    });
+    // Sans audio complet, `listen_gist` serait retiré de toutes les séances (règle médias).
+    if (dialogue.turns.some((t) => t.audio === undefined)) warn(where, `Répliques sans audio : le dialogue ne sera pas jouable à l'écoute`);
+    if (dialogue.question) checkQuestion(dialogue.question, where, err);
+    else warn(where, `Dialogue sans question : inutilisable en listen_gist`);
+    if (!dialogue.reviewed) (opts.production ? err : warn)(where, `Dialogue non relu par un locuteur natif`);
+  }
+}
+
+/** Un média référencé est-il présent ? `mediaIndex` absent (tests sur disque) = tout est présent. */
+function mediaPresent(content: ContentIndex, path: string): boolean {
+  return content.mediaIndex === undefined || content.mediaIndex.has(path);
+}
+
+function checkQuestion(question: LocalizedQuestion, where: string, err: Report) {
+  if (question.answer < 0 || question.answer >= question.options.length) err(where, `Réponse hors des options`);
+  if (question.options.length < 2) err(where, `Question à moins de 2 options`);
 }
 
 type Report = (where: string, message: string) => void;
@@ -198,12 +246,72 @@ function checkStep(content: ContentIndex, lesson: Lesson, step: LessonStep, wher
       needConcept(step.concept);
       break;
 
-    case "match_pairs":
+    case "match_pairs": {
       step.concepts.forEach(needConcept);
+      const concepts = step.concepts.flatMap((id) => content.concepts.get(id) ?? []);
+      const mode = step.mode ?? "text_gloss";
+      if (mode === "audio_image") {
+        for (const c of concepts) if (!c.image) err(where, `${c.id} n'a pas d'image (mode audio_image)`);
+      }
+      // Deux cartes identiques d'un côté rendraient l'appariement arbitraire.
+      const rights = mode === "text_gloss" ? concepts.map((c) => c.gloss.fr) : concepts.map((c) => normalizeAnswer(c.vi));
+      for (const [i, value] of rights.entries()) {
+        if (rights.indexOf(value) !== i) err(where, `Deux cartes portent « ${value} » : appariement ambigu`);
+      }
       break;
+    }
 
     case "fill_gap":
+      if (!step.text.includes(GAP)) err(where, `Le texte ne contient pas le trou « ${GAP} »`);
       if (!step.options.some((o) => normalizeAnswer(o) === normalizeAnswer(step.answer))) err(where, `La réponse n'est pas dans les options`);
+      for (const [i, o] of step.options.entries()) {
+        if (step.options.findIndex((x) => normalizeAnswer(x) === normalizeAnswer(o)) !== i) err(where, `Option « ${o} » en double`);
+      }
+      break;
+
+    case "listen_gist": {
+      const dialogue = content.dialogues.get(step.dialogue);
+      if (!dialogue) err(where, `Dialogue inconnu : ${step.dialogue}`);
+      else if (!dialogue.question) err(where, `${step.dialogue} n'a pas de question de compréhension`);
+      break;
+    }
+
+    case "speak_answer": {
+      step.accepted.forEach(needConcept);
+      if (step.accepted.length === 0) err(where, `Aucune réponse acceptée`);
+      if (step.prompt.trim() === "") err(where, `Question vide`);
+      if (step.audio !== undefined && !mediaPresent(content, step.audio)) err(where, `Audio absent du pack : ${step.audio}`);
+      const graded = step.accepted.some((id) => {
+        const pitch = content.concepts.get(id)?.pitch;
+        return pitch !== undefined && mediaPresent(content, pitch);
+      });
+      if (!graded) warn(where, `Aucune réponse acceptée n'a de courbe F0 : l'exercice ne sera pas noté`);
+      break;
+    }
+
+    case "speak_roleplay": {
+      step.prompts.forEach((p) => needConcept(p.concept));
+      if (step.prompts.length < ROLEPLAY_MIN_PROMPTS || step.prompts.length > ROLEPLAY_MAX_PROMPTS) {
+        err(where, `${step.prompts.length} consignes (attendu ${ROLEPLAY_MIN_PROMPTS} à ${ROLEPLAY_MAX_PROMPTS})`);
+      }
+      if (!step.prompts.some((p) => content.concepts.get(p.concept)?.pitch)) {
+        warn(where, `Aucune réplique n'a de courbe F0 : le jeu de rôle ne sera pas noté`);
+      }
+      break;
+    }
+
+    case "dialogue_choice":
+      checkDialogueChoice(content, step, where, err, warn);
+      break;
+
+    case "translate_to_vi":
+      if (step.accepted.length === 0) err(where, `Aucune traduction acceptée`);
+      break;
+
+    case "translate_to_fr":
+      for (const [locale, forms] of Object.entries(step.accepted)) {
+        if (!forms || forms.length === 0 || forms.some((f) => f.trim() === "")) err(where, `accepted.${locale} vide`);
+      }
       break;
 
     case "spot_the_south": {
@@ -216,11 +324,47 @@ function checkStep(content: ContentIndex, lesson: Lesson, step: LessonStep, wher
     case "game":
       if (Array.isArray(step.conceptPool)) step.conceptPool.forEach(needConcept);
       break;
-
-    case "translate_to_vi":
-    case "translate_to_fr":
-      break;
   }
+}
+
+/**
+ * Dialogue à embranchements : 3 à 5 tours, identifiants uniques, `next` qui pointe sur un tour
+ * existant (jamais sur lui-même), tours atteignables depuis le premier, au moins un meilleur choix.
+ */
+function checkDialogueChoice(content: ContentIndex, step: Extract<LessonStep, { type: "dialogue_choice" }>, where: string, err: Report, warn: Report) {
+  const { turns } = step;
+  if (turns.length < DIALOGUE_CHOICE_MIN_TURNS || turns.length > DIALOGUE_CHOICE_MAX_TURNS) {
+    err(where, `${turns.length} tours (attendu ${DIALOGUE_CHOICE_MIN_TURNS} à ${DIALOGUE_CHOICE_MAX_TURNS})`);
+  }
+  const ids = new Set<string>();
+  const replyIds = new Set<string>();
+  for (const turn of turns) {
+    if (ids.has(turn.id)) err(where, `Tour ${turn.id} en double`);
+    ids.add(turn.id);
+  }
+  for (const turn of turns) {
+    const at = `${where} tour ${turn.id}`;
+    if (turn.replies.length < 2 || turn.replies.length > 3) err(at, `${turn.replies.length} réponses (attendu 2 ou 3)`);
+    if ((turn.translation.fr ?? "").trim() === "") err(at, `Traduction française manquante`);
+    if (turn.audio !== undefined && !mediaPresent(content, turn.audio)) err(at, `Audio absent du pack : ${turn.audio}`);
+    for (const reply of turn.replies) {
+      if (replyIds.has(reply.id) || ids.has(reply.id)) err(at, `Identifiant de réponse ${reply.id} en double`);
+      replyIds.add(reply.id);
+      if (reply.vi === undefined && reply.translation === undefined) err(at, `Réponse ${reply.id} sans texte`);
+      if (reply.next !== undefined && !ids.has(reply.next)) err(at, `Réponse ${reply.id} : tour suivant inconnu (${reply.next})`);
+      if (reply.next === turn.id) err(at, `Réponse ${reply.id} : boucle sur son propre tour`);
+    }
+    if (!turn.replies.some((r) => r.best)) warn(at, `Aucun meilleur choix : ce tour ne compte pas dans la note`);
+  }
+  // Tours orphelins : le joueur ne les verra jamais.
+  const reachable = new Set<string>();
+  const visit = (id: string | undefined) => {
+    if (id === undefined || reachable.has(id)) return;
+    reachable.add(id);
+    for (const reply of turns.find((t) => t.id === id)?.replies ?? []) visit(reply.next);
+  };
+  visit(turns[0]?.id);
+  for (const turn of turns) if (!reachable.has(turn.id)) warn(where, `Tour ${turn.id} inatteignable depuis le premier`);
 }
 
 /** La cible peut-elle être formée en enchaînant des jetons (chacun au plus une fois) ? */
@@ -276,4 +420,5 @@ function checkNfc(content: ContentIndex, err: Report) {
   for (const l of content.lessons.values()) walk(l, l.id, "");
   for (const c of content.concepts.values()) walk(c, c.id, "");
   for (const c of content.culture.values()) walk(c, c.id, "");
+  for (const d of content.dialogues.values()) walk(d, d.id, "");
 }

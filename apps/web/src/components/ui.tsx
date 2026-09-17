@@ -1,13 +1,19 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { activePackLang } from "../packs/active.ts";
 
-/** Écran une colonne, action principale en bas, à portée de pouce (spec §13). */
+/**
+ * Écran une colonne, action principale en bas, à portée de pouce (spec §13).
+ *
+ * `--parlo-nav` : hauteur de la navigation basse quand elle est visible (components/BottomNav.tsx),
+ * 0 sur les écrans de concentration. La page réserve cette place et l'action principale se pose
+ * juste au-dessus de la barre — valeur CSS constante, connue dès le premier rendu (pas de CLS).
+ */
 export function Screen({ children, action, top }: { children: ReactNode; action?: ReactNode; top?: ReactNode }) {
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] md:max-w-[720px]">
+    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-[var(--parlo-nav,0px)] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]">
       {top}
       <main className="flex flex-1 flex-col py-4">{children}</main>
-      {action && <div className="sticky bottom-0 bg-nuoc pt-3 pb-[max(1.25rem,env(safe-area-inset-bottom))]">{action}</div>}
+      {action && <div className="sticky bottom-[var(--parlo-nav,0px)] bg-nuoc pt-3 pb-[max(1.25rem,env(safe-area-inset-bottom))]">{action}</div>}
     </div>
   );
 }

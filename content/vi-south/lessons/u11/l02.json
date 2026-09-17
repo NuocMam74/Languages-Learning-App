@@ -112,22 +112,110 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em đặt Grab rồi.",
-      "tokens": [
-        "Em",
-        "đặt",
-        "Grab",
-        "rồi",
-        "chưa"
-      ],
-      "translation": {
-        "fr": "J'ai déjà réservé un Grab.",
-        "en": "I've already booked a Grab."
+      "type": "dialogue_choice",
+      "situation": {
+        "fr": "Tu hèles un xe ôm au coin de la rue.",
+        "en": "You flag down a xe ôm at the street corner."
       },
+      "turns": [
+        {
+          "id": "t1",
+          "vi": "Em đi đâu?",
+          "translation": {
+            "fr": "Tu vas où ?",
+            "en": "Where are you going?"
+          },
+          "replies": [
+            {
+              "id": "r1a",
+              "vi": "Anh chở em ra chợ Bến Thành nha.",
+              "next": "t2",
+              "best": true,
+              "feedback": {
+                "fr": "chở + destination + nha : la formule du Sud.",
+                "en": "chở + destination + nha: the Southern formula."
+              }
+            },
+            {
+              "id": "r1b",
+              "vi": "Chợ Bến Thành.",
+              "next": "t2",
+              "feedback": {
+                "fr": "Compris, mais un peu sec.",
+                "en": "Understood, but a bit blunt."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "vi": "Bốn chục ngàn nha em.",
+          "translation": {
+            "fr": "Quarante mille.",
+            "en": "Forty thousand."
+          },
+          "replies": [
+            {
+              "id": "r2a",
+              "vi": "Ba chục được hông anh?",
+              "next": "t3",
+              "best": true,
+              "feedback": {
+                "fr": "On peut négocier une course, poliment.",
+                "en": "You can bargain over a ride, politely."
+              }
+            },
+            {
+              "id": "r2b",
+              "vi": "Mắc quá!",
+              "next": "t3",
+              "feedback": {
+                "fr": "Trop brutal : propose plutôt un prix.",
+                "en": "Too harsh: suggest a price instead."
+              }
+            },
+            {
+              "id": "r2c",
+              "vi": "Dạ được.",
+              "next": "t3",
+              "feedback": {
+                "fr": "Correct, mais tu peux négocier un peu.",
+                "en": "Fine, but you could bargain a little."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "vi": "Được rồi, lên xe đi em.",
+          "translation": {
+            "fr": "D'accord, monte.",
+            "en": "All right, hop on."
+          },
+          "replies": [
+            {
+              "id": "r3a",
+              "vi": "Dạ, anh chạy chậm chậm nha.",
+              "best": true,
+              "feedback": {
+                "fr": "Demander de rouler doucement est tout à fait normal.",
+                "en": "Asking for a slow ride is perfectly normal."
+              }
+            },
+            {
+              "id": "r3b",
+              "vi": "Nhanh lên anh!",
+              "feedback": {
+                "fr": "Presser un conducteur de moto n'est jamais une bonne idée.",
+                "en": "Rushing a motorbike driver is never a good idea."
+              }
+            }
+          ]
+        }
+      ],
       "explain": {
-        "fr": "đặt + service : réserver. rồi : c'est fait.",
-        "en": "đặt + service: to book. rồi: done."
+        "fr": "Prix, casque, vitesse : trois choses qui se disent avant de partir.",
+        "en": "Price, helmet, speed: three things to settle before setting off."
       }
     },
     {

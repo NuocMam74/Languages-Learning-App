@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_hoi_duong",
+  "title": {
+    "fr": "Demander son chemin",
+    "en": "Asking the way"
+  },
+  "turns": [
+    {
+      "speaker": "Marie",
+      "vi": "Dạ cô ơi, cho con hỏi nhà thuốc ở đâu ạ?",
+      "translation": {
+        "fr": "Excusez-moi madame, où est la pharmacie ?",
+        "en": "Excuse me, where is the pharmacy?"
+      },
+      "audio": "audio/dlg_hoi_duong_t1_mai.opus"
+    },
+    {
+      "speaker": "Cô bán nước",
+      "vi": "Con đi thẳng tới ngã tư, rồi quẹo phải.",
+      "translation": {
+        "fr": "Va tout droit jusqu'au carrefour, puis tourne à droite.",
+        "en": "Go straight to the crossroads, then turn right."
+      },
+      "audio": "audio/dlg_hoi_duong_t2_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, có xa hông cô?",
+      "translation": {
+        "fr": "C'est loin ?",
+        "en": "Is it far?"
+      },
+      "audio": "audio/dlg_hoi_duong_t3_mai.opus"
+    },
+    {
+      "speaker": "Cô bán nước",
+      "vi": "Gần thôi con. Nhà thuốc ở kế bên ngân hàng.",
+      "translation": {
+        "fr": "C'est tout près. La pharmacie est à côté de la banque.",
+        "en": "It's close. The pharmacy is next to the bank."
+      },
+      "audio": "audio/dlg_hoi_duong_t4_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, con cảm ơn cô.",
+      "translation": {
+        "fr": "Merci madame.",
+        "en": "Thank you."
+      },
+      "audio": "audio/dlg_hoi_duong_t5_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Où se trouve la pharmacie ?",
+      "en": "Where is the pharmacy?"
+    },
+    "options": [
+      {
+        "fr": "À côté de la banque, à droite après le carrefour.",
+        "en": "Next to the bank, right after the crossroads."
+      },
+      {
+        "fr": "En face du marché, à gauche.",
+        "en": "Opposite the market, on the left."
+      },
+      {
+        "fr": "Derrière l'hôpital, tout droit.",
+        "en": "Behind the hospital, straight on."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« quẹo phải » puis « kế bên ngân hàng ».",
+      "en": "'quẹo phải' then 'kế bên ngân hàng'."
+    }
+  },
+  "reviewed": false
+}

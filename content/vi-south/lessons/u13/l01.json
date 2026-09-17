@@ -106,22 +106,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em làm xong rồi.",
-      "tokens": [
-        "Em",
-        "làm",
-        "xong",
+      "type": "fill_gap",
+      "text": "Em ăn cơm ___.",
+      "answer": "rồi",
+      "options": [
         "rồi",
-        "chưa"
+        "rối",
+        "roi"
       ],
       "translation": {
-        "fr": "J'ai fini (mon travail).",
-        "en": "I've finished (my work)."
+        "fr": "J'ai déjà mangé.",
+        "en": "I've already eaten."
       },
       "explain": {
-        "fr": "verbe + xong rồi : avoir fini de…",
-        "en": "verb + xong rồi: to have finished…"
+        "fr": "rồi en fin de phrase = c'est fait. rối = emmêlé, roi = baguette.",
+        "en": "rồi at the end = it's done. rối = tangled, roi = a switch."
       }
     },
     {

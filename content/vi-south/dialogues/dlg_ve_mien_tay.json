@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_ve_mien_tay",
+  "title": {
+    "fr": "Descendre dans le delta",
+    "en": "A trip to the delta"
+  },
+  "turns": [
+    {
+      "speaker": "Anh Nam",
+      "vi": "Tết này tui về miền Tây. Chị đi chơi hông?",
+      "translation": {
+        "fr": "Ce Tết je descends dans le delta. Tu viens ?",
+        "en": "This Tết I'm going down to the delta. Coming along?"
+      },
+      "audio": "audio/dlg_ve_mien_tay_t1_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Đi chớ! Dưới đó có gì vui hông anh?",
+      "translation": {
+        "fr": "Bien sûr ! Il y a quoi de sympa là-bas ?",
+        "en": "Of course! What's fun down there?"
+      },
+      "audio": "audio/dlg_ve_mien_tay_t2_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Mình đi ghe ra chợ nổi hen. Rồi ra vườn hái trái cây.",
+      "translation": {
+        "fr": "On prend le bateau pour le marché flottant. Puis on cueille des fruits au verger.",
+        "en": "We'll take a boat to the floating market. Then pick fruit in the orchard."
+      },
+      "audio": "audio/dlg_ve_mien_tay_t3_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Nghe vui quá! Chừng nào đi vậy anh?",
+      "translation": {
+        "fr": "Ça a l'air super ! On part quand ?",
+        "en": "Sounds great! When do we go?"
+      },
+      "audio": "audio/dlg_ve_mien_tay_t4_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Mùng bốn. Nhớ nghen, đừng có quên!",
+      "translation": {
+        "fr": "Le quatrième jour du Tết. N'oublie pas, hein !",
+        "en": "The fourth day of Tết. Don't forget, all right!"
+      },
+      "audio": "audio/dlg_ve_mien_tay_t5_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Hổng quên đâu!",
+      "translation": {
+        "fr": "Je n'oublierai pas !",
+        "en": "I won't forget!"
+      },
+      "audio": "audio/dlg_ve_mien_tay_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Que vont-ils faire dans le delta ?",
+      "en": "What will they do in the delta?"
+    },
+    "options": [
+      {
+        "fr": "Aller en barque au marché flottant et cueillir des fruits.",
+        "en": "Take a boat to the floating market and pick fruit."
+      },
+      {
+        "fr": "Aller à la pagode et manger au restaurant.",
+        "en": "Go to the pagoda and eat out."
+      },
+      {
+        "fr": "Rester à la maison à regarder un film.",
+        "en": "Stay home and watch a film."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« đi ghe ra chợ nổi » puis « ra vườn hái trái cây ».",
+      "en": "'đi ghe ra chợ nổi' then 'ra vườn hái trái cây'."
+    }
+  },
+  "reviewed": false
+}

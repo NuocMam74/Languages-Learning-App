@@ -1,0 +1,126 @@
+/** Profil : identité, niveau, série, compétences, acquis, badges (contrat phase7 §3). */
+export const fr = {
+  "profile.title": "Profil",
+
+  // Identité
+  "profile.name.label": "Nom affiché",
+  "profile.name.edit": "Changer mon nom",
+  "profile.name.save": "Enregistrer",
+  "profile.name.placeholder": "Ton prénom",
+  "profile.account.guest": "Invité · progression sur cet appareil",
+  "profile.account.signedIn": "Connecté · {email}",
+  "profile.account.unverified": "Email à vérifier",
+  "profile.account.expired": "Session expirée · reconnecte-toi",
+  "profile.memberSince": "Avec Parlo depuis le {date}",
+  "profile.guestHint": "Crée un compte pour garder tout ça, même si tu changes de téléphone.",
+  "profile.guestCta": "Créer mon compte",
+
+  // Niveau et série
+  "profile.level.title": "Niveau",
+  "profile.streak.title": "Série",
+  "profile.streak.current": "{n} jour d'affilée",
+  "profile.streak.current.plural": "{n} jours d'affilée",
+  "profile.streak.none": "Aucune série en cours",
+  "profile.streak.longest": "Record : {n} jour",
+  "profile.streak.longest.plural": "Record : {n} jours",
+  "profile.streak.freezes": "{n} protection en réserve",
+  "profile.streak.freezes.plural": "{n} protections en réserve",
+  "profile.streak.frozen": "Série gelée jusqu'au {date}",
+
+  // Compétences
+  "profile.skills.title": "Compétences",
+  "profile.skills.language": "Langue",
+  "profile.skill.listening": "Écoute",
+  "profile.skill.reading": "Lecture",
+  "profile.skill.vocabulary": "Vocabulaire",
+  "profile.skill.speaking": "Production orale",
+  "profile.skill.ratio": "{percent} % · {correct} / {total}",
+  "profile.skill.level.none": "Pas encore travaillée",
+  "profile.skill.level.new": "On commence",
+  "profile.skill.level.fragile": "À consolider",
+  "profile.skill.level.solid": "Solide",
+  "profile.skill.level.strong": "Très solide",
+  "profile.skills.window": "Sur les 60 derniers jours, examens compris.",
+
+  // Acquis
+  "profile.acquired.title": "Acquis",
+  "profile.acquired.words": "Mots appris",
+  "profile.acquired.structures": "Structures",
+  "profile.acquired.lessons": "Leçons terminées",
+  "profile.acquired.units": "Unités validées",
+  "profile.acquired.speaking": "Prises de parole",
+  "profile.acquired.activeDays": "Jours actifs",
+  "profile.acquired.certificates": "Certificats",
+  "profile.games.title": "Records des jeux",
+  "profile.games.best": "{correct} / {total}",
+  "profile.exams.link": "Examens et certificats",
+
+  // Badges
+  "profile.badges.title": "Badges",
+  "profile.badges.count": "{n} sur {total}",
+
+  // Langues
+  "profile.languages.title": "Mes langues",
+  "profile.languages.continue": "Continuer",
+  "profile.loading": "Chargement de ton profil",
+} as const;
+
+export const en: Record<keyof typeof fr, string> = {
+  "profile.title": "Profile",
+
+  "profile.name.label": "Display name",
+  "profile.name.edit": "Change my name",
+  "profile.name.save": "Save",
+  "profile.name.placeholder": "Your first name",
+  "profile.account.guest": "Guest · progress kept on this device",
+  "profile.account.signedIn": "Signed in · {email}",
+  "profile.account.unverified": "Email not verified yet",
+  "profile.account.expired": "Session expired · sign in again",
+  "profile.memberSince": "With Parlo since {date}",
+  "profile.guestHint": "Create an account to keep all of this, even if you change phone.",
+  "profile.guestCta": "Create my account",
+
+  "profile.level.title": "Level",
+  "profile.streak.title": "Streak",
+  "profile.streak.current": "{n} day in a row",
+  "profile.streak.current.plural": "{n} days in a row",
+  "profile.streak.none": "No streak going",
+  "profile.streak.longest": "Best: {n} day",
+  "profile.streak.longest.plural": "Best: {n} days",
+  "profile.streak.freezes": "{n} protection in reserve",
+  "profile.streak.freezes.plural": "{n} protections in reserve",
+  "profile.streak.frozen": "Streak frozen until {date}",
+
+  "profile.skills.title": "Skills",
+  "profile.skills.language": "Language",
+  "profile.skill.listening": "Listening",
+  "profile.skill.reading": "Reading",
+  "profile.skill.vocabulary": "Vocabulary",
+  "profile.skill.speaking": "Speaking",
+  "profile.skill.ratio": "{percent}% · {correct} / {total}",
+  "profile.skill.level.none": "Not practised yet",
+  "profile.skill.level.new": "Just starting",
+  "profile.skill.level.fragile": "Needs work",
+  "profile.skill.level.solid": "Solid",
+  "profile.skill.level.strong": "Very solid",
+  "profile.skills.window": "Over the last 60 days, exams included.",
+
+  "profile.acquired.title": "What you've got",
+  "profile.acquired.words": "Words learned",
+  "profile.acquired.structures": "Structures",
+  "profile.acquired.lessons": "Lessons finished",
+  "profile.acquired.units": "Units passed",
+  "profile.acquired.speaking": "Speaking turns",
+  "profile.acquired.activeDays": "Active days",
+  "profile.acquired.certificates": "Certificates",
+  "profile.games.title": "Game records",
+  "profile.games.best": "{correct} / {total}",
+  "profile.exams.link": "Exams and certificates",
+
+  "profile.badges.title": "Badges",
+  "profile.badges.count": "{n} of {total}",
+
+  "profile.languages.title": "My languages",
+  "profile.languages.continue": "Continue",
+  "profile.loading": "Loading your profile",
+};

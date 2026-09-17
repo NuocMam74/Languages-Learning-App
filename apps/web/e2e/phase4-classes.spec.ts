@@ -324,7 +324,7 @@ test("élève : invitation en invité → compte → consentement → rejoint ; 
   await expect(page.getByText("Enseignant : Cô Hoa")).toBeVisible();
   expect(calls.find((c) => c.path === "/classes/join/7K3Q9B")?.body).toEqual({ consent: true });
 
-  // Hub : « Devoir : … pour <jour> (3/5) » vers la prochaine leçon du devoir.
+  // Accueil : « Devoir : … pour <jour> (3/5) » vers la prochaine leçon du devoir (contrat phase7 §2.4).
   await forgetSession(page);
   await page.goto("/");
   const weekday = new Date(`${isoDay(3)}T12:00:00`).toLocaleDateString("fr-FR", { weekday: "long" });
@@ -345,7 +345,8 @@ test("élève : invitation en invité → compte → consentement → rejoint ; 
   await expect(page.getByTestId("my-classes-empty")).toBeVisible();
   expect(calls.some((c) => c.method === "DELETE" && c.path === "/me/classes/cls-1")).toBe(true);
 
-  await page.goto("/");
+  await page.goto("/apprendre");
   await expect(page.getByTestId("tutor-greeting")).toBeVisible();
+  await page.goto("/");
   await expect(page.getByTestId("hub-assignment")).toHaveCount(0);
 });

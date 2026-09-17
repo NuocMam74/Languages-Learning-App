@@ -113,22 +113,23 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Dạ, con không biết.",
-      "tokens": [
-        "Dạ",
-        "con",
-        "không",
-        "biết",
-        "hổng"
-      ],
-      "translation": {
-        "fr": "Non, je ne sais pas (poli, à un aîné).",
-        "en": "No, I don't know (polite, to an elder)."
+      "type": "translate_to_fr",
+      "source": "Hổng biết.",
+      "accepted": {
+        "fr": [
+          "Sais pas.",
+          "Je sais pas.",
+          "Aucune idée.",
+          "Je ne sais pas."
+        ],
+        "en": [
+          "Dunno.",
+          "No idea."
+        ]
       },
       "explain": {
-        "fr": "Avec un aîné : dạ + không, pas hổng.",
-        "en": "With an elder: dạ + không, not hổng."
+        "fr": "hổng est plus appuyé que hông, lui-même familier pour không.",
+        "en": "hổng is stronger than hông, itself a colloquial không."
       }
     },
     {

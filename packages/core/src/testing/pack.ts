@@ -20,6 +20,8 @@ export function loadPack(code = "vi-south"): ContentIndex {
     lessons: all(join(root, "lessons")),
     concepts: all(join(root, "concepts")),
     culture: all(join(root, "culture")),
+    // Facultatif : un pack sans dialogue n'a pas le dossier.
+    ...(existsSync(join(root, "dialogues")) ? { dialogues: all<NonNullable<RawPackFiles["dialogues"]>[number]>(join(root, "dialogues")) } : {}),
   };
   return buildContentIndex(raw);
 }

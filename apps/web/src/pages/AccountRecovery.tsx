@@ -47,19 +47,21 @@ export function ForgotPasswordPage() {
   };
 
   return (
-    <Screen top={<Back />}>
+    <Screen
+      top={<Back />}
+      action={sent ? undefined : <Button type="submit" form="forgot-form" disabled={busy || !email.includes("@")}>{busy ? t("account.busy") : t("journey.forgot.submit")}</Button>}
+    >
       <h1 className="mt-2 font-serif text-2xl">{t("journey.forgot.title")}</h1>
       {sent ? (
         <p className="mt-6 text-lg" role="status" data-testid="forgot-sent">{t("journey.forgot.sent")}</p>
       ) : (
-        <form onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-5">
+        <form id="forgot-form" onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-5">
           <p className="text-phu-sa">{t("journey.forgot.body")}</p>
           <div className="flex flex-col gap-1">
             <label htmlFor="forgot-email" className="font-medium">{t("account.field.email")}</label>
-            <input id="forgot-email" type="email" className={inputClass} value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" inputMode="email" />
+            <input id="forgot-email" type="email" className={inputClass} value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="username" inputMode="email" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="send" />
           </div>
           {error && <p role="alert" className="font-medium text-son-mai">{t(error)}</p>}
-          <Button type="submit" disabled={busy || !email.includes("@")}>{busy ? t("account.busy") : t("journey.forgot.submit")}</Button>
         </form>
       )}
       <Link to="/connexion" className="mt-6 grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.login.title")}</Link>
@@ -93,7 +95,10 @@ export function ResetPasswordPage() {
   };
 
   return (
-    <Screen top={<Back />}>
+    <Screen
+      top={<Back />}
+      action={done ? undefined : <Button type="submit" form="reset-form" disabled={busy || !token || password.length < PASSWORD_MIN}>{busy ? t("account.busy") : t("journey.reset.submit")}</Button>}
+    >
       <h1 className="mt-2 font-serif text-2xl">{t("journey.reset.title")}</h1>
       {done ? (
         <div className="mt-6 flex flex-col gap-4" role="status" data-testid="reset-done">
@@ -101,7 +106,7 @@ export function ResetPasswordPage() {
           <Link to="/connexion" className="grid min-h-12 place-items-center rounded-2xl bg-ngoc px-5 text-lg font-semibold text-nuoc">{t("account.login.title")}</Link>
         </div>
       ) : (
-        <form onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-5">
+        <form id="reset-form" onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-5">
           <div className="flex flex-col gap-1">
             <label htmlFor="reset-password" className="font-medium">{t("journey.reset.field")}</label>
             <input
@@ -113,13 +118,16 @@ export function ResetPasswordPage() {
               minLength={PASSWORD_MIN}
               required
               autoComplete="new-password"
+              autoCapitalize="off"
+              autoCorrect="off"
+              spellCheck={false}
+              enterKeyHint="done"
               aria-describedby="reset-hint"
             />
             <p id="reset-hint" className="text-sm text-phu-sa">{t("account.field.passwordHint", { n: PASSWORD_MIN })}</p>
           </div>
           {error && <p role="alert" className="font-medium text-son-mai">{t(error)}</p>}
-          {error === "journey.reset.invalid" && <Link to="/compte/mot-de-passe-oublie" className="min-h-11 font-semibold text-ngoc">{t("journey.forgot.submit")}</Link>}
-          <Button type="submit" disabled={busy || !token || password.length < PASSWORD_MIN}>{busy ? t("account.busy") : t("journey.reset.submit")}</Button>
+          {error === "journey.reset.invalid" && <Link to="/compte/mot-de-passe-oublie" className="inline-flex min-h-11 items-center font-semibold text-ngoc">{t("journey.forgot.submit")}</Link>}
         </form>
       )}
     </Screen>

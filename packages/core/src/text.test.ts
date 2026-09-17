@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { compareAnswer, heardClassOf, isToneMinimalPair, normalizeAnswer, stripDiacritics, stripTones, toneOf } from "./text.ts";
+import { compareAnswer, compareLoose, heardClassOf, isToneMinimalPair, normalizeAnswer, normalizeLoose, stripDiacritics, stripTones, toneOf } from "./text.ts";
 
 const SOUTH = [["ngang"], ["huyen"], ["sac"], ["hoi", "nga"], ["nang"]] as const;
 
@@ -73,5 +73,40 @@ describe("compareAnswer", () => {
   it("les diacritiques comptent : sans eux, ce n'est pas correct", () => {
     expect(compareAnswer("ma", ["má"]).kind).toBe("tone_only");
     expect(compareAnswer("chó", ["chào"]).kind).toBe("wrong");
+  });
+});
+
+describe("compareLoose (langue d'interface)", () => {
+  const accepted = ["Voici ma mère.", "C'est ma mère"];
+
+  it("ignore casse, accents et ponctuation", () => {
+    expect(compareLoose("voici ma mere", accepted)).toBe(true);
+    expect(compareLoose("VOICI MA MÈRE !", accepted)).toBe(true);
+    expect(compareLoose("c est ma mere", accepted)).toBe(true);
+  });
+
+  it("l'article initial est facultatif, des deux côtés", () => {
+    expect(compareLoose("mangue", ["la mangue"])).toBe(true);
+    expect(compareLoose("une mangue", ["mangue"])).toBe(true);
+    expect(compareLoose("eau", ["l'eau"])).toBe(true);
+    expect(compareLoose("the market", ["market"])).toBe(true);
+    // Seul le premier mot : « le » au milieu compte.
+    expect(compareLoose("ferme la porte", ["ferme porte"])).toBe(false);
+  });
+
+  it("un article seul reste un mot (on ne vide pas la réponse)", () => {
+    expect(compareLoose("la", ["la"])).toBe(true);
+    expect(compareLoose("la", ["le"])).toBe(false);
+  });
+
+  it("refuse une réponse vide ou différente", () => {
+    expect(compareLoose("", accepted)).toBe(false);
+    expect(compareLoose("   ", accepted)).toBe(false);
+    expect(compareLoose("Voici mon père", accepted)).toBe(false);
+  });
+
+  it("normalizeLoose : NFC, minuscules, sans accents, espaces réduits", () => {
+    expect(normalizeLoose(" L'Eau,   s'il vous plaît ! ")).toBe("eau s il vous plait");
+    expect(normalizeLoose("Ça".normalize("NFD"))).toBe("ca");
   });
 });

@@ -78,6 +78,9 @@ writeFileSync(join(OUT, "icon-192.png"), png(192, artwork(192, 1)));
 writeFileSync(join(OUT, "icon-512.png"), png(512, artwork(512, 1)));
 writeFileSync(join(OUT, "icon-maskable-512.png"), png(512, artwork(512, 0.72)));
 writeFileSync(join(OUT, "apple-touch-icon.png"), png(180, artwork(180, 0.86)));
+// iOS : tailles iPad (152, 167) et Spotlight/réglages (120) ; icônes des raccourcis du manifeste (96).
+for (const size of [120, 152, 167, 180]) writeFileSync(join(OUT, `apple-touch-icon-${size}.png`), png(size, artwork(size, 0.86)));
+writeFileSync(join(OUT, "shortcut-96.png"), png(96, artwork(96, 0.86)));
 writeFileSync(
   join(OUT, "icon.svg"),
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#0E5E55"/><circle cx="50" cy="40" r="17" fill="#E5A21B"/><path d="M18 64q10.7-7 21.3 0t21.4 0 21.3 0M18 76q10.7-7 21.3 0t21.4 0 21.3 0" stroke="#F2F6F3" stroke-width="5.5" fill="none" stroke-linecap="round"/></svg>\n`,

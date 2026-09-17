@@ -88,15 +88,21 @@
       }
     },
     {
-      "type": "listen_pick_text",
-      "concept": "s_b_ong_di_dau_roi",
-      "distractors": [
-        "Bả đi đâu rồi?",
-        "Ảnh đi đâu rồi?"
+      "type": "fill_gap",
+      "text": "___ đi đâu rồi?",
+      "answer": "Ổng",
+      "options": [
+        "Ổng",
+        "Ông",
+        "Ống"
       ],
+      "translation": {
+        "fr": "Il est parti où ? (un homme âgé)",
+        "en": "Where has he gone? (an older man)"
+      },
       "explain": {
-        "fr": "ổng : lui (âgé) ; bả : elle (âgée) ; ảnh : lui (jeune).",
-        "en": "ổng: he (older); bả: she (older); ảnh: he (younger)."
+        "fr": "ổng = ông ấy contracté, à l'oral au Sud. Ống = un tuyau.",
+        "en": "ổng is a contraction of ông ấy in Southern speech. Ống = a pipe."
       }
     },
     {

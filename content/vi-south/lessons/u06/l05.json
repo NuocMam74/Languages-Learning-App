@@ -87,25 +87,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Nhà tôi số một trăm lẻ tám.",
-      "tokens": [
-        "Nhà",
-        "tôi",
-        "số",
-        "một",
-        "trăm",
+      "type": "fill_gap",
+      "text": "Một trăm ___ năm.",
+      "answer": "lẻ",
+      "options": [
         "lẻ",
-        "tám",
-        "mười"
+        "lẹ",
+        "lê"
       ],
       "translation": {
-        "fr": "J'habite au numéro 108.",
-        "en": "I live at number 108."
+        "fr": "Cent cinq.",
+        "en": "One hundred and five."
       },
       "explain": {
-        "fr": "số + nombre = le numéro. 108 = một trăm lẻ tám.",
-        "en": "số + number = the number. 108 = một trăm lẻ tám."
+        "fr": "lẻ relie la centaine aux unités : một trăm lẻ năm.",
+        "en": "lẻ links hundreds to units: một trăm lẻ năm."
       }
     },
     {

@@ -8,7 +8,7 @@ from fastapi.testclient import TestClient
 from sqlalchemy import func, select
 
 from app.models import Answer, ProcessedEvent
-from tests.conftest import event, register
+from tests.conftest import event, register, today_iso
 
 
 def post(client: TestClient, auth: dict[str, str], events: list[dict[str, Any]]) -> dict[str, Any]:
@@ -80,7 +80,7 @@ def test_batch_is_idempotent(client: TestClient, auth: dict[str, str]) -> None:
         event("session_started", {"sessionId": "s1", "source": "daily", "plannedSeconds": 380}),
         answer(),
         answer(),
-        session_completed("s1", "2026-09-14"),
+        session_completed("s1", today_iso()),
     ]
     ids = [e["id"] for e in batch]
 
@@ -100,15 +100,15 @@ def test_batch_is_idempotent(client: TestClient, auth: dict[str, str]) -> None:
 
 
 def test_duplicate_id_inside_one_batch_applied_once(client: TestClient, auth: dict[str, str]) -> None:
-    e = session_completed("s-dup", "2026-09-14")
+    e = session_completed("s-dup", today_iso())
     result = post(client, auth, [e, e])
     assert result["accepted"] == [e["id"], e["id"]]
     assert me(client, auth)["enrollment"]["xpTotal"] == 30
 
 
 def test_same_session_completed_twice_with_new_event_id_no_double_xp(client: TestClient, auth: dict[str, str]) -> None:
-    post(client, auth, [session_completed("s-x", "2026-09-14")])
-    post(client, auth, [session_completed("s-x", "2026-09-14")])
+    post(client, auth, [session_completed("s-x", today_iso())])
+    post(client, auth, [session_completed("s-x", today_iso())])
     assert me(client, auth)["enrollment"]["xpTotal"] == 30
 
 
@@ -144,7 +144,7 @@ def test_batch_size_limit(client: TestClient, auth: dict[str, str]) -> None:
 def test_event_id_of_another_user_is_not_applied(client: TestClient) -> None:
     alice = register(client)
     bob = register(client)
-    e = session_completed("s-a", "2026-09-14")
+    e = session_completed("s-a", today_iso())
     post(client, alice, [e])
     result = post(client, bob, [e])
     assert result["rejected"] == [{"id": e["id"], "reason": "id_conflict"}]

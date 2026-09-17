@@ -18,27 +18,33 @@
   ],
   "vi-south.u06": [
     "« một trăm năm » entendu comme 150 (explication de u06.l05) ; « hai chục » = 20 000 đ ; « Trứng gà bao nhiêu một chục ? » (un chục n'est peut-être pas 10 pour les fruits dans le delta).",
-    "Contractions hăm / băm."
+    "Contractions hăm / băm.",
+    "fill_gap u06.l05 : options lẻ / lẹ / lê. « lẹ » (rapide) est-il assez courant au Sud pour servir de distracteur ?"
   ],
   "vi-south.u08": [
     "« thối tiền / thối lại » pour rendre la monnaie ; « Bớt cho em đi chị ».",
     "Orthographe ký/kí, kỹ sư/kĩ sư, hủ tiếu/hủ tíu.",
-    "L'entrée ký/cân doit-elle exister (« cân » = peser partout) ?"
+    "L'entrée ký/cân doit-elle exister (« cân » = peser partout) ?",
+    "dialogue_choice u08.l02 : « Dạ, em gửi chị. » pour tendre l'argent ; « bảy mươi lăm ngàn » ou « bảy chục lăm » ?"
   ],
   "vi-south.u07": [
-    "Naturel : « Ít cay thôi nha em. » ; « trà đá » vraiment offert dans les petits restaurants de Saïgon ? « cà » seul pour aubergine."
+    "Naturel : « Ít cay thôi nha em. » ; « trà đá » vraiment offert dans les petits restaurants de Saïgon ? « cà » seul pour aubergine.",
+    "dialogue_choice u07.l04 : le client se désigne par « anh » face à un serveur plus jeune (« Cho anh một tô phở. ») — naturel ?"
   ],
   "vi-south.u11": [
-    "Naturel : « Anh đội nón bảo hiểm vô nha. », « Anh chạy chậm lại được không? ». quẹo/rẽ en avertissement plutôt qu'en erreur ?"
+    "Naturel : « Anh đội nón bảo hiểm vô nha. », « Anh chạy chậm lại được không? ». quẹo/rẽ en avertissement plutôt qu'en erreur ?",
+    "fill_gap u11.l03 : distracteurs què / queo pour quẹo — de vrais mots, mais rares. « rẽ » volontairement écarté (forme du Nord, bloquée par la garde du Sud)."
   ],
   "vi-south.u05": [
-    "Naturel : « Tôi mới qua Việt Nam. », « Tụi mình bằng tuổi nhau. », « Tôi tên Lan », « Em mấy tuổi ? » réservé aux enfants."
+    "Naturel : « Tôi mới qua Việt Nam. », « Tụi mình bằng tuổi nhau. », « Tôi tên Lan », « Em mấy tuổi ? » réservé aux enfants.",
+    "speak_answer u05.l06 : « Chị nói tiếng Việt được hông? » — « được hông » plutôt que « được không » ?"
   ],
   "vi-south.u10": [
     "« Nhà tôi ở hẻm năm mươi, đường Lê Lợi. » ; format d'adresse 123/4."
   ],
   "vi-south.u09": [
-    "« Mai gặp lại nha » (mai = demain)."
+    "« Mai gặp lại nha » (mai = demain).",
+    "fill_gap u09.l05 : « Mình hẹn lúc mấy giờ? » — « lúc » obligatoire ou facultatif à l'oral ?"
   ],
   "_culture_facts_u05_u11": [
     "~40 % des Vietnamiens s'appellent Nguyễn ; métro de Saïgon ouvert fin 2024 ; cuisine du Sud plus sucrée ; tuổi ta."
@@ -66,20 +72,24 @@
     "giùm/hộ, coi/xem, nha/nhé, chích/tiêm : vraie répartition Sud/Nord ? listes d'exceptions à vérifier."
   ],
   "vi-south.u16": [
-    "Naturel : « Em bị sốt với ho. » ; faits : cạo gió, pharmaciens qui conseillent directement."
+    "Naturel : « Em bị sốt với ho. » ; faits : cạo gió, pharmaciens qui conseillent directement.",
+    "speak_roleplay u16.l05 : l'explication rappelle « bịnh à l'oral, bệnh à l'écrit » — formulation à valider."
   ],
   "vi-south.u15": [
     "Naturel : « Cho em sạc pin nhờ được không? », « Dạ, em là Lan, bên công ty Sao Mai. »"
   ],
   "vi-south.u17": [
-    "Faits : électricité facturée au « số », propriétaire qui ferme le portail la nuit."
+    "Faits : électricité facturée au « số », propriétaire qui ferme le portail la nuit.",
+    "fill_gap u17.l02 : lầu / lâu / lẩu réunis dans un même exercice de lecture."
   ],
   "vi-south.u12": [
     "Paires dở/dơ, gọi/gói/gỏi, lầu/lâu/lẩu, chủ/chú, rồi/rối ; vérifier les tone_identify sur des mots hỏi.",
-    "Naturel : « Anh ăn cơm tấm chưa? »"
+    "Naturel : « Anh ăn cơm tấm chưa? »",
+    "fill_gap u12.l04 : « Chi » (= quoi, Sud) comme distracteur de « Khi » — risque de confusion pédagogique ?"
   ],
   "vi-south.u21": [
-    "Naturel et particule : « Em về nhen. », « Mai gặp hen. », « Thiệt há? », « Anh giỡn hoài! », « Con nhỏ dễ thương quá! »"
+    "Naturel et particule : « Em về nhen. », « Mai gặp hen. », « Thiệt há? », « Anh giỡn hoài! », « Con nhỏ dễ thương quá! »",
+    "fill_gap u21.l01 (Ổng / Ông / Ống) et u21.l03 (hen / hẹn / hèn). nghen et nhen ne sont jamais opposés : les deux sont corrects."
   ],
   "vi-south.u19": [
     "Registre : « Anh cho tôi coi hộ chiếu. » (agent) et « Chị photo giùm em hai bản nha. »"
@@ -98,5 +108,31 @@
   ],
   "vi-south.u20": [
     "Concept « hội » (fête) ajouté pour la paire hồi/hội ; « mưa lớn » comme forme du Sud ; « đám giỗ » vs « giỗ »; « Mình đi ghe ra chợ nổi hen. »"
+  ],
+  "_dialogues": [
+    "Nouveau dossier dialogues/ (14 dialogues, support de listen_gist) : chaque réplique renvoie à audio/<id>_t<n>_mai.opus. Une seule voix (Mai) pour tous les locuteurs : faut-il deux voix (femme + homme) pour que les tours se distinguent ?",
+    "dlg_bua_com_gia_dinh : « Vô ăn cơm đi con. » et « Bữa nay má nấu canh chua. » sonnent-ils naturels ?",
+    "dlg_lam_quen : Marie dit « tôi » (neutre) tout du long ; ailleurs elle dit « em » ou « chị » selon l'interlocuteur. Cohérent pour un apprenant ?",
+    "dlg_goi_pho : « Dạ, chị ăn gì? » ou plutôt « Dạ, chị dùng gì ạ? » dans un quán de Saïgon ?",
+    "dlg_tra_gia_o_cho : prix (60 000 → 50 000 đ le ký de xoài), « một ký rưỡi » et le total « bảy mươi lăm ngàn » sont-ils plausibles ?",
+    "dlg_hen_gio : « Chi vậy anh? » (= pourquoi ?) comme forme du Sud.",
+    "dlg_di_xe_om : « Anh chạy chậm chậm giùm em nha. » ; négocier 40 000 → 30 000 sur une course courte, réaliste ?",
+    "dlg_thue_phong_tro : « Ba triệu rưỡi một tháng », « Tiền điện nước tính riêng », « Hẻm này yên tĩnh lắm con. »",
+    "dlg_moi_an_tet / dlg_ve_mien_tay : « mùng hai », « mùng bốn », « Đi chớ! » et « Nhớ nghen, đừng có quên! ».",
+    "dlg_ke_chuyen_hoi_nho : « ở dưới quê », « tụi tui », « Rồi sao nữa? »."
+  ],
+  "_exercices_phase6": [
+    "fill_gap : les distracteurs sont toujours de vrais mots, voisins tonals (là/lá/lạ, lăm/năm/nắm, lầu/lâu/lẩu…). Aucun couple hỏi/ngã n'est opposé — à revérifier à l'oreille.",
+    "listen_transcribe : variantes acceptées à trancher — « cám ơn » pour cảm ơn (u20.l01), « a lô » pour alô (u15.l01), « bẩy » pour bảy (u06.l02), « điện thọai » pour điện thoại (u06.l06). Les accepter (tolérance de saisie) ou les refuser (on enseigne l'orthographe) ?",
+    "translate_to_vi : les listes acceptées mélangent tôi et tui. Faut-il accepter tui partout, ou le réserver au registre familier ?",
+    "speak_answer / speak_roleplay : aucun concept n'a encore de courbe F0 (dossier pitch/ vide) : ces étapes ne seront pas notées tant que l'audio natif n'existe pas.",
+    "dialogue_choice : le « meilleur choix » est presque toujours celui qui ajoute dạ / nha / nghen. À confirmer que les autres réponses sont seulement moins bonnes, jamais fautives.",
+    "match_pairs : les appariements de révision utilisent la glose française ; deux concepts d'un même exercice ne doivent jamais partager la même glose (vérifié automatiquement)."
+  ],
+  "vi-south.u22": [
+    "fill_gap u22.l01 : Hồi / Hội / Hỏi — aucun couple hỏi/ngã, mais trois tons à distinguer à la lecture."
+  ],
+  "vi-south.u24": [
+    "fill_gap u24.l01 : hờn / hớn comme distracteurs de hơn — assez courants pour être reconnus ?"
   ]
 }

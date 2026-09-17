@@ -27,7 +27,12 @@
     "c_b_gia_fake",
     "c_b_gia_price",
     "c_b_se_future",
-    "s_b_uoc_gi_noi_gioi"
+    "s_b_uoc_gi_noi_gioi",
+    "c_b_neu",
+    "c_b_chac",
+    "c_b_co_le",
+    "c_b_gia_su",
+    "c_b_uoc_gi"
   ],
   "steps": [
     {
@@ -118,19 +123,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Có lẽ mai trời mưa.",
-      "tokens": [
-        "Có lẽ",
-        "mai",
-        "trời",
-        "mưa",
-        "mua"
-      ],
-      "translation": {
-        "fr": "Il pleuvra peut-être demain.",
-        "en": "It might rain tomorrow."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_neu",
+        "c_b_chac",
+        "c_b_co_le",
+        "c_b_gia_su",
+        "c_b_uoc_gi"
+      ]
     },
     {
       "type": "tone_identify",

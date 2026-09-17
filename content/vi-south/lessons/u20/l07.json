@@ -22,7 +22,10 @@
     "c_b_cuoi_laugh",
     "c_b_li_xi",
     "s_b_de_bua_khac",
-    "s_b_da_con_cam_on"
+    "s_b_da_con_cam_on",
+    "c_b_dam_gio",
+    "c_b_thiep_moi",
+    "c_b_qua_gift"
   ],
   "steps": [
     {
@@ -101,20 +104,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tiếc quá, em bận rồi.",
-      "tokens": [
-        "Tiếc",
-        "quá",
-        "em",
-        "bận",
-        "rồi",
-        "tiệc"
-      ],
-      "translation": {
-        "fr": "Dommage, je suis déjà pris(e).",
-        "en": "What a pity, I'm already busy."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_dam_cuoi",
+        "c_b_dam_gio",
+        "c_b_li_xi",
+        "c_b_thiep_moi",
+        "c_b_qua_gift"
+      ]
     },
     {
       "type": "listen_pick_text",
@@ -126,6 +123,14 @@
       "explain": {
         "fr": "Để bữa khác nha : une autre fois.",
         "en": "Để bữa khác nha: another time."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_moi_an_tet",
+      "explain": {
+        "fr": "« mùng hai » désigne le deuxième jour du Tết.",
+        "en": "'mùng hai' means the second day of Tết."
       }
     },
     {

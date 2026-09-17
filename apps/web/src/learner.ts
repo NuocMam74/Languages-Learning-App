@@ -17,12 +17,14 @@ import {
   mergeCards,
   newCard,
   nextLesson,
+  normalizeSkillStats,
   placementCards,
   planSession,
   pushSouthResult,
   pushToneResult,
   recordActivity,
   recordResult,
+  recordSkillAnswer,
   recordReviewResult,
   resolveEntryLesson,
   reviewConcept,
@@ -48,10 +50,12 @@ import {
   type SessionPlan,
   type SessionRun,
   type SessionSource,
+  type SkillStats,
   type SrsCard,
   type Streak,
   type UnitId,
 } from "@parlo/core";
+import { ensureSessionContent } from "./content.ts";
 import { db, getKv, LEGACY_SNAPSHOT_KEY, setDb, setKv, withoutPack, type ParloDB, type Profile, type SessionSnapshot, type StoredSrsCard, type Totals } from "./db.ts";
 import { playableSteps } from "./media.ts";
 import { activePackCode, scopedKey } from "./packs/active.ts";
@@ -98,6 +102,9 @@ export const saveProfile = (profile: Profile) => setKv("profile", profile);
 export const getTotals = () => getKv<Totals>("totals", DEFAULT_TOTALS);
 export const getBadges = () => getKv<EarnedBadge[]>("badges", []);
 export const getPlacement = () => getKv<PlacementRecord | null>("placement", null);
+/** Agrégat de compétences du pack (contrat phase7 §3) : toujours ramené à la forme attendue. */
+export const getSkillStats = async (pack?: string): Promise<SkillStats> =>
+  normalizeSkillStats(pack === undefined ? await getKv<unknown>("stats", null) : (await db().kv.get(scopedKey("stats", pack)))?.value);
 export const getLanguageInterest = () => getKv<Record<string, boolean>>("langInterest", {});
 export const setLanguageInterest = (value: Record<string, boolean>) => setKv("langInterest", value);
 
@@ -267,11 +274,34 @@ export async function sessionAvailability(content: ContentIndex, request: Sessio
   return hasWork(request.source === "daily" ? plans.daily : plans.review) ? "work" : "empty";
 }
 
+/**
+ * Leçons et concepts d'une séance (reprise ou nouvelle) : leurs unités sont chargées avant de construire
+ * le moindre exercice (le moteur reste synchrone).
+ */
+function sessionNeeds(content: ContentIndex, request: SessionRequest, plans: { daily: SessionPlan; review: SessionPlan } | null, saved: SessionSnapshot | null): { lessonIds: LessonId[]; conceptIds: ConceptId[] } {
+  const lessonIds: LessonId[] = [];
+  const conceptIds: ConceptId[] = [];
+  const resumed = saved ? sessionOf(saved, content) : null;
+  if (resumed && matches(resumed, request)) {
+    if (resumed.lesson) lessonIds.push(resumed.lesson.lessonId);
+    conceptIds.push(...resumed.reviewQueue.map((item) => item.conceptId));
+    return { lessonIds, conceptIds };
+  }
+  if (request.source === "lesson") return { lessonIds: [request.lessonId], conceptIds };
+  const plan = plans ? (request.source === "daily" ? plans.daily : plans.review) : null;
+  for (const block of plan?.blocks ?? []) {
+    if (block.kind === "new") lessonIds.push(block.lessonId);
+    if ("conceptIds" in block) conceptIds.push(...block.conceptIds);
+  }
+  return { lessonIds, conceptIds };
+}
+
 /** Reprend la séance sauvegardée si elle correspond à la demande, sinon en démarre une. */
 export async function openSession(content: ContentIndex, request: SessionRequest, now = new Date()): Promise<SessionRun> {
   const d = db();
   const profile = await getProfile();
   const plans = request.source === "lesson" ? null : await planning(content, profile, now);
+  await ensureSessionContent(content, sessionNeeds(content, request, plans, await readSnapshot(d, content.pack.code)));
 
   return d.transaction("rw", d.snapshot, d.outbox, async () => {
     const saved = await readSnapshot(d, content.pack.code);
@@ -352,6 +382,12 @@ export async function submitSessionAnswer(
       return run;
     }
 
+    // Compétences (contrat phase7 §3) : agrégat local borné, écrit dans la transaction de la réponse.
+    // Aucun événement, aucun envoi : le serveur a déjà `answer_submitted`.
+    if (evaluation.graded) {
+      const stats = normalizeSkillStats(await packKv<unknown>(d, pack, "stats", null));
+      await setPackKv(d, pack, "stats", recordSkillAnswer(stats, exerciseType, evaluation.correct, localDay(now)));
+    }
     if (evaluation.graded && TONE_EXERCISE_TYPES.has(exerciseType)) {
       const log = await packKv<boolean[]>(d, pack, "toneLog", []);
       await setPackKv(d, pack, "toneLog", pushToneResult(log, evaluation.correct));
@@ -581,7 +617,8 @@ export interface PronunciationRecord {
   sessionId: string | null;
   conceptId: ConceptId;
   score: number;
-  exerciseType: "speak_repeat" | "tone_produce";
+  /** Étape orale notée : répétition, ton produit, réponse libre ou jeu de rôle (contrat phase6 §3). */
+  exerciseType: "speak_repeat" | "tone_produce" | "speak_answer" | "speak_roleplay";
 }
 
 /** Écrit `pronunciation_scored` dans l'outbox pour chaque prise notée. */

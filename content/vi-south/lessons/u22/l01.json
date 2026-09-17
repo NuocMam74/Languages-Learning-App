@@ -106,18 +106,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Hồi nhỏ em ở đâu?",
-      "tokens": [
-        "Hồi nhỏ",
-        "em",
-        "ở",
-        "đâu",
-        "đây"
+      "type": "fill_gap",
+      "text": "___ nhỏ tui ở dưới quê.",
+      "answer": "Hồi",
+      "options": [
+        "Hồi",
+        "Hội",
+        "Hỏi"
       ],
       "translation": {
-        "fr": "Tu vivais où quand tu étais petit(e) ?",
-        "en": "Where did you live as a child?"
+        "fr": "Quand j'étais petit, je vivais à la campagne.",
+        "en": "As a child I lived in the countryside."
+      },
+      "explain": {
+        "fr": "hồi = à l'époque où. hội = la fête, hỏi = demander.",
+        "en": "hồi = back when. hội = festival, hỏi = to ask."
       }
     },
     {

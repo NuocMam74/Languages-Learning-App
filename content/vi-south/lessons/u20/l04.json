@@ -102,19 +102,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Mai nhà em có đám giỗ.",
-      "tokens": [
-        "Mai",
-        "nhà",
-        "em",
-        "có",
-        "đám giỗ",
-        "đám cưới"
+      "type": "fill_gap",
+      "text": "Mai nhà em có ___ giỗ.",
+      "answer": "đám",
+      "options": [
+        "đám",
+        "đàm",
+        "dám"
       ],
       "translation": {
         "fr": "Demain, il y a un đám giỗ chez moi.",
-        "en": "Tomorrow my family holds a đám giỗ."
+        "en": "Tomorrow there's a đám giỗ at my place."
+      },
+      "explain": {
+        "fr": "đám = rassemblement (đám cưới, đám giỗ). đàm = converser, dám = oser.",
+        "en": "đám = gathering (đám cưới, đám giỗ). đàm = to converse, dám = to dare."
       }
     },
     {

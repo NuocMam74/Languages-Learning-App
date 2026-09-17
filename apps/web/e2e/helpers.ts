@@ -33,11 +33,44 @@ export async function playOneStep(page: Page, finished: RegExp): Promise<"done" 
   const radio = page.getByRole("radio").first();
   const check = page.getByRole("button", { name: "Valider" });
 
+  // Catalogue complet (contrat phase6) : appariement, dialogue à embranchements, écrits et écoute
+  // globale ne se jouent pas comme un QCM. On répond au hasard : ce qui compte ici est que la
+  // séance avance jusqu'au bilan, juste ou faux.
+  const pairs = page.getByTestId("match-pairs");
+  const dialogueTurn = page.getByTestId("dialogue-turn");
+  const input = page.getByTestId("answer-input");
+  const gistListen = page.getByTestId("gist-listen");
+  const roleplay = page.getByTestId("roleplay");
+
   const wasFeedback = (await session.getAttribute("data-status")) === "feedback";
   if (wasFeedback) {
     await cont.click();
+  } else if (await pairs.isVisible()) {
+    const columns = pairs.locator("ul");
+    const count = await columns.first().locator("button").count();
+    for (let i = 0; i < count; i++) {
+      await columns.first().locator("button").nth(i).click();
+      await columns.last().locator("button").nth(i).click();
+    }
+    await check.click();
+  } else if (await dialogueTurn.isVisible()) {
+    for (let i = 0; i < 8 && !(await page.getByTestId("dialogue-summary").isVisible()); i++) {
+      await page.getByRole("radio").first().click();
+      if (await cont.isVisible()) await cont.click();
+    }
+    await check.click();
+  } else if (await gistListen.isVisible()) {
+    await gistListen.click();
+    await expect(radio).toBeVisible({ timeout: 15_000 });
+    await radio.click();
+    await check.click();
+  } else if (await input.isVisible()) {
+    await input.fill("?");
+    await check.click();
   } else if (await done.isVisible()) {
     await done.click();
+    // Jeu de rôle : une réplique par prise, la même action revient jusqu'à la dernière.
+    for (let i = 0; i < 4 && (await roleplay.isVisible()) && (await done.isVisible()); i++) await done.click();
   } else if (await radio.isVisible()) {
     await radio.click();
     await check.click();

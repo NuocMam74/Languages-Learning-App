@@ -90,21 +90,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị tới khi nào?",
-      "tokens": [
-        "Chị",
-        "tới",
-        "khi nào",
-        "bao lâu"
+      "type": "fill_gap",
+      "text": "___ nào anh về Việt Nam?",
+      "answer": "Khi",
+      "options": [
+        "Khi",
+        "Chi",
+        "Khí"
       ],
       "translation": {
-        "fr": "Tu es arrivée quand ? (à une femme un peu plus âgée)",
-        "en": "When did you arrive? (to a slightly older woman)"
+        "fr": "Quand est-ce que tu rentres au Vietnam ?",
+        "en": "When are you going back to Vietnam?"
       },
       "explain": {
-        "fr": "khi nào en fin de phrase : le passé.",
-        "en": "khi nào at the end: the past."
+        "fr": "khi nào en tête = futur. chi = quoi (Sud), khí = l'air.",
+        "en": "khi nào at the front = future. chi = what (Southern), khí = air."
       }
     },
     {

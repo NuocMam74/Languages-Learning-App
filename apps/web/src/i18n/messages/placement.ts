@@ -26,7 +26,7 @@ export const fr = {
   "placement.level.3": "Belle oreille !",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "language.continue": "Continue",
   "language.soonTitle": "Coming soon",
   "language.name.vi-north": "Northern Vietnamese",

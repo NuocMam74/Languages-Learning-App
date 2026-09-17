@@ -59,13 +59,13 @@ function NewDocument({ code }: { code: string }) {
       <p className="font-semibold">{st("tree.new")}</p>
       <div className="flex gap-2">
         <label className="sr-only" htmlFor="new-kind">{st("tree.new.kind")}</label>
-        <select id="new-kind" className="min-h-11 rounded-xl border-2 border-phu-sa/20 bg-white px-2" value={kind} onChange={(e) => setKind(e.target.value as DocKind)}>
+        <select id="new-kind" className="min-h-11 min-w-0 shrink rounded-xl border-2 border-phu-sa/20 bg-white px-2" value={kind} onChange={(e) => setKind(e.target.value as DocKind)}>
           <option value="concept">{st("kind.concept")}</option>
           <option value="lesson">{st("kind.lesson")}</option>
           <option value="culture">{st("kind.culture")}</option>
         </select>
         <label className="sr-only" htmlFor="new-id">{st("tree.new.id")}</label>
-        <input id="new-id" className="min-w-0 flex-1 rounded-xl border-2 border-phu-sa/20 bg-white px-2 font-mono" placeholder={placeholder} value={id} onChange={(e) => setId(e.target.value)} />
+        <input id="new-id" className="min-h-11 min-w-0 flex-1 rounded-xl border-2 border-phu-sa/20 bg-white px-2 font-mono" placeholder={placeholder} value={id} onChange={(e) => setId(e.target.value)} />
       </div>
       <button type="submit" className="min-h-11 self-start font-semibold text-ngoc">{st("tree.new.create")}</button>
     </form>
@@ -99,10 +99,10 @@ export function Tree({ code }: { code: string }) {
   const searching = q.length > 0;
 
   return (
-    <nav aria-label={st("tree.label")} className="flex flex-col gap-3" data-testid="studio-tree">
+    <nav aria-label={st("tree.label")} className="flex min-w-0 flex-col gap-3" data-testid="studio-tree">
       <div className="flex flex-col gap-1">
         <label htmlFor="tree-search" className="font-medium">{st("tree.search")}</label>
-        <input id="tree-search" type="search" className="rounded-xl border-2 border-phu-sa/20 bg-white px-3 py-2" value={query} placeholder={st("tree.search.placeholder")} onChange={(e) => setQuery(e.target.value)} />
+        <input id="tree-search" type="search" className="min-h-11 w-full min-w-0 rounded-xl border-2 border-phu-sa/20 bg-white px-3 py-2" value={query} placeholder={st("tree.search.placeholder")} onChange={(e) => setQuery(e.target.value)} />
       </div>
 
       <Group title={st("tree.lessons")} count={units.reduce((n, u) => n + u.lessons.length, 0)} open={searching}>

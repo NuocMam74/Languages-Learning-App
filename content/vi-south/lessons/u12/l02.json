@@ -96,22 +96,22 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị lấy cái nào?",
-      "tokens": [
-        "Chị",
-        "lấy",
-        "cái",
-        "nào",
-        "gì"
-      ],
-      "translation": {
-        "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",
-        "en": "Which one are you taking? (to a slightly older woman)"
+      "type": "translate_to_fr",
+      "source": "Nhà em ở đâu?",
+      "accepted": {
+        "fr": [
+          "Tu habites où ?",
+          "Où habites-tu ?",
+          "Tu vis où ?",
+          "Où est ta maison ?"
+        ],
+        "en": [
+          "Where do you live?"
+        ]
       },
       "explain": {
-        "fr": "nom + nào : quel… ?",
-        "en": "noun + nào: which…?"
+        "fr": "Littéralement « ta maison est où ».",
+        "en": "Literally 'your house is where'."
       }
     },
     {

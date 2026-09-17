@@ -104,22 +104,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị tên gì vậy?",
-      "tokens": [
-        "Chị",
-        "tên",
-        "gì",
-        "vậy",
-        "ai"
+      "type": "fill_gap",
+      "text": "Tôi tên ___ Nam.",
+      "answer": "là",
+      "options": [
+        "là",
+        "lá",
+        "lạ"
       ],
       "translation": {
-        "fr": "Comment tu t'appelles ? (à une femme un peu plus âgée)",
-        "en": "What's your name? (to a slightly older woman)"
+        "fr": "Je m'appelle Nam.",
+        "en": "My name is Nam."
       },
       "explain": {
-        "fr": "vậy en fin de question adoucit, très naturel au Sud.",
-        "en": "vậy at the end softens the question, very natural in the South."
+        "fr": "là relie deux noms : Tôi tên là Nam. lá = feuille, lạ = étrange.",
+        "en": "là links two nouns: Tôi tên là Nam. lá = leaf, lạ = strange."
       }
     },
     {

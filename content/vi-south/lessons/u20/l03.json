@@ -84,18 +84,37 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Dạ, con no rồi.",
-      "tokens": [
-        "Dạ",
-        "con",
-        "no",
-        "rồi",
-        "chưa"
+      "type": "speak_roleplay",
+      "situation": {
+        "fr": "À table chez une tante, pendant un repas de famille.",
+        "en": "At an aunt's table during a family meal."
+      },
+      "prompts": [
+        {
+          "cue": {
+            "fr": "Invite tes parents à commencer.",
+            "en": "Invite your parents to start."
+          },
+          "concept": "s_b_con_moi_ba_ma"
+        },
+        {
+          "cue": {
+            "fr": "Dis poliment que tu as déjà mangé.",
+            "en": "Politely say you've already eaten."
+          },
+          "concept": "s_b_da_con_an_roi"
+        },
+        {
+          "cue": {
+            "fr": "Dis que tu n'as plus faim.",
+            "en": "Say you're full."
+          },
+          "concept": "s_b_da_con_no_roi"
+        }
       ],
-      "translation": {
-        "fr": "Merci, je n'ai plus faim.",
-        "en": "Thank you, I'm full."
+      "explain": {
+        "fr": "Chaque réponse commence par dạ : c'est la marque du respect.",
+        "en": "Every answer starts with dạ: that is the respect marker."
       }
     },
     {

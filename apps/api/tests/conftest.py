@@ -3,7 +3,7 @@
 import shutil
 import uuid
 from collections.abc import Iterator
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -80,6 +80,16 @@ def event(type_: str, payload: dict[str, Any], occurred_at: datetime | None = No
         "schemaVersion": 1,
         "payload": payload,
     }
+
+
+def today_iso() -> str:
+    """Jour local du serveur de test : les événements datés du jour évitent le rejet `invalid: local_date`."""
+    return datetime.now(UTC).date().isoformat()
+
+
+def day_iso(offset: int) -> str:
+    """Jour local décalé de `offset` jours (dates relatives : un test ne vieillit pas)."""
+    return (datetime.now(UTC).date() + timedelta(days=offset)).isoformat()
 
 
 def user_id_of(client: TestClient, headers: dict[str, str]) -> str:

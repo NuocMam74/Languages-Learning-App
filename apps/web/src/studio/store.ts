@@ -1,6 +1,6 @@
 import { buildContentIndex, type ContentIndex, type RawPackFiles } from "@parlo/core";
 import { create } from "zustand";
-import { loadPack } from "../content.ts";
+import { loadFullPack } from "../content.ts";
 import { getStudioTree, type DocKind, type StudioTree } from "./studio-api.ts";
 import { overlayAll, rawFromIndex } from "./validation.ts";
 
@@ -42,7 +42,7 @@ export const useStudio = create<StudioState>((set, get) => ({
   open(code) {
     if (get().code === code) return;
     set({ code, raw: null, rawStatus: "loading", tree: null, treeStatus: "idle", working: {} });
-    loadPack(code)
+    loadFullPack(code)
       .then((index) => get().code === code && set({ raw: rawFromIndex(index), rawStatus: "ready" }))
       .catch(() => get().code === code && set({ rawStatus: "missing" }));
     void get().refreshTree();

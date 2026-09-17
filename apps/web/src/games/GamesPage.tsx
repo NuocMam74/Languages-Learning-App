@@ -76,7 +76,7 @@ export function GamesPage({ content }: { content: ContentIndex }) {
           const entry = PLAYABLE[id];
           if (!entry) {
             return (
-              <li key={id} className="flex items-baseline justify-between border-t border-phu-sa/10 py-4 text-phu-sa/60">
+              <li key={id} className="flex items-baseline justify-between border-t border-phu-sa/10 py-4 text-phu-sa/80">
                 <Vi size="2xl">{name}</Vi>
                 <span className="text-sm">{t("games.soon")}</span>
               </li>
@@ -89,7 +89,7 @@ export function GamesPage({ content }: { content: ContentIndex }) {
                 <span className="flex flex-1 flex-col gap-1">
                   <Vi size="vi">{name}</Vi>
                   <span className="text-sm text-nuoc/85">{t(entry.tagline)}</span>
-                  <span className="text-sm font-semibold text-nghe">
+                  <span className="text-sm font-semibold text-[color-mix(in_srgb,var(--color-nghe)_60%,white)]">
                     {bests === undefined ? "" : best ? t("games.best", { points: best.points, correct: best.correct, total: best.total }) : t("games.noBest")}
                   </span>
                 </span>
@@ -100,7 +100,7 @@ export function GamesPage({ content }: { content: ContentIndex }) {
         })}
         {/* Phase 3 : Đối đáp, conversation chronométrée avec Cô Mai (page propre, compte et réseau requis). */}
         {tutorAvailable === false ? (
-          <li className="flex items-baseline justify-between border-t border-phu-sa/10 py-4 text-phu-sa/60" data-game="doi_dap">
+          <li className="flex items-baseline justify-between border-t border-phu-sa/10 py-4 text-phu-sa/80" data-game="doi_dap">
             <Vi size="2xl">{t("game.doi_dap")}</Vi>
             <span className="text-sm">{t("journey.games.soon")}</span>
           </li>
@@ -169,7 +169,7 @@ export function GamePlayPage({ content }: { content: ContentIndex }) {
   };
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] md:max-w-[720px]">
+    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]">
       <BackLink to="/jeux" label={t("games.back")} />
       <main className="flex flex-1 flex-col pt-2">
         {id === "cho_noi" && <ChoNoiStandalone {...common} completed={completed} />}

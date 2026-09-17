@@ -152,10 +152,11 @@ def test_events_apply_to_the_pack_of_their_ids(mp_client: TestClient) -> None:
     )
     done_payload = {"sessionId": "es-s1", "lessonId": "es.u01.l01", "score": 1, "durationMs": 1000}
     done = event("lesson_completed", done_payload, t0 + timedelta(seconds=1))
-    completed = session_completed("es-s1", "2026-09-15", xp=25, when=t0 + timedelta(seconds=2))
+    # Jour local aligné sur l'horodatage (le serveur rejette un écart > 1 jour).
+    completed = session_completed("es-s1", t0.date().isoformat(), xp=25, when=t0 + timedelta(seconds=2))
     result = post(mp_client, auth, [answer, done, completed])
     assert result["rejected"] == []
-    post(mp_client, auth, [session_completed("vi-s1", "2026-09-15", xp=7)])
+    post(mp_client, auth, [session_completed("vi-s1", t0.date().isoformat(), xp=7)])
 
     state = me(mp_client, auth)
     by_pack = {e["courseCode"]: e for e in state["enrollments"]}

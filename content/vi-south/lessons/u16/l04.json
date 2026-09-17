@@ -107,22 +107,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Ngày uống mấy lần?",
-      "tokens": [
-        "Ngày",
-        "uống",
-        "mấy",
-        "lần",
-        "bao lâu"
-      ],
-      "translation": {
-        "fr": "Combien de fois par jour ?",
-        "en": "How many times a day?"
-      },
+      "type": "listen_transcribe",
+      "concept": "c_thuoc_medicine",
       "explain": {
-        "fr": "Ngày… mấy lần : par jour.",
-        "en": "Ngày… mấy lần: per day."
+        "fr": "thuốc = médicament (et aussi tabac : thuốc lá).",
+        "en": "thuốc = medicine (and tobacco: thuốc lá)."
       }
     },
     {

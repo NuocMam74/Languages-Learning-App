@@ -19,7 +19,9 @@
     "s_b_chuc_mung_nam_moi",
     "s_b_con_chuc_co",
     "c_b_tet",
-    "c_tien"
+    "c_tien",
+    "c_que",
+    "c_hong"
   ],
   "steps": [
     {
@@ -92,23 +94,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Con chúc bà sống lâu trăm tuổi.",
-      "tokens": [
-        "Con",
-        "chúc",
-        "bà",
-        "sống lâu",
-        "trăm tuổi",
-        "sông"
-      ],
+      "type": "speak_answer",
+      "prompt": "Tết này con có về quê hông?",
       "translation": {
-        "fr": "Je te souhaite de vivre cent ans, grand-mère.",
-        "en": "I wish you a hundred years of life, Grandma."
+        "fr": "Tu rentres au pays pour le Tết ?",
+        "en": "Are you going home for Tết?"
       },
+      "accepted": [
+        "c_que",
+        "c_hong"
+      ],
       "explain": {
-        "fr": "Vœu classique pour les grands-parents.",
-        "en": "A classic wish for grandparents."
+        "fr": "Réponds « Dạ có… » ou « Dạ hông… », puis explique en un mot.",
+        "en": "Answer 'Dạ có…' or 'Dạ hông…', then add a word of explanation."
       }
     },
     {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SmallButton } from "./fields.tsx";
-import { st } from "./i18n.ts";
+import { st, studioLocale } from "./i18n.ts";
 import type { DraftInfo } from "./studio-api.ts";
 
 /** Aplatit un document en « chemin → valeur » pour comparer deux versions champ par champ. */
@@ -38,7 +38,7 @@ export function ConflictPanel({ mine, theirs, onResolve }: { mine: unknown; thei
     <div role="alertdialog" aria-labelledby="conflict-title" aria-describedby="conflict-body" className="flex flex-col gap-3 rounded-2xl border-l-4 border-son-mai bg-white p-4" data-testid="conflict">
       <h2 id="conflict-title" className="font-semibold">{st("conflict.title")}</h2>
       <p id="conflict-body">
-        {theirs ? st("conflict.body", { who: theirs.updatedBy || st("conflict.someone"), when: new Date(theirs.updatedAt).toLocaleString("fr-FR") }) : st("conflict.bodyUnknown")}
+        {theirs ? st("conflict.body", { who: theirs.updatedBy || st("conflict.someone"), when: new Date(theirs.updatedAt).toLocaleString(studioLocale()) }) : st("conflict.bodyUnknown")}
       </p>
       <div className="flex flex-wrap gap-2">
         <SmallButton tone="primary" onClick={() => onResolve("mine")}>{st("conflict.keepMine")}</SmallButton>

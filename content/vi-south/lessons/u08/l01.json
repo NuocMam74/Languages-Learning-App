@@ -110,22 +110,23 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Dạ, năm chục ngàn.",
-      "tokens": [
-        "Dạ",
-        "năm",
-        "chục",
-        "ngàn",
-        "trăm"
-      ],
-      "translation": {
-        "fr": "Cinquante mille (đồng).",
-        "en": "Fifty thousand (đồng)."
+      "type": "translate_to_fr",
+      "source": "Cái này bao nhiêu?",
+      "accepted": {
+        "fr": [
+          "Ça coûte combien ?",
+          "Combien ça coûte ?",
+          "C'est combien ?",
+          "Ça fait combien ?"
+        ],
+        "en": [
+          "How much is this?",
+          "How much does this cost?"
+        ]
       },
       "explain": {
-        "fr": "On compte en chục ngàn : năm chục ngàn = 50 000.",
-        "en": "People count in chục ngàn: năm chục ngàn = 50,000."
+        "fr": "On sous-entend tiền : Cái này bao nhiêu (tiền)?",
+        "en": "tiền is left out: Cái này bao nhiêu (tiền)?"
       }
     },
     {

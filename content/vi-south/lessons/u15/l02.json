@@ -105,23 +105,101 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị gọi lại cho em nha.",
-      "tokens": [
-        "Chị",
-        "gọi lại",
-        "cho",
-        "em",
-        "nha",
-        "gói"
-      ],
-      "translation": {
-        "fr": "Rappelle-moi, d'accord ? (à une femme un peu plus âgée)",
-        "en": "Call me back, okay? (to a slightly older woman)"
+      "type": "dialogue_choice",
+      "situation": {
+        "fr": "Tu appelles un collègue, mais quelqu'un d'autre décroche.",
+        "en": "You call a colleague, but somebody else picks up."
       },
+      "turns": [
+        {
+          "id": "t1",
+          "vi": "Alô, em nghe.",
+          "translation": {
+            "fr": "Allô, oui ?",
+            "en": "Hello, yes?"
+          },
+          "replies": [
+            {
+              "id": "r1a",
+              "vi": "Alô, dạ cho em gặp anh Minh.",
+              "next": "t2",
+              "best": true,
+              "feedback": {
+                "fr": "« cho em gặp… » = passe-moi…",
+                "en": "'cho em gặp…' = put me through to…"
+              }
+            },
+            {
+              "id": "r1b",
+              "vi": "Anh Minh đâu?",
+              "next": "t2",
+              "feedback": {
+                "fr": "Trop direct au téléphone avec un inconnu.",
+                "en": "Too direct on the phone with a stranger."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "vi": "Dạ, anh Minh đang họp. Ai vậy ạ?",
+          "translation": {
+            "fr": "Minh est en réunion. C'est de la part de qui ?",
+            "en": "Minh is in a meeting. Who's calling?"
+          },
+          "replies": [
+            {
+              "id": "r2a",
+              "vi": "Dạ em là Marie, bên công ty Sài Gòn Xanh.",
+              "next": "t3",
+              "best": true,
+              "feedback": {
+                "fr": "On se présente et on dit « bên » + société.",
+                "en": "You give your name and 'bên' + company."
+              }
+            },
+            {
+              "id": "r2b",
+              "vi": "Marie.",
+              "next": "t3",
+              "feedback": {
+                "fr": "Donne aussi d'où tu appelles.",
+                "en": "Say where you're calling from too."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "vi": "Dạ, để em nhắn lại giùm chị nha.",
+          "translation": {
+            "fr": "Je lui laisserai le message.",
+            "en": "I'll pass the message on."
+          },
+          "replies": [
+            {
+              "id": "r3a",
+              "vi": "Dạ, cảm ơn em. Lát chị gọi lại.",
+              "best": true,
+              "feedback": {
+                "fr": "Remercier et annoncer le rappel : parfait.",
+                "en": "Thank and announce the callback: perfect."
+              }
+            },
+            {
+              "id": "r3b",
+              "vi": "Ừ.",
+              "feedback": {
+                "fr": "Un simple « ừ » laisse une impression de froideur.",
+                "en": "A bare 'ừ' comes across as cold."
+              }
+            }
+          ]
+        }
+      ],
       "explain": {
-        "fr": "gọi lại cho + personne.",
-        "en": "gọi lại cho + person."
+        "fr": "Au téléphone, dạ et giùm font tout le travail.",
+        "en": "On the phone, dạ and giùm do all the work."
       }
     },
     {

@@ -70,6 +70,25 @@ XP_PER_ITEM_CAP = 15
 XP_CAP_BONUS = 50
 
 
+# Ordre de traitement à horodatage égal : ce qui ouvre la séance d'abord, ce qui la clôt ensuite.
+# Sans cela, un `session_completed` traité avant le `lesson_completed` du même lot verrait une séance vide
+# (pas de série ni d'XP) alors que la leçon en fait partie.
+_EVENT_ORDER: dict[str, int] = {
+    "session_started": 0,
+    "answer_submitted": 1,
+    "srs_card_updated": 1,
+    "pronunciation_scored": 1,
+    "conversation_turn": 1,
+    "game_played": 1,
+    "lesson_completed": 2,
+    "session_completed": 3,
+}
+
+
+def _order_within_instant(event_type: str) -> int:
+    return _EVENT_ORDER.get(event_type, 1)
+
+
 def cap_duration_ms(value: float) -> int:
     return min(MAX_DURATION_MS, max(0, round(value)))
 
@@ -115,7 +134,9 @@ def process_batch(
         for row in db.execute(select(ProcessedEvent.id, ProcessedEvent.user_id).where(ProcessedEvent.id.in_(ids)))
     }
 
-    for event, raw in sorted(valid, key=lambda item: (item[0].occurred_at, str(item[0].id))):
+    for event, raw in sorted(
+        valid, key=lambda item: (item[0].occurred_at, _order_within_instant(item[0].type), str(item[0].id))
+    ):
         event_id = str(event.id)
         if event_id in existing:
             if existing[event_id] == user_id:

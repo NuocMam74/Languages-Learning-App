@@ -113,23 +113,22 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tụi mình bằng tuổi nhau.",
-      "tokens": [
-        "Tụi",
-        "mình",
-        "bằng",
-        "tuổi",
-        "nhau",
-        "mấy"
-      ],
-      "translation": {
-        "fr": "On a le même âge.",
-        "en": "We're the same age."
+      "type": "translate_to_fr",
+      "source": "Anh bao nhiêu tuổi?",
+      "accepted": {
+        "fr": [
+          "Tu as quel âge ?",
+          "Quel âge as-tu ?",
+          "Vous avez quel âge ?",
+          "Quel âge avez-vous ?"
+        ],
+        "en": [
+          "How old are you?"
+        ]
       },
       "explain": {
-        "fr": "Même âge : pas d'aîné ni de cadet, on se dit bạn, mình, tui.",
-        "en": "Same age: no elder or younger, so bạn, mình, tui."
+        "fr": "bao nhiêu pour un nombre qu'on suppose grand ; mấy pour un petit.",
+        "en": "bao nhiêu for a presumably large number; mấy for a small one."
       }
     },
     {

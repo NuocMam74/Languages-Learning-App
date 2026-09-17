@@ -90,23 +90,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Số điện thoại của chị là bao nhiêu?",
-      "tokens": [
-        "Số điện thoại",
-        "của",
-        "chị",
-        "là",
-        "bao nhiêu",
-        "mấy"
+      "type": "listen_transcribe",
+      "concept": "c_dien_thoai",
+      "accepted": [
+        "điện thọai"
       ],
-      "translation": {
-        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
-        "en": "What's your phone number? (to a slightly older woman)"
-      },
       "explain": {
-        "fr": "Pour un numéro, on demande là bao nhiêu ?",
-        "en": "For a number you ask là bao nhiêu?"
+        "fr": "điện thoại : le ton se place sur le a (thoại), pas sur le o.",
+        "en": "điện thoại: the tone mark goes on the a (thoại), not the o."
       }
     },
     {

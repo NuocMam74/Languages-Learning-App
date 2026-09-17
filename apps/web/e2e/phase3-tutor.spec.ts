@@ -147,8 +147,12 @@ async function fakeSpeech(page: Page) {
 }
 
 test("invité : Cô Mai demande un compte, Đối đáp aussi", async ({ page }) => {
+  // Cô Mai disponible côté serveur : ce qui bloque ici est l'absence de compte, pas l'absence de modèle.
+  await page.route("**/api/tutor/status**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ available: true, reason: null, personaName: "Cô Mai" }) }));
   await onboard(page);
   await toHub(page);
+  // Les entrées Cô Mai vivent sur l'accueil (contrat phase7 §2.5).
+  await page.goto("/");
   await page.getByRole("link", { name: "Parler avec Cô Mai" }).click();
   await expect(page.getByTestId("tutor-gate")).toHaveAttribute("data-reason", "guest");
   await expect(page.getByText("Pour discuter avec Cô Mai, il faut un compte.")).toBeVisible();

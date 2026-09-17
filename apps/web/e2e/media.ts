@@ -9,6 +9,28 @@ import type { Page } from "@playwright/test";
  */
 export async function declareAllMedia(page: Page, options: { audio?: boolean; pitch?: boolean } = {}): Promise<void> {
   const { audio = true, pitch = true } = options;
+  // Contenu découpé (core.json + unités) : l'index des médias vit dans le core ; les `pitchRef` des étapes dans les unités.
+  await page.route("**/content/*/v*/core.json", async (route) => {
+    const response = await route.fetch();
+    const core = (await response.json()) as {
+      mediaIndex?: string[];
+      conceptIndex: { audio: { src: string }[]; pitch?: string }[];
+      units: { id: string }[];
+    };
+    const paths = new Set(core.mediaIndex ?? []);
+    for (const concept of core.conceptIndex) {
+      if (audio) for (const track of concept.audio) paths.add(track.src);
+      if (pitch && concept.pitch) paths.add(concept.pitch);
+    }
+    if (pitch) {
+      const base = route.request().url().replace(/core\.json(\?.*)?$/, "");
+      for (const unit of core.units) {
+        const file = (await (await page.request.get(`${base}units/${unit.id}.json`)).json()) as { lessons: { steps: { pitchRef?: string }[] }[] };
+        for (const lesson of file.lessons) for (const step of lesson.steps) if (step.pitchRef) paths.add(step.pitchRef);
+      }
+    }
+    await route.fulfill({ response, json: { ...core, mediaIndex: [...paths].sort() } });
+  });
   await page.route("**/content/*/v*/bundle.json", async (route) => {
     const response = await route.fetch();
     const bundle = (await response.json()) as {

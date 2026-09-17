@@ -98,15 +98,14 @@
       }
     },
     {
-      "type": "listen_pick_text",
+      "type": "listen_transcribe",
       "concept": "c_bay_seven",
-      "distractors": [
-        "bay",
-        "bày"
+      "accepted": [
+        "bẩy"
       ],
       "explain": {
-        "fr": "bảy plonge : sept. bay, plat : voler.",
-        "en": "bảy dips: seven. bay, level: to fly."
+        "fr": "bảy : sept. On voit parfois l'orthographe bẩy, mais bảy est la forme standard.",
+        "en": "bảy: seven. You sometimes see bẩy, but bảy is standard."
       }
     },
     {

@@ -363,7 +363,7 @@ function Roster({ detail, content, onRemoved }: { detail: ClassDetail; content: 
                       {col.key ? (
                         <button
                           type="button"
-                          className={`inline-flex min-h-11 items-center gap-1 print:min-h-0 ${active ? "text-ngoc" : ""}`}
+                          className={`inline-flex min-h-11 min-w-11 items-center gap-1 print:min-h-0 print:min-w-0 ${active ? "text-ngoc" : ""}`}
                           onClick={() => toggle(col.key!)}
                           aria-label={t("teacher.sortBy", { col: t(col.label) })}
                         >
@@ -384,7 +384,7 @@ function Roster({ detail, content, onRemoved }: { detail: ClassDetail; content: 
                 return (
                   <tr key={s.id} className="border-b border-phu-sa/10 align-top break-inside-avoid" data-testid="roster-row">
                     <td className="py-2 pr-3">
-                      <button type="button" className="min-h-11 text-left font-semibold text-ngoc underline-offset-4 hover:underline print:min-h-0 print:text-muc" onClick={() => setOpenId(s.id)}>
+                      <button type="button" className="min-h-11 min-w-11 text-left font-semibold text-ngoc underline-offset-4 hover:underline print:min-h-0 print:min-w-0 print:text-muc" onClick={() => setOpenId(s.id)}>
                         {s.displayName}
                       </button>
                     </td>
@@ -650,7 +650,10 @@ function AssignmentForm({ classId, content, onCreated }: { classId: string; cont
       </fieldset>
       <p className="text-sm text-phu-sa" aria-live="polite">{plural("teacher.assignment.selected", "teacher.assignment.selected.plural", count)}</p>
       {error && <p role="alert" className="font-medium text-son-mai">{t(error)}</p>}
-      <Button type="submit" disabled={busy}>{t("teacher.assignment.create")}</Button>
+      {/* Formulaire long (toutes les unités) : « Créer le devoir » reste dans la barre collante du bas. */}
+      <div className="sticky bottom-0 z-10 bg-nuoc pt-3 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+        <Button type="submit" disabled={busy}>{t("teacher.assignment.create")}</Button>
+      </div>
     </form>
   );
 }

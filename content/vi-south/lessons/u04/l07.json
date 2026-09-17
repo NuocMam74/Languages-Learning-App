@@ -129,6 +129,14 @@
       }
     },
     {
+      "type": "listen_gist",
+      "dialogue": "dlg_bua_com_gia_dinh",
+      "explain": {
+        "fr": "Écoute tout le dialogue avant de répondre : on ne cherche pas chaque mot.",
+        "en": "Listen to the whole dialogue before answering: you don't need every word."
+      }
+    },
+    {
       "type": "speak_repeat",
       "concept": "s_ba_noi",
       "explain": {

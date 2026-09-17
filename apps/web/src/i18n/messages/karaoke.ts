@@ -43,7 +43,7 @@ export const fr = {
   "karaoke.game.bestFor": "Record : {n}",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "karaoke.toneProduce": "Say the word with the right tone",
   "karaoke.speak": "Speak",
   "karaoke.stop": "Stop",
@@ -67,6 +67,7 @@ export const en: Partial<Record<keyof typeof fr, string>> = {
   "karaoke.legend.native": "Native voice",
   "karaoke.legend.you": "You",
   "karaoke.plot": "Pitch curve: native voice in green, your voice in yellow",
+  "karaoke.derived": "Curve computed from the audio (development)",
   "karaoke.permission.title": "The microphone, to listen to you",
   "karaoke.permission.body": "Parlo compares the melody of your voice with a native Southern voice, right on your device.",
   "karaoke.permission.privacy": "Your audio stays on your phone: nothing is recorded, nothing is sent.",
@@ -79,6 +80,8 @@ export const en: Partial<Record<keyof typeof fr, string>> = {
   "karaoke.game.title": "Tonal karaoke",
   "karaoke.game.tagline": "Say the phrase: your curve is drawn over the native voice's.",
   "karaoke.game.pick": "Pick a phrase",
+  "karaoke.game.poolKnown": "Phrases from your completed lessons",
+  "karaoke.game.poolAll": "Available phrases",
   "karaoke.game.none": "No native voice curves are available yet. They come with the recordings.",
   "karaoke.game.next": "Another phrase",
   "karaoke.game.bestFor": "Best: {n}",

@@ -119,15 +119,16 @@ test("second appareil : la connexion restaure progression, XP et série ; ni onb
   expect(calls.some((c) => c.path === "/me/state")).toBe(true);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
 
-  // Hub directement (compte inscrit) : progression du serveur.
+  // Parcours directement (compte inscrit) : progression du serveur.
   await expect(page.getByTestId("hub-pack")).toBeVisible();
-  await expect(page).toHaveURL(/\/$/);
+  await expect(page).toHaveURL(/\/apprendre$/);
   await expect(page.getByText("350 XP", { exact: true })).toBeVisible();
   await expect(page.getByText("3 jours de suite")).toBeVisible();
   await expect(page.getByTestId("level")).toHaveAttribute("data-level", "3");
   expect(await countStore(page, "lessonProgress")).toBe(3);
-  // Badge de défi du serveur visible sur la page Badges.
-  await page.getByRole("link", { name: "Badges" }).click();
+  // Badge de défi du serveur visible sur la page Badges, atteinte depuis l'accueil (contrat phase7 §2).
+  await page.goto("/");
+  await page.getByRole("link", { name: "Tout voir" }).click();
   await expect(page.getByTestId("challenge-badges")).toBeVisible();
 });
 
@@ -137,7 +138,16 @@ test.use({ serviceWorkers: "block" });
 test("test d'unité : échoué → « Presque ! Refais le test », puis réussi → l'unité suivante s'ouvre", async ({ page }) => {
   test.setTimeout(150_000);
   // Test d'unité réduit à 3 écoutes au texte connu (réponses juste / fausse déterministes).
-  await page.route("**/content/vi-south/v*/bundle.json", async (route) => {
+  // Contenu découpé : l'index des leçons (core.json) et la leçon complète (unité u01) portent le test.
+  await page.route("**/content/vi-south/v*/core.json", async (route) => {
+    const response = await route.fetch();
+    const core = (await response.json()) as { lessonIndex: { id: string; concepts: string[]; srsIntroduce?: string[] }[] };
+    const test = core.lessonIndex.find((l) => l.id === "vi-south.u01.l09")!;
+    test.concepts = ["c_ba", "c_chao", "c_anh"];
+    test.srsIntroduce = [];
+    await route.fulfill({ response, json: core });
+  });
+  await page.route("**/content/vi-south/v*/units/vi-south.u01.json", async (route) => {
     const response = await route.fetch();
     const bundle = (await response.json()) as { lessons: { id: string; steps: unknown[]; concepts: string[]; review: { srsIntroduce: string[] } }[] };
     const test = bundle.lessons.find((l) => l.id === "vi-south.u01.l09")!;
@@ -267,7 +277,7 @@ test("révision vide : « Rien à réviser », aucun XP ; lien profond vers une 
   expect(completed).toBe(0);
 
   await page.goto("/lecon/vi-south.u24.l08");
-  await expect(page).toHaveURL(/\/$/);
+  await expect(page).toHaveURL(/\/apprendre$/);
   await expect(page.getByTestId("hub-notice")).toHaveText(/pas encore débloquée/);
 });
 

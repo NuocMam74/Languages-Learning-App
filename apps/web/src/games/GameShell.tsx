@@ -103,7 +103,8 @@ export function ReplayButton({ label, onClick, size = "lg" }: { label: string; o
 
 /** Marqueur discret de synthèse vocale / audio manquant (spec §7.4). */
 export function SourceMarker({ source }: { source: PlaybackSource | null }) {
-  if (source === "tts") return <span className="text-sm text-phu-sa/70">{t("audio.tts")}</span>;
+  if (source === "tts") return <span className="text-sm text-phu-sa/80">{t("audio.tts")}</span>;
   if (source === "missing") return <span className="text-sm text-son-mai">{t("audio.missing")}</span>;
+  if (source === "blocked") return <span className="text-sm font-semibold text-ngoc">{t("mobile.audio.tapToListen")}</span>;
   return null;
 }

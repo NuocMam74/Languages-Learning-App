@@ -23,10 +23,11 @@ export type MessageKey = keyof Fr & string;
 export type AppLocale = "fr" | "en";
 type Table = Partial<Record<MessageKey, string>>;
 
-// Premier affichage : Welcome, Onboarding, Hub (et ses cartes), séance. Liste littérale (import.meta.glob).
+// Premier affichage : Welcome, Onboarding, accueil, Hub (et ses cartes), séance. Liste littérale (import.meta.glob).
 const bootFr = import.meta.glob(
   [
     "./messages/base.ts",
+    "./messages/dashboard.ts",
     "./messages/session.ts",
     "./messages/journey.ts",
     "./messages/badges.ts",
@@ -49,6 +50,7 @@ const lazyFr = import.meta.glob(
     "!./messages/index.ts",
     "!./messages/studio.ts",
     "!./messages/base.ts",
+    "!./messages/dashboard.ts",
     "!./messages/session.ts",
     "!./messages/journey.ts",
     "!./messages/badges.ts",

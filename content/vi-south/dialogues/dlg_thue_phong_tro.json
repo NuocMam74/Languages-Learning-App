@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_thue_phong_tro",
+  "title": {
+    "fr": "Louer une chambre",
+    "en": "Renting a room"
+  },
+  "turns": [
+    {
+      "speaker": "Marie",
+      "vi": "Dạ chú ơi, còn phòng hông chú?",
+      "translation": {
+        "fr": "Bonjour monsieur, il reste une chambre ?",
+        "en": "Excuse me, do you still have a room?"
+      },
+      "audio": "audio/dlg_thue_phong_tro_t1_mai.opus"
+    },
+    {
+      "speaker": "Chú chủ nhà",
+      "vi": "Còn một phòng trên lầu hai.",
+      "translation": {
+        "fr": "Il reste une chambre au deuxième étage.",
+        "en": "There's one room on the second floor."
+      },
+      "audio": "audio/dlg_thue_phong_tro_t2_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, bao nhiêu một tháng vậy chú?",
+      "translation": {
+        "fr": "C'est combien par mois ?",
+        "en": "How much a month?"
+      },
+      "audio": "audio/dlg_thue_phong_tro_t3_mai.opus"
+    },
+    {
+      "speaker": "Chú chủ nhà",
+      "vi": "Ba triệu rưỡi một tháng. Tiền điện nước tính riêng.",
+      "translation": {
+        "fr": "Trois millions et demi par mois. L'électricité et l'eau sont à part.",
+        "en": "Three and a half million a month. Electricity and water are charged separately."
+      },
+      "audio": "audio/dlg_thue_phong_tro_t4_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, phòng có máy lạnh hông chú?",
+      "translation": {
+        "fr": "La chambre a la climatisation ?",
+        "en": "Does the room have air conditioning?"
+      },
+      "audio": "audio/dlg_thue_phong_tro_t5_mai.opus"
+    },
+    {
+      "speaker": "Chú chủ nhà",
+      "vi": "Có. Hẻm này yên tĩnh lắm con.",
+      "translation": {
+        "fr": "Oui. Cette ruelle est très calme.",
+        "en": "Yes. This alley is very quiet."
+      },
+      "audio": "audio/dlg_thue_phong_tro_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Qu'est-ce qui n'est pas compris dans le loyer ?",
+      "en": "What is not included in the rent?"
+    },
+    "options": [
+      {
+        "fr": "L'électricité et l'eau.",
+        "en": "Electricity and water."
+      },
+      {
+        "fr": "La climatisation.",
+        "en": "The air conditioning."
+      },
+      {
+        "fr": "La caution.",
+        "en": "The deposit."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« Tiền điện nước tính riêng » : facturé à part.",
+      "en": "'Tiền điện nước tính riêng': billed separately."
+    }
+  },
+  "reviewed": false
+}

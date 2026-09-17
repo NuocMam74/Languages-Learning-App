@@ -1,34 +1,34 @@
-import { badgeCodesFor, isChallengeBadge, localDay, streakAt, type ContentIndex } from "@parlo/core";
+import { localDay, streakAt, type ContentIndex } from "@parlo/core";
 import { examLevels } from "../exams/exam-files.ts";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
-import { ChallengeCard } from "../challenges/ChallengeCard.tsx";
-import { ReminderPrompt } from "../notifications/Reminders.tsx";
-import { InstallHint } from "../components/InstallHint.tsx";
-import { LeagueHubLine } from "../leagues/LeagueWidgets.tsx";
 import { LevelLine } from "../components/LevelLine.tsx";
 import { RiverPath } from "../components/RiverPath.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import type { Profile, Totals } from "../db.ts";
-import { l, plural, t } from "../i18n/index.ts";
-import { getBadges, getProfile, getTotals, hasWork, MAX_FREEZE_DAYS, planning, setFreeze, todaySeconds, type Planning } from "../learner.ts";
+import { getLocale, l, plural, t } from "../i18n/index.ts";
+import { getProfile, getTotals, hasWork, MAX_FREEZE_DAYS, planning, setFreeze, todaySeconds, type Planning } from "../learner.ts";
 import { localGreeting, remoteGreeting } from "../tutor.ts";
-import { HubTutor } from "../tutor/HubTutor.tsx";
 import { useOnline } from "../use-online.ts";
 
-/** Phase 4 : devoir de classe (chargé seulement pour un compte connecté). */
-const HubAssignmentCard = lazy(() => import("../classes/HubAssignmentCard.tsx"));
+const OfflineUnit = lazy(() => import("../offline/OfflineUnit.tsx").then((m) => ({ default: m.OfflineUnit })));
 
 interface HubState {
   profile: Profile;
   totals: Totals;
   plan: Planning;
-  badges: number;
   seconds: number;
 }
 
-/** Hub quotidien (spec §4.2) : Cô Mai, un bouton principal, la série, l'objectif, la carte du parcours. */
+/**
+ * Parcours de la langue active, route `/apprendre` (spec §4.2, contrat phase7 §1) : la salutation
+ * de Cô Mai, un bouton principal, l'objectif du jour, la série de cette langue, les révisions, les
+ * examens, les jeux et la carte fluviale.
+ *
+ * Tout ce qui concerne **le compte** (langues, badges, défi, ligue, devoirs, rappel, installation)
+ * vit sur l'accueil `/` : rien de global ici.
+ */
 export function Hub({ content }: { content: ContentIndex }) {
   const navigate = useNavigate();
   const online = useOnline();
@@ -40,9 +40,8 @@ export function Hub({ content }: { content: ContentIndex }) {
 
   const load = async () => {
     const profile = await getProfile();
-    const [totals, plan, badges, seconds] = await Promise.all([getTotals(), planning(content, profile), getBadges(), todaySeconds()]);
-    const applicable = new Set<string>(badgeCodesFor(content.pack));
-    setState({ profile, totals, plan, badges: badges.filter((b) => applicable.has(b.code) || isChallengeBadge(b.code)).length, seconds });
+    const [totals, plan, seconds] = await Promise.all([getTotals(), planning(content, profile), todaySeconds()]);
+    setState({ profile, totals, plan, seconds });
   };
 
   useEffect(() => {
@@ -53,9 +52,10 @@ export function Hub({ content }: { content: ContentIndex }) {
     if (accountStatus === "signed_in" && online) void remoteGreeting().then((text) => text && setGreeting(text));
   }, [accountStatus, online]);
 
-  if (!state) return <Screen><div /></Screen>;
+  // Statut du compte connu avant le premier rendu : pas de bascule invité → connecté visible (CLS).
+  if (!state || accountStatus === "loading") return <Screen><div /></Screen>;
 
-  const { profile, totals, plan, badges, seconds } = state;
+  const { profile, totals, plan, seconds } = state;
   const { xp } = totals;
   // Série à la lecture (contrat phase5 §3) : 0 si des jours manqués ne sont pas couverts.
   const streak = streakAt(totals.streak, localDay(new Date()));
@@ -78,7 +78,7 @@ export function Hub({ content }: { content: ContentIndex }) {
       <header className="flex items-start justify-between gap-3 pb-4">
         <div>
           {/* Changer de langue apprise (ADR 0006) : chaque pack garde sa progression. */}
-          <Link to="/langue" className="font-serif text-2xl" aria-label={`${l(content.pack.name)} — ${t("packs.change")}`} data-testid="hub-pack">
+          <Link to="/langue" className="inline-flex min-h-11 items-center font-serif text-2xl" aria-label={`${l(content.pack.name)} — ${t("packs.change")}`} data-testid="hub-pack">
             {l(content.pack.name)}
           </Link>
           <p className="text-sm text-phu-sa">{accountStatus === "signed_in" ? t("session.hub.synced") : accountStatus === "expired" ? t("session.hub.expired") : t("hub.guest")}</p>
@@ -94,14 +94,13 @@ export function Hub({ content }: { content: ContentIndex }) {
       {notice === "locked" && (
         <p role="status" className="mb-4 rounded-xl bg-nghe/15 px-4 py-2 text-sm" data-testid="hub-notice">{t("journey.locked")}</p>
       )}
-      <VerifyEmailBanner />
 
-      <p className="mb-5 border-l-4 border-nghe pl-3" data-testid="tutor-greeting">
+      {/* Salut du serveur à la place du salut local : deux lignes réservées, texte échangé sur place. */}
+      <p className={`mb-5 border-l-4 border-nghe pl-3 ${accountStatus === "signed_in" && online ? "min-h-[3.2rem]" : ""}`} data-testid="tutor-greeting">
         <span className="font-semibold">{t("tutor.name")}</span>
         <span className="text-phu-sa"> — </span>
         {greeting ?? localGreeting(new Date(), streak)}
       </p>
-      <HubTutor />
 
       <section className="flex flex-col gap-3 pb-5" aria-label={t("session.hub.progress")}>
         <p className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
@@ -129,16 +128,7 @@ export function Hub({ content }: { content: ContentIndex }) {
 
         <LevelLine pack={content.pack} xp={xp} />
         <FreezeControl frozenUntil={frozen ? streak.frozenUntil : null} onChange={() => void load()} />
-        <LeagueHubLine />
       </section>
-
-      <ReminderPrompt />
-      {accountStatus === "signed_in" && online && (
-        <Suspense fallback={null}>
-          <HubAssignmentCard content={content} completed={plan.completed} />
-        </Suspense>
-      )}
-      <ChallengeCard content={content} />
 
       <nav className="flex flex-col border-y border-phu-sa/10" aria-label={t("session.hub.more")}>
         {plan.dueCount > 0 && (
@@ -146,15 +136,8 @@ export function Hub({ content }: { content: ContentIndex }) {
             <span>{plural("session.hub.review", "session.hub.review.plural", plan.dueCount)}</span>
           </Link>
         )}
-        <Link to="/badges" className="flex min-h-12 items-center justify-between border-t border-phu-sa/10 py-2 first:border-t-0">
-          <span>{t("badges.title")}</span>
-          <span className="text-sm text-phu-sa">{t("badges.count", { n: badges, total: Math.max(badges, badgeCodesFor(content.pack).length) })}</span>
-        </Link>
-        <Link to="/jeux" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
+        <Link to="/jeux" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2 first:border-t-0">
           {t("session.hub.games")}
-        </Link>
-        <Link to="/defis" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
-          {t("social.hub.challenges")}
         </Link>
         {examLevels(content.pack.code).length > 0 && (
           <Link to="/examens" className="flex min-h-12 items-center border-t border-phu-sa/10 py-2">
@@ -163,12 +146,12 @@ export function Hub({ content }: { content: ContentIndex }) {
         )}
       </nav>
 
+      {/* État de la connexion : il appartient à l'écran où l'on est, pas seulement à l'accueil. */}
       {!online && <p className="mt-4 rounded-xl bg-phu-sa/5 px-4 py-2 text-sm text-phu-sa">{t("hub.offline")}</p>}
-      <div className="mt-4">
-        <InstallHint />
-      </div>
 
       <h2 className="mt-6 mb-2 text-phu-sa">{t("hub.path")}</h2>
+      {/* Unité en cours disponible hors ligne (spec §8.1) ; toutes les unités : Réglages → Hors ligne. */}
+      {plan.next && <Suspense fallback={null}><OfflineUnit content={content} unitId={plan.next.unit} current /></Suspense>}
       <RiverPath content={content} completed={plan.completed} unlocked={plan.open} current={plan.next?.id ?? null} />
       {!plan.next && <p className="py-6 text-center text-phu-sa">{t("hub.done")}</p>}
     </Screen>
@@ -180,7 +163,7 @@ function FreezeControl({ frozenUntil, onChange }: { frozenUntil: string | null; 
   const [days, setDays] = useState(3);
 
   if (frozenUntil) {
-    const date = new Date(`${frozenUntil}T12:00:00`).toLocaleDateString(undefined, { day: "numeric", month: "long" });
+    const date = new Date(`${frozenUntil}T12:00:00`).toLocaleDateString(getLocale(), { day: "numeric", month: "long" });
     return (
       <p className="flex flex-wrap items-center gap-x-4 text-sm text-phu-sa">
         <span>{t("session.freeze.active", { date })}</span>
@@ -221,33 +204,6 @@ function FreezeControl({ frozenUntil, onChange }: { frozenUntil: string | null; 
           {t("common.cancel")}
         </button>
       </div>
-    </div>
-  );
-}
-
-/** Bandeau « vérifie ton email » (contrat phase5 §4) avec renvoi du lien. */
-function VerifyEmailBanner() {
-  const account = useAccount((s) => s.account);
-  const status = useAccount((s) => s.status);
-  const resend = useAccount((s) => s.resendVerification);
-  const [state, setState] = useState<"idle" | "busy" | "sent" | "error">("idle");
-  if (status !== "signed_in" || !account || account.emailVerified !== false) return null;
-  return (
-    <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 rounded-xl bg-ngoc-sang px-4 py-2 text-sm" data-testid="verify-banner">
-      <span>{state === "sent" ? t("journey.verify.resent") : t("journey.verify.banner")}</span>
-      {state !== "sent" && (
-        <button
-          type="button"
-          disabled={state === "busy"}
-          className="min-h-11 font-semibold text-ngoc"
-          onClick={() => {
-            setState("busy");
-            void resend().then(() => setState("sent"), () => setState("error"));
-          }}
-        >
-          {t("journey.verify.resend")}
-        </button>
-      )}
     </div>
   );
 }

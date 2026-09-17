@@ -23,7 +23,11 @@
     "c_ban_sell",
     "c_ban_friend",
     "c_ban_table",
-    "s_mac_qua"
+    "s_mac_qua",
+    "c_mua_buy",
+    "c_re",
+    "c_mac_expensive",
+    "c_bot"
   ],
   "steps": [
     {
@@ -105,24 +109,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em lấy nửa ký chuối.",
-      "tokens": [
-        "Em",
-        "lấy",
-        "nửa",
-        "ký",
-        "chuối",
-        "trái"
-      ],
-      "translation": {
-        "fr": "Je prends un demi-kilo de bananes.",
-        "en": "I'll take half a kilo of bananas."
-      },
-      "explain": {
-        "fr": "lấy : je prends.",
-        "en": "lấy: I'll take."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_mua_buy",
+        "c_ban_sell",
+        "c_re",
+        "c_mac_expensive",
+        "c_bot"
+      ]
     },
     {
       "type": "tone_minimal_pair",
@@ -139,6 +133,14 @@
       "explain": {
         "fr": "bán monte, bạn tombe court, bàn descend.",
         "en": "bán rises, bạn drops short, bàn falls."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_tra_gia_o_cho",
+      "explain": {
+        "fr": "Le prix change en cours de dialogue : écoute jusqu'au bout.",
+        "en": "The price changes during the dialogue: listen to the end."
       }
     },
     {

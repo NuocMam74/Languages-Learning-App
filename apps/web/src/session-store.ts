@@ -13,12 +13,14 @@ import {
   type Evaluation,
   type Exercise,
   type ExerciseResponse,
+  type Localized,
   type SessionPhase,
   type SessionRun,
 } from "@parlo/core";
 import { create } from "zustand";
 import { ttsAllowed } from "./audio.ts";
-import { l, toneLabel } from "./i18n/index.ts";
+import { UnitUnavailableError } from "./content.ts";
+import { l, t, toneLabel } from "./i18n/index.ts";
 import { finishSession, isLessonOpen, openSession, saveLessonPart, sessionAvailability, submitSessionAnswer, type SessionRecap, type SessionRequest } from "./learner.ts";
 import { syncEngine } from "./sync.ts";
 
@@ -63,6 +65,8 @@ export function exerciseFor(content: ContentIndex, run: SessionRun, phase: Sessi
         known: run.knownAtStart,
         stepIndex: phase.index,
         allowTtsTone: ttsAllowed(true),
+        // Formats riches (contrat phase6 §5) : les vues fill_gap et match_pairs existent (src/exercises).
+        richFormats: true,
       });
     case "new":
     case "practice": {
@@ -97,6 +101,19 @@ export function givenText(exercise: Exercise, response: ExerciseResponse): strin
   if (response.kind === "tokens" && exercise.type === "build_sentence") {
     const byId = new Map(exercise.tokens.map((t) => [t.id, t.text ?? ""]));
     return response.optionIds.map((id) => byId.get(id) ?? "").join(" ");
+  }
+  // Réponses du catalogue complet (contrat phase6) : ce que l'apprenant a dit, pour « Cô Mai, pourquoi ? ».
+  if (response.kind === "text") return response.text;
+  if (response.kind === "pairs" && exercise.type === "match_pairs") {
+    const label = (options: readonly { id: string; text?: string; label?: Localized }[], id: string) => {
+      const option = options.find((o) => o.id === id);
+      return option?.text ?? (option?.label ? l(option.label) : id);
+    };
+    return response.pairs.map((p) => `${label(exercise.left, p.leftId)} → ${label(exercise.right, p.rightId)}`).join(" · ");
+  }
+  if (response.kind === "path" && exercise.type === "dialogue_choice") {
+    const replies = new Map(exercise.turns.flatMap((turn) => turn.replies.map((r) => [r.id, r.vi ?? (r.label ? l(r.label) : r.id)] as const)));
+    return response.turnIds.map((id) => replies.get(id) ?? id).join(" · ");
   }
   return "";
 }
@@ -153,7 +170,9 @@ export const useSession = create<SessionState>((set, get) => {
         }
         await advance(content, await openSession(content, request));
       } catch (e) {
-        set({ status: "error", error: e instanceof Error ? e.message : String(e) });
+        // Leçon d'une unité ni chargée ni téléchargée, hors ligne (spec §8.1) : message clair plutôt qu'une erreur technique.
+        const message = e instanceof UnitUnavailableError ? t("offline.unitUnavailable") : e instanceof Error ? e.message : String(e);
+        set({ status: "error", error: message });
       }
     },
 

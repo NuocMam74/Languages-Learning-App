@@ -88,3 +88,56 @@ describe("buildReviewExercise", () => {
     expect(buildReviewExercise(content, "c_ba", "x", undefined, { stepIndex: 7 }).stepIndex).toBe(7);
   });
 });
+
+describe("formats riches (contrat phase6 §5)", () => {
+  const rich = { richFormats: true } as const;
+
+  it("désactivés par défaut : rien ne change pour les appelants existants", () => {
+    expect(reviewFormats(content, "c_ma_mom")).not.toContain("fill_gap");
+    expect(reviewFormats(content, "c_ma_mom")).not.toContain("match_pairs");
+    for (let i = 0; i < 30; i++) {
+      expect(["fill_gap", "match_pairs"]).not.toContain(buildReviewExercise(content, "c_ma_mom", `s${i}`).type);
+    }
+  });
+
+  it("fill_gap : le concept retiré d'une de ses phrases d'exemple", () => {
+    expect(reviewFormats(content, "c_ma_mom", rich)).toContain("fill_gap");
+    const ex = buildReviewExercise(content, "c_ma_mom", "x", "fill_gap", rich);
+    if (ex.type !== "fill_gap") throw new Error(ex.type);
+    expect(ex.text).toBe("Đây là ___ tôi.");
+    expect(ex.translation?.fr).toBe("Voici ma mère.");
+    expect(ex.options.find((o) => o.id === ex.answerId)?.text).toBe("má");
+    expect(ex.options.length).toBeGreaterThanOrEqual(2);
+    expect(ex.conceptIds).toEqual(["c_ma_mom"]);
+    expect(evaluate(ex, { kind: "choice", optionId: ex.answerId })).toMatchObject({ correct: true, graded: true });
+  });
+
+  it("fill_gap indisponible sans phrase d'exemple contenant la forme", () => {
+    const noExamples = withConcepts(content, (c) => {
+      const { examples: _drop, ...rest } = c;
+      return rest;
+    });
+    expect(reviewFormats(noExamples, "c_ma_mom", rich)).not.toContain("fill_gap");
+  });
+
+  it("match_pairs : la cible et deux voisins, glosses et formes distinctes", () => {
+    expect(reviewFormats(content, "c_ma_mom", rich)).toContain("match_pairs");
+    const ex = buildReviewExercise(content, "c_ma_mom", "x", "match_pairs", rich);
+    if (ex.type !== "match_pairs") throw new Error(ex.type);
+    expect(ex.mode).toBe("text_gloss");
+    expect(ex.left).toHaveLength(3);
+    expect(ex.right).toHaveLength(3);
+    expect(ex.conceptIds[0]).toBe("c_ma_mom");
+    expect(new Set(ex.right.map((o) => o.label?.fr)).size).toBe(3);
+    expect(evaluate(ex, { kind: "pairs", pairs: ex.answer })).toMatchObject({ correct: true, graded: true });
+  });
+
+  it("match_pairs impossible quand le pack n'a pas assez de concepts du même type", () => {
+    const tiny: ContentIndex = { ...content, concepts: new Map([["c_ma_mom", content.concepts.get("c_ma_mom")!]]) };
+    expect(reviewFormats(tiny, "c_ma_mom", rich)).not.toContain("match_pairs");
+  });
+
+  it("déterministe pour une même graine", () => {
+    expect(buildReviewExercise(content, "c_ma_mom", "s", "match_pairs", rich)).toEqual(buildReviewExercise(content, "c_ma_mom", "s", "match_pairs", rich));
+  });
+});

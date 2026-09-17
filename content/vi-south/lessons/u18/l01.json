@@ -117,18 +117,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Đây là đồng nghiệp của tui.",
-      "tokens": [
-        "Đây là",
-        "đồng nghiệp",
-        "của",
-        "tui",
-        "sếp"
-      ],
-      "translation": {
-        "fr": "Voici mon/ma collègue.",
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "Voici mon collègue.",
         "en": "This is my colleague."
+      },
+      "accepted": [
+        "Đây là đồng nghiệp của tui.",
+        "Đây là đồng nghiệp của tôi.",
+        "Đây là đồng nghiệp của em.",
+        "Đây là đồng nghiệp tui."
+      ],
+      "explain": {
+        "fr": "của marque l'appartenance ; à l'oral il tombe souvent.",
+        "en": "của marks possession; in speech it is often dropped."
       }
     },
     {

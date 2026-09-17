@@ -109,7 +109,7 @@ export function ExpressPage({ content }: { content: ContentIndex }) {
   const line = statusLine();
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] md:max-w-[720px]" data-testid="express" data-posting={posting.status}>
+    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]" data-testid="express" data-posting={posting.status}>
       <BackHeader title={t("social.express.title")} to="/defis" />
       <main className="flex flex-1 flex-col pt-2">
         <ChoNoi

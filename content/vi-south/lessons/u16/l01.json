@@ -112,21 +112,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh khỏe không?",
-      "tokens": [
-        "Anh",
-        "khỏe",
-        "không",
-        "bệnh"
+      "type": "fill_gap",
+      "text": "Em ___ bệnh rồi.",
+      "answer": "bị",
+      "options": [
+        "bị",
+        "bi",
+        "bí"
       ],
       "translation": {
-        "fr": "Tu vas bien ? (à un homme un peu plus âgé)",
-        "en": "Are you well? (to a slightly older man)"
+        "fr": "Je suis tombé(e) malade.",
+        "en": "I've fallen ill."
       },
       "explain": {
-        "fr": "khỏe không ? : ça va ?",
-        "en": "khỏe không?: how are you?"
+        "fr": "bị marque ce qu'on subit. bi = bille, bí = courge, coincé.",
+        "en": "bị marks something you undergo. bi = marble, bí = squash, stuck."
       }
     },
     {

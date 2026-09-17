@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_goi_dien_thoai",
+  "title": {
+    "fr": "Un coup de téléphone",
+    "en": "A phone call"
+  },
+  "turns": [
+    {
+      "speaker": "Lan",
+      "vi": "Alô, em nghe.",
+      "translation": {
+        "fr": "Allô, oui ?",
+        "en": "Hello, yes?"
+      },
+      "audio": "audio/dlg_goi_dien_thoai_t1_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Alô, dạ cho em gặp anh Minh.",
+      "translation": {
+        "fr": "Allô, je voudrais parler à Minh.",
+        "en": "Hello, I'd like to speak to Minh."
+      },
+      "audio": "audio/dlg_goi_dien_thoai_t2_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Dạ, anh Minh đang họp. Ai vậy ạ?",
+      "translation": {
+        "fr": "Minh est en réunion. C'est de la part de qui ?",
+        "en": "Minh is in a meeting. Who's calling?"
+      },
+      "audio": "audio/dlg_goi_dien_thoai_t3_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ em là Marie, bên công ty Sài Gòn Xanh.",
+      "translation": {
+        "fr": "Je suis Marie, de la société Sài Gòn Xanh.",
+        "en": "I'm Marie, from Sài Gòn Xanh."
+      },
+      "audio": "audio/dlg_goi_dien_thoai_t4_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Dạ, để em nhắn lại giùm chị nha.",
+      "translation": {
+        "fr": "Je lui laisserai le message.",
+        "en": "I'll pass the message on for you."
+      },
+      "audio": "audio/dlg_goi_dien_thoai_t5_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, cảm ơn em. Lát chị gọi lại.",
+      "translation": {
+        "fr": "Merci. Je rappellerai tout à l'heure.",
+        "en": "Thank you. I'll call back later."
+      },
+      "audio": "audio/dlg_goi_dien_thoai_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Pourquoi Marie ne peut-elle pas parler à Minh ?",
+      "en": "Why can't Marie speak to Minh?"
+    },
+    "options": [
+      {
+        "fr": "Il est en réunion.",
+        "en": "He's in a meeting."
+      },
+      {
+        "fr": "Il est déjà rentré chez lui.",
+        "en": "He's already gone home."
+      },
+      {
+        "fr": "Son téléphone n'a plus de batterie.",
+        "en": "His phone is out of battery."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« Anh Minh đang họp. » — đang = en ce moment.",
+      "en": "'Anh Minh đang họp.' — đang = right now."
+    }
+  },
+  "reviewed": false
+}

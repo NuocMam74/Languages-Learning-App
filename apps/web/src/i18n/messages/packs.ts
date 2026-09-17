@@ -8,7 +8,7 @@ export const fr = {
   "packs.switching": "Changement de langue…",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "packs.available": "Available",
   "packs.change": "Change the language you're learning",
   "packs.settings.title": "Language you're learning",

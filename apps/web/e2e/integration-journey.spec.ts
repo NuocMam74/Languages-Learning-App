@@ -51,7 +51,7 @@ test("second appareil, séance vide, mot de passe oublié, export et suppression
   await pageB.getByLabel("Mot de passe").fill(password);
   await pageB.getByRole("button", { name: "Se connecter" }).click();
   await expect(pageB.getByRole("status")).toBeVisible({ timeout: 20_000 });
-  await pageB.goto("/");
+  await pageB.goto("/apprendre");
   await expect(pageB).not.toHaveURL(/bienvenue|onboarding/);
   await expect(pageB.getByRole("link", { name: "Cinq tons à entendre" })).toBeVisible({ timeout: 20_000 });
 

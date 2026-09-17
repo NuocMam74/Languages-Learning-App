@@ -111,22 +111,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Quẹo phải ở cây xăng.",
-      "tokens": [
-        "Quẹo",
-        "phải",
-        "ở",
-        "cây xăng",
-        "trái"
+      "type": "fill_gap",
+      "text": "Tới ngã tư anh ___ phải nha.",
+      "answer": "quẹo",
+      "options": [
+        "quẹo",
+        "què",
+        "queo"
       ],
       "translation": {
-        "fr": "Tourne à droite à la station-service.",
-        "en": "Turn right at the petrol station."
+        "fr": "Au carrefour, tournez à droite.",
+        "en": "At the crossroads, turn right."
       },
       "explain": {
-        "fr": "ở + repère : l'endroit où tourner.",
-        "en": "ở + landmark: where to turn."
+        "fr": "Au Sud on dit quẹo (au Nord : rẽ). què = boiteux, queo = tordu.",
+        "en": "In the South it's quẹo (rẽ in the North). què = lame, queo = bent."
       }
     },
     {

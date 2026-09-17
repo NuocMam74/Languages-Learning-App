@@ -23,7 +23,10 @@
     "c_b_cong_an",
     "c_b_tam_tru",
     "c_b_the",
-    "s_b_ky_ten_o_day"
+    "s_b_ky_ten_o_day",
+    "c_b_visa",
+    "c_b_don",
+    "c_b_tai_khoan"
   ],
   "steps": [
     {
@@ -107,19 +110,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em muốn mở tài khoản.",
-      "tokens": [
-        "Em",
-        "muốn",
-        "mở",
-        "tài khoản",
-        "mua"
-      ],
-      "translation": {
-        "fr": "Je voudrais ouvrir un compte.",
-        "en": "I'd like to open an account."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_ho_chieu",
+        "c_b_visa",
+        "c_b_don",
+        "c_b_the",
+        "c_b_tai_khoan"
+      ]
     },
     {
       "type": "tone_identify",

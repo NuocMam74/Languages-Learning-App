@@ -22,7 +22,10 @@
     "s_b_hoi_mac",
     "c_b_kha",
     "s_b_anh_thay_sao",
-    "s_b_tui_nghi_la"
+    "s_b_tui_nghi_la",
+    "c_b_dong_y",
+    "c_b_sai",
+    "c_b_nhung_ma"
   ],
   "steps": [
     {
@@ -105,12 +108,14 @@
       }
     },
     {
-      "type": "tone_identify",
-      "concept": "c_b_kha",
-      "explain": {
-        "fr": "khá : sắc.",
-        "en": "khá: sắc."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_dong_y",
+        "c_b_dung_right",
+        "c_b_sai",
+        "c_b_kha",
+        "c_b_nhung_ma"
+      ]
     },
     {
       "type": "listen_pick_text",

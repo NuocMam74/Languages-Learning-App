@@ -20,7 +20,8 @@
     "audio:list": "tsx scripts/audio/recording-list.ts",
     "audio:process": "tsx scripts/audio/process.ts",
     "audio:e2e": "tsx scripts/audio/synth-fixtures.ts --e2e",
-    "check": "npm run typecheck && npm run test && npm run content:validate && npm run content:lint"
+    "i18n:check": "tsx scripts/i18n-check.ts",
+    "check": "npm run typecheck && npm run test && npm run content:validate && npm run content:lint && npm run i18n:check"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

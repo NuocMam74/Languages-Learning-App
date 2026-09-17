@@ -115,24 +115,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh chạy chậm lại được không?",
-      "tokens": [
-        "Anh",
-        "chạy",
-        "chậm",
-        "lại",
-        "được",
-        "không",
-        "nhanh"
-      ],
-      "translation": {
-        "fr": "Tu peux rouler moins vite ? (à un homme un peu plus âgé)",
-        "en": "Can you ride more slowly? (to a slightly older man)"
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "Ça prend combien de temps ?",
+        "en": "How long does it take?"
       },
+      "accepted": [
+        "Đi bao lâu?",
+        "Mất bao lâu?",
+        "Đi bao lâu vậy anh?",
+        "Đi bao lâu hả anh?"
+      ],
       "explain": {
-        "fr": "Comme nói chậm lại được không : … được không ? pour demander poliment.",
-        "en": "Like nói chậm lại được không: … được không? to ask politely."
+        "fr": "bao lâu = combien de temps ; bao nhiêu = combien (quantité).",
+        "en": "bao lâu = how long; bao nhiêu = how much."
       }
     },
     {

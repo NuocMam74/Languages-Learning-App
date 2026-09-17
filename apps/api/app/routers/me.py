@@ -210,6 +210,9 @@ def patch_profile(body: ProfilePatch, user: CurrentUser, db: DbDep, packs: Packs
     profile = _profile(db, user)
     fields = body.model_fields_set
 
+    if "display_name" in fields and body.display_name is not None:
+        user.display_name = body.display_name.strip() or user.display_name
+
     if "daily_goal_min" in fields:
         if body.daily_goal_min is None:
             raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, detail="dailyGoalMin ne peut pas être null")

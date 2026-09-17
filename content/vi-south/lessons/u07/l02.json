@@ -84,25 +84,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Cho em một ly cà phê sữa đá.",
-      "tokens": [
-        "Cho",
-        "em",
-        "một",
+      "type": "fill_gap",
+      "text": "Cho em một ___ cà phê sữa đá.",
+      "answer": "ly",
+      "options": [
         "ly",
-        "cà phê",
-        "sữa",
-        "đá",
-        "tô"
+        "lý",
+        "lỳ"
       ],
       "translation": {
         "fr": "Un café glacé au lait, s'il te plaît.",
         "en": "An iced milk coffee, please."
       },
       "explain": {
-        "fr": "Pour une boisson : một ly + boisson.",
-        "en": "For a drink: một ly + drink."
+        "fr": "Au Sud, un verre c'est ly (au Nord : cốc). lý = raison, lỳ = têtu.",
+        "en": "In the South a glass is ly (cốc in the North). lý = reason, lỳ = stubborn."
       }
     },
     {

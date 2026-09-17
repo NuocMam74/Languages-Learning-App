@@ -52,7 +52,8 @@ test("séance du jour : révisions dues, nouvelle leçon, mise en pratique, bila
   // Reprise exacte au milieu des révisions.
   await playOneStep(page, /Séance terminée/);
   const cursor = await page.getByTestId("lesson").getAttribute("data-cursor");
-  await page.goto("/");
+  // Reprise exacte en revenant sur le parcours de la langue (contrat phase7 §1).
+  await page.goto("/apprendre");
   await expect(page).toHaveURL(/\/seance$/);
   await expect(page.getByTestId("lesson")).toHaveAttribute("data-cursor", cursor ?? "");
 

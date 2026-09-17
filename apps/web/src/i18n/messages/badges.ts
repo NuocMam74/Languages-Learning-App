@@ -34,7 +34,8 @@ export const fr = {
   "badges.challenges.title": "Défis relevés",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
+  "badges.title": "Badges",
   "badges.count": "{n} of {total}",
   "badges.recap.earned": "New badge",
   "badges.earnedOn": "Earned on {date}",

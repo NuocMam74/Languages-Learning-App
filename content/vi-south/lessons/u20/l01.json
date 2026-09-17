@@ -19,7 +19,8 @@
     "c_b_dam_cuoi",
     "s_b_da_con_cam_on",
     "c_b_thiep_moi",
-    "c_moi"
+    "c_moi",
+    "c_cam_on"
   ],
   "steps": [
     {
@@ -97,22 +98,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Dạ, con cảm ơn cô.",
-      "tokens": [
-        "Dạ",
-        "con",
-        "cảm ơn",
-        "cô",
-        "có"
+      "type": "listen_transcribe",
+      "concept": "c_cam_on",
+      "accepted": [
+        "cám ơn"
       ],
-      "translation": {
-        "fr": "Merci, madame (à une femme de l'âge de tes parents).",
-        "en": "Thank you (to a woman your parents' age)."
-      },
       "explain": {
-        "fr": "dạ en tête : poli et chaleureux.",
-        "en": "dạ first: polite and warm."
+        "fr": "On écrit cảm ơn ; cám ơn est très répandu à l'oral et à l'écrit familier.",
+        "en": "The spelling is cảm ơn; cám ơn is very common in speech and informal writing."
       }
     },
     {

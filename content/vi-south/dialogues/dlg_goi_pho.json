@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_goi_pho",
+  "title": {
+    "fr": "Commander un phở",
+    "en": "Ordering phở"
+  },
+  "turns": [
+    {
+      "speaker": "Marie",
+      "vi": "Em ơi!",
+      "translation": {
+        "fr": "S'il te plaît !",
+        "en": "Excuse me!"
+      },
+      "audio": "audio/dlg_goi_pho_t1_mai.opus"
+    },
+    {
+      "speaker": "Người phục vụ",
+      "vi": "Dạ, chị ăn gì?",
+      "translation": {
+        "fr": "Oui, vous prenez quoi ?",
+        "en": "Yes, what will you have?"
+      },
+      "audio": "audio/dlg_goi_pho_t2_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Cho chị một tô phở bò với một ly cà phê sữa đá.",
+      "translation": {
+        "fr": "Un bol de phở au bœuf et un café glacé au lait.",
+        "en": "A bowl of beef phở and an iced milk coffee."
+      },
+      "audio": "audio/dlg_goi_pho_t3_mai.opus"
+    },
+    {
+      "speaker": "Người phục vụ",
+      "vi": "Dạ. Chị ăn cay hông?",
+      "translation": {
+        "fr": "D'accord. Vous mangez pimenté ?",
+        "en": "All right. Do you eat spicy food?"
+      },
+      "audio": "audio/dlg_goi_pho_t4_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Ít cay thôi nha em.",
+      "translation": {
+        "fr": "Juste un peu piquant, s'il te plaît.",
+        "en": "Just a little spicy, please."
+      },
+      "audio": "audio/dlg_goi_pho_t5_mai.opus"
+    },
+    {
+      "speaker": "Người phục vụ",
+      "vi": "Dạ, chị chờ chút xíu nha.",
+      "translation": {
+        "fr": "D'accord, un petit instant.",
+        "en": "All right, just a moment."
+      },
+      "audio": "audio/dlg_goi_pho_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Qu'est-ce que Marie commande ?",
+      "en": "What does Marie order?"
+    },
+    "options": [
+      {
+        "fr": "Un phở au bœuf et un café glacé au lait.",
+        "en": "Beef phở and an iced milk coffee."
+      },
+      {
+        "fr": "Un hủ tiếu et un thé glacé.",
+        "en": "Hủ tiếu and iced tea."
+      },
+      {
+        "fr": "Un cơm tấm et un jus de canne.",
+        "en": "Cơm tấm and sugarcane juice."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« Cho chị một tô phở bò với một ly cà phê sữa đá. »",
+      "en": "'Cho chị một tô phở bò với một ly cà phê sữa đá.'"
+    }
+  },
+  "reviewed": false
+}

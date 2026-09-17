@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_di_xe_om",
+  "title": {
+    "fr": "Une course en xe ôm",
+    "en": "A xe ôm ride"
+  },
+  "turns": [
+    {
+      "speaker": "Marie",
+      "vi": "Anh ơi, chở em ra chợ Bến Thành nha.",
+      "translation": {
+        "fr": "Emmenez-moi au marché Bến Thành, s'il vous plaît.",
+        "en": "Take me to Bến Thành market, please."
+      },
+      "audio": "audio/dlg_di_xe_om_t1_mai.opus"
+    },
+    {
+      "speaker": "Anh xe ôm",
+      "vi": "Được. Bốn chục ngàn nha em.",
+      "translation": {
+        "fr": "D'accord. Quarante mille.",
+        "en": "All right. Forty thousand."
+      },
+      "audio": "audio/dlg_di_xe_om_t2_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ. Đi bao lâu vậy anh?",
+      "translation": {
+        "fr": "D'accord. Ça prend combien de temps ?",
+        "en": "Fine. How long does it take?"
+      },
+      "audio": "audio/dlg_di_xe_om_t3_mai.opus"
+    },
+    {
+      "speaker": "Anh xe ôm",
+      "vi": "Chừng mười lăm phút, nếu hông kẹt xe. Em đội nón bảo hiểm vô nha.",
+      "translation": {
+        "fr": "Environ quinze minutes, s'il n'y a pas de bouchons. Mets le casque.",
+        "en": "About fifteen minutes if there's no traffic jam. Put the helmet on."
+      },
+      "audio": "audio/dlg_di_xe_om_t4_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ. Anh chạy chậm chậm giùm em nha.",
+      "translation": {
+        "fr": "D'accord. Roulez doucement, s'il vous plaît.",
+        "en": "OK. Please drive slowly."
+      },
+      "audio": "audio/dlg_di_xe_om_t5_mai.opus"
+    },
+    {
+      "speaker": "Anh xe ôm",
+      "vi": "Tới rồi nè em. Cho anh bốn chục.",
+      "translation": {
+        "fr": "On est arrivés. Ça fait quarante mille.",
+        "en": "Here we are. That's forty thousand."
+      },
+      "audio": "audio/dlg_di_xe_om_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Combien de temps dure le trajet, d'après le conducteur ?",
+      "en": "How long is the ride, according to the driver?"
+    },
+    "options": [
+      {
+        "fr": "Environ quinze minutes s'il n'y a pas de bouchons.",
+        "en": "About fifteen minutes with no traffic jam."
+      },
+      {
+        "fr": "Environ quarante minutes.",
+        "en": "About forty minutes."
+      },
+      {
+        "fr": "Environ cinq minutes.",
+        "en": "About five minutes."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« Chừng mười lăm phút, nếu hông kẹt xe. » — chừng = environ.",
+      "en": "'Chừng mười lăm phút, nếu hông kẹt xe.' — chừng = about."
+    }
+  },
+  "reviewed": false
+}

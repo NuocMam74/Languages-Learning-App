@@ -28,7 +28,7 @@ export function ClassesSettings() {
 
   if (!teacher && !student) return null;
   return (
-    <section className="flex flex-col gap-3 border-t border-phu-sa/10 py-5 first:border-t-0" data-testid="classes-settings">
+    <section className="flex flex-col gap-3 border-t border-phu-sa/10 py-5" data-testid="classes-settings">
       <h2 className="font-semibold">{t("classes.settings.title")}</h2>
       <div className="flex flex-wrap gap-x-6">
         {teacher && <Link to="/prof" className="min-h-11 py-2 font-semibold text-ngoc">{t("classes.settings.teacher")}</Link>}

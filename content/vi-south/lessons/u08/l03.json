@@ -95,24 +95,15 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em mua hai trái xoài.",
-      "tokens": [
-        "Em",
-        "mua",
-        "hai",
-        "trái",
-        "xoài",
-        "con"
+      "type": "match_pairs",
+      "concepts": [
+        "c_xoai",
+        "c_chuoi",
+        "c_thom",
+        "c_sau_rieng",
+        "c_dua_hau"
       ],
-      "translation": {
-        "fr": "J'achète deux mangues.",
-        "en": "I'm buying two mangoes."
-      },
-      "explain": {
-        "fr": "trái : le classificateur des fruits au Sud.",
-        "en": "trái: the fruit classifier in the South."
-      }
+      "mode": "audio_image"
     },
     {
       "type": "spot_the_south",

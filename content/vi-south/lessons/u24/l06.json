@@ -88,22 +88,110 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Mỗi người một ý.",
-      "tokens": [
-        "Mỗi",
-        "người",
-        "một",
-        "ý",
-        "mọi"
-      ],
-      "translation": {
-        "fr": "Chacun son avis.",
-        "en": "Everyone has their own view."
+      "type": "dialogue_choice",
+      "situation": {
+        "fr": "Avec des collègues, vous choisissez où déjeuner.",
+        "en": "With colleagues, you're picking a lunch spot."
       },
+      "turns": [
+        {
+          "id": "t1",
+          "vi": "Trưa nay mình ăn cơm tấm hay hủ tiếu?",
+          "translation": {
+            "fr": "Ce midi, cơm tấm ou hủ tiếu ?",
+            "en": "Cơm tấm or hủ tiếu for lunch?"
+          },
+          "replies": [
+            {
+              "id": "r1a",
+              "vi": "Theo tui, quán cơm tấm gần đây ngon hơn.",
+              "next": "t2",
+              "best": true,
+              "feedback": {
+                "fr": "« Theo tui » = à mon avis : la formule du Sud.",
+                "en": "'Theo tui' = in my view: the Southern formula."
+              }
+            },
+            {
+              "id": "r1b",
+              "vi": "Sao cũng được.",
+              "next": "t2",
+              "feedback": {
+                "fr": "Ne rien dire, c'est laisser les autres décider pour toi.",
+                "en": "Saying nothing means letting others decide for you."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "vi": "Ủa, quán đó hơi mắc mà.",
+          "translation": {
+            "fr": "Ah, mais ce resto est un peu cher.",
+            "en": "Hmm, that place is a bit pricey though."
+          },
+          "replies": [
+            {
+              "id": "r2a",
+              "vi": "Hơi mắc, nhưng mà ngon.",
+              "next": "t3",
+              "best": true,
+              "feedback": {
+                "fr": "Nuancer avec « hơi… nhưng mà… » : très naturel.",
+                "en": "Qualifying with 'hơi… nhưng mà…': very natural."
+              }
+            },
+            {
+              "id": "r2b",
+              "vi": "Sai rồi!",
+              "next": "t3",
+              "feedback": {
+                "fr": "« Sai rồi » ferme la discussion : trop brutal.",
+                "en": "'Sai rồi' shuts the conversation down: too harsh."
+              }
+            },
+            {
+              "id": "r2c",
+              "vi": "Ừ, vậy đi chỗ khác.",
+              "next": "t3",
+              "feedback": {
+                "fr": "Tu abandonnes ton avis trop vite.",
+                "en": "You drop your opinion too quickly."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "vi": "Vậy tụi mình ăn cơm tấm nha.",
+          "translation": {
+            "fr": "Alors on prend un cơm tấm.",
+            "en": "Cơm tấm it is, then."
+          },
+          "replies": [
+            {
+              "id": "r3a",
+              "vi": "Dạ, tui đồng ý.",
+              "best": true,
+              "feedback": {
+                "fr": "« đồng ý » clôt proprement la discussion.",
+                "en": "'đồng ý' closes the discussion cleanly."
+              }
+            },
+            {
+              "id": "r3b",
+              "vi": "Chưa chắc.",
+              "feedback": {
+                "fr": "Après une décision, « chưa chắc » sème le doute pour rien.",
+                "en": "Once it's decided, 'chưa chắc' just sows doubt."
+              }
+            }
+          ]
+        }
+      ],
       "explain": {
-        "fr": "Expression toute faite pour clore un débat.",
-        "en": "Set phrase to close a debate."
+        "fr": "Donner son avis au Sud : theo tui, puis une nuance, jamais un « sai rồi » sec.",
+        "en": "Giving an opinion in the South: theo tui, then a qualifier, never a bare 'sai rồi'."
       }
     },
     {

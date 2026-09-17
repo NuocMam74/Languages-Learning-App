@@ -98,15 +98,21 @@
       }
     },
     {
-      "type": "listen_pick_text",
-      "concept": "s_b_chac_hong",
-      "distractors": [
-        "Chắc chưa?",
-        "Thiệt hông?"
+      "type": "fill_gap",
+      "text": "___ ảnh tới trễ.",
+      "answer": "Chắc",
+      "options": [
+        "Chắc",
+        "Chắt",
+        "Chặt"
       ],
+      "translation": {
+        "fr": "Il va sûrement arriver en retard.",
+        "en": "He'll probably be late."
+      },
       "explain": {
-        "fr": "Chắc hông ? : t'es sûr(e) ?",
-        "en": "Chắc hông?: are you sure?"
+        "fr": "chắc = sûrement (plus sûr que có lẽ). chắt = arrière-petit-enfant, chặt = couper.",
+        "en": "chắc = probably (stronger than có lẽ). chắt = great-grandchild, chặt = to chop."
       }
     },
     {

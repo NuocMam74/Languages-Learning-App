@@ -82,7 +82,8 @@ export const fr = {
   "tutor.doiDap.best": "Record : {n} / 100",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
+  "tutor.name": "Cô Mai",
   "tutor.why": "Cô Mai, why?",
   "tutor.thinking": "Cô Mai is thinking…",
   "tutor.why.offline": "I'll explain in more detail once you're signed in and online. Meanwhile, keep the sentence just above in mind.",

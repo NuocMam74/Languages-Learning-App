@@ -103,23 +103,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Bảy giờ mười lăm phút.",
-      "tokens": [
-        "Bảy",
-        "giờ",
-        "mười",
-        "lăm",
-        "phút",
-        "rưỡi"
+      "type": "fill_gap",
+      "text": "Bây giờ ___ giờ rồi?",
+      "answer": "mấy",
+      "options": [
+        "mấy",
+        "mây",
+        "máy"
       ],
       "translation": {
-        "fr": "Sept heures quinze.",
-        "en": "A quarter past seven."
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
       },
       "explain": {
-        "fr": "giờ puis phút : bảy giờ mười lăm (phút).",
-        "en": "giờ then phút: bảy giờ mười lăm (phút)."
+        "fr": "mấy pour un petit nombre. mây = nuage, máy = machine.",
+        "en": "mấy for a small number. mây = cloud, máy = machine."
       }
     },
     {

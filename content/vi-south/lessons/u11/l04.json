@@ -138,21 +138,37 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Dừng lại ở trường học.",
-      "tokens": [
-        "Dừng lại",
-        "ở",
-        "trường học",
-        "chạy"
-      ],
-      "translation": {
-        "fr": "Arrête-toi à l'école.",
-        "en": "Stop at the school."
+      "type": "speak_roleplay",
+      "situation": {
+        "fr": "Tu es à l'arrière d'un xe ôm et tu guides le conducteur.",
+        "en": "You're riding pillion on a xe ôm and guiding the driver."
       },
+      "prompts": [
+        {
+          "cue": {
+            "fr": "Demande d'aller tout droit.",
+            "en": "Ask him to go straight on."
+          },
+          "concept": "s_chay_thang"
+        },
+        {
+          "cue": {
+            "fr": "Demande de s'arrêter.",
+            "en": "Ask him to stop."
+          },
+          "concept": "s_dung_lai"
+        },
+        {
+          "cue": {
+            "fr": "Dis « déposez-moi ici ».",
+            "en": "Say 'drop me here'."
+          },
+          "concept": "s_cho_em_xuong"
+        }
+      ],
       "explain": {
-        "fr": "dừng lại ở + lieu : s'arrêter à.",
-        "en": "dừng lại ở + place: stop at."
+        "fr": "chạy pour un véhicule, đi pour la marche.",
+        "en": "chạy for a vehicle, đi for walking."
       }
     },
     {

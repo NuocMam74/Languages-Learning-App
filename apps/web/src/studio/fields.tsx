@@ -96,6 +96,8 @@ export function TextField({ label, path, value, onChange, hint, vi = false, mult
     readOnly,
     placeholder,
     lang: vi ? "vi" : undefined,
+    // Saisie vietnamienne au clavier d'un téléphone : ni correction ni majuscule automatiques.
+    ...(vi ? { autoCorrect: "off" as const, autoCapitalize: "off" as const, spellCheck: false } : {}),
     "aria-invalid": issues.some((i) => i.level === "error") || undefined,
     "aria-describedby": describedBy,
     className: inputClass(issues.some((i) => i.level === "error"), vi),
@@ -393,7 +395,7 @@ export function Badge({ tone, children }: { tone: "draft" | "reviewed" | "unrevi
   const styles = {
     draft: "bg-nghe/25 text-muc",
     reviewed: "bg-ngoc-sang text-ngoc",
-    unreviewed: "bg-son-mai/10 text-son-mai",
+    unreviewed: "bg-white text-son-mai ring-1 ring-son-mai/30",
     neutral: "bg-phu-sa/10 text-phu-sa",
   };
   return <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold ${styles[tone]}`}>{children}</span>;

@@ -91,22 +91,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Phim này khá hay.",
-      "tokens": [
-        "Phim",
-        "này",
-        "khá",
-        "hay",
-        "khà"
+      "type": "fill_gap",
+      "text": "Hơi mắc, ___ mà ngon.",
+      "answer": "nhưng",
+      "options": [
+        "nhưng",
+        "nhung",
+        "những"
       ],
       "translation": {
-        "fr": "Ce film est plutôt bien.",
-        "en": "This film is pretty good."
+        "fr": "Un peu cher, mais c'est bon.",
+        "en": "A bit pricey, but good."
       },
       "explain": {
-        "fr": "hay : intéressant, bien (film, livre).",
-        "en": "hay: interesting, good (film, book)."
+        "fr": "nhưng mà = mais (les deux mots ensemble, à l'oral). nhung = velours, những = marque du pluriel.",
+        "en": "nhưng mà = but (both words together in speech). nhung = velvet, những = a plural marker."
       }
     },
     {

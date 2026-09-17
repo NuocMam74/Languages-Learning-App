@@ -1,15 +1,19 @@
-import { compareAnswer, heardClassOf, normalizeAnswer, toneOf } from "./text.ts";
+import { contentMedia, hasPitchRef } from "./media.ts";
+import { compareAnswer, compareLoose, heardClassOf, normalizeAnswer, toneOf, type AnswerMatch } from "./text.ts";
 import type {
   Concept,
   ConceptId,
   ContentIndex,
   CultureCard,
+  Dialogue,
   GameId,
   LexicalVariantEntry,
   Lesson,
   LessonId,
   LessonStep,
   Localized,
+  LocalizedQuestion,
+  MatchPairsMode,
   StepType,
   Tone,
 } from "./types.ts";
@@ -38,9 +42,46 @@ interface ExerciseBase {
   explain: Localized | null;
 }
 
+/** Association attendue (ou proposée) dans `match_pairs`. */
+export interface PairMatch {
+  leftId: string;
+  rightId: string;
+}
+
+/** Une réponse possible d'un tour de `dialogue_choice`, telle que l'interface l'affiche. */
+export interface DialogueReplyView {
+  id: string;
+  /** Réplique en langue cible, ou null si la réponse n'existe qu'en langue d'interface. */
+  vi: string | null;
+  label: Localized | null;
+  /** Tour suivant, null = fin du dialogue. */
+  next: string | null;
+  best: boolean;
+  feedback: Localized | null;
+}
+
+export interface DialogueTurnView {
+  id: string;
+  vi: string;
+  translation: Localized;
+  audio: string | null;
+  /** Réponses mélangées (ordre déterministe, lié à la graine). */
+  replies: DialogueReplyView[];
+}
+
+/** Une consigne de jeu de rôle, concept résolu. */
+export interface RoleplayPromptView {
+  cue: Localized;
+  concept: Concept;
+  /** Courbe F0 présente : la réplique est notée ; null = entraînement libre. */
+  pitchRef: string | null;
+}
+
 export type Exercise =
   | (ExerciseBase & { type: "culture_card"; card: CultureCard; options: ChoiceOption[]; answerId: string })
   | (ExerciseBase & { type: "listen_pick_image" | "listen_pick_text"; audio: Concept; options: ChoiceOption[]; answerId: string })
+  /** Écoute globale d'un dialogue puis une question de compréhension (options localisées, ordre du fichier). */
+  | (ExerciseBase & { type: "listen_gist"; dialogue: Dialogue; question: LocalizedQuestion; options: ChoiceOption[]; answerId: string })
   | (ExerciseBase & { type: "tone_identify"; audio: Concept; options: ChoiceOption[]; answerId: string })
   | (ExerciseBase & { type: "tone_minimal_pair"; audio: Concept | null; target: string; options: ChoiceOption[]; answerId: string })
   | (ExerciseBase & { type: "spot_the_south"; entry: LexicalVariantEntry; options: ChoiceOption[]; answerId: string })
@@ -48,6 +89,21 @@ export type Exercise =
   | (ExerciseBase & { type: "speak_repeat"; concept: Concept; pitchRef: string | null })
   /** Produire le mot avec le bon ton (une syllabe) : noté par la courbe de hauteur, comme speak_repeat. */
   | (ExerciseBase & { type: "tone_produce"; concept: Concept; tone: Tone; pitchRef: string | null })
+  /** Trou dans une phrase : choix parmi des formes proches (l'erreur de ton est « presque »). */
+  | (ExerciseBase & { type: "fill_gap"; text: string; translation: Localized | null; options: ChoiceOption[]; answerId: string })
+  /** Transcrire ce qu'on entend (clavier vietnamien, spec §8.4). `accepted[0]` = forme de référence. */
+  | (ExerciseBase & { type: "listen_transcribe"; audio: Concept; accepted: string[] })
+  | (ExerciseBase & { type: "translate_to_vi"; source: Localized; accepted: string[] })
+  /** Traduction vers la langue d'interface : comparaison relâchée (accents et article facultatifs). */
+  | (ExerciseBase & { type: "translate_to_fr"; source: string; accepted: { fr: string[] } & Partial<Record<string, string[]>> })
+  /** Appariement : chaque élément de `left` va avec un élément de `right` (mêmes concepts, ordres différents). */
+  | (ExerciseBase & { type: "match_pairs"; mode: MatchPairsMode; left: ChoiceOption[]; right: ChoiceOption[]; answer: PairMatch[] })
+  /** Répondre oralement à une question : noté seulement si une des réponses acceptées a une courbe F0. */
+  | (ExerciseBase & { type: "speak_answer"; prompt: string; translation: Localized; audio: string | null; accepted: Concept[]; pitchRef: string | null })
+  /** Jeu de rôle guidé : 2 à 4 répliques à dire ; noté si au moins une a une courbe F0. */
+  | (ExerciseBase & { type: "speak_roleplay"; situation: Localized; prompts: RoleplayPromptView[] })
+  /** Dialogue à embranchements : `bestReplyIds` = réponses attendues (vide = entraînement non noté). */
+  | (ExerciseBase & { type: "dialogue_choice"; situation: Localized | null; startId: string; turns: DialogueTurnView[]; bestReplyIds: string[] })
   | (ExerciseBase & { type: "game"; game: GameId; conceptIds: ConceptId[] })
   | (ExerciseBase & { type: "unsupported"; stepType: StepType });
 
@@ -56,6 +112,12 @@ export type ChoiceExercise = Extract<Exercise, { answerId: string }>;
 export type ExerciseResponse =
   | { kind: "choice"; optionId: string }
   | { kind: "tokens"; optionIds: string[] }
+  /** Réponse écrite (transcription, traduction) — telle que tapée, normalisée à la comparaison. */
+  | { kind: "text"; text: string }
+  /** Appariement : une entrée par association proposée (les doublons de gauche sont ignorés). */
+  | { kind: "pairs"; pairs: PairMatch[] }
+  /** Chemin dans un dialogue à embranchements : identifiants des réponses choisies, dans l'ordre. */
+  | { kind: "path"; turnIds: string[] }
   | { kind: "speech"; score: number | null }
   | { kind: "game"; correct: number; total: number }
   | { kind: "skip" };
@@ -68,11 +130,18 @@ export interface Evaluation {
   graded: boolean;
   expected: string;
   explain: Localized | null;
+  /** Nature de l'écart pour une réponse écrite (« presque : c'est má, pas mà »). */
+  match?: AnswerMatch["kind"];
 }
 
 /** Score de prononciation (0–100) à partir duquel speak_repeat / tone_produce est réussi. */
 export const SPEAK_PASS_SCORE = 60;
 export const GAME_PASS_RATIO = 0.7;
+/**
+ * Exercices à score partiel (`match_pairs`, `dialogue_choice`) : tout juste pour être réussi,
+ * « presque » à partir de ce taux.
+ */
+export const PARTIAL_NEAR_MISS_RATIO = 0.7;
 
 // ---------------------------------------------------------------------------
 // Aléa déterministe : même séance + même étape = même ordre d'options (reprise exacte).
@@ -122,6 +191,7 @@ export function buildExercise(content: ContentIndex, lesson: Lesson, stepIndex: 
 }
 
 function buildFromStep(content: ContentIndex, lesson: Lesson, step: LessonStep, stepIndex: number, rand: () => number): Exercise {
+  const stepType: StepType = step.type;
   switch (step.type) {
     case "culture_card": {
       const card = content.culture.get(step.ref);
@@ -146,6 +216,31 @@ function buildFromStep(content: ContentIndex, lesson: Lesson, step: LessonStep, 
       const options = texts.map((text, i) => ({ id: `t${i}`, text }));
       const answer = options.find((o) => o.text === audio.vi);
       return { type: step.type, stepIndex, conceptIds: [audio.id], explain: step.explain ?? audio.note ?? null, audio, options, answerId: answer?.id ?? "" };
+    }
+
+    case "listen_transcribe": {
+      const audio = requireConcept(content, step.concept);
+      // La forme du concept d'abord : c'est elle qu'on affiche en correction.
+      const accepted = [...new Set([audio.vi, ...(step.accepted ?? [])])];
+      return {
+        type: step.type, stepIndex, conceptIds: [audio.id], explain: step.explain ?? audio.note ?? null,
+        audio, accepted,
+      };
+    }
+
+    case "listen_gist": {
+      const dialogue = content.dialogues.get(step.dialogue);
+      if (!dialogue) throw new ContentError(`Dialogue inconnu : ${step.dialogue}`);
+      const question = dialogue.question;
+      if (!question) throw new ContentError(`Dialogue ${dialogue.id} sans question : listen_gist impossible`);
+      // Comme la carte culture, les options gardent l'ordre du fichier (la réponse est un index).
+      const options = question.options.map((label, i) => ({ id: String(i), label }));
+      return {
+        type: step.type, stepIndex,
+        conceptIds: conceptsInText(content, lesson, dialogue.turns.map((t) => t.vi).join(" ")),
+        explain: step.explain ?? question.explain ?? null,
+        dialogue, question, options, answerId: String(question.answer),
+      };
     }
 
     case "tone_identify": {
@@ -205,6 +300,81 @@ function buildFromStep(content: ContentIndex, lesson: Lesson, step: LessonStep, 
       };
     }
 
+    case "fill_gap": {
+      const options = shuffle(step.options, rand).map((text, i) => ({ id: `o${i}`, text }));
+      const answerId = options.find((o) => normalizeAnswer(o.text) === normalizeAnswer(step.answer))?.id ?? "";
+      return {
+        type: step.type, stepIndex,
+        conceptIds: conceptsInText(content, lesson, step.text.replace(GAP, step.answer)),
+        explain: step.explain ?? null,
+        text: step.text, translation: step.translation ?? null, options, answerId,
+      };
+    }
+
+    case "translate_to_vi":
+      return {
+        type: step.type, stepIndex,
+        conceptIds: conceptsInText(content, lesson, step.accepted[0] ?? ""),
+        explain: step.explain ?? null, source: step.source, accepted: [...step.accepted],
+      };
+
+    case "translate_to_fr":
+      return {
+        type: step.type, stepIndex, conceptIds: conceptsInText(content, lesson, step.source),
+        explain: step.explain ?? null, source: step.source, accepted: step.accepted,
+      };
+
+    case "match_pairs": {
+      const concepts = step.concepts.map((id) => requireConcept(content, id));
+      const mode = step.mode ?? "text_gloss";
+      // Deux mélanges indépendants : les deux colonnes ne sont pas dans le même ordre.
+      const left = shuffle(concepts, rand).map((c) => matchOption(c, "l", mode === "text_gloss" ? "text" : "audio"));
+      const right = shuffle(concepts, rand).map((c) => matchOption(c, "r", mode === "audio_text" ? "text" : mode === "audio_image" ? "image" : "gloss"));
+      return {
+        type: step.type, stepIndex, conceptIds: concepts.map((c) => c.id), explain: null,
+        mode, left, right, answer: concepts.map((c) => ({ leftId: `l${c.id}`, rightId: `r${c.id}` })),
+      };
+    }
+
+    case "speak_answer": {
+      const media = contentMedia(content);
+      const accepted = step.accepted.map((id) => requireConcept(content, id));
+      const graded = accepted.find((c) => hasPitchRef(c, media));
+      return {
+        type: step.type, stepIndex, conceptIds: accepted.map((c) => c.id), explain: step.explain ?? null,
+        prompt: step.prompt, translation: step.translation, audio: step.audio ?? null,
+        accepted, pitchRef: graded?.pitch ?? null,
+      };
+    }
+
+    case "speak_roleplay": {
+      const media = contentMedia(content);
+      const prompts = step.prompts.map((p) => {
+        const concept = requireConcept(content, p.concept);
+        return { cue: p.cue, concept, pitchRef: hasPitchRef(concept, media) ? concept.pitch ?? null : null };
+      });
+      return {
+        type: step.type, stepIndex, conceptIds: prompts.map((p) => p.concept.id), explain: step.explain ?? null,
+        situation: step.situation, prompts,
+      };
+    }
+
+    case "dialogue_choice": {
+      const turns: DialogueTurnView[] = step.turns.map((turn) => ({
+        id: turn.id, vi: turn.vi, translation: turn.translation, audio: turn.audio ?? null,
+        replies: shuffle(turn.replies, rand).map((r) => ({
+          id: r.id, vi: r.vi ?? null, label: r.translation ?? null, next: r.next ?? null,
+          best: r.best === true, feedback: r.feedback ?? null,
+        })),
+      }));
+      const text = step.turns.flatMap((t) => [t.vi, ...t.replies.flatMap((r) => (r.vi ? [r.vi] : []))]).join(" ");
+      return {
+        type: step.type, stepIndex, conceptIds: conceptsInText(content, lesson, text), explain: step.explain ?? null,
+        situation: step.situation ?? null, startId: step.turns[0]?.id ?? "",
+        turns, bestReplyIds: turns.flatMap((t) => t.replies.filter((r) => r.best).map((r) => r.id)),
+      };
+    }
+
     case "game": {
       const pool = step.conceptPool === "lesson" || step.conceptPool === "unit" || step.conceptPool === "known"
         ? lesson.concepts
@@ -213,7 +383,29 @@ function buildFromStep(content: ContentIndex, lesson: Lesson, step: LessonStep, 
     }
 
     default:
-      return { type: "unsupported", stepIndex, conceptIds: [], explain: null, stepType: step.type };
+      // Inatteignable avec les types connus : filet pour un pack produit par une version plus récente.
+      return { type: "unsupported", stepIndex, conceptIds: [], explain: null, stepType };
+  }
+}
+
+/** Marqueur du trou dans `fill_gap` (identique au schéma de leçon). */
+export const GAP = "___";
+
+/**
+ * Une carte d'appariement. `side` évite toute collision d'identifiants entre les deux colonnes ;
+ * une colonne « audio » ne porte volontairement aucun texte (sinon la réponse est écrite dessus).
+ */
+function matchOption(concept: Concept, side: "l" | "r", show: "audio" | "text" | "gloss" | "image"): ChoiceOption {
+  const base = { id: `${side}${concept.id}`, conceptId: concept.id };
+  switch (show) {
+    case "audio":
+      return base;
+    case "text":
+      return { ...base, text: concept.vi };
+    case "gloss":
+      return { ...base, label: concept.gloss };
+    case "image":
+      return { ...base, ...(concept.image ? { image: concept.image } : {}) };
   }
 }
 
@@ -228,6 +420,30 @@ function conceptsInText(content: ContentIndex, lesson: Lesson, text: string): Co
 
 // ---------------------------------------------------------------------------
 
+/** Note d'un oral : seuil SPEAK_PASS_SCORE, « presque » dans les 15 points en dessous. */
+function speechEvaluation(score: number, expected: string, explain: Localized | null): Evaluation {
+  const correct = score >= SPEAK_PASS_SCORE;
+  return { correct, nearMiss: !correct && score >= SPEAK_PASS_SCORE - 15, graded: true, expected, explain };
+}
+
+/** Note d'un exercice à score partiel : tout juste pour être réussi, « presque » au-delà du seuil. */
+function partialEvaluation(correctCount: number, total: number, expected: string, explain: Localized | null): Evaluation {
+  const ratio = total === 0 ? 0 : correctCount / total;
+  return {
+    correct: total > 0 && correctCount === total,
+    nearMiss: correctCount < total && ratio >= PARTIAL_NEAR_MISS_RATIO,
+    graded: true,
+    expected,
+    explain,
+  };
+}
+
+/** Correction lisible d'un appariement : « má → maman · ba → papa ». */
+function pairsExpected(left: readonly ChoiceOption[], right: readonly ChoiceOption[], answer: readonly PairMatch[]): string {
+  const text = (o: ChoiceOption | undefined) => o?.text ?? o?.label?.fr ?? o?.image ?? o?.conceptId ?? "";
+  return answer.map((p) => `${text(left.find((o) => o.id === p.leftId))} → ${text(right.find((o) => o.id === p.rightId))}`).join(" · ");
+}
+
 export function evaluate(exercise: Exercise, response: ExerciseResponse): Evaluation {
   const ungraded = (expected = ""): Evaluation => ({ correct: true, nearMiss: false, graded: false, expected, explain: null });
   if (response.kind === "skip") return { ...ungraded(), correct: false };
@@ -236,6 +452,8 @@ export function evaluate(exercise: Exercise, response: ExerciseResponse): Evalua
     case "culture_card":
     case "listen_pick_image":
     case "listen_pick_text":
+    case "listen_gist":
+    case "fill_gap":
     case "tone_identify":
     case "tone_minimal_pair":
     case "spot_the_south": {
@@ -272,8 +490,74 @@ export function evaluate(exercise: Exercise, response: ExerciseResponse): Evalua
       if (response.kind !== "speech") return { ...ungraded(exercise.concept.vi), correct: false };
       // Micro refusé ou indisponible : l'exercice devient de l'écoute, sans note.
       if (response.score === null) return ungraded(exercise.concept.vi);
-      const correct = response.score >= SPEAK_PASS_SCORE;
-      return { correct, nearMiss: !correct && response.score >= SPEAK_PASS_SCORE - 15, graded: true, expected: exercise.concept.vi, explain: exercise.explain };
+      return speechEvaluation(response.score, exercise.concept.vi, exercise.explain);
+    }
+
+    case "speak_answer": {
+      const expected = exercise.accepted[0]?.vi ?? "";
+      if (response.kind !== "speech") return { ...ungraded(expected), correct: false };
+      // Sans courbe F0 de référence (ou sans micro) : écoute et répétition libres, jamais notées.
+      if (response.score === null || exercise.pitchRef === null) return ungraded(expected);
+      return speechEvaluation(response.score, expected, exercise.explain);
+    }
+
+    case "speak_roleplay": {
+      const expected = exercise.prompts.map((p) => p.concept.vi).join(" · ");
+      if (response.kind !== "speech") return { ...ungraded(expected), correct: false };
+      if (response.score === null || !exercise.prompts.some((p) => p.pitchRef !== null)) return ungraded(expected);
+      return speechEvaluation(response.score, expected, exercise.explain);
+    }
+
+    case "listen_transcribe":
+    case "translate_to_vi": {
+      const expected = exercise.accepted[0] ?? "";
+      if (response.kind !== "text") return { ...ungraded(expected), correct: false };
+      const match = compareAnswer(response.text, exercise.accepted);
+      // Écrit à un ton (ou un accent) près : « presque », noté « hard » par le SRS.
+      return {
+        correct: match.kind === "correct",
+        nearMiss: match.kind === "tone_only" || match.kind === "diacritics_only",
+        graded: true,
+        expected: match.kind === "correct" ? expected : match.expected,
+        explain: exercise.explain,
+        match: match.kind,
+      };
+    }
+
+    case "translate_to_fr": {
+      const forms = Object.values(exercise.accepted).flatMap((list) => list ?? []);
+      const expected = exercise.accepted.fr[0] ?? "";
+      if (response.kind !== "text") return { ...ungraded(expected), correct: false };
+      // Langue d'interface : accents, ponctuation et article initial facultatifs (toutes langues acceptées).
+      const correct = compareLoose(response.text, forms);
+      return { correct, nearMiss: false, graded: true, expected, explain: exercise.explain, match: correct ? "correct" : "wrong" };
+    }
+
+    case "match_pairs": {
+      const expected = pairsExpected(exercise.left, exercise.right, exercise.answer);
+      if (response.kind !== "pairs") return { ...ungraded(expected), correct: false };
+      const wanted = new Map(exercise.answer.map((p) => [p.leftId, p.rightId]));
+      const seen = new Set<string>();
+      let ok = 0;
+      for (const pair of response.pairs) {
+        if (seen.has(pair.leftId)) continue;
+        seen.add(pair.leftId);
+        if (wanted.get(pair.leftId) === pair.rightId) ok++;
+      }
+      const total = exercise.answer.length;
+      return partialEvaluation(ok, total, expected, exercise.explain);
+    }
+
+    case "dialogue_choice": {
+      const best = new Set(exercise.bestReplyIds);
+      const expected = exercise.turns.flatMap((t) => t.replies.filter((r) => best.has(r.id)).map((r) => r.vi ?? r.label?.fr ?? r.id)).join(" · ");
+      if (response.kind !== "path") return { ...ungraded(expected), correct: false };
+      // Aucun « meilleur choix » déclaré : dialogue d'exploration, on ne note pas.
+      if (best.size === 0) return ungraded(expected);
+      const known = new Set(exercise.turns.flatMap((t) => t.replies.map((r) => r.id)));
+      const played = response.turnIds.filter((id) => known.has(id));
+      if (played.length === 0) return { ...ungraded(expected), correct: false };
+      return partialEvaluation(played.filter((id) => best.has(id)).length, played.length, expected, exercise.explain);
     }
 
     case "game": {

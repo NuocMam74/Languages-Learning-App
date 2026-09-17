@@ -24,7 +24,10 @@
     "c_gia",
     "c_tien",
     "c_b_the",
-    "c_b_ho_chieu"
+    "c_b_ho_chieu",
+    "s_b_neu_co_tien",
+    "c_b_du_lich",
+    "c_mua_buy"
   ],
   "steps": [
     {
@@ -86,19 +89,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Giả sử trúng số, anh làm gì?",
-      "tokens": [
-        "Giả sử",
-        "trúng số",
-        "anh",
-        "làm",
-        "gì",
-        "giá"
-      ],
+      "type": "speak_answer",
+      "prompt": "Giả sử trúng số, anh làm gì?",
       "translation": {
         "fr": "Imagine que tu gagnes à la loterie : tu fais quoi ?",
-        "en": "Say you won the lottery: what would you do?"
+        "en": "Suppose you won the lottery: what would you do?"
+      },
+      "accepted": [
+        "s_b_neu_co_tien",
+        "c_b_du_lich",
+        "c_mua_buy"
+      ],
+      "explain": {
+        "fr": "Commence par « Nếu… thì tui sẽ… ».",
+        "en": "Start with 'Nếu… thì tui sẽ…'."
       }
     },
     {

@@ -120,19 +120,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tui bắt đầu học tiếng Việt năm ngoái.",
-      "tokens": [
-        "Tui",
-        "bắt đầu",
-        "học",
-        "tiếng Việt",
-        "năm ngoái",
-        "năm nay"
-      ],
+      "type": "speak_answer",
+      "prompt": "Rồi sao nữa?",
       "translation": {
-        "fr": "J'ai commencé le vietnamien l'an dernier.",
-        "en": "I started learning Vietnamese last year."
+        "fr": "Et après ?",
+        "en": "And then what?"
+      },
+      "accepted": [
+        "c_b_sau_do",
+        "c_b_luc_do"
+      ],
+      "explain": {
+        "fr": "Reprends avec « Sau đó… » pour continuer ton récit.",
+        "en": "Pick up with 'Sau đó…' to carry on the story."
       }
     },
     {

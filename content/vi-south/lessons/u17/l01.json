@@ -91,23 +91,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Nhà em có ba phòng ngủ.",
-      "tokens": [
-        "Nhà",
-        "em",
-        "có",
-        "ba",
-        "phòng ngủ",
-        "phòng tắm"
-      ],
-      "translation": {
-        "fr": "Chez moi, il y a trois chambres.",
-        "en": "My house has three bedrooms."
-      },
+      "type": "listen_transcribe",
+      "concept": "c_giuong",
       "explain": {
-        "fr": "có + nombre + pièce.",
-        "en": "có + number + room."
+        "fr": "giường : gi- se prononce [j] au Sud.",
+        "en": "giường: gi- is pronounced [j] in the South."
       }
     },
     {

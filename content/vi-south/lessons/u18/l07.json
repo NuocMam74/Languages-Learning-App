@@ -23,7 +23,11 @@
     "c_ca_fish",
     "c_b_may_tinh",
     "c_b_ban_busy",
-    "s_b_xin_nghi_phep"
+    "s_b_xin_nghi_phep",
+    "c_b_dong_nghiep",
+    "c_b_luong",
+    "c_b_tang_ca",
+    "c_b_nghi_phep"
   ],
   "steps": [
     {
@@ -103,19 +107,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Xin lỗi, em tới trễ.",
-      "tokens": [
-        "Xin lỗi",
-        "em",
-        "tới",
-        "trễ",
-        "tối"
-      ],
-      "translation": {
-        "fr": "Pardon, je suis en retard.",
-        "en": "Sorry, I'm late."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_sep",
+        "c_b_dong_nghiep",
+        "c_b_luong",
+        "c_b_tang_ca",
+        "c_b_nghi_phep"
+      ]
     },
     {
       "type": "listen_pick_text",
@@ -127,6 +126,14 @@
       "explain": {
         "fr": "nghỉ phép : congé.",
         "en": "nghỉ phép: time off."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_van_phong",
+      "explain": {
+        "fr": "Une heure et un lieu sont donnés : retiens les deux.",
+        "en": "A time and a place are given: hold on to both."
       }
     },
     {

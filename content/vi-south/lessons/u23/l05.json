@@ -118,21 +118,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Nếu tui là anh, tui sẽ đi Grab.",
-      "tokens": [
-        "Nếu",
-        "tui",
-        "là",
-        "anh",
-        "tui",
-        "sẽ",
-        "đi",
-        "Grab"
-      ],
-      "translation": {
-        "fr": "À ta place, je prendrais un Grab.",
-        "en": "If I were you, I'd take a Grab."
+      "type": "translate_to_fr",
+      "source": "Nếu có nhiều tiền, tui sẽ mua nhà.",
+      "accepted": {
+        "fr": [
+          "Si j'avais beaucoup d'argent, j'achèterais une maison.",
+          "Si j'ai beaucoup d'argent, j'achèterai une maison."
+        ],
+        "en": [
+          "If I had a lot of money, I'd buy a house."
+        ]
+      },
+      "explain": {
+        "fr": "Le vietnamien ne distingue pas le réel de l'irréel : le contexte tranche.",
+        "en": "Vietnamese doesn't mark real vs. unreal conditions: context decides."
       }
     },
     {

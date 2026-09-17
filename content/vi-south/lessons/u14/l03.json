@@ -108,22 +108,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Phở ở đây ngon lắm.",
-      "tokens": [
-        "Phở",
-        "ở đây",
-        "ngon",
-        "lắm",
-        "dở"
+      "type": "fill_gap",
+      "text": "Món này ngon ___!",
+      "answer": "quá",
+      "options": [
+        "quá",
+        "qua",
+        "quà"
       ],
       "translation": {
-        "fr": "Le phở ici est très bon.",
-        "en": "The phở here is really good."
+        "fr": "Ce plat est trop bon !",
+        "en": "This dish is so good!"
       },
       "explain": {
-        "fr": "ngon lắm : très bon.",
-        "en": "ngon lắm: really tasty."
+        "fr": "quá après l'adjectif = trop, tellement. qua = passer, quà = cadeau.",
+        "en": "quá after an adjective = so, too. qua = to pass, quà = gift."
       }
     },
     {

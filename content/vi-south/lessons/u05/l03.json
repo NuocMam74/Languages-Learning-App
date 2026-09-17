@@ -98,22 +98,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tôi mới qua Việt Nam.",
-      "tokens": [
-        "Tôi",
-        "mới",
-        "qua",
-        "Việt Nam",
-        "mời"
+      "type": "fill_gap",
+      "text": "Tôi ___ ở Sài Gòn.",
+      "answer": "sống",
+      "options": [
+        "sống",
+        "sóng",
+        "xong"
       ],
       "translation": {
-        "fr": "Je viens d'arriver au Vietnam.",
-        "en": "I just came to Vietnam."
+        "fr": "Je vis à Saïgon.",
+        "en": "I live in Saigon."
       },
       "explain": {
-        "fr": "mới devant le verbe = « venir de ». qua = venir d'un pays à l'autre.",
-        "en": "mới before the verb = 'just'. qua = to come from one country to another."
+        "fr": "sống = vivre. sóng (monte) = la vague, xong = fini.",
+        "en": "sống = to live. sóng (rising) = wave, xong = finished."
       }
     },
     {

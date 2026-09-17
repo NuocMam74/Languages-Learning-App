@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_di_kham_benh",
+  "title": {
+    "fr": "Chez le médecin",
+    "en": "At the doctor's"
+  },
+  "turns": [
+    {
+      "speaker": "Bác sĩ",
+      "vi": "Chào em. Em bị sao vậy?",
+      "translation": {
+        "fr": "Bonjour. Qu'est-ce qui ne va pas ?",
+        "en": "Hello. What's wrong?"
+      },
+      "audio": "audio/dlg_di_kham_benh_t1_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, em bị sốt với nhức đầu hai ngày rồi.",
+      "translation": {
+        "fr": "J'ai de la fièvre et mal à la tête depuis deux jours.",
+        "en": "I've had a fever and a headache for two days."
+      },
+      "audio": "audio/dlg_di_kham_benh_t2_mai.opus"
+    },
+    {
+      "speaker": "Bác sĩ",
+      "vi": "Em có ho hông?",
+      "translation": {
+        "fr": "Tu tousses ?",
+        "en": "Do you have a cough?"
+      },
+      "audio": "audio/dlg_di_kham_benh_t3_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ có, ho nhiều lắm. Em mệt quá.",
+      "translation": {
+        "fr": "Oui, je tousse beaucoup. Je suis épuisée.",
+        "en": "Yes, a lot. I'm exhausted."
+      },
+      "audio": "audio/dlg_di_kham_benh_t4_mai.opus"
+    },
+    {
+      "speaker": "Bác sĩ",
+      "vi": "Em uống thuốc này ngày hai lần, sau khi ăn. Nhớ nghỉ ngơi nghen.",
+      "translation": {
+        "fr": "Prends ce médicament deux fois par jour, après les repas. Et repose-toi.",
+        "en": "Take this medicine twice a day, after meals. And do rest."
+      },
+      "audio": "audio/dlg_di_kham_benh_t5_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, em cảm ơn bác sĩ.",
+      "translation": {
+        "fr": "Merci docteur.",
+        "en": "Thank you, doctor."
+      },
+      "audio": "audio/dlg_di_kham_benh_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Combien de fois par jour Marie doit-elle prendre le médicament ?",
+      "en": "How often a day must Marie take the medicine?"
+    },
+    "options": [
+      {
+        "fr": "Deux fois, après les repas.",
+        "en": "Twice, after meals."
+      },
+      {
+        "fr": "Trois fois, avant les repas.",
+        "en": "Three times, before meals."
+      },
+      {
+        "fr": "Une fois, le soir.",
+        "en": "Once, in the evening."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« ngày hai lần, sau khi ăn ».",
+      "en": "'ngày hai lần, sau khi ăn'."
+    }
+  },
+  "reviewed": false
+}

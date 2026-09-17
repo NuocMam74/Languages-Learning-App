@@ -1,4 +1,4 @@
-import type { LessonId, LessonRun, ParloEvent, RawPackFiles, SessionRun, SrsCard, Streak } from "@parlo/core";
+import type { CoreFile, LessonId, LessonRun, ParloEvent, RawPackFiles, SessionRun, SrsCard, Streak, UnitFile } from "@parlo/core";
 import { Dexie, type EntityTable, type Transaction } from "dexie";
 import { activePackCode, DEFAULT_PACK, isPackScopedKey, packOfLesson, scopedKey } from "./packs/active.ts";
 
@@ -14,9 +14,41 @@ import { activePackCode, DEFAULT_PACK, isPackScopedKey, packOfLesson, scopedKey 
 export interface StoredPack {
   code: string;
   version: number;
-  files: RawPackFiles;
+  /** Contenu découpé (core.json) ; les unités sont dans `units`. */
+  core?: CoreFile;
+  /** Ancien bundle complet (avant le découpage) : relu puis découpé localement. */
+  files?: RawPackFiles;
+  /** Base des fichiers de cette version (manifeste de l'API), si différente de /content/<code>/v<n>/. */
+  baseUrl?: string;
   fetchedAt: string;
 }
+
+/** Fichier d'unité d'une version de pack (clé `code@version:unitId`). */
+export interface StoredUnit {
+  key: string;
+  code: string;
+  version: number;
+  unit: string;
+  data: UnitFile;
+  fetchedAt: string;
+}
+
+/** Unité rendue disponible hors ligne (spec §8.1) : médias en cache, dernier usage pour la purge LRU. */
+export interface OfflineUnitRow {
+  /** `code:unitId` (indépendant de la version : retéléchargée après une mise à jour). */
+  key: string;
+  code: string;
+  unit: string;
+  version: number;
+  status: "downloading" | "ready" | "error";
+  bytes: number;
+  media: string[];
+  downloadedAt: string;
+  lastUsedAt: string;
+}
+
+export const unitKey = (code: string, version: number, unit: string) => `${code}@${version}:${unit}`;
+export const offlineKey = (code: string, unit: string) => `${code}:${unit}`;
 
 /** Carte SRS stockée : l'id de concept reste la clé (unique entre packs, vérifié en CI), `packCode` indexé. */
 export type StoredSrsCard = SrsCard & { packCode?: string };
@@ -122,6 +154,8 @@ export class ParloDB extends Dexie {
   snapshot!: EntityTable<SessionSnapshot, "key">;
   kv!: EntityTable<KeyValue, "key">;
   syncLog!: EntityTable<SyncLogRow, "seq">;
+  units!: EntityTable<StoredUnit, "key">;
+  offlineUnits!: EntityTable<OfflineUnitRow, "key">;
 
   constructor(name = "parlo") {
     super(name);
@@ -144,6 +178,12 @@ export class ParloDB extends Dexie {
         lessonProgress: "lessonId, packCode",
       })
       .upgrade(migrateToMultiPack);
+    // Contenu découpé par unité et unités hors ligne (audit mobile P1 #6, spec §8.1) : tables nouvelles, rien à migrer
+    // (un ancien bundle dans `packs` est découpé à la première lecture).
+    this.version(4).stores({
+      units: "key, [code+version], code",
+      offlineUnits: "key, code, lastUsedAt",
+    });
 
     // Toute écriture sans packCode (tests, modules qui ignorent les packs) est rattachée au bon pack.
     this.srsCards.hook("creating", (_key, card) => {

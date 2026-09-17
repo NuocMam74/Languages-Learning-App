@@ -21,7 +21,12 @@
     "c_ong_he",
     "c_b_ghe",
     "s_b_nho_nghen",
-    "s_b_de_thuong_qua"
+    "s_b_de_thuong_qua",
+    "c_b_hong_emph",
+    "c_b_nghen",
+    "c_b_ne",
+    "c_b_hoai",
+    "c_b_gion"
   ],
   "steps": [
     {
@@ -80,18 +85,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Hổng có đâu!",
-      "tokens": [
-        "Hổng",
-        "có",
-        "đâu",
-        "đây"
-      ],
-      "translation": {
-        "fr": "Mais non, pas du tout !",
-        "en": "No way, not at all!"
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_hong_emph",
+        "c_b_nghen",
+        "c_b_ne",
+        "c_b_hoai",
+        "c_b_gion"
+      ]
     },
     {
       "type": "spot_the_south",
@@ -99,6 +100,14 @@
       "explain": {
         "fr": "Sud : vậy ; Nord : thế.",
         "en": "South: vậy; North: thế."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_ve_mien_tay",
+      "explain": {
+        "fr": "Deux activités sont annoncées : retiens-les toutes les deux.",
+        "en": "Two activities are announced: keep both in mind."
       }
     },
     {

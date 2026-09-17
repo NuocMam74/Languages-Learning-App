@@ -114,22 +114,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Hôm nay để anh trả.",
-      "tokens": [
-        "Hôm nay",
-        "để",
-        "anh",
-        "trả",
-        "tiền"
+      "type": "fill_gap",
+      "text": "Em ơi, ___ tiền!",
+      "answer": "tính",
+      "options": [
+        "tính",
+        "tinh",
+        "tình"
       ],
       "translation": {
-        "fr": "Aujourd'hui, c'est moi qui paie. (homme, à plus jeune)",
-        "en": "Today it's on me. (man, to someone younger)"
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
       },
       "explain": {
-        "fr": "để + personne + verbe : « laisse (quelqu'un) faire ».",
-        "en": "để + person + verb: 'let (someone) do it'."
+        "fr": "tính tiền = faire l'addition. tinh = pur, tình = sentiment.",
+        "en": "tính tiền = to add up the bill. tinh = pure, tình = feeling."
       }
     },
     {

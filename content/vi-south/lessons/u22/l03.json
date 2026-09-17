@@ -115,21 +115,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Hôm qua tui đi chợ rồi về nhà.",
-      "tokens": [
-        "Hôm qua",
-        "tui",
-        "đi",
-        "chợ",
-        "rồi",
-        "về",
-        "nhà",
-        "chờ"
-      ],
-      "translation": {
-        "fr": "Hier, je suis allé(e) au marché puis je suis rentré(e).",
-        "en": "Yesterday I went to the market, then went home."
+      "type": "translate_to_fr",
+      "source": "Hôm qua tui đi chợ rồi về nhà.",
+      "accepted": {
+        "fr": [
+          "Hier, je suis allé au marché puis je suis rentré.",
+          "Hier je suis allée au marché puis rentrée à la maison.",
+          "Hier, je suis allé au marché et je suis rentré chez moi."
+        ],
+        "en": [
+          "Yesterday I went to the market then went home."
+        ]
+      },
+      "explain": {
+        "fr": "rồi enchaîne deux actions : « puis ».",
+        "en": "rồi chains two actions: 'then'."
       }
     },
     {

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { BadgeIcon } from "../components/BadgeIcon.tsx";
 import { Screen } from "../components/ui.tsx";
-import { t, type MessageKey } from "../i18n/index.ts";
+import { getLocale, t, type MessageKey } from "../i18n/index.ts";
 import { getBadges, type EarnedBadge } from "../learner.ts";
 
 /** Badges et jalons (spec §5.4). */
@@ -19,7 +19,7 @@ export default function Badges({ content }: { content?: ContentIndex }) {
   const codes = content ? badgeCodesFor(content.pack) : BADGE_CODES;
   // Badges de défi attribués par le serveur (contrat phase5 §3) : affichés à part.
   const challenges = (earned ?? []).filter((b) => isChallengeBadge(b.code));
-  const dateOf = (iso: string) => new Date(iso).toLocaleDateString(undefined, { day: "numeric", month: "long", year: "numeric" });
+  const dateOf = (iso: string) => new Date(iso).toLocaleDateString(getLocale(), { day: "numeric", month: "long", year: "numeric" });
 
   return (
     <Screen

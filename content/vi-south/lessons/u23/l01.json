@@ -103,19 +103,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Nếu trễ thì đi Grab.",
-      "tokens": [
+      "type": "fill_gap",
+      "text": "___ mưa thì tui ở nhà.",
+      "answer": "Nếu",
+      "options": [
         "Nếu",
-        "trễ",
-        "thì",
-        "đi",
-        "Grab",
-        "tre"
+        "Nếm",
+        "Nêu"
       ],
       "translation": {
-        "fr": "Si on est en retard, on prend un Grab.",
-        "en": "If we're late, we'll take a Grab."
+        "fr": "S'il pleut, je reste à la maison.",
+        "en": "If it rains, I stay home."
+      },
+      "explain": {
+        "fr": "nếu… thì… : la condition puis la suite. nếm = goûter, nêu = soulever (une question).",
+        "en": "nếu… thì…: condition then result. nếm = to taste, nêu = to raise (a point)."
       }
     },
     {

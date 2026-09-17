@@ -35,15 +35,84 @@ export interface Concept {
   reviewed: boolean;
 }
 
+/** Question à choix unique posée dans la langue d'interface (carte culture, dialogue). */
+export interface LocalizedQuestion {
+  prompt: Localized;
+  options: Localized[];
+  answer: number;
+  explain?: Localized;
+}
+
 export interface CultureCard {
   id: string;
   title: Localized;
   body: Localized;
   vi?: string;
   audio?: string;
-  question: { prompt: Localized; options: Localized[]; answer: number; explain?: Localized };
+  question: LocalizedQuestion;
   reviewed: boolean;
 }
+
+export type DialogueId = string;
+
+/** Réplique d'un dialogue enregistré (content/<pack>/dialogues). */
+export interface DialogueTurn {
+  /** Qui parle (libre : « Cô Mai », « Anh Nam »…). */
+  speaker: string;
+  vi: string;
+  translation: Localized;
+  audio?: string;
+}
+
+/**
+ * Dialogue court (~15 s) : support de `listen_gist`. Linéaire — les dialogues à
+ * embranchements sont décrits dans l'étape `dialogue_choice` elle-même.
+ */
+export interface Dialogue {
+  id: DialogueId;
+  title: Localized;
+  turns: DialogueTurn[];
+  /** Question de compréhension globale (obligatoire pour servir un `listen_gist`). */
+  question?: LocalizedQuestion;
+  reviewed: boolean;
+}
+
+/** Au-delà, ce n'est plus un dialogue de 15 s (contrat phase6 §3). */
+export const DIALOGUE_MAX_TURNS = 8;
+
+/** Réponse possible à un tour de `dialogue_choice` : en cible (`vi`), en langue d'interface, ou les deux. */
+export interface DialogueChoiceReply {
+  id: string;
+  vi?: string;
+  translation?: Localized;
+  /** Tour suivant ; absent = fin du dialogue. */
+  next?: string;
+  /** Réponse attendue d'un locuteur du Sud (registre, politesse, justesse). */
+  best?: boolean;
+  feedback?: Localized;
+}
+
+export interface DialogueChoiceTurn {
+  id: string;
+  /** Ce que dit le personnage (langue cible). */
+  vi: string;
+  translation: Localized;
+  audio?: string;
+  replies: DialogueChoiceReply[];
+}
+
+export const DIALOGUE_CHOICE_MIN_TURNS = 3;
+export const DIALOGUE_CHOICE_MAX_TURNS = 5;
+export const ROLEPLAY_MIN_PROMPTS = 2;
+export const ROLEPLAY_MAX_PROMPTS = 4;
+
+/** Une consigne de jeu de rôle : la situation en langue d'interface, la réplique à dire (concept). */
+export interface RoleplayPrompt {
+  cue: Localized;
+  concept: ConceptId;
+}
+
+export type MatchPairsMode = "audio_text" | "text_gloss" | "audio_image";
 
 export interface LexicalVariantEntry {
   id: string;
@@ -75,7 +144,11 @@ export type LessonStep =
   | ({ type: "tone_minimal_pair"; pair: string[]; audioConcepts?: ConceptId[] } & WithExplain)
   | ({ type: "tone_produce"; concept: ConceptId } & WithExplain)
   | ({ type: "speak_repeat"; concept: ConceptId; pitchRef?: string } & WithExplain)
-  | { type: "match_pairs"; concepts: ConceptId[]; mode?: "audio_text" | "text_gloss" | "audio_image" }
+  | ({ type: "listen_gist"; dialogue: DialogueId } & WithExplain)
+  | ({ type: "speak_answer"; prompt: string; translation: Localized; audio?: string; accepted: ConceptId[] } & WithExplain)
+  | ({ type: "speak_roleplay"; situation: Localized; prompts: RoleplayPrompt[] } & WithExplain)
+  | ({ type: "dialogue_choice"; situation?: Localized; turns: DialogueChoiceTurn[] } & WithExplain)
+  | { type: "match_pairs"; concepts: ConceptId[]; mode?: MatchPairsMode }
   | ({ type: "build_sentence"; target: string; tokens: string[]; translation: Localized; audioConcept?: ConceptId } & WithExplain)
   | ({ type: "fill_gap"; text: string; answer: string; options: string[]; translation?: Localized } & WithExplain)
   | ({ type: "translate_to_vi"; source: Localized; accepted: string[] } & WithExplain)
@@ -147,12 +220,36 @@ export interface ContentIndex {
   lessons: ReadonlyMap<LessonId, Lesson>;
   concepts: ReadonlyMap<ConceptId, Concept>;
   culture: ReadonlyMap<string, CultureCard>;
+  /** Dialogues enregistrés (`listen_gist`). Vide si le pack n'en a pas. */
+  dialogues: ReadonlyMap<DialogueId, Dialogue>;
   variants?: LexicalVariants;
   /**
    * Médias présents (contrat phase5 §1). Absent = inconnu (contenu lu sur disque en test) : tout est
    * considéré disponible. Le client le reçoit toujours avec le bundle.
    */
   mediaIndex?: ReadonlySet<string>;
+  /**
+   * Contenu découpé par unité (core.json + units/<unit>.json) : leçons et concepts des unités non
+   * chargées sont des résumés (sans étapes, concepts compacts). Absent = tout est chargé.
+   */
+  split?: SplitState;
+}
+
+/** Taille d'un fichier d'unité et de ses médias présents (octets), pour le téléchargement hors ligne. */
+export interface UnitManifestEntry {
+  id: UnitId;
+  bytes: number;
+  mediaBytes: number;
+  mediaCount: number;
+}
+
+export interface SplitState {
+  version: number;
+  /** Unités dont les leçons, concepts et cartes culture complets sont dans l'index. */
+  loaded: Set<UnitId>;
+  units: ReadonlyMap<UnitId, UnitManifestEntry>;
+  /** Unité qui porte le concept complet. */
+  conceptUnits: ReadonlyMap<ConceptId, UnitId>;
 }
 
 /**
@@ -165,6 +262,16 @@ export function hasFeature(pack: Pick<Pack, "features">, feature: PackFeature): 
 
 /** Exercices qui n'ont de sens que pour un pack tonal (`features: ["tones"]`). */
 export const TONAL_STEP_TYPES: ReadonlySet<StepType> = new Set<StepType>(["tone_identify", "tone_minimal_pair", "tone_produce"]);
+
+/**
+ * Exercices qui exigent un enregistrement natif : sans le média, l'étape est retirée de la
+ * séance (ni affichée, ni notée), comme les étapes tonales (contrat phase5 §1, phase6 §1).
+ */
+export const NATIVE_AUDIO_STEP_TYPES: ReadonlySet<StepType> = new Set<StepType>([
+  ...TONAL_STEP_TYPES,
+  "listen_transcribe",
+  "listen_gist",
+]);
 
 export function localize(text: Localized, locale: string): string {
   return text[locale] ?? text.fr;

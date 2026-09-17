@@ -1,0 +1,99 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_lam_quen",
+  "title": {
+    "fr": "Faire connaissance",
+    "en": "Getting acquainted"
+  },
+  "turns": [
+    {
+      "speaker": "Anh Nam",
+      "vi": "Chào chị. Chị tên gì?",
+      "translation": {
+        "fr": "Bonjour. Comment vous appelez-vous ?",
+        "en": "Hello. What's your name?"
+      },
+      "audio": "audio/dlg_lam_quen_t1_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, tôi tên Marie. Còn anh?",
+      "translation": {
+        "fr": "Je m'appelle Marie. Et vous ?",
+        "en": "I'm Marie. And you?"
+      },
+      "audio": "audio/dlg_lam_quen_t2_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Tôi tên Nam. Chị là người nước nào?",
+      "translation": {
+        "fr": "Moi c'est Nam. Vous êtes de quel pays ?",
+        "en": "I'm Nam. What country are you from?"
+      },
+      "audio": "audio/dlg_lam_quen_t3_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Tôi là người Pháp. Tôi mới qua Việt Nam hai tháng.",
+      "translation": {
+        "fr": "Je suis française. Je suis arrivée au Vietnam il y a deux mois.",
+        "en": "I'm French. I came to Vietnam two months ago."
+      },
+      "audio": "audio/dlg_lam_quen_t4_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Chị làm nghề gì?",
+      "translation": {
+        "fr": "Vous faites quel métier ?",
+        "en": "What do you do for a living?"
+      },
+      "audio": "audio/dlg_lam_quen_t5_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Tôi là giáo viên. Tôi dạy tiếng Pháp ở quận Ba.",
+      "translation": {
+        "fr": "Je suis enseignante. J'enseigne le français dans le 3e arrondissement.",
+        "en": "I'm a teacher. I teach French in District 3."
+      },
+      "audio": "audio/dlg_lam_quen_t6_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Rất vui được gặp chị.",
+      "translation": {
+        "fr": "Ravi de vous rencontrer.",
+        "en": "Very nice to meet you."
+      },
+      "audio": "audio/dlg_lam_quen_t7_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Qui est Marie ?",
+      "en": "Who is Marie?"
+    },
+    "options": [
+      {
+        "fr": "Une Française, enseignante.",
+        "en": "A French woman, a teacher."
+      },
+      {
+        "fr": "Une Française, médecin.",
+        "en": "A French woman, a doctor."
+      },
+      {
+        "fr": "Une Vietnamienne de l'étranger, étudiante.",
+        "en": "An overseas Vietnamese, a student."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« Tôi là người Pháp » puis « Tôi là giáo viên ».",
+      "en": "'Tôi là người Pháp' then 'Tôi là giáo viên'."
+    }
+  },
+  "reviewed": false
+}

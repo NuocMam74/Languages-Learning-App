@@ -63,14 +63,25 @@ function answerFor(ex: Exercise, right = true): ExerciseResponse {
     }
     case "speak_repeat":
     case "tone_produce":
+    case "speak_answer":
+    case "speak_roleplay":
       return { kind: "speech", score: null };
+    // Appariement : les révisions riches en produisent depuis que l'interface sait les afficher (contrat phase6 §5).
+    case "match_pairs":
+      return { kind: "pairs", pairs: right ? ex.answer : ex.answer.map((p, i) => ({ leftId: p.leftId, rightId: ex.answer[(i + 1) % ex.answer.length]!.rightId })) };
+    case "listen_transcribe":
+    case "translate_to_vi":
+      return { kind: "text", text: right ? (ex.accepted[0] ?? "") : "???" };
+    case "translate_to_fr":
+      return { kind: "text", text: right ? (ex.accepted.fr[0] ?? "") : "???" };
+    case "dialogue_choice":
+      return { kind: "path", turnIds: right ? ex.bestReplyIds : [] };
     case "game":
     case "unsupported":
       return { kind: "skip" };
     default:
-      if (!("answerId" in ex)) return { kind: "skip" }; // types sans QCM (texte, paires, dialogue) : non joués ici
-      if (!("answerId" in ex)) return { kind: "skip" }; // types sans QCM (texte, paires, dialogue) : non joués ici
-  return { kind: "choice", optionId: right ? ex.answerId : (ex.options.find((o) => o.id !== ex.answerId)?.id ?? "") };
+      if (!("answerId" in ex)) return { kind: "skip" }; // type sans QCM : non joué ici
+      return { kind: "choice", optionId: right ? ex.answerId : (ex.options.find((o) => o.id !== ex.answerId)?.id ?? "") };
   }
 }
 

@@ -102,22 +102,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em sắp tới rồi.",
-      "tokens": [
-        "Em",
-        "sắp",
-        "tới",
-        "rồi",
-        "tối"
-      ],
-      "translation": {
-        "fr": "J'arrive bientôt.",
-        "en": "I'm almost there."
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "L'année prochaine, j'irai à Cần Thơ.",
+        "en": "Next year I'll go to Cần Thơ."
       },
+      "accepted": [
+        "Năm sau tôi sẽ đi Cần Thơ.",
+        "Năm sau tui sẽ đi Cần Thơ.",
+        "Năm sau em sẽ đi Cần Thơ.",
+        "Năm sau tôi đi Cần Thơ."
+      ],
       "explain": {
-        "fr": "sắp + verbe + rồi : c'est imminent.",
-        "en": "sắp + verb + rồi: it's imminent."
+        "fr": "Avec un repère de temps clair, sẽ devient facultatif.",
+        "en": "With a clear time marker, sẽ becomes optional."
       }
     },
     {

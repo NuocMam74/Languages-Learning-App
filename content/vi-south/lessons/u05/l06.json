@@ -121,22 +121,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tôi đang học tiếng Việt.",
-      "tokens": [
-        "Tôi",
-        "đang",
-        "học",
-        "tiếng Việt",
-        "hiểu"
-      ],
+      "type": "speak_answer",
+      "prompt": "Chị nói tiếng Việt được hông?",
       "translation": {
-        "fr": "J'apprends le vietnamien (en ce moment).",
-        "en": "I'm learning Vietnamese."
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
       },
+      "accepted": [
+        "c_chut_xiu",
+        "c_hieu"
+      ],
       "explain": {
-        "fr": "đang devant le verbe = action en cours.",
-        "en": "đang before the verb = ongoing action."
+        "fr": "Réponds court : « Dạ, chút xíu. » suffit largement.",
+        "en": "Keep it short: 'Dạ, chút xíu.' is plenty."
       }
     },
     {

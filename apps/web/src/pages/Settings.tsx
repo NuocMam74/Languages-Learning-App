@@ -2,17 +2,22 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
 import { ApiError, getServerExport } from "../api.ts";
+import { Slot } from "../components/Slot.tsx";
 import { Screen } from "../components/ui.tsx";
 import { db, type Profile } from "../db.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
 import { deleteLocalData, exportLocalData, getProfile, saveProfile } from "../learner.ts";
 import { clearPrefs, usePrefs } from "../prefs.ts";
 import { syncInterfaceLocale, syncProfileChange } from "../profile-sync.ts";
-import { ReminderSettings } from "../notifications/Reminders.tsx";
+import { loadReminderState, ReminderSettings } from "../notifications/Reminders.tsx";
+import type { ReminderState } from "../notifications/push.ts";
+import { getLeaguesEnabled } from "../leagues/league-store.ts";
 import { LeagueSettings } from "../leagues/LeagueWidgets.tsx";
 import { PackSettings } from "../packs/PackSettings.tsx";
+import { preloadPackChoices } from "../packs/use-packs.ts";
 import { ClassesSettings } from "../classes/ClassesSettings.tsx";
 import { StudioLink } from "../studio/StudioLink.tsx";
+import { OfflineSettings } from "../offline/OfflineSettings.tsx";
 
 /** Réglages (spec §4.1.6, §13, §14) : profil, affichage, compte, données. */
 
@@ -27,7 +32,9 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 
 function Segmented<T extends string | number>({ label, value, options, onChange }: { label: string; value: T | null; options: { value: T; label: string }[]; onChange: (v: T) => void }) {
   return (
-    <div role="radiogroup" aria-label={label} className="flex flex-wrap gap-2">
+    // Grille à 2 colonnes sur téléphone : le nombre de lignes ne dépend pas de la largeur du texte,
+    // donc l'arrivée de la police (swap) ne décale plus la page (CLS, audit mobile P1 #4).
+    <div role="radiogroup" aria-label={label} className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
       {options.map((o) => (
         <button
           key={String(o.value)}
@@ -82,9 +89,21 @@ export default function Settings() {
   const { locale, silent, dictation, setLocale, setSilent, setDictation } = usePrefs();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  // Sections dont l'état est lu en local (rappels, ligue) : préchargées avec le profil, la page
+  // s'affiche en une fois à sa hauteur finale (CLS mesuré à 0,55 quand elles arrivaient après coup).
+  const [preloaded, setPreloaded] = useState<{ reminder: ReminderState; leagues: boolean } | null>(null);
 
   useEffect(() => {
-    void getProfile().then(setProfile);
+    void getProfile().then(async (p) => {
+      // Noms des packs compris : la liste « Langue apprise » ne gagne pas une ligne après coup (CLS).
+      const [reminder, leagues] = await Promise.all([
+        loadReminderState(),
+        getLeaguesEnabled({ motivation: p.motivation }),
+        preloadPackChoices().catch(() => undefined),
+      ]);
+      setProfile(p);
+      setPreloaded({ reminder, leagues });
+    });
   }, []);
 
   const update = (patch: Partial<Profile>) => {
@@ -126,38 +145,42 @@ export default function Settings() {
   const reminders: NonNullable<Profile["reminder"]>[] = ["morning", "noon", "evening", "none"];
   const motivations: NonNullable<Profile["motivation"]>[] = ["family", "roots", "travel", "work", "curiosity"];
 
+  const header = (
+    <div className="flex items-center gap-3 pt-2">
+      <button type="button" onClick={() => navigate("/")} className="grid size-11 shrink-0 place-items-center text-phu-sa" aria-label={t("common.back")}>
+        <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M15 5l-7 7 7 7" /></svg>
+      </button>
+      <h1 className="font-serif text-2xl">{t("settings.title")}</h1>
+    </div>
+  );
+  if (!profile || !preloaded || status === "loading") return <Screen top={header}><div data-testid="settings-loading" /></Screen>;
+
   return (
-    <Screen
-      top={
-        <div className="flex items-center gap-3 pt-2">
-          <button type="button" onClick={() => navigate("/")} className="grid size-11 place-items-center text-phu-sa" aria-label={t("common.back")}>
-            <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M15 5l-7 7 7 7" /></svg>
-          </button>
-          <h1 className="font-serif text-2xl">{t("settings.title")}</h1>
-        </div>
-      }
-    >
+    <Screen top={header}>
       <Section title={t("packs.settings.title")}>
         <PackSettings />
       </Section>
 
-      {profile && (
-        <Section title={t("settings.profile")}>
-          <p className="text-sm text-phu-sa">{t("settings.goal")}</p>
-          <Segmented label={t("settings.goal")} value={profile.dailyGoalMin} options={([5, 10, 15, 20] as const).map((n) => ({ value: n, label: t("onboarding.minutes.value", { n }) }))} onChange={(v) => update({ dailyGoalMin: v })} />
-          <p className="text-sm text-phu-sa">{t("settings.reminder")}</p>
-          <Segmented label={t("settings.reminder")} value={profile.reminder} options={reminders.map((r) => ({ value: r, label: t(`onboarding.reminder.${r}` as MessageKey) }))} onChange={(v) => update({ reminder: v })} />
-          <p className="text-sm text-phu-sa">{t("settings.path")}</p>
-          <Segmented label={t("settings.path")} value={profile.motivation} options={motivations.map((m) => ({ value: m, label: t(`onboarding.why.${m}` as MessageKey) }))} onChange={(v) => update({ motivation: v })} />
-        </Section>
-      )}
+      <Section title={t("settings.profile")}>
+        {/* Identité, niveau, compétences, badges : c'est le profil (contrat phase7 §3) ; ici, les réglages. */}
+        <Link to="/profil" className="flex min-h-12 items-center justify-between font-semibold text-ngoc" data-testid="settings-profile-link">
+          <span>{t("profile.title")}</span>
+          <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M9 5l7 7-7 7" /></svg>
+        </Link>
+        <p className="text-sm text-phu-sa">{t("settings.goal")}</p>
+        <Segmented label={t("settings.goal")} value={profile.dailyGoalMin} options={([5, 10, 15, 20] as const).map((n) => ({ value: n, label: t("onboarding.minutes.value", { n }) }))} onChange={(v) => update({ dailyGoalMin: v })} />
+        <p className="text-sm text-phu-sa">{t("settings.reminder")}</p>
+        <Segmented label={t("settings.reminder")} value={profile.reminder} options={reminders.map((r) => ({ value: r, label: t(`onboarding.reminder.${r}` as MessageKey) }))} onChange={(v) => update({ reminder: v })} />
+        <p className="text-sm text-phu-sa">{t("settings.path")}</p>
+        <Segmented label={t("settings.path")} value={profile.motivation} options={motivations.map((m) => ({ value: m, label: t(`onboarding.why.${m}` as MessageKey) }))} onChange={(v) => update({ motivation: v })} />
+      </Section>
 
       <Section title={t("notif.settings.title")}>
-        <ReminderSettings />
+        <ReminderSettings initial={preloaded.reminder} />
       </Section>
 
       <Section title={t("league.settings.title")}>
-        <LeagueSettings motivation={profile?.motivation ?? null} />
+        <LeagueSettings motivation={profile.motivation} initialEnabled={preloaded.leagues} />
       </Section>
 
       <Section title={t("settings.display")}>
@@ -190,9 +213,14 @@ export default function Settings() {
         )}
       </Section>
 
-      <ClassesSettings />
+      {/* Sections réseau (rôles, classes) : emplacements réservés à la hauteur de la dernière visite. */}
+      <Slot id={`settings-classes-${status}`}>
+        <ClassesSettings />
+      </Slot>
 
-      <StudioLink />
+      <Slot id={`settings-studio-${status}`}>
+        <StudioLink />
+      </Slot>
 
       <Section title={t("settings.data")}>
         <button type="button" className="min-h-11 self-start font-semibold text-ngoc" data-testid="export-data" onClick={() => void exportData()}>
@@ -217,6 +245,14 @@ export default function Settings() {
             </div>
           </div>
         )}
+      </Section>
+
+      {/*
+        Hors ligne en dernier : la liste des unités arrive après coup (pack découpé, estimation de
+        stockage) et passe de « Chargement… » à ~2 400 px. En bas de page, rien ne se décale (CLS).
+      */}
+      <Section title={t("offline.title")}>
+        <OfflineSettings />
       </Section>
     </Screen>
   );
@@ -296,7 +332,7 @@ function DeleteAccount() {
       </button>
     );
   }
-  const ready = mode === "password" ? password.length > 0 : typed.trim() === "SUPPRIMER";
+  const ready = mode === "password" ? password.length > 0 : typed.trim() === t("journey.deleteAccount.word");
   return (
     <form onSubmit={(e) => void submit(e)} className="flex flex-col gap-3 border-l-4 border-son-mai pl-3" data-testid="delete-account">
       <p className="font-semibold">{t("journey.deleteAccount")}</p>
@@ -304,7 +340,7 @@ function DeleteAccount() {
       {mode === "password" ? (
         <label className="flex flex-col gap-1">
           <span className="font-medium">{t("journey.deleteAccount.password")}</span>
-          <input type="password" autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} className="min-h-12 rounded-xl border-2 border-phu-sa/20 bg-white px-4 text-lg" />
+          <input type="password" autoComplete="current-password" autoCapitalize="off" autoCorrect="off" spellCheck={false} value={password} onChange={(e) => setPassword(e.target.value)} className="min-h-12 rounded-xl border-2 border-phu-sa/20 bg-white px-4 text-lg" />
         </label>
       ) : (
         <label className="flex flex-col gap-1">

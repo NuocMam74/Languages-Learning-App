@@ -120,7 +120,7 @@ export default function Placement({ content }: { content: ContentIndex }) {
   };
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] md:max-w-[720px]" data-testid="placement">
+    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]" data-testid="placement">
       <header className="flex items-center justify-between gap-4">
         <p className="text-sm text-phu-sa">{t("placement.progress", { i: answers.length + 1, n: spec.slots.length })}</p>
         <p className="text-sm font-semibold tabular-nums" aria-live="off" aria-label={t("placement.timeLeft", { s: remaining })}>

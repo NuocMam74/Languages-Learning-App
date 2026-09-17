@@ -109,21 +109,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị hỏi gì?",
-      "tokens": [
-        "Chị",
-        "hỏi",
-        "gì",
-        "ai"
+      "type": "fill_gap",
+      "text": "Người đó là ai ___?",
+      "answer": "vậy",
+      "options": [
+        "vậy",
+        "vây",
+        "vẫy"
       ],
       "translation": {
-        "fr": "Tu demandes quoi ? (à une femme un peu plus âgée)",
-        "en": "What are you asking? (to a slightly older woman)"
+        "fr": "C'est qui, cette personne ?",
+        "en": "Who is that person?"
       },
       "explain": {
-        "fr": "hỏi + gì : demander quoi.",
-        "en": "hỏi + gì: ask what."
+        "fr": "vậy en fin de question adoucit : très courant au Sud.",
+        "en": "vậy at the end of a question softens it: very common in the South."
       }
     },
     {

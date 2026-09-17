@@ -394,6 +394,12 @@ export interface ProfilePatch {
   dailyGoalMin?: number;
   pathVariant?: string | null;
   interfaceLocale?: string | null;
+  /**
+   * Contrat phase7 §3 : nom affiché modifiable depuis le profil. Les serveurs qui ne connaissent
+   * pas encore ce champ l'ignorent (`ProfilePatch` accepte les champs inconnus) : le nom reste
+   * alors celui de l'appareil.
+   */
+  displayName?: string;
 }
 
 export const patchProfile = (patch: ProfilePatch) => request<unknown>("/me/profile", { method: "PATCH", body: patch });

@@ -1,5 +1,5 @@
-import type { Concept, ContentIndex, Lesson, LessonStep } from "./types.ts";
-import { TONAL_STEP_TYPES } from "./types.ts";
+import type { Concept, ContentIndex, Dialogue, Lesson, LessonStep, StepType } from "./types.ts";
+import { NATIVE_AUDIO_STEP_TYPES, TONAL_STEP_TYPES } from "./types.ts";
 
 /**
  * Disponibilité des médias (contrat phase5-parcours §1). Le bundle d'un pack expose
@@ -57,6 +57,31 @@ export function tonalStepHasNativeAudio(content: ContentIndex, step: LessonStep,
   return concepts.length > 0 && concepts.every((c) => hasNativeAudio(c, media));
 }
 
+/** Une étape de ce type est retirée de la séance si son enregistrement natif manque. */
+export function stepRequiresNativeAudio(type: StepType): boolean {
+  return NATIVE_AUDIO_STEP_TYPES.has(type);
+}
+
+/** Dialogue écoutable : au moins un tour, et chaque tour a son enregistrement présent. */
+export function dialogueHasAudio(dialogue: Dialogue | undefined, media: MediaIndex | null): boolean {
+  return dialogue !== undefined && dialogue.turns.length > 0 && dialogue.turns.every((t) => present(t.audio, media));
+}
+
+/**
+ * L'étape a-t-elle l'audio natif qu'elle exige (contrat phase6 §1) ? Étape sans exigence : true.
+ * Couvre les étapes tonales, `listen_transcribe` (on ne transcrit pas de la synthèse) et
+ * `listen_gist` (le dialogue doit être enregistré en entier).
+ */
+export function stepHasRequiredAudio(content: ContentIndex, step: LessonStep, media: MediaIndex | null = contentMedia(content)): boolean {
+  if (!stepRequiresNativeAudio(step.type)) return true;
+  if (step.type === "listen_transcribe") {
+    const concept = content.concepts.get(step.concept);
+    return concept !== undefined && hasNativeAudio(concept, media);
+  }
+  if (step.type === "listen_gist") return dialogueHasAudio(content.dialogues.get(step.dialogue), media);
+  return tonalStepHasNativeAudio(content, step, media);
+}
+
 export interface PlayableOptions {
   /** Build `VITE_TTS_TONE_FALLBACK=true` (bêta interne) : étapes tonales jouées en synthèse vocale. */
   toneFallback?: boolean;
@@ -64,12 +89,15 @@ export interface PlayableOptions {
 }
 
 /**
- * Étape jouable en séance : une étape tonale sans audio natif est retirée (ni affichée ni notée),
- * sauf repli de synthèse. `speak_repeat` sans courbe reste une écoute non notée (jouable).
+ * Étape jouable en séance : une étape qui exige un enregistrement natif et ne l'a pas est retirée
+ * (ni affichée ni notée), sauf repli de synthèse. Les étapes orales (`speak_repeat`, `speak_answer`,
+ * `speak_roleplay`) sans courbe F0 restent jouables : elles deviennent de l'écoute non notée.
  */
 export function isStepPlayable(content: ContentIndex, step: LessonStep, options: PlayableOptions = {}): boolean {
-  if (options.toneFallback) return true;
-  return tonalStepHasNativeAudio(content, step, options.media === undefined ? contentMedia(content) : options.media);
+  // Le repli de synthèse ne concerne que les tons : on ne fait jamais transcrire ni écouter un
+  // dialogue en voix de synthèse.
+  if (options.toneFallback && TONAL_STEP_TYPES.has(step.type)) return true;
+  return stepHasRequiredAudio(content, step, options.media === undefined ? contentMedia(content) : options.media);
 }
 
 /** Index des étapes jouables d'une leçon (ordre conservé, indices d'origine). */

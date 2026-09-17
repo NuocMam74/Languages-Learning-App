@@ -27,7 +27,11 @@
     "c_tien",
     "c_chu_owner",
     "c_chu",
-    "s_con_phong"
+    "s_con_phong",
+    "c_phong_tro",
+    "c_chu_nha",
+    "c_hop_dong",
+    "c_may_lanh"
   ],
   "steps": [
     {
@@ -115,24 +119,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tiền điện nước tính riêng.",
-      "tokens": [
-        "Tiền",
-        "điện",
-        "nước",
-        "tính",
-        "riêng",
-        "nhà"
-      ],
-      "translation": {
-        "fr": "L'eau et l'électricité sont facturées à part.",
-        "en": "Water and electricity are charged separately."
-      },
-      "explain": {
-        "fr": "tính riêng : compté à part.",
-        "en": "tính riêng: charged separately."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_phong_tro",
+        "c_chu_nha",
+        "c_hop_dong",
+        "c_chia_khoa",
+        "c_may_lanh"
+      ]
     },
     {
       "type": "build_sentence",
@@ -152,6 +146,14 @@
       "explain": {
         "fr": "adjectif + hơn : plus…",
         "en": "adjective + hơn: more…"
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_thue_phong_tro",
+      "explain": {
+        "fr": "Écoute bien ce qui est « tính riêng ».",
+        "en": "Listen for what is 'tính riêng'."
       }
     },
     {

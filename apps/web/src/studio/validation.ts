@@ -17,6 +17,7 @@ import {
 import { createSouthLinter } from "@parlo/south-lint";
 import { Ajv2020, type ErrorObject, type ValidateFunction } from "ajv/dist/2020.js";
 import type { DocKind } from "./studio-api.ts";
+import { st, type StudioKey } from "./i18n.ts";
 
 /**
  * Validation en direct d'un brouillon, dans le navigateur, avec les mêmes règles que la CI
@@ -24,7 +25,7 @@ import type { DocKind } from "./studio-api.ts";
  *   1. schémas JSON du dépôt (content/schema, importés par Vite dans le seul chunk du studio) ;
  *   2. contrôles sémantiques @parlo/core sur le pack publié avec le brouillon superposé ;
  *   3. garde du Sud sur les champs vietnamiens.
- * Chaque problème est rattaché à un champ (`path` pointé, ex. `steps.2.concept`) et formulé en français simple.
+ * Chaque problème est rattaché à un champ (`path` pointé, ex. `steps.2.concept`) et formulé simplement dans la langue d'interface (messages : i18n/messages/studio.ts).
  */
 
 export interface FieldIssue {
@@ -63,15 +64,15 @@ function validatorFor(kind: DocKind): ValidateFunction | null {
   return fn;
 }
 
-const PATTERN_HINTS: [RegExp, string][] = [
-  [/\^\(c\|s\|t\|p\)_/, "Identifiant de mot attendu : c_…, s_…, t_… ou p_…, en minuscules sans accent."],
-  [/\\\.u\[0-9\]\{2\}\\\.l/, "Identifiant de leçon attendu, ex. vi-south.u01.l01."],
-  [/\\\.u\[0-9\]\{2\}\$/, "Identifiant d'unité attendu, ex. vi-south.u01."],
-  [/\^cc_/, "Identifiant de carte culture attendu : cc_…, en minuscules sans accent."],
-  [/\^lv_/, "Identifiant de variante attendu : lv_…, en minuscules sans accent."],
-  [/opus\|m4a/, "Chemin de fichier attendu, en minuscules sans espace, ex. audio/c_ba_mai.opus."],
-  [/___/, "Le texte doit contenir ___ (trois tirets bas) à la place du mot manquant."],
-  [/exam/, "Identifiant d'examen attendu, ex. vi-south.exam.a0."],
+const PATTERN_HINTS: [RegExp, StudioKey][] = [
+  [/\^\(c\|s\|t\|p\)_/, "validation.pattern.concept"],
+  [/\\\.u\[0-9\]\{2\}\\\.l/, "validation.pattern.lesson"],
+  [/\\\.u\[0-9\]\{2\}\$/, "validation.pattern.unit"],
+  [/\^cc_/, "validation.pattern.culture"],
+  [/\^lv_/, "validation.pattern.variant"],
+  [/opus\|m4a/, "validation.pattern.media"],
+  [/___/, "validation.pattern.gap"],
+  [/exam/, "validation.pattern.exam"],
 ];
 
 function pointerToPath(pointer: string): string[] {
@@ -81,8 +82,8 @@ function pointerToPath(pointer: string): string[] {
     .map((s) => s.replace(/~1/g, "/").replace(/~0/g, "~"));
 }
 
-function plural(n: number, one: string, many: string): string {
-  return `${n} ${n > 1 ? many : one}`;
+function plural(n: number, one: StudioKey, many: StudioKey): string {
+  return st(n > 1 ? many : one, { n });
 }
 
 /** Erreur ajv → message clair, rattaché au champ concerné. */
@@ -92,47 +93,47 @@ export function describeSchemaError(e: ErrorObject): { path: string; message: st
   const at = (...extra: string[]) => [...base, ...extra].join(".");
   switch (e.keyword) {
     case "required":
-      return { path: at(String(params.missingProperty)), message: "Ce champ est obligatoire." };
+      return { path: at(String(params.missingProperty)), message: st("validation.required") };
     case "additionalProperties":
-      return { path: at(), message: `Champ non prévu : « ${String(params.additionalProperty)} ».` };
+      return { path: at(), message: st("validation.additional", { name: String(params.additionalProperty) }) };
     case "pattern": {
       const pattern = String(params.pattern);
       const hint = PATTERN_HINTS.find(([re]) => re.test(pattern))?.[1];
-      return { path: at(), message: hint ?? "Format invalide." };
+      return { path: at(), message: st(hint ?? "validation.format") };
     }
     case "minLength":
-      return { path: at(), message: "Ce champ ne peut pas être vide." };
+      return { path: at(), message: st("validation.empty") };
     case "minItems":
-      return { path: at(), message: `Il faut au moins ${plural(Number(params.limit), "élément", "éléments")}.` };
+      return { path: at(), message: plural(Number(params.limit), "validation.minItems.one", "validation.minItems.many") };
     case "maxItems":
-      return { path: at(), message: `Pas plus de ${plural(Number(params.limit), "élément", "éléments")}.` };
+      return { path: at(), message: plural(Number(params.limit), "validation.maxItems.one", "validation.maxItems.many") };
     case "uniqueItems":
-      return { path: at(), message: "La liste contient un doublon." };
+      return { path: at(), message: st("validation.unique") };
     case "enum":
     case "const":
-      return { path: at(), message: "Valeur non autorisée." };
+      return { path: at(), message: st("validation.enum") };
     case "type":
-      return { path: at(), message: params.type === "integer" ? "Nombre entier attendu." : params.type === "string" ? "Texte attendu." : "Type de valeur incorrect." };
+      return { path: at(), message: st(params.type === "integer" ? "validation.integer" : params.type === "string" ? "validation.string" : "validation.type") };
     case "minimum":
-      return { path: at(), message: `Doit être au moins ${String(params.limit)}.` };
+      return { path: at(), message: st("validation.minimum", { n: String(params.limit) }) };
     case "maximum":
-      return { path: at(), message: `Doit être au plus ${String(params.limit)}.` };
+      return { path: at(), message: st("validation.maximum", { n: String(params.limit) }) };
     case "exclusiveMinimum":
-      return { path: at(), message: `Doit être supérieur à ${String(params.limit)}.` };
+      return { path: at(), message: st("validation.exclusiveMinimum", { n: String(params.limit) }) };
     case "propertyNames":
     case "pattern_propertyName":
-      return { path: at(), message: "Code de langue invalide (ex. fr, en)." };
+      return { path: at(), message: st("validation.locale") };
     case "discriminator":
-      return { path: at("type"), message: "Type d'exercice inconnu." };
+      return { path: at("type"), message: st("validation.stepType") };
     case "not":
-      return { path: at("type"), message: "Ce type d'exercice n'est pas permis ici." };
+      return { path: at("type"), message: st("validation.stepNotAllowed") };
     case "oneOf":
     case "anyOf":
     case "allOf":
     case "if":
       return null;
     default:
-      return { path: at(), message: e.message ?? "Valeur invalide." };
+      return { path: at(), message: e.message ?? st("validation.invalid") };
   }
 }
 
@@ -154,7 +155,7 @@ export function schemaIssues(kind: DocKind, data: unknown): FieldIssue[] {
   // conceptPool : « lesson | unit | known » OU liste ; ajv n'a alors qu'un oneOf à signaler.
   if (out.length === 0 && errors.length > 0) {
     const first = errors[0];
-    out.push({ level: "error", source: "schema", path: first ? pointerToPath(first.instancePath).join(".") : "", message: "Valeur invalide." });
+    out.push({ level: "error", source: "schema", path: first ? pointerToPath(first.instancePath).join(".") : "", message: st("validation.invalid") });
   }
   return out;
 }
@@ -168,6 +169,8 @@ export function rawFromIndex(index: ContentIndex): RawPackFiles {
     lessons: [...index.lessons.values()],
     concepts: [...index.concepts.values()],
     culture: [...index.culture.values()],
+    // Sans les dialogues, l'aperçu d'une étape `listen_gist` échouerait (contrat phase6 §6).
+    ...(index.dialogues.size > 0 ? { dialogues: [...index.dialogues.values()] } : {}),
     ...(index.variants ? { variants: index.variants } : {}),
   };
 }
@@ -278,7 +281,7 @@ export function contentIssues(raw: RawPackFiles, kind: DocKind, id: string, data
     const issues = kind === "exam" ? checkExam(index, data as ExamFile, id) : checkContent(index).filter((i) => belongsTo(i, kind, id));
     return issues.map((i) => ({ level: i.level, source: "content" as const, path: contentIssuePath(i, kind, id, data), message: i.message }));
   } catch (error) {
-    return [{ level: "error", source: "content", path: "", message: `Contrôle impossible : ${error instanceof Error ? error.message : String(error)}` }];
+    return [{ level: "error", source: "content", path: "", message: st("validation.checkFailed", { message: error instanceof Error ? error.message : String(error) }) }];
   }
 }
 
@@ -360,7 +363,7 @@ export function southIssues(kind: DocKind, data: unknown, variants: LexicalVaria
         level: f.severity,
         source: "south",
         path: field.path,
-        message: `« ${f.found} » est une forme du Nord. Au Sud, on dit : ${f.suggestions.join(" / ")}.`,
+        message: st("validation.north", { found: f.found, suggestions: f.suggestions.join(" / ") }),
       });
     }
   }

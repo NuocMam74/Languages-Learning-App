@@ -20,7 +20,11 @@
     "s_tra_da",
     "c_muong",
     "c_cay",
-    "s_cho_em_to_pho"
+    "s_cho_em_to_pho",
+    "c_hu_tieu",
+    "c_com_tam",
+    "c_banh_mi",
+    "c_nuoc_mia"
   ],
   "steps": [
     {
@@ -110,22 +114,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Dạ, em no rồi.",
-      "tokens": [
-        "Dạ",
-        "em",
-        "no",
-        "rồi",
-        "chưa"
-      ],
-      "translation": {
-        "fr": "Merci, j'ai assez mangé.",
-        "en": "Thanks, I'm full."
-      },
+      "type": "match_pairs",
+      "concepts": [
+        "c_pho",
+        "c_hu_tieu",
+        "c_com_tam",
+        "c_banh_mi",
+        "c_nuoc_mia"
+      ]
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_goi_pho",
       "explain": {
-        "fr": "no rồi : rassasié.",
-        "en": "no rồi: full."
+        "fr": "Écoute la commande en entier avant de choisir.",
+        "en": "Listen to the whole order before choosing."
       }
     },
     {

@@ -43,6 +43,26 @@ export function MessageList({ messages, glossaries, streaming, onRetry }: {
   );
 }
 
+/** Rattache la ponctuation qui suit un mot glosé à ce mot (évite un « ? » orphelin en début de ligne). */
+function withAttachedPunctuation(segments: readonly { text: string; key: string | null }[]): { text: string; key: string | null; punct: string }[] {
+  const out: { text: string; key: string | null; punct: string }[] = [];
+  for (const seg of segments) {
+    const prev = out[out.length - 1];
+    if (!seg.key && prev?.key) {
+      const match = /^\s?[\p{P}\p{S}]+/u.exec(seg.text);
+      if (match) {
+        // Espace fine avant ? ! : (typographie française) : insécable.
+        prev.punct = match[0].replace(/^\s/, "\u00a0");
+        const rest = seg.text.slice(match[0].length);
+        if (rest) out.push({ text: rest, key: null, punct: "" });
+        continue;
+      }
+    }
+    out.push({ ...seg, punct: "" });
+  }
+  return out;
+}
+
 function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage; glossaries: Glossary[]; speakable: boolean }) {
   const [open, setOpen] = useState<{ key: string; text: string } | null>(null);
   const resting = message.fallback === "quota";
@@ -50,7 +70,7 @@ function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage
   const viText = message.sentences.filter(looksVietnamese).join(" ");
 
   return (
-    <div className="flex max-w-[88%] flex-col items-start gap-1.5 self-start" data-testid="tutor-message" data-fallback={message.fallback ?? undefined}>
+    <div className="flex max-w-[88%] scroll-mt-4 flex-col items-start gap-1.5 self-start" data-testid="tutor-message" data-fallback={message.fallback ?? undefined}>
       <span className="text-sm font-semibold text-ngoc">{t("tutor.name")}</span>
       {resting && message.sentences.length === 0 && (
         <p className="rounded-2xl rounded-tl-md bg-phu-sa/5 px-4 py-2.5 text-lg">{t("tutor.chat.resting")}</p>
@@ -64,17 +84,22 @@ function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage
             className={`rounded-2xl rounded-tl-md px-4 py-2.5 ${message.fallback ? "bg-phu-sa/5" : "bg-ngoc-sang"} ${vi ? "font-serif text-[1.3rem] leading-[1.55]" : "text-lg"}`}
           >
             {vi && !message.fallback
-              ? segmentSentence(sentence, ...glossaries).map((seg, j) =>
+              ? withAttachedPunctuation(segmentSentence(sentence, ...glossaries)).map((seg, j) =>
                   seg.key ? (
-                    <button
-                      key={j}
-                      type="button"
-                      className={`inline cursor-pointer rounded-sm underline decoration-ngoc/50 decoration-dotted decoration-2 underline-offset-[6px] ${open?.key === seg.key ? "bg-nghe/25" : ""}`}
-                      aria-expanded={open?.key === seg.key}
-                      onClick={() => setOpen(open?.key === seg.key ? null : { key: seg.key!, text: seg.text })}
-                    >
-                      {seg.text}
-                    </button>
+                    // Mot + ponctuation collée insécables (« không? » ne se coupe pas avant « ? »).
+                    <span key={j} className="whitespace-nowrap">
+                      <button
+                        type="button"
+                        // Cible tactile ≥ 44 px de haut sans changer l'interligne (padding compensé par marge négative).
+                        className={`-mx-1.5 -my-1.5 inline cursor-pointer rounded-md px-1.5 py-1.5 underline decoration-ngoc/50 decoration-dotted decoration-2 underline-offset-[6px] ${open?.key === seg.key ? "bg-nghe/25" : ""}`}
+                        aria-expanded={open?.key === seg.key}
+                        data-gloss-word=""
+                        onClick={() => setOpen(open?.key === seg.key ? null : { key: seg.key!, text: seg.text })}
+                      >
+                        {seg.text}
+                      </button>
+                      {seg.punct}
+                    </span>
                   ) : (
                     <span key={j}>{seg.text}</span>
                   ),
@@ -96,7 +121,7 @@ function TutorMessage({ message, glossaries, speakable }: { message: ChatMessage
           <button type="button" className="min-h-11 font-semibold text-ngoc" onClick={() => speakVietnamese(viText)}>
             {t("tutor.chat.listen")}
           </button>
-          <span className="text-phu-sa/70">{t("audio.tts")}</span>
+          <span className="text-phu-sa/80">{t("audio.tts")}</span>
         </p>
       )}
     </div>
@@ -144,11 +169,13 @@ function Typing() {
 }
 
 /** Barre de saisie en bas (zone du pouce) : texte, dictée facultative, envoi. */
-export function Composer({ onSend, disabled, placeholder, extra }: {
+export function Composer({ onSend, disabled, placeholder, extra, onFocus }: {
   onSend: (text: string, inputMode: InputMode) => void | Promise<unknown>;
   disabled: boolean;
   placeholder?: string;
   extra?: ReactNode;
+  /** Saisie ouverte (clavier) : Đối đáp y ramène la question de Cô Mai à l'écran. */
+  onFocus?: () => void;
 }) {
   const [text, setText] = useState("");
   const [voice, setVoice] = useState(false);
@@ -217,6 +244,13 @@ export function Composer({ onSend, disabled, placeholder, extra }: {
         <textarea
           id="tutor-input"
           lang="vi"
+          // Clavier iOS/Android en français : pas de « correction » des mots vietnamiens.
+          autoCorrect="off"
+          autoCapitalize="off"
+          autoComplete="off"
+          spellCheck={false}
+          enterKeyHint="send"
+          onFocus={onFocus}
           rows={1}
           value={text}
           placeholder={placeholder ?? t("tutor.chat.placeholder")}
@@ -227,7 +261,7 @@ export function Composer({ onSend, disabled, placeholder, extra }: {
               submit();
             }
           }}
-          className="max-h-32 min-h-12 flex-1 resize-none rounded-2xl border-2 border-phu-sa/15 bg-white px-4 py-2.5 font-serif text-lg leading-normal focus:border-ngoc focus:outline-none"
+          className="max-h-32 min-h-12 min-w-0 flex-1 resize-none rounded-2xl border-2 border-phu-sa/15 bg-white px-4 py-2.5 font-serif text-lg leading-normal placeholder:truncate placeholder:text-base placeholder:text-phu-sa/80 focus:border-ngoc focus:outline-none"
         />
         {canDictate && (
           <button

@@ -2,19 +2,23 @@ import type { ContentIndex } from "@parlo/core";
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { useAccount } from "./account.ts";
+import { Shell } from "./components/BottomNav.tsx";
+import { ScreenSkeleton, WithMessages } from "./components/Skeleton.tsx";
 import { Button, Screen } from "./components/ui.tsx";
-import { checkContentUpdate, loadPack } from "./content.ts";
+import { checkContentUpdate, loadPack, warmLessonUnit } from "./content.ts";
+import { Dashboard } from "./dashboard/Dashboard.tsx";
+import { DeepLinkGuard } from "./dashboard/DeepLinkGuard.tsx";
 import type { Profile } from "./db.ts";
-import { t } from "./i18n/index.ts";
+import { ensureMessages, t } from "./i18n/index.ts";
 import { currentSession, getProfile, sessionPath } from "./learner.ts";
+import { WithUnits } from "./offline/ContentGate.tsx";
+import { prefetchLikelyUnits } from "./offline/prefetch.ts";
 import { loadActivePack } from "./packs/switch.ts";
 import { Hub } from "./pages/Hub.tsx";
-import { Onboarding } from "./pages/Onboarding.tsx";
-import { SessionPage } from "./pages/SessionPage.tsx";
 import { Welcome } from "./pages/Welcome.tsx";
-import { GamePlayPage, GamesPage } from "./games/GamesPage.tsx";
 import { usePrefs } from "./prefs.ts";
-import { startExpressQueue } from "./social/express-store.ts";
+import { RouteError, withRecovery } from "./pwa/chunk-recovery.tsx";
+import { UpdatePrompt } from "./pwa/UpdatePrompt.tsx";
 import { restoreOnStart, STATE_RESTORED_EVENT } from "./restore.ts";
 import { ACCOUNT_UPDATED_EVENT, startSync } from "./sync.ts";
 import { useTutorStatus } from "./tutor/status.ts";
@@ -22,6 +26,11 @@ import { useTutorStatus } from "./tutor/status.ts";
 /** Pages de démonstration des composants (spec §16) : développement uniquement, absentes du build. */
 const DemoPage = import.meta.env.DEV ? lazy(() => import("./demo/DemoPage.tsx")) : null;
 
+// Séance et jeux : chargés à la demande (le hub et l'accueil n'embarquent ni exercices, ni jeux, ni karaoké).
+const SessionPage = lazy(() => import("./pages/SessionPage.tsx").then((m) => ({ default: m.SessionPage })));
+const GamesPage = lazy(() => import("./games/GamesPage.tsx").then((m) => ({ default: m.GamesPage })));
+const GamePlayPage = lazy(() => import("./games/GamesPage.tsx").then((m) => ({ default: m.GamePlayPage })));
+const Onboarding = lazy(() => import("./pages/Onboarding.tsx").then((m) => ({ default: m.Onboarding })));
 // Écrans hors du parcours quotidien : chargés à la demande (bundle principal léger).
 const LanguageChoice = lazy(() => import("./pages/LanguageChoice.tsx"));
 const Placement = lazy(() => import("./pages/Placement.tsx"));
@@ -30,6 +39,9 @@ const ForgotPasswordPage = lazy(() => import("./pages/AccountRecovery.tsx").then
 const ResetPasswordPage = lazy(() => import("./pages/AccountRecovery.tsx").then((m) => ({ default: m.ResetPasswordPage })));
 const VerifyEmailPage = lazy(() => import("./pages/AccountRecovery.tsx").then((m) => ({ default: m.VerifyEmailPage })));
 const Settings = lazy(() => import("./pages/Settings.tsx"));
+const ProfilePage = lazy(() => import("./profile/ProfilePage.tsx"));
+/** Onglet « Réviser » (contrat phase8 §4) : écran d'attente tant que la bibliothèque n'existe pas. */
+const ReviewSoon = lazy(() => import("./dashboard/ReviewSoon.tsx"));
 const Badges = lazy(() => import("./pages/Badges.tsx"));
 // Phase 2 : examens, certificats, rappels.
 const ExamsPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.ExamsPage })));
@@ -58,7 +70,16 @@ const MyClassesPage = lazy(() => import("./classes/ClassesPages.tsx").then((m) =
 // Phase 4 : studio de contenu (reviewer, editor, admin) ; garde des rôles dans le chunk du studio.
 const StudioApp = lazy(() => import("./studio/StudioApp.tsx"));
 
-const later = (node: ReactNode) => <Suspense fallback={null}>{node}</Suspense>;
+// Écran à la demande : squelette, puis chaînes d'interface de tous les domaines chargées avant le rendu.
+const later = (node: ReactNode) => <Suspense fallback={<ScreenSkeleton />}><WithMessages>{node}</WithMessages></Suspense>;
+
+/** Travail non critique après le premier affichage (le navigateur peint d'abord). */
+const afterFirstPaint = (task: () => void) => {
+  const idle = (globalThis as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback;
+  setTimeout(() => (idle ? idle(task, { timeout: 2000 }) : task()), 0);
+};
+
+const inSessionRoute = () => /^\/(seance|revision|lecon\/)/.test(window.location.pathname);
 
 interface Boot {
   content: ContentIndex;
@@ -68,27 +89,62 @@ interface Boot {
 export function App() {
   const [boot, setBoot] = useState<Boot | null>(null);
   const [failed, setFailed] = useState(false);
-  const locale = usePrefs((s) => s.locale);
+  const chosenLocale = usePrefs((s) => s.locale);
+  // Langue d'interface changée : l'arbre est remonté une fois ses chaînes chargées (anglais chargé à la demande).
+  const [locale, setLocale] = useState(chosenLocale);
+  useEffect(() => {
+    let live = true;
+    void ensureMessages("all").then(() => live && setLocale(chosenLocale), () => live && setLocale(chosenLocale));
+    return () => {
+      live = false;
+    };
+  }, [chosenLocale]);
 
   const start = useCallback(() => {
     setFailed(false);
+    // Lien direct vers une séance : son écran et toutes les chaînes partent en même temps que le contenu
+    // (une seule attente réseau au lieu de trois en cascade).
+    if (inSessionRoute()) {
+      void import("./pages/SessionPage.tsx");
+      void ensureMessages("all");
+      const lessonId = /^\/lecon\/(.+)$/.exec(window.location.pathname)?.[1];
+      if (lessonId) warmLessonUnit(decodeURIComponent(lessonId));
+    }
     // Langue apprise enregistrée d'abord (ADR 0006) : contenu, profil et progression sont ceux de ce pack.
     loadActivePack()
       .then(async () => {
-        // Contenu publié depuis le build (contrat phase5 §6) : vérifié en ligne, sans bloquer longtemps le démarrage.
-        await Promise.race([checkContentUpdate().catch(() => "none"), new Promise((resolve) => setTimeout(resolve, 2500))]);
         // Nouvel appareil d'un compte connecté : progression restaurée avant d'afficher le parcours (contrat phase5 §4).
+        // Sans effet (et sans réseau) dès qu'une progression locale existe.
         await restoreOnStart().catch(() => false);
       })
-      .then(() => Promise.all([loadPack(), getProfile()]))
+      // Premier affichage depuis IndexedDB (ou core.json, petit et précaché) : jamais d'attente réseau si le contenu est local.
+      .then(() => Promise.all([loadPack(), getProfile(), ensureMessages("boot")]))
       .then(async ([content, profile]) => {
         const session = await currentSession(content);
-        // Reprise exacte, une seule fois au lancement : quitter la séance ramène ensuite au hub.
-        if (session && profile.onboardedAt && window.location.pathname === "/") {
+        // Reprise exacte, une seule fois au lancement, en arrivant sur le parcours de la langue :
+        // quitter la séance y ramène ensuite. L'accueil (`/`) n'enlève jamais la vue d'ensemble —
+        // sa carte « Reprendre » propose la séance interrompue (contrat phase7 §2).
+        if (session && profile.onboardedAt && window.location.pathname === "/apprendre") {
           window.history.replaceState(null, "", sessionPath(session));
         }
         setBoot({ content, profile });
-        void useTutorStatus.getState().refresh({ packHasTutor: Boolean(content.pack.tutor) });
+        afterFirstPaint(() => {
+          void useTutorStatus.getState().refresh({ packHasTutor: Boolean(content.pack.tutor) });
+          void import("./offline/downloads.ts").then((m) => m.startOfflineMaintenance(content));
+          void prefetchLikelyUnits(content);
+          void ensureMessages("all");
+          // Prochain écran probable depuis le hub : la séance (chunk préchargé au repos).
+          if (!inSessionRoute()) void import("./pages/SessionPage.tsx");
+          // Contenu publié depuis le build (contrat phase5 §6), vérifié en arrière-plan : appliqué tout de suite hors
+          // séance (le hub se met à jour), sinon mis en attente jusqu'à la fin de la séance.
+          void checkContentUpdate(undefined, undefined, inSessionRoute)
+            .then(async (update) => {
+              if (update !== "applied" || inSessionRoute()) return;
+              const next = await loadPack();
+              setBoot((current) => (current ? { ...current, content: next } : current));
+            })
+            .catch(() => undefined);
+        });
       })
       .catch(() => setFailed(true));
   }, []);
@@ -109,10 +165,16 @@ export function App() {
 
   useEffect(() => {
     void useAccount.getState().init();
-    const stopExpress = startExpressQueue(() => useAccount.getState().status === "signed_in");
+    // File du défi express : module chargé après le premier affichage.
+    let stopExpress: (() => void) | null = null;
+    let live = true;
+    void import("./social/express-store.ts").then((m) => {
+      if (live) stopExpress = m.startExpressQueue(() => useAccount.getState().status === "signed_in");
+    });
     const stopSync = startSync();
     return () => {
-      stopExpress();
+      live = false;
+      stopExpress?.();
       stopSync();
     };
   }, []);
@@ -124,7 +186,7 @@ export function App() {
       </Screen>
     );
   }
-  if (!boot) return null;
+  if (!boot) return <ScreenSkeleton />;
   // Changer la langue d'interface remonte l'arbre : toutes les chaînes sont relues.
   return <Routes key={locale ?? "auto"} boot={boot} onProfile={(profile) => setBoot({ ...boot, profile })} />;
 }
@@ -136,18 +198,29 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
   // Recréé seulement quand l'onboarding se termine ; les pages relisent le profil elles-mêmes.
   const router = useMemo(
     () =>
-      createBrowserRouter([
-        {
-          path: "/",
-          element: onboarded ? <Hub content={content} /> : <Navigate to="/bienvenue" replace />,
-        },
+      // withRecovery : chunk périmé après déploiement → rechargement unique ou écran « Recharger ».
+      // Toutes les routes vivent sous `Shell` : il pose la navigation basse (contrat phase7 §1) et
+      // la place qu'elle réserve. Chaque route garde son propre écran de secours (withRecovery).
+      createBrowserRouter([{
+        element: <Shell />,
+        errorElement: <RouteError />,
+        children: withRecovery([
+          {
+            path: "/",
+            element: onboarded ? <Dashboard content={content} /> : <Navigate to="/bienvenue" replace />,
+          },
+        // Le parcours de la langue active : tout ce qui existait sur l'ancien accueil.
+        { path: "/apprendre", element: onboarded ? <Hub content={content} /> : <Navigate to="/bienvenue" replace /> },
+        { path: "/profil", element: later(<ProfilePage content={content} />) },
+        { path: "/reviser", element: later(<ReviewSoon />) },
         { path: "/bienvenue", element: <Welcome content={content} /> },
         { path: "/langue", element: later(<LanguageChoice content={content} />) },
-        { path: "/onboarding", element: <Onboarding content={content} onDone={onProfile} /> },
+        { path: "/onboarding", element: later(<Onboarding content={content} onDone={onProfile} />) },
         { path: "/placement", element: later(<Placement content={content} />) },
-        { path: "/seance", element: <SessionPage content={content} mode="daily" /> },
-        { path: "/revision", element: <SessionPage content={content} mode="review" /> },
-        { path: "/lecon/:lessonId", element: <SessionPage content={content} mode="lesson" /> },
+        { path: "/seance", element: later(<SessionPage content={content} mode="daily" />) },
+        { path: "/revision", element: later(<SessionPage content={content} mode="review" />) },
+        // Lien profond vers une leçon d'une autre langue : confirmation, bascule, puis la leçon (contrat phase7 §1).
+        { path: "/lecon/:lessonId", element: later(<DeepLinkGuard><SessionPage content={content} mode="lesson" /></DeepLinkGuard>) },
         { path: "/compte", element: later(<AccountPage mode="register" />) },
         { path: "/connexion", element: later(<AccountPage mode="login" />) },
         { path: "/compte/mot-de-passe-oublie", element: later(<ForgotPasswordPage />) },
@@ -155,16 +228,16 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/compte/verifier", element: later(<VerifyEmailPage />) },
         { path: "/reglages", element: later(<Settings />) },
         { path: "/badges", element: later(<Badges content={content} />) },
-        { path: "/jeux", element: <GamesPage content={content} /> },
-        { path: "/jeux/karaoke_tonal", element: later(<KaraokePage content={content} />) },
+        { path: "/jeux", element: later(<WithUnits content={content}><GamesPage content={content} /></WithUnits>) },
+        { path: "/jeux/karaoke_tonal", element: later(<WithUnits content={content}><KaraokePage content={content} /></WithUnits>) },
         { path: "/jeux/doi_dap", element: later(<DoiDapPage content={content} />) },
         { path: "/co-mai", element: later(<TutorStartPage />) },
         { path: "/co-mai/:conversationId", element: later(<ConversationPage content={content} />) },
         { path: "/bilan-semaine", element: later(<DebriefPage />) },
-        { path: "/jeux/:game", element: <GamePlayPage content={content} /> },
+        { path: "/jeux/:game", element: later(<WithUnits content={content}><GamePlayPage content={content} /></WithUnits>) },
         { path: "/examens", element: later(<ExamsPage content={content} />) },
-        { path: "/examens/:level", element: later(<RealExamPage content={content} />) },
-        { path: "/examens/:level/blanc", element: later(<MockExamPage content={content} />) },
+        { path: "/examens/:level", element: later(<WithUnits content={content}><RealExamPage content={content} /></WithUnits>) },
+        { path: "/examens/:level/blanc", element: later(<WithUnits content={content}><MockExamPage content={content} /></WithUnits>) },
         { path: "/certificats", element: later(<CertificatesPage content={content} />) },
         { path: "/verifier/:code", element: later(<VerifyPage />) },
         { path: "/rappels", element: later(<RemindersPage />) },
@@ -181,14 +254,20 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/studio/*", element: later(<StudioApp />) },
         ...(DemoPage
           ? [
-              { path: "/demo", element: <Suspense fallback={null}><DemoPage content={content} /></Suspense> },
-              { path: "/demo/:component", element: <Suspense fallback={null}><DemoPage content={content} /></Suspense> },
+              { path: "/demo", element: later(<WithUnits content={content} scope="all"><DemoPage content={content} /></WithUnits>) },
+              { path: "/demo/:component", element: later(<WithUnits content={content} scope="all"><DemoPage content={content} /></WithUnits>) },
             ]
           : []),
         { path: "*", element: <Navigate to="/" replace /> },
-      ]),
+        ]),
+      }]),
     [content, onboarded],
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <UpdatePrompt />
+    </>
+  );
 }

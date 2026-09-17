@@ -1,5 +1,5 @@
 import { BADGE_CODES, levelForXp, nextLesson, sessionItemsDone, sessionItemsRemaining, TONAL_STEP_TYPES, UNIT_TEST_PASS_SCORE, type ContentIndex, type Exercise, type SessionPhase } from "@parlo/core";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { useAccount } from "../account.ts";
 import { playConcept, ttsAllowed } from "../audio.ts";
@@ -8,7 +8,7 @@ import { ExerciseView } from "../components/exercises.tsx";
 import { levelLabel, LevelLine } from "../components/LevelLine.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
 import { playCorrectSound } from "../feedback-sound.ts";
-import { l, t, type MessageKey } from "../i18n/index.ts";
+import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { getProfile, progressState } from "../learner.ts";
 import { usePrefs } from "../prefs.ts";
 import { useSession } from "../session-store.ts";
@@ -30,6 +30,11 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   const navigate = useNavigate();
   const { status, run, phase, exercise, feedback, recap, error, open, answer, next, remedial } = useSession();
   const [attempt, setAttempt] = useState(0);
+  // Hauteur de la feuille de correction : le contenu est rembourré d'autant pour rester lisible dessous.
+  const [sheetHeight, setSheetHeight] = useState(0);
+  const onSheetHeight = useCallback((h: number) => setSheetHeight(Math.round(h)), []);
+  // Option choisie : l'exercice est remonté après la réponse (sélection perdue), la feuille la resurligne.
+  const [chosenId, setChosenId] = useState<string | null>(null);
 
   useEffect(() => {
     void open(content, mode === "lesson" ? { source: "lesson", lessonId } : { source: mode });
@@ -44,11 +49,11 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   }, [status, feedback, next]);
 
   if (status === "error") return <Screen><p className="text-son-mai">{error}</p></Screen>;
-  if (status === "locked") return <Navigate to="/" replace state={{ notice: "locked" }} />;
+  if (status === "locked") return <Navigate to="/apprendre" replace state={{ notice: "locked" }} />;
   if (status === "empty") {
     const review = mode === "review";
     return (
-      <Screen action={<Button onClick={() => navigate("/", { replace: true })}>{t("recap.next")}</Button>}>
+      <Screen action={<Button onClick={() => navigate("/apprendre", { replace: true })}>{t("recap.next")}</Button>}>
         <div className="flex flex-1 flex-col justify-center gap-4" data-testid="session-empty">
           <h1 className="font-serif text-2xl">{t(review ? "journey.empty.title" : "journey.empty.dailyTitle")}</h1>
           <p className="text-lg text-phu-sa">{t(review ? "journey.empty.body" : "journey.empty.dailyBody")}</p>
@@ -56,7 +61,7 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
       </Screen>
     );
   }
-  if (status === "done" && recap) return <Recap content={content} onDone={() => navigate("/")} onRetry={() => setAttempt((n) => n + 1)} />;
+  if (status === "done" && recap) return <Recap content={content} onDone={() => navigate("/apprendre")} onRetry={() => setAttempt((n) => n + 1)} />;
   if (!run || !exercise || !phase) return <Screen><div /></Screen>;
 
   const done = sessionItemsDone(run);
@@ -72,10 +77,12 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
       data-status={status}
       data-cursor={done}
       data-phase={phase.kind}
-      className="relative mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] md:max-w-[720px]"
+      data-correct={status === "feedback" && feedback ? String(feedback.correct) : undefined}
+      className="relative mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]"
+      style={status === "feedback" && feedback && !feedback.correct && sheetHeight > 0 ? { paddingBottom: sheetHeight } : undefined}
     >
       <header className="flex items-center gap-4">
-        <button type="button" onClick={() => navigate("/")} aria-label={t("lesson.quit")} className="grid size-11 place-items-center rounded-full text-phu-sa">
+        <button type="button" onClick={() => navigate("/apprendre")} aria-label={t("lesson.quit")} className="grid size-11 shrink-0 place-items-center rounded-full text-phu-sa">
           <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
         <div
@@ -100,10 +107,13 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
       )}
 
       <main className="flex flex-1 flex-col pt-6">
-        <ExerciseView key={`${phase.kind}:${done}:${remedial ?? ""}`} exercise={exercise} content={content} onAnswer={(r) => void answer(r)} locked={status !== "answering"} />
+        <ExerciseView key={`${phase.kind}:${done}:${remedial ?? ""}`} exercise={exercise} content={content} onAnswer={(r) => {
+          setChosenId(r.kind === "choice" ? r.optionId : null);
+          void answer(r);
+        }} locked={status !== "answering"} />
       </main>
 
-      {status === "feedback" && feedback && <Feedback content={content} />}
+      {status === "feedback" && feedback && <Feedback content={content} onHeight={onSheetHeight} chosenId={chosenId} />}
     </div>
   );
 }
@@ -123,11 +133,85 @@ function exerciseAudio(exercise: Exercise) {
   }
 }
 
-function Feedback({ content }: { content: ContentIndex }) {
+/** Échappe un identifiant d'option pour un sélecteur d'attribut (CSS.escape absent de jsdom). */
+const cssId = (id: string) => (typeof CSS !== "undefined" && typeof CSS.escape === "function" ? CSS.escape(id) : id.replace(/["\\]/g, "\\$&"));
+
+/**
+ * Après une erreur : fait défiler pour que l'option choisie et la bonne réponse restent visibles
+ * au-dessus de la feuille (priorité à la bonne réponse si les deux ne tiennent pas).
+ */
+function revealAnswers(sheet: HTMLElement, expectedId: string | undefined, chosenId: string | null) {
+  const main = document.querySelector('[data-testid="lesson"] main');
+  if (!main) return;
+  const chosen = chosenId ? main.querySelector<HTMLElement>(`[data-option-id="${cssId(chosenId)}"]`) : null;
+  const expected = expectedId ? main.querySelector<HTMLElement>(`[data-option-id="${cssId(expectedId)}"]`) : null;
+  const targets = [chosen, expected].filter((el): el is HTMLElement => el !== null);
+  if (targets.length === 0) return;
+  const rects = targets.map((el) => el.getBoundingClientRect());
+  const visibleTop = 12;
+  const visibleBottom = sheet.getBoundingClientRect().top - 12;
+  let top = Math.min(...rects.map((r) => r.top));
+  let bottom = Math.max(...rects.map((r) => r.bottom));
+  if (bottom - top > visibleBottom - visibleTop && expected) {
+    const r = expected.getBoundingClientRect();
+    top = r.top;
+    bottom = r.bottom;
+  }
+  let delta = 0;
+  if (bottom > visibleBottom) delta = bottom - visibleBottom;
+  if (top - delta < visibleTop) delta = top - visibleTop;
+  if (Math.abs(delta) < 2) return;
+  const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  window.scrollBy({ top: delta, behavior: reduce ? "auto" : "smooth" });
+}
+
+function Feedback({ content, onHeight, chosenId }: { content: ContentIndex; onHeight: (height: number) => void; chosenId: string | null }) {
   const { feedback, exercise, run, phase, given, next, remedial } = useSession();
   const silent = usePrefs((s) => s.silent);
   const [why, setWhy] = useState<WhyAnswer | "loading" | null>(null);
   const replayed = useRef(false);
+  const sheet = useRef<HTMLDivElement>(null);
+  const expectedId = exercise && "options" in exercise && "answerId" in exercise ? exercise.answerId : undefined;
+  // Lus par l'observateur de taille : la feuille grandit (« Cô Mai, pourquoi ? ») → on refait de la place.
+  const reveal = useRef<{ wrong: boolean; expectedId: string | undefined; chosenId: string | null; height: number }>({ wrong: false, expectedId: undefined, chosenId: null, height: 0 });
+  reveal.current.wrong = feedback !== null && !feedback.correct;
+  reveal.current.expectedId = expectedId;
+  reveal.current.chosenId = chosenId;
+
+  // La page réserve la hauteur de la feuille (padding) : rien n'est caché sans pouvoir défiler.
+  useLayoutEffect(() => {
+    const el = sheet.current;
+    if (!el) return;
+    const report = () => {
+      const height = el.getBoundingClientRect().height;
+      onHeight(height);
+      const grew = reveal.current.height > 0 && height > reveal.current.height + 8;
+      reveal.current.height = height;
+      if (grew && reveal.current.wrong) requestAnimationFrame(() => revealAnswers(el, reveal.current.expectedId, reveal.current.chosenId));
+    };
+    report();
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(report);
+    observer?.observe(el);
+    return () => {
+      observer?.disconnect();
+      onHeight(0);
+    };
+  }, [onHeight]);
+
+  useEffect(() => {
+    if (!feedback || feedback.correct) return;
+    // Deux images : le padding de la page est appliqué avant de mesurer.
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => {
+        if (sheet.current) revealAnswers(sheet.current, expectedId, chosenId);
+      });
+    });
+    return () => {
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
+  }, [feedback, expectedId, chosenId]);
 
   // Erreur : la bonne réponse se fait réentendre (sauf mode silencieux).
   useEffect(() => {
@@ -140,7 +224,9 @@ function Feedback({ content }: { content: ContentIndex }) {
   if (!feedback || !exercise || !run || !phase) return null;
 
   const expectedOption = "options" in exercise && "answerId" in exercise ? exercise.options.find((o) => o.id === exercise.answerId) : undefined;
-  const expected = expectedOption?.label ? l(expectedOption.label) : feedback.expected;
+  // Options de ton : libellé lisible (« sắc — monte »), jamais le code interne (« sac »).
+  const optionLabel = expectedOption?.label ? l(expectedOption.label) : expectedOption?.tones ? toneLabel(expectedOption.tones) : null;
+  const expected = optionLabel ?? feedback.expected;
   const isReview = phase.kind === "warmup" || phase.kind === "review";
 
   const ask = async () => {
@@ -158,47 +244,55 @@ function Feedback({ content }: { content: ContentIndex }) {
 
   return (
     <div
+      ref={sheet}
       role="status"
-      className={`fixed inset-x-0 bottom-0 z-10 mx-auto max-w-[720px] rounded-t-3xl px-5 pt-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] ${
+      data-testid="feedback-sheet"
+      className={`fixed inset-x-0 bottom-0 z-10 mx-auto flex max-h-[70dvh] max-w-[720px] flex-col rounded-t-3xl pt-5 pr-[max(1.25rem,env(safe-area-inset-right))] pb-[max(1.25rem,env(safe-area-inset-bottom))] pl-[max(1.25rem,env(safe-area-inset-left))] short:max-h-[55dvh] short:pt-3 short:pb-[max(0.75rem,env(safe-area-inset-bottom))] ${
         feedback.correct ? "bg-ngoc text-nuoc" : "bg-white text-muc shadow-[0_-8px_30px_rgb(20_32_30/0.12)]"
       }`}
     >
+      {expectedId && !feedback.correct && (
+        // Bonne réponse surlignée dans la liste, l'option choisie (fausse) en rouge.
+        <style>{`${chosenId && chosenId !== expectedId ? `[data-testid="lesson"] [data-option-id="${cssId(chosenId)}"]{border-color:var(--color-son-mai);background-color:color-mix(in srgb,var(--color-son-mai) 8%,white)}` : ""}[data-testid="lesson"] [data-option-id="${cssId(expectedId)}"]{border-color:var(--color-ngoc);background-color:var(--color-ngoc-sang);box-shadow:0 0 0 2px var(--color-ngoc)}`}</style>
+      )}
       {feedback.correct ? (
         <p className="text-2xl font-semibold motion-safe:animate-[rise_300ms_ease-out]">{t("lesson.correct")}</p>
       ) : (
-        <div className="flex flex-col gap-3">
-          <p className="text-lg font-semibold text-son-mai">
-            {feedback.nearMiss ? t("lesson.nearMiss", { expected }) : t("lesson.wrong")}
-          </p>
-          {!feedback.nearMiss && expected && (
-            <p className="flex flex-wrap items-baseline gap-2">
-              <span>{t("lesson.answerLabel")}</span>
-              {expectedOption?.label ? <span className="text-lg font-semibold">{expected}</span> : <Vi size="2xl">{expected}</Vi>}
+        <div className="flex min-h-0 flex-col gap-3 short:grid short:grid-cols-[minmax(0,1fr)_auto] short:items-end short:gap-x-6">
+          <div className="-mx-1 flex min-h-0 flex-col gap-3 overflow-y-auto overscroll-contain px-1 short:max-h-[calc(55dvh-1.5rem)] short:gap-1">
+            <p className="text-lg font-semibold text-son-mai">
+              {feedback.nearMiss ? t("lesson.nearMiss", { expected }) : t("lesson.wrong")}
             </p>
-          )}
-          {feedback.explain && <p>{l(feedback.explain)}</p>}
+            {!feedback.nearMiss && expected && (
+              <p className="flex flex-wrap items-baseline gap-2">
+                <span>{t("lesson.answerLabel")}</span>
+                {optionLabel ? <span className="text-lg font-semibold" data-testid="feedback-expected">{expected}</span> : <Vi size="2xl">{expected}</Vi>}
+              </p>
+            )}
+            {feedback.explain && <p>{l(feedback.explain)}</p>}
 
-          {why === null && !remedial && (
-            <button type="button" onClick={() => void ask()} className="min-h-11 self-start text-left font-semibold text-ngoc underline-offset-4 hover:underline">
-              {t("tutor.why")}
-            </button>
-          )}
-          {why === "loading" && <p className="min-h-11 text-sm text-phu-sa">{t("tutor.thinking")}</p>}
-          {why !== null && why !== "loading" && (
-            <p className="border-l-4 border-nghe pl-3 text-sm" aria-live="polite">
-              <span className="font-semibold">{t("tutor.name")} : </span>
-              {why.kind === "tutor"
-                ? why.text
-                : why.kind === "unavailable"
-                  ? feedback.explain
-                    ? l(feedback.explain)
-                    : t("journey.why.fallback")
-                  : t(feedback.explain ? "tutor.why.offline" : "tutor.why.offlineNoExplain")}
-            </p>
-          )}
+            {why === null && !remedial && (
+              <button type="button" onClick={() => void ask()} className="min-h-11 self-start text-left font-semibold text-ngoc underline-offset-4 hover:underline">
+                {t("tutor.why")}
+              </button>
+            )}
+            {why === "loading" && <p className="min-h-11 text-sm text-phu-sa">{t("tutor.thinking")}</p>}
+            {why !== null && why !== "loading" && (
+              <p className="border-l-4 border-nghe pl-3 text-sm" aria-live="polite">
+                <span className="font-semibold">{t("tutor.name")} : </span>
+                {why.kind === "tutor"
+                  ? why.text
+                  : why.kind === "unavailable"
+                    ? feedback.explain
+                      ? l(feedback.explain)
+                      : t("journey.why.fallback")
+                    : t(feedback.explain ? "tutor.why.offline" : "tutor.why.offlineNoExplain")}
+              </p>
+            )}
 
-          <p className="text-sm text-phu-sa">{t(isReview ? "session.retryLater" : "lesson.retryLater")}</p>
-          <Button onClick={() => void next()}>{t("lesson.continue")}</Button>
+            <p className="text-sm text-phu-sa">{t(isReview ? "session.retryLater" : "lesson.retryLater")}</p>
+          </div>
+          <Button className="shrink-0 short:w-auto" onClick={() => void next()}>{t("lesson.continue")}</Button>
         </div>
       )}
     </div>

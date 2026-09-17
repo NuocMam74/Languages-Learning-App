@@ -42,6 +42,7 @@ export function JoinClassPage() {
   const online = useOnline();
   const [consent, setConsent] = useState(false);
   const [state, setState] = useState<JoinState>({ kind: "idle" });
+  let action: ReactNode = undefined;
 
   const join = async () => {
     if (!consent) return;
@@ -75,6 +76,7 @@ export function JoinClassPage() {
   } else {
     body = (
       <form
+        id="class-join-form"
         className="flex flex-col gap-4"
         onSubmit={(e) => {
           e.preventDefault();
@@ -105,15 +107,18 @@ export function JoinClassPage() {
         </label>
         {!online && <p className="text-phu-sa">{t("classes.join.offline")}</p>}
         {state.kind === "error" && <p role="alert" className="font-medium text-son-mai">{t(state.message)}</p>}
-        <Button type="submit" disabled={!consent || !online || state.kind === "joining"}>
-          {state.kind === "joining" ? t("classes.join.busy") : t("classes.join.submit")}
-        </Button>
       </form>
+    );
+    // « Rejoindre la classe » dans la barre collante du bas (coupé sous la ligne de flottaison sinon).
+    action = (
+      <Button type="submit" form="class-join-form" disabled={!consent || !online || state.kind === "joining"}>
+        {state.kind === "joining" ? t("classes.join.busy") : t("classes.join.submit")}
+      </Button>
     );
   }
 
   return (
-    <Screen top={<BackHeader title={t("classes.join.title")} />}>
+    <Screen top={<BackHeader title={t("classes.join.title")} />} action={action}>
       <p className="mb-4 text-phu-sa">
         {t("classes.join.code", { code })}
       </p>

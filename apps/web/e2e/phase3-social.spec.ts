@@ -131,9 +131,10 @@ test("ligue : classement simulé, rang sur le hub, désactivable (famille : dés
   await page.getByRole("button", { name: "Quitter la leçon" }).click();
   await expect(page.getByTestId("tutor-greeting")).toBeVisible();
   await idbWrite(page, [{ key: "account", value: ACCOUNT }]);
-  await page.goto("/");
+  await page.goto("/apprendre");
   await expect(page.getByTestId("tutor-greeting")).toBeVisible();
-  // Garde-fou : famille → ligue désactivée, aucun rang, aucun appel.
+  // Garde-fou : famille → ligue désactivée, aucun rang, aucun appel. La ligue vit sur l'accueil (contrat phase7 §2.4).
+  await page.goto("/");
   await expect(page.getByTestId("league-hub-line")).toHaveCount(0);
 
   await page.goto("/reglages");
@@ -163,14 +164,14 @@ test("ligue : classement simulé, rang sur le hub, désactivable (famille : dés
   await expect(page.locator('[data-zone="relegate"]')).toHaveCount(5);
   await expect(rows.first()).toContainText("1er");
 
-  // Désactiver depuis les réglages : la ligne du hub disparaît.
+  // Désactiver depuis les réglages : la ligne de l'accueil disparaît.
   await page.goto("/reglages");
   await page.getByRole("switch", { name: "Participer à la ligue hebdomadaire" }).click();
   await expect(page.getByRole("switch", { name: "Participer à la ligue hebdomadaire" })).toHaveAttribute("aria-checked", "false");
   await expect.poll(() => calls.filter((c) => c.path === "/me/profile" && c.method === "PATCH").at(-1)?.body).toEqual({ leaguesEnabled: false });
-  await page.goto("/");
+  await page.goto("/apprendre");
   await expect(page.getByTestId("tutor-greeting")).toBeVisible();
-  await expect(page.getByRole("link", { name: "Défis entre amis · défi express" })).toBeVisible();
+  await page.goto("/");
   await expect(page.getByTestId("league-hub-line")).toHaveCount(0);
   await page.goto("/ligue");
   await expect(page.getByTestId("league")).toHaveAttribute("data-state", "disabled");

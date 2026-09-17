@@ -118,24 +118,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chị tôi là bác sĩ.",
-      "tokens": [
-        "Chị",
-        "tôi",
-        "là",
-        "bác sĩ",
-        "giáo viên",
-        "của"
-      ],
-      "translation": {
-        "fr": "Ma grande sœur est médecin.",
-        "en": "My older sister is a doctor."
-      },
-      "explain": {
-        "fr": "chị tôi : « ma grande sœur », le possesseur après.",
-        "en": "chị tôi: 'my older sister', owner after."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_bac_si",
+        "c_giao_vien",
+        "c_sinh_vien",
+        "c_ky_su",
+        "c_nhan_vien"
+      ]
     },
     {
       "type": "speak_repeat",

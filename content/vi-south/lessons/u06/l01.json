@@ -115,23 +115,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tôi có ba con cá.",
-      "tokens": [
-        "Tôi",
-        "có",
-        "ba",
+      "type": "fill_gap",
+      "text": "Tôi có ba ___ cá.",
+      "answer": "con",
+      "options": [
         "con",
-        "cá",
-        "bà"
+        "còn",
+        "cái"
       ],
       "translation": {
         "fr": "J'ai trois poissons.",
         "en": "I have three fish."
       },
       "explain": {
-        "fr": "Nombre + con + animal, comme hai con mèo.",
-        "en": "Number + con + animal, like hai con mèo."
+        "fr": "con = classificateur des animaux ; cái = des objets.",
+        "en": "con = classifier for animals; cái = for objects."
       }
     },
     {

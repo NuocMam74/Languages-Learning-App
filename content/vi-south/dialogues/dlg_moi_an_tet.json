@@ -1,0 +1,81 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_moi_an_tet",
+  "title": {
+    "fr": "Une invitation pour le Tết",
+    "en": "A Tết invitation"
+  },
+  "turns": [
+    {
+      "speaker": "Cô Tư",
+      "vi": "Tết này con có về quê hông?",
+      "translation": {
+        "fr": "Tu rentres au pays pour le Tết ?",
+        "en": "Are you going back home for Tết?"
+      },
+      "audio": "audio/dlg_moi_an_tet_t1_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ hông cô, con ở lại Sài Gòn thôi.",
+      "translation": {
+        "fr": "Non, je reste à Saïgon.",
+        "en": "No, I'm staying in Saigon."
+      },
+      "audio": "audio/dlg_moi_an_tet_t2_mai.opus"
+    },
+    {
+      "speaker": "Cô Tư",
+      "vi": "Vậy mùng hai con qua nhà cô ăn cơm nghen.",
+      "translation": {
+        "fr": "Alors le deuxième jour du Tết, viens manger à la maison.",
+        "en": "Then come and eat at my place on the second day of Tết."
+      },
+      "audio": "audio/dlg_moi_an_tet_t3_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, con cảm ơn cô. Con chúc cô năm mới vui vẻ.",
+      "translation": {
+        "fr": "Merci. Je vous souhaite une bonne année.",
+        "en": "Thank you. I wish you a happy new year."
+      },
+      "audio": "audio/dlg_moi_an_tet_t4_mai.opus"
+    },
+    {
+      "speaker": "Cô Tư",
+      "vi": "Cảm ơn con. Nhớ qua nghen, đừng khách sáo!",
+      "translation": {
+        "fr": "Merci. N'oublie pas de venir, ne fais pas de manières !",
+        "en": "Thank you. Do come, don't stand on ceremony!"
+      },
+      "audio": "audio/dlg_moi_an_tet_t5_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Que propose Cô Tư à Marie ?",
+      "en": "What does Cô Tư offer Marie?"
+    },
+    "options": [
+      {
+        "fr": "De venir manger chez elle le 2e jour du Tết.",
+        "en": "To come and eat at her place on the 2nd day of Tết."
+      },
+      {
+        "fr": "De rentrer au village avec elle.",
+        "en": "To go back to the village with her."
+      },
+      {
+        "fr": "De lui apporter un cadeau.",
+        "en": "To bring her a present."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« mùng hai » = le deuxième jour du Tết.",
+      "en": "'mùng hai' = the second day of Tết."
+    }
+  },
+  "reviewed": false
+}

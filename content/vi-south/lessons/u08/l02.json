@@ -113,22 +113,110 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Cái này rẻ quá!",
-      "tokens": [
-        "Cái",
-        "này",
-        "rẻ",
-        "quá",
-        "mắc"
-      ],
-      "translation": {
-        "fr": "Celui-ci est vraiment pas cher !",
-        "en": "This one is so cheap!"
+      "type": "dialogue_choice",
+      "situation": {
+        "fr": "Au marché, tu veux acheter des mangues.",
+        "en": "At the market, you want to buy mangoes."
       },
+      "turns": [
+        {
+          "id": "t1",
+          "vi": "Xoài ngon nè em! Sáu chục ngàn một ký.",
+          "translation": {
+            "fr": "De belles mangues ! Soixante mille le kilo.",
+            "en": "Lovely mangoes! Sixty thousand a kilo."
+          },
+          "replies": [
+            {
+              "id": "r1a",
+              "vi": "Mắc quá chị ơi! Bớt cho em đi chị.",
+              "next": "t2",
+              "best": true,
+              "feedback": {
+                "fr": "Marchander en souriant, c'est attendu.",
+                "en": "Haggling with a smile is expected."
+              }
+            },
+            {
+              "id": "r1b",
+              "vi": "Mắc quá! Chị bán rẻ đi.",
+              "next": "t2",
+              "feedback": {
+                "fr": "Un peu direct : « Bớt cho em đi chị » sonne plus doux.",
+                "en": "A bit direct: 'Bớt cho em đi chị' sounds gentler."
+              }
+            },
+            {
+              "id": "r1c",
+              "vi": "Dạ, cho em một ký.",
+              "next": "t2",
+              "feedback": {
+                "fr": "Tu acceptes le premier prix : au marché, on discute toujours un peu.",
+                "en": "You take the first price: at the market people always haggle a little."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "vi": "Thôi, năm chục ngàn. Em lấy mấy ký?",
+          "translation": {
+            "fr": "Bon, cinquante mille. Tu en prends combien ?",
+            "en": "Fine, fifty thousand. How many kilos?"
+          },
+          "replies": [
+            {
+              "id": "r2a",
+              "vi": "Dạ, cho em một ký rưỡi.",
+              "next": "t3",
+              "best": true,
+              "feedback": {
+                "fr": "Clair et poli : dạ + cho em + quantité.",
+                "en": "Clear and polite: dạ + cho em + quantity."
+              }
+            },
+            {
+              "id": "r2b",
+              "vi": "Một ký.",
+              "next": "t3",
+              "feedback": {
+                "fr": "Ajoute « dạ » : ça ne coûte rien et ça change tout.",
+                "en": "Add 'dạ': it costs nothing and changes everything."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "vi": "Dạ, bảy mươi lăm ngàn nha em.",
+          "translation": {
+            "fr": "Alors soixante-quinze mille.",
+            "en": "That'll be seventy-five thousand."
+          },
+          "replies": [
+            {
+              "id": "r3a",
+              "vi": "Dạ, em gửi chị.",
+              "best": true,
+              "feedback": {
+                "fr": "« gửi » = je te remets l'argent : très courant.",
+                "en": "'gửi' = here's the money: very common."
+              }
+            },
+            {
+              "id": "r3b",
+              "vi": "Tiền đây.",
+              "feedback": {
+                "fr": "Trop sec pour une vendeuse plus âgée que toi.",
+                "en": "Too blunt for a seller older than you."
+              }
+            }
+          ]
+        }
+      ],
       "explain": {
-        "fr": "quá après l'adjectif : « trop » ou « tellement ».",
-        "en": "quá after the adjective: 'too' or 'so'."
+        "fr": "Marchander, oui ; être sec, non.",
+        "en": "Haggle, yes; be curt, no."
       }
     },
     {

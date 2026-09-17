@@ -22,7 +22,12 @@
     "c_cho_carry",
     "c_cho_market",
     "c_cho_wait",
-    "s_cho_em_xuong"
+    "s_cho_em_xuong",
+    "c_queo",
+    "c_nga_tu",
+    "c_den_do",
+    "c_cau_bridge",
+    "c_ket_xe"
   ],
   "steps": [
     {
@@ -98,23 +103,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Đi xe buýt mất bao lâu?",
-      "tokens": [
-        "Đi",
-        "xe buýt",
-        "mất",
-        "bao lâu",
-        "bao nhiêu"
-      ],
-      "translation": {
-        "fr": "Ça prend combien de temps en bus ?",
-        "en": "How long does it take by bus?"
-      },
-      "explain": {
-        "fr": "mất bao lâu : combien de temps.",
-        "en": "mất bao lâu: how long."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_queo",
+        "c_nga_tu",
+        "c_den_do",
+        "c_cau_bridge",
+        "c_ket_xe"
+      ]
     },
     {
       "type": "tone_minimal_pair",
@@ -131,6 +127,14 @@
       "explain": {
         "fr": "chở plonge, chợ court, chờ descend.",
         "en": "chở dips, chợ short, chờ falls."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_di_xe_om",
+      "explain": {
+        "fr": "Le conducteur donne une durée et une condition : les deux comptent.",
+        "en": "The driver gives a duration and a condition: both matter."
       }
     },
     {

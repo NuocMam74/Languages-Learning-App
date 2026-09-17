@@ -127,22 +127,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Mấy ngày thì xong?",
-      "tokens": [
-        "Mấy",
-        "ngày",
-        "thì",
-        "xong",
-        "giờ"
+      "type": "fill_gap",
+      "text": "Visa của tui ___ hết hạn.",
+      "answer": "sắp",
+      "options": [
+        "sắp",
+        "sáp",
+        "sắc"
       ],
       "translation": {
-        "fr": "Ce sera prêt en combien de jours ?",
-        "en": "How many days until it's ready?"
+        "fr": "Mon visa expire bientôt.",
+        "en": "My visa expires soon."
       },
       "explain": {
-        "fr": "xong : fini, prêt.",
-        "en": "xong: done, ready."
+        "fr": "sắp = sur le point de. sáp = la cire, sắc = tranchant (et le nom du ton).",
+        "en": "sắp = about to. sáp = wax, sắc = sharp (also the tone's name)."
       }
     },
     {

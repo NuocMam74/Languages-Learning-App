@@ -19,7 +19,9 @@
     "c_nha_ve_sinh",
     "c_khach_san",
     "c_san_bay",
-    "c_day_here"
+    "c_day_here",
+    "s_co_xa_khong",
+    "s_gan_day"
   ],
   "steps": [
     {
@@ -112,21 +114,37 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Nhà vệ sinh ở đây.",
-      "tokens": [
-        "Nhà vệ sinh",
-        "ở",
-        "đây",
-        "đâu"
-      ],
-      "translation": {
-        "fr": "Les toilettes sont ici.",
-        "en": "The toilet is here."
+      "type": "speak_roleplay",
+      "situation": {
+        "fr": "Tu es perdu(e) dans le quartier et tu demandes ton chemin.",
+        "en": "You're lost in the neighbourhood and ask for directions."
       },
+      "prompts": [
+        {
+          "cue": {
+            "fr": "Demande où sont les toilettes.",
+            "en": "Ask where the toilets are."
+          },
+          "concept": "s_nha_ve_sinh_o_dau"
+        },
+        {
+          "cue": {
+            "fr": "Demande si c'est loin.",
+            "en": "Ask whether it's far."
+          },
+          "concept": "s_co_xa_khong"
+        },
+        {
+          "cue": {
+            "fr": "Dis « près d'ici ».",
+            "en": "Say 'near here'."
+          },
+          "concept": "s_gan_day"
+        }
+      ],
       "explain": {
-        "fr": "Même structure pour répondre : lieu + ở đây.",
-        "en": "Same structure to answer: place + ở đây."
+        "fr": "Commence toujours par « Dạ, cho con hỏi… » avec une personne plus âgée.",
+        "en": "Always start with 'Dạ, cho con hỏi…' to someone older."
       }
     },
     {

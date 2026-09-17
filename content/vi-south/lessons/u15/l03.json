@@ -96,22 +96,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em thấy tin nhắn rồi.",
-      "tokens": [
-        "Em",
-        "thấy",
-        "tin nhắn",
-        "rồi",
-        "chưa"
-      ],
-      "translation": {
-        "fr": "J'ai vu le message.",
-        "en": "I've seen the message."
+      "type": "translate_to_fr",
+      "source": "Lát em gọi lại nha.",
+      "accepted": {
+        "fr": [
+          "Je te rappelle tout à l'heure.",
+          "Je rappelle tout à l'heure.",
+          "Je te rappelle dans un moment."
+        ],
+        "en": [
+          "I'll call you back in a bit."
+        ]
       },
       "explain": {
-        "fr": "thấy : voir. rồi : c'est fait.",
-        "en": "thấy: to see. rồi: done."
+        "fr": "lát (nữa) = tout à l'heure, dans un moment.",
+        "en": "lát (nữa) = in a little while."
       }
     },
     {

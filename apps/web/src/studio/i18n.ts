@@ -8,6 +8,9 @@ import { en, fr } from "../i18n/messages/studio.ts";
 
 export type StudioKey = keyof typeof fr;
 
+/** Langue d'interface, pour Intl (dates, durées) dans le studio. */
+export const studioLocale = (): "fr" | "en" => getLocale();
+
 export function st(key: StudioKey, vars: Record<string, string | number> = {}): string {
   const template = (getLocale() === "en" ? en[key] : undefined) ?? fr[key];
   return template.replace(/\{(\w+)\}/g, (_, name: string) => String(vars[name] ?? `{${name}}`));

@@ -68,23 +68,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh đợi em chút xíu nha.",
-      "tokens": [
-        "Anh",
+      "type": "fill_gap",
+      "text": "Anh ___ em chút xíu nha.",
+      "answer": "đợi",
+      "options": [
         "đợi",
-        "em",
-        "chút xíu",
-        "nha",
-        "đời"
+        "đói",
+        "đội"
       ],
       "translation": {
-        "fr": "Attends-moi une petite minute. (à un homme un peu plus âgé)",
-        "en": "Wait for me just a sec. (to a slightly older man)"
+        "fr": "Attends-moi une petite minute.",
+        "en": "Wait for me a moment."
       },
       "explain": {
-        "fr": "đợi + personne + chút xíu.",
-        "en": "đợi + person + chút xíu."
+        "fr": "đợi = attendre. đói = avoir faim, đội = porter sur la tête.",
+        "en": "đợi = to wait. đói = hungry, đội = to wear on the head."
       }
     },
     {

@@ -199,7 +199,8 @@ test("compte connecté : défi réclamé, examen certifiant réussi, certificat 
   await challenge.getByRole("button", { name: "Récupérer le badge" }).click();
   await expect(challenge.getByText("Badge récupéré · +50 XP")).toBeVisible();
 
-  // Examen certifiant
+  // Examen certifiant : l'entrée vit sur le parcours de la langue (contrat phase7 §1).
+  await page.goto("/apprendre");
   await page.getByRole("link", { name: "Examens et certificats" }).click();
   await page.getByRole("link", { name: "Examen certifiant" }).click();
   await expect(page.getByText("Une seule tentative toutes les 48 heures.")).toBeVisible();

@@ -97,20 +97,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tui thích Sài Gòn, tại vì người ta dễ thương.",
-      "tokens": [
-        "Tui",
-        "thích",
-        "Sài Gòn",
-        "tại vì",
-        "người ta",
-        "dễ thương",
-        "nên"
-      ],
-      "translation": {
-        "fr": "J'aime Saïgon parce que les gens sont gentils.",
-        "en": "I like Saigon because people are nice."
+      "type": "translate_to_fr",
+      "source": "Tại vì kẹt xe nên em tới trễ.",
+      "accepted": {
+        "fr": [
+          "Je suis en retard parce qu'il y avait des bouchons.",
+          "C'est à cause des bouchons que je suis en retard.",
+          "Je suis arrivé en retard à cause des embouteillages."
+        ],
+        "en": [
+          "I'm late because of the traffic jam."
+        ]
+      },
+      "explain": {
+        "fr": "tại vì… nên… : la cause, puis la conséquence.",
+        "en": "tại vì… nên…: cause, then consequence."
       }
     },
     {

@@ -21,7 +21,9 @@
     "c_chich",
     "c_benh_vien",
     "c_nha_thuoc",
-    "c_truong_hoc"
+    "c_truong_hoc",
+    "s_bi_sot",
+    "s_ngay_may_lan"
   ],
   "steps": [
     {
@@ -102,23 +104,37 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em muốn đi khám bệnh.",
-      "tokens": [
-        "Em",
-        "muốn",
-        "đi",
-        "khám",
-        "bệnh",
-        "chích"
-      ],
-      "translation": {
-        "fr": "Je voudrais consulter un médecin.",
-        "en": "I'd like to see a doctor."
+      "type": "speak_roleplay",
+      "situation": {
+        "fr": "Chez le médecin : tu décris ce que tu as.",
+        "en": "At the doctor's: you describe your symptoms."
       },
+      "prompts": [
+        {
+          "cue": {
+            "fr": "Dis que tu as de la fièvre.",
+            "en": "Say you have a fever."
+          },
+          "concept": "s_bi_sot"
+        },
+        {
+          "cue": {
+            "fr": "Montre où tu as mal.",
+            "en": "Show where it hurts."
+          },
+          "concept": "s_em_dau_o_day"
+        },
+        {
+          "cue": {
+            "fr": "Demande combien de fois par jour.",
+            "en": "Ask how many times a day."
+          },
+          "concept": "s_ngay_may_lan"
+        }
+      ],
       "explain": {
-        "fr": "muốn : vouloir.",
-        "en": "muốn: to want."
+        "fr": "On dit bịnh à l'oral au Sud, bệnh à l'écrit.",
+        "en": "People say bịnh in Southern speech, bệnh in writing."
       }
     },
     {

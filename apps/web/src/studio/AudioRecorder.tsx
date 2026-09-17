@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import workletUrl from "./recorder-worklet.ts?worker&url";
 import type { RecorderMessage } from "./recorder-worklet.ts";
 import { SelectField, SmallButton, type IdOption } from "./fields.tsx";
-import { st } from "./i18n.ts";
+import { st, studioLocale } from "./i18n.ts";
 import { getAudioPreview, uploadAudio, type AudioUploadResult } from "./studio-api.ts";
 import { encodeWav, findVoiceBounds, resample, STUDIO_SAMPLE_RATE, waveformPeaks } from "./wav.ts";
 
@@ -273,7 +273,7 @@ export function AudioRecorder({ code, conceptId, vi, voices, beforeUpload, onUpl
     }
   };
 
-  const seconds = (samples: number) => (samples / STUDIO_SAMPLE_RATE).toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+  const seconds = (samples: number) => (samples / STUDIO_SAMPLE_RATE).toLocaleString(studioLocale(), { maximumFractionDigits: 1, minimumFractionDigits: 1 });
 
   return (
     <div className="flex flex-col gap-4 rounded-2xl border-2 border-ngoc/20 bg-white/60 p-4" data-testid="audio-recorder">
@@ -320,7 +320,7 @@ export function AudioRecorder({ code, conceptId, vi, voices, beforeUpload, onUpl
           <ul className="flex flex-col gap-2">
             {result.files.map((f) => (
               <li key={f.path} className="flex flex-col gap-1">
-                <span className="font-mono text-sm">{f.path} · {(f.durationMs / 1000).toLocaleString("fr-FR")} s</span>
+                <span className="font-mono text-sm">{f.path} · {(f.durationMs / 1000).toLocaleString(studioLocale())} s</span>
                 <PreviewAudio code={code} path={f.path} />
               </li>
             ))}

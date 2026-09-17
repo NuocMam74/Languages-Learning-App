@@ -122,21 +122,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Mười hai giờ trưa.",
-      "tokens": [
-        "Mười hai",
-        "giờ",
-        "trưa",
-        "tối"
-      ],
+      "type": "speak_answer",
+      "prompt": "Em thường đi làm lúc mấy giờ?",
       "translation": {
-        "fr": "Midi.",
-        "en": "Twelve noon."
+        "fr": "Tu vas au travail à quelle heure d'habitude ?",
+        "en": "What time do you usually go to work?"
       },
+      "accepted": [
+        "c_sang",
+        "c_chieu"
+      ],
       "explain": {
-        "fr": "12 h : mười hai giờ trưa.",
-        "en": "12 pm: mười hai giờ trưa."
+        "fr": "Réponds simplement : « Dạ, sáng. » ou une heure.",
+        "en": "Answer simply: 'Dạ, sáng.' or a time."
       }
     },
     {

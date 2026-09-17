@@ -115,25 +115,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Lớp tôi có ba mươi tư người.",
-      "tokens": [
-        "Lớp",
-        "tôi",
-        "có",
-        "ba",
-        "mươi",
-        "tư",
-        "người",
-        "mười"
+      "type": "fill_gap",
+      "text": "Mười ___ ngàn đồng.",
+      "answer": "lăm",
+      "options": [
+        "lăm",
+        "năm",
+        "nắm"
       ],
       "translation": {
-        "fr": "Ma classe compte trente-quatre personnes.",
-        "en": "My class has thirty-four people."
+        "fr": "Quinze mille đồng.",
+        "en": "Fifteen thousand đồng."
       },
       "explain": {
-        "fr": "Après mươi, quatre se dit souvent tư : ba mươi tư.",
-        "en": "After mươi, four is often tư: ba mươi tư."
+        "fr": " Après une dizaine, năm devient lăm : mười lăm, hai mươi lăm.",
+        "en": "After a ten, năm becomes lăm: mười lăm, hai mươi lăm."
       }
     },
     {

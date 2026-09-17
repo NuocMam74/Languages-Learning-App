@@ -58,7 +58,7 @@ test("espagnol hors ligne, retour au vietnamien intact, les deux progressions pe
     });
     idb.close();
   });
-  await page.goto("/");
+  await page.goto("/apprendre");
   await expect(page.getByTestId("hub-pack")).toBeVisible();
   await page.getByTestId("hub-pack").click();
   await expect(page.getByRole("heading", { name: "Quelle langue veux-tu parler ?" })).toBeVisible();

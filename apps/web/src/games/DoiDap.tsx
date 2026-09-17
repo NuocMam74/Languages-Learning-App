@@ -12,6 +12,7 @@ import { ApiError } from "../api.ts";
 import { Button, Vi } from "../components/ui.tsx";
 import { getLocale, t } from "../i18n/index.ts";
 import { useTutorAccess } from "../tutor/access.ts";
+import { useCompactViewport, visibleHeight } from "../use-viewport.ts";
 import { Composer, GateActions, MessageList, TutorGate } from "../tutor/ChatView.tsx";
 import { endConversation, startConversation, type ConversationStart } from "../tutor/client.ts";
 import { contentGlossary } from "../tutor/glossary.ts";
@@ -124,6 +125,25 @@ export function DoiDap(props: DoiDapProps) {
   );
 }
 
+/**
+ * Clavier ouvert : ramène la dernière réplique de Cô Mai au-dessus de la barre de saisie
+ * (la question reste lisible pendant que le chrono tourne).
+ */
+function revealLastQuestion(root: HTMLElement | null) {
+  const messages = root?.querySelectorAll<HTMLElement>('[data-testid="tutor-message"]');
+  const last = messages?.[messages.length - 1];
+  const composer = root?.querySelector<HTMLElement>('[data-testid="composer"]');
+  if (!last) return;
+  const viewport = window.visualViewport;
+  const top = (viewport?.offsetTop ?? 0) + 8;
+  const bottom = Math.min((viewport?.offsetTop ?? 0) + visibleHeight(), composer?.getBoundingClientRect().top ?? Infinity) - 8;
+  const rect = last.getBoundingClientRect();
+  if (rect.top >= top && rect.bottom <= bottom) return;
+  // Trop haute pour tenir : on montre son début.
+  const delta = rect.height > bottom - top ? rect.top - top : rect.bottom - bottom;
+  window.scrollBy({ top: delta, behavior: "auto" });
+}
+
 function DoiDapRound({ content, start, onDone }: {
   content: ContentIndex;
   start: ConversationStart;
@@ -178,7 +198,14 @@ function DoiDapRound({ content, start, onDone }: {
   };
 
   const turnNumber = Math.min(turns.length + 1, total);
+  const compact = useCompactViewport();
+  const root = useRef<HTMLDivElement>(null);
+  const onComposerFocus = () => {
+    // Après l'animation du clavier (visualViewport redimensionné).
+    window.setTimeout(() => revealLastQuestion(root.current), 350);
+  };
   return (
+    <div ref={root} className="flex flex-1 flex-col">
     <GameLayout
       testId="doi-dap"
       attrs={{ "data-phase": "playing", "data-turn": turns.length }}
@@ -188,7 +215,8 @@ function DoiDapRound({ content, start, onDone }: {
         ) : undefined
       }
     >
-      <div className="sticky top-0 z-10 flex flex-col gap-1.5 bg-nuoc pb-3">
+      {/* Hauteur visible réduite (paysage, clavier) : l'en-tête ne colle plus en haut, la question garde la place. */}
+      <div className={`z-10 flex flex-col gap-1.5 bg-nuoc ${compact ? "pb-1.5" : "sticky top-0 pb-3"}`} data-compact={compact || undefined}>
         <div className="flex items-baseline justify-between">
           <span className="font-semibold">{over ? t("tutor.doiDap.over") : t("tutor.doiDap.turn", { n: turnNumber, total })}</span>
           {answering && (
@@ -216,7 +244,8 @@ function DoiDapRound({ content, start, onDone }: {
         />
         {timer.expired && answering && <p className="mt-3 text-sm text-phu-sa">{t("tutor.doiDap.timeUpHint")}</p>}
       </div>
-      {!over && <Composer disabled={chat.streaming} onSend={send} placeholder={t("tutor.doiDap.placeholder")} />}
+      {!over && <Composer disabled={chat.streaming} onSend={send} placeholder={t("tutor.doiDap.placeholder")} onFocus={onComposerFocus} />}
     </GameLayout>
+    </div>
   );
 }

@@ -95,23 +95,15 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tôi đi làm bằng xe máy.",
-      "tokens": [
-        "Tôi",
-        "đi làm",
-        "bằng",
-        "xe máy",
-        "với"
+      "type": "match_pairs",
+      "concepts": [
+        "c_xe_may",
+        "c_xe_buyt",
+        "c_xe_hoi",
+        "c_may_bay",
+        "c_xe_dap"
       ],
-      "translation": {
-        "fr": "Je vais au travail en moto.",
-        "en": "I go to work by motorbike."
-      },
-      "explain": {
-        "fr": "bằng + véhicule : « en… ».",
-        "en": "bằng + vehicle: 'by…'."
-      }
+      "mode": "audio_image"
     },
     {
       "type": "speak_repeat",

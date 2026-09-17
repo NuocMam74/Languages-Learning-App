@@ -112,22 +112,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Cây xăng ở đối diện ngân hàng.",
-      "tokens": [
-        "Cây xăng",
-        "ở",
-        "đối diện",
-        "ngân hàng",
-        "bên"
-      ],
-      "translation": {
-        "fr": "La station-service est en face de la banque.",
-        "en": "The petrol station is opposite the bank."
-      },
+      "type": "listen_transcribe",
+      "concept": "c_ben_phai",
       "explain": {
-        "fr": "đối diện + lieu : en face de.",
-        "en": "đối diện + place: opposite."
+        "fr": "bên phải : deux syllabes, deux tons différents.",
+        "en": "bên phải: two syllables, two different tones."
       }
     },
     {

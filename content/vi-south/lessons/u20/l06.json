@@ -91,22 +91,110 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Để bữa khác nha.",
-      "tokens": [
-        "Để",
-        "bữa",
-        "khác",
-        "nha",
-        "bưa"
-      ],
-      "translation": {
-        "fr": "Une autre fois, d'accord ?",
-        "en": "Another time, okay?"
+      "type": "dialogue_choice",
+      "situation": {
+        "fr": "Une voisine de l'âge de tes parents t'invite à un đám giỗ, mais tu travailles.",
+        "en": "A neighbour your parents' age invites you to a đám giỗ, but you're working."
       },
+      "turns": [
+        {
+          "id": "t1",
+          "vi": "Mai nhà cô có đám giỗ, con qua ăn cơm nghen.",
+          "translation": {
+            "fr": "Demain il y a un đám giỗ chez moi, viens manger.",
+            "en": "There's a đám giỗ at mine tomorrow, come and eat."
+          },
+          "replies": [
+            {
+              "id": "r1a",
+              "vi": "Dạ, con cảm ơn cô. Nhưng mà mai con bận rồi.",
+              "next": "t2",
+              "best": true,
+              "feedback": {
+                "fr": "On remercie d'abord, on refuse ensuite.",
+                "en": "Thank first, decline after."
+              }
+            },
+            {
+              "id": "r1b",
+              "vi": "Dạ hông được.",
+              "next": "t2",
+              "feedback": {
+                "fr": "Refuser sans remercier est très sec.",
+                "en": "Declining without thanks is very blunt."
+              }
+            },
+            {
+              "id": "r1c",
+              "vi": "Dạ, con qua.",
+              "next": "t2",
+              "feedback": {
+                "fr": "Accepter alors qu'on ne peut pas : le problème revient demain.",
+                "en": "Accepting when you can't just moves the problem to tomorrow."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "vi": "Vậy hả? Tiếc quá!",
+          "translation": {
+            "fr": "Ah bon ? Quel dommage !",
+            "en": "Oh really? What a shame!"
+          },
+          "replies": [
+            {
+              "id": "r2a",
+              "vi": "Dạ, để bữa khác nha cô.",
+              "next": "t3",
+              "best": true,
+              "feedback": {
+                "fr": "« Để bữa khác » garde la porte ouverte.",
+                "en": "'Để bữa khác' keeps the door open."
+              }
+            },
+            {
+              "id": "r2b",
+              "vi": "Dạ.",
+              "next": "t3",
+              "feedback": {
+                "fr": "Un simple « dạ » laisse l'échange en suspens.",
+                "en": "A bare 'dạ' leaves the exchange hanging."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "vi": "Ừ, bữa nào rảnh qua chơi nghen con.",
+          "translation": {
+            "fr": "Bon, passe quand tu es libre.",
+            "en": "All right, drop by when you're free."
+          },
+          "replies": [
+            {
+              "id": "r3a",
+              "vi": "Dạ, con nhớ rồi. Con cảm ơn cô.",
+              "best": true,
+              "feedback": {
+                "fr": "On clôt en remerciant : impeccable.",
+                "en": "Closing with thanks: flawless."
+              }
+            },
+            {
+              "id": "r3b",
+              "vi": "Dạ, chào cô.",
+              "feedback": {
+                "fr": "Correct, mais un merci de plus ne coûte rien.",
+                "en": "Fine, but one more thank-you costs nothing."
+              }
+            }
+          ]
+        }
+      ],
       "explain": {
-        "fr": "Refus doux : on repousse au lieu de dire non.",
-        "en": "Soft refusal: postpone rather than say no."
+        "fr": "Refuser au Sud : merci, raison courte, « để bữa khác ».",
+        "en": "Declining in the South: thanks, a short reason, 'để bữa khác'."
       }
     },
     {

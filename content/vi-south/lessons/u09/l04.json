@@ -102,22 +102,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chủ nhật tôi ở nhà.",
-      "tokens": [
-        "Chủ nhật",
-        "tôi",
-        "ở",
-        "nhà",
-        "thứ"
-      ],
-      "translation": {
-        "fr": "Dimanche, je reste à la maison.",
-        "en": "On Sunday I stay home."
-      },
+      "type": "listen_transcribe",
+      "concept": "c_chu_nhat",
       "explain": {
-        "fr": "Le jour en tête, puis la phrase.",
-        "en": "The day first, then the sentence."
+        "fr": "chủ nhật : le seul jour qui ne se dit pas avec thứ.",
+        "en": "chủ nhật: the only day not formed with thứ."
       }
     },
     {

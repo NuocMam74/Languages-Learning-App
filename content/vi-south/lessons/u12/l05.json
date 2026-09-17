@@ -22,7 +22,8 @@
     "c_may",
     "c_tien",
     "c_dien_thoai",
-    "c_sach"
+    "c_sach",
+    "c_bao_nhieu"
   ],
   "steps": [
     {
@@ -113,23 +114,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Nhà em có mấy người?",
-      "tokens": [
-        "Nhà",
-        "em",
-        "có",
-        "mấy",
-        "người",
-        "bao nhiêu"
-      ],
-      "translation": {
-        "fr": "Vous êtes combien dans ta famille ? (à plus jeune)",
-        "en": "How many people in your family? (to someone younger)"
-      },
+      "type": "listen_transcribe",
+      "concept": "c_bao_nhieu",
       "explain": {
-        "fr": "Une famille : un petit nombre, donc mấy.",
-        "en": "A family: a small number, so mấy."
+        "fr": "bao nhiêu : deux syllabes plates, la seconde monte à peine.",
+        "en": "bao nhiêu: two level syllables, the second barely rises."
       }
     },
     {

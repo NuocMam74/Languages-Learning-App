@@ -105,7 +105,7 @@ test("une leçon interrompue reprend exactement au même endroit", async ({ page
   const before = await progress.getAttribute("aria-valuenow");
   expect(Number(before)).toBeGreaterThan(0);
 
-  await page.goto("/");
+  await page.goto("/apprendre");
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
   await expect(progress).toHaveAttribute("aria-valuenow", before ?? "");
 });

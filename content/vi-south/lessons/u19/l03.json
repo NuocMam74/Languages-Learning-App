@@ -124,20 +124,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Địa chỉ của anh ở phường nào?",
-      "tokens": [
-        "Địa chỉ",
-        "của",
-        "anh",
-        "ở",
-        "phường",
-        "nào",
-        "đâu"
-      ],
+      "type": "speak_answer",
+      "prompt": "Em ở phường nào?",
       "translation": {
-        "fr": "Ton adresse est dans quel quartier ?",
-        "en": "Which ward is your address in?"
+        "fr": "Tu habites dans quel quartier ?",
+        "en": "Which ward do you live in?"
+      },
+      "accepted": [
+        "c_b_phuong",
+        "c_dia_chi"
+      ],
+      "explain": {
+        "fr": "Donne le phường puis le quận : c'est l'ordre attendu.",
+        "en": "Give the phường then the quận: that's the expected order."
       }
     },
     {

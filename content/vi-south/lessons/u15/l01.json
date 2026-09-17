@@ -115,22 +115,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Ai gọi em vậy?",
-      "tokens": [
-        "Ai",
-        "gọi",
-        "em",
-        "vậy",
-        "gỏi"
+      "type": "listen_transcribe",
+      "concept": "c_alo",
+      "accepted": [
+        "a lô"
       ],
-      "translation": {
-        "fr": "Qui t'appelle ?",
-        "en": "Who's calling you?"
-      },
       "explain": {
-        "fr": "Ai + verbe : qui… ?",
-        "en": "Ai + verb: who…?"
+        "fr": "alô s'écrit en un mot ou deux : les deux se rencontrent.",
+        "en": "alô is written as one word or two: both are seen."
       }
     },
     {

@@ -41,7 +41,7 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
           type="button"
           onClick={() => void run("natural")}
           aria-label={t("audio.play")}
-          className={`grid place-items-center rounded-full bg-ngoc text-nuoc shadow-[0_6px_0_0_rgb(14_94_85/0.35)] active:translate-y-1 active:shadow-none ${large ? "size-24" : "size-14"}`}
+          className={`grid place-items-center rounded-full bg-ngoc text-nuoc shadow-[0_6px_0_0_rgb(14_94_85/0.35)] active:translate-y-1 active:shadow-none ${large ? "size-24" : "size-14"} ${source === "blocked" ? "ring-4 ring-nghe ring-offset-2 ring-offset-nuoc motion-safe:animate-pulse" : ""}`}
         >
           <SpeakerIcon className={large ? "size-10" : "size-6"} />
         </button>
@@ -56,8 +56,10 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
           </button>
         )}
       </div>
-      {source === "tts" && <p className="text-sm text-phu-sa/70">{t("audio.tts")}</p>}
+      {source === "tts" && <p className="text-sm text-phu-sa/80">{t("audio.tts")}</p>}
       {source === "missing" && <p className="text-sm text-son-mai">{t("audio.missing")}</p>}
+      {/* Lecture automatique refusée (iOS sans geste) : invitation, pas une erreur. */}
+      {source === "blocked" && <p className="text-sm font-semibold text-ngoc" data-testid="audio-tap">{t("mobile.audio.tapToListen")}</p>}
       {silent && transcripts && transcript && (
         <p className="text-center text-lg" data-testid="transcript">
           <span className="sr-only">{t("settings.silent.transcript")} </span>

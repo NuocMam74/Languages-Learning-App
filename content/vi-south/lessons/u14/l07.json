@@ -23,7 +23,11 @@
     "c_do_dirty",
     "s_phim_hay_qua",
     "s_vay_ha",
-    "s_anh_thay_sao"
+    "s_anh_thay_sao",
+    "c_thich",
+    "c_ghet",
+    "c_ghien",
+    "c_ngon"
   ],
   "steps": [
     {
@@ -126,23 +130,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Món này hơi dở.",
-      "tokens": [
-        "Món",
-        "này",
-        "hơi",
-        "dở",
-        "dơ"
-      ],
-      "translation": {
-        "fr": "Ce plat n'est pas terrible.",
-        "en": "This dish isn't great."
-      },
-      "explain": {
-        "fr": "hơi + adjectif : un peu. Plus doux que dở quá.",
-        "en": "hơi + adjective: a bit. Softer than dở quá."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_thich",
+        "c_ghet",
+        "c_ghien",
+        "c_ngon",
+        "c_do_bad"
+      ]
     },
     {
       "type": "speak_repeat",

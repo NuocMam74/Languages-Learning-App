@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
+import { usePrefs } from "../prefs.ts";
 import type { Concept, Lesson } from "@parlo/core";
 import { readPackFiles, toRaw } from "../../../../scripts/lib/load-pack.ts";
 import { doubtsFor, unitsOf } from "./doubts.ts";
@@ -85,6 +86,8 @@ describe("WAV", () => {
 });
 
 describe("validation du brouillon", () => {
+  // Messages dans la langue d'interface : ces assertions portent sur le français (jsdom annonce en-US).
+  beforeAll(() => usePrefs.setState({ locale: "fr" }));
   const raw = toRaw(readPackFiles("vi-south"));
   const concept = raw.concepts.find((c) => c.id === "c_ba") as Concept;
   const lesson = raw.lessons.find((l) => l.id === "vi-south.u01.l01") as Lesson;

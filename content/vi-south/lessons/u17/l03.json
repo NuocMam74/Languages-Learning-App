@@ -106,22 +106,100 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em muốn thuê phòng trọ.",
-      "tokens": [
-        "Em",
-        "muốn",
-        "thuê",
-        "phòng trọ",
-        "thuế"
-      ],
-      "translation": {
-        "fr": "Je voudrais louer une chambre.",
-        "en": "I'd like to rent a room."
+      "type": "dialogue_choice",
+      "situation": {
+        "fr": "Tu visites une chambre à louer au fond d'un hẻm.",
+        "en": "You're viewing a room to rent at the end of an alley."
       },
+      "turns": [
+        {
+          "id": "t1",
+          "vi": "Còn một phòng trên lầu hai. Con coi thử nha.",
+          "translation": {
+            "fr": "Il reste une chambre au deuxième. Va voir.",
+            "en": "There's one room on the second floor. Have a look."
+          },
+          "replies": [
+            {
+              "id": "r1a",
+              "vi": "Dạ, bao nhiêu một tháng vậy chú?",
+              "next": "t2",
+              "best": true,
+              "feedback": {
+                "fr": "Le prix d'abord, avec « vậy chú » pour adoucir.",
+                "en": "Price first, with 'vậy chú' to soften it."
+              }
+            },
+            {
+              "id": "r1b",
+              "vi": "Phòng này bao nhiêu?",
+              "next": "t2",
+              "feedback": {
+                "fr": "Sans « dạ » ni « chú », ça sonne sec.",
+                "en": "Without 'dạ' or 'chú' it sounds curt."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "vi": "Ba triệu rưỡi. Tiền điện nước tính riêng.",
+          "translation": {
+            "fr": "Trois millions et demi. L'eau et l'électricité à part.",
+            "en": "Three and a half million. Water and power extra."
+          },
+          "replies": [
+            {
+              "id": "r2a",
+              "vi": "Dạ, tiền cọc bao nhiêu vậy chú?",
+              "next": "t3",
+              "best": true,
+              "feedback": {
+                "fr": "Penser à la caution avant de signer : indispensable.",
+                "en": "Ask about the deposit before signing: essential."
+              }
+            },
+            {
+              "id": "r2b",
+              "vi": "Mắc quá!",
+              "feedback": {
+                "fr": "Un loyer se discute, mais pas comme au marché.",
+                "en": "Rent is negotiable, but not the way market prices are."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "vi": "Cọc một tháng, ký hợp đồng sáu tháng nha con.",
+          "translation": {
+            "fr": "Un mois de caution, contrat de six mois.",
+            "en": "One month's deposit, six-month contract."
+          },
+          "replies": [
+            {
+              "id": "r3a",
+              "vi": "Dạ, con suy nghĩ rồi trả lời chú nha.",
+              "best": true,
+              "feedback": {
+                "fr": "On peut réfléchir sans vexer personne.",
+                "en": "You can think it over without offending anyone."
+              }
+            },
+            {
+              "id": "r3b",
+              "vi": "Dạ, con lấy liền.",
+              "feedback": {
+                "fr": "Signer sans réfléchir n'est jamais une bonne idée.",
+                "en": "Signing on the spot is never a good idea."
+              }
+            }
+          ]
+        }
+      ],
       "explain": {
-        "fr": "muốn thuê : vouloir louer.",
-        "en": "muốn thuê: want to rent."
+        "fr": "Prix, charges, caution, durée : les quatre questions à poser.",
+        "en": "Price, bills, deposit, term: the four questions to ask."
       }
     },
     {

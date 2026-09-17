@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_hen_gio",
+  "title": {
+    "fr": "Prendre rendez-vous",
+    "en": "Making an appointment"
+  },
+  "turns": [
+    {
+      "speaker": "Anh Nam",
+      "vi": "Chiều nay em có rảnh hông?",
+      "translation": {
+        "fr": "Tu es libre cet après-midi ?",
+        "en": "Are you free this afternoon?"
+      },
+      "audio": "audio/dlg_hen_gio_t1_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Dạ rảnh. Chi vậy anh?",
+      "translation": {
+        "fr": "Oui. Pourquoi ?",
+        "en": "Yes. What for?"
+      },
+      "audio": "audio/dlg_hen_gio_t2_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Mình đi uống cà phê nha. Bốn giờ rưỡi được hông?",
+      "translation": {
+        "fr": "On va boire un café. Quatre heures et demie, ça va ?",
+        "en": "Let's go for a coffee. Is half past four all right?"
+      },
+      "audio": "audio/dlg_hen_gio_t3_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Dạ, bốn giờ rưỡi em còn họp. Năm giờ được hông anh?",
+      "translation": {
+        "fr": "À quatre heures et demie je suis encore en réunion. Cinq heures, ça irait ?",
+        "en": "At half past four I'm still in a meeting. Would five work?"
+      },
+      "audio": "audio/dlg_hen_gio_t4_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Được. Năm giờ, quán cà phê gần công ty nha.",
+      "translation": {
+        "fr": "D'accord. Cinq heures, au café près de l'entreprise.",
+        "en": "Fine. Five o'clock, at the café near the company."
+      },
+      "audio": "audio/dlg_hen_gio_t5_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Dạ, em nhớ rồi. Anh đừng tới trễ nha!",
+      "translation": {
+        "fr": "C'est noté. N'arrive pas en retard !",
+        "en": "Got it. Don't be late!"
+      },
+      "audio": "audio/dlg_hen_gio_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "À quelle heure se donnent-ils finalement rendez-vous ?",
+      "en": "What time do they finally agree on?"
+    },
+    "options": [
+      {
+        "fr": "17 h.",
+        "en": "5 p.m."
+      },
+      {
+        "fr": "16 h 30.",
+        "en": "4:30 p.m."
+      },
+      {
+        "fr": "16 h.",
+        "en": "4 p.m."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "Lan est en réunion à bốn giờ rưỡi : ils choisissent năm giờ.",
+      "en": "Lan is in a meeting at bốn giờ rưỡi, so they choose năm giờ."
+    }
+  },
+  "reviewed": false
+}

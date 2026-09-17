@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_ke_chuyen_hoi_nho",
+  "title": {
+    "fr": "Raconter son enfance",
+    "en": "Talking about childhood"
+  },
+  "turns": [
+    {
+      "speaker": "Lan",
+      "vi": "Hồi nhỏ anh ở đâu?",
+      "translation": {
+        "fr": "Où habitais-tu quand tu étais petit ?",
+        "en": "Where did you live as a child?"
+      },
+      "audio": "audio/dlg_ke_chuyen_hoi_nho_t1_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Hồi nhỏ tui ở dưới quê, gần sông.",
+      "translation": {
+        "fr": "Quand j'étais petit, je vivais à la campagne, près du fleuve.",
+        "en": "As a child I lived in the countryside, near the river."
+      },
+      "audio": "audio/dlg_ke_chuyen_hoi_nho_t2_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Vui hông anh? Kể tui nghe đi!",
+      "translation": {
+        "fr": "C'était bien ? Raconte-moi !",
+        "en": "Was it fun? Tell me about it!"
+      },
+      "audio": "audio/dlg_ke_chuyen_hoi_nho_t3_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Vui lắm. Chiều nào tụi tui cũng ra sông tắm. Hồi đó chưa có điện thoại.",
+      "translation": {
+        "fr": "Très bien. Tous les après-midis on allait se baigner au fleuve. À l'époque il n'y avait pas de téléphone.",
+        "en": "Great fun. Every afternoon we swam in the river. Back then there were no phones."
+      },
+      "audio": "audio/dlg_ke_chuyen_hoi_nho_t4_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Rồi sao nữa?",
+      "translation": {
+        "fr": "Et après ?",
+        "en": "And then?"
+      },
+      "audio": "audio/dlg_ke_chuyen_hoi_nho_t5_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Sau đó ba má tui lên Sài Gòn làm, tui đi theo.",
+      "translation": {
+        "fr": "Ensuite mes parents sont montés travailler à Saïgon, et je les ai suivis.",
+        "en": "Then my parents moved to Saigon to work, and I followed them."
+      },
+      "audio": "audio/dlg_ke_chuyen_hoi_nho_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Où Nam a-t-il passé son enfance ?",
+      "en": "Where did Nam spend his childhood?"
+    },
+    "options": [
+      {
+        "fr": "À la campagne, près d'un fleuve.",
+        "en": "In the countryside, near a river."
+      },
+      {
+        "fr": "À Saïgon, dans une ruelle.",
+        "en": "In Saigon, in an alley."
+      },
+      {
+        "fr": "À l'étranger, avec ses grands-parents.",
+        "en": "Abroad, with his grandparents."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« Hồi nhỏ tui ở dưới quê, gần sông. »",
+      "en": "'Hồi nhỏ tui ở dưới quê, gần sông.'"
+    }
+  },
+  "reviewed": false
+}

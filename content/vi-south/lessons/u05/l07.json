@@ -23,7 +23,10 @@
     "s_nguoi_phap",
     "c_cong_ty",
     "c_hieu",
-    "s_rat_vui_duoc_gap"
+    "s_rat_vui_duoc_gap",
+    "s_nguoi_nuoc_nao",
+    "s_anh_o_dau",
+    "s_anh_lam_nghe_gi"
   ],
   "steps": [
     {
@@ -109,23 +112,13 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tôi mới qua Việt Nam.",
-      "tokens": [
-        "Tôi",
-        "mới",
-        "qua",
-        "Việt Nam",
-        "mời"
-      ],
-      "translation": {
-        "fr": "Je viens d'arriver au Vietnam.",
-        "en": "I just came to Vietnam."
-      },
-      "explain": {
-        "fr": "mới + verbe = venir de.",
-        "en": "mới + verb = just."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "s_anh_ten_gi",
+        "s_nguoi_nuoc_nao",
+        "s_anh_o_dau",
+        "s_anh_lam_nghe_gi"
+      ]
     },
     {
       "type": "tone_identify",
@@ -133,6 +126,14 @@
       "explain": {
         "fr": "hiểu : hỏi, comme un ngã au Sud.",
         "en": "hiểu: hỏi, like ngã in the South."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_lam_quen",
+      "explain": {
+        "fr": "Deux inconnus se présentent : qui est l'autre ?",
+        "en": "Two strangers introduce themselves: who is the other person?"
       }
     },
     {

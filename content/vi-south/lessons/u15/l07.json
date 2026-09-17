@@ -23,7 +23,12 @@
     "c_tin_nhan",
     "c_dien_thoai",
     "c_sach",
-    "s_het_pin"
+    "s_het_pin",
+    "c_goi_lai",
+    "c_nhan_tin",
+    "c_doi_wait",
+    "c_ban_busy",
+    "c_sac_pin"
   ],
   "steps": [
     {
@@ -118,24 +123,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh đợi em chút xíu nha.",
-      "tokens": [
-        "Anh",
-        "đợi",
-        "em",
-        "chút xíu",
-        "nha",
-        "đời"
-      ],
-      "translation": {
-        "fr": "Attends-moi une petite minute. (à un homme un peu plus âgé)",
-        "en": "Wait for me just a sec. (to a slightly older man)"
-      },
-      "explain": {
-        "fr": "đợi + personne + chút xíu.",
-        "en": "đợi + person + chút xíu."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_goi_lai",
+        "c_nhan_tin",
+        "c_doi_wait",
+        "c_ban_busy",
+        "c_sac_pin"
+      ]
     },
     {
       "type": "listen_pick_text",
@@ -147,6 +142,14 @@
       "explain": {
         "fr": "hết pin : plus de batterie. còn : encore.",
         "en": "hết pin: battery dead. còn: still some left."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_goi_dien_thoai",
+      "explain": {
+        "fr": "La raison est donnée dès la troisième réplique.",
+        "en": "The reason is given as early as the third line."
       }
     },
     {

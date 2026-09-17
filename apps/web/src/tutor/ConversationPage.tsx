@@ -21,9 +21,10 @@ interface LastConversation {
 /** Ouvertures reçues à la création, lues par l'écran de conversation (évite un GET inutile). */
 const openings = new Map<string, ConversationStart>();
 
+/** « Retour au parcours » : depuis Cô Mai, on revient sur le parcours de la langue (contrat phase7 §1). */
 export function BackHome() {
   return (
-    <Link to="/" className="-ml-2 flex min-h-11 items-center gap-1 self-start px-2 text-ngoc">
+    <Link to="/apprendre" className="-ml-2 flex min-h-11 items-center gap-1 self-start px-2 text-ngoc">
       <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
         <path d="M15 5l-7 7 7 7" />
       </svg>
@@ -147,7 +148,7 @@ function Chat({ conversationId, content, loaded }: { conversationId: string; con
   const closed = loaded.ended || chat.resting;
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] md:max-w-[720px]" data-testid="conversation">
+    <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]" data-testid="conversation">
       <header className="flex items-center justify-between gap-3">
         <BackHome />
         {chat.remaining !== null && (

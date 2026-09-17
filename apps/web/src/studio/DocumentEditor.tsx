@@ -6,7 +6,7 @@ import { ConceptEditor } from "./ConceptEditor.tsx";
 import { ConflictPanel, JsonEditor } from "./Conflict.tsx";
 import { CultureEditor } from "./CultureEditor.tsx";
 import { Badge, fieldDomId, IssuesContext, SmallButton, TelexContext } from "./fields.tsx";
-import { st, type StudioKey } from "./i18n.ts";
+import { st, studioLocale, type StudioKey } from "./i18n.ts";
 import { LessonEditor } from "./LessonEditor.tsx";
 import { canPublish } from "./roles.ts";
 import { OptionsContext, type PackOptions } from "./StepForm.tsx";
@@ -29,7 +29,7 @@ function readTelex(): boolean {
 function SaveStatus({ state, savedAt }: { state: SaveState; savedAt: string | null }) {
   const text: Record<SaveState, string> = {
     loading: st("save.loading"),
-    clean: savedAt ? st("save.draftFrom", { when: new Date(savedAt).toLocaleString("fr-FR") }) : st("save.clean"),
+    clean: savedAt ? st("save.draftFrom", { when: new Date(savedAt).toLocaleString(studioLocale()) }) : st("save.clean"),
     dirty: st("save.dirty"),
     saving: st("save.saving"),
     saved: st("save.saved"),
@@ -71,7 +71,7 @@ function IssueSummary({ issues }: { issues: readonly FieldIssue[] }) {
       <ul className="mt-2 flex flex-col gap-1 text-sm">
         {issues.slice(0, 30).map((issue, i) => (
           <li key={i}>
-            <button type="button" className={`text-left underline-offset-2 hover:underline ${issue.level === "error" ? "text-son-mai" : "text-phu-sa"}`} onClick={() => focus(issue.path)}>
+            <button type="button" className={`min-h-11 w-full py-1 text-left underline-offset-2 hover:underline ${issue.level === "error" ? "text-son-mai" : "text-phu-sa"}`} onClick={() => focus(issue.path)}>
               {issue.path ? <span className="font-mono">{issue.path}</span> : st("issues.document")} — {issue.message}
             </button>
           </li>

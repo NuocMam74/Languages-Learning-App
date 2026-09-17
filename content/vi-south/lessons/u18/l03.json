@@ -111,18 +111,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Xin lỗi, em tới trễ.",
-      "tokens": [
-        "Xin lỗi",
-        "em",
-        "tới",
-        "trễ",
-        "tối"
+      "type": "fill_gap",
+      "text": "Bữa nay em bận ___.",
+      "answer": "lắm",
+      "options": [
+        "lắm",
+        "lấm",
+        "làm"
       ],
       "translation": {
-        "fr": "Pardon, je suis en retard.",
-        "en": "Sorry, I'm late."
+        "fr": "Aujourd'hui je suis très occupé(e).",
+        "en": "Today I'm very busy."
+      },
+      "explain": {
+        "fr": "lắm se place après l'adjectif. lấm = taché, làm = faire.",
+        "en": "lắm goes after the adjective. lấm = smudged, làm = to do."
       }
     },
     {

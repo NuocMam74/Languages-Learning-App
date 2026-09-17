@@ -110,19 +110,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Ngày xửa ngày xưa, có một ông vua.",
-      "tokens": [
-        "Ngày xửa",
-        "ngày xưa",
-        "có",
-        "một",
-        "ông vua",
-        "ông"
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "À l'époque, il n'y avait pas encore de téléphone.",
+        "en": "Back then there were no phones yet."
+      },
+      "accepted": [
+        "Hồi đó chưa có điện thoại.",
+        "Hồi đó chưa có điện thoại đâu.",
+        "Lúc đó chưa có điện thoại.",
+        "Hồi đó chưa có điện thoại gì hết."
       ],
-      "translation": {
-        "fr": "Il était une fois un roi.",
-        "en": "Once upon a time there was a king."
+      "explain": {
+        "fr": "chưa có = il n'y avait pas encore. Pas besoin de marque de passé.",
+        "en": "chưa có = there wasn't yet. No past marker needed."
       }
     },
     {

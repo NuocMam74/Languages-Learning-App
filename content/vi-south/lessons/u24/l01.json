@@ -104,20 +104,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tui thấy phở ngon hơn hủ tiếu.",
-      "tokens": [
-        "Tui",
-        "thấy",
-        "phở",
-        "ngon",
+      "type": "fill_gap",
+      "text": "Theo tui, quán này ngon ___.",
+      "answer": "hơn",
+      "options": [
         "hơn",
-        "hủ tiếu",
-        "hơi"
+        "hờn",
+        "hớn"
       ],
       "translation": {
-        "fr": "Je trouve le phở meilleur que le hủ tiếu.",
-        "en": "I think phở is better than hủ tiếu."
+        "fr": "À mon avis, ce resto est meilleur.",
+        "en": "In my view this place is better."
+      },
+      "explain": {
+        "fr": "hơn après l'adjectif = plus… que. hờn = bouder, hớn (hở) = tout joyeux.",
+        "en": "hơn after an adjective = more… than. hờn = to sulk, hớn (hở) = beaming."
       }
     },
     {

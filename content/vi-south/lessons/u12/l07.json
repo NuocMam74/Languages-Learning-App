@@ -24,7 +24,12 @@
     "c_may",
     "c_may_cloud",
     "s_an_com_chua",
-    "s_nha_em_o_dau"
+    "s_nha_em_o_dau",
+    "c_nao_which",
+    "c_khi_nao",
+    "c_bao_nhieu",
+    "c_hoi_ask",
+    "c_tra_loi"
   ],
   "steps": [
     {
@@ -106,23 +111,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Khi nào anh về quê?",
-      "tokens": [
-        "Khi nào",
-        "anh",
-        "về",
-        "quê",
-        "đâu"
-      ],
-      "translation": {
-        "fr": "Quand est-ce que tu rentres au pays ? (à un homme un peu plus âgé)",
-        "en": "When are you going back to your hometown? (to a slightly older man)"
-      },
-      "explain": {
-        "fr": "Khi nào en tête : futur.",
-        "en": "Khi nào first: future."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_nao_which",
+        "c_khi_nao",
+        "c_bao_nhieu",
+        "c_hoi_ask",
+        "c_tra_loi"
+      ]
     },
     {
       "type": "listen_pick_text",

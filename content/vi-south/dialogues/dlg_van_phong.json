@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_van_phong",
+  "title": {
+    "fr": "Au bureau, le premier jour",
+    "en": "At the office, day one"
+  },
+  "turns": [
+    {
+      "speaker": "Anh Nam",
+      "vi": "Chào em, em là nhân viên mới hả?",
+      "translation": {
+        "fr": "Bonjour, c'est toi la nouvelle employée ?",
+        "en": "Hello, are you the new employee?"
+      },
+      "audio": "audio/dlg_van_phong_t1_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, em mới vô làm hôm qua. Em tên Marie.",
+      "translation": {
+        "fr": "Oui, j'ai commencé hier. Je m'appelle Marie.",
+        "en": "Yes, I started yesterday. I'm Marie."
+      },
+      "audio": "audio/dlg_van_phong_t2_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Anh tên Nam. Rất vui được làm việc với em.",
+      "translation": {
+        "fr": "Moi c'est Nam. Ravi de travailler avec toi.",
+        "en": "I'm Nam. Very glad to be working with you."
+      },
+      "audio": "audio/dlg_van_phong_t3_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ. Anh ơi, mấy giờ họp vậy anh?",
+      "translation": {
+        "fr": "La réunion est à quelle heure ?",
+        "en": "What time is the meeting?"
+      },
+      "audio": "audio/dlg_van_phong_t4_mai.opus"
+    },
+    {
+      "speaker": "Anh Nam",
+      "vi": "Chín giờ rưỡi, ở phòng họp. Đừng tới trễ nghen.",
+      "translation": {
+        "fr": "Neuf heures et demie, en salle de réunion. N'arrive pas en retard.",
+        "en": "Half past nine, in the meeting room. Don't be late."
+      },
+      "audio": "audio/dlg_van_phong_t5_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, em cảm ơn anh.",
+      "translation": {
+        "fr": "Merci.",
+        "en": "Thank you."
+      },
+      "audio": "audio/dlg_van_phong_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Quand a lieu la réunion ?",
+      "en": "When is the meeting?"
+    },
+    "options": [
+      {
+        "fr": "À 9 h 30, en salle de réunion.",
+        "en": "At 9:30, in the meeting room."
+      },
+      {
+        "fr": "À 9 h, dans le bureau du chef.",
+        "en": "At 9:00, in the boss's office."
+      },
+      {
+        "fr": "À 10 h, au café d'en bas.",
+        "en": "At 10:00, at the café downstairs."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« Chín giờ rưỡi » = neuf heures et demie.",
+      "en": "'Chín giờ rưỡi' = half past nine."
+    }
+  },
+  "reviewed": false
+}

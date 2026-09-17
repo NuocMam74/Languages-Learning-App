@@ -125,7 +125,7 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
 
   if (done) {
     return (
-      <Screen action={<Button onClick={() => (mode === "login" || oauth ? window.location.assign("/") : navigate("/", { replace: true }))}>{t("recap.next")}</Button>}>
+      <Screen action={<Button onClick={() => (mode === "login" || oauth ? window.location.assign("/apprendre") : navigate("/apprendre", { replace: true }))}>{t("recap.next")}</Button>}>
         <div className="flex flex-1 flex-col justify-center gap-3" role="status">
           <h1 className="font-serif text-2xl">{t(mode === "register" ? "account.done.register" : "account.done.login")}</h1>
           <p className="text-phu-sa">{t("account.done.synced")}</p>
@@ -137,6 +137,12 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
   const register = mode === "register";
   return (
     <Screen
+      // Action principale dans la barre collante du bas : visible sans défiler, même clavier ouvert.
+      action={
+        <Button type="submit" form="account-form" disabled={busy}>
+          {busy ? t("account.busy") : t(register ? "account.register.submit" : "account.login.submit")}
+        </Button>
+      }
       top={
         <div className="pt-2">
           <button type="button" onClick={() => navigate(-1)} className="grid size-11 place-items-center text-phu-sa" aria-label={t("common.back")}>
@@ -148,14 +154,14 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
       <h1 className="mt-2 font-serif text-2xl">{t(register ? "account.register.title" : "account.login.title")}</h1>
       {register && <p className="mt-2 text-phu-sa">{t("account.register.why")}</p>}
 
-      <form onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-5" noValidate={false}>
+      <form id="account-form" onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-5" noValidate={false}>
         {register && (
           <Field id="acc-name" label={t("account.field.name")}>
-            <input id="acc-name" className={inputClass} value={displayName} onChange={(e) => setDisplayName(e.target.value)} required maxLength={80} autoComplete="nickname" />
+            <input id="acc-name" className={inputClass} value={displayName} onChange={(e) => setDisplayName(e.target.value)} required maxLength={80} autoComplete="nickname" autoCapitalize="words" autoCorrect="off" spellCheck={false} enterKeyHint="next" />
           </Field>
         )}
         <Field id="acc-email" label={t("account.field.email")}>
-          <input id="acc-email" type="email" className={inputClass} value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" inputMode="email" />
+          <input id="acc-email" type="email" className={inputClass} value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete={register ? "email" : "username"} inputMode="email" autoCapitalize="off" autoCorrect="off" spellCheck={false} enterKeyHint="next" />
         </Field>
         <Field id="acc-password" label={t("account.field.password")} {...(register ? { hint: t("account.field.passwordHint", { n: PASSWORD_MIN }) } : {})}>
           <input
@@ -167,6 +173,10 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
             required
             minLength={register ? PASSWORD_MIN : 1}
             autoComplete={register ? "new-password" : "current-password"}
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+            enterKeyHint={register ? "next" : "go"}
             aria-describedby={register ? "acc-password-hint" : undefined}
           />
         </Field>
@@ -187,10 +197,6 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
         )}
 
         {error && <p role="alert" className="font-medium text-son-mai">{t(error)}</p>}
-
-        <Button type="submit" disabled={busy}>
-          {busy ? t("account.busy") : t(register ? "account.register.submit" : "account.login.submit")}
-        </Button>
       </form>
 
       {!register && (
@@ -203,7 +209,7 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
           <>
             <Link to={withNext("/connexion")} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.toLogin")}</Link>
             <div className="border-t border-phu-sa/10 pt-4">
-              <Link to="/" className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.guest.continue")}</Link>
+              <Link to="/apprendre" className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.guest.continue")}</Link>
               <p className="text-center text-sm text-phu-sa">{t("account.offer.guestWarning")}</p>
             </div>
           </>

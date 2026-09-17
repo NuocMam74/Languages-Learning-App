@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_tra_gia_o_cho",
+  "title": {
+    "fr": "Marchander au marché",
+    "en": "Haggling at the market"
+  },
+  "turns": [
+    {
+      "speaker": "Chị bán trái cây",
+      "vi": "Xoài ngon nè em! Mua đi em!",
+      "translation": {
+        "fr": "De belles mangues ! Achète-en !",
+        "en": "Lovely mangoes! Buy some!"
+      },
+      "audio": "audio/dlg_tra_gia_o_cho_t1_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, xoài bao nhiêu một ký chị?",
+      "translation": {
+        "fr": "C'est combien le kilo de mangues ?",
+        "en": "How much per kilo for the mangoes?"
+      },
+      "audio": "audio/dlg_tra_gia_o_cho_t2_mai.opus"
+    },
+    {
+      "speaker": "Chị bán trái cây",
+      "vi": "Sáu chục ngàn một ký em.",
+      "translation": {
+        "fr": "Soixante mille le kilo.",
+        "en": "Sixty thousand a kilo."
+      },
+      "audio": "audio/dlg_tra_gia_o_cho_t3_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Mắc quá chị ơi! Bớt cho em đi chị.",
+      "translation": {
+        "fr": "C'est trop cher ! Fais-moi un prix.",
+        "en": "That's too expensive! Give me a better price."
+      },
+      "audio": "audio/dlg_tra_gia_o_cho_t4_mai.opus"
+    },
+    {
+      "speaker": "Chị bán trái cây",
+      "vi": "Thôi, năm chục ngàn. Em lấy mấy ký?",
+      "translation": {
+        "fr": "Bon, cinquante mille. Tu en prends combien ?",
+        "en": "Fine, fifty thousand. How many kilos?"
+      },
+      "audio": "audio/dlg_tra_gia_o_cho_t5_mai.opus"
+    },
+    {
+      "speaker": "Marie",
+      "vi": "Dạ, cho em một ký rưỡi.",
+      "translation": {
+        "fr": "Un kilo et demi, s'il te plaît.",
+        "en": "A kilo and a half, please."
+      },
+      "audio": "audio/dlg_tra_gia_o_cho_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Combien Marie paie-t-elle finalement le kilo ?",
+      "en": "How much does Marie finally pay per kilo?"
+    },
+    "options": [
+      {
+        "fr": "50 000 đồng.",
+        "en": "50,000 đồng."
+      },
+      {
+        "fr": "60 000 đồng.",
+        "en": "60,000 đồng."
+      },
+      {
+        "fr": "15 000 đồng.",
+        "en": "15,000 đồng."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "La vendeuse baisse de sáu chục (60 000) à năm chục (50 000).",
+      "en": "The seller drops from sáu chục (60,000) to năm chục (50,000)."
+    }
+  },
+  "reviewed": false
+}

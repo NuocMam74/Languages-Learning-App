@@ -1,0 +1,90 @@
+{
+  "$schema": "../../schema/dialogue.schema.json",
+  "id": "dlg_bua_com_gia_dinh",
+  "title": {
+    "fr": "Le repas de famille",
+    "en": "The family meal"
+  },
+  "turns": [
+    {
+      "speaker": "Má",
+      "vi": "Lan ơi, ăn cơm chưa con?",
+      "translation": {
+        "fr": "Lan, tu as mangé ?",
+        "en": "Lan, have you eaten yet?"
+      },
+      "audio": "audio/dlg_bua_com_gia_dinh_t1_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Dạ chưa má. Con mới đi làm về.",
+      "translation": {
+        "fr": "Pas encore, maman. Je rentre juste du travail.",
+        "en": "Not yet, Mum. I've just got back from work."
+      },
+      "audio": "audio/dlg_bua_com_gia_dinh_t2_mai.opus"
+    },
+    {
+      "speaker": "Má",
+      "vi": "Vô ăn cơm đi con. Bữa nay má nấu canh chua.",
+      "translation": {
+        "fr": "Viens manger. Aujourd'hui j'ai fait une soupe aigre.",
+        "en": "Come and eat. Today I made sour soup."
+      },
+      "audio": "audio/dlg_bua_com_gia_dinh_t3_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Dạ, con mời ba má ăn cơm.",
+      "translation": {
+        "fr": "Je vous en prie, papa, maman, mangez.",
+        "en": "Please, Dad, Mum, do eat."
+      },
+      "audio": "audio/dlg_bua_com_gia_dinh_t4_mai.opus"
+    },
+    {
+      "speaker": "Ba",
+      "vi": "Ăn thêm đi con, còn nhiều lắm.",
+      "translation": {
+        "fr": "Reprends-en, il en reste beaucoup.",
+        "en": "Have some more, there's plenty left."
+      },
+      "audio": "audio/dlg_bua_com_gia_dinh_t5_mai.opus"
+    },
+    {
+      "speaker": "Lan",
+      "vi": "Dạ thôi, con no rồi. Con cảm ơn ba má.",
+      "translation": {
+        "fr": "Non merci, je n'ai plus faim. Merci papa, maman.",
+        "en": "No thanks, I'm full. Thank you, Dad, Mum."
+      },
+      "audio": "audio/dlg_bua_com_gia_dinh_t6_mai.opus"
+    }
+  ],
+  "question": {
+    "prompt": {
+      "fr": "Que fait Lan au début du dialogue ?",
+      "en": "What is Lan doing at the start?"
+    },
+    "options": [
+      {
+        "fr": "Elle rentre tout juste du travail.",
+        "en": "She's just got home from work."
+      },
+      {
+        "fr": "Elle part au marché.",
+        "en": "She's leaving for the market."
+      },
+      {
+        "fr": "Elle est en train de cuisiner.",
+        "en": "She's cooking."
+      }
+    ],
+    "answer": 0,
+    "explain": {
+      "fr": "« Con mới đi làm về » : mới + verbe = venir de faire.",
+      "en": "'Con mới đi làm về': mới + verb = to have just done something."
+    }
+  },
+  "reviewed": false
+}

@@ -1,15 +1,70 @@
-import type { ChoiceOption, ContentIndex, Exercise, ExerciseResponse } from "@parlo/core";
-import { useState, type ReactNode } from "react";
+import type { ChoiceOption, ContentIndex, Exercise, ExerciseResponse, GameId } from "@parlo/core";
+import { lazy, Suspense, useState, type ComponentType, type ReactNode } from "react";
 import { playConcept, playPath, ttsAllowed } from "../audio.ts";
 import { mediaUrl } from "../content.ts";
-import { GameExercise, SESSION_GAMES } from "../games/GameExercise.tsx";
-import { DoiDapExercise } from "../games/DoiDapExercise.tsx";
-import { NhoMatExercise } from "../games/NhoMat.tsx";
-import { KaraokeExercise } from "../karaoke/KaraokeExercise.tsx";
 import { useSession } from "../session-store.ts";
-import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
+import { ensureMessages, l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { AudioButton } from "./AudioButton.tsx";
+import { ExerciseSkeleton } from "./Skeleton.tsx";
 import { Button, Vi } from "./ui.tsx";
+
+/**
+ * Famille d'exercice chargée à la demande (audit mobile P1 #6) : hors du bundle du hub et de l'accueil,
+ * préchargée pendant la séance (au repos) pour s'afficher sans squelette une fois prête.
+ */
+function deferredFamily<P extends object>(load: () => Promise<ComponentType<P>>): { View: ComponentType<P>; preload: () => Promise<unknown> } {
+  let ready: ComponentType<P> | null = null;
+  let pending: Promise<ComponentType<P>> | null = null;
+  const preload = () => (pending ??= load().then((component) => (ready = component)));
+  const Lazy = lazy(() => preload().then((component) => ({ default: component })));
+  const View = (props: P) => {
+    const Ready = ready;
+    return Ready ? <Ready {...props} /> : <Suspense fallback={<ExerciseSkeleton />}><Lazy {...props} /></Suspense>;
+  };
+  return { View, preload };
+}
+
+const games = deferredFamily(() => import("../games/GameExercise.tsx").then((m) => m.GameExercise));
+const doiDap = deferredFamily(() => import("../games/DoiDapExercise.tsx").then((m) => m.DoiDapExercise));
+const nhoMat = deferredFamily(() => import("../games/NhoMat.tsx").then((m) => m.NhoMatExercise));
+const karaoke = deferredFamily(() => import("../karaoke/KaraokeExercise.tsx").then((m) => m.KaraokeExercise));
+// Catalogue complet (contrat phase6) : chaque famille attend aussi ses chaînes d'interface, chargées
+// par domaine — jamais une clé brute à l'écran le temps que le domaine « exercises » arrive.
+const withMessages = <T,>(load: () => Promise<T>): Promise<T> => Promise.all([load(), ensureMessages("all")]).then(([m]) => m);
+const text = deferredFamily(() => withMessages(() => import("../exercises/TextAnswerView.tsx").then((m) => m.TextAnswerView)));
+const fillGap = deferredFamily(() => withMessages(() => import("../exercises/FillGapView.tsx").then((m) => m.FillGapView)));
+const matchPairs = deferredFamily(() => withMessages(() => import("../exercises/MatchPairsView.tsx").then((m) => m.MatchPairsView)));
+const listenGist = deferredFamily(() => withMessages(() => import("../exercises/ListenGistView.tsx").then((m) => m.ListenGistView)));
+const dialogueChoice = deferredFamily(() => withMessages(() => import("../exercises/DialogueChoiceView.tsx").then((m) => m.DialogueChoiceView)));
+const speakAnswer = deferredFamily(() => withMessages(() => import("../exercises/SpeakView.tsx").then((m) => m.SpeakAnswerView)));
+const speakRoleplay = deferredFamily(() => withMessages(() => import("../exercises/SpeakView.tsx").then((m) => m.SpeakRoleplayView)));
+const GameExercise = games.View;
+const DoiDapExercise = doiDap.View;
+const NhoMatExercise = nhoMat.View;
+const KaraokeExercise = karaoke.View;
+const TextAnswerView = text.View;
+const FillGapView = fillGap.View;
+const MatchPairsView = matchPairs.View;
+const ListenGistView = listenGist.View;
+const DialogueChoiceView = dialogueChoice.View;
+const SpeakAnswerView = speakAnswer.View;
+const SpeakRoleplayView = speakRoleplay.View;
+/** Jeux jouables en séance : même liste que `SESSION_GAMES` (games/GameExercise.tsx), sans charger ce module. */
+const SESSION_GAMES: ReadonlySet<GameId> = new Set<GameId>(["cho_noi", "xe_om", "bua_com"]);
+
+// Écran de séance ouvert (ce module n'est chargé que là) : familles préchargées au repos.
+if (typeof window !== "undefined") {
+  const idle = (window as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 300));
+  idle(
+    () =>
+      void Promise.all([
+        karaoke.preload(), games.preload(), nhoMat.preload(), doiDap.preload(),
+        text.preload(), fillGap.preload(), matchPairs.preload(), listenGist.preload(), dialogueChoice.preload(),
+        speakAnswer.preload(), speakRoleplay.preload(),
+      ]).catch(() => undefined),
+    { timeout: 1500 },
+  );
+}
 
 /**
  * Un composant par famille d'exercice, piloté uniquement par les données.
@@ -39,6 +94,22 @@ export function ExerciseView({ exercise, content, onAnswer, locked }: { exercise
     case "speak_repeat":
     case "tone_produce":
       return <SpeechView exercise={exercise} {...common} />;
+    case "listen_transcribe":
+    case "translate_to_vi":
+    case "translate_to_fr":
+      return <TextAnswerView exercise={exercise} {...common} />;
+    case "fill_gap":
+      return <FillGapView exercise={exercise} {...common} />;
+    case "match_pairs":
+      return <MatchPairsView exercise={exercise} {...common} />;
+    case "listen_gist":
+      return <ListenGistView exercise={exercise} {...common} />;
+    case "dialogue_choice":
+      return <DialogueChoiceView exercise={exercise} {...common} />;
+    case "speak_answer":
+      return <SpeakAnswerView exercise={exercise} {...common} />;
+    case "speak_roleplay":
+      return <SpeakRoleplayView exercise={exercise} {...common} />;
     case "game":
       if (exercise.game === "doi_dap") return <DoiDapExercise exercise={exercise} {...common} />;
       if (exercise.game === "nho_mat") return <NhoMatExercise exercise={exercise} {...common} />;
@@ -143,6 +214,7 @@ function OptionButton({ option, content, image, tone, selected, disabled, onSele
       type="button"
       role="radio"
       aria-checked={selected}
+      data-option-id={option.id}
       disabled={disabled}
       onClick={onSelect}
       className={`flex min-h-16 items-center justify-center rounded-2xl border-2 px-4 py-3 text-left transition-colors ${

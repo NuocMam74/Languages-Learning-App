@@ -153,7 +153,7 @@ export const fr = {
   "classes.settings.mine": "Mes classes",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "teacher.title": "Teacher space",
   "teacher.loading": "Loading…",
   "teacher.guest": "The teacher space works with an account: sign in to manage your classes.",
@@ -204,6 +204,7 @@ export const en: Partial<Record<keyof typeof fr, string>> = {
   "teacher.lastActive.days": "{n} d ago",
   "teacher.lastActive.never": "never",
   "teacher.streak.days": "{n} d",
+  "teacher.none": "—",
   "teacher.exam.passed": "{level} passed",
   "teacher.exam.score": "{level} {p}%",
   "teacher.student.weak": "Concepts to work on",
@@ -279,6 +280,7 @@ export const en: Partial<Record<keyof typeof fr, string>> = {
   "classes.mine.offline": "Your classes are shown online.",
   "classes.due.today": "today",
   "classes.due.tomorrow": "tomorrow",
+  "classes.due.weekday": "{weekday}",
   "classes.due.date": "{date}",
   "classes.due.label": "Due {when}",
   "classes.hub.card": "Assignment: {title} due {when} ({done}/{total})",

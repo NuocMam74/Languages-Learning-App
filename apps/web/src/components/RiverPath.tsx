@@ -42,7 +42,7 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
 
   let lastUnit = "";
   return (
-    <div className="relative w-full" style={{ height }}>
+    <div className="@container relative w-full" style={{ height }}>
       <svg viewBox={`0 0 100 ${height}`} preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>
         <path d={d} fill="none" stroke="var(--color-ngoc-sang)" strokeWidth="14" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
         <path d={d} fill="none" stroke="var(--color-ngoc)" strokeOpacity="0.25" strokeWidth="2" strokeDasharray="2 10" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
@@ -56,8 +56,13 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
           lastUnit = node.unit.id;
           const left = xOf(i);
           const labelSide = left > 50 ? "right-[calc(100%+0.75rem)] text-right" : "left-[calc(100%+0.75rem)]";
-
           const planned = !node.lesson;
+          // Étiquette bornée à la place qui reste jusqu'au bord du fleuve (unités cqw du conteneur) :
+          // jamais de défilement horizontal sur un téléphone de 360 px.
+          const dotHalf = planned ? 12 : isCurrent ? 40 : 28;
+          const room = left > 50 ? left : 100 - left;
+          const labelWidth = `min(9rem, calc(${room.toFixed(2)}cqw - ${dotHalf + 12}px))`;
+
           const dot = (
             <span
               className={`grid place-items-center rounded-full ${
@@ -67,7 +72,7 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
                     ? "size-20 border-4 border-nghe bg-ngoc text-nuoc"
                     : done
                       ? "size-14 border-4 border-ngoc bg-ngoc text-nuoc"
-                      : "size-14 border-4 border-phu-sa/15 bg-nuoc text-phu-sa/40"
+                      : "size-14 border-4 border-phu-sa/15 bg-nuoc text-phu-sa/80"
               }`}
             >
               {planned ? null : done ? (
@@ -81,9 +86,9 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
           return (
             <li key={node.id} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${left}%`, top: yOf(i) }}>
               {locked || !node.lesson ? <div aria-disabled>{dot}</div> : <Link to={`/lecon/${node.id}`} aria-label={l(node.lesson.title)}>{dot}</Link>}
-              <div className={`absolute top-1/2 w-36 -translate-y-1/2 ${labelSide}`}>
-                {showUnit && <p className="text-xs text-phu-sa/70">{l(node.unit.title)}</p>}
-                <p className={`text-sm leading-snug ${locked ? "text-phu-sa/50" : "font-medium"}`}>{node.lesson ? l(node.lesson.title) : ""}</p>
+              <div className={`absolute top-1/2 -translate-y-1/2 break-words ${labelSide}`} style={{ width: labelWidth }}>
+                {showUnit && <p className="text-xs text-phu-sa">{l(node.unit.title)}</p>}
+                <p className={`text-sm leading-snug ${locked ? "text-phu-sa/80" : "font-medium"}`}>{node.lesson ? l(node.lesson.title) : ""}</p>
               </div>
             </li>
           );

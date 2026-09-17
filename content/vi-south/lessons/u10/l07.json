@@ -22,7 +22,10 @@
     "c_ke_ben",
     "c_cho_market",
     "c_cho_wait",
-    "s_nha_ve_sinh_o_dau"
+    "s_nha_ve_sinh_o_dau",
+    "c_ben_phai",
+    "c_doi_dien",
+    "c_truoc"
   ],
   "steps": [
     {
@@ -101,23 +104,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Quán cà phê ở kế bên chợ.",
-      "tokens": [
-        "Quán cà phê",
-        "ở",
-        "kế bên",
-        "chợ",
-        "trái"
-      ],
-      "translation": {
-        "fr": "Le café est à côté du marché.",
-        "en": "The café is next to the market."
-      },
-      "explain": {
-        "fr": "kế bên + lieu.",
-        "en": "kế bên + place."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_ben_trai",
+        "c_ben_phai",
+        "c_ke_ben",
+        "c_doi_dien",
+        "c_truoc"
+      ]
     },
     {
       "type": "tone_minimal_pair",
@@ -132,6 +126,14 @@
       "explain": {
         "fr": "chợ court, chờ descend.",
         "en": "chợ short, chờ falls."
+      }
+    },
+    {
+      "type": "listen_gist",
+      "dialogue": "dlg_hoi_duong",
+      "explain": {
+        "fr": "Repère d'abord le mouvement, ensuite le repère (kế bên…).",
+        "en": "Catch the movement first, then the landmark (kế bên…)."
       }
     },
     {

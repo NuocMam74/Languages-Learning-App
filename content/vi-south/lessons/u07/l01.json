@@ -116,23 +116,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh ăn phở hay hủ tiếu?",
-      "tokens": [
-        "Anh",
-        "ăn",
-        "phở",
-        "hay",
-        "hủ tiếu",
-        "và"
-      ],
-      "translation": {
-        "fr": "Tu prends un phở ou un hủ tiếu ? (à un homme un peu plus âgé)",
-        "en": "Phở or hủ tiếu? (to a slightly older man)"
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "Un bol de phở, s'il te plaît.",
+        "en": "A bowl of phở, please."
       },
+      "accepted": [
+        "Cho em một tô phở.",
+        "Cho tôi một tô phở.",
+        "Cho chị một tô phở.",
+        "Cho anh một tô phở."
+      ],
       "explain": {
-        "fr": "hay = « ou » dans une question.",
-        "en": "hay = 'or' in a question."
+        "fr": "Cho + pronom + quantité + plat : la formule pour commander.",
+        "en": "Cho + pronoun + quantity + dish: the way to order."
       }
     },
     {

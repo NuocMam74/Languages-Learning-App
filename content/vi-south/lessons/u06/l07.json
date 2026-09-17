@@ -24,7 +24,10 @@
     "c_mot_one",
     "c_mot_high",
     "s_anh_bao_nhieu_tuoi",
-    "s_so_dien_thoai"
+    "s_so_dien_thoai",
+    "c_bay_seven",
+    "c_tam_eight",
+    "c_chin_nine"
   ],
   "steps": [
     {
@@ -122,23 +125,14 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh bao nhiêu tuổi?",
-      "tokens": [
-        "Anh",
-        "bao nhiêu",
-        "tuổi",
-        "mấy"
-      ],
-      "translation": {
-        "fr": "Tu as quel âge ? (à un homme un peu plus âgé)",
-        "en": "How old are you? (to a slightly older man)"
-      },
-      "audioConcept": "s_anh_bao_nhieu_tuoi",
-      "explain": {
-        "fr": "bao nhiêu pour un adulte.",
-        "en": "bao nhiêu for an adult."
-      }
+      "type": "match_pairs",
+      "concepts": [
+        "c_sau_six",
+        "c_bay_seven",
+        "c_tam_eight",
+        "c_chin_nine",
+        "c_muoi_ten"
+      ]
     },
     {
       "type": "speak_repeat",

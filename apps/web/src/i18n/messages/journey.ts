@@ -66,6 +66,8 @@ export const fr = {
   "journey.deleteAccount.body": "Ton compte et tout ce qu'il contient (progression, conversations, certificats) sont supprimés définitivement, sur le serveur et sur cet appareil.",
   "journey.deleteAccount.password": "Mot de passe",
   "journey.deleteAccount.typeHint": "Pour confirmer, écris SUPPRIMER.",
+  /** Mot à taper pour confirmer (comparé côté interface ; l’API reçoit toujours « SUPPRIMER »). */
+  "journey.deleteAccount.word": "SUPPRIMER",
   "journey.deleteAccount.typeLabel": "Confirmation",
   "journey.deleteAccount.submit": "Supprimer définitivement",
   "journey.deleteAccount.wrongPassword": "Mot de passe incorrect.",
@@ -77,7 +79,7 @@ export const fr = {
   "journey.exam.notGradedMedia": "Certains items ne sont pas notés tant que leurs enregistrements natifs manquent.",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "journey.level.label": "Level {n}",
   "journey.level.progress": "{done} / {total} XP to level {next}",
   "journey.level.max": "Top level",
@@ -137,7 +139,8 @@ export const en: Partial<Record<keyof typeof fr, string>> = {
   "journey.deleteAccount": "Delete my account",
   "journey.deleteAccount.body": "Your account and everything in it (progress, conversations, certificates) is permanently deleted, on the server and on this device.",
   "journey.deleteAccount.password": "Password",
-  "journey.deleteAccount.typeHint": "To confirm, type SUPPRIMER.",
+  "journey.deleteAccount.typeHint": "To confirm, type DELETE.",
+  "journey.deleteAccount.word": "DELETE",
   "journey.deleteAccount.typeLabel": "Confirmation",
   "journey.deleteAccount.submit": "Delete permanently",
   "journey.deleteAccount.wrongPassword": "Wrong password.",

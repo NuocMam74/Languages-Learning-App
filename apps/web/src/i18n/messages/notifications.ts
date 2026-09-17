@@ -25,10 +25,28 @@ export const fr = {
   "notif.ios.body": "Sur iPhone, les rappels ne marchent que si Parlo est sur l'écran d'accueil : touche Partager, puis « Sur l'écran d'accueil », et rouvre Parlo depuis son icône.",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "notif.settings.title": "Reminders",
   "notif.settings.toggle": "One reminder a day",
+  "notif.settings.hint": "At most one a day, and only if you haven't done your session yet.",
   "notif.settings.hour": "Reminder time",
+  "notif.settings.hourValue": "{h}:00",
+  "notif.settings.denied": "Notifications are blocked in your browser settings.",
+  "notif.settings.unsupported": "This browser doesn't support notifications.",
+  "notif.settings.account": "Reminders need an account.",
+  "notif.settings.offline": "Go online to change your reminders.",
+  "notif.settings.error": "Couldn't turn on reminders right now.",
+  "notif.prompt.title": "Cô Mai can give you a nudge",
+  "notif.prompt.body": "Three sessions already. Would a short reminder at a time you choose help you keep the rhythm?",
+  "notif.prompt.yes": "Choose my time",
+  "notif.prompt.no": "Not now",
+  "notif.page.title": "A reminder, not an alarm",
+  "notif.page.body": "At most one notification a day, at the time you choose, only if you haven't practised yet. You can stop it any time in settings.",
+  "notif.page.example": "“6 minutes, and you can order a coffee tonight.”",
   "notif.page.enable": "Turn on reminders",
+  "notif.page.enabling": "Turning on…",
+  "notif.page.done": "Got it. See you tomorrow at {h}:00.",
   "notif.page.later": "Later",
+  "notif.ios.title": "First, install Parlo",
+  "notif.ios.body": "On iPhone, reminders only work if Parlo is on your home screen: tap Share, then “Add to Home Screen”, and reopen Parlo from its icon.",
 };

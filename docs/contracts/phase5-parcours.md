@@ -90,5 +90,13 @@ apps/web) et Python (apps/api) : **toute règle ci-dessous doit être identique 
 ## 6. Contenu mis à jour sans rebuild
 
 - Au démarrage (en ligne), le client lit `GET /courses/{code}/manifest` (ou `/content/<code>/latest.json` statique) ; si la version
-  diffère de la version locale, il télécharge le nouveau bundle (examens, placement et données de jeux **inclus dans le bundle**).
-  La reprise d'une séance commencée sur l'ancienne version reste possible (le snapshot porte la version).
+  diffère de la version locale, il télécharge le nouveau contenu (examens, placement et données de jeux **inclus dans le core**).
+  La reprise d'une séance commencée sur l'ancienne version reste possible (le snapshot porte la version) ; la vérification a lieu
+  **après le premier affichage** et, si une séance est ouverte, la nouvelle version attend la fin de cette séance.
+- **Livraison en deux temps** (audit mobile P1 #6) : `v{n}/core.json` (pack, cursus, index des leçons sans étapes, index compact
+  des concepts, variantes, index et tailles des médias, examens, placement, jeux) puis `v{n}/units/<unitId>.json` à la demande
+  (leçons complètes, concepts introduits dans l'unité, cartes culture citées). `v{n}/bundle.json` reste servi une version pour les
+  anciens clients ; un client récent qui ne trouve pas `core.json` relit `bundle.json` et le découpe localement.
+  Découpage unique (`packages/core/src/content-split.ts`), reproduit à l'octet près par l'API
+  (`apps/api/app/services/content_split.py`, fixture de parité `tests/fixtures/content_split_parity.json`) et par le plugin Vite.
+  Le moteur reste synchrone : `ensureUnits` charge les unités nécessaires **avant** d'ouvrir une séance.

@@ -19,7 +19,8 @@
     "c_man",
     "c_chua_sour",
     "c_nuoc_mam",
-    "c_ot"
+    "c_ot",
+    "c_cay"
   ],
   "steps": [
     {
@@ -102,23 +103,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Cho em thêm nước mắm.",
-      "tokens": [
-        "Cho",
-        "em",
-        "thêm",
-        "nước mắm",
-        "ớt",
-        "ly"
-      ],
-      "translation": {
-        "fr": "Encore un peu de sauce de poisson, s'il te plaît.",
-        "en": "A bit more fish sauce, please."
-      },
+      "type": "listen_transcribe",
+      "concept": "c_cay",
       "explain": {
-        "fr": "thêm + chose : en redemander.",
-        "en": "thêm + thing: ask for more."
+        "fr": "cay s'écrit sans diacritique : ton ngang, plat.",
+        "en": "cay has no diacritic: level ngang tone."
       }
     },
     {

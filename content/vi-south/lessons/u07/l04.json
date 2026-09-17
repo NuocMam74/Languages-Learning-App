@@ -105,23 +105,110 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Ít cay thôi nha em.",
-      "tokens": [
-        "Ít",
-        "cay",
-        "thôi",
-        "nha",
-        "em",
-        "ngon"
-      ],
-      "translation": {
-        "fr": "Pas trop piquant, s'il te plaît.",
-        "en": "Not too spicy, please."
+      "type": "dialogue_choice",
+      "situation": {
+        "fr": "Tu entres dans un quán à midi ; le serveur vient te voir.",
+        "en": "You walk into a quán at lunchtime; the waiter comes over."
       },
+      "turns": [
+        {
+          "id": "t1",
+          "vi": "Dạ, anh ăn gì?",
+          "translation": {
+            "fr": "Vous prenez quoi ?",
+            "en": "What will you have?"
+          },
+          "replies": [
+            {
+              "id": "r1a",
+              "vi": "Cho anh một tô phở.",
+              "next": "t2",
+              "best": true,
+              "feedback": {
+                "fr": "Naturel : cho + pronom + quantité + plat.",
+                "en": "Natural: cho + pronoun + quantity + dish."
+              }
+            },
+            {
+              "id": "r1b",
+              "vi": "Tôi muốn phở.",
+              "next": "t2",
+              "feedback": {
+                "fr": "Compréhensible, mais on dit plutôt « Cho anh một tô phở ».",
+                "en": "Understandable, but 'Cho anh một tô phở' is what people say."
+              }
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "vi": "Dạ, anh ăn cay hông?",
+          "translation": {
+            "fr": "Vous mangez pimenté ?",
+            "en": "Do you eat spicy food?"
+          },
+          "replies": [
+            {
+              "id": "r2a",
+              "vi": "Ít cay thôi nha em.",
+              "next": "t3",
+              "best": true,
+              "feedback": {
+                "fr": "« thôi » puis « nha » : la demande devient douce.",
+                "en": "'thôi' then 'nha' softens the request."
+              }
+            },
+            {
+              "id": "r2b",
+              "vi": "Không.",
+              "next": "t3",
+              "feedback": {
+                "fr": "Un peu sec : au moins « Dạ hông ».",
+                "en": "A bit blunt: at least say 'Dạ hông'."
+              }
+            },
+            {
+              "id": "r2c",
+              "vi": "Dạ hông, cảm ơn em.",
+              "next": "t3",
+              "feedback": {
+                "fr": "Correct et poli, mais tu passes à côté du piment !",
+                "en": "Correct and polite, but you miss out on the chilli!"
+              }
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "vi": "Dạ, anh chờ chút xíu nha.",
+          "translation": {
+            "fr": "Un petit instant.",
+            "en": "Just a moment."
+          },
+          "replies": [
+            {
+              "id": "r3a",
+              "vi": "Dạ, cảm ơn em.",
+              "best": true,
+              "feedback": {
+                "fr": "« Dạ » garde le ton poli, même vers plus jeune.",
+                "en": "'Dạ' keeps things polite, even to someone younger."
+              }
+            },
+            {
+              "id": "r3b",
+              "vi": "Ừ, cảm ơn em.",
+              "feedback": {
+                "fr": "« Ừ » est un peu brusque face à quelqu'un qu'on ne connaît pas.",
+                "en": "'Ừ' is a bit curt with someone you don't know."
+              }
+            }
+          ]
+        }
+      ],
       "explain": {
-        "fr": "ít cay = « peu piquant ». thôi nha adoucit la demande.",
-        "en": "ít cay = 'a little spicy'. thôi nha softens the request."
+        "fr": "Le bon choix est presque toujours celui qui ajoute dạ ou nha.",
+        "en": "The right choice is nearly always the one that adds dạ or nha."
       }
     },
     {

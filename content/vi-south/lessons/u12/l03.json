@@ -19,7 +19,8 @@
     "c_tai_sao",
     "s_sao_vay",
     "c_vi_because",
-    "s_tai_sao_em_hoc"
+    "s_tai_sao_em_hoc",
+    "c_hoc"
   ],
   "steps": [
     {
@@ -86,23 +87,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Vì ba má em là người Việt.",
-      "tokens": [
-        "Vì",
-        "ba má",
-        "em",
-        "là",
-        "người Việt",
-        "Pháp"
-      ],
+      "type": "speak_answer",
+      "prompt": "Tại sao em học tiếng Việt?",
       "translation": {
-        "fr": "Parce que mes parents sont vietnamiens.",
-        "en": "Because my parents are Vietnamese."
+        "fr": "Pourquoi apprends-tu le vietnamien ?",
+        "en": "Why are you learning Vietnamese?"
       },
+      "accepted": [
+        "c_vi_because",
+        "c_hoc"
+      ],
       "explain": {
-        "fr": "Vì… : parce que…",
-        "en": "Vì…: because…"
+        "fr": "Commence ta réponse par « Dạ, vì… ».",
+        "en": "Start your answer with 'Dạ, vì…'."
       }
     },
     {

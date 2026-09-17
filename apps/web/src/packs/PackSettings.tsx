@@ -15,7 +15,7 @@ export function PackSettings() {
     setBusy(true);
     try {
       await switchPack(code);
-      window.location.assign((await isOnboarded(code)) ? "/" : "/onboarding");
+      window.location.assign((await isOnboarded(code)) ? "/apprendre" : "/onboarding");
     } catch {
       setBusy(false);
     }
@@ -23,7 +23,8 @@ export function PackSettings() {
 
   return (
     <>
-      <div role="radiogroup" aria-label={t("packs.settings.title")} className="flex flex-wrap gap-2">
+      {/* Grille à 2 colonnes sur téléphone : hauteur stable quand la police arrive (CLS). */}
+      <div role="radiogroup" aria-label={t("packs.settings.title")} className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
         {choices.map((choice) => (
           <button
             key={choice.code}

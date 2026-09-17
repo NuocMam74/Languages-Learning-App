@@ -28,19 +28,24 @@ function HourSelect({ value, onChange, disabled }: { value: number; onChange: (h
   );
 }
 
-function useReminderState() {
-  const [state, setState] = useState<ReminderState | null>(null);
+/** Lecture locale de l'état des rappels (profil → heure par défaut). */
+export const loadReminderState = () => getProfile().then((p) => getReminderState(defaultHour(p.reminder)));
+
+function useReminderState(initial: ReminderState | null = null) {
+  const [state, setState] = useState<ReminderState | null>(initial);
   useEffect(() => {
-    void getProfile().then((p) => getReminderState(defaultHour(p.reminder))).then(setState);
+    if (initial) return;
+    void loadReminderState().then(setState);
   }, []);
   return [state, setState] as const;
 }
 
 /** Section « Rappels » des réglages. */
-export function ReminderSettings() {
+export function ReminderSettings({ initial = null }: { initial?: ReminderState | null } = {}) {
   const status = useAccount((s) => s.status);
   const online = useOnline();
-  const [state, setState] = useReminderState();
+  // État préchargé par les Réglages : la section s'affiche d'emblée à sa hauteur finale (CLS).
+  const [state, setState] = useReminderState(initial);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const support = pushSupport();

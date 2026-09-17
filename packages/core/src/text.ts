@@ -107,3 +107,34 @@ export function compareAnswer(given: string, accepted: readonly string[]): Answe
   }
   return { kind: "wrong", expected: first };
 }
+
+/**
+ * Articles initiaux facultatifs dans la langue d'interface (« le pont » = « pont »).
+ * Après `normalizeLoose`, `l'eau` est devenu `l eau` : « l » figure donc dans la liste.
+ */
+const OPTIONAL_LEADING_ARTICLES: ReadonlySet<string> = new Set(["le", "la", "les", "l", "un", "une", "the", "a", "an"]);
+
+/**
+ * Forme de comparaison relâchée pour la **langue d'interface** (jamais pour la langue cible) :
+ * NFC, minuscules, sans accents ni ponctuation, espaces réduits, article initial retiré.
+ * « L'eau, s'il vous plaît ! » → « eau s il vous plait ».
+ */
+export function normalizeLoose(text: string): string {
+  const words = stripDiacritics(text.normalize("NFC"))
+    .toLowerCase()
+    .replace(PUNCTUATION_RE, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+  if (words.length > 1 && OPTIONAL_LEADING_ARTICLES.has(words[0] ?? "")) words.shift();
+  return words.join(" ");
+}
+
+/**
+ * Compare une traduction écrite dans la langue d'interface à des formes acceptées :
+ * les accents et la ponctuation sont facultatifs, l'article initial aussi (spec §4.4,
+ * « usage modéré » de la traduction : on vérifie le sens, pas l'orthographe du français).
+ */
+export function compareLoose(given: string, accepted: readonly string[]): boolean {
+  const g = normalizeLoose(given);
+  return g.length > 0 && accepted.some((form) => normalizeLoose(form) === g);
+}

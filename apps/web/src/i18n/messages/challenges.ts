@@ -16,7 +16,7 @@ export const fr = {
   "challenges.localNote": "Calculé sur ce téléphone",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "challenges.label": "Weekly challenge",
   "challenges.kind.words_theme": "{n} new words this week",
   "challenges.kind.streak_days": "{n} days in a row",
@@ -24,6 +24,11 @@ export const en: Partial<Record<keyof typeof fr, string>> = {
   "challenges.kind.lessons": "{n} lessons this week",
   "challenges.kind.game_score": "{n} games won",
   "challenges.progress": "{done} of {target}",
+  "challenges.until": "Until {date}",
   "challenges.claim": "Claim the badge",
+  "challenges.claiming": "One moment…",
   "challenges.claimed": "Badge claimed",
+  "challenges.claimedXp": "Badge claimed · +{n} XP",
+  "challenges.claimOffline": "Go online to claim the badge.",
+  "challenges.localNote": "Calculated on this phone",
 };

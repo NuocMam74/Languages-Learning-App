@@ -81,7 +81,8 @@ describe("migration vers le schéma multi-pack (v3)", () => {
       setDb(d);
 
       expect(await loadActivePack()).toBe("vi-south");
-      expect(d.verno).toBe(3);
+      // v3 (multi-pack) puis v4 (unités de contenu, hors ligne) : la migration v3 s'applique en chemin.
+      expect(d.verno).toBeGreaterThanOrEqual(3);
 
       expect(await completedLessons("vi-south")).toEqual(new Set(["vi-south.u01.l01"]));
       expect((await packCards("vi-south")).map((c) => c.conceptId).sort()).toEqual(["c_anh", "c_ba", "c_chao"]);

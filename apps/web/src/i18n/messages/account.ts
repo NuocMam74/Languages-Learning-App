@@ -35,7 +35,7 @@ export const fr = {
   "account.error.age": "Coche la case d'âge pour créer un compte.",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "account.offer.title": "Keep your progress",
   "account.offer.body": "Create an account to find your lessons and streak on all your devices.",
   "account.offer.cta": "Create an account",

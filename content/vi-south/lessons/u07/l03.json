@@ -19,7 +19,9 @@
     "c_dia_plate",
     "c_muong",
     "c_dua",
-    "c_them"
+    "c_them",
+    "s_em_oi",
+    "s_ngon_qua"
   ],
   "steps": [
     {
@@ -91,24 +93,37 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Cho em thêm một cái chén.",
-      "tokens": [
-        "Cho",
-        "em",
-        "thêm",
-        "một",
-        "cái",
-        "chén",
-        "ly"
-      ],
-      "translation": {
-        "fr": "Un bol de plus, s'il te plaît.",
-        "en": "One more bowl, please."
+      "type": "speak_roleplay",
+      "situation": {
+        "fr": "Au quán : tu appelles le serveur et tu demandes une cuillère.",
+        "en": "At the quán: you call the waiter and ask for a spoon."
       },
+      "prompts": [
+        {
+          "cue": {
+            "fr": "Appelle le serveur, plus jeune que toi.",
+            "en": "Call the waiter, who is younger than you."
+          },
+          "concept": "s_em_oi"
+        },
+        {
+          "cue": {
+            "fr": "Demande une cuillère.",
+            "en": "Ask for a spoon."
+          },
+          "concept": "c_muong"
+        },
+        {
+          "cue": {
+            "fr": "Dis que c'est délicieux.",
+            "en": "Say it's delicious."
+          },
+          "concept": "s_ngon_qua"
+        }
+      ],
       "explain": {
-        "fr": "thêm devant la quantité : « en plus ».",
-        "en": "thêm before the quantity: 'extra'."
+        "fr": "Au Sud on dit muỗng, pas thìa.",
+        "en": "In the South it's muỗng, not thìa."
       }
     },
     {

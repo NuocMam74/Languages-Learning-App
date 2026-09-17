@@ -37,7 +37,18 @@ function rightAnswer(ex: Exercise): ExerciseResponse {
     }
     case "speak_repeat":
     case "tone_produce":
+    case "speak_answer":
+    case "speak_roleplay":
       return { kind: "speech", score: 85 };
+    case "listen_transcribe":
+    case "translate_to_vi":
+      return { kind: "text", text: ex.accepted[0] ?? "" };
+    case "translate_to_fr":
+      return { kind: "text", text: ex.accepted.fr[0] ?? "" };
+    case "match_pairs":
+      return { kind: "pairs", pairs: ex.answer.map((p) => ({ ...p })) };
+    case "dialogue_choice":
+      return { kind: "path", turnIds: [...ex.bestReplyIds] };
     case "game":
       return { kind: "game", correct: 9, total: 10 };
     case "unsupported":
@@ -50,7 +61,15 @@ function rightAnswer(ex: Exercise): ExerciseResponse {
 function wrongAnswer(ex: Exercise): ExerciseResponse {
   if ("answerId" in ex) return { kind: "choice", optionId: ex.options.find((o) => o.id !== ex.answerId)?.id ?? "x" };
   if (ex.type === "build_sentence") return { kind: "tokens", optionIds: [] };
-  if (ex.type === "speak_repeat" || ex.type === "tone_produce") return { kind: "speech", score: 10 };
+  if (ex.type === "speak_repeat" || ex.type === "tone_produce" || ex.type === "speak_answer" || ex.type === "speak_roleplay") {
+    return { kind: "speech", score: 10 };
+  }
+  if (ex.type === "listen_transcribe" || ex.type === "translate_to_vi" || ex.type === "translate_to_fr") return { kind: "text", text: "xxx" };
+  if (ex.type === "match_pairs") return { kind: "pairs", pairs: [] };
+  if (ex.type === "dialogue_choice") {
+    const worst = ex.turns.flatMap((t) => t.replies.filter((r) => !r.best).map((r) => r.id));
+    return { kind: "path", turnIds: worst.slice(0, 1) };
+  }
   return { kind: "skip" };
 }
 

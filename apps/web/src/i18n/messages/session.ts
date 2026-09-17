@@ -29,7 +29,7 @@ export const fr = {
   "session.freeze.cancel": "Je suis de retour",
 } as const;
 
-export const en: Partial<Record<keyof typeof fr, string>> = {
+export const en: Record<keyof typeof fr, string> = {
   "session.block.warmup": "Warm-up",
   "session.block.review": "Spaced review",
   "session.block.new": "New",

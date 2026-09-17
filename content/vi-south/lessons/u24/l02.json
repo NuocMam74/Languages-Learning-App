@@ -20,7 +20,8 @@
     "c_b_sai",
     "c_b_hay",
     "s_b_dung_roi",
-    "s_b_sai_roi"
+    "s_b_sai_roi",
+    "c_b_dong_y"
   ],
   "steps": [
     {
@@ -94,23 +95,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Cũng đúng, nhưng mà hơi khác.",
-      "tokens": [
-        "Cũng",
-        "đúng",
-        "nhưng mà",
-        "hơi",
-        "khác",
-        "đụng"
-      ],
-      "translation": {
-        "fr": "C'est vrai aussi, mais c'est un peu différent.",
-        "en": "That's true too, but it's a bit different."
-      },
+      "type": "listen_transcribe",
+      "concept": "c_b_dong_y",
       "explain": {
-        "fr": "Commencer par cũng đúng adoucit le désaccord.",
-        "en": "Starting with cũng đúng softens disagreement."
+        "fr": "đồng ý : être d'accord. Deux syllabes, ton huyền puis sắc.",
+        "en": "đồng ý: to agree. Two syllables, huyền then sắc."
       }
     },
     {

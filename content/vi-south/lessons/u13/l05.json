@@ -19,7 +19,8 @@
     "c_hoi_nay",
     "s_em_moi_toi",
     "s_vua_an_xong",
-    "s_tuan_truoc"
+    "s_tuan_truoc",
+    "c_roi"
   ],
   "steps": [
     {
@@ -98,22 +99,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Hồi nãy chị gọi em.",
-      "tokens": [
-        "Hồi nãy",
-        "chị",
-        "gọi",
-        "em",
-        "sẽ"
-      ],
+      "type": "speak_answer",
+      "prompt": "Em ăn cơm chưa?",
       "translation": {
-        "fr": "Tout à l'heure, je t'ai appelé(e). (femme, à plus jeune)",
-        "en": "I called you a moment ago. (woman, to someone younger)"
+        "fr": "Tu as mangé ?",
+        "en": "Have you eaten yet?"
       },
+      "accepted": [
+        "s_vua_an_xong",
+        "c_roi"
+      ],
       "explain": {
-        "fr": "hồi nãy en tête de phrase.",
-        "en": "hồi nãy at the start."
+        "fr": "« Dạ, em vừa ăn xong. » ou simplement « Dạ, rồi. »",
+        "en": "'Dạ, em vừa ăn xong.' or simply 'Dạ, rồi.'"
       }
     },
     {

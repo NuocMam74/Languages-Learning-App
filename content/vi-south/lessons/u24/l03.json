@@ -105,18 +105,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Chưa chắc đâu anh.",
-      "tokens": [
-        "Chưa",
-        "chắc",
-        "đâu",
-        "anh",
-        "đây"
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "Je ne suis pas trop d'accord.",
+        "en": "I don't really agree."
+      },
+      "accepted": [
+        "Em không đồng ý lắm.",
+        "Tui không đồng ý lắm.",
+        "Tôi không đồng ý lắm.",
+        "Em hổng đồng ý lắm."
       ],
-      "translation": {
-        "fr": "Pas si sûr (à un homme un peu plus âgé).",
-        "en": "Not so sure (to a slightly older man)."
+      "explain": {
+        "fr": "không… lắm adoucit un désaccord : on ne dit jamais « sai » à un aîné.",
+        "en": "không… lắm softens disagreement: you never say 'sai' to an elder."
       }
     },
     {

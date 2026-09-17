@@ -121,23 +121,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em bỏ tiền vô phong bì.",
-      "tokens": [
-        "Em",
-        "bỏ",
-        "tiền",
-        "vô",
-        "phong bì",
-        "phòng"
-      ],
-      "translation": {
-        "fr": "Je mets l'argent dans l'enveloppe.",
-        "en": "I put the money in the envelope."
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "Tous mes vœux de bonheur !",
+        "en": "Wishing you every happiness!"
       },
+      "accepted": [
+        "Chúc mừng hạnh phúc!",
+        "Chúc mừng hạnh phúc.",
+        "Chúc hai em hạnh phúc!"
+      ],
       "explain": {
-        "fr": "bỏ vô : mettre dans (Sud).",
-        "en": "bỏ vô: put into (South)."
+        "fr": "La formule consacrée devant un couple qui se marie.",
+        "en": "The set phrase for a couple getting married."
       }
     },
     {

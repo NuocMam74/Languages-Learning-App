@@ -97,23 +97,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh cho em chìa khóa nha.",
-      "tokens": [
-        "Anh",
-        "cho",
-        "em",
-        "chìa khóa",
-        "nha",
-        "chủ nhà"
-      ],
-      "translation": {
-        "fr": "Tu me donnes la clé ? (à un homme un peu plus âgé)",
-        "en": "Could you give me the key? (to a slightly older man)"
+      "type": "translate_to_fr",
+      "source": "Phòng này bao nhiêu một tháng?",
+      "accepted": {
+        "fr": [
+          "Cette chambre, c'est combien par mois ?",
+          "C'est combien par mois ?",
+          "Combien coûte cette chambre par mois ?"
+        ],
+        "en": [
+          "How much is this room a month?"
+        ]
       },
       "explain": {
-        "fr": "cho + personne + objet : donner.",
-        "en": "cho + person + thing: to give."
+        "fr": "một tháng se place à la fin : « combien pour un mois ».",
+        "en": "một tháng goes at the end: 'how much for one month'."
       }
     },
     {

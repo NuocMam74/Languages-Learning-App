@@ -115,19 +115,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Tui có hộ chiếu và visa.",
-      "tokens": [
-        "Tui",
-        "có",
-        "hộ chiếu",
-        "và",
-        "visa",
-        "không"
-      ],
-      "translation": {
-        "fr": "J'ai un passeport et un visa.",
-        "en": "I have a passport and a visa."
+      "type": "listen_transcribe",
+      "concept": "c_b_ho_chieu",
+      "explain": {
+        "fr": "hộ chiếu : passeport. Les deux syllabes descendent puis montent.",
+        "en": "hộ chiếu: passport. The syllables dip then rise."
       }
     },
     {

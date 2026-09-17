@@ -5,7 +5,7 @@ import { playConcept, ttsAllowed } from "../audio.ts";
 import { AudioButton } from "../components/AudioButton.tsx";
 import { Button, Vi } from "../components/ui.tsx";
 import { getLocale, l, t } from "../i18n/index.ts";
-import { recordPronunciation } from "../learner.ts";
+import { recordPronunciation, type PronunciationRecord } from "../learner.ts";
 import { KaraokePlot, type AlignedResult } from "./KaraokePlot.tsx";
 import { loadReference, syllableLabels, type LoadedReference } from "./reference.ts";
 import { micPermission, usePitchCapture, type Take } from "./use-pitch-capture.ts";
@@ -26,6 +26,8 @@ interface Props {
   mode: KaraokeMode;
   /** Ton attendu (tone_produce). */
   tone?: Tone;
+  /** Type d'étape rapporté par `pronunciation_scored` ; défaut : déduit du mode (speak_repeat / tone_produce). */
+  exerciseType?: PronunciationRecord["exerciseType"];
   locked?: boolean;
   sessionId: string | null;
   /** Score retenu (meilleur essai), ou null si l'exercice n'a pas pu être noté. */
@@ -41,7 +43,7 @@ interface Analysis {
   aligned: AlignedResult | null;
 }
 
-export function KaraokeExercise({ content, concept, pitchRef, mode, tone, locked = false, sessionId, onSubmit, prompt, continueLabel, extra }: Props) {
+export function KaraokeExercise({ content, concept, pitchRef, mode, tone, exerciseType, locked = false, sessionId, onSubmit, prompt, continueLabel, extra }: Props) {
   const [loaded, setLoaded] = useState<LoadedReference | null | undefined>(undefined);
   const [explain, setExplain] = useState(false);
   const [attempts, setAttempts] = useState(0);
@@ -82,8 +84,8 @@ export function KaraokeExercise({ content, concept, pitchRef, mode, tone, locked
     counted.current = r;
     setAttempts((n) => n + 1);
     setBest((b) => Math.max(b ?? 0, r.grade.score ?? 0));
-    void recordPronunciation({ sessionId, conceptId: concept.id, score: r.grade.score, exerciseType: mode === "tone" ? "tone_produce" : "speak_repeat" }).catch(() => undefined);
-  }, [mic.state, mic.result, sessionId, concept.id, mode]);
+    void recordPronunciation({ sessionId, conceptId: concept.id, score: r.grade.score, exerciseType: exerciseType ?? (mode === "tone" ? "tone_produce" : "speak_repeat") }).catch(() => undefined);
+  }, [mic.state, mic.result, sessionId, concept.id, mode, exerciseType]);
 
   const speak = async () => {
     if (!explain && (await micPermission()) !== "granted") {
@@ -184,7 +186,7 @@ export function KaraokeExercise({ content, concept, pitchRef, mode, tone, locked
           recording={mic.state === "recording"}
           aligned={done ? (mic.result?.aligned ?? null) : null}
         />
-        {loaded?.source === "derived" && <p className="text-sm text-phu-sa/70">{t("karaoke.derived")}</p>}
+        {loaded?.source === "derived" && <p className="text-sm text-phu-sa/80">{t("karaoke.derived")}</p>}
         <p className="min-h-6 text-center text-phu-sa" aria-live="polite">{status}</p>
         {done && grade?.score != null && (
           <ScoreResult

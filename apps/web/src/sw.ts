@@ -3,13 +3,13 @@ import { ExpirationPlugin } from "workbox-expiration";
 import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from "workbox-precaching";
 import { RangeRequestsPlugin } from "workbox-range-requests";
 import { NavigationRoute, registerRoute } from "workbox-routing";
-import { CacheFirst, StaleWhileRevalidate } from "workbox-strategies";
+import { CacheFirst, NetworkFirst, StaleWhileRevalidate } from "workbox-strategies";
+import { AUDIO_CACHE, AUDIO_PATH, CONTENT_CACHE, IMAGE_CACHE, IMAGE_PATH, LATEST_PATH, UNIT_PATH } from "./offline/cache-names.ts";
 
 /**
  * Service worker (injectManifest, spec §8.1, §5.8).
- * Même comportement de cache qu'avant la Phase 2 (generateSW) :
- *   - app shell + bundle.json des packs en précache ;
- *   - JSON de contenu en stale-while-revalidate ;
+ *   - app shell + core.json des packs en précache ;
+ *   - latest.json réseau d'abord ; unités (versionnées) cache d'abord ; autre JSON de contenu en stale-while-revalidate ;
  *   - audio en CacheFirst avec quota LRU et requêtes partielles ;
  *   - images en CacheFirst.
  * En plus : notifications push (rappel quotidien) et clic → ouverture de l'app.
@@ -38,6 +38,7 @@ interface SwScope {
   addEventListener(type: "push", listener: (event: PushEventLike) => void): void;
   addEventListener(type: "notificationclick", listener: (event: NotificationEventLike) => void): void;
   addEventListener(type: "install" | "activate", listener: (event: ExtendableEventLike) => void): void;
+  addEventListener(type: "message", listener: (event: MessageEvent) => void): void;
 }
 
 declare global {
@@ -52,8 +53,12 @@ const sw = self as unknown as SwScope;
 type Plugins = NonNullable<NonNullable<ConstructorParameters<typeof CacheFirst>[0]>["plugins"]>;
 const plugins = (...list: object[]): Plugins => list as Plugins;
 
-// registerType "autoUpdate" : la nouvelle version prend la main tout de suite.
-void sw.skipWaiting();
+// registerType "prompt" : une nouvelle version attend (« Nouvelle version disponible — Mettre à jour »)
+// et ne prend la main que sur demande de la page (jamais de rechargement au milieu d'une séance).
+// Première installation : aucune version en attente, activation et contrôle immédiats.
+sw.addEventListener("message", (event) => {
+  if ((event.data as { type?: string } | null)?.type === "SKIP_WAITING") void sw.skipWaiting();
+});
 clientsClaim();
 
 cleanupOutdatedCaches();
@@ -62,25 +67,33 @@ precacheAndRoute(self.__WB_MANIFEST);
 // Les navigations vers l'API (démarrage OAuth, redirections du serveur) ne sont jamais servies par l'app.
 registerRoute(new NavigationRoute(createHandlerBoundToURL("/index.html"), { denylist: [/^\/api\//] }));
 
+// --- Contenu (audit mobile P1 #6, spec §8.1) ----------------------------------------
+// core.json du build : précaché ci-dessus. Manifeste : réseau d'abord (une nouvelle version doit se voir).
+registerRoute(({ url }) => LATEST_PATH.test(url.pathname), new NetworkFirst({ cacheName: CONTENT_CACHE, networkTimeoutSeconds: 3 }));
+// Fichiers d'unité versionnés, donc immuables : cache d'abord (la page les garde aussi dans IndexedDB).
+registerRoute(({ url }) => UNIT_PATH.test(url.pathname), new CacheFirst({ cacheName: CONTENT_CACHE }));
+// Autre JSON de contenu (core d'une version publiée après le build, courbes F0, ancien bundle.json).
 registerRoute(
   ({ url }) => url.pathname.startsWith("/content/") && url.pathname.endsWith(".json"),
-  new StaleWhileRevalidate({ cacheName: "content-v1" }),
+  new StaleWhileRevalidate({ cacheName: CONTENT_CACHE }),
 );
 
+// Médias : la page y range aussi les unités « Disponible hors ligne » (src/offline/downloads.ts, quota et purge LRU
+// gérés par la page) ; pas de purge globale sur erreur de quota, qui effacerait ces téléchargements explicites.
 registerRoute(
-  ({ url }) => /^\/content\/.+\.(opus|m4a)$/.test(url.pathname),
+  ({ url }) => AUDIO_PATH.test(url.pathname),
   new CacheFirst({
-    cacheName: "audio-v1",
+    cacheName: AUDIO_CACHE,
     plugins: plugins(
-      new ExpirationPlugin({ maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 90, purgeOnQuotaError: true }),
+      new ExpirationPlugin({ maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 90 }),
       new RangeRequestsPlugin(),
     ),
   }),
 );
 
 registerRoute(
-  ({ url }) => /^\/content\/.+\.(webp|png|svg)$/.test(url.pathname),
-  new CacheFirst({ cacheName: "images-v1", plugins: plugins(new ExpirationPlugin({ maxEntries: 500, purgeOnQuotaError: true })) }),
+  ({ url }) => IMAGE_PATH.test(url.pathname),
+  new CacheFirst({ cacheName: IMAGE_CACHE, plugins: plugins(new ExpirationPlugin({ maxEntries: 500 })) }),
 );
 
 // --- Push -------------------------------------------------------------------------

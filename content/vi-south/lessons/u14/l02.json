@@ -105,21 +105,11 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em ghét sầu riêng.",
-      "tokens": [
-        "Em",
-        "ghét",
-        "sầu riêng",
-        "ghế"
-      ],
-      "translation": {
-        "fr": "Je déteste le durian.",
-        "en": "I hate durian."
-      },
+      "type": "listen_transcribe",
+      "concept": "c_ghien",
       "explain": {
-        "fr": "ghét + nom : détester.",
-        "en": "ghét + noun: to hate."
+        "fr": "ghiền : forme du Sud (au Nord : nghiện).",
+        "en": "ghiền: the Southern form (nghiện in the North)."
       }
     },
     {

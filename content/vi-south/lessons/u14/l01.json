@@ -104,24 +104,19 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em không thích ăn cay lắm.",
-      "tokens": [
-        "Em",
-        "không",
-        "thích",
-        "ăn",
-        "cay",
-        "lắm",
-        "ngọt"
-      ],
+      "type": "speak_answer",
+      "prompt": "Em có thích phở hông?",
       "translation": {
-        "fr": "Je n'aime pas trop le piquant.",
-        "en": "I don't really like spicy food."
+        "fr": "Tu aimes le phở ?",
+        "en": "Do you like phở?"
       },
+      "accepted": [
+        "s_thich_lam",
+        "c_thich"
+      ],
       "explain": {
-        "fr": "không thích… lắm : pas trop.",
-        "en": "không thích… lắm: not really."
+        "fr": "« Thích lắm! » est plus chaleureux qu'un simple « có ».",
+        "en": "'Thích lắm!' is warmer than a bare 'có'."
       }
     },
     {

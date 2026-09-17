@@ -108,22 +108,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Anh ăn cơm tấm chưa?",
-      "tokens": [
-        "Anh",
-        "ăn",
-        "cơm tấm",
-        "chưa",
-        "không"
-      ],
-      "translation": {
-        "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
-        "en": "Have you tried cơm tấm? (to a slightly older man)"
+      "type": "translate_to_fr",
+      "source": "Anh đi Đà Lạt chưa?",
+      "accepted": {
+        "fr": [
+          "Tu es déjà allé à Đà Lạt ?",
+          "Est-ce que tu es déjà allé à Đà Lạt ?",
+          "Tu as déjà été à Đà Lạt ?"
+        ],
+        "en": [
+          "Have you been to Đà Lạt yet?"
+        ]
       },
       "explain": {
-        "fr": "chưa en fin de question : déjà ?",
-        "en": "chưa at the end: yet? / ever?"
+        "fr": "chưa en fin de question = « déjà ? ».",
+        "en": "chưa at the end of a question = 'yet?'."
       }
     },
     {

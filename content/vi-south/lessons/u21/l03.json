@@ -115,21 +115,21 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em về nhen.",
-      "tokens": [
-        "Em",
-        "về",
-        "nhen",
-        "vê"
+      "type": "fill_gap",
+      "text": "Mai gặp ___.",
+      "answer": "hen",
+      "options": [
+        "hen",
+        "hẹn",
+        "hèn"
       ],
       "translation": {
-        "fr": "Bon, j'y vais !",
-        "en": "Right, I'm off!"
+        "fr": "À demain, hein.",
+        "en": "See you tomorrow, then."
       },
       "explain": {
-        "fr": "về + particule : pour prendre congé.",
-        "en": "về + particle: to take your leave."
+        "fr": "hen = particule qui adoucit. hẹn = rendez-vous, hèn = lâche.",
+        "en": "hen = a softening particle. hẹn = appointment, hèn = cowardly."
       }
     },
     {

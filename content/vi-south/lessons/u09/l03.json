@@ -117,22 +117,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Mai gặp lại nha.",
-      "tokens": [
-        "Mai",
-        "gặp",
-        "lại",
-        "nha",
-        "qua"
-      ],
-      "translation": {
-        "fr": "À demain !",
-        "en": "See you tomorrow!"
+      "type": "translate_to_vi",
+      "source": {
+        "fr": "Demain, je vais au marché.",
+        "en": "Tomorrow I'm going to the market."
       },
+      "accepted": [
+        "Ngày mai tôi đi chợ.",
+        "Mai tôi đi chợ.",
+        "Ngày mai tui đi chợ.",
+        "Mai tui đi chợ."
+      ],
       "explain": {
-        "fr": "Au Sud, mai tout court veut souvent dire « demain ».",
-        "en": "In the South, plain mai often means 'tomorrow'."
+        "fr": "Le temps se met en tête de phrase ; le verbe ne change pas.",
+        "en": "The time phrase comes first; the verb never changes."
       }
     },
     {

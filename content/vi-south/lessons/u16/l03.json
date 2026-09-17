@@ -89,23 +89,20 @@
       }
     },
     {
-      "type": "build_sentence",
-      "target": "Em bị sốt với ho.",
-      "tokens": [
-        "Em",
-        "bị",
-        "sốt",
-        "với",
-        "ho",
-        "khỏe"
-      ],
+      "type": "speak_answer",
+      "prompt": "Em bị sao vậy?",
       "translation": {
-        "fr": "J'ai de la fièvre et je tousse.",
-        "en": "I have a fever and a cough."
+        "fr": "Qu'est-ce qui ne va pas ?",
+        "en": "What's wrong?"
       },
+      "accepted": [
+        "s_bi_sot",
+        "c_ho_cough",
+        "c_met"
+      ],
       "explain": {
-        "fr": "với : et (à l'oral).",
-        "en": "với: and (spoken)."
+        "fr": "Une phrase suffit : « Dạ, em bị sốt. »",
+        "en": "One sentence is enough: 'Dạ, em bị sốt.'"
       }
     },
     {

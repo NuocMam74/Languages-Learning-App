@@ -10,6 +10,8 @@ test.use({ reducedMotion: "reduce", serviceWorkers: "block" });
 // Chợ nổi (pack tonal) exige l'audio natif : le build n'en a pas encore, l'index des médias est complété (voir media.ts).
 test.beforeEach(async ({ page }) => {
   await declareAllMedia(page);
+  // Đối đáp dépend de Cô Mai : sans modèle configuré l'API la dit indisponible et le jeu s'affiche « bientôt ».
+  await page.route("**/api/tutor/status**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ available: true, reason: null, personaName: "Cô Mai" }) }));
 });
 
 test("Chợ nổi se joue jusqu'au résultat et garde le record", async ({ page }) => {

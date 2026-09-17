@@ -44,9 +44,10 @@ export function LeagueHubLine() {
 }
 
 /** Réglage de la ligue (section des réglages). */
-export function LeagueSettings({ motivation }: { motivation: Profile["motivation"] }) {
+export function LeagueSettings({ motivation, initialEnabled = null }: { motivation: Profile["motivation"]; initialEnabled?: boolean | null }) {
   const status = useAccount((s) => s.status);
-  const [enabled, setEnabled] = useState<boolean | null>(null);
+  // Valeur préchargée par les Réglages : pas de section qui apparaît après coup (CLS).
+  const [enabled, setEnabled] = useState<boolean | null>(initialEnabled);
   const signedIn = status === "signed_in" || status === "expired";
 
   // Relu quand la motivation change : sans choix explicite, le défaut suit la motivation.

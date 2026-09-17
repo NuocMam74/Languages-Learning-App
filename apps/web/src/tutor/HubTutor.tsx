@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useAccount } from "../account.ts";
+import { Slot } from "../components/Slot.tsx";
 import { t } from "../i18n/index.ts";
 import { cachedDebrief } from "./debrief.ts";
 import { useTutorStatus } from "./status.ts";
@@ -20,7 +21,7 @@ export function HubTutor({ now = new Date() }: { now?: Date }) {
 
   const showDebrief = status === "signed_in" && (now.getDay() === 1 || available);
   return (
-    <div className="flex flex-col gap-3 pb-5" data-testid="hub-tutor">
+    <div className="flex flex-col pb-5" data-testid="hub-tutor">
       {tutorAvailable === false ? (
         // Sans modèle ou sans persona : conversation annoncée, pas une page qui échoue (contrat phase5 §5).
         <p className="flex min-h-12 items-center rounded-2xl border-2 border-phu-sa/15 px-4 py-2 text-phu-sa" data-testid="hub-tutor-soon">
@@ -31,12 +32,15 @@ export function HubTutor({ now = new Date() }: { now?: Date }) {
           {t("tutor.hub.talk")}
         </Link>
       )}
-      {showDebrief && (
-        <Link to="/bilan-semaine" className="flex flex-col border-l-4 border-nghe py-1 pl-3" data-testid="hub-debrief">
-          <span className="font-semibold">{t("tutor.hub.debrief")}</span>
-          <span className="text-sm text-phu-sa">{t("tutor.hub.debriefHint")}</span>
-        </Link>
-      )}
+      {/* Bilan : connu après lecture locale ; emplacement réservé (pas de saut du hub). */}
+      <Slot id={`hub-debrief-${status}`}>
+        {showDebrief && (
+          <Link to="/bilan-semaine" className="mt-3 flex flex-col border-l-4 border-nghe py-1 pl-3" data-testid="hub-debrief">
+            <span className="font-semibold">{t("tutor.hub.debrief")}</span>
+            <span className="text-sm text-phu-sa">{t("tutor.hub.debriefHint")}</span>
+          </Link>
+        )}
+      </Slot>
     </div>
   );
 }

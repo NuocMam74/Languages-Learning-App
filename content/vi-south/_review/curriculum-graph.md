@@ -54,4 +54,31 @@ de ses unités requises.
 Niveau 0 → u01, 1 → u03, 2 → u05, 3 → u07. Les unités antérieures sont « sautées » : u04 est sautée au
 niveau 2, u04–u06 au niveau 3.
 
+## Dialogues (`dialogues/`)
+
+Quatorze dialogues courts (5 à 7 répliques, ~15 s) servent l'exercice `listen_gist`, placé dans la **leçon de
+révision** (`l07`) de l'unité correspondante. Chaque dialogue rejoue le vocabulaire de son unité et rien de plus :
+il se comprend sans mot nouveau une fois l'unité terminée. Audio à enregistrer :
+`audio/<id>_t<n>_mai.opus`, une piste par réplique (les fichiers n'existent pas encore).
+
+| Unité | Dialogue | Situation |
+|---|---|---|
+| u04 Famille | `dlg_bua_com_gia_dinh` | Le repas de famille : ăn cơm chưa, mời ba má, no rồi. |
+| u05 Se présenter | `dlg_lam_quen` | Deux inconnus : tên, người nước nào, nghề gì. |
+| u07 Manger et boire | `dlg_goi_pho` | Commander un phở et un cà phê sữa đá. |
+| u08 Marché et prix | `dlg_tra_gia_o_cho` | Marchander des mangues : bao nhiêu một ký, bớt cho em. |
+| u09 Temps et heures | `dlg_hen_gio` | Fixer un rendez-vous : rảnh, bốn giờ rưỡi, năm giờ. |
+| u10 Lieux | `dlg_hoi_duong` | Demander son chemin : đi thẳng, quẹo phải, kế bên. |
+| u11 Se déplacer | `dlg_di_xe_om` | Une course en xe ôm : chở, bao lâu, nón bảo hiểm. |
+| u15 Téléphone | `dlg_goi_dien_thoai` | Un appel : cho em gặp, đang họp, nhắn lại giùm. |
+| u16 Santé | `dlg_di_kham_benh` | Chez le médecin : bị sốt, nhức đầu, ngày hai lần. |
+| u17 Logement | `dlg_thue_phong_tro` | Louer une chambre : còn phòng, một tháng, tính riêng. |
+| u18 Travail | `dlg_van_phong` | Premier jour au bureau : nhân viên mới, mấy giờ họp. |
+| u20 Invitations | `dlg_moi_an_tet` | Invitation pour le Tết : mùng hai, đừng khách sáo. |
+| u21 Parler du Sud | `dlg_ve_mien_tay` | Descendre dans le delta : ghe, chợ nổi, nghen. |
+| u22 Raconter le passé | `dlg_ke_chuyen_hoi_nho` | L'enfance : hồi nhỏ, hồi đó, rồi sao nữa. |
+
+Les dialogues **à embranchements** (`dialogue_choice`) ne vivent pas ici : ils sont écrits dans l'étape
+elle-même, dans huit leçons (u07.l04, u08.l02, u11.l02, u15.l02, u17.l03, u18.l02, u20.l06, u24.l06).
+
 Vérifier après toute modification : `npm run content:validate`.

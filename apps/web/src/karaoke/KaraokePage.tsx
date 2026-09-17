@@ -64,7 +64,7 @@ export default function KaraokePage({ content }: { content: ContentIndex }) {
       setCurrent(null);
     };
     return (
-      <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-5 pt-[max(1rem,env(safe-area-inset-top))] md:max-w-[720px]">
+      <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col pt-[max(1rem,env(safe-area-inset-top))] pr-[max(1.25rem,env(safe-area-inset-right))] pl-[max(1.25rem,env(safe-area-inset-left))] md:max-w-[720px]">
         {back}
         <main className="flex flex-1 flex-col pt-2">
           <KaraokeExercise
