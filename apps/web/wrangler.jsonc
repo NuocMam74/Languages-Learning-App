@@ -8,7 +8,10 @@
   //     npx wrangler deploy --config apps/web/wrangler.jsonc
   //
   // Les chemins ci-dessous sont relatifs à ce fichier, pas au répertoire de travail.
-  "name": "parlo",
+  // Doit être **identique** au nom du Worker sur Cloudflare, sinon le déploiement échoue ou crée
+  // un second Worker à côté. Cloudflare dérive ce nom du dépôt Git, en minuscules et avec des
+  // tirets : dépôt « Languages-Learning-App » → Worker « languages-learning-app ».
+  "name": "languages-learning-app",
   "main": "worker.js",
   "compatibility_date": "2026-09-01",
   "assets": {
