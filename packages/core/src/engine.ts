@@ -626,6 +626,29 @@ export function currentItem(run: LessonRun): QueueItem | null {
   return run.queue[run.cursor] ?? null;
 }
 
+/**
+ * Leçon **maîtrisée** (contrat phase10 §3) : elle est allée au bout, et **chaque exercice noté a
+ * fini par être réussi**, réessais compris — le moteur repropose déjà un item raté une fois
+ * (`recordResult`). Une erreur non corrigée à la fin laisse donc la leçon non validée, et la
+ * suivante fermée.
+ *
+ * On regroupe par étape, pas par réponse : un item réussi au deuxième essai compte comme réussi.
+ * C'est la différence avec `lessonScore`, qui mesure le sans-faute du premier jet (et sert au
+ * seuil des tests d'unité, à l'XP et aux statistiques).
+ *
+ * Les exercices non notés ne comptent pas : une carte culture sans question, une production orale
+ * sans courbe de référence, un mini-jeu passé faute de mots jouables.
+ */
+export function isLessonMastered(run: LessonRun): boolean {
+  if (!isFinished(run)) return false;
+  const byStep = new Map<number, boolean>();
+  for (const result of run.results) {
+    if (!result.graded) continue;
+    byStep.set(result.stepIndex, (byStep.get(result.stepIndex) ?? false) || result.correct);
+  }
+  return [...byStep.values()].every(Boolean);
+}
+
 export function isFinished(run: LessonRun): boolean {
   return run.cursor >= run.queue.length;
 }

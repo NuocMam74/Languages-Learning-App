@@ -25,9 +25,11 @@ import {
   getBadges,
   getPlacement,
   getTotals,
+  isLessonOpen,
   openSession,
   planning,
   markSessionTaught,
+  progressState,
   saveLessonPart,
   saveProfile,
   savePlacement,
@@ -309,5 +311,48 @@ describe("placement", () => {
     const plans = await planning(content, DEFAULT_PROFILE);
     expect(plans.next?.id).toBe(entry!.id);
     expect(plans.unlocked.has("vi-south.u01.l01")).toBe(entry!.id !== "vi-south.u01.l01");
+  });
+});
+
+describe("progression : réussir avant de passer à la suite (contrat phase10 §3)", () => {
+  const L01 = "vi-south.u01.l01";
+  const L02 = "vi-south.u01.l02";
+
+  // Base neuve par test : ces vérifications portent sur un parcours vierge, pas sur ce qu'un test
+  // précédent a laissé.
+  beforeEach(() => {
+    dbName = `parlo-mastery-${Math.random()}`;
+    restart();
+  });
+  afterEach(() => setDb(null));
+
+  it("terminer en se trompant n'ouvre pas la leçon suivante ; la refaire sans faute l'ouvre", async () => {
+    const content = buildContentIndex(raw);
+    await saveProfile({ ...DEFAULT_PROFILE, onboardedAt: new Date().toISOString() });
+
+    // Tout faux : chaque item raté est reproposé une fois (spec §3.3) et raté de nouveau.
+    await finishSession(content, await play(content, await openSession(content, { source: "lesson", lessonId: L01 }), Infinity, false));
+    // La leçon reste ouverte — il faut bien pouvoir la refaire…
+    expect(await isLessonOpen(content, L01)).toBe(true);
+    // …mais la suite est fermée.
+    expect(await isLessonOpen(content, L02)).toBe(false);
+    expect((await progressState(content)).completed.has(L01)).toBe(true);
+    expect((await progressState(content)).passed.has(L01)).toBe(false);
+
+    // Refaite sans faute : la maîtrise est acquise, la suivante s'ouvre.
+    await finishSession(content, await play(content, await openSession(content, { source: "lesson", lessonId: L01 }), Infinity, true));
+    expect((await progressState(content)).passed.has(L01)).toBe(true);
+    expect(await isLessonOpen(content, L02)).toBe(true);
+  });
+
+  it("la maîtrise ne se reperd pas : une reprise ratée ne referme pas la suite", async () => {
+    const content = buildContentIndex(raw);
+    await saveProfile({ ...DEFAULT_PROFILE, onboardedAt: new Date().toISOString() });
+    await finishSession(content, await play(content, await openSession(content, { source: "lesson", lessonId: L01 }), Infinity, true));
+    expect(await isLessonOpen(content, L02)).toBe(true);
+
+    await finishSession(content, await play(content, await openSession(content, { source: "lesson", lessonId: L01 }), Infinity, false));
+    expect((await progressState(content)).passed.has(L01)).toBe(true);
+    expect(await isLessonOpen(content, L02)).toBe(true);
   });
 });

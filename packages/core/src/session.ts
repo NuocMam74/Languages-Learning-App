@@ -137,8 +137,12 @@ function lessonDone(lesson: Lesson, progress: ProgressSets): boolean {
 }
 
 /**
- * Leçon ouverte : unité disponible et prérequis intra-unité terminés (les prérequis
- * inter-unités sont ignorés : le graphe d'unités les remplace).
+ * Leçon ouverte : unité disponible et prérequis intra-unité **réussis** (contrat phase10 §3) — les
+ * prérequis inter-unités sont ignorés, le graphe d'unités les remplace.
+ *
+ * « Réussis », pas « terminés » : arriver au bout d'une leçon en se trompant ne l'ouvre pas pour
+ * autant la suivante. Une leçon déjà commencée reste toujours accessible, justement pour pouvoir
+ * la refaire.
  */
 export function isLessonUnlocked(curriculum: Curriculum, lessons: ReadonlyMap<LessonId, Lesson>, lessonId: LessonId, progress: ProgressSets): boolean {
   const lesson = lessons.get(lessonId);
@@ -147,7 +151,8 @@ export function isLessonUnlocked(curriculum: Curriculum, lessons: ReadonlyMap<Le
   const unit = curriculum.units.find((u) => u.lessons.includes(lessonId));
   if (!unit || !isUnitAvailable(curriculum, lessons, unit.id, progress)) return false;
   const inUnit = new Set(unit.lessons);
-  return lesson.prerequisites.every((p) => !inUnit.has(p) || progress.completed.has(p));
+  const passed = progress.passed ?? progress.completed;
+  return lesson.prerequisites.every((p) => !inUnit.has(p) || passed.has(p));
 }
 
 /**
@@ -177,7 +182,9 @@ export function nextLesson(
     for (const lessonId of unit.lessons) {
       const lesson = lessons.get(lessonId);
       if (!lesson || lessonDone(lesson, progress)) continue;
-      if (lesson.prerequisites.every((p) => !inUnit.has(p) || completed.has(p))) return lesson;
+      // Prérequis réussis (contrat phase10 §3) : la prochaine étape proposée est celle qu'on peut
+      // réellement ouvrir. `lessonDone` renvoie déjà vers une leçon à refaire.
+      if (lesson.prerequisites.every((p) => !inUnit.has(p) || (passed ?? completed).has(p))) return lesson;
     }
   }
   return null;

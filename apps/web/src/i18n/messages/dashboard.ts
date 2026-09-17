@@ -68,6 +68,12 @@ export const fr = {
   // États
   "dashboard.offline": "Hors ligne : tu vois ta progression enregistrée sur cet appareil.",
   "dashboard.loading": "Chargement de ta progression",
+  // Invitation à finir sa configuration (contrat phase10 §4) : une invitation, jamais un reproche.
+  "setup.title": "Rends cet espace un peu tien",
+  "setup.body": "Deux minutes, et l'app te parlera par ton nom.",
+  "setup.name": "Choisir mon nom",
+  "setup.character": "Habiller mon personnage",
+  "setup.later": "Plus tard",
 } as const;
 
 export const en: Record<keyof typeof fr, string> = {
@@ -131,4 +137,9 @@ export const en: Record<keyof typeof fr, string> = {
 
   "dashboard.offline": "Offline: you're seeing the progress saved on this device.",
   "dashboard.loading": "Loading your progress",
+  "setup.title": "Make this place yours",
+  "setup.body": "Two minutes, and the app will call you by your name.",
+  "setup.name": "Choose my name",
+  "setup.character": "Dress my character",
+  "setup.later": "Later",
 };

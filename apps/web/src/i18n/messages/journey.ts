@@ -77,6 +77,7 @@ export const fr = {
   // Examens
   "journey.exam.unavailable": "Indisponible pour le moment : les enregistrements natifs nécessaires ne sont pas encore prêts.",
   "journey.exam.notGradedMedia": "Certains items ne sont pas notés tant que leurs enregistrements natifs manquent.",
+  "journey.lesson.redo": "{title} — à refaire : il reste une erreur",
 } as const;
 
 export const en: Record<keyof typeof fr, string> = {
@@ -149,4 +150,5 @@ export const en: Record<keyof typeof fr, string> = {
 
   "journey.exam.unavailable": "Unavailable for now: the native recordings it needs aren't ready yet.",
   "journey.exam.notGradedMedia": "Some items aren't graded while their native recordings are missing.",
+  "journey.lesson.redo": "{title} — to redo: one mistake left",
 };

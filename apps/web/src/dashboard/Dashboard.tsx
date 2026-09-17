@@ -26,6 +26,8 @@ const HubTutor = lazy(() => import("../tutor/HubTutor.tsx").then((m) => ({ defau
 // Phase 9 : la mission à faire aujourd'hui, et le personnage de l'apprenant (le médaillon d'initiales
 // tient sa place tant qu'il n'est pas arrivé : rien ne se décale).
 const MissionsCard = lazy(() => import("../missions/MissionsCard.tsx"));
+// Invitation à choisir son nom et à habiller son personnage (contrat phase10 §4).
+const SetupPrompt = lazy(() => import("./SetupPrompt.tsx"));
 const ProfileAvatar = lazy(() => import("../profile/ProfileAvatar.tsx"));
 // Badges et certificat : dessins de médaillons et fichiers d'examen — hors du bundle de démarrage.
 const DashboardBadges = lazy(() => import("./Motivation.tsx").then((m) => ({ default: m.DashboardBadges })));
@@ -164,6 +166,13 @@ export function Dashboard({ content }: { content: ContentIndex }) {
           <div className="empty:hidden">
             <OptionalChunk>
               <Suspense fallback={null}><MissionsCard content={content} /></Suspense>
+            </OptionalChunk>
+          </div>
+        </Slot>
+        <Slot id="dash-setup">
+          <div className="empty:hidden">
+            <OptionalChunk>
+              <Suspense fallback={null}><SetupPrompt started={started} /></Suspense>
             </OptionalChunk>
           </div>
         </Slot>

@@ -59,6 +59,13 @@ export interface LessonProgressRow {
   packCode?: string;
   status: "completed";
   bestScore: number;
+  /**
+   * Leçon **maîtrisée** au moins une fois : tous ses exercices notés réussis, réessais compris
+   * (contrat phase10 §3). C'est elle qui ouvre la leçon suivante, pas `status: "completed"`.
+   * Absent = lignes écrites avant ce contrat : elles ne valent pas réussite (on ne valide pas
+   * rétroactivement une leçon dont on ne sait pas si elle a été réussie).
+   */
+  mastered?: boolean;
   attempts: number;
   completedAt: string;
 }

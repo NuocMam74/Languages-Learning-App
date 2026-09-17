@@ -1,7 +1,7 @@
 import type { ContentIndex, LessonId } from "@parlo/core";
 import { Link } from "react-router";
 import { Icon } from "../design/index.ts";
-import { l } from "../i18n/index.ts";
+import { l, t } from "../i18n/index.ts";
 
 /**
  * Carte du parcours : un fleuve vertical en SVG, les leçons sont des
@@ -11,9 +11,15 @@ import { l } from "../i18n/index.ts";
 const STEP_Y = 112;
 const AMPLITUDE = 26; // % de la largeur
 
-export function RiverPath({ content, completed, current, unlocked = completed }: {
+export function RiverPath({ content, completed, passed = completed, current, unlocked = completed }: {
   content: ContentIndex;
   completed: ReadonlySet<LessonId>;
+  /**
+   * Leçons **réussies** (contrat phase10 §3). Une leçon terminée mais non réussie ne se coche pas :
+   * elle s'affiche « à refaire », sinon on verrait une pastille verte suivie d'une étape verrouillée.
+   * Défaut : `completed`, pour les appelants qui ne distinguent pas encore les deux.
+   */
+  passed?: ReadonlySet<LessonId>;
   current: LessonId | null;
   /** Leçons ouvertes sans être terminées (sautées grâce au test de placement). */
   unlocked?: ReadonlySet<LessonId>;
@@ -50,9 +56,11 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
       </svg>
       <ol className="absolute inset-0">
         {nodes.map((node, i) => {
-          const done = completed.has(node.id);
+          const done = passed.has(node.id);
+          // Terminée mais pas réussie : accessible, et à refaire.
+          const redo = !done && completed.has(node.id);
           const isCurrent = node.id === current;
-          const locked = !node.lesson || (!done && !isCurrent && !unlocked.has(node.id));
+          const locked = !node.lesson || (!done && !redo && !isCurrent && !unlocked.has(node.id));
           const showUnit = node.unit.id !== lastUnit;
           lastUnit = node.unit.id;
           const left = xOf(i);
@@ -73,11 +81,15 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
                     ? "size-20 border-4 border-nghe bg-ngoc text-nuoc shadow-raised ring-[6px] ring-nghe/25"
                     : done
                       ? "size-14 border-4 border-ngoc bg-ngoc text-nuoc shadow-card"
-                      : "size-14 border-4 border-line-strong bg-surface text-phu-sa"
+                      : redo
+                        ? "size-14 border-4 border-nghe bg-surface-nghe text-nghe-ecrit shadow-card"
+                        : "size-14 border-4 border-line-strong bg-surface text-phu-sa"
               }`}
             >
               {planned ? null : done ? (
                 <Icon name="check" size={24} strokeWidth={3} />
+              ) : redo ? (
+                <Icon name="refresh" size={22} strokeWidth={2.6} />
               ) : (
                 <span className="font-serif text-xl">{i + 1}</span>
               )}
@@ -86,7 +98,13 @@ export function RiverPath({ content, completed, current, unlocked = completed }:
 
           return (
             <li key={node.id} className="absolute -translate-x-1/2 -translate-y-1/2 transition-transform motion-safe:active:scale-[.97]" style={{ left: `${left}%`, top: yOf(i) }}>
-              {locked || !node.lesson ? <div aria-disabled>{dot}</div> : <Link to={`/lecon/${node.id}`} aria-label={l(node.lesson.title)}>{dot}</Link>}
+              {locked || !node.lesson ? (
+                <div aria-disabled>{dot}</div>
+              ) : (
+                <Link to={`/lecon/${node.id}`} aria-label={redo ? t("journey.lesson.redo", { title: l(node.lesson.title) }) : l(node.lesson.title)} data-state={done ? "done" : redo ? "redo" : "open"}>
+                  {dot}
+                </Link>
+              )}
               <div className={`absolute top-1/2 -translate-y-1/2 break-words ${labelSide}`} style={{ width: labelWidth }}>
                 {showUnit && <p className="text-xs text-phu-sa">{l(node.unit.title)}</p>}
                 <p className={`text-sm leading-snug ${locked ? "text-phu-sa" : "font-medium"}`}>{node.lesson ? l(node.lesson.title) : ""}</p>

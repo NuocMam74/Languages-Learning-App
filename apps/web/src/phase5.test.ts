@@ -79,7 +79,9 @@ describe("test d'unité (contrat phase5 §2)", () => {
 
   async function completeUnitExceptTest() {
     const now = new Date().toISOString();
-    await d.lessonProgress.bulkPut(unit1.lessons.filter((id) => id !== test.id).map((lessonId) => ({ lessonId, packCode: "vi-south", status: "completed" as const, bestScore: 1, attempts: 1, completedAt: now })));
+    // `mastered: true` : les leçons de l'unité ont été **réussies**, c'est ce qui ouvre la suite
+    // depuis le contrat phase10 §3 (terminer en se trompant n'ouvre plus rien).
+    await d.lessonProgress.bulkPut(unit1.lessons.filter((id) => id !== test.id).map((lessonId) => ({ lessonId, packCode: "vi-south", status: "completed" as const, bestScore: 1, mastered: true, attempts: 1, completedAt: now })));
   }
 
   it("sous 0,7 : « Presque ! », l'unité suivante reste fermée et le test est reproposé ; réussi : la suite s'ouvre", async () => {

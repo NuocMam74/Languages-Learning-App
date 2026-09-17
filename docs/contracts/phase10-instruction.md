@@ -32,11 +32,50 @@ Le reste de la chaîne existait déjà et n'est pas touché : les exercices (20 
 du bloc « Mise en pratique », le test d'unité en fin d'unité, les examens A0/A1/A2 et leurs
 certificats. Ce contrat ne fait qu'ajouter la marche manquante au début.
 
-## 3. Verrouillage du parcours
+## 3. Réussir avant de passer à la suite
 
-`isLessonUnlocked` n'ouvrait déjà qu'une leçon à la fois (unité disponible + prérequis intra-unité
-terminés). Ce qui court-circuitait ce verrou était le **placement** : sans enregistrement natif, son
-test d'écoute était muet, répondu au hasard, et `lessonsBefore` comptait toutes les leçons sautées
-comme réussies — y compris des tests d'unité. Corrigé en amont : un item de placement exige un
-enregistrement natif, quelle que soit sa compétence. Sans voix natives, il n'y a donc **pas de
-placement**, et chacun commence à la leçon 1.
+Règle : **une leçon n'est validée que si tous ses exercices notés ont été réussis** — réessais
+compris, le moteur reproposant déjà un item raté une fois (spec §3.3). Tant qu'il reste une erreur
+non corrigée, la leçon reste ouverte (il faut bien pouvoir la refaire) et **la suivante reste
+fermée**.
+
+- `isLessonMastered` (core/engine.ts) mesure cette maîtrise : on regroupe par étape, donc un item
+  réussi au deuxième essai compte comme réussi. C'est la différence avec `lessonScore`, qui mesure
+  le sans-faute du premier jet et sert au seuil des tests d'unité, à l'XP et aux statistiques.
+- `lessonProgress.mastered` la garde, au mieux de toutes les tentatives : une maîtrise ne se reperd
+  jamais, et une reprise ratée ne referme pas la suite. Les lignes écrites avant ce contrat n'ont
+  pas le champ : elles ne valent pas réussite, on ne valide pas rétroactivement une leçon dont on
+  ne sait rien.
+- `isLessonUnlocked` exige désormais les prérequis **réussis**, plus seulement terminés. Le contenu
+  décrit bien la chaîne : 193 leçons sur 194 déclarent la précédente en prérequis.
+- Sur la carte du parcours, une leçon terminée mais non réussie **ne se coche pas** : elle s'affiche
+  « à refaire » (pastille curcuma, icône de reprise, nom accessible explicite). Une pastille verte
+  suivie d'une étape verrouillée serait incompréhensible.
+
+Pourquoi « tout réussi, réessais compris » plutôt que « 100 % du premier coup » : le sans-faute de
+premier jet est **inatteignable tant qu'aucun enregistrement natif n'existe** (les exercices
+d'écoute ne sont pas jouables), ce qui bloquerait le parcours à la leçon 1. La règle retenue exige
+autant — rien ne passe à la trappe — mais reste franchissable en corrigeant ses erreurs.
+
+Les **examens certifiants** gardent leur seuil de 75 % (spec §5.5) : c'est le **serveur** qui calcule
+la réussite et émet le diplôme. Monter le seuil côté app seulement ferait refuser un examen que le
+serveur a validé, PDF déjà émis. À changer des deux côtés, ou pas du tout.
+
+## 4. Inviter à configurer son espace
+
+Une carte sur l'accueil, sous la carte des missions, quand il manque le **nom** du profil ou que le
+**personnage** n'a jamais été habillé. Ton de la spec §5.8 : une invitation, jamais un reproche —
+elle dit ce qu'on y gagne (« l'app te parlera par ton nom »), pas ce qui manque.
+
+- N'apparaît qu'une fois la première séance faite : avant, la seule chose à faire est d'apprendre
+  quelque chose.
+- Disparaît d'elle-même dès que les deux sont faits, et se referme pour de bon d'un geste
+  (« Plus tard », mémorisé) : elle ne revient pas harceler.
+
+## 5. Ce que le placement ne fait plus
+
+`isLessonUnlocked` n'ouvrait déjà qu'une leçon à la fois. Ce qui court-circuitait ce verrou était le
+**placement** : sans enregistrement natif, son test d'écoute était muet, répondu au hasard, et
+`lessonsBefore` comptait toutes les leçons sautées comme réussies — y compris des tests d'unité.
+Corrigé : un item de placement exige un enregistrement natif, quelle que soit sa compétence. Sans
+voix natives, il n'y a donc **pas de placement**, et chacun commence à la leçon 1.

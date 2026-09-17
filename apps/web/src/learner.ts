@@ -7,6 +7,7 @@ import {
   emptyStreak,
   evaluateBadges,
   isEmptySession,
+  isLessonMastered,
   isLessonUnlocked,
   isPracticeRun,
   isUnitPassed,
@@ -192,8 +193,13 @@ export async function progressState(content: ContentIndex, d: ParloDB = db()): P
   const skipped = placement ? lessonsBefore(content.curriculum, placement.entryLessonId) : [];
   const completed = new Set(rows.map((r) => r.lessonId));
   const unlocked = new Set([...completed, ...skipped]);
+  // « Réussi » (contrat phase10 §3) : une leçon ordinaire doit être **maîtrisée** — tous ses
+  // exercices notés réussis, réessais compris — et un test d'unité doit passer son seuil. Terminer
+  // en se trompant laisse la leçon ouverte à refaire, sans ouvrir la suivante.
   const passed = new Set([
-    ...rows.filter((r) => content.lessons.get(r.lessonId)?.kind !== "unit_test" || isUnitTestPassed(r.bestScore)).map((r) => r.lessonId),
+    ...rows
+      .filter((r) => (content.lessons.get(r.lessonId)?.kind === "unit_test" ? isUnitTestPassed(r.bestScore) : r.mastered === true))
+      .map((r) => r.lessonId),
     ...skipped,
   ]);
   return { completed, unlocked, passed };
@@ -475,11 +481,15 @@ export async function saveLessonPart(content: ContentIndex, run: SessionRun, now
     }
 
     const progress = await d.lessonProgress.get(lesson.id);
+    // Maîtrise (contrat phase10 §3) : acquise dès qu'une tentative a tout réussi, et jamais reperdue
+    // — comme `bestScore`, c'est le meilleur de toutes les tentatives.
+    const mastered = (progress?.mastered ?? false) || isLessonMastered(lessonRun);
     await d.lessonProgress.put({
       lessonId: lesson.id,
       packCode: pack,
       status: "completed",
       bestScore: Math.max(progress?.bestScore ?? 0, score),
+      mastered,
       attempts: (progress?.attempts ?? 0) + 1,
       completedAt: now.toISOString(),
     });

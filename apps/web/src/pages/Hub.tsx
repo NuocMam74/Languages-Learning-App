@@ -196,7 +196,7 @@ export function Hub({ content }: { content: ContentIndex }) {
       <SectionTitle tone="banner" icon="boat" className="mb-3">{t("hub.path")}</SectionTitle>
       {/* Unité en cours disponible hors ligne (spec §8.1) ; toutes les unités : Réglages → Hors ligne. */}
       {plan.next && <Suspense fallback={null}><OfflineUnit content={content} unitId={plan.next.unit} current /></Suspense>}
-      <RiverPath content={content} completed={plan.completed} unlocked={plan.open} current={plan.next?.id ?? null} />
+      <RiverPath content={content} completed={plan.completed} passed={plan.passed} unlocked={plan.open} current={plan.next?.id ?? null} />
       {!plan.next && <p className="py-6 text-center text-phu-sa">{t("hub.done")}</p>}
     </Screen>
   );
