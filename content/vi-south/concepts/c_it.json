@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Ít cay thôi nha em.",
+      "fr": "Juste un peu piquant, s'il te plaît.",
+      "en": "Just a little spicy, please."
+    }
+  ]
 }

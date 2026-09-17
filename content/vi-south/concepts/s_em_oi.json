@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em ơi, cho anh một tô hủ tiếu.",
+      "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
+      "en": "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+    }
+  ]
 }

@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bữa nay em bận lắm.",
+      "fr": "Aujourd'hui je suis très occupé(e).",
+      "en": "I'm very busy today."
+    }
+  ]
 }

@@ -27,5 +27,12 @@
     "fr": "Au Sud, v se prononce souvent comme un « y ».",
     "en": "In the South, v is often pronounced like 'y'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chiều nay tôi về sớm.",
+      "fr": "Cet après-midi, je rentre tôt.",
+      "en": "This afternoon I'm going home early."
+    }
+  ]
 }

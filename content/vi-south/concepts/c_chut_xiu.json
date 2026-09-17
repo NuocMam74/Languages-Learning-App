@@ -26,5 +26,12 @@
     "fr": "Très courant au Sud. Plus neutre : một chút.",
     "en": "Very common in the South. More neutral: một chút."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi nói tiếng Việt chút xíu.",
+      "fr": "Je parle un tout petit peu vietnamien.",
+      "en": "I speak a tiny bit of Vietnamese."
+    }
+  ]
 }

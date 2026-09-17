@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tại sao em học tiếng Việt?",
+      "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
+      "en": "Why are you learning Vietnamese? (to someone younger)"
+    }
+  ]
 }

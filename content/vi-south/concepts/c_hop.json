@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, anh Minh đang họp. Ai vậy ạ?",
+      "fr": "Minh est en réunion. C'est de la part de qui ?",
+      "en": "Minh is in a meeting. Who's calling?"
+    }
+  ]
 }

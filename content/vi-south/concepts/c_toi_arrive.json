@@ -27,5 +27,12 @@
     "fr": "Au Sud, tới est plus courant que đến à l'oral.",
     "en": "In the South, tới is more common than đến in speech."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Xin lỗi, tôi tới trễ.",
+      "fr": "Désolé(e), je suis en retard.",
+      "en": "Sorry, I'm late."
+    }
+  ]
 }

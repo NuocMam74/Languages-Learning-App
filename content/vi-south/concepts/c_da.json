@@ -28,5 +28,12 @@
     "fr": "Dạ ouvre une réponse polie envers un aîné. Au Sud, on l'entend partout, même en décrochant le téléphone.",
     "en": "Dạ opens a polite reply to an elder. In the South you hear it everywhere, even when answering the phone."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, em cảm ơn anh.",
+      "fr": "Oui, merci (à un homme un peu plus âgé).",
+      "en": "Yes, thank you (to a slightly older man)."
+    }
+  ]
 }

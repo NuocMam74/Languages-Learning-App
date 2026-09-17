@@ -28,5 +28,12 @@
     "fr": "Au Sud : ngàn ; au Nord : nghìn.",
     "en": "South: ngàn; North: nghìn."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mười lăm ngàn đồng.",
+      "fr": "Quinze mille đồng.",
+      "en": "Fifteen thousand đồng."
+    }
+  ]
 }

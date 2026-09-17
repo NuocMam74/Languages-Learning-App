@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh có vợ chưa?",
+      "fr": "Tu es marié ? (à un homme un peu plus âgé)",
+      "en": "Are you married? (to a slightly older man)"
+    }
+  ]
 }

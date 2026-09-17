@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ có, ho nhiều lắm. Em mệt quá.",
+      "fr": "Oui, je tousse beaucoup. Je suis épuisée.",
+      "en": "Yes, a lot. I'm exhausted."
+    }
+  ]
 }

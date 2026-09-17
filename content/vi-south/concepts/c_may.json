@@ -27,5 +27,12 @@
     "fr": "Em mấy tuổi ? se dit à un enfant ou à plus jeune. Pour un adulte : bao nhiêu tuổi ?",
     "en": "Em mấy tuổi? is for a child or someone younger. For an adult: bao nhiêu tuổi?"
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bây giờ mấy giờ rồi?",
+      "fr": "Quelle heure est-il ?",
+      "en": "What time is it?"
+    }
+  ]
 }

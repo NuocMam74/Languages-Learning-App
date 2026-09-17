@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em ở nhà.",
+      "fr": "Je suis à la maison.",
+      "en": "I'm at home."
+    }
+  ]
 }

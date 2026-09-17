@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Lần đầu tui ăn sầu riêng.",
+      "fr": "C'est la première fois que je mange du durian.",
+      "en": "It's my first time eating durian."
+    }
+  ]
 }

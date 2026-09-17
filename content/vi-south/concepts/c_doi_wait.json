@@ -27,5 +27,12 @@
     "fr": "đợi et chờ veulent dire la même chose.",
     "en": "đợi and chờ mean the same thing."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh đợi em chút xíu nha.",
+      "fr": "Attends-moi une petite minute.",
+      "en": "Wait for me a moment."
+    }
+  ]
 }

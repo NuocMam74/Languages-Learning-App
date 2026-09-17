@@ -28,5 +28,12 @@
     "fr": "Au Sud : coi phim ; au Nord : xem phim.",
     "en": "South: coi phim; North: xem phim."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nè, coi cái này nè!",
+      "fr": "Tiens, regarde ça !",
+      "en": "Hey, look at this!"
+    }
+  ]
 }

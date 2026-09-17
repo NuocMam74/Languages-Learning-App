@@ -27,5 +27,12 @@
     "fr": "On voit aussi l'orthographe khoẻ : c'est le même mot.",
     "en": "You'll also see the spelling khoẻ: same word."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, khỏe lắm.",
+      "fr": "Très bien (poliment).",
+      "en": "Very well (politely)."
+    }
+  ]
 }

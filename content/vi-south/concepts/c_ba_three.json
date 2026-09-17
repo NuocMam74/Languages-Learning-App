@@ -27,5 +27,12 @@
     "fr": "Même mot que ba, « papa » : seul le contexte les distingue.",
     "en": "Same word as ba, 'dad': only context tells them apart."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi có ba con cá.",
+      "fr": "J'ai trois poissons.",
+      "en": "I have three fish."
+    }
+  ]
 }

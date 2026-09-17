@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh là người Pháp phải không?",
+      "fr": "Tu es français, n'est-ce pas ? (à un homme un peu plus âgé)",
+      "en": "You're French, right? (to a slightly older man)"
+    }
+  ]
 }

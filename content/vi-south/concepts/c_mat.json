@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Đi xe buýt mất bao lâu?",
+      "fr": "Ça prend combien de temps en bus ?",
+      "en": "How long does it take by bus?"
+    }
+  ]
 }

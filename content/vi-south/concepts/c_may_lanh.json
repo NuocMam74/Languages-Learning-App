@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/home/aircon.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Phòng có máy lạnh không?",
+      "fr": "La chambre a la clim ?",
+      "en": "Does the room have air conditioning?"
+    }
+  ]
 }

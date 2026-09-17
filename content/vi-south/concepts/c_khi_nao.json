@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Khi nào anh về quê?",
+      "fr": "Quand est-ce que tu rentres au pays ? (à un homme un peu plus âgé)",
+      "en": "When are you going back to your hometown? (to a slightly older man)"
+    }
+  ]
 }

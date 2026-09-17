@@ -26,5 +26,12 @@
     "fr": "À trois branches : ngã ba.",
     "en": "With three branches: ngã ba."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tới ngã tư thì quẹo trái.",
+      "fr": "Au carrefour, tourne à gauche.",
+      "en": "At the crossroads, turn left."
+    }
+  ]
 }

@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tụi mình đi đâu?",
+      "fr": "On va où ?",
+      "en": "Where are we going?"
+    }
+  ]
 }

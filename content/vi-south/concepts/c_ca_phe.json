@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/food/phin.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cho em một ly cà phê sữa đá.",
+      "fr": "Un café glacé au lait, s'il te plaît.",
+      "en": "An iced milk coffee, please."
+    }
+  ]
 }

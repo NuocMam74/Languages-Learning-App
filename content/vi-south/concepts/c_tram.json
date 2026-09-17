@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Một trăm lẻ năm.",
+      "fr": "Cent cinq.",
+      "en": "One hundred and five."
+    }
+  ]
 }

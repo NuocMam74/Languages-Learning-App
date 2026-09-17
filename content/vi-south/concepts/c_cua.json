@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Đây là gia đình của tôi.",
+      "fr": "Voici ma famille.",
+      "en": "This is my family."
+    }
+  ]
 }

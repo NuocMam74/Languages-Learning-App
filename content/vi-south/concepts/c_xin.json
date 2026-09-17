@@ -27,5 +27,12 @@
     "fr": "Xin lỗi : « demander pardon ». Em xin… : « je voudrais… ».",
     "en": "Xin lỗi: 'ask forgiveness'. Em xin…: 'may I have…'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em xin ly sữa.",
+      "fr": "Je voudrais un verre de lait.",
+      "en": "May I have a glass of milk?"
+    }
+  ]
 }

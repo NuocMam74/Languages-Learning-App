@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chợ có gần đây hông?",
+      "fr": "Le marché est près d'ici ?",
+      "en": "Is the market near here?"
+    }
+  ]
 }

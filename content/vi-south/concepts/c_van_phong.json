@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Văn phòng tui ở quận 1.",
+      "fr": "Mon bureau est dans le 1er arrondissement.",
+      "en": "My office is in District 1."
+    }
+  ]
 }

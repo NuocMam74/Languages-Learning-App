@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/family/grandma.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bà nội tôi còn khỏe lắm.",
+      "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+      "en": "My paternal grandmother is still in great shape."
+    }
+  ]
 }

@@ -27,5 +27,12 @@
     "fr": "Au marché, hai chục ngàn = 20 000 đồng ; on abrège souvent en hai chục.",
     "en": "At the market, hai chục ngàn = 20,000 đồng; often shortened to hai chục."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị thối lại cho em hai chục.",
+      "fr": "Tu me rends vingt mille. (à une vendeuse un peu plus âgée)",
+      "en": "You give me twenty thousand back. (to a slightly older saleswoman)"
+    }
+  ]
 }

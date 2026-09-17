@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em thấy cũng được.",
+      "fr": "Je trouve ça correct.",
+      "en": "I think it's okay."
+    }
+  ]
 }

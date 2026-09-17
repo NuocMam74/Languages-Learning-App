@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/places/hotel.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Xin lỗi, khách sạn ở đâu vậy anh?",
+      "fr": "Pardon, où est l'hôtel ? (à un homme un peu plus âgé)",
+      "en": "Excuse me, where's the hotel? (to a slightly older man)"
+    }
+  ]
 }

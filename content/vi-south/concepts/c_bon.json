@@ -27,5 +27,12 @@
     "fr": "Après une dizaine, on dit souvent tư : hai mươi tư (24).",
     "en": "After a tens word, tư is common: hai mươi tư (24)."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà tôi có bốn người.",
+      "fr": "Nous sommes quatre à la maison.",
+      "en": "There are four of us at home."
+    }
+  ]
 }

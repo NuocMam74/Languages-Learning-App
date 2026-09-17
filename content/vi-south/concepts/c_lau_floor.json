@@ -29,5 +29,12 @@
     "fr": "Au Sud, lầu 1 est le premier étage ; au Nord, on dirait tầng 2.",
     "en": "In the South lầu 1 is the first floor up; in the North that's tầng 2."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em ở lầu hai.",
+      "fr": "J'habite au deuxième étage.",
+      "en": "I live on the second floor."
+    }
+  ]
 }

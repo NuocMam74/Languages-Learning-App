@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Ăn thêm đi con, còn nhiều lắm.",
+      "fr": "Reprends-en, il en reste beaucoup.",
+      "en": "Have some more, there's plenty left."
+    }
+  ]
 }

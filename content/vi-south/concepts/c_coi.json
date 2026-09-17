@@ -28,5 +28,12 @@
     "fr": "coi est la forme orale du Sud ; xem se lit et s'entend aussi partout.",
     "en": "coi is the southern spoken form; xem is also read and heard everywhere."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tối nay mình đi coi phim nha.",
+      "fr": "Ce soir, on va voir un film ?",
+      "en": "Shall we go see a film tonight?"
+    }
+  ]
 }

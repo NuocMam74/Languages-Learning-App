@@ -28,5 +28,12 @@
     "fr": "Au Sud, le phở arrive avec une assiette d'herbes fraîches et de pousses de soja.",
     "en": "In the South, phở comes with a plate of fresh herbs and bean sprouts."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cho em một tô phở.",
+      "fr": "Un bol de phở, s'il te plaît.",
+      "en": "A bowl of phở, please."
+    }
+  ]
 }

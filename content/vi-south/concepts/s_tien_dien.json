@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tiền điện nước tính riêng.",
+      "fr": "L'eau et l'électricité sont facturées à part.",
+      "en": "Water and electricity are charged separately."
+    }
+  ]
 }

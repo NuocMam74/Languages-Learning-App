@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Vậy hả? Em cũng thích phở.",
+      "fr": "Ah bon ? Moi aussi j'aime le phở.",
+      "en": "Really? I like phở too."
+    }
+  ]
 }

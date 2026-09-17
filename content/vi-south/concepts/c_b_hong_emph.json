@@ -24,5 +24,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hổng có đâu!",
+      "fr": "Mais non, pas du tout !",
+      "en": "No way, not at all!"
+    }
+  ]
 }

@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bác sĩ ơi, em đau ở đây.",
+      "fr": "Docteur, j'ai mal ici.",
+      "en": "Doctor, it hurts here."
+    }
+  ]
 }

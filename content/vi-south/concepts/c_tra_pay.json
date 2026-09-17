@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em trả tiền nha chị.",
+      "fr": "Je vous paie, d'accord ? (à une vendeuse un peu plus âgée)",
+      "en": "Let me pay you, okay? (to a slightly older saleswoman)"
+    }
+  ]
 }

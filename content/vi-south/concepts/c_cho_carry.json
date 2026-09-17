@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh chở em ra chợ Bến Thành nha.",
+      "fr": "Emmène-moi au marché Bến Thành, d'accord ? (à un homme un peu plus âgé)",
+      "en": "Take me to Bến Thành market, okay? (to a slightly older man)"
+    }
+  ]
 }

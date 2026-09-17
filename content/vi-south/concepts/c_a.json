@@ -27,5 +27,12 @@
     "fr": "Au Sud, dạ en tête de réponse est le plus fréquent ; ạ ajoute encore de la déférence.",
     "en": "In the South, dạ at the start of a reply is most common; ạ adds extra deference."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, con cảm ơn cô ạ.",
+      "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",
+      "en": "Thank you (very polite, to a woman your parents' age)."
+    }
+  ]
 }

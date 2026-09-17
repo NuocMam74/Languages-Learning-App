@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Visa của tui sắp hết hạn.",
+      "fr": "Mon visa expire bientôt.",
+      "en": "My visa is about to expire."
+    }
+  ]
 }

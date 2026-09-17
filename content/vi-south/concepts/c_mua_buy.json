@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em mua hai trái xoài.",
+      "fr": "J'achète deux mangues.",
+      "en": "I'm buying two mangoes."
+    }
+  ]
 }

@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ cô ơi, cho con hỏi nhà thuốc ở đâu ạ?",
+      "fr": "Excusez-moi madame, où est la pharmacie ?",
+      "en": "Excuse me, where is the pharmacy?"
+    }
+  ]
 }

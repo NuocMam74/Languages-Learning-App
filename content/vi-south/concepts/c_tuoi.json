@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em tôi mười tuổi.",
+      "fr": "Mon petit frère a dix ans.",
+      "en": "My little brother is ten."
+    }
+  ]
 }

@@ -24,5 +24,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mùng bốn. Nhớ nghen, đừng có quên!",
+      "fr": "Le quatrième jour du Tết. N'oublie pas, hein !",
+      "en": "The fourth day of Tết. Don't forget, all right!"
+    }
+  ]
 }

@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/health/headache.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em bị nhức đầu.",
+      "fr": "J'ai mal à la tête.",
+      "en": "I have a headache."
+    }
+  ]
 }

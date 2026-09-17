@@ -27,5 +27,12 @@
     "fr": "Après l'adjectif : mắc quá (trop cher), ngon quá (tellement bon).",
     "en": "After the adjective: mắc quá (too expensive), ngon quá (so tasty)."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mắc quá, bớt cho em đi chị.",
+      "fr": "C'est trop cher, fais-moi un prix.",
+      "en": "It's too expensive, give me a discount."
+    }
+  ]
 }

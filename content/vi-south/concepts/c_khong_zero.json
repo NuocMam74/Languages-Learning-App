@@ -27,5 +27,12 @@
     "fr": "Le même mot que « non » : le contexte suffit.",
     "en": "The same word as 'no': context makes it clear."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Xin lỗi, tôi không hiểu.",
+      "fr": "Pardon, je ne comprends pas.",
+      "en": "Sorry, I don't understand."
+    }
+  ]
 }

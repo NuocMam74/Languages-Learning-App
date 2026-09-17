@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Ngân hàng ở bên trái.",
+      "fr": "La banque est à gauche.",
+      "en": "The bank is on the left."
+    }
+  ]
 }

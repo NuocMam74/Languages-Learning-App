@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cái này đúng hay sai?",
+      "fr": "C'est juste ou faux ?",
+      "en": "Is this right or wrong?"
+    }
+  ]
 }

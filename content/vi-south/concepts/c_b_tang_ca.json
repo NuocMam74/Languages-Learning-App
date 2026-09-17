@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tối nay tui phải tăng ca.",
+      "fr": "Ce soir, je dois faire des heures sup.",
+      "en": "Tonight I have to work overtime."
+    }
+  ]
 }

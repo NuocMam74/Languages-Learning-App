@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em bị sốt với ho.",
+      "fr": "J'ai de la fièvre et je tousse.",
+      "en": "I have a fever and a cough."
+    }
+  ]
 }

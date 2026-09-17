@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tui bắt đầu học tiếng Việt năm ngoái.",
+      "fr": "J'ai commencé le vietnamien l'an dernier.",
+      "en": "I started learning Vietnamese last year."
+    }
+  ]
 }

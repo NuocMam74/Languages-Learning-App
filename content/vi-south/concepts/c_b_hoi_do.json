@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hồi đó chưa có điện thoại.",
+      "fr": "À l'époque, il n'y avait pas encore de téléphone.",
+      "en": "Back then, there were no phones yet."
+    }
+  ]
 }

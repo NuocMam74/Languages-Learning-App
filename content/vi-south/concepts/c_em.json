@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/people/em.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Alô, em nghe.",
+      "fr": "Allô, oui ?",
+      "en": "Hello, yes?"
+    }
+  ]
 }

@@ -28,5 +28,12 @@
     "fr": "Nhà tôi : chez moi, ma maison… ou ma famille.",
     "en": "Nhà tôi: my home, my house… or my family."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em ở nhà.",
+      "fr": "Je suis à la maison.",
+      "en": "I'm at home."
+    }
+  ]
 }

@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/things/vacation.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em xin nghỉ phép ba ngày.",
+      "fr": "Je demande trois jours de congé.",
+      "en": "I'd like to take three days off."
+    }
+  ]
 }

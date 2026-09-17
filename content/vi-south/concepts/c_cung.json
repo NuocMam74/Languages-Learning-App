@@ -27,5 +27,12 @@
     "fr": "Se place avant le verbe ou l'adjectif : Em cũng khỏe.",
     "en": "Goes before the verb or adjective: Em cũng khỏe."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em cũng khỏe.",
+      "fr": "Moi aussi, je vais bien.",
+      "en": "I'm well too."
+    }
+  ]
 }

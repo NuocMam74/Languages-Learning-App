@@ -26,5 +26,12 @@
     "fr": "Pour un nombre qui peut être grand (âge d'un adulte, prix). Pour un petit nombre : mấy.",
     "en": "For a number that may be large (an adult's age, a price). For a small number: mấy."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh bao nhiêu tuổi?",
+      "fr": "Tu as quel âge ? (à un homme un peu plus âgé)",
+      "en": "How old are you? (to a slightly older man)"
+    }
+  ]
 }

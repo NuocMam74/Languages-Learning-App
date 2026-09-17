@@ -27,5 +27,12 @@
     "fr": "Souvent omis quand le contexte suffit : Hôm qua em đi chợ.",
     "en": "Often dropped when context is clear: Hôm qua em đi chợ."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hôm qua em đã đi chợ.",
+      "fr": "Hier, je suis allé(e) au marché.",
+      "en": "Yesterday I went to the market."
+    }
+  ]
 }

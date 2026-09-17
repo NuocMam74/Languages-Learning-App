@@ -27,5 +27,12 @@
     "fr": "On voit aussi l'orthographe kĩ sư.",
     "en": "The spelling kĩ sư is also seen."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi là kỹ sư.",
+      "fr": "Je suis ingénieur(e).",
+      "en": "I'm an engineer."
+    }
+  ]
 }

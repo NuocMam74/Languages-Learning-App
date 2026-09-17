@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/people/bac.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bác còn trẻ lắm.",
+      "fr": "Vous êtes encore très jeune (à un aîné).",
+      "en": "You still look very young (to an elder)."
+    }
+  ]
 }

@@ -28,5 +28,12 @@
     "fr": "Au Sud, ghiền s'emploie gaiement : ghiền cà phê, ghiền trà sữa. Au Nord, nghiện.",
     "en": "In the South ghiền is used cheerfully: ghiền cà phê, ghiền trà sữa. In the North, nghiện."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh ghiền cà phê sữa đá.",
+      "fr": "Je suis accro au café glacé au lait. (homme, à plus jeune)",
+      "en": "I'm hooked on iced milk coffee. (man, to someone younger)"
+    }
+  ]
 }

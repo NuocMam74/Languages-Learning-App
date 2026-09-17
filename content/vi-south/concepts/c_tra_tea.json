@@ -28,5 +28,12 @@
     "fr": "Au Sud, le thé se dit trà. Trà đá : thé glacé.",
     "en": "In the South, tea is trà. Trà đá: iced tea."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em xin ly trà.",
+      "fr": "Je voudrais un verre de thé.",
+      "en": "May I have a glass of tea?"
+    }
+  ]
 }

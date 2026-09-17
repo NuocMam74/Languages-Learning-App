@@ -26,5 +26,12 @@
     "fr": "On entend aussi, plus court : Tôi tên Lan.",
     "en": "You also hear the shorter: Tôi tên Lan."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi tên là Lan.",
+      "fr": "Je m'appelle Lan.",
+      "en": "My name is Lan."
+    }
+  ]
 }

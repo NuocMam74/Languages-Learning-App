@@ -28,5 +28,12 @@
     "fr": "De ký lô. On voit aussi l'orthographe kí. Au Nord : cân.",
     "en": "From ký lô. The spelling kí is also seen. North: cân."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Xoài bao nhiêu một ký?",
+      "fr": "Combien le kilo de mangues ?",
+      "en": "How much is a kilo of mangoes?"
+    }
+  ]
 }

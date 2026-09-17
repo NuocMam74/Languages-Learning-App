@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chờ em chút nha.",
+      "fr": "Attends-moi un peu, d'accord ?",
+      "en": "Wait for me a moment, okay?"
+    }
+  ]
 }

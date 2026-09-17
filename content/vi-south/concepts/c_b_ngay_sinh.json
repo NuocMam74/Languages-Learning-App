@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Họ tên, ngày sinh, rồi ký tên.",
+      "fr": "Nom, date de naissance, puis la signature.",
+      "en": "Full name, date of birth, then sign."
+    }
+  ]
 }

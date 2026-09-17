@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chào chị. Chị tên gì?",
+      "fr": "Bonjour. Comment vous appelez-vous ?",
+      "en": "Hello. What's your name?"
+    }
+  ]
 }

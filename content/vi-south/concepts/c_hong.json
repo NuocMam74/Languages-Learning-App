@@ -27,5 +27,12 @@
     "fr": "Forme familière de không, très entendue au Sud. À reconnaître ; avec un aîné, dis không.",
     "en": "Casual form of không, heard everywhere in the South. Recognise it; with an elder, say không."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị nói tiếng Việt được hông?",
+      "fr": "Tu parles vietnamien ?",
+      "en": "Do you speak Vietnamese?"
+    }
+  ]
 }

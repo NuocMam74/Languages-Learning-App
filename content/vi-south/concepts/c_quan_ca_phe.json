@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/places/cafe.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Quán cà phê ở kế bên chợ.",
+      "fr": "Le café est à côté du marché.",
+      "en": "The café is next to the market."
+    }
+  ]
 }

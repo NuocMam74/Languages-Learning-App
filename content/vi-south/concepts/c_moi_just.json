@@ -27,5 +27,12 @@
     "fr": "Devant le verbe : tôi mới qua = « je viens d'arriver ». Ne pas confondre avec mời (inviter).",
     "en": "Before a verb: tôi mới qua = 'I just arrived'. Don't mix it up with mời (to invite)."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em là nhân viên mới.",
+      "fr": "Je suis le nouvel employé / la nouvelle employée.",
+      "en": "I'm the new employee."
+    }
+  ]
 }

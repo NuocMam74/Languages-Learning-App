@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi là người Pháp.",
+      "fr": "Je suis français(e).",
+      "en": "I'm French."
+    }
+  ]
 }

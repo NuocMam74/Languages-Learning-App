@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, em no rồi.",
+      "fr": "Merci, j'ai assez mangé.",
+      "en": "Thanks, I'm full."
+    }
+  ]
 }

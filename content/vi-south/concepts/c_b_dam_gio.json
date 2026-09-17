@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/things/altar.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mai nhà em có đám giỗ.",
+      "fr": "Demain, il y a un đám giỗ chez moi.",
+      "en": "Tomorrow there's a đám giỗ at my place."
+    }
+  ]
 }

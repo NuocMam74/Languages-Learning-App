@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/family/eldest_sister.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị hai mươi lăm tuổi.",
+      "fr": "Elle a vingt-cinq ans.",
+      "en": "She's twenty-five."
+    }
+  ]
 }

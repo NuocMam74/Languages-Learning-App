@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/places/gas.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cây xăng ở đối diện ngân hàng.",
+      "fr": "La station-service est en face de la banque.",
+      "en": "The petrol station is opposite the bank."
+    }
+  ]
 }

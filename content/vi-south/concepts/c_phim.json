@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Phim này hay quá!",
+      "fr": "Ce film est super !",
+      "en": "This film is great!"
+    }
+  ]
 }

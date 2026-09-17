@@ -28,5 +28,12 @@
     "fr": "Au Sud : quẹo ; au Nord et dans les applis GPS : rẽ.",
     "en": "South: quẹo; North and GPS apps: rẽ."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tới ngã tư thì quẹo trái.",
+      "fr": "Au carrefour, tourne à gauche.",
+      "en": "At the crossroads, turn left."
+    }
+  ]
 }

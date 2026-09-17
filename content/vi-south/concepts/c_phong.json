@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/home/room.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Phòng này bao nhiêu một tháng?",
+      "fr": "Cette chambre, c'est combien par mois ?",
+      "en": "How much is this room per month?"
+    }
+  ]
 }

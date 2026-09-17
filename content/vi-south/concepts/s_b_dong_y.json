@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tui đồng ý với chị.",
+      "fr": "Je suis d'accord avec toi.",
+      "en": "I agree with you."
+    }
+  ]
 }

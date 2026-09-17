@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/people/chu.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, con cảm ơn chú.",
+      "fr": "Merci (à un homme de l'âge de tes parents).",
+      "en": "Thank you (to a man your parents' age)."
+    }
+  ]
 }

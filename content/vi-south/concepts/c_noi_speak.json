@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị nói tiếng Việt được hông?",
+      "fr": "Tu parles vietnamien ?",
+      "en": "Do you speak Vietnamese?"
+    }
+  ]
 }

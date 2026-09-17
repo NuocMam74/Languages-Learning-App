@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/animals/dog.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà tôi có một con chó.",
+      "fr": "Chez moi, il y a un chien.",
+      "en": "At my home there's a dog."
+    }
+  ]
 }

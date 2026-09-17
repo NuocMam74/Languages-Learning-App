@@ -26,5 +26,12 @@
     "fr": "Có gia đình : « avoir une famille », c'est-à-dire être marié.",
     "en": "Có gia đình: 'to have a family', i.e. to be married."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Đây là gia đình của tôi.",
+      "fr": "Voici ma famille.",
+      "en": "This is my family."
+    }
+  ]
 }

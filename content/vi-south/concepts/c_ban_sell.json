@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị bán cái này bao nhiêu?",
+      "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
+      "en": "How much are you selling this for? (to a slightly older saleswoman)"
+    }
+  ]
 }

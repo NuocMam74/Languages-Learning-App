@@ -27,5 +27,12 @@
     "fr": "Au Sud, gi se prononce comme un « y ».",
     "en": "In the South, gi is pronounced like a 'y'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Địa chỉ của anh là gì?",
+      "fr": "C'est quoi ton adresse ? (à un homme un peu plus âgé)",
+      "en": "What's your address? (to a slightly older man)"
+    }
+  ]
 }

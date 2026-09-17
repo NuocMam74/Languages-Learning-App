@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Quê ngoại tôi ở Bến Tre.",
+      "fr": "La famille de ma mère vient de Bến Tre.",
+      "en": "My mother's family comes from Bến Tre."
+    }
+  ]
 }

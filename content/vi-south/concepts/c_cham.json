@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh chạy chậm lại được không?",
+      "fr": "Tu peux rouler moins vite ? (à un homme un peu plus âgé)",
+      "en": "Can you ride more slowly? (to a slightly older man)"
+    }
+  ]
 }

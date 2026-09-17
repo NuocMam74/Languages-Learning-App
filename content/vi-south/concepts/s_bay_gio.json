@@ -26,5 +26,12 @@
     "fr": "À l'oral, souvent raccourci en giờ : Giờ đi nha !",
     "en": "In speech often shortened to giờ: Giờ đi nha!"
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bây giờ mấy giờ rồi?",
+      "fr": "Quelle heure est-il ?",
+      "en": "What time is it?"
+    }
+  ]
 }

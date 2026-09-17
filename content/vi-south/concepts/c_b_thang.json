@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cuối tháng mới lãnh lương.",
+      "fr": "On touche le salaire seulement en fin de mois.",
+      "en": "We only get paid at the end of the month."
+    }
+  ]
 }

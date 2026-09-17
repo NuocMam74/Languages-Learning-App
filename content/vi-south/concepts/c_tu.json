@@ -27,5 +27,12 @@
     "fr": "On compte bốn, mais le rang se dit tư : chú Tư, chị Tư.",
     "en": "You count bốn, but the rank is tư: chú Tư, chị Tư."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Lớp tôi có ba mươi tư người.",
+      "fr": "Ma classe compte trente-quatre personnes.",
+      "en": "My class has thirty-four people."
+    }
+  ]
 }

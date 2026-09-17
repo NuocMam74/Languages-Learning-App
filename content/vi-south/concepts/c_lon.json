@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh lớn hơn em.",
+      "fr": "Je suis plus âgé que toi (dit par un grand frère).",
+      "en": "I'm older than you (said by an older brother)."
+    }
+  ]
 }

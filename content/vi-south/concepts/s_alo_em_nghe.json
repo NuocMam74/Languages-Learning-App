@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Alô, em nghe nè.",
+      "fr": "Allô, je t'écoute.",
+      "en": "Hello, I'm listening."
+    }
+  ]
 }

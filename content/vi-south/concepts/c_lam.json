@@ -27,5 +27,12 @@
     "fr": "Toujours après l'adjectif : khỏe lắm, vui lắm.",
     "en": "Always after the adjective: khỏe lắm, vui lắm."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, khỏe lắm.",
+      "fr": "Très bien (poliment).",
+      "en": "Very well (politely)."
+    }
+  ]
 }

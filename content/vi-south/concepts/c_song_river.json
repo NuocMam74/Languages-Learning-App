@@ -28,5 +28,12 @@
     "fr": "Sông Cửu Long : le Mékong, « le fleuve des Neuf Dragons ».",
     "en": "Sông Cửu Long: the Mekong, 'river of the Nine Dragons'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hồi nhỏ tui ở dưới quê, gần sông.",
+      "fr": "Quand j'étais petit, je vivais à la campagne, près du fleuve.",
+      "en": "As a child I lived in the countryside, near the river."
+    }
+  ]
 }

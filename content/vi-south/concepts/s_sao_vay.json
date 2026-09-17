@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em bị sao vậy?",
+      "fr": "Qu'est-ce qui ne va pas ?",
+      "en": "What's wrong?"
+    }
+  ]
 }

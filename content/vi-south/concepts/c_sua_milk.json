@@ -28,5 +28,12 @@
     "fr": "Cà phê sữa đá : le café au lait glacé de Saïgon.",
     "en": "Cà phê sữa đá: Saigon's iced milk coffee."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em xin ly sữa.",
+      "fr": "Je voudrais un verre de lait.",
+      "en": "May I have a glass of milk?"
+    }
+  ]
 }

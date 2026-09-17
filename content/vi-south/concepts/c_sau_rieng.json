@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/food/durian.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em chưa bao giờ ăn sầu riêng.",
+      "fr": "Je n'ai jamais mangé de durian.",
+      "en": "I've never eaten durian."
+    }
+  ]
 }

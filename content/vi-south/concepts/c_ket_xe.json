@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Giờ này kẹt xe lắm.",
+      "fr": "À cette heure-ci, ça bouchonne beaucoup.",
+      "en": "At this time of day the traffic is bad."
+    }
+  ]
 }

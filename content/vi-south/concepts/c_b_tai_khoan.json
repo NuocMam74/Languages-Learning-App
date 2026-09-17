@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em muốn mở tài khoản.",
+      "fr": "Je voudrais ouvrir un compte.",
+      "en": "I'd like to open an account."
+    }
+  ]
 }

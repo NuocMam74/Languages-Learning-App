@@ -26,5 +26,12 @@
     "fr": "Littéralement « facile à aimer ».",
     "en": "Literally 'easy to love'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Con nhỏ dễ thương quá!",
+      "fr": "Qu'elle est mignonne, cette petite !",
+      "en": "What a cute little girl!"
+    }
+  ]
 }

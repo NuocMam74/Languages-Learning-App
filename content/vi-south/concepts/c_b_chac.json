@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chắc ảnh tới trễ.",
+      "fr": "Il va sûrement arriver en retard.",
+      "en": "He'll probably be late."
+    }
+  ]
 }

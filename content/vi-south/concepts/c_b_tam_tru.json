@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tui đi khai báo tạm trú.",
+      "fr": "Je vais déclarer mon lieu de résidence.",
+      "en": "I'm going to register my residence."
+    }
+  ]
 }

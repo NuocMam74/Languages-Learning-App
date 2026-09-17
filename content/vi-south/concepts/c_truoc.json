@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh chờ em ở trước khách sạn nha.",
+      "fr": "Attends-moi devant l'hôtel, d'accord ?",
+      "en": "Wait for me in front of the hotel, okay?"
+    }
+  ]
 }

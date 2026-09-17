@@ -27,5 +27,12 @@
     "fr": "Devant le verbe, il nie : không có. En fin de phrase, il pose une question.",
     "en": "Before a verb it negates: không có. At the end of a sentence it asks a question."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, không phải.",
+      "fr": "Non, ce n'est pas ça (poliment).",
+      "en": "No, that's not it (politely)."
+    }
+  ]
 }

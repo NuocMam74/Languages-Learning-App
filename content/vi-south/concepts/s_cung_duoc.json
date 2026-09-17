@@ -26,5 +26,12 @@
     "fr": "Manière polie de dire que c'est moyen.",
     "en": "A polite way to say it's so-so."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em thấy cũng được.",
+      "fr": "Je trouve ça correct.",
+      "en": "I think it's okay."
+    }
+  ]
 }

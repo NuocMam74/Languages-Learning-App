@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/things/clock.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bây giờ mấy giờ rồi?",
+      "fr": "Quelle heure est-il ?",
+      "en": "What time is it?"
+    }
+  ]
 }

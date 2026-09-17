@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/things/wedding.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mời chị đi đám cưới em nha.",
+      "fr": "Viens à mon mariage, s'il te plaît.",
+      "en": "Please come to my wedding."
+    }
+  ]
 }

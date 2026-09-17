@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ. Anh ơi, mấy giờ họp vậy anh?",
+      "fr": "La réunion est à quelle heure ?",
+      "en": "What time is the meeting?"
+    }
+  ]
 }

@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Món này ngon quá!",
+      "fr": "Ce plat est trop bon !",
+      "en": "This dish is so good!"
+    }
+  ]
 }

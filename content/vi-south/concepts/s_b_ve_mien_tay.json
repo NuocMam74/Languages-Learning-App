@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tết này tui về miền Tây. Chị đi chơi hông?",
+      "fr": "Ce Tết je descends dans le delta. Tu viens ?",
+      "en": "This Tết I'm going down to the delta. Coming along?"
+    }
+  ]
 }

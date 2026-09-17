@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cho em sạc pin nhờ được không?",
+      "fr": "Je peux recharger mon téléphone chez vous ?",
+      "en": "Could I charge my phone here?"
+    }
+  ]
 }

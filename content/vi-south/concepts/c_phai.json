@@ -27,5 +27,12 @@
     "fr": "Dạ, phải : « oui, c'est bien ça ». Không phải : « ce n'est pas ça ».",
     "en": "Dạ, phải: 'yes, that's right'. Không phải: 'that's not it'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, không phải.",
+      "fr": "Non, ce n'est pas ça (poliment).",
+      "en": "No, that's not it (politely)."
+    }
+  ]
 }

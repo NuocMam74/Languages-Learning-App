@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/people/doctor.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bác sĩ ơi, em đau ở đây.",
+      "fr": "Docteur, j'ai mal ici.",
+      "en": "Doctor, it hurts here."
+    }
+  ]
 }

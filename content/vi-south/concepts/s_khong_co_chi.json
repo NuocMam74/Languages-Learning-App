@@ -27,5 +27,12 @@
     "fr": "La réponse du Sud (et du Centre) à cảm ơn : « il n'y a pas de quoi ».",
     "en": "The southern (and central) reply to cảm ơn: 'it's nothing'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, không có chi.",
+      "fr": "De rien (poliment).",
+      "en": "You're welcome (politely)."
+    }
+  ]
 }

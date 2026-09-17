@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Có lẽ mai trời mưa.",
+      "fr": "Il pleuvra peut-être demain.",
+      "en": "It might rain tomorrow."
+    }
+  ]
 }

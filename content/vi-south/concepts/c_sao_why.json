@@ -27,5 +27,12 @@
     "fr": "Au Sud, sao sert à tout : Sao vậy ? (qu'est-ce qui se passe ?), Anh thấy sao ? (tu en penses quoi ?).",
     "en": "In the South sao does a lot: Sao vậy? (what's up?), Anh thấy sao? (what do you think?)."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tại sao em học tiếng Việt?",
+      "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
+      "en": "Why are you learning Vietnamese? (to someone younger)"
+    }
+  ]
 }

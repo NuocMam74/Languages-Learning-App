@@ -28,5 +28,12 @@
     "fr": "Trời ơi ! : « Mon Dieu ! », l'exclamation de tous les jours.",
     "en": "Trời ơi!: 'Oh my God!', the everyday exclamation."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Trời đang mưa.",
+      "fr": "Il pleut en ce moment.",
+      "en": "It's raining right now."
+    }
+  ]
 }

@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/nature/morning.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi thường đi làm lúc bảy giờ sáng.",
+      "fr": "D'habitude, je pars travailler à sept heures du matin.",
+      "en": "I usually go to work at seven in the morning."
+    }
+  ]
 }

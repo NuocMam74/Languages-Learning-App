@@ -26,5 +26,12 @@
     "fr": "Très courant au Sud. On entend aussi bên cạnh.",
     "en": "Very common in the South. You also hear bên cạnh."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Quán cà phê ở kế bên chợ.",
+      "fr": "Le café est à côté du marché.",
+      "en": "The café is next to the market."
+    }
+  ]
 }

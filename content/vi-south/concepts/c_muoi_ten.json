@@ -27,5 +27,12 @@
     "fr": "De 10 à 19 : mười, mười một, mười hai…",
     "en": "From 10 to 19: mười, mười một, mười hai…"
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em tôi mười tuổi.",
+      "fr": "Mon petit frère a dix ans.",
+      "en": "My little brother is ten."
+    }
+  ]
 }

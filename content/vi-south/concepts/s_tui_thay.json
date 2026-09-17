@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tui thấy phim này hay.",
+      "fr": "Je trouve ce film bien.",
+      "en": "I think this film is good."
+    }
+  ]
 }

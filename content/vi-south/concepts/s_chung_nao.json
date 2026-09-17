@@ -26,5 +26,12 @@
     "fr": "Très courant au Sud pour le futur : Chừng nào đi ? À reconnaître.",
     "en": "Very common in the South for the future: Chừng nào đi? Learn to recognise it."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nghe vui quá! Chừng nào đi vậy anh?",
+      "fr": "Ça a l'air super ! On part quand ?",
+      "en": "Sounds great! When do we go?"
+    }
+  ]
 }

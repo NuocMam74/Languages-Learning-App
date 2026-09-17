@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Ăn cơm chưa?",
+      "fr": "Tu as mangé ? (salutation entre proches)",
+      "en": "Have you eaten? (greeting between close ones)"
+    }
+  ]
 }

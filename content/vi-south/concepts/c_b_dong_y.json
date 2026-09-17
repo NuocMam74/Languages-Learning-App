@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em không đồng ý lắm.",
+      "fr": "Je ne suis pas trop d'accord.",
+      "en": "I don't really agree."
+    }
+  ]
 }

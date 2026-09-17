@@ -28,5 +28,12 @@
     "fr": "Au Sud : nhắn giùm, lấy giùm. On écrit aussi dùm.",
     "en": "In the South: nhắn giùm, lấy giùm. Also written dùm."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị nhắn lại giùm em nha.",
+      "fr": "Tu peux lui laisser un message de ma part ? (à une femme un peu plus âgée)",
+      "en": "Could you pass on a message for me? (to a slightly older woman)"
+    }
+  ]
 }

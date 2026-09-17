@@ -26,5 +26,12 @@
     "fr": "dưới quê : « en bas », à la campagne, vu de Saïgon.",
     "en": "dưới quê: 'down' in the countryside, seen from Saigon."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hồi nhỏ tui ở dưới quê, gần sông.",
+      "fr": "Quand j'étais petit, je vivais à la campagne, près du fleuve.",
+      "en": "As a child I lived in the countryside, near the river."
+    }
+  ]
 }

@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Kể tui nghe đi!",
+      "fr": "Raconte-moi !",
+      "en": "Tell me about it!"
+    }
+  ]
 }

@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/people/teacher.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi là giáo viên. Tôi dạy tiếng Pháp ở quận Ba.",
+      "fr": "Je suis enseignante. J'enseigne le français dans le 3e arrondissement.",
+      "en": "I'm a teacher. I teach French in District 3."
+    }
+  ]
 }

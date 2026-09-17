@@ -28,5 +28,12 @@
     "fr": "tụi mình, tụi em, tụi nó. Au Nord : chúng tôi, chúng em.",
     "en": "tụi mình, tụi em, tụi nó. In the North: chúng tôi, chúng em."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tụi mình đi đâu?",
+      "fr": "On va où ?",
+      "en": "Where are we going?"
+    }
+  ]
 }

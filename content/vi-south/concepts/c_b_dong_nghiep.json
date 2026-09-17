@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/people/colleagues.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Đây là đồng nghiệp của tui.",
+      "fr": "Voici mon collègue.",
+      "en": "This is my colleague."
+    }
+  ]
 }

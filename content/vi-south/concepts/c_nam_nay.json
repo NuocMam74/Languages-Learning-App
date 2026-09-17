@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Năm nay tôi ba mươi tuổi.",
+      "fr": "Cette année, j'ai trente ans.",
+      "en": "This year I'm thirty."
+    }
+  ]
 }

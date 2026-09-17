@@ -23,5 +23,11 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hổng biết.",
+      "fr": "Sais pas."
+    }
+  ]
 }

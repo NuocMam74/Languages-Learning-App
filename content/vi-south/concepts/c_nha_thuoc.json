@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/health/pharmacy.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Gần thôi con. Nhà thuốc ở kế bên ngân hàng.",
+      "fr": "C'est tout près. La pharmacie est à côté de la banque.",
+      "en": "It's close. The pharmacy is next to the bank."
+    }
+  ]
 }

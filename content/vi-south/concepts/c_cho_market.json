@@ -28,5 +28,12 @@
     "fr": "Chợ Bến Thành, chợ nổi Cái Răng : les marchés rythment le Sud.",
     "en": "Chợ Bến Thành, the Cái Răng floating market: markets set the pace of the South."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hôm nay tôi đi chợ.",
+      "fr": "Aujourd'hui, je vais au marché.",
+      "en": "Today I'm going to the market."
+    }
+  ]
 }

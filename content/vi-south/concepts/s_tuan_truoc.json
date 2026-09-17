@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tuần trước em về quê.",
+      "fr": "La semaine dernière, je suis rentré(e) au pays.",
+      "en": "Last week I went back to my hometown."
+    }
+  ]
 }

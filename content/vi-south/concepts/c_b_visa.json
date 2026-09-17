@@ -27,5 +27,12 @@
     "fr": "On dit aussi thị thực, plus officiel.",
     "en": "Also thị thực, more official."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tui muốn gia hạn visa.",
+      "fr": "Je veux prolonger mon visa.",
+      "en": "I want to extend my visa."
+    }
+  ]
 }

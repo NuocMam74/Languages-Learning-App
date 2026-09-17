@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em ở phường nào?",
+      "fr": "Tu habites dans quel quartier ?",
+      "en": "Which ward do you live in?"
+    }
+  ]
 }

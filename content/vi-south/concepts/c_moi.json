@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mời bác uống trà.",
+      "fr": "Je vous en prie, prenez du thé (à un aîné).",
+      "en": "Please have some tea (to an elder)."
+    }
+  ]
 }

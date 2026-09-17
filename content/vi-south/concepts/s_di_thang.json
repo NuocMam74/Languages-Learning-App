@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Con đi thẳng tới ngã tư, rồi quẹo phải.",
+      "fr": "Va tout droit jusqu'au carrefour, puis tourne à droite.",
+      "en": "Go straight to the crossroads, then turn right."
+    }
+  ]
 }

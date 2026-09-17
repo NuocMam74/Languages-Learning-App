@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tiếc quá, em bận rồi.",
+      "fr": "Dommage, je suis déjà pris(e).",
+      "en": "What a pity, I'm already busy."
+    }
+  ]
 }

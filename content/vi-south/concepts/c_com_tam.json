@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/food/com_tam.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh ăn cơm tấm chưa?",
+      "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
+      "en": "Have you tried cơm tấm? (to a slightly older man)"
+    }
+  ]
 }

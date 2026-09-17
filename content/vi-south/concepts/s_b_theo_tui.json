@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Theo tui, quán này ngon hơn.",
+      "fr": "À mon avis, ce resto est meilleur.",
+      "en": "In my opinion, this place is better."
+    }
+  ]
 }

@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, không phải.",
+      "fr": "Non, ce n'est pas ça (poliment).",
+      "en": "No, that's not it (politely)."
+    }
+  ]
 }

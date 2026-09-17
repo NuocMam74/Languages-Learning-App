@@ -27,5 +27,12 @@
     "fr": "Au Sud, dans la conversation, le v glisse souvent vers « y ».",
     "en": "In southern conversation, v often slides towards 'y'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em vui lắm.",
+      "fr": "Je suis très content(e).",
+      "en": "I'm very happy."
+    }
+  ]
 }

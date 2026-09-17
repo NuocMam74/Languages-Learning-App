@@ -28,5 +28,12 @@
     "fr": "Au Sud, le cá kho (poisson mijoté au caramel) est un plat de famille.",
     "en": "In the South, cá kho (fish braised in caramel) is a family dish."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi có ba con cá.",
+      "fr": "J'ai trois poissons.",
+      "en": "I have three fish."
+    }
+  ]
 }

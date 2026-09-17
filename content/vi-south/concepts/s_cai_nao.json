@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị lấy cái nào?",
+      "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",
+      "en": "Which one are you taking? (to a slightly older woman)"
+    }
+  ]
 }

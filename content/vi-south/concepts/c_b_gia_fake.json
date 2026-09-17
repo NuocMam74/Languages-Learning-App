@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Giả sử trúng số, anh làm gì?",
+      "fr": "Imagine que tu gagnes à la loterie : tu fais quoi ?",
+      "en": "Suppose you won the lottery: what would you do?"
+    }
+  ]
 }

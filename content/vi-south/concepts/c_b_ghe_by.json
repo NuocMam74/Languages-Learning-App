@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nếu rảnh thì ghé nhà tui chơi nha.",
+      "fr": "Si tu es libre, passe chez moi, d'accord ?",
+      "en": "If you're free, drop by my place, okay?"
+    }
+  ]
 }

@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Năm ngoái tui đã qua Việt Nam.",
+      "fr": "L'an dernier, je suis venu(e) au Vietnam.",
+      "en": "Last year I came to Vietnam."
+    }
+  ]
 }

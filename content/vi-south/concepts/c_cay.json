@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em không thích ăn cay lắm.",
+      "fr": "Je n'aime pas trop le piquant.",
+      "en": "I don't really like spicy food."
+    }
+  ]
 }

@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà em có ba phòng ngủ.",
+      "fr": "Chez moi, il y a trois chambres.",
+      "en": "My house has three bedrooms."
+    }
+  ]
 }

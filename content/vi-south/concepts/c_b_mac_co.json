@@ -27,5 +27,12 @@
     "fr": "Cây mắc cỡ : la sensitive, plante qui se replie au toucher.",
     "en": "Cây mắc cỡ: the 'sensitive plant' that folds when touched."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em mắc cỡ quá.",
+      "fr": "Je suis tout(e) gêné(e).",
+      "en": "I'm so embarrassed."
+    }
+  ]
 }

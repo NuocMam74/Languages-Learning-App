@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Alô, dạ cho em gặp anh Minh.",
+      "fr": "Allô, je voudrais parler à Minh.",
+      "en": "Hello, I'd like to speak to Minh."
+    }
+  ]
 }

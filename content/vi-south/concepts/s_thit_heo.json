@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị bán cho em một ký thịt heo.",
+      "fr": "Vends-moi un kilo de porc, s'il te plaît.",
+      "en": "Sell me a kilo of pork, please."
+    }
+  ]
 }

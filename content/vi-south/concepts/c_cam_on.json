@@ -26,5 +26,12 @@
     "fr": "Au Sud on entend et on écrit aussi « cám ơn ». Les deux sont acceptés.",
     "en": "In the South you also hear and see « cám ơn ». Both are accepted."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, em cảm ơn anh.",
+      "fr": "Oui, merci (à un homme un peu plus âgé).",
+      "en": "Yes, thank you (to a slightly older man)."
+    }
+  ]
 }

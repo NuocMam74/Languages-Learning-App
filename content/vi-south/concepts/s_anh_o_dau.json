@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hồi nhỏ anh ở đâu?",
+      "fr": "Où habitais-tu quand tu étais petit ?",
+      "en": "Where did you live as a child?"
+    }
+  ]
 }

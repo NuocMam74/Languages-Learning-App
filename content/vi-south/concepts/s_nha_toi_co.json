@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà tôi có hai con mèo.",
+      "fr": "Chez moi, il y a deux chats.",
+      "en": "At my home there are two cats."
+    }
+  ]
 }

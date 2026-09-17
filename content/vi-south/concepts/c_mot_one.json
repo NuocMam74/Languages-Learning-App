@@ -27,5 +27,12 @@
     "fr": "Au Sud, le -t final sonne presque « c ».",
     "en": "In the South, final -t sounds almost like 'c'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà tôi có một con chó.",
+      "fr": "Chez moi, il y a un chien.",
+      "en": "At my home there's a dog."
+    }
+  ]
 }

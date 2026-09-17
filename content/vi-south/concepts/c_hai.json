@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh hai tôi ở Cần Thơ.",
+      "fr": "Mon frère aîné habite à Cần Thơ.",
+      "en": "My eldest brother lives in Cần Thơ."
+    }
+  ]
 }

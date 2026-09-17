@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Xoài bao nhiêu một ký?",
+      "fr": "Combien le kilo de mangues ?",
+      "en": "How much is a kilo of mangoes?"
+    }
+  ]
 }

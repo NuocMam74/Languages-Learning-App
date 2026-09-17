@@ -26,5 +26,12 @@
     "fr": "On « boit » les médicaments : uống thuốc.",
     "en": "Medicine is 'drunk': uống thuốc."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em uống thuốc này ngày hai lần, sau khi ăn. Nhớ nghỉ ngơi nghen.",
+      "fr": "Prends ce médicament deux fois par jour, après les repas. Et repose-toi.",
+      "en": "Take this medicine twice a day, after meals. And do rest."
+    }
+  ]
 }

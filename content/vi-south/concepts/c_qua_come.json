@@ -27,5 +27,12 @@
     "fr": "Au Sud, qua s'emploie beaucoup pour les voyages : qua Pháp, qua Việt Nam.",
     "en": "In the South qua is common for travel: qua Pháp, qua Việt Nam."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hôm qua tôi ăn phở.",
+      "fr": "Hier, j'ai mangé un phở.",
+      "en": "Yesterday I had phở."
+    }
+  ]
 }

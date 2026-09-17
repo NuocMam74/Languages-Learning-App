@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hôm nay thứ bảy.",
+      "fr": "Aujourd'hui, c'est samedi.",
+      "en": "Today is Saturday."
+    }
+  ]
 }

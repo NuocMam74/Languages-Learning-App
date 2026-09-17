@@ -28,5 +28,12 @@
     "fr": "cà désigne aussi d'autres légumes de la même famille : cà chua, la tomate.",
     "en": "cà also names related vegetables: cà chua, tomato."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cho em một ly cà phê sữa đá.",
+      "fr": "Un café glacé au lait, s'il te plaît.",
+      "en": "An iced milk coffee, please."
+    }
+  ]
 }

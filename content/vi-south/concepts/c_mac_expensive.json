@@ -28,5 +28,12 @@
     "fr": "Au Sud : mắc ; au Nord : đắt. Mắc quá ! : « trop cher ! »",
     "en": "South: mắc; North: đắt. Mắc quá!: 'too expensive!'"
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mắc quá, bớt cho em đi chị.",
+      "fr": "C'est trop cher, fais-moi un prix.",
+      "en": "It's too expensive, give me a discount."
+    }
+  ]
 }

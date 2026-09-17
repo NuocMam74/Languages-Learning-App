@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tiền cọc là một tháng.",
+      "fr": "La caution, c'est un mois.",
+      "en": "The deposit is one month."
+    }
+  ]
 }

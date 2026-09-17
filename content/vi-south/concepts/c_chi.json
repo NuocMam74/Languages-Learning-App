@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/people/chi.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị ơi, xin lỗi.",
+      "fr": "Excusez-moi (à une femme un peu plus âgée).",
+      "en": "Excuse me (to a slightly older woman)."
+    }
+  ]
 }

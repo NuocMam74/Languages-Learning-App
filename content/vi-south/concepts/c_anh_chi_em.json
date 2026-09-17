@@ -26,5 +26,12 @@
     "fr": "Có anh chị em không ? : có + chose + không ? pose une question oui/non. Réponse : có, ou không.",
     "en": "Có anh chị em không?: có + thing + không? asks a yes/no question. Answer: có, or không."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em có anh chị em không?",
+      "fr": "Tu as des frères et sœurs ? (à plus jeune)",
+      "en": "Do you have brothers and sisters? (to someone younger)"
+    }
+  ]
 }

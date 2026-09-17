@@ -24,5 +24,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Ổng là ba tôi.",
+      "fr": "Lui, c'est mon père.",
+      "en": "He's my dad."
+    }
+  ]
 }

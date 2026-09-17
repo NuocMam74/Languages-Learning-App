@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/family/wife.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Đây là vợ tôi.",
+      "fr": "Voici ma femme.",
+      "en": "This is my wife."
+    }
+  ]
 }

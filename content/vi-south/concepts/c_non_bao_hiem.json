@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/things/helmet.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh đội nón bảo hiểm vô nha.",
+      "fr": "Mets ton casque, d'accord ? (à un homme un peu plus âgé)",
+      "en": "Put your helmet on, okay? (to a slightly older man)"
+    }
+  ]
 }

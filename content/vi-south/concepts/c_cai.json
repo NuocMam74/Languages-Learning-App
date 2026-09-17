@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Đây là cái bàn.",
+      "fr": "Ceci est une table.",
+      "en": "This is a table."
+    }
+  ]
 }

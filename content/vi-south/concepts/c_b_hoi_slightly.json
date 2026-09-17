@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tui thấy hơi sợ.",
+      "fr": "J'avais un peu peur.",
+      "en": "I felt a bit scared."
+    }
+  ]
 }

@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tại vì kẹt xe nên em tới trễ.",
+      "fr": "Je suis en retard parce qu'il y avait des bouchons.",
+      "en": "I'm late because of the traffic jam."
+    }
+  ]
 }

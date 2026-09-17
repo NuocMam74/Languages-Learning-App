@@ -26,5 +26,12 @@
     "fr": "À l'oral on entend aussi : Cái này nhiêu?",
     "en": "In speech you also hear: Cái này nhiêu?"
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị bán cái này bao nhiêu?",
+      "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
+      "en": "How much are you selling this for? (to a slightly older saleswoman)"
+    }
+  ]
 }

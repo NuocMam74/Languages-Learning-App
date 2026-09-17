@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tới rồi, cho em xuống đây.",
+      "fr": "On est arrivés, déposez-moi ici.",
+      "en": "We're here, drop me off here."
+    }
+  ]
 }

@@ -23,5 +23,11 @@
     }
   ],
   "image": "img/places/toilet.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà vệ sinh ở đâu?",
+      "fr": "Où sont les toilettes ?"
+    }
+  ]
 }

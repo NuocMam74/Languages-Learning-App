@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nếu mưa thì tui ở nhà.",
+      "fr": "S'il pleut, je reste à la maison.",
+      "en": "If it rains, I'll stay home."
+    }
+  ]
 }

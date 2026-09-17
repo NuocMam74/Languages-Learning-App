@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Người đó là ai?",
+      "fr": "Qui est cette personne ?",
+      "en": "Who is that person?"
+    }
+  ]
 }

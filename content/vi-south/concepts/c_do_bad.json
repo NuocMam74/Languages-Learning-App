@@ -27,5 +27,12 @@
     "fr": "Au Sud, dở est le contraire de ngon et de hay : món này dở, phim dở.",
     "en": "In the South dở is the opposite of ngon and hay: món này dở, phim dở."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Món này hơi dở.",
+      "fr": "Ce plat n'est pas terrible.",
+      "en": "This dish isn't great."
+    }
+  ]
 }

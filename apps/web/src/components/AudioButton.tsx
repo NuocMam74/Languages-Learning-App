@@ -58,6 +58,20 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
       </div>
       {source === "tts" && <p className="text-sm text-phu-sa">{t("audio.tts")}</p>}
       {source === "missing" && <p className="text-sm text-son-mai">{t("audio.missing")}</p>}
+      {/*
+       * Rien à entendre — ni enregistrement, ni voix installée sur l'appareil. Cacher la
+       * transcription ne protège alors plus rien : elle ne « donne » la réponse d'un exercice
+       * d'écoute que s'il y a quelque chose à écouter. Sans audio, la cacher rend l'item
+       * impossible ; la montrer laisse au moins lire ce qu'on aurait dû entendre.
+       * L'examen garde son verrou (`TranscriptsAllowed` à false) : là, un item muet reste sans
+       * réponse plutôt que d'être offert.
+       */}
+      {source === "missing" && transcripts && transcript && !silent && (
+        <p className="text-center text-lg" data-testid="transcript-fallback">
+          <span className="sr-only">{t("settings.silent.transcript")} </span>
+          {transcript}
+        </p>
+      )}
       {/* Lecture automatique refusée (iOS sans geste) : invitation, pas une erreur. */}
       {source === "blocked" && <p className="text-sm font-semibold text-ngoc" data-testid="audio-tap">{t("mobile.audio.tapToListen")}</p>}
       {silent && transcripts && transcript && (

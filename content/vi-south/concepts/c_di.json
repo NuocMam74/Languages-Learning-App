@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dì Út tôi ở Sài Gòn.",
+      "fr": "Ma plus jeune tante (côté mère) habite à Saïgon.",
+      "en": "My youngest aunt (mother's side) lives in Saigon."
+    }
+  ]
 }

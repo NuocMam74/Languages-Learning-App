@@ -26,5 +26,12 @@
     "fr": "Au Sud, Việt sonne presque « Việc ». En Telex : tieengs Vieetj.",
     "en": "In the South, Việt sounds almost like 'Việc'. In Telex: tieengs Vieetj."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị nói tiếng Việt được hông?",
+      "fr": "Tu parles vietnamien ?",
+      "en": "Do you speak Vietnamese?"
+    }
+  ]
 }

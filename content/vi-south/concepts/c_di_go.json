@@ -27,5 +27,12 @@
     "fr": "đ se dit langue contre les dents, comme un d français appuyé.",
     "en": "đ is said with the tongue against the teeth, like a firm English d."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh đi đâu vậy?",
+      "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+      "en": "Where are you going? (to a slightly older man)"
+    }
+  ]
 }

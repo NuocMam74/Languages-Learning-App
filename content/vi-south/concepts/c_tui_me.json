@@ -27,5 +27,12 @@
     "fr": "Forme du Sud de tôi entre amis. Pas avec un aîné qu'on respecte.",
     "en": "Southern casual form of tôi among friends. Not with an elder you respect."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tui tên là Hùng.",
+      "fr": "Moi, c'est Hùng (familier).",
+      "en": "I'm Hùng (casual)."
+    }
+  ]
 }

@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/signs/turn_right.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tới ngã tư anh quẹo phải nha.",
+      "fr": "Au carrefour, tournez à droite.",
+      "en": "At the crossroads, turn right."
+    }
+  ]
 }

@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chào mọi người.",
+      "fr": "Bonjour tout le monde.",
+      "en": "Hello everyone."
+    }
+  ]
 }

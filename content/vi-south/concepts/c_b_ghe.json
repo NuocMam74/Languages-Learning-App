@@ -25,5 +25,12 @@
     }
   ],
   "image": "img/vehicles/boat.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mình đi ghe ra chợ nổi hen.",
+      "fr": "On prend le bateau pour le marché flottant, d'accord ?",
+      "en": "Let's take the boat to the floating market, okay?"
+    }
+  ]
 }

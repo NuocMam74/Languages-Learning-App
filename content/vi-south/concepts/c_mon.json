@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Món này hơi dở.",
+      "fr": "Ce plat n'est pas terrible.",
+      "en": "This dish isn't great."
+    }
+  ]
 }

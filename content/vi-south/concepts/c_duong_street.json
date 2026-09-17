@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà tôi ở hẻm năm mươi, đường Lê Lợi.",
+      "fr": "J'habite ruelle 50, rue Lê Lợi.",
+      "en": "I live in alley 50, Lê Lợi street."
+    }
+  ]
 }

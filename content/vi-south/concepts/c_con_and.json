@@ -27,5 +27,12 @@
     "fr": "Còn anh ? = « Et toi ? ». Devant un adjectif : còn trẻ = encore jeune.",
     "en": "Còn anh? = 'And you?'. Before an adjective: còn trẻ = still young."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, em khỏe. Còn anh?",
+      "fr": "Je vais bien. Et toi ? (à un homme un peu plus âgé)",
+      "en": "I'm well. And you? (to a slightly older man)"
+    }
+  ]
 }

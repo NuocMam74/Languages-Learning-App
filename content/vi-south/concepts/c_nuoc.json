@@ -28,5 +28,11 @@
     "fr": "nước veut aussi dire « pays » : nước Pháp, la France.",
     "en": "nước also means 'country': nước Pháp, France."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị là người nước nào?",
+      "fr": "Tu es de quel pays ?"
+    }
+  ]
 }

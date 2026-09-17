@@ -28,5 +28,12 @@
     "fr": "À l'oral du Sud, on entend souvent « bịnh ». Attention : au Sud, ốm veut dire « maigre ».",
     "en": "In southern speech you often hear 'bịnh'. Careful: in the South, ốm means 'skinny'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em bị bệnh rồi.",
+      "fr": "Je suis tombé(e) malade.",
+      "en": "I've fallen ill."
+    }
+  ]
 }

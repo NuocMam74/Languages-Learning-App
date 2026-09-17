@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/people/anh.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, em cảm ơn anh.",
+      "fr": "Oui, merci (à un homme un peu plus âgé).",
+      "en": "Yes, thank you (to a slightly older man)."
+    }
+  ]
 }

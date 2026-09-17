@@ -28,5 +28,12 @@
     "fr": "Au Sud : làm giùm ; au Nord : làm hộ.",
     "en": "South: làm giùm; North: làm hộ."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị photo giùm em hai bản nha.",
+      "fr": "Tu me fais deux photocopies, s'il te plaît ?",
+      "en": "Could you make me two copies?"
+    }
+  ]
 }

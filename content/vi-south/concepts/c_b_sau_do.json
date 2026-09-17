@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Sau đó tui qua Pháp.",
+      "fr": "Ensuite, je suis parti(e) en France.",
+      "en": "After that I went to France."
+    }
+  ]
 }

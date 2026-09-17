@@ -26,5 +26,12 @@
     "fr": "À l'oral, vậy se prononce souvent « dzậy » ; on écrit vậy.",
     "en": "Spoken vậy often sounds like 'dzậy'; it's written vậy."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh đi đâu vậy?",
+      "fr": "Tu vas où comme ça ?",
+      "en": "Where are you off to?"
+    }
+  ]
 }

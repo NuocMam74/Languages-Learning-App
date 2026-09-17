@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Ngày mai tôi đi chợ.",
+      "fr": "Demain, je vais au marché.",
+      "en": "Tomorrow I'm going to the market."
+    }
+  ]
 }

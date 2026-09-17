@@ -24,5 +24,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mai gặp hen.",
+      "fr": "À demain, hein.",
+      "en": "See you tomorrow, eh."
+    }
+  ]
 }

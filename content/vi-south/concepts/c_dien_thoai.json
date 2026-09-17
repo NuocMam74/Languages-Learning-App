@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/things/phone.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Số điện thoại của chị là bao nhiêu?",
+      "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+      "en": "What's your phone number? (to a slightly older woman)"
+    }
+  ]
 }

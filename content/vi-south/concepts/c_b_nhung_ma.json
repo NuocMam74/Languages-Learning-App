@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hơi mắc, nhưng mà ngon.",
+      "fr": "Un peu cher, mais c'est bon.",
+      "en": "A bit pricey, but tasty."
+    }
+  ]
 }

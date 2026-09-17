@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Hồi nhỏ tui ở dưới quê.",
+      "fr": "Quand j'étais petit(e), je vivais à la campagne.",
+      "en": "As a child, I lived in the countryside."
+    }
+  ]
 }

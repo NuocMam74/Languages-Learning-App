@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/things/passport.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh cho tôi coi hộ chiếu.",
+      "fr": "Montrez-moi votre passeport.",
+      "en": "Show me your passport."
+    }
+  ]
 }

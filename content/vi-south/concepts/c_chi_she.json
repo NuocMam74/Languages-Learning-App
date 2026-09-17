@@ -24,5 +24,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chỉ là chị tôi.",
+      "fr": "Elle, c'est ma grande sœur.",
+      "en": "She's my older sister."
+    }
+  ]
 }

@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh cho em nghỉ thứ sáu nha.",
+      "fr": "Tu me laisses prendre vendredi, d'accord ?",
+      "en": "Can I take Friday off, okay?"
+    }
+  ]
 }

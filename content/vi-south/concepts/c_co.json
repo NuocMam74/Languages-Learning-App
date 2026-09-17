@@ -27,5 +27,12 @@
     "fr": "Pour répondre oui à une question en có … không ?, on reprend có.",
     "en": "To say yes to a có … không? question, repeat có."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, không có chi.",
+      "fr": "De rien (poliment).",
+      "en": "You're welcome (politely)."
+    }
+  ]
 }

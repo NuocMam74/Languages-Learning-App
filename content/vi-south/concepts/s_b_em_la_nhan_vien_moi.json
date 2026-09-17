@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chào em, em là nhân viên mới hả?",
+      "fr": "Bonjour, c'est toi la nouvelle employée ?",
+      "en": "Hello, are you the new employee?"
+    }
+  ]
 }

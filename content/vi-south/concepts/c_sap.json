@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em sắp tới rồi.",
+      "fr": "J'arrive bientôt.",
+      "en": "I'm almost there."
+    }
+  ]
 }

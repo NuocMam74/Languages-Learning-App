@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/signs/straight.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh chạy thẳng qua cầu nha.",
+      "fr": "Va tout droit et passe le pont, d'accord ?",
+      "en": "Go straight over the bridge, okay?"
+    }
+  ]
 }

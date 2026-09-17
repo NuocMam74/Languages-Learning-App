@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Vui hông anh? Kể tui nghe đi!",
+      "fr": "C'était bien ? Raconte-moi !",
+      "en": "Was it fun? Tell me about it!"
+    }
+  ]
 }

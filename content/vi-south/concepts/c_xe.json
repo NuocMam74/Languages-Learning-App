@@ -28,5 +28,12 @@
     "fr": "À Saïgon, xe tout court, c'est souvent la moto. La voiture : xe hơi.",
     "en": "In Saigon, plain xe often means the motorbike. A car is xe hơi."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Đi xe buýt mất bao lâu?",
+      "fr": "Ça prend combien de temps en bus ?",
+      "en": "How long does it take by bus?"
+    }
+  ]
 }

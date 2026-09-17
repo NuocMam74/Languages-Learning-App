@@ -28,5 +28,12 @@
     "fr": "Au Sud, on se désigne souvent par con face à cô, chú, ông ou bà ; au Nord, plutôt cháu.",
     "en": "In the South people often call themselves con with cô, chú, ông or bà; in the North, cháu is more usual."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, con cảm ơn chú.",
+      "fr": "Merci (à un homme de l'âge de tes parents).",
+      "en": "Thank you (to a man your parents' age)."
+    }
+  ]
 }

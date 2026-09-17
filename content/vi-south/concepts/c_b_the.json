@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/things/card.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em cần hai tấm hình thẻ.",
+      "fr": "J'ai besoin de deux photos d'identité.",
+      "en": "I need two ID photos."
+    }
+  ]
 }

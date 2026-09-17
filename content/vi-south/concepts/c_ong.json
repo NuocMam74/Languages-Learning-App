@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/people/ong.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Con chào ông.",
+      "fr": "Bonjour (à un homme âgé).",
+      "en": "Hello (to an elderly man)."
+    }
+  ]
 }

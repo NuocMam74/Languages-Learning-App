@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh nghỉ ngơi đi nha.",
+      "fr": "Repose-toi, d'accord ? (à un homme un peu plus âgé)",
+      "en": "Get some rest, okay? (to a slightly older man)"
+    }
+  ]
 }

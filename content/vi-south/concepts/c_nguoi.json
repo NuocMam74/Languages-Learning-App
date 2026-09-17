@@ -27,5 +27,12 @@
     "fr": "người + pays = la nationalité : người Pháp, người Việt.",
     "en": "người + country = nationality: người Pháp, người Việt."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi là người Pháp.",
+      "fr": "Je suis français(e).",
+      "en": "I'm French."
+    }
+  ]
 }

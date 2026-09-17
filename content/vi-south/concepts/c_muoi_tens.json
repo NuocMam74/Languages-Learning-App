@@ -27,5 +27,12 @@
     "fr": "mươi, sans accent, suit un chiffre : hai mươi (20), ba mươi (30).",
     "en": "mươi, level tone, follows a digit: hai mươi (20), ba mươi (30)."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị hai mươi lăm tuổi.",
+      "fr": "Elle a vingt-cinq ans.",
+      "en": "She's twenty-five."
+    }
+  ]
 }

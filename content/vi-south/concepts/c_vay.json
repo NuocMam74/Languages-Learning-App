@@ -28,5 +28,12 @@
     "fr": "Sao vậy ? : « Qu'est-ce qu'il y a ? ». Au Nord, on dirait thế.",
     "en": "Sao vậy?: 'What's up?'. The North would say thế."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh đi đâu vậy?",
+      "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+      "en": "Where are you going? (to a slightly older man)"
+    }
+  ]
 }

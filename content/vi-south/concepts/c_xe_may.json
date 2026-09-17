@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/things/scooter.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Bây giờ ai cũng có xe máy.",
+      "fr": "Aujourd'hui, tout le monde a une moto.",
+      "en": "Nowadays everyone has a motorbike."
+    }
+  ]
 }

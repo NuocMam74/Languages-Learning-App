@@ -27,5 +27,12 @@
     "fr": "Au Sud : hình (photo) ; au Nord : ảnh.",
     "en": "South: hình (photo); North: ảnh."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chụp hình ở đâu vậy chị?",
+      "fr": "On fait les photos où ? (à une femme un peu plus âgée)",
+      "en": "Where can I get photos taken? (to a slightly older woman)"
+    }
+  ]
 }

@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/things/form.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh điền vô đơn này nha.",
+      "fr": "Remplis ce formulaire, d'accord ?",
+      "en": "Fill in this form, okay?"
+    }
+  ]
 }

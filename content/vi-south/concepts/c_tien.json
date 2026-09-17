@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/things/money.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em ơi, tính tiền!",
+      "fr": "L'addition, s'il te plaît !",
+      "en": "The bill, please!"
+    }
+  ]
 }

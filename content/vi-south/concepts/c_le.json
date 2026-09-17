@@ -28,5 +28,12 @@
     "fr": "Au Sud : một trăm lẻ năm ; au Nord : một trăm linh năm.",
     "en": "South: một trăm lẻ năm; North: một trăm linh năm."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Một trăm lẻ năm.",
+      "fr": "Cent cinq.",
+      "en": "One hundred and five."
+    }
+  ]
 }

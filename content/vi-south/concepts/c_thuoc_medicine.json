@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/health/medicine.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chị bán cho em thuốc nhức đầu.",
+      "fr": "Vends-moi un médicament contre le mal de tête. (à une femme un peu plus âgée)",
+      "en": "Could I have something for a headache? (to a slightly older woman)"
+    }
+  ]
 }

@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mình hẹn lúc mấy giờ?",
+      "fr": "On se donne rendez-vous à quelle heure ?",
+      "en": "What time shall we meet?"
+    }
+  ]
 }

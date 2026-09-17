@@ -23,5 +23,12 @@
     }
   ],
   "image": "img/places/park.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Trường học ở giữa công viên và bệnh viện.",
+      "fr": "L'école est entre le parc et l'hôpital.",
+      "en": "The school is between the park and the hospital."
+    }
+  ]
 }

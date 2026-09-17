@@ -26,5 +26,12 @@
     "fr": "nước = « pays » (et « eau ») ; nào = « quel ».",
     "en": "nước = 'country' (and 'water'); nào = 'which'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi tên Nam. Chị là người nước nào?",
+      "fr": "Moi c'est Nam. Vous êtes de quel pays ?",
+      "en": "I'm Nam. What country are you from?"
+    }
+  ]
 }

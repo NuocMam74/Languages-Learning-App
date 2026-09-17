@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà trong hẻm yên tĩnh hơn.",
+      "fr": "Une maison dans une ruelle, c'est plus calme.",
+      "en": "A house down an alley is quieter."
+    }
+  ]
 }

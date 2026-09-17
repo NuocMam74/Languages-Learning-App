@@ -28,5 +28,12 @@
     "fr": "Au Sud : trễ ; au Nord : muộn. Au Sud, trễ sonne comme trẻ (jeune).",
     "en": "South: trễ; North: muộn. In the South trễ sounds like trẻ (young)."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Xin lỗi, tôi tới trễ.",
+      "fr": "Désolé(e), je suis en retard.",
+      "en": "Sorry, I'm late."
+    }
+  ]
 }

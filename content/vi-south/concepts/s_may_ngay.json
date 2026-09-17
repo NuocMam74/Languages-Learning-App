@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em ở Sài Gòn mấy ngày?",
+      "fr": "Tu restes combien de jours à Saïgon ? (à plus jeune)",
+      "en": "How many days are you staying in Saigon? (to someone younger)"
+    }
+  ]
 }

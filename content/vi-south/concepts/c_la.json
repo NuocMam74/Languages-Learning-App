@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tôi tên là Lan.",
+      "fr": "Je m'appelle Lan.",
+      "en": "My name is Lan."
+    }
+  ]
 }

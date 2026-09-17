@@ -28,5 +28,12 @@
     "fr": "Phở bò : phở au bœuf.",
     "en": "Phở bò: beef phở."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cho chị một tô phở bò với một ly cà phê sữa đá.",
+      "fr": "Un bol de phở au bœuf et un café glacé au lait.",
+      "en": "A bowl of beef phở and an iced milk coffee."
+    }
+  ]
 }

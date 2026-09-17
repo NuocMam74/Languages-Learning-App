@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Mình đi ghe ra chợ nổi hen. Rồi ra vườn hái trái cây.",
+      "fr": "On prend le bateau pour le marché flottant. Puis on cueille des fruits au verger.",
+      "en": "We'll take a boat to the floating market. Then pick fruit in the orchard."
+    }
+  ]
 }

@@ -28,5 +28,12 @@
     "fr": "Un tô phở : un bol de phở. Le petit bol à riz, au Sud, c'est chén.",
     "en": "Một tô phở: a bowl of phở. The small rice bowl, in the South, is chén."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cho em một tô phở.",
+      "fr": "Un bol de phở, s'il te plaît.",
+      "en": "A bowl of phở, please."
+    }
+  ]
 }

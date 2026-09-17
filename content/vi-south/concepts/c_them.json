@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cho em thêm một cái chén.",
+      "fr": "Un bol de plus, s'il te plaît.",
+      "en": "One more bowl, please."
+    }
+  ]
 }

@@ -27,5 +27,12 @@
     "fr": "Après mười ou mươi, năm devient lăm : mười lăm (15).",
     "en": "After mười or mươi, năm becomes lăm: mười lăm (15)."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Năm nay tôi ba mươi tuổi.",
+      "fr": "Cette année, j'ai trente ans.",
+      "en": "This year I'm thirty."
+    }
+  ]
 }

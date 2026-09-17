@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Năm sau em sẽ đi Cần Thơ.",
+      "fr": "L'année prochaine, j'irai à Cần Thơ.",
+      "en": "Next year I'll go to Cần Thơ."
+    }
+  ]
 }

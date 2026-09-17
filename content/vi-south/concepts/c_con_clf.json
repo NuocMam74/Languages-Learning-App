@@ -27,5 +27,12 @@
     "fr": "Même mot que con « enfant » : con chó, con mèo, con cá.",
     "en": "Same word as con 'child': con chó, con mèo, con cá."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nhà tôi có hai con mèo.",
+      "fr": "Chez moi, il y a deux chats.",
+      "en": "At my home there are two cats."
+    }
+  ]
 }

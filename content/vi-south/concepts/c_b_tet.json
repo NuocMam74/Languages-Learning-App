@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Tết này con có về quê hông?",
+      "fr": "Tu rentres au pays pour le Tết ?",
+      "en": "Are you going home for Tết?"
+    }
+  ]
 }

@@ -29,5 +29,12 @@
     "fr": "Au Sud : chén ; au Nord : bát. Le grand bol à soupe : tô.",
     "en": "South: chén; North: bát. The big soup bowl: tô."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Cho em thêm một cái chén.",
+      "fr": "Un bol de plus, s'il te plaît.",
+      "en": "One more bowl, please."
+    }
+  ]
 }

@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Em đang bận, lát em gọi lại nha.",
+      "fr": "Je suis occupé(e), je te rappelle tout à l'heure.",
+      "en": "I'm busy, I'll call you back in a bit."
+    }
+  ]
 }

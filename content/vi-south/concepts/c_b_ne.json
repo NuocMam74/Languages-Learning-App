@@ -24,5 +24,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Nè, coi cái này nè!",
+      "fr": "Tiens, regarde ça !",
+      "en": "Hey, look at this!"
+    }
+  ]
 }

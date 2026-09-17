@@ -24,5 +24,12 @@
     }
   ],
   "image": "img/nature/sunset.svg",
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Chiều nay tôi về sớm.",
+      "fr": "Cet après-midi, je rentre tôt.",
+      "en": "This afternoon I'm going home early."
+    }
+  ]
 }

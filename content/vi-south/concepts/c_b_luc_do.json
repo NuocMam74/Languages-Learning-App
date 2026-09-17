@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Lúc đó trời mưa lớn lắm.",
+      "fr": "À ce moment-là, il pleuvait très fort.",
+      "en": "At that moment it was raining really hard."
+    }
+  ]
 }

@@ -27,5 +27,12 @@
     "fr": "Au Sud, r ne se confond pas avec d ni gi.",
     "en": "In the South, r doesn't merge with d or gi."
   },
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Anh chở em ra chợ Bến Thành nha.",
+      "fr": "Emmène-moi au marché Bến Thành, d'accord ? (à un homme un peu plus âgé)",
+      "en": "Take me to Bến Thành market, okay? (to a slightly older man)"
+    }
+  ]
 }

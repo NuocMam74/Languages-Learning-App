@@ -22,5 +22,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Dạ, con cảm ơn cô. Con chúc cô năm mới vui vẻ.",
+      "fr": "Merci. Je vous souhaite une bonne année.",
+      "en": "Thank you. I wish you a happy new year."
+    }
+  ]
 }

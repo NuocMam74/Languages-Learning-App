@@ -23,5 +23,12 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "examples": [
+    {
+      "vi": "Con đem trái cây tới.",
+      "fr": "J'apporte des fruits.",
+      "en": "I'm bringing fruit."
+    }
+  ]
 }
