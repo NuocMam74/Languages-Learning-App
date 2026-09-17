@@ -126,7 +126,7 @@ function Alert({ children }: { children: ReactNode }) {
 export default function Settings() {
   const navigate = useNavigate();
   const { status, account, signOut } = useAccount();
-  const { locale, silent, dictation, setLocale, setSilent, setDictation } = usePrefs();
+  const { locale, theme, feedbackSounds, silent, dictation, setLocale, setTheme, setFeedbackSounds, setSilent, setDictation } = usePrefs();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
   // Sections dont l'état est lu en local (rappels, ligue) : préchargées avec le profil, la page
@@ -248,7 +248,22 @@ export default function Settings() {
           <Row icon="globe" label={t("settings.locale")}>
             <Segmented label={t("settings.locale")} value={locale ?? "auto"} options={[{ value: "auto", label: t("settings.locale.auto") }, { value: "fr", label: "Français" }, { value: "en", label: "English" }]} onChange={(v) => changeLocale(v === "fr" || v === "en" ? v : null)} />
           </Row>
+          {/* Thème (contrat phase9 §8) : « système » par défaut, appliqué avant le premier rendu. */}
+          <Row icon="lantern" label={t("settings.theme")} hint={t("settings.theme.hint")}>
+            <Segmented
+              label={t("settings.theme")}
+              value={theme}
+              options={[
+                { value: "system" as const, label: t("settings.theme.system") },
+                { value: "light" as const, label: t("settings.theme.light") },
+                { value: "dark" as const, label: t("settings.theme.dark") },
+              ]}
+              onChange={setTheme}
+            />
+          </Row>
           <Switch icon="mute" label={t("settings.silent")} hint={t("settings.silent.hint")} checked={silent} onChange={setSilent} />
+          {/* Le mode silencieux reste le maître : le dire, plutôt que de décocher l'interrupteur tout seul. */}
+          <Switch icon="sound" label={t("settings.sounds")} hint={t(silent ? "settings.sounds.silent" : "settings.sounds.hint")} checked={feedbackSounds} onChange={setFeedbackSounds} />
           <Switch icon="mic" label={t("tutor.dictation.setting")} hint={t("tutor.dictation.hint")} checked={dictation} onChange={setDictation} />
         </Card>
       </Section>

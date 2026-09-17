@@ -1,0 +1,54 @@
+name: Déploiement PWA
+
+# Scénario A (README § Déploiement) : la PWA seule, en hébergement statique. Aucune API, aucune
+# base — le build embarque le contenu des packs, et le mode invité fonctionne hors ligne.
+#
+# Ce workflow **ne fait rien** tant que la variable de dépôt `CLOUDFLARE_PROJECT_NAME` n'est pas
+# définie : un dépôt fraîchement cloné ne voit pas ses pushes échouer pour une config absente.
+#
+# Pour l'activer (Settings → Secrets and variables → Actions) :
+#   Variable : CLOUDFLARE_PROJECT_NAME  = le nom du projet Cloudflare Pages
+#   Secret   : CLOUDFLARE_API_TOKEN     = jeton avec la permission « Cloudflare Pages: Edit »
+#   Secret   : CLOUDFLARE_ACCOUNT_ID    = l'identifiant de compte Cloudflare
+#
+# Hébergeur différent ? Le build est le même ; seule la dernière étape change. Les règles
+# d'hébergement (`apps/web/public/_redirects` et `_headers`) sont lues telles quelles par
+# Cloudflare Pages **et** Netlify.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Un seul déploiement à la fois : deux pushes rapprochés ne se marchent pas dessus.
+concurrency:
+  group: deploy-pwa
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build et publication
+    if: vars.CLOUDFLARE_PROJECT_NAME != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      # Garde minimale avant publication : `npm run build` inclut déjà `tsc --noEmit`, les tests
+      # ajoutent la logique (récompenses, missions, moteur). La CI complète (contenu, south-lint,
+      # i18n, Playwright) tourne en parallèle dans ci.yml.
+      - name: Tests unitaires
+        run: npm test
+      - name: Build PWA
+        run: npm run build
+
+      - name: Publication sur Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy apps/web/dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME }} --branch=main

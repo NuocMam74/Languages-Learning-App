@@ -1,0 +1,27 @@
+# En-têtes d'hébergement statique (Cloudflare Pages et Netlify lisent ce fichier tel quel).
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Fichiers au nom haché par Vite (assets/index-CtU-AojZ.css…) : leur contenu ne change jamais
+# sans que leur nom change. Police, JS, CSS : un an, immuable.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Contenu des packs : le numéro de version est dans le chemin (/content/vi-south/v1/…), donc
+# une nouvelle version publiée est une nouvelle URL.
+/content/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Le service worker doit être **revalidé à chaque fois** : c'est lui qui annonce les mises à jour
+# (registerType "prompt", src/sw.ts). Mis en cache, l'app resterait sur une version périmée.
+/sw.js
+  Cache-Control: no-cache
+
+# Coquille de l'app et manifeste : revalidés, ils sont minuscules et pointent vers les assets hachés.
+/index.html
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  Cache-Control: no-cache

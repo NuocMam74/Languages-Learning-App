@@ -62,6 +62,7 @@
 }
 
 @layer base {
+  /* `color-scheme` est posé par theme.ts : les champs et ascenseurs natifs suivent le thème. */
   html {
     background: var(--color-nuoc);
     color: var(--color-muc);

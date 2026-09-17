@@ -23,6 +23,10 @@ const ReminderPrompt = lazy(() => import("../notifications/Reminders.tsx").then(
 const HubAssignmentCard = lazy(() => import("../classes/HubAssignmentCard.tsx"));
 const InstallHint = lazy(() => import("../components/InstallHint.tsx").then((m) => ({ default: m.InstallHint })));
 const HubTutor = lazy(() => import("../tutor/HubTutor.tsx").then((m) => ({ default: m.HubTutor })));
+// Phase 9 : la mission à faire aujourd'hui, et le personnage de l'apprenant (le médaillon d'initiales
+// tient sa place tant qu'il n'est pas arrivé : rien ne se décale).
+const MissionsCard = lazy(() => import("../missions/MissionsCard.tsx"));
+const ProfileAvatar = lazy(() => import("../profile/ProfileAvatar.tsx"));
 // Badges et certificat : dessins de médaillons et fichiers d'examen — hors du bundle de démarrage.
 const DashboardBadges = lazy(() => import("./Motivation.tsx").then((m) => ({ default: m.DashboardBadges })));
 const DashboardCertificate = lazy(() => import("./Motivation.tsx").then((m) => ({ default: m.DashboardCertificate })));
@@ -156,6 +160,13 @@ export function Dashboard({ content }: { content: ContentIndex }) {
             <Suspense fallback={null}><ChallengeCard content={content} /></Suspense>
           </OptionalChunk>
         </Slot>
+        <Slot id="dash-missions">
+          <div className="empty:hidden">
+            <OptionalChunk>
+              <Suspense fallback={null}><MissionsCard content={content} /></Suspense>
+            </OptionalChunk>
+          </div>
+        </Slot>
         <Slot id={`dash-league-${accountStatus}`}>
           <div className="empty:hidden">
             <OptionalChunk>
@@ -251,7 +262,13 @@ function Header({ name, level, tier, xp, streak, loading }: { name: string | nul
       </div>
       <div className="flex shrink-0 items-center gap-1">
         <Link to="/profil" aria-label={t("dashboard.openProfile")} data-testid="dashboard-avatar" className="grid min-h-11 place-items-center">
-          <Avatar name={name} />
+          {/* Le personnage remplace les initiales quand il porte quelque chose (contrat phase9 §4) ;
+              sinon — et tant que son chunk n'est pas là — le médaillon garde exactement sa place. */}
+          <Suspense fallback={<Avatar name={name} />}>
+            <OptionalChunk fallback={<Avatar name={name} />}>
+              <ProfileAvatar size={44} fallback={<Avatar name={name} />} />
+            </OptionalChunk>
+          </Suspense>
         </Link>
         <Link
           to="/reglages"

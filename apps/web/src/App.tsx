@@ -44,6 +44,10 @@ const ProfilePage = lazy(() => import("./profile/ProfilePage.tsx"));
 const ReviewPage = lazy(() => import("./review/ReviewPage.tsx"));
 const NotesPage = lazy(() => import("./notes/NotesPage.tsx"));
 const Badges = lazy(() => import("./pages/Badges.tsx"));
+// Phase 9 : missions, récompenses, atelier du personnage.
+const MissionsPage = lazy(() => import("./missions/MissionsPage.tsx"));
+const RewardsPage = lazy(() => import("./rewards/RewardsPage.tsx"));
+const WardrobePage = lazy(() => import("./rewards/WardrobePage.tsx"));
 // Phase 2 : examens, certificats, rappels.
 const ExamsPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.ExamsPage })));
 const MockExamPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.MockExamPage })));
@@ -237,6 +241,9 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/compte/verifier", element: later(<VerifyEmailPage />) },
         { path: "/reglages", element: later(<Settings />) },
         { path: "/badges", element: later(<Badges content={content} />) },
+        { path: "/missions", element: later(<MissionsPage content={content} />) },
+        { path: "/recompenses", element: later(<RewardsPage />) },
+        { path: "/atelier", element: later(<WardrobePage />) },
         { path: "/jeux", element: later(<WithUnits content={content}><GamesPage content={content} /></WithUnits>) },
         { path: "/jeux/karaoke_tonal", element: later(<WithUnits content={content}><KaraokePage content={content} /></WithUnits>) },
         { path: "/jeux/doi_dap", element: later(<DoiDapPage content={content} />) },

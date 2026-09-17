@@ -16,6 +16,7 @@ export * from "./placement.ts";
 export * from "./exams.ts";
 export * from "./challenges.ts";
 export * from "./games/index.ts";
+export * from "./rewards/index.ts";
 export { buildContentIndex, type RawPackFiles } from "./content-index.ts";
 export * from "./content-split.ts";
 export * from "./input/telex.ts";

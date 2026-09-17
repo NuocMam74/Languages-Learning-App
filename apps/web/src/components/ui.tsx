@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode, Ref } from "react";
 import { activePackLang } from "../packs/active.ts";
 
 /**
@@ -29,7 +29,11 @@ type Variant = "primary" | "quiet" | "outline" | "reward";
  * Bouton. Le micro-retour de pression (scale 0.98) est le même partout (contrat phase8 §1) et ne
  * retarde jamais le clic : c'est une transformation, pas une attente.
  */
-export function Button({ variant = "primary", className = "", ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant }) {
+export function Button({ variant = "primary", className = "", ref, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: Variant;
+  /** Les dialogues posent le focus dessus à l'ouverture (rewards/Celebration.tsx). */
+  ref?: Ref<HTMLButtonElement>;
+}) {
   const styles: Record<Variant, string> = {
     primary: "bg-ngoc text-nuoc shadow-card hover:bg-ngoc/90 disabled:bg-phu-sa/25 disabled:text-phu-sa/60 disabled:shadow-none",
     quiet: "bg-transparent text-ngoc underline-offset-4 hover:underline",
@@ -39,6 +43,7 @@ export function Button({ variant = "primary", className = "", ...props }: Button
   return (
     <button
       type="button"
+      ref={ref}
       className={`min-h-14 w-full rounded-card px-6 text-lg font-semibold transition-[background-color,transform,box-shadow] duration-150 motion-safe:active:scale-[.98] ${styles[variant]} ${className}`}
       {...props}
     />

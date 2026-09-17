@@ -31,6 +31,7 @@ import {
   reviewConcept,
   reviewedConcepts,
   scorePlacement,
+  sessionCounters,
   sessionPhase,
   startSessionRun,
   TONE_EXERCISE_TYPES,
@@ -38,6 +39,7 @@ import {
   XP_SESSION_BONUS,
   type BadgeCode,
   type ConceptId,
+  type Counters,
   type ContentIndex,
   type Evaluation,
   type Exercise,
@@ -500,6 +502,17 @@ export interface SessionRecap {
   /** XP totale avant / après (montée de niveau). */
   xpBefore: number;
   xpAfter: number;
+  /**
+   * Compteurs de la séance (contrat phase9 §1) : lus par `rewards/store.ts` **après** la
+   * transaction — les récompenses sont locales et n'ont pas à partager l'écriture pédagogique.
+   * Vides pour une séance vide ou un entraînement : rien n'a été recompté.
+   */
+  counters: Counters;
+  /** Jour local de la séance (le journal des missions est par jour). */
+  localDate: string;
+  /** Mots connus et meilleure série, pour les paliers de trophées. */
+  knownWords: number;
+  bestStreak: number;
 }
 
 /** Bilan : XP, série, minutes du jour, badges, session_completed. */
@@ -543,6 +556,7 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
     );
     const cards = await packCards(pack, d);
     const words = new Set([...content.concepts.values()].filter((c) => c.type === "word").map((c) => c.id));
+    const knownWords = countKnownWords(cards, words);
     const [toneLog, southLog, cultureCards, earned] = await Promise.all([
       packKv<boolean[]>(d, pack, "toneLog", []),
       packKv<boolean[]>(d, pack, "southLog", []),
@@ -553,7 +567,7 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       ? []
       : evaluateBadges(
           {
-            curriculum: content.curriculum, completedLessons: completed, streak, knownWords: countKnownWords(cards, words), toneLog, southLog,
+            curriculum: content.curriculum, completedLessons: completed, streak, knownWords, toneLog, southLog,
             cultureCardsPassed: cultureCards.length, passedUnits, features: content.pack.features,
           },
           new Set(earned.map((b) => b.code)),
@@ -593,6 +607,12 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       unitTest: !practice && lesson?.kind === "unit_test" && lessonId ? { lessonId, score, passed: isUnitTestPassed(score) } : null,
       xpBefore: totals.xp,
       xpAfter: totals.xp + xp,
+      // Une séance vide ou un entraînement ne nourrit ni les missions ni les trophées : ils ne
+      // comptent pas la progression, et une récompense sans progression serait une tricherie.
+      counters: empty ? {} : sessionCounters({ run: saved, lesson, lessonCompleted, xp, itemsCount: capped.itemsCount, durationMs: capped.durationMs, learned: saved.learned }),
+      localDate: today,
+      knownWords,
+      bestStreak: Math.max(streak.current, streak.longest),
     };
   });
 }

@@ -13,13 +13,15 @@ import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { Button } from "../components/ui.tsx";
 import { t } from "../i18n/index.ts";
 import { BuaCom } from "./BuaCom.tsx";
+import { CaPhe } from "./CaPhe.tsx";
 import { ChoNoi } from "./ChoNoi.tsx";
+import { LoTo } from "./LoTo.tsx";
 import { GameEmpty, GameLayout, GameLoading } from "./GameShell.tsx";
 import { useXeOmData } from "./xe-om-data.ts";
 import { XeOm } from "./XeOm.tsx";
 
 /** Mini-jeux jouables en séance (les autres restent « bientôt »). */
-export const SESSION_GAMES: ReadonlySet<GameId> = new Set<GameId>(["cho_noi", "xe_om", "bua_com"]);
+export const SESSION_GAMES: ReadonlySet<GameId> = new Set<GameId>(["cho_noi", "xe_om", "bua_com", "lo_to", "ca_phe"]);
 
 /** Taille d'une partie en bloc 4 (1–2 min, spec §4.3). */
 const SESSION_XE_OM_ROUTES = 2;
@@ -59,6 +61,10 @@ export function GameExercise({ exercise, content, onAnswer, locked }: {
       return <XeOmExercise content={content} concepts={concepts} seed={seed} onSkip={skip} resultActions={resultActions} />;
     case "bua_com":
       return <BuaComExercise content={content} conceptIds={exercise.conceptIds} seed={seed} onSkip={skip} resultActions={resultActions} />;
+    case "lo_to":
+      return <LoTo content={content} concepts={concepts} seed={seed} onSkip={skip} resultActions={resultActions} />;
+    case "ca_phe":
+      return <CaPhe content={content} concepts={concepts} seed={seed} onSkip={skip} resultActions={resultActions} />;
     default:
       return <ChoNoi content={content} concepts={concepts} seed={seed} onSkip={skip} resultActions={resultActions} />;
   }

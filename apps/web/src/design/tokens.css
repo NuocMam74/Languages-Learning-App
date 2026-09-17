@@ -43,6 +43,9 @@
   --spacing-block: 1.5rem;
   --spacing-section: 2rem;
 
+  /* Reflet du squelette : blanc en clair, très discret en sombre (jeton, pas valeur en dur). */
+  --color-shimmer: rgb(255 255 255 / 0.55);
+
   /* Durées : une seule référence pour les remplissages et les entrées. */
   --ease-out-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -138,7 +141,7 @@
 }
 
 @utility parlo-shimmer {
-  background-image: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 0.55) 50%, transparent 100%);
+  background-image: linear-gradient(90deg, transparent 0%, var(--color-shimmer) 50%, transparent 100%);
   background-size: 60% 100%;
   background-repeat: no-repeat;
   animation: parlo-shimmer 1400ms linear infinite;
@@ -160,5 +163,90 @@
   }
   body::before {
     opacity: 0.03;
+  }
+}
+
+/*
+ * Thème sombre (contrat phase9 §8). On ne redéfinit que **les rôles** : le fond reste de l'eau, le
+ * primaire reste du jade, l'accent reste de la laque, le signal reste du curcuma — seulement plus
+ * clairs ou plus sombres selon ce sur quoi ils se posent. Aucun écran ne connaît ces valeurs : tout
+ * passe par ces variables, donc tout suit.
+ *
+ * Deux règles, volontairement séparées :
+ *  - `prefers-color-scheme` pour le choix « système », sauf si le clair est demandé explicitement ;
+ *  - `[data-theme="dark"]` pour le choix explicite, qui gagne dans les deux sens (theme.ts).
+ *
+ * Contraste vérifié : mực sur nước 14:1, ngọc sur surface 8:1, phù sa sur surface 6,5:1, et les
+ * aplats pleins (bouton primaire, bandeau de section) portent du texte sombre — donc AA partout.
+ */
+@layer theme {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --color-nuoc: #0c1614;
+      --color-muc: #e9efec;
+      --color-ngoc: #5cc0af;
+      --color-ngoc-sang: #193b35;
+      --color-son-mai: #f07c6e;
+      --color-nghe: #e5a21b;
+      --color-nghe-ecrit: #f3c169;
+      --color-phu-sa: #9fada7;
+
+      --color-surface: #152420;
+      --color-surface-2: #111d1a;
+      /* Bandeau de section : aplat jade clair, texte nước (sombre) — le même contrat qu'en clair, inversé. */
+      --color-surface-ngoc: #47b3a2;
+      --color-surface-nghe: #2e2412;
+      --color-surface-son-mai: #2f1a17;
+
+      --color-line: #e9efec1f;
+      --color-line-strong: #e9efec38;
+      --color-shimmer: rgb(233 239 236 / 0.09);
+
+      --shadow-card: 0 1px 1px rgb(0 0 0 / 0.3), 0 10px 24px -16px rgb(0 0 0 / 0.75);
+      --shadow-raised: 0 2px 3px rgb(0 0 0 / 0.35), 0 18px 36px -20px rgb(0 0 0 / 0.8);
+      --shadow-sheet: 0 -8px 30px rgb(0 0 0 / 0.55);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --color-nuoc: #0c1614;
+    --color-muc: #e9efec;
+    --color-ngoc: #5cc0af;
+    --color-ngoc-sang: #193b35;
+    --color-son-mai: #f07c6e;
+    --color-nghe: #e5a21b;
+    --color-nghe-ecrit: #f3c169;
+    --color-phu-sa: #9fada7;
+
+    --color-surface: #152420;
+    --color-surface-2: #111d1a;
+    --color-surface-ngoc: #47b3a2;
+    --color-surface-nghe: #2e2412;
+    --color-surface-son-mai: #2f1a17;
+
+    --color-line: #e9efec1f;
+    --color-line-strong: #e9efec38;
+    --color-shimmer: rgb(233 239 236 / 0.09);
+
+    --shadow-card: 0 1px 1px rgb(0 0 0 / 0.3), 0 10px 24px -16px rgb(0 0 0 / 0.75);
+    --shadow-raised: 0 2px 3px rgb(0 0 0 / 0.35), 0 18px 36px -20px rgb(0 0 0 / 0.8);
+    --shadow-sheet: 0 -8px 30px rgb(0 0 0 / 0.55);
+  }
+}
+
+@layer base {
+  /*
+   * Texture d'eau en sombre : le tracé jade du motif clair disparaîtrait. On redessine les mêmes
+   * rides en clair, à peine posées — la page garde son grain au lieu d'être un aplat noir.
+   */
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) body::before {
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
+    }
+  }
+  html[data-theme="dark"] body::before {
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
   }
 }

@@ -133,7 +133,7 @@ export interface LexicalVariants {
 
 type WithExplain = { explain?: Localized };
 
-export type GameId = "cho_noi" | "karaoke_tonal" | "xe_om" | "bua_com" | "doi_dap" | "nho_mat";
+export type GameId = "cho_noi" | "karaoke_tonal" | "xe_om" | "bua_com" | "doi_dap" | "nho_mat" | "lo_to" | "ca_phe";
 
 export type LessonStep =
   | { type: "culture_card"; ref: string }

@@ -113,3 +113,51 @@ Légende : **OK** = conforme · **OK\*** = conforme, réserve notée · **—** 
    différé du delta ferait clignoter le héros : arbitrage assumé.
 5. **Captures** : `docs/audits/shots/{before,after}/{iphone-13,galaxy-s25-ultra}/` — 15 écrans par
    appareil, pris sur un vrai parcours joué, pas sur des maquettes.
+
+---
+
+# Phase 9 — récompenses, missions, atelier, thème sombre
+
+Passe faite écran par écran sur les nouveautés du contrat `phase9-recompenses.md`. Les écrans
+existants n'ont pas changé de structure : ils héritent du thème par les jetons.
+
+| Écran | État | Ce qui a été vérifié |
+|---|---|---|
+| `/missions` | OK | Trois périodes, squelette de chargement, état vide illustré, barre de progression nommée, bouton de réclamation ≥ 44 px avec `aria-label` explicite, pastille « réclamée » après coup. |
+| `/recompenses` | OK | Bourse en carte forte, 8 familles de trophées avec palier atteint **et** reste à faire, 4 collections avec les objets manquants en silhouette, état vide illustré pour la collection. |
+| `/atelier` | OK | Personnage mis à jour au doigt, six emplacements, « Rien » pour les facultatifs, pièce verrouillée **expliquée** en une phrase, achat refusé avec le manque chiffré (`role="status"`). |
+| Carte de félicitations | OK | `role="dialog"` + `aria-modal`, focus posé sur le bouton, Échap ferme, voile cliquable, une carte à la fois, compteur du reste, nom du profil (« Bravo, {name} ! ») et repli sans nom. |
+| Accueil (carte missions) | OK | Sous le défi de la semaine, masquée quand il n'y a rien, `Slot` pour réserver sa hauteur. |
+| Profil (bloc récompenses) | OK | Personnage 72 px, xu, compte de trophées, trois rangées de 48 px vers missions / récompenses / atelier, hauteurs réservées avant la lecture d'IndexedDB. |
+| `/jeux/lo_to` | OK | Intro, grille 3×3 au pouce, barre de temps nommée, repli **au sens** en mode silencieux, état vide quand le pool est trop petit, `aria-live` sur le retour. |
+| `/jeux/ca_phe` | OK | Intro, commande par la voix (jetons numérotés, pas les mots), repli **écrit** en mode silencieux, la bonne réponse montrée après une erreur, état vide. |
+| Thème sombre | OK | Appliqué avant le premier rendu (`installTheme` dans `main.tsx`), suit le téléphone en mode « système », `color-scheme` et `theme-color` alignés, texture d'eau redessinée. |
+
+## Contrôles automatiques (ajouts)
+
+| Contrôle | Où | Résultat |
+|---|---|---|
+| Logique de récompense (compteurs, missions, trophées, coffres, atelier) | `packages/core/src/rewards/rewards.test.ts` | 40 cas |
+| Deux nouveaux jeux (pool, grille, service, score) | `packages/core/src/games/{lo-to,ca-phe}.test.ts` | 20 cas |
+| `build_sentence` en révision (jetons sans ponctuation) | `packages/core/src/review.test.ts` | 18 cas |
+| Gains locaux (double comptage, doublons, double réclamation, achat) | `apps/web/src/rewards/rewards-store.test.ts` | 21 cas |
+| Félicitations et thème | `apps/web/src/rewards/celebration.test.tsx` | 10 cas |
+| Textes fr/en | `npm run i18n:check` | 1751 clés, 0 sans anglais, 0 texte codé en dur |
+
+## Réserves connues
+
+1. **Les récompenses ne quittent pas l'appareil** (contrat §1) : ni xu, ni trophées, ni objets, ni
+   personnage ne sont synchronisés. Changer de téléphone les perd — l'export local (RGPD) les
+   contient. C'est le prix de la minimisation (spec §14) et de zéro changement du contrat d'API.
+2. **Les missions ne donnent pas d'XP**, seulement des xu : l'XP est réécrite par `applyServerState`
+   à chaque lecture de `/me`, une XP locale s'évaporerait à la synchronisation suivante.
+3. **Pas de cinquième onglet** : la barre basse reste à quatre entrées (contrat phase8 §4). Missions,
+   récompenses et atelier s'atteignent depuis le profil, la carte de l'accueil et « Réviser ».
+4. **Le bloc « mise en pratique » reste piloté par le contenu** : une séance de révision seule ne se
+   termine pas par un mini-jeu (il faudrait toucher `planSession` et la reprise de séance). La
+   variété d'une révision vient des six formats, dont `build_sentence` désormais.
+5. **`prefers-reduced-motion`** : la barre de temps de Lô tô continue d'avancer — c'est une
+   information, pas une décoration. Elle est mise à jour par intervalle, jamais par animation CSS.
+6. **Pas de nouvelle capture e2e** : `apps/web/e2e/` n'a pas été étendu à ces écrans (Playwright non
+   exécuté ici). Les tests unitaires couvrent la logique et l'accessibilité de la carte de
+   félicitations ; une passe Playwright reste à faire avant livraison.

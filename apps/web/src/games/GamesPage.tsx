@@ -1,6 +1,7 @@
 import {
   BUA_COM_DEFAULTS,
   betterGameBest,
+  GAME_PASS_RATIO,
   buaComSources,
   generateBuaComRounds,
   pickXeOmRoutes,
@@ -18,8 +19,12 @@ import { Card, Chip, EmptyState, FloatingMarket, Icon, Illustration, PageHeader,
 import { getKv, setKv } from "../db.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
 import { completedLessons, recordGamePlayed } from "../learner.ts";
+import { celebrate } from "../rewards/celebrate.ts";
+import { awardGame } from "../rewards/store.ts";
 import { BuaCom } from "./BuaCom.tsx";
+import { CaPhe } from "./CaPhe.tsx";
 import { ChoNoi } from "./ChoNoi.tsx";
+import { LoTo } from "./LoTo.tsx";
 import { GameBack, GameLoading } from "./GameShell.tsx";
 import { NhoMat, nhoMatStandalonePool } from "./NhoMat.tsx";
 import { useXeOmData } from "./xe-om-data.ts";
@@ -29,8 +34,8 @@ import { useTutorStatus } from "../tutor/status.ts";
 
 /** Onglet « Jeux » (spec §5.6) : chaque mini-jeu jouable seul, avec son record. */
 
-/** Les 4 jeux du MVP, dans l'ordre de la spec. */
-const MVP_GAMES: GameId[] = ["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "nho_mat"];
+/** Les jeux jouables seuls, dans l'ordre de la spec puis du contrat phase9 §7. */
+const MVP_GAMES: GameId[] = ["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "nho_mat", "lo_to", "ca_phe"];
 
 /** Jeux jouables sur /jeux/:game : accroche et icône de la carte. Les autres s'affichent « bientôt ». */
 const PLAYABLE: Partial<Record<GameId, { tagline: MessageKey; icon: IconName }>> = {
@@ -38,6 +43,8 @@ const PLAYABLE: Partial<Record<GameId, { tagline: MessageKey; icon: IconName }>>
   xe_om: { tagline: "games.xeOm.tagline", icon: "scooter" },
   bua_com: { tagline: "games.buaCom.tagline", icon: "bowl" },
   nho_mat: { tagline: "nhoMat.tagline", icon: "cards" },
+  lo_to: { tagline: "loTo.tagline", icon: "lantern" },
+  ca_phe: { tagline: "caPhe.tagline", icon: "bowl" },
 };
 
 export const bestKey = (game: GameId) => `games.${game}.best`;
@@ -190,6 +197,11 @@ export function GamePlayPage({ content }: { content: ContentIndex }) {
   };
   const onFinish = (result: GameResult) => {
     void recordGamePlayed(id, result, Date.now() - startedAt.current).catch(() => undefined);
+    // Une partie rapporte des xu et nourrit missions et trophées. Jamais bloquant : une récompense
+    // qui échoue ne doit pas abîmer la fin de partie.
+    void awardGame({ ...result, won: result.total > 0 && result.correct / result.total >= GAME_PASS_RATIO })
+      .then(celebrate)
+      .catch(() => undefined);
     const next = betterGameBest(best, result);
     const improved = next !== best;
     setNewBest(improved);
@@ -221,6 +233,8 @@ export function GamePlayPage({ content }: { content: ContentIndex }) {
         {id === "xe_om" && <XeOmStandalone {...common} />}
         {id === "bua_com" && <BuaComStandalone {...common} completed={completed} />}
         {id === "nho_mat" && <NhoMatStandalone {...common} completed={completed} />}
+        {id === "lo_to" && <LoToStandalone {...common} completed={completed} />}
+        {id === "ca_phe" && <CaPheStandalone {...common} completed={completed} />}
       </main>
     </div>
   );
@@ -284,6 +298,28 @@ function NhoMatStandalone({ completed, bestChip, ...props }: StandaloneProps & {
       {...props}
       concepts={pool.concepts}
       introExtra={<PoolLine label={pool.fromCompleted ? t("nhoMat.pool.completed") : t("nhoMat.pool.first")} bestChip={bestChip} />}
+    />
+  );
+}
+
+function LoToStandalone({ completed, bestChip, ...props }: StandaloneProps & { completed: ReadonlySet<string> }) {
+  const pool = useMemo(() => gamePool(props.content, completed), [props.content, completed]);
+  return (
+    <LoTo
+      {...props}
+      concepts={pool.concepts}
+      introExtra={<PoolLine label={pool.fromCompleted ? t("games.pool.completed") : t("games.pool.first")} bestChip={bestChip} />}
+    />
+  );
+}
+
+function CaPheStandalone({ completed, bestChip, ...props }: StandaloneProps & { completed: ReadonlySet<string> }) {
+  const pool = useMemo(() => gamePool(props.content, completed), [props.content, completed]);
+  return (
+    <CaPhe
+      {...props}
+      concepts={pool.concepts}
+      introExtra={<PoolLine label={pool.fromCompleted ? t("games.pool.completed") : t("games.pool.first")} bestChip={bestChip} />}
     />
   );
 }

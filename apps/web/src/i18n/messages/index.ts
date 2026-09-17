@@ -25,9 +25,11 @@ import * as dashboard from "./dashboard.ts";
 import * as profile from "./profile.ts";
 import * as exercises from "./exercises.ts";
 import * as review from "./review.ts";
+import * as rewards from "./rewards.ts";
+import * as missions from "./missions.ts";
 
 /**
  * Registre des types (MessageKey). Au runtime, i18n/index.ts charge chaque fichier de ce dossier par
  * langue (`?lang=fr|en`) : domaines du premier affichage tout de suite, les autres à la demande.
  */
-export const modules = [base, games, session, account, badges, placement, settings, tutor, exams, challenges, notifications, karaoke, social, packs, classes, journey, mobile, offline, dashboard, profile, exercises, review] as const;
+export const modules = [base, games, session, account, badges, placement, settings, tutor, exams, challenges, notifications, karaoke, social, packs, classes, journey, mobile, offline, dashboard, profile, exercises, review, rewards, missions] as const;

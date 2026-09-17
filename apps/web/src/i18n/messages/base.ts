@@ -100,6 +100,8 @@ export const fr = {
   "game.bua_com": "Bữa cơm",
   "game.doi_dap": "Đối đáp",
   "game.nho_mat": "Nhớ mặt",
+  "game.lo_to": "Lô tô",
+  "game.ca_phe": "Cà phê sữa đá",
   "error.content": "Le contenu n'a pas pu être chargé. Vérifie ta connexion pour ce premier lancement.",
   "error.retry": "Réessayer",
 } as const;
@@ -205,6 +207,8 @@ export const en: Record<keyof typeof fr, string> = {
   "game.bua_com": "Bữa cơm",
   "game.doi_dap": "Đối đáp",
   "game.nho_mat": "Nhớ mặt",
+  "game.lo_to": "Lô tô",
+  "game.ca_phe": "Cà phê sữa đá",
   "error.content": "Content couldn't be loaded. Check your connection for this first launch.",
   "error.retry": "Try again",
 };

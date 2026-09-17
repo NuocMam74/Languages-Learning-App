@@ -58,6 +58,56 @@ cd apps/web && PARLO_INTEGRATION=1 npx playwright test e2e/integration*.spec.ts
 Le contenu se valide avec `npm run content:validate` (ajouter `-- --production` pour refuser le
 contenu non relu et les médias manquants). Voir [CONTENT.md](CONTENT.md) pour la relecture.
 
+## Déployer
+
+### Scénario A — la PWA seule (hébergement statique)
+
+`npm run build` produit un site **entièrement statique** dans `apps/web/dist` (5,8 Mo, contenu des
+packs compris). Aucun serveur, aucune base : le mode invité fonctionne hors ligne, et tout ce qui
+est local le reste (progression, notes, xu, trophées, collections, personnage).
+
+Réglages de l'hébergeur :
+
+| | |
+|---|---|
+| Build | `npm ci && npm run build` |
+| Dossier publié | `apps/web/dist` |
+| Node | 24 |
+
+Les deux fichiers d'hébergement sont versionnés dans `apps/web/public/` et copiés dans le build ;
+**Cloudflare Pages et Netlify les lisent tels quels**, sans configuration supplémentaire :
+
+- `_redirects` — repli monopage (`/missions`, `/atelier`… sont de vraies URL) et **404 franc sur
+  `/api/*`** (corps : `no-api.json`, volontairement nommé hors du préfixe `/api`) : sans lui,
+  l'appel de rafraîchissement recevrait `index.html` en 200 et l'app se croirait hors ligne en
+  permanence.
+- `_headers` — `assets/` et `content/` immuables (noms hachés, versions dans le chemin), `sw.js` et
+  `index.html` revalidés à chaque fois, sinon les mises à jour n'arrivent jamais.
+
+Publication automatique à chaque push sur `main` :
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml) (inerte tant que la variable
+`CLOUDFLARE_PROJECT_NAME` n'est pas définie ; les secrets attendus sont documentés en tête).
+Sinon, un `npx wrangler pages deploy apps/web/dist` manuel suffit.
+
+**Deux contraintes à respecter :** l'app doit être servie à la **racine d'un domaine** (Vite n'a pas
+de `base`, le routeur pas de `basename` — un sous-chemin la casse), et en **HTTPS** (sans quoi pas
+de service worker, donc ni installation ni hors ligne).
+
+Ce que ce scénario ne donne pas, faute d'API : compte, synchronisation entre appareils, Cô Mai,
+ligues, défis entre amis, classes, certificats PDF. Les écrans concernés se replient proprement.
+
+### Scénario B — avec l'API
+
+[docker-compose.yml](docker-compose.yml) documente toutes les variables ; l'image de l'API est
+[apps/api/Dockerfile](apps/api/Dockerfile). Il faut un hébergeur Docker et un Postgres. Ce qui
+change par rapport au développement : `ENV=production` (l'API refuse de démarrer avec le
+`JWT_SECRET` par défaut ou plus court que 32 caractères), `COOKIE_SECURE=true`, `CORS_ORIGINS` et
+`PUBLIC_WEB_URL` / `PUBLIC_API_URL` sur les URL publiques réelles, `VAPID_*` pour le push,
+`ANTHROPIC_API_KEY` pour Cô Mai.
+
+Côté front, `VITE_API_BASE` (défaut `/api`) choisit la cible : même domaine derrière un proxy, ou
+l'origine complète de l'API (`VITE_API_BASE=https://api.exemple.fr`).
+
 ## État d'avancement
 
 Toutes les phases de la spécification (§15) sont implémentées et testées ; chaque critère d'acceptation

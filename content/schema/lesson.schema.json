@@ -318,7 +318,7 @@
       "additionalProperties": false,
       "properties": {
         "type": { "const": "game" },
-        "game": { "enum": ["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "doi_dap", "nho_mat"] },
+        "game": { "enum": ["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "doi_dap", "nho_mat", "lo_to", "ca_phe"] },
         "conceptPool": {
           "oneOf": [
             { "enum": ["lesson", "unit", "known"] },

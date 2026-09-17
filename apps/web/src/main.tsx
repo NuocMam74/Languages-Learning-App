@@ -5,7 +5,11 @@ import { App } from "./App.tsx";
 import { installChunkRecovery } from "./pwa/chunk-recovery.tsx";
 import { captureInstallPrompt } from "./pwa/install.ts";
 import { usePwaUpdate } from "./pwa/update.ts";
+import { installTheme } from "./theme.ts";
 import "./app.css";
+
+// Thème avant tout rendu (contrat phase9 §8) : aucun écran ne s'allume en blanc pour devenir sombre.
+installTheme();
 
 // Invite d'installation Android et chunks périmés : écoutés avant le premier rendu.
 captureInstallPrompt();

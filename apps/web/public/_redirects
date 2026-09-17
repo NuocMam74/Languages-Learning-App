@@ -1,0 +1,18 @@
+# Règles d'hébergement statique (Cloudflare Pages et Netlify lisent ce fichier tel quel).
+#
+# Les fichiers qui existent réellement sont servis avant ces règles : elles ne s'appliquent
+# qu'aux URL sans fichier correspondant.
+
+# Déploiement statique sans API (scénario A) : un 404 **franc**, avec un corps JSON.
+# Sans cette règle, /api/auth/refresh recevrait index.html en 200 ; `refreshSession`
+# (apps/web/src/api.ts) échouerait à le lire en JSON et conclurait « réseau injoignable » —
+# l'app afficherait « hors ligne » en permanence au lieu de rester simplement en mode invité.
+# Le corps vit **hors** du préfixe /api (et pas en /api-unavailable.json) : un proxy ou une règle
+# d'hébergeur qui capture le préfixe « /api » avalerait sinon le fichier de réponse lui-même —
+# c'est exactement ce que fait le proxy de `vite preview`.
+# Avec un vrai serveur d'API sur le même domaine, remplacer cette ligne par un proxy.
+/api/*  /no-api.json  404
+
+# Repli d'application monopage : /missions, /atelier, /recompenses… sont de vraies URL, ouvertes
+# directement ou rechargées. Sans cette ligne, elles renverraient un 404 de l'hébergeur.
+/*  /index.html  200

@@ -95,8 +95,9 @@ describe("formats riches (contrat phase6 §5)", () => {
   it("désactivés par défaut : rien ne change pour les appelants existants", () => {
     expect(reviewFormats(content, "c_ma_mom")).not.toContain("fill_gap");
     expect(reviewFormats(content, "c_ma_mom")).not.toContain("match_pairs");
+    expect(reviewFormats(content, "c_ma_mom")).not.toContain("build_sentence");
     for (let i = 0; i < 30; i++) {
-      expect(["fill_gap", "match_pairs"]).not.toContain(buildReviewExercise(content, "c_ma_mom", `s${i}`).type);
+      expect(["fill_gap", "match_pairs", "build_sentence"]).not.toContain(buildReviewExercise(content, "c_ma_mom", `s${i}`).type);
     }
   });
 
@@ -130,6 +131,30 @@ describe("formats riches (contrat phase6 §5)", () => {
     expect(ex.conceptIds[0]).toBe("c_ma_mom");
     expect(new Set(ex.right.map((o) => o.label?.fr)).size).toBe(3);
     expect(evaluate(ex, { kind: "pairs", pairs: ex.answer })).toMatchObject({ correct: true, graded: true });
+  });
+
+  it("build_sentence : les mots d'une phrase d'exemple à remettre dans l'ordre", () => {
+    expect(reviewFormats(content, "c_ma_mom", rich)).toContain("build_sentence");
+    const ex = buildReviewExercise(content, "c_ma_mom", "x", "build_sentence", rich);
+    if (ex.type !== "build_sentence") throw new Error(ex.type);
+    // La ponctuation ne devient pas un jeton : on travaille l'ordre des mots (contrat phase9 §6).
+    expect(ex.tokens.map((token) => token.text)).not.toContain("tôi.");
+    for (const token of ex.tokens) expect(token.text).not.toMatch(/[.,!?;:]/);
+    // Les jetons remis dans l'ordre reconstituent exactement la cible.
+    expect(ex.target.split(" ").sort()).toEqual(ex.tokens.map((token) => token.text ?? "").sort());
+    expect(ex.translation.fr).toBe("Voici ma mère.");
+    expect(ex.conceptIds).toEqual(["c_ma_mom"]);
+    const ordered = ex.target.split(" ").map((word) => ex.tokens.find((token) => token.text === word)!.id);
+    expect(evaluate(ex, { kind: "tokens", optionIds: ordered })).toMatchObject({ correct: true, graded: true });
+  });
+
+  it("build_sentence : jamais proposé sans phrase d'exemple de la bonne longueur", () => {
+    const tooShort = withConcepts(content, (c) => (c.id === "c_ma_mom" ? { ...c, examples: [{ vi: "Má tôi", fr: "Ma mère" }] } : c));
+    expect(reviewFormats(tooShort, "c_ma_mom", rich)).not.toContain("build_sentence");
+    const tooLong = withConcepts(content, (c) =>
+      c.id === "c_ma_mom" ? { ...c, examples: [{ vi: "Đây là má tôi và đây là ba tôi ở Cần Thơ", fr: "…" }] } : c,
+    );
+    expect(reviewFormats(tooLong, "c_ma_mom", rich)).not.toContain("build_sentence");
   });
 
   it("match_pairs impossible quand le pack n'a pas assez de concepts du même type", () => {

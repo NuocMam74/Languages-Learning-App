@@ -69,12 +69,14 @@ export function withRecovery(routes: RouteObject[]): RouteObject[] {
 }
 
 /** Frontière pour un widget chargé à la demande (carte du hub…) : en cas de chunk manquant, il disparaît. */
-export class OptionalChunk extends Component<{ children: ReactNode }, { failed: boolean }> {
+export class OptionalChunk extends Component<{ children: ReactNode; fallback?: ReactNode }, { failed: boolean }> {
   override state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
   }
   override render() {
-    return this.state.failed ? null : this.props.children;
+    // `fallback` sert quand la place doit rester occupée (le médaillon de l'en-tête) ; sans lui,
+    // un chunk facultatif qui échoue disparaît simplement.
+    return this.state.failed ? (this.props.fallback ?? null) : this.props.children;
   }
 }

@@ -22,6 +22,8 @@ import { ttsAllowed } from "./audio.ts";
 import { UnitUnavailableError } from "./content.ts";
 import { l, t, toneLabel } from "./i18n/index.ts";
 import { finishSession, isLessonOpen, openSession, saveLessonPart, sessionAvailability, submitSessionAnswer, type SessionRecap, type SessionRequest } from "./learner.ts";
+import { celebrate } from "./rewards/celebrate.ts";
+import { awardSession } from "./rewards/store.ts";
 import { syncEngine } from "./sync.ts";
 
 /**
@@ -118,6 +120,26 @@ export function givenText(exercise: Exercise, response: ExerciseResponse): strin
   return "";
 }
 
+/**
+ * Récompenses d'une séance terminée (contrat phase9 §5). Séparée du bilan : le bilan dit ce qu'on a
+ * appris (XP, série, mots), les félicitations disent ce qu'on a **gagné** — deux moments, deux
+ * responsabilités. Rien ici n'est nécessaire à la progression, donc tout y est facultatif.
+ */
+async function grantRewards(content: ContentIndex, recap: SessionRecap): Promise<void> {
+  if (Object.keys(recap.counters).length === 0) return;
+  const celebrations = await awardSession({
+    xp: recap.xp,
+    perfect: (recap.counters.perfectLessons ?? 0) > 0,
+    counters: recap.counters,
+    streakDays: recap.streak.current,
+    bestStreak: recap.bestStreak,
+    knownWords: recap.knownWords,
+    pack: content.pack,
+    day: recap.localDate,
+  });
+  celebrate(celebrations);
+}
+
 export const useSession = create<SessionState>((set, get) => {
   /** Avance jusqu'au prochain exercice jouable, en enregistrant leçon et bilan au passage. */
   async function advance(content: ContentIndex, start: SessionRun): Promise<void> {
@@ -134,6 +156,10 @@ export const useSession = create<SessionState>((set, get) => {
         set({ recap, status: "done", feedback: null, exercise: null, phase });
         // Fin de séance : l'outbox part tout de suite (contrat phase5 §4).
         void syncEngine.flush({ force: true }).catch(() => undefined);
+        // Récompenses (contrat phase9 §5) : hors de la transaction pédagogique, et **après** que le
+        // bilan est affiché — les cartes de félicitations se posent par-dessus, elles n'attendent
+        // pas. Un échec de récompense ne doit jamais faire échouer une séance.
+        void grantRewards(content, recap).catch(() => undefined);
         return;
       }
       set({ run, phase, exercise: exerciseFor(content, run, phase), feedback: null, given: "", shownAt: performance.now(), status: "answering", remedial: null });

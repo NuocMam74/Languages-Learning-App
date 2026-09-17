@@ -12,6 +12,7 @@ import { activePackCode } from "../packs/active.ts";
 import { isOnboarded, switchPack } from "../packs/switch.ts";
 import { usePackChoices } from "../packs/use-packs.ts";
 import { acquired, certificateCount, earnedBadges, gameBests, languageSkills, streakView, type AcquiredCounts, type StreakView } from "./data.ts";
+import { RewardsBlock } from "../rewards/RewardsBlock.tsx";
 import { Avatar } from "./Avatar.tsx";
 import { MAX_DISPLAY_NAME, readDisplayName, saveDisplayName } from "./identity.ts";
 
@@ -105,7 +106,12 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
         loading={summaries === null}
       />
 
-      <Block index={1} id="profile-streak-title" icon="flame" title={t("profile.streak.title")}>
+      {/* Récompenses (contrat phase9) : ce qu'on a gagné, ce qu'il reste à réclamer, et l'atelier. */}
+      <Block index={1} id="profile-rewards-title" icon="trophy" title={t("rewards.title")}>
+        <RewardsBlock pack={content.pack} />
+      </Block>
+
+      <Block index={2} id="profile-streak-title" icon="flame" title={t("profile.streak.title")}>
         {/* Les lanternes vivent ici : la série est la seule chose de l'écran qui se gagne jour après jour. */}
         <Card tone="notice" className="flex items-center gap-4">
           <div className="min-w-0 flex-1">
@@ -127,7 +133,7 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
         </Card>
       </Block>
 
-      <Block index={2} id="profile-skills-title" icon="chart" title={t("profile.skills.title")}>
+      <Block index={3} id="profile-skills-title" icon="chart" title={t("profile.skills.title")}>
         <Card className="flex flex-col gap-4">
           {codes.length > 1 && (
             <div role="radiogroup" aria-label={t("profile.skills.language")} className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
@@ -157,7 +163,7 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
         </Card>
       </Block>
 
-      <Block index={3} id="profile-acquired-title" icon="target" title={t("profile.acquired.title")}>
+      <Block index={4} id="profile-acquired-title" icon="target" title={t("profile.acquired.title")}>
         <Card className="flex flex-col gap-4">
           <dl className="grid grid-cols-2 gap-x-4 gap-y-3.5 sm:grid-cols-3" data-testid="profile-acquired">
             <Count label={t("profile.acquired.structures")} value={counts?.structures} />
@@ -187,7 +193,7 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
       </Block>
 
       <Block
-        index={4}
+        index={5}
         id="profile-badges-title"
         icon="star"
         title={t("profile.badges.title")}
@@ -216,7 +222,7 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
         </Card>
       </Block>
 
-      <Block index={5} id="profile-languages-title" icon="globe" title={t("profile.languages.title")}>
+      <Block index={6} id="profile-languages-title" icon="globe" title={t("profile.languages.title")}>
         <ul className="flex flex-col gap-2" data-testid="profile-languages">
           {choices.map((choice) => {
             const summary = summaries?.find((s) => s.code === choice.code) ?? null;

@@ -7,8 +7,17 @@ import { create } from "zustand";
 
 export type InterfaceLocale = "fr" | "en";
 
+/** Thème d'affichage (contrat phase9 §8) : « system » suit le réglage de l'appareil. */
+export type ThemeChoice = "system" | "light" | "dark";
+
 interface PrefsValue {
   locale: InterfaceLocale | null;
+  theme: ThemeChoice;
+  /**
+   * Sons de retour des exercices et des récompenses (contrat phase9 §5). Le mode silencieux les
+   * coupe aussi : c'est le maître, celui-ci ne fait que les refuser séparément de la voix.
+   */
+  feedbackSounds: boolean;
   /** Mode silencieux : pas de lecture automatique, transcriptions affichées (spec §13). */
   silent: boolean;
   /**
@@ -20,6 +29,8 @@ interface PrefsValue {
 
 interface PrefsState extends PrefsValue {
   setLocale: (locale: InterfaceLocale | null) => void;
+  setTheme: (theme: ThemeChoice) => void;
+  setFeedbackSounds: (on: boolean) => void;
   setSilent: (silent: boolean) => void;
   setDictation: (dictation: boolean) => void;
 }
@@ -32,11 +43,14 @@ function read(): PrefsValue {
     const parsed = raw ? (JSON.parse(raw) as Partial<PrefsValue>) : {};
     return {
       locale: parsed.locale === "fr" || parsed.locale === "en" ? parsed.locale : null,
+      theme: parsed.theme === "light" || parsed.theme === "dark" ? parsed.theme : "system",
+      // Les sons accompagnent l'app depuis toujours : ils restent allumés tant qu'on ne les coupe pas.
+      feedbackSounds: parsed.feedbackSounds !== false,
       silent: parsed.silent === true,
       dictation: parsed.dictation === true,
     };
   } catch {
-    return { locale: null, silent: false, dictation: false };
+    return { locale: null, theme: "system", feedbackSounds: true, silent: false, dictation: false };
   }
 }
 
@@ -48,13 +62,21 @@ function write(value: PrefsValue): void {
   }
 }
 
-const pick = ({ locale, silent, dictation }: PrefsValue): PrefsValue => ({ locale, silent, dictation });
+const pick = ({ locale, theme, feedbackSounds, silent, dictation }: PrefsValue): PrefsValue => ({ locale, theme, feedbackSounds, silent, dictation });
 
 export const usePrefs = create<PrefsState>((set, get) => ({
   ...read(),
   setLocale(locale) {
     set({ locale });
     write({ ...pick(get()), locale });
+  },
+  setTheme(theme) {
+    set({ theme });
+    write({ ...pick(get()), theme });
+  },
+  setFeedbackSounds(feedbackSounds) {
+    set({ feedbackSounds });
+    write({ ...pick(get()), feedbackSounds });
   },
   setSilent(silent) {
     set({ silent });
@@ -72,5 +94,5 @@ export function clearPrefs(): void {
   } catch {
     // rien à effacer
   }
-  usePrefs.setState({ locale: null, silent: false, dictation: false });
+  usePrefs.setState({ locale: null, theme: "system", feedbackSounds: true, silent: false, dictation: false });
 }

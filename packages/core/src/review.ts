@@ -9,15 +9,20 @@ import { hasFeature, type Concept, type ConceptId, type ContentIndex, type Local
  * de leçon (spec §6.3), donc un même concept revient sous des formats variés.
  */
 
-export type ReviewFormat = "listen_pick_text" | "tone_identify" | "listen_pick_image" | "fill_gap" | "match_pairs";
+export type ReviewFormat = "listen_pick_text" | "tone_identify" | "listen_pick_image" | "fill_gap" | "match_pairs" | "build_sentence";
 
 /**
- * Formats riches (contrat phase6 §5) : `fill_gap` (le concept dans une de ses phrases d'exemple)
- * et `match_pairs` (le concept et 2–3 voisins). Ils demandent une interface dédiée : `reviewFormats`
- * ne les propose qu'avec `richFormats` (la PWA l'active dans `apps/web/src/session-store.ts`, ses vues
+ * Formats riches (contrat phase6 §5, phase9 §6) : `fill_gap` (le concept dans une de ses phrases
+ * d'exemple), `match_pairs` (le concept et 2–3 voisins) et `build_sentence` (remettre les mots
+ * d'une de ses phrases dans l'ordre). Ils demandent une interface dédiée : `reviewFormats` ne les
+ * propose qu'avec `richFormats` (la PWA l'active dans `apps/web/src/session-store.ts`, ses vues
  * existent depuis `apps/web/src/exercises`) ; les autres clients gardent le défaut prudent.
  */
-export const RICH_REVIEW_FORMATS: ReadonlySet<ReviewFormat> = new Set<ReviewFormat>(["fill_gap", "match_pairs"]);
+export const RICH_REVIEW_FORMATS: ReadonlySet<ReviewFormat> = new Set<ReviewFormat>(["fill_gap", "match_pairs", "build_sentence"]);
+
+/** Bornes d'une phrase à reconstruire : trop courte, c'est gratuit ; trop longue, c'est un puzzle. */
+export const BUILD_SENTENCE_MIN_TOKENS = 3;
+export const BUILD_SENTENCE_MAX_TOKENS = 8;
 
 /** Nombre de concepts d'un appariement de révision (cible comprise). */
 export const REVIEW_MATCH_SIZE = 3;
@@ -113,6 +118,23 @@ function gapSentence(target: Concept): { text: string; translation: Localized } 
   return null;
 }
 
+/**
+ * Phrase d'exemple à reconstruire mot à mot (contrat phase9 §6) : support d'un `build_sentence` de
+ * révision. On prend la première phrase qui contient la forme du concept et qui tient dans les
+ * bornes de jetons — une phrase de deux mots ne s'assemble pas, une de douze se subit.
+ */
+function tokenSentence(target: Concept): { text: string; tokens: string[]; translation: Localized } | null {
+  for (const example of target.examples ?? []) {
+    if (!example.vi.toLocaleLowerCase("vi").includes(target.vi.toLocaleLowerCase("vi"))) continue;
+    // La ponctuation ne s'assemble pas : un jeton « tôi. » se lirait comme une faute, et l'ordre
+    // des mots est ce qu'on travaille — pas la virgule.
+    const tokens = example.vi.replace(/[.,!?;:…]/g, " ").split(/\s+/).filter(Boolean);
+    if (tokens.length < BUILD_SENTENCE_MIN_TOKENS || tokens.length > BUILD_SENTENCE_MAX_TOKENS) continue;
+    return { text: tokens.join(" "), tokens, translation: { fr: example.fr, ...(example.en ? { en: example.en } : {}) } };
+  }
+  return null;
+}
+
 /** Concepts appariables avec la cible : même type, forme et traduction distinctes. */
 function matchMates(content: ContentIndex, target: Concept, known: ReadonlySet<ConceptId>, rand: () => number): Concept[] {
   const glosses = new Set([target.gloss.fr]);
@@ -141,6 +163,7 @@ export function reviewFormats(content: ContentIndex, conceptId: ConceptId, opts:
   if (opts.richFormats) {
     if (gapSentence(target) && textDistractors(content, target, known, rand).length >= 1) formats.push("fill_gap");
     if (matchMates(content, target, known, rand).length >= REVIEW_MATCH_SIZE - 1) formats.push("match_pairs");
+    if (tokenSentence(target)) formats.push("build_sentence");
   }
   return formats;
 }
@@ -193,6 +216,17 @@ export function buildReviewExercise(
       const options = texts.map((text, i) => ({ id: `o${i}`, text }));
       const answerId = options.find((o) => o.text === target.vi)?.id ?? "";
       return { type: "fill_gap", stepIndex, conceptIds: [target.id], explain, text: gap.text, translation: gap.translation, options, answerId };
+    }
+
+    case "build_sentence": {
+      // tokenSentence est garanti par reviewFormats ; sinon on retombe sur une question de forme.
+      const sentence = tokenSentence(target);
+      if (!sentence) return buildReviewExercise(content, conceptId, seed, "listen_pick_text", opts);
+      const tokens = shuffle(sentence.tokens.map((text, i) => ({ id: `k${i}`, text })), rand);
+      return {
+        type: "build_sentence", stepIndex, conceptIds: [target.id], explain,
+        target: sentence.text, translation: sentence.translation, audio: null, tokens,
+      };
     }
 
     case "match_pairs": {

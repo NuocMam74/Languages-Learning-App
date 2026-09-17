@@ -5,3 +5,5 @@ export * from "./xe-om.ts";
 export * from "./bua-com.ts";
 export * from "./doi-dap.ts";
 export * from "./nho-mat.ts";
+export * from "./lo-to.ts";
+export * from "./ca-phe.ts";

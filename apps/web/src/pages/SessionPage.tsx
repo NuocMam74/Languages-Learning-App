@@ -8,7 +8,7 @@ import { ExerciseView } from "../components/exercises.tsx";
 import { levelLabel, LevelLine } from "../components/LevelLine.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
 import { Card, CountUp, EmptyState, Icon, IconButton, ProgressBar, ProgressRing, SectionTitle, Sheet, staggerStyle } from "../design/index.ts";
-import { playCorrectSound } from "../feedback-sound.ts";
+import { playCorrectSound, playWrongSound } from "../feedback-sound.ts";
 import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { getProfile, progressState } from "../learner.ts";
 import { LessonNoteBlock } from "../notes/NoteBlock.tsx";
@@ -48,11 +48,16 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   }, [content, mode, lessonId, open, attempt]);
 
   useEffect(() => {
-    if (status === "feedback" && feedback?.correct) {
-      playCorrectSound();
-      const id = setTimeout(() => void next(), CORRECT_PAUSE_MS);
-      return () => clearTimeout(id);
+    if (status !== "feedback" || !feedback) return;
+    if (!feedback.correct) {
+      // Un son neutre et grave (contrat phase9 §5), et on laisse le temps de lire la correction :
+      // rien n'enchaîne tout seul après une erreur.
+      playWrongSound();
+      return;
     }
+    playCorrectSound();
+    const id = setTimeout(() => void next(), CORRECT_PAUSE_MS);
+    return () => clearTimeout(id);
   }, [status, feedback, next]);
 
   // Entraînement : on revient dans la bibliothèque, pas sur le parcours.
@@ -278,7 +283,7 @@ function Feedback({ content, onHeight, chosenId }: { content: ContentIndex; onHe
     >
       {expectedId && !feedback.correct && (
         // Bonne réponse surlignée dans la liste, l'option choisie (fausse) en rouge.
-        <style>{`${chosenId && chosenId !== expectedId ? `[data-testid="lesson"] [data-option-id="${cssId(chosenId)}"]{border-color:var(--color-son-mai);background-color:color-mix(in srgb,var(--color-son-mai) 8%,white)}` : ""}[data-testid="lesson"] [data-option-id="${cssId(expectedId)}"]{border-color:var(--color-ngoc);background-color:var(--color-ngoc-sang);box-shadow:0 0 0 2px var(--color-ngoc)}`}</style>
+        <style>{`${chosenId && chosenId !== expectedId ? `[data-testid="lesson"] [data-option-id="${cssId(chosenId)}"]{border-color:var(--color-son-mai);background-color:color-mix(in srgb,var(--color-son-mai) 8%,var(--color-surface))}` : ""}[data-testid="lesson"] [data-option-id="${cssId(expectedId)}"]{border-color:var(--color-ngoc);background-color:var(--color-ngoc-sang);box-shadow:0 0 0 2px var(--color-ngoc)}`}</style>
       )}
       {feedback.correct ? (
         // Le moment héroïque de la séance : la feuille jade monte, la coche se pose avec elle.

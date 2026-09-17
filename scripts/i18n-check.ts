@@ -88,6 +88,8 @@ const FRENCH_WORDS = new Set(
 const ALLOWED_WORDS = new Set(
   (
     "français english parlo mai cô co saigon saïgon ba bà ma má mà la là cà phê ca cá chè xe om ôm bun phở pho bánh mì hue huế công " +
+    // « Lô tô » et « sữa đá » : ô et á existent en français, donc VIETNAMESE_ONLY ne les attrape pas.
+    "lô lo tô to sữa sua đá da " +
     "xp ipa json telex pdf qr url id ok stop a0 a1 a2 b1 b2 min ngang huyen sac hoi nga nang " +
     "pack packs division badge badges image images audio note date version code format type points " +
     "question questions minutes secondes"

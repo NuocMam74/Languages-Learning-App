@@ -37,7 +37,7 @@ StepType = Literal[
 ]
 
 # Miroir de `GameId` (packages/core/src/types.ts).
-GameId = Literal["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "doi_dap", "nho_mat"]
+GameId = Literal["cho_noi", "karaoke_tonal", "xe_om", "bua_com", "doi_dap", "nho_mat", "lo_to", "ca_phe"]
 
 NonNegative = Annotated[float, Field(ge=0, le=1e15)]
 Id = Annotated[str, Field(min_length=1, max_length=128)]

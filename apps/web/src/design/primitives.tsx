@@ -42,6 +42,7 @@ export type PassThrough = {
   "aria-label"?: string;
   "aria-labelledby"?: string;
   "aria-live"?: "polite" | "assertive" | "off";
+  "aria-modal"?: boolean;
   "aria-busy"?: boolean;
 } & Record<`data-${string}`, unknown>;
 

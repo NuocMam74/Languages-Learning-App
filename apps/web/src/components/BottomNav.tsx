@@ -1,7 +1,15 @@
-import type { ReactNode } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import { Outlet, NavLink, useLocation } from "react-router";
 import { Icon, type IconName } from "../design/index.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
+import { useCelebrations } from "../rewards/celebrate.ts";
+
+/**
+ * Les félicitations peuvent tomber sur n'importe quel écran (fin de séance, fin de partie,
+ * mission réclamée) : leur calque vit donc ici, au-dessus de toutes les routes. Chargé à la
+ * demande — tant que rien n'est gagné, il ne coûte rien (contrat phase9 §5).
+ */
+const CelebrationLayer = lazy(() => import("../rewards/Celebration.tsx").then((m) => ({ default: m.CelebrationLayer })));
 
 /**
  * Navigation basse (contrat phase7 §1) : visible sur les écrans « de séjour » (accueil, parcours,
@@ -50,10 +58,17 @@ export function isFocusedRoute(pathname: string): boolean {
 export function Shell({ children }: { children?: ReactNode }) {
   const { pathname } = useLocation();
   const focused = isFocusedRoute(pathname);
+  // Les félicitations s'affichent même sur un écran de concentration : la fin de séance en est un.
+  const celebrating = useCelebrations((s) => s.queue.length > 0);
   return (
     <div className={focused ? undefined : NAV_HEIGHT}>
       {children ?? <Outlet />}
       {!focused && <BottomNav pathname={pathname} />}
+      {celebrating && (
+        <Suspense fallback={null}>
+          <CelebrationLayer />
+        </Suspense>
+      )}
     </div>
   );
 }
