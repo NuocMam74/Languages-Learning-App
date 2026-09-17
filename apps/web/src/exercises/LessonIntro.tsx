@@ -2,7 +2,7 @@ import type { Concept, ContentIndex, Lesson } from "@parlo/core";
 import { playConcept, ttsAllowed } from "../audio.ts";
 import { AudioButton } from "../components/AudioButton.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
-import { Card, Chip, Icon, SectionTitle } from "../design/index.ts";
+import { Card, Chip, Icon, IconButton, SectionTitle } from "../design/index.ts";
 import { l, plural, t, toneLabel } from "../i18n/index.ts";
 
 /**
@@ -16,11 +16,14 @@ import { l, plural, t, toneLabel } from "../i18n/index.ts";
  * Elle n'est pas un exercice : rien n'est noté, rien n'entre dans le SRS, rien n'est envoyé. Le
  * seul bouton mène aux exercices.
  */
-export function LessonIntro({ content, lesson, conceptIds, onStart }: {
+export function LessonIntro({ content, lesson, conceptIds, onStart, onQuit }: {
   content: ContentIndex;
   lesson: Lesson | undefined;
   conceptIds: readonly string[];
   onStart: () => void;
+  /** Quitter : même geste et même place que pendant la séance. Sans lui, une PWA installée n'a
+      aucun bouton retour et l'écran devient un cul-de-sac. */
+  onQuit: () => void;
 }) {
   const concepts = conceptIds.flatMap((id): Concept[] => {
     const concept = content.concepts.get(id);
@@ -40,6 +43,7 @@ export function LessonIntro({ content, lesson, conceptIds, onStart }: {
     >
       <div className="flex flex-1 flex-col gap-5 pt-2" data-testid="lesson-intro" data-concepts={concepts.length}>
         <header>
+          <IconButton icon="close" label={t("lesson.quit")} onClick={onQuit} className="-mt-1 -ml-2 mb-1" />
           <p className="text-sm text-phu-sa">{t("intro.eyebrow")}</p>
           <h1 className="font-serif text-2xl leading-tight">{lesson ? l(lesson.title) : t("intro.title")}</h1>
           {lesson && <p className="pt-1 text-lg text-phu-sa text-balance">{l(lesson.goal)}</p>}

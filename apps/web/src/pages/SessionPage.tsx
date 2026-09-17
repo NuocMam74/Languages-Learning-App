@@ -93,7 +93,15 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   // Découverte (contrat phase10 §1) : on présente la leçon avant de la faire pratiquer. Placée
   // avant la garde ci-dessous, qui exige un exercice — la fiche n'en est pas un.
   if (phase?.kind === "teach" && run) {
-    return <LessonIntro content={content} lesson={content.lessons.get(phase.lesson.lessonId)} conceptIds={phase.conceptIds} onStart={() => void taught()} />;
+    return (
+      <LessonIntro
+        content={content}
+        lesson={content.lessons.get(phase.lesson.lessonId)}
+        conceptIds={phase.conceptIds}
+        onStart={() => void taught()}
+        onQuit={() => navigate(backTo)}
+      />
+    );
   }
   if (!run || !exercise || !phase) return <Screen><div /></Screen>;
 
