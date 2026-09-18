@@ -1,4 +1,5 @@
 import type { ContentIndex } from "@parlo/core";
+import { useMemo } from "react";
 import { Link } from "react-router";
 import { Screen } from "../components/ui.tsx";
 import { Card, Chip, EmptyState, Icon, PageHeader, SectionTitle, type IconName } from "../design/index.ts";
@@ -6,6 +7,7 @@ import { l, plural, t, type MessageKey } from "../i18n/index.ts";
 import { useNotes } from "../notes/store.ts";
 import { useOnline } from "../use-online.ts";
 import type { LibraryData } from "./data.ts";
+import { byPos, byTheme } from "./library.ts";
 
 /**
  * Accueil de « Réviser » (contrat phase8 §2, §4) : la bibliothèque de tout ce qui a été vu dans la
@@ -22,11 +24,20 @@ type Shelf = { to: string; label: MessageKey; icon: IconName; count: string; tes
 export default function ReviewHome({ content, data }: { content: ContentIndex; data: LibraryData }) {
   const online = useOnline();
   const notes = useNotes((s) => s.notes);
-  const empty = data.concepts.length === 0 && data.grammar.length === 0 && data.completed.size === 0 && notes.length === 0;
+  // Les conseils se lisent dès le premier jour : tant qu'il y en a, la bibliothèque n'est pas vide.
+  const empty =
+    data.concepts.length === 0 && data.grammar.length === 0 && data.completed.size === 0 && notes.length === 0 && content.guides.size === 0;
   const due = data.dueCount > 0;
+  // On n'annonce que les rayons **ouverts** : promettre « 12 catégories » puis n'en laisser cliquer
+  // que trois serait une fausse promesse.
+  const categories = useMemo(() => byPos(content, data.concepts).filter((s) => s.entries.length > 0).length, [content, data.concepts]);
+  const themes = useMemo(() => byTheme(content, data.concepts).filter((s) => s.entries.length > 0).length, [content, data.concepts]);
 
   const shelves: Shelf[] = [
     { to: "/reviser/vocabulaire", label: "review.section.vocabulary", icon: "cards", count: plural("review.count.words", "review.count.words.plural", data.concepts.length), testId: "review-vocabulary" },
+    { to: "/reviser/conseils", label: "review.section.tips", icon: "info", count: plural("review.count.tips", "review.count.tips.plural", content.guides.size), testId: "review-tips" },
+    { to: "/reviser/categories", label: "review.section.categories", icon: "grammar", count: plural("review.count.categories", "review.count.categories.plural", categories), testId: "review-categories" },
+    { to: "/reviser/themes", label: "review.section.themes", icon: "book", count: plural("review.count.themes", "review.count.themes.plural", themes), testId: "review-themes" },
     { to: "/reviser/grammaire", label: "review.section.grammar", icon: "grammar", count: plural("review.count.cards", "review.count.cards.plural", data.grammar.length), testId: "review-grammar" },
     { to: "/reviser/lecons", label: "review.section.lessons", icon: "book", count: plural("review.count.lessons", "review.count.lessons.plural", data.completed.size), testId: "review-lessons" },
     { to: "/reviser/dialogues", label: "review.section.dialogues", icon: "dialogue", count: plural("review.count.dialogues", "review.count.dialogues.plural", data.dialogues.length), testId: "review-dialogues" },

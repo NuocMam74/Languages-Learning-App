@@ -34,5 +34,6 @@
     "fr": "Chào s'emploie presque toujours avec un pronom : on salue quelqu'un, pas « le monde ».",
     "en": "Chào almost always takes a pronoun: you greet someone, not 'everyone'."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "verb"
 }

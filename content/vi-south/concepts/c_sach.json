@@ -24,5 +24,6 @@
     }
   ],
   "image": "img/things/book.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

@@ -26,5 +26,6 @@
     "fr": "On remplace anh par chị, em, cô… selon la personne.",
     "en": "Swap anh for chị, em, cô… depending on who you ask."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

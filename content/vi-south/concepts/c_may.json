@@ -34,5 +34,6 @@
       "fr": "Quelle heure est-il ?",
       "en": "What time is it?"
     }
-  ]
+  ],
+  "pos": "question"
 }

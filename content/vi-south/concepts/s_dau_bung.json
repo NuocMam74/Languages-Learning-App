@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/health/stomachache.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

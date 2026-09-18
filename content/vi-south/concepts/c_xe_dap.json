@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/vehicles/bicycle.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

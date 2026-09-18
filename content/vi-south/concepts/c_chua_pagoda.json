@@ -24,5 +24,6 @@
     }
   ],
   "image": "img/places/pagoda.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

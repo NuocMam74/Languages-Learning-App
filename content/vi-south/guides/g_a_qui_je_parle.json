@@ -1,0 +1,114 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_a_qui_je_parle",
+  "kind": "usage",
+  "order": 1,
+  "title": {
+    "fr": "À qui je parle : anh, chị, em",
+    "en": "Who am I talking to: anh, chị, em"
+  },
+  "summary": {
+    "fr": "Le vietnamien n'a ni « tu » ni « vous » : on choisit un mot de parenté.",
+    "en": "Vietnamese has no neutral 'you': you pick a kinship word."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Un mot qui dépend de l'âge",
+        "en": "A word that depends on age"
+      },
+      "body": {
+        "fr": "On s'adresse à quelqu'un comme à un membre de la famille, selon son âge et son sexe. Le même mot sert pour « je » et pour « tu » : chacun prend celui qui lui revient.",
+        "en": "You address people as if they were family, by age and gender. The same word serves for 'I' and 'you': each speaker takes the one that fits them."
+      },
+      "examples": [
+        {
+          "vi": "Chào anh.",
+          "fr": "Bonjour (à un homme un peu plus âgé).",
+          "en": "Hello (to a slightly older man)."
+        },
+        {
+          "vi": "Em cảm ơn chị.",
+          "fr": "Merci (moi plus jeune, à une femme plus âgée).",
+          "en": "Thank you (younger me, to an older woman)."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Le minimum vital",
+        "en": "The bare minimum"
+      },
+      "body": {
+        "fr": "anh : homme un peu plus âgé. chị : femme un peu plus âgée. em : plus jeune. cô : femme de l'âge d'un parent. chú : homme de l'âge d'un parent. bác : nettement plus âgé. ông, bà : personne âgée.",
+        "en": "anh: slightly older man. chị: slightly older woman. em: younger. cô: woman your parents' age. chú: man your parents' age. bác: clearly older. ông, bà: elderly."
+      },
+      "examples": [
+        {
+          "vi": "Dạ, con chào bác.",
+          "fr": "Bonjour (à quelqu'un de bien plus âgé).",
+          "en": "Hello (to someone much older)."
+        },
+        {
+          "vi": "Cô ơi, cho em hỏi.",
+          "fr": "Madame, je peux vous demander ?",
+          "en": "Excuse me, may I ask?"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Et « je » ?",
+        "en": "And 'I'?"
+      },
+      "body": {
+        "fr": "tôi est neutre et correct partout : c'est le refuge quand on hésite. tui est sa version familière du Sud. Sinon, on prend le mot de parenté qui convient face à l'autre.",
+        "en": "tôi is neutral and safe everywhere: the fallback when unsure. tui is its Southern colloquial form. Otherwise use the kinship word that fits the other person."
+      },
+      "examples": [
+        {
+          "vi": "Tôi là người Pháp.",
+          "fr": "Je suis français.",
+          "en": "I'm French."
+        },
+        {
+          "vi": "Em không hiểu.",
+          "fr": "Je ne comprends pas.",
+          "en": "I don't understand.",
+          "note": {
+            "fr": "« em » ici, parce qu'on parle à quelqu'un de plus âgé.",
+            "en": "'em' here, because you're speaking to someone older."
+          }
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Dans le doute, demande l'âge",
+        "en": "When unsure, ask the age"
+      },
+      "body": {
+        "fr": "La question n'a rien d'indiscret : c'est elle qui permet de choisir le bon mot. On la pose très tôt dans une conversation.",
+        "en": "The question isn't rude at all: it's what lets you pick the right word. It comes up early in conversation."
+      },
+      "examples": [
+        {
+          "vi": "Anh bao nhiêu tuổi?",
+          "fr": "Tu as quel âge ?",
+          "en": "How old are you?"
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Ne cherche pas un mot fixe pour « je » : il change selon la personne en face.",
+      "en": "Don't look for a fixed word for 'I': it changes with who you're facing."
+    },
+    {
+      "fr": "Au Sud, l'aîné de la fratrie est anh hai ou chị hai.",
+      "en": "In the South the eldest sibling is anh hai or chị hai."
+    }
+  ],
+  "reviewed": false
+}

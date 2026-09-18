@@ -23,5 +23,6 @@
     }
   ],
   "pitch": "pitch/s_chao_anh.json",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

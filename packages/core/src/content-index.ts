@@ -1,7 +1,7 @@
 import type { ExamFile } from "./exams.ts";
 import type { XeOmData } from "./games/xe-om.ts";
 import type { PlacementSpec } from "./placement.ts";
-import type { Concept, ContentIndex, CultureCard, Curriculum, Dialogue, LexicalVariants, Lesson, Pack } from "./types.ts";
+import type { Concept, ContentIndex, CultureCard, Curriculum, Dialogue, Guide, LexicalVariants, Lesson, Pack } from "./types.ts";
 
 /** Fichiers bruts d'un pack, quelle que soit leur provenance (disque, CDN, IndexedDB). */
 export interface RawPackFiles {
@@ -10,6 +10,8 @@ export interface RawPackFiles {
   lessons: readonly Lesson[];
   concepts: readonly Concept[];
   culture: readonly CultureCard[];
+  /** Fiches conseils (dossier `guides/`, facultatif). */
+  guides?: readonly Guide[];
   /** Dialogues du pack (dossier `dialogues/`, facultatif). */
   dialogues?: readonly Dialogue[];
   variants?: LexicalVariants;
@@ -28,6 +30,7 @@ export function buildContentIndex(raw: RawPackFiles): ContentIndex {
     lessons: new Map(raw.lessons.map((l) => [l.id, l])),
     concepts: new Map(raw.concepts.map((c) => [c.id, c])),
     culture: new Map(raw.culture.map((c) => [c.id, c])),
+    guides: new Map((raw.guides ?? []).map((g) => [g.id, g])),
     dialogues: new Map((raw.dialogues ?? []).map((d) => [d.id, d])),
     ...(raw.variants ? { variants: raw.variants } : {}),
     ...(raw.mediaIndex ? { mediaIndex: new Set(raw.mediaIndex) } : {}),

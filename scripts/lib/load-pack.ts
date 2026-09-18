@@ -66,6 +66,7 @@ export function readPackFiles(code: string) {
     concepts: group("concepts"),
     culture: group("culture"),
     dialogues: group("dialogues"),
+    guides: group("guides"),
   };
 }
 
@@ -78,6 +79,7 @@ export function toRaw(files: ReturnType<typeof readPackFiles>): RawPackFiles {
     concepts: files.concepts.map((f) => f.data as RawPackFiles["concepts"][number]),
     culture: files.culture.map((f) => f.data as RawPackFiles["culture"][number]),
     dialogues: files.dialogues.map((f) => f.data as NonNullable<RawPackFiles["dialogues"]>[number]),
+    guides: files.guides.map((f) => f.data as NonNullable<RawPackFiles["guides"]>[number]),
     ...(files.variants ? { variants: files.variants.data as NonNullable<RawPackFiles["variants"]> } : {}),
   };
 }

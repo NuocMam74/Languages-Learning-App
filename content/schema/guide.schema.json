@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parlo.app/schema/guide.schema.json",
+  "title": "Fiche conseil (grammaire pratique, situation, usage)",
+  "type": "object",
+  "required": ["id", "kind", "title", "summary", "sections", "reviewed"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^g_[a-z0-9_]+$" },
+    "kind": {
+      "description": "grammar = comment construire, situation = quoi dire où, usage = ce qui se fait et ne se fait pas.",
+      "enum": ["grammar", "situation", "usage"]
+    },
+    "order": {
+      "description": "Ordre de lecture dans son rayon. Le contenu décide de sa progression : sans lui, les fiches sortiraient dans l'ordre alphabétique de leurs fichiers.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "title": { "$ref": "common.schema.json#/$defs/localized" },
+    "summary": {
+      "$ref": "common.schema.json#/$defs/localized",
+      "description": "Une phrase : ce que la fiche permet de faire."
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["heading", "body"],
+        "additionalProperties": false,
+        "properties": {
+          "heading": { "$ref": "common.schema.json#/$defs/localized" },
+          "body": { "$ref": "common.schema.json#/$defs/localized" },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["vi", "fr"],
+              "additionalProperties": false,
+              "properties": {
+                "vi": { "$ref": "common.schema.json#/$defs/viText" },
+                "fr": { "type": "string", "minLength": 1 },
+                "en": { "type": "string", "minLength": 1 },
+                "note": { "$ref": "common.schema.json#/$defs/localized" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pitfalls": {
+      "description": "Pièges fréquents, dits en une phrase chacun.",
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/localized" }
+    },
+    "related": {
+      "description": "Concepts du pack traités par la fiche : ils ouvrent le vocabulaire déjà filtré.",
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/conceptId" }
+    },
+    "reviewed": { "$ref": "common.schema.json#/$defs/reviewed" }
+  }
+}

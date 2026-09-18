@@ -18,6 +18,27 @@ export interface AudioRef {
   speed: "natural" | "slow";
 }
 
+/**
+ * Catégorie grammaticale d'un concept, pour l'étude par catégorie (contrat phase14 §1).
+ *
+ * Les classes fermées du vietnamien y figurent telles quelles — classificateurs, particules
+ * finales, interrogatifs : elles n'ont pas d'équivalent français et ce sont justement celles qu'on
+ * veut pouvoir réviser en bloc. `phrase` couvre les tournures entières (`type: "structure"`).
+ */
+export type PartOfSpeech =
+  | "noun"
+  | "verb"
+  | "adjective"
+  | "adverb"
+  | "pronoun"
+  | "classifier"
+  | "numeral"
+  | "preposition"
+  | "conjunction"
+  | "particle"
+  | "question"
+  | "phrase";
+
 export interface Concept {
   id: ConceptId;
   type: "word" | "structure" | "tone" | "sound";
@@ -27,6 +48,8 @@ export interface Concept {
   gloss: Localized;
   northernEquivalent?: string;
   register?: "neutral" | "familiar" | "formal";
+  /** Absente sur les tons et les sons : ce ne sont pas des parties du discours. */
+  pos?: PartOfSpeech;
   audio: AudioRef[];
   pitch?: string;
   image?: string;
@@ -213,6 +236,40 @@ export interface Pack {
   comingSoon?: boolean;
 }
 
+/**
+ * Fiche conseil (contrat phase15 §1) : ce qu'un apprenant cherche hors séance — comment construire
+ * une phrase, quoi dire dans une situation, ce qui se fait et ne se fait pas.
+ *
+ * C'est du contenu, pas de l'interface : une fiche se relit hors ligne, passe la garde du Sud et
+ * attend sa relecture par un locuteur natif comme le reste du corpus.
+ */
+export interface GuideExample {
+  vi: string;
+  fr: string;
+  en?: string;
+  note?: Localized;
+}
+
+export interface GuideSection {
+  heading: Localized;
+  body: Localized;
+  examples?: GuideExample[];
+}
+
+export interface Guide {
+  id: string;
+  kind: "grammar" | "situation" | "usage";
+  /** Ordre de lecture dans son rayon ; absent = à la fin, par titre. */
+  order?: number;
+  title: Localized;
+  summary: Localized;
+  sections: GuideSection[];
+  pitfalls?: Localized[];
+  /** Concepts traités : la fiche renvoie au vocabulaire. */
+  related?: ConceptId[];
+  reviewed: boolean;
+}
+
 /** Tout ce dont le moteur a besoin pour jouer les leçons d'un pack. */
 export interface ContentIndex {
   pack: Pack;
@@ -220,6 +277,8 @@ export interface ContentIndex {
   lessons: ReadonlyMap<LessonId, Lesson>;
   concepts: ReadonlyMap<ConceptId, Concept>;
   culture: ReadonlyMap<string, CultureCard>;
+  /** Fiches conseils (contrat phase15 §1). Vide si le pack n'en a pas. */
+  guides: ReadonlyMap<string, Guide>;
   /** Dialogues enregistrés (`listen_gist`). Vide si le pack n'en a pas. */
   dialogues: ReadonlyMap<DialogueId, Dialogue>;
   variants?: LexicalVariants;

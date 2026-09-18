@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/food/watermelon.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/things/lottery.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

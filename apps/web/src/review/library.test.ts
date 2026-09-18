@@ -2,6 +2,8 @@ import { buildContentIndex, newCard, review, type ContentIndex, type RawPackFile
 import { describe, expect, it } from "vitest";
 import { readPackFiles, toRaw } from "../../../../scripts/lib/load-pack.ts";
 import {
+  byPos,
+  byTheme,
   conceptState,
   daysUntilDue,
   grammarEntries,
@@ -12,6 +14,7 @@ import {
   seenConcepts,
   seenDialogues,
   seenUnits,
+  POS_ORDER,
 } from "./library.ts";
 
 /**
@@ -150,5 +153,47 @@ describe("grammaire, culture et dialogues", () => {
     const all = seenDialogues(content, new Set(content.lessons.keys()));
     for (const id of all) expect(content.dialogues.has(id)).toBe(true);
     expect(new Set(all).size).toBe(all.length);
+  });
+});
+
+describe("index par catégorie grammaticale et par thème (contrat phase14 §2)", () => {
+  const seen = seenConcepts(content, { completed: new Set([l01.id, l02.id]), cards: [], now: NOW });
+
+  it("chaque concept du pack porte une catégorie, sauf les tons et les sons", () => {
+    const orphans = [...content.concepts.values()].filter((c) => !c.pos && c.type !== "tone" && c.type !== "sound");
+    expect(orphans.map((c) => c.vi)).toEqual([]);
+  });
+
+  it("range les mots vus dans leur catégorie, et compte le reste du pack comme « à découvrir »", () => {
+    const shelves = byPos(content, seen);
+    expect(shelves.length).toBeGreaterThan(0);
+    // L'ordre d'affichage est celui du contrat, pas celui de la découverte.
+    expect(shelves.map((s) => s.key)).toEqual(POS_ORDER.filter((pos) => shelves.some((s) => s.key === pos)));
+
+    for (const shelf of shelves) {
+      for (const entry of shelf.entries) expect(content.concepts.get(entry.conceptId)!.pos).toBe(shelf.key);
+    }
+    // Aucun mot vu n'est perdu en route, et rien n'est compté deux fois.
+    const placed = shelves.flatMap((s) => s.entries.map((e) => e.conceptId));
+    expect(new Set(placed).size).toBe(placed.length);
+    expect(placed.length).toBe(seen.filter((e) => content.concepts.get(e.conceptId)?.pos).length);
+  });
+
+  it("« à découvrir » ne compte que ce qui n'a pas été vu", () => {
+    const shelves = byPos(content, seen);
+    const total = shelves.reduce((n, s) => n + s.entries.length + s.toCome, 0);
+    expect(total).toBe([...content.concepts.values()].filter((c) => c.pos).length);
+  });
+
+  it("par thème : les unités du cursus, dans l'ordre, y compris celles pas encore ouvertes", () => {
+    const shelves = byTheme(content, seen);
+    const order = content.curriculum.units.map((u) => u.id);
+    expect(shelves.map((s) => s.key)).toEqual(order.filter((id) => shelves.some((s) => s.key === id)));
+    // La première unité est entamée ; une unité lointaine ne montre que son nombre.
+    const first = shelves.find((s) => s.key === firstUnit.id)!;
+    expect(first.entries.length).toBeGreaterThan(0);
+    const later = shelves.filter((s) => s.entries.length === 0);
+    expect(later.length).toBeGreaterThan(0);
+    for (const shelf of later) expect(shelf.toCome).toBeGreaterThan(0);
   });
 });

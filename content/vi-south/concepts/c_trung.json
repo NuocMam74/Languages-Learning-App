@@ -24,5 +24,6 @@
     }
   ],
   "image": "img/food/egg.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

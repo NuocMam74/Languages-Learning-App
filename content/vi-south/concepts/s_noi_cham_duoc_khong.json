@@ -26,5 +26,6 @@
     "fr": "… được không ? = « est-ce possible ? » : la façon polie de demander un service.",
     "en": "… được không? = 'is that possible?': the polite way to ask a favour."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

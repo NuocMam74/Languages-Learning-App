@@ -1,0 +1,106 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_dire_non",
+  "kind": "grammar",
+  "order": 3,
+  "title": {
+    "fr": "Dire non, et dire pas encore",
+    "en": "Saying no, and saying not yet"
+  },
+  "summary": {
+    "fr": "Nier, refuser et corriger sans paraître sec.",
+    "en": "Negating, declining and correcting without sounding blunt."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "không devant le verbe",
+        "en": "không before the verb"
+      },
+      "body": {
+        "fr": "Un seul mot suffit, et il se place juste avant le verbe.",
+        "en": "One word does it, placed right before the verb."
+      },
+      "examples": [
+        {
+          "vi": "Tôi không đi.",
+          "fr": "Je n'y vais pas.",
+          "en": "I'm not going."
+        },
+        {
+          "vi": "Em không biết.",
+          "fr": "Je ne sais pas.",
+          "en": "I don't know."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "« pas encore » : chưa",
+        "en": "'not yet': chưa"
+      },
+      "body": {
+        "fr": "chưa remplace không quand la chose reste possible plus tard.",
+        "en": "chưa replaces không when the thing may still happen later."
+      },
+      "examples": [
+        {
+          "vi": "Em chưa ăn.",
+          "fr": "Je n'ai pas encore mangé.",
+          "en": "I haven't eaten yet."
+        },
+        {
+          "vi": "Em chưa biết.",
+          "fr": "Je ne sais pas encore.",
+          "en": "I don't know yet."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Corriger : không phải",
+        "en": "Correcting: không phải"
+      },
+      "body": {
+        "fr": "Pour nier ce que quelqu'un vient d'affirmer, et non une action.",
+        "en": "To deny something just claimed, rather than an action."
+      },
+      "examples": [
+        {
+          "vi": "Không phải, em là người Pháp.",
+          "fr": "Non, je suis français.",
+          "en": "No, I'm French."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Refuser sans froisser",
+        "en": "Declining gently"
+      },
+      "body": {
+        "fr": "Un refus nu passe mal. dạ devant, cảm ơn derrière, et la phrase devient aimable.",
+        "en": "A bare refusal sounds harsh. Put dạ in front and cảm ơn after, and it turns friendly."
+      },
+      "examples": [
+        {
+          "vi": "Dạ thôi, cảm ơn anh.",
+          "fr": "Non merci.",
+          "en": "No thank you."
+        },
+        {
+          "vi": "Dạ không, em no rồi.",
+          "fr": "Non merci, je n'ai plus faim.",
+          "en": "No thanks, I'm full."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "dạ ne veut pas dire « oui » : c'est une marque de politesse. Dạ không, c'est « non » dit poliment.",
+      "en": "dạ doesn't mean 'yes': it marks politeness. Dạ không is a polite 'no'."
+    }
+  ],
+  "reviewed": false
+}

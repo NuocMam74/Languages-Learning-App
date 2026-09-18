@@ -24,5 +24,6 @@
     }
   ],
   "image": "img/family/husband.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "pronoun"
 }

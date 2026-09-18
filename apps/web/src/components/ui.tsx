@@ -51,8 +51,13 @@ export function Button({ variant = "primary", className = "", ref, ...props }: B
 }
 
 /** Texte de la langue apprise mis en valeur : c'est l'objet visuel, pas une étiquette. `lang` = celle du pack actif. */
-export function Vi({ children, size = "vi", className = "" }: { children: ReactNode; size?: "vi" | "vi-xl" | "2xl"; className?: string }) {
-  const sizes = { vi: "text-vi", "vi-xl": "text-vi-xl", "2xl": "text-2xl" };
+/**
+ * Texte de la langue cible. `vi` et `vi-xl` sont les tailles d'exercice : un mot seul, au centre de
+ * l'écran. `lg` existe pour la lecture suivie — une fiche conseil aligne des phrases entières, et à
+ * 40 px chacune tiendrait sur deux lignes.
+ */
+export function Vi({ children, size = "vi", className = "" }: { children: ReactNode; size?: "vi" | "vi-xl" | "2xl" | "lg"; className?: string }) {
+  const sizes = { vi: "text-vi", "vi-xl": "text-vi-xl", "2xl": "text-2xl", lg: "text-xl" };
   return (
     <span lang={activePackLang() ?? undefined} data-target-text="" className={`font-serif ${sizes[size]} ${className}`}>
       {children}

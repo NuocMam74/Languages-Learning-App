@@ -30,5 +30,6 @@
       "en": "half past two"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "pos": "numeral"
 }

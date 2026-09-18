@@ -27,5 +27,6 @@
     "fr": "hai mươi mốt = 21. Mais 11 reste mười một.",
     "en": "hai mươi mốt = 21. But 11 stays mười một."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "numeral"
 }

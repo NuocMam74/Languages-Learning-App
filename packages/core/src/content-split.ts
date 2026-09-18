@@ -9,6 +9,7 @@ import type {
   CultureCard,
   Curriculum,
   Dialogue,
+  Guide,
   Lesson,
   LessonId,
   LexicalVariants,
@@ -48,6 +49,8 @@ export interface ConceptSummary {
   vi: string;
   tone?: NonNullable<Concept["tone"]>;
   gloss: Concept["gloss"];
+  /** Catégorie grammaticale : l'index par catégorie doit pouvoir compter tout le pack hors ligne. */
+  pos?: NonNullable<Concept["pos"]>;
   audio: Concept["audio"];
   image?: string;
   pitch?: string;
@@ -66,6 +69,12 @@ export interface CoreFile {
    * absent tant qu'aucun pack n'en a, pour ne pas changer le core.json existant.
    */
   dialogues?: Dialogue[];
+  /**
+   * Fiches conseils : dans le core, comme les dialogues. Ce sont quelques kilo-octets de texte
+   * qu'on veut lisibles hors ligne dès l'installation — on ne consulte pas un conseil au moment où
+   * l'unité qui le porterait vient d'être téléchargée, mais au moment où on en a besoin.
+   */
+  guides?: Guide[];
   variants?: LexicalVariants;
   mediaIndex: string[];
   exams: ExamFile[];
@@ -255,6 +264,7 @@ export function splitPack(raw: RawPackFiles, options: SplitOptions = {}): { core
     lessonIndex: raw.lessons.map(summarizeLesson),
     conceptIndex: raw.concepts.map((c) => summarizeConcept(c, conceptUnit.get(c.id))),
     ...(raw.dialogues && raw.dialogues.length > 0 ? { dialogues: [...raw.dialogues] } : {}),
+    ...(raw.guides && raw.guides.length > 0 ? { guides: [...raw.guides] } : {}),
     ...(raw.variants ? { variants: raw.variants } : {}),
     mediaIndex,
     exams: [...(raw.exams ?? [])],
@@ -291,6 +301,7 @@ function summarizeConcept(c: Concept, unit: UnitId | undefined): ConceptSummary 
     vi: c.vi,
     ...(c.tone ? { tone: c.tone } : {}),
     gloss: c.gloss,
+    ...(c.pos ? { pos: c.pos } : {}),
     audio: c.audio,
     ...(c.image ? { image: c.image } : {}),
     ...(c.pitch ? { pitch: c.pitch } : {}),
@@ -329,6 +340,7 @@ export function buildSplitContentIndex(core: CoreFile, units: readonly UnitFile[
     concepts: new Map(core.conceptIndex.map((c) => [c.id, stubConcept(c)])),
     culture: new Map(),
     dialogues: new Map((core.dialogues ?? []).map((d) => [d.id, d])),
+    guides: new Map((core.guides ?? []).map((g) => [g.id, g])),
     ...(core.variants ? { variants: core.variants } : {}),
     mediaIndex: new Set(core.mediaIndex),
     split: {
@@ -407,6 +419,7 @@ export function mergeSplit(core: CoreFile, units: readonly UnitFile[]): RawPackF
     concepts: core.conceptIndex.map((c) => concepts.get(c.id) as Concept),
     culture: [...new Map(units.flatMap((u) => u.culture.map((c) => [c.id, c] as const))).values()],
     ...(core.dialogues ? { dialogues: core.dialogues } : {}),
+    ...(core.guides ? { guides: core.guides } : {}),
     ...(core.variants ? { variants: core.variants } : {}),
     mediaIndex: core.mediaIndex,
     exams: core.exams,

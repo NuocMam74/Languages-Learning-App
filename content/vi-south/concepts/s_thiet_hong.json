@@ -26,5 +26,6 @@
     "fr": "thiệt = thật, hông = không, à l'oral du Sud.",
     "en": "thiệt = thật, hông = không, in southern speech."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

@@ -24,5 +24,6 @@
     }
   ],
   "image": "img/nature/noon.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

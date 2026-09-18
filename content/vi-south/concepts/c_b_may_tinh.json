@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/things/laptop.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

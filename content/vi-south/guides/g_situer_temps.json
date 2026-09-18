@@ -1,0 +1,102 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_situer_temps",
+  "kind": "grammar",
+  "order": 4,
+  "title": {
+    "fr": "Hier, maintenant, demain",
+    "en": "Yesterday, now, tomorrow"
+  },
+  "summary": {
+    "fr": "Situer une action dans le temps sans conjuguer quoi que ce soit.",
+    "en": "Placing an action in time without conjugating anything."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Un petit mot devant le verbe",
+        "en": "A small word before the verb"
+      },
+      "body": {
+        "fr": "đã pour le passé, đang pour ce qui se fait à l'instant, sẽ pour le futur. Le verbe, lui, ne bouge pas.",
+        "en": "đã for the past, đang for right now, sẽ for the future. The verb itself stays put."
+      },
+      "examples": [
+        {
+          "vi": "Em đang ăn.",
+          "fr": "Je suis en train de manger.",
+          "en": "I'm eating right now."
+        },
+        {
+          "vi": "Em sẽ đi Sài Gòn.",
+          "fr": "J'irai à Saigon.",
+          "en": "I'll go to Saigon."
+        },
+        {
+          "vi": "Em ăn rồi.",
+          "fr": "J'ai déjà mangé.",
+          "en": "I've already eaten.",
+          "note": {
+            "fr": "rồi se met à la fin et dit que c'est fait.",
+            "en": "rồi goes at the end and says it's done."
+          }
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Le plus souvent, un mot de temps suffit",
+        "en": "Usually a time word is enough"
+      },
+      "body": {
+        "fr": "Dès qu'on dit hôm qua ou ngày mai, le marqueur devient inutile. Les gens l'omettent.",
+        "en": "As soon as you say hôm qua or ngày mai, the marker becomes redundant. People drop it."
+      },
+      "examples": [
+        {
+          "vi": "Hôm qua em đi chợ.",
+          "fr": "Hier je suis allé au marché.",
+          "en": "Yesterday I went to the market."
+        },
+        {
+          "vi": "Ngày mai em đi làm.",
+          "fr": "Demain je vais travailler.",
+          "en": "Tomorrow I'm going to work."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Les repères à retenir",
+        "en": "The time words to keep"
+      },
+      "body": {
+        "fr": "hôm qua (hier), hôm nay (aujourd'hui), ngày mai (demain), hồi nãy (tout à l'heure), chút nữa (dans un moment).",
+        "en": "hôm qua (yesterday), hôm nay (today), ngày mai (tomorrow), hồi nãy (a moment ago), chút nữa (in a moment)."
+      },
+      "examples": [
+        {
+          "vi": "Hồi nãy em gặp chị Lan.",
+          "fr": "Tout à l'heure j'ai croisé Lan.",
+          "en": "I ran into Lan a moment ago."
+        },
+        {
+          "vi": "Chút nữa em gọi lại.",
+          "fr": "Je rappelle dans un moment.",
+          "en": "I'll call back in a moment."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "N'empile pas les marqueurs : Hôm qua em đã đi est correct mais lourd ; Hôm qua em đi suffit.",
+      "en": "Don't stack markers: Hôm qua em đã đi is correct but heavy; Hôm qua em đi is enough."
+    },
+    {
+      "fr": "Au Sud on dit hồi nãy pour « tout à l'heure ».",
+      "en": "In the South it's hồi nãy for 'a moment ago'."
+    }
+  ],
+  "reviewed": false
+}

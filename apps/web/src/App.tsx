@@ -43,6 +43,7 @@ const ProfilePage = lazy(() => import("./profile/ProfilePage.tsx"));
 /** Onglet « Réviser » (contrat phase8 §2, §4) : la bibliothèque de tout ce qui a été vu, et les notes. */
 const ReviewPage = lazy(() => import("./review/ReviewPage.tsx"));
 const NotesPage = lazy(() => import("./notes/NotesPage.tsx"));
+const TipPage = lazy(() => import("./review/Tips.tsx").then((m) => ({ default: m.TipPage })));
 const Badges = lazy(() => import("./pages/Badges.tsx"));
 // Phase 9 : missions, récompenses, atelier du personnage.
 const MissionsPage = lazy(() => import("./missions/MissionsPage.tsx"));
@@ -225,6 +226,9 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         // unités absentes n'apportent rien et ne cassent rien).
         { path: "/reviser", element: later(<WithUnits content={content}><ReviewPage content={content} /></WithUnits>) },
         { path: "/reviser/:section", element: later(<WithUnits content={content}><ReviewPage content={content} /></WithUnits>) },
+        // La fiche conseil se lit sans la bibliothèque : son contenu vient de core.json, donc pas de
+        // `WithUnits` ni de lecture d'IndexedDB — elle s'ouvre instantanément, hors ligne compris.
+        { path: "/reviser/conseils/:guideId", element: later(<TipPage content={content} />) },
         { path: "/notes", element: later(<WithUnits content={content}><NotesPage content={content} /></WithUnits>) },
         { path: "/bienvenue", element: <Welcome content={content} /> },
         { path: "/langue", element: later(<LanguageChoice content={content} />) },

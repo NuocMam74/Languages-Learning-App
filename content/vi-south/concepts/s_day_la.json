@@ -34,5 +34,6 @@
     "fr": "Là relie deux noms : « ceci est ». Pas de conjugaison.",
     "en": "Là links two nouns: 'this is'. No conjugation."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

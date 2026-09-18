@@ -1,0 +1,89 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_au_telephone",
+  "kind": "situation",
+  "order": 6,
+  "title": {
+    "fr": "Au téléphone",
+    "en": "On the phone"
+  },
+  "summary": {
+    "fr": "Décrocher, se présenter, et s'en sortir quand ça coupe.",
+    "en": "Picking up, introducing yourself, and coping when the line is bad."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Décrocher",
+        "en": "Picking up"
+      },
+      "body": {
+        "fr": "A lô ne sert qu'au téléphone. On enchaîne souvent avec dạ, em nghe.",
+        "en": "A lô is for phones only. It's usually followed by dạ, em nghe."
+      },
+      "examples": [
+        {
+          "vi": "A lô?",
+          "fr": "Allô ?",
+          "en": "Hello?"
+        },
+        {
+          "vi": "Dạ, em nghe.",
+          "fr": "Oui, j'écoute.",
+          "en": "Yes, I'm listening."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Se présenter, demander quelqu'un",
+        "en": "Introducing yourself, asking for someone"
+      },
+      "body": {
+        "fr": "On donne son nom, puis on demande la personne avec cho em gặp.",
+        "en": "Give your name, then ask for the person with cho em gặp."
+      },
+      "examples": [
+        {
+          "vi": "Em là Marie. Cho em gặp anh Nam.",
+          "fr": "C'est Marie. Je voudrais parler à Nam.",
+          "en": "This is Marie. May I speak to Nam?"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Quand ça coupe",
+        "en": "When the line is bad"
+      },
+      "body": {
+        "fr": "Trois phrases suffisent à sauver l'appel.",
+        "en": "Three phrases are enough to rescue the call."
+      },
+      "examples": [
+        {
+          "vi": "Anh nói lớn chút được không?",
+          "fr": "Tu peux parler un peu plus fort ?",
+          "en": "Could you speak up a bit?"
+        },
+        {
+          "vi": "Em không nghe rõ.",
+          "fr": "Je n'entends pas bien.",
+          "en": "I can't hear you clearly."
+        },
+        {
+          "vi": "Chút nữa em gọi lại nha.",
+          "fr": "Je rappelle dans un moment.",
+          "en": "I'll call back in a moment."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Au Sud, « parler fort » se dit nói lớn.",
+      "en": "In the South, 'speak up' is nói lớn."
+    }
+  ],
+  "reviewed": false
+}

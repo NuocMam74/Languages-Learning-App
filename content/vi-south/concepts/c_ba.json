@@ -38,5 +38,6 @@
     "fr": "Au Sud on dit ba ; au Nord, bố. Les deux se comprennent partout.",
     "en": "In the South: ba; in the North: bố. Both are understood everywhere."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "numeral"
 }

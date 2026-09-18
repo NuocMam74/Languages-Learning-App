@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/people/student.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

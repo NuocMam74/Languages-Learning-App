@@ -1,0 +1,88 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_particules_sud",
+  "kind": "usage",
+  "order": 2,
+  "title": {
+    "fr": "Adoucir ce qu'on dit : dạ, nha, nghen",
+    "en": "Softening what you say: dạ, nha, nghen"
+  },
+  "summary": {
+    "fr": "Les petits mots qui font la différence entre correct et aimable.",
+    "en": "The small words between merely correct and actually friendly."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "dạ : la politesse en un mot",
+        "en": "dạ: politeness in one word"
+      },
+      "body": {
+        "fr": "En tête de réponse, dạ dit le respect. Il ne veut pas dire oui : il colore ce qui suit, oui comme non.",
+        "en": "At the start of an answer, dạ signals respect. It doesn't mean yes: it colors whatever follows, yes or no."
+      },
+      "examples": [
+        {
+          "vi": "Dạ, em hiểu.",
+          "fr": "Oui, je comprends.",
+          "en": "Yes, I understand."
+        },
+        {
+          "vi": "Dạ không.",
+          "fr": "Non (poliment).",
+          "en": "No (politely)."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "nha, nghen : demander gentiment",
+        "en": "nha, nghen: asking nicely"
+      },
+      "body": {
+        "fr": "En fin de phrase, ils transforment un ordre en demande, et une information en complicité. C'est la signature du Sud.",
+        "en": "At the end of a sentence they turn an order into a request and a statement into something shared. This is the Southern signature."
+      },
+      "examples": [
+        {
+          "vi": "Anh chờ em chút nha.",
+          "fr": "Attends-moi un instant, d'accord ?",
+          "en": "Wait for me a moment, okay?"
+        },
+        {
+          "vi": "Mai gặp nghen.",
+          "fr": "À demain, hein.",
+          "en": "See you tomorrow, yeah."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "ạ : vers quelqu'un de bien plus âgé",
+        "en": "ạ: toward someone much older"
+      },
+      "body": {
+        "fr": "ạ se pose à la toute fin, et marque le respect envers une personne âgée ou une autorité.",
+        "en": "ạ goes at the very end and marks respect toward an elder or an authority."
+      },
+      "examples": [
+        {
+          "vi": "Con chào bác ạ.",
+          "fr": "Bonjour (à quelqu'un de bien plus âgé).",
+          "en": "Hello (to someone much older)."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Au Sud, la particule « d'accord ? » est nha ou nghen.",
+      "en": "In the South, the 'okay?' particle is nha or nghen."
+    },
+    {
+      "fr": "Sans ces petits mots, une phrase juste peut sonner brusque.",
+      "en": "Without these small words, a correct sentence can land abruptly."
+    }
+  ],
+  "reviewed": false
+}

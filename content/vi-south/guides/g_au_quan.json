@@ -1,0 +1,94 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_au_quan",
+  "kind": "situation",
+  "order": 3,
+  "title": {
+    "fr": "Commander à manger et à boire",
+    "en": "Ordering food and drink"
+  },
+  "summary": {
+    "fr": "Une seule formule ouvre presque toutes les commandes : Cho em…",
+    "en": "One phrase opens nearly every order: Cho em…"
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Commander",
+        "en": "Ordering"
+      },
+      "body": {
+        "fr": "Cho + à qui + quoi. Mot à mot « donne à moi », mais c'est la formule polie ordinaire, pas un ordre.",
+        "en": "Cho + to whom + what. Literally 'give me', but it's the ordinary polite formula, not an order."
+      },
+      "examples": [
+        {
+          "vi": "Cho em một tô phở.",
+          "fr": "Un bol de phở, s'il vous plaît.",
+          "en": "One bowl of phở, please."
+        },
+        {
+          "vi": "Cho em hai ly cà phê sữa đá.",
+          "fr": "Deux cafés au lait glacés.",
+          "en": "Two iced milk coffees."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Préciser",
+        "en": "Being specific"
+      },
+      "body": {
+        "fr": "On ajoute la précision après, et nha adoucit la demande.",
+        "en": "Add the detail afterwards, and nha softens the request."
+      },
+      "examples": [
+        {
+          "vi": "Ít đường nha.",
+          "fr": "Peu de sucre, d'accord ?",
+          "en": "Not much sugar, okay?"
+        },
+        {
+          "vi": "Không cay nha.",
+          "fr": "Pas épicé.",
+          "en": "Not spicy."
+        },
+        {
+          "vi": "Cho em thêm rau.",
+          "fr": "Un peu plus d'herbes, s'il vous plaît.",
+          "en": "More herbs, please."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Payer",
+        "en": "Paying"
+      },
+      "body": {
+        "fr": "On appelle, on demande l'addition. Le geste se fait à table, sans se lever.",
+        "en": "You call over and ask for the bill. It happens at the table, no need to get up."
+      },
+      "examples": [
+        {
+          "vi": "Tính tiền giùm em.",
+          "fr": "L'addition, s'il vous plaît.",
+          "en": "The bill, please."
+        },
+        {
+          "vi": "Bao nhiêu tiền?",
+          "fr": "Ça fait combien ?",
+          "en": "How much is it?"
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Un verre se dit ly, un bol chén, un grand bol tô, une assiette dĩa.",
+      "en": "A glass is ly, a bowl chén, a big bowl tô, a plate dĩa."
+    }
+  ],
+  "reviewed": false
+}

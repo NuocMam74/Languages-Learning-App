@@ -34,5 +34,6 @@
     "fr": "Se place après le nom ou le pronom : Chị ơi ! Má ơi !",
     "en": "Comes after the name or pronoun: Chị ơi! Má ơi!"
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "particle"
 }

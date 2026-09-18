@@ -7,6 +7,7 @@ import {
   type DialogueId,
   type LessonId,
   type Localized,
+  type PartOfSpeech,
   type SrsCard,
   type UnitId,
 } from "@parlo/core";
@@ -239,4 +240,83 @@ export function seenDialogues(content: ContentIndex, completed: ReadonlySet<Less
     }
   }
   return out;
+}
+
+// ---------------------------------------------------------------------------
+// Index : par catégorie grammaticale, par thème
+
+/**
+ * Ordre d'affichage des catégories (contrat phase14 §1). Il suit l'utilité pour un francophone qui
+ * révise : d'abord ce qui porte le sens (noms, verbes, adjectifs), puis ce qui structure la phrase,
+ * enfin les classes propres au vietnamien — classificateurs et particules finales, qu'on ne trouve
+ * dans aucun manuel de français et qu'il faut pouvoir réviser en bloc.
+ */
+export const POS_ORDER: readonly PartOfSpeech[] = [
+  "noun", "verb", "adjective", "adverb", "pronoun", "numeral",
+  "classifier", "particle", "question", "preposition", "conjunction", "phrase",
+];
+
+/** Rayon de l'index : une catégorie ou un thème, avec ce qui a été vu et ce qui reste à venir. */
+export interface IndexShelf<K extends string> {
+  key: K;
+  /** Concepts déjà rencontrés, dans l'ordre du cursus. */
+  entries: SeenConcept[];
+  /** Concepts du pack qui n'ont pas encore été vus : annoncés en nombre, jamais divulgués. */
+  toCome: number;
+}
+
+/**
+ * Regroupe les mots vus par catégorie grammaticale, et compte ceux qui restent à découvrir.
+ *
+ * Le compte « à venir » porte sur **tout** le pack, pas seulement sur ce qui a été vu : c'est ce qui
+ * fait de l'écran un index plutôt qu'une simple liste. Mais on n'en montre que le nombre — la règle
+ * de la bibliothèque (ne rien divulgâcher, contrat phase8 §2) tient toujours.
+ */
+export function byPos(content: ContentIndex, entries: readonly SeenConcept[]): IndexShelf<PartOfSpeech>[] {
+  const seen = new Map<PartOfSpeech, SeenConcept[]>();
+  const seenIds = new Set<ConceptId>();
+  for (const entry of entries) {
+    const pos = content.concepts.get(entry.conceptId)?.pos;
+    if (!pos) continue;
+    seenIds.add(entry.conceptId);
+    const list = seen.get(pos);
+    if (list) list.push(entry);
+    else seen.set(pos, [entry]);
+  }
+
+  const total = new Map<PartOfSpeech, number>();
+  for (const concept of content.concepts.values()) {
+    if (!concept.pos || seenIds.has(concept.id)) continue;
+    total.set(concept.pos, (total.get(concept.pos) ?? 0) + 1);
+  }
+
+  return POS_ORDER.map((key) => ({ key, entries: seen.get(key) ?? [], toCome: total.get(key) ?? 0 })).filter(
+    (shelf) => shelf.entries.length > 0 || shelf.toCome > 0,
+  );
+}
+
+/**
+ * Le même index, par thème : une unité du cursus = un thème. Les unités qu'on n'a pas encore
+ * ouvertes y figurent avec leur nombre de mots, pour que l'index montre le chemin entier.
+ */
+export function byTheme(content: ContentIndex, entries: readonly SeenConcept[]): IndexShelf<UnitId>[] {
+  const seen = new Map<UnitId, SeenConcept[]>();
+  const seenIds = new Set<ConceptId>();
+  for (const entry of entries) {
+    seenIds.add(entry.conceptId);
+    const list = seen.get(entry.unit);
+    if (list) list.push(entry);
+    else seen.set(entry.unit, [entry]);
+  }
+
+  const units = conceptUnits(content);
+  const total = new Map<UnitId, number>();
+  for (const [conceptId, unit] of units) {
+    if (seenIds.has(conceptId) || !content.concepts.has(conceptId)) continue;
+    total.set(unit, (total.get(unit) ?? 0) + 1);
+  }
+
+  return content.curriculum.units
+    .map((unit) => ({ key: unit.id, entries: seen.get(unit.id) ?? [], toCome: total.get(unit.id) ?? 0 }))
+    .filter((shelf) => shelf.entries.length > 0 || shelf.toCome > 0);
 }

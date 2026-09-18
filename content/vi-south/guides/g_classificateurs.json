@@ -1,0 +1,99 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_classificateurs",
+  "kind": "grammar",
+  "order": 5,
+  "title": {
+    "fr": "Compter avec un classificateur",
+    "en": "Counting with a classifier"
+  },
+  "summary": {
+    "fr": "Pourquoi on ne dit jamais « deux chien », et lequel choisir.",
+    "en": "Why you never say 'two dog', and which word to slot in."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Nombre, classificateur, nom",
+        "en": "Number, classifier, noun"
+      },
+      "body": {
+        "fr": "Entre le nombre et le nom, il faut un mot qui dit de quelle sorte de chose on parle. C'est le classificateur. Il n'a pas d'équivalent français, mais il n'est pas facultatif.",
+        "en": "Between the number and the noun you need a word saying what kind of thing it is. That's the classifier. English has no équivalent, but it isn't optional."
+      },
+      "examples": [
+        {
+          "vi": "một cái ghế",
+          "fr": "une chaise",
+          "en": "one chair"
+        },
+        {
+          "vi": "hai con chó",
+          "fr": "deux chiens",
+          "en": "two dogs"
+        },
+        {
+          "vi": "ba ly cà phê",
+          "fr": "trois cafés",
+          "en": "three coffees"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Ceux qui servent tous les jours",
+        "en": "The everyday ones"
+      },
+      "body": {
+        "fr": "cái pour les objets, con pour les animaux, cây pour ce qui est long, trái pour les fruits, ly pour un verre, chén pour un bol, tô pour un grand bol, dĩa pour une assiette, cuốn pour un livre.",
+        "en": "cái for objects, con for animals, cây for long things, trái for fruit, ly for a glass, chén for a bowl, tô for a big bowl, dĩa for a plate, cuốn for a book."
+      },
+      "examples": [
+        {
+          "vi": "hai trái xoài",
+          "fr": "deux mangues",
+          "en": "two mangoes"
+        },
+        {
+          "vi": "một tô phở",
+          "fr": "un bol de phở",
+          "en": "one bowl of phở"
+        },
+        {
+          "vi": "một chén cơm",
+          "fr": "un bol de riz",
+          "en": "one bowl of rice"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "cái sert aussi à montrer",
+        "en": "cái also points"
+      },
+      "body": {
+        "fr": "Avec này (ci) et đó (là), cái devient le doigt qu'on pointe. C'est la formule du marché.",
+        "en": "With này (this) and đó (that), cái becomes a pointing finger. It's the market formula."
+      },
+      "examples": [
+        {
+          "vi": "Cái này bao nhiêu?",
+          "fr": "Combien, celui-ci ?",
+          "en": "How much is this one?"
+        },
+        {
+          "vi": "Cho em cái đó.",
+          "fr": "Donne-moi celui-là.",
+          "en": "Give me that one."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Au Sud : trái, ly, chén et dĩa — ce sont les mots du Sud pour le fruit, le verre, le bol et l'assiette.",
+      "en": "In the South: trái, ly, chén and dĩa — the Southern words for fruit, glass, bowl and plate."
+    }
+  ],
+  "reviewed": false
+}

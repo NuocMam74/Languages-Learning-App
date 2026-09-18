@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/signs/stop.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

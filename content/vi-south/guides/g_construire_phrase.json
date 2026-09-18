@@ -1,0 +1,111 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_construire_phrase",
+  "kind": "grammar",
+  "order": 1,
+  "title": {
+    "fr": "Construire une phrase",
+    "en": "Building a sentence"
+  },
+  "summary": {
+    "fr": "L'ordre des mots, et le fait qu'aucun verbe ne se conjugue.",
+    "en": "Word order, and the fact that no verb is ever conjugated."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Qui, fait quoi, quoi",
+        "en": "Who does what"
+      },
+      "body": {
+        "fr": "Comme en français : sujet, puis verbe, puis complément. La différence tient en une phrase : le verbe ne change jamais. Ni selon la personne, ni selon le temps.",
+        "en": "Like English: subject, then verb, then object. One différence matters: the verb never changes — not for person, not for tense."
+      },
+      "examples": [
+        {
+          "vi": "Tôi ăn cơm.",
+          "fr": "Je mange du riz.",
+          "en": "I eat rice."
+        },
+        {
+          "vi": "Em uống cà phê.",
+          "fr": "Je bois un café.",
+          "en": "I drink coffee.",
+          "note": {
+            "fr": "« em » est le mot qu'on emploie pour « je » face à quelqu'un d'un peu plus âgé.",
+            "en": "'em' is the word for 'I' when speaking to someone slightly older."
+          }
+        },
+        {
+          "vi": "Anh đi chợ.",
+          "fr": "Tu vas au marché.",
+          "en": "You go to the market."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Ce qui décrit vient après",
+        "en": "Modifiers come after"
+      },
+      "body": {
+        "fr": "L'adjectif se place après le nom, et le possesseur aussi. « ma maison » se dit mot à mot « maison moi ».",
+        "en": "Adjectives go after the noun, and so does the owner: 'my house' is literally 'house me'."
+      },
+      "examples": [
+        {
+          "vi": "nhà tôi",
+          "fr": "ma maison",
+          "en": "my house"
+        },
+        {
+          "vi": "cà phê sữa đá",
+          "fr": "un café au lait glacé",
+          "en": "iced milk coffee",
+          "note": {
+            "fr": "Mot à mot : café — lait — glace. L'ordre se lit de gauche à droite.",
+            "en": "Literally: coffee — milk — ice. Read left to right."
+          }
+        },
+        {
+          "vi": "một cái áo mới",
+          "fr": "une chemise neuve",
+          "en": "a new shirt"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Le temps et le lieu s'accrochent aux bords",
+        "en": "Time and place sit at the edges"
+      },
+      "body": {
+        "fr": "Un mot de temps se pose en tête de phrase, un lieu se pose à la fin. C'est tout ce qu'il faut pour situer.",
+        "en": "A time word goes at the front, a place at the end. That is all you need to situate a sentence."
+      },
+      "examples": [
+        {
+          "vi": "Hôm nay tôi đi làm.",
+          "fr": "Aujourd'hui je vais au travail.",
+          "en": "Today I'm going to work."
+        },
+        {
+          "vi": "Tôi ăn sáng ở nhà.",
+          "fr": "Je prends le petit-déjeuner à la maison.",
+          "en": "I have breakfast at home."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Ne cherche pas à conjuguer : tôi đi, anh đi, họ đi — le verbe est identique.",
+      "en": "Don't try to conjugate: tôi đi, anh đi, họ đi — the verb is the same."
+    },
+    {
+      "fr": "Le possesseur ne passe jamais devant : on dit nhà tôi, jamais tôi nhà.",
+      "en": "The owner never comes first: it's nhà tôi, never tôi nhà."
+    }
+  ],
+  "reviewed": false
+}

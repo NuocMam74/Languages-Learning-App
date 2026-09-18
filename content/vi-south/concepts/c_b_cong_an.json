@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/people/police.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

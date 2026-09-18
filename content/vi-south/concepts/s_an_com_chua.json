@@ -26,5 +26,6 @@
     "fr": "Une salutation autant qu'une question : réponds Rồi (oui) ou Chưa (pas encore).",
     "en": "As much a greeting as a question: answer Rồi (yes) or Chưa (not yet)."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

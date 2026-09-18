@@ -27,5 +27,6 @@
     "fr": "Thưa cô : formule de l'élève à son enseignante.",
     "en": "Thưa cô: how a pupil addresses the teacher."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "verb"
 }

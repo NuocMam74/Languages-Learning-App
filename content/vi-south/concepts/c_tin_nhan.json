@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/things/message.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

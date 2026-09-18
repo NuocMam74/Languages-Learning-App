@@ -33,5 +33,6 @@
     "fr": "Sert à s'excuser et à interpeller poliment. On ajoute la personne : xin lỗi anh.",
     "en": "Used to apologise and to politely get attention. Add the person: xin lỗi anh."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "verb"
 }

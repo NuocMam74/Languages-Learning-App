@@ -96,6 +96,7 @@ for (const code of listPacks()) {
   files.concepts.forEach((f) => validate("concept.schema.json", f, rel(f.path)));
   files.culture.forEach((f) => validate("culture.schema.json", f, rel(f.path)));
   files.dialogues.forEach((f) => validate("dialogue.schema.json", f, rel(f.path)));
+  files.guides.forEach((f) => validate("guide.schema.json", f, rel(f.path)));
 
   // Les contrôles sémantiques supposent des fichiers conformes aux schémas (ceux de ce pack).
   if (errorCount() > errorsBefore) continue;
@@ -156,7 +157,7 @@ for (const code of listPacks()) {
   }
 
   const media = new Set<string>();
-  [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture, ...files.dialogues, ...exams, ...games].forEach((f) => collectMedia(f.data, media));
+  [...(files.pack ? [files.pack] : []), ...files.lessons, ...files.concepts, ...files.culture, ...files.dialogues, ...files.guides, ...exams, ...games].forEach((f) => collectMedia(f.data, media));
   const missing = [...media].filter((m) => !existsSync(join(files.root, m)));
   if (missing.length > 0) {
     report(strictMedia ? "error" : "warning", code, `${missing.length} média(s) référencé(s) absent(s), ex. ${missing.slice(0, 3).join(", ")}`);
@@ -185,7 +186,9 @@ if (jsonOutput) {
 } else {
   const unreviewed = warnings.filter((w) => w.message.includes("non relue"));
   for (const w of warnings.filter((w) => !unreviewed.includes(w))) console.warn(`⚠  ${w.where} — ${w.message}`);
-  if (unreviewed.length > 0) console.warn(`⚠  ${unreviewed.length} leçon(s) non relue(s) par un locuteur natif (reviewed: false)`);
+  // Le repli groupé ne concerne plus que les leçons : les fiches conseils partagent la formule
+  // « non relue », et les compter comme des leçons donnerait un chiffre faux.
+  if (unreviewed.length > 0) console.warn(`⚠  ${unreviewed.length} élément(s) non relu(s) par un locuteur natif (reviewed: false)`);
   for (const e of errors) console.error(`✖  ${e.where} — ${e.message}`);
 
   if (errors.length > 0) {

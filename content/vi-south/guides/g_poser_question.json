@@ -1,0 +1,120 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_poser_question",
+  "kind": "grammar",
+  "order": 2,
+  "title": {
+    "fr": "Poser une question",
+    "en": "Asking a question"
+  },
+  "summary": {
+    "fr": "Quatre façons de demander, sans jamais changer l'ordre des mots.",
+    "en": "Four ways to ask, none of which reorders the sentence."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "La question fermée : … không ?",
+        "en": "Yes/no questions: … không?"
+      },
+      "body": {
+        "fr": "On garde la phrase telle quelle et on ajoute không à la fin. Rien d'autre ne bouge.",
+        "en": "Keep the sentence as it is and add không at the end. Nothing else moves."
+      },
+      "examples": [
+        {
+          "vi": "Anh khỏe không?",
+          "fr": "Tu vas bien ?",
+          "en": "Are you well?"
+        },
+        {
+          "vi": "Em ăn cơm không?",
+          "fr": "Tu manges du riz ?",
+          "en": "Are you having rice?",
+          "note": {
+            "fr": "À l'oral, au Sud, on entend souvent « hông » à la place de « không ».",
+            "en": "In the South you often hear 'hông' instead of 'không'."
+          }
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Vérifier : … phải không ?",
+        "en": "Checking: … phải không?"
+      },
+      "body": {
+        "fr": "Quand on croit déjà savoir la réponse et qu'on veut la confirmer.",
+        "en": "When you think you know the answer and want it confirmed."
+      },
+      "examples": [
+        {
+          "vi": "Anh là người Pháp, phải không?",
+          "fr": "Tu es français, c'est bien ça ?",
+          "en": "You're French, right?"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "« Déjà fait ? » : … chưa ?",
+        "en": "'Already?': … chưa?"
+      },
+      "body": {
+        "fr": "Cette question-là revient tout le temps, à commencer par « tu as mangé ? », qui sert de bonjour.",
+        "en": "This one comes up constantly, starting with 'have you eaten?', which doubles as a greeting."
+      },
+      "examples": [
+        {
+          "vi": "Em ăn cơm chưa?",
+          "fr": "Tu as déjà mangé ?",
+          "en": "Have you eaten yet?"
+        },
+        {
+          "vi": "Dạ rồi.",
+          "fr": "Oui, déjà.",
+          "en": "Yes, already."
+        },
+        {
+          "vi": "Dạ chưa.",
+          "fr": "Pas encore.",
+          "en": "Not yet."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Les mots interrogatifs restent à leur place",
+        "en": "Question words stay put"
+      },
+      "body": {
+        "fr": "C'est la vraie différence avec le français : le mot interrogatif ne remonte pas en tête. Il occupe la place du mot qu'il remplace.",
+        "en": "This is the real différence from English: the question word does not move to the front. It sits where the answer would."
+      },
+      "examples": [
+        {
+          "vi": "Anh đi đâu?",
+          "fr": "Tu vas où ?",
+          "en": "Where are you going?"
+        },
+        {
+          "vi": "Cái này bao nhiêu?",
+          "fr": "Ça coûte combien ?",
+          "en": "How much is this?"
+        },
+        {
+          "vi": "Em tên gì?",
+          "fr": "Tu t'appelles comment ?",
+          "en": "What's your name?"
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "không à la fin pose une question ; không devant le verbe nie. Même mot, deux places, deux sens.",
+      "en": "không at the end asks; không before the verb negates. Same word, two positions, two meanings."
+    }
+  ],
+  "reviewed": false
+}

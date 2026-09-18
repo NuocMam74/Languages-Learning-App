@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/family/youngest.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

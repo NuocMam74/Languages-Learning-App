@@ -27,5 +27,6 @@
     "fr": "thiệt : vrai (Sud) ; au Nord, thật.",
     "en": "thiệt: true (South); North: thật."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }

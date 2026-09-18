@@ -1,0 +1,115 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_saluer_remercier",
+  "kind": "situation",
+  "order": 1,
+  "title": {
+    "fr": "Saluer, remercier, s'excuser",
+    "en": "Greeting, thanking, apologising"
+  },
+  "summary": {
+    "fr": "Les quatre échanges qu'on refait dix fois par jour.",
+    "en": "The four exchanges you repeat ten times a day."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Saluer",
+        "en": "Greeting"
+      },
+      "body": {
+        "fr": "Chào, suivi du mot de parenté. Le même mot sert pour bonjour et pour au revoir.",
+        "en": "Chào, followed by the kinship word. The same word covers hello and goodbye."
+      },
+      "examples": [
+        {
+          "vi": "Chào chị.",
+          "fr": "Bonjour / au revoir (à une femme plus âgée).",
+          "en": "Hello / goodbye (to an older woman)."
+        },
+        {
+          "vi": "Dạ, chào anh.",
+          "fr": "Bonjour (poliment).",
+          "en": "Hello (politely).",
+          "note": {
+            "fr": "Xin chào tout seul est correct, mais scolaire. Avec le mot de parenté, c'est naturel.",
+            "en": "Xin chào on its own is correct but textbook-ish. With the kinship word it sounds natural."
+          }
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Prendre des nouvelles",
+        "en": "Asking how someone is"
+      },
+      "body": {
+        "fr": "La question se pose avec không, et la réponse reprend le mot de la question.",
+        "en": "The question uses không, and the answer echoes the question's word."
+      },
+      "examples": [
+        {
+          "vi": "Anh khỏe không?",
+          "fr": "Tu vas bien ?",
+          "en": "Are you well?"
+        },
+        {
+          "vi": "Dạ khỏe, cảm ơn anh.",
+          "fr": "Ça va bien, merci.",
+          "en": "I'm well, thank you."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Merci, de rien",
+        "en": "Thanks, you're welcome"
+      },
+      "body": {
+        "fr": "cảm ơn prend lui aussi le mot de parenté. La réponse du Sud est không có chi.",
+        "en": "cảm ơn also takes the kinship word. The Southern reply is không có chi."
+      },
+      "examples": [
+        {
+          "vi": "Cảm ơn anh.",
+          "fr": "Merci.",
+          "en": "Thank you."
+        },
+        {
+          "vi": "Dạ, không có chi.",
+          "fr": "De rien.",
+          "en": "You're welcome."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Pardon",
+        "en": "Sorry"
+      },
+      "body": {
+        "fr": "xin lỗi sert pour s'excuser et aussi pour aborder quelqu'un dans la rue.",
+        "en": "xin lỗi works both to apologise and to approach a stranger."
+      },
+      "examples": [
+        {
+          "vi": "Xin lỗi anh.",
+          "fr": "Excuse-moi.",
+          "en": "Sorry."
+        },
+        {
+          "vi": "Dạ, không sao.",
+          "fr": "Ce n'est rien.",
+          "en": "It's nothing."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Au Sud, « de rien » se dit không có chi.",
+      "en": "In the South, 'you're welcome' is không có chi."
+    }
+  ],
+  "reviewed": false
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_prix_argent",
+  "kind": "usage",
+  "order": 3,
+  "title": {
+    "fr": "Lire un prix, payer",
+    "en": "Reading a price, paying"
+  },
+  "summary": {
+    "fr": "Pourquoi « năm chục » veut dire cinquante mille.",
+    "en": "Why 'năm chục' means fifty thousand."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "On compte en milliers",
+        "en": "Counting in thousands"
+      },
+      "body": {
+        "fr": "Les prix courants s'expriment en milliers de đồng. À l'oral, le mot ngàn tombe très souvent : ce qui reste, ce sont les milliers.",
+        "en": "Everyday prices are in thousands of đồng. In speech ngàn is very often dropped: what's left counts thousands."
+      },
+      "examples": [
+        {
+          "vi": "Hai chục ngàn.",
+          "fr": "Vingt mille.",
+          "en": "Twenty thousand."
+        },
+        {
+          "vi": "Năm chục.",
+          "fr": "Cinquante mille.",
+          "en": "Fifty thousand.",
+          "note": {
+            "fr": "ngàn est sous-entendu : personne ne parle de cinquante đồng.",
+            "en": "ngàn is implied: nobody means fifty đồng."
+          }
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Les mots des nombres",
+        "en": "The number words"
+      },
+      "body": {
+        "fr": "chục (dizaine), trăm (cent), ngàn (mille), triệu (million). Le Sud dit ngàn là où le Nord dit un autre mot, et lẻ pour le « et » des nombres.",
+        "en": "chục (ten), trăm (hundred), ngàn (thousand), triệu (million). The South says ngàn where the North uses another word, and lẻ for the 'and' in numbers."
+      },
+      "examples": [
+        {
+          "vi": "Một trăm ngàn.",
+          "fr": "Cent mille.",
+          "en": "One hundred thousand."
+        },
+        {
+          "vi": "Hai triệu rưỡi.",
+          "fr": "Deux millions et demi.",
+          "en": "Two and a half million."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Demander et vérifier",
+        "en": "Asking and checking"
+      },
+      "body": {
+        "fr": "Une question pour le prix, une pour l'addition, et on s'en sort partout.",
+        "en": "One question for the price, one for the bill, and you're covered."
+      },
+      "examples": [
+        {
+          "vi": "Bao nhiêu tiền?",
+          "fr": "Combien ça coûte ?",
+          "en": "How much does it cost?"
+        },
+        {
+          "vi": "Tính tiền giùm em.",
+          "fr": "L'addition, s'il vous plaît.",
+          "en": "The bill, please."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Au Sud on dit ngàn pour mille, et lăm pour le cinq après une dizaine.",
+      "en": "In the South it's ngàn for a thousand, and lăm for the five after a ten."
+    }
+  ],
+  "reviewed": false
+}

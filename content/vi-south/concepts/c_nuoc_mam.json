@@ -23,5 +23,6 @@
     }
   ],
   "image": "img/food/fish_sauce.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

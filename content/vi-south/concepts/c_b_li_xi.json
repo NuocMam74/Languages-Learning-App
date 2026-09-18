@@ -24,5 +24,6 @@
     }
   ],
   "image": "img/things/lixi.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

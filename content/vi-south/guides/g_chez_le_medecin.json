@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_chez_le_medecin",
+  "kind": "situation",
+  "order": 5,
+  "title": {
+    "fr": "Dire où on a mal",
+    "en": "Saying where it hurts"
+  },
+  "summary": {
+    "fr": "Chez le médecin ou à la pharmacie, avec le minimum de mots.",
+    "en": "At the doctor or the pharmacy, with the fewest words."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "bị : ce qu'on subit",
+        "en": "bị: what you're suffering"
+      },
+      "body": {
+        "fr": "bị introduit ce qui vous arrive contre votre gré. C'est le mot par lequel commence presque toute plainte.",
+        "en": "bị introduces what happens to you against your will. Almost every complaint starts with it."
+      },
+      "examples": [
+        {
+          "vi": "Em bị bệnh.",
+          "fr": "Je suis malade.",
+          "en": "I'm sick."
+        },
+        {
+          "vi": "Em bị sốt.",
+          "fr": "J'ai de la fièvre.",
+          "en": "I have a fever."
+        },
+        {
+          "vi": "Em bị ho.",
+          "fr": "Je tousse.",
+          "en": "I have a cough."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Où on a mal",
+        "en": "Where it hurts"
+      },
+      "body": {
+        "fr": "bị đau, puis la partie du corps : đầu (tête), bụng (ventre), họng (gorge), răng (dent), lưng (dos), chân (jambe).",
+        "en": "bị đau, then the body part: đầu (head), bụng (belly), họng (throat), răng (tooth), lưng (back), chân (leg)."
+      },
+      "examples": [
+        {
+          "vi": "Em bị đau bụng.",
+          "fr": "J'ai mal au ventre.",
+          "en": "My stomach hurts."
+        },
+        {
+          "vi": "Em bị đau đầu.",
+          "fr": "J'ai mal à la tête.",
+          "en": "I have a headache."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "À la pharmacie",
+        "en": "At the pharmacy"
+      },
+      "body": {
+        "fr": "La pharmacie se dit nhà thuốc au Sud. On demande le médicament par le symptôme.",
+        "en": "A pharmacy is nhà thuốc in the South. You ask for medicine by symptom."
+      },
+      "examples": [
+        {
+          "vi": "Nhà thuốc ở đâu?",
+          "fr": "Où est la pharmacie ?",
+          "en": "Where's the pharmacy?"
+        },
+        {
+          "vi": "Cho em thuốc đau đầu.",
+          "fr": "Un médicament contre le mal de tête.",
+          "en": "Something for a headache."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Au Sud, « malade » se dit bệnh.",
+      "en": "In the South, 'sick' is bệnh."
+    },
+    {
+      "fr": "Pharmacie : nhà thuốc.",
+      "en": "Pharmacy: nhà thuốc."
+    }
+  ],
+  "reviewed": false
+}

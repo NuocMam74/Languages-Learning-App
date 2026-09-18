@@ -24,5 +24,6 @@
     }
   ],
   "image": "img/food/chicken.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

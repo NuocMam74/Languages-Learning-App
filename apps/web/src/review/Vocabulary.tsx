@@ -1,12 +1,13 @@
-import { isDue, type ContentIndex, type UnitId } from "@parlo/core";
+import { isDue, type ContentIndex, type PartOfSpeech, type UnitId } from "@parlo/core";
 import { useMemo, useState } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { Screen } from "../components/ui.tsx";
 import { Card, Chip, EmptyState, Icon } from "../design/index.ts";
 import { l, plural, t, type MessageKey } from "../i18n/index.ts";
 import { forceDue } from "../learner.ts";
 import type { LibraryData } from "./data.ts";
-import { LIBRARY_FILTERS, matchesFilter, matchesSearch, seenUnits, type LibraryFilter, type SeenConcept } from "./library.ts";
+import { POS_LABEL } from "./Index.tsx";
+import { LIBRARY_FILTERS, matchesFilter, matchesSearch, POS_ORDER, seenUnits, type LibraryFilter, type SeenConcept } from "./library.ts";
 import { enter, Field, GroupTitle, LibraryHeader, SEARCH_CLASS, SELECT_CLASS } from "./ui.tsx";
 import { WordRow } from "./WordCard.tsx";
 
@@ -28,12 +29,28 @@ const FILTER_LABEL: Record<LibraryFilter, MessageKey> = {
 };
 
 export function Vocabulary({ content, data }: { content: ContentIndex; data: LibraryData }) {
+  // Les index (`/reviser/categories`, `/reviser/themes`) ouvrent cette liste déjà filtrée. L'URL
+  // porte donc le filtre : elle se partage, et le retour du navigateur ramène au bon rayon.
+  const [params, setParams] = useSearchParams();
   const [query, setQuery] = useState("");
-  const [unit, setUnit] = useState<UnitId | "">("");
-  const [filter, setFilter] = useState<LibraryFilter>("all");
   const [open, setOpen] = useState<string | null>(null);
 
+  const unit = (params.get("unite") ?? "") as UnitId | "";
+  const pos = (params.get("categorie") ?? "") as PartOfSpeech | "";
+  const filter = (LIBRARY_FILTERS.find((f) => f === params.get("etat")) ?? "all") as LibraryFilter;
+  const setParam = (key: string, value: string) => {
+    const next = new URLSearchParams(params);
+    if (value === "") next.delete(key);
+    else next.set(key, value);
+    setParams(next, { replace: true });
+  };
+
   const units = useMemo(() => seenUnits(content, data.concepts), [content, data.concepts]);
+  // Seules les catégories effectivement présentes : un menu déroulant ne propose pas du vide.
+  const categories = useMemo(() => {
+    const present = new Set(data.concepts.map((e) => content.concepts.get(e.conceptId)?.pos).filter(Boolean));
+    return POS_ORDER.filter((value) => present.has(value));
+  }, [content, data.concepts]);
   const unitTitles = useMemo(() => new Map(content.curriculum.units.map((u) => [u.id, l(u.title)])), [content]);
 
   const shown = useMemo(
@@ -42,9 +59,11 @@ export function Vocabulary({ content, data }: { content: ContentIndex; data: Lib
         if (unit !== "" && entry.unit !== unit) return false;
         if (!matchesFilter(entry, filter, data.now)) return false;
         const concept = content.concepts.get(entry.conceptId);
-        return concept ? matchesSearch(query, [concept.vi, l(concept.gloss), concept.northernEquivalent]) : false;
+        if (!concept) return false;
+        if (pos !== "" && concept.pos !== pos) return false;
+        return matchesSearch(query, [concept.vi, l(concept.gloss), concept.northernEquivalent]);
       }),
-    [content, data.concepts, data.now, query, unit, filter],
+    [content, data.concepts, data.now, query, unit, pos, filter],
   );
 
   const groups = useMemo(() => {
@@ -91,15 +110,23 @@ export function Vocabulary({ content, data }: { content: ContentIndex; data: Lib
 
             <div className="flex flex-wrap gap-3">
               <Field label={t("review.vocab.filter.unit")} id="vocab-unit">
-                <select id="vocab-unit" value={unit} onChange={(e) => setUnit(e.target.value)} data-testid="vocab-unit" className={SELECT_CLASS}>
+                <select id="vocab-unit" value={unit} onChange={(e) => setParam("unite", e.target.value)} data-testid="vocab-unit" className={SELECT_CLASS}>
                   <option value="">{t("review.vocab.unit.all")}</option>
                   {units.map((id) => (
                     <option key={id} value={id}>{unitTitles.get(id) ?? id}</option>
                   ))}
                 </select>
               </Field>
+              <Field label={t("review.vocab.filter.pos")} id="vocab-pos">
+                <select id="vocab-pos" value={pos} onChange={(e) => setParam("categorie", e.target.value)} data-testid="vocab-pos" className={SELECT_CLASS}>
+                  <option value="">{t("review.vocab.pos.all")}</option>
+                  {categories.map((value) => (
+                    <option key={value} value={value}>{t(POS_LABEL[value])}</option>
+                  ))}
+                </select>
+              </Field>
               <Field label={t("review.vocab.filter.state")} id="vocab-state">
-                <select id="vocab-state" value={filter} onChange={(e) => setFilter(e.target.value as LibraryFilter)} data-testid="vocab-state" className={SELECT_CLASS}>
+                <select id="vocab-state" value={filter} onChange={(e) => setParam("etat", e.target.value)} data-testid="vocab-state" className={SELECT_CLASS}>
                   {LIBRARY_FILTERS.map((value) => (
                     <option key={value} value={value}>{t(FILTER_LABEL[value])}</option>
                   ))}
@@ -128,8 +155,7 @@ export function Vocabulary({ content, data }: { content: ContentIndex; data: Lib
                     className="inline-flex min-h-12 items-center rounded-card border-2 border-ngoc px-5 font-semibold text-ngoc"
                     onClick={() => {
                       setQuery("");
-                      setUnit("");
-                      setFilter("all");
+                      setParams(new URLSearchParams(), { replace: true });
                     }}
                   >
                     {t("review.vocab.clear")}

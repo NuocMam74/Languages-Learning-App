@@ -23,5 +23,6 @@
       "speed": "slow"
     }
   ],
-  "reviewed": false
+  "reviewed": false,
+  "pos": "numeral"
 }

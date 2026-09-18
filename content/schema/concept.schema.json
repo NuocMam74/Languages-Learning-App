@@ -15,6 +15,10 @@
     "gloss": { "$ref": "common.schema.json#/$defs/localized" },
     "northernEquivalent": { "type": "string", "description": "Forme du Nord, à reconnaître. Ignorée par south-lint." },
     "register": { "enum": ["neutral", "familiar", "formal"] },
+    "pos": {
+      "description": "Catégorie grammaticale, pour l'étude autonome par catégorie. Posée par scripts/classify-concepts.ts, à relire avec le reste du contenu.",
+      "enum": ["noun", "verb", "adjective", "adverb", "pronoun", "classifier", "numeral", "preposition", "conjunction", "particle", "question", "phrase"]
+    },
     "audio": {
       "type": "array",
       "items": {

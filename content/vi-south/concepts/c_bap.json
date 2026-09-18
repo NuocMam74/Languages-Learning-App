@@ -25,5 +25,6 @@
     }
   ],
   "image": "img/food/corn.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

@@ -49,7 +49,7 @@ export function southLintPack(code: string): PackLintResult {
       }
     }
   };
-  const extra = ["exams", "games", "dialogues", "placement.json"].flatMap((name) => {
+  const extra = ["exams", "games", "dialogues", "guides", "placement.json"].flatMap((name) => {
     const path = join(files.root, name);
     if (!existsSync(path)) return [];
     const paths = name.endsWith(".json") ? [path] : readdirSync(path).filter((f) => f.endsWith(".json")).map((f) => join(path, f));

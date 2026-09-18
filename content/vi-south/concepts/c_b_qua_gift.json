@@ -24,5 +24,6 @@
     }
   ],
   "image": "img/things/gift.svg",
-  "reviewed": false
+  "reviewed": false,
+  "pos": "noun"
 }

@@ -15,7 +15,10 @@ export async function onboard(page: Page, minutes = "5 min") {
   }
   // Le placement n'est proposé que si assez d'items ont leur audio natif (contrat parcours §1).
   const placement = page.getByRole("heading", { name: "Un mini-test de 90 secondes ?" });
-  await expect(placement.or(page.locator('[data-testid="lesson"]'))).toBeVisible();
+  // Depuis le contrat phase10 §1, une leçon qui introduit du nouveau s'ouvre sur sa fiche de
+  // découverte : l'arrivée peut donc être la fiche **ou** le premier exercice.
+  const lesson = page.locator('[data-testid="lesson"], [data-testid="lesson-intro"]');
+  await expect(placement.or(lesson).first()).toBeVisible();
   if (await placement.isVisible()) await page.getByRole("button", { name: /^Passer/ }).click();
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
 }
@@ -24,9 +27,12 @@ export async function onboard(page: Page, minutes = "5 min") {
 export async function playOneStep(page: Page, finished: RegExp): Promise<"done" | "step"> {
   // Fiche de découverte (contrat phase10 §1) : une séance qui introduit du nouveau s'ouvre sur la
   // présentation des mots. Elle n'est pas un item — on la lit et on passe aux exercices.
-  const intro = page.getByTestId("lesson-intro");
-  if (await intro.isVisible().catch(() => false)) {
-    await page.getByTestId("intro-start").click();
+  // On guette le **bouton**, pas la fiche : il vit dans la barre d'action de `Screen`, montée juste
+  // après le corps de la fiche. Guetter la fiche puis cliquer le bouton laissait une fenêtre où le
+  // premier était là et le second pas encore — le clic attendait alors sans fin.
+  const introStart = page.getByTestId("intro-start");
+  if (await introStart.isVisible().catch(() => false)) {
+    await introStart.click({ timeout: 10_000 }).catch(() => {});
     return "step";
   }
   const heading = page.getByRole("heading", { name: finished });

@@ -8,6 +8,8 @@ import NotesPage from "../notes/NotesPage.tsx";
 import { useNotes } from "../notes/store.ts";
 import { Dialogues } from "./Dialogues.tsx";
 import { Grammar } from "./Grammar.tsx";
+import { Categories, Themes } from "./Index.tsx";
+import { Tips } from "./Tips.tsx";
 import { LessonsList } from "./LessonsList.tsx";
 import ReviewHome from "./ReviewHome.tsx";
 import { Vocabulary } from "./Vocabulary.tsx";
@@ -17,7 +19,7 @@ import { loadLibrary, type LibraryData } from "./data.ts";
  * Section « Réviser » (contrat phase8 §2) : `/reviser` et ses rayons `/reviser/<section>`.
  * Une seule lecture locale alimente tous les écrans — ils n'attendent jamais le réseau.
  */
-const SECTIONS = ["vocabulaire", "grammaire", "lecons", "dialogues", "notes"] as const;
+const SECTIONS = ["vocabulaire", "categories", "themes", "conseils", "grammaire", "lecons", "dialogues", "notes"] as const;
 type Section = (typeof SECTIONS)[number];
 
 const isSection = (value: string | undefined): value is Section => SECTIONS.includes(value as Section);
@@ -54,6 +56,12 @@ export default function ReviewPage({ content }: { content: ContentIndex }) {
   switch (section) {
     case "vocabulaire":
       return <Vocabulary content={content} data={data} />;
+    case "categories":
+      return <Categories content={content} data={data} />;
+    case "themes":
+      return <Themes content={content} data={data} />;
+    case "conseils":
+      return <Tips content={content} />;
     case "grammaire":
       return <Grammar content={content} data={data} />;
     case "lecons":

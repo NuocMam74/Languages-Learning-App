@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_au_marche",
+  "kind": "situation",
+  "order": 2,
+  "title": {
+    "fr": "Au marché",
+    "en": "At the market"
+  },
+  "summary": {
+    "fr": "Demander un prix, marchander sans froisser, conclure.",
+    "en": "Asking a price, haggling without friction, closing the deal."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Demander le prix",
+        "en": "Asking the price"
+      },
+      "body": {
+        "fr": "Deux formules couvrent presque tout : celle qui montre, et celle qui pèse.",
+        "en": "Two phrases cover almost everything: one points, one weighs."
+      },
+      "examples": [
+        {
+          "vi": "Cái này bao nhiêu?",
+          "fr": "Combien, celui-ci ?",
+          "en": "How much is this?"
+        },
+        {
+          "vi": "Bao nhiêu một ký?",
+          "fr": "Combien le kilo ?",
+          "en": "How much per kilo?"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Marchander",
+        "en": "Haggling"
+      },
+      "body": {
+        "fr": "On marchande sur les marchés, pas dans les magasins à prix affichés. Le ton reste souriant : c'est un échange, pas un bras de fer.",
+        "en": "You haggle at markets, not in shops with printed prices. Keep it smiling: it's an exchange, not a standoff."
+      },
+      "examples": [
+        {
+          "vi": "Mắc quá!",
+          "fr": "C'est trop cher !",
+          "en": "That's too expensive!"
+        },
+        {
+          "vi": "Bớt chút được không?",
+          "fr": "Tu peux baisser un peu ?",
+          "en": "Can you come down a bit?"
+        },
+        {
+          "vi": "Hai chục được không?",
+          "fr": "Vingt mille, ça va ?",
+          "en": "Twenty thousand, okay?"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Conclure, ou s'en aller",
+        "en": "Closing, or walking away"
+      },
+      "body": {
+        "fr": "Accepter ou partir se dit aussi simplement l'un que l'autre. Partir n'a rien de vexant.",
+        "en": "Accepting and walking away are equally simple. Leaving isn't taken badly."
+      },
+      "examples": [
+        {
+          "vi": "Dạ được, lấy giùm em hai trái.",
+          "fr": "D'accord, donne-m'en deux.",
+          "en": "Alright, give me two."
+        },
+        {
+          "vi": "Thôi, để em coi thêm.",
+          "fr": "Non merci, je vais regarder ailleurs.",
+          "en": "No thanks, I'll look around."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Au Sud, « cher » se dit mắc.",
+      "en": "In the South, 'expensive' is mắc."
+    },
+    {
+      "fr": "giùm après un verbe veut dire « pour moi » : lấy giùm em, « prends-m'en ».",
+      "en": "giùm after a verb means 'for me': lấy giùm em, 'get me some'."
+    }
+  ],
+  "reviewed": false
+}

@@ -84,8 +84,34 @@ export function checkContent(content: ContentIndex, opts: { production?: boolean
   }
 
   checkDialogues(content, opts, err, warn);
+  checkGuides(content, opts, err, warn);
 
   return issues;
+}
+
+/**
+ * Contrôles des fiches conseils (contrat phase15 §1).
+ *
+ * Une fiche est du contenu de langue : elle passe par la même relecture que le reste. Et comme elle
+ * se lit sans séance, une section vide ou un exemple sans traduction n'y serait rattrapé par rien.
+ */
+function checkGuides(content: ContentIndex, opts: { production?: boolean }, err: Report, warn: Report) {
+  for (const guide of content.guides.values()) {
+    const where = guide.id;
+    if ((guide.title.fr ?? "").trim() === "") err(where, `Titre français manquant`);
+    if ((guide.summary.fr ?? "").trim() === "") err(where, `Résumé français manquant`);
+    if (guide.sections.length === 0) err(where, `Fiche sans section`);
+    guide.sections.forEach((section, i) => {
+      const at = `${where} section ${i + 1}`;
+      if ((section.heading.fr ?? "").trim() === "") err(at, `Titre de section manquant`);
+      if ((section.body.fr ?? "").trim() === "") err(at, `Section vide`);
+      for (const example of section.examples ?? []) {
+        if (example.vi.trim() === "") err(at, `Exemple sans vietnamien`);
+        if (example.fr.trim() === "") err(at, `Exemple sans traduction française : ${example.vi}`);
+      }
+    });
+    if (!guide.reviewed) (opts.production ? err : warn)(where, `Fiche conseil non relue par un locuteur natif`);
+  }
 }
 
 /** Contrôles des dialogues (contrat phase6 §3) : longueur, traductions, question, audio. */

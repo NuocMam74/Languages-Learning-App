@@ -1,0 +1,99 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_se_deplacer",
+  "kind": "situation",
+  "order": 4,
+  "title": {
+    "fr": "Taxi, Grab, xe ôm",
+    "en": "Taxi, Grab, xe ôm"
+  },
+  "summary": {
+    "fr": "Dire où on va, guider en route, parler du prix.",
+    "en": "Saying where you're going, guiding on the way, talking price."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Dire où on va",
+        "en": "Saying where you're going"
+      },
+      "body": {
+        "fr": "Cho em tới + le lieu suffit. On peut aussi montrer l'adresse sur un téléphone.",
+        "en": "Cho em tới + the place is enough. Showing the address on a phone works too."
+      },
+      "examples": [
+        {
+          "vi": "Cho em tới chợ Bến Thành.",
+          "fr": "Au marché Bến Thành, s'il vous plaît.",
+          "en": "To Bến Thành market, please."
+        },
+        {
+          "vi": "Anh chở em tới đây được không?",
+          "fr": "Tu peux m'emmener ici ?",
+          "en": "Can you take me here?"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Guider en route",
+        "en": "Guiding on the way"
+      },
+      "body": {
+        "fr": "Quatre mots suffisent à conduire quelqu'un jusqu'à destination.",
+        "en": "Four words are enough to get someone to the destination."
+      },
+      "examples": [
+        {
+          "vi": "Quẹo trái.",
+          "fr": "À gauche.",
+          "en": "Turn left."
+        },
+        {
+          "vi": "Quẹo phải.",
+          "fr": "À droite.",
+          "en": "Turn right."
+        },
+        {
+          "vi": "Đi thẳng.",
+          "fr": "Tout droit.",
+          "en": "Straight on."
+        },
+        {
+          "vi": "Dừng ở đây.",
+          "fr": "Arrête-toi ici.",
+          "en": "Stop here."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Le prix, et les imprévus",
+        "en": "Price, and what gets in the way"
+      },
+      "body": {
+        "fr": "On demande le prix avant de monter quand il n'y a pas de compteur.",
+        "en": "Ask the price before getting on when there's no meter."
+      },
+      "examples": [
+        {
+          "vi": "Tới đó bao nhiêu?",
+          "fr": "Combien jusque là-bas ?",
+          "en": "How much to get there?"
+        },
+        {
+          "vi": "Kẹt xe quá.",
+          "fr": "Il y a beaucoup d'embouteillages.",
+          "en": "Traffic is bad."
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Au Sud : quẹo pour tourner, kẹt xe pour les embouteillages, hẻm pour une ruelle.",
+      "en": "In the South: quẹo to turn, kẹt xe for traffic jams, hẻm for an alley."
+    }
+  ],
+  "reviewed": false
+}

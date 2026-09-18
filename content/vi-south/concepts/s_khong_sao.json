@@ -26,5 +26,6 @@
     "fr": "Réponse habituelle à xin lỗi. Plus appuyé : Không sao đâu.",
     "en": "The usual reply to xin lỗi. Stronger: Không sao đâu."
   },
-  "reviewed": false
+  "reviewed": false,
+  "pos": "phrase"
 }
