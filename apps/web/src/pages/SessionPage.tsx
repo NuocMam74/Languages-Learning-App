@@ -1,4 +1,4 @@
-import { BADGE_CODES, levelForXp, nextLesson, sessionItemsDone, sessionItemsRemaining, sessionTally, TONAL_STEP_TYPES, UNIT_TEST_PASS_SCORE, type ContentIndex, type Exercise, type SessionPhase } from "@parlo/core";
+import { BADGE_CODES, levelForXp, MARK_MAX, nextLesson, sessionItemsDone, sessionItemsRemaining, sessionTally, TONAL_STEP_TYPES, UNIT_TEST_PASS_SCORE, type ContentIndex, type Exercise, type SessionPhase } from "@parlo/core";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from "react-router";
 import { useAccount } from "../account.ts";
@@ -15,6 +15,8 @@ import { playCorrectSound, playWrongSound } from "../feedback-sound.ts";
 import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { getProfile, progressState } from "../learner.ts";
 import { LessonNoteBlock } from "../notes/NoteBlock.tsx";
+import { noteTargetOf, SessionNoteButton, SessionNotePanel, useSessionNote } from "../notes/SessionNote.tsx";
+import { SessionNotesRecap } from "../notes/SessionNotesRecap.tsx";
 import { usePrefs } from "../prefs.ts";
 import { markGuideRead } from "../review/guides-read.ts";
 import { useSession } from "../session-store.ts";
@@ -55,6 +57,8 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   const onSheetHeight = useCallback((h: number) => setSheetHeight(Math.round(h)), []);
   // Option choisie : l'exercice est remonté après la réponse (sélection perdue), la feuille la resurligne.
   const [chosenId, setChosenId] = useState<string | null>(null);
+  // Bloc-notes de l'exercice affiché : il se referme à chaque question (une note par question).
+  const [noteOpen, toggleNote] = useSessionNote(`${run?.sessionId ?? ""}:${run ? sessionItemsDone(run) : 0}`);
 
   useEffect(() => {
     void open(
@@ -137,6 +141,7 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   // L'étape réellement affichée : c'est elle qu'on aime, pas la position dans la file.
   const currentStep = (phase.kind === "new" || phase.kind === "practice") && exercise.stepIndex >= 0 ? exercise.stepIndex : null;
   const favoriteStep = run.lesson && currentStep !== null ? { lessonId: run.lesson.lessonId, stepIndex: currentStep } : null;
+  const noteTarget = noteTargetOf(exercise, run.lesson?.lessonId ?? null);
 
   return (
     <div
@@ -154,8 +159,12 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
         <ProgressBar value={done} max={total} label={t("lesson.progress", { i: done + 1, n: total })} className="h-3 flex-1" />
         {/* Aimer l'exercice affiché (contrat phase18 §2). Seulement sur une étape de leçon : un
             item de rappel espacé est tiré au sort, il n'a pas d'existence à retrouver. */}
-        {favoriteStep !== null && <FavoriteButton target={favoriteStep} size={20} className="-mr-2" />}
+        {favoriteStep !== null && <FavoriteButton target={favoriteStep} size={20} />}
+        {/* Noter pendant la séance (contrat phase22 §2) : le moment où l'on a quelque chose à
+            noter, c'est l'exercice — pas la page Notes, une fois l'idée passée. */}
+        <SessionNoteButton target={noteTarget} open={noteOpen} onToggle={toggleNote} />
       </header>
+      {noteOpen && <SessionNotePanel target={noteTarget} />}
       {/* Où j'en suis, et comment ça se passe. Deux chiffres, à gauche et à droite de la même
           ligne : la barre seule ne dit ni combien il reste, ni ce qui est juste. */}
       <p className="mt-2 flex items-center justify-between gap-3 text-sm text-phu-sa">
@@ -427,6 +436,7 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
         <div className="flex flex-1 flex-col justify-center gap-4" data-testid="practice-recap">
           <h1 className="font-serif text-2xl">{t("review.practice.doneTitle")}</h1>
           <p className="text-lg text-phu-sa">{t("review.practice.doneBody")}</p>
+          <SessionNotesRecap content={content} since={recap.startedAt} />
           {recap.lessonId && <LessonNoteBlock lessonId={recap.lessonId} />}
         </div>
       </Screen>
@@ -528,6 +538,28 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
         ) : (
           <LevelLine pack={content.pack} xp={recap.xpAfter} />
         )}
+
+        {/* La note du niveau (contrat phase21 §4). Elle est distincte du pourcentage de séance
+            au-dessus : celui-là compte aussi le rappel espacé, celle-ci ne juge que le niveau, sur
+            un barème de 20 questions identique d'un niveau à l'autre — c'est ce qui rend la
+            moyenne du profil comparable. Le meilleur essai est rappelé : c'est lui qui compte. */}
+        {recap.levelMark && (
+          <Card tone="quiet" as="section" className="flex items-baseline justify-between gap-4" data-testid="recap-mark" data-mark={recap.levelMark.mark}>
+            <span className="text-lg">{t("recap.mark.label")}</span>
+            <span className="flex flex-col items-end">
+              <span className="text-vi font-semibold tabular-nums">{t("recap.mark.value", { mark: recap.levelMark.mark, max: MARK_MAX })}</span>
+              <span className="text-sm text-phu-sa">
+                {recap.levelMark.best > recap.levelMark.mark
+                  ? t("recap.mark.best", { best: recap.levelMark.best, max: MARK_MAX })
+                  : t("recap.mark.beaten")}
+              </span>
+            </span>
+          </Card>
+        )}
+
+        {/* Les notes prises en chemin, rassemblées (contrat phase22 §2) : c'est ici qu'elles se
+            relisent, pas dans une page qu'on rouvrira peut-être. */}
+        <SessionNotesRecap content={content} since={recap.startedAt} />
 
         {recap.unitTest?.passed && (
           <p className="flex items-center gap-2 font-medium text-ngoc" data-testid="unit-test-passed">

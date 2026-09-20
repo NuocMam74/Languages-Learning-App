@@ -35,10 +35,12 @@ afterEach(() => {
 });
 
 describe("sens de l'exercice", () => {
-  it("une phrase à assembler dit ce qu'elle veut dire", () => {
+  it("une phrase à assembler dit ce qu'elle veut dire, pas comment on l'écrit", () => {
     const exercise = firstOfType("build_sentence");
     expect(meaningGivesAnswer(exercise)).toBe(false);
+    // La consigne (le sens) est là dès le départ ; la phrase cible, qui **est** la réponse, non.
     expect(exerciseMeaning(content, exercise)?.gloss).toBeTruthy();
+    expect(exerciseMeaning(content, exercise)).toMatchObject({ vi: null });
   });
 
   it("une écoute à choix garde son sens pour la correction", () => {
@@ -61,6 +63,17 @@ describe("ligne de sens à l'écran", () => {
     const exercise = firstOfType("build_sentence");
     render(<ExerciseView exercise={exercise} content={content} onAnswer={() => undefined} locked={false} />);
     expect(screen.getAllByTestId("exercise-meaning").length).toBeGreaterThan(0);
+  });
+
+  it("une phrase à assembler n'est jamais écrite à l'écran avant d'être assemblée", () => {
+    const exercise = firstOfType("build_sentence");
+    render(<ExerciseView exercise={exercise} content={content} onAnswer={() => undefined} locked={false} />);
+    // La consigne dit quoi dire (la traduction) ; la phrase cible, qui est la réponse, n'est nulle
+    // part — ni dans la ligne de sens, ni ailleurs. Les jetons, eux, la contiennent mot à mot mais
+    // dans le désordre : c'est l'exercice.
+    expect(screen.getByTestId("exercise-meaning").textContent).not.toContain(exercise.target);
+    const tokens = screen.getAllByRole("button").map((b) => b.textContent ?? "");
+    expect(tokens).not.toContain(exercise.target);
   });
 
   it("attend la réponse quand elle la donnerait, puis paraît", () => {

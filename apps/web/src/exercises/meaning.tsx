@@ -35,9 +35,12 @@ function conceptMeaning(content: ContentIndex, ids: readonly string[]): Exercise
 
 export function exerciseMeaning(content: ContentIndex, exercise: Exercise): ExerciseMeaning | null {
   switch (exercise.type) {
-    // Les formats qui portent déjà leur traduction dans les données : on la reprend telle quelle.
+    // Assembler une phrase : la traduction dit **quoi** dire, et c'est la consigne — sans elle on
+    // remet des jetons dans l'ordre sans savoir ce qu'on écrit. La phrase vietnamienne, elle, est la
+    // réponse : l'afficher au-dessus des jetons revenait à donner le corrigé avec l'énoncé. Elle
+    // n'arrive qu'à la correction, et seulement si on s'est trompé (« La bonne réponse : … »).
     case "build_sentence":
-      return { vi: exercise.target, gloss: l(exercise.translation) };
+      return { vi: null, gloss: l(exercise.translation) };
     case "fill_gap":
       return exercise.translation ? { vi: null, gloss: l(exercise.translation) } : conceptMeaning(content, exercise.conceptIds);
     case "translate_to_vi":
