@@ -82,12 +82,18 @@ def test_session_next_uses_progress_cards_and_goal(client: TestClient, auth: dic
     ]
     assert plan["estimatedSeconds"] == 20 + 15 + lesson_seconds
 
-    # Objectif 5 min (300 s, toléré 360 s) : la leçon de 5 min tient, la révision prend la marge de tolérance.
-    assert lesson_seconds == 300
-    client.patch("/me/profile", headers=auth, json={"dailyGoalMin": 5})
+    # Plus petit objectif proposé : 10 min (600 s, toléré 720 s). Le plancher est passé de 5 à 10
+    # quand un niveau est devenu un barème de 20 exercices notés (contrat phase21 §3) — un niveau
+    # dure 6 min, et le planificateur écarte purement et simplement une leçon plus longue que
+    # l'objectif du jour.
+    #
+    # Ce qui se vérifie ici n'est donc pas la durée d'un niveau (elle bougera encore, le jour où
+    # les enregistrements existeront), mais l'invariant : au plus petit objectif, la leçon du jour
+    # tient dans la séance avec ses révisions, marge de tolérance comprise.
+    client.patch("/me/profile", headers=auth, json={"dailyGoalMin": 10})
     plan = client.get("/me/session/next", headers=auth).json()
     assert [b["kind"] for b in plan["blocks"]] == ["review", "new", "recap"]
-    assert plan["estimatedSeconds"] <= 300 * (1 + OVERRUN_TOLERANCE)
+    assert plan["estimatedSeconds"] <= 600 * (1 + OVERRUN_TOLERANCE)
 
 
 def due_cards(n: int) -> list[SrsCard]:
