@@ -6,6 +6,7 @@ export const fr = {
   "account.offer.guestWarning": "En invité, ta progression reste uniquement sur cet appareil : si tu effaces les données du navigateur, elle disparaît.",
   // Pas d'API dans cette installation : la progression s'emporte dans un fichier.
   "account.offer.noServer": "Cette version n'a pas de serveur : pas de compte, donc pas de synchronisation. Pour retrouver ta progression sur un autre téléphone, emporte-la dans un fichier.",
+  "account.noServer.feature": "Cette partie a besoin d'un serveur, et cette version n'en a pas. Tout le reste fonctionne.",
   "account.register.title": "Créer ton compte",
   "account.register.why": "Pour garder ta progression. Tout ce que tu as déjà fait est conservé.",
   "account.register.submit": "Créer mon compte",
@@ -48,6 +49,7 @@ export const en: Record<keyof typeof fr, string> = {
   "account.offer.guestWarning": "As a guest, your progress stays on this device only: clearing browser data erases it.",
   // No API in this install: progress travels in a file.
   "account.offer.noServer": "This version has no server: no account, so no syncing. To carry your progress to another phone, take it with you in a file.",
+  "account.noServer.feature": "This part needs a server, and this version has none. Everything else works.",
   "account.register.title": "Create your account",
   "account.register.why": "To keep your progress. Everything you've done so far is kept.",
   "account.register.submit": "Create my account",

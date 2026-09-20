@@ -43,3 +43,11 @@ export const useApiStatus = create<ApiStatusState>((set, get) => ({
     }
   },
 }));
+
+/**
+ * Raccourci pour les écrans : peut-on encore parler de compte à l'apprenant ?
+ *
+ * Tout écran qui dit « crée un compte » doit passer par là. Sans serveur, la phrase n'a aucun sens
+ * et le lien mène à un formulaire mort.
+ */
+export const useAccountsPossible = (): boolean => useApiStatus((s) => s.accountsPossible)();

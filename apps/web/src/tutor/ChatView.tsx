@@ -1,5 +1,6 @@
 import type { Localized } from "@parlo/core";
 import { usePrefs } from "../prefs.ts";
+import { useAccountsPossible } from "../api-status.ts";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import { Card, EmptyState, Icon, SectionTitle } from "../design/index.ts";
@@ -326,7 +327,9 @@ export function TutorGate({ reason, children }: { reason: "guest" | "expired" | 
 }
 
 export function GateActions({ reason }: { reason: "guest" | "expired" | "offline" | "soon" }) {
-  if (reason === "offline" || reason === "soon") return null;
+  // Cô Mai a besoin du serveur : sans lui, proposer un compte ne mène nulle part.
+  const accounts = useAccountsPossible();
+  if (reason === "offline" || reason === "soon" || !accounts) return null;
   return (
     <Link
       to={reason === "expired" ? "/connexion" : "/compte"}

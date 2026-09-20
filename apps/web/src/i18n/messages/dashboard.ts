@@ -58,6 +58,7 @@ export const fr = {
   "dashboard.first.body": "Ici tu retrouveras tout : la langue que tu apprends, ta série, tes badges. On commence par une première séance.",
   "dashboard.first.cta": "Commencer ma première leçon",
   "dashboard.first.guest": "Crée un compte quand tu veux : rien n'est perdu d'ici là.",
+  "dashboard.first.guest.noServer": "Ta progression reste sur ce téléphone, et tu peux l'emporter ailleurs quand tu veux.",
 
   // Lien profond vers une autre langue
   "dashboard.deepLink.title": "Cette leçon est en {name}",
@@ -129,6 +130,7 @@ export const en: Record<keyof typeof fr, string> = {
   "dashboard.first.body": "Everything lives here: the language you're learning, your streak, your badges. Let's start with a first session.",
   "dashboard.first.cta": "Start my first lesson",
   "dashboard.first.guest": "Create an account whenever you like: nothing is lost until then.",
+  "dashboard.first.guest.noServer": "Your progress stays on this phone, and you can take it elsewhere whenever you like.",
 
   "dashboard.deepLink.title": "This lesson is in {name}",
   "dashboard.deepLink.body": "Opening this link changes the language you're learning. Your progress in the other language stays untouched.",

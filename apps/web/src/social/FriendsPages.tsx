@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, useParams } from "react-router";
 import { useAccount } from "../account.ts";
+import { useAccountsPossible } from "../api-status.ts";
 import { ApiError } from "../api.ts";
 import { Button, Screen } from "../components/ui.tsx";
 import { Card, Chip, EmptyState, FloatingMarket, Icon, Illustration, PageHeader, ProgressBar, SectionTitle, Skeleton } from "../design/index.ts";
@@ -212,6 +213,8 @@ type JoinState =
 
 /** /defi/:code : rejoindre un défi (compte requis → création de compte puis retour ici). */
 export function JoinChallengePage() {
+  // Rejoindre un défi passe par le serveur : sans lui, on ne propose pas de compte.
+  const accounts = useAccountsPossible();
   const { code = "" } = useParams();
   const status = useAccount((s) => s.status);
   const online = useOnline();
@@ -242,12 +245,20 @@ export function JoinChallengePage() {
     body = (
       <>
         <Card tone="quiet"><p className="text-lg">{t("social.join.guest")}</p></Card>
-        <Link to={accountPath("register", here)} className={PRIMARY_LINK}>{t("social.join.register")}</Link>
-        <Link to={accountPath("login", here)} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("social.join.login")}</Link>
+        {accounts ? (
+          <>
+            <Link to={accountPath("register", here)} className={PRIMARY_LINK}>{t("social.join.register")}</Link>
+            <Link to={accountPath("login", here)} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("social.join.login")}</Link>
+          </>
+        ) : (
+          <p className="text-sm text-phu-sa">{t("account.noServer.feature")}</p>
+        )}
       </>
     );
   } else if (status === "expired") {
-    body = <Link to={accountPath("login", here)} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("social.join.login")}</Link>;
+    body = accounts
+      ? <Link to={accountPath("login", here)} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("social.join.login")}</Link>
+      : <p className="text-sm text-phu-sa">{t("account.noServer.feature")}</p>;
   } else if (!online && state.kind !== "joined") body = <EmptyState art="boat" title={t("social.join.offline")} />;
   else {
     switch (state.kind) {

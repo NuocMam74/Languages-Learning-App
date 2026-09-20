@@ -1,6 +1,7 @@
 import { buildContentIndex, type Lesson } from "@parlo/core";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link, Navigate, NavLink, Route, Routes, useLocation, useNavigate, useParams } from "react-router";
+import { useAccountsPossible } from "../api-status.ts";
 import { DocumentEditor } from "./DocumentEditor.tsx";
 import { st } from "./i18n.ts";
 import { LessonPlayer } from "./Preview.tsx";
@@ -23,13 +24,14 @@ function Centered({ children }: { children: ReactNode }) {
 
 export default function StudioApp() {
   const roles = useMyRoles();
+  const accounts = useAccountsPossible();
   if (roles.status === "loading") return <Centered><p>{st("common.loading")}</p></Centered>;
   if (roles.status === "signed_out") {
     return (
       <Centered>
         <h1 className="font-serif text-2xl">{st("guard.title")}</h1>
         <p>{st("guard.signin")}</p>
-        <Link to="/connexion" className="min-h-11 py-2 font-semibold text-ngoc">{st("guard.signin.link")}</Link>
+        {accounts && <Link to="/connexion" className="min-h-11 py-2 font-semibold text-ngoc">{st("guard.signin.link")}</Link>}
       </Centered>
     );
   }

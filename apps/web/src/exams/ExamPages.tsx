@@ -19,6 +19,7 @@ import {
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useAccount } from "../account.ts";
+import { useAccountsPossible } from "../api-status.ts";
 import { ApiError, getExamAttemptResult, getExams, NetworkError, startExam, submitExam, type ExamSubmitResult, type ExamSummary } from "../api.ts";
 import { CertificateReady } from "../certificates/CertificatePages.tsx";
 import { BackHeader } from "./BackHeader.tsx";
@@ -359,6 +360,8 @@ type RealStage =
   | { kind: "certificate"; result: ExamSubmitResult };
 
 export function RealExamPage({ content }: { content: ContentIndex }) {
+  // L'examen certifiant exige le serveur : sans lui, aucune invitation à créer un compte.
+  const accounts = useAccountsPossible();
   const navigate = useNavigate();
   const online = useOnline();
   const status = useAccount((s) => s.status);
@@ -537,12 +540,16 @@ export function RealExamPage({ content }: { content: ContentIndex }) {
               <p className="min-w-0 flex-1">{blocked}</p>
             </Card>
           )}
-          {status !== "signed_in" && (
+          {/* Sans serveur, l'examen certifiant ne peut pas exister : on le dit, plutôt que d'envoyer
+              vers un formulaire de compte qui n'aboutira pas. */}
+          {status !== "signed_in" && (accounts ? (
             <Link to="/compte" className="mt-2 flex min-h-11 items-center gap-2 self-start font-semibold text-ngoc">
               {t("account.offer.cta")}
               <Icon name="chevronRight" size={18} />
             </Link>
-          )}
+          ) : (
+            <p className="mt-2 text-sm text-phu-sa">{t("account.noServer.feature")}</p>
+          ))}
           {error && (
             <Card tone="alert" className="mt-5 flex items-start gap-3">
               <Icon name="alert" className="mt-0.5 shrink-0 text-son-mai" />

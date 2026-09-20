@@ -2,6 +2,7 @@ import { levelForXp, levelName, type ContentIndex } from "@parlo/core";
 import { lazy, Suspense, useEffect, useState, type CSSProperties } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
+import { useAccountsPossible } from "../api-status.ts";
 import { Slot } from "../components/Slot.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import { VerifyEmailBanner } from "../components/VerifyEmailBanner.tsx";
@@ -293,6 +294,8 @@ function Header({ name, level, tier, xp, streak, loading }: { name: string | nul
 
 /** Première ouverture : une invitation, pas un tableau vide (contrat §1). Le delta ouvre l'écran. */
 function FirstRun({ signedIn }: { signedIn: boolean }) {
+  // « Crée un compte quand tu veux » : encore faut-il qu'un serveur puisse en créer un.
+  const accounts = useAccountsPossible();
   return (
     <Card tone="feature" as="section" className="mb-6 flex min-h-[9rem] flex-col items-center gap-2 text-center" data-testid="dashboard-first">
       <Illustration className="max-w-[15rem] motion-safe:parlo-enter">
@@ -300,7 +303,7 @@ function FirstRun({ signedIn }: { signedIn: boolean }) {
       </Illustration>
       <h2 className="font-serif text-2xl">{t("dashboard.first.title")}</h2>
       <p className="text-phu-sa text-balance">{t("dashboard.first.body")}</p>
-      {!signedIn && <p className="text-sm text-phu-sa">{t("dashboard.first.guest")}</p>}
+      {!signedIn && <p className="text-sm text-phu-sa">{t(accounts ? "dashboard.first.guest" : "dashboard.first.guest.noServer")}</p>}
     </Card>
   );
 }

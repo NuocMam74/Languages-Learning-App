@@ -3,6 +3,7 @@ import { localDay } from "@parlo/core";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useAccount } from "../account.ts";
+import { useAccountsPossible } from "../api-status.ts";
 import { ApiError } from "../api.ts";
 import { Button, Screen } from "../components/ui.tsx";
 import { Card, Chip, EmptyState, Icon, PageHeader, SectionTitle, Skeleton } from "../design/index.ts";
@@ -21,11 +22,19 @@ import { Confirm, inputClass, linkButton, primaryLink, ProgressBar, whenLabel } 
 const accountPath = (kind: "register" | "login", next: string) => `${kind === "register" ? "/compte" : "/connexion"}?next=${encodeURIComponent(next)}`;
 
 function AccountLinks({ next, text }: { next: string; text: string }) {
+  // Sans serveur, ni compte ni classe : l'écran le dit au lieu d'ouvrir un formulaire mort.
+  const accounts = useAccountsPossible();
   return (
     <div className="flex flex-col gap-3 pt-2">
       <Card tone="quiet"><p>{text}</p></Card>
-      <Link to={accountPath("register", next)} className={primaryLink}>{t("classes.join.register")}</Link>
-      <Link to={accountPath("login", next)} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("classes.join.login")}</Link>
+      {accounts ? (
+        <>
+          <Link to={accountPath("register", next)} className={primaryLink}>{t("classes.join.register")}</Link>
+          <Link to={accountPath("login", next)} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("classes.join.login")}</Link>
+        </>
+      ) : (
+        <Card tone="notice"><p>{t("account.noServer.feature")}</p></Card>
+      )}
     </div>
   );
 }
