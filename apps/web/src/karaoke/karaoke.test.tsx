@@ -47,7 +47,9 @@ describe("KaraokeExercise", () => {
     const onSubmit = vi.fn();
     const concept = content.concepts.get("c_ma_mom")!;
     render(<KaraokeExercise content={content} concept={concept} pitchRef={null} mode="tone" tone="sac" sessionId={null} onSubmit={onSubmit} />);
-    await waitFor(() => expect(screen.getByText(/pas encore enregistrée|isn't recorded yet/)).toBeTruthy(), { timeout: 5000 });
+    // Une consigne, pas une excuse : sans courbe, l'exercice reste utile et ne s'annonce pas
+    // comme un chantier (contrat phase16 §5).
+    await waitFor(() => expect(screen.getByText(/répète à voix haute|say it out loud/)).toBeTruthy(), { timeout: 5000 });
     fireEvent.click(screen.getByRole("button", { name: /C'est fait|Done/ }));
     expect(onSubmit).toHaveBeenCalledWith(null);
     vi.unstubAllGlobals();

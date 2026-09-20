@@ -19,7 +19,10 @@ export const fr = {
   "karaoke.great": "Ta courbe suit bien celle de la voix native.",
   "karaoke.toneOk": "Bon ton.",
   "karaoke.loading": "Préparation de la courbe…",
-  "karaoke.noReference": "La courbe de ce mot n'est pas encore enregistrée : écoute, répète à voix haute, puis continue (sans note).",
+  // Consigne, pas excuse (contrat phase16 §5) : répéter à voix haute vaut la peine, avec ou sans
+  // note. Dire « la courbe n'est pas encore enregistrée » transformait un exercice utile en
+  // chantier visible, à chaque mot.
+  "karaoke.noReference": "Écoute, puis répète à voix haute.",
   "karaoke.legend.native": "Voix native",
   "karaoke.legend.you": "Toi",
   "karaoke.plot": "Courbe de hauteur : voix native en vert, ta voix en jaune",
@@ -63,7 +66,7 @@ export const en: Record<keyof typeof fr, string> = {
   "karaoke.great": "Your curve follows the native voice closely.",
   "karaoke.toneOk": "Right tone.",
   "karaoke.loading": "Preparing the curve…",
-  "karaoke.noReference": "This word's curve isn't recorded yet: listen, repeat out loud, then continue (not graded).",
+  "karaoke.noReference": "Listen, then say it out loud.",
   "karaoke.legend.native": "Native voice",
   "karaoke.legend.you": "You",
   "karaoke.plot": "Pitch curve: native voice in green, your voice in yellow",

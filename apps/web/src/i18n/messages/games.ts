@@ -30,8 +30,6 @@ export const fr = {
   "games.choNoi.points": "{n} points",
   "games.choNoi.newBest": "Nouveau record",
   "games.choNoi.notEnough": "Pas assez de mots avec un audio natif pour jouer ici. On y reviendra.",
-  // Jeu d'oreille sur un pack sans voix (contrat phase16 §5) : fermé et dit, plutôt qu'ouvert sur un mur.
-  "games.needsVoices": "Dès que les voix seront enregistrées",
   "games.choNoi.pool": "Mots des leçons terminées",
   "games.choNoi.poolFirst": "Mots de la première leçon",
   "games.newBest": "Nouveau record",
@@ -119,7 +117,6 @@ export const en: Record<keyof typeof fr, string> = {
   "games.title": "Games",
   "games.intro": "Replay what you've learned, at your own pace.",
   "games.soon": "soon",
-  "games.needsVoices": "As soon as the voices are recorded",
   "games.empty.title": "No game open yet",
   "games.empty.body": "Games open up as you go through the lessons: get back to your path, they're on their way.",
   "games.best": "Best: {points} points · {correct} of {total}",

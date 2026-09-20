@@ -102,9 +102,9 @@ test("sans voix native : le manque est dit une fois, et rien ne mène à un mur"
   // Le pack livré ne contient aucun enregistrement : un chantier annoncé, en haut, une seule fois.
   await expect(page.getByTestId("hub-no-voices")).toBeVisible();
 
-  // Chợ nổi trie des barques à l'oreille : fermé, plutôt qu'ouvert sur « pas assez de mots ».
+  // Chợ nổi trie des barques à l'oreille par leur ton : sans voix native, il ne figure pas du tout
+  // dans la liste — ni ouvert sur un mur, ni verrouillé à expliquer. Les autres jeux, eux, sont là.
   await page.goto("/jeux");
-  const choNoi = page.getByRole("listitem").filter({ hasText: "Chợ nổi" });
-  await expect(choNoi).toContainText("Dès que les voix seront enregistrées");
-  await expect(choNoi.getByRole("link")).toHaveCount(0);
+  await expect(page.getByRole("link", { name: /Xe ôm/ })).toBeVisible();
+  await expect(page.getByRole("listitem").filter({ hasText: "Chợ nổi" })).toHaveCount(0);
 });

@@ -213,7 +213,7 @@ async function playTest(page: Page, right: boolean) {
   const recap = page.getByTestId("unit-test-failed").or(page.getByTestId("unit-test-passed"));
   // Mot attendu par étape, lu dans le snapshot IndexedDB (file de la leçon) pour rester déterministe.
   const words = ["ba", "chào", "anh"];
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 30; i++) {
     const lesson = page.locator('[data-testid="lesson"][data-status="answering"]');
     const cont = page.getByRole("button", { name: "Continuer" });
     // Une bonne réponse enchaîne seule ; une erreur attend « Continuer ».
@@ -225,22 +225,43 @@ async function playTest(page: Page, right: boolean) {
       await cont.click();
       continue;
     }
+    // Lecture **totale** du snapshot : elle rend toujours la main, y compris quand il n'y a rien à
+    // lire. La fin d'une séance efface le snapshot, et l'écran de bilan met un instant à
+    // apparaître : entre les deux, cette lecture tombe sur un enregistrement absent. Écrite
+    // naïvement, l'exception partait dans le gestionnaire `onsuccess` d'IndexedDB — un contexte
+    // que personne n'observe — la promesse ne se réglait jamais, et une course d'une seconde
+    // devenait un test bloqué jusqu'à son délai de 150 s. On renvoie -1, et on repasse par le
+    // haut de la boucle : c'est là, et seulement là, qu'on décide si la séance est finie.
     const stepIndex = await page.evaluate(
       () =>
-        new Promise<number>((resolve, reject) => {
+        new Promise<number>((resolve) => {
           const open = indexedDB.open("parlo");
-          open.onerror = () => reject(open.error);
+          open.onerror = () => resolve(-1);
           open.onsuccess = () => {
-            const req = open.result.transaction("snapshot").objectStore("snapshot").get("vi-south");
-            req.onsuccess = () => {
-              const run = (req.result as { session: { lesson: { queue: { stepIndex: number }[]; cursor: number } } }).session.lesson;
-              resolve(run.queue[run.cursor]!.stepIndex);
+            try {
+              const req = open.result.transaction("snapshot").objectStore("snapshot").get("vi-south");
+              req.onerror = () => {
+                open.result.close();
+                resolve(-1);
+              };
+              req.onsuccess = () => {
+                const run = (req.result as { session?: { lesson?: { queue: { stepIndex: number }[]; cursor: number } } } | undefined)?.session?.lesson;
+                open.result.close();
+                resolve(run?.queue[run.cursor]?.stepIndex ?? -1);
+              };
+            } catch {
               open.result.close();
-            };
-            req.onerror = () => reject(req.error);
+              resolve(-1);
+            }
           };
         }),
     );
+    // Snapshot illisible : la séance se termine peut-être. On laisse le bilan se peindre, puis le
+    // haut de la boucle tranche — sans consommer un tour pour rien.
+    if (stepIndex < 0) {
+      await page.waitForTimeout(300);
+      continue;
+    }
     const word = words[stepIndex]!;
     const radios = page.getByRole("radio");
     await expect(radios).toHaveCount(3);

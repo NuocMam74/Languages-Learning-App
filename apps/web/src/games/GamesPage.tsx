@@ -96,10 +96,10 @@ export function GamesPage({ content }: { content: ContentIndex }) {
       continue;
     }
     const entry = PLAYABLE[id];
-    if (entry && !isGamePlayable(content, id)) {
-      rows.push({ id, name, icon: "lock", soon: t("games.needsVoices") });
-      continue;
-    }
+    // Jeu d'oreille sans voix native : on ne le montre pas du tout, comme le karaoké tonal sans
+    // courbe. Une ligne verrouillée qui explique une absence est encore une façon de l'exposer ;
+    // le jeu revient de lui-même le jour où les enregistrements arrivent.
+    if (entry && !isGamePlayable(content, id)) continue;
     rows.push(
       entry
         ? { id, name, icon: entry.icon, to: `/jeux/${id}`, tagline: t(entry.tagline), state: state(id) }

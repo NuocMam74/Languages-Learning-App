@@ -115,7 +115,14 @@ export async function playOneStep(page: Page, finished: RegExp): Promise<"done" 
   await expect(heading.or(session).first()).toBeVisible();
   if (await heading.isVisible()) return "done";
 
+  // Position de la séance : le compteur **et** la phase. `data-cursor` vaut
+  // `reviewCursor + lesson.cursor` ; à la bascule révisions → leçon, `lesson.cursor` repart de
+  // zéro, donc la somme reste identique alors que l'écran a changé d'exercice. Lu seul, le
+  // compteur fait croire que la séance n'avance plus, et le tour échoue après dix secondes
+  // d'attente — sur une machine chargée, c'est exactement là que ça tombait. La phase, elle,
+  // change à cette frontière (`review` → `new`), et ne change jamais sans que la séance ait bougé.
   const cursor = await session.getAttribute("data-cursor");
+  const phase = await session.getAttribute("data-phase");
   const cont = page.getByRole("button", { name: "Continuer" });
   const done = page.getByRole("button", { name: "C'est fait" });
   const radio = page.getByRole("radio").first();
@@ -196,11 +203,11 @@ export async function playOneStep(page: Page, finished: RegExp): Promise<"done" 
     // et getAttribute attendrait sans fin.
     const snap = await page.evaluate(() => {
       const el = document.querySelector('[data-testid="lesson"]');
-      return el ? { status: el.getAttribute("data-status"), cursor: el.getAttribute("data-cursor") } : null;
+      return el ? { status: el.getAttribute("data-status"), cursor: el.getAttribute("data-cursor"), phase: el.getAttribute("data-phase") } : null;
     });
     if (!snap) throw new Error("transition en cours");
     const status = snap.status;
-    const moved = snap.cursor !== cursor;
+    const moved = snap.cursor !== cursor || snap.phase !== phase;
     const freshQuestion = (await radio.isVisible()) && (await page.locator('[role="radio"][aria-checked="true"]').count()) === 0;
     const ready = (status === "feedback" && (await cont.first().isVisible())) || (status === "answering" && (moved || freshQuestion || wasFeedback));
     expect(ready).toBe(true);
