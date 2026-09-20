@@ -10,7 +10,7 @@
     "fr": "Décrire tes symptômes.",
     "en": "Describe your symptoms."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u16.l02"
   ],
@@ -22,7 +22,11 @@
     "s_met_qua",
     "s_nhuc_dau",
     "s_dau_bung",
-    "c_voi"
+    "c_voi",
+    "c_nhuc",
+    "c_dau_head",
+    "c_dau_pain",
+    "s_mau_khoe"
   ],
   "steps": [
     {
@@ -130,6 +134,162 @@
         "fr": "mệt tombe court, quá monte.",
         "en": "mệt drops short, quá rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_met",
+      "distractors": [
+        "canh",
+        "quá",
+        "cầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nhuc_dau",
+      "distractors": [
+        "tụi mình",
+        "theo tui"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_dau_bung",
+      "distractors": [
+        "tiền điện",
+        "Đây là…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_voi",
+      "distractors": [
+        "hẹn",
+        "mười",
+        "đau"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_cough",
+      "distractors": [
+        "họ",
+        "thơm",
+        "ghét"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_nhuc_dau",
+      "distractors": [
+        "s_tra_da",
+        "s_queo_trai",
+        "s_ca_phe_sua_da"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_dau_bung",
+      "distractors": [
+        "s_queo_trai",
+        "s_nhuc_dau",
+        "s_queo_phai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em bị ___ với ho.",
+      "answer": "sốt",
+      "options": [
+        "sốt",
+        "mạ",
+        "đơn",
+        "dừa"
+      ],
+      "translation": {
+        "fr": "J'ai de la fièvre et je tousse.",
+        "en": "I have a fever and a cough."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em bị sốt với ___.",
+      "answer": "ho",
+      "options": [
+        "ho",
+        "họ",
+        "thơm",
+        "ghét"
+      ],
+      "translation": {
+        "fr": "J'ai de la fièvre et je tousse.",
+        "en": "I have a fever and a cough."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em bị ___.",
+      "answer": "nhức đầu",
+      "options": [
+        "nhức đầu",
+        "tụi mình",
+        "theo tui",
+        "mấy ngày"
+      ],
+      "translation": {
+        "fr": "J'ai mal à la tête.",
+        "en": "I have a headache."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em bị nhức đầu",
+      "tokens": [
+        "Em",
+        "bị",
+        "nhức",
+        "đầu"
+      ],
+      "translation": {
+        "fr": "J'ai mal à la tête.",
+        "en": "I have a headache."
+      },
+      "audioConcept": "s_nhuc_dau"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhuc",
+      "distractors": [
+        "thấy",
+        "cậu",
+        "của"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_head",
+      "distractors": [
+        "đâu",
+        "vườn",
+        "visa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_pain",
+      "distractors": [
+        "sốt",
+        "trà",
+        "giùm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mau_khoe",
+      "distractors": [
+        "Chị tên gì?",
+        "Em mới tới."
+      ]
     }
   ],
   "review": {

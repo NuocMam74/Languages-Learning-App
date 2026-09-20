@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais situer une action dans le temps.",
     "en": "Show you can place an action in time."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u13.l07"
   ],
@@ -22,7 +22,12 @@
     "c_se",
     "c_hoi_nay",
     "s_vua_an_xong",
-    "s_nam_sau_di_can_tho"
+    "s_nam_sau_di_can_tho",
+    "s_sau_tet",
+    "c_nam_sau",
+    "c_nam_ngoai",
+    "s_tuan_truoc",
+    "s_em_moi_toi"
   ],
   "steps": [
     {
@@ -202,6 +207,101 @@
         "fr": "Cần descend, Thơ reste plat.",
         "en": "Cần falls, Thơ stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nam_sau_di_can_tho",
+      "distractors": [
+        "Rất vui được làm việc với chị.",
+        "Tui làm ở một công ty Pháp."
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hôm qua em ___ đi chợ.",
+      "answer": "đã",
+      "options": [
+        "đã",
+        "đá",
+        "bác",
+        "bảy"
+      ],
+      "translation": {
+        "fr": "Hier, je suis allé(e) au marché.",
+        "en": "Yesterday I went to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tuần sau em ___ về Pháp.",
+      "answer": "sẽ",
+      "options": [
+        "sẽ",
+        "phút",
+        "qua",
+        "chơi"
+      ],
+      "translation": {
+        "fr": "La semaine prochaine, je rentre en France.",
+        "en": "Next week I'm going back to France."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tuần sau em sẽ về Pháp",
+      "tokens": [
+        "Tuần",
+        "sau",
+        "em",
+        "sẽ",
+        "về",
+        "Pháp"
+      ],
+      "translation": {
+        "fr": "La semaine prochaine, je rentre en France.",
+        "en": "Next week I'm going back to France."
+      },
+      "audioConcept": "c_se"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_sau_tet",
+      "distractors": [
+        "quẹo trái",
+        "Thiệt hông?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_sau",
+      "distractors": [
+        "tại sao",
+        "bao nhiêu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_ngoai",
+      "distractors": [
+        "dưa hấu",
+        "ngày mai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tuan_truoc",
+      "distractors": [
+        "nửa ký",
+        "Tui thấy…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_moi_toi",
+      "distractors": [
+        "số điện thoại",
+        "Em cũng vậy."
+      ]
     }
   ],
   "review": {

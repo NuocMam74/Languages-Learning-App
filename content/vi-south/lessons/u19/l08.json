@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais te débrouiller au guichet.",
     "en": "Show you can manage at the counter."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u19.l07"
   ],
@@ -181,6 +181,116 @@
       "translation": {
         "fr": "Tu me fais deux photocopies, s'il te plaît ?",
         "en": "Could you make me two copies?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_visa",
+      "distractors": [
+        "chó",
+        "sẽ",
+        "chỉ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cong_an",
+      "distractors": [
+        "năm ngoái",
+        "phòng ngủ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_the",
+      "distractors": [
+        "bắp",
+        "hông",
+        "alô"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gium",
+      "distractors": [
+        "tiệm",
+        "gọi",
+        "lên"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tui muốn gia hạn ___.",
+      "answer": "visa",
+      "options": [
+        "visa",
+        "chó",
+        "sẽ",
+        "chỉ"
+      ],
+      "translation": {
+        "fr": "Je veux prolonger mon visa.",
+        "en": "I want to extend my visa."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ của anh đâu?",
+      "answer": "giấy tờ",
+      "options": [
+        "giấy tờ",
+        "hồi đó",
+        "tuần trước",
+        "đi làm"
+      ],
+      "translation": {
+        "fr": "Où sont tes papiers ? (à un homme un peu plus âgé)",
+        "en": "Where are your papers? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở ___ nào?",
+      "answer": "phường",
+      "options": [
+        "phường",
+        "cậu",
+        "bảy",
+        "tốt"
+      ],
+      "translation": {
+        "fr": "Tu habites dans quel quartier ?",
+        "en": "Which ward do you live in?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em cần hai tấm hình ___.",
+      "answer": "thẻ",
+      "options": [
+        "thẻ",
+        "bắp",
+        "hông",
+        "alô"
+      ],
+      "translation": {
+        "fr": "J'ai besoin de deux photos d'identité.",
+        "en": "I need two ID photos."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em muốn mở ___.",
+      "answer": "tài khoản",
+      "options": [
+        "tài khoản",
+        "công an",
+        "kỹ sư",
+        "xe đạp"
+      ],
+      "translation": {
+        "fr": "Je voudrais ouvrir un compte.",
+        "en": "I'd like to open an account."
       }
     }
   ],

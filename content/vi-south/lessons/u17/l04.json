@@ -10,7 +10,7 @@
     "fr": "Parler caution, contrat et clés.",
     "en": "Talk about deposit, contract and keys."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u17.l03"
   ],
@@ -141,6 +141,155 @@
         "fr": "chìa descend, khóa monte.",
         "en": "chìa falls, khóa rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_owner",
+      "distractors": [
+        "chú",
+        "phim",
+        "mạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "bắt đầu",
+        "phòng ngủ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu",
+      "distractors": [
+        "chủ",
+        "mất",
+        "thưởng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chia_khoa",
+      "distractors": [
+        "bắt đầu",
+        "dễ thương"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "giờ",
+        "sai",
+        "chuyện"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_ky_su",
+        "c_song_river",
+        "c_sach"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_ben_trai",
+        "c_cay_xang",
+        "c_xe_may"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chu",
+      "distractors": [
+        "c_quan_ca_phe",
+        "c_bap",
+        "c_bac_si"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ là một tháng.",
+      "answer": "tiền cọc",
+      "options": [
+        "tiền cọc",
+        "Thiệt há?",
+        "Tới rồi.",
+        "Không phải."
+      ],
+      "translation": {
+        "fr": "La caution, c'est un mois.",
+        "en": "The deposit is one month."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Số ___ của chị là bao nhiêu?",
+      "answer": "điện thoại",
+      "options": [
+        "điện thoại",
+        "bắt đầu",
+        "phòng ngủ",
+        "nước mía"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "giờ",
+        "sai",
+        "chuyện"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, con cảm ơn ___.",
+      "answer": "chú",
+      "options": [
+        "chú",
+        "chủ",
+        "mất",
+        "thưởng"
+      ],
+      "translation": {
+        "fr": "Merci (à un homme de l'âge de tes parents).",
+        "en": "Thank you (to a man your parents' age)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Số điện thoại của chị là bao nhiêu",
+      "tokens": [
+        "Số",
+        "điện",
+        "thoại",
+        "của",
+        "chị",
+        "là",
+        "bao",
+        "nhiêu"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      },
+      "audioConcept": "c_dien_thoai"
     }
   ],
   "review": {

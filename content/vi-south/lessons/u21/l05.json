@@ -10,7 +10,7 @@
     "fr": "Reconnaître des mots du Sud pour décrire les gens.",
     "en": "Recognise southern words to describe people."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u21.l04"
   ],
@@ -21,7 +21,15 @@
     "s_b_em_mac_co",
     "c_b_gion",
     "c_b_hoai",
-    "s_b_gion_hoai"
+    "s_b_gion_hoai",
+    "s_b_thiet_ha",
+    "s_b_ne_coi_nay",
+    "c_b_coi",
+    "c_b_ne",
+    "c_b_ha_particle",
+    "s_b_di_dau_vay",
+    "s_b_mai_gap_hen",
+    "s_b_nho_nghen"
   ],
   "steps": [
     {
@@ -123,6 +131,128 @@
         "fr": "dễ thương : mignon, gentil. Très fréquent au Sud.",
         "en": "dễ thương: cute, sweet. Very common in the South."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoai",
+      "distractors": [
+        "rau",
+        "bà",
+        "lầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_de_thuong",
+      "distractors": [
+        "lần đầu",
+        "trái cây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_mac_co",
+      "distractors": [
+        "cà phê sữa đá",
+        "Khi nào anh về?"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ quá.",
+      "answer": "mắc cỡ",
+      "options": [
+        "mắc cỡ",
+        "nhân viên",
+        "anh hai",
+        "tài khoản"
+      ],
+      "translation": {
+        "fr": "Je suis tout(e) gêné(e).",
+        "en": "I'm so embarrassed."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Con nhỏ ___ quá!",
+      "answer": "dễ thương",
+      "options": [
+        "dễ thương",
+        "lần đầu",
+        "trái cây",
+        "chủ nhật"
+      ],
+      "translation": {
+        "fr": "Qu'elle est mignonne, cette petite !",
+        "en": "What a cute little girl!"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_thiet_ha",
+      "distractors": [
+        "dừng lại",
+        "Hổng biết."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ne_coi_nay",
+      "distractors": [
+        "Xin lỗi, em tới trễ.",
+        "Chị là người nước nào?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_coi",
+      "distractors": [
+        "theo",
+        "chậm",
+        "thím"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ne",
+      "distractors": [
+        "anh",
+        "xoài",
+        "gà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ha_particle",
+      "distractors": [
+        "nội",
+        "bò",
+        "coi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_di_dau_vay",
+      "distractors": [
+        "Hẹn gặp lại.",
+        "Bạn tên gì?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_mai_gap_hen",
+      "distractors": [
+        "Đi đâu vậy?",
+        "Em mới tới."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_nho_nghen",
+      "distractors": [
+        "theo tui",
+        "tuần sau"
+      ]
     },
     {
       "type": "game",

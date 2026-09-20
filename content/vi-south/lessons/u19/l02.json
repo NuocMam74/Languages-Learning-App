@@ -10,7 +10,7 @@
     "fr": "Dire que ton visa expire et demander à le prolonger.",
     "en": "Say your visa is expiring and ask to extend it."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u19.l01"
   ],
@@ -20,7 +20,12 @@
     "c_b_gia_han",
     "s_b_visa_het_han",
     "s_b_gia_han_visa",
-    "c_b_visa"
+    "c_b_visa",
+    "c_b_giay_second",
+    "c_b_giay_paper",
+    "c_b_don",
+    "c_b_ho_chieu",
+    "c_b_giay_to"
   ],
   "steps": [
     {
@@ -150,6 +155,129 @@
       "explain": {
         "fr": "muốn monte, gia plat, hạn court.",
         "en": "muốn rises, gia level, hạn short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gia_han_visa",
+      "distractors": [
+        "Em là nhân viên mới.",
+        "Cuối tháng mới lãnh lương."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_visa",
+      "distractors": [
+        "giây",
+        "tháng",
+        "sao"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tui ___ gia hạn visa.",
+      "answer": "muốn",
+      "options": [
+        "muốn",
+        "bông",
+        "thím",
+        "đợi"
+      ],
+      "translation": {
+        "fr": "Je veux prolonger mon visa.",
+        "en": "I want to extend my visa."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_second",
+      "distractors": [
+        "giấy",
+        "xoài",
+        "dừa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_paper",
+      "distractors": [
+        "giây",
+        "mây",
+        "hen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_don",
+      "distractors": [
+        "sữa",
+        "mắc",
+        "nhanh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ho_chieu",
+      "distractors": [
+        "làm việc",
+        "chủ nhật"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_to",
+      "distractors": [
+        "máy lạnh",
+        "văn phòng"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_don",
+      "distractors": [
+        "c_ma_mom",
+        "c_com_tam",
+        "c_khach_san"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ho_chieu",
+      "distractors": [
+        "c_ben_phai",
+        "c_ba_grandma",
+        "c_chia_khoa"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tờ của anh đâu?",
+      "answer": "giấy",
+      "options": [
+        "giấy",
+        "giây",
+        "mây",
+        "hen"
+      ],
+      "translation": {
+        "fr": "Où sont tes papiers ? (à un homme un peu plus âgé)",
+        "en": "Where are your papers? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh cho tôi coi ___.",
+      "answer": "hộ chiếu",
+      "options": [
+        "hộ chiếu",
+        "làm việc",
+        "chủ nhật",
+        "ngày mai"
+      ],
+      "translation": {
+        "fr": "Montrez-moi votre passeport.",
+        "en": "Show me your passport."
       }
     }
   ],

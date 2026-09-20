@@ -31,7 +31,7 @@ async function onboardHere(page: Page) {
   await page.getByRole("button", { name: "Continuer" }).click();
   for (let i = 0; i < 5; i++) {
     await expect(page.getByText(`Question ${i + 1} sur 5`)).toBeVisible({ timeout: 20_000 });
-    const choice = i === 3 ? page.getByRole("button", { name: "5 min", exact: true }) : page.locator("main button").first();
+    const choice = i === 3 ? page.getByRole("button", { name: "10 min", exact: true }) : page.locator("main button").first();
     await choice.click();
   }
   const placement = page.getByRole("heading", { name: "Un mini-test de 90 secondes ?" });

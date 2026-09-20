@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais poser les questions de base.",
     "en": "Show you can ask the basic questions."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l07"
   ],
@@ -193,6 +193,146 @@
       "explain": {
         "fr": "nhiêu reste plat, tiền descend.",
         "en": "nhiêu stays level, tiền falls."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may_cloud",
+      "distractors": [
+        "mấy",
+        "phút",
+        "trăm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoi_ask",
+      "distractors": [
+        "ít",
+        "phải",
+        "đợi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bao_nhieu_tien",
+      "distractors": [
+        "Kẹt xe quá!",
+        "Món nào ngon?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may",
+      "distractors": [
+        "mây",
+        "no",
+        "học"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Khi ___ anh về quê?",
+      "answer": "nào",
+      "options": [
+        "nào",
+        "mà",
+        "này",
+        "bạn"
+      ],
+      "translation": {
+        "fr": "Quand est-ce que tu rentres au pays ? (à un homme un peu plus âgé)",
+        "en": "When are you going back to your hometown? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em học tiếng Việt?",
+      "answer": "tại sao",
+      "options": [
+        "tại sao",
+        "tạm trú",
+        "ngày sinh",
+        "văn phòng"
+      ],
+      "translation": {
+        "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
+        "en": "Why are you learning Vietnamese? (to someone younger)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây giờ ___ giờ rồi?",
+      "answer": "mấy",
+      "options": [
+        "mấy",
+        "mây",
+        "no",
+        "học"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Người đó là ai vậy",
+      "tokens": [
+        "Người",
+        "đó",
+        "là",
+        "ai",
+        "vậy"
+      ],
+      "translation": {
+        "fr": "C'est qui, cette personne ?",
+        "en": "Who is that person?"
+      },
+      "audioConcept": "s_nguoi_do_la_ai"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Khi nào anh về quê",
+      "tokens": [
+        "Khi",
+        "nào",
+        "anh",
+        "về",
+        "quê"
+      ],
+      "translation": {
+        "fr": "Quand est-ce que tu rentres au pays ? (à un homme un peu plus âgé)",
+        "en": "When are you going back to your hometown? (to a slightly older man)"
+      },
+      "audioConcept": "c_nao_which"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ mấy giờ rồi",
+      "tokens": [
+        "Bây",
+        "giờ",
+        "mấy",
+        "giờ",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      },
+      "audioConcept": "c_may"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Người đó là ai vậy?",
+      "accepted": {
+        "fr": [
+          "C'est qui, cette personne ?"
+        ],
+        "en": [
+          "Who is that person?"
+        ]
       }
     }
   ],

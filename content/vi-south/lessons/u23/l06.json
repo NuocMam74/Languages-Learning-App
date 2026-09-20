@@ -10,7 +10,7 @@
     "fr": "Exprimer un souhait ou un regret.",
     "en": "Express a wish or a regret."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u23.l05"
   ],
@@ -19,7 +19,18 @@
     "c_b_uoc_gi",
     "c_b_gioi",
     "s_b_uoc_gi_noi_gioi",
-    "s_b_uoc_gi_ve_que"
+    "s_b_uoc_gi_ve_que",
+    "s_b_neu_co_tien",
+    "c_b_du_lich",
+    "c_b_se_future",
+    "s_b_gia_su_trung_so",
+    "c_b_trung_so",
+    "c_b_ve_so",
+    "c_b_gia_price",
+    "c_b_gia_fake",
+    "c_b_gia_su",
+    "s_b_chac_hong",
+    "s_b_co_le_mai_mua"
   ],
   "steps": [
     {
@@ -122,6 +133,128 @@
         "fr": "ước monte, giỏi plonge, Việt tombe court.",
         "en": "ước rises, giỏi dips, Việt drops short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_uoc_gi",
+      "distractors": [
+        "phong bì",
+        "bình thường"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_uoc_gi_ve_que",
+      "distractors": [
+        "Hôm qua tui đi chợ rồi về nhà.",
+        "Tại vì kẹt xe nên em tới trễ."
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ gì tui nói giỏi tiếng Việt.",
+      "answer": "ước",
+      "options": [
+        "ước",
+        "trước",
+        "lãnh",
+        "nhờ"
+      ],
+      "translation": {
+        "fr": "Si seulement je parlais bien vietnamien.",
+        "en": "If only I spoke Vietnamese well."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_co_tien",
+      "distractors": [
+        "Tại vì kẹt xe nên em tới trễ.",
+        "Nếu rảnh thì ghé nhà tui chơi nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_du_lich",
+      "distractors": [
+        "lì xì",
+        "bao nhiêu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_se_future",
+      "distractors": [
+        "ba",
+        "ảnh",
+        "đúng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gia_su_trung_so",
+      "distractors": [
+        "Mời chị đi đám cưới em nha.",
+        "Chị photo giùm em hai bản nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_trung_so",
+      "distractors": [
+        "tăng ca",
+        "năm ngoái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ve_so",
+      "distractors": [
+        "tạm trú",
+        "bác sĩ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_price",
+      "distractors": [
+        "giả",
+        "già",
+        "đắng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_fake",
+      "distractors": [
+        "già",
+        "giá",
+        "đẹp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_su",
+      "distractors": [
+        "đám cưới",
+        "họ hàng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chac_hong",
+      "distractors": [
+        "ông ngoại",
+        "thứ hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_co_le_mai_mua",
+      "distractors": [
+        "Em không đồng ý lắm.",
+        "Lát em gọi lại nha."
+      ]
     },
     {
       "type": "game",

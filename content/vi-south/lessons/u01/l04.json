@@ -10,7 +10,7 @@
     "fr": "T'excuser, remercier et répondre « de rien » à la manière du Sud.",
     "en": "Apologise, thank, and say 'you're welcome' the southern way."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u01.l03"
   ],
@@ -19,7 +19,13 @@
     "s_khong_co_chi",
     "s_khong_sao",
     "c_oi",
-    "s_hen_gap_lai"
+    "s_hen_gap_lai",
+    "s_day_la",
+    "c_toi",
+    "c_ba_grandma",
+    "c_ba",
+    "c_em",
+    "s_chao_anh"
   ],
   "steps": [
     {
@@ -122,6 +128,146 @@
         "fr": "Hẹn gặp lại : « à la prochaine ». hẹn et gặp tombent court.",
         "en": "Hẹn gặp lại: 'see you again'. hẹn and gặp drop short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hen_gap_lai",
+      "distractors": [
+        "Có xa không?",
+        "Nhà tôi có…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_oi",
+      "distractors": [
+        "hông",
+        "chào",
+        "ạ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ chị.",
+      "answer": "xin lỗi",
+      "options": [
+        "xin lỗi",
+        "nước mía",
+        "hết hạn",
+        "xe hơi"
+      ],
+      "translation": {
+        "fr": "Pardon (à une femme un peu plus âgée).",
+        "en": "Sorry (to a slightly older woman)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, ___",
+      "answer": "Không có chi.",
+      "options": [
+        "Không có chi.",
+        "Kẹt xe quá!",
+        "Em cũng vậy.",
+        "Trời đang mưa."
+      ],
+      "translation": {
+        "fr": "De rien (poliment).",
+        "en": "You're welcome (politely)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___!",
+      "answer": "ơi",
+      "options": [
+        "ơi",
+        "hông",
+        "chào",
+        "ạ"
+      ],
+      "translation": {
+        "fr": "S'il vous plaît ! (pour appeler un homme un peu plus âgé)",
+        "en": "Excuse me! (calling a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi chị",
+      "tokens": [
+        "Xin",
+        "lỗi",
+        "chị"
+      ],
+      "translation": {
+        "fr": "Pardon (à une femme un peu plus âgée).",
+        "en": "Sorry (to a slightly older woman)."
+      },
+      "audioConcept": "c_xin_loi"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Anh ơi!",
+      "accepted": {
+        "fr": [
+          "S'il vous plaît ! (pour appeler un homme un peu plus âgé)"
+        ],
+        "en": [
+          "Excuse me! (calling a slightly older man)"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_day_la",
+      "distractors": [
+        "phải không?",
+        "quẹo trái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi",
+      "distractors": [
+        "tối",
+        "trưa",
+        "khác"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "ba",
+        "bả",
+        "giây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba",
+      "distractors": [
+        "bà",
+        "bả",
+        "cổ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_em",
+      "distractors": [
+        "nhớ",
+        "dơ",
+        "ước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chao_anh",
+      "distractors": [
+        "Vậy hả?",
+        "gần đây"
+      ]
     },
     {
       "type": "game",

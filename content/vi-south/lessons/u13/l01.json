@@ -10,7 +10,7 @@
     "fr": "Dire qu'une action est passée ou finie.",
     "en": "Say an action is past or done."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l08"
   ],
@@ -135,6 +135,157 @@
         "fr": "đã et rồi encadrent le verbe.",
         "en": "đã and rồi frame the verb."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xong",
+      "distractors": [
+        "lẩu",
+        "phim",
+        "gần"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_pho",
+      "distractors": [
+        "mở",
+        "nghĩ",
+        "bớt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "nhắn tin",
+        "đồng ý"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi",
+      "distractors": [
+        "rối",
+        "qua",
+        "ra"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_com",
+      "distractors": [
+        "muốn",
+        "thím",
+        "khỏe"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_pho",
+      "distractors": [
+        "c_non_bao_hiem",
+        "c_ga_station",
+        "c_to_bowl"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "c_b_don",
+        "c_ga_chicken",
+        "c_com"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hôm qua em ___ đi chợ.",
+      "answer": "đã",
+      "options": [
+        "đã",
+        "đá",
+        "heo",
+        "theo"
+      ],
+      "translation": {
+        "fr": "Hier, je suis allé(e) au marché.",
+        "en": "Yesterday I went to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, em no ___.",
+      "answer": "rồi",
+      "options": [
+        "rồi",
+        "rối",
+        "qua",
+        "ra"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Ăn ___ chưa?",
+      "answer": "cơm",
+      "options": [
+        "cơm",
+        "muốn",
+        "thím",
+        "khỏe"
+      ],
+      "translation": {
+        "fr": "Tu as mangé ? (salutation entre proches)",
+        "en": "Have you eaten? (greeting between close ones)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em một tô ___.",
+      "answer": "phở",
+      "options": [
+        "phở",
+        "mở",
+        "nghĩ",
+        "bớt"
+      ],
+      "translation": {
+        "fr": "Un bol de phở, s'il te plaît.",
+        "en": "A bowl of phở, please."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ em no rồi",
+      "tokens": [
+        "Dạ",
+        "em",
+        "no",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      },
+      "audioConcept": "c_roi"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ăn cơm chưa",
+      "tokens": [
+        "Ăn",
+        "cơm",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu as mangé ? (salutation entre proches)",
+        "en": "Have you eaten? (greeting between close ones)"
+      },
+      "audioConcept": "c_com"
     }
   ],
   "review": {

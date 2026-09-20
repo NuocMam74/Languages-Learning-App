@@ -10,7 +10,7 @@
     "fr": "Reconnaître đ, nh, ng et savoir taper les tons en Telex.",
     "en": "Recognise đ, nh, ng and type tones with Telex."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u02.l05"
   ],
@@ -21,7 +21,13 @@
     "c_ngu_sleep",
     "c_o_at",
     "s_tieng_viet",
-    "c_vay"
+    "c_vay",
+    "c_chua",
+    "c_mac_expensive",
+    "c_tot_good",
+    "c_mot_one",
+    "c_an_eat",
+    "c_ban_table"
   ],
   "steps": [
     {
@@ -128,6 +134,134 @@
         "fr": "tiếng monte, Việt tombe court. En Telex : tieengs Vieetj.",
         "en": "tiếng rises, Việt drops short. In Telex: tieengs Vieetj."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tieng_viet",
+      "distractors": [
+        "đi thẳng",
+        "Chắc hông?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_house",
+      "distractors": [
+        "nha",
+        "mấy",
+        "gọi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngu_sleep",
+      "distractors": [
+        "kể",
+        "nhờ",
+        "không"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_o_at",
+      "distractors": [
+        "đêm",
+        "ghe",
+        "sống"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vay",
+      "distractors": [
+        "quẹo",
+        "dở",
+        "sữa"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ đâu vậy?",
+      "answer": "đi",
+      "options": [
+        "đi",
+        "năm",
+        "chỉ",
+        "bà"
+      ],
+      "translation": {
+        "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+        "en": "Where are you going? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở ___.",
+      "answer": "nhà",
+      "options": [
+        "nhà",
+        "nha",
+        "mấy",
+        "gọi"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua",
+      "distractors": [
+        "ghe",
+        "ồn",
+        "việc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mac_expensive",
+      "distractors": [
+        "với",
+        "ai",
+        "mốt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tot_good",
+      "distractors": [
+        "chè",
+        "xấu",
+        "bị"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_one",
+      "distractors": [
+        "mốt",
+        "nhiều",
+        "ly"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_an_eat",
+      "distractors": [
+        "lát",
+        "đũa",
+        "thịt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_table",
+      "distractors": [
+        "bạn",
+        "bán",
+        "mì"
+      ]
     },
     {
       "type": "game",

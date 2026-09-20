@@ -10,7 +10,7 @@
     "fr": "Poser une condition simple.",
     "en": "Set a simple condition."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 4,
   "prerequisites": [
     "vi-south.u22.l08"
   ],
@@ -135,6 +135,53 @@
         "fr": "nếu monte, mưa plat, thì descend.",
         "en": "nếu rises, mưa level, thì falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "cho",
+        "điện",
+        "lương"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trời đang ___.",
+      "answer": "mưa",
+      "options": [
+        "mưa",
+        "cho",
+        "điện",
+        "lương"
+      ],
+      "translation": {
+        "fr": "Il pleut en ce moment.",
+        "en": "It's raining right now."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Trời đang mưa",
+      "tokens": [
+        "Trời",
+        "đang",
+        "mưa"
+      ],
+      "translation": {
+        "fr": "Il pleut en ce moment.",
+        "en": "It's raining right now."
+      },
+      "audioConcept": "c_mua_rain"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_neu",
+        "c_b_thi",
+        "s_b_neu_mua_thi_o_nha",
+        "c_mua_rain"
+      ]
     }
   ],
   "review": {

@@ -10,7 +10,7 @@
     "fr": "Ouvrir un compte, retirer de l'argent, payer par virement.",
     "en": "Open an account, withdraw money, pay by transfer."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u19.l03"
   ],
@@ -22,7 +22,12 @@
     "s_b_rut_tien",
     "c_b_the",
     "c_b_chuyen_khoan",
-    "c_ngan_hang"
+    "c_ngan_hang",
+    "s_b_khai_bao_tam_tru",
+    "s_b_cho_coi_ho_chieu",
+    "c_b_tam_tru",
+    "c_b_phuong",
+    "c_b_cong_an"
   ],
   "steps": [
     {
@@ -138,6 +143,121 @@
         "fr": "mở plonge, tài descend, khoản plonge.",
         "en": "mở dips, tài falls, khoản dips."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_rut",
+      "distractors": [
+        "chén",
+        "đã",
+        "đắng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_mo",
+      "distractors": [
+        "mợ",
+        "lớn",
+        "rẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_mo_tai_khoan",
+      "distractors": [
+        "Cho em gặp anh Minh.",
+        "Cuối tháng mới lãnh lương."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_the",
+      "distractors": [
+        "giờ",
+        "nước",
+        "của"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "đám cưới",
+        "hết hạn"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ở bên trái.",
+      "answer": "ngân hàng",
+      "options": [
+        "ngân hàng",
+        "đám cưới",
+        "hết hạn",
+        "công ty"
+      ],
+      "translation": {
+        "fr": "La banque est à gauche.",
+        "en": "The bank is on the left."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ngân hàng ở bên trái",
+      "tokens": [
+        "Ngân",
+        "hàng",
+        "ở",
+        "bên",
+        "trái"
+      ],
+      "translation": {
+        "fr": "La banque est à gauche.",
+        "en": "The bank is on the left."
+      },
+      "audioConcept": "c_ngan_hang"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_khai_bao_tam_tru",
+      "distractors": [
+        "Theo tui, quán này ngon hơn.",
+        "Anh chở em ra chợ nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_cho_coi_ho_chieu",
+      "distractors": [
+        "Anh đợi em chút xíu nha.",
+        "Chị nhắn lại giùm em nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tam_tru",
+      "distractors": [
+        "nhà thuốc",
+        "nghỉ phép"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_phuong",
+      "distractors": [
+        "lúc",
+        "lên",
+        "đụng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cong_an",
+      "distractors": [
+        "kế bên",
+        "chủ nhà"
+      ]
     }
   ],
   "review": {

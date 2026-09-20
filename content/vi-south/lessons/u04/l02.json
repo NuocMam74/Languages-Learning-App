@@ -10,7 +10,7 @@
     "fr": "Présenter ta femme, ton mari et ta famille.",
     "en": "Introduce your wife, husband and family."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u04.l01"
   ],
@@ -20,7 +20,13 @@
     "c_gia_dinh",
     "c_cua",
     "c_ong_xa",
-    "c_ba_xa"
+    "c_ba_xa",
+    "c_em_ut",
+    "c_tu",
+    "c_anh_ba",
+    "c_chi_hai",
+    "c_anh_hai",
+    "c_hai"
   ],
   "steps": [
     {
@@ -129,6 +135,130 @@
         "fr": "bà descend ; xã (ngã) se prononce comme un hỏi au Sud.",
         "en": "bà falls; xã (ngã) sounds like hỏi in the South."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_xa",
+      "distractors": [
+        "máy lạnh",
+        "cơm tấm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vo",
+      "distractors": [
+        "hen",
+        "xin",
+        "dở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chong",
+      "distractors": [
+        "nghỉ",
+        "nửa",
+        "hồi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cua",
+      "distractors": [
+        "tui",
+        "chủ",
+        "thịt"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ tôi.",
+      "answer": "vợ",
+      "options": [
+        "vợ",
+        "hen",
+        "xin",
+        "dở"
+      ],
+      "translation": {
+        "fr": "Voici ma femme.",
+        "en": "This is my wife."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ của tôi.",
+      "answer": "gia đình",
+      "options": [
+        "gia đình",
+        "hợp đồng",
+        "tầng trệt",
+        "xe buýt"
+      ],
+      "translation": {
+        "fr": "Voici ma famille.",
+        "en": "This is my family."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_em_ut",
+      "distractors": [
+        "máy bay",
+        "làm việc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tu",
+      "distractors": [
+        "da",
+        "tiệc",
+        "đêm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_ba",
+      "distractors": [
+        "bao giờ",
+        "bên phải"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi_hai",
+      "distractors": [
+        "khách sạn",
+        "chủ nhật"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_hai",
+      "distractors": [
+        "tầng trệt",
+        "chìa khóa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hai",
+      "distractors": [
+        "ghiền",
+        "chuối",
+        "hỏi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_em_ut",
+      "distractors": [
+        "c_muong",
+        "c_gio",
+        "c_thit"
+      ]
     }
   ],
   "review": {

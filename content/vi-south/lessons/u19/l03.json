@@ -10,7 +10,7 @@
     "fr": "Te présenter au poste de police du quartier.",
     "en": "Go to the ward police station."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u19.l02"
   ],
@@ -20,7 +20,12 @@
     "c_b_tam_tru",
     "s_b_cho_coi_ho_chieu",
     "s_b_khai_bao_tam_tru",
-    "c_dia_chi"
+    "c_dia_chi",
+    "s_b_gia_han_visa",
+    "s_b_visa_het_han",
+    "c_b_gia_han",
+    "c_b_muon",
+    "c_b_het_han"
   ],
   "steps": [
     {
@@ -146,6 +151,148 @@
         "fr": "khai plat, báo monte, tạm court, trú monte.",
         "en": "khai level, báo rises, tạm short, trú rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dia_chi",
+      "distractors": [
+        "cà phê",
+        "xe hơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cong_an",
+      "distractors": [
+        "năm sau",
+        "giấy tờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_khai_bao_tam_tru",
+      "distractors": [
+        "Anh ghiền cà phê sữa đá.",
+        "Chị nhắn lại giùm em nha."
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở ___ nào?",
+      "answer": "phường",
+      "options": [
+        "phường",
+        "sớm",
+        "vé",
+        "đá"
+      ],
+      "translation": {
+        "fr": "Tu habites dans quel quartier ?",
+        "en": "Which ward do you live in?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tui đi khai báo ___.",
+      "answer": "tạm trú",
+      "options": [
+        "tạm trú",
+        "hình thẻ",
+        "chìa khóa",
+        "chuyển khoản"
+      ],
+      "translation": {
+        "fr": "Je vais déclarer mon lieu de résidence.",
+        "en": "I'm going to register my residence."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ của anh là gì?",
+      "answer": "địa chỉ",
+      "options": [
+        "địa chỉ",
+        "cà phê",
+        "xe hơi",
+        "đám giỗ"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton adresse ? (à un homme un peu plus âgé)",
+        "en": "What's your address? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ở phường nào",
+      "tokens": [
+        "Em",
+        "ở",
+        "phường",
+        "nào"
+      ],
+      "translation": {
+        "fr": "Tu habites dans quel quartier ?",
+        "en": "Which ward do you live in?"
+      },
+      "audioConcept": "c_b_phuong"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Địa chỉ của anh là gì",
+      "tokens": [
+        "Địa",
+        "chỉ",
+        "của",
+        "anh",
+        "là",
+        "gì"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton adresse ? (à un homme un peu plus âgé)",
+        "en": "What's your address? (to a slightly older man)"
+      },
+      "audioConcept": "c_dia_chi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gia_han_visa",
+      "distractors": [
+        "Sau đó tui qua Pháp.",
+        "Anh có thích phở không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_visa_het_han",
+      "distractors": [
+        "Tuần này em làm ca sáng.",
+        "Chị nhắn lại giùm em nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_han",
+      "distractors": [
+        "hộ chiếu",
+        "nhân viên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_muon",
+      "distractors": [
+        "uống",
+        "lẩu",
+        "chút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_het_han",
+      "distractors": [
+        "giấy tờ",
+        "dễ thương"
+      ]
     }
   ],
   "review": {

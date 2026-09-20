@@ -19,7 +19,10 @@
     "c_b_ghe_by",
     "c_b_choi",
     "s_b_neu_ranh",
-    "c_b_ghe"
+    "c_b_ghe",
+    "s_b_neu_mua_thi_o_nha",
+    "c_b_thi",
+    "c_b_neu"
   ],
   "steps": [
     {
@@ -136,6 +139,124 @@
         "fr": "rảnh plonge, ghé monte, chơi plat.",
         "en": "rảnh dips, ghé rises, chơi level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ghe",
+      "distractors": [
+        "ghé",
+        "tư",
+        "hông"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ghe",
+      "distractors": [
+        "c_meo",
+        "c_troi",
+        "c_b_ho_chieu"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mình đi ___ ra chợ nổi hen.",
+      "answer": "ghe",
+      "options": [
+        "ghe",
+        "ghé",
+        "tư",
+        "hông"
+      ],
+      "translation": {
+        "fr": "On prend le bateau pour le marché flottant, d'accord ?",
+        "en": "Let's take the boat to the floating market, okay?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mình đi ghe ra chợ nổi hen",
+      "tokens": [
+        "Mình",
+        "đi",
+        "ghe",
+        "ra",
+        "chợ",
+        "nổi",
+        "hen"
+      ],
+      "translation": {
+        "fr": "On prend le bateau pour le marché flottant, d'accord ?",
+        "en": "Let's take the boat to the floating market, okay?"
+      },
+      "audioConcept": "c_b_ghe"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_mua_thi_o_nha",
+      "distractors": [
+        "Em xin nghỉ phép ba ngày.",
+        "Đây là đồng nghiệp của tui."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thi",
+      "distractors": [
+        "xin",
+        "cơm",
+        "trẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_neu",
+      "distractors": [
+        "ký",
+        "trước",
+        "sáng"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nếu mưa ___ tui ở nhà.",
+      "answer": "thì",
+      "options": [
+        "thì",
+        "xin",
+        "cơm",
+        "trẻ"
+      ],
+      "translation": {
+        "fr": "S'il pleut, je reste à la maison.",
+        "en": "If it rains, I'll stay home."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ mưa thì tui ở nhà.",
+      "answer": "nếu",
+      "options": [
+        "nếu",
+        "ký",
+        "trước",
+        "sáng"
+      ],
+      "translation": {
+        "fr": "S'il pleut, je reste à la maison.",
+        "en": "If it rains, I'll stay home."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_ranh",
+        "c_b_ghe_by",
+        "c_b_choi",
+        "s_b_neu_ranh",
+        "c_b_ghe",
+        "s_b_neu_mua_thi_o_nha"
+      ]
     },
     {
       "type": "game",

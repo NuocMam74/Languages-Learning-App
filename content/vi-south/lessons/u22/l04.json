@@ -10,7 +10,7 @@
     "fr": "Enchaîner les étapes d'un récit.",
     "en": "Link the steps of a story."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u22.l03"
   ],
@@ -21,7 +21,9 @@
     "s_b_luc_do_troi_mua",
     "s_b_sau_do_tui_qua_phap",
     "c_luc",
-    "c_mua_rain"
+    "c_mua_rain",
+    "s_b_hom_qua_tui_di_cho",
+    "c_b_da_past"
   ],
   "steps": [
     {
@@ -150,6 +152,176 @@
         "fr": "sau plat, đó monte, Pháp monte.",
         "en": "sau level, đó rises, Pháp rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_sau_do_tui_qua_phap",
+      "distractors": [
+        "Cuối tháng mới lãnh lương.",
+        "Cho em gặp anh Minh."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_luc",
+      "distractors": [
+        "đêm",
+        "chắc",
+        "tôi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "ở",
+        "mua",
+        "mệt"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ trời mưa lớn lắm.",
+      "answer": "lúc đó",
+      "options": [
+        "lúc đó",
+        "hồi nhỏ",
+        "ngân hàng",
+        "công an"
+      ],
+      "translation": {
+        "fr": "À ce moment-là, il pleuvait très fort.",
+        "en": "At that moment it was raining really hard."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui qua Pháp.",
+      "answer": "sau đó",
+      "options": [
+        "sau đó",
+        "tuần trước",
+        "kỹ sư",
+        "kẹt xe"
+      ],
+      "translation": {
+        "fr": "Ensuite, je suis parti(e) en France.",
+        "en": "After that I went to France."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tui ___ học tiếng Việt năm ngoái.",
+      "answer": "bắt đầu",
+      "options": [
+        "bắt đầu",
+        "trúng số",
+        "sinh viên",
+        "hết hạn"
+      ],
+      "translation": {
+        "fr": "J'ai commencé le vietnamien l'an dernier.",
+        "en": "I started learning Vietnamese last year."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi thường đi làm ___ bảy giờ sáng.",
+      "answer": "lúc",
+      "options": [
+        "lúc",
+        "đêm",
+        "chắc",
+        "tôi"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trời đang ___.",
+      "answer": "mưa",
+      "options": [
+        "mưa",
+        "ở",
+        "mua",
+        "mệt"
+      ],
+      "translation": {
+        "fr": "Il pleut en ce moment.",
+        "en": "It's raining right now."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui bắt đầu học tiếng Việt năm ngoái",
+      "tokens": [
+        "Tui",
+        "bắt",
+        "đầu",
+        "học",
+        "tiếng",
+        "Việt",
+        "năm",
+        "ngoái"
+      ],
+      "translation": {
+        "fr": "J'ai commencé le vietnamien l'an dernier.",
+        "en": "I started learning Vietnamese last year."
+      },
+      "audioConcept": "c_b_bat_dau"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi thường đi làm lúc bảy giờ sáng",
+      "tokens": [
+        "Tôi",
+        "thường",
+        "đi",
+        "làm",
+        "lúc",
+        "bảy",
+        "giờ",
+        "sáng"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      },
+      "audioConcept": "c_luc"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Trời đang mưa",
+      "tokens": [
+        "Trời",
+        "đang",
+        "mưa"
+      ],
+      "translation": {
+        "fr": "Il pleut en ce moment.",
+        "en": "It's raining right now."
+      },
+      "audioConcept": "c_mua_rain"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hom_qua_tui_di_cho",
+      "distractors": [
+        "Nếu rảnh thì ghé nhà tui chơi nha.",
+        "Số điện thoại của chị là bao nhiêu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_da_past",
+      "distractors": [
+        "đá",
+        "bò",
+        "thầy"
+      ]
     }
   ],
   "review": {

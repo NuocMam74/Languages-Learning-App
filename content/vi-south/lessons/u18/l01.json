@@ -10,7 +10,7 @@
     "fr": "Dire où tu travailles et présenter ton bureau.",
     "en": "Say where you work and describe your office."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u15.l08"
   ],
@@ -140,6 +140,114 @@
         "fr": "làm descend, công ty reste plat, Pháp monte.",
         "en": "làm falls, công ty stays level, Pháp rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sep",
+      "distractors": [
+        "cưới",
+        "vì",
+        "nhớ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dong_nghiep",
+      "distractors": [
+        "lúc đó",
+        "đám giỗ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_may_tinh",
+      "distractors": [
+        "máy lạnh",
+        "họ hàng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_van_phong",
+      "distractors": [
+        "du lịch",
+        "năm ngoái"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ của tui.",
+      "answer": "đồng nghiệp",
+      "options": [
+        "đồng nghiệp",
+        "lúc đó",
+        "đám giỗ",
+        "kẹt xe"
+      ],
+      "translation": {
+        "fr": "Voici mon collègue.",
+        "en": "This is my colleague."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi làm việc cho một ___ Pháp.",
+      "answer": "công ty",
+      "options": [
+        "công ty",
+        "ước gì",
+        "nhân viên",
+        "sinh viên"
+      ],
+      "translation": {
+        "fr": "Je travaille pour une entreprise française.",
+        "en": "I work for a French company."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui ở quận 1.",
+      "answer": "văn phòng",
+      "options": [
+        "văn phòng",
+        "du lịch",
+        "năm ngoái",
+        "cảm ơn"
+      ],
+      "translation": {
+        "fr": "Mon bureau est dans le 1er arrondissement.",
+        "en": "My office is in District 1."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi làm việc cho một công ty Pháp",
+      "tokens": [
+        "Tôi",
+        "làm",
+        "việc",
+        "cho",
+        "một",
+        "công",
+        "ty",
+        "Pháp"
+      ],
+      "translation": {
+        "fr": "Je travaille pour une entreprise française.",
+        "en": "I work for a French company."
+      },
+      "audioConcept": "c_cong_ty"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_sep",
+        "c_b_dong_nghiep",
+        "c_b_may_tinh",
+        "s_b_tui_lam_cong_ty",
+        "c_cong_ty",
+        "c_van_phong"
+      ]
     }
   ],
   "review": {

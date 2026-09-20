@@ -10,7 +10,7 @@
     "fr": "Dire ce que tu ferais.",
     "en": "Say what you would do."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u23.l04"
   ],
@@ -19,7 +19,13 @@
     "c_b_du_lich",
     "s_b_neu_co_tien",
     "c_nha_house",
-    "c_mua_buy"
+    "c_mua_buy",
+    "s_b_gia_su_trung_so",
+    "c_b_trung_so",
+    "c_b_ve_so",
+    "c_b_gia_price",
+    "c_b_gia_fake",
+    "c_b_gia_su"
   ],
   "steps": [
     {
@@ -141,6 +147,149 @@
         "fr": "nếu monte, nhiều descend, sẽ plonge au Sud.",
         "en": "nếu rises, nhiều falls, sẽ dips in the South."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_se_future",
+      "distractors": [
+        "mà",
+        "điện",
+        "vì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_house",
+      "distractors": [
+        "nha",
+        "bà",
+        "sợ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tui ___ đi du lịch miền Tây.",
+      "answer": "sẽ",
+      "options": [
+        "sẽ",
+        "mà",
+        "điện",
+        "vì"
+      ],
+      "translation": {
+        "fr": "Je voyagerai dans le delta.",
+        "en": "I'll travel around the Mekong Delta."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở ___.",
+      "answer": "nhà",
+      "options": [
+        "nhà",
+        "nha",
+        "bà",
+        "sợ"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ hai trái xoài.",
+      "answer": "mua",
+      "options": [
+        "mua",
+        "sáng",
+        "cũng",
+        "hay"
+      ],
+      "translation": {
+        "fr": "J'achète deux mangues.",
+        "en": "I'm buying two mangoes."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ở nhà",
+      "tokens": [
+        "Em",
+        "ở",
+        "nhà"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      },
+      "audioConcept": "c_nha_house"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em mua hai trái xoài",
+      "tokens": [
+        "Em",
+        "mua",
+        "hai",
+        "trái",
+        "xoài"
+      ],
+      "translation": {
+        "fr": "J'achète deux mangues.",
+        "en": "I'm buying two mangoes."
+      },
+      "audioConcept": "c_mua_buy"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gia_su_trung_so",
+      "distractors": [
+        "Rất vui được làm việc với chị.",
+        "Ước gì tui nói giỏi tiếng Việt."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_trung_so",
+      "distractors": [
+        "tuần trước",
+        "danh thiếp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ve_so",
+      "distractors": [
+        "nước mía",
+        "trả lời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_price",
+      "distractors": [
+        "già",
+        "giả",
+        "đồng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_fake",
+      "distractors": [
+        "giá",
+        "già",
+        "chủ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_su",
+      "distractors": [
+        "có lẽ",
+        "tài khoản"
+      ]
     },
     {
       "type": "game",

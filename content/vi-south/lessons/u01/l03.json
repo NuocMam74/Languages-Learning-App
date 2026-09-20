@@ -2,39 +2,263 @@
   "$schema": "../../../schema/lesson.schema.json",
   "id": "vi-south.u01.l03",
   "unit": "vi-south.u01",
-  "title": { "fr": "Ba, má et les autres", "en": "Ba, má and the others" },
-  "goal": { "fr": "Présenter ton père et ta mère comme on le dit à Saïgon.", "en": "Introduce your dad and mom the Saigon way." },
-  "estimatedMinutes": 5,
-  "prerequisites": ["vi-south.u01.l02"],
-  "concepts": ["c_ba", "c_ma_mom", "c_ba_grandma", "c_toi", "s_day_la"],
+  "title": {
+    "fr": "Ba, má et les autres",
+    "en": "Ba, má and the others"
+  },
+  "goal": {
+    "fr": "Présenter ton père et ta mère comme on le dit à Saïgon.",
+    "en": "Introduce your dad and mom the Saigon way."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u01.l02"
+  ],
+  "concepts": [
+    "c_ba",
+    "c_ma_mom",
+    "c_ba_grandma",
+    "c_toi",
+    "s_day_la",
+    "c_em",
+    "s_chao_anh",
+    "c_cam_on",
+    "c_da",
+    "c_chi"
+  ],
   "steps": [
-    { "type": "culture_card", "ref": "cc_family_south" },
+    {
+      "type": "culture_card",
+      "ref": "cc_family_south"
+    },
     {
       "type": "listen_pick_image",
       "concept": "c_ba",
-      "distractors": ["c_ma_mom", "c_ba_grandma"],
-      "explain": { "fr": "ba, ton plat : papa.", "en": "ba, flat tone: dad." }
+      "distractors": [
+        "c_ma_mom",
+        "c_ba_grandma"
+      ],
+      "explain": {
+        "fr": "ba, ton plat : papa.",
+        "en": "ba, flat tone: dad."
+      }
     },
     {
       "type": "tone_minimal_pair",
-      "pair": ["ba", "bà"],
-      "audioConcepts": ["c_ba", "c_ba_grandma"],
-      "explain": { "fr": "Ton plat contre ton descendant : papa contre grand-mère.", "en": "Flat versus falling: dad versus grandma." }
+      "pair": [
+        "ba",
+        "bà"
+      ],
+      "audioConcepts": [
+        "c_ba",
+        "c_ba_grandma"
+      ],
+      "explain": {
+        "fr": "Ton plat contre ton descendant : papa contre grand-mère.",
+        "en": "Flat versus falling: dad versus grandma."
+      }
     },
-    { "type": "spot_the_south", "variant": "lv_papa" },
+    {
+      "type": "spot_the_south",
+      "variant": "lv_papa"
+    },
     {
       "type": "build_sentence",
       "target": "Đây là ba tôi.",
-      "tokens": ["Đây", "là", "ba", "tôi", "má", "bà"],
-      "translation": { "fr": "Voici mon père.", "en": "This is my dad." },
+      "tokens": [
+        "Đây",
+        "là",
+        "ba",
+        "tôi",
+        "má",
+        "bà"
+      ],
+      "translation": {
+        "fr": "Voici mon père.",
+        "en": "This is my dad."
+      },
       "audioConcept": "s_day_la",
-      "explain": { "fr": "Đây là… = « voici… ». Pas de verbe être conjugué, et le possesseur vient après : ba tôi.", "en": "Đây là… = 'this is…'. No conjugation, and the owner comes after: ba tôi." }
+      "explain": {
+        "fr": "Đây là… = « voici… ». Pas de verbe être conjugué, et le possesseur vient après : ba tôi.",
+        "en": "Đây là… = 'this is…'. No conjugation, and the owner comes after: ba tôi."
+      }
     },
-    { "type": "spot_the_south", "variant": "lv_maman" },
-    { "type": "tone_identify", "concept": "c_ba_grandma" },
-    { "type": "speak_repeat", "concept": "s_day_la", "pitchRef": "pitch/s_day_la.json" },
-    { "type": "game", "game": "cho_noi", "conceptPool": "lesson" }
+    {
+      "type": "spot_the_south",
+      "variant": "lv_maman"
+    },
+    {
+      "type": "tone_identify",
+      "concept": "c_ba_grandma"
+    },
+    {
+      "type": "speak_repeat",
+      "concept": "s_day_la",
+      "pitchRef": "pitch/s_day_la.json"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "mà",
+        "mạ",
+        "ma"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "bả",
+        "ba",
+        "năm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba",
+      "distractors": [
+        "bà",
+        "bả",
+        "hẹn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi",
+      "distractors": [
+        "tối",
+        "no",
+        "cười"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_day_la",
+      "distractors": [
+        "Thiệt há?",
+        "tuần sau"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "c_meo",
+        "c_troi",
+        "c_rau"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "c_ho_cough",
+        "c_co_aunt",
+        "c_chieu"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ tôi.",
+      "answer": "ba",
+      "options": [
+        "ba",
+        "bà",
+        "bả",
+        "hẹn"
+      ],
+      "translation": {
+        "fr": "Voici mon père.",
+        "en": "This is my dad."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ tôi.",
+      "answer": "má",
+      "options": [
+        "má",
+        "mà",
+        "mạ",
+        "ma"
+      ],
+      "translation": {
+        "fr": "Voici ma mère.",
+        "en": "This is my mom."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là má tôi",
+      "tokens": [
+        "Đây",
+        "là",
+        "má",
+        "tôi"
+      ],
+      "translation": {
+        "fr": "Voici ma mère.",
+        "en": "This is my mom."
+      },
+      "audioConcept": "c_ma_mom"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_em",
+      "distractors": [
+        "mười",
+        "nghĩ",
+        "mất"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chao_anh",
+      "distractors": [
+        "đi thẳng",
+        "Tui thấy…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cam_on",
+      "distractors": [
+        "ngân hàng",
+        "du lịch"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da",
+      "distractors": [
+        "da",
+        "bị",
+        "tháng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "chỉ",
+        "tô",
+        "quá"
+      ]
+    },
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
   ],
-  "review": { "srsIntroduce": ["c_ba", "c_ba_grandma", "c_toi", "s_day_la"] },
+  "review": {
+    "srsIntroduce": [
+      "c_ba",
+      "c_ba_grandma",
+      "c_toi",
+      "s_day_la"
+    ]
+  },
   "reviewed": false
 }

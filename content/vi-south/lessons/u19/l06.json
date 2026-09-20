@@ -10,7 +10,7 @@
     "fr": "Demander des photos d'identité et des photocopies.",
     "en": "Ask for ID photos and photocopies."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u19.l05"
   ],
@@ -19,7 +19,15 @@
     "c_b_hinh_the",
     "c_b_gium",
     "s_b_photo_gium",
-    "c_b_can_need"
+    "c_b_can_need",
+    "c_b_ngay_sinh",
+    "s_b_ky_ten_o_day",
+    "c_b_ky_sign",
+    "s_b_dien_vo_don",
+    "c_b_dien_don",
+    "c_b_chuyen_khoan",
+    "c_b_the",
+    "s_b_rut_tien"
   ],
   "steps": [
     {
@@ -135,6 +143,134 @@
         "fr": "giùm descend, bản plonge, nha plat.",
         "en": "giùm falls, bản dips, nha level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_photo_gium",
+      "distractors": [
+        "Anh cho em nghỉ thứ sáu nha.",
+        "Mời chị đi đám cưới em nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_can_need",
+      "distractors": [
+        "nhỏ",
+        "không",
+        "đẹp"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ở đâu vậy chị?",
+      "answer": "chụp hình",
+      "options": [
+        "chụp hình",
+        "sầu riêng",
+        "miền Tây",
+        "Việt kiều"
+      ],
+      "translation": {
+        "fr": "On fait les photos où ? (à une femme un peu plus âgée)",
+        "en": "Where can I get photos taken? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em cần hai tấm ___.",
+      "answer": "hình thẻ",
+      "options": [
+        "hình thẻ",
+        "chị hai",
+        "hồi đó",
+        "hết hạn"
+      ],
+      "translation": {
+        "fr": "J'ai besoin de deux photos d'identité.",
+        "en": "I need two ID photos."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị photo ___ em hai bản nha.",
+      "answer": "giùm",
+      "options": [
+        "giùm",
+        "lầu",
+        "vì",
+        "ngày"
+      ],
+      "translation": {
+        "fr": "Tu me fais deux photocopies, s'il te plaît ?",
+        "en": "Could you make me two copies?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ngay_sinh",
+      "distractors": [
+        "tăng ca",
+        "chung cư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ky_ten_o_day",
+      "distractors": [
+        "Em nhắn rồi đó.",
+        "Anh có vợ chưa?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ky_sign",
+      "distractors": [
+        "dừa",
+        "giỏi",
+        "lấy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dien_vo_don",
+      "distractors": [
+        "Tuần này em làm ca sáng.",
+        "Anh cho tôi coi hộ chiếu."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dien_don",
+      "distractors": [
+        "sạc pin",
+        "bên trái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_chuyen_khoan",
+      "distractors": [
+        "hôm nay",
+        "giáo viên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_the",
+      "distractors": [
+        "bốn",
+        "đã",
+        "ơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_rut_tien",
+      "distractors": [
+        "Anh có vợ chưa?",
+        "Mời bác uống trà."
+      ]
     },
     {
       "type": "game",

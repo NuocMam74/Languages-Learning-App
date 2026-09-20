@@ -10,7 +10,7 @@
     "fr": "Saluer les aînés et parler de l'âge avec tact.",
     "en": "Greet elders and talk about age tactfully."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u03.l03"
   ],
@@ -20,7 +20,15 @@
     "c_chau",
     "s_con_chao_ong",
     "c_gia",
-    "c_tre"
+    "c_tre",
+    "c_thay",
+    "s_con_chao_co",
+    "c_con",
+    "c_chu",
+    "c_co_aunt",
+    "c_hon",
+    "s_em_may_tuoi",
+    "c_may"
   ],
   "steps": [
     {
@@ -136,6 +144,132 @@
         "fr": "ông est plat : voix stable, bouche arrondie.",
         "en": "ông is level: steady voice, rounded lips."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac",
+      "distractors": [
+        "sách",
+        "tiếc",
+        "thưa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong",
+      "distractors": [
+        "ổng",
+        "rảnh",
+        "hội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_con_chao_ong",
+      "distractors": [
+        "Dạ, ăn rồi.",
+        "Em mấy tuổi?"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ còn trẻ lắm.",
+      "answer": "bác",
+      "options": [
+        "bác",
+        "sách",
+        "tiếc",
+        "thưa"
+      ],
+      "translation": {
+        "fr": "Vous êtes encore très jeune (à un aîné).",
+        "en": "You still look very young (to an elder)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Con chào ___.",
+      "answer": "ông",
+      "options": [
+        "ông",
+        "ổng",
+        "rảnh",
+        "hội"
+      ],
+      "translation": {
+        "fr": "Bonjour (à un homme âgé).",
+        "en": "Hello (to an elderly man)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thay",
+      "distractors": [
+        "thấy",
+        "thẻ",
+        "dở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_con_chao_co",
+      "distractors": [
+        "Em cũng vậy.",
+        "Ăn cơm chưa?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_con",
+      "distractors": [
+        "còn",
+        "một",
+        "thẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu",
+      "distractors": [
+        "chủ",
+        "nhức",
+        "gỏi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co_aunt",
+      "distractors": [
+        "cổ",
+        "ồn",
+        "cá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hon",
+      "distractors": [
+        "hông",
+        "da",
+        "qua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_may_tuoi",
+      "distractors": [
+        "Hổng có đâu!",
+        "Có xa không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may",
+      "distractors": [
+        "mây",
+        "cho",
+        "lầu"
+      ]
     },
     {
       "type": "game",

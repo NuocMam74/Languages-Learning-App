@@ -10,7 +10,7 @@
     "fr": "Demander l'âge et dire qui est plus âgé.",
     "en": "Ask someone's age and say who is older."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u03.l01"
   ],
@@ -21,7 +21,13 @@
     "c_may",
     "s_em_may_tuoi",
     "c_hon",
-    "c_em"
+    "c_em",
+    "s_ban_ten_gi",
+    "s_toi_ten_la",
+    "c_la",
+    "c_ten",
+    "c_minh",
+    "c_tui_me"
   ],
   "steps": [
     {
@@ -136,6 +142,139 @@
       "explain": {
         "fr": "mấy monte, tuổi plonge et remonte.",
         "en": "mấy rises, tuổi dips and rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tuoi",
+      "distractors": [
+        "điện",
+        "mây",
+        "trời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may",
+      "distractors": [
+        "mây",
+        "nhức",
+        "cơm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hon",
+      "distractors": [
+        "bông",
+        "vậy",
+        "đụng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_em",
+      "distractors": [
+        "ký",
+        "tám",
+        "ít"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ hơn em.",
+      "answer": "lớn",
+      "options": [
+        "lớn",
+        "nghỉ",
+        "mất",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "Je suis plus âgé que toi (dit par un grand frère).",
+        "en": "I'm older than you (said by an older brother)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ hơn chị.",
+      "answer": "nhỏ",
+      "options": [
+        "nhỏ",
+        "nói",
+        "thơm",
+        "bị"
+      ],
+      "translation": {
+        "fr": "Je suis plus jeune que toi (à une femme plus âgée).",
+        "en": "I'm younger than you (to an older woman)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ban_ten_gi",
+      "distractors": [
+        "Chị tên gì?",
+        "Dạ, ăn rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_toi_ten_la",
+      "distractors": [
+        "Dễ thương quá!",
+        "Chị tên gì?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_la",
+      "distractors": [
+        "no",
+        "rồi",
+        "thưởng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ten",
+      "distractors": [
+        "giùm",
+        "trẻ",
+        "ngon"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_minh",
+      "distractors": [
+        "xin",
+        "qua",
+        "phòng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui_me",
+      "distractors": [
+        "tụi",
+        "xin",
+        "tháng"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi tên ___ Lan.",
+      "answer": "là",
+      "options": [
+        "là",
+        "no",
+        "rồi",
+        "thưởng"
+      ],
+      "translation": {
+        "fr": "Je m'appelle Lan.",
+        "en": "My name is Lan."
       }
     }
   ],

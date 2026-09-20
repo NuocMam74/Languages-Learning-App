@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais demander ton chemin et situer un lieu.",
     "en": "Show you can ask the way and locate a place."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u10.l07"
   ],
@@ -203,6 +203,95 @@
       "explain": {
         "fr": "sau : derrière.",
         "en": "sau: behind."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_six",
+      "distractors": [
+        "sau",
+        "chè",
+        "trước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "tài khoản",
+        "trái cây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_san_bay",
+      "distractors": [
+        "phòng ngủ",
+        "điện thoại"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cay_xang",
+      "distractors": [
+        "nước mắm",
+        "chụp hình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ben_phai",
+      "distractors": [
+        "chung cư",
+        "điền đơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_after",
+      "distractors": [
+        "sáu",
+        "là",
+        "bệnh"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chua_pagoda",
+      "distractors": [
+        "c_pho",
+        "c_mua_rain",
+        "c_ga_station"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trường học ở giữa công viên và ___.",
+      "answer": "bệnh viện",
+      "options": [
+        "bệnh viện",
+        "tài khoản",
+        "trái cây",
+        "đám cưới"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chợ có ___ đây hông?",
+      "answer": "gần",
+      "options": [
+        "gần",
+        "còn",
+        "thịt",
+        "là"
+      ],
+      "translation": {
+        "fr": "Le marché est près d'ici ?",
+        "en": "Is the market near here?"
       }
     }
   ],

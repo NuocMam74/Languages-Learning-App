@@ -11,7 +11,7 @@
     "fr": "Revoir avis, accord, nuances et justifications.",
     "en": "Go over opinions, agreement, nuance and reasons."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u24.l06"
   ],
@@ -25,7 +25,8 @@
     "s_b_tui_nghi_la",
     "c_b_dong_y",
     "c_b_sai",
-    "c_b_nhung_ma"
+    "c_b_nhung_ma",
+    "s_b_hue_nha"
   ],
   "steps": [
     {
@@ -136,6 +137,150 @@
         "fr": "nghĩ plonge au Sud, đúng monte.",
         "en": "nghĩ dips in the South, đúng rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dung_right",
+      "distractors": [
+        "đụng",
+        "ho",
+        "ghé"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dung_bump",
+      "distractors": [
+        "đúng",
+        "sách",
+        "nhiều"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_kha",
+      "distractors": [
+        "số",
+        "nước",
+        "vậy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tui_nghi_la",
+      "distractors": [
+        "Nhà vệ sinh ở đâu?",
+        "Lát em gọi lại nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dong_y",
+      "distractors": [
+        "xe đạp",
+        "nhân viên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sai",
+      "distractors": [
+        "khác",
+        "lớn",
+        "đũa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nhung_ma",
+      "distractors": [
+        "năm sau",
+        "điện thoại"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cái này ___ hay sai?",
+      "answer": "đúng",
+      "options": [
+        "đúng",
+        "đụng",
+        "ho",
+        "ghé"
+      ],
+      "translation": {
+        "fr": "C'est juste ou faux ?",
+        "en": "Is this right or wrong?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em không ___ lắm.",
+      "answer": "đồng ý",
+      "options": [
+        "đồng ý",
+        "xe đạp",
+        "nhân viên",
+        "cây xăng"
+      ],
+      "translation": {
+        "fr": "Je ne suis pas trop d'accord.",
+        "en": "I don't really agree."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cái này đúng hay ___?",
+      "answer": "sai",
+      "options": [
+        "sai",
+        "khác",
+        "lớn",
+        "đũa"
+      ],
+      "translation": {
+        "fr": "C'est juste ou faux ?",
+        "en": "Is this right or wrong?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hơi mắc, ___ ngon.",
+      "answer": "nhưng mà",
+      "options": [
+        "nhưng mà",
+        "năm sau",
+        "điện thoại",
+        "chủ nhật"
+      ],
+      "translation": {
+        "fr": "Un peu cher, mais c'est bon.",
+        "en": "A bit pricey, but tasty."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hơi mắc nhưng mà ngon",
+      "tokens": [
+        "Hơi",
+        "mắc",
+        "nhưng",
+        "mà",
+        "ngon"
+      ],
+      "translation": {
+        "fr": "Un peu cher, mais c'est bon.",
+        "en": "A bit pricey, but tasty."
+      },
+      "audioConcept": "c_b_nhung_ma"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hue_nha",
+      "distractors": [
+        "đi khám bệnh",
+        "Bao nhiêu tiền?"
+      ]
     },
     {
       "type": "game",

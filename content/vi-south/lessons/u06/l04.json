@@ -10,7 +10,7 @@
     "fr": "Demander l'âge d'un adulte et dire le tien.",
     "en": "Ask an adult's age and give yours."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u06.l03"
   ],
@@ -18,7 +18,18 @@
     "c_bao_nhieu",
     "s_anh_bao_nhieu_tuoi",
     "c_nam_nay",
-    "s_bang_tuoi"
+    "s_bang_tuoi",
+    "c_lop",
+    "s_hai_muoi_mot",
+    "s_muoi_lam",
+    "c_lam_five",
+    "c_mot_high",
+    "c_muoi_tens",
+    "c_muoi_ten",
+    "c_chin_nine",
+    "c_tam_eight",
+    "c_bay_seven",
+    "c_sau_six"
   ],
   "steps": [
     {
@@ -138,6 +149,118 @@
         "fr": "Tout reste plat jusqu'à tuổi, qui plonge.",
         "en": "Everything stays level until tuổi, which dips."
       }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi ba mươi tuổi.",
+      "answer": "năm nay",
+      "options": [
+        "năm nay",
+        "sầu riêng",
+        "miền Tây",
+        "giả sử"
+      ],
+      "translation": {
+        "fr": "Cette année, j'ai trente ans.",
+        "en": "This year I'm thirty."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lop",
+      "distractors": [
+        "tốt",
+        "cơm",
+        "ca"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hai_muoi_mot",
+      "distractors": [
+        "Đợi chút nha.",
+        "Hổng có đâu!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_muoi_lam",
+      "distractors": [
+        "Khỏe chưa?",
+        "tiếng Việt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam_five",
+      "distractors": [
+        "lắm",
+        "trước",
+        "bò"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_high",
+      "distractors": [
+        "một",
+        "rẻ",
+        "nghĩ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_tens",
+      "distractors": [
+        "mười",
+        "theo",
+        "nhớ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_ten",
+      "distractors": [
+        "mươi",
+        "đem",
+        "muỗng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chin_nine",
+      "distractors": [
+        "gà",
+        "sắp",
+        "má"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tam_eight",
+      "distractors": [
+        "phút",
+        "hay",
+        "trời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bay_seven",
+      "distractors": [
+        "đau",
+        "bận",
+        "chưa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_six",
+      "distractors": [
+        "sau",
+        "lấy",
+        "tuần"
+      ]
     },
     {
       "type": "game",

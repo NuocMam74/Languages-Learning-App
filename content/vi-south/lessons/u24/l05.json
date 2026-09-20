@@ -10,7 +10,7 @@
     "fr": "Justifier ton avis.",
     "en": "Justify your opinion."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u24.l04"
   ],
@@ -20,7 +20,14 @@
     "c_b_tai_sao",
     "s_b_tai_vi_ket_xe",
     "s_b_tai_sao_vay",
-    "c_ket_xe"
+    "c_ket_xe",
+    "s_b_kha_ngon",
+    "s_b_hoi_mac",
+    "c_b_nhung_ma",
+    "c_b_kha",
+    "s_b_chua_chac",
+    "s_b_em_khong_dong_y_lam",
+    "s_b_dong_y"
   ],
   "steps": [
     {
@@ -133,6 +140,142 @@
         "fr": "tại court, vì descend, kẹt court, trễ plonge au Sud.",
         "en": "tại short, vì falls, kẹt short, trễ dips in the South."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_sao",
+      "distractors": [
+        "năm nay",
+        "thành phố"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ket_xe",
+      "distractors": [
+        "kỹ sư",
+        "đối diện"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em học tiếng Việt?",
+      "answer": "tại sao",
+      "options": [
+        "tại sao",
+        "năm nay",
+        "thành phố",
+        "trả lời"
+      ],
+      "translation": {
+        "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
+        "en": "Why are you learning Vietnamese? (to someone younger)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Giờ này ___ lắm.",
+      "answer": "kẹt xe",
+      "options": [
+        "kẹt xe",
+        "kỹ sư",
+        "đối diện",
+        "nhân viên"
+      ],
+      "translation": {
+        "fr": "À cette heure-ci, ça bouchonne beaucoup.",
+        "en": "At this time of day the traffic is bad."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tại sao em học tiếng Việt",
+      "tokens": [
+        "Tại",
+        "sao",
+        "em",
+        "học",
+        "tiếng",
+        "Việt"
+      ],
+      "translation": {
+        "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
+        "en": "Why are you learning Vietnamese? (to someone younger)"
+      },
+      "audioConcept": "c_b_tai_sao"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Giờ này kẹt xe lắm",
+      "tokens": [
+        "Giờ",
+        "này",
+        "kẹt",
+        "xe",
+        "lắm"
+      ],
+      "translation": {
+        "fr": "À cette heure-ci, ça bouchonne beaucoup.",
+        "en": "At this time of day the traffic is bad."
+      },
+      "audioConcept": "c_ket_xe"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_kha_ngon",
+      "distractors": [
+        "Em mới tới.",
+        "Anh thấy sao?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hoi_mac",
+      "distractors": [
+        "Tiếc quá, em bận rồi.",
+        "Bữa nay em bận lắm."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nhung_ma",
+      "distractors": [
+        "bắt đầu",
+        "phòng ngủ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_kha",
+      "distractors": [
+        "giùm",
+        "bốn",
+        "tuổi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chua_chac",
+      "distractors": [
+        "Dạ, có.",
+        "quẹo phải"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_khong_dong_y_lam",
+      "distractors": [
+        "Chị là người nước nào?",
+        "Em muốn mở tài khoản."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dong_y",
+      "distractors": [
+        "Em mấy tuổi?",
+        "Con chào ông."
+      ]
     },
     {
       "type": "game",

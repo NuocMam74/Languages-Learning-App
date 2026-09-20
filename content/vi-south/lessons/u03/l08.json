@@ -11,7 +11,7 @@
     "fr": "Revoir comment s'adresser à chacun selon son âge.",
     "en": "Go over how to address each person by age."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u03.l07"
   ],
@@ -21,7 +21,11 @@
     "c_ong_he",
     "c_tui_me",
     "c_tuoi",
-    "s_moi_bac_uong_tra"
+    "s_moi_bac_uong_tra",
+    "c_moi_nguoi",
+    "c_vay",
+    "s_ai_vay",
+    "c_ai"
   ],
   "steps": [
     {
@@ -137,6 +141,164 @@
         "fr": "Invite l'aîné : mời bác uống trà.",
         "en": "Invite the elder: mời bác uống trà."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_he",
+      "distractors": [
+        "ông",
+        "coi",
+        "ồn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tuoi",
+      "distractors": [
+        "nhiều",
+        "nghe",
+        "hồi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_moi_bac_uong_tra",
+      "distractors": [
+        "Ký tên ở đây.",
+        "Em ăn cơm chưa?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong",
+      "distractors": [
+        "ổng",
+        "nếu",
+        "visa"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Con chào ___.",
+      "answer": "ông",
+      "options": [
+        "ông",
+        "ổng",
+        "nếu",
+        "visa"
+      ],
+      "translation": {
+        "fr": "Bonjour (à un homme âgé).",
+        "en": "Hello (to an elderly man)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ là ba tôi.",
+      "answer": "ổng",
+      "options": [
+        "ổng",
+        "ông",
+        "coi",
+        "ồn"
+      ],
+      "translation": {
+        "fr": "Lui, c'est mon père.",
+        "en": "He's my dad."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tên là Hùng.",
+      "answer": "tui",
+      "options": [
+        "tui",
+        "tụi",
+        "thích",
+        "giá"
+      ],
+      "translation": {
+        "fr": "Moi, c'est Hùng (familier).",
+        "en": "I'm Hùng (casual)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Con chào ông",
+      "tokens": [
+        "Con",
+        "chào",
+        "ông"
+      ],
+      "translation": {
+        "fr": "Bonjour (à un homme âgé).",
+        "en": "Hello (to an elderly man)."
+      },
+      "audioConcept": "c_ong"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ổng là ba tôi",
+      "tokens": [
+        "Ổng",
+        "là",
+        "ba",
+        "tôi"
+      ],
+      "translation": {
+        "fr": "Lui, c'est mon père.",
+        "en": "He's my dad."
+      },
+      "audioConcept": "c_ong_he"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui tên là Hùng",
+      "tokens": [
+        "Tui",
+        "tên",
+        "là",
+        "Hùng"
+      ],
+      "translation": {
+        "fr": "Moi, c'est Hùng (familier).",
+        "en": "I'm Hùng (casual)."
+      },
+      "audioConcept": "c_tui_me"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi_nguoi",
+      "distractors": [
+        "anh ba",
+        "ông xã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vay",
+      "distractors": [
+        "thẻ",
+        "trưa",
+        "ăn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ai_vay",
+      "distractors": [
+        "gần đây",
+        "thứ bảy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ai",
+      "distractors": [
+        "mốt",
+        "đâu",
+        "thưởng"
+      ]
     },
     {
       "type": "game",

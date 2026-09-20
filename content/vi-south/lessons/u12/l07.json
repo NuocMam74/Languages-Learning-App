@@ -11,7 +11,7 @@
     "fr": "Revoir tous les mots interrogatifs.",
     "en": "Go over all the question words."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l06"
   ],
@@ -139,6 +139,117 @@
         "fr": "đâu reste plat à la fin.",
         "en": "đâu stays level at the end."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "hồi đó",
+        "tăng ca"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "tầng trệt",
+        "hôm qua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may",
+      "distractors": [
+        "mây",
+        "trứng",
+        "bên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may_cloud",
+      "distractors": [
+        "mấy",
+        "rưỡi",
+        "sợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_em_o_dau",
+      "distractors": [
+        "Người đó là ai?",
+        "Chị có con không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chờ",
+        "chở",
+        "đá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nao_which",
+      "distractors": [
+        "tui",
+        "ước",
+        "đem"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khi_nao",
+      "distractors": [
+        "đèn đỏ",
+        "giả sử"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bao_nhieu",
+      "distractors": [
+        "khách sạn",
+        "tại sao"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoi_ask",
+      "distractors": [
+        "hen",
+        "cái",
+        "số"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tra_loi",
+      "distractors": [
+        "thiệp mời",
+        "bên trái"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "c_trua",
+        "c_dien_thoai",
+        "c_chen"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "c_da_ice",
+        "c_dua_hau",
+        "c_cong_vien"
+      ]
     },
     {
       "type": "game",

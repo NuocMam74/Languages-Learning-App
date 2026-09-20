@@ -129,6 +129,108 @@
         "fr": "hộ tombe court, chiếu monte.",
         "en": "hộ drops short, chiếu rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_second",
+      "distractors": [
+        "giấy",
+        "trong",
+        "chờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ho_chieu",
+      "distractors": [
+        "ngã tư",
+        "chủ nhật"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_visa",
+      "distractors": [
+        "đũa",
+        "chục",
+        "trước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_don",
+      "distractors": [
+        "có",
+        "cầu",
+        "thêm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_paper",
+      "distractors": [
+        "giây",
+        "tên",
+        "đau"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ của anh đâu?",
+      "answer": "giấy tờ",
+      "options": [
+        "giấy tờ",
+        "thiệp mời",
+        "lì xì",
+        "hồi nãy"
+      ],
+      "translation": {
+        "fr": "Où sont tes papiers ? (à un homme un peu plus âgé)",
+        "en": "Where are your papers? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh cho tôi coi ___.",
+      "answer": "hộ chiếu",
+      "options": [
+        "hộ chiếu",
+        "ngã tư",
+        "chủ nhật",
+        "vé số"
+      ],
+      "translation": {
+        "fr": "Montrez-moi votre passeport.",
+        "en": "Show me your passport."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh cho tôi coi hộ chiếu",
+      "tokens": [
+        "Anh",
+        "cho",
+        "tôi",
+        "coi",
+        "hộ",
+        "chiếu"
+      ],
+      "translation": {
+        "fr": "Montrez-moi votre passeport.",
+        "en": "Show me your passport."
+      },
+      "audioConcept": "c_b_ho_chieu"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_giay_to",
+        "c_b_ho_chieu",
+        "c_b_visa",
+        "c_b_don",
+        "c_b_giay_paper",
+        "c_b_giay_second"
+      ]
     }
   ],
   "review": {

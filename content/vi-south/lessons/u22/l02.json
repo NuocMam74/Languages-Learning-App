@@ -10,7 +10,7 @@
     "fr": "Comparer autrefois et aujourd'hui.",
     "en": "Compare the past and the present."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u22.l01"
   ],
@@ -19,7 +19,11 @@
     "s_b_hoi_do_chua_co",
     "c_b_ngay_xua",
     "s_bay_gio",
-    "c_chua"
+    "c_chua",
+    "s_b_hoi_nho_tui_o_que",
+    "c_b_hoi_nho",
+    "c_b_hoi_festival",
+    "c_b_hoi_back"
   ],
   "steps": [
     {
@@ -140,6 +144,152 @@
       "explain": {
         "fr": "chưa plat, có monte, điện thoại : court puis court.",
         "en": "chưa level, có rises, điện thoại: short, short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua",
+      "distractors": [
+        "hiểu",
+        "tuổi",
+        "lớp"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Vui lắm. Chiều nào tụi tui cũng ra sông tắm. ___",
+      "answer": "Hồi đó chưa có điện thoại.",
+      "options": [
+        "Hồi đó chưa có điện thoại.",
+        "Con mời ba má ăn cơm.",
+        "Tối nay tui phải tăng ca.",
+        "Theo tui, quán này ngon hơn."
+      ],
+      "translation": {
+        "fr": "Très bien. Tous les après-midis on allait se baigner au fleuve. À l'époque il n'y avait pas de téléphone.",
+        "en": "Great fun. Every afternoon we swam in the river. Back then there were no phones."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ mấy giờ rồi?",
+      "answer": "bây giờ",
+      "options": [
+        "bây giờ",
+        "Không sao.",
+        "Ngon quá!",
+        "quẹo trái"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh có vợ ___?",
+      "answer": "chưa",
+      "options": [
+        "chưa",
+        "hiểu",
+        "tuổi",
+        "lớp"
+      ],
+      "translation": {
+        "fr": "Tu es marié ? (à un homme un peu plus âgé)",
+        "en": "Are you married? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ mấy giờ rồi",
+      "tokens": [
+        "Bây",
+        "giờ",
+        "mấy",
+        "giờ",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      },
+      "audioConcept": "s_bay_gio"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh có vợ chưa",
+      "tokens": [
+        "Anh",
+        "có",
+        "vợ",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu es marié ? (à un homme un peu plus âgé)",
+        "en": "Are you married? (to a slightly older man)"
+      },
+      "audioConcept": "c_chua"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Vui lắm. Chiều nào tụi tui cũng ra sông tắm. Hồi đó chưa có điện thoại.",
+      "accepted": {
+        "fr": [
+          "Très bien. Tous les après-midis on allait se baigner au fleuve. À l'époque il n'y avait pas de téléphone."
+        ],
+        "en": [
+          "Great fun. Every afternoon we swam in the river. Back then there were no phones."
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hoi_nho_tui_o_que",
+      "distractors": [
+        "Theo tui, quán này ngon hơn.",
+        "Em có anh chị em không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_nho",
+      "distractors": [
+        "năm ngoái",
+        "nhưng mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_festival",
+      "distractors": [
+        "hồi",
+        "canh",
+        "còn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_back",
+      "distractors": [
+        "hội",
+        "cô",
+        "bệnh"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui ở dưới quê.",
+      "answer": "hồi nhỏ",
+      "options": [
+        "hồi nhỏ",
+        "năm ngoái",
+        "nhưng mà",
+        "nhân viên"
+      ],
+      "translation": {
+        "fr": "Quand j'étais petit(e), je vivais à la campagne.",
+        "en": "As a child, I lived in the countryside."
       }
     }
   ],

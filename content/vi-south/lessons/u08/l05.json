@@ -10,7 +10,7 @@
     "fr": "Acheter viande, œufs et maïs avec les mots du Sud.",
     "en": "Buy meat, eggs and corn with southern words."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u08.l04"
   ],
@@ -151,6 +151,151 @@
       "explain": {
         "fr": "Au Sud : heo, pas lợn ; ký, pas cân.",
         "en": "In the South: heo, not lợn; ký, not cân."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thit",
+      "distractors": [
+        "lẩu",
+        "cổ",
+        "với"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_heo",
+      "distractors": [
+        "cô",
+        "chiều",
+        "đã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trung",
+      "distractors": [
+        "ăn",
+        "bị",
+        "cậu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bap",
+      "distractors": [
+        "tư",
+        "già",
+        "tuần"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bao_nhieu_mot_ky",
+      "distractors": [
+        "Ổng đi đâu rồi?",
+        "Em ở lầu hai."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mac_qua",
+      "distractors": [
+        "Không phải.",
+        "đi thẳng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nua_ky",
+      "distractors": [
+        "quẹo phải",
+        "Nhớ nghen!"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_thit",
+      "distractors": [
+        "c_bo_beef",
+        "c_dia_plate",
+        "c_may_lanh"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị bán cho em một ký ___ heo.",
+      "answer": "thịt",
+      "options": [
+        "thịt",
+        "lẩu",
+        "cổ",
+        "với"
+      ],
+      "translation": {
+        "fr": "Vends-moi un kilo de porc, s'il te plaît.",
+        "en": "Sell me a kilo of pork, please."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xoài ___",
+      "answer": "Bao nhiêu một ký?",
+      "options": [
+        "Bao nhiêu một ký?",
+        "Ổng đi đâu rồi?",
+        "Em ở lầu hai.",
+        "Anh bao nhiêu tuổi?"
+      ],
+      "translation": {
+        "fr": "Combien le kilo de mangues ?",
+        "en": "How much is a kilo of mangoes?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xoài bao nhiêu một ký",
+      "tokens": [
+        "Xoài",
+        "bao",
+        "nhiêu",
+        "một",
+        "ký"
+      ],
+      "translation": {
+        "fr": "Combien le kilo de mangues ?",
+        "en": "How much is a kilo of mangoes?"
+      },
+      "audioConcept": "s_bao_nhieu_mot_ky"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mắc quá bớt cho em đi chị",
+      "tokens": [
+        "Mắc",
+        "quá",
+        "bớt",
+        "cho",
+        "em",
+        "đi",
+        "chị"
+      ],
+      "translation": {
+        "fr": "C'est trop cher, fais-moi un prix.",
+        "en": "It's too expensive, give me a discount."
+      },
+      "audioConcept": "s_mac_qua"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Mắc quá, bớt cho em đi chị.",
+      "accepted": {
+        "fr": [
+          "C'est trop cher, fais-moi un prix."
+        ],
+        "en": [
+          "It's too expensive, give me a discount."
+        ]
       }
     },
     {

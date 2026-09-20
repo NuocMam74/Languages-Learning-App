@@ -52,6 +52,10 @@ async function playOneStep(page: Page): Promise<"done" | "step"> {
   const done = page.getByRole("button", { name: "C'est fait" });
   const radio = page.getByRole("radio").first();
   const check = page.getByRole("button", { name: "Valider" });
+  // Appariement : ni bouton radio ni champ, deux colonnes de cartes à relier. La leçon 1 en
+  // contient un depuis le contrat phase21 §1 (elle fait relier les cinq tons de « ma » à leur
+  // sens) — sans cette branche, la séance ne va plus au bilan.
+  const pairs = page.getByTestId("match-pairs");
 
   // L'écran peut encore être en train de se construire : attendre une action possible avant de choisir.
   await expect(cont.or(done).or(radio).or(check).first()).toBeVisible();
@@ -61,6 +65,21 @@ async function playOneStep(page: Page): Promise<"done" | "step"> {
   // une correction à refermer ou une carte à passer — dans les deux cas, c'est le bon geste.
   if (await cont.isVisible().catch(() => false)) {
     await cont.click();
+  } else if (await pairs.isVisible().catch(() => false)) {
+    const columns = pairs.locator("ul");
+    const count = await columns.first().locator("button").count();
+    for (let i = 0; i < count; i++) {
+      await columns.first().locator("button").nth(i).click();
+      await columns.last().locator("button").nth(i).click();
+    }
+    // Les associations se perdent si l'écran se remonte pendant qu'on clique : après une bonne
+    // réponse, la séance enchaîne d'elle-même (700 ms) et la vue repart à zéro. « Valider » reste
+    // alors fermé — on rend la main plutôt que d'attendre un bouton qui ne s'ouvrira pas.
+    if (await check.isDisabled().catch(() => true)) {
+      await page.waitForTimeout(200);
+      return "step";
+    }
+    await check.click();
   } else if (await done.isVisible()) {
     await done.click();
   } else if (await radio.isVisible()) {
@@ -96,7 +115,13 @@ async function playOneStep(page: Page): Promise<"done" | "step"> {
     if (!snap) throw new Error("transition en cours");
     const status = snap.status;
     const moved = snap.cursor !== cursor;
-    const freshQuestion = (await radio.isVisible()) && (await page.locator('[role="radio"][aria-checked="true"]').count()) === 0;
+    // Question neuve : rien n'est encore sélectionné. Vrai pour un QCM (aucune option cochée) comme
+    // pour un appariement (aucune carte retenue) — sans ce second cas, l'intervention de Cô Mai
+    // après trois erreurs, qui remonte le **même** exercice sans bouger le curseur, passait pour
+    // une séance bloquée.
+    const freshQuestion =
+      ((await radio.isVisible()) && (await page.locator('[role="radio"][aria-checked="true"]').count()) === 0) ||
+      ((await pairs.isVisible().catch(() => false)) && (await pairs.locator('button[aria-pressed="true"]').count()) === 0);
     const ready = (status === "feedback" && (await cont.isVisible())) || (status === "answering" && (moved || freshQuestion || wasFeedback));
     expect(ready).toBe(true);
   }).toPass({ timeout: 10_000 });

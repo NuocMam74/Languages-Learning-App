@@ -11,7 +11,7 @@
     "fr": "Revoir fêtes, repas de famille et refus polis.",
     "en": "Go over celebrations, family meals and polite refusals."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u20.l06"
   ],
@@ -139,6 +139,136 @@
       "explain": {
         "fr": "dạ court, cảm plonge.",
         "en": "dạ short, cảm dips."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dam_cuoi",
+      "distractors": [
+        "chị hai",
+        "xe ôm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cuoi_wed",
+      "distractors": [
+        "cười",
+        "gặp",
+        "mưa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cuoi_laugh",
+      "distractors": [
+        "cưới",
+        "chục",
+        "thôi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_li_xi",
+      "distractors": [
+        "phòng trọ",
+        "trúng số"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_da_con_cam_on",
+      "distractors": [
+        "Kể tui nghe đi!",
+        "Em đang làm việc."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dam_gio",
+      "distractors": [
+        "ngã tư",
+        "đồng ý"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thiep_moi",
+      "distractors": [
+        "công ty",
+        "công viên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_qua_gift",
+      "distractors": [
+        "quá",
+        "qua",
+        "mưa"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dam_gio",
+      "distractors": [
+        "c_thit",
+        "c_chua_pagoda",
+        "c_chi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_qua_gift",
+      "distractors": [
+        "c_to_bowl",
+        "c_chia_khoa",
+        "c_gio"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mời chị đi ___ em nha.",
+      "answer": "đám cưới",
+      "options": [
+        "đám cưới",
+        "chị hai",
+        "xe ôm",
+        "bao nhiêu"
+      ],
+      "translation": {
+        "fr": "Viens à mon mariage, s'il te plaît.",
+        "en": "Please come to my wedding."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___",
+      "answer": "Ăn cơm chưa?",
+      "options": [
+        "Ăn cơm chưa?",
+        "Anh tên gì?",
+        "Bạn tên gì?",
+        "Em mới tới."
+      ],
+      "translation": {
+        "fr": "Tu as mangé ?",
+        "en": "Have you eaten yet?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tháng sau tụi em ___.",
+      "answer": "cưới",
+      "options": [
+        "cưới",
+        "cười",
+        "gặp",
+        "mưa"
+      ],
+      "translation": {
+        "fr": "Nous nous marions le mois prochain.",
+        "en": "We're getting married next month."
       }
     },
     {

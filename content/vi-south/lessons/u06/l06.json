@@ -10,7 +10,7 @@
     "fr": "Demander et donner un numéro de téléphone.",
     "en": "Ask for and give a phone number."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u06.l05"
   ],
@@ -18,7 +18,17 @@
     "c_dien_thoai",
     "s_so_dien_thoai",
     "s_cho_em_xin_so",
-    "c_goi"
+    "c_goi",
+    "c_chuc",
+    "s_mot_tram_le_nam",
+    "c_le",
+    "c_ngan",
+    "c_tram",
+    "s_bang_tuoi",
+    "c_nam_nay",
+    "s_anh_bao_nhieu_tuoi",
+    "c_bao_nhieu",
+    "c_lop"
   ],
   "steps": [
     {
@@ -119,6 +129,145 @@
         "fr": "Phrase douce : nha reste plat et léger.",
         "en": "A soft sentence: nha stays level and light."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi",
+      "distractors": [
+        "gói",
+        "gỏi",
+        "đợi"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Số ___ của chị là bao nhiêu?",
+      "answer": "điện thoại",
+      "options": [
+        "điện thoại",
+        "gia hạn",
+        "lúc đó",
+        "trả lời"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ của chị là bao nhiêu?",
+      "answer": "số điện thoại",
+      "options": [
+        "số điện thoại",
+        "Còn phòng không?",
+        "Có xa không?",
+        "Rồi sao nữa?"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ cho em nha.",
+      "answer": "gọi",
+      "options": [
+        "gọi",
+        "gói",
+        "gỏi",
+        "đợi"
+      ],
+      "translation": {
+        "fr": "Appelle-moi, d'accord ?",
+        "en": "Call me, okay?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chuc",
+      "distractors": [
+        "theo",
+        "trong",
+        "về"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mot_tram_le_nam",
+      "distractors": [
+        "Em ở lầu hai.",
+        "Ổng đi đâu rồi?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_le",
+      "distractors": [
+        "rau",
+        "rút",
+        "mời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan",
+      "distractors": [
+        "bán",
+        "thường",
+        "đang"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tram",
+      "distractors": [
+        "anh",
+        "họp",
+        "đau"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bang_tuoi",
+      "distractors": [
+        "Chưa xong.",
+        "Chưa chắc."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_nay",
+      "distractors": [
+        "máy tính",
+        "cẩn thận"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_bao_nhieu_tuoi",
+      "distractors": [
+        "Ngày uống mấy lần?",
+        "Cho em xuống đây."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bao_nhieu",
+      "distractors": [
+        "chung cư",
+        "hết hạn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lop",
+      "distractors": [
+        "khám",
+        "ngon",
+        "trong"
+      ]
     },
     {
       "type": "game",

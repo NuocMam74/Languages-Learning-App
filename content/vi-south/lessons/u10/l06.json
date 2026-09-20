@@ -10,7 +10,7 @@
     "fr": "Situer précisément un lieu par rapport à un autre.",
     "en": "Place one location precisely relative to another."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u10.l05"
   ],
@@ -21,7 +21,14 @@
     "c_trong",
     "c_sau_six",
     "c_tiem",
-    "c_va"
+    "c_va",
+    "c_quan_district",
+    "s_so_nha",
+    "c_dia_chi",
+    "c_hem",
+    "c_duong_street",
+    "c_doi_dien",
+    "c_ke_ben"
   ],
   "steps": [
     {
@@ -152,6 +159,146 @@
         "fr": "trước monte, avec un tr bien net.",
         "en": "trước rises, with a crisp tr."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_after",
+      "distractors": [
+        "sáu",
+        "xe",
+        "sữa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_six",
+      "distractors": [
+        "sau",
+        "sợ",
+        "ơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tiem",
+      "distractors": [
+        "ma",
+        "ngọt",
+        "thuê"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_va",
+      "distractors": [
+        "nhiều",
+        "một",
+        "nước"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh chờ em ở ___ khách sạn nha.",
+      "answer": "trước",
+      "options": [
+        "trước",
+        "coi",
+        "nhiều",
+        "bắp"
+      ],
+      "translation": {
+        "fr": "Attends-moi devant l'hôtel, d'accord ?",
+        "en": "Wait for me in front of the hotel, okay?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tiệm phở ở ___ chợ.",
+      "answer": "sau",
+      "options": [
+        "sau",
+        "sáu",
+        "xe",
+        "sữa"
+      ],
+      "translation": {
+        "fr": "Le restaurant de phở est derrière le marché.",
+        "en": "The phở shop is behind the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trường học ở ___ công viên và bệnh viện.",
+      "answer": "giữa",
+      "options": [
+        "giữa",
+        "xin",
+        "ký",
+        "muốn"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_quan_district",
+      "distractors": [
+        "mệt",
+        "nếu",
+        "chị"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_so_nha",
+      "distractors": [
+        "tiếng Việt",
+        "Cũng được."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dia_chi",
+      "distractors": [
+        "cơm tấm",
+        "năm ngoái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hem",
+      "distractors": [
+        "sáng",
+        "hen",
+        "về"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_duong_street",
+      "distractors": [
+        "ngọt",
+        "mở",
+        "hồi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_dien",
+      "distractors": [
+        "ngày sinh",
+        "xe đạp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ke_ben",
+      "distractors": [
+        "anh hai",
+        "tạm trú"
+      ]
     },
     {
       "type": "game",

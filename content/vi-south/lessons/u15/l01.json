@@ -10,7 +10,7 @@
     "fr": "Décrocher et demander qui appelle.",
     "en": "Pick up and ask who's calling."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u09.l08"
   ],
@@ -140,6 +140,161 @@
       "explain": {
         "fr": "nghe reste plat.",
         "en": "nghe stays level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_pack",
+      "distractors": [
+        "gỏi",
+        "gọi",
+        "da"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_salad",
+      "distractors": [
+        "gói",
+        "gọi",
+        "xong"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sach",
+      "distractors": [
+        "mất",
+        "xin",
+        "dì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "mất",
+        "trưa",
+        "đặt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi",
+      "distractors": [
+        "gỏi",
+        "gói",
+        "cay"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "hộ chiếu",
+        "bệnh viện"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ne",
+      "distractors": [
+        "ngủ",
+        "ra",
+        "chủ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sach",
+      "distractors": [
+        "c_com",
+        "c_truong_hoc",
+        "c_ong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_com",
+        "c_ga_chicken",
+        "c_chi_hai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, em nghe nè.",
+      "answer": "alô",
+      "options": [
+        "alô",
+        "hoài",
+        "chích",
+        "mời"
+      ],
+      "translation": {
+        "fr": "Allô, je t'écoute.",
+        "en": "Hello, I'm listening."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Số ___ của chị là bao nhiêu?",
+      "answer": "điện thoại",
+      "options": [
+        "điện thoại",
+        "hộ chiếu",
+        "bệnh viện",
+        "chìa khóa"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "mất",
+        "trưa",
+        "đặt"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ cho em nha.",
+      "answer": "gọi",
+      "options": [
+        "gọi",
+        "gỏi",
+        "gói",
+        "cay"
+      ],
+      "translation": {
+        "fr": "Appelle-moi, d'accord ?",
+        "en": "Call me, okay?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, coi cái này nè!",
+      "answer": "nè",
+      "options": [
+        "nè",
+        "ngủ",
+        "ra",
+        "chủ"
+      ],
+      "translation": {
+        "fr": "Tiens, regarde ça !",
+        "en": "Hey, look at this!"
       }
     }
   ],

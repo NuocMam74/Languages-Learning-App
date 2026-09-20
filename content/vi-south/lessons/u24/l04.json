@@ -10,7 +10,7 @@
     "fr": "Nuancer un jugement.",
     "en": "Nuance a judgement."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u24.l03"
   ],
@@ -20,7 +20,14 @@
     "s_b_hoi_mac",
     "s_b_kha_ngon",
     "c_b_hoi_slightly",
-    "c_mac_expensive"
+    "c_mac_expensive",
+    "s_b_chua_chac",
+    "s_b_em_khong_dong_y_lam",
+    "s_b_dong_y",
+    "c_b_dong_y",
+    "s_b_sai_roi",
+    "s_b_dung_roi",
+    "c_b_hay"
   ],
   "steps": [
     {
@@ -127,6 +134,144 @@
         "fr": "hơi plat, mắc monte, ngon plat.",
         "en": "hơi level, mắc rises, ngon level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_slightly",
+      "distractors": [
+        "điện",
+        "nhen",
+        "ly"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mac_expensive",
+      "distractors": [
+        "tiền",
+        "tư",
+        "ngủ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tui thấy ___ sợ.",
+      "answer": "hơi",
+      "options": [
+        "hơi",
+        "điện",
+        "nhen",
+        "ly"
+      ],
+      "translation": {
+        "fr": "J'avais un peu peur.",
+        "en": "I felt a bit scared."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ quá, bớt cho em đi chị.",
+      "answer": "mắc",
+      "options": [
+        "mắc",
+        "tiền",
+        "tư",
+        "ngủ"
+      ],
+      "translation": {
+        "fr": "C'est trop cher, fais-moi un prix.",
+        "en": "It's too expensive, give me a discount."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui thấy hơi sợ",
+      "tokens": [
+        "Tui",
+        "thấy",
+        "hơi",
+        "sợ"
+      ],
+      "translation": {
+        "fr": "J'avais un peu peur.",
+        "en": "I felt a bit scared."
+      },
+      "audioConcept": "c_b_hoi_slightly"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mắc quá bớt cho em đi chị",
+      "tokens": [
+        "Mắc",
+        "quá",
+        "bớt",
+        "cho",
+        "em",
+        "đi",
+        "chị"
+      ],
+      "translation": {
+        "fr": "C'est trop cher, fais-moi un prix.",
+        "en": "It's too expensive, give me a discount."
+      },
+      "audioConcept": "c_mac_expensive"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chua_chac",
+      "distractors": [
+        "nửa ký",
+        "Đây là…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_khong_dong_y_lam",
+      "distractors": [
+        "Anh đi Đà Lạt chưa?",
+        "Lát em gọi lại nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dong_y",
+      "distractors": [
+        "đi khám bệnh",
+        "Em cũng vậy."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dong_y",
+      "distractors": [
+        "phòng tắm",
+        "cà phê"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_sai_roi",
+      "distractors": [
+        "bà nội",
+        "trà đá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dung_roi",
+      "distractors": [
+        "Chưa xong.",
+        "nửa ký"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hay",
+      "distractors": [
+        "con",
+        "và",
+        "gặp"
+      ]
     },
     {
       "type": "game",

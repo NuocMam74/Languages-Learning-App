@@ -10,7 +10,7 @@
     "fr": "Consulter et montrer où tu as mal.",
     "en": "See a doctor and show where it hurts."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u16.l04"
   ],
@@ -156,6 +156,149 @@
         "fr": "đau plat, đây plat : une phrase calme.",
         "en": "đau level, đây level: a calm sentence."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_kham",
+      "distractors": [
+        "muỗng",
+        "muốn",
+        "lăm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_thuoc",
+      "distractors": [
+        "lì xì",
+        "điền đơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_truong_hoc",
+      "distractors": [
+        "phong bì",
+        "chủ nhà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bi_sot",
+      "distractors": [
+        "Anh ở đâu?",
+        "Làm xong rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ngay_may_lan",
+      "distractors": [
+        "Em vừa ăn xong.",
+        "Em bị bệnh rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "bánh mì",
+        "bao giờ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_thuoc",
+      "distractors": [
+        "c_ban_table",
+        "c_khach_san",
+        "c_em"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_truong_hoc",
+      "distractors": [
+        "c_dem",
+        "c_che_dessert",
+        "c_dien_thoai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bác sĩ ơi, ___",
+      "answer": "Em đau ở đây.",
+      "options": [
+        "Em đau ở đây.",
+        "Em vừa ăn xong.",
+        "Em đã ăn rồi.",
+        "Bao nhiêu một ký?"
+      ],
+      "translation": {
+        "fr": "Docteur, j'ai mal ici.",
+        "en": "Doctor, it hurts here."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trường học ở giữa công viên và ___.",
+      "answer": "bệnh viện",
+      "options": [
+        "bệnh viện",
+        "bánh mì",
+        "bao giờ",
+        "cảm ơn"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Gần thôi con. ___ ở kế bên ngân hàng.",
+      "answer": "nhà thuốc",
+      "options": [
+        "nhà thuốc",
+        "lì xì",
+        "điền đơn",
+        "cơm tấm"
+      ],
+      "translation": {
+        "fr": "C'est tout près. La pharmacie est à côté de la banque.",
+        "en": "It's close. The pharmacy is next to the bank."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ở giữa công viên và bệnh viện.",
+      "answer": "trường học",
+      "options": [
+        "trường học",
+        "phong bì",
+        "chủ nhà",
+        "đèn đỏ"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em bị sốt với ho",
+      "tokens": [
+        "Em",
+        "bị",
+        "sốt",
+        "với",
+        "ho"
+      ],
+      "translation": {
+        "fr": "J'ai de la fièvre et je tousse.",
+        "en": "I have a fever and a cough."
+      },
+      "audioConcept": "s_bi_sot"
     }
   ],
   "review": {

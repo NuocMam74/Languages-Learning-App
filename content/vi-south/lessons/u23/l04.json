@@ -10,7 +10,7 @@
     "fr": "Imaginer une situation.",
     "en": "Imagine a situation."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u23.l03"
   ],
@@ -131,6 +131,149 @@
       "explain": {
         "fr": "giả plonge, trúng monte, gì descend.",
         "en": "giả dips, trúng rises, gì falls."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_fake",
+      "distractors": [
+        "già",
+        "giá",
+        "ghiền"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_price",
+      "distractors": [
+        "già",
+        "giả",
+        "xấu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gia",
+      "distractors": [
+        "giả",
+        "giá",
+        "vui"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "tới",
+        "nhờ",
+        "ngày"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_the",
+      "distractors": [
+        "thuốc",
+        "ngọt",
+        "thứ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ho_chieu",
+      "distractors": [
+        "ước gì",
+        "họ hàng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_co_tien",
+      "distractors": [
+        "Hôm qua tui đi chợ rồi về nhà.",
+        "Ước gì tui được về quê ăn Tết."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_du_lich",
+      "distractors": [
+        "hôm nay",
+        "em út"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_buy",
+      "distractors": [
+        "tốt",
+        "giây",
+        "ngon"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ve_so",
+      "distractors": [
+        "xe hơi",
+        "hộ chiếu"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_pho",
+        "c_ca_phe",
+        "c_com"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_the",
+      "distractors": [
+        "c_cong_vien",
+        "c_xe_may",
+        "c_ga_station"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_ho_chieu",
+      "distractors": [
+        "c_gio",
+        "c_san_bay",
+        "c_xe_buyt"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ trúng số, anh làm gì?",
+      "answer": "giả sử",
+      "options": [
+        "giả sử",
+        "danh thiếp",
+        "điện thoại",
+        "bắt đầu"
+      ],
+      "translation": {
+        "fr": "Imagine que tu gagnes à la loterie : tu fais quoi ?",
+        "en": "Suppose you won the lottery: what would you do?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ sử trúng số, anh làm gì?",
+      "answer": "giả",
+      "options": [
+        "giả",
+        "già",
+        "giá",
+        "ghiền"
+      ],
+      "translation": {
+        "fr": "Imagine que tu gagnes à la loterie : tu fais quoi ?",
+        "en": "Suppose you won the lottery: what would you do?"
       }
     },
     {

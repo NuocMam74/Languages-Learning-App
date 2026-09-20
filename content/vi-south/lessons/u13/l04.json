@@ -10,7 +10,7 @@
     "fr": "Parler de ce qui va arriver.",
     "en": "Talk about what's coming."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u13.l03"
   ],
@@ -18,7 +18,17 @@
     "c_se",
     "c_sap",
     "s_tuan_sau",
-    "s_sap_toi_roi"
+    "s_sap_toi_roi",
+    "s_troi_dang_mua",
+    "s_em_dang_lam",
+    "c_roi_tangled",
+    "c_dang_bitter",
+    "c_dang",
+    "c_lan",
+    "s_chua_bao_gio",
+    "s_chua_xong",
+    "s_di_da_lat_chua",
+    "s_lam_xong_roi"
   ],
   "steps": [
     {
@@ -130,6 +140,135 @@
         "fr": "sắp et tới montent, rồi descend.",
         "en": "sắp and tới rise, rồi falls."
       }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tuần sau em ___ về Pháp.",
+      "answer": "sẽ",
+      "options": [
+        "sẽ",
+        "sai",
+        "lăm",
+        "mới"
+      ],
+      "translation": {
+        "fr": "La semaine prochaine, je rentre en France.",
+        "en": "Next week I'm going back to France."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ tới rồi.",
+      "answer": "sắp",
+      "options": [
+        "sắp",
+        "thơm",
+        "vừa",
+        "mất"
+      ],
+      "translation": {
+        "fr": "J'arrive bientôt.",
+        "en": "I'm almost there."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em sắp tới rồi",
+      "tokens": [
+        "Em",
+        "sắp",
+        "tới",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "J'arrive bientôt.",
+        "en": "I'm almost there."
+      },
+      "audioConcept": "c_sap"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_troi_dang_mua",
+      "distractors": [
+        "Hẹn gặp lại.",
+        "hai mươi mốt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dang_lam",
+      "distractors": [
+        "Em mắc cỡ quá.",
+        "Khi nào anh về?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi_tangled",
+      "distractors": [
+        "rồi",
+        "mưa",
+        "trước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dang_bitter",
+      "distractors": [
+        "với",
+        "chồng",
+        "gà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dang",
+      "distractors": [
+        "ca",
+        "chiều",
+        "tô"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lan",
+      "distractors": [
+        "sáng",
+        "tiệm",
+        "đau"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chua_bao_gio",
+      "distractors": [
+        "Hổng có đâu!",
+        "Trời đang mưa."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chua_xong",
+      "distractors": [
+        "bao lâu",
+        "Đúng rồi!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_di_da_lat_chua",
+      "distractors": [
+        "Cho em một tô phở.",
+        "Em không đồng ý lắm."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_lam_xong_roi",
+      "distractors": [
+        "Mai gặp hen.",
+        "Món nào ngon?"
+      ]
     }
   ],
   "review": {

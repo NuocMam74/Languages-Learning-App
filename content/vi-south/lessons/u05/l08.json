@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais te présenter et poser les questions de base.",
     "en": "Show you can introduce yourself and ask the basic questions."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u05.l07"
   ],
@@ -196,6 +196,121 @@
       "explain": {
         "fr": "gặp tombe court (nặng).",
         "en": "gặp drops short (nặng)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gap",
+      "distractors": [
+        "ca",
+        "nên",
+        "tên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "ngày sinh",
+        "giấy tờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ky_su",
+      "distractors": [
+        "hôm qua",
+        "tầng trệt"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ Trần.",
+      "answer": "họ",
+      "options": [
+        "họ",
+        "ho",
+        "xong",
+        "tui"
+      ],
+      "translation": {
+        "fr": "Mon nom de famille est Trần.",
+        "en": "My family name is Trần."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi tên Nam. ___",
+      "answer": "Chị là người nước nào?",
+      "options": [
+        "Chị là người nước nào?",
+        "Anh đi Đà Lạt chưa?",
+        "Nhà em có mấy người?",
+        "Hơi mắc, nhưng mà ngon."
+      ],
+      "translation": {
+        "fr": "Moi c'est Nam. Vous êtes de quel pays ?",
+        "en": "I'm Nam. What country are you from?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ ở Paris.",
+      "answer": "sống",
+      "options": [
+        "sống",
+        "sông",
+        "nào",
+        "khá"
+      ],
+      "translation": {
+        "fr": "J'habite à Paris.",
+        "en": "I live in Paris."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi là ___.",
+      "answer": "kỹ sư",
+      "options": [
+        "kỹ sư",
+        "hôm qua",
+        "tầng trệt",
+        "tại sao"
+      ],
+      "translation": {
+        "fr": "Je suis ingénieur(e).",
+        "en": "I'm an engineer."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi nói tiếng Việt ___.",
+      "answer": "chút xíu",
+      "options": [
+        "chút xíu",
+        "nước mắm",
+        "vé số",
+        "bên trái"
+      ],
+      "translation": {
+        "fr": "Je parle un tout petit peu vietnamien.",
+        "en": "I speak a tiny bit of Vietnamese."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hẹn ___ lại anh.",
+      "answer": "gặp",
+      "options": [
+        "gặp",
+        "ca",
+        "nên",
+        "tên"
+      ],
+      "translation": {
+        "fr": "À bientôt (à un homme un peu plus âgé).",
+        "en": "See you (to a slightly older man)."
       }
     }
   ],

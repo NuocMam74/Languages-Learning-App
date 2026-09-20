@@ -10,7 +10,7 @@
     "fr": "Dire qu'on vient de faire quelque chose.",
     "en": "Say you've just done something."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u13.l04"
   ],
@@ -20,7 +20,13 @@
     "s_em_moi_toi",
     "s_vua_an_xong",
     "s_tuan_truoc",
-    "c_roi"
+    "c_roi",
+    "s_sap_toi_roi",
+    "s_tuan_sau",
+    "c_sap",
+    "c_se",
+    "s_troi_dang_mua",
+    "s_em_dang_lam"
   ],
   "steps": [
     {
@@ -133,6 +139,150 @@
         "fr": "mới et tới montent tous les deux.",
         "en": "mới and tới both rise."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi",
+      "distractors": [
+        "rối",
+        "lẻ",
+        "dở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vua_just",
+      "distractors": [
+        "trái",
+        "đũa",
+        "chờ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ ăn xong.",
+      "answer": "vừa",
+      "options": [
+        "vừa",
+        "trái",
+        "đũa",
+        "chờ"
+      ],
+      "translation": {
+        "fr": "Je viens de finir de manger.",
+        "en": "I've just finished eating."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em về quê.",
+      "answer": "tuần trước",
+      "options": [
+        "tuần trước",
+        "Vậy hả?",
+        "Chưa xong.",
+        "Dở quá!"
+      ],
+      "translation": {
+        "fr": "La semaine dernière, je suis rentré(e) au pays.",
+        "en": "Last week I went back to my hometown."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, em no ___.",
+      "answer": "rồi",
+      "options": [
+        "rồi",
+        "rối",
+        "lẻ",
+        "dở"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tuần trước em về quê",
+      "tokens": [
+        "Tuần",
+        "trước",
+        "em",
+        "về",
+        "quê"
+      ],
+      "translation": {
+        "fr": "La semaine dernière, je suis rentré(e) au pays.",
+        "en": "Last week I went back to my hometown."
+      },
+      "audioConcept": "s_tuan_truoc"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ em no rồi",
+      "tokens": [
+        "Dạ",
+        "em",
+        "no",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      },
+      "audioConcept": "c_roi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_sap_toi_roi",
+      "distractors": [
+        "cà phê sữa đá",
+        "Em đang làm việc."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tuan_sau",
+      "distractors": [
+        "Cũng được.",
+        "Chưa xong."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sap",
+      "distractors": [
+        "bận",
+        "chua",
+        "khác"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_se",
+      "distractors": [
+        "sai",
+        "nhà",
+        "trước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_troi_dang_mua",
+      "distractors": [
+        "Em mới tới.",
+        "Không có chi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dang_lam",
+      "distractors": [
+        "Khi nào anh về?",
+        "Dạ, con no rồi."
+      ]
     }
   ],
   "review": {

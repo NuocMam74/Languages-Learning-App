@@ -10,7 +10,7 @@
     "fr": "Entendre s et x, deux sons que le Sud distingue souvent.",
     "en": "Hear s and x, two sounds the South often keeps apart."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u02.l02"
   ],
@@ -21,7 +21,11 @@
     "c_xa_far",
     "c_xin",
     "c_sach",
-    "c_ly"
+    "c_ly",
+    "c_da_skin",
+    "c_ra",
+    "c_rau",
+    "c_dua_coconut"
   ],
   "steps": [
     {
@@ -118,6 +122,129 @@
         "fr": "Langue un peu recourbée pour s, puis ư lèvres étirées.",
         "en": "Curl your tongue slightly for s, then spread lips for ư."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sach",
+      "distractors": [
+        "xong",
+        "cổ",
+        "nhỏ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe",
+      "distractors": [
+        "đội",
+        "ghé",
+        "gì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sua_milk",
+      "distractors": [
+        "đũa",
+        "lớn",
+        "năm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xin",
+      "distractors": [
+        "ngủ",
+        "Tết",
+        "chút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ly",
+      "distractors": [
+        "giữa",
+        "này",
+        "bận"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_song_river",
+      "distractors": [
+        "c_may_bay",
+        "c_ot",
+        "c_ben_phai"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sach",
+      "distractors": [
+        "c_khach_san",
+        "c_song_river",
+        "c_b_dong_nghiep"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ly",
+      "distractors": [
+        "c_ca_fish",
+        "c_b_sep",
+        "c_ngan_hang"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em xin ly ___.",
+      "answer": "sữa",
+      "options": [
+        "sữa",
+        "đũa",
+        "lớn",
+        "năm"
+      ],
+      "translation": {
+        "fr": "Je voudrais un verre de lait.",
+        "en": "May I have a glass of milk?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_skin",
+      "distractors": [
+        "dạ",
+        "sông",
+        "đụng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ra",
+      "distractors": [
+        "đau",
+        "nghen",
+        "mạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_rau",
+      "distractors": [
+        "vô",
+        "rút",
+        "gặp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua_coconut",
+      "distractors": [
+        "tô",
+        "chén",
+        "mất"
+      ]
     },
     {
       "type": "game",

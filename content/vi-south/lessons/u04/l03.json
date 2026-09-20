@@ -10,7 +10,7 @@
     "fr": "Distinguer les grands-parents du côté du père et de la mère.",
     "en": "Tell paternal from maternal grandparents."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u04.l02"
   ],
@@ -20,7 +20,16 @@
     "c_ong_ba",
     "s_ba_noi",
     "s_ong_ngoai",
-    "c_que"
+    "c_que",
+    "c_ba_xa",
+    "c_ong_xa",
+    "c_cua",
+    "c_gia_dinh",
+    "c_chong",
+    "c_vo",
+    "c_em_ut",
+    "c_tu",
+    "c_anh_ba"
   ],
   "steps": [
     {
@@ -139,6 +148,130 @@
         "fr": "bà descend doucement, nội tombe court.",
         "en": "bà falls gently, nội drops short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_noi",
+      "distractors": [
+        "khá",
+        "ca",
+        "nước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngoai",
+      "distractors": [
+        "giỡn",
+        "trẻ",
+        "chỉ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bà ___ tôi còn khỏe lắm.",
+      "answer": "nội",
+      "options": [
+        "nội",
+        "khá",
+        "ca",
+        "nước"
+      ],
+      "translation": {
+        "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+        "en": "My paternal grandmother is still in great shape."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Quê ___ tôi ở Bến Tre.",
+      "answer": "ngoại",
+      "options": [
+        "ngoại",
+        "giỡn",
+        "trẻ",
+        "chỉ"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_xa",
+      "distractors": [
+        "sầu riêng",
+        "xin lỗi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_xa",
+      "distractors": [
+        "xe hơi",
+        "xin lỗi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cua",
+      "distractors": [
+        "ơi",
+        "Tết",
+        "nghen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gia_dinh",
+      "distractors": [
+        "lúc đó",
+        "mắc cười"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chong",
+      "distractors": [
+        "gà",
+        "coi",
+        "sắp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vo",
+      "distractors": [
+        "mạ",
+        "ông",
+        "mất"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_em_ut",
+      "distractors": [
+        "công ty",
+        "chị hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tu",
+      "distractors": [
+        "này",
+        "nhờ",
+        "mợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_ba",
+      "distractors": [
+        "ngã tư",
+        "Việt kiều"
+      ]
     }
   ],
   "review": {

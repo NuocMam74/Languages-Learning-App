@@ -10,7 +10,7 @@
     "fr": "Compter les animaux et les objets de la maison.",
     "en": "Count animals and things at home."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u04.l05"
   ],
@@ -20,7 +20,12 @@
     "c_cho_dog",
     "c_meo",
     "c_ghe",
-    "s_nha_toi_co"
+    "s_nha_toi_co",
+    "s_da_co",
+    "s_co_anh_chi_em_khong",
+    "s_co_vo_chua",
+    "c_chua",
+    "c_anh_chi_em"
   ],
   "steps": [
     {
@@ -147,6 +152,136 @@
         "fr": "nhà descend, tôi plat, có monte.",
         "en": "nhà falls, tôi level, có rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cai",
+      "distractors": [
+        "mời",
+        "đụng",
+        "nên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_dog",
+      "distractors": [
+        "cho",
+        "rút",
+        "xe"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_meo",
+      "distractors": [
+        "rau",
+        "khám",
+        "tháng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_toi_co",
+      "distractors": [
+        "Cũng khá ngon.",
+        "Để anh trả."
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ghe",
+      "distractors": [
+        "c_sang",
+        "c_b_ghe",
+        "c_b_bong"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ bàn.",
+      "answer": "cái",
+      "options": [
+        "cái",
+        "mời",
+        "đụng",
+        "nên"
+      ],
+      "translation": {
+        "fr": "Ceci est une table.",
+        "en": "This is a table."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà tôi có hai ___ mèo.",
+      "answer": "con",
+      "options": [
+        "con",
+        "còn",
+        "thơm",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a deux chats.",
+        "en": "At my home there are two cats."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà tôi có một con ___.",
+      "answer": "chó",
+      "options": [
+        "chó",
+        "cho",
+        "rút",
+        "xe"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a un chien.",
+        "en": "At my home there's a dog."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_da_co",
+      "distractors": [
+        "tiền cọc",
+        "Thích lắm!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_co_anh_chi_em_khong",
+      "distractors": [
+        "Con mời ba má ăn cơm.",
+        "Chị nhắn lại giùm em nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_co_vo_chua",
+      "distractors": [
+        "Mọi người thấy sao?",
+        "Em vừa ăn xong."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua",
+      "distractors": [
+        "món",
+        "da",
+        "còn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_chi_em",
+      "distractors": [
+        "nón bảo hiểm",
+        "trạm xe buýt"
+      ]
     },
     {
       "type": "game",

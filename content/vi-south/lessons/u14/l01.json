@@ -10,7 +10,7 @@
     "fr": "Dire ce que tu aimes et demander.",
     "en": "Say what you like and ask others."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l08"
   ],
@@ -131,6 +131,155 @@
         "fr": "phở plonge, không reste plat.",
         "en": "phở dips, không stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tra_da",
+      "distractors": [
+        "mười lăm",
+        "đau bụng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ca_phe_sua_da",
+      "distractors": [
+        "Dạ, con ăn rồi.",
+        "Bao nhiêu một ký?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sua_milk",
+      "distractors": [
+        "trời",
+        "tiếc",
+        "cười"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_tra_da",
+      "distractors": [
+        "s_nhuc_dau",
+        "s_queo_trai",
+        "s_dau_bung"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sua_milk",
+      "distractors": [
+        "c_ho_cough",
+        "c_truong_hoc",
+        "c_thit"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em có ___ phở hông?",
+      "answer": "thích",
+      "options": [
+        "thích",
+        "xa",
+        "của",
+        "ma"
+      ],
+      "translation": {
+        "fr": "Tu aimes le phở ?",
+        "en": "Do you like phở?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em một ly ___.",
+      "answer": "cà phê sữa đá",
+      "options": [
+        "cà phê sữa đá",
+        "Dạ, con ăn rồi.",
+        "Bao nhiêu một ký?",
+        "Em ở lầu hai."
+      ],
+      "translation": {
+        "fr": "Un café glacé au lait, s'il te plaît.",
+        "en": "An iced milk coffee, please."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em xin ly ___.",
+      "answer": "sữa",
+      "options": [
+        "sữa",
+        "trời",
+        "tiếc",
+        "cười"
+      ],
+      "translation": {
+        "fr": "Je voudrais un verre de lait.",
+        "en": "May I have a glass of milk?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em có thích phở hông",
+      "tokens": [
+        "Em",
+        "có",
+        "thích",
+        "phở",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Tu aimes le phở ?",
+        "en": "Do you like phở?"
+      },
+      "audioConcept": "c_thich"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em một ly cà phê sữa đá",
+      "tokens": [
+        "Cho",
+        "em",
+        "một",
+        "ly",
+        "cà",
+        "phê",
+        "sữa",
+        "đá"
+      ],
+      "translation": {
+        "fr": "Un café glacé au lait, s'il te plaît.",
+        "en": "An iced milk coffee, please."
+      },
+      "audioConcept": "s_ca_phe_sua_da"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em xin ly sữa",
+      "tokens": [
+        "Em",
+        "xin",
+        "ly",
+        "sữa"
+      ],
+      "translation": {
+        "fr": "Je voudrais un verre de lait.",
+        "en": "May I have a glass of milk?"
+      },
+      "audioConcept": "c_sua_milk"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_thich",
+        "s_thich_pho_khong",
+        "s_thich_lam",
+        "s_ca_phe_sua_da",
+        "s_tra_da",
+        "c_sua_milk"
+      ]
     }
   ],
   "review": {

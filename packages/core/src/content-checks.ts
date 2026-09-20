@@ -1,4 +1,5 @@
 import { GAP } from "./engine.ts";
+import { GRADED_STEPS_PER_LESSON, gradedSteps, unpracticedConcepts } from "./practice.ts";
 import { lexiconOf, unmetDemands, type KnownLexicon } from "./prerequisites.ts";
 import { heardClassOf, isToneMinimalPair, normalizeAnswer, toneOf } from "./text.ts";
 import {
@@ -65,6 +66,8 @@ export function checkContent(content: ContentIndex, opts: { production?: boolean
     if (!lesson.reviewed) (opts.production ? err : warn)(where, `Leçon non relue par un locuteur natif`);
 
     lesson.steps.forEach((step, i) => checkStep(content, lesson, step, `${where} étape ${i + 1} (${step.type})`, err, warn));
+    checkPractice(content, lesson, where, err);
+    checkGradedCount(content, lesson, where, err, warn);
   }
 
   checkPrerequisiteCycles(content, err);
@@ -130,6 +133,64 @@ function checkPrerequisites(content: ContentIndex, err: Report) {
       for (const form of own.forms) forms.add(form);
     }
   }
+}
+
+/**
+ * Garde de la mise en pratique (contrat phase20 §1) : **aucun mot montré par une leçon n'en sort
+ * sans avoir été la réponse d'au moins un exercice.**
+ *
+ * Sans cette garde, on écrit une leçon qui présente cinq tons et n'en fait reconnaître qu'un :
+ * c'était le cas de la toute première leçon du parcours, et de 124 leçons sur 194 au moment
+ * d'écrire ce contrôle. Le corpus a été corrigé (`scripts/derive-practice.ts`), et le compte est
+ * désormais nul — d'où le niveau `error` : la dette est soldée, elle ne doit pas revenir.
+ *
+ * Le décompte ignore les étapes retirées de la séance faute d'enregistrement (voir `practice.ts`) :
+ * un exercice de tons que personne ne joue ne met rien en pratique.
+ */
+function checkPractice(content: ContentIndex, lesson: Lesson, where: string, err: Report) {
+  const missing = unpracticedConcepts(content, lesson).filter((id) => content.concepts.has(id));
+  if (missing.length === 0) return;
+  err(
+    where,
+    `Jamais mis en pratique (aucun exercice jouable dont c'est la réponse) : ${missing.join(", ")}` +
+      ` — ajouter un listen_pick_text ou un match_pairs, ou retirer ces concepts de la leçon`,
+  );
+}
+
+/**
+ * Barème d'un niveau (contrat phase21 §1) : **20 exercices notés, ni plus ni moins**. C'est ce qui
+ * rend la réussite lisible comme une note sur 20 (une bonne réponse, un point) et, surtout, ce qui
+ * rend deux niveaux comparables — donc une moyenne, donc un classement des thèmes par faiblesse.
+ * Avec un barème mouvant (6 à 14 exercices selon le niveau, avant ce contrat), « 6 sur 8 » et
+ * « 11 sur 14 » ne se moyennent pas honnêtement.
+ *
+ * Le décompte est celui de `practice.ts` : étapes retirées faute d'enregistrement exclues, mini-jeu
+ * exclu. C'est ce que l'apprenant voit vraiment.
+ *
+ * **Deux niveaux de gravité, et la différence compte.**
+ *
+ * *Dépasser 20 est une erreur* : le générateur sait toujours s'arrêter à 20, donc un niveau à 22 est
+ * une étape écrite en trop par-dessus, et la note de ce niveau pèserait plus lourd que les autres
+ * dans la moyenne.
+ *
+ * *Rester en dessous n'est qu'un avertissement*, parce qu'aucun script ne peut le corriger. Un
+ * niveau ne peut réviser que les mots **de son thème** (voir `derive-practice.ts` : au-delà, une
+ * unité téléchargée seule ne se jouerait plus hors ligne). Le niveau qui ouvre un thème n'a donc
+ * rien à réviser, et le corpus n'y fait pas 20 questions sans réciter : 21 niveaux sur 197 sont dans
+ * ce cas. Leur note reste sur 20 — chaque question y vaut simplement plus de points, et l'écran dit
+ * sur combien de questions elle porte. Ce qui les rapprocherait de 20, ce sont des phrases d'exemple
+ * et des images pour leurs mots : du contenu à écrire, pas une règle à changer.
+ */
+function checkGradedCount(content: ContentIndex, lesson: Lesson, where: string, err: Report, warn: Report) {
+  const graded = gradedSteps(content, lesson).length;
+  if (graded === GRADED_STEPS_PER_LESSON) return;
+  const report = graded > GRADED_STEPS_PER_LESSON ? err : warn;
+  const how = graded > GRADED_STEPS_PER_LESSON ? "il y en a" : "il en manque";
+  report(
+    where,
+    `${graded} exercices notés au lieu de ${GRADED_STEPS_PER_LESSON} (${how} ${Math.abs(graded - GRADED_STEPS_PER_LESSON)})` +
+      ` — la note de ce niveau ne pèse pas comme celle des autres ; npx tsx scripts/derive-practice.ts --write`,
+  );
 }
 
 /**

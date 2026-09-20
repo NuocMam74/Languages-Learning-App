@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais te déplacer et guider un chauffeur à Saïgon.",
     "en": "Show you can get around and guide a driver in Saigon."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u11.l07"
   ],
@@ -188,6 +188,101 @@
       "explain": {
         "fr": "… được không ? : poliment.",
         "en": "… được không?: politely."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_queo",
+      "distractors": [
+        "bên",
+        "cơm",
+        "ghé"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_hoi",
+      "distractors": [
+        "công ty",
+        "yên tĩnh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_queo_trai",
+      "distractors": [
+        "nửa ký",
+        "Mắc quá!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_dung_lai",
+      "distractors": [
+        "Dở quá!",
+        "thối tiền"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_non_bao_hiem",
+      "distractors": [
+        "nhà vệ sinh",
+        "trạm xe buýt"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_may",
+      "distractors": [
+        "c_nuoc",
+        "c_tin_nhan",
+        "c_b_qua_gift"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây giờ ai cũng có ___.",
+      "answer": "xe máy",
+      "options": [
+        "xe máy",
+        "hình thẻ",
+        "nước mía",
+        "chung cư"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, tout le monde a une moto.",
+        "en": "Nowadays everyone has a motorbike."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tới ngã tư thì ___.",
+      "answer": "quẹo trái",
+      "options": [
+        "quẹo trái",
+        "nửa ký",
+        "Mắc quá!",
+        "Thiệt hông?"
+      ],
+      "translation": {
+        "fr": "Au carrefour, tourne à gauche.",
+        "en": "At the crossroads, turn left."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tới ngã tư thì ___ trái.",
+      "answer": "quẹo",
+      "options": [
+        "quẹo",
+        "bên",
+        "cơm",
+        "ghé"
+      ],
+      "translation": {
+        "fr": "Au carrefour, tourne à gauche.",
+        "en": "At the crossroads, turn left."
       }
     }
   ],

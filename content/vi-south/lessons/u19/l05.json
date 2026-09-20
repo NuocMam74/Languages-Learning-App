@@ -10,7 +10,7 @@
     "fr": "Remplir un formulaire : nom, date de naissance, signature.",
     "en": "Fill in a form: name, date of birth, signature."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u19.l04"
   ],
@@ -20,7 +20,14 @@
     "c_b_ky_sign",
     "s_b_ky_ten_o_day",
     "c_b_ngay_sinh",
-    "c_b_don"
+    "c_b_don",
+    "c_b_chuyen_khoan",
+    "c_b_the",
+    "s_b_rut_tien",
+    "c_b_rut",
+    "s_b_mo_tai_khoan",
+    "c_b_mo",
+    "c_b_tai_khoan"
   ],
   "steps": [
     {
@@ -149,6 +156,127 @@
         "fr": "ký monte, tên plat, ở plonge, đây plat.",
         "en": "ký rises, tên level, ở dips, đây level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ky_ten_o_day",
+      "distractors": [
+        "Dạ, ai vậy ạ?",
+        "Em bị bệnh rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_don",
+      "distractors": [
+        "cá",
+        "bảy",
+        "giấy"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tên ở đây.",
+      "answer": "ký",
+      "options": [
+        "ký",
+        "trễ",
+        "em",
+        "bớt"
+      ],
+      "translation": {
+        "fr": "Signez ici.",
+        "en": "Sign here."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Họ tên, ___, rồi ký tên.",
+      "answer": "ngày sinh",
+      "options": [
+        "ngày sinh",
+        "bên trái",
+        "bác sĩ",
+        "dễ thương"
+      ],
+      "translation": {
+        "fr": "Nom, date de naissance, puis la signature.",
+        "en": "Full name, date of birth, then sign."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh điền vô ___ này nha.",
+      "answer": "đơn",
+      "options": [
+        "đơn",
+        "cá",
+        "bảy",
+        "giấy"
+      ],
+      "translation": {
+        "fr": "Remplis ce formulaire, d'accord ?",
+        "en": "Fill in this form, okay?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_chuyen_khoan",
+      "distractors": [
+        "họ hàng",
+        "khách sạn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_the",
+      "distractors": [
+        "nè",
+        "ngày",
+        "xin"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_rut_tien",
+      "distractors": [
+        "Giữ sức khỏe nha.",
+        "Mời bác uống trà."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_rut",
+      "distractors": [
+        "phường",
+        "đem",
+        "nhức"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_mo_tai_khoan",
+      "distractors": [
+        "Bớt cho em đi chị.",
+        "Tui nghĩ là chị đúng."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_mo",
+      "distractors": [
+        "mợ",
+        "vườn",
+        "ngủ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_khoan",
+      "distractors": [
+        "nước mắm",
+        "anh hai"
+      ]
     }
   ],
   "review": {

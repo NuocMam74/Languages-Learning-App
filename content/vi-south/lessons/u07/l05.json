@@ -10,7 +10,7 @@
     "fr": "Demander l'addition et proposer de payer.",
     "en": "Ask for the bill and offer to pay."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u07.l04"
   ],
@@ -19,7 +19,16 @@
     "c_tien",
     "c_no_full",
     "c_roi",
-    "s_de_anh_tra"
+    "s_de_anh_tra",
+    "c_b_hay",
+    "s_ngon_qua",
+    "c_ngon",
+    "c_it",
+    "c_cay",
+    "c_mon",
+    "s_em_oi",
+    "c_them",
+    "c_dua"
   ],
   "steps": [
     {
@@ -130,6 +139,124 @@
         "fr": "tính tiền = faire l'addition. tinh = pur, tình = sentiment.",
         "en": "tính tiền = to add up the bill. tinh = pure, tình = feeling."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi",
+      "distractors": [
+        "rối",
+        "chiều",
+        "ba"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "giỏi",
+        "bàn",
+        "pin"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, em ___ rồi.",
+      "answer": "no",
+      "options": [
+        "no",
+        "cậu",
+        "gỏi",
+        "ly"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hay",
+      "distractors": [
+        "giùm",
+        "coi",
+        "về"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ngon_qua",
+      "distractors": [
+        "tiền điện",
+        "Mệt quá!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngon",
+      "distractors": [
+        "giờ",
+        "tư",
+        "khám"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_it",
+      "distractors": [
+        "cũng",
+        "thôi",
+        "mợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cay",
+      "distractors": [
+        "đúng",
+        "ngon",
+        "ít"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mon",
+      "distractors": [
+        "bớt",
+        "nói",
+        "vườn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_oi",
+      "distractors": [
+        "bây giờ",
+        "Chưa xong."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_them",
+      "distractors": [
+        "trẻ",
+        "gói",
+        "giường"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua",
+      "distractors": [
+        "phải",
+        "giá",
+        "ông"
+      ]
     },
     {
       "type": "game",

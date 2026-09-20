@@ -10,7 +10,7 @@
     "fr": "Nommer les fruits du marché, avec les mots du Sud.",
     "en": "Name market fruit, with southern words."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u08.l02"
   ],
@@ -19,7 +19,11 @@
     "c_chuoi",
     "c_thom",
     "c_sau_rieng",
-    "c_dua_hau"
+    "c_dua_hau",
+    "s_bot_cho_em",
+    "c_bot",
+    "s_mac_qua",
+    "c_qua_too"
   ],
   "steps": [
     {
@@ -120,6 +124,110 @@
         "fr": "sầu descend, riêng reste plat.",
         "en": "sầu falls, riêng stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chuoi",
+      "distractors": [
+        "tiền",
+        "tô",
+        "nghĩ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thom",
+      "distractors": [
+        "theo",
+        "chơi",
+        "rảnh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "tạm trú",
+        "gọi lại"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua_hau",
+      "distractors": [
+        "ngã tư",
+        "lần đầu"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xoai",
+      "distractors": [
+        "c_den_do",
+        "c_b_vuon",
+        "c_thit"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "trái ___",
+      "answer": "xoài",
+      "options": [
+        "xoài",
+        "hay",
+        "phải",
+        "chắc"
+      ],
+      "translation": {
+        "fr": "une mangue",
+        "en": "a mango"
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "trái xoài",
+      "accepted": {
+        "fr": [
+          "une mangue"
+        ],
+        "en": [
+          "a mango"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bot_cho_em",
+      "distractors": [
+        "Anh đi Đà Lạt chưa?",
+        "Xin lỗi, em tới trễ."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bot",
+      "distractors": [
+        "mè",
+        "canh",
+        "cà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mac_qua",
+      "distractors": [
+        "Đúng rồi!",
+        "nhức đầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_qua_too",
+      "distractors": [
+        "qua",
+        "quà",
+        "chắc"
+      ]
     }
   ],
   "review": {

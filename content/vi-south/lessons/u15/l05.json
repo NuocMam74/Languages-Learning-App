@@ -10,7 +10,7 @@
     "fr": "Demander un numéro et recharger ton téléphone.",
     "en": "Ask for a number and charge your phone."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u15.l04"
   ],
@@ -20,7 +20,16 @@
     "c_pin",
     "s_het_pin",
     "c_sac_pin",
-    "c_nho_favour"
+    "c_nho_favour",
+    "s_doi_em_chut",
+    "s_doi_chut_nha",
+    "c_doi_wait",
+    "s_em_nhan_roi",
+    "s_nhan_zalo",
+    "c_tin_nhan",
+    "c_nhan_tin",
+    "c_ban_busy",
+    "s_em_dang_ban"
   ],
   "steps": [
     {
@@ -153,6 +162,113 @@
         "fr": "hết monte, pin plat, rồi descend.",
         "en": "hết rises, pin level, rồi falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_het",
+      "distractors": [
+        "sợ",
+        "mả",
+        "tới"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nho_favour",
+      "distractors": [
+        "nhớ",
+        "em",
+        "vì"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em sạc ___ nhờ được không?",
+      "answer": "pin",
+      "options": [
+        "pin",
+        "bớt",
+        "trả",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "Je peux recharger mon téléphone chez vous ?",
+        "en": "Could I charge my phone here?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_doi_em_chut",
+      "distractors": [
+        "Tui đi khai báo tạm trú.",
+        "Đây là đồng nghiệp của tui."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_doi_chut_nha",
+      "distractors": [
+        "Đi đâu vậy?",
+        "Nhà tôi có…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_wait",
+      "distractors": [
+        "đem",
+        "lát",
+        "muốn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_nhan_roi",
+      "distractors": [
+        "cà phê sữa đá",
+        "Em ơi, tính tiền."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nhan_zalo",
+      "distractors": [
+        "Tiếc quá, em bận rồi.",
+        "Chị là người nước nào?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tin_nhan",
+      "distractors": [
+        "mắc cỡ",
+        "bác sĩ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhan_tin",
+      "distractors": [
+        "trúng số",
+        "giấy tờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_busy",
+      "distractors": [
+        "đẹp",
+        "không",
+        "trời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dang_ban",
+      "distractors": [
+        "Trời đang mưa.",
+        "Rồi sao nữa?"
+      ]
     }
   ],
   "review": {

@@ -10,7 +10,7 @@
     "fr": "Demander si une chambre est libre et son prix.",
     "en": "Ask if a room is free and how much it costs."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u17.l02"
   ],
@@ -22,7 +22,10 @@
     "s_con_phong",
     "c_tien",
     "c_giuong",
-    "c_phong"
+    "c_phong",
+    "s_o_lau_hai",
+    "c_tang_tret",
+    "c_lau_hotpot"
   ],
   "steps": [
     {
@@ -221,6 +224,130 @@
         "fr": "còn et phòng descendent, không plat.",
         "en": "còn and phòng fall, không level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giuong",
+      "distractors": [
+        "trẻ",
+        "mắc",
+        "giùm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thang_month",
+      "distractors": [
+        "sáu",
+        "gọi",
+        "sao"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "giỏi",
+        "dở",
+        "khỏe"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong",
+      "distractors": [
+        "hơn",
+        "người",
+        "thích"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_giuong",
+      "distractors": [
+        "c_xe",
+        "c_giao_vien",
+        "c_tien"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_phong",
+      "distractors": [
+        "c_cho_market",
+        "c_bo_beef",
+        "c_chia_khoa"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Phòng này bao nhiêu một ___?",
+      "answer": "tháng",
+      "options": [
+        "tháng",
+        "sáu",
+        "gọi",
+        "sao"
+      ],
+      "translation": {
+        "fr": "Cette chambre, c'est combien par mois ?",
+        "en": "How much is this room per month?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "giỏi",
+        "dở",
+        "khỏe"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi tính tiền",
+      "tokens": [
+        "Em",
+        "ơi",
+        "tính",
+        "tiền"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      },
+      "audioConcept": "c_tien"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_o_lau_hai",
+      "distractors": [
+        "Em sắp tới rồi.",
+        "Thôi, cảm ơn chị."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tang_tret",
+      "distractors": [
+        "dễ thương",
+        "cảm ơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lau_hotpot",
+      "distractors": [
+        "lâu",
+        "lầu",
+        "đặt"
+      ]
     }
   ],
   "review": {

@@ -10,7 +10,7 @@
     "fr": "Réagir dans une conversation.",
     "en": "React in a conversation."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l05"
   ],
@@ -20,7 +20,14 @@
     "s_dung_roi",
     "s_em_cung_vay",
     "c_do_bad",
-    "c_do_dirty"
+    "c_do_dirty",
+    "c_mac_cuoi",
+    "s_anh_thay_sao",
+    "s_tui_thay",
+    "c_thay_feel",
+    "s_phim_hay_qua",
+    "c_coi",
+    "c_phim"
   ],
   "steps": [
     {
@@ -144,6 +151,128 @@
         "fr": "vậy tombe court, hả plonge : ton surpris.",
         "en": "vậy drops short, hả dips: a surprised tone."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_bad",
+      "distractors": [
+        "dơ",
+        "trời",
+        "mình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_dirty",
+      "distractors": [
+        "dở",
+        "gà",
+        "rút"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ Em cũng thích phở.",
+      "answer": "Vậy hả?",
+      "options": [
+        "Vậy hả?",
+        "Đúng rồi!",
+        "nhức đầu",
+        "tiền cọc"
+      ],
+      "translation": {
+        "fr": "Ah bon ? Moi aussi j'aime le phở.",
+        "en": "Really? I like phở too."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Món này hơi ___.",
+      "answer": "dở",
+      "options": [
+        "dở",
+        "dơ",
+        "trời",
+        "mình"
+      ],
+      "translation": {
+        "fr": "Ce plat n'est pas terrible.",
+        "en": "This dish isn't great."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Món này hơi dở",
+      "tokens": [
+        "Món",
+        "này",
+        "hơi",
+        "dở"
+      ],
+      "translation": {
+        "fr": "Ce plat n'est pas terrible.",
+        "en": "This dish isn't great."
+      },
+      "audioConcept": "c_do_bad"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mac_cuoi",
+      "distractors": [
+        "cơm tấm",
+        "chị hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_thay_sao",
+      "distractors": [
+        "Em mới tới.",
+        "Cái gì vậy?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tui_thay",
+      "distractors": [
+        "Nhớ nghen!",
+        "mười lăm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thay_feel",
+      "distractors": [
+        "thầy",
+        "cà",
+        "quê"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_phim_hay_qua",
+      "distractors": [
+        "Bao nhiêu một ký?",
+        "Ký tên ở đây."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_coi",
+      "distractors": [
+        "ly",
+        "giờ",
+        "kể"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phim",
+      "distractors": [
+        "há",
+        "tôi",
+        "xin"
+      ]
     }
   ],
   "review": {

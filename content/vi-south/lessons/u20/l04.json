@@ -10,7 +10,7 @@
     "fr": "Comprendre une invitation à un đám giỗ et savoir quoi apporter.",
     "en": "Understand a đám giỗ invitation and know what to bring."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u20.l03"
   ],
@@ -20,7 +20,14 @@
     "c_b_trai_cay",
     "c_b_ban_tho",
     "s_b_mai_nha_em_dam_gio",
-    "c_dem_bring"
+    "c_dem_bring",
+    "s_b_da_con_no_roi",
+    "s_b_an_them_di",
+    "s_b_con_moi_ba_ma",
+    "s_b_da_con_an_roi",
+    "s_b_an_com_chua",
+    "c_b_phong_bi",
+    "c_b_qua_gift"
   ],
   "steps": [
     {
@@ -135,6 +142,118 @@
         "fr": "giỗ porte le ngã : au Sud, il sonne comme un hỏi.",
         "en": "giỗ carries ngã: in the South it sounds like hỏi."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dam_gio",
+      "distractors": [
+        "ước gì",
+        "hồi đó"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_trai_cay",
+      "distractors": [
+        "bác sĩ",
+        "chủ nhà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dem_bring",
+      "distractors": [
+        "tiệm",
+        "mốt",
+        "vườn"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mai nhà em có ___.",
+      "answer": "đám giỗ",
+      "options": [
+        "đám giỗ",
+        "ước gì",
+        "hồi đó",
+        "khách sạn"
+      ],
+      "translation": {
+        "fr": "Demain, il y a un đám giỗ chez moi.",
+        "en": "Tomorrow there's a đám giỗ at my place."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Con đem ___ tới.",
+      "answer": "trái cây",
+      "options": [
+        "trái cây",
+        "bác sĩ",
+        "chủ nhà",
+        "văn phòng"
+      ],
+      "translation": {
+        "fr": "J'apporte des fruits.",
+        "en": "I'm bringing fruit."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_da_con_no_roi",
+      "distractors": [
+        "Kể tui nghe đi!",
+        "Chắc ảnh tới trễ."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_an_them_di",
+      "distractors": [
+        "Kể tui nghe đi!",
+        "Em mắc cỡ quá."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_con_moi_ba_ma",
+      "distractors": [
+        "Phòng này bao nhiêu một tháng?",
+        "Nếu mưa thì tui ở nhà."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_da_con_an_roi",
+      "distractors": [
+        "Em đang làm việc.",
+        "Anh bao nhiêu tuổi?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_an_com_chua",
+      "distractors": [
+        "Không có chi.",
+        "Em đi đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_phong_bi",
+      "distractors": [
+        "lì xì",
+        "tại sao"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_qua_gift",
+      "distractors": [
+        "qua",
+        "quá",
+        "hai"
+      ]
     }
   ],
   "review": {

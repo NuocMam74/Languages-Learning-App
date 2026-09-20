@@ -10,7 +10,7 @@
     "fr": "Dire « nous » à la manière du Sud et demander qui c'est.",
     "en": "Say 'we' the southern way and ask who someone is."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u03.l06"
   ],
@@ -21,7 +21,12 @@
     "s_ai_vay",
     "c_vay",
     "c_moi_nguoi",
-    "c_tui_me"
+    "c_tui_me",
+    "c_co_she",
+    "c_chi_she",
+    "c_anh_he",
+    "c_ba_she",
+    "c_ong_he"
   ],
   "steps": [
     {
@@ -139,6 +144,168 @@
         "fr": "ai plat, vậy court et tombant.",
         "en": "ai level, vậy short and falling."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vay",
+      "distractors": [
+        "nghỉ",
+        "khám",
+        "rẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui_me",
+      "distractors": [
+        "tụi",
+        "hoài",
+        "cái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui",
+      "distractors": [
+        "tui",
+        "trong",
+        "tiệm"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ mình đi đâu?",
+      "answer": "tụi",
+      "options": [
+        "tụi",
+        "tui",
+        "trong",
+        "tiệm"
+      ],
+      "translation": {
+        "fr": "On va où ?",
+        "en": "Where are we going?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh đi đâu ___?",
+      "answer": "vậy",
+      "options": [
+        "vậy",
+        "nghỉ",
+        "khám",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+        "en": "Where are you going? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chào ___.",
+      "answer": "mọi người",
+      "options": [
+        "mọi người",
+        "hôm qua",
+        "điền đơn",
+        "đèn đỏ"
+      ],
+      "translation": {
+        "fr": "Bonjour tout le monde.",
+        "en": "Hello everyone."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tên là Hùng.",
+      "answer": "tui",
+      "options": [
+        "tui",
+        "tụi",
+        "hoài",
+        "cái"
+      ],
+      "translation": {
+        "fr": "Moi, c'est Hùng (familier).",
+        "en": "I'm Hùng (casual)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đi đâu vậy",
+      "tokens": [
+        "Anh",
+        "đi",
+        "đâu",
+        "vậy"
+      ],
+      "translation": {
+        "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+        "en": "Where are you going? (to a slightly older man)"
+      },
+      "audioConcept": "c_vay"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui tên là Hùng",
+      "tokens": [
+        "Tui",
+        "tên",
+        "là",
+        "Hùng"
+      ],
+      "translation": {
+        "fr": "Moi, c'est Hùng (familier).",
+        "en": "I'm Hùng (casual)."
+      },
+      "audioConcept": "c_tui_me"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co_she",
+      "distractors": [
+        "cô",
+        "ra",
+        "hay"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi_she",
+      "distractors": [
+        "chị",
+        "đắng",
+        "cổ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_he",
+      "distractors": [
+        "anh",
+        "và",
+        "theo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_she",
+      "distractors": [
+        "ba",
+        "bà",
+        "cần"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_he",
+      "distractors": [
+        "ông",
+        "xe",
+        "quận"
+      ]
     },
     {
       "type": "game",

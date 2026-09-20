@@ -10,7 +10,7 @@
     "fr": "Dire où tu as mal.",
     "en": "Say where it hurts."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u16.l01"
   ],
@@ -143,6 +143,169 @@
         "fr": "nhức monte, đầu descend.",
         "en": "nhức rises, đầu falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngu_sleep",
+      "distractors": [
+        "thuê",
+        "cá",
+        "nghỉ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_where",
+      "distractors": [
+        "đầu",
+        "bị",
+        "nghỉ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_head",
+      "distractors": [
+        "đâu",
+        "muốn",
+        "bệnh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhuc",
+      "distractors": [
+        "chủ",
+        "khỏe",
+        "hay"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_dau_bung",
+      "distractors": [
+        "Không sao.",
+        "thứ hai"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ngu_sleep",
+      "distractors": [
+        "c_xe_may",
+        "c_sot",
+        "c_phong"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bác sĩ ơi, em ___ ở đây.",
+      "answer": "đau",
+      "options": [
+        "đau",
+        "ngon",
+        "gỏi",
+        "cần"
+      ],
+      "translation": {
+        "fr": "Docteur, j'ai mal ici.",
+        "en": "Doctor, it hurts here."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em bị nhức ___.",
+      "answer": "đầu",
+      "options": [
+        "đầu",
+        "đâu",
+        "muốn",
+        "bệnh"
+      ],
+      "translation": {
+        "fr": "J'ai mal à la tête.",
+        "en": "I have a headache."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà em có ba phòng ___.",
+      "answer": "ngủ",
+      "options": [
+        "ngủ",
+        "thuê",
+        "cá",
+        "nghỉ"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a trois chambres.",
+        "en": "My house has three bedrooms."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh đi ___ vậy?",
+      "answer": "đâu",
+      "options": [
+        "đâu",
+        "đầu",
+        "bị",
+        "nghỉ"
+      ],
+      "translation": {
+        "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+        "en": "Where are you going? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bác sĩ ơi em đau ở đây",
+      "tokens": [
+        "Bác",
+        "sĩ",
+        "ơi",
+        "em",
+        "đau",
+        "ở",
+        "đây"
+      ],
+      "translation": {
+        "fr": "Docteur, j'ai mal ici.",
+        "en": "Doctor, it hurts here."
+      },
+      "audioConcept": "c_dau_pain"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà em có ba phòng ngủ",
+      "tokens": [
+        "Nhà",
+        "em",
+        "có",
+        "ba",
+        "phòng",
+        "ngủ"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a trois chambres.",
+        "en": "My house has three bedrooms."
+      },
+      "audioConcept": "c_ngu_sleep"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đi đâu vậy",
+      "tokens": [
+        "Anh",
+        "đi",
+        "đâu",
+        "vậy"
+      ],
+      "translation": {
+        "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+        "en": "Where are you going? (to a slightly older man)"
+      },
+      "audioConcept": "c_dau_where"
     }
   ],
   "review": {

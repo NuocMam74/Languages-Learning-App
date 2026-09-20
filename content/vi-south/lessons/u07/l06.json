@@ -10,7 +10,7 @@
     "fr": "Parler du goût et demander un condiment.",
     "en": "Talk about taste and ask for a condiment."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u07.l05"
   ],
@@ -21,7 +21,13 @@
     "c_nuoc_mam",
     "c_ot",
     "c_cay",
-    "c_canh"
+    "c_canh",
+    "s_de_anh_tra",
+    "c_roi",
+    "c_no_full",
+    "c_tien",
+    "s_tinh_tien",
+    "c_b_hay"
   ],
   "steps": [
     {
@@ -118,6 +124,144 @@
         "fr": "nước et mắm montent tous les deux.",
         "en": "nước and mắm both rise."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngot",
+      "distractors": [
+        "mời",
+        "gà",
+        "chút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc_mam",
+      "distractors": [
+        "trường học",
+        "kỹ sư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ot",
+      "distractors": [
+        "khác",
+        "đắng",
+        "rảnh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cay",
+      "distractors": [
+        "một",
+        "ba",
+        "cái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_canh",
+      "distractors": [
+        "hơi",
+        "nhờ",
+        "đâu"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "canh ___",
+      "answer": "chua",
+      "options": [
+        "chua",
+        "chùa",
+        "đã",
+        "nên"
+      ],
+      "translation": {
+        "fr": "soupe aigre (au tamarin)",
+        "en": "sour soup (with tamarind)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ chua ngon lắm.",
+      "answer": "canh",
+      "options": [
+        "canh",
+        "hơi",
+        "nhờ",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "La soupe aigre est délicieuse.",
+        "en": "The sour soup is delicious."
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "canh chua",
+      "accepted": {
+        "fr": [
+          "soupe aigre (au tamarin)"
+        ],
+        "en": [
+          "sour soup (with tamarind)"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_de_anh_tra",
+      "distractors": [
+        "Bao nhiêu tiền?",
+        "số điện thoại"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi",
+      "distractors": [
+        "rối",
+        "mình",
+        "cay"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_no_full",
+      "distractors": [
+        "bận",
+        "chủ",
+        "nói"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "sách",
+        "trứng",
+        "quà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tinh_tien",
+      "distractors": [
+        "Chúc mừng năm mới!",
+        "Em đau ở đây."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hay",
+      "distractors": [
+        "hổng",
+        "chén",
+        "nội"
+      ]
     },
     {
       "type": "game",

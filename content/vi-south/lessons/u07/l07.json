@@ -11,7 +11,7 @@
     "fr": "Revoir plats, boissons, vaisselle et addition.",
     "en": "Go over dishes, drinks, tableware and the bill."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u07.l06"
   ],
@@ -137,6 +137,121 @@
       "explain": {
         "fr": "tô plat, phở plonge.",
         "en": "tô level, phở dips."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_to_pho",
+      "distractors": [
+        "Cho em gặp anh Minh.",
+        "Sau đó tui qua Pháp."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_pho",
+      "distractors": [
+        "hẻm",
+        "ông",
+        "bông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muong",
+      "distractors": [
+        "trẻ",
+        "nhen",
+        "lấy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hu_tieu",
+      "distractors": [
+        "bác sĩ",
+        "đi làm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_com_tam",
+      "distractors": [
+        "công viên",
+        "hồi đó"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "trả lời",
+        "bà xã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc_mia",
+      "distractors": [
+        "trả lời",
+        "bệnh viện"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_tra_da",
+      "distractors": [
+        "s_dau_bung",
+        "s_queo_trai",
+        "s_nhuc_dau"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_com_tam",
+      "distractors": [
+        "c_sot",
+        "c_chua_pagoda",
+        "c_may_lanh"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "c_chia_khoa",
+        "c_b_qua_gift",
+        "c_sau_rieng"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em một tô ___.",
+      "answer": "phở",
+      "options": [
+        "phở",
+        "hẻm",
+        "ông",
+        "bông"
+      ],
+      "translation": {
+        "fr": "Un bol de phở, s'il te plaît.",
+        "en": "A bowl of phở, please."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, cho anh một tô ___.",
+      "answer": "hủ tiếu",
+      "options": [
+        "hủ tiếu",
+        "bác sĩ",
+        "đi làm",
+        "công ty"
+      ],
+      "translation": {
+        "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
+        "en": "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
       }
     },
     {

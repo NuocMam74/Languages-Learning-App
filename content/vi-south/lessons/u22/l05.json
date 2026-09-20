@@ -10,7 +10,7 @@
     "fr": "Raconter une première fois.",
     "en": "Tell about a first time."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u22.l04"
   ],
@@ -22,7 +22,10 @@
     "s_b_lan_dau_toi_saigon",
     "s_b_roi_sao_nua",
     "c_sau_rieng",
-    "c_so_afraid"
+    "c_so_afraid",
+    "s_b_sau_do_tui_qua_phap",
+    "s_b_luc_do_troi_mua",
+    "c_b_bat_dau"
   ],
   "steps": [
     {
@@ -140,6 +143,135 @@
         "fr": "rồi descend, sao plat, nữa plonge au Sud.",
         "en": "rồi falls, sao level, nữa dips in the South."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_lan_dau",
+      "distractors": [
+        "ông xã",
+        "phòng trọ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_slightly",
+      "distractors": [
+        "cưới",
+        "quá",
+        "đã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_roi_sao_nua",
+      "distractors": [
+        "Tui đồng ý.",
+        "Con chào cô."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "bánh mì",
+        "dễ thương"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_so_afraid",
+      "distractors": [
+        "ghe",
+        "dĩa",
+        "hay"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ đầu tui ăn sầu riêng.",
+      "answer": "lần",
+      "options": [
+        "lần",
+        "giấy",
+        "rẻ",
+        "đồng"
+      ],
+      "translation": {
+        "fr": "C'est la première fois que je mange du durian.",
+        "en": "It's my first time eating durian."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tui ___ hơi sợ.",
+      "answer": "thấy",
+      "options": [
+        "thấy",
+        "thầy",
+        "bớt",
+        "con"
+      ],
+      "translation": {
+        "fr": "J'avais un peu peur.",
+        "en": "I felt a bit scared."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em chưa bao giờ ăn ___.",
+      "answer": "sầu riêng",
+      "options": [
+        "sầu riêng",
+        "bánh mì",
+        "dễ thương",
+        "phòng ngủ"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em chưa bao giờ ăn sầu riêng",
+      "tokens": [
+        "Em",
+        "chưa",
+        "bao",
+        "giờ",
+        "ăn",
+        "sầu",
+        "riêng"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      },
+      "audioConcept": "c_sau_rieng"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_sau_do_tui_qua_phap",
+      "distractors": [
+        "Anh có thích phở không?",
+        "Tui muốn gia hạn visa."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_luc_do_troi_mua",
+      "distractors": [
+        "Con mời ba má ăn cơm.",
+        "Tối nay tui phải tăng ca."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_bat_dau",
+      "distractors": [
+        "xe ôm",
+        "hết hạn"
+      ]
     }
   ],
   "review": {

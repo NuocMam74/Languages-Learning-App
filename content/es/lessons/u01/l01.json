@@ -93,6 +93,76 @@
       }
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_es_buenas_tardes",
+      "distractors": [
+        "me llamo",
+        "mucho gusto"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_hola",
+      "distractors": [
+        "soy",
+        "ocho",
+        "gracias"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_buenos_dias",
+      "distractors": [
+        "buenas tardes",
+        "mucho gusto"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_gracias",
+      "distractors": [
+        "nueve",
+        "cinco",
+        "tres"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_buenas_tardes",
+      "distractors": [
+        "c_es_buenas_noches",
+        "c_es_buenos_dias"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_buenas_noches",
+      "distractors": [
+        "c_es_buenos_dias",
+        "c_es_buenas_tardes"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_adios",
+      "distractors": [
+        "c_es_tu",
+        "c_es_yo",
+        "c_es_dos"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_es_hola",
+        "c_es_buenos_dias",
+        "c_es_buenas_tardes",
+        "c_es_buenas_noches",
+        "c_es_adios",
+        "c_es_gracias"
+      ]
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

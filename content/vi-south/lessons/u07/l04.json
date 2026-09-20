@@ -10,7 +10,7 @@
     "fr": "Appeler le serveur, commander et dire que c'est bon.",
     "en": "Call the server, order and say it's good."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u07.l03"
   ],
@@ -21,7 +21,16 @@
     "c_it",
     "c_ngon",
     "s_ngon_qua",
-    "c_b_hay"
+    "c_b_hay",
+    "c_them",
+    "c_dua",
+    "c_muong",
+    "c_dia_plate",
+    "c_chen",
+    "c_nuoc_mia",
+    "c_ly",
+    "s_tra_da",
+    "c_da_ice"
   ],
   "steps": [
     {
@@ -231,6 +240,115 @@
         "fr": "ngon plat, quá monte avec entrain.",
         "en": "ngon level, quá rises with enthusiasm."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mon",
+      "distractors": [
+        "xa",
+        "dĩa",
+        "chuối"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hay",
+      "distractors": [
+        "già",
+        "gỏi",
+        "mè"
+      ]
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Em ơi, cho anh một tô hủ tiếu.",
+      "accepted": {
+        "fr": [
+          "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)"
+        ],
+        "en": [
+          "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_them",
+      "distractors": [
+        "gọi",
+        "ho",
+        "trái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua",
+      "distractors": [
+        "mả",
+        "quẹo",
+        "dĩa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muong",
+      "distractors": [
+        "mưa",
+        "giùm",
+        "sếp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dia_plate",
+      "distractors": [
+        "mì",
+        "dì",
+        "dơ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chen",
+      "distractors": [
+        "đâu",
+        "bạn",
+        "gỏi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc_mia",
+      "distractors": [
+        "bác sĩ",
+        "bắt đầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ly",
+      "distractors": [
+        "chú",
+        "sếp",
+        "nhà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tra_da",
+      "distractors": [
+        "Sai rồi.",
+        "đau bụng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_ice",
+      "distractors": [
+        "đã",
+        "trứng",
+        "năm"
+      ]
     }
   ],
   "review": {

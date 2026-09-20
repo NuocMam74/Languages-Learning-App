@@ -10,7 +10,7 @@
     "fr": "Dire les nombres de 11 à 99, avec leurs petites transformations.",
     "en": "Say numbers from 11 to 99, with their little changes."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u06.l02"
   ],
@@ -22,7 +22,9 @@
     "s_hai_muoi_mot",
     "c_muoi_ten",
     "c_mot_one",
-    "c_lop"
+    "c_lop",
+    "c_chin_nine",
+    "c_tam_eight"
   ],
   "steps": [
     {
@@ -140,6 +142,179 @@
         "fr": "hai plat, mươi plat, mốt monte à la fin.",
         "en": "hai level, mươi level, mốt rises at the end."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_high",
+      "distractors": [
+        "một",
+        "sắp",
+        "thứ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_ten",
+      "distractors": [
+        "mươi",
+        "hai",
+        "mưa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_one",
+      "distractors": [
+        "mốt",
+        "mà",
+        "chở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lop",
+      "distractors": [
+        "chị",
+        "thưởng",
+        "phòng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_tens",
+      "distractors": [
+        "mười",
+        "cho",
+        "cưới"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị hai ___ lăm tuổi.",
+      "answer": "mươi",
+      "options": [
+        "mươi",
+        "mười",
+        "cho",
+        "cưới"
+      ],
+      "translation": {
+        "fr": "Elle a vingt-cinq ans.",
+        "en": "She's twenty-five."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em tôi ___ tuổi.",
+      "answer": "mười",
+      "options": [
+        "mười",
+        "mươi",
+        "hai",
+        "mưa"
+      ],
+      "translation": {
+        "fr": "Mon petit frère a dix ans.",
+        "en": "My little brother is ten."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà tôi có ___ con chó.",
+      "answer": "một",
+      "options": [
+        "một",
+        "mốt",
+        "mà",
+        "chở"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a un chien.",
+        "en": "At my home there's a dog."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi có ba mươi tư người.",
+      "answer": "lớp",
+      "options": [
+        "lớp",
+        "chị",
+        "thưởng",
+        "phòng"
+      ],
+      "translation": {
+        "fr": "Ma classe compte trente-quatre personnes.",
+        "en": "My class has thirty-four people."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em tôi mười tuổi",
+      "tokens": [
+        "Em",
+        "tôi",
+        "mười",
+        "tuổi"
+      ],
+      "translation": {
+        "fr": "Mon petit frère a dix ans.",
+        "en": "My little brother is ten."
+      },
+      "audioConcept": "c_muoi_ten"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà tôi có một con chó",
+      "tokens": [
+        "Nhà",
+        "tôi",
+        "có",
+        "một",
+        "con",
+        "chó"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a un chien.",
+        "en": "At my home there's a dog."
+      },
+      "audioConcept": "c_mot_one"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Lớp tôi có ba mươi tư người",
+      "tokens": [
+        "Lớp",
+        "tôi",
+        "có",
+        "ba",
+        "mươi",
+        "tư",
+        "người"
+      ],
+      "translation": {
+        "fr": "Ma classe compte trente-quatre personnes.",
+        "en": "My class has thirty-four people."
+      },
+      "audioConcept": "c_lop"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chin_nine",
+      "distractors": [
+        "thẻ",
+        "giá",
+        "nhen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tam_eight",
+      "distractors": [
+        "nhà",
+        "giùm",
+        "giỡn"
+      ]
     },
     {
       "type": "game",

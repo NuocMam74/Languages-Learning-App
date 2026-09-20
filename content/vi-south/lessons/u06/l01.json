@@ -141,6 +141,137 @@
       }
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "bả",
+        "ba",
+        "nhỏ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bon",
+      "distractors": [
+        "đúng",
+        "nửa",
+        "coi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "c_benh_vien",
+        "c_tin_nhan",
+        "c_bac"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xin lỗi, tôi ___ hiểu.",
+      "answer": "không",
+      "options": [
+        "không",
+        "khỏe",
+        "xin",
+        "mình"
+      ],
+      "translation": {
+        "fr": "Pardon, je ne comprends pas.",
+        "en": "Sorry, I don't understand."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi có ___ con cá.",
+      "answer": "ba",
+      "options": [
+        "ba",
+        "bà",
+        "bả",
+        "thưa"
+      ],
+      "translation": {
+        "fr": "J'ai trois poissons.",
+        "en": "I have three fish."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà tôi có ___ người.",
+      "answer": "bốn",
+      "options": [
+        "bốn",
+        "đúng",
+        "nửa",
+        "coi"
+      ],
+      "translation": {
+        "fr": "Nous sommes quatre à la maison.",
+        "en": "There are four of us at home."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ nội tôi còn khỏe lắm.",
+      "answer": "bà",
+      "options": [
+        "bà",
+        "bả",
+        "ba",
+        "nhỏ"
+      ],
+      "translation": {
+        "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+        "en": "My paternal grandmother is still in great shape."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi tôi không hiểu",
+      "tokens": [
+        "Xin",
+        "lỗi",
+        "tôi",
+        "không",
+        "hiểu"
+      ],
+      "translation": {
+        "fr": "Pardon, je ne comprends pas.",
+        "en": "Sorry, I don't understand."
+      },
+      "audioConcept": "c_khong_zero"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bà nội tôi còn khỏe lắm",
+      "tokens": [
+        "Bà",
+        "nội",
+        "tôi",
+        "còn",
+        "khỏe",
+        "lắm"
+      ],
+      "translation": {
+        "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+        "en": "My paternal grandmother is still in great shape."
+      },
+      "audioConcept": "c_ba_grandma"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_khong_zero",
+        "c_ba_three",
+        "c_bon",
+        "c_nam_five",
+        "c_so",
+        "c_ba_grandma"
+      ]
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

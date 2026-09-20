@@ -10,7 +10,7 @@
     "fr": "Te présenter à tes nouveaux collègues.",
     "en": "Introduce yourself to new colleagues."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u18.l01"
   ],
@@ -214,6 +214,182 @@
       "explain": {
         "fr": "vui reste plat, được et việc tombent court.",
         "en": "vui stays level, được and việc drop short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_rat_vui_lam_viec",
+      "distractors": [
+        "Năm sau em sẽ đi Cần Thơ.",
+        "Mình đi ghe ra chợ nổi hen."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi",
+      "distractors": [
+        "mới",
+        "ơi",
+        "khá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi_just",
+      "distractors": [
+        "mời",
+        "đá",
+        "đợi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dong_nghiep",
+      "distractors": [
+        "đám giỗ",
+        "chung cư"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ cho một công ty Pháp.",
+      "answer": "làm việc",
+      "options": [
+        "làm việc",
+        "xe hơi",
+        "vé số",
+        "phòng trọ"
+      ],
+      "translation": {
+        "fr": "Je travaille pour une entreprise française.",
+        "en": "I work for a French company."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ bác uống trà.",
+      "answer": "mời",
+      "options": [
+        "mời",
+        "mới",
+        "ơi",
+        "khá"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em là nhân viên ___.",
+      "answer": "mới",
+      "options": [
+        "mới",
+        "mời",
+        "đá",
+        "đợi"
+      ],
+      "translation": {
+        "fr": "Je suis le nouvel employé / la nouvelle employée.",
+        "en": "I'm the new employee."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ của tui.",
+      "answer": "đồng nghiệp",
+      "options": [
+        "đồng nghiệp",
+        "đám giỗ",
+        "chung cư",
+        "ngân hàng"
+      ],
+      "translation": {
+        "fr": "Voici mon collègue.",
+        "en": "This is my colleague."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chào em em là nhân viên mới hả",
+      "tokens": [
+        "Chào",
+        "em",
+        "em",
+        "là",
+        "nhân",
+        "viên",
+        "mới",
+        "hả"
+      ],
+      "translation": {
+        "fr": "Bonjour, c'est toi la nouvelle employée ?",
+        "en": "Hello, are you the new employee?"
+      },
+      "audioConcept": "s_b_em_la_nhan_vien_moi"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi làm việc cho một công ty Pháp",
+      "tokens": [
+        "Tôi",
+        "làm",
+        "việc",
+        "cho",
+        "một",
+        "công",
+        "ty",
+        "Pháp"
+      ],
+      "translation": {
+        "fr": "Je travaille pour une entreprise française.",
+        "en": "I work for a French company."
+      },
+      "audioConcept": "c_lam_viec"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mời bác uống trà",
+      "tokens": [
+        "Mời",
+        "bác",
+        "uống",
+        "trà"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      },
+      "audioConcept": "c_moi"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là đồng nghiệp của tui",
+      "tokens": [
+        "Đây",
+        "là",
+        "đồng",
+        "nghiệp",
+        "của",
+        "tui"
+      ],
+      "translation": {
+        "fr": "Voici mon collègue.",
+        "en": "This is my colleague."
+      },
+      "audioConcept": "c_b_dong_nghiep"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Chào em, em là nhân viên mới hả?",
+      "accepted": {
+        "fr": [
+          "Bonjour, c'est toi la nouvelle employée ?"
+        ],
+        "en": [
+          "Hello, are you the new employee?"
+        ]
       }
     },
     {

@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais présenter ta famille à la manière du Sud.",
     "en": "Show you can present your family the southern way."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u04.l07"
   ],
@@ -189,6 +189,116 @@
       "explain": {
         "fr": "thím monte (sắc).",
         "en": "thím rises (sắc)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thim",
+      "distractors": [
+        "chua",
+        "rút",
+        "mặn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_hai",
+      "distractors": [
+        "tăng ca",
+        "phòng trọ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vo",
+      "distractors": [
+        "thuê",
+        "thích",
+        "không"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_meo",
+      "distractors": [
+        "heo",
+        "hiểu",
+        "thích"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi ở Cần Thơ.",
+      "answer": "anh hai",
+      "options": [
+        "anh hai",
+        "tăng ca",
+        "phòng trọ",
+        "hợp đồng"
+      ],
+      "translation": {
+        "fr": "Mon frère aîné habite à Cần Thơ.",
+        "en": "My eldest brother lives in Cần Thơ."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ tôi ở Cần Thơ.",
+      "answer": "hai",
+      "options": [
+        "hai",
+        "ly",
+        "sai",
+        "khá"
+      ],
+      "translation": {
+        "fr": "Mon frère aîné habite à Cần Thơ.",
+        "en": "My eldest brother lives in Cần Thơ."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ tôi.",
+      "answer": "vợ",
+      "options": [
+        "vợ",
+        "thuê",
+        "thích",
+        "không"
+      ],
+      "translation": {
+        "fr": "Voici ma femme.",
+        "en": "This is my wife."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi còn khỏe lắm.",
+      "answer": "bà nội",
+      "options": [
+        "bà nội",
+        "đi thẳng",
+        "tuần sau",
+        "Đỡ rồi."
+      ],
+      "translation": {
+        "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+        "en": "My paternal grandmother is still in great shape."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ Út tôi ở Sài Gòn.",
+      "answer": "dì",
+      "options": [
+        "dì",
+        "chó",
+        "rau",
+        "già"
+      ],
+      "translation": {
+        "fr": "Ma plus jeune tante (côté mère) habite à Saïgon.",
+        "en": "My youngest aunt (mother's side) lives in Saigon."
       }
     }
   ],

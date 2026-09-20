@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais te débrouiller quand tu es malade.",
     "en": "Show you can cope when you're sick."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u16.l07"
   ],
@@ -199,6 +199,91 @@
       "explain": {
         "fr": "Formule d'au revoir attentionnée.",
         "en": "A caring way to say goodbye."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngu_sleep",
+      "distractors": [
+        "bắp",
+        "thưa",
+        "nhen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_cough",
+      "distractors": [
+        "họ",
+        "xấu",
+        "phường"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_dau_bung",
+      "distractors": [
+        "gần đây",
+        "Chưa xong."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nhuc_dau",
+      "distractors": [
+        "Dạ, có.",
+        "Đỡ rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sot",
+      "distractors": [
+        "nha",
+        "rối",
+        "ghế"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_nhuc_dau",
+      "distractors": [
+        "s_dau_bung",
+        "s_queo_phai",
+        "s_ca_phe_sua_da"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ngu_sleep",
+      "distractors": [
+        "c_muong",
+        "c_trua",
+        "c_chieu"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ho_cough",
+      "distractors": [
+        "c_b_dam_cuoi",
+        "c_pho",
+        "c_nha_thuoc"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em bị ___.",
+      "answer": "nhức đầu",
+      "options": [
+        "nhức đầu",
+        "Dạ, có.",
+        "Đỡ rồi.",
+        "Chưa xong."
+      ],
+      "translation": {
+        "fr": "J'ai mal à la tête.",
+        "en": "I have a headache."
       }
     }
   ],

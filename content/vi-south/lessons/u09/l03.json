@@ -10,7 +10,7 @@
     "fr": "Dire quand se passe une action.",
     "en": "Say when something happens."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u09.l02"
   ],
@@ -19,7 +19,16 @@
     "c_ngay_mai",
     "c_hom_qua",
     "c_ngay",
-    "c_tuan"
+    "c_tuan",
+    "c_dem",
+    "c_toi_evening",
+    "c_chieu",
+    "c_trua",
+    "c_sang",
+    "c_ruoi",
+    "s_bay_gio",
+    "c_phut",
+    "s_may_gio_roi"
   ],
   "steps": [
     {
@@ -140,6 +149,139 @@
         "fr": "ngày descend, mai reste plat.",
         "en": "ngày falls, mai stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngay",
+      "distractors": [
+        "nghỉ",
+        "xa",
+        "vườn"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi đi chợ.",
+      "answer": "hôm nay",
+      "options": [
+        "hôm nay",
+        "chụp hình",
+        "khi nào",
+        "cẩn thận"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je vais au marché.",
+        "en": "Today I'm going to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi đi chợ.",
+      "answer": "ngày mai",
+      "options": [
+        "ngày mai",
+        "lì xì",
+        "giáo viên",
+        "năm ngoái"
+      ],
+      "translation": {
+        "fr": "Demain, je vais au marché.",
+        "en": "Tomorrow I'm going to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi ăn phở.",
+      "answer": "hôm qua",
+      "options": [
+        "hôm qua",
+        "bác sĩ",
+        "bà xã",
+        "trái cây"
+      ],
+      "translation": {
+        "fr": "Hier, j'ai mangé un phở.",
+        "en": "Yesterday I had phở."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dem",
+      "distractors": [
+        "sai",
+        "sông",
+        "nghĩ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi_evening",
+      "distractors": [
+        "tôi",
+        "của",
+        "cậu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chieu",
+      "distractors": [
+        "với",
+        "da",
+        "nhen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trua",
+      "distractors": [
+        "dĩa",
+        "chùa",
+        "của"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sang",
+      "distractors": [
+        "sau",
+        "thưởng",
+        "ngoại"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ruoi",
+      "distractors": [
+        "cưới",
+        "ghế",
+        "hông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bay_gio",
+      "distractors": [
+        "Đúng rồi!",
+        "Dạ, có."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phut",
+      "distractors": [
+        "đụng",
+        "mưa",
+        "nhức"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_may_gio_roi",
+      "distractors": [
+        "Đi đâu vậy?",
+        "Alô, em nghe."
+      ]
     },
     {
       "type": "game",

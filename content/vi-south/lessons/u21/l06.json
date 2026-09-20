@@ -10,7 +10,7 @@
     "fr": "Reconnaître les mots du delta : ghe, bông, vườn.",
     "en": "Recognise delta words: ghe, bông, vườn."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u21.l05"
   ],
@@ -22,7 +22,11 @@
     "s_b_ve_mien_tay",
     "s_b_di_ghe_cho_noi",
     "c_song_river",
-    "c_dua_coconut"
+    "c_dua_coconut",
+    "s_b_gion_hoai",
+    "c_b_hoai",
+    "c_b_gion",
+    "s_b_em_mac_co"
   ],
   "steps": [
     {
@@ -126,6 +130,125 @@
         "fr": "Tết monte, về descend, Tây plat.",
         "en": "Tết rises, về falls, Tây level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_mien_tay",
+      "distractors": [
+        "khi nào",
+        "gia đình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_song_river",
+      "distractors": [
+        "sống",
+        "trước",
+        "đắng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua_coconut",
+      "distractors": [
+        "ước",
+        "với",
+        "chén"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ghe",
+      "distractors": [
+        "ghé",
+        "và",
+        "hơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_vuon",
+      "distractors": [
+        "sau",
+        "nửa",
+        "đã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_di_ghe_cho_noi",
+      "distractors": [
+        "Giả sử trúng số, anh làm gì?",
+        "Con chúc cô năm mới vui vẻ."
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_song_river",
+      "distractors": [
+        "c_banh_mi",
+        "c_gio",
+        "c_ma_mom"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dua_coconut",
+      "distractors": [
+        "c_b_may_tinh",
+        "c_b_dong_nghiep",
+        "c_bo_beef"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mình đi ___ ra chợ nổi hen.",
+      "answer": "ghe",
+      "options": [
+        "ghe",
+        "ghé",
+        "và",
+        "hơi"
+      ],
+      "translation": {
+        "fr": "On prend le bateau pour le marché flottant, d'accord ?",
+        "en": "Let's take the boat to the floating market, okay?"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_gion_hoai",
+      "distractors": [
+        "Con chào ông.",
+        "Mau khỏe nha!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoai",
+      "distractors": [
+        "thưởng",
+        "nhỏ",
+        "quẹo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gion",
+      "distractors": [
+        "đá",
+        "nhờ",
+        "thầy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_mac_co",
+      "distractors": [
+        "Anh có vợ chưa?",
+        "Để bữa khác nha."
+      ]
     },
     {
       "type": "game",

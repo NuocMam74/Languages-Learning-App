@@ -10,7 +10,7 @@
     "fr": "Demander un prix et comprendre la réponse.",
     "en": "Ask a price and understand the answer."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u06.l08"
   ],
@@ -136,6 +136,164 @@
         "fr": "cái monte, này descend, bao nhiêu reste plat.",
         "en": "cái rises, này falls, bao nhiêu stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_friend",
+      "distractors": [
+        "bàn",
+        "bán",
+        "rảnh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_table",
+      "distractors": [
+        "bán",
+        "bạn",
+        "sai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_sell",
+      "distractors": [
+        "bàn",
+        "bạn",
+        "đụng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nay",
+      "distractors": [
+        "nhiều",
+        "phở",
+        "năm"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ban_table",
+      "distractors": [
+        "c_dua_hau",
+        "c_tin_nhan",
+        "c_chi"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị ___ cái này bao nhiêu?",
+      "answer": "bán",
+      "options": [
+        "bán",
+        "bàn",
+        "bạn",
+        "đụng"
+      ],
+      "translation": {
+        "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
+        "en": "How much are you selling this for? (to a slightly older saleswoman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "cái ___",
+      "answer": "này",
+      "options": [
+        "này",
+        "nhiều",
+        "phở",
+        "năm"
+      ],
+      "translation": {
+        "fr": "ceci, cet objet-ci",
+        "en": "this one"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mười lăm ngàn ___.",
+      "answer": "đồng",
+      "options": [
+        "đồng",
+        "ngon",
+        "đội",
+        "cô"
+      ],
+      "translation": {
+        "fr": "Quinze mille đồng.",
+        "en": "Fifteen thousand đồng."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là cái ___.",
+      "answer": "bàn",
+      "options": [
+        "bàn",
+        "bán",
+        "bạn",
+        "sai"
+      ],
+      "translation": {
+        "fr": "Ceci est une table.",
+        "en": "This is a table."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mười lăm ngàn đồng",
+      "tokens": [
+        "Mười",
+        "lăm",
+        "ngàn",
+        "đồng"
+      ],
+      "translation": {
+        "fr": "Quinze mille đồng.",
+        "en": "Fifteen thousand đồng."
+      },
+      "audioConcept": "c_dong"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là cái bàn",
+      "tokens": [
+        "Đây",
+        "là",
+        "cái",
+        "bàn"
+      ],
+      "translation": {
+        "fr": "Ceci est une table.",
+        "en": "This is a table."
+      },
+      "audioConcept": "c_ban_table"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "cái này",
+      "accepted": {
+        "fr": [
+          "ceci, cet objet-ci"
+        ],
+        "en": [
+          "this one"
+        ]
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_mua_buy",
+        "c_ban_sell",
+        "c_nay",
+        "s_cai_nay_bao_nhieu",
+        "c_dong",
+        "c_ban_friend"
+      ]
     },
     {
       "type": "game",

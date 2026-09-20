@@ -10,7 +10,7 @@
     "fr": "Situer l'heure dans la journée.",
     "en": "Place a time within the day."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u09.l01"
   ],
@@ -20,7 +20,11 @@
     "c_chieu",
     "c_toi_evening",
     "c_dem",
-    "c_toi"
+    "c_toi",
+    "c_ruoi",
+    "s_bay_gio",
+    "c_phut",
+    "s_may_gio_roi"
   ],
   "steps": [
     {
@@ -144,6 +148,139 @@
         "fr": "tối monte nettement, ne le confonds pas avec tôi.",
         "en": "tối rises clearly, don't mix it up with tôi."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi",
+      "distractors": [
+        "tối",
+        "dơ",
+        "rẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sang",
+      "distractors": [
+        "cơm",
+        "trong",
+        "mua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi_evening",
+      "distractors": [
+        "tôi",
+        "mốt",
+        "tám"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dem",
+      "distractors": [
+        "hoài",
+        "chủ",
+        "chậm"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_trua",
+      "distractors": [
+        "c_ca_phe",
+        "c_mua_rain",
+        "c_cay_xang"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_toi_evening",
+      "distractors": [
+        "c_con",
+        "c_troi",
+        "c_chua_pagoda"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chín giờ ___ rồi.",
+      "answer": "tối",
+      "options": [
+        "tối",
+        "tôi",
+        "mốt",
+        "tám"
+      ],
+      "translation": {
+        "fr": "Il est déjà neuf heures du soir.",
+        "en": "It's already nine in the evening."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ba ___.",
+      "answer": "tôi",
+      "options": [
+        "tôi",
+        "tối",
+        "dơ",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "Voici mon père.",
+        "en": "This is my dad."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là ba tôi",
+      "tokens": [
+        "Đây",
+        "là",
+        "ba",
+        "tôi"
+      ],
+      "translation": {
+        "fr": "Voici mon père.",
+        "en": "This is my dad."
+      },
+      "audioConcept": "c_toi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ruoi",
+      "distractors": [
+        "nếu",
+        "mình",
+        "sao"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bay_gio",
+      "distractors": [
+        "theo tui",
+        "Thiệt há?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phut",
+      "distractors": [
+        "tui",
+        "Pháp",
+        "lên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_may_gio_roi",
+      "distractors": [
+        "Tôi tên là…",
+        "Hẹn gặp lại."
+      ]
     }
   ],
   "review": {

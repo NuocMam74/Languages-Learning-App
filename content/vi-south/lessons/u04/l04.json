@@ -10,7 +10,7 @@
     "fr": "Nommer oncles et tantes des deux côtés de la famille.",
     "en": "Name uncles and aunts on both sides of the family."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u04.l03"
   ],
@@ -20,7 +20,17 @@
     "c_duong",
     "c_thim",
     "c_mo",
-    "c_ho_hang"
+    "c_ho_hang",
+    "c_que",
+    "s_ong_ngoai",
+    "s_ba_noi",
+    "c_ong_ba",
+    "c_ngoai",
+    "c_noi",
+    "c_ba_xa",
+    "c_ong_xa",
+    "c_cua",
+    "c_gia_dinh"
   ],
   "steps": [
     {
@@ -139,6 +149,123 @@
         "fr": "cậu : ton bas, court, qui tombe.",
         "en": "cậu: low, short, falling tone."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_duong",
+      "distractors": [
+        "tuần",
+        "má",
+        "ngon"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thim",
+      "distractors": [
+        "bớt",
+        "nhớ",
+        "sau"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ Út tôi ở Sài Gòn.",
+      "answer": "dì",
+      "options": [
+        "dì",
+        "phải",
+        "người",
+        "sợ"
+      ],
+      "translation": {
+        "fr": "Ma plus jeune tante (côté mère) habite à Saïgon.",
+        "en": "My youngest aunt (mother's side) lives in Saigon."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_que",
+      "distractors": [
+        "sông",
+        "lẩu",
+        "rút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ong_ngoai",
+      "distractors": [
+        "tiền nước",
+        "bao lâu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ba_noi",
+      "distractors": [
+        "thứ bảy",
+        "dừng lại"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_ba",
+      "distractors": [
+        "ngân hàng",
+        "danh thiếp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngoai",
+      "distractors": [
+        "tôi",
+        "giỡn",
+        "đơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_noi",
+      "distractors": [
+        "sáu",
+        "thêm",
+        "mè"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_xa",
+      "distractors": [
+        "cơm tấm",
+        "ngày mai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_xa",
+      "distractors": [
+        "chụp hình",
+        "bao nhiêu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cua",
+      "distractors": [
+        "vườn",
+        "bông",
+        "đã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gia_dinh",
+      "distractors": [
+        "nhân viên",
+        "anh hai"
+      ]
     }
   ],
   "review": {

@@ -11,7 +11,7 @@
     "fr": "Revoir prix, marchandage, fruits et poids.",
     "en": "Go over prices, haggling, fruit and weights."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u08.l06"
   ],
@@ -149,6 +149,134 @@
       "explain": {
         "fr": "mắc et quá montent tous les deux.",
         "en": "mắc and quá both rise."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_friend",
+      "distractors": [
+        "bán",
+        "bàn",
+        "sẽ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_table",
+      "distractors": [
+        "bạn",
+        "bán",
+        "ba"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thom",
+      "distractors": [
+        "chị",
+        "mà",
+        "họ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_heo",
+      "distractors": [
+        "cổ",
+        "dạ",
+        "trưa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_sell",
+      "distractors": [
+        "bạn",
+        "bàn",
+        "gỏi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mac_qua",
+      "distractors": [
+        "ông ngoại",
+        "chừng nào"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_buy",
+      "distractors": [
+        "thím",
+        "sau",
+        "chén"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_re",
+      "distractors": [
+        "sắp",
+        "cá",
+        "gặp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mac_expensive",
+      "distractors": [
+        "xa",
+        "nhà",
+        "dạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bot",
+      "distractors": [
+        "hai",
+        "lần",
+        "Tết"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ban_table",
+      "distractors": [
+        "c_sot",
+        "c_b_don",
+        "c_xe"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị bán ___",
+      "answer": "Cái này bao nhiêu?",
+      "options": [
+        "Cái này bao nhiêu?",
+        "Dạ, con ăn rồi.",
+        "Anh Minh đang họp.",
+        "Anh có vợ chưa?"
+      ],
+      "translation": {
+        "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
+        "en": "How much are you selling this for? (to a slightly older saleswoman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị bán cho em một ký thịt ___.",
+      "answer": "heo",
+      "options": [
+        "heo",
+        "cổ",
+        "dạ",
+        "trưa"
+      ],
+      "translation": {
+        "fr": "Vends-moi un kilo de porc, s'il te plaît.",
+        "en": "Sell me a kilo of pork, please."
       }
     },
     {

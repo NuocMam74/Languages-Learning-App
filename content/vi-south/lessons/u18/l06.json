@@ -10,7 +10,7 @@
     "fr": "Demander poliment un jour de congé.",
     "en": "Politely ask for a day off."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u18.l05"
   ],
@@ -20,7 +20,13 @@
     "s_b_xin_nghi_phep",
     "s_b_anh_cho_em_nghi",
     "c_ngay",
-    "c_b_sep"
+    "c_b_sep",
+    "c_b_viec",
+    "s_b_lam_ca_sang",
+    "s_b_tang_ca",
+    "c_b_tang_ca",
+    "c_b_ca_shift",
+    "c_b_thuong"
   ],
   "steps": [
     {
@@ -139,6 +145,138 @@
         "fr": "xin plat, nghỉ plonge, phép monte.",
         "en": "xin level, nghỉ dips, phép rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sep",
+      "distractors": [
+        "nước",
+        "bận",
+        "ghế"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nghi_phep",
+      "distractors": [
+        "ước gì",
+        "chủ nhật"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngay",
+      "distractors": [
+        "già",
+        "mời",
+        "vậy"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_sep",
+      "distractors": [
+        "c_ba_grandma",
+        "c_ly",
+        "c_b_ho_chieu"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em xin ___ phép ba ngày.",
+      "answer": "nghỉ",
+      "options": [
+        "nghỉ",
+        "thưởng",
+        "chơi",
+        "là"
+      ],
+      "translation": {
+        "fr": "Je demande trois jours de congé.",
+        "en": "I'd like to take three days off."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ mai tôi đi chợ.",
+      "answer": "ngày",
+      "options": [
+        "ngày",
+        "già",
+        "mời",
+        "vậy"
+      ],
+      "translation": {
+        "fr": "Demain, je vais au marché.",
+        "en": "Tomorrow I'm going to the market."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ngày mai tôi đi chợ",
+      "tokens": [
+        "Ngày",
+        "mai",
+        "tôi",
+        "đi",
+        "chợ"
+      ],
+      "translation": {
+        "fr": "Demain, je vais au marché.",
+        "en": "Tomorrow I'm going to the market."
+      },
+      "audioConcept": "c_ngay"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_viec",
+      "distractors": [
+        "em",
+        "cô",
+        "ho"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_lam_ca_sang",
+      "distractors": [
+        "Em có anh chị em không?",
+        "Phòng này bao nhiêu một tháng?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tang_ca",
+      "distractors": [
+        "Anh nói chậm lại được không?",
+        "Em xin nghỉ phép ba ngày."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tang_ca",
+      "distractors": [
+        "ngày sinh",
+        "xe buýt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ca_shift",
+      "distractors": [
+        "cà",
+        "cá",
+        "nhen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thuong",
+      "distractors": [
+        "thường",
+        "tối",
+        "phòng"
+      ]
     }
   ],
   "review": {

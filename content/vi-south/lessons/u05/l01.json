@@ -130,6 +130,115 @@
       }
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_gap",
+      "distractors": [
+        "Pháp",
+        "ăn",
+        "chú"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ Trần.",
+      "answer": "họ",
+      "options": [
+        "họ",
+        "ho",
+        "thường",
+        "giấy"
+      ],
+      "translation": {
+        "fr": "Mon nom de famille est Trần.",
+        "en": "My family name is Trần."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chào chị. ___",
+      "answer": "Chị tên gì?",
+      "options": [
+        "Chị tên gì?",
+        "đi khám bệnh",
+        "Anh khỏe không?",
+        "Anh ở đâu?"
+      ],
+      "translation": {
+        "fr": "Bonjour. Comment vous appelez-vous ?",
+        "en": "Hello. What's your name?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hẹn ___ lại anh.",
+      "answer": "gặp",
+      "options": [
+        "gặp",
+        "Pháp",
+        "ăn",
+        "chú"
+      ],
+      "translation": {
+        "fr": "À bientôt (à un homme un peu plus âgé).",
+        "en": "See you (to a slightly older man)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi họ Trần",
+      "tokens": [
+        "Tôi",
+        "họ",
+        "Trần"
+      ],
+      "translation": {
+        "fr": "Mon nom de famille est Trần.",
+        "en": "My family name is Trần."
+      },
+      "audioConcept": "c_ho_surname"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chào chị Chị tên gì",
+      "tokens": [
+        "Chào",
+        "chị",
+        "Chị",
+        "tên",
+        "gì"
+      ],
+      "translation": {
+        "fr": "Bonjour. Comment vous appelez-vous ?",
+        "en": "Hello. What's your name?"
+      },
+      "audioConcept": "s_chi_ten_gi"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hẹn gặp lại anh",
+      "tokens": [
+        "Hẹn",
+        "gặp",
+        "lại",
+        "anh"
+      ],
+      "translation": {
+        "fr": "À bientôt (à un homme un peu plus âgé).",
+        "en": "See you (to a slightly older man)."
+      },
+      "audioConcept": "c_gap"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_ho_surname",
+        "s_anh_ten_gi",
+        "s_chi_ten_gi",
+        "c_gap",
+        "s_rat_vui_duoc_gap"
+      ]
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

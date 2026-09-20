@@ -114,6 +114,80 @@
       }
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_xe_buyt",
+      "distractors": [
+        "năm ngoái",
+        "hủ tiếu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_hoi",
+      "distractors": [
+        "yên tĩnh",
+        "nghỉ phép"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may_bay",
+      "distractors": [
+        "giáo viên",
+        "máy tính"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_dap",
+      "distractors": [
+        "sân bay",
+        "phong bì"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_may",
+      "distractors": [
+        "c_com_tam",
+        "c_dua",
+        "c_tra_tea"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây giờ ai cũng có ___.",
+      "answer": "xe máy",
+      "options": [
+        "xe máy",
+        "phong bì",
+        "đèn đỏ",
+        "ngày xưa"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, tout le monde a une moto.",
+        "en": "Nowadays everyone has a motorbike."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ ai cũng có xe máy",
+      "tokens": [
+        "Bây",
+        "giờ",
+        "ai",
+        "cũng",
+        "có",
+        "xe",
+        "máy"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, tout le monde a une moto.",
+        "en": "Nowadays everyone has a motorbike."
+      },
+      "audioConcept": "c_xe_may"
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

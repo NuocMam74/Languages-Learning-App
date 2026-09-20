@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais chercher et louer un logement.",
     "en": "Show you can look for and rent a place."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u17.l07"
   ],
@@ -198,6 +198,104 @@
       "explain": {
         "fr": "hẻm plonge, xe plat, hơi plat.",
         "en": "hẻm dips, xe level, hơi level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ghe",
+      "distractors": [
+        "thịt",
+        "rau",
+        "hiểu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_table",
+      "distractors": [
+        "bạn",
+        "bán",
+        "Pháp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hem_xe_hoi",
+      "distractors": [
+        "Dạ, ăn rồi.",
+        "Em đang bận."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giuong",
+      "distractors": [
+        "thơm",
+        "trưa",
+        "lần"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ghe",
+      "distractors": [
+        "c_bo_beef",
+        "c_muong",
+        "c_cay_xang"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ban_table",
+      "distractors": [
+        "c_b_dam_gio",
+        "c_thuoc_medicine",
+        "c_da_ice"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là cái ___.",
+      "answer": "bàn",
+      "options": [
+        "bàn",
+        "bạn",
+        "bán",
+        "Pháp"
+      ],
+      "translation": {
+        "fr": "Ceci est une table.",
+        "en": "This is a table."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ nước tính riêng.",
+      "answer": "tiền điện",
+      "options": [
+        "tiền điện",
+        "Hổng biết.",
+        "thứ hai",
+        "Sao vậy?"
+      ],
+      "translation": {
+        "fr": "L'eau et l'électricité sont facturées à part.",
+        "en": "Water and electricity are charged separately."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chung cư này gần chợ, mà hơi ___.",
+      "answer": "ồn",
+      "options": [
+        "ồn",
+        "cô",
+        "tháng",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "Cet immeuble est près du marché, mais un peu bruyant.",
+        "en": "This building is near the market, but a bit noisy."
       }
     }
   ],

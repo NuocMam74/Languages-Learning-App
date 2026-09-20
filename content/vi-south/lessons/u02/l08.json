@@ -11,7 +11,7 @@
     "fr": "Montrer que tu reconnais les sons du Sud à l'oreille et à l'écrit.",
     "en": "Show you recognise southern sounds by ear and in writing."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u02.l07"
   ],
@@ -177,6 +177,117 @@
       "explain": {
         "fr": "ở : hỏi, confondu avec le ngã au Sud.",
         "en": "ở: hỏi, merged with ngã in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_skin",
+      "distractors": [
+        "dạ",
+        "chậm",
+        "đây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da",
+      "distractors": [
+        "da",
+        "đội",
+        "việc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_friend",
+      "distractors": [
+        "bàn",
+        "bán",
+        "rẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_table",
+      "distractors": [
+        "bán",
+        "bạn",
+        "khỏe"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_o_at",
+      "distractors": [
+        "vừa",
+        "bông",
+        "rưỡi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "ký",
+        "rồi",
+        "nghen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trai_fruit",
+      "distractors": [
+        "trả",
+        "cá",
+        "bà"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_mi",
+      "distractors": [
+        "c_troi",
+        "c_chu",
+        "c_b_dam_gio"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ban_table",
+      "distractors": [
+        "c_bo_beef",
+        "c_pho",
+        "c_xe_may"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, em cảm ơn anh.",
+      "answer": "dạ",
+      "options": [
+        "dạ",
+        "da",
+        "đội",
+        "việc"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh đi ___ vậy?",
+      "answer": "đâu",
+      "options": [
+        "đâu",
+        "đầu",
+        "nhức",
+        "người"
+      ],
+      "translation": {
+        "fr": "Tu vas où ? (à un homme un peu plus âgé)",
+        "en": "Where are you going? (to a slightly older man)"
       }
     }
   ],

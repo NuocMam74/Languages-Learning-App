@@ -10,7 +10,7 @@
     "fr": "Juger un plat, poliment.",
     "en": "Judge a dish, politely."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l02"
   ],
@@ -137,6 +137,153 @@
         "fr": "cũng et được : deux tons qui cassent.",
         "en": "cũng and được: two broken tones."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_bad",
+      "distractors": [
+        "dơ",
+        "ạ",
+        "đẹp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_dirty",
+      "distractors": [
+        "dở",
+        "ga",
+        "chua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoi_slightly",
+      "distractors": [
+        "cô",
+        "tháng",
+        "mấy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_pho",
+      "distractors": [
+        "sốt",
+        "nghe",
+        "ơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_com_tam",
+      "distractors": [
+        "cảm ơn",
+        "lì xì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "sầu riêng",
+        "đồng nghiệp"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_com_tam",
+      "distractors": [
+        "c_song_river",
+        "c_da_ice",
+        "c_ngu_sleep"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "c_sua_milk",
+        "c_cay_xang",
+        "c_den_do"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Món này hơi ___.",
+      "answer": "dở",
+      "options": [
+        "dở",
+        "dơ",
+        "ạ",
+        "đẹp"
+      ],
+      "translation": {
+        "fr": "Ce plat n'est pas terrible.",
+        "en": "This dish isn't great."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em một tô ___.",
+      "answer": "phở",
+      "options": [
+        "phở",
+        "sốt",
+        "nghe",
+        "ơi"
+      ],
+      "translation": {
+        "fr": "Un bol de phở, s'il te plaît.",
+        "en": "A bowl of phở, please."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ăn ___ chưa?",
+      "answer": "cơm tấm",
+      "options": [
+        "cơm tấm",
+        "cảm ơn",
+        "lì xì",
+        "hôm nay"
+      ],
+      "translation": {
+        "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
+        "en": "Have you tried cơm tấm? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cho em một tô phở",
+      "tokens": [
+        "Cho",
+        "em",
+        "một",
+        "tô",
+        "phở"
+      ],
+      "translation": {
+        "fr": "Un bol de phở, s'il te plaît.",
+        "en": "A bowl of phở, please."
+      },
+      "audioConcept": "c_pho"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ăn cơm tấm chưa",
+      "tokens": [
+        "Anh",
+        "ăn",
+        "cơm",
+        "tấm",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
+        "en": "Have you tried cơm tấm? (to a slightly older man)"
+      },
+      "audioConcept": "c_com_tam"
     }
   ],
   "review": {

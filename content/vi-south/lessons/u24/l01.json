@@ -10,7 +10,7 @@
     "fr": "Donner ton avis simplement et demander celui des autres.",
     "en": "Give your opinion simply and ask for others'."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 4,
   "prerequisites": [
     "vi-south.u23.l08"
   ],
@@ -128,6 +128,63 @@
         "fr": "theo plat, này descend, hơn plat.",
         "en": "theo level, này falls, hơn level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_theo_tui",
+      "distractors": [
+        "nghỉ ngơi",
+        "Chắc hông?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hon",
+      "distractors": [
+        "ngon",
+        "gặp",
+        "bên"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh lớn ___ em.",
+      "answer": "hơn",
+      "options": [
+        "hơn",
+        "ngon",
+        "gặp",
+        "bên"
+      ],
+      "translation": {
+        "fr": "Je suis plus âgé que toi (dit par un grand frère).",
+        "en": "I'm older than you (said by an older brother)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh lớn hơn em",
+      "tokens": [
+        "Anh",
+        "lớn",
+        "hơn",
+        "em"
+      ],
+      "translation": {
+        "fr": "Je suis plus âgé que toi (dit par un grand frère).",
+        "en": "I'm older than you (said by an older brother)."
+      },
+      "audioConcept": "c_hon"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_theo",
+        "s_b_theo_tui",
+        "s_b_theo_tui_ngon",
+        "s_b_anh_thay_sao",
+        "c_hon"
+      ]
     },
     {
       "type": "game",

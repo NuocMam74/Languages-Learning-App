@@ -10,7 +10,7 @@
     "fr": "Dire les jours de la semaine.",
     "en": "Say the days of the week."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u09.l03"
   ],
@@ -19,7 +19,19 @@
     "s_thu_hai",
     "s_thu_bay",
     "c_chu_nhat",
-    "s_hom_nay_thu_may"
+    "s_hom_nay_thu_may",
+    "c_tuan",
+    "c_ngay",
+    "c_hom_qua",
+    "c_ngay_mai",
+    "c_hom_nay",
+    "c_dem",
+    "c_toi_evening",
+    "c_chieu",
+    "c_trua",
+    "c_sang",
+    "c_ruoi",
+    "s_bay_gio"
   ],
   "steps": [
     {
@@ -116,6 +128,134 @@
         "fr": "thứ et mấy montent tous les deux.",
         "en": "thứ and mấy both rise."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thu",
+      "distractors": [
+        "nửa",
+        "sao",
+        "cá"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hôm nay ___ bảy.",
+      "answer": "thứ",
+      "options": [
+        "thứ",
+        "nửa",
+        "sao",
+        "cá"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, c'est samedi.",
+        "en": "Today is Saturday."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tuan",
+      "distractors": [
+        "đem",
+        "giùm",
+        "tới"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngay",
+      "distractors": [
+        "tôi",
+        "hay",
+        "đã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hom_qua",
+      "distractors": [
+        "thiệp mời",
+        "tăng ca"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngay_mai",
+      "distractors": [
+        "năm sau",
+        "phòng trọ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hom_nay",
+      "distractors": [
+        "sân bay",
+        "hôm qua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dem",
+      "distractors": [
+        "sáu",
+        "đũa",
+        "mươi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi_evening",
+      "distractors": [
+        "tôi",
+        "này",
+        "cầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chieu",
+      "distractors": [
+        "chị",
+        "tới",
+        "nhiều"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trua",
+      "distractors": [
+        "xe",
+        "nhờ",
+        "xin"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sang",
+      "distractors": [
+        "cưới",
+        "mời",
+        "ra"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ruoi",
+      "distractors": [
+        "tốt",
+        "hội",
+        "thơm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bay_gio",
+      "distractors": [
+        "tiền nước",
+        "nhức đầu"
+      ]
     },
     {
       "type": "game",

@@ -10,7 +10,7 @@
     "fr": "Dire ce que tu détestes ou adores.",
     "en": "Say what you hate or can't live without."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l01"
   ],
@@ -21,7 +21,10 @@
     "s_ghet_ket_xe",
     "c_sau_rieng",
     "c_chuoi",
-    "c_dua_hau"
+    "c_dua_hau",
+    "s_thich_lam",
+    "s_thich_pho_khong",
+    "c_thich"
   ],
   "steps": [
     {
@@ -126,6 +129,145 @@
       "explain": {
         "fr": "ghiền descend, cà descend, phê plat.",
         "en": "ghiền falls, cà falls, phê level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chuoi",
+      "distractors": [
+        "lát",
+        "chào",
+        "đúng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua_hau",
+      "distractors": [
+        "trường học",
+        "bắt đầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ghien_ca_phe",
+      "distractors": [
+        "Điện thoại em hết pin rồi.",
+        "Anh cho tôi coi hộ chiếu."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "địa chỉ",
+        "đèn đỏ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chuoi",
+      "distractors": [
+        "c_ba",
+        "c_xe",
+        "c_b_ghe"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dua_hau",
+      "distractors": [
+        "c_ca_phe",
+        "c_tra_tea",
+        "c_bac"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ cà phê sữa đá.",
+      "answer": "ghiền",
+      "options": [
+        "ghiền",
+        "sau",
+        "khỏe",
+        "đặt"
+      ],
+      "translation": {
+        "fr": "Je suis accro au café glacé au lait. (homme, à plus jeune)",
+        "en": "I'm hooked on iced milk coffee. (man, to someone younger)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em chưa bao giờ ăn ___.",
+      "answer": "sầu riêng",
+      "options": [
+        "sầu riêng",
+        "địa chỉ",
+        "đèn đỏ",
+        "xe ôm"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em chưa bao giờ ăn sầu riêng",
+      "tokens": [
+        "Em",
+        "chưa",
+        "bao",
+        "giờ",
+        "ăn",
+        "sầu",
+        "riêng"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      },
+      "audioConcept": "c_sau_rieng"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thich_lam",
+      "distractors": [
+        "Tui thấy…",
+        "bằng tuổi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thich_pho_khong",
+      "distractors": [
+        "Sau đó tui qua Pháp.",
+        "Cho em một tô phở."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thich",
+      "distractors": [
+        "bông",
+        "ở",
+        "bệnh"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em có ___ phở hông?",
+      "answer": "thích",
+      "options": [
+        "thích",
+        "bông",
+        "ở",
+        "bệnh"
+      ],
+      "translation": {
+        "fr": "Tu aimes le phở ?",
+        "en": "Do you like phở?"
       }
     }
   ],

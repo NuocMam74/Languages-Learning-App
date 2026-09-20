@@ -10,7 +10,7 @@
     "fr": "Refuser poliment une invitation.",
     "en": "Politely decline an invitation."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u20.l05"
   ],
@@ -20,7 +20,15 @@
     "c_b_tiec",
     "c_b_tiec_party",
     "s_b_dung_khach_sao",
-    "c_b_ban_busy"
+    "c_b_ban_busy",
+    "c_b_tet",
+    "s_b_con_chuc_co",
+    "s_b_chuc_mung_nam_moi",
+    "c_b_li_xi",
+    "c_dem_bring",
+    "s_b_mai_nha_em_dam_gio",
+    "c_b_ban_tho",
+    "c_b_trai_cay"
   ],
   "steps": [
     {
@@ -216,6 +224,144 @@
         "fr": "để plonge, bữa plonge aussi au Sud, khác monte.",
         "en": "để dips, bữa dips too in the South, khác rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tiec_qua",
+      "distractors": [
+        "Em là nhân viên mới.",
+        "Anh có thích phở không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tiec_party",
+      "distractors": [
+        "tiếc",
+        "ghé",
+        "nội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ban_busy",
+      "distractors": [
+        "nếu",
+        "tiền",
+        "giỡn"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ quá, em bận rồi.",
+      "answer": "tiếc",
+      "options": [
+        "tiếc",
+        "tiệc",
+        "giả",
+        "rưỡi"
+      ],
+      "translation": {
+        "fr": "Dommage, je suis déjà pris(e).",
+        "en": "What a pity, I'm already busy."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bữa nay em ___ lắm.",
+      "answer": "bận",
+      "options": [
+        "bận",
+        "nếu",
+        "tiền",
+        "giỡn"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui je suis très occupé(e).",
+        "en": "I'm very busy today."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bữa nay em bận lắm",
+      "tokens": [
+        "Bữa",
+        "nay",
+        "em",
+        "bận",
+        "lắm"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui je suis très occupé(e).",
+        "en": "I'm very busy today."
+      },
+      "audioConcept": "c_b_ban_busy"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tet",
+      "distractors": [
+        "rẻ",
+        "ở",
+        "cưới"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_con_chuc_co",
+      "distractors": [
+        "Giả sử trúng số, anh làm gì?",
+        "Ước gì tui nói giỏi tiếng Việt."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chuc_mung_nam_moi",
+      "distractors": [
+        "Em ghét kẹt xe.",
+        "Em vừa ăn xong."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_li_xi",
+      "distractors": [
+        "yên tĩnh",
+        "ngày sinh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dem_bring",
+      "distractors": [
+        "hay",
+        "bán",
+        "trưa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_mai_nha_em_dam_gio",
+      "distractors": [
+        "Visa của tui sắp hết hạn.",
+        "Anh điền vô đơn này nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ban_tho",
+      "distractors": [
+        "anh hai",
+        "sinh viên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_trai_cay",
+      "distractors": [
+        "ngân hàng",
+        "tin nhắn"
+      ]
     },
     {
       "type": "game",

@@ -141,6 +141,84 @@
         "fr": "cái monte, gì descend, vậy tombe court.",
         "en": "cái rises, gì falls, vậy drops short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoi_ask",
+      "distractors": [
+        "rưỡi",
+        "ổng",
+        "khá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "nghỉ phép",
+        "giả sử"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sinh_vien",
+      "distractors": [
+        "phòng trọ",
+        "trả lời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac_si",
+      "distractors": [
+        "xin lỗi",
+        "đồng nghiệp"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "c_chi_hai",
+        "c_bac_si",
+        "c_thom"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sinh_vien",
+      "distractors": [
+        "c_sua_milk",
+        "c_chia_khoa",
+        "c_xoai"
+      ]
+    },
+    {
+      "type": "build_sentence",
+      "target": "Người đó là ai vậy",
+      "tokens": [
+        "Người",
+        "đó",
+        "là",
+        "ai",
+        "vậy"
+      ],
+      "translation": {
+        "fr": "C'est qui, cette personne ?",
+        "en": "Who is that person?"
+      },
+      "audioConcept": "s_nguoi_do_la_ai"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "s_cai_gi_vay",
+        "s_nguoi_do_la_ai",
+        "s_em_an_gi",
+        "c_hoi_ask",
+        "c_tra_loi",
+        "c_bac_si"
+      ]
     }
   ],
   "review": {

@@ -10,7 +10,7 @@
     "fr": "Parler poliment à un aîné et l'inviter à boire le thé.",
     "en": "Speak politely to an elder and invite them to have tea."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u03.l04"
   ],
@@ -19,7 +19,16 @@
     "c_thua",
     "c_moi",
     "c_uong",
-    "s_moi_bac_uong_tra"
+    "s_moi_bac_uong_tra",
+    "c_tre",
+    "c_gia",
+    "s_con_chao_ong",
+    "c_chau",
+    "c_ong",
+    "c_bac",
+    "c_thay",
+    "s_con_chao_co",
+    "c_con"
   ],
   "steps": [
     {
@@ -133,6 +142,133 @@
         "fr": "mời descend, uống monte, trà descend.",
         "en": "mời falls, uống rises, trà falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_a",
+      "distractors": [
+        "hoài",
+        "khỏe",
+        "thịt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_uong",
+      "distractors": [
+        "giùm",
+        "ngoại",
+        "người"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "D___, con cảm ơn cô ạ.",
+      "answer": "ạ",
+      "options": [
+        "ạ",
+        "hoài",
+        "khỏe",
+        "thịt"
+      ],
+      "translation": {
+        "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",
+        "en": "Thank you (very polite, to a woman your parents' age)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ bác uống trà.",
+      "answer": "mời",
+      "options": [
+        "mời",
+        "mới",
+        "phim",
+        "về"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tre",
+      "distractors": [
+        "thêm",
+        "qua",
+        "chơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gia",
+      "distractors": [
+        "giá",
+        "giả",
+        "sợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_con_chao_ong",
+      "distractors": [
+        "Em ăn gì?",
+        "Có xa không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chau",
+      "distractors": [
+        "Pháp",
+        "quận",
+        "thuê"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong",
+      "distractors": [
+        "ổng",
+        "mốt",
+        "trái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac",
+      "distractors": [
+        "bận",
+        "xoài",
+        "đi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thay",
+      "distractors": [
+        "thấy",
+        "hơn",
+        "xa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_con_chao_co",
+      "distractors": [
+        "Em ăn gì?",
+        "Thôi, huề nha!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_con",
+      "distractors": [
+        "còn",
+        "khỏe",
+        "mạ"
+      ]
     }
   ],
   "review": {

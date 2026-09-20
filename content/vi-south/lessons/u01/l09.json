@@ -11,7 +11,7 @@
     "fr": "Montrer que tu entends les tons et que tu sais saluer et remercier.",
     "en": "Show you can hear the tones and greet and thank people."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u01.l08"
   ],
@@ -186,6 +186,123 @@
         "fr": "khỏe : hỏi, qui au Sud sonne comme le ngã.",
         "en": "khỏe: hỏi, which sounds like ngã in the South."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_ghost",
+      "distractors": [
+        "mạ",
+        "mả",
+        "mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_but",
+      "distractors": [
+        "ma",
+        "mạ",
+        "mả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "mả",
+        "ma",
+        "mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_seedling",
+      "distractors": [
+        "ma",
+        "má",
+        "mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba",
+      "distractors": [
+        "bà",
+        "bả",
+        "mươi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "bả",
+        "ba",
+        "ít"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ga_station",
+      "distractors": [
+        "gà",
+        "sao",
+        "bớt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ga_chicken",
+      "distractors": [
+        "ga",
+        "mua",
+        "đi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "chỉ",
+        "gỏi",
+        "đâu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc",
+      "distractors": [
+        "ơi",
+        "còn",
+        "bên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khoe",
+      "distractors": [
+        "cổ",
+        "phường",
+        "mười"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "c_meo",
+        "c_xoai",
+        "c_b_dam_cuoi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba",
+      "distractors": [
+        "c_com_tam",
+        "c_b_dam_cuoi",
+        "c_thit"
+      ]
     }
   ],
   "review": {

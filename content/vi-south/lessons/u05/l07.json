@@ -11,7 +11,7 @@
     "fr": "Revoir nom, pays, métier et petites phrases utiles.",
     "en": "Go over name, country, job and handy phrases."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u05.l06"
   ],
@@ -142,6 +142,163 @@
       "explain": {
         "fr": "rất monte, gặp tombe court.",
         "en": "rất rises, gặp drops short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi",
+      "distractors": [
+        "mới",
+        "cơm",
+        "lúc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi_just",
+      "distractors": [
+        "mời",
+        "rút",
+        "ghét"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hieu",
+      "distractors": [
+        "thấy",
+        "không",
+        "bả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_rat_vui_duoc_gap",
+      "distractors": [
+        "Nhà vệ sinh ở đâu?",
+        "Sau đó tui qua Pháp."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac_si",
+      "distractors": [
+        "bàn thờ",
+        "tuần trước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_nuoc_nao",
+      "distractors": [
+        "Cho em một tô phở.",
+        "Cho em gặp anh Minh."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_o_dau",
+      "distractors": [
+        "Em bị sốt.",
+        "Em cũng vậy."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_lam_nghe_gi",
+      "distractors": [
+        "Chị làm ở đâu?",
+        "Khi nào anh về?"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ bác uống trà.",
+      "answer": "mời",
+      "options": [
+        "mời",
+        "mới",
+        "cơm",
+        "lúc"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em là nhân viên ___.",
+      "answer": "mới",
+      "options": [
+        "mới",
+        "mời",
+        "rút",
+        "ghét"
+      ],
+      "translation": {
+        "fr": "Je suis le nouvel employé / la nouvelle employée.",
+        "en": "I'm the new employee."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi là ___.",
+      "answer": "người Pháp",
+      "options": [
+        "người Pháp",
+        "người Việt",
+        "Mệt quá!",
+        "Vậy hả?"
+      ],
+      "translation": {
+        "fr": "Je suis français(e).",
+        "en": "I'm French."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi làm việc cho một ___ Pháp.",
+      "answer": "công ty",
+      "options": [
+        "công ty",
+        "tại vì",
+        "anh ba",
+        "công viên"
+      ],
+      "translation": {
+        "fr": "Je travaille pour une entreprise française.",
+        "en": "I work for a French company."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xin lỗi, tôi không ___.",
+      "answer": "hiểu",
+      "options": [
+        "hiểu",
+        "thấy",
+        "không",
+        "bả"
+      ],
+      "translation": {
+        "fr": "Pardon, je ne comprends pas.",
+        "en": "Sorry, I don't understand."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi tên Nam. ___",
+      "answer": "Chị là người nước nào?",
+      "options": [
+        "Chị là người nước nào?",
+        "Cho em một tô phở.",
+        "Cho em gặp anh Minh.",
+        "Tiếc quá, em bận rồi."
+      ],
+      "translation": {
+        "fr": "Moi c'est Nam. Vous êtes de quel pays ?",
+        "en": "I'm Nam. What country are you from?"
       }
     },
     {

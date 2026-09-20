@@ -20,7 +20,12 @@
     "c_es_soy",
     "s_es_me_llamo",
     "s_es_como_te_llamas",
-    "c_es_mucho_gusto"
+    "c_es_mucho_gusto",
+    "c_es_gracias",
+    "c_es_adios",
+    "c_es_buenas_noches",
+    "c_es_buenas_tardes",
+    "c_es_buenos_dias"
   ],
   "steps": [
     {
@@ -109,6 +114,134 @@
         "fr": "Yo est souvent omis : « Soy Pablo » suffit.",
         "en": "Yo is often dropped: “Soy Pablo” is enough."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_tu",
+      "distractors": [
+        "dos",
+        "adiós",
+        "hola"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_yo",
+      "distractors": [
+        "tres",
+        "seis",
+        "ocho"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_soy",
+      "distractors": [
+        "gracias",
+        "nueve",
+        "siete"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_es_me_llamo",
+      "distractors": [
+        "mucho gusto",
+        "buenas tardes"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_tu",
+      "distractors": [
+        "c_es_adios",
+        "c_es_yo",
+        "c_es_gracias"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ Pablo.",
+      "answer": "soy",
+      "options": [
+        "soy",
+        "gracias",
+        "nueve",
+        "siete"
+      ],
+      "translation": {
+        "fr": "Je suis Pablo.",
+        "en": "I'm Pablo."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ Ana.",
+      "answer": "me llamo",
+      "options": [
+        "me llamo",
+        "mucho gusto",
+        "buenas tardes",
+        "buenos días"
+      ],
+      "translation": {
+        "fr": "Je m'appelle Ana.",
+        "en": "My name is Ana."
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Soy Pablo.",
+      "accepted": {
+        "fr": [
+          "Je suis Pablo."
+        ],
+        "en": [
+          "I'm Pablo."
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_gracias",
+      "distractors": [
+        "siete",
+        "diez",
+        "ocho"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_adios",
+      "distractors": [
+        "dos",
+        "diez",
+        "seis"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_buenas_noches",
+      "distractors": [
+        "buenas tardes",
+        "me llamo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_buenas_tardes",
+      "distractors": [
+        "me llamo",
+        "buenos días"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_buenos_dias",
+      "distractors": [
+        "buenas noches",
+        "mucho gusto"
+      ]
     },
     {
       "type": "game",

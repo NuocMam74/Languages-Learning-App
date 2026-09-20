@@ -10,7 +10,7 @@
     "fr": "Recevoir un lì xì et présenter tes vœux du Tết.",
     "en": "Receive lì xì and give Tết wishes."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u20.l04"
   ],
@@ -128,6 +128,192 @@
         "fr": "chúc monte, mới monte, vẻ plonge.",
         "en": "chúc rises, mới rises, vẻ dips."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "bán",
+        "nội",
+        "sẽ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_que",
+      "distractors": [
+        "ca",
+        "sáu",
+        "thím"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hong",
+      "distractors": [
+        "hổng",
+        "số",
+        "vé"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_con_chuc_co",
+      "distractors": [
+        "Anh cho em nghỉ thứ sáu nha.",
+        "Rất vui được làm việc với chị."
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_ca_fish",
+        "c_ong",
+        "c_b_don"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, con cảm ơn cô. ___",
+      "answer": "Con chúc cô năm mới vui vẻ.",
+      "options": [
+        "Con chúc cô năm mới vui vẻ.",
+        "Anh cho em nghỉ thứ sáu nha.",
+        "Rất vui được làm việc với chị.",
+        "Mời chị đi đám cưới em nha."
+      ],
+      "translation": {
+        "fr": "Merci. Je vous souhaite une bonne année.",
+        "en": "Thank you. I wish you a happy new year."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ này con có về quê hông?",
+      "answer": "Tết",
+      "options": [
+        "Tết",
+        "phòng",
+        "đâu",
+        "đơn"
+      ],
+      "translation": {
+        "fr": "Tu rentres au pays pour le Tết ?",
+        "en": "Are you going home for Tết?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "bán",
+        "nội",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ngoại tôi ở Bến Tre.",
+      "answer": "quê",
+      "options": [
+        "quê",
+        "ca",
+        "sáu",
+        "thím"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị nói tiếng Việt được ___?",
+      "answer": "hông",
+      "options": [
+        "hông",
+        "hổng",
+        "số",
+        "vé"
+      ],
+      "translation": {
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tết này con có về quê hông",
+      "tokens": [
+        "Tết",
+        "này",
+        "con",
+        "có",
+        "về",
+        "quê",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Tu rentres au pays pour le Tết ?",
+        "en": "Are you going home for Tết?"
+      },
+      "audioConcept": "c_b_tet"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi tính tiền",
+      "tokens": [
+        "Em",
+        "ơi",
+        "tính",
+        "tiền"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      },
+      "audioConcept": "c_tien"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Quê ngoại tôi ở Bến Tre",
+      "tokens": [
+        "Quê",
+        "ngoại",
+        "tôi",
+        "ở",
+        "Bến",
+        "Tre"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      },
+      "audioConcept": "c_que"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị nói tiếng Việt được hông",
+      "tokens": [
+        "Chị",
+        "nói",
+        "tiếng",
+        "Việt",
+        "được",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
+      },
+      "audioConcept": "c_hong"
     },
     {
       "type": "game",

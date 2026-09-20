@@ -10,7 +10,7 @@
     "fr": "Demander l'heure d'une réunion et t'excuser d'un retard.",
     "en": "Ask when a meeting is and apologise for being late."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u18.l02"
   ],
@@ -20,7 +20,11 @@
     "s_b_em_ban_lam",
     "s_b_xin_loi_toi_tre",
     "c_hop",
-    "c_tre_late"
+    "c_tre_late",
+    "s_b_rat_vui_lam_viec",
+    "s_b_day_la_dong_nghiep",
+    "s_b_em_la_nhan_vien_moi",
+    "s_b_tui_lam_cong_ty"
   ],
   "steps": [
     {
@@ -135,6 +139,154 @@
         "fr": "tới monte ; trễ, au Sud, sonne comme un hỏi.",
         "en": "tới rises; trễ sounds like hỏi in the South."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tre_late",
+      "distractors": [
+        "quà",
+        "trả",
+        "qua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_ban_lam",
+      "distractors": [
+        "Nhắn Zalo cho em nha.",
+        "Có lẽ mai trời mưa."
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ. Anh ơi, ___",
+      "answer": "Mấy giờ họp vậy anh?",
+      "options": [
+        "Mấy giờ họp vậy anh?",
+        "Nhà vệ sinh ở đâu?",
+        "Anh có thích phở không?",
+        "Cho em gặp anh Minh."
+      ],
+      "translation": {
+        "fr": "La réunion est à quelle heure ?",
+        "en": "What time is the meeting?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, anh Minh đang ___. Ai vậy ạ?",
+      "answer": "họp",
+      "options": [
+        "họp",
+        "chơi",
+        "mới",
+        "thì"
+      ],
+      "translation": {
+        "fr": "Minh est en réunion. C'est de la part de qui ?",
+        "en": "Minh is in a meeting. Who's calling?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xin lỗi, tôi tới ___.",
+      "answer": "trễ",
+      "options": [
+        "trễ",
+        "quà",
+        "trả",
+        "qua"
+      ],
+      "translation": {
+        "fr": "Désolé(e), je suis en retard.",
+        "en": "Sorry, I'm late."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ Anh ơi mấy giờ họp vậy anh",
+      "tokens": [
+        "Dạ",
+        "Anh",
+        "ơi",
+        "mấy",
+        "giờ",
+        "họp",
+        "vậy",
+        "anh"
+      ],
+      "translation": {
+        "fr": "La réunion est à quelle heure ?",
+        "en": "What time is the meeting?"
+      },
+      "audioConcept": "s_b_may_gio_hop"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ anh Minh đang họp Ai vậy ạ",
+      "tokens": [
+        "Dạ",
+        "anh",
+        "Minh",
+        "đang",
+        "họp",
+        "Ai",
+        "vậy",
+        "ạ"
+      ],
+      "translation": {
+        "fr": "Minh est en réunion. C'est de la part de qui ?",
+        "en": "Minh is in a meeting. Who's calling?"
+      },
+      "audioConcept": "c_hop"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi tôi tới trễ",
+      "tokens": [
+        "Xin",
+        "lỗi",
+        "tôi",
+        "tới",
+        "trễ"
+      ],
+      "translation": {
+        "fr": "Désolé(e), je suis en retard.",
+        "en": "Sorry, I'm late."
+      },
+      "audioConcept": "c_tre_late"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_rat_vui_lam_viec",
+      "distractors": [
+        "Con chúc cô năm mới vui vẻ.",
+        "Năm sau em sẽ đi Cần Thơ."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_day_la_dong_nghiep",
+      "distractors": [
+        "Anh ghiền cà phê sữa đá.",
+        "Hồi đó chưa có điện thoại."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_la_nhan_vien_moi",
+      "distractors": [
+        "Anh đi Đà Lạt chưa?",
+        "Có lẽ mai trời mưa."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tui_lam_cong_ty",
+      "distractors": [
+        "Chị photo giùm em hai bản nha.",
+        "Năm sau em sẽ đi Cần Thơ."
+      ]
     }
   ],
   "review": {

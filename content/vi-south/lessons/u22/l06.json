@@ -10,7 +10,7 @@
     "fr": "Raconter une petite histoire en trois étapes.",
     "en": "Tell a short story in three steps."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u22.l05"
   ],
@@ -19,7 +19,14 @@
     "c_b_chuyen",
     "c_b_nghe",
     "s_b_ke_tui_nghe",
-    "c_len"
+    "c_len",
+    "c_so_afraid",
+    "s_b_roi_sao_nua",
+    "s_b_lan_dau_toi_saigon",
+    "c_b_hoi_slightly",
+    "c_b_thay_see",
+    "c_b_lan_dau",
+    "c_b_lan"
   ],
   "steps": [
     {
@@ -135,6 +142,147 @@
         "fr": "kể plonge, nghe plat, đi plat.",
         "en": "kể dips, nghe level, đi level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nghe",
+      "distractors": [
+        "hơi",
+        "mới",
+        "nhen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_len",
+      "distractors": [
+        "xin",
+        "trái",
+        "bận"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui nghe đi!",
+      "answer": "kể",
+      "options": [
+        "kể",
+        "nhờ",
+        "ạ",
+        "bạn"
+      ],
+      "translation": {
+        "fr": "Raconte-moi !",
+        "en": "Tell me about it!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Vui hông anh? ___",
+      "answer": "Kể tui nghe đi!",
+      "options": [
+        "Kể tui nghe đi!",
+        "Dạ, con cảm ơn.",
+        "Người đó là ai?",
+        "Mọi người thấy sao?"
+      ],
+      "translation": {
+        "fr": "C'était bien ? Raconte-moi !",
+        "en": "Was it fun? Tell me about it!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hồi đó tui ở quê, rồi tui ___ Sài Gòn.",
+      "answer": "lên",
+      "options": [
+        "lên",
+        "xin",
+        "trái",
+        "bận"
+      ],
+      "translation": {
+        "fr": "À l’époque je vivais à la campagne, puis je suis monté à Saïgon.",
+        "en": "Back then I lived in the countryside, then I went up to Saigon."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Vui hông anh Kể tui nghe đi",
+      "tokens": [
+        "Vui",
+        "hông",
+        "anh",
+        "Kể",
+        "tui",
+        "nghe",
+        "đi"
+      ],
+      "translation": {
+        "fr": "C'était bien ? Raconte-moi !",
+        "en": "Was it fun? Tell me about it!"
+      },
+      "audioConcept": "s_b_ke_tui_nghe"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_so_afraid",
+      "distractors": [
+        "ăn",
+        "lẻ",
+        "nhớ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_roi_sao_nua",
+      "distractors": [
+        "Lúc mấy giờ?",
+        "Em đi đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_lan_dau_toi_saigon",
+      "distractors": [
+        "Đợi chút nha.",
+        "uống thuốc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_slightly",
+      "distractors": [
+        "cười",
+        "sếp",
+        "ngàn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thay_see",
+      "distractors": [
+        "thầy",
+        "tháng",
+        "vợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_lan_dau",
+      "distractors": [
+        "lúc đó",
+        "đám cưới"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_lan",
+      "distractors": [
+        "tốt",
+        "giường",
+        "còn"
+      ]
     },
     {
       "type": "game",

@@ -11,7 +11,7 @@
     "fr": "Revoir les formules du téléphone et des messages.",
     "en": "Go over phone and messaging phrases."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u15.l06"
   ],
@@ -172,6 +172,109 @@
         "fr": "verbe + giùm + personne : faire pour quelqu'un.",
         "en": "verb + giùm + person: do for someone."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_pack",
+      "distractors": [
+        "gọi",
+        "gỏi",
+        "vé"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_salad",
+      "distractors": [
+        "gọi",
+        "gói",
+        "bả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "tăng ca",
+        "ước gì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sach",
+      "distractors": [
+        "rẻ",
+        "lớn",
+        "ngủ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi",
+      "distractors": [
+        "gỏi",
+        "gói",
+        "có"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tin_nhan",
+      "distractors": [
+        "đồng ý",
+        "sạc pin"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_lai",
+      "distractors": [
+        "điện thoại",
+        "nhân viên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhan_tin",
+      "distractors": [
+        "đám giỗ",
+        "xe ôm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_wait",
+      "distractors": [
+        "hông",
+        "sao",
+        "xin"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_busy",
+      "distractors": [
+        "ngủ",
+        "hỏi",
+        "vé"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sac_pin",
+      "distractors": [
+        "đám giỗ",
+        "phòng trọ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_benh_vien",
+        "c_ly",
+        "c_chen"
+      ]
     },
     {
       "type": "game",

@@ -10,7 +10,7 @@
     "fr": "Prendre des nouvelles et répondre.",
     "en": "Ask after someone and reply."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u16.l05"
   ],
@@ -146,6 +146,142 @@
       "explain": {
         "fr": "sức monte, khỏe plonge.",
         "en": "sức rises, khỏe dips."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_giu_suc_khoe",
+      "distractors": [
+        "Dạ, con cảm ơn.",
+        "Nhà em ở đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thuoc_medicine",
+      "distractors": [
+        "của",
+        "nha",
+        "vừa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc",
+      "distractors": [
+        "đắng",
+        "cổ",
+        "thứ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "nha",
+        "vậy",
+        "cà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhieu",
+      "distractors": [
+        "no",
+        "mất",
+        "quá"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nuoc",
+      "distractors": [
+        "c_ong",
+        "c_ben_trai",
+        "c_bap"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_xe_may",
+        "c_nuoc_mam",
+        "c_chi_hai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ đi nha.",
+      "answer": "nghỉ ngơi",
+      "options": [
+        "nghỉ ngơi",
+        "thối tiền",
+        "Nhớ nghen!",
+        "Thích lắm!"
+      ],
+      "translation": {
+        "fr": "Repose-toi, d'accord ? (à un homme un peu plus âgé)",
+        "en": "Get some rest, okay? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị bán cho em ___ nhức đầu.",
+      "answer": "thuốc",
+      "options": [
+        "thuốc",
+        "của",
+        "nha",
+        "vừa"
+      ],
+      "translation": {
+        "fr": "Vends-moi un médicament contre le mal de tête. (à une femme un peu plus âgée)",
+        "en": "Could I have something for a headache? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị là người ___ nào?",
+      "answer": "nước",
+      "options": [
+        "nước",
+        "đắng",
+        "cổ",
+        "thứ"
+      ],
+      "translation": {
+        "fr": "Tu es de quel pays ?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "nha",
+        "vậy",
+        "cà"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em đỡ ___ rồi, cảm ơn chị.",
+      "answer": "nhiều",
+      "options": [
+        "nhiều",
+        "no",
+        "mất",
+        "quá"
+      ],
+      "translation": {
+        "fr": "Je vais beaucoup mieux, merci.",
+        "en": "I am much better, thank you."
       }
     }
   ],

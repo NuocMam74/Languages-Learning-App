@@ -10,7 +10,7 @@
     "fr": "Reconnaître les négations familières du Sud.",
     "en": "Recognise casual southern negations."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u21.l01"
   ],
@@ -20,7 +20,8 @@
     "s_b_hong_biet",
     "s_b_hong_co_dau",
     "c_hong",
-    "c_khong"
+    "c_khong",
+    "s_b_ong_di_dau_roi"
   ],
   "steps": [
     {
@@ -139,6 +140,141 @@
         "fr": "hổng plonge, biết monte.",
         "en": "hổng dips, biết rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hong",
+      "distractors": [
+        "hổng",
+        "đây",
+        "tháng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khong",
+      "distractors": [
+        "giùm",
+        "quẹo",
+        "việc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hong_co_dau",
+      "distractors": [
+        "Không có chi.",
+        "Chị tên gì?"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ có đâu!",
+      "answer": "hổng",
+      "options": [
+        "hổng",
+        "hông",
+        "phòng",
+        "nhờ"
+      ],
+      "translation": {
+        "fr": "Mais non, pas du tout !",
+        "en": "No way, not at all!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hổng ___.",
+      "answer": "biết",
+      "options": [
+        "biết",
+        "Pháp",
+        "hỏi",
+        "sau"
+      ],
+      "translation": {
+        "fr": "Sais pas."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị nói tiếng Việt được ___?",
+      "answer": "hông",
+      "options": [
+        "hông",
+        "hổng",
+        "đây",
+        "tháng"
+      ],
+      "translation": {
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, ___ phải.",
+      "answer": "không",
+      "options": [
+        "không",
+        "giùm",
+        "quẹo",
+        "việc"
+      ],
+      "translation": {
+        "fr": "Non, ce n'est pas ça (poliment).",
+        "en": "No, that's not it (politely)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị nói tiếng Việt được hông",
+      "tokens": [
+        "Chị",
+        "nói",
+        "tiếng",
+        "Việt",
+        "được",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
+      },
+      "audioConcept": "c_hong"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ không phải",
+      "tokens": [
+        "Dạ",
+        "không",
+        "phải"
+      ],
+      "translation": {
+        "fr": "Non, ce n'est pas ça (poliment).",
+        "en": "No, that's not it (politely)."
+      },
+      "audioConcept": "c_khong"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ong_di_dau_roi",
+      "distractors": [
+        "Em ở lầu hai.",
+        "Tiền điện tính riêng."
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_hong_emph",
+        "c_b_biet",
+        "s_b_hong_biet",
+        "s_b_hong_co_dau",
+        "c_hong",
+        "c_khong"
+      ]
     }
   ],
   "review": {

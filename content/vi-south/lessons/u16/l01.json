@@ -10,7 +10,7 @@
     "fr": "Dire que tu es malade et souhaiter un bon rétablissement.",
     "en": "Say you're sick and wish someone well."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l08"
   ],
@@ -136,6 +136,113 @@
         "fr": "mau plat, khỏe plonge.",
         "en": "mau level, khỏe dips."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ky_su",
+      "distractors": [
+        "công ty",
+        "cảm ơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "ngày sinh",
+        "bên phải"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bi",
+      "distractors": [
+        "đắng",
+        "mười",
+        "tiền"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac_si",
+      "distractors": [
+        "đám giỗ",
+        "văn phòng"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ky_su",
+      "distractors": [
+        "c_mua_rain",
+        "c_b_may_tinh",
+        "c_xoai"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "c_chuoi",
+        "c_heo",
+        "c_tin_nhan"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em bị ___ rồi.",
+      "answer": "bệnh",
+      "options": [
+        "bệnh",
+        "học",
+        "muốn",
+        "mở"
+      ],
+      "translation": {
+        "fr": "Je suis tombé(e) malade.",
+        "en": "I've fallen ill."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi là ___.",
+      "answer": "kỹ sư",
+      "options": [
+        "kỹ sư",
+        "công ty",
+        "cảm ơn",
+        "thành phố"
+      ],
+      "translation": {
+        "fr": "Je suis ingénieur(e).",
+        "en": "I'm an engineer."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi là kỹ sư",
+      "tokens": [
+        "Tôi",
+        "là",
+        "kỹ",
+        "sư"
+      ],
+      "translation": {
+        "fr": "Je suis ingénieur(e).",
+        "en": "I'm an engineer."
+      },
+      "audioConcept": "c_ky_su"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_benh_sick",
+        "c_bi",
+        "s_em_bi_benh",
+        "s_mau_khoe",
+        "c_bac_si",
+        "c_ky_su"
+      ]
     }
   ],
   "review": {

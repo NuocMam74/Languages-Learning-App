@@ -10,7 +10,7 @@
     "fr": "Demander un nombre, petit ou grand.",
     "en": "Ask for a number, small or large."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l04"
   ],
@@ -136,6 +136,167 @@
         "fr": "nhiêu reste plat, tiền descend.",
         "en": "nhiêu stays level, tiền falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may_cloud",
+      "distractors": [
+        "mấy",
+        "lấy",
+        "dượng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "trái cây",
+        "xe buýt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sach",
+      "distractors": [
+        "trước",
+        "sẽ",
+        "hổng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bao_nhieu",
+      "distractors": [
+        "trúng số",
+        "ngày sinh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may",
+      "distractors": [
+        "mây",
+        "tụi",
+        "hơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "lần",
+        "hẹn",
+        "muỗng"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_benh_vien",
+        "c_ban_table",
+        "c_com"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sach",
+      "distractors": [
+        "c_ngu_sleep",
+        "c_bo_beef",
+        "c_banh_mi"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở Sài Gòn ___?",
+      "answer": "mấy ngày",
+      "options": [
+        "mấy ngày",
+        "tụi mình",
+        "thứ bảy",
+        "người Việt"
+      ],
+      "translation": {
+        "fr": "Tu restes combien de jours à Saïgon ? (à plus jeune)",
+        "en": "How many days are you staying in Saigon? (to someone younger)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây giờ ___ giờ rồi?",
+      "answer": "mấy",
+      "options": [
+        "mấy",
+        "mây",
+        "tụi",
+        "hơi"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "lần",
+        "hẹn",
+        "muỗng"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Số ___ của chị là bao nhiêu?",
+      "answer": "điện thoại",
+      "options": [
+        "điện thoại",
+        "trái cây",
+        "xe buýt",
+        "danh thiếp"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ tuổi?",
+      "answer": "bao nhiêu",
+      "options": [
+        "bao nhiêu",
+        "trúng số",
+        "ngày sinh",
+        "đồng ý"
+      ],
+      "translation": {
+        "fr": "Tu as quel âge ? (à un homme un peu plus âgé)",
+        "en": "How old are you? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ mấy giờ rồi",
+      "tokens": [
+        "Bây",
+        "giờ",
+        "mấy",
+        "giờ",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      },
+      "audioConcept": "c_may"
     }
   ],
   "review": {

@@ -16,6 +16,7 @@ import {
   lessonBriefing,
   lessonsBefore,
   lessonScore,
+  markOutOf20,
   localDay,
   makeEvent,
   markTaught,
@@ -81,11 +82,26 @@ import { activePackCode, scopedKey } from "./packs/active.ts";
  * transaction : rien n'est perdu, tout sera synchronisé (ADR 0004).
  */
 
+/**
+ * Objectifs quotidiens proposés (spec §4.1, plancher relevé par le contrat phase21 §3). 5 minutes a
+ * disparu : un niveau dure 6 minutes, et un objectif plus court que le niveau du jour le fait
+ * écarter de la séance — l'apprenant ne progressait plus.
+ */
+export const DAILY_GOAL_CHOICES = [10, 15, 20] as const;
+export const DEFAULT_DAILY_GOAL_MIN: Profile["dailyGoalMin"] = 10;
+
+/** Un profil écrit avant ce plancher (5 min) est remonté au plus petit objectif encore proposé. */
+export function normalizeDailyGoal(value: unknown): Profile["dailyGoalMin"] {
+  return (DAILY_GOAL_CHOICES as readonly number[]).includes(value as number)
+    ? (value as Profile["dailyGoalMin"])
+    : DEFAULT_DAILY_GOAL_MIN;
+}
+
 export const DEFAULT_PROFILE: Profile = {
   motivation: null,
   entourage: null,
   selfLevel: null,
-  dailyGoalMin: 5,
+  dailyGoalMin: DEFAULT_DAILY_GOAL_MIN,
   reminder: null,
   onboardedAt: null,
 };
@@ -121,7 +137,10 @@ export interface DailyActivity {
  * faire écran blanc. Fusionner avec les valeurs par défaut coûte une ligne et supprime la classe
  * entière de ces pannes.
  */
-export const getProfile = async (): Promise<Profile> => ({ ...DEFAULT_PROFILE, ...(await getKv<Partial<Profile>>("profile", {})) });
+export const getProfile = async (): Promise<Profile> => {
+  const stored = await getKv<Partial<Profile>>("profile", {});
+  return { ...DEFAULT_PROFILE, ...stored, dailyGoalMin: normalizeDailyGoal(stored.dailyGoalMin) };
+};
 export const saveProfile = (profile: Profile) => setKv("profile", profile);
 export const getTotals = async (): Promise<Totals> => {
   const stored = await getKv<Partial<Totals>>("totals", {});
@@ -614,6 +633,12 @@ export interface SessionRecap {
   /** Test d'unité : score de cette tentative et réussite (seuil 0,7). */
   unitTest: { lessonId: LessonId; score: number; passed: boolean } | null;
   /**
+   * Note du niveau sur 20 (contrat phase21 §4) : `mark` pour la tentative qu'on vient de jouer,
+   * `best` pour le meilleur essai — c'est `best` qui compte dans les moyennes. `null` hors leçon
+   * (révision seule) et en entraînement, où rien n'est recompté.
+   */
+  levelMark: { lessonId: LessonId; mark: number; best: number } | null;
+  /**
    * Réussite de la séance entière au premier essai (révisions comprises), entre 0 et 1 ; `null`
    * quand rien n'était noté. C'est le pourcentage affiché au bilan — il répond à la seule question
    * qu'on se pose en arrivant là : « j'ai eu combien ? »
@@ -624,6 +649,11 @@ export interface SessionRecap {
   /** XP totale avant / après (montée de niveau). */
   xpBefore: number;
   xpAfter: number;
+  /**
+   * Début de la séance (ISO). Sert au bilan à rassembler les notes prises en chemin (contrat
+   * phase22 §2) : ce sont celles écrites depuis cet instant.
+   */
+  startedAt: string;
   /**
    * Compteurs de la séance (contrat phase9 §1) : lus par `rewards/store.ts` **après** la
    * transaction — les récompenses sont locales et n'ont pas à partager l'écriture pédagogique.
@@ -717,6 +747,7 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
     const lessonResults = saved.lesson?.results ?? [];
     const answeredWell = new Set(lessonResults.filter((r) => r.graded && r.correct).flatMap((r) => r.conceptIds));
     const score = saved.lesson ? lessonScore(saved.lesson) : 0;
+    const lessonRow = lessonId ? await d.lessonProgress.get(lessonId) : undefined;
     return {
       source: saved.source,
       lessonId,
@@ -728,15 +759,23 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       reviewedWell: reviewedConcepts(saved),
       streak,
       badges: fresh,
-      firstLesson: !practice && lessonId !== null && completed.size === 1 && (await d.lessonProgress.get(lessonId))?.attempts === 1,
+      firstLesson: !practice && lessonId !== null && completed.size === 1 && lessonRow?.attempts === 1,
       empty,
       practice,
       // Un test d'unité rejoué en entraînement ne se réussit ni ne se rate : il est déjà acquis.
       unitTest: !practice && lesson?.kind === "unit_test" && lessonId ? { lessonId, score, passed: isUnitTestPassed(score) } : null,
       score: sessionScore(saved),
+      // Note du niveau (contrat phase21 §4) : celle de **cette** tentative, et le meilleur essai
+      // gardé. Elle ne porte que sur la leçon — le pourcentage au-dessus, lui, compte la séance
+      // entière, rappel espacé compris ; ce sont deux chiffres différents et ils le disent.
+      levelMark:
+        lessonId && saved.lesson && !practice
+          ? { lessonId, mark: markOutOf20(score), best: markOutOf20(Math.max(lessonRow?.bestScore ?? 0, score)) }
+          : null,
       tally: sessionTally(saved),
       xpBefore: totals.xp,
       xpAfter: totals.xp + xp,
+      startedAt: saved.startedAt,
       // Une séance vide ou un entraînement ne nourrit ni les missions ni les trophées : ils ne
       // comptent pas la progression, et une récompense sans progression serait une tricherie.
       counters: empty ? {} : sessionCounters({ run: saved, lesson, lessonCompleted, xp, itemsCount: capped.itemsCount, durationMs: capped.durationMs, learned: saved.learned }),

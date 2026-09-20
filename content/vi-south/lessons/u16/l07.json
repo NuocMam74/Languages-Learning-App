@@ -11,7 +11,7 @@
     "fr": "Revoir symptômes, pharmacie et médecin.",
     "en": "Go over symptoms, pharmacy and doctor."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u16.l06"
   ],
@@ -149,6 +149,118 @@
         "fr": "nhức monte, đầu descend.",
         "en": "nhức rises, đầu falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_dau_bung",
+      "distractors": [
+        "Chào anh.",
+        "trà đá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngu_sleep",
+      "distractors": [
+        "hay",
+        "hen",
+        "nghĩ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_where",
+      "distractors": [
+        "đầu",
+        "trăm",
+        "ca"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_head",
+      "distractors": [
+        "đâu",
+        "thím",
+        "chở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "ngày sinh",
+        "có lẽ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "ngày xưa",
+        "miền Tây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nhuc_dau",
+      "distractors": [
+        "quẹo trái",
+        "gần đây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_thuoc",
+      "distractors": [
+        "vé số",
+        "dễ thương"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sot",
+      "distractors": [
+        "phải",
+        "ạ",
+        "ở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_cough",
+      "distractors": [
+        "họ",
+        "nhen",
+        "hội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_met",
+      "distractors": [
+        "chậm",
+        "pin",
+        "hội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dau_pain",
+      "distractors": [
+        "anh",
+        "chưa",
+        "mả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thuoc_medicine",
+      "distractors": [
+        "bận",
+        "tôi",
+        "ghé"
+      ]
     },
     {
       "type": "game",

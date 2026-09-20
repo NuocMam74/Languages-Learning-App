@@ -11,7 +11,7 @@
     "fr": "Revoir les tons, les salutations et les premiers mots de l'unité.",
     "en": "Go over the unit's tones, greetings and first words."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u01.l07"
   ],
@@ -139,6 +139,161 @@
         "fr": "chi est plat, không et có bien distincts.",
         "en": "chi is level, không and có clearly apart."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_ghost",
+      "distractors": [
+        "má",
+        "mà",
+        "mạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "mà",
+        "mạ",
+        "mả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_but",
+      "distractors": [
+        "ma",
+        "mạ",
+        "má"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "ba",
+        "bả",
+        "người"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba",
+      "distractors": [
+        "bà",
+        "bả",
+        "vui"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ga_chicken",
+      "distractors": [
+        "ga",
+        "lầu",
+        "da"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khong_co_chi",
+      "distractors": [
+        "Còn phòng không?",
+        "Hổng có đâu!"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "c_benh_vien",
+        "c_b_dong_nghiep",
+        "c_b_li_xi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "c_sau_rieng",
+        "c_ba",
+        "c_nha_house"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ tôi.",
+      "answer": "má",
+      "options": [
+        "má",
+        "mà",
+        "mạ",
+        "mả"
+      ],
+      "translation": {
+        "fr": "Voici ma mère.",
+        "en": "This is my mom."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đây là ___ tôi.",
+      "answer": "ba",
+      "options": [
+        "ba",
+        "bà",
+        "bả",
+        "vui"
+      ],
+      "translation": {
+        "fr": "Voici mon père.",
+        "en": "This is my dad."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, em ___ anh.",
+      "answer": "cảm ơn",
+      "options": [
+        "cảm ơn",
+        "nhà thuốc",
+        "bao giờ",
+        "bắt đầu"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, ___",
+      "answer": "Không có chi.",
+      "options": [
+        "Không có chi.",
+        "Còn phòng không?",
+        "Hổng có đâu!",
+        "Mai gặp hen."
+      ],
+      "translation": {
+        "fr": "De rien (poliment).",
+        "en": "You're welcome (politely)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đây là má tôi",
+      "tokens": [
+        "Đây",
+        "là",
+        "má",
+        "tôi"
+      ],
+      "translation": {
+        "fr": "Voici ma mère.",
+        "en": "This is my mom."
+      },
+      "audioConcept": "c_ma_mom"
     },
     {
       "type": "game",

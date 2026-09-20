@@ -10,7 +10,7 @@
     "fr": "Reconnaître vậy (« dzậy »), nè, há et coi.",
     "en": "Recognise vậy ('dzậy'), nè, há and coi."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u21.l03"
   ],
@@ -21,7 +21,14 @@
     "c_b_coi",
     "s_b_ne_coi_nay",
     "s_b_thiet_ha",
-    "c_vay"
+    "c_vay",
+    "s_b_mai_gap_hen",
+    "s_b_nho_nghen",
+    "c_b_nho_remember",
+    "c_b_hen_particle",
+    "c_b_nhen",
+    "c_b_nghen",
+    "s_b_hong_co_dau"
   ],
   "steps": [
     {
@@ -134,6 +141,122 @@
         "fr": "Écris vậy, même si tu entends « dzậy ».",
         "en": "Write vậy, even if you hear 'dzậy'."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ha_particle",
+      "distractors": [
+        "tuần",
+        "người",
+        "thường"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ne",
+      "distractors": [
+        "to",
+        "mời",
+        "vợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ne_coi_nay",
+      "distractors": [
+        "Lát em gọi lại nha.",
+        "Anh đi Đà Lạt chưa?"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___",
+      "answer": "Đi đâu vậy?",
+      "options": [
+        "Đi đâu vậy?",
+        "Tại sao vậy?",
+        "Em mới tới.",
+        "Rồi sao nữa?"
+      ],
+      "translation": {
+        "fr": "Tu vas où comme ça ?",
+        "en": "Where are you off to?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, coi cái này nè!",
+      "answer": "nè",
+      "options": [
+        "nè",
+        "to",
+        "mời",
+        "vợ"
+      ],
+      "translation": {
+        "fr": "Tiens, regarde ça !",
+        "en": "Hey, look at this!"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_mai_gap_hen",
+      "distractors": [
+        "Mau khỏe nha!",
+        "Anh giỡn hoài!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_nho_nghen",
+      "distractors": [
+        "Mệt quá!",
+        "Dở quá!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nho_remember",
+      "distractors": [
+        "nhờ",
+        "bả",
+        "tô"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hen_particle",
+      "distractors": [
+        "hẹn",
+        "tuần",
+        "ghế"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nhen",
+      "distractors": [
+        "rối",
+        "ký",
+        "trái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nghen",
+      "distractors": [
+        "lớp",
+        "xong",
+        "đá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hong_co_dau",
+      "distractors": [
+        "Anh thấy sao?",
+        "Em mấy tuổi?"
+      ]
     }
   ],
   "review": {

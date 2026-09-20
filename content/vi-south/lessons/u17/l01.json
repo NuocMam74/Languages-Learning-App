@@ -10,7 +10,7 @@
     "fr": "Nommer les pièces de la maison.",
     "en": "Name the rooms of a house."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u11.l08"
   ],
@@ -121,6 +121,140 @@
       "explain": {
         "fr": "phòng descend, tắm monte.",
         "en": "phòng falls, tắm rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua_pagoda",
+      "distractors": [
+        "chua",
+        "đẹp",
+        "cười"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_truong_hoc",
+      "distractors": [
+        "cơm tấm",
+        "thành phố"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ghe",
+      "distractors": [
+        "bạn",
+        "mắc",
+        "thích"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_table",
+      "distractors": [
+        "bạn",
+        "bán",
+        "nhang"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giuong",
+      "distractors": [
+        "lớp",
+        "rau",
+        "số"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_house",
+      "distractors": [
+        "nha",
+        "ồn",
+        "rối"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chua_pagoda",
+      "distractors": [
+        "c_com",
+        "c_meo",
+        "c_banh_mi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_truong_hoc",
+      "distractors": [
+        "c_trua",
+        "c_heo",
+        "c_b_bong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ghe",
+      "distractors": [
+        "c_nha_thuoc",
+        "c_b_nghi_phep",
+        "c_chi_hai"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ban_table",
+      "distractors": [
+        "c_toi_evening",
+        "c_da_ice",
+        "c_ben_trai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà em có ba ___.",
+      "answer": "phòng ngủ",
+      "options": [
+        "phòng ngủ",
+        "kẹt xe",
+        "chụp hình",
+        "bình thường"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a trois chambres.",
+        "en": "My house has three bedrooms."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở ___.",
+      "answer": "nhà",
+      "options": [
+        "nhà",
+        "nha",
+        "ồn",
+        "rối"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ở giữa công viên và bệnh viện.",
+      "answer": "trường học",
+      "options": [
+        "trường học",
+        "cơm tấm",
+        "thành phố",
+        "nhân viên"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
       }
     }
   ],

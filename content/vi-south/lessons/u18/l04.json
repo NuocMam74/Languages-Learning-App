@@ -10,7 +10,7 @@
     "fr": "Parler du salaire, du jour de paie et des primes.",
     "en": "Talk about salary, payday and bonuses."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u18.l03"
   ],
@@ -21,7 +21,10 @@
     "s_b_lanh_luong",
     "c_b_thuong",
     "c_tien",
-    "c_thuong"
+    "c_thuong",
+    "s_b_xin_loi_toi_tre",
+    "s_b_em_ban_lam",
+    "c_b_ban_busy"
   ],
   "steps": [
     {
@@ -138,6 +141,152 @@
         "fr": "lãnh plonge, lương reste plat.",
         "en": "lãnh dips, lương stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thuong",
+      "distractors": [
+        "thưởng",
+        "chú",
+        "khám"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_lanh",
+      "distractors": [
+        "đã",
+        "dở",
+        "muốn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "thường",
+        "xong",
+        "lẩu"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cuối tháng mới lãnh ___.",
+      "answer": "lương",
+      "options": [
+        "lương",
+        "việc",
+        "mì",
+        "đẹp"
+      ],
+      "translation": {
+        "fr": "On touche le salaire seulement en fin de mois.",
+        "en": "We only get paid at the end of the month."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tết có ___ không anh?",
+      "answer": "thưởng",
+      "options": [
+        "thưởng",
+        "thường",
+        "một",
+        "heo"
+      ],
+      "translation": {
+        "fr": "Il y a une prime au Tết ? (à un homme un peu plus âgé)",
+        "en": "Is there a Tết bonus? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "thường",
+        "xong",
+        "lẩu"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ đi làm lúc bảy giờ sáng.",
+      "answer": "thường",
+      "options": [
+        "thường",
+        "thưởng",
+        "chú",
+        "khám"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi tính tiền",
+      "tokens": [
+        "Em",
+        "ơi",
+        "tính",
+        "tiền"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      },
+      "audioConcept": "c_tien"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi thường đi làm lúc bảy giờ sáng",
+      "tokens": [
+        "Tôi",
+        "thường",
+        "đi",
+        "làm",
+        "lúc",
+        "bảy",
+        "giờ",
+        "sáng"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      },
+      "audioConcept": "c_thuong"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_xin_loi_toi_tre",
+      "distractors": [
+        "Em muốn mở tài khoản.",
+        "Nhà em có mấy người?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_em_ban_lam",
+      "distractors": [
+        "Nhà vệ sinh ở đâu?",
+        "Anh đi Đà Lạt chưa?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ban_busy",
+      "distractors": [
+        "hổng",
+        "giây",
+        "lẩu"
+      ]
     }
   ],
   "review": {

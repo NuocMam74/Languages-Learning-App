@@ -11,7 +11,7 @@
     "fr": "Revoir thích, ghét, ngon, dở, đẹp, hay.",
     "en": "Go over thích, ghét, ngon, dở, đẹp, hay."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l06"
   ],
@@ -145,6 +145,126 @@
       "explain": {
         "fr": "thấy monte, sao reste plat.",
         "en": "thấy rises, sao stays level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ca_phe_sua_da",
+      "distractors": [
+        "Em sắp tới rồi.",
+        "Em đau ở đây."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tra_da",
+      "distractors": [
+        "gần đây",
+        "người Pháp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sua_milk",
+      "distractors": [
+        "mười",
+        "và",
+        "bà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_bad",
+      "distractors": [
+        "dơ",
+        "hội",
+        "giùm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_dirty",
+      "distractors": [
+        "dở",
+        "bắp",
+        "rưỡi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_thay_sao",
+      "distractors": [
+        "Rồi sao nữa?",
+        "Đừng khách sáo!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thich",
+      "distractors": [
+        "ký",
+        "lần",
+        "theo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ghet",
+      "distractors": [
+        "nhức",
+        "tối",
+        "nhen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ghien",
+      "distractors": [
+        "hết",
+        "họ",
+        "bạn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngon",
+      "distractors": [
+        "nội",
+        "đang",
+        "đau"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_tra_da",
+      "distractors": [
+        "s_queo_trai",
+        "s_queo_phai",
+        "s_dung_lai"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sua_milk",
+      "distractors": [
+        "c_xe_dap",
+        "c_quan_ca_phe",
+        "c_chong"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em một ly ___.",
+      "answer": "cà phê sữa đá",
+      "options": [
+        "cà phê sữa đá",
+        "Em sắp tới rồi.",
+        "Em đau ở đây.",
+        "Bao nhiêu một ký?"
+      ],
+      "translation": {
+        "fr": "Un café glacé au lait, s'il te plaît.",
+        "en": "An iced milk coffee, please."
       }
     },
     {

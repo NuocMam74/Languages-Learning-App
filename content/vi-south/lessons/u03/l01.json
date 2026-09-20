@@ -10,7 +10,7 @@
     "fr": "Dire ton nom et choisir entre tôi, tui et mình.",
     "en": "Say your name and choose between tôi, tui and mình."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 4,
   "prerequisites": [
     "vi-south.u02.l08"
   ],
@@ -124,6 +124,73 @@
         "fr": "tôi et tên restent plats, là descend.",
         "en": "tôi and tên stay level, là falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_minh",
+      "distractors": [
+        "ở",
+        "muốn",
+        "anh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ten",
+      "distractors": [
+        "vừa",
+        "tới",
+        "phút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_toi_ten_la",
+      "distractors": [
+        "Rồi sao nữa?",
+        "Em mới tới."
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tên là Hùng.",
+      "answer": "tui",
+      "options": [
+        "tui",
+        "tụi",
+        "thường",
+        "chiều"
+      ],
+      "translation": {
+        "fr": "Moi, c'est Hùng (familier).",
+        "en": "I'm Hùng (casual)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ là Lan.",
+      "answer": "tên",
+      "options": [
+        "tên",
+        "vừa",
+        "tới",
+        "phút"
+      ],
+      "translation": {
+        "fr": "Je m'appelle Lan.",
+        "en": "My name is Lan."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_tui_me",
+        "c_minh",
+        "c_ten",
+        "c_la",
+        "s_toi_ten_la",
+        "s_ban_ten_gi"
+      ]
     },
     {
       "type": "game",

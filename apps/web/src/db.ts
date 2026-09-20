@@ -89,7 +89,13 @@ export interface Profile {
   motivation: "family" | "travel" | "work" | "roots" | "curiosity" | null;
   entourage: "nobody" | "partner" | "parents" | "colleagues" | null;
   selfLevel: "none" | "words" | "understand" | "speak" | null;
-  dailyGoalMin: 5 | 10 | 15 | 20;
+  /**
+   * Objectif quotidien, en minutes. Le plancher est passé de 5 à 10 quand un niveau est devenu un
+   * barème de 20 exercices (contrat phase21 §3) : une leçon dure 6 min, et `planSession` écarte
+   * purement et simplement une leçon qui ne tient pas dans l'objectif — à 5 min, le parcours
+   * n'avançait plus dès qu'une révision était due.
+   */
+  dailyGoalMin: 10 | 15 | 20;
   reminder: "morning" | "noon" | "evening" | "none" | null;
   onboardedAt: string | null;
 }

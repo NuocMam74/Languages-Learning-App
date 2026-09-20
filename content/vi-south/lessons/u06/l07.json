@@ -11,7 +11,7 @@
     "fr": "Revoir les chiffres, l'âge et les grands nombres.",
     "en": "Go over digits, age and big numbers."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u06.l06"
   ],
@@ -141,6 +141,160 @@
         "fr": "số monte, điện et thoại tombent court.",
         "en": "số rises, điện and thoại drop short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_one",
+      "distractors": [
+        "mốt",
+        "lãnh",
+        "sắp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_high",
+      "distractors": [
+        "một",
+        "không",
+        "hông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_bao_nhieu_tuoi",
+      "distractors": [
+        "Em đã ăn rồi.",
+        "Người đó là ai?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_so_dien_thoai",
+      "distractors": [
+        "Ăn cơm chưa?",
+        "Anh tên gì?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_ten",
+      "distractors": [
+        "mươi",
+        "chuối",
+        "hơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_tens",
+      "distractors": [
+        "mười",
+        "chủ",
+        "hông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bay_seven",
+      "distractors": [
+        "thêm",
+        "chuối",
+        "cần"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tam_eight",
+      "distractors": [
+        "coi",
+        "bên",
+        "nên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chin_nine",
+      "distractors": [
+        "họp",
+        "ly",
+        "gặp"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em tôi ___ tuổi.",
+      "answer": "mười",
+      "options": [
+        "mười",
+        "mươi",
+        "chuối",
+        "hơn"
+      ],
+      "translation": {
+        "fr": "Mon petit frère a dix ans.",
+        "en": "My little brother is ten."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị hai ___ lăm tuổi.",
+      "answer": "mươi",
+      "options": [
+        "mươi",
+        "mười",
+        "chủ",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Elle a vingt-cinq ans.",
+        "en": "She's twenty-five."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà tôi có ___ con chó.",
+      "answer": "một",
+      "options": [
+        "một",
+        "mốt",
+        "lãnh",
+        "sắp"
+      ],
+      "translation": {
+        "fr": "Chez moi, il y a un chien.",
+        "en": "At my home there's a dog."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ của chị là bao nhiêu?",
+      "answer": "số điện thoại",
+      "options": [
+        "số điện thoại",
+        "Ăn cơm chưa?",
+        "Anh tên gì?",
+        "Còn phòng không?"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em tôi mười tuổi",
+      "tokens": [
+        "Em",
+        "tôi",
+        "mười",
+        "tuổi"
+      ],
+      "translation": {
+        "fr": "Mon petit frère a dix ans.",
+        "en": "My little brother is ten."
+      },
+      "audioConcept": "c_muoi_ten"
     },
     {
       "type": "game",

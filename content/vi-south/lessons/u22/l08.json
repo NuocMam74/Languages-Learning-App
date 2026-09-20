@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais raconter un souvenir simple.",
     "en": "Show you can tell a simple memory."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u22.l07"
   ],
@@ -176,6 +176,138 @@
         "fr": "J'ai commencé le vietnamien l'an dernier.",
         "en": "I started learning Vietnamese last year."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ke",
+      "distractors": [
+        "chào",
+        "tiếc",
+        "bận"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_da_past",
+      "distractors": [
+        "đá",
+        "ông",
+        "ồn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "nước mắm",
+        "ngân hàng"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui ở dưới quê.",
+      "answer": "hồi nhỏ",
+      "options": [
+        "hồi nhỏ",
+        "anh hai",
+        "đèn đỏ",
+        "hủ tiếu"
+      ],
+      "translation": {
+        "fr": "Quand j'étais petit(e), je vivais à la campagne.",
+        "en": "As a child, I lived in the countryside."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Năm ngoái tui ___ qua Việt Nam.",
+      "answer": "đã",
+      "options": [
+        "đã",
+        "đá",
+        "ông",
+        "ồn"
+      ],
+      "translation": {
+        "fr": "L'an dernier, je suis venu(e) au Vietnam.",
+        "en": "Last year I came to Vietnam."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui qua Pháp.",
+      "answer": "sau đó",
+      "options": [
+        "sau đó",
+        "điền đơn",
+        "xe hơi",
+        "năm nay"
+      ],
+      "translation": {
+        "fr": "Ensuite, je suis parti(e) en France.",
+        "en": "After that I went to France."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em chưa bao giờ ăn ___.",
+      "answer": "sầu riêng",
+      "options": [
+        "sầu riêng",
+        "nước mắm",
+        "ngân hàng",
+        "phòng ngủ"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui nghe đi!",
+      "answer": "kể",
+      "options": [
+        "kể",
+        "chào",
+        "tiếc",
+        "bận"
+      ],
+      "translation": {
+        "fr": "Raconte-moi !",
+        "en": "Tell me about it!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Vui hông anh? ___",
+      "answer": "Kể tui nghe đi!",
+      "options": [
+        "Kể tui nghe đi!",
+        "Khi nào anh về?",
+        "Mời bác uống trà.",
+        "Em ở lầu hai."
+      ],
+      "translation": {
+        "fr": "C'était bien ? Raconte-moi !",
+        "en": "Was it fun? Tell me about it!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Sau đó tui qua Pháp",
+      "tokens": [
+        "Sau",
+        "đó",
+        "tui",
+        "qua",
+        "Pháp"
+      ],
+      "translation": {
+        "fr": "Ensuite, je suis parti(e) en France.",
+        "en": "After that I went to France."
+      },
+      "audioConcept": "c_b_sau_do"
     }
   ],
   "review": {

@@ -10,7 +10,7 @@
     "fr": "Reconnaître -n et -t quand le Sud les fait sonner -ng et -c.",
     "en": "Recognise -n and -t when the South makes them sound -ng and -c."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u02.l04"
   ],
@@ -21,7 +21,15 @@
     "c_mot_one",
     "c_tot_good",
     "c_mac_expensive",
-    "c_chua"
+    "c_chua",
+    "c_nha_particle",
+    "c_chut",
+    "c_troi",
+    "c_che_dessert",
+    "c_trai_fruit",
+    "c_cho_wait",
+    "c_cho_market",
+    "c_tra_tea"
   ],
   "steps": [
     {
@@ -120,6 +128,138 @@
         "fr": "Au Sud, ăn finit presque en « ng » : laisse la bouche ouverte.",
         "en": "In the South, ăn ends almost in 'ng': keep your mouth open."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_friend",
+      "distractors": [
+        "bàn",
+        "bán",
+        "mây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tot_good",
+      "distractors": [
+        "giả",
+        "sắp",
+        "món"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_table",
+      "distractors": [
+        "bạn",
+        "bán",
+        "tiệm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_an_eat",
+      "distractors": [
+        "cô",
+        "và",
+        "nửa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua",
+      "distractors": [
+        "gần",
+        "ly",
+        "chú"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ cơm chưa?",
+      "answer": "ăn",
+      "options": [
+        "ăn",
+        "cô",
+        "và",
+        "nửa"
+      ],
+      "translation": {
+        "fr": "Tu as mangé ? (salutation entre proches)",
+        "en": "Have you eaten? (greeting between close ones)"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_particle",
+      "distractors": [
+        "nhà",
+        "già",
+        "điện"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chut",
+      "distractors": [
+        "mà",
+        "theo",
+        "trái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_troi",
+      "distractors": [
+        "bốn",
+        "tối",
+        "hội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_che_dessert",
+      "distractors": [
+        "cay",
+        "sẽ",
+        "tới"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trai_fruit",
+      "distractors": [
+        "không",
+        "sau",
+        "nội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_wait",
+      "distractors": [
+        "chợ",
+        "chở",
+        "lẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chở",
+        "chờ",
+        "có"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tra_tea",
+      "distractors": [
+        "trả",
+        "ở",
+        "bạn"
+      ]
     },
     {
       "type": "game",

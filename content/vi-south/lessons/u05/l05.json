@@ -10,7 +10,7 @@
     "fr": "Dire où tu travailles et pour quelle entreprise.",
     "en": "Say where you work and for which company."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u05.l04"
   ],
@@ -20,7 +20,17 @@
     "c_van_phong",
     "s_chi_lam_o_dau",
     "c_danh_thiep",
-    "c_cho_for"
+    "c_cho_for",
+    "c_nhan_vien",
+    "c_ky_su",
+    "c_sinh_vien",
+    "c_giao_vien",
+    "c_bac_si",
+    "s_anh_lam_nghe_gi",
+    "s_anh_o_dau",
+    "c_thanh_pho",
+    "c_moi_just",
+    "c_qua_come"
   ],
   "steps": [
     {
@@ -132,6 +142,112 @@
         "fr": "chị tombe court, làm descend, ở plonge, đâu plat.",
         "en": "chị drops short, làm falls, ở dips, đâu level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_for",
+      "distractors": [
+        "chó",
+        "mời",
+        "nước"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ cho một công ty Pháp.",
+      "answer": "làm việc",
+      "options": [
+        "làm việc",
+        "phòng ngủ",
+        "chung cư",
+        "sinh viên"
+      ],
+      "translation": {
+        "fr": "Je travaille pour une entreprise française.",
+        "en": "I work for a French company."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhan_vien",
+      "distractors": [
+        "miền Tây",
+        "chủ nhà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ky_su",
+      "distractors": [
+        "bánh mì",
+        "tại sao"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sinh_vien",
+      "distractors": [
+        "tại sao",
+        "máy tính"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "phòng trọ",
+        "tại vì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac_si",
+      "distractors": [
+        "tại vì",
+        "năm ngoái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_lam_nghe_gi",
+      "distractors": [
+        "Nhà em ở đâu?",
+        "Mời bác uống trà."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_o_dau",
+      "distractors": [
+        "Chị tên gì?",
+        "Mai gặp hen."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thanh_pho",
+      "distractors": [
+        "máy tính",
+        "chủ nhà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi_just",
+      "distractors": [
+        "mời",
+        "chậm",
+        "nhen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_qua_come",
+      "distractors": [
+        "quà",
+        "quá",
+        "có"
+      ]
     },
     {
       "type": "game",

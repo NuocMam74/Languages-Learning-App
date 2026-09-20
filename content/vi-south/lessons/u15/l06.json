@@ -10,7 +10,7 @@
     "fr": "Demander quelqu'un et laisser un message.",
     "en": "Ask for someone and leave a message."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u15.l05"
   ],
@@ -143,6 +143,134 @@
       "explain": {
         "fr": "gặp tombe court.",
         "en": "gặp drops short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac_si",
+      "distractors": [
+        "chủ nhật",
+        "chụp hình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "nhà thuốc",
+        "kế bên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hop",
+      "distractors": [
+        "chút",
+        "nhỏ",
+        "phim"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nhan_lai_gium",
+      "distractors": [
+        "Anh điền vô đơn này nha.",
+        "Hồi đó chưa có điện thoại."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ben_side",
+      "distractors": [
+        "bệnh",
+        "ca",
+        "về"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ky_su",
+      "distractors": [
+        "năm ngoái",
+        "nhưng mà"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_bac_si",
+      "distractors": [
+        "c_bac",
+        "c_che_dessert",
+        "c_ong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "c_trai_fruit",
+        "c_san_bay",
+        "c_troi"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Alô, dạ ___",
+      "answer": "Cho em gặp anh Minh.",
+      "options": [
+        "Cho em gặp anh Minh.",
+        "Nhắn Zalo cho em nha.",
+        "Mấy giờ họp vậy anh?",
+        "Rất vui được gặp chị."
+      ],
+      "translation": {
+        "fr": "Allô, je voudrais parler à Minh.",
+        "en": "Hello, I'd like to speak to Minh."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, ___ Ai vậy ạ?",
+      "answer": "Anh Minh đang họp.",
+      "options": [
+        "Anh Minh đang họp.",
+        "Phim này hay quá!",
+        "Em ở lầu hai.",
+        "Anh có vợ chưa?"
+      ],
+      "translation": {
+        "fr": "Minh est en réunion. C'est de la part de qui ?",
+        "en": "Minh is in a meeting. Who's calling?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị nhắn lại ___ em nha.",
+      "answer": "giùm",
+      "options": [
+        "giùm",
+        "đem",
+        "nhớ",
+        "học"
+      ],
+      "translation": {
+        "fr": "Tu peux lui laisser un message de ma part ? (à une femme un peu plus âgée)",
+        "en": "Could you pass on a message for me? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Ngân hàng ở ___ trái.",
+      "answer": "bên",
+      "options": [
+        "bên",
+        "bệnh",
+        "ca",
+        "về"
+      ],
+      "translation": {
+        "fr": "La banque est à gauche.",
+        "en": "The bank is on the left."
       }
     }
   ],

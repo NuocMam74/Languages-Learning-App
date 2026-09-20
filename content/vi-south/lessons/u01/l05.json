@@ -10,7 +10,7 @@
     "fr": "Dire oui et non poliment, et reconnaître le hông du Sud.",
     "en": "Say yes and no politely, and recognise the southern hông."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u01.l04"
   ],
@@ -19,7 +19,15 @@
     "c_khong",
     "c_hong",
     "c_phai",
-    "s_khong_phai"
+    "s_khong_phai",
+    "s_hen_gap_lai",
+    "c_oi",
+    "s_khong_sao",
+    "s_khong_co_chi",
+    "c_xin_loi",
+    "s_day_la",
+    "c_toi",
+    "c_ba_grandma"
   ],
   "steps": [
     {
@@ -120,6 +128,135 @@
         "fr": "không reste plat, phải plonge puis remonte.",
         "en": "không stays level, phải dips then rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phai",
+      "distractors": [
+        "vợ",
+        "gà",
+        "mì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khong_phai",
+      "distractors": [
+        "Sai rồi.",
+        "Đúng rồi!"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, không ___ chi.",
+      "answer": "có",
+      "options": [
+        "có",
+        "há",
+        "tới",
+        "đụng"
+      ],
+      "translation": {
+        "fr": "De rien (poliment).",
+        "en": "You're welcome (politely)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, ___ phải.",
+      "answer": "không",
+      "options": [
+        "không",
+        "sắp",
+        "giỡn",
+        "trả"
+      ],
+      "translation": {
+        "fr": "Non, ce n'est pas ça (poliment).",
+        "en": "No, that's not it (politely)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ không có chi",
+      "tokens": [
+        "Dạ",
+        "không",
+        "có",
+        "chi"
+      ],
+      "translation": {
+        "fr": "De rien (poliment).",
+        "en": "You're welcome (politely)."
+      },
+      "audioConcept": "c_co"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hen_gap_lai",
+      "distractors": [
+        "số điện thoại",
+        "Anh thấy sao?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_oi",
+      "distractors": [
+        "sao",
+        "thơm",
+        "ít"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khong_sao",
+      "distractors": [
+        "bao lâu",
+        "Thiệt hông?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khong_co_chi",
+      "distractors": [
+        "Dạ, ăn rồi.",
+        "Em mới tới."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xin_loi",
+      "distractors": [
+        "trả lời",
+        "bình thường"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_day_la",
+      "distractors": [
+        "chừng nào",
+        "Mắc quá!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi",
+      "distractors": [
+        "tối",
+        "ước",
+        "quá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "ba",
+        "bả",
+        "mốt"
+      ]
     }
   ],
   "review": {

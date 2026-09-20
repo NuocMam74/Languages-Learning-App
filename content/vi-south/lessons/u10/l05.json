@@ -10,7 +10,7 @@
     "fr": "Comprendre et donner une adresse à Saïgon.",
     "en": "Understand and give a Saigon address."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u10.l04"
   ],
@@ -19,7 +19,14 @@
     "c_hem",
     "c_dia_chi",
     "s_so_nha",
-    "c_quan_district"
+    "c_quan_district",
+    "c_doi_dien",
+    "c_ke_ben",
+    "c_ben_phai",
+    "c_ben_trai",
+    "s_gan_day",
+    "c_cay_xang",
+    "c_quan_ca_phe"
   ],
   "steps": [
     {
@@ -131,6 +138,128 @@
         "fr": "Pour une adresse : là gì ?",
         "en": "For an address: là gì?"
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_quan_district",
+      "distractors": [
+        "khác",
+        "mèo",
+        "mất"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà tôi ở hẻm năm mươi, ___ Lê Lợi.",
+      "answer": "đường",
+      "options": [
+        "đường",
+        "giường",
+        "mốt",
+        "ghe"
+      ],
+      "translation": {
+        "fr": "J'habite ruelle 50, rue Lê Lợi.",
+        "en": "I live in alley 50, Lê Lợi street."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ của anh là gì?",
+      "answer": "địa chỉ",
+      "options": [
+        "địa chỉ",
+        "xe hơi",
+        "năm sau",
+        "chủ nhà"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton adresse ? (à un homme un peu plus âgé)",
+        "en": "What's your address? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ 1",
+      "answer": "quận",
+      "options": [
+        "quận",
+        "khác",
+        "mèo",
+        "mất"
+      ],
+      "translation": {
+        "fr": "le 1er arrondissement",
+        "en": "District 1"
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Quận 1",
+      "accepted": {
+        "fr": [
+          "le 1er arrondissement"
+        ],
+        "en": [
+          "District 1"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_dien",
+      "distractors": [
+        "ngân hàng",
+        "bệnh viện"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ke_ben",
+      "distractors": [
+        "kỹ sư",
+        "nhưng mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ben_phai",
+      "distractors": [
+        "hợp đồng",
+        "vé số"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ben_trai",
+      "distractors": [
+        "lúc đó",
+        "gia hạn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_gan_day",
+      "distractors": [
+        "tiền điện",
+        "dừng lại"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cay_xang",
+      "distractors": [
+        "tại sao",
+        "tuần trước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_quan_ca_phe",
+      "distractors": [
+        "nón bảo hiểm",
+        "anh chị em"
+      ]
     },
     {
       "type": "game",

@@ -10,7 +10,7 @@
     "fr": "Nommer la vaisselle du Sud et en demander davantage.",
     "en": "Name southern tableware and ask for more."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u07.l02"
   ],
@@ -21,7 +21,10 @@
     "c_dua",
     "c_them",
     "s_em_oi",
-    "s_ngon_qua"
+    "s_ngon_qua",
+    "c_nuoc_mia",
+    "c_ly",
+    "s_tra_da"
   ],
   "steps": [
     {
@@ -137,6 +140,144 @@
         "fr": "thêm, plat : en plus. thềm descend : le seuil.",
         "en": "thêm, level: extra. thềm falls: doorstep."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chen",
+      "distractors": [
+        "trước",
+        "đây",
+        "ho"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muong",
+      "distractors": [
+        "nhiều",
+        "ký",
+        "quẹo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua",
+      "distractors": [
+        "đụng",
+        "trứng",
+        "đem"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_oi",
+      "distractors": [
+        "Cái nào?",
+        "Vậy hả?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ngon_qua",
+      "distractors": [
+        "Cái nào?",
+        "Hổng biết."
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dia_plate",
+      "distractors": [
+        "c_may_lanh",
+        "c_ben_phai",
+        "c_ben_trai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em thêm một cái ___.",
+      "answer": "chén",
+      "options": [
+        "chén",
+        "trước",
+        "đây",
+        "ho"
+      ],
+      "translation": {
+        "fr": "Un bol de plus, s'il te plaît.",
+        "en": "One more bowl, please."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em ___ một cái chén.",
+      "answer": "thêm",
+      "options": [
+        "thêm",
+        "già",
+        "chở",
+        "lẩu"
+      ],
+      "translation": {
+        "fr": "Un bol de plus, s'il te plaît.",
+        "en": "One more bowl, please."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi cho anh một tô hủ tiếu",
+      "tokens": [
+        "Em",
+        "ơi",
+        "cho",
+        "anh",
+        "một",
+        "tô",
+        "hủ",
+        "tiếu"
+      ],
+      "translation": {
+        "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
+        "en": "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+      },
+      "audioConcept": "s_em_oi"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Em ơi, cho anh một tô hủ tiếu.",
+      "accepted": {
+        "fr": [
+          "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)"
+        ],
+        "en": [
+          "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc_mia",
+      "distractors": [
+        "danh thiếp",
+        "hộ chiếu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ly",
+      "distractors": [
+        "chú",
+        "chào",
+        "hết"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tra_da",
+      "distractors": [
+        "tuần sau",
+        "Ngon quá!"
+      ]
     },
     {
       "type": "game",

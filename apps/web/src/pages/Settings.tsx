@@ -8,7 +8,7 @@ import { Screen } from "../components/ui.tsx";
 import { Card, Icon, PageHeader, SectionTitle, Skeleton, type IconName } from "../design/index.ts";
 import { db, type Profile } from "../db.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
-import { deleteLocalData, exportLocalData, getProfile, saveProfile } from "../learner.ts";
+import { DAILY_GOAL_CHOICES, deleteLocalData, exportLocalData, getProfile, saveProfile } from "../learner.ts";
 import { clearPrefs, usePrefs } from "../prefs.ts";
 import { syncInterfaceLocale, syncProfileChange } from "../profile-sync.ts";
 import { loadReminderState, ReminderSettings } from "../notifications/Reminders.tsx";
@@ -221,7 +221,7 @@ export default function Settings() {
             <Icon name="chevronRight" size={18} className="text-phu-sa" />
           </Link>
           <Row icon="target" label={t("settings.goal")}>
-            <Segmented label={t("settings.goal")} value={profile.dailyGoalMin} options={([5, 10, 15, 20] as const).map((n) => ({ value: n, label: t("onboarding.minutes.value", { n }) }))} onChange={(v) => update({ dailyGoalMin: v })} />
+            <Segmented label={t("settings.goal")} value={profile.dailyGoalMin} options={DAILY_GOAL_CHOICES.map((n) => ({ value: n, label: t("onboarding.minutes.value", { n }) }))} onChange={(v) => update({ dailyGoalMin: v })} />
           </Row>
           <Row icon="clock" label={t("settings.reminder")}>
             <Segmented label={t("settings.reminder")} value={profile.reminder} options={reminders.map((r) => ({ value: r, label: t(`onboarding.reminder.${r}` as MessageKey) }))} onChange={(v) => update({ reminder: v })} />

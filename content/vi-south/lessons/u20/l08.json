@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais inviter, remercier et refuser avec tact.",
     "en": "Show you can invite, thank and decline tactfully."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u20.l07"
   ],
@@ -167,6 +167,135 @@
         "fr": "tiếc : sắc.",
         "en": "tiếc: sắc."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cuoi_wed",
+      "distractors": [
+        "cười",
+        "tên",
+        "trong"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tiec",
+      "distractors": [
+        "tiệc",
+        "tháng",
+        "ma"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_qua_gift",
+      "distractors": [
+        "quá",
+        "qua",
+        "đúng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dam_gio",
+      "distractors": [
+        "khi nào",
+        "bệnh viện"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mai nhà em có ___.",
+      "answer": "đám giỗ",
+      "options": [
+        "đám giỗ",
+        "khi nào",
+        "bệnh viện",
+        "chủ nhà"
+      ],
+      "translation": {
+        "fr": "Demain, il y a un đám giỗ chez moi.",
+        "en": "Tomorrow there's a đám giỗ at my place."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tháng sau tụi em ___.",
+      "answer": "cưới",
+      "options": [
+        "cưới",
+        "cười",
+        "tên",
+        "trong"
+      ],
+      "translation": {
+        "fr": "Nous nous marions le mois prochain.",
+        "en": "We're getting married next month."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ quá, em bận rồi.",
+      "answer": "tiếc",
+      "options": [
+        "tiếc",
+        "tiệc",
+        "tháng",
+        "ma"
+      ],
+      "translation": {
+        "fr": "Dommage, je suis déjà pris(e).",
+        "en": "What a pity, I'm already busy."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mai nhà em có đám giỗ",
+      "tokens": [
+        "Mai",
+        "nhà",
+        "em",
+        "có",
+        "đám",
+        "giỗ"
+      ],
+      "translation": {
+        "fr": "Demain, il y a un đám giỗ chez moi.",
+        "en": "Tomorrow there's a đám giỗ at my place."
+      },
+      "audioConcept": "c_b_dam_gio"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tháng sau tụi em cưới",
+      "tokens": [
+        "Tháng",
+        "sau",
+        "tụi",
+        "em",
+        "cưới"
+      ],
+      "translation": {
+        "fr": "Nous nous marions le mois prochain.",
+        "en": "We're getting married next month."
+      },
+      "audioConcept": "c_b_cuoi_wed"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tiếc quá em bận rồi",
+      "tokens": [
+        "Tiếc",
+        "quá",
+        "em",
+        "bận",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Dommage, je suis déjà pris(e).",
+        "en": "What a pity, I'm already busy."
+      },
+      "audioConcept": "c_b_tiec"
     }
   ],
   "review": {

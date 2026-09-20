@@ -10,7 +10,7 @@
     "fr": "Demander où et lequel.",
     "en": "Ask where and which."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l01"
   ],
@@ -138,6 +138,156 @@
         "fr": "đâu reste plat à la fin.",
         "en": "đâu stays level at the end."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "nhà thuốc",
+        "trúng số"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "nhân viên",
+        "hộ chiếu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chờ",
+        "chở",
+        "heo"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "c_ga_chicken",
+        "c_bac",
+        "c_nha_house"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "c_em",
+        "c_anh_hai",
+        "c_heo"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị lấy ___",
+      "answer": "Cái nào?",
+      "options": [
+        "Cái nào?",
+        "Chưa xong.",
+        "Không phải.",
+        "tiếng Việt"
+      ],
+      "translation": {
+        "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",
+        "en": "Which one are you taking? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hôm nay tôi đi ___.",
+      "answer": "chợ",
+      "options": [
+        "chợ",
+        "chờ",
+        "chở",
+        "heo"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je vais au marché.",
+        "en": "Today I'm going to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trường học ở giữa công viên và ___.",
+      "answer": "bệnh viện",
+      "options": [
+        "bệnh viện",
+        "nhà thuốc",
+        "trúng số",
+        "trường học"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ở bên trái.",
+      "answer": "ngân hàng",
+      "options": [
+        "ngân hàng",
+        "nhân viên",
+        "hộ chiếu",
+        "máy tính"
+      ],
+      "translation": {
+        "fr": "La banque est à gauche.",
+        "en": "The bank is on the left."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị lấy cái nào",
+      "tokens": [
+        "Chị",
+        "lấy",
+        "cái",
+        "nào"
+      ],
+      "translation": {
+        "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",
+        "en": "Which one are you taking? (to a slightly older woman)"
+      },
+      "audioConcept": "s_cai_nao"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay tôi đi chợ",
+      "tokens": [
+        "Hôm",
+        "nay",
+        "tôi",
+        "đi",
+        "chợ"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je vais au marché.",
+        "en": "Today I'm going to the market."
+      },
+      "audioConcept": "c_cho_market"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ngân hàng ở bên trái",
+      "tokens": [
+        "Ngân",
+        "hàng",
+        "ở",
+        "bên",
+        "trái"
+      ],
+      "translation": {
+        "fr": "La banque est à gauche.",
+        "en": "The bank is on the left."
+      },
+      "audioConcept": "c_ngan_hang"
     }
   ],
   "review": {

@@ -1,4 +1,4 @@
-import { badgeCodesFor, isChallengeBadge, levelForXp, levelName, SKILLS, type ContentIndex, type GameBest, type GameId, type SkillSummary } from "@parlo/core";
+import { badgeCodesFor, isChallengeBadge, levelForXp, levelName, MARK_MAX, SKILLS, type ContentIndex, type GameBest, type GameId, type SkillSummary, type ThemeMark } from "@parlo/core";
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
@@ -13,6 +13,7 @@ import { activePackCode } from "../packs/active.ts";
 import { isOnboarded, switchPack } from "../packs/switch.ts";
 import { usePackChoices } from "../packs/use-packs.ts";
 import { acquired, certificateCount, earnedBadges, gameBests, languageSkills, streakView, type AcquiredCounts, type StreakView } from "./data.ts";
+import { packMarks, type MarksView } from "./marks.ts";
 import { RewardsBlock } from "../rewards/RewardsBlock.tsx";
 import { Avatar } from "./Avatar.tsx";
 import { MAX_DISPLAY_NAME, readDisplayName, saveDisplayName } from "./identity.ts";
@@ -42,6 +43,7 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
   const [memberSince, setMemberSince] = useState<string | null>(null);
   const [skillPack, setSkillPack] = useState(active);
   const [skills, setSkills] = useState<SkillSummary[] | null>(null);
+  const [marks, setMarks] = useState<MarksView | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -50,7 +52,9 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
         readDisplayName(), allPackSummaries(codes), streakView(), earnedBadges(), gameBests(), getProfile(),
       ]);
       const acquis = await acquired(content, await certificateCount());
+      const bulletin = await packMarks(content);
       if (!live) return;
+      setMarks(bulletin);
       setName(display);
       setSummaries(packs);
       setStreak(streakNow);
@@ -134,7 +138,14 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
         </Card>
       </Block>
 
-      <Block index={3} id="profile-skills-title" icon="chart" title={t("profile.skills.title")}>
+      {/* Bulletin (contrat phase21 §4) : la moyenne, puis les thèmes — c'est l'écran qui répond à
+          « sur quoi je bute ? ». Il vient avant les compétences : le thème dit quoi refaire
+          (« les chiffres »), la compétence dit comment on apprend (« l'oreille »). */}
+      <Block index={3} id="profile-marks-title" icon="chart" title={t("profile.marks.title")}>
+        <MarksBlock marks={marks} />
+      </Block>
+
+      <Block index={4} id="profile-skills-title" icon="chart" title={t("profile.skills.title")}>
         <Card className="flex flex-col gap-4">
           {codes.length > 1 && (
             <div role="radiogroup" aria-label={t("profile.skills.language")} className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
@@ -164,7 +175,7 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
         </Card>
       </Block>
 
-      <Block index={4} id="profile-acquired-title" icon="target" title={t("profile.acquired.title")}>
+      <Block index={5} id="profile-acquired-title" icon="target" title={t("profile.acquired.title")}>
         <Card className="flex flex-col gap-4">
           <dl className="grid grid-cols-2 gap-x-4 gap-y-3.5 sm:grid-cols-3" data-testid="profile-acquired">
             <Count label={t("profile.acquired.structures")} value={counts?.structures} />
@@ -194,7 +205,7 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
       </Block>
 
       <Block
-        index={5}
+        index={6}
         id="profile-badges-title"
         icon="star"
         title={t("profile.badges.title")}
@@ -223,7 +234,7 @@ export default function ProfilePage({ content }: { content: ContentIndex }) {
         </Card>
       </Block>
 
-      <Block index={6} id="profile-languages-title" icon="globe" title={t("profile.languages.title")}>
+      <Block index={7} id="profile-languages-title" icon="globe" title={t("profile.languages.title")}>
         <ul className="flex flex-col gap-2" data-testid="profile-languages">
           {choices.map((choice) => {
             const summary = summaries?.find((s) => s.code === choice.code) ?? null;
@@ -292,6 +303,79 @@ function Count({ label, value, testid }: { label: string; value: number | undefi
       {/* Hauteur réservée : le chiffre arrive d'IndexedDB sans faire grandir la grille. */}
       <dd className="text-lg font-semibold tabular-nums">{value ?? 0}</dd>
     </div>
+  );
+}
+
+function MarksBlock({ marks }: { marks: MarksView | null }) {
+  const started = marks?.themes.filter((theme) => theme.mark !== null) ?? [];
+  return (
+    <Card className="flex flex-col gap-4">
+      <div className="flex items-baseline justify-between gap-4" data-testid="profile-overall-mark" data-mark={marks?.overall.mark ?? ""}>
+        <span className="font-medium">{t("profile.marks.overall")}</span>
+        {/* Hauteur réservée : la moyenne arrive d'IndexedDB et ne doit pousser personne (CLS). */}
+        <span className="flex min-h-[2.75rem] flex-col items-end justify-center">
+          {marks === null || marks.overall.mark === null ? (
+            <span className="text-sm text-phu-sa">{marks === null ? "" : t("profile.marks.empty")}</span>
+          ) : (
+            <>
+              <span className="text-vi font-semibold tabular-nums">{t("profile.marks.value", { mark: marks.overall.mark, max: MARK_MAX })}</span>
+              <span className="text-sm text-phu-sa">
+                {plural("profile.marks.overall.on", "profile.marks.overall.on.plural", marks.overall.levels)}
+              </span>
+            </>
+          )}
+        </span>
+      </div>
+
+      {/* Les thèmes qui résistent, nommés, avec le niveau exact à refaire : sans ce lien, le
+          diagnostic laisse l'apprenant devant une liste et rien à faire. Le lien mène au niveau
+          **normal**, pas à l'entraînement — seul le premier enregistre une nouvelle note. */}
+      {(marks?.weak.length ?? 0) > 0 && (
+        <section className="flex flex-col gap-2 rounded-card bg-surface-nghe p-3" data-testid="profile-weak-themes">
+          <h3 className="font-semibold">{t("profile.marks.weak.title")}</h3>
+          <ul className="flex flex-col">
+            {marks?.weak.map((theme) => (
+              <li key={theme.unit} data-unit={theme.unit}>
+                {theme.weakest && (
+                  <Link
+                    to={`/lecon/${encodeURIComponent(theme.weakest.lessonId)}`}
+                    className="flex min-h-11 items-center justify-between gap-3 font-semibold text-ngoc"
+                  >
+                    <span className="min-w-0 truncate">{t("profile.marks.weak.redo", { title: l(theme.weakest.title) })}</span>
+                    <span className="tabular-nums">{t("profile.marks.value", { mark: theme.weakest.mark, max: MARK_MAX })}</span>
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <ul className="flex flex-col gap-3.5" data-testid="profile-themes">
+        {started.map((theme) => (
+          <ThemeRow key={theme.unit} theme={theme} />
+        ))}
+      </ul>
+      <p className="text-sm text-phu-sa">{t("profile.marks.note")}</p>
+    </Card>
+  );
+}
+
+function ThemeRow({ theme }: { theme: ThemeMark }) {
+  const mark = theme.mark ?? 0;
+  const tone = theme.level === "fragile" ? "son-mai" : theme.level === "strong" ? "ngoc" : "nghe";
+  return (
+    <li data-testid="profile-theme" data-unit={theme.unit} data-level={theme.level ?? "none"}>
+      <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-3">
+        <span className="font-medium">{l(theme.title)}</span>
+        <span className="text-sm text-phu-sa tabular-nums">{t("profile.marks.value", { mark, max: MARK_MAX })}</span>
+      </div>
+      <ProgressBar value={mark} max={MARK_MAX} size="sm" tone={tone} label={l(theme.title)} />
+      <p className="mt-0.5 flex flex-wrap justify-between gap-x-3 text-sm text-phu-sa">
+        <span>{theme.level ? t(`profile.marks.level.${theme.level}` as MessageKey) : t("profile.marks.untouched")}</span>
+        <span>{t(theme.done > 1 ? "profile.marks.progress.plural" : "profile.marks.progress", { n: theme.done, total: theme.total })}</span>
+      </p>
+    </li>
   );
 }
 

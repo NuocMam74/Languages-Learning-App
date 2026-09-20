@@ -10,7 +10,7 @@
     "fr": "Acheter au poids et demander le prix au kilo.",
     "en": "Buy by weight and ask the price per kilo."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u08.l03"
   ],
@@ -19,7 +19,16 @@
     "c_nua",
     "s_nua_ky",
     "s_bao_nhieu_mot_ky",
-    "c_lay"
+    "c_lay",
+    "c_dua_hau",
+    "c_sau_rieng",
+    "c_thom",
+    "c_chuoi",
+    "c_xoai",
+    "s_bot_cho_em",
+    "c_bot",
+    "s_mac_qua",
+    "c_qua_too"
   ],
   "steps": [
     {
@@ -126,6 +135,122 @@
         "fr": "một ký = un kilo. mốt ne s'emploie qu'après une dizaine (hai mươi mốt).",
         "en": "một ký = one kilo. mốt only appears after a ten (hai mươi mốt)."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ky",
+      "distractors": [
+        "cưới",
+        "phòng",
+        "lát"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ cái này.",
+      "answer": "lấy",
+      "options": [
+        "lấy",
+        "cá",
+        "đã",
+        "thưởng"
+      ],
+      "translation": {
+        "fr": "Je prends celui-ci.",
+        "en": "I'll take this one."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em lấy cái này",
+      "tokens": [
+        "Em",
+        "lấy",
+        "cái",
+        "này"
+      ],
+      "translation": {
+        "fr": "Je prends celui-ci.",
+        "en": "I'll take this one."
+      },
+      "audioConcept": "c_lay"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua_hau",
+      "distractors": [
+        "nhắn tin",
+        "tin nhắn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "tài khoản",
+        "trúng số"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thom",
+      "distractors": [
+        "tên",
+        "họp",
+        "sông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chuoi",
+      "distractors": [
+        "bên",
+        "no",
+        "vườn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xoai",
+      "distractors": [
+        "trăm",
+        "đâu",
+        "theo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bot_cho_em",
+      "distractors": [
+        "Cho em gặp anh Minh.",
+        "Nhắn Zalo cho em nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bot",
+      "distractors": [
+        "quẹo",
+        "cậu",
+        "nhen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mac_qua",
+      "distractors": [
+        "thứ bảy",
+        "Cái nào?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_qua_too",
+      "distractors": [
+        "qua",
+        "quà",
+        "sẽ"
+      ]
     },
     {
       "type": "game",

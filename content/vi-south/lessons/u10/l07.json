@@ -11,7 +11,7 @@
     "fr": "Revoir les lieux et les mots pour les situer.",
     "en": "Go over places and the words to locate them."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u10.l06"
   ],
@@ -142,6 +142,136 @@
       "explain": {
         "fr": "Garde ở bien plongeant.",
         "en": "Keep ở dipping."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_wait",
+      "distractors": [
+        "chở",
+        "chợ",
+        "nửa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_ve_sinh_o_dau",
+      "distractors": [
+        "Có lẽ mai trời mưa.",
+        "Anh có thích phở không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cong_vien",
+      "distractors": [
+        "năm ngoái",
+        "kẹt xe"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ben_trai",
+      "distractors": [
+        "ngân hàng",
+        "địa chỉ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chờ",
+        "chở",
+        "mời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ben_phai",
+      "distractors": [
+        "yên tĩnh",
+        "cây xăng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_dien",
+      "distractors": [
+        "ngày sinh",
+        "chủ nhật"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_truoc",
+      "distractors": [
+        "bận",
+        "nhanh",
+        "đẹp"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_market",
+      "distractors": [
+        "c_xe_may",
+        "c_ngan_hang",
+        "c_xe_buyt"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ben_phai",
+      "distractors": [
+        "c_toi_evening",
+        "c_chia_khoa",
+        "c_ngan_hang"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trường học ở giữa ___ và bệnh viện.",
+      "answer": "công viên",
+      "options": [
+        "công viên",
+        "năm ngoái",
+        "kẹt xe",
+        "bình thường"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Ngân hàng ở ___.",
+      "answer": "bên trái",
+      "options": [
+        "bên trái",
+        "ngân hàng",
+        "địa chỉ",
+        "đối diện"
+      ],
+      "translation": {
+        "fr": "La banque est à gauche.",
+        "en": "The bank is on the left."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Quán cà phê ở ___ chợ.",
+      "answer": "kế bên",
+      "options": [
+        "kế bên",
+        "nhắn tin",
+        "đồng nghiệp",
+        "bệnh viện"
+      ],
+      "translation": {
+        "fr": "Le café est à côté du marché.",
+        "en": "The café is next to the market."
       }
     },
     {

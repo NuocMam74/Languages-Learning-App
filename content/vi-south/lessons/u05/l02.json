@@ -10,7 +10,7 @@
     "fr": "Dire d'où tu viens et demander la nationalité de quelqu'un.",
     "en": "Say where you're from and ask someone's nationality."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u05.l01"
   ],
@@ -20,7 +20,12 @@
     "s_nguoi_phap",
     "s_nguoi_viet",
     "s_nguoi_nuoc_nao",
-    "c_viet_kieu"
+    "c_viet_kieu",
+    "s_rat_vui_duoc_gap",
+    "c_gap",
+    "s_chi_ten_gi",
+    "s_anh_ten_gi",
+    "c_ho_surname"
   ],
   "steps": [
     {
@@ -128,6 +133,159 @@
       "explain": {
         "fr": "người descend, Việt tombe court.",
         "en": "người falls, Việt drops short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_viet",
+      "distractors": [
+        "Chưa xong.",
+        "tiền điện"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nguoi",
+      "distractors": [
+        "tối",
+        "hơi",
+        "còn"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi là ___ Pháp.",
+      "answer": "người",
+      "options": [
+        "người",
+        "tối",
+        "hơi",
+        "còn"
+      ],
+      "translation": {
+        "fr": "Je suis français(e).",
+        "en": "I'm French."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi tên Nam. ___",
+      "answer": "Chị là người nước nào?",
+      "options": [
+        "Chị là người nước nào?",
+        "Cho em gặp anh Minh.",
+        "Tui nghĩ là chị đúng.",
+        "Sau đó tui qua Pháp."
+      ],
+      "translation": {
+        "fr": "Moi c'est Nam. Vous êtes de quel pays ?",
+        "en": "I'm Nam. What country are you from?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi tên Nam Chị là người nước nào",
+      "tokens": [
+        "Tôi",
+        "tên",
+        "Nam",
+        "Chị",
+        "là",
+        "người",
+        "nước",
+        "nào"
+      ],
+      "translation": {
+        "fr": "Moi c'est Nam. Vous êtes de quel pays ?",
+        "en": "I'm Nam. What country are you from?"
+      },
+      "audioConcept": "s_nguoi_nuoc_nao"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_rat_vui_duoc_gap",
+      "distractors": [
+        "Nhắn Zalo cho em nha.",
+        "Nhà em có mấy người?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gap",
+      "distractors": [
+        "hết",
+        "cá",
+        "việc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chi_ten_gi",
+      "distractors": [
+        "Trời đang mưa.",
+        "Cái gì vậy?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_ten_gi",
+      "distractors": [
+        "Cái gì vậy?",
+        "Mau khỏe nha!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_surname",
+      "distractors": [
+        "ho",
+        "sẽ",
+        "mả"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hẹn ___ lại anh.",
+      "answer": "gặp",
+      "options": [
+        "gặp",
+        "hết",
+        "cá",
+        "việc"
+      ],
+      "translation": {
+        "fr": "À bientôt (à un homme un peu plus âgé).",
+        "en": "See you (to a slightly older man)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chào chị. ___",
+      "answer": "Chị tên gì?",
+      "options": [
+        "Chị tên gì?",
+        "Trời đang mưa.",
+        "Cái gì vậy?",
+        "Tôi tên là…"
+      ],
+      "translation": {
+        "fr": "Bonjour. Comment vous appelez-vous ?",
+        "en": "Hello. What's your name?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ Trần.",
+      "answer": "họ",
+      "options": [
+        "họ",
+        "ho",
+        "sẽ",
+        "mả"
+      ],
+      "translation": {
+        "fr": "Mon nom de famille est Trần.",
+        "en": "My family name is Trần."
       }
     },
     {

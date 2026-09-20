@@ -10,7 +10,7 @@
     "fr": "Saluer et remercier une personne un peu plus âgée que toi.",
     "en": "Greet and thank someone slightly older than you."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u01.l01"
   ],
@@ -21,7 +21,11 @@
     "c_em",
     "c_da",
     "c_cam_on",
-    "s_chao_anh"
+    "s_chao_anh",
+    "c_ma_seedling",
+    "c_ma_tomb",
+    "c_ma_mom",
+    "c_ma_but"
   ],
   "steps": [
     {
@@ -112,6 +116,145 @@
         "fr": "Face à plus âgé, tu te désignes par em, et tu nommes l'autre (anh) à la fin.",
         "en": "To someone older, call yourself em and name them (anh) at the end."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chao_anh",
+      "distractors": [
+        "Đỡ rồi.",
+        "Dạ, có."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh",
+      "distractors": [
+        "ảnh",
+        "về",
+        "há"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "chỉ",
+        "nhỏ",
+        "trễ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_em",
+      "distractors": [
+        "cưới",
+        "ai",
+        "chồng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da",
+      "distractors": [
+        "da",
+        "qua",
+        "gì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cam_on",
+      "distractors": [
+        "giả sử",
+        "đối diện"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_em",
+      "distractors": [
+        "c_nha_thuoc",
+        "c_xe_dap",
+        "c_thom"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ anh.",
+      "answer": "chào",
+      "options": [
+        "chào",
+        "qua",
+        "mạ",
+        "đội"
+      ],
+      "translation": {
+        "fr": "Bonjour (à un homme un peu plus âgé).",
+        "en": "Hello (to a slightly older man)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, em cảm ơn ___.",
+      "answer": "anh",
+      "options": [
+        "anh",
+        "ảnh",
+        "về",
+        "há"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Chào anh.",
+      "accepted": {
+        "fr": [
+          "Bonjour (à un homme un peu plus âgé)."
+        ],
+        "en": [
+          "Hello (to a slightly older man)."
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_seedling",
+      "distractors": [
+        "ma",
+        "mả",
+        "mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_tomb",
+      "distractors": [
+        "má",
+        "mà",
+        "mạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "ma",
+        "mạ",
+        "mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_but",
+      "distractors": [
+        "mả",
+        "mạ",
+        "ma"
+      ]
     },
     {
       "type": "game",

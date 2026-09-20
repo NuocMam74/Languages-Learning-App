@@ -10,7 +10,7 @@
     "fr": "Demander où se trouve un lieu et comprendre « ici ».",
     "en": "Ask where a place is and understand 'here'."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u10.l01"
   ],
@@ -21,7 +21,9 @@
     "c_san_bay",
     "c_day_here",
     "s_co_xa_khong",
-    "s_gan_day"
+    "s_gan_day",
+    "c_ngan_hang",
+    "c_cong_vien"
   ],
   "steps": [
     {
@@ -154,6 +156,164 @@
         "fr": "nhà descend, vệ tombe court, sinh plat, ở plonge, đâu plat.",
         "en": "nhà falls, vệ drops short, sinh level, ở dips, đâu level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_co_xa_khong",
+      "distractors": [
+        "Em ăn gì?",
+        "hai mươi mốt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_gan_day",
+      "distractors": [
+        "uống thuốc",
+        "Đây là…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_ve_sinh",
+      "distractors": [
+        "anh chị em",
+        "nón bảo hiểm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khach_san",
+      "distractors": [
+        "nghỉ phép",
+        "tài khoản"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_san_bay",
+      "distractors": [
+        "đám cưới",
+        "làm việc"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ở đâu?",
+      "answer": "nhà vệ sinh",
+      "options": [
+        "nhà vệ sinh",
+        "anh chị em",
+        "nón bảo hiểm",
+        "quán cà phê"
+      ],
+      "translation": {
+        "fr": "Où sont les toilettes ?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xin lỗi, ___ ở đâu vậy anh?",
+      "answer": "khách sạn",
+      "options": [
+        "khách sạn",
+        "nghỉ phép",
+        "tài khoản",
+        "xe ôm"
+      ],
+      "translation": {
+        "fr": "Pardon, où est l'hôtel ? (à un homme un peu plus âgé)",
+        "en": "Excuse me, where's the hotel? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "ở ___",
+      "answer": "đây",
+      "options": [
+        "đây",
+        "thuốc",
+        "mèo",
+        "lên"
+      ],
+      "translation": {
+        "fr": "ici",
+        "en": "here"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chợ có ___ hông?",
+      "answer": "gần đây",
+      "options": [
+        "gần đây",
+        "uống thuốc",
+        "Đây là…",
+        "nghỉ ngơi"
+      ],
+      "translation": {
+        "fr": "Le marché est près d'ici ?",
+        "en": "Is the market near here?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà vệ sinh ở đâu",
+      "tokens": [
+        "Nhà",
+        "vệ",
+        "sinh",
+        "ở",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Où sont les toilettes ?"
+      },
+      "audioConcept": "c_nha_ve_sinh"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chợ có gần đây hông",
+      "tokens": [
+        "Chợ",
+        "có",
+        "gần",
+        "đây",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Le marché est près d'ici ?",
+        "en": "Is the market near here?"
+      },
+      "audioConcept": "s_gan_day"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "ở đây",
+      "accepted": {
+        "fr": [
+          "ici"
+        ],
+        "en": [
+          "here"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "giả sử",
+        "trả lời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cong_vien",
+      "distractors": [
+        "bình thường",
+        "xe hơi"
+      ]
     },
     {
       "type": "game",

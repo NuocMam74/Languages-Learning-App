@@ -10,7 +10,7 @@
     "fr": "Poser et répondre aux questions sur la famille.",
     "en": "Ask and answer questions about family."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u04.l04"
   ],
@@ -20,7 +20,11 @@
     "s_co_vo_chua",
     "s_co_anh_chi_em_khong",
     "s_da_co",
-    "c_co"
+    "c_co",
+    "c_ho_hang",
+    "c_mo",
+    "c_thim",
+    "c_duong"
   ],
   "steps": [
     {
@@ -138,6 +142,154 @@
         "fr": "có monte, vợ tombe court, chưa reste plat à la fin.",
         "en": "có rises, vợ drops short, chưa stays level at the end."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_chi_em",
+      "distractors": [
+        "trạm xe buýt",
+        "quán cà phê"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_co_vo_chua",
+      "distractors": [
+        "Hôm nay thứ mấy?",
+        "Ngày uống mấy lần?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co",
+      "distractors": [
+        "nè",
+        "sốt",
+        "coi"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em có ___ không?",
+      "answer": "anh chị em",
+      "options": [
+        "anh chị em",
+        "trạm xe buýt",
+        "quán cà phê",
+        "nhà vệ sinh"
+      ],
+      "translation": {
+        "fr": "Tu as des frères et sœurs ? (à plus jeune)",
+        "en": "Do you have brothers and sisters? (to someone younger)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh có vợ ___?",
+      "answer": "chưa",
+      "options": [
+        "chưa",
+        "về",
+        "chích",
+        "thôi"
+      ],
+      "translation": {
+        "fr": "Tu es marié ? (à un homme un peu plus âgé)",
+        "en": "Are you married? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, không ___ chi.",
+      "answer": "có",
+      "options": [
+        "có",
+        "nè",
+        "sốt",
+        "coi"
+      ],
+      "translation": {
+        "fr": "De rien (poliment).",
+        "en": "You're welcome (politely)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ có xa hông cô",
+      "tokens": [
+        "Dạ",
+        "có",
+        "xa",
+        "hông",
+        "cô"
+      ],
+      "translation": {
+        "fr": "C'est loin ?",
+        "en": "Is it far?"
+      },
+      "audioConcept": "s_da_co"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ không có chi",
+      "tokens": [
+        "Dạ",
+        "không",
+        "có",
+        "chi"
+      ],
+      "translation": {
+        "fr": "De rien (poliment).",
+        "en": "You're welcome (politely)."
+      },
+      "audioConcept": "c_co"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Dạ, có xa hông cô?",
+      "accepted": {
+        "fr": [
+          "C'est loin ?"
+        ],
+        "en": [
+          "Is it far?"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_hang",
+      "distractors": [
+        "nhà thuốc",
+        "hôm qua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mo",
+      "distractors": [
+        "mở",
+        "ghé",
+        "vui"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thim",
+      "distractors": [
+        "tiệm",
+        "nói",
+        "nè"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_duong",
+      "distractors": [
+        "chồng",
+        "nghen",
+        "lên"
+      ]
     },
     {
       "type": "game",

@@ -10,7 +10,7 @@
     "fr": "Demander la durée d'un trajet et la vitesse.",
     "en": "Ask how long a trip takes and about speed."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u11.l04"
   ],
@@ -20,7 +20,14 @@
     "s_bao_lau",
     "c_mat",
     "c_nhanh",
-    "c_cham"
+    "c_cham",
+    "c_cau_bridge",
+    "s_toi_roi",
+    "s_cho_em_xuong",
+    "s_dung_lai",
+    "s_di_thang",
+    "s_chay_thang",
+    "c_b_thi"
   ],
   "steps": [
     {
@@ -130,6 +137,135 @@
         "fr": "bao lâu = combien de temps ; bao nhiêu = combien (quantité).",
         "en": "bao lâu = how long; bao nhiêu = how much."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mat",
+      "distractors": [
+        "tui",
+        "gặp",
+        "chua"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đi ___?",
+      "answer": "bao lâu",
+      "options": [
+        "bao lâu",
+        "bằng tuổi",
+        "Mệt quá!",
+        "Chưa xong."
+      ],
+      "translation": {
+        "fr": "Ça prend combien de temps ?",
+        "en": "How long does it take?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đi xe buýt ___ bao lâu?",
+      "answer": "mất",
+      "options": [
+        "mất",
+        "tui",
+        "gặp",
+        "chua"
+      ],
+      "translation": {
+        "fr": "Ça prend combien de temps en bus ?",
+        "en": "How long does it take by bus?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh chạy ___ lại được không?",
+      "answer": "chậm",
+      "options": [
+        "chậm",
+        "thì",
+        "khác",
+        "đội"
+      ],
+      "translation": {
+        "fr": "Tu peux rouler moins vite ? (à un homme un peu plus âgé)",
+        "en": "Can you ride more slowly? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh chạy chậm lại được không",
+      "tokens": [
+        "Anh",
+        "chạy",
+        "chậm",
+        "lại",
+        "được",
+        "không"
+      ],
+      "translation": {
+        "fr": "Tu peux rouler moins vite ? (à un homme un peu plus âgé)",
+        "en": "Can you ride more slowly? (to a slightly older man)"
+      },
+      "audioConcept": "c_cham"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cau_bridge",
+      "distractors": [
+        "cậu",
+        "rưỡi",
+        "ở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_toi_roi",
+      "distractors": [
+        "Em ơi!",
+        "Thiệt há?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_xuong",
+      "distractors": [
+        "Nhà em ở đâu?",
+        "Chắc ảnh tới trễ."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_dung_lai",
+      "distractors": [
+        "tuần sau",
+        "Đúng rồi!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_di_thang",
+      "distractors": [
+        "Sai rồi.",
+        "Chưa xong."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chay_thang",
+      "distractors": [
+        "mười lăm",
+        "quẹo phải"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thi",
+      "distractors": [
+        "mời",
+        "mà",
+        "phút"
+      ]
     },
     {
       "type": "game",

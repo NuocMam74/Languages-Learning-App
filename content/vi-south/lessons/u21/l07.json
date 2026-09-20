@@ -11,7 +11,7 @@
     "fr": "Revoir pronoms, particules et mots du delta.",
     "en": "Go over pronouns, particles and delta words."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u21.l06"
   ],
@@ -128,6 +128,140 @@
       "explain": {
         "fr": "dễ plonge au Sud, thương plat, quá monte.",
         "en": "dễ dips in the South, thương level, quá rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong",
+      "distractors": [
+        "ổng",
+        "về",
+        "thấy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_he",
+      "distractors": [
+        "ông",
+        "canh",
+        "bả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_de_thuong_qua",
+      "distractors": [
+        "Đừng khách sáo!",
+        "Em bị sốt."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ghe",
+      "distractors": [
+        "ghé",
+        "hai",
+        "mạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hong_emph",
+      "distractors": [
+        "hông",
+        "chùa",
+        "thích"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nghen",
+      "distractors": [
+        "người",
+        "ma",
+        "lấy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ne",
+      "distractors": [
+        "sông",
+        "sáu",
+        "lầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoai",
+      "distractors": [
+        "sữa",
+        "xin",
+        "nên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gion",
+      "distractors": [
+        "lẻ",
+        "thì",
+        "vì"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ong",
+      "distractors": [
+        "c_trai_fruit",
+        "c_sach",
+        "c_con"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___",
+      "answer": "Đi đâu vậy?",
+      "options": [
+        "Đi đâu vậy?",
+        "Mau khỏe nha!",
+        "Em mới tới.",
+        "Em mấy tuổi?"
+      ],
+      "translation": {
+        "fr": "Tu vas où comme ça ?",
+        "en": "Where are you off to?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Con chào ___.",
+      "answer": "ông",
+      "options": [
+        "ông",
+        "ổng",
+        "về",
+        "thấy"
+      ],
+      "translation": {
+        "fr": "Bonjour (à un homme âgé).",
+        "en": "Hello (to an elderly man)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ là ba tôi.",
+      "answer": "ổng",
+      "options": [
+        "ổng",
+        "ông",
+        "canh",
+        "bả"
+      ],
+      "translation": {
+        "fr": "Lui, c'est mon père.",
+        "en": "He's my dad."
       }
     },
     {

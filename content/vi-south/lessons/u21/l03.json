@@ -10,7 +10,7 @@
     "fr": "Adoucir tes phrases avec les particules du Sud.",
     "en": "Soften your sentences with southern particles."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u21.l02"
   ],
@@ -21,7 +21,12 @@
     "c_b_nho_remember",
     "s_b_nho_nghen",
     "s_b_mai_gap_hen",
-    "c_hen"
+    "c_hen",
+    "s_b_hong_co_dau",
+    "s_b_hong_biet",
+    "c_b_biet",
+    "c_b_hong_emph",
+    "s_b_ong_di_dau_roi"
   ],
   "steps": [
     {
@@ -138,6 +143,144 @@
       "explain": {
         "fr": "nhớ monte, nghen reste plat.",
         "en": "nhớ rises, nghen stays level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nhen",
+      "distractors": [
+        "có",
+        "con",
+        "thường"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hen",
+      "distractors": [
+        "hen",
+        "ba",
+        "no"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nghen",
+      "distractors": [
+        "không",
+        "tuổi",
+        "mè"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hen_particle",
+      "distractors": [
+        "hẹn",
+        "mè",
+        "trễ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mình ___ lúc mấy giờ?",
+      "answer": "hẹn",
+      "options": [
+        "hẹn",
+        "hen",
+        "ba",
+        "no"
+      ],
+      "translation": {
+        "fr": "On se donne rendez-vous à quelle heure ?",
+        "en": "What time shall we meet?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mình hẹn lúc mấy giờ",
+      "tokens": [
+        "Mình",
+        "hẹn",
+        "lúc",
+        "mấy",
+        "giờ"
+      ],
+      "translation": {
+        "fr": "On se donne rendez-vous à quelle heure ?",
+        "en": "What time shall we meet?"
+      },
+      "audioConcept": "c_hen"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hong_co_dau",
+      "distractors": [
+        "Em đi đâu?",
+        "Dạ, ăn rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hong_biet",
+      "distractors": [
+        "Em ơi!",
+        "thịt heo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_biet",
+      "distractors": [
+        "hay",
+        "thôi",
+        "thầy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hong_emph",
+      "distractors": [
+        "hông",
+        "thầy",
+        "mua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ong_di_dau_roi",
+      "distractors": [
+        "Em nhắn rồi đó.",
+        "Dạ, ai vậy ạ?"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hổng ___.",
+      "answer": "biết",
+      "options": [
+        "biết",
+        "hay",
+        "thôi",
+        "thầy"
+      ],
+      "translation": {
+        "fr": "Sais pas."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ có đâu!",
+      "answer": "hổng",
+      "options": [
+        "hổng",
+        "hông",
+        "thầy",
+        "mua"
+      ],
+      "translation": {
+        "fr": "Mais non, pas du tout !",
+        "en": "No way, not at all!"
       }
     }
   ],

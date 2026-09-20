@@ -10,7 +10,7 @@
     "fr": "Commander une boisson dans un café du Sud.",
     "en": "Order a drink at a southern café."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u07.l01"
   ],
@@ -20,7 +20,12 @@
     "c_da_ice",
     "s_tra_da",
     "c_ly",
-    "c_nuoc_mia"
+    "c_nuoc_mia",
+    "s_cho_em_to_pho",
+    "c_banh_mi",
+    "c_com_tam",
+    "c_hu_tieu",
+    "c_pho"
   ],
   "steps": [
     {
@@ -128,6 +133,114 @@
         "fr": "cà descend, phê plat, sữa plonge, đá monte.",
         "en": "cà falls, phê level, sữa dips, đá rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_ice",
+      "distractors": [
+        "đã",
+        "chục",
+        "heo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ca_phe",
+      "distractors": [
+        "tuần trước",
+        "máy lạnh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ca_phe_sua_da",
+      "distractors": [
+        "Kể tui nghe đi!",
+        "một trăm lẻ năm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ly",
+      "distractors": [
+        "chào",
+        "vậy",
+        "trái"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_da_ice",
+      "distractors": [
+        "c_ca_fish",
+        "c_sua_milk",
+        "c_chua_pagoda"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "s_tra_da",
+      "distractors": [
+        "s_ca_phe_sua_da",
+        "s_chay_thang",
+        "s_dung_lai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em một ly ___ sữa đá.",
+      "answer": "cà phê",
+      "options": [
+        "cà phê",
+        "tuần trước",
+        "máy lạnh",
+        "đám cưới"
+      ],
+      "translation": {
+        "fr": "Un café glacé au lait, s'il te plaît.",
+        "en": "An iced milk coffee, please."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_to_pho",
+      "distractors": [
+        "Hơi mắc, nhưng mà ngon.",
+        "Bớt cho em đi chị."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "bệnh viện",
+        "nhắn tin"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_com_tam",
+      "distractors": [
+        "nhân viên",
+        "bắt đầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hu_tieu",
+      "distractors": [
+        "cảm ơn",
+        "vé số"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_pho",
+      "distractors": [
+        "nói",
+        "cậu",
+        "đồng"
+      ]
     }
   ],
   "review": {

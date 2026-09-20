@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais donner un avis nuancé et le justifier.",
     "en": "Show you can give and justify a nuanced opinion."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u24.l07"
   ],
@@ -22,7 +22,9 @@
     "s_b_tai_sao_vay",
     "s_b_moi_nguoi_thay_sao",
     "c_b_dung_right",
-    "c_b_tai_vi"
+    "c_b_tai_vi",
+    "s_b_hue_nha",
+    "s_b_tui_nghi_la"
   ],
   "steps": [
     {
@@ -169,6 +171,135 @@
         "fr": "Je pense que tu as raison.",
         "en": "I think you're right."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sai",
+      "distractors": [
+        "gần",
+        "hơn",
+        "rút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dung_right",
+      "distractors": [
+        "đụng",
+        "da",
+        "vừa"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em không ___ lắm.",
+      "answer": "đồng ý",
+      "options": [
+        "đồng ý",
+        "chụp hình",
+        "nhân viên",
+        "nước mắm"
+      ],
+      "translation": {
+        "fr": "Je ne suis pas trop d'accord.",
+        "en": "I don't really agree."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cái này đúng hay ___?",
+      "answer": "sai",
+      "options": [
+        "sai",
+        "gần",
+        "hơn",
+        "rút"
+      ],
+      "translation": {
+        "fr": "C'est juste ou faux ?",
+        "en": "Is this right or wrong?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cái này ___ hay sai?",
+      "answer": "đúng",
+      "options": [
+        "đúng",
+        "đụng",
+        "da",
+        "vừa"
+      ],
+      "translation": {
+        "fr": "C'est juste ou faux ?",
+        "en": "Is this right or wrong?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ kẹt xe nên em tới trễ.",
+      "answer": "tại vì",
+      "options": [
+        "tại vì",
+        "trái cây",
+        "mắc cười",
+        "tạm trú"
+      ],
+      "translation": {
+        "fr": "Je suis en retard parce qu'il y avait des bouchons.",
+        "en": "I'm late because of the traffic jam."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em không đồng ý lắm",
+      "tokens": [
+        "Em",
+        "không",
+        "đồng",
+        "ý",
+        "lắm"
+      ],
+      "translation": {
+        "fr": "Je ne suis pas trop d'accord.",
+        "en": "I don't really agree."
+      },
+      "audioConcept": "c_b_dong_y"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tại vì kẹt xe nên em tới trễ",
+      "tokens": [
+        "Tại",
+        "vì",
+        "kẹt",
+        "xe",
+        "nên",
+        "em",
+        "tới",
+        "trễ"
+      ],
+      "translation": {
+        "fr": "Je suis en retard parce qu'il y avait des bouchons.",
+        "en": "I'm late because of the traffic jam."
+      },
+      "audioConcept": "c_b_tai_vi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_hue_nha",
+      "distractors": [
+        "Dạ, ăn rồi.",
+        "Anh khỏe không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tui_nghi_la",
+      "distractors": [
+        "Cho em một tô phở.",
+        "Nhắn Zalo cho em nha."
+      ]
     }
   ],
   "review": {

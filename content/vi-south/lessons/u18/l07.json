@@ -11,7 +11,7 @@
     "fr": "Revoir le bureau, les réunions, le salaire et les congés.",
     "en": "Go over the office, meetings, salary and time off."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u18.l06"
   ],
@@ -143,6 +143,128 @@
         "fr": "mấy monte, giờ descend, họp court.",
         "en": "mấy rises, giờ falls, họp short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sep",
+      "distractors": [
+        "hơi",
+        "con",
+        "nghen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ca_shift",
+      "distractors": [
+        "cà",
+        "cá",
+        "cái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ca_eggplant",
+      "distractors": [
+        "ca",
+        "cá",
+        "nhang"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ca_fish",
+      "distractors": [
+        "cà",
+        "ca",
+        "lầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_may_tinh",
+      "distractors": [
+        "máy bay",
+        "kế bên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ban_busy",
+      "distractors": [
+        "mắc",
+        "đầu",
+        "chưa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dong_nghiep",
+      "distractors": [
+        "em út",
+        "mắc cỡ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_luong",
+      "distractors": [
+        "ký",
+        "mới",
+        "rau"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tang_ca",
+      "distractors": [
+        "ông xã",
+        "hồi nhỏ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nghi_phep",
+      "distractors": [
+        "đối diện",
+        "đám giỗ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ca_eggplant",
+      "distractors": [
+        "c_co_aunt",
+        "c_b_bong",
+        "c_nuoc_mam"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ca_fish",
+      "distractors": [
+        "c_xe_hoi",
+        "c_con",
+        "c_sua_milk"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dong_nghiep",
+      "distractors": [
+        "c_ga_station",
+        "c_bo_beef",
+        "c_nha_house"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_nghi_phep",
+      "distractors": [
+        "c_ot",
+        "c_muong",
+        "c_co_aunt"
+      ]
     },
     {
       "type": "game",

@@ -10,7 +10,7 @@
     "fr": "Dire que tu apprends le vietnamien et demander de parler lentement.",
     "en": "Say you're learning Vietnamese and ask people to speak slowly."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u05.l05"
   ],
@@ -19,7 +19,15 @@
     "c_hoc",
     "c_hieu",
     "c_chut_xiu",
-    "s_noi_cham_duoc_khong"
+    "s_noi_cham_duoc_khong",
+    "c_cho_for",
+    "c_danh_thiep",
+    "s_chi_lam_o_dau",
+    "c_van_phong",
+    "c_cong_ty",
+    "c_lam_viec",
+    "c_nhan_vien",
+    "c_ky_su"
   ],
   "steps": [
     {
@@ -143,6 +151,142 @@
         "fr": "Phrase longue : garde chậm bien bas et court.",
         "en": "Long sentence: keep chậm low and short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hieu",
+      "distractors": [
+        "thẻ",
+        "cay",
+        "rút"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị ___ tiếng Việt được hông?",
+      "answer": "nói",
+      "options": [
+        "nói",
+        "ghé",
+        "chồng",
+        "của"
+      ],
+      "translation": {
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xin lỗi, tôi không ___.",
+      "answer": "hiểu",
+      "options": [
+        "hiểu",
+        "thẻ",
+        "cay",
+        "rút"
+      ],
+      "translation": {
+        "fr": "Pardon, je ne comprends pas.",
+        "en": "Sorry, I don't understand."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi nói tiếng Việt ___.",
+      "answer": "chút xíu",
+      "options": [
+        "chút xíu",
+        "chủ nhà",
+        "họ hàng",
+        "xe buýt"
+      ],
+      "translation": {
+        "fr": "Je parle un tout petit peu vietnamien.",
+        "en": "I speak a tiny bit of Vietnamese."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị nói tiếng Việt được hông",
+      "tokens": [
+        "Chị",
+        "nói",
+        "tiếng",
+        "Việt",
+        "được",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
+      },
+      "audioConcept": "c_noi_speak"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_for",
+      "distractors": [
+        "chó",
+        "cậu",
+        "ổng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_danh_thiep",
+      "distractors": [
+        "trúng số",
+        "giả sử"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chi_lam_o_dau",
+      "distractors": [
+        "Người đó là ai?",
+        "Phim này hay quá!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_van_phong",
+      "distractors": [
+        "mắc cỡ",
+        "anh ba"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cong_ty",
+      "distractors": [
+        "bắt đầu",
+        "giả sử"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam_viec",
+      "distractors": [
+        "bên phải",
+        "tuần trước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhan_vien",
+      "distractors": [
+        "đi làm",
+        "chung cư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ky_su",
+      "distractors": [
+        "Việt kiều",
+        "chủ nhà"
+      ]
     }
   ],
   "review": {

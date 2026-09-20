@@ -10,7 +10,7 @@
     "fr": "Acheter un médicament et comprendre la posologie.",
     "en": "Buy medicine and understand the dosage."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u16.l03"
   ],
@@ -132,6 +132,129 @@
       "explain": {
         "fr": "mấy monte, lần descend.",
         "en": "mấy rises, lần falls."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "đồng nghiệp",
+        "nhưng mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "kế bên",
+        "bàn thờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "trễ",
+        "hơn",
+        "bận"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sach",
+      "distractors": [
+        "ông",
+        "thầy",
+        "quà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_thuoc",
+      "distractors": [
+        "tăng ca",
+        "yên tĩnh"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "c_heo",
+        "c_ca_phe",
+        "c_tin_nhan"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ngan_hang",
+      "distractors": [
+        "c_b_bong",
+        "c_ky_su",
+        "c_vo"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_b_ve_so",
+        "c_xe_buyt",
+        "c_bac"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sach",
+      "distractors": [
+        "c_gio",
+        "c_den_do",
+        "c_ba_grandma"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị bán cho em ___ nhức đầu.",
+      "answer": "thuốc",
+      "options": [
+        "thuốc",
+        "khám",
+        "cũng",
+        "chuyện"
+      ],
+      "translation": {
+        "fr": "Vends-moi un médicament contre le mal de tête. (à une femme un peu plus âgée)",
+        "en": "Could I have something for a headache? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Gần thôi con. ___ ở kế bên ngân hàng.",
+      "answer": "nhà thuốc",
+      "options": [
+        "nhà thuốc",
+        "tăng ca",
+        "yên tĩnh",
+        "khi nào"
+      ],
+      "translation": {
+        "fr": "C'est tout près. La pharmacie est à côté de la banque.",
+        "en": "It's close. The pharmacy is next to the bank."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trường học ở giữa công viên và ___.",
+      "answer": "bệnh viện",
+      "options": [
+        "bệnh viện",
+        "đồng nghiệp",
+        "nhưng mà",
+        "chủ nhật"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
       }
     }
   ],

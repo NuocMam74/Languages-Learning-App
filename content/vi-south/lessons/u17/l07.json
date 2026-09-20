@@ -11,7 +11,7 @@
     "fr": "Revoir pièces, étages, loyer et factures.",
     "en": "Go over rooms, floors, rent and bills."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u17.l06"
   ],
@@ -163,6 +163,127 @@
         "fr": "còn et phòng descendent, không plat.",
         "en": "còn and phòng fall, không level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_giuong",
+      "distractors": [
+        "chỉ",
+        "Tết",
+        "ổng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lau_floor",
+      "distractors": [
+        "lẩu",
+        "lâu",
+        "lát"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lau_long",
+      "distractors": [
+        "lầu",
+        "lẩu",
+        "hen"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lau_hotpot",
+      "distractors": [
+        "lâu",
+        "lầu",
+        "ít"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "khách sạn",
+        "gia đình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "gỏi",
+        "đội",
+        "gặp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_owner",
+      "distractors": [
+        "chú",
+        "tiếc",
+        "chào"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu",
+      "distractors": [
+        "chủ",
+        "chín",
+        "bận"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_con_phong",
+      "distractors": [
+        "Dễ thương quá!",
+        "Em đi đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong",
+      "distractors": [
+        "ba",
+        "lớn",
+        "bông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_house",
+      "distractors": [
+        "nha",
+        "trà",
+        "thím"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chia_khoa",
+      "distractors": [
+        "đèn đỏ",
+        "năm ngoái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong_tro",
+      "distractors": [
+        "sầu riêng",
+        "khi nào"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_nha",
+      "distractors": [
+        "anh ba",
+        "lần đầu"
+      ]
     },
     {
       "type": "game",

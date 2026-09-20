@@ -10,7 +10,7 @@
     "fr": "Féliciter les mariés et parler du mariage.",
     "en": "Congratulate a couple and talk about the wedding."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u20.l01"
   ],
@@ -19,7 +19,11 @@
     "c_b_cuoi_laugh",
     "s_b_chuc_mung_hanh_phuc",
     "c_b_qua_gift",
-    "c_b_phong_bi"
+    "c_b_phong_bi",
+    "c_b_thiep_moi",
+    "s_b_da_con_cam_on",
+    "c_b_dam_cuoi",
+    "s_b_moi_di_dam_cuoi"
   ],
   "steps": [
     {
@@ -143,6 +147,162 @@
         "fr": "chúc monte, mừng descend, hạnh court, phúc monte.",
         "en": "chúc rises, mừng falls, hạnh short, phúc rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cuoi_laugh",
+      "distractors": [
+        "cưới",
+        "sáu",
+        "giây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cuoi_wed",
+      "distractors": [
+        "cười",
+        "đâu",
+        "xoài"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_qua_gift",
+      "distractors": [
+        "qua",
+        "quá",
+        "ngon"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tháng sau tụi em ___.",
+      "answer": "cưới",
+      "options": [
+        "cưới",
+        "cười",
+        "đâu",
+        "xoài"
+      ],
+      "translation": {
+        "fr": "Nous nous marions le mois prochain.",
+        "en": "We're getting married next month."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thiep_moi",
+      "distractors": [
+        "bánh mì",
+        "em út"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_da_con_cam_on",
+      "distractors": [
+        "Nhà em ở đâu?",
+        "một trăm lẻ năm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dam_cuoi",
+      "distractors": [
+        "chụp hình",
+        "khi nào"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_moi_di_dam_cuoi",
+      "distractors": [
+        "Tui làm ở một công ty Pháp.",
+        "Chị photo giùm em hai bản nha."
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_dam_cuoi",
+      "distractors": [
+        "c_b_visa",
+        "c_con",
+        "c_trung"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mời chị đi ___ em nha.",
+      "answer": "đám cưới",
+      "options": [
+        "đám cưới",
+        "chụp hình",
+        "khi nào",
+        "sạc pin"
+      ],
+      "translation": {
+        "fr": "Viens à mon mariage, s'il te plaît.",
+        "en": "Please come to my wedding."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ con cảm ơn cô ạ",
+      "tokens": [
+        "Dạ",
+        "con",
+        "cảm",
+        "ơn",
+        "cô",
+        "ạ"
+      ],
+      "translation": {
+        "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",
+        "en": "Thank you (very polite, to a woman your parents' age)."
+      },
+      "audioConcept": "s_b_da_con_cam_on"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mời chị đi đám cưới em nha",
+      "tokens": [
+        "Mời",
+        "chị",
+        "đi",
+        "đám",
+        "cưới",
+        "em",
+        "nha"
+      ],
+      "translation": {
+        "fr": "Viens à mon mariage, s'il te plaît.",
+        "en": "Please come to my wedding."
+      },
+      "audioConcept": "c_b_dam_cuoi"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Dạ, con cảm ơn cô ạ.",
+      "accepted": {
+        "fr": [
+          "Merci beaucoup (très poli, à une femme de l'âge de tes parents)."
+        ],
+        "en": [
+          "Thank you (very polite, to a woman your parents' age)."
+        ]
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_cuoi_wed",
+        "c_b_cuoi_laugh",
+        "s_b_chuc_mung_hanh_phuc",
+        "c_b_qua_gift",
+        "c_b_phong_bi",
+        "c_b_thiep_moi"
+      ]
     }
   ],
   "review": {

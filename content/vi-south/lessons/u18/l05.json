@@ -10,7 +10,7 @@
     "fr": "Dire ton équipe de travail et tes heures sup.",
     "en": "Say which shift you work and when you do overtime."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u18.l04"
   ],
@@ -149,6 +149,143 @@
       "explain": {
         "fr": "tăng et ca restent plats.",
         "en": "tăng and ca stay level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ca_eggplant",
+      "distractors": [
+        "ca",
+        "cá",
+        "nhiều"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ca_fish",
+      "distractors": [
+        "ca",
+        "cà",
+        "lên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ca_shift",
+      "distractors": [
+        "cà",
+        "cá",
+        "chú"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tang_ca",
+      "distractors": [
+        "Mai nhà em có đám giỗ.",
+        "Hồi nhỏ tui ở dưới quê."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sang",
+      "distractors": [
+        "tư",
+        "phở",
+        "giường"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ca_eggplant",
+      "distractors": [
+        "c_chuoi",
+        "c_ngan_hang",
+        "c_b_li_xi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ca_fish",
+      "distractors": [
+        "c_sinh_vien",
+        "c_em",
+        "c_com_tam"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tối nay tui phải tăng ___.",
+      "answer": "ca",
+      "options": [
+        "ca",
+        "cà",
+        "cá",
+        "chú"
+      ],
+      "translation": {
+        "fr": "Ce soir, je dois faire des heures sup.",
+        "en": "Tonight I have to work overtime."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhiều ___ quá!",
+      "answer": "việc",
+      "options": [
+        "việc",
+        "mì",
+        "cơm",
+        "hen"
+      ],
+      "translation": {
+        "fr": "Tellement de travail !",
+        "en": "So much work!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi thường đi làm lúc bảy giờ ___.",
+      "answer": "sáng",
+      "options": [
+        "sáng",
+        "tư",
+        "phở",
+        "giường"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em một ly ___ phê sữa đá.",
+      "answer": "cà",
+      "options": [
+        "cà",
+        "ca",
+        "cá",
+        "nhiều"
+      ],
+      "translation": {
+        "fr": "Un café glacé au lait, s'il te plaît.",
+        "en": "An iced milk coffee, please."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi có ba con ___.",
+      "answer": "cá",
+      "options": [
+        "cá",
+        "ca",
+        "cà",
+        "lên"
+      ],
+      "translation": {
+        "fr": "J'ai trois poissons.",
+        "en": "I have three fish."
       }
     }
   ],

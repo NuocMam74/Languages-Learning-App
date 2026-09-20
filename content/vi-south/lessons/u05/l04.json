@@ -10,7 +10,7 @@
     "fr": "Demander le métier de quelqu'un et dire le tien.",
     "en": "Ask what someone does and say what you do."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u05.l03"
   ],
@@ -20,7 +20,13 @@
     "c_giao_vien",
     "c_sinh_vien",
     "c_ky_su",
-    "c_nhan_vien"
+    "c_nhan_vien",
+    "s_anh_o_dau",
+    "c_thanh_pho",
+    "c_moi_just",
+    "c_qua_come",
+    "c_song_live",
+    "c_viet_kieu"
   ],
   "steps": [
     {
@@ -134,6 +140,105 @@
         "fr": "làm et nghề descendent, gì descend aussi : trois tons graves.",
         "en": "làm and nghề fall, gì falls too: three low tones."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac_si",
+      "distractors": [
+        "hồi nãy",
+        "tăng ca"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sinh_vien",
+      "distractors": [
+        "sầu riêng",
+        "anh hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ky_su",
+      "distractors": [
+        "đám cưới",
+        "bao giờ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_giao_vien",
+      "distractors": [
+        "c_chieu",
+        "c_ben_phai",
+        "c_dua_coconut"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi là ___.",
+      "answer": "kỹ sư",
+      "options": [
+        "kỹ sư",
+        "đám cưới",
+        "bao giờ",
+        "thành phố"
+      ],
+      "translation": {
+        "fr": "Je suis ingénieur(e).",
+        "en": "I'm an engineer."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_o_dau",
+      "distractors": [
+        "Ăn cơm chưa?",
+        "Tôi tên là…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thanh_pho",
+      "distractors": [
+        "xe buýt",
+        "hết hạn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi_just",
+      "distractors": [
+        "mời",
+        "rảnh",
+        "dở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_qua_come",
+      "distractors": [
+        "quá",
+        "quà",
+        "điện"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_song_live",
+      "distractors": [
+        "sông",
+        "sai",
+        "kể"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_viet_kieu",
+      "distractors": [
+        "xe máy",
+        "kỹ sư"
+      ]
     }
   ],
   "review": {

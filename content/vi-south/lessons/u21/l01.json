@@ -10,7 +10,7 @@
     "fr": "Reconnaître les pronoms contractés du Sud.",
     "en": "Recognise the contracted southern pronouns."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l08"
   ],
@@ -134,6 +134,140 @@
       "explain": {
         "fr": "Sud, à l'oral : chỉ ; ailleurs : chị ấy.",
         "en": "Spoken South: chỉ; elsewhere: chị ấy."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ong_di_dau_roi",
+      "distractors": [
+        "Người đó là ai?",
+        "Chắc ảnh tới trễ."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong",
+      "distractors": [
+        "ổng",
+        "chục",
+        "cũng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "bả",
+        "ba",
+        "và"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_she",
+      "distractors": [
+        "bà",
+        "ba",
+        "no"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_he",
+      "distractors": [
+        "anh",
+        "đẹp",
+        "đã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "chỉ",
+        "vợ",
+        "đúng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi_she",
+      "distractors": [
+        "chị",
+        "ảnh",
+        "sợ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ong",
+      "distractors": [
+        "c_sang",
+        "c_em_ut",
+        "c_b_dam_gio"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "c_chung_cu",
+        "c_ngu_sleep",
+        "c_chu"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chi",
+      "distractors": [
+        "c_toi_evening",
+        "c_trai_fruit",
+        "c_bac"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Con chào ___.",
+      "answer": "ông",
+      "options": [
+        "ông",
+        "ổng",
+        "chục",
+        "cũng"
+      ],
+      "translation": {
+        "fr": "Bonjour (à un homme âgé).",
+        "en": "Hello (to an elderly man)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ là ba tôi.",
+      "answer": "ổng",
+      "options": [
+        "ổng",
+        "ông",
+        "thím",
+        "đi"
+      ],
+      "translation": {
+        "fr": "Lui, c'est mon père.",
+        "en": "He's my dad."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ nội tôi còn khỏe lắm.",
+      "answer": "bà",
+      "options": [
+        "bà",
+        "bả",
+        "ba",
+        "và"
+      ],
+      "translation": {
+        "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+        "en": "My paternal grandmother is still in great shape."
       }
     }
   ],

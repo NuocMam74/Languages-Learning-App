@@ -11,7 +11,7 @@
     "fr": "Revoir conditions, probabilités et souhaits.",
     "en": "Go over conditions, likelihood and wishes."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u23.l06"
   ],
@@ -147,6 +147,136 @@
         "fr": "ước monte, giỏi plonge.",
         "en": "ước rises, giỏi dips."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "rẻ",
+        "chiều",
+        "cơm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_the",
+      "distractors": [
+        "xấu",
+        "thôi",
+        "biết"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ghe",
+      "distractors": [
+        "ghé",
+        "một",
+        "thím"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ghe_by",
+      "distractors": [
+        "ghe",
+        "ghiền",
+        "đâu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ve_so",
+      "distractors": [
+        "kẹt xe",
+        "bệnh viện"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gia",
+      "distractors": [
+        "giả",
+        "giá",
+        "không"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_fake",
+      "distractors": [
+        "già",
+        "giá",
+        "sẽ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_price",
+      "distractors": [
+        "già",
+        "giả",
+        "mười"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_se_future",
+      "distractors": [
+        "chó",
+        "lớn",
+        "tư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_uoc_gi_noi_gioi",
+      "distractors": [
+        "Mời chị đi đám cưới em nha.",
+        "Con chúc cô năm mới vui vẻ."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_neu",
+      "distractors": [
+        "thích",
+        "coi",
+        "chè"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_chac",
+      "distractors": [
+        "tô",
+        "lâu",
+        "thường"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_co_le",
+      "distractors": [
+        "bệnh viện",
+        "chị hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_gia_su",
+      "distractors": [
+        "họ hàng",
+        "ngã tư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_uoc_gi",
+      "distractors": [
+        "đồng ý",
+        "danh thiếp"
+      ]
     },
     {
       "type": "game",

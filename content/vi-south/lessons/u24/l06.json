@@ -10,7 +10,7 @@
     "fr": "Participer à une petite discussion entre amis.",
     "en": "Take part in a small discussion among friends."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u24.l05"
   ],
@@ -20,7 +20,13 @@
     "s_b_tui_nghi_la",
     "s_b_moi_nguoi_thay_sao",
     "s_b_hue_nha",
-    "c_moi_nguoi"
+    "c_moi_nguoi",
+    "s_b_tai_sao_vay",
+    "s_b_tai_vi_ket_xe",
+    "c_b_tai_sao",
+    "c_b_nen",
+    "c_b_tai_vi",
+    "s_b_kha_ngon"
   ],
   "steps": [
     {
@@ -213,6 +219,146 @@
         "fr": "mọi court, người descend, thấy monte, sao plat.",
         "en": "mọi short, người falls, thấy rises, sao level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi_nguoi",
+      "distractors": [
+        "anh hai",
+        "kẹt xe"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nghi_think",
+      "distractors": [
+        "đường",
+        "dở",
+        "lẻ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tui ___ là chị đúng.",
+      "answer": "nghĩ",
+      "options": [
+        "nghĩ",
+        "đường",
+        "dở",
+        "lẻ"
+      ],
+      "translation": {
+        "fr": "Je pense que tu as raison.",
+        "en": "I think you're right."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Để bữa ___ nha.",
+      "answer": "khác",
+      "options": [
+        "khác",
+        "tới",
+        "hay",
+        "Tết"
+      ],
+      "translation": {
+        "fr": "Une autre fois, d'accord ?",
+        "en": "Another time, okay?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chào ___.",
+      "answer": "mọi người",
+      "options": [
+        "mọi người",
+        "anh hai",
+        "kẹt xe",
+        "nước mắm"
+      ],
+      "translation": {
+        "fr": "Bonjour tout le monde.",
+        "en": "Hello everyone."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Để bữa khác nha",
+      "tokens": [
+        "Để",
+        "bữa",
+        "khác",
+        "nha"
+      ],
+      "translation": {
+        "fr": "Une autre fois, d'accord ?",
+        "en": "Another time, okay?"
+      },
+      "audioConcept": "c_b_khac"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chào mọi người",
+      "tokens": [
+        "Chào",
+        "mọi",
+        "người"
+      ],
+      "translation": {
+        "fr": "Bonjour tout le monde.",
+        "en": "Hello everyone."
+      },
+      "audioConcept": "c_moi_nguoi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tai_sao_vay",
+      "distractors": [
+        "Ăn cơm chưa?",
+        "Trời đang mưa."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_tai_vi_ket_xe",
+      "distractors": [
+        "Nếu rảnh thì ghé nhà tui chơi nha.",
+        "Hôm qua tui đi chợ rồi về nhà."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_sao",
+      "distractors": [
+        "nghỉ phép",
+        "ngày sinh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_nen",
+      "distractors": [
+        "gói",
+        "ho",
+        "sau"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_vi",
+      "distractors": [
+        "hồi nhỏ",
+        "tạm trú"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_kha_ngon",
+      "distractors": [
+        "Anh thấy sao?",
+        "Bạn tên gì?"
+      ]
     },
     {
       "type": "game",

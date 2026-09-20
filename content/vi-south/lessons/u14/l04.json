@@ -10,7 +10,7 @@
     "fr": "Parler d'un lieu, d'un film.",
     "en": "Talk about a place or a film."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l03"
   ],
@@ -138,6 +138,134 @@
       "explain": {
         "fr": "hay plat, quá monte.",
         "en": "hay level, quá rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cong_vien",
+      "distractors": [
+        "điền đơn",
+        "tại sao"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua_pagoda",
+      "distractors": [
+        "chua",
+        "đâu",
+        "tiền"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hay_good",
+      "distractors": [
+        "sợ",
+        "sắp",
+        "giá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phim",
+      "distractors": [
+        "vé",
+        "mươi",
+        "da"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_coi",
+      "distractors": [
+        "Tết",
+        "quê",
+        "rẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_song_river",
+      "distractors": [
+        "sống",
+        "này",
+        "ngon"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cong_vien",
+      "distractors": [
+        "c_b_the",
+        "c_non_bao_hiem",
+        "c_mua_rain"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chua_pagoda",
+      "distractors": [
+        "c_muong",
+        "c_nuoc",
+        "c_bap"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Phim này ___ quá!",
+      "answer": "hay",
+      "options": [
+        "hay",
+        "sợ",
+        "sắp",
+        "giá"
+      ],
+      "translation": {
+        "fr": "Ce film est super !",
+        "en": "This film is great!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tối nay mình đi ___ phim nha.",
+      "answer": "coi",
+      "options": [
+        "coi",
+        "Tết",
+        "quê",
+        "rẻ"
+      ],
+      "translation": {
+        "fr": "Ce soir, on va voir un film ?",
+        "en": "Shall we go see a film tonight?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trường học ở giữa ___ và bệnh viện.",
+      "answer": "công viên",
+      "options": [
+        "công viên",
+        "điền đơn",
+        "tại sao",
+        "tuần trước"
+      ],
+      "translation": {
+        "fr": "L'école est entre le parc et l'hôpital.",
+        "en": "The school is between the park and the hospital."
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Trường học ở giữa công viên và bệnh viện.",
+      "accepted": {
+        "fr": [
+          "L'école est entre le parc et l'hôpital."
+        ],
+        "en": [
+          "The school is between the park and the hospital."
+        ]
       }
     }
   ],

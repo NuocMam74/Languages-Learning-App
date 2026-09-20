@@ -10,7 +10,7 @@
     "fr": "Raconter tes horaires habituels.",
     "en": "Describe your usual schedule."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u09.l05"
   ],
@@ -19,7 +19,14 @@
     "s_luc_may_gio",
     "c_thuong",
     "c_di_lam",
-    "c_ve"
+    "c_ve",
+    "c_toi_arrive",
+    "c_tre_late",
+    "c_som",
+    "c_hop",
+    "c_hen",
+    "s_hom_nay_thu_may",
+    "c_chu_nhat"
   ],
   "steps": [
     {
@@ -141,6 +148,137 @@
         "fr": "chiều nay : cet après-midi ; tối nay : ce soir.",
         "en": "chiều nay: this afternoon; tối nay: this evening."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_luc",
+      "distractors": [
+        "lấy",
+        "cho",
+        "giấy"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi thường đi làm ___ bảy giờ sáng.",
+      "answer": "lúc",
+      "options": [
+        "lúc",
+        "lấy",
+        "cho",
+        "giấy"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mình hẹn ___",
+      "answer": "Lúc mấy giờ?",
+      "options": [
+        "Lúc mấy giờ?",
+        "Nhà tôi có…",
+        "Em đang bận.",
+        "Còn phòng không?"
+      ],
+      "translation": {
+        "fr": "On se donne rendez-vous à quelle heure ?",
+        "en": "What time shall we meet?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chiều nay tôi ___ sớm.",
+      "answer": "về",
+      "options": [
+        "về",
+        "ngoại",
+        "con",
+        "thêm"
+      ],
+      "translation": {
+        "fr": "Cet après-midi, je rentre tôt.",
+        "en": "This afternoon I'm going home early."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mình hẹn lúc mấy giờ",
+      "tokens": [
+        "Mình",
+        "hẹn",
+        "lúc",
+        "mấy",
+        "giờ"
+      ],
+      "translation": {
+        "fr": "On se donne rendez-vous à quelle heure ?",
+        "en": "What time shall we meet?"
+      },
+      "audioConcept": "s_luc_may_gio"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi_arrive",
+      "distractors": [
+        "mình",
+        "ba",
+        "trái"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tre_late",
+      "distractors": [
+        "quà",
+        "giấy",
+        "nhờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_som",
+      "distractors": [
+        "ước",
+        "đang",
+        "con"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hop",
+      "distractors": [
+        "thuốc",
+        "phường",
+        "hoài"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hen",
+      "distractors": [
+        "hen",
+        "nè",
+        "thưa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hom_nay_thu_may",
+      "distractors": [
+        "Kể tui nghe đi!",
+        "Em nhắn rồi đó."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_nhat",
+      "distractors": [
+        "chung cư",
+        "ông xã"
+      ]
     },
     {
       "type": "game",

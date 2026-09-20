@@ -11,7 +11,7 @@
     "fr": "Montrer que tu reconnais le parler familier du Sud.",
     "en": "Show you recognise casual southern speech."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u21.l07"
   ],
@@ -161,6 +161,118 @@
         "fr": "Sud : vậy ; Nord : thế.",
         "en": "South: vậy; North: thế."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hong",
+      "distractors": [
+        "hổng",
+        "gần",
+        "xin"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hong_emph",
+      "distractors": [
+        "hông",
+        "khám",
+        "sếp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_bong",
+      "distractors": [
+        "giùm",
+        "bận",
+        "cũng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_vuon",
+      "distractors": [
+        "heo",
+        "ớt",
+        "ghiền"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị nói tiếng Việt được ___?",
+      "answer": "hông",
+      "options": [
+        "hông",
+        "hổng",
+        "gần",
+        "xin"
+      ],
+      "translation": {
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ có đâu!",
+      "answer": "hổng",
+      "options": [
+        "hổng",
+        "hông",
+        "khám",
+        "sếp"
+      ],
+      "translation": {
+        "fr": "Mais non, pas du tout !",
+        "en": "No way, not at all!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ quá.",
+      "answer": "mắc cỡ",
+      "options": [
+        "mắc cỡ",
+        "xe buýt",
+        "chị hai",
+        "hồi nhỏ"
+      ],
+      "translation": {
+        "fr": "Je suis tout(e) gêné(e).",
+        "en": "I'm so embarrassed."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị nói tiếng Việt được hông",
+      "tokens": [
+        "Chị",
+        "nói",
+        "tiếng",
+        "Việt",
+        "được",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Tu parles vietnamien ?",
+        "en": "Do you speak Vietnamese?"
+      },
+      "audioConcept": "c_hong"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hổng có đâu",
+      "tokens": [
+        "Hổng",
+        "có",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "Mais non, pas du tout !",
+        "en": "No way, not at all!"
+      },
+      "audioConcept": "c_b_hong_emph"
     }
   ],
   "review": {

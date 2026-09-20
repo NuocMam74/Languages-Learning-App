@@ -112,6 +112,62 @@
       }
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_me_sesame",
+      "distractors": [
+        "hổng",
+        "chào",
+        "ba"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_to_bowl",
+      "distractors": [
+        "chén",
+        "khỏe",
+        "mì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "lấy",
+        "việc",
+        "nội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bo_beef",
+      "distractors": [
+        "vợ",
+        "ngàn",
+        "bán"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_mi",
+      "distractors": [
+        "c_tien",
+        "c_heo",
+        "c_b_vuon"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_to_big",
+        "c_to_bowl",
+        "c_mi",
+        "c_mua_rain",
+        "c_me_sesame",
+        "c_bo_beef"
+      ]
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

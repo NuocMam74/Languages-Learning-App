@@ -120,6 +120,74 @@
       }
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_chi_hai",
+      "distractors": [
+        "bình thường",
+        "máy bay"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tu",
+      "distractors": [
+        "năm",
+        "đũa",
+        "ngày"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_hai",
+      "distractors": [
+        "nước mắm",
+        "phòng trọ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_em_ut",
+      "distractors": [
+        "xe máy",
+        "danh thiếp"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chi_hai",
+      "distractors": [
+        "c_benh_vien",
+        "c_chu",
+        "c_xe"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ tôi ở Cần Thơ.",
+      "answer": "hai",
+      "options": [
+        "hai",
+        "bạn",
+        "sẽ",
+        "đồng"
+      ],
+      "translation": {
+        "fr": "Mon frère aîné habite à Cần Thơ.",
+        "en": "My eldest brother lives in Cần Thơ."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_hai",
+        "c_anh_hai",
+        "c_chi_hai",
+        "c_anh_ba",
+        "c_tu",
+        "c_em_ut"
+      ]
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

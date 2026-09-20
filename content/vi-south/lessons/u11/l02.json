@@ -10,7 +10,7 @@
     "fr": "Prendre un taxi-moto et dire où tu vas.",
     "en": "Take a motorbike taxi and say where you're going."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u11.l01"
   ],
@@ -21,7 +21,8 @@
     "s_di_dau",
     "s_cho_em_ra_cho",
     "c_cho_market",
-    "c_cho_wait"
+    "c_cho_wait",
+    "c_xe_dap"
   ],
   "steps": [
     {
@@ -237,6 +238,161 @@
         "fr": "chở plonge, chợ tombe court : deux tons différents.",
         "en": "chở dips, chợ drops short: two different tones."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_ra_cho",
+      "distractors": [
+        "Điện thoại em hết pin rồi.",
+        "Tại sao em học tiếng Việt?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_wait",
+      "distractors": [
+        "chở",
+        "chợ",
+        "bả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_carry",
+      "distractors": [
+        "chờ",
+        "chợ",
+        "phòng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chờ",
+        "chở",
+        "chưa"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_market",
+      "distractors": [
+        "c_xe_om",
+        "c_sua_milk",
+        "c_chieu"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ xe",
+      "answer": "đặt",
+      "options": [
+        "đặt",
+        "trẻ",
+        "hay",
+        "còn"
+      ],
+      "translation": {
+        "fr": "réserver une course",
+        "en": "book a ride"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ em ra chợ Bến Thành nha.",
+      "answer": "chở",
+      "options": [
+        "chở",
+        "chờ",
+        "chợ",
+        "phòng"
+      ],
+      "translation": {
+        "fr": "Emmène-moi au marché Bến Thành, d'accord ? (à un homme un peu plus âgé)",
+        "en": "Take me to Bến Thành market, okay? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hôm nay tôi đi ___.",
+      "answer": "chợ",
+      "options": [
+        "chợ",
+        "chờ",
+        "chở",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je vais au marché.",
+        "en": "Today I'm going to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em chút nha.",
+      "answer": "chờ",
+      "options": [
+        "chờ",
+        "chở",
+        "chợ",
+        "bả"
+      ],
+      "translation": {
+        "fr": "Attends-moi un peu, d'accord ?",
+        "en": "Wait for me a moment, okay?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay tôi đi chợ",
+      "tokens": [
+        "Hôm",
+        "nay",
+        "tôi",
+        "đi",
+        "chợ"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je vais au marché.",
+        "en": "Today I'm going to the market."
+      },
+      "audioConcept": "c_cho_market"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chờ em chút nha",
+      "tokens": [
+        "Chờ",
+        "em",
+        "chút",
+        "nha"
+      ],
+      "translation": {
+        "fr": "Attends-moi un peu, d'accord ?",
+        "en": "Wait for me a moment, okay?"
+      },
+      "audioConcept": "c_cho_wait"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "đặt xe",
+      "accepted": {
+        "fr": [
+          "réserver une course"
+        ],
+        "en": [
+          "book a ride"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_dap",
+      "distractors": [
+        "gia đình",
+        "văn phòng"
+      ]
     }
   ],
   "review": {

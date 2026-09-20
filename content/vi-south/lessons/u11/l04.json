@@ -10,7 +10,7 @@
     "fr": "Guider jusqu'à l'arrivée et descendre.",
     "en": "Guide the driver to the end and get off."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u11.l03"
   ],
@@ -20,7 +20,13 @@
     "s_dung_lai",
     "s_cho_em_xuong",
     "s_toi_roi",
-    "c_cau_bridge"
+    "c_cau_bridge",
+    "c_b_thi",
+    "c_den_do",
+    "c_nga_tu",
+    "s_queo_phai",
+    "s_queo_trai",
+    "c_queo"
   ],
   "steps": [
     {
@@ -170,6 +176,129 @@
         "fr": "chạy pour un véhicule, đi pour la marche.",
         "en": "chạy for a vehicle, đi for walking."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chay_thang",
+      "distractors": [
+        "sau Tết",
+        "Tui thấy…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_dung_lai",
+      "distractors": [
+        "theo tui",
+        "mười lăm"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ qua cầu nha.",
+      "answer": "chạy thẳng",
+      "options": [
+        "chạy thẳng",
+        "sau Tết",
+        "Tui thấy…",
+        "Vậy hả?"
+      ],
+      "translation": {
+        "fr": "Va tout droit et passe le pont, d'accord ?",
+        "en": "Go straight over the bridge, okay?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Con ___ tới ngã tư, rồi quẹo phải.",
+      "answer": "đi thẳng",
+      "options": [
+        "đi thẳng",
+        "số nhà",
+        "tiền nước",
+        "Tui thấy…"
+      ],
+      "translation": {
+        "fr": "Va tout droit jusqu'au carrefour, puis tourne à droite.",
+        "en": "Go straight to the crossroads, then turn right."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tới rồi, ___",
+      "answer": "Cho em xuống đây.",
+      "options": [
+        "Cho em xuống đây.",
+        "Khi nào anh về?",
+        "Chúc mừng năm mới!",
+        "Mời bác uống trà."
+      ],
+      "translation": {
+        "fr": "On est arrivés, déposez-moi ici.",
+        "en": "We're here, drop me off here."
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Con đi thẳng tới ngã tư, rồi quẹo phải.",
+      "accepted": {
+        "fr": [
+          "Va tout droit jusqu'au carrefour, puis tourne à droite."
+        ],
+        "en": [
+          "Go straight to the crossroads, then turn right."
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thi",
+      "distractors": [
+        "đồng",
+        "tiếc",
+        "nửa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_den_do",
+      "distractors": [
+        "bà xã",
+        "hình thẻ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nga_tu",
+      "distractors": [
+        "ngân hàng",
+        "chung cư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_queo_phai",
+      "distractors": [
+        "Tui thấy…",
+        "tiền nước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_queo_trai",
+      "distractors": [
+        "thối tiền",
+        "Nhớ nghen!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_queo",
+      "distractors": [
+        "nhanh",
+        "mả",
+        "tuần"
+      ]
     },
     {
       "type": "game",

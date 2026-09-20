@@ -10,7 +10,7 @@
     "fr": "Situer un souvenir ou un projet.",
     "en": "Place a memory or a plan in time."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u13.l05"
   ],
@@ -145,6 +145,151 @@
         "fr": "Cần descend, Thơ reste plat.",
         "en": "Cần falls, Thơ stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nam_sau_di_can_tho",
+      "distractors": [
+        "Anh cho em nghỉ thứ sáu nha.",
+        "Mời chị đi đám cưới em nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may_bay",
+      "distractors": [
+        "đám giỗ",
+        "mắc cỡ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_buyt",
+      "distractors": [
+        "chụp hình",
+        "ông bà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_hoi",
+      "distractors": [
+        "tầng trệt",
+        "chung cư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi",
+      "distractors": [
+        "rối",
+        "cái",
+        "bò"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi_tangled",
+      "distractors": [
+        "rồi",
+        "hồi",
+        "nghỉ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_buyt",
+      "distractors": [
+        "c_den_do",
+        "c_dem",
+        "c_ba"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_hoi",
+      "distractors": [
+        "c_pho",
+        "c_gio",
+        "c_ot"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em đã tới Việt Nam.",
+      "answer": "năm ngoái",
+      "options": [
+        "năm ngoái",
+        "hồi nhỏ",
+        "ngày xưa",
+        "kỹ sư"
+      ],
+      "translation": {
+        "fr": "L'année dernière, je suis venu(e) au Vietnam.",
+        "en": "Last year I came to Vietnam."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em sẽ đi Cần Thơ.",
+      "answer": "năm sau",
+      "options": [
+        "năm sau",
+        "xe ôm",
+        "sầu riêng",
+        "ông bà"
+      ],
+      "translation": {
+        "fr": "L'année prochaine, j'irai à Cần Thơ.",
+        "en": "Next year I'll go to Cần Thơ."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đi ___ mất bao lâu?",
+      "answer": "xe buýt",
+      "options": [
+        "xe buýt",
+        "chụp hình",
+        "ông bà",
+        "ông xã"
+      ],
+      "translation": {
+        "fr": "Ça prend combien de temps en bus ?",
+        "en": "How long does it take by bus?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, em no ___.",
+      "answer": "rồi",
+      "options": [
+        "rồi",
+        "rối",
+        "cái",
+        "bò"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đi xe buýt mất bao lâu",
+      "tokens": [
+        "Đi",
+        "xe",
+        "buýt",
+        "mất",
+        "bao",
+        "lâu"
+      ],
+      "translation": {
+        "fr": "Ça prend combien de temps en bus ?",
+        "en": "How long does it take by bus?"
+      },
+      "audioConcept": "c_xe_buyt"
     }
   ],
   "review": {

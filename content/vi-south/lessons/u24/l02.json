@@ -10,7 +10,7 @@
     "fr": "Dire qu'une chose est juste ou fausse, avec tact.",
     "en": "Say something is right or wrong, tactfully."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u24.l01"
   ],
@@ -21,7 +21,11 @@
     "c_b_hay",
     "s_b_dung_roi",
     "s_b_sai_roi",
-    "c_b_dong_y"
+    "c_b_dong_y",
+    "s_b_anh_thay_sao",
+    "s_b_theo_tui_ngon",
+    "s_b_theo_tui",
+    "c_b_theo"
   ],
   "steps": [
     {
@@ -129,6 +133,170 @@
         "fr": "đúng monte, rồi descend.",
         "en": "đúng rises, rồi falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dung_bump",
+      "distractors": [
+        "đúng",
+        "chào",
+        "ký"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_sai_roi",
+      "distractors": [
+        "tiếng Việt",
+        "Chắc hông?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dong_y",
+      "distractors": [
+        "bệnh viện",
+        "cẩn thận"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dung_right",
+      "distractors": [
+        "đụng",
+        "nghĩ",
+        "thấy"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cái này ___ hay sai?",
+      "answer": "đúng",
+      "options": [
+        "đúng",
+        "đụng",
+        "nghĩ",
+        "thấy"
+      ],
+      "translation": {
+        "fr": "C'est juste ou faux ?",
+        "en": "Is this right or wrong?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em không ___ lắm.",
+      "answer": "đồng ý",
+      "options": [
+        "đồng ý",
+        "bệnh viện",
+        "cẩn thận",
+        "chút xíu"
+      ],
+      "translation": {
+        "fr": "Je ne suis pas trop d'accord.",
+        "en": "I don't really agree."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em không đồng ý lắm",
+      "tokens": [
+        "Em",
+        "không",
+        "đồng",
+        "ý",
+        "lắm"
+      ],
+      "translation": {
+        "fr": "Je ne suis pas trop d'accord.",
+        "en": "I don't really agree."
+      },
+      "audioConcept": "c_b_dong_y"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_anh_thay_sao",
+      "distractors": [
+        "Cũng khá ngon.",
+        "Tôi tên là…"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_theo_tui_ngon",
+      "distractors": [
+        "Tui đi khai báo tạm trú.",
+        "Anh chở em ra chợ nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_theo_tui",
+      "distractors": [
+        "mấy ngày",
+        "thứ hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_theo",
+      "distractors": [
+        "chùa",
+        "ly",
+        "giùm"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, quán này ngon hơn.",
+      "answer": "theo tui",
+      "options": [
+        "theo tui",
+        "mấy ngày",
+        "thứ hai",
+        "Ai vậy?"
+      ],
+      "translation": {
+        "fr": "À mon avis, ce resto est meilleur.",
+        "en": "In my opinion, this place is better."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui, quán này ngon hơn.",
+      "answer": "theo",
+      "options": [
+        "theo",
+        "chùa",
+        "ly",
+        "giùm"
+      ],
+      "translation": {
+        "fr": "À mon avis, ce resto est meilleur.",
+        "en": "In my opinion, this place is better."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_dung_right",
+        "c_b_dung_bump",
+        "c_b_sai",
+        "c_b_hay",
+        "s_b_dung_roi",
+        "s_b_sai_roi"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_dong_y",
+        "s_b_anh_thay_sao",
+        "s_b_theo_tui_ngon",
+        "s_b_theo_tui",
+        "c_b_theo"
+      ]
     }
   ],
   "review": {

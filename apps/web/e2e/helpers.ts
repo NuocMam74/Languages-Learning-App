@@ -2,7 +2,8 @@ import { expect, type Locator, type Page } from "@playwright/test";
 
 /** Aides partagées des parcours e2e (séance, onboarding). */
 
-export async function onboard(page: Page, minutes = "5 min") {
+/** `minutes` : un des objectifs proposés (10, 15 ou 20 — le plancher est passé à 10, contrat phase21 §3). */
+export async function onboard(page: Page, minutes = "10 min") {
   await page.goto("/");
   await expect(page).toHaveURL(/\/bienvenue$/);
   await page.getByRole("button", { name: "Commencer" }).click();
@@ -151,6 +152,13 @@ export async function playOneStep(page: Page, finished: RegExp): Promise<"done" 
       await columns.first().locator("button").nth(i).click();
       await columns.last().locator("button").nth(i).click();
     }
+    // Les associations se perdent si l'écran se remonte pendant qu'on clique : après une bonne
+    // réponse, la séance enchaîne d'elle-même (700 ms) et la vue repart à zéro. « Valider » reste
+    // alors fermé — on rend la main plutôt que d'attendre un bouton qui ne s'ouvrira pas.
+    if (await check.isDisabled().catch(() => true)) {
+      await page.waitForTimeout(200);
+      return "step";
+    }
     await check.click();
   } else if (await dialogueTurn.isVisible()) {
     for (let i = 0; i < 8 && !(await page.getByTestId("dialogue-summary").isVisible()); i++) {
@@ -208,7 +216,13 @@ export async function playOneStep(page: Page, finished: RegExp): Promise<"done" 
     if (!snap) throw new Error("transition en cours");
     const status = snap.status;
     const moved = snap.cursor !== cursor || snap.phase !== phase;
-    const freshQuestion = (await radio.isVisible()) && (await page.locator('[role="radio"][aria-checked="true"]').count()) === 0;
+    // Question neuve : rien n'est encore sélectionné. Vrai pour un QCM (aucune option cochée) comme
+    // pour un appariement (aucune carte retenue) — sans ce second cas, l'intervention de Cô Mai
+    // après trois erreurs, qui remonte le **même** exercice sans bouger le curseur, passait pour
+    // une séance bloquée.
+    const freshQuestion =
+      ((await radio.isVisible()) && (await page.locator('[role="radio"][aria-checked="true"]').count()) === 0) ||
+      ((await pairs.isVisible().catch(() => false)) && (await pairs.locator('button[aria-pressed="true"]').count()) === 0);
     const ready = (status === "feedback" && (await cont.first().isVisible())) || (status === "answering" && (moved || freshQuestion || wasFeedback));
     expect(ready).toBe(true);
   }).toPass({ timeout: 10_000 });

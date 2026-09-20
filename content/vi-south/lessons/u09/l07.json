@@ -11,7 +11,7 @@
     "fr": "Revoir l'heure, les jours et les rendez-vous.",
     "en": "Go over time, days and appointments."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u09.l06"
   ],
@@ -143,6 +143,134 @@
       "explain": {
         "fr": "lúc et mấy montent, giờ descend.",
         "en": "lúc and mấy rise, giờ falls."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi",
+      "distractors": [
+        "tối",
+        "sông",
+        "mua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_luc_may_gio",
+      "distractors": [
+        "Tại sao vậy?",
+        "Mấy giờ rồi?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chieu",
+      "distractors": [
+        "khỏe",
+        "vui",
+        "chín"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi_evening",
+      "distractors": [
+        "tôi",
+        "tuổi",
+        "lương"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sang",
+      "distractors": [
+        "lăm",
+        "lên",
+        "bận"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trua",
+      "distractors": [
+        "giỡn",
+        "mả",
+        "dạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dem",
+      "distractors": [
+        "lớp",
+        "thôi",
+        "đã"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_toi_evening",
+      "distractors": [
+        "c_troi",
+        "c_b_bong",
+        "c_khach_san"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sang",
+      "distractors": [
+        "c_ca_eggplant",
+        "c_ba_grandma",
+        "c_cay_xang"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_trua",
+      "distractors": [
+        "c_ca_fish",
+        "c_song_river",
+        "c_co_aunt"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dem",
+      "distractors": [
+        "c_ghe",
+        "c_xe_may",
+        "c_san_bay"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ nay tôi về sớm.",
+      "answer": "chiều",
+      "options": [
+        "chiều",
+        "khỏe",
+        "vui",
+        "chín"
+      ],
+      "translation": {
+        "fr": "Cet après-midi, je rentre tôt.",
+        "en": "This afternoon I'm going home early."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây giờ ___",
+      "answer": "Mấy giờ rồi?",
+      "options": [
+        "Mấy giờ rồi?",
+        "Cũng khá ngon.",
+        "Con chào ông.",
+        "Anh giỡn hoài!"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
       }
     },
     {

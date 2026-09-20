@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais gérer un appel et un message.",
     "en": "Show you can handle a call and a message."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u15.l07"
   ],
@@ -211,6 +211,104 @@
       "explain": {
         "fr": "bên + entreprise : de chez…",
         "en": "bên + company: from…"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sach",
+      "distractors": [
+        "coi",
+        "trăm",
+        "vô"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "hơi",
+        "học",
+        "ba"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_wait",
+      "distractors": [
+        "sống",
+        "bên",
+        "nghĩ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "ngày sinh",
+        "phòng trọ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sach",
+      "distractors": [
+        "c_ly",
+        "c_xe_buyt",
+        "c_chua_pagoda"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_ca_phe",
+        "c_dua",
+        "c_cho_dog"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Số ___ của chị là bao nhiêu?",
+      "answer": "điện thoại",
+      "options": [
+        "điện thoại",
+        "ngày sinh",
+        "phòng trọ",
+        "bắt đầu"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "hơi",
+        "học",
+        "ba"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em đang bận, ___",
+      "answer": "Lát em gọi lại nha.",
+      "options": [
+        "Lát em gọi lại nha.",
+        "Nhà vệ sinh ở đâu?",
+        "Em không đồng ý lắm.",
+        "Cuối tháng mới lãnh lương."
+      ],
+      "translation": {
+        "fr": "Je suis occupé(e), je te rappelle tout à l'heure.",
+        "en": "I'm busy, I'll call you back in a bit."
       }
     }
   ],

@@ -127,6 +127,81 @@
       }
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_truong_hoc",
+      "distractors": [
+        "chung cư",
+        "chút xíu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_benh_vien",
+      "distractors": [
+        "ông bà",
+        "bác sĩ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cong_vien",
+      "distractors": [
+        "nhân viên",
+        "máy tính"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_ve_sinh",
+      "distractors": [
+        "nón bảo hiểm",
+        "trạm xe buýt"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chua_pagoda",
+      "distractors": [
+        "c_trung",
+        "c_chong",
+        "c_heo"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_ve_sinh",
+      "distractors": [
+        "c_thit",
+        "c_ba",
+        "c_xoai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ở đâu?",
+      "answer": "nhà vệ sinh",
+      "options": [
+        "nhà vệ sinh",
+        "nón bảo hiểm",
+        "trạm xe buýt",
+        "anh chị em"
+      ],
+      "translation": {
+        "fr": "Où sont les toilettes ?"
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_truong_hoc",
+        "c_benh_vien",
+        "c_chua_pagoda",
+        "c_cong_vien",
+        "c_ngan_hang",
+        "c_nha_ve_sinh"
+      ]
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

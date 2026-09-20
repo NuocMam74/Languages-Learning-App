@@ -10,7 +10,7 @@
     "fr": "Dire à quel étage et dans quelle ruelle tu habites.",
     "en": "Say which floor and alley you live in."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u17.l01"
   ],
@@ -21,7 +21,8 @@
     "c_tang_tret",
     "s_o_lau_hai",
     "c_phong",
-    "c_nha_house"
+    "c_nha_house",
+    "c_phong_tam"
   ],
   "steps": [
     {
@@ -130,6 +131,150 @@
         "fr": "lầu descend, hai reste plat.",
         "en": "lầu falls, hai stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lau_long",
+      "distractors": [
+        "lẩu",
+        "lầu",
+        "cá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lau_hotpot",
+      "distractors": [
+        "lầu",
+        "lâu",
+        "đồng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong",
+      "distractors": [
+        "chắc",
+        "thưa",
+        "ăn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_house",
+      "distractors": [
+        "nha",
+        "điện",
+        "nhanh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lau_floor",
+      "distractors": [
+        "lâu",
+        "lẩu",
+        "hiểu"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_phong",
+      "distractors": [
+        "c_rau",
+        "c_ca_fish",
+        "c_pho"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_house",
+      "distractors": [
+        "c_ba",
+        "c_quan_ca_phe",
+        "c_chia_khoa"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Đi bao ___?",
+      "answer": "lâu",
+      "options": [
+        "lâu",
+        "lẩu",
+        "lầu",
+        "cá"
+      ],
+      "translation": {
+        "fr": "Ça prend combien de temps ?",
+        "en": "How long does it take?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở ___.",
+      "answer": "nhà",
+      "options": [
+        "nhà",
+        "nha",
+        "điện",
+        "nhanh"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ở lầu hai",
+      "tokens": [
+        "Em",
+        "ở",
+        "lầu",
+        "hai"
+      ],
+      "translation": {
+        "fr": "J'habite au deuxième étage.",
+        "en": "I live on the second floor."
+      },
+      "audioConcept": "c_lau_floor"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Đi bao lâu",
+      "tokens": [
+        "Đi",
+        "bao",
+        "lâu"
+      ],
+      "translation": {
+        "fr": "Ça prend combien de temps ?",
+        "en": "How long does it take?"
+      },
+      "audioConcept": "c_lau_long"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ở nhà",
+      "tokens": [
+        "Em",
+        "ở",
+        "nhà"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      },
+      "audioConcept": "c_nha_house"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phong_tam",
+      "distractors": [
+        "nhà thuốc",
+        "tại vì"
+      ]
     }
   ],
   "review": {

@@ -10,7 +10,7 @@
     "fr": "Faire patienter, à l'oral et par écrit.",
     "en": "Ask someone to wait, spoken and written."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u15.l03"
   ],
@@ -20,7 +20,8 @@
     "s_doi_em_chut",
     "c_gio",
     "c_dien_thoai",
-    "c_tien"
+    "c_tien",
+    "s_em_nhan_roi"
   ],
   "steps": [
     {
@@ -121,6 +122,170 @@
         "fr": "đợi tombe court, chút monte.",
         "en": "đợi drops short, chút rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "bên phải",
+        "đi làm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "sông",
+        "và",
+        "đem"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gio",
+      "distractors": [
+        "mà",
+        "heo",
+        "phở"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_ot",
+        "c_com",
+        "c_giuong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_rau",
+        "c_meo",
+        "c_xe_dap"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây ___ mấy giờ rồi?",
+      "answer": "giờ",
+      "options": [
+        "giờ",
+        "mà",
+        "heo",
+        "phở"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Số ___ của chị là bao nhiêu?",
+      "answer": "điện thoại",
+      "options": [
+        "điện thoại",
+        "bên phải",
+        "đi làm",
+        "Việt kiều"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "sông",
+        "và",
+        "đem"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh đợi em chút xíu nha",
+      "tokens": [
+        "Anh",
+        "đợi",
+        "em",
+        "chút",
+        "xíu",
+        "nha"
+      ],
+      "translation": {
+        "fr": "Attends-moi une petite minute.",
+        "en": "Wait for me a moment."
+      },
+      "audioConcept": "c_doi_wait"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ mấy giờ rồi",
+      "tokens": [
+        "Bây",
+        "giờ",
+        "mấy",
+        "giờ",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      },
+      "audioConcept": "c_gio"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Số điện thoại của chị là bao nhiêu",
+      "tokens": [
+        "Số",
+        "điện",
+        "thoại",
+        "của",
+        "chị",
+        "là",
+        "bao",
+        "nhiêu"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      },
+      "audioConcept": "c_dien_thoai"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi tính tiền",
+      "tokens": [
+        "Em",
+        "ơi",
+        "tính",
+        "tiền"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      },
+      "audioConcept": "c_tien"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_nhan_roi",
+      "distractors": [
+        "Ổng đi đâu rồi?",
+        "Chị làm ở đâu?"
+      ]
     }
   ],
   "review": {

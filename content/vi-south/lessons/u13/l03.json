@@ -10,7 +10,7 @@
     "fr": "Dire ce qui se passe maintenant.",
     "en": "Say what's happening now."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u13.l02"
   ],
@@ -157,6 +157,122 @@
         "fr": "trời descend, đang plat, mưa plat.",
         "en": "trời falls, đang level, mưa level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi_tangled",
+      "distractors": [
+        "rồi",
+        "người",
+        "ngàn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_troi",
+      "distractors": [
+        "mời",
+        "phim",
+        "ông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dem",
+      "distractors": [
+        "tư",
+        "phim",
+        "tới"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi",
+      "distractors": [
+        "rối",
+        "nghĩ",
+        "to"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tra_tea",
+      "distractors": [
+        "trả",
+        "sẽ",
+        "ba"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sua_milk",
+      "distractors": [
+        "lầu",
+        "giỏi",
+        "vừa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dang",
+      "distractors": [
+        "vườn",
+        "cưới",
+        "coi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "lớn",
+        "kể",
+        "bả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ca_phe",
+      "distractors": [
+        "danh thiếp",
+        "khi nào"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_troi",
+      "distractors": [
+        "c_non_bao_hiem",
+        "c_ba_grandma",
+        "c_chong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dem",
+      "distractors": [
+        "c_b_sep",
+        "c_benh_vien",
+        "c_ca_eggplant"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tra_tea",
+      "distractors": [
+        "c_ban_table",
+        "c_thuoc_medicine",
+        "c_banh_mi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sua_milk",
+      "distractors": [
+        "c_b_nghi_phep",
+        "c_dien_thoai",
+        "c_chi_hai"
+      ]
     }
   ],
   "review": {

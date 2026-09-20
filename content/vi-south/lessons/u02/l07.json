@@ -11,7 +11,7 @@
     "fr": "Revoir voyelles, consonnes et finales du Sud.",
     "en": "Go over southern vowels, consonants and finals."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u02.l06"
   ],
@@ -139,6 +139,156 @@
         "fr": "tr recourbé, puis le ton descend.",
         "en": "Curled tr, then the tone falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chở",
+        "chờ",
+        "rút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_wait",
+      "distractors": [
+        "chở",
+        "chợ",
+        "cưới"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_skin",
+      "distractors": [
+        "dạ",
+        "biết",
+        "rút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da",
+      "distractors": [
+        "da",
+        "mạ",
+        "coi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua_coconut",
+      "distractors": [
+        "theo",
+        "cay",
+        "tháng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tra_tea",
+      "distractors": [
+        "trả",
+        "hiểu",
+        "giữa"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_to_bowl",
+      "distractors": [
+        "c_sua_milk",
+        "c_ngu_sleep",
+        "c_cho_dog"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_market",
+      "distractors": [
+        "c_b_li_xi",
+        "c_xe",
+        "c_chong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_song_river",
+      "distractors": [
+        "c_xoai",
+        "c_trua",
+        "c_phong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tra_tea",
+      "distractors": [
+        "c_dien_thoai",
+        "c_xe_dap",
+        "c_b_nghi_phep"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em chút nha.",
+      "answer": "chờ",
+      "options": [
+        "chờ",
+        "chở",
+        "chợ",
+        "cưới"
+      ],
+      "translation": {
+        "fr": "Attends-moi un peu, d'accord ?",
+        "en": "Wait for me a moment, okay?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, em cảm ơn anh.",
+      "answer": "dạ",
+      "options": [
+        "dạ",
+        "da",
+        "mạ",
+        "coi"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em xin ly ___.",
+      "answer": "trà",
+      "options": [
+        "trà",
+        "trả",
+        "hiểu",
+        "giữa"
+      ],
+      "translation": {
+        "fr": "Je voudrais un verre de thé.",
+        "en": "May I have a glass of tea?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chờ em chút nha",
+      "tokens": [
+        "Chờ",
+        "em",
+        "chút",
+        "nha"
+      ],
+      "translation": {
+        "fr": "Attends-moi un peu, d'accord ?",
+        "en": "Wait for me a moment, okay?"
+      },
+      "audioConcept": "c_cho_wait"
     },
     {
       "type": "game",

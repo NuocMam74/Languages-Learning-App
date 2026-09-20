@@ -10,7 +10,7 @@
     "fr": "Donner ton avis et demander celui des autres.",
     "en": "Give your opinion and ask for others'."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l04"
   ],
@@ -18,7 +18,17 @@
     "c_thay_feel",
     "s_tui_thay",
     "s_anh_thay_sao",
-    "c_mac_cuoi"
+    "c_mac_cuoi",
+    "s_phim_hay_qua",
+    "c_coi",
+    "c_phim",
+    "c_hay_good",
+    "c_xau",
+    "c_dep",
+    "c_hoi_slightly",
+    "s_cung_duoc",
+    "s_do_qua",
+    "c_do_dirty"
   ],
   "steps": [
     {
@@ -128,6 +138,129 @@
         "fr": "thấy monte, sao reste plat.",
         "en": "thấy rises, sao stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thay_feel",
+      "distractors": [
+        "thầy",
+        "heo",
+        "ba"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ cũng được.",
+      "answer": "thấy",
+      "options": [
+        "thấy",
+        "thầy",
+        "heo",
+        "ba"
+      ],
+      "translation": {
+        "fr": "Je trouve ça correct.",
+        "en": "I think it's okay."
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Tui thấy phim này hay.",
+      "accepted": {
+        "fr": [
+          "Je trouve ce film bien."
+        ],
+        "en": [
+          "I think this film is good."
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_phim_hay_qua",
+      "distractors": [
+        "Ngày uống mấy lần?",
+        "Cái này bao nhiêu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_coi",
+      "distractors": [
+        "chưa",
+        "mưa",
+        "chục"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phim",
+      "distractors": [
+        "bận",
+        "người",
+        "cay"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hay_good",
+      "distractors": [
+        "sai",
+        "lần",
+        "hơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xau",
+      "distractors": [
+        "trong",
+        "qua",
+        "thứ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dep",
+      "distractors": [
+        "gà",
+        "và",
+        "nhỏ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoi_slightly",
+      "distractors": [
+        "tháng",
+        "nghen",
+        "giỡn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cung_duoc",
+      "distractors": [
+        "Sao vậy?",
+        "Mệt quá!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_do_qua",
+      "distractors": [
+        "Cái nào?",
+        "Sai rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_dirty",
+      "distractors": [
+        "dở",
+        "vườn",
+        "giùm"
+      ]
     }
   ],
   "review": {

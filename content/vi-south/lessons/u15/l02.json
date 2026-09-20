@@ -10,7 +10,7 @@
     "fr": "Dire que tu es occupé et que tu rappelles.",
     "en": "Say you're busy and will call back."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u15.l01"
   ],
@@ -19,7 +19,13 @@
     "c_lat",
     "c_goi_lai",
     "s_em_dang_ban",
-    "c_ban_busy"
+    "c_ban_busy",
+    "c_b_ne",
+    "c_goi_salad",
+    "c_goi_pack",
+    "s_ai_vay_a",
+    "s_alo_em_nghe",
+    "c_alo"
   ],
   "steps": [
     {
@@ -214,6 +220,154 @@
         "fr": "gọi et lại tombent courts.",
         "en": "gọi and lại drop short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lat",
+      "distractors": [
+        "đặt",
+        "chú",
+        "họp"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em đang bận, ___",
+      "answer": "Lát em gọi lại nha.",
+      "options": [
+        "Lát em gọi lại nha.",
+        "Tui muốn gia hạn visa.",
+        "Anh có thích phở không?",
+        "Cho em gặp anh Minh."
+      ],
+      "translation": {
+        "fr": "Je suis occupé(e), je te rappelle tout à l'heure.",
+        "en": "I'm busy, I'll call you back in a bit."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ne",
+      "distractors": [
+        "hết",
+        "cô",
+        "rối"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_salad",
+      "distractors": [
+        "gói",
+        "gọi",
+        "đội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_pack",
+      "distractors": [
+        "gỏi",
+        "gọi",
+        "mua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ai_vay_a",
+      "distractors": [
+        "Ký tên ở đây.",
+        "Mọi người thấy sao?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_alo_em_nghe",
+      "distractors": [
+        "Kẹt xe quá!",
+        "Anh khỏe không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_alo",
+      "distractors": [
+        "sợ",
+        "tôi",
+        "cơm"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, coi cái này nè!",
+      "answer": "nè",
+      "options": [
+        "nè",
+        "hết",
+        "cô",
+        "rối"
+      ],
+      "translation": {
+        "fr": "Tiens, regarde ça !",
+        "en": "Hey, look at this!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, em nghe nè.",
+      "answer": "alô",
+      "options": [
+        "alô",
+        "sợ",
+        "tôi",
+        "cơm"
+      ],
+      "translation": {
+        "fr": "Allô, je t'écoute.",
+        "en": "Hello, I'm listening."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nè coi cái này nè",
+      "tokens": [
+        "Nè",
+        "coi",
+        "cái",
+        "này",
+        "nè"
+      ],
+      "translation": {
+        "fr": "Tiens, regarde ça !",
+        "en": "Hey, look at this!"
+      },
+      "audioConcept": "c_b_ne"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Alô em nghe nè",
+      "tokens": [
+        "Alô",
+        "em",
+        "nghe",
+        "nè"
+      ],
+      "translation": {
+        "fr": "Allô, je t'écoute.",
+        "en": "Hello, I'm listening."
+      },
+      "audioConcept": "s_alo_em_nghe"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "s_goi_lai_nha",
+        "c_lat",
+        "c_goi_lai",
+        "s_em_dang_ban",
+        "c_ban_busy",
+        "c_b_ne"
+      ]
     }
   ],
   "review": {

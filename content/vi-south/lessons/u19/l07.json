@@ -11,7 +11,7 @@
     "fr": "Revoir papiers, banque et formulaires.",
     "en": "Go over papers, banking and forms."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u19.l06"
   ],
@@ -133,6 +133,140 @@
       "explain": {
         "fr": "ký monte, đây plat.",
         "en": "ký rises, đây level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ho_chieu",
+      "distractors": [
+        "tuần trước",
+        "bệnh viện"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_paper",
+      "distractors": [
+        "giây",
+        "một",
+        "cá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_giay_second",
+      "distractors": [
+        "giấy",
+        "con",
+        "hẹn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_cong_an",
+      "distractors": [
+        "hồi nãy",
+        "em út"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_the",
+      "distractors": [
+        "mây",
+        "sắp",
+        "hơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_ky_ten_o_day",
+      "distractors": [
+        "Cho em xuống đây.",
+        "Chúc mừng hạnh phúc!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_visa",
+      "distractors": [
+        "chuối",
+        "đụng",
+        "khám"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_don",
+      "distractors": [
+        "mả",
+        "ngàn",
+        "khá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_tai_khoan",
+      "distractors": [
+        "cẩn thận",
+        "ngày mai"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_the",
+      "distractors": [
+        "c_b_vuon",
+        "c_ca_eggplant",
+        "c_ky_su"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_visa",
+      "distractors": [
+        "c_xe_om",
+        "c_ot",
+        "c_mi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_don",
+      "distractors": [
+        "c_ot",
+        "c_b_visa",
+        "c_che_dessert"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh cho tôi coi ___.",
+      "answer": "hộ chiếu",
+      "options": [
+        "hộ chiếu",
+        "tuần trước",
+        "bệnh viện",
+        "hồi nãy"
+      ],
+      "translation": {
+        "fr": "Montrez-moi votre passeport.",
+        "en": "Show me your passport."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tờ của anh đâu?",
+      "answer": "giấy",
+      "options": [
+        "giấy",
+        "giây",
+        "một",
+        "cá"
+      ],
+      "translation": {
+        "fr": "Où sont tes papiers ? (à un homme un peu plus âgé)",
+        "en": "Where are your papers? (to a slightly older man)"
       }
     },
     {

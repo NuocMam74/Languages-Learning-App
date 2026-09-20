@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais acheter au marché à la manière du Sud.",
     "en": "Show you can shop at the market the southern way."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u08.l07"
   ],
@@ -22,7 +22,8 @@
     "s_bao_nhieu_mot_ky",
     "c_bap",
     "s_thoi_cam_on",
-    "c_mua_buy"
+    "c_mua_buy",
+    "s_thoi_tien"
   ],
   "steps": [
     {
@@ -181,6 +182,117 @@
         "fr": "mua : acheter.",
         "en": "mua: to buy."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_re",
+      "distractors": [
+        "cần",
+        "mở",
+        "trả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chuoi",
+      "distractors": [
+        "bị",
+        "chút",
+        "đội"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bap",
+      "distractors": [
+        "tên",
+        "chỉ",
+        "cơm"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mười lăm ngàn ___.",
+      "answer": "đồng",
+      "options": [
+        "đồng",
+        "bắp",
+        "chút",
+        "xấu"
+      ],
+      "translation": {
+        "fr": "Quinze mille đồng.",
+        "en": "Fifteen thousand đồng."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xoài ___",
+      "answer": "Bao nhiêu một ký?",
+      "options": [
+        "Bao nhiêu một ký?",
+        "Mọi người thấy sao?",
+        "Anh có vợ chưa?",
+        "Phim này hay quá!"
+      ],
+      "translation": {
+        "fr": "Combien le kilo de mangues ?",
+        "en": "How much is a kilo of mangoes?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ hai trái xoài.",
+      "answer": "mua",
+      "options": [
+        "mua",
+        "thôi",
+        "phòng",
+        "mới"
+      ],
+      "translation": {
+        "fr": "J'achète deux mangues.",
+        "en": "I'm buying two mangoes."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mười lăm ngàn đồng",
+      "tokens": [
+        "Mười",
+        "lăm",
+        "ngàn",
+        "đồng"
+      ],
+      "translation": {
+        "fr": "Quinze mille đồng.",
+        "en": "Fifteen thousand đồng."
+      },
+      "audioConcept": "c_dong"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xoài bao nhiêu một ký",
+      "tokens": [
+        "Xoài",
+        "bao",
+        "nhiêu",
+        "một",
+        "ký"
+      ],
+      "translation": {
+        "fr": "Combien le kilo de mangues ?",
+        "en": "How much is a kilo of mangoes?"
+      },
+      "audioConcept": "s_bao_nhieu_mot_ky"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thoi_tien",
+      "distractors": [
+        "trà đá",
+        "đi thẳng"
+      ]
     }
   ],
   "review": {

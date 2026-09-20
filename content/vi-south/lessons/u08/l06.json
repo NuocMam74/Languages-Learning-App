@@ -10,7 +10,7 @@
     "fr": "Payer, refuser poliment et comprendre la monnaie rendue.",
     "en": "Pay, politely decline and understand your change."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u08.l05"
   ],
@@ -19,7 +19,13 @@
     "c_thoi",
     "s_thoi_cam_on",
     "s_thoi_tien",
-    "c_tien"
+    "c_tien",
+    "c_bap",
+    "c_trung",
+    "s_thit_heo",
+    "c_heo",
+    "c_thit",
+    "c_lay"
   ],
   "steps": [
     {
@@ -139,6 +145,153 @@
         "fr": "thôi plat, cảm plonge, ơn plat, chị tombe court.",
         "en": "thôi level, cảm dips, ơn level, chị drops short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "cổ",
+        "bớt",
+        "mình"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_co_aunt",
+        "c_lau_floor",
+        "c_b_nghi_phep"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ tiền nha chị.",
+      "answer": "trả",
+      "options": [
+        "trả",
+        "trà",
+        "hay",
+        "giùm"
+      ],
+      "translation": {
+        "fr": "Je vous paie, d'accord ? (à une vendeuse un peu plus âgée)",
+        "en": "Let me pay you, okay? (to a slightly older saleswoman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Ít cay ___ nha em.",
+      "answer": "thôi",
+      "options": [
+        "thôi",
+        "chín",
+        "thưa",
+        "xong"
+      ],
+      "translation": {
+        "fr": "Juste un peu piquant, s'il te plaît.",
+        "en": "Just a little spicy, please."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "cổ",
+        "bớt",
+        "mình"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ít cay thôi nha em",
+      "tokens": [
+        "Ít",
+        "cay",
+        "thôi",
+        "nha",
+        "em"
+      ],
+      "translation": {
+        "fr": "Juste un peu piquant, s'il te plaît.",
+        "en": "Just a little spicy, please."
+      },
+      "audioConcept": "c_thoi"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi tính tiền",
+      "tokens": [
+        "Em",
+        "ơi",
+        "tính",
+        "tiền"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      },
+      "audioConcept": "c_tien"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bap",
+      "distractors": [
+        "sáu",
+        "trẻ",
+        "mua"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trung",
+      "distractors": [
+        "ông",
+        "mấy",
+        "tốt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thit_heo",
+      "distractors": [
+        "uống thuốc",
+        "Chào anh."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_heo",
+      "distractors": [
+        "mả",
+        "nhen",
+        "đợi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thit",
+      "distractors": [
+        "cho",
+        "sớm",
+        "trời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lay",
+      "distractors": [
+        "học",
+        "xong",
+        "no"
+      ]
     }
   ],
   "review": {

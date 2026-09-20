@@ -10,7 +10,7 @@
     "fr": "Reconnaître le « y » du Sud et le distinguer du r.",
     "en": "Recognise the southern 'y' and tell it from r."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u02.l01"
   ],
@@ -21,7 +21,13 @@
     "c_rau",
     "c_ra",
     "c_da_skin",
-    "c_da"
+    "c_da",
+    "c_bo_beef",
+    "c_me_sesame",
+    "c_mua_rain",
+    "c_mi",
+    "c_to_bowl",
+    "c_to_big"
   ],
   "steps": [
     {
@@ -124,6 +130,151 @@
         "fr": "Commence par « y », puis laisse le ton descendre.",
         "en": "Start with 'y', then let the tone fall."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_skin",
+      "distractors": [
+        "dạ",
+        "hay",
+        "sai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da",
+      "distractors": [
+        "da",
+        "chuối",
+        "nhờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vui",
+      "distractors": [
+        "cô",
+        "bả",
+        "đúng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dua_coconut",
+      "distractors": [
+        "người",
+        "mặn",
+        "năm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_rau",
+      "distractors": [
+        "mua",
+        "dĩa",
+        "nhang"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ lắm.",
+      "answer": "vui",
+      "options": [
+        "vui",
+        "cô",
+        "bả",
+        "đúng"
+      ],
+      "translation": {
+        "fr": "Je suis très content(e).",
+        "en": "I'm very happy."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___, em cảm ơn anh.",
+      "answer": "dạ",
+      "options": [
+        "dạ",
+        "da",
+        "chuối",
+        "nhờ"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ em cảm ơn anh",
+      "tokens": [
+        "Dạ",
+        "em",
+        "cảm",
+        "ơn",
+        "anh"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      },
+      "audioConcept": "c_da"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bo_beef",
+      "distractors": [
+        "tên",
+        "pin",
+        "ho"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_me_sesame",
+      "distractors": [
+        "đâu",
+        "vợ",
+        "đũa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "sữa",
+        "khám",
+        "chút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mi",
+      "distractors": [
+        "hen",
+        "nội",
+        "bà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_to_bowl",
+      "distractors": [
+        "bán",
+        "vừa",
+        "ghiền"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_to_big",
+      "distractors": [
+        "chậm",
+        "tuổi",
+        "bốn"
+      ]
     }
   ],
   "review": {

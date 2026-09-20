@@ -10,7 +10,7 @@
     "fr": "Indiquer au chauffeur où tourner.",
     "en": "Tell the driver where to turn."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u11.l02"
   ],
@@ -20,7 +20,12 @@
     "s_queo_phai",
     "c_nga_tu",
     "c_den_do",
-    "c_b_thi"
+    "c_b_thi",
+    "s_cho_em_ra_cho",
+    "s_di_dau",
+    "c_cho_carry",
+    "c_dat",
+    "c_xe_om"
   ],
   "steps": [
     {
@@ -128,6 +133,120 @@
         "fr": "Au Sud on dit quẹo (au Nord : rẽ). què = boiteux, queo = tordu.",
         "en": "In the South it's quẹo (rẽ in the North). què = lame, queo = bent."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_queo",
+      "distractors": [
+        "tiếc",
+        "nhiều",
+        "quận"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_queo_trai",
+      "distractors": [
+        "Ai vậy?",
+        "mười lăm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_queo_phai",
+      "distractors": [
+        "thứ hai",
+        "Đúng rồi!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_den_do",
+      "distractors": [
+        "cẩn thận",
+        "điền đơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thi",
+      "distractors": [
+        "trà",
+        "tối",
+        "chủ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tới ngã tư thì ___ trái.",
+      "answer": "quẹo",
+      "options": [
+        "quẹo",
+        "tiếc",
+        "nhiều",
+        "quận"
+      ],
+      "translation": {
+        "fr": "Au carrefour, tourne à gauche.",
+        "en": "At the crossroads, turn left."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tới ngã tư anh ___ nha.",
+      "answer": "quẹo phải",
+      "options": [
+        "quẹo phải",
+        "thứ hai",
+        "Đúng rồi!",
+        "Tới rồi."
+      ],
+      "translation": {
+        "fr": "Au carrefour, tournez à droite.",
+        "en": "At the crossroads, turn right."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_ra_cho",
+      "distractors": [
+        "Anh cho tôi coi hộ chiếu.",
+        "Tại sao em học tiếng Việt?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_di_dau",
+      "distractors": [
+        "hai mươi mốt",
+        "Bao nhiêu tiền?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_carry",
+      "distractors": [
+        "chờ",
+        "chợ",
+        "dở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dat",
+      "distractors": [
+        "giây",
+        "ghét",
+        "ra"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_om",
+      "distractors": [
+        "bàn thờ",
+        "nước mía"
+      ]
     },
     {
       "type": "game",

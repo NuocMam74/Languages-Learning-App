@@ -11,7 +11,7 @@
     "fr": "Revoir véhicules, directions et trajets.",
     "en": "Go over vehicles, directions and trips."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u11.l06"
   ],
@@ -144,6 +144,117 @@
         "fr": "xuống monte, đây reste plat.",
         "en": "xuống rises, đây stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_carry",
+      "distractors": [
+        "chờ",
+        "chợ",
+        "việc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chờ",
+        "chở",
+        "tên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_wait",
+      "distractors": [
+        "chở",
+        "chợ",
+        "nghỉ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_xuong",
+      "distractors": [
+        "Ký tên ở đây.",
+        "Khi nào anh về?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xe_om",
+      "distractors": [
+        "hình thẻ",
+        "ngã tư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_queo_phai",
+      "distractors": [
+        "Dạ, có.",
+        "Thích lắm!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_queo",
+      "distractors": [
+        "là",
+        "lẻ",
+        "tư"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nga_tu",
+      "distractors": [
+        "ông bà",
+        "tại sao"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_den_do",
+      "distractors": [
+        "nước mắm",
+        "bao giờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cau_bridge",
+      "distractors": [
+        "cậu",
+        "tô",
+        "chào"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ket_xe",
+      "distractors": [
+        "cơm tấm",
+        "khách sạn"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_market",
+      "distractors": [
+        "c_che_dessert",
+        "c_ngan_hang",
+        "c_truong_hoc"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_den_do",
+      "distractors": [
+        "c_ben_trai",
+        "c_chieu",
+        "c_cay_xang"
+      ]
     },
     {
       "type": "game",

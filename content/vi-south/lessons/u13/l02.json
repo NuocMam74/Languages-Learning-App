@@ -10,7 +10,7 @@
     "fr": "Demander si c'est déjà fait et répondre.",
     "en": "Ask whether something is done and answer."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u13.l01"
   ],
@@ -21,7 +21,11 @@
     "c_lan",
     "c_sau_rieng",
     "c_xoai",
-    "c_thom"
+    "c_thom",
+    "s_lam_xong_roi",
+    "c_xong",
+    "s_em_da_an_roi",
+    "c_da_past"
   ],
   "steps": [
     {
@@ -132,6 +136,126 @@
         "fr": "chưa plat, bao plat, giờ descend.",
         "en": "chưa level, bao level, giờ falls."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_rieng",
+      "distractors": [
+        "làm việc",
+        "bên phải"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xoai",
+      "distractors": [
+        "sợ",
+        "rút",
+        "ít"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thom",
+      "distractors": [
+        "coi",
+        "học",
+        "sáng"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xoai",
+      "distractors": [
+        "c_chen",
+        "c_chong",
+        "c_b_qua_gift"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_thom",
+      "distractors": [
+        "c_chu",
+        "c_b_ve_so",
+        "c_co_aunt"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ ăn sầu riêng.",
+      "answer": "chưa bao giờ",
+      "options": [
+        "chưa bao giờ",
+        "Kẹt xe quá!",
+        "số điện thoại",
+        "Đừng khách sáo!"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "trái ___",
+      "answer": "xoài",
+      "options": [
+        "xoài",
+        "sợ",
+        "rút",
+        "ít"
+      ],
+      "translation": {
+        "fr": "une mangue",
+        "en": "a mango"
+      }
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "trái xoài",
+      "accepted": {
+        "fr": [
+          "une mangue"
+        ],
+        "en": [
+          "a mango"
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_lam_xong_roi",
+      "distractors": [
+        "hai mươi mốt",
+        "Ăn cơm chưa?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_xong",
+      "distractors": [
+        "chín",
+        "nghe",
+        "mợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_da_an_roi",
+      "distractors": [
+        "Dạ, ai vậy ạ?",
+        "Chúc mừng năm mới!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_past",
+      "distractors": [
+        "đá",
+        "hết",
+        "vui"
+      ]
     },
     {
       "type": "game",

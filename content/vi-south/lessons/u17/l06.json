@@ -10,7 +10,7 @@
     "fr": "Comparer deux logements.",
     "en": "Compare two places to live."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u17.l05"
   ],
@@ -20,7 +20,8 @@
     "c_yen_tinh",
     "s_hem_xe_hoi",
     "c_nha_house",
-    "c_khach_san"
+    "c_khach_san",
+    "s_tinh_rieng"
   ],
   "steps": [
     {
@@ -140,6 +141,150 @@
         "fr": "hẻm plonge, xe plat, hơi plat.",
         "en": "hẻm dips, xe level, hơi level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khach_san",
+      "distractors": [
+        "điện thoại",
+        "năm nay"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chung_cu",
+      "distractors": [
+        "xe ôm",
+        "phòng trọ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_house",
+      "distractors": [
+        "nha",
+        "cậu",
+        "nghỉ"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nha_house",
+      "distractors": [
+        "c_chong",
+        "c_benh_vien",
+        "c_ga_station"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_khach_san",
+      "distractors": [
+        "c_xe_may",
+        "c_com_tam",
+        "c_bo_beef"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ này gần chợ, mà hơi ồn.",
+      "answer": "chung cư",
+      "options": [
+        "chung cư",
+        "xe ôm",
+        "phòng trọ",
+        "kẹt xe"
+      ],
+      "translation": {
+        "fr": "Cet immeuble est près du marché, mais un peu bruyant.",
+        "en": "This building is near the market, but a bit noisy."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà trong hẻm ___ hơn.",
+      "answer": "yên tĩnh",
+      "options": [
+        "yên tĩnh",
+        "hộ chiếu",
+        "sạc pin",
+        "nhưng mà"
+      ],
+      "translation": {
+        "fr": "Une maison dans une ruelle, c'est plus calme.",
+        "en": "A house down an alley is quieter."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở ___.",
+      "answer": "nhà",
+      "options": [
+        "nhà",
+        "nha",
+        "cậu",
+        "nghỉ"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xin lỗi, ___ ở đâu vậy anh?",
+      "answer": "khách sạn",
+      "options": [
+        "khách sạn",
+        "điện thoại",
+        "năm nay",
+        "hôm qua"
+      ],
+      "translation": {
+        "fr": "Pardon, où est l'hôtel ? (à un homme un peu plus âgé)",
+        "en": "Excuse me, where's the hotel? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ở nhà",
+      "tokens": [
+        "Em",
+        "ở",
+        "nhà"
+      ],
+      "translation": {
+        "fr": "Je suis à la maison.",
+        "en": "I'm at home."
+      },
+      "audioConcept": "c_nha_house"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Xin lỗi khách sạn ở đâu vậy anh",
+      "tokens": [
+        "Xin",
+        "lỗi",
+        "khách",
+        "sạn",
+        "ở",
+        "đâu",
+        "vậy",
+        "anh"
+      ],
+      "translation": {
+        "fr": "Pardon, où est l'hôtel ? (à un homme un peu plus âgé)",
+        "en": "Excuse me, where's the hotel? (to a slightly older man)"
+      },
+      "audioConcept": "c_khach_san"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tinh_rieng",
+      "distractors": [
+        "Em nhắn rồi đó.",
+        "Anh bao nhiêu tuổi?"
+      ]
     }
   ],
   "review": {

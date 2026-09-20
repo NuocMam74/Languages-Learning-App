@@ -52,6 +52,11 @@ Pas d'inquiétude, un contrôle automatique le signale tout de suite.
 5. **Explications.** Une explication courte, vraie, jamais une règle inventée.
 6. **Paires de tons.** Au Sud, hỏi et ngã se prononcent pareil : on ne demande **jamais**
    de les distinguer à l'oreille. Si tu vois un exercice qui le fait, signale-le.
+7. **Les leurres.** Dans un exercice « écoute et choisis », les mauvaises réponses
+   (`"distractors"`) doivent être des pièges plausibles — idéalement le même mot à un autre ton
+   (`ma` / `mà` / `mạ`). Beaucoup ont été choisis par une machine parmi les mots du pack : s'il
+   y en a un trop lointain, qui rend la question trop facile, remplace-le par un mot plus proche
+   déjà enseigné. **N'invente pas de mot** : prends-en un qui existe ailleurs dans le contenu.
 
 ## Quand tu as fini
 
@@ -64,7 +69,9 @@ Pas d'inquiétude, un contrôle automatique le signale tout de suite.
 À chaque proposition, deux vérifications tournent seules :
 
 - **Validation** : format du fichier, références entre fichiers, longueur des cartes culture,
-  interdiction d'opposer hỏi et ngã…
+  interdiction d'opposer hỏi et ngã, et **chaque mot listé par une leçon doit y être demandé au
+  moins une fois** (si tu retires un exercice, le mot qu'il faisait travailler doit revenir
+  ailleurs, ou sortir de la liste `"concepts"` de la leçon)…
 - **Garde du Sud** : si un mot du Nord (`bố`, `vâng`, `bát`…) apparaît dans du vietnamien
   censé être du Sud, la proposition est bloquée. Si c'est un faux positif (par exemple
   « công bố », qui se dit partout), dis-le : on ajoute une exception dans `lexical-variants.json`.

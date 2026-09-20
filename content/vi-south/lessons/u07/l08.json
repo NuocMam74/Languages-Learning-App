@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais commander, manger et payer à la manière du Sud.",
     "en": "Show you can order, eat and pay the southern way."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u07.l07"
   ],
@@ -186,6 +186,108 @@
       "explain": {
         "fr": "hay = « ou » (question).",
         "en": "hay = 'or' (question)."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngot",
+      "distractors": [
+        "mình",
+        "thấy",
+        "năm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_com_tam",
+      "distractors": [
+        "đồng ý",
+        "đám giỗ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ca_phe_sua_da",
+      "distractors": [
+        "Em ăn cơm chưa?",
+        "Chúc mừng năm mới!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chen",
+      "distractors": [
+        "quẹo",
+        "việc",
+        "xa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc_mam",
+      "distractors": [
+        "hủ tiếu",
+        "năm ngoái"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ăn ___ chưa?",
+      "answer": "cơm tấm",
+      "options": [
+        "cơm tấm",
+        "đồng ý",
+        "đám giỗ",
+        "hợp đồng"
+      ],
+      "translation": {
+        "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
+        "en": "Have you tried cơm tấm? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, cho anh một tô ___.",
+      "answer": "hủ tiếu",
+      "options": [
+        "hủ tiếu",
+        "nhưng mà",
+        "giả sử",
+        "ông bà"
+      ],
+      "translation": {
+        "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
+        "en": "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em một ly ___.",
+      "answer": "cà phê sữa đá",
+      "options": [
+        "cà phê sữa đá",
+        "Em ăn cơm chưa?",
+        "Chúc mừng năm mới!",
+        "Phim này hay quá!"
+      ],
+      "translation": {
+        "fr": "Un café glacé au lait, s'il te plaît.",
+        "en": "An iced milk coffee, please."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cho em thêm một cái ___.",
+      "answer": "chén",
+      "options": [
+        "chén",
+        "quẹo",
+        "việc",
+        "xa"
+      ],
+      "translation": {
+        "fr": "Un bol de plus, s'il te plaît.",
+        "en": "One more bowl, please."
       }
     }
   ],

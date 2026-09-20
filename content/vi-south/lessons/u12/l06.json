@@ -10,7 +10,7 @@
     "fr": "Poser une question fermée et y répondre.",
     "en": "Ask yes/no questions and answer them."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l05"
   ],
@@ -19,7 +19,16 @@
     "s_an_roi",
     "s_chi_co_con_khong",
     "s_phai_khong",
-    "c_chua"
+    "c_chua",
+    "s_bao_nhieu_tien",
+    "s_may_ngay",
+    "s_nha_may_nguoi",
+    "c_may_cloud",
+    "s_chung_nao",
+    "s_khi_nao_anh_ve",
+    "c_bao_gio_when",
+    "c_khi_nao",
+    "s_tai_sao_em_hoc"
   ],
   "steps": [
     {
@@ -132,6 +141,133 @@
         "fr": "cơm plat, chưa plat : phrase facile à dire.",
         "en": "cơm level, chưa level: an easy one to say."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chua",
+      "distractors": [
+        "lớp",
+        "rối",
+        "giùm"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh là người Pháp ___",
+      "answer": "phải không?",
+      "options": [
+        "phải không?",
+        "Ngon quá!",
+        "tụi mình",
+        "Cũng được."
+      ],
+      "translation": {
+        "fr": "Tu es français, n'est-ce pas ? (à un homme un peu plus âgé)",
+        "en": "You're French, right? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh có vợ ___?",
+      "answer": "chưa",
+      "options": [
+        "chưa",
+        "lớp",
+        "rối",
+        "giùm"
+      ],
+      "translation": {
+        "fr": "Tu es marié ? (à un homme un peu plus âgé)",
+        "en": "Are you married? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh có vợ chưa",
+      "tokens": [
+        "Anh",
+        "có",
+        "vợ",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu es marié ? (à un homme un peu plus âgé)",
+        "en": "Are you married? (to a slightly older man)"
+      },
+      "audioConcept": "c_chua"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bao_nhieu_tien",
+      "distractors": [
+        "Món nào ngon?",
+        "Dạ, ăn rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_may_ngay",
+      "distractors": [
+        "sau Tết",
+        "chừng nào"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_may_nguoi",
+      "distractors": [
+        "Bớt cho em đi chị.",
+        "Anh có thích phở không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_may_cloud",
+      "distractors": [
+        "mấy",
+        "đồng",
+        "heo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_chung_nao",
+      "distractors": [
+        "bà nội",
+        "Sao vậy?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khi_nao_anh_ve",
+      "distractors": [
+        "Em nhắn rồi đó.",
+        "Chị làm ở đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bao_gio_when",
+      "distractors": [
+        "chuyển khoản",
+        "chụp hình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khi_nao",
+      "distractors": [
+        "nhưng mà",
+        "ngày sinh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tai_sao_em_hoc",
+      "distractors": [
+        "Hồi nhỏ tui ở dưới quê.",
+        "Visa của tui sắp hết hạn."
+      ]
     }
   ],
   "review": {

@@ -10,7 +10,7 @@
     "fr": "Inviter quelqu'un et remercier poliment.",
     "en": "Invite someone and thank them politely."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l08"
   ],
@@ -135,6 +135,138 @@
         "fr": "dạ court, con plat, cảm plonge, ơn plat.",
         "en": "dạ short, con level, cảm dips, ơn level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cam_on",
+      "distractors": [
+        "bà xã",
+        "mắc cười"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dam_cuoi",
+      "distractors": [
+        "máy lạnh",
+        "bà xã"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mời chị đi ___ em nha.",
+      "answer": "đám cưới",
+      "options": [
+        "đám cưới",
+        "máy lạnh",
+        "bà xã",
+        "đồng nghiệp"
+      ],
+      "translation": {
+        "fr": "Viens à mon mariage, s'il te plaît.",
+        "en": "Please come to my wedding."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ bác uống trà.",
+      "answer": "mời",
+      "options": [
+        "mời",
+        "mới",
+        "bảy",
+        "nhớ"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, em ___ anh.",
+      "answer": "cảm ơn",
+      "options": [
+        "cảm ơn",
+        "bà xã",
+        "mắc cười",
+        "lần đầu"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ con cảm ơn cô ạ",
+      "tokens": [
+        "Dạ",
+        "con",
+        "cảm",
+        "ơn",
+        "cô",
+        "ạ"
+      ],
+      "translation": {
+        "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",
+        "en": "Thank you (very polite, to a woman your parents' age)."
+      },
+      "audioConcept": "s_b_da_con_cam_on"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mời bác uống trà",
+      "tokens": [
+        "Mời",
+        "bác",
+        "uống",
+        "trà"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      },
+      "audioConcept": "c_moi"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ em cảm ơn anh",
+      "tokens": [
+        "Dạ",
+        "em",
+        "cảm",
+        "ơn",
+        "anh"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      },
+      "audioConcept": "c_cam_on"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Dạ, con cảm ơn cô ạ.",
+      "accepted": {
+        "fr": [
+          "Merci beaucoup (très poli, à une femme de l'âge de tes parents)."
+        ],
+        "en": [
+          "Thank you (very polite, to a woman your parents' age)."
+        ]
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "s_b_moi_di_dam_cuoi",
+        "c_b_dam_cuoi",
+        "s_b_da_con_cam_on",
+        "c_b_thiep_moi",
+        "c_moi",
+        "c_cam_on"
+      ]
     }
   ],
   "review": {

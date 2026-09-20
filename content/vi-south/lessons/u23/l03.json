@@ -10,7 +10,7 @@
     "fr": "Dire que c'est probable ou possible.",
     "en": "Say something is likely or possible."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u23.l02"
   ],
@@ -20,7 +20,14 @@
     "s_b_chac_tre",
     "s_b_co_le_mai_mua",
     "s_b_chac_hong",
-    "c_anh_he"
+    "c_anh_he",
+    "s_b_neu_ranh",
+    "c_b_choi",
+    "c_b_ghe_by",
+    "c_b_ranh",
+    "s_b_neu_mua_thi_o_nha",
+    "c_b_thi",
+    "c_b_neu"
   ],
   "steps": [
     {
@@ -137,6 +144,122 @@
       "explain": {
         "fr": "có monte, lẽ plonge au Sud, mưa plat.",
         "en": "có rises, lẽ dips in the South, mưa level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_chac_hong",
+      "distractors": [
+        "người Việt",
+        "theo tui"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_co_le_mai_mua",
+      "distractors": [
+        "Bữa nay em bận lắm.",
+        "Tiếc quá, em bận rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_he",
+      "distractors": [
+        "anh",
+        "xin",
+        "nhà"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ mai trời mưa.",
+      "answer": "có lẽ",
+      "options": [
+        "có lẽ",
+        "nhân viên",
+        "tạm trú",
+        "khách sạn"
+      ],
+      "translation": {
+        "fr": "Il pleuvra peut-être demain.",
+        "en": "It might rain tomorrow."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_ranh",
+      "distractors": [
+        "Nếu có nhiều tiền, tui sẽ mua nhà.",
+        "Hôm qua tui đi chợ rồi về nhà."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_choi",
+      "distractors": [
+        "với",
+        "người",
+        "là"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ghe_by",
+      "distractors": [
+        "ghe",
+        "mười",
+        "chục"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ranh",
+      "distractors": [
+        "đang",
+        "mây",
+        "alô"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_neu_mua_thi_o_nha",
+      "distractors": [
+        "Con mời ba má ăn cơm.",
+        "Mai nhà em có đám giỗ."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_thi",
+      "distractors": [
+        "gỏi",
+        "hồi",
+        "quê"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_neu",
+      "distractors": [
+        "chỉ",
+        "thầy",
+        "chắc"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nếu rảnh thì ghé nhà tui ___ nha.",
+      "answer": "chơi",
+      "options": [
+        "chơi",
+        "với",
+        "người",
+        "là"
+      ],
+      "translation": {
+        "fr": "Si tu es libre, passe chez moi, d'accord ?",
+        "en": "If you're free, drop by my place, okay?"
       }
     }
   ],

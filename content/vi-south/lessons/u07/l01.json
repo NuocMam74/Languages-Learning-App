@@ -139,6 +139,106 @@
         "fr": "tô reste plat, phở plonge à la fin.",
         "en": "tô stays level, phở dips at the end."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_pho",
+      "distractors": [
+        "xoài",
+        "thứ",
+        "vô"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_com_tam",
+      "distractors": [
+        "máy bay",
+        "tầng trệt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_banh_mi",
+      "distractors": [
+        "năm ngoái",
+        "nhắn tin"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, cho anh một tô ___.",
+      "answer": "hủ tiếu",
+      "options": [
+        "hủ tiếu",
+        "hồi đó",
+        "máy bay",
+        "em út"
+      ],
+      "translation": {
+        "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
+        "en": "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ăn ___ chưa?",
+      "answer": "cơm tấm",
+      "options": [
+        "cơm tấm",
+        "máy bay",
+        "tầng trệt",
+        "hôm nay"
+      ],
+      "translation": {
+        "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
+        "en": "Have you tried cơm tấm? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em ơi cho anh một tô hủ tiếu",
+      "tokens": [
+        "Em",
+        "ơi",
+        "cho",
+        "anh",
+        "một",
+        "tô",
+        "hủ",
+        "tiếu"
+      ],
+      "translation": {
+        "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
+        "en": "Excuse me, a bowl of hủ tiếu. (man, to a younger server)"
+      },
+      "audioConcept": "c_hu_tieu"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Anh ăn cơm tấm chưa",
+      "tokens": [
+        "Anh",
+        "ăn",
+        "cơm",
+        "tấm",
+        "chưa"
+      ],
+      "translation": {
+        "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
+        "en": "Have you tried cơm tấm? (to a slightly older man)"
+      },
+      "audioConcept": "c_com_tam"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_pho",
+        "c_hu_tieu",
+        "c_com_tam",
+        "c_banh_mi",
+        "s_cho_em_to_pho"
+      ]
     }
   ],
   "review": {

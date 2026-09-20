@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais imaginer, supposer et souhaiter.",
     "en": "Show you can imagine, suppose and wish."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u23.l07"
   ],
@@ -176,6 +176,113 @@
       "translation": {
         "fr": "Si seulement je parlais bien vietnamien.",
         "en": "If only I spoke Vietnamese well."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_the",
+      "distractors": [
+        "tư",
+        "chỉ",
+        "trứng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ranh",
+      "distractors": [
+        "tụi",
+        "của",
+        "đúng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tien",
+      "distractors": [
+        "ba",
+        "ngoại",
+        "cá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ve_so",
+      "distractors": [
+        "nghỉ phép",
+        "khách sạn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_uoc",
+      "distractors": [
+        "đụng",
+        "rau",
+        "cay"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_tien",
+      "distractors": [
+        "c_anh_hai",
+        "c_b_ghe",
+        "c_khach_san"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_b_the",
+      "distractors": [
+        "c_ba_grandma",
+        "c_nha_house",
+        "c_cay_xang"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ơi, tính ___!",
+      "answer": "tiền",
+      "options": [
+        "tiền",
+        "ba",
+        "ngoại",
+        "cá"
+      ],
+      "translation": {
+        "fr": "L'addition, s'il te plaît !",
+        "en": "The bill, please!"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em cần hai tấm hình ___.",
+      "answer": "thẻ",
+      "options": [
+        "thẻ",
+        "tư",
+        "chỉ",
+        "trứng"
+      ],
+      "translation": {
+        "fr": "J'ai besoin de deux photos d'identité.",
+        "en": "I need two ID photos."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nếu ___ thì ghé nhà tui chơi nha.",
+      "answer": "rảnh",
+      "options": [
+        "rảnh",
+        "tụi",
+        "của",
+        "đúng"
+      ],
+      "translation": {
+        "fr": "Si tu es libre, passe chez moi, d'accord ?",
+        "en": "If you're free, drop by my place, okay?"
       }
     }
   ],

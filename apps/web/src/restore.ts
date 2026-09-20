@@ -1,7 +1,7 @@
 import { mergeCards } from "@parlo/core";
 import { getMeState, hasAccessToken, refreshSession, type MeStateDto } from "./api.ts";
 import { db, getKv, withoutPack, type LessonProgressRow, type Profile, type Totals } from "./db.ts";
-import { DEFAULT_PROFILE, type EarnedBadge, type PlacementRecord } from "./learner.ts";
+import { DEFAULT_PROFILE, normalizeDailyGoal, type EarnedBadge, type PlacementRecord } from "./learner.ts";
 import { activePackCode, scopedKey } from "./packs/active.ts";
 import { ACCOUNT_KEY } from "./sync.ts";
 
@@ -81,7 +81,7 @@ export async function applyRestoredState(pack: string, state: MeStateDto, now = 
     const profile = await kv<Profile | null>("profile", null);
     if (enrolled && !profile?.onboardedAt) {
       const remote = state.profile ?? {};
-      const goal = [5, 10, 15, 20].includes(remote.dailyGoalMin ?? 0) ? (remote.dailyGoalMin as Profile["dailyGoalMin"]) : (profile?.dailyGoalMin ?? DEFAULT_PROFILE.dailyGoalMin);
+      const goal = normalizeDailyGoal(remote.dailyGoalMin ?? profile?.dailyGoalMin);
       await put("profile", {
         motivation: pick(remote.motivation, ["family", "travel", "work", "roots", "curiosity"] as const) ?? profile?.motivation ?? null,
         entourage: pick(remote.entourage, ["nobody", "partner", "parents", "colleagues"] as const) ?? profile?.entourage ?? null,

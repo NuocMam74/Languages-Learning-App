@@ -10,7 +10,7 @@
     "fr": "Dire que tu es d'accord, ou pas trop.",
     "en": "Say you agree, or not really."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u24.l02"
   ],
@@ -19,7 +19,15 @@
     "s_b_dong_y",
     "s_b_em_khong_dong_y_lam",
     "s_b_chua_chac",
-    "c_lam"
+    "c_lam",
+    "s_b_sai_roi",
+    "s_b_dung_roi",
+    "c_b_hay",
+    "c_b_sai",
+    "c_b_dung_bump",
+    "c_b_dung_right",
+    "s_b_anh_thay_sao",
+    "s_b_theo_tui_ngon"
   ],
   "steps": [
     {
@@ -128,6 +136,132 @@
         "fr": "đồng descend, ý monte, lắm monte.",
         "en": "đồng falls, ý rises, lắm rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dong_y",
+      "distractors": [
+        "Hẹn gặp lại.",
+        "hẻm xe hơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam",
+      "distractors": [
+        "lăm",
+        "lầu",
+        "dở"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, khỏe ___.",
+      "answer": "lắm",
+      "options": [
+        "lắm",
+        "lăm",
+        "lầu",
+        "dở"
+      ],
+      "translation": {
+        "fr": "Très bien (poliment).",
+        "en": "Very well (politely)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Dạ khỏe lắm",
+      "tokens": [
+        "Dạ",
+        "khỏe",
+        "lắm"
+      ],
+      "translation": {
+        "fr": "Très bien (poliment).",
+        "en": "Very well (politely)."
+      },
+      "audioConcept": "c_lam"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Tui đồng ý với chị.",
+      "accepted": {
+        "fr": [
+          "Je suis d'accord avec toi."
+        ],
+        "en": [
+          "I agree with you."
+        ]
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_sai_roi",
+      "distractors": [
+        "bao lâu",
+        "tuần trước"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_dung_roi",
+      "distractors": [
+        "thứ hai",
+        "Đỡ rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hay",
+      "distractors": [
+        "nghen",
+        "bà",
+        "đắng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sai",
+      "distractors": [
+        "gà",
+        "gặp",
+        "gì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dung_bump",
+      "distractors": [
+        "đúng",
+        "gì",
+        "mì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_dung_right",
+      "distractors": [
+        "đụng",
+        "hồi",
+        "điện"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_anh_thay_sao",
+      "distractors": [
+        "Mấy giờ rồi?",
+        "Món nào ngon?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_theo_tui_ngon",
+      "distractors": [
+        "Phòng này bao nhiêu một tháng?",
+        "Anh đợi em chút xíu nha."
+      ]
     },
     {
       "type": "game",

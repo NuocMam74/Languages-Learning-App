@@ -11,7 +11,7 @@
     "fr": "Revoir đã, rồi, chưa, đang, sẽ, sắp, vừa.",
     "en": "Go over đã, rồi, chưa, đang, sẽ, sắp, vừa."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u13.l06"
   ],
@@ -142,6 +142,159 @@
       "explain": {
         "fr": "sắp et tới montent, rồi descend.",
         "en": "sắp and tới rise, rồi falls."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi",
+      "distractors": [
+        "rối",
+        "ạ",
+        "lăm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_roi_tangled",
+      "distractors": [
+        "rồi",
+        "hông",
+        "ai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_da_past",
+      "distractors": [
+        "đá",
+        "nào",
+        "gói"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dang",
+      "distractors": [
+        "lớp",
+        "ghé",
+        "hơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_se",
+      "distractors": [
+        "chó",
+        "tiếc",
+        "thịt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sap",
+      "distractors": [
+        "bắp",
+        "với",
+        "đặt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vua_just",
+      "distractors": [
+        "ra",
+        "há",
+        "sẽ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, em no ___.",
+      "answer": "rồi",
+      "options": [
+        "rồi",
+        "rối",
+        "ạ",
+        "lăm"
+      ],
+      "translation": {
+        "fr": "Merci, j'ai assez mangé.",
+        "en": "Thanks, I'm full."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hôm qua em ___ đi chợ.",
+      "answer": "đã",
+      "options": [
+        "đã",
+        "đá",
+        "nào",
+        "gói"
+      ],
+      "translation": {
+        "fr": "Hier, je suis allé(e) au marché.",
+        "en": "Yesterday I went to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Trời ___ mưa.",
+      "answer": "đang",
+      "options": [
+        "đang",
+        "lớp",
+        "ghé",
+        "hơi"
+      ],
+      "translation": {
+        "fr": "Il pleut en ce moment.",
+        "en": "It's raining right now."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tuần sau em ___ về Pháp.",
+      "answer": "sẽ",
+      "options": [
+        "sẽ",
+        "chó",
+        "tiếc",
+        "thịt"
+      ],
+      "translation": {
+        "fr": "La semaine prochaine, je rentre en France.",
+        "en": "Next week I'm going back to France."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ tới rồi.",
+      "answer": "sắp",
+      "options": [
+        "sắp",
+        "bắp",
+        "với",
+        "đặt"
+      ],
+      "translation": {
+        "fr": "J'arrive bientôt.",
+        "en": "I'm almost there."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ___ ăn xong.",
+      "answer": "vừa",
+      "options": [
+        "vừa",
+        "ra",
+        "há",
+        "sẽ"
+      ],
+      "translation": {
+        "fr": "Je viens de finir de manger.",
+        "en": "I've just finished eating."
       }
     },
     {

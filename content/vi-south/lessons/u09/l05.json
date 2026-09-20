@@ -10,7 +10,7 @@
     "fr": "Fixer un rendez-vous et t'excuser d'être en retard.",
     "en": "Set a meeting time and apologise for being late."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u09.l04"
   ],
@@ -20,7 +20,13 @@
     "c_som",
     "c_tre_late",
     "c_toi_arrive",
-    "c_luc"
+    "c_luc",
+    "s_hom_nay_thu_may",
+    "c_chu_nhat",
+    "s_thu_bay",
+    "s_thu_hai",
+    "c_thu",
+    "c_tuan"
   ],
   "steps": [
     {
@@ -135,6 +141,138 @@
         "fr": "tới monte : arriver.",
         "en": "tới rises: to arrive."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi_arrive",
+      "distractors": [
+        "gần",
+        "rảnh",
+        "xin"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_luc",
+      "distractors": [
+        "hiểu",
+        "tụi",
+        "cổ"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mình ___ lúc mấy giờ?",
+      "answer": "hẹn",
+      "options": [
+        "hẹn",
+        "hen",
+        "ho",
+        "bông"
+      ],
+      "translation": {
+        "fr": "On se donne rendez-vous à quelle heure ?",
+        "en": "What time shall we meet?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Xin lỗi, tôi tới ___.",
+      "answer": "trễ",
+      "options": [
+        "trễ",
+        "rồi",
+        "lầu",
+        "tiếc"
+      ],
+      "translation": {
+        "fr": "Désolé(e), je suis en retard.",
+        "en": "Sorry, I'm late."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi thường đi làm ___ bảy giờ sáng.",
+      "answer": "lúc",
+      "options": [
+        "lúc",
+        "hiểu",
+        "tụi",
+        "cổ"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi thường đi làm lúc bảy giờ sáng",
+      "tokens": [
+        "Tôi",
+        "thường",
+        "đi",
+        "làm",
+        "lúc",
+        "bảy",
+        "giờ",
+        "sáng"
+      ],
+      "translation": {
+        "fr": "D'habitude, je pars travailler à sept heures du matin.",
+        "en": "I usually go to work at seven in the morning."
+      },
+      "audioConcept": "c_luc"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hom_nay_thu_may",
+      "distractors": [
+        "Khi nào anh về?",
+        "Em nhắn rồi đó."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu_nhat",
+      "distractors": [
+        "xe ôm",
+        "bàn thờ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thu_bay",
+      "distractors": [
+        "tuần sau",
+        "thối tiền"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_thu_hai",
+      "distractors": [
+        "thịt heo",
+        "Không sao."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_thu",
+      "distractors": [
+        "tuổi",
+        "trước",
+        "nhanh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tuan",
+      "distractors": [
+        "tốt",
+        "đã",
+        "bán"
+      ]
     }
   ],
   "review": {

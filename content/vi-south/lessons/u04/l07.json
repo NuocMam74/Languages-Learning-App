@@ -11,7 +11,7 @@
     "fr": "Revoir les mots de la famille et les questions qui vont avec.",
     "en": "Go over family words and the questions that go with them."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u04.l06"
   ],
@@ -21,7 +21,12 @@
     "c_cau",
     "c_chong",
     "c_ngoai",
-    "s_ba_noi"
+    "s_ba_noi",
+    "s_nha_toi_co",
+    "c_ghe",
+    "c_meo",
+    "c_cho_dog",
+    "c_con_clf"
   ],
   "steps": [
     {
@@ -143,6 +148,148 @@
         "fr": "bà descend, nội tombe court.",
         "en": "bà falls, nội drops short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngoai",
+      "distractors": [
+        "chào",
+        "nhang",
+        "hồi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ba_noi",
+      "distractors": [
+        "sau Tết",
+        "Chào anh."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi_hai",
+      "distractors": [
+        "ngày xưa",
+        "giả sử"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chong",
+      "distractors": [
+        "bàn",
+        "lắm",
+        "chở"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Quê ___ tôi ở Bến Tre.",
+      "answer": "ngoại",
+      "options": [
+        "ngoại",
+        "chào",
+        "nhang",
+        "hồi"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi còn khỏe lắm.",
+      "answer": "bà nội",
+      "options": [
+        "bà nội",
+        "sau Tết",
+        "Chào anh.",
+        "Không sao."
+      ],
+      "translation": {
+        "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+        "en": "My paternal grandmother is still in great shape."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Quê ngoại tôi ở Bến Tre",
+      "tokens": [
+        "Quê",
+        "ngoại",
+        "tôi",
+        "ở",
+        "Bến",
+        "Tre"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      },
+      "audioConcept": "c_ngoai"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bà nội tôi còn khỏe lắm",
+      "tokens": [
+        "Bà",
+        "nội",
+        "tôi",
+        "còn",
+        "khỏe",
+        "lắm"
+      ],
+      "translation": {
+        "fr": "Ma grand-mère paternelle est encore en pleine forme.",
+        "en": "My paternal grandmother is still in great shape."
+      },
+      "audioConcept": "s_ba_noi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_toi_co",
+      "distractors": [
+        "Đừng khách sáo!",
+        "Mấy giờ rồi?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ghe",
+      "distractors": [
+        "gặp",
+        "sai",
+        "sắp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_meo",
+      "distractors": [
+        "con",
+        "visa",
+        "có"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_dog",
+      "distractors": [
+        "cho",
+        "đây",
+        "thuốc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_con_clf",
+      "distractors": [
+        "còn",
+        "tiệm",
+        "sớm"
+      ]
     },
     {
       "type": "game",

@@ -10,7 +10,7 @@
     "fr": "Demander quand, au futur et au passé.",
     "en": "Ask when, about future and past."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l03"
   ],
@@ -19,7 +19,13 @@
     "c_bao_gio_when",
     "s_khi_nao_anh_ve",
     "s_chung_nao",
-    "c_gio"
+    "c_gio",
+    "s_tai_sao_em_hoc",
+    "c_vi_because",
+    "s_sao_vay",
+    "c_tai_sao",
+    "c_sao_why",
+    "s_mon_nao_ngon"
   ],
   "steps": [
     {
@@ -131,6 +137,153 @@
         "fr": "nào et về descendent tous les deux.",
         "en": "nào and về both fall."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gio",
+      "distractors": [
+        "biết",
+        "nên",
+        "số"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_gio",
+      "distractors": [
+        "c_co_aunt",
+        "c_b_li_xi",
+        "c_anh_hai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ anh về quê?",
+      "answer": "khi nào",
+      "options": [
+        "khi nào",
+        "trái cây",
+        "lần đầu",
+        "xe ôm"
+      ],
+      "translation": {
+        "fr": "Quand est-ce que tu rentres au pays ? (à un homme un peu plus âgé)",
+        "en": "When are you going back to your hometown? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em chưa ___ ăn sầu riêng.",
+      "answer": "bao giờ",
+      "options": [
+        "bao giờ",
+        "máy bay",
+        "tại vì",
+        "giáo viên"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây ___ mấy giờ rồi?",
+      "answer": "giờ",
+      "options": [
+        "giờ",
+        "biết",
+        "nên",
+        "số"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em chưa bao giờ ăn sầu riêng",
+      "tokens": [
+        "Em",
+        "chưa",
+        "bao",
+        "giờ",
+        "ăn",
+        "sầu",
+        "riêng"
+      ],
+      "translation": {
+        "fr": "Je n'ai jamais mangé de durian.",
+        "en": "I've never eaten durian."
+      },
+      "audioConcept": "c_bao_gio_when"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bây giờ mấy giờ rồi",
+      "tokens": [
+        "Bây",
+        "giờ",
+        "mấy",
+        "giờ",
+        "rồi"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      },
+      "audioConcept": "c_gio"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tai_sao_em_hoc",
+      "distractors": [
+        "Con mời ba má ăn cơm.",
+        "Anh điền vô đơn này nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vi_because",
+      "distractors": [
+        "mua",
+        "bàn",
+        "kể"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_sao_vay",
+      "distractors": [
+        "thối tiền",
+        "thứ hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tai_sao",
+      "distractors": [
+        "du lịch",
+        "máy tính"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sao_why",
+      "distractors": [
+        "khám",
+        "ảnh",
+        "coi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mon_nao_ngon",
+      "distractors": [
+        "Tại sao vậy?",
+        "Tôi tên là…"
+      ]
     }
   ],
   "review": {

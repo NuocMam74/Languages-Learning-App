@@ -10,7 +10,7 @@
     "fr": "Demander si c'est loin et ce qu'il y a près d'ici.",
     "en": "Ask if it's far and what's nearby."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u10.l02"
   ],
@@ -21,7 +21,9 @@
     "c_cay_xang",
     "s_gan_day",
     "c_cho_market",
-    "c_cho_wait"
+    "c_cho_wait",
+    "c_day_here",
+    "c_san_bay"
   ],
   "steps": [
     {
@@ -139,6 +141,142 @@
         "fr": "gần = près. cần = avoir besoin, gắn = fixer.",
         "en": "gần = near. cần = to need, gắn = to attach."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_wait",
+      "distractors": [
+        "chở",
+        "chợ",
+        "trời"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_quan_ca_phe",
+      "distractors": [
+        "nón bảo hiểm",
+        "trạm xe buýt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cay_xang",
+      "distractors": [
+        "ước gì",
+        "chị hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chờ",
+        "chở",
+        "thường"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_market",
+      "distractors": [
+        "c_ca_phe",
+        "c_phong",
+        "c_anh_hai"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chợ có ___ hông?",
+      "answer": "gần đây",
+      "options": [
+        "gần đây",
+        "Hổng biết.",
+        "tuần sau",
+        "Dở quá!"
+      ],
+      "translation": {
+        "fr": "Le marché est près d'ici ?",
+        "en": "Is the market near here?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hôm nay tôi đi ___.",
+      "answer": "chợ",
+      "options": [
+        "chợ",
+        "chờ",
+        "chở",
+        "thường"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je vais au marché.",
+        "en": "Today I'm going to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em chút nha.",
+      "answer": "chờ",
+      "options": [
+        "chờ",
+        "chở",
+        "chợ",
+        "trời"
+      ],
+      "translation": {
+        "fr": "Attends-moi un peu, d'accord ?",
+        "en": "Wait for me a moment, okay?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hôm nay tôi đi chợ",
+      "tokens": [
+        "Hôm",
+        "nay",
+        "tôi",
+        "đi",
+        "chợ"
+      ],
+      "translation": {
+        "fr": "Aujourd'hui, je vais au marché.",
+        "en": "Today I'm going to the market."
+      },
+      "audioConcept": "c_cho_market"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chờ em chút nha",
+      "tokens": [
+        "Chờ",
+        "em",
+        "chút",
+        "nha"
+      ],
+      "translation": {
+        "fr": "Attends-moi un peu, d'accord ?",
+        "en": "Wait for me a moment, okay?"
+      },
+      "audioConcept": "c_cho_wait"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_day_here",
+      "distractors": [
+        "không",
+        "chích",
+        "chậm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_san_bay",
+      "distractors": [
+        "trường học",
+        "ước gì"
+      ]
     },
     {
       "type": "game",

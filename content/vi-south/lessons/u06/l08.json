@@ -11,7 +11,7 @@
     "fr": "Montrer que tu comprends et dis les nombres du quotidien.",
     "en": "Show you understand and say everyday numbers."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u06.l07"
   ],
@@ -23,7 +23,11 @@
     "s_anh_bao_nhieu_tuoi",
     "s_mot_tram_le_nam",
     "c_dien_thoai",
-    "c_chuc"
+    "c_chuc",
+    "c_goi",
+    "s_cho_em_xin_so",
+    "s_so_dien_thoai",
+    "c_le"
   ],
   "steps": [
     {
@@ -187,6 +191,103 @@
         "fr": "chục : la dizaine.",
         "en": "chục: a group of ten."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bay_seven",
+      "distractors": [
+        "alô",
+        "xong",
+        "hẻm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "em út",
+        "ước gì"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi có ___ con cá.",
+      "answer": "ba",
+      "options": [
+        "ba",
+        "bà",
+        "bả",
+        "chồng"
+      ],
+      "translation": {
+        "fr": "J'ai trois poissons.",
+        "en": "I have three fish."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Số ___ của chị là bao nhiêu?",
+      "answer": "điện thoại",
+      "options": [
+        "điện thoại",
+        "em út",
+        "ước gì",
+        "sân bay"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tôi có ba con cá",
+      "tokens": [
+        "Tôi",
+        "có",
+        "ba",
+        "con",
+        "cá"
+      ],
+      "translation": {
+        "fr": "J'ai trois poissons.",
+        "en": "I have three fish."
+      },
+      "audioConcept": "c_ba_three"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi",
+      "distractors": [
+        "gói",
+        "gỏi",
+        "vì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cho_em_xin_so",
+      "distractors": [
+        "Giả sử trúng số, anh làm gì?",
+        "Anh cho em nghỉ thứ sáu nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_so_dien_thoai",
+      "distractors": [
+        "Dễ thương quá!",
+        "Hổng có đâu!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_le",
+      "distractors": [
+        "quà",
+        "hết",
+        "chậm"
+      ]
     }
   ],
   "review": {

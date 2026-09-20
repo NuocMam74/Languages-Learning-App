@@ -10,7 +10,7 @@
     "fr": "Demander pourquoi et répondre avec vì.",
     "en": "Ask why and answer with vì."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u12.l02"
   ],
@@ -20,7 +20,16 @@
     "s_sao_vay",
     "c_vi_because",
     "s_tai_sao_em_hoc",
-    "c_hoc"
+    "c_hoc",
+    "s_mon_nao_ngon",
+    "s_nha_em_o_dau",
+    "s_cai_nao",
+    "c_nao_which",
+    "c_tra_loi",
+    "c_hoi_ask",
+    "s_em_an_gi",
+    "s_nguoi_do_la_ai",
+    "s_cai_gi_vay"
   ],
   "steps": [
     {
@@ -132,6 +141,128 @@
       "explain": {
         "fr": "sao plat, vậy tombe court.",
         "en": "sao level, vậy drops short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vi_because",
+      "distractors": [
+        "rưỡi",
+        "gì",
+        "giỡn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoc",
+      "distractors": [
+        "ho",
+        "nhanh",
+        "hổng"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tại ___ em học tiếng Việt?",
+      "answer": "sao",
+      "options": [
+        "sao",
+        "mợ",
+        "gọi",
+        "cần"
+      ],
+      "translation": {
+        "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
+        "en": "Why are you learning Vietnamese? (to someone younger)"
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mon_nao_ngon",
+      "distractors": [
+        "Đợi chút nha.",
+        "Anh ở đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nha_em_o_dau",
+      "distractors": [
+        "Anh làm nghề gì?",
+        "Chị có con không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cai_nao",
+      "distractors": [
+        "thối tiền",
+        "Hổng biết."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nao_which",
+      "distractors": [
+        "đụng",
+        "vé",
+        "người"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tra_loi",
+      "distractors": [
+        "tuần trước",
+        "gia đình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hoi_ask",
+      "distractors": [
+        "ba",
+        "hai",
+        "cười"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_an_gi",
+      "distractors": [
+        "Để anh trả.",
+        "Hẹn gặp lại."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_do_la_ai",
+      "distractors": [
+        "Chúc mừng hạnh phúc!",
+        "Em đã ăn rồi."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cai_gi_vay",
+      "distractors": [
+        "Anh thấy sao?",
+        "Bao nhiêu tiền?"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị lấy ___",
+      "answer": "Cái nào?",
+      "options": [
+        "Cái nào?",
+        "thối tiền",
+        "Hổng biết.",
+        "số nhà"
+      ],
+      "translation": {
+        "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",
+        "en": "Which one are you taking? (to a slightly older woman)"
       }
     }
   ],

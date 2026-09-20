@@ -129,6 +129,109 @@
       }
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_gio",
+      "distractors": [
+        "phút",
+        "lẻ",
+        "nào"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ruoi",
+      "distractors": [
+        "ngủ",
+        "bận",
+        "hay"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây ___ mấy giờ rồi?",
+      "answer": "giờ",
+      "options": [
+        "giờ",
+        "phút",
+        "lẻ",
+        "nào"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bảy giờ mười lăm ___.",
+      "answer": "phút",
+      "options": [
+        "phút",
+        "khác",
+        "há",
+        "dì"
+      ],
+      "translation": {
+        "fr": "Sept heures quinze.",
+        "en": "A quarter past seven."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "hai giờ ___",
+      "answer": "rưỡi",
+      "options": [
+        "rưỡi",
+        "ngủ",
+        "bận",
+        "hay"
+      ],
+      "translation": {
+        "fr": "deux heures et demie",
+        "en": "half past two"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Bảy giờ mười lăm phút",
+      "tokens": [
+        "Bảy",
+        "giờ",
+        "mười",
+        "lăm",
+        "phút"
+      ],
+      "translation": {
+        "fr": "Sept heures quinze.",
+        "en": "A quarter past seven."
+      },
+      "audioConcept": "c_phut"
+    },
+    {
+      "type": "build_sentence",
+      "target": "hai giờ rưỡi",
+      "tokens": [
+        "hai",
+        "giờ",
+        "rưỡi"
+      ],
+      "translation": {
+        "fr": "deux heures et demie",
+        "en": "half past two"
+      },
+      "audioConcept": "c_ruoi"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_gio",
+        "s_may_gio_roi",
+        "c_phut",
+        "s_bay_gio",
+        "c_ruoi"
+      ]
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

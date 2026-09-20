@@ -10,7 +10,7 @@
     "fr": "Distinguer tr et ch, et découvrir des mots du quotidien du Sud.",
     "en": "Tell tr from ch, and meet everyday southern words."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u02.l03"
   ],
@@ -22,7 +22,8 @@
     "c_che_dessert",
     "c_troi",
     "c_chut",
-    "c_nha_particle"
+    "c_nha_particle",
+    "c_ly"
   ],
   "steps": [
     {
@@ -134,6 +135,141 @@
         "fr": "ch simple, puis un ton qui tombe court et net.",
         "en": "Plain ch, then a tone that drops short and sharp."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_market",
+      "distractors": [
+        "chở",
+        "chờ",
+        "chục"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_troi",
+      "distractors": [
+        "đắng",
+        "và",
+        "ghe"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cho_wait",
+      "distractors": [
+        "chợ",
+        "chở",
+        "giá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_trai_fruit",
+      "distractors": [
+        "chưa",
+        "chỉ",
+        "ai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_che_dessert",
+      "distractors": [
+        "thím",
+        "nghen",
+        "giây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chut",
+      "distractors": [
+        "nói",
+        "nghe",
+        "quẹo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nha_particle",
+      "distractors": [
+        "nhà",
+        "đâu",
+        "cậu"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_cho_market",
+      "distractors": [
+        "c_vo",
+        "c_com",
+        "c_xe"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_troi",
+      "distractors": [
+        "c_banh_mi",
+        "c_chia_khoa",
+        "c_truong_hoc"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em xin ly ___.",
+      "answer": "trà",
+      "options": [
+        "trà",
+        "trả",
+        "trời",
+        "lầu"
+      ],
+      "translation": {
+        "fr": "Je voudrais un verre de thé.",
+        "en": "May I have a glass of tea?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ em chút nha.",
+      "answer": "chờ",
+      "options": [
+        "chờ",
+        "chợ",
+        "chở",
+        "giá"
+      ],
+      "translation": {
+        "fr": "Attends-moi un peu, d'accord ?",
+        "en": "Wait for me a moment, okay?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em xin ly trà",
+      "tokens": [
+        "Em",
+        "xin",
+        "ly",
+        "trà"
+      ],
+      "translation": {
+        "fr": "Je voudrais un verre de thé.",
+        "en": "May I have a glass of tea?"
+      },
+      "audioConcept": "c_tra_tea"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ly",
+      "distractors": [
+        "người",
+        "sẽ",
+        "gì"
+      ]
     }
   ],
   "review": {

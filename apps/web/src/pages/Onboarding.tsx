@@ -6,7 +6,7 @@ import { Screen } from "../components/ui.tsx";
 import type { Profile } from "../db.ts";
 import { Icon, ProgressBar, staggerStyle } from "../design/index.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
-import { DEFAULT_PROFILE, saveProfile } from "../learner.ts";
+import { DAILY_GOAL_CHOICES, DEFAULT_PROFILE, saveProfile } from "../learner.ts";
 import { playablePlacementFor } from "../packs/placement.ts";
 import { syncProfileChange } from "../profile-sync.ts";
 
@@ -35,7 +35,7 @@ const QUESTIONS = [
   q("motivation", "onboarding.why", ["family", "travel", "work", "roots", "curiosity"], (v) => t(`onboarding.why.${v}` as MessageKey)),
   q("entourage", "onboarding.who", ["nobody", "partner", "parents", "colleagues"], (v) => t(`onboarding.who.${v}` as MessageKey)),
   q("selfLevel", "onboarding.level", ["none", "words", "understand", "speak"], (v) => t(`onboarding.level.${v}` as MessageKey)),
-  q("dailyGoalMin", "onboarding.minutes", [5, 10, 15, 20], (v) => t("onboarding.minutes.value", { n: v })),
+  q("dailyGoalMin", "onboarding.minutes", [...DAILY_GOAL_CHOICES], (v) => t("onboarding.minutes.value", { n: v })),
   q("reminder", "onboarding.reminder", ["morning", "noon", "evening", "none"], (v) => t(`onboarding.reminder.${v}` as MessageKey)),
 ];
 

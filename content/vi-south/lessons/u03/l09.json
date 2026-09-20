@@ -11,7 +11,7 @@
     "fr": "Montrer que tu choisis le bon pronom selon l'âge.",
     "en": "Show you pick the right pronoun by age."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u03.l08"
   ],
@@ -198,6 +198,120 @@
       "explain": {
         "fr": "ổng = ông ấy, à l'oral du Sud.",
         "en": "ổng = ông ấy, in southern speech."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_con",
+      "distractors": [
+        "còn",
+        "đẹp",
+        "rút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_con_and",
+      "distractors": [
+        "con",
+        "món",
+        "thì"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "chỉ",
+        "thưa",
+        "thôi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi_she",
+      "distractors": [
+        "chị",
+        "ghé",
+        "trứng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_minh",
+      "distractors": [
+        "mợ",
+        "ký",
+        "người"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui_me",
+      "distractors": [
+        "tụi",
+        "nghỉ",
+        "trong"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui",
+      "distractors": [
+        "tui",
+        "thịt",
+        "trà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co_aunt",
+      "distractors": [
+        "cổ",
+        "lãnh",
+        "ghét"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bac",
+      "distractors": [
+        "học",
+        "gọi",
+        "hen"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_con",
+      "distractors": [
+        "c_nha_thuoc",
+        "c_sinh_vien",
+        "c_chong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chi",
+      "distractors": [
+        "c_chia_khoa",
+        "c_b_li_xi",
+        "c_may_lanh"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Dạ, con cảm ơn ___ ạ.",
+      "answer": "cô",
+      "options": [
+        "cô",
+        "cổ",
+        "lãnh",
+        "ghét"
+      ],
+      "translation": {
+        "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",
+        "en": "Thank you (very polite, to a woman your parents' age)."
       }
     }
   ],

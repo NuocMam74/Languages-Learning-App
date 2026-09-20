@@ -95,6 +95,123 @@
       "concept": "c_es_siete"
     },
     {
+      "type": "listen_pick_text",
+      "concept": "c_es_cuatro",
+      "distractors": [
+        "ocho",
+        "uno",
+        "tres"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_siete",
+      "distractors": [
+        "hola",
+        "soy",
+        "uno"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_nueve",
+      "distractors": [
+        "diez",
+        "gracias",
+        "tres"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_uno",
+      "distractors": [
+        "tres",
+        "cuatro",
+        "nueve"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_dos",
+      "distractors": [
+        "seis",
+        "cuatro",
+        "soy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_tres",
+      "distractors": [
+        "hola",
+        "adiós",
+        "tú"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_cinco",
+      "distractors": [
+        "ocho",
+        "soy",
+        "yo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_es_ocho",
+      "distractors": [
+        "yo",
+        "tú",
+        "soy"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_dos",
+      "distractors": [
+        "c_es_cuatro",
+        "c_es_uno",
+        "c_es_adios"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_tres",
+      "distractors": [
+        "c_es_gracias",
+        "c_es_dos",
+        "c_es_seis"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_cuatro",
+      "distractors": [
+        "c_es_yo",
+        "c_es_tres",
+        "c_es_gracias"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_seis",
+      "distractors": [
+        "c_es_hola",
+        "c_es_tu",
+        "c_es_dos"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_siete",
+      "distractors": [
+        "c_es_dos",
+        "c_es_adios",
+        "c_es_cuatro"
+      ]
+    },
+    {
       "type": "game",
       "game": "cho_noi",
       "conceptPool": "lesson"

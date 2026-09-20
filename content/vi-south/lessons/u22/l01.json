@@ -138,6 +138,97 @@
         "fr": "hồi descend, nhỏ plonge, quê plat.",
         "en": "hồi falls, nhỏ dips, quê level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_festival",
+      "distractors": [
+        "hồi",
+        "thích",
+        "anh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_back",
+      "distractors": [
+        "hội",
+        "sắp",
+        "mệt"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ngoại tôi ở Bến Tre.",
+      "answer": "quê",
+      "options": [
+        "quê",
+        "bàn",
+        "ngoại",
+        "chị"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Hồi nhỏ tui ở dưới quê gần sông",
+      "tokens": [
+        "Hồi",
+        "nhỏ",
+        "tui",
+        "ở",
+        "dưới",
+        "quê",
+        "gần",
+        "sông"
+      ],
+      "translation": {
+        "fr": "Quand j'étais petit, je vivais à la campagne, près du fleuve.",
+        "en": "As a child I lived in the countryside, near the river."
+      },
+      "audioConcept": "s_b_hoi_nho_tui_o_que"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Quê ngoại tôi ở Bến Tre",
+      "tokens": [
+        "Quê",
+        "ngoại",
+        "tôi",
+        "ở",
+        "Bến",
+        "Tre"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      },
+      "audioConcept": "c_que"
+    },
+    {
+      "type": "translate_to_fr",
+      "source": "Hồi nhỏ tui ở dưới quê, gần sông.",
+      "accepted": {
+        "fr": [
+          "Quand j'étais petit, je vivais à la campagne, près du fleuve."
+        ],
+        "en": [
+          "As a child I lived in the countryside, near the river."
+        ]
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_b_hoi_back",
+        "c_b_hoi_festival",
+        "c_b_hoi_nho",
+        "s_b_hoi_nho_tui_o_que",
+        "c_que"
+      ]
     }
   ],
   "review": {

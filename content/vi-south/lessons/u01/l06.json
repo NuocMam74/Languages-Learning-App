@@ -10,7 +10,7 @@
     "fr": "Reconnaître tes premiers mots de cuisine grâce aux tons.",
     "en": "Recognise your first food words by their tones."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u01.l05"
   ],
@@ -20,7 +20,14 @@
     "c_ga_chicken",
     "c_ga_station",
     "c_com",
-    "c_nuoc"
+    "c_nuoc",
+    "s_khong_phai",
+    "c_phai",
+    "c_hong",
+    "c_khong",
+    "c_co",
+    "s_hen_gap_lai",
+    "c_oi"
   ],
   "steps": [
     {
@@ -120,6 +127,139 @@
         "fr": "cơm est plat ; ferme bien les lèvres sur le m final.",
         "en": "cơm is level; close your lips on the final m."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ga_station",
+      "distractors": [
+        "gà",
+        "đặt",
+        "nhỏ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nuoc",
+      "distractors": [
+        "Tết",
+        "anh",
+        "khá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ca_fish",
+      "distractors": [
+        "ca",
+        "cà",
+        "cay"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ga_chicken",
+      "distractors": [
+        "ga",
+        "vậy",
+        "nên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_com",
+      "distractors": [
+        "chắc",
+        "bớt",
+        "to"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ca_eggplant",
+      "distractors": [
+        "c_troi",
+        "c_nuoc_mam",
+        "c_chuoi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ga_station",
+      "distractors": [
+        "c_heo",
+        "c_co_aunt",
+        "c_sach"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_nuoc",
+      "distractors": [
+        "c_sua_milk",
+        "c_b_may_tinh",
+        "c_ot"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_khong_phai",
+      "distractors": [
+        "tiền nước",
+        "người Việt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phai",
+      "distractors": [
+        "mươi",
+        "cơm",
+        "theo"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hong",
+      "distractors": [
+        "hổng",
+        "chua",
+        "mặn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khong",
+      "distractors": [
+        "lớn",
+        "rưỡi",
+        "hồi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co",
+      "distractors": [
+        "ngọt",
+        "sắp",
+        "sẽ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hen_gap_lai",
+      "distractors": [
+        "Còn phòng không?",
+        "Anh ở đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_oi",
+      "distractors": [
+        "gói",
+        "mè",
+        "ước"
+      ]
     },
     {
       "type": "game",

@@ -10,7 +10,7 @@
     "fr": "Reconnaître les pronoms « il, elle » de l'oral du Sud.",
     "en": "Recognise the southern spoken 'he, she' pronouns."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u03.l05"
   ],
@@ -146,6 +146,159 @@
       "explain": {
         "fr": "chỉ (elle) et chị (grande sœur) : même syllabe, ton différent.",
         "en": "chỉ (her) and chị (older sister): same syllable, different tone."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_she",
+      "distractors": [
+        "ba",
+        "bà",
+        "gỏi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co_she",
+      "distractors": [
+        "cô",
+        "bả",
+        "bông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong",
+      "distractors": [
+        "ổng",
+        "cổ",
+        "giây"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "bả",
+        "ba",
+        "tuần"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co_aunt",
+      "distractors": [
+        "cổ",
+        "đụng",
+        "chích"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_he",
+      "distractors": [
+        "ông",
+        "giữa",
+        "bên"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi_she",
+      "distractors": [
+        "chị",
+        "ồn",
+        "sợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "chỉ",
+        "mở",
+        "nhà"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ong",
+      "distractors": [
+        "c_b_cong_an",
+        "c_chong",
+        "c_to_bowl"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chi",
+      "distractors": [
+        "c_ben_phai",
+        "c_san_bay",
+        "c_phong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "c_xe_buyt",
+        "c_com_tam",
+        "c_sau_rieng"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_co_aunt",
+      "distractors": [
+        "c_xe_buyt",
+        "c_dia_plate",
+        "c_to_bowl"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ là ba tôi.",
+      "answer": "ổng",
+      "options": [
+        "ổng",
+        "ông",
+        "giữa",
+        "bên"
+      ],
+      "translation": {
+        "fr": "Lui, c'est mon père.",
+        "en": "He's my dad."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ là chị tôi.",
+      "answer": "chỉ",
+      "options": [
+        "chỉ",
+        "chị",
+        "ồn",
+        "sợ"
+      ],
+      "translation": {
+        "fr": "Elle, c'est ma grande sœur.",
+        "en": "She's my older sister."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Con chào ___.",
+      "answer": "ông",
+      "options": [
+        "ông",
+        "ổng",
+        "cổ",
+        "giây"
+      ],
+      "translation": {
+        "fr": "Bonjour (à un homme âgé).",
+        "en": "Hello (to an elderly man)."
       }
     },
     {

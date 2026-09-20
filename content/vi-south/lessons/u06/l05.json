@@ -10,7 +10,7 @@
     "fr": "Dire les centaines et les milliers à la manière du Sud.",
     "en": "Say hundreds and thousands the southern way."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u06.l04"
   ],
@@ -19,7 +19,17 @@
     "c_ngan",
     "c_le",
     "s_mot_tram_le_nam",
-    "c_chuc"
+    "c_chuc",
+    "s_bang_tuoi",
+    "c_nam_nay",
+    "s_anh_bao_nhieu_tuoi",
+    "c_bao_nhieu",
+    "c_lop",
+    "s_hai_muoi_mot",
+    "s_muoi_lam",
+    "c_lam_five",
+    "c_mot_high",
+    "c_muoi_tens"
   ],
   "steps": [
     {
@@ -123,6 +133,114 @@
         "fr": "trăm plat, lẻ plonge, năm plat.",
         "en": "trăm level, lẻ dips, năm level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_le",
+      "distractors": [
+        "con",
+        "kể",
+        "ớt"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Một ___ lẻ năm.",
+      "answer": "trăm",
+      "options": [
+        "trăm",
+        "họp",
+        "rảnh",
+        "tháng"
+      ],
+      "translation": {
+        "fr": "Cent cinq.",
+        "en": "One hundred and five."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bang_tuoi",
+      "distractors": [
+        "tụi mình",
+        "nửa ký"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_nay",
+      "distractors": [
+        "bánh mì",
+        "điền đơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_anh_bao_nhieu_tuoi",
+      "distractors": [
+        "Em nhắn rồi đó.",
+        "Giữ sức khỏe nha."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bao_nhieu",
+      "distractors": [
+        "kế bên",
+        "trúng số"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lop",
+      "distractors": [
+        "hẻm",
+        "giùm",
+        "dừa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hai_muoi_mot",
+      "distractors": [
+        "Hổng có đâu!",
+        "Anh khỏe không?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_muoi_lam",
+      "distractors": [
+        "sau Tết",
+        "mấy ngày"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam_five",
+      "distractors": [
+        "lắm",
+        "dượng",
+        "bắp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_high",
+      "distractors": [
+        "một",
+        "chích",
+        "vậy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_tens",
+      "distractors": [
+        "mười",
+        "ma",
+        "tới"
+      ]
     }
   ],
   "review": {

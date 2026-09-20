@@ -10,7 +10,7 @@
     "fr": "Demander et envoyer un message.",
     "en": "Ask for and send a message."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u15.l02"
   ],
@@ -20,7 +20,13 @@
     "s_nhan_zalo",
     "s_em_nhan_roi",
     "c_dien_thoai",
-    "c_sach"
+    "c_sach",
+    "c_ban_busy",
+    "s_em_dang_ban",
+    "c_goi_lai",
+    "c_lat",
+    "s_goi_lai_nha",
+    "c_b_ne"
   ],
   "steps": [
     {
@@ -137,6 +143,126 @@
         "fr": "nhắn monte, nha plat.",
         "en": "nhắn rises, nha level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "xin lỗi",
+        "giả sử"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sach",
+      "distractors": [
+        "sớm",
+        "chưa",
+        "giá"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_dien_thoai",
+      "distractors": [
+        "c_thuoc_medicine",
+        "c_nha_ve_sinh",
+        "c_rau"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_sach",
+      "distractors": [
+        "c_ngan_hang",
+        "c_sau_rieng",
+        "c_toi_evening"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Số ___ của chị là bao nhiêu?",
+      "answer": "điện thoại",
+      "options": [
+        "điện thoại",
+        "xin lỗi",
+        "giả sử",
+        "tăng ca"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Số điện thoại của chị là bao nhiêu",
+      "tokens": [
+        "Số",
+        "điện",
+        "thoại",
+        "của",
+        "chị",
+        "là",
+        "bao",
+        "nhiêu"
+      ],
+      "translation": {
+        "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
+        "en": "What's your phone number? (to a slightly older woman)"
+      },
+      "audioConcept": "c_dien_thoai"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_busy",
+      "distractors": [
+        "dượng",
+        "tuần",
+        "trà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_em_dang_ban",
+      "distractors": [
+        "Anh giỡn hoài!",
+        "Anh ở đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_goi_lai",
+      "distractors": [
+        "văn phòng",
+        "xe hơi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lat",
+      "distractors": [
+        "ngoại",
+        "nhang",
+        "sai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_goi_lai_nha",
+      "distractors": [
+        "Em muốn mở tài khoản.",
+        "Em là nhân viên mới."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ne",
+      "distractors": [
+        "gì",
+        "vì",
+        "thưa"
+      ]
     }
   ],
   "review": {

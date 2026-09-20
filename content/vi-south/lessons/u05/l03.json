@@ -10,7 +10,7 @@
     "fr": "Dire où tu vis et depuis quand tu es au Vietnam.",
     "en": "Say where you live and that you just arrived in Vietnam."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u05.l02"
   ],
@@ -20,7 +20,13 @@
     "c_moi_just",
     "c_thanh_pho",
     "s_anh_o_dau",
-    "c_moi"
+    "c_moi",
+    "c_viet_kieu",
+    "s_nguoi_nuoc_nao",
+    "s_nguoi_viet",
+    "s_nguoi_phap",
+    "c_phap",
+    "c_nguoi"
   ],
   "steps": [
     {
@@ -149,6 +155,143 @@
         "fr": "anh plat, ở plonge, đâu reste plat.",
         "en": "anh level, ở dips, đâu stays level."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_qua_come",
+      "distractors": [
+        "quá",
+        "quà",
+        "chiều"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi_just",
+      "distractors": [
+        "mời",
+        "dở",
+        "hẻm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_moi",
+      "distractors": [
+        "mới",
+        "sẽ",
+        "dượng"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ ở Paris.",
+      "answer": "sống",
+      "options": [
+        "sống",
+        "sông",
+        "rau",
+        "chua"
+      ],
+      "translation": {
+        "fr": "J'habite à Paris.",
+        "en": "I live in Paris."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ở ___ nào?",
+      "answer": "thành phố",
+      "options": [
+        "thành phố",
+        "kế bên",
+        "bánh mì",
+        "ông bà"
+      ],
+      "translation": {
+        "fr": "Tu habites dans quelle ville ? (à un homme un peu plus âgé)",
+        "en": "Which city do you live in? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ bác uống trà.",
+      "answer": "mời",
+      "options": [
+        "mời",
+        "mới",
+        "sẽ",
+        "dượng"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mời bác uống trà",
+      "tokens": [
+        "Mời",
+        "bác",
+        "uống",
+        "trà"
+      ],
+      "translation": {
+        "fr": "Je vous en prie, prenez du thé (à un aîné).",
+        "en": "Please have some tea (to an elder)."
+      },
+      "audioConcept": "c_moi"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_viet_kieu",
+      "distractors": [
+        "phòng ngủ",
+        "hồi nãy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_nuoc_nao",
+      "distractors": [
+        "Nè, coi cái này nè!",
+        "Em là nhân viên mới."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_viet",
+      "distractors": [
+        "Đúng rồi!",
+        "Thiệt há?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_nguoi_phap",
+      "distractors": [
+        "Cũng được.",
+        "bao lâu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_phap",
+      "distractors": [
+        "ký",
+        "chè",
+        "thêm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nguoi",
+      "distractors": [
+        "cần",
+        "hổng",
+        "mua"
+      ]
     }
   ],
   "review": {

@@ -10,7 +10,7 @@
     "fr": "Parler de la circulation et de la sécurité.",
     "en": "Talk about traffic and safety."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u11.l05"
   ],
@@ -20,7 +20,13 @@
     "s_ket_xe_qua",
     "c_can_than",
     "c_doi_wear",
-    "c_vo_into"
+    "c_vo_into",
+    "c_cham",
+    "c_nhanh",
+    "c_mat",
+    "s_bao_lau",
+    "c_ve_ticket",
+    "c_tram_xe_buyt"
   ],
   "steps": [
     {
@@ -136,6 +142,114 @@
         "fr": "cẩn plonge, thận tombe court.",
         "en": "cẩn dips, thận drops short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_non_bao_hiem",
+      "distractors": [
+        "anh chị em",
+        "quán cà phê"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_doi_wear",
+      "distractors": [
+        "hồi",
+        "hơi",
+        "tốt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_vo_into",
+      "distractors": [
+        "trẻ",
+        "tiền",
+        "bên"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh đội ___ vô nha.",
+      "answer": "nón bảo hiểm",
+      "options": [
+        "nón bảo hiểm",
+        "anh chị em",
+        "quán cà phê",
+        "nhà vệ sinh"
+      ],
+      "translation": {
+        "fr": "Mets ton casque, d'accord ? (à un homme un peu plus âgé)",
+        "en": "Put your helmet on, okay? (to a slightly older man)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Giờ này ___ lắm.",
+      "answer": "kẹt xe",
+      "options": [
+        "kẹt xe",
+        "đèn đỏ",
+        "cơm tấm",
+        "máy tính"
+      ],
+      "translation": {
+        "fr": "À cette heure-ci, ça bouchonne beaucoup.",
+        "en": "At this time of day the traffic is bad."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cham",
+      "distractors": [
+        "trứng",
+        "chị",
+        "lần"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nhanh",
+      "distractors": [
+        "ghé",
+        "thơm",
+        "chỉ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mat",
+      "distractors": [
+        "năm",
+        "thì",
+        "xoài"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bao_lau",
+      "distractors": [
+        "thứ hai",
+        "Hổng biết."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ve_ticket",
+      "distractors": [
+        "cà",
+        "mà",
+        "phở"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tram_xe_buyt",
+      "distractors": [
+        "nón bảo hiểm",
+        "anh chị em"
+      ]
     }
   ],
   "review": {

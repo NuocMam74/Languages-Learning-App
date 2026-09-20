@@ -11,7 +11,7 @@
     "fr": "Revoir les repères du passé et les liens du récit.",
     "en": "Go over past-time markers and story links."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u22.l06"
   ],
@@ -144,6 +144,126 @@
         "fr": "sau plat, Pháp monte.",
         "en": "sau level, Pháp rises."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_troi",
+      "distractors": [
+        "bò",
+        "khỏe",
+        "mình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi_evening",
+      "distractors": [
+        "tôi",
+        "sau",
+        "rút"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_festival",
+      "distractors": [
+        "hồi",
+        "đau",
+        "ông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_lan",
+      "distractors": [
+        "thưa",
+        "mười",
+        "dĩa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_b_sau_do_tui_qua_phap",
+      "distractors": [
+        "Em muốn mở tài khoản.",
+        "Nè, coi cái này nè!"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_back",
+      "distractors": [
+        "hội",
+        "cậu",
+        "thêm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_rain",
+      "distractors": [
+        "ít",
+        "tuần",
+        "phường"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_nho",
+      "distractors": [
+        "Việt kiều",
+        "chuyển khoản"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_hoi_do",
+      "distractors": [
+        "Việt kiều",
+        "tại sao"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_ngay_xua",
+      "distractors": [
+        "tăng ca",
+        "nghỉ phép"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_luc_do",
+      "distractors": [
+        "phong bì",
+        "tạm trú"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_b_sau_do",
+      "distractors": [
+        "tài khoản",
+        "sầu riêng"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_troi",
+      "distractors": [
+        "c_ben_phai",
+        "c_tin_nhan",
+        "c_chuoi"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_toi_evening",
+      "distractors": [
+        "c_giuong",
+        "c_b_visa",
+        "c_ga_chicken"
+      ]
     },
     {
       "type": "game",

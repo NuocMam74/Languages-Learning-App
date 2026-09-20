@@ -10,7 +10,7 @@
     "fr": "Situer un lieu : à gauche, à droite, à côté, en face.",
     "en": "Place something: left, right, next to, opposite."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u10.l03"
   ],
@@ -18,7 +18,14 @@
     "c_ben_trai",
     "c_ben_phai",
     "c_ke_ben",
-    "c_doi_dien"
+    "c_doi_dien",
+    "s_gan_day",
+    "c_cay_xang",
+    "c_quan_ca_phe",
+    "s_co_xa_khong",
+    "c_gan",
+    "c_day_here",
+    "c_san_bay"
   ],
   "steps": [
     {
@@ -126,6 +133,143 @@
         "fr": "bên plat, phải plonge.",
         "en": "bên level, phải dips."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ben_trai",
+      "distractors": [
+        "trường học",
+        "chị hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ben_phai",
+      "distractors": [
+        "bao giờ",
+        "trái cây"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Ngân hàng ở ___.",
+      "answer": "bên trái",
+      "options": [
+        "bên trái",
+        "trường học",
+        "chị hai",
+        "cà phê"
+      ],
+      "translation": {
+        "fr": "La banque est à gauche.",
+        "en": "The bank is on the left."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Quán cà phê ở ___ chợ.",
+      "answer": "kế bên",
+      "options": [
+        "kế bên",
+        "đối diện",
+        "dễ thương",
+        "anh hai"
+      ],
+      "translation": {
+        "fr": "Le café est à côté du marché.",
+        "en": "The café is next to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Cây xăng ở ___ ngân hàng.",
+      "answer": "đối diện",
+      "options": [
+        "đối diện",
+        "gọi lại",
+        "ngày sinh",
+        "khách sạn"
+      ],
+      "translation": {
+        "fr": "La station-service est en face de la banque.",
+        "en": "The petrol station is opposite the bank."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Cây xăng ở đối diện ngân hàng",
+      "tokens": [
+        "Cây",
+        "xăng",
+        "ở",
+        "đối",
+        "diện",
+        "ngân",
+        "hàng"
+      ],
+      "translation": {
+        "fr": "La station-service est en face de la banque.",
+        "en": "The petrol station is opposite the bank."
+      },
+      "audioConcept": "c_doi_dien"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_gan_day",
+      "distractors": [
+        "ông ngoại",
+        "thứ bảy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cay_xang",
+      "distractors": [
+        "địa chỉ",
+        "đèn đỏ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_quan_ca_phe",
+      "distractors": [
+        "anh chị em",
+        "trạm xe buýt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_co_xa_khong",
+      "distractors": [
+        "Em đi đâu?",
+        "Cũng khá ngon."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gan",
+      "distractors": [
+        "giỡn",
+        "hay",
+        "sếp"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_day_here",
+      "distractors": [
+        "giờ",
+        "ngoại",
+        "anh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_san_bay",
+      "distractors": [
+        "năm ngoái",
+        "cà phê"
+      ]
     },
     {
       "type": "game",

@@ -10,7 +10,7 @@
     "fr": "Dire que c'est cher et demander une réduction.",
     "en": "Say it's expensive and ask for a discount."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u08.l01"
   ],
@@ -19,7 +19,12 @@
     "c_qua_too",
     "s_mac_qua",
     "c_bot",
-    "s_bot_cho_em"
+    "s_bot_cho_em",
+    "c_dong",
+    "s_cai_nay_bao_nhieu",
+    "c_nay",
+    "c_ban_sell",
+    "c_mua_buy"
   ],
   "steps": [
     {
@@ -226,6 +231,148 @@
         "fr": "bớt monte, cho et em plats, đi plat, chị tombe court.",
         "en": "bớt rises, cho and em level, đi level, chị drops short."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_bot_cho_em",
+      "distractors": [
+        "Tui muốn gia hạn visa.",
+        "Nhà em có mấy người?"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mắc ___, bớt cho em đi chị.",
+      "answer": "quá",
+      "options": [
+        "quá",
+        "quà",
+        "qua",
+        "dừa"
+      ],
+      "translation": {
+        "fr": "C'est trop cher, fais-moi un prix.",
+        "en": "It's too expensive, give me a discount."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dong",
+      "distractors": [
+        "mấy",
+        "đang",
+        "ghét"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_cai_nay_bao_nhieu",
+      "distractors": [
+        "Giữ sức khỏe nha.",
+        "Chị làm ở đâu?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nay",
+      "distractors": [
+        "thôi",
+        "giả",
+        "thưởng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_sell",
+      "distractors": [
+        "bạn",
+        "bàn",
+        "ồn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mua_buy",
+      "distractors": [
+        "tụi",
+        "chục",
+        "to"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Mười lăm ngàn ___.",
+      "answer": "đồng",
+      "options": [
+        "đồng",
+        "mấy",
+        "đang",
+        "ghét"
+      ],
+      "translation": {
+        "fr": "Quinze mille đồng.",
+        "en": "Fifteen thousand đồng."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị bán ___",
+      "answer": "Cái này bao nhiêu?",
+      "options": [
+        "Cái này bao nhiêu?",
+        "Giữ sức khỏe nha.",
+        "Chị làm ở đâu?",
+        "Em mắc cỡ quá."
+      ],
+      "translation": {
+        "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
+        "en": "How much are you selling this for? (to a slightly older saleswoman)"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "cái ___",
+      "answer": "này",
+      "options": [
+        "này",
+        "thôi",
+        "giả",
+        "thưởng"
+      ],
+      "translation": {
+        "fr": "ceci, cet objet-ci",
+        "en": "this one"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chị ___ cái này bao nhiêu?",
+      "answer": "bán",
+      "options": [
+        "bán",
+        "bạn",
+        "bàn",
+        "ồn"
+      ],
+      "translation": {
+        "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
+        "en": "How much are you selling this for? (to a slightly older saleswoman)"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Mười lăm ngàn đồng",
+      "tokens": [
+        "Mười",
+        "lăm",
+        "ngàn",
+        "đồng"
+      ],
+      "translation": {
+        "fr": "Quinze mille đồng.",
+        "en": "Fifteen thousand đồng."
+      },
+      "audioConcept": "c_dong"
     }
   ],
   "review": {

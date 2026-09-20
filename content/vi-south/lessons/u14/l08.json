@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais dire ce que tu aimes et ce que tu penses.",
     "en": "Show you can say what you like and think."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u14.l07"
   ],
@@ -187,6 +187,150 @@
         "fr": "vậy tombe court, hả plonge : ton surpris.",
         "en": "vậy drops short, hả dips: a surprised tone."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_bad",
+      "distractors": [
+        "dơ",
+        "giấy",
+        "cà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_do_dirty",
+      "distractors": [
+        "dở",
+        "này",
+        "bệnh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dep",
+      "distractors": [
+        "cái",
+        "bốn",
+        "hơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_vay_ha",
+      "distractors": [
+        "tuần trước",
+        "Cũng được."
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em có ___ phở hông?",
+      "answer": "thích",
+      "options": [
+        "thích",
+        "tụi",
+        "thuê",
+        "sớm"
+      ],
+      "translation": {
+        "fr": "Tu aimes le phở ?",
+        "en": "Do you like phở?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Món này hơi ___.",
+      "answer": "dở",
+      "options": [
+        "dở",
+        "dơ",
+        "giấy",
+        "cà"
+      ],
+      "translation": {
+        "fr": "Ce plat n'est pas terrible.",
+        "en": "This dish isn't great."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ Em cũng thích phở.",
+      "answer": "Vậy hả?",
+      "options": [
+        "Vậy hả?",
+        "tuần trước",
+        "Cũng được.",
+        "bà nội"
+      ],
+      "translation": {
+        "fr": "Ah bon ? Moi aussi j'aime le phở.",
+        "en": "Really? I like phở too."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Em có thích phở hông",
+      "tokens": [
+        "Em",
+        "có",
+        "thích",
+        "phở",
+        "hông"
+      ],
+      "translation": {
+        "fr": "Tu aimes le phở ?",
+        "en": "Do you like phở?"
+      },
+      "audioConcept": "c_thich"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Món này hơi dở",
+      "tokens": [
+        "Món",
+        "này",
+        "hơi",
+        "dở"
+      ],
+      "translation": {
+        "fr": "Ce plat n'est pas terrible.",
+        "en": "This dish isn't great."
+      },
+      "audioConcept": "c_do_bad"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tui thấy phim này hay",
+      "tokens": [
+        "Tui",
+        "thấy",
+        "phim",
+        "này",
+        "hay"
+      ],
+      "translation": {
+        "fr": "Je trouve ce film bien.",
+        "en": "I think this film is good."
+      },
+      "audioConcept": "s_tui_thay"
+    },
+    {
+      "type": "build_sentence",
+      "target": "Vậy hả Em cũng thích phở",
+      "tokens": [
+        "Vậy",
+        "hả",
+        "Em",
+        "cũng",
+        "thích",
+        "phở"
+      ],
+      "translation": {
+        "fr": "Ah bon ? Moi aussi j'aime le phở.",
+        "en": "Really? I like phở too."
+      },
+      "audioConcept": "s_vay_ha"
     }
   ],
   "review": {

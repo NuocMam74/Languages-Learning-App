@@ -11,7 +11,7 @@
     "fr": "Montrer que tu sais parler de l'heure, des jours et des horaires.",
     "en": "Show you can talk about time, days and schedules."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u09.l07"
   ],
@@ -197,6 +197,124 @@
         "fr": "rưỡi : ngã, comme un hỏi au Sud.",
         "en": "rưỡi: ngã, like hỏi in the South."
       }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ruoi",
+      "distractors": [
+        "khác",
+        "cho",
+        "chợ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gio",
+      "distractors": [
+        "đợi",
+        "cơm",
+        "đầu"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_dem",
+      "distractors": [
+        "thưởng",
+        "rưỡi",
+        "ở"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Bây ___ mấy giờ rồi?",
+      "answer": "giờ",
+      "options": [
+        "giờ",
+        "đợi",
+        "cơm",
+        "đầu"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ mấy giờ rồi?",
+      "answer": "bây giờ",
+      "options": [
+        "bây giờ",
+        "Mệt quá!",
+        "tụi mình",
+        "Thích lắm!"
+      ],
+      "translation": {
+        "fr": "Quelle heure est-il ?",
+        "en": "What time is it?"
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tôi đi chợ.",
+      "answer": "ngày mai",
+      "options": [
+        "ngày mai",
+        "họ hàng",
+        "chút xíu",
+        "bệnh viện"
+      ],
+      "translation": {
+        "fr": "Demain, je vais au marché.",
+        "en": "Tomorrow I'm going to the market."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Chiều nay tôi về ___.",
+      "answer": "sớm",
+      "options": [
+        "sớm",
+        "trời",
+        "nhờ",
+        "mặn"
+      ],
+      "translation": {
+        "fr": "Cet après-midi, je rentre tôt.",
+        "en": "This afternoon I'm going home early."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "hai giờ ___",
+      "answer": "rưỡi",
+      "options": [
+        "rưỡi",
+        "khác",
+        "cho",
+        "chợ"
+      ],
+      "translation": {
+        "fr": "deux heures et demie",
+        "en": "half past two"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Ngày mai tôi đi chợ",
+      "tokens": [
+        "Ngày",
+        "mai",
+        "tôi",
+        "đi",
+        "chợ"
+      ],
+      "translation": {
+        "fr": "Demain, je vais au marché.",
+        "en": "Tomorrow I'm going to the market."
+      },
+      "audioConcept": "c_ngay_mai"
     }
   ],
   "review": {

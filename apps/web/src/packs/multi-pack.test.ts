@@ -130,7 +130,7 @@ describe("deux langues sur le même appareil", () => {
     expect(await isOnboarded("es")).toBe(false);
     expect((await getProfile()).onboardedAt).toBeNull();
     expect(await getTotals()).toMatchObject({ xp: 0 });
-    await saveProfile({ ...DEFAULT_PROFILE, dailyGoalMin: 5, onboardedAt: new Date().toISOString() });
+    await saveProfile({ ...DEFAULT_PROFILE, dailyGoalMin: 10, onboardedAt: new Date().toISOString() });
     const esRecap = await finishSession(es, await openSession(es, { source: "lesson", lessonId: "es.u01.l01" }));
     expect(esRecap.firstLesson).toBe(true);
     expect(esRecap.badges).toEqual(["first_lesson"]);
