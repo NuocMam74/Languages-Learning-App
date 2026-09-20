@@ -19,7 +19,8 @@
     "c_benh_vien",
     "c_chua_pagoda",
     "c_cong_vien",
-    "c_ngan_hang"
+    "c_ngan_hang",
+    "c_nha_ve_sinh"
   ],
   "steps": [
     {
@@ -137,7 +138,8 @@
       "c_benh_vien",
       "c_chua_pagoda",
       "c_cong_vien",
-      "c_ngan_hang"
+      "c_ngan_hang",
+      "c_nha_ve_sinh"
     ]
   },
   "reviewed": false

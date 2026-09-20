@@ -21,7 +21,8 @@
     "c_met",
     "s_met_qua",
     "s_nhuc_dau",
-    "s_dau_bung"
+    "s_dau_bung",
+    "c_voi"
   ],
   "steps": [
     {
@@ -137,7 +138,8 @@
       "c_ho_cough",
       "s_bi_sot",
       "c_met",
-      "s_met_qua"
+      "s_met_qua",
+      "c_voi"
     ]
   },
   "reviewed": false

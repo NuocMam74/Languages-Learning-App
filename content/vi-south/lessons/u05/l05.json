@@ -19,7 +19,8 @@
     "c_cong_ty",
     "c_van_phong",
     "s_chi_lam_o_dau",
-    "c_danh_thiep"
+    "c_danh_thiep",
+    "c_cho_for"
   ],
   "steps": [
     {
@@ -144,7 +145,8 @@
       "c_cong_ty",
       "c_van_phong",
       "s_chi_lam_o_dau",
-      "c_danh_thiep"
+      "c_danh_thiep",
+      "c_cho_for"
     ]
   },
   "reviewed": false

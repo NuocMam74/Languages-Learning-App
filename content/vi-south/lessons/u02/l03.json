@@ -20,7 +20,8 @@
     "c_song_river",
     "c_xa_far",
     "c_xin",
-    "c_sach"
+    "c_sach",
+    "c_ly"
   ],
   "steps": [
     {
@@ -131,7 +132,8 @@
       "c_song_river",
       "c_xa_far",
       "c_xin",
-      "c_sach"
+      "c_sach",
+      "c_ly"
     ]
   },
   "reviewed": false

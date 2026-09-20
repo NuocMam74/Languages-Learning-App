@@ -146,7 +146,9 @@
       "c_b_gia_price",
       "c_b_ve_so",
       "c_b_trung_so",
-      "s_b_gia_su_trung_so"
+      "s_b_gia_su_trung_so",
+      "s_b_neu_co_tien",
+      "c_b_du_lich"
     ]
   },
   "reviewed": false

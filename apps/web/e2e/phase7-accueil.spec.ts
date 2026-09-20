@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test, type Page, type Route } from "@playwright/test";
-import { onboard, playUntil } from "./helpers.ts";
+import { dismissCelebrations, onboard, playUntil, skipBriefing } from "./helpers.ts";
 
 /**
  * Contrat phase7-accueil : l'app n'est plus « une langue », c'est un compte qui apprend des langues.
@@ -144,12 +144,17 @@ test("progression : reprise, compteurs, profil mis à jour, navigation basse mas
   await mockGuest(page);
   await onboard(page);
 
-  // Navigation basse masquée pendant la séance (contrat §1).
+  // Navigation basse masquée pendant la séance (contrat §1). La leçon s'ouvre d'abord sur sa
+  // préparation (contrat phase10 §1) : on la traverse pour atteindre l'écran d'exercice.
+  await skipBriefing(page);
   await expect(page.locator('[data-testid="lesson"]')).toBeVisible();
   await expect(page.getByTestId("bottom-nav")).toHaveCount(0);
 
   await playUntil(page, /^Leçon terminée$/);
   await expect(page.getByTestId("bottom-nav")).toHaveCount(0);
+  // Une leçon terminée déclenche ses récompenses : leurs cartes couvrent l'écran et
+  // interceptent tout clic tant qu'on ne les a pas refermées.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
   await expect(page).toHaveURL(/\/apprendre$/);
   await expect(page.getByTestId("bottom-nav")).toBeVisible();
@@ -197,7 +202,13 @@ test("progression : reprise, compteurs, profil mis à jour, navigation basse mas
   await expect(page.getByTestId("profile-avatar")).toHaveText("MA");
   await page.goto("/");
   await expect(page.getByTestId("dashboard-header")).toContainText("Mai Anh");
-  await expect(page.getByTestId("dashboard-avatar")).toHaveText("MA");
+  // Sur l'accueil, le personnage remplace les initiales dès qu'il porte quelque chose (contrat
+  // phase9 §4) — et il porte la tenue par défaut d'emblée. On vérifie donc le médaillon lui-même :
+  // présent, nommé, et menant au profil. Le nom, lui, est vérifié juste au-dessus.
+  const medallion = page.getByTestId("dashboard-avatar");
+  await expect(medallion).toBeVisible();
+  await expect(medallion.locator("svg").first()).toBeVisible();
+  await expect(medallion).toHaveAttribute("href", "/profil");
 });
 
 test("changer de langue depuis l'accueil : /apprendre avec les données de cette langue", async ({ page }) => {
@@ -205,6 +216,9 @@ test("changer de langue depuis l'accueil : /apprendre avec les données de cette
   await mockGuest(page);
   await onboard(page);
   await playUntil(page, /^Leçon terminée$/);
+  // Une leçon terminée déclenche ses récompenses : leurs cartes couvrent l'écran et
+  // interceptent tout clic tant qu'on ne les a pas refermées.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
   await expect(page.getByTestId("hub-pack")).toHaveText(viName);
   const viXp = (await page.getByText(/^\d+ XP$/).textContent()) ?? "";
@@ -222,6 +236,7 @@ test("changer de langue depuis l'accueil : /apprendre avec les données de cette
   await expect(page).toHaveURL(/\/(apprendre|onboarding)$/);
   if (new URL(page.url()).pathname === "/onboarding") {
     for (let i = 0; i < 5; i++) await page.locator("main button").first().click();
+    await skipBriefing(page);
     await expect(page.locator('[data-testid="lesson"]')).toBeVisible({ timeout: 30_000 });
     await page.getByRole("button", { name: "Quitter la leçon" }).click();
   }
@@ -230,12 +245,16 @@ test("changer de langue depuis l'accueil : /apprendre avec les données de cette
   await expect(page.getByText("0 XP", { exact: true })).toBeVisible();
 
   // Lien profond vers une leçon de l'autre langue : confirmation, bascule, puis la leçon (contrat §1).
-  await page.goto("/lecon/vi-south.u01.l02");
+  // On vise la leçon **déjà terminée** : depuis le contrat phase10 §3, la suivante ne s'ouvre qu'une
+  // fois celle-ci réussie, et ce test répond au hasard — le lien y serait ouvert une fois sur deux.
+  // Ce qu'on vérifie ici est la bascule de langue, pas le déverrouillage.
+  await page.goto("/lecon/vi-south.u01.l01");
   const prompt = page.getByTestId("deeplink-prompt");
   await expect(prompt).toBeVisible();
   await expect(prompt).toHaveAttribute("data-pack", "vi-south");
   await expect(prompt).toContainText(viName);
   await page.getByTestId("deeplink-confirm").click();
+  await skipBriefing(page);
   await expect(page.locator('[data-testid="lesson"]')).toBeVisible({ timeout: 60_000 });
   await page.getByRole("button", { name: "Quitter la leçon" }).click();
   await expect(page.getByTestId("hub-pack")).toHaveText(viName);
@@ -261,6 +280,9 @@ test("compte connecté : l'accueil et le profil montrent la progression restaur�
   await page.getByLabel("Mot de passe").fill("mot-de-passe-solide");
   await page.getByRole("button", { name: "Se connecter" }).click();
   await expect(page.getByRole("heading", { name: "Te revoilà" })).toBeVisible();
+  // Une leçon terminée déclenche ses récompenses : leurs cartes couvrent l'écran et
+  // interceptent tout clic tant qu'on ne les a pas refermées.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
   await expect(page).toHaveURL(/\/apprendre$/);
 
@@ -271,7 +293,7 @@ test("compte connecté : l'accueil et le profil montrent la progression restaur�
   await expect(totals).toContainText("350 XP");
   await expect(totals).toContainText("3 jours de suite");
   await expect(page.getByTestId("dashboard-header")).toContainText("Lan");
-  await expect(page.getByTestId("dashboard-avatar")).toHaveText("L");
+  await expect(page.getByTestId("dashboard-avatar").locator("svg").first()).toBeVisible();
   // Trois leçons restaurées : la carte « Reprendre » propose la suite, pas la première leçon.
   await expect(page.getByTestId("dashboard-language").first()).toContainText("3 / ");
 
@@ -289,6 +311,9 @@ test("accueil et profil : pas de saut de mise en page (CLS)", async ({ page }) =
   await mockGuest(page);
   await onboard(page);
   await playUntil(page, /^Leçon terminée$/);
+  // Une leçon terminée déclenche ses récompenses : leurs cartes couvrent l'écran et
+  // interceptent tout clic tant qu'on ne les a pas refermées.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
 
   for (const path of ["/", "/profil"]) {

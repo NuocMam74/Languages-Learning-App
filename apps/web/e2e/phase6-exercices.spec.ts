@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { onboard } from "./helpers.ts";
+import { onboard, skipBriefing } from "./helpers.ts";
 
 /**
  * Catalogue complet d'exercices (contrat phase6) en navigateur réel : les neuf types que le moteur
@@ -171,6 +171,9 @@ test("les neuf exercices du catalogue sont jouables, notés et accessibles au cl
   await warmUp(page);
   await onboard(page);
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
+  // La leçon s'ouvre sur sa fiche de préparation (contrat phase10 §1, élargi phase16 §2) : on la
+  // consulte comme un apprenant, puis on arrive sur le premier exercice.
+  await skipBriefing(page);
 
   // 1. listen_transcribe — clavier vietnamien : la frappe Telex « mas » donne « má ».
   await expect(page.getByRole("heading", { name: "Écris ce que tu entends" })).toBeVisible();
@@ -289,6 +292,7 @@ test("l'exercice écrit reste jouable en mode silencieux et ne montre jamais la 
   await page.goto("/reglages");
   await page.getByRole("switch", { name: "Mode silencieux" }).click();
   await page.goto("/lecon/vi-south.u01.l01");
+  await skipBriefing(page);
 
   await expect(page.getByRole("heading", { name: "Écris ce que tu entends" })).toBeVisible();
   const transcript = page.getByTestId("transcript");

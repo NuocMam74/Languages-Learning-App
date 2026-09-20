@@ -19,7 +19,8 @@
     "c_b_nhang",
     "c_b_trai_cay",
     "c_b_ban_tho",
-    "s_b_mai_nha_em_dam_gio"
+    "s_b_mai_nha_em_dam_gio",
+    "c_dem_bring"
   ],
   "steps": [
     {
@@ -142,7 +143,8 @@
       "c_b_nhang",
       "c_b_trai_cay",
       "c_b_ban_tho",
-      "s_b_mai_nha_em_dam_gio"
+      "s_b_mai_nha_em_dam_gio",
+      "c_dem_bring"
     ]
   },
   "reviewed": false

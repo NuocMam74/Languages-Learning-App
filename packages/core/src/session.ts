@@ -130,10 +130,25 @@ export function isUnitAvailable(curriculum: Curriculum, lessons: ReadonlyMap<Les
   );
 }
 
-/** Leçon faite pour le parcours : terminée, et réussie s'il s'agit d'un test d'unité. */
+/**
+ * Leçon faite pour le parcours : **réussie**, pas seulement terminée.
+ *
+ * C'est la même exigence que `isLessonUnlocked` (contrat phase10 §3), et elles doivent s'accorder.
+ * Tant qu'elles divergeaient, une leçon terminée avec une erreur créait un cul-de-sac : elle
+ * comptait comme faite, donc la séance du jour passait à la suivante — qui, elle, restait fermée
+ * faute de prérequis réussi. Résultat, le parcours affichait « à refaire » pendant que l'accueil
+ * n'offrait plus aucun bouton et que la séance du jour était vide.
+ *
+ * Avec cette règle, la leçon à refaire **est** la prochaine étape proposée : le chemin ne se coupe
+ * jamais.
+ *
+ * Le serveur (`apps/api/app/services/progression.py`) garde volontairement la règle plus permissive
+ * : il ne reçoit jamais la maîtrise, seulement des scores. Sa version de `next_lesson` ne sert
+ * qu'au pointeur d'inscription et au bilan hebdomadaire ; la séance, elle, se décide ici. La
+ * divergence est documentée des deux côtés — ne pas la « corriger » en copiant l'une sur l'autre.
+ */
 function lessonDone(lesson: Lesson, progress: ProgressSets): boolean {
-  if (!progress.completed.has(lesson.id)) return false;
-  return lesson.kind !== "unit_test" || (progress.passed ?? progress.completed).has(lesson.id);
+  return (progress.passed ?? progress.completed).has(lesson.id);
 }
 
 /**

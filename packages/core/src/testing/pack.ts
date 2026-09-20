@@ -22,6 +22,8 @@ export function loadPack(code = "vi-south"): ContentIndex {
     culture: all(join(root, "culture")),
     // Facultatif : un pack sans dialogue n'a pas le dossier.
     ...(existsSync(join(root, "dialogues")) ? { dialogues: all<NonNullable<RawPackFiles["dialogues"]>[number]>(join(root, "dialogues")) } : {}),
+    // Idem pour les fiches conseils (contrat phase15 §1).
+    ...(existsSync(join(root, "guides")) ? { guides: all<NonNullable<RawPackFiles["guides"]>[number]>(join(root, "guides")) } : {}),
   };
   return buildContentIndex(raw);
 }

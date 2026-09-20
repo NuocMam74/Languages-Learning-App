@@ -18,7 +18,8 @@
     "c_b_ke",
     "c_b_chuyen",
     "c_b_nghe",
-    "s_b_ke_tui_nghe"
+    "s_b_ke_tui_nghe",
+    "c_len"
   ],
   "steps": [
     {
@@ -146,7 +147,8 @@
       "c_b_ke",
       "c_b_chuyen",
       "c_b_nghe",
-      "s_b_ke_tui_nghe"
+      "s_b_ke_tui_nghe",
+      "c_len"
     ]
   },
   "reviewed": false

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nha_particle",
+  "type": "word",
+  "vi": "nha",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "particule finale : « d’accord ? », « hein ? »",
+    "en": "final particle: “okay?”, “alright?”"
+  },
+  "register": "familiar",
+  "pos": "particle",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nha_particle_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nha_particle_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Chờ em chút nha.",
+      "fr": "Attends-moi un instant, d’accord ?",
+      "en": "Wait a moment for me, okay?"
+    }
+  ],
+  "note": {
+    "fr": "Très fréquente au Sud en fin de phrase. Sans elle, la même phrase sonne sèche.",
+    "en": "Very common in the South at the end of a sentence. Without it the same sentence sounds curt."
+  },
+  "reviewed": false
+}

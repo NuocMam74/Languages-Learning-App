@@ -75,6 +75,18 @@ describe("nextLesson", () => {
     expect(nextLesson(content.curriculum, content.lessons, done, null)?.id).toBe("vi-south.u04.l01");
   });
 
+  it("leçon terminée mais non réussie : c'est elle la prochaine étape, pas un cul-de-sac", () => {
+    // Le défaut corrigé : `nextLesson` la comptait comme faite et passait à la suivante, que
+    // `isLessonUnlocked` refusait d'ouvrir faute de prérequis **réussi**. La séance du jour se
+    // retrouvait vide et l'accueil sans bouton, pendant que le parcours affichait « à refaire ».
+    const completed = new Set(["vi-south.u01.l01"]);
+    const passed = new Set<string>();
+    expect(nextLesson(content.curriculum, content.lessons, completed, null, passed)?.id).toBe("vi-south.u01.l01");
+    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u01.l02", { completed, passed })).toBe(false);
+    // Réussie, elle laisse enfin la place à la suivante.
+    expect(nextLesson(content.curriculum, content.lessons, completed, null, completed)?.id).toBe("vi-south.u01.l02");
+  });
+
   it("test d'unité terminé sous le seuil : l'unité suivante reste fermée, le test est reproposé", () => {
     const u01 = content.curriculum.units[0]!;
     const test = u01.lessons.find((id) => content.lessons.get(id)?.kind === "unit_test")!;

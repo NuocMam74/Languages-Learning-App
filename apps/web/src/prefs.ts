@@ -10,7 +10,7 @@ export type InterfaceLocale = "fr" | "en";
 /** Thème d'affichage (contrat phase9 §8) : « system » suit le réglage de l'appareil. */
 export type ThemeChoice = "system" | "light" | "dark";
 
-interface PrefsValue {
+export interface PrefsValue {
   locale: InterfaceLocale | null;
   theme: ThemeChoice;
   /**
@@ -37,7 +37,8 @@ interface PrefsState extends PrefsValue {
 
 const KEY = "parlo.prefs";
 
-function read(): PrefsValue {
+/** Lues telles quelles : le transfert vers un autre appareil les emporte (contrat phase17 §1). */
+export function readPrefs(): PrefsValue {
   try {
     const raw = localStorage.getItem(KEY);
     const parsed = raw ? (JSON.parse(raw) as Partial<PrefsValue>) : {};
@@ -54,7 +55,8 @@ function read(): PrefsValue {
   }
 }
 
-function write(value: PrefsValue): void {
+/** Écrites telles quelles, à l'import d'un transfert. Le store React se relit au prochain rendu. */
+export function writePrefs(value: PrefsValue): void {
   try {
     localStorage.setItem(KEY, JSON.stringify(value));
   } catch {
@@ -65,26 +67,26 @@ function write(value: PrefsValue): void {
 const pick = ({ locale, theme, feedbackSounds, silent, dictation }: PrefsValue): PrefsValue => ({ locale, theme, feedbackSounds, silent, dictation });
 
 export const usePrefs = create<PrefsState>((set, get) => ({
-  ...read(),
+  ...readPrefs(),
   setLocale(locale) {
     set({ locale });
-    write({ ...pick(get()), locale });
+    writePrefs({ ...pick(get()), locale });
   },
   setTheme(theme) {
     set({ theme });
-    write({ ...pick(get()), theme });
+    writePrefs({ ...pick(get()), theme });
   },
   setFeedbackSounds(feedbackSounds) {
     set({ feedbackSounds });
-    write({ ...pick(get()), feedbackSounds });
+    writePrefs({ ...pick(get()), feedbackSounds });
   },
   setSilent(silent) {
     set({ silent });
-    write({ ...pick(get()), silent });
+    writePrefs({ ...pick(get()), silent });
   },
   setDictation(dictation) {
     set({ dictation });
-    write({ ...pick(get()), dictation });
+    writePrefs({ ...pick(get()), dictation });
   },
 }));
 

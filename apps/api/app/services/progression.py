@@ -75,7 +75,23 @@ def is_unit_available(pack: Pack, unit: Unit, state: ProgressState) -> bool:
 
 
 def lesson_done(lesson: Lesson, state: ProgressState) -> bool:
-    """Terminée, et réussie s'il s'agit d'un test d'unité (un test sous le seuil reste à refaire)."""
+    """Terminée, et réussie s'il s'agit d'un test d'unité (un test sous le seuil reste à refaire).
+
+    **Volontairement plus permissif que le client**, et ce n'est pas un oubli. Depuis le contrat
+    phase10 §3, l'application exige la *maîtrise* d'une leçon ordinaire — tous ses exercices notés
+    réussis — pour ouvrir la suivante. Le serveur, lui, ne reçoit que des scores : `events.py` ne
+    lui envoie jamais `mastered`, donc `passed` ne contient que des tests d'unité (voir
+    `progress_from`). Il ne peut pas appliquer la même règle.
+
+    Conséquence assumée : côté serveur, `next_lesson` peut désigner la leçon suivante là où le
+    client propose de refaire la précédente. C'est sans effet sur l'apprentissage — le client est
+    la source de vérité de la séance ; le serveur ne s'en sert que pour le pointeur d'inscription
+    et la phrase du bilan hebdomadaire.
+
+    Ne pas « aligner » cette fonction sur le client sans donner d'abord au serveur la maîtrise :
+    avec le `passed` actuel, une leçon ordinaire n'y figure jamais, et `next_lesson` renverrait
+    éternellement la toute première leçon du cursus.
+    """
     if lesson.id not in state.completed:
         return False
     return lesson.kind != "unit_test" or lesson.id in state.passed

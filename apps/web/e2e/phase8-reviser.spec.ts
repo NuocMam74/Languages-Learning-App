@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { onboard, playUntil } from "./helpers.ts";
+import { dismissCelebrations, onboard, playUntil } from "./helpers.ts";
 
 /**
  * Contrat phase8 §2, §3, §4 — « Réviser » : la bibliothèque de tout ce qui a été vu, et les notes.
@@ -19,6 +19,9 @@ async function firstLesson(page: Page) {
   await onboard(page);
   await playUntil(page, /^Leçon terminée$/);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
+  // Une première leçon donne ses récompenses : leurs cartes couvrent l'écran et interceptent les
+  // clics suivants. On les referme comme le ferait un apprenant.
+  await dismissCelebrations(page);
   await expect(page).toHaveURL(/\/apprendre$/);
 }
 
@@ -49,6 +52,9 @@ test("la bibliothèque rassemble les mots, les explications et les leçons de la
   await page.getByTestId("review-vocabulary").click();
   await expect(page).toHaveURL(/\/reviser\/vocabulaire$/);
   const words = page.getByTestId("word");
+  // La bibliothèque lit IndexedDB : elle pose d'abord son squelette. Compter sans attendre le
+  // premier mot revient à compter le squelette — c'est-à-dire zéro.
+  await expect(words.first()).toBeVisible();
   const total = await words.count();
   expect(total).toBeGreaterThan(0);
 

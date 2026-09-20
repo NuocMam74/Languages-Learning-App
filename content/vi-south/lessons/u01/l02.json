@@ -2,53 +2,133 @@
   "$schema": "../../../schema/lesson.schema.json",
   "id": "vi-south.u01.l02",
   "unit": "vi-south.u01",
-  "title": { "fr": "Chào ! Saluer quelqu'un", "en": "Chào! Greeting someone" },
-  "goal": { "fr": "Saluer et remercier une personne un peu plus âgée que toi.", "en": "Greet and thank someone slightly older than you." },
+  "title": {
+    "fr": "Chào ! Saluer quelqu'un",
+    "en": "Chào! Greeting someone"
+  },
+  "goal": {
+    "fr": "Saluer et remercier une personne un peu plus âgée que toi.",
+    "en": "Greet and thank someone slightly older than you."
+  },
   "estimatedMinutes": 5,
-  "prerequisites": ["vi-south.u01.l01"],
-  "concepts": ["c_chao", "c_anh", "c_chi", "c_em", "c_da", "c_cam_on", "s_chao_anh"],
+  "prerequisites": [
+    "vi-south.u01.l01"
+  ],
+  "concepts": [
+    "c_chao",
+    "c_anh",
+    "c_chi",
+    "c_em",
+    "c_da",
+    "c_cam_on",
+    "s_chao_anh"
+  ],
   "steps": [
-    { "type": "culture_card", "ref": "cc_greet_the_person" },
+    {
+      "type": "culture_card",
+      "ref": "cc_greet_the_person"
+    },
     {
       "type": "listen_pick_image",
       "concept": "c_anh",
-      "distractors": ["c_chi", "c_em"],
-      "explain": { "fr": "anh : un homme un peu plus âgé que toi.", "en": "anh: a man slightly older than you." }
+      "distractors": [
+        "c_chi",
+        "c_em"
+      ],
+      "explain": {
+        "fr": "anh : un homme un peu plus âgé que toi.",
+        "en": "anh: a man slightly older than you."
+      }
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chao",
-      "distractors": ["cháo", "chạo"],
-      "explain": { "fr": "chào descend (accent grave). cháo, avec le ton qui monte, c'est la soupe de riz !", "en": "chào falls (grave accent). cháo, rising, is rice porridge!" }
+      "distractors": [
+        "cháo",
+        "chạo"
+      ],
+      "explain": {
+        "fr": "chào descend (accent grave). cháo, avec le ton qui monte, c'est la soupe de riz !",
+        "en": "chào falls (grave accent). cháo, rising, is rice porridge!"
+      }
     },
     {
       "type": "listen_pick_image",
       "concept": "c_chi",
-      "distractors": ["c_anh", "c_em"],
-      "explain": { "fr": "chị : une femme un peu plus âgée que toi.", "en": "chị: a woman slightly older than you." }
+      "distractors": [
+        "c_anh",
+        "c_em"
+      ],
+      "explain": {
+        "fr": "chị : une femme un peu plus âgée que toi.",
+        "en": "chị: a woman slightly older than you."
+      }
     },
     {
       "type": "build_sentence",
       "target": "Chào chị.",
-      "tokens": ["Chào", "chị", "anh"],
-      "translation": { "fr": "Bonjour (à une femme un peu plus âgée).", "en": "Hello (to a slightly older woman)." },
-      "explain": { "fr": "Chào + la personne. Pour une femme un peu plus âgée : chị.", "en": "Chào + the person. For a slightly older woman: chị." }
+      "tokens": [
+        "Chào",
+        "chị",
+        "anh"
+      ],
+      "translation": {
+        "fr": "Bonjour (à une femme un peu plus âgée).",
+        "en": "Hello (to a slightly older woman)."
+      },
+      "explain": {
+        "fr": "Chào + la personne. Pour une femme un peu plus âgée : chị.",
+        "en": "Chào + the person. For a slightly older woman: chị."
+      }
     },
     {
       "type": "tone_identify",
       "concept": "c_da",
-      "explain": { "fr": "dạ porte le point souscrit : ton bas, court, qui tombe.", "en": "dạ has the dot below: low, short, falling." }
+      "explain": {
+        "fr": "dạ porte le point souscrit : ton bas, court, qui tombe.",
+        "en": "dạ has the dot below: low, short, falling."
+      }
     },
-    { "type": "speak_repeat", "concept": "s_chao_anh", "pitchRef": "pitch/s_chao_anh.json" },
+    {
+      "type": "speak_repeat",
+      "concept": "s_chao_anh",
+      "pitchRef": "pitch/s_chao_anh.json"
+    },
     {
       "type": "build_sentence",
       "target": "Dạ, em cảm ơn anh.",
-      "tokens": ["Dạ", "em", "cảm ơn", "anh", "chào"],
-      "translation": { "fr": "Oui, merci (à un homme un peu plus âgé).", "en": "Yes, thank you (to a slightly older man)." },
-      "explain": { "fr": "Face à plus âgé, tu te désignes par em, et tu nommes l'autre (anh) à la fin.", "en": "To someone older, call yourself em and name them (anh) at the end." }
+      "tokens": [
+        "Dạ",
+        "em",
+        "cảm ơn",
+        "anh",
+        "chào"
+      ],
+      "translation": {
+        "fr": "Oui, merci (à un homme un peu plus âgé).",
+        "en": "Yes, thank you (to a slightly older man)."
+      },
+      "explain": {
+        "fr": "Face à plus âgé, tu te désignes par em, et tu nommes l'autre (anh) à la fin.",
+        "en": "To someone older, call yourself em and name them (anh) at the end."
+      }
     },
-    { "type": "game", "game": "cho_noi", "conceptPool": "lesson" }
+    {
+      "type": "game",
+      "game": "cho_noi",
+      "conceptPool": "lesson"
+    }
   ],
-  "review": { "srsIntroduce": ["c_chao", "c_anh", "c_chi", "c_da", "c_cam_on", "s_chao_anh"] },
+  "review": {
+    "srsIntroduce": [
+      "c_chao",
+      "c_anh",
+      "c_chi",
+      "c_da",
+      "c_cam_on",
+      "s_chao_anh",
+      "c_em"
+    ]
+  },
   "reviewed": false
 }

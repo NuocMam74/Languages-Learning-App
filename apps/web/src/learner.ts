@@ -13,6 +13,7 @@ import {
   isPracticeRun,
   isUnitPassed,
   isUnitTestPassed,
+  lessonBriefing,
   lessonsBefore,
   lessonScore,
   localDay,
@@ -42,6 +43,7 @@ import {
   uuidv7,
   XP_SESSION_BONUS,
   type BadgeCode,
+  type Briefing,
   type ConceptId,
   type Counters,
   type Localized,
@@ -60,12 +62,14 @@ import {
   type SessionSource,
   type SkillStats,
   type SrsCard,
+  type StepType,
   type Streak,
   type UnitId,
 } from "@parlo/core";
 import { ensureSessionContent } from "./content.ts";
 import { db, getKv, LEGACY_SNAPSHOT_KEY, setDb, setKv, withoutPack, type ParloDB, type Profile, type SessionSnapshot, type StoredSrsCard, type Totals } from "./db.ts";
 import { playableSteps } from "./media.ts";
+import { readGuideIds } from "./review/guides-read.ts";
 import { activePackCode, scopedKey } from "./packs/active.ts";
 
 /**
@@ -105,9 +109,21 @@ export interface DailyActivity {
   seconds: number;
 }
 
-export const getProfile = () => getKv<Profile>("profile", DEFAULT_PROFILE);
+/**
+ * Profil et totaux sont **ramenés à leur forme complète** à la lecture.
+ *
+ * Ils viennent d'IndexedDB, et donc parfois d'une version plus ancienne de l'application, d'un
+ * transfert d'appareil (contrat phase17 §1) ou d'une restauration serveur. Un champ ajouté depuis
+ * manquerait alors, et l'accueil tombait dessus sans filet — un `totals` sans série suffisait à
+ * faire écran blanc. Fusionner avec les valeurs par défaut coûte une ligne et supprime la classe
+ * entière de ces pannes.
+ */
+export const getProfile = async (): Promise<Profile> => ({ ...DEFAULT_PROFILE, ...(await getKv<Partial<Profile>>("profile", {})) });
 export const saveProfile = (profile: Profile) => setKv("profile", profile);
-export const getTotals = () => getKv<Totals>("totals", DEFAULT_TOTALS);
+export const getTotals = async (): Promise<Totals> => {
+  const stored = await getKv<Partial<Totals>>("totals", {});
+  return { ...DEFAULT_TOTALS, ...stored, streak: { ...emptyStreak(), ...(stored.streak ?? {}) } };
+};
 export const getBadges = () => getKv<EarnedBadge[]>("badges", []);
 export const getPlacement = () => getKv<PlacementRecord | null>("placement", null);
 /** Agrégat de compétences du pack (contrat phase7 §3) : toujours ramené à la forme attendue. */
@@ -243,7 +259,14 @@ export function hasWork(plan: SessionPlan): boolean {
  * `practice` : rejouer une leçon déjà terminée depuis la bibliothèque « Réviser » (contrat phase8 §2).
  * Même déroulé, mais la progression n'est pas recomptée — voir `SessionMode` dans @parlo/core.
  */
-export type SessionRequest = { source: "daily" } | { source: "review" } | { source: "lesson"; lessonId: LessonId; practice?: boolean };
+export type SessionRequest =
+  | { source: "daily" }
+  | { source: "review" }
+  /**
+   * Une leçon. `steps` restreint la séance à certaines étapes — les exercices mis en favori
+   * (contrat phase18 §3). Toujours en entraînement : on rejoue par goût, rien n'est recompté.
+   */
+  | { source: "lesson"; lessonId: LessonId; practice?: boolean; steps?: readonly number[] };
 
 function lessonPlan(lesson: Lesson): SessionPlan {
   return { blocks: [{ kind: "new", lessonId: lesson.id }, { kind: "recap" }], estimatedSeconds: lesson.estimatedMinutes * 60 };
@@ -264,7 +287,12 @@ function sessionOf(snapshot: SessionSnapshot, content: ContentIndex): SessionRun
 function matches(run: SessionRun, request: SessionRequest): boolean {
   // Une séance d'entraînement et la même leçon « pour de vrai » ne se reprennent pas l'une l'autre.
   if (request.source === "lesson") {
-    return run.source === "lesson" && run.lesson?.lessonId === request.lessonId && isPracticeRun(run) === (request.practice === true);
+    if (run.source !== "lesson" || run.lesson?.lessonId !== request.lessonId) return false;
+    if (isPracticeRun(run) !== (request.practice === true)) return false;
+    // Une sélection d'étapes ne reprend pas une séance qui en jouait d'autres (contrat phase18 §3).
+    const wanted = request.steps ? [...request.steps].sort((a, b) => a - b).join(",") : null;
+    const running = run.lesson ? run.lesson.queue.map((item) => item.stepIndex).sort((a, b) => a - b).join(",") : "";
+    return wanted === null || wanted === running;
   }
   return run.source === request.source && !isPracticeRun(run);
 }
@@ -318,11 +346,49 @@ function sessionNeeds(content: ContentIndex, request: SessionRequest, plans: { d
 }
 
 /** Reprend la séance sauvegardée si elle correspond à la demande, sinon en démarre une. */
+/**
+ * Ce que l'apprenant a déjà rencontré : les mots (cartes SRS et leçons terminées), les formats
+ * d'exercice croisés, les fiches conseils lues. C'est la base de la fiche de préparation
+ * (contrat phase16 §2) — on ne présente pas deux fois la même chose, et on ne laisse rien passer.
+ */
+interface PriorKnowledge {
+  concepts: Set<ConceptId>;
+  formats: Set<StepType>;
+  guides: Set<string>;
+}
+
+async function priorKnowledge(content: ContentIndex): Promise<PriorKnowledge> {
+  const [state, cards, guides] = await Promise.all([progressState(content), packCards(content.pack.code), readGuideIds()]);
+  const concepts = new Set<ConceptId>(cards.map((c) => c.conceptId));
+  const formats = new Set<StepType>();
+  for (const lessonId of state.completed) {
+    const done = content.lessons.get(lessonId);
+    if (!done) continue;
+    // Une leçon terminée a présenté ses mots : ils n'ont pas à l'être une seconde fois.
+    for (const id of done.review.srsIntroduce) concepts.add(id);
+    for (const step of done.steps) formats.add(step.type);
+  }
+  return { concepts, formats, guides };
+}
+
+function briefingFor(content: ContentIndex, lesson: Lesson | null, prior: PriorKnowledge, playable: readonly number[] | undefined): Briefing | undefined {
+  if (!lesson) return undefined;
+  return lessonBriefing(content, lesson, {
+    known: prior.concepts,
+    seenFormats: prior.formats,
+    readGuides: prior.guides,
+    // Les étapes retirées de la séance (pas d'enregistrement natif) ne préparent rien.
+    ...(playable ? { playable } : {}),
+  });
+}
+
 export async function openSession(content: ContentIndex, request: SessionRequest, now = new Date()): Promise<SessionRun> {
   const d = db();
   const profile = await getProfile();
   const plans = request.source === "lesson" ? null : await planning(content, profile, now);
   await ensureSessionContent(content, sessionNeeds(content, request, plans, await readSnapshot(d, content.pack.code)));
+  // Lu hors transaction : Dexie referme la sienne dès qu'on attend une promesse qui n'en vient pas.
+  const prior = await priorKnowledge(content);
 
   return d.transaction("rw", d.snapshot, d.outbox, async () => {
     const saved = await readSnapshot(d, content.pack.code);
@@ -346,11 +412,19 @@ export async function openSession(content: ContentIndex, request: SessionRequest
     const sessionId = uuidv7(now);
     const source: SessionSource = request.source;
     const known = (plans?.cards ?? []).map((c) => c.conceptId);
-    const playable = lesson ? playableSteps(content, lesson) : undefined;
+    const allPlayable = lesson ? playableSteps(content, lesson) : undefined;
+    // Sélection d'étapes : on garde l'intersection avec ce qui est jouable — un favori posé sur un
+    // exercice devenu injouable (enregistrement manquant) ne ressuscite pas l'exercice.
+    const wanted = request.source === "lesson" ? request.steps : undefined;
+    const playable = wanted ? allPlayable?.filter((i) => wanted.includes(i)) : allPlayable;
     const practice = request.source === "lesson" && request.practice === true;
+    // La fiche de préparation est figée au démarrage, comme `knownAtStart` : une reprise retrouve
+    // exactement la même (contrat phase16 §2). Inutile en entraînement — on y rejoue du connu.
+    const briefing = practice ? undefined : briefingFor(content, lesson, prior, playable);
     const run = startSessionRun({
       plan, sessionId, source, lesson, known, now, contentVersion: content.pack.version,
       ...(playable ? { playable } : {}), ...(practice ? { mode: "practice" as const } : {}),
+      ...(briefing ? { briefing } : {}),
     });
     const event = makeEvent("session_started", { sessionId, source, plannedSeconds: plan.estimatedSeconds }, now);
     await writeSnapshot(d, content.pack.code, run, now);
@@ -815,8 +889,10 @@ export async function clearLearningData(): Promise<void> {
   // Les notes personnelles ne partent jamais au serveur (contrat phase8 §3) : elles ne peuvent pas
   // être restaurées, mais les laisser les montrerait au compte suivant — on les efface (l'export de
   // la page Notes est là pour les emporter avant de se déconnecter).
-  await d.transaction("rw", [d.srsCards, d.lessonProgress, d.outbox, d.snapshot, d.syncLog, d.kv, d.notes], async () => {
-    await Promise.all([d.srsCards.clear(), d.lessonProgress.clear(), d.outbox.clear(), d.snapshot.clear(), d.syncLog.clear(), d.notes.clear()]);
+  await d.transaction("rw", [d.srsCards, d.lessonProgress, d.outbox, d.snapshot, d.syncLog, d.kv, d.notes, d.favorites], async () => {
+    // Les favoris partent avec les notes, et pour la même raison : ils ne remontent pas au serveur,
+    // donc ils ne se restaureront pas — mais les laisser les montrerait au compte suivant.
+    await Promise.all([d.srsCards.clear(), d.lessonProgress.clear(), d.outbox.clear(), d.snapshot.clear(), d.syncLog.clear(), d.notes.clear(), d.favorites.clear()]);
     const keys = (await d.kv.toCollection().primaryKeys()).filter((key) => key !== "activePack");
     await d.kv.bulkDelete(keys);
   });

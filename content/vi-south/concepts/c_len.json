@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_len",
+  "type": "word",
+  "vi": "lên",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "monter ; monter à (la ville)",
+    "en": "to go up; to head up to (the city)"
+  },
+  "register": "neutral",
+  "pos": "verb",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_len_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_len_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Hồi đó tui ở quê, rồi tui lên Sài Gòn.",
+      "fr": "À l’époque je vivais à la campagne, puis je suis monté à Saïgon.",
+      "en": "Back then I lived in the countryside, then I went up to Saigon."
+    }
+  ],
+  "note": {
+    "fr": "On « monte » à Saïgon depuis la province, quelle que soit la direction sur la carte.",
+    "en": "You “go up” to Saigon from the provinces, whatever the map says."
+  },
+  "reviewed": false
+}

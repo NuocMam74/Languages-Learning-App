@@ -5,8 +5,12 @@ import { Screen } from "../components/ui.tsx";
 import { Skeleton } from "../design/index.ts";
 import { t } from "../i18n/index.ts";
 import NotesPage from "../notes/NotesPage.tsx";
+import { useFavorites } from "../favorites.ts";
 import { useNotes } from "../notes/store.ts";
 import { Dialogues } from "./Dialogues.tsx";
+import { Favorites } from "./Favorites.tsx";
+import { useGuidesRead } from "./guides-read.ts";
+import { StudyPath } from "./StudyPath.tsx";
 import { Grammar } from "./Grammar.tsx";
 import { Categories, Themes } from "./Index.tsx";
 import { Tips } from "./Tips.tsx";
@@ -19,7 +23,7 @@ import { loadLibrary, type LibraryData } from "./data.ts";
  * Section « Réviser » (contrat phase8 §2) : `/reviser` et ses rayons `/reviser/<section>`.
  * Une seule lecture locale alimente tous les écrans — ils n'attendent jamais le réseau.
  */
-const SECTIONS = ["vocabulaire", "categories", "themes", "conseils", "grammaire", "lecons", "dialogues", "notes"] as const;
+const SECTIONS = ["ordre", "favoris", "vocabulaire", "categories", "themes", "conseils", "grammaire", "lecons", "dialogues", "notes"] as const;
 type Section = (typeof SECTIONS)[number];
 
 const isSection = (value: string | undefined): value is Section => SECTIONS.includes(value as Section);
@@ -28,14 +32,16 @@ export default function ReviewPage({ content }: { content: ContentIndex }) {
   const { section } = useParams();
   const [data, setData] = useState<LibraryData | null>(null);
   const loadNotes = useNotes((s) => s.load);
+  const loadGuidesRead = useGuidesRead((s) => s.load);
+  const loadFavorites = useFavorites((s) => s.load);
 
   useEffect(() => {
     let live = true;
-    void Promise.all([loadLibrary(content), loadNotes(content.pack.code)]).then(([library]) => live && setData(library));
+    void Promise.all([loadLibrary(content), loadNotes(content.pack.code), loadGuidesRead(), loadFavorites(content.pack.code)]).then(([library]) => live && setData(library));
     return () => {
       live = false;
     };
-  }, [content, loadNotes]);
+  }, [content, loadNotes, loadGuidesRead, loadFavorites]);
 
   // Section inconnue dans l'URL : on revient à la bibliothèque plutôt que d'afficher un vide.
   if (section !== undefined && !isSection(section)) return <Navigate to="/reviser" replace />;
@@ -54,6 +60,12 @@ export default function ReviewPage({ content }: { content: ContentIndex }) {
     );
 
   switch (section) {
+    // L'ordre de travail (contrat phase16 §4) : par où commencer, du plus simple au plus dur.
+    case "ordre":
+      return <StudyPath content={content} data={data} />;
+    // Favoris (contrat phase18 §3) : le seul rayon dont l'apprenant décide du contenu.
+    case "favoris":
+      return <Favorites content={content} />;
     case "vocabulaire":
       return <Vocabulary content={content} data={data} />;
     case "categories":

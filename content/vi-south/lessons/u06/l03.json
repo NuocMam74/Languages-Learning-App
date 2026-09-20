@@ -21,7 +21,8 @@
     "s_muoi_lam",
     "s_hai_muoi_mot",
     "c_muoi_ten",
-    "c_mot_one"
+    "c_mot_one",
+    "c_lop"
   ],
   "steps": [
     {
@@ -152,7 +153,8 @@
       "c_mot_high",
       "c_lam_five",
       "s_muoi_lam",
-      "s_hai_muoi_mot"
+      "s_hai_muoi_mot",
+      "c_lop"
     ]
   },
   "reviewed": false

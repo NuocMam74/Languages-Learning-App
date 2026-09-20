@@ -44,12 +44,17 @@ describe("migration de la base", () => {
     const upgraded = new ParloDB(dbName);
     setDb(upgraded);
     await upgraded.open();
-    expect(upgraded.verno).toBe(5);
+    // Pas d'égalité stricte sur le numéro : chaque table ajoutée le fait monter, et ce test parle
+    // de migration, pas de comptage de versions. Ce qui compte, c'est qu'elle ait monté.
+    expect(upgraded.verno).toBeGreaterThanOrEqual(5);
     expect((await upgraded.srsCards.get("c_ba"))?.reps).toBe(2);
     expect((await upgraded.lessonProgress.get("vi-south.u01.l01"))?.bestScore).toBe(0.9);
     expect((await upgraded.kv.get("vi-south:totals"))?.value).toEqual({ xp: 120 });
     expect(await upgraded.outbox.count()).toBe(1);
     expect(await upgraded.notes.count()).toBe(0);
+    // Les tables ajoutées depuis le sont aussi, et vides : une base ancienne ne perd rien et
+    // n'invente rien (favoris, contrat phase18 §1).
+    expect(await upgraded.favorites.count()).toBe(0);
 
     // Et la table neuve est utilisable tout de suite.
     const note = await writeNote({ target: { kind: "concept", id: "c_ba" }, text: "café glacé" }, "vi-south", NOW);

@@ -1,7 +1,8 @@
-import type { ContentIndex } from "@parlo/core";
+import { packHasNativeAudio, type ContentIndex } from "@parlo/core";
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { useAccount } from "./account.ts";
+import { NativeVoices } from "./components/AudioButton.tsx";
 import { Shell } from "./components/BottomNav.tsx";
 import { ScreenSkeleton, WithMessages } from "./components/Skeleton.tsx";
 import { Button, Screen } from "./components/ui.tsx";
@@ -39,6 +40,8 @@ const ForgotPasswordPage = lazy(() => import("./pages/AccountRecovery.tsx").then
 const ResetPasswordPage = lazy(() => import("./pages/AccountRecovery.tsx").then((m) => ({ default: m.ResetPasswordPage })));
 const VerifyEmailPage = lazy(() => import("./pages/AccountRecovery.tsx").then((m) => ({ default: m.VerifyEmailPage })));
 const Settings = lazy(() => import("./pages/Settings.tsx"));
+/** Changer d'appareil (contrat phase17 §2) : écran dédié, chargé à la demande. */
+const TransferPage = lazy(() => import("./pages/Transfer.tsx"));
 const ProfilePage = lazy(() => import("./profile/ProfilePage.tsx"));
 /** Onglet « Réviser » (contrat phase8 §2, §4) : la bibliothèque de tout ce qui a été vu, et les notes. */
 const ReviewPage = lazy(() => import("./review/ReviewPage.tsx"));
@@ -247,6 +250,7 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/compte/reinitialiser", element: later(<ResetPasswordPage />) },
         { path: "/compte/verifier", element: later(<VerifyEmailPage />) },
         { path: "/reglages", element: later(<Settings />) },
+        { path: "/reglages/appareil", element: later(<TransferPage />) },
         { path: "/badges", element: later(<Badges content={content} />) },
         { path: "/missions", element: later(<MissionsPage content={content} />) },
         { path: "/mondes", element: later(<WorldsPage content={content} />) },
@@ -288,11 +292,15 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
       }]),
     [content, onboarded],
   );
+  const voices = useMemo(() => packHasNativeAudio(content), [content]);
 
   return (
-    <>
+    // Aucune voix native dans le pack (contrat phase16 §5) : les boutons audio le disent
+    // calmement au lieu d'afficher une erreur rouge par mot. Fourni ici, une fois, parce que
+    // c'est un état du **contenu** et non de l'écran où l'on se trouve.
+    <NativeVoices.Provider value={voices}>
       <RouterProvider router={router} />
       <UpdatePrompt />
-    </>
+    </NativeVoices.Provider>
   );
 }

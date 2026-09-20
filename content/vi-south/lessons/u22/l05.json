@@ -21,7 +21,8 @@
     "c_b_hoi_slightly",
     "s_b_lan_dau_toi_saigon",
     "s_b_roi_sao_nua",
-    "c_sau_rieng"
+    "c_sau_rieng",
+    "c_so_afraid"
   ],
   "steps": [
     {
@@ -148,7 +149,8 @@
       "c_b_thay_see",
       "c_b_hoi_slightly",
       "s_b_lan_dau_toi_saigon",
-      "s_b_roi_sao_nua"
+      "s_b_roi_sao_nua",
+      "c_so_afraid"
     ]
   },
   "reviewed": false

@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nhieu",
+  "type": "word",
+  "vi": "nhiều",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "beaucoup, nombreux",
+    "en": "much, many, a lot"
+  },
+  "register": "neutral",
+  "pos": "adjective",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nhieu_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nhieu_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Em đỡ nhiều rồi, cảm ơn chị.",
+      "fr": "Je vais beaucoup mieux, merci.",
+      "en": "I am much better, thank you."
+    }
+  ],
+  "reviewed": false
+}

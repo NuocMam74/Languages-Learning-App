@@ -20,7 +20,8 @@
     "c_cay",
     "c_it",
     "c_ngon",
-    "s_ngon_qua"
+    "s_ngon_qua",
+    "c_b_hay"
   ],
   "steps": [
     {
@@ -239,7 +240,8 @@
       "c_cay",
       "c_it",
       "c_ngon",
-      "s_ngon_qua"
+      "s_ngon_qua",
+      "c_b_hay"
     ]
   },
   "reviewed": false

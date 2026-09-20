@@ -1,5 +1,5 @@
 import { expect, test, type Page, type Route, type TestInfo } from "@playwright/test";
-import { playOneStep } from "./helpers.ts";
+import { dismissCelebrations, playOneStep, skipBriefing } from "./helpers.ts";
 
 /**
  * QA mobile (docs/audits/mobile-audit.md). Matrice d'acceptation, définie en projets Playwright :
@@ -35,8 +35,12 @@ async function onboardHere(page: Page) {
     await choice.click();
   }
   const placement = page.getByRole("heading", { name: "Un mini-test de 90 secondes ?" });
-  await expect(placement.or(page.locator('[data-testid="lesson"]')).first()).toBeVisible({ timeout: 30_000 });
+  // L'arrivée est le placement, la fiche de préparation ou l'exercice : on accepte les trois,
+  // puis on traverse ce qui précède l'exercice.
+  const entry = page.locator('[data-testid="lesson"], [data-testid="lesson-intro"]');
+  await expect(placement.or(entry).first()).toBeVisible({ timeout: 30_000 });
   if (await placement.isVisible()) await page.getByRole("button", { name: /^Passer/ }).click();
+  await skipBriefing(page);
   await expect(page.locator('[data-testid="lesson"]')).toBeVisible({ timeout: 30_000 });
 }
 
@@ -303,7 +307,9 @@ test("invité : accueil, onboarding, feuille de correction, bilan, hub et écran
   let sheetChecked = false;
   for (let step = 0; step < 30 && !sheetChecked; step++) {
     const lesson = page.locator('[data-testid="lesson"]');
-    if (!(await lesson.isVisible())) break;
+    // La séance peut être sur sa fiche de préparation entre deux blocs : ce n'est pas la fin, et
+    // `playOneStep` sait la traverser. On ne sort que si plus rien de la séance n'est à l'écran.
+    if (!(await lesson.isVisible()) && !(await page.getByTestId("intro-start").isVisible())) break;
     const radio = page.getByRole("radio").first();
     if ((await lesson.getAttribute("data-status")) === "answering" && (await radio.isVisible())) {
       await checkScreen(page, `exercice ${step}`, page.getByRole("button", { name: "Valider" }));
@@ -353,14 +359,15 @@ test("invité : accueil, onboarding, feuille de correction, bilan, hub et écran
   const recapTitle = page.getByRole("heading", { name: /Leçon terminée/ });
   const daily = page.getByRole("button", { name: /Séance du jour/ });
   for (let i = 0; i < 60; i++) {
-    if (await recapTitle.isVisible() || await daily.isVisible()) break;
-    if (!(await page.locator('[data-testid="lesson"]').isVisible())) {
-      await page.waitForTimeout(500);
-      continue;
-    }
+    if ((await recapTitle.isVisible()) || (await daily.isVisible())) break;
+    // `playOneStep` couvre les trois états possibles — fiche de préparation, exercice, bilan.
+    // Attendre 500 ms « au cas où » faisait tourner la boucle trente secondes pour rien quand
+    // l'écran affiché était la fiche.
     if ((await playOneStep(page, /Leçon terminée/).catch(() => "step")) === "done") break;
   }
   if (await recapTitle.isVisible()) {
+    // Les récompenses se posent par-dessus le bilan et interceptent les clics : on les referme.
+    await dismissCelebrations(page);
     await checkScreen(page, "bilan", page.getByRole("button", { name: /Continuer|Retour/ }).first());
     await page.getByRole("button", { name: /Continuer|Retour/ }).first().click();
   } else {

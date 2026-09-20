@@ -1,4 +1,4 @@
-import { expect, type Page } from "@playwright/test";
+import { expect, type Locator, type Page } from "@playwright/test";
 
 /** Aides partagées des parcours e2e (séance, onboarding). */
 
@@ -23,21 +23,96 @@ export async function onboard(page: Page, minutes = "5 min") {
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
 }
 
+/**
+ * Déplie tous les volets de la fiche de préparation : le bouton « Commencer les exercices » reste
+ * fermé tant qu'il en reste un (contrat phase16 §2). C'est le geste qu'un apprenant fait ; les
+ * tests de parcours le font aussi, sinon ils butent sur un bouton désactivé.
+ */
+export async function openAllBriefingPanels(page: Page): Promise<void> {
+  const panels = page.locator('[data-testid^="brief-panel-"][data-open="false"]');
+  for (let i = 0; i < 20 && (await panels.count()) > 0; i++) await panels.first().click({ timeout: 5_000 }).catch(() => {});
+}
+
+/**
+ * Referme les cartes de félicitations empilées (contrat phase9 §5). Elles se posent par-dessus
+ * l'écran, en couvrent les liens, et arrivent **après** le bilan : un test qui enchaîne sur le
+ * parcours doit les refermer comme le ferait un apprenant, pas les contourner.
+ */
+export async function dismissCelebrations(page: Page): Promise<void> {
+  const layer = page.locator('[data-testid="celebration-layer"]').first();
+  const ok = page.getByTestId("celebration-ok").first();
+  for (let i = 0; i < 8; i++) {
+    if (!(await layer.isVisible().catch(() => false))) {
+      // Une carte peut encore être en route : les récompenses sont accordées après l'affichage du
+      // bilan. On lui laisse un instant plutôt que de conclure trop tôt et de se faire intercepter
+      // le clic suivant.
+      await layer.waitFor({ state: "visible", timeout: 1_500 }).catch(() => undefined);
+      if (!(await layer.isVisible().catch(() => false))) return;
+    }
+    await ok.click({ timeout: 5_000 }).catch(() => undefined);
+    await layer.waitFor({ state: "hidden", timeout: 5_000 }).catch(() => undefined);
+  }
+}
+
+/**
+ * Traverse la fiche de préparation si elle s'affiche, et rend la main sur le premier exercice.
+ * Les tests qui ciblent un exercice précis passent par ici : depuis le contrat phase10 §1, une
+ * leçon qui introduit du nouveau ne s'ouvre pas sur une question.
+ */
+export async function skipBriefing(page: Page): Promise<void> {
+  // On laisse l'écran arriver avant de décider : `isVisible()` ne patiente pas, et une leçon met
+  // un instant à s'ouvrir. L'attente est **tolérante** : si rien de tout cela n'apparaît, on rend
+  // la main sans rien affirmer — c'est à l'assertion de l'appelant de dire ce qui manque, pas à ce
+  // helper de masquer l'échec derrière le sien.
+  const start = page.getByTestId("intro-start");
+  const lesson = page.locator('[data-testid="lesson"]');
+  await expect(start.or(lesson).first())
+    .toBeVisible({ timeout: 30_000 })
+    .catch(() => undefined);
+  if (!(await start.isVisible().catch(() => false))) return;
+  await openAllBriefingPanels(page);
+  // Elle a pu se refermer entre-temps (un clic qui atteint la barre d'action collée en bas) : si
+  // le bouton n'est plus là, c'est qu'on est déjà dans les exercices. Rien à forcer.
+  if (!(await start.isVisible().catch(() => false))) return;
+  await expect(start).toBeEnabled();
+  await start.click();
+}
+
+/**
+ * Remplit un champ et **vérifie que la valeur tient**. Un écran qui vient de s'ouvrir peut se
+ * remonter dans la foulée (chunk chargé à la demande), et un champ contrôlé se vide alors sans
+ * bruit : le bouton d'envoi reste fermé et le test attend un élément qui ne s'activera jamais.
+ */
+export async function fillStable(field: Locator, value: string): Promise<void> {
+  await expect(async () => {
+    await field.fill(value);
+    await expect(field).toHaveValue(value, { timeout: 1_000 });
+  }).toPass({ timeout: 15_000 });
+}
+
 /** Répond à l'item affiché, juste ou non : la séance doit aller au bilan quoi qu'il arrive. */
 export async function playOneStep(page: Page, finished: RegExp): Promise<"done" | "step"> {
-  // Fiche de découverte (contrat phase10 §1) : une séance qui introduit du nouveau s'ouvre sur la
-  // présentation des mots. Elle n'est pas un item — on la lit et on passe aux exercices.
+  // Fiche de préparation (contrat phase10 §1, élargi phase16 §2) : une séance qui introduit du
+  // nouveau s'ouvre sur ce que les exercices vont exiger. Elle n'est pas un item — on la consulte
+  // et on passe aux exercices.
   // On guette le **bouton**, pas la fiche : il vit dans la barre d'action de `Screen`, montée juste
   // après le corps de la fiche. Guetter la fiche puis cliquer le bouton laissait une fenêtre où le
   // premier était là et le second pas encore — le clic attendait alors sans fin.
   const introStart = page.getByTestId("intro-start");
-  if (await introStart.isVisible().catch(() => false)) {
-    await introStart.click({ timeout: 10_000 }).catch(() => {});
-    return "step";
-  }
   const heading = page.getByRole("heading", { name: finished });
   const session = page.locator('[data-testid="lesson"][data-status="answering"], [data-testid="lesson"][data-status="feedback"]');
-  await expect(heading.or(session)).toBeVisible();
+  // On attend **l'un des trois** avant de décider : fiche, exercice ou bilan. Tester la fiche sans
+  // l'attendre concluait « pas de fiche » pendant qu'elle finissait de s'afficher, puis on
+  // attendait un exercice qui ne viendrait pas — un échec à 5 s sur un écran parfaitement normal.
+  await expect(introStart.or(heading).or(session).first()).toBeVisible();
+  if (await introStart.isVisible().catch(() => false)) {
+    // Une seule implémentation, celle de `skipBriefing` : elle attend que le bouton s'ouvre.
+    // Cliquer sans attendre échouait en silence (le bouton reste fermé tant qu'un volet n'est pas
+    // déplié) et la séance ne bougeait plus, sans que rien ne le dise.
+    await skipBriefing(page);
+    return "step";
+  }
+  await expect(heading.or(session).first()).toBeVisible();
   if (await heading.isVisible()) return "done";
 
   const cursor = await session.getAttribute("data-cursor");
@@ -56,8 +131,12 @@ export async function playOneStep(page: Page, finished: RegExp): Promise<"done" 
   const roleplay = page.getByTestId("roleplay");
 
   const wasFeedback = (await session.getAttribute("data-status")) === "feedback";
-  if (wasFeedback) {
-    await cont.click();
+  // « Continuer » décide en premier, sans se fier à `data-status` : cet attribut est une lecture
+  // d'instant, et s'y fier se trompait dans les deux sens — cliquer un « Continuer » déjà parti,
+  // ou cliquer une option que la correction venait de désactiver. S'il est là, c'est qu'il y a une
+  // correction à refermer ou une carte à passer ; dans les deux cas, c'est le bon geste.
+  if (await cont.first().isVisible().catch(() => false)) {
+    await cont.first().click();
   } else if (await pairs.isVisible()) {
     const columns = pairs.locator("ul");
     const count = await columns.first().locator("button").count();
@@ -85,10 +164,23 @@ export async function playOneStep(page: Page, finished: RegExp): Promise<"done" 
     // Jeu de rôle : une réplique par prise, la même action revient jusqu'à la dernière.
     for (let i = 0; i < 4 && (await roleplay.isVisible()) && (await done.isVisible()); i++) await done.click();
   } else if (await radio.isVisible()) {
+    // Après une bonne réponse, la séance enchaîne d'elle-même (700 ms) : pendant ce temps les
+    // options sont désactivées et « Continuer » n'est pas encore là. Cliquer une option
+    // désactivée attendrait sans fin — on laisse passer le tour, l'appelant rappellera.
+    if (!(await radio.isEnabled().catch(() => false))) {
+      await page.waitForTimeout(400);
+      return "step";
+    }
     await radio.click();
     await check.click();
   } else if (await check.isVisible()) {
-    await page.locator("main .flex-wrap").last().locator("button:not([disabled])").first().click();
+    const free = page.locator("main .flex-wrap").last().locator("button:not([disabled])").first();
+    // Même raison : un écran verrouillé n'offre rien à toucher. On patiente au lieu d'insister.
+    if ((await free.count()) === 0) {
+      await page.waitForTimeout(400);
+      return "step";
+    }
+    await free.click();
     await check.click();
   } else {
     await cont.first().click(); // carte culture, « Continuer sans jouer »
@@ -96,6 +188,10 @@ export async function playOneStep(page: Page, finished: RegExp): Promise<"done" 
 
   await expect(async () => {
     if (await heading.isVisible()) return;
+    // La séance a pu enchaîner sur la fiche de préparation : le rappel espacé est fini, le bloc
+    // « Nouveau » s'ouvre sur ce que la leçon va exiger (contrat phase10 §1). L'écran d'exercice
+    // est démonté — c'est un pas en avant, pas une transition en cours. Le tour suivant la traverse.
+    if (await introStart.isVisible().catch(() => false)) return;
     // Lecture atomique : pendant la transition vers le bilan l'écran de séance est démonté,
     // et getAttribute attendrait sans fin.
     const snap = await page.evaluate(() => {

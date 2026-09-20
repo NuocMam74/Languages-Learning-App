@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_dem_bring",
+  "type": "word",
+  "vi": "đem",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "apporter, emporter",
+    "en": "to bring, to take along"
+  },
+  "register": "neutral",
+  "pos": "verb",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_dem_bring_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_dem_bring_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Con đem trái cây tới.",
+      "fr": "J’apporte des fruits.",
+      "en": "I am bringing fruit."
+    }
+  ],
+  "reviewed": false
+}

@@ -20,7 +20,8 @@
     "c_dau_where",
     "c_ngu_sleep",
     "c_o_at",
-    "s_tieng_viet"
+    "s_tieng_viet",
+    "c_vay"
   ],
   "steps": [
     {
@@ -141,7 +142,8 @@
       "c_dau_where",
       "c_ngu_sleep",
       "c_o_at",
-      "s_tieng_viet"
+      "s_tieng_viet",
+      "c_vay"
     ]
   },
   "reviewed": false

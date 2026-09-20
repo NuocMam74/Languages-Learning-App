@@ -70,6 +70,9 @@ test("les conseils s'ouvrent dès le premier jour, se cherchent, et se lisent ho
   await expect(page).toHaveURL(/\/reviser\/conseils$/);
 
   // --- Hors ligne : les fiches voyagent dans core.json, donc elles restent lisibles.
+  // On attend que le service worker soit prêt : c'est lui qui sert la navigation hors ligne, et
+  // couper le réseau avant son activation ne teste rien d'autre que la course.
+  await page.evaluate(() => navigator.serviceWorker.ready.then(() => undefined));
   await context.setOffline(true);
   await page.goto("/reviser/conseils/g_au_marche");
   await expect(page.getByRole("heading", { name: "Au marché" })).toBeVisible();

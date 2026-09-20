@@ -21,7 +21,8 @@
     "s_giu_suc_khoe",
     "c_thuoc_medicine",
     "c_nuoc",
-    "c_tien"
+    "c_tien",
+    "c_nhieu"
   ],
   "steps": [
     {
@@ -153,7 +154,8 @@
       "s_khoe_chua",
       "s_do_roi",
       "s_nghi_ngoi",
-      "s_giu_suc_khoe"
+      "s_giu_suc_khoe",
+      "c_nhieu"
     ]
   },
   "reviewed": false

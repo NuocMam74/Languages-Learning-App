@@ -43,7 +43,9 @@ export function EmptyState({ art = "boat", title, body, action, compact = false,
       <Illustration className={compact ? "max-w-[9rem]" : "max-w-[13rem]"}>
         <Art />
       </Illustration>
-      <p className="font-serif text-lg text-muc">{title}</p>
+      {/* Un titre, pas un paragraphe : un état vide est une région de la page, et on y arrive
+          souvent en naviguant de titre en titre. Le niveau 2 va sous le titre d'écran (h1). */}
+      <h2 className="font-serif text-lg text-muc">{title}</h2>
       {body && <p className="max-w-[30rem] text-phu-sa">{body}</p>}
       {action && <div className="pt-1">{action}</div>}
     </div>

@@ -315,6 +315,16 @@ export default function Settings() {
       </Slot>
 
       <Section title={t("settings.data")} icon="download">
+        {/* Changer d'appareil vient **avant** l'export RGPD : c'est le geste qu'on cherche ici, et
+            les deux fichiers ne servent pas à la même chose (contrat phase17 §2). */}
+        <Card className="flex flex-col gap-2">
+          <Link to="/reglages/appareil" className="flex min-h-12 items-center gap-3 font-semibold text-ngoc" data-testid="settings-transfer">
+            <Icon name="share" size={20} />
+            <span className="min-w-0 flex-1 text-left">{t("settings.transfer")}</span>
+            <Icon name="chevronRight" size={20} className="text-phu-sa" />
+          </Link>
+          <p className="text-sm text-phu-sa">{t("settings.transfer.hint")}</p>
+        </Card>
         <Card className="flex flex-col gap-2">
           <button type="button" className="flex min-h-12 items-center gap-3 font-semibold text-ngoc" data-testid="export-data" onClick={() => void exportData()}>
             <Icon name="download" size={20} />

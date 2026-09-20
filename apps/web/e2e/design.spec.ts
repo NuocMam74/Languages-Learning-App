@@ -1,19 +1,26 @@
 import { expect, test, type Page } from "@playwright/test";
-import { onboard } from "./helpers.ts";
+import { onboard, skipBriefing } from "./helpers.ts";
 
 /**
  * Audit visuel (contrat phase8 §1 et §5). Ce fichier ne juge pas le goût : il vérifie les
  * promesses mesurables du système de design sur les deux téléphones de référence.
  *
- *  1. aucun débordement horizontal (iPhone 13 — 390×844 WebKit, Galaxy S25 Ultra — 412×915 Edge) ;
+ *  1. aucun débordement horizontal, aux deux gabarits de référence (390×844 et 412×915) ;
  *  2. CLS ≤ 0,05 sur accueil, parcours, réviser, profil et une leçon ;
  *  3. `prefers-reduced-motion` respecté : aucune animation longue ne tourne ;
  *  4. contraste AA sur les styles de texte échantillonnés ;
  *  5. chaque écran vide montre son illustration et son invitation — jamais un écran blanc.
  */
 
-const IPHONE_13 = { browserName: "webkit" as const, viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true };
-const S25_ULTRA = { browserName: "chromium" as const, channel: "msedge", viewport: { width: 412, height: 915 }, deviceScaleFactor: 3.5, isMobile: true, hasTouch: true };
+/**
+ * Les deux gabarits de référence. On y fixe l'écran, pas le moteur : `browserName` et `channel`
+ * ne peuvent pas vivre dans un `test.use()` de groupe (Playwright impose alors un worker par
+ * groupe et refuse le fichier), et la CI n'installe de toute façon que Chromium. Ce que cet audit
+ * promet — pas de débordement, CLS tenu, contraste AA, animations respectées — dépend de la
+ * largeur et de la densité, pas du moteur : c'est donc ce qu'on émule.
+ */
+const IPHONE_13 = { viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true };
+const S25_ULTRA = { viewport: { width: 412, height: 915 }, deviceScaleFactor: 3.5, isMobile: true, hasTouch: true };
 
 /** Budget de décalage cumulé (contrat phase8) : au-delà, la page « saute » sous les yeux. */
 const CLS_BUDGET = 0.05;
@@ -72,13 +79,36 @@ async function expectNoOverflow(page: Page, where: string) {
  */
 async function expectAaContrast(page: Page, where: string) {
   const failures = await page.evaluate(() => {
+    /**
+     * Toute couleur CSS en sRGB, convertie **par le navigateur**.
+     *
+     * Les jetons du système de design sortent de `getComputedStyle` en `oklab(L a b / α)` : une
+     * lecture par expression régulière y perdait le signe des composantes a et b et rendait un
+     * gris moyen là où l'écran montre un blanc cassé. On peint donc un pixel et on le relit —
+     * exact, et valable pour toutes les notations à venir (lab, hwb, color()…).
+     */
+    const canvas = document.createElement("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true })!;
+    ctx.globalCompositeOperation = "copy";
     const parse = (value: string): [number, number, number, number] => {
-      const n = value.match(/[\d.]+/g)?.map(Number) ?? [0, 0, 0, 0];
-      return [n[0] ?? 0, n[1] ?? 0, n[2] ?? 0, n[3] ?? 1];
+      ctx.fillStyle = "rgba(0, 0, 0, 0)";
+      ctx.fillStyle = value;
+      ctx.fillRect(0, 0, 1, 1);
+      const [r = 0, g = 0, b = 0, a = 0] = ctx.getImageData(0, 0, 1, 1).data;
+      return [r, g, b, a / 255];
     };
+    /**
+     * « source-over » : fg par-dessus bg, **avec l'opacité qui en résulte**. La forcer à 1, comme
+     * on le faisait, arrêtait la remontée des fonds à la première couche translucide et donnait
+     * une couleur qui n'existe nulle part à l'écran (un gris moyen sous du texte posé sur blanc).
+     */
     const over = (fg: [number, number, number, number], bg: [number, number, number, number]): [number, number, number, number] => {
-      const a = fg[3];
-      return [fg[0] * a + bg[0] * (1 - a), fg[1] * a + bg[1] * (1 - a), fg[2] * a + bg[2] * (1 - a), 1];
+      const a = fg[3] + bg[3] * (1 - fg[3]);
+      if (a === 0) return [0, 0, 0, 0];
+      const mix = (i: number) => (fg[i] * fg[3] + bg[i] * bg[3] * (1 - fg[3])) / a;
+      return [mix(0), mix(1), mix(2), a];
     };
     const lum = (c: [number, number, number, number]) => {
       const f = (v: number) => {
@@ -107,6 +137,10 @@ async function expectAaContrast(page: Page, where: string) {
       if (rect.width === 0 || rect.height === 0) continue;
       const style = getComputedStyle(el);
       if (style.visibility === "hidden" || style.opacity === "0") continue;
+      // Décor explicitement masqué aux aides techniques : le « 30 » gravé dans l'icône d'un badge
+      // non gagné en est un. Ce n'est pas du texte à lire — le nom du badge est écrit à côté — et
+      // l'estomper est justement ce qui dit « pas encore obtenu ».
+      if (el.closest('[aria-hidden="true"]')) continue;
       const size = Number.parseFloat(style.fontSize);
       const weight = Number(style.fontWeight) || 400;
       const large = size >= 24 || (size >= 18.66 && weight >= 700);
@@ -151,6 +185,9 @@ function auditFor(name: string, device: typeof IPHONE_13 | typeof S25_ULTRA) {
     test("une leçon : pas de débordement ni de saut de mise en page", async ({ page }) => {
       await watchLayoutShift(page);
       await onboard(page);
+      // Une leçon qui introduit du nouveau s'ouvre sur sa préparation : on la traverse, l'audit
+      // porte ici sur l'écran d'exercice.
+      await skipBriefing(page);
       await expect(page.getByTestId("lesson")).toBeVisible();
       await page.waitForTimeout(700);
       await expectNoOverflow(page, "leçon");
@@ -183,8 +220,10 @@ function auditFor(name: string, device: typeof IPHONE_13 | typeof S25_ULTRA) {
       await expectAaContrast(page, "/bienvenue");
 
       await onboard(page);
-      // Rien n'a encore été appris : la bibliothèque et les notes doivent inviter, pas se taire.
-      for (const path of ["/reviser", "/notes"]) {
+      // Rien n'a encore été appris : les écrans qui n'ont rien à montrer doivent inviter, pas se
+      // taire. « Réviser » n'en fait plus partie — depuis le contrat phase15 §2, les conseils s'y
+      // lisent dès le premier jour, et depuis phase16 §4 l'ordre de travail y ouvre la page.
+      for (const path of ["/notes"]) {
         await page.goto(path);
         const empty = page.locator("[data-empty-state]").first();
         await expect(empty, `${path} : état vide absent`).toBeVisible();
@@ -194,5 +233,5 @@ function auditFor(name: string, device: typeof IPHONE_13 | typeof S25_ULTRA) {
   });
 }
 
-auditFor("iPhone 13 (390×844, WebKit)", IPHONE_13);
-auditFor("Galaxy S25 Ultra (412×915, Edge)", S25_ULTRA);
+auditFor("iPhone 13 (390×844)", IPHONE_13);
+auditFor("Galaxy S25 Ultra (412×915)", S25_ULTRA);

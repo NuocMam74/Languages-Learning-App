@@ -9,6 +9,17 @@ import { usePrefs } from "../prefs.ts";
  */
 export const TranscriptsAllowed = createContext(true);
 
+/**
+ * Le pack a-t-il des voix natives enregistrées ? (contrat phase16 §5)
+ *
+ * Quand il n'en a **aucune** — l'état du vietnamien du Sud aujourd'hui : 0 fichier sur 1632
+ * référencés — répéter « Audio natif pas encore enregistré » en rouge sous chaque mot fait passer
+ * un chantier connu pour une série de pannes. On le dit alors une fois, en haut du parcours, et
+ * ici on se contente d'une ligne calme. Si des voix existent et qu'il en manque une, en revanche,
+ * c'est bien une anomalie de ce mot-là : le message rouge reprend sa place.
+ */
+export const NativeVoices = createContext(true);
+
 interface Props {
   play: (speed: "natural" | "slow") => Promise<PlaybackSource>;
   /** Joue automatiquement à l'affichage (l'oreille avant l'œil). */
@@ -24,6 +35,7 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
   const played = useRef(false);
   const silent = usePrefs((s) => s.silent);
   const transcripts = useContext(TranscriptsAllowed);
+  const voices = useContext(NativeVoices);
 
   const run = async (speed: "natural" | "slow") => setSource(await play(speed));
 
@@ -57,7 +69,7 @@ export function AudioButton({ play, autoPlay = true, large = true, withSlow = tr
         )}
       </div>
       {source === "tts" && <p className="text-sm text-phu-sa">{t("audio.tts")}</p>}
-      {source === "missing" && <p className="text-sm text-son-mai">{t("audio.missing")}</p>}
+      {source === "missing" && <p className={`text-sm ${voices ? "text-son-mai" : "text-phu-sa"}`}>{t(voices ? "audio.missing" : "audio.noVoicesYet")}</p>}
       {/*
        * Rien à entendre — ni enregistrement, ni voix installée sur l'appareil. Cacher la
        * transcription ne protège alors plus rien : elle ne « donne » la réponse d'un exercice

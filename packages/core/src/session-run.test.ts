@@ -42,8 +42,10 @@ describe("déroulé de séance", () => {
     // progression ne bouge pas.
     expect(phase.kind).toBe("teach");
     if (phase.kind !== "teach") throw new Error(phase.kind);
-    expect(phase.conceptIds).toEqual(conceptsToTeach(run, content));
-    expect(phase.conceptIds.length).toBeGreaterThan(0);
+    // Sans `briefing` au démarrage (snapshot d'avant le contrat phase16), la fiche retombe sur
+    // les seuls mots que la leçon introduit : le comportement d'avant, préservé.
+    expect(phase.briefing.discover).toEqual(conceptsToTeach(run, content));
+    expect(phase.briefing.discover.length).toBeGreaterThan(0);
     const doneBefore = sessionItemsDone(run);
     run = markTaught(run);
     expect(sessionItemsDone(run)).toBe(doneBefore);

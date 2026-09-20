@@ -167,7 +167,9 @@
       "c_nha_ve_sinh",
       "c_khach_san",
       "c_san_bay",
-      "c_day_here"
+      "c_day_here",
+      "s_co_xa_khong",
+      "s_gan_day"
     ]
   },
   "reviewed": false

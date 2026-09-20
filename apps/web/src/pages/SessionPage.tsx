@@ -1,11 +1,12 @@
 import { BADGE_CODES, levelForXp, nextLesson, sessionItemsDone, sessionItemsRemaining, TONAL_STEP_TYPES, UNIT_TEST_PASS_SCORE, type ContentIndex, type Exercise, type SessionPhase } from "@parlo/core";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Link, Navigate, useNavigate, useParams, useSearchParams } from "react-router";
 import { useAccount } from "../account.ts";
 import { playConcept, ttsAllowed } from "../audio.ts";
 import { BadgeIcon } from "../components/BadgeIcon.tsx";
+import { FavoriteButton } from "../components/FavoriteButton.tsx";
 import { ExerciseView } from "../components/exercises.tsx";
-import { LessonIntro } from "../exercises/LessonIntro.tsx";
+import { LessonBriefing } from "../exercises/LessonBriefing.tsx";
 import { levelLabel, LevelLine } from "../components/LevelLine.tsx";
 import { Button, Screen, Vi } from "../components/ui.tsx";
 import { Card, CountUp, EmptyState, Icon, IconButton, ProgressBar, ProgressRing, SectionTitle, Sheet, staggerStyle } from "../design/index.ts";
@@ -14,6 +15,7 @@ import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { getProfile, progressState } from "../learner.ts";
 import { LessonNoteBlock } from "../notes/NoteBlock.tsx";
 import { usePrefs } from "../prefs.ts";
+import { markGuideRead } from "../review/guides-read.ts";
 import { useSession } from "../session-store.ts";
 import { askWhy, type WhyAnswer } from "../tutor.ts";
 
@@ -35,6 +37,15 @@ const PHASE_LABEL: Partial<Record<SessionPhase["kind"], MessageKey>> = {
 export function SessionPage({ content, mode }: { content: ContentIndex; mode: "daily" | "review" | "lesson" | "practice" }) {
   const { lessonId = "" } = useParams();
   const practice = mode === "practice";
+  // `?etapes=2,5,9` : rejouer seulement les exercices mis en favori (contrat phase18 §3). L'URL
+  // les porte pour que le lien se partage et que le retour du navigateur retombe au bon endroit.
+  const [search] = useSearchParams();
+  const steps = useMemo(() => {
+    const raw = search.get("etapes");
+    if (!raw) return undefined;
+    const parsed = raw.split(",").map(Number).filter((n) => Number.isInteger(n) && n >= 0);
+    return parsed.length > 0 ? parsed : undefined;
+  }, [search]);
   const navigate = useNavigate();
   const { status, run, phase, exercise, feedback, recap, error, open, answer, next, taught, remedial } = useSession();
   const [attempt, setAttempt] = useState(0);
@@ -45,8 +56,13 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   const [chosenId, setChosenId] = useState<string | null>(null);
 
   useEffect(() => {
-    void open(content, mode === "lesson" || mode === "practice" ? { source: "lesson", lessonId, ...(mode === "practice" ? { practice: true } : {}) } : { source: mode });
-  }, [content, mode, lessonId, open, attempt]);
+    void open(
+      content,
+      mode === "lesson" || mode === "practice"
+        ? { source: "lesson", lessonId, ...(mode === "practice" ? { practice: true } : {}), ...(steps ? { steps } : {}) }
+        : { source: mode },
+    );
+  }, [content, mode, lessonId, open, attempt, steps]);
 
   useEffect(() => {
     if (status !== "feedback" || !feedback) return;
@@ -90,16 +106,18 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
     );
   }
   if (status === "done" && recap) return <Recap content={content} onDone={() => navigate(backTo)} onRetry={() => setAttempt((n) => n + 1)} />;
-  // Découverte (contrat phase10 §1) : on présente la leçon avant de la faire pratiquer. Placée
-  // avant la garde ci-dessous, qui exige un exercice — la fiche n'en est pas un.
+  // Préparation (contrat phase10 §1, élargi phase16 §2) : on présente tout ce que les exercices
+  // vont exiger avant de faire pratiquer, et on n'ouvre le bouton qu'une fois tout consulté.
+  // Placée avant la garde ci-dessous, qui exige un exercice — la fiche n'en est pas un.
   if (phase?.kind === "teach" && run) {
     return (
-      <LessonIntro
+      <LessonBriefing
         content={content}
         lesson={content.lessons.get(phase.lesson.lessonId)}
-        conceptIds={phase.conceptIds}
+        briefing={phase.briefing}
         onStart={() => void taught()}
         onQuit={() => navigate(backTo)}
+        onGuideRead={(guideId) => void markGuideRead(guideId)}
       />
     );
   }
@@ -111,6 +129,9 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
   const nudgeConcept = run.lesson?.tutorNudge ? content.concepts.get(run.lesson.tutorNudge) : undefined;
   const label = run.source !== "lesson" ? PHASE_LABEL[phase.kind] : undefined;
   const lessonStart = (phase.kind === "new" || phase.kind === "practice") && phase.lesson.cursor === 0;
+  // L'étape réellement affichée : c'est elle qu'on aime, pas la position dans la file.
+  const currentStep = (phase.kind === "new" || phase.kind === "practice") && exercise.stepIndex >= 0 ? exercise.stepIndex : null;
+  const favoriteStep = run.lesson && currentStep !== null ? { lessonId: run.lesson.lessonId, stepIndex: currentStep } : null;
 
   return (
     <div
@@ -126,11 +147,14 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
         <IconButton icon="close" label={t("lesson.quit")} onClick={() => navigate(backTo)} className="-ml-2" />
         {/* La barre de séance se remplit seule : c'est le seul mouvement pendant qu'on répond. */}
         <ProgressBar value={done} max={total} label={t("lesson.progress", { i: done + 1, n: total })} className="h-3 flex-1" />
+        {/* Aimer l'exercice affiché (contrat phase18 §2). Seulement sur une étape de leçon : un
+            item de rappel espacé est tiré au sort, il n'a pas d'existence à retrouver. */}
+        {favoriteStep !== null && <FavoriteButton target={favoriteStep} size={20} className="-mr-2" />}
       </header>
       {practice && (
         <p className="mt-3 flex items-center gap-2 rounded-chip bg-surface-nghe px-3 py-1.5 text-sm" data-testid="practice-banner">
           <Icon name="refresh" size={15} />
-          {t("review.practice.banner")}
+          {t(steps ? "favorites.practice.banner" : "review.practice.banner")}
         </p>
       )}
       {label && (
@@ -472,10 +496,19 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
           </p>
         )}
 
+        {/* Aimer la leçon qu'on vient de finir (contrat phase18 §2) : c'est le moment où l'on sait
+            si elle a plu, et le seul écran où la question se pose sans interrompre. */}
+        {recap.lessonId && (
+          <Card tone="quiet" as="section" className="flex items-center gap-3" data-testid="recap-favorite">
+            <FavoriteButton target={{ lessonId: recap.lessonId }} className="-ml-2" />
+            <p className="min-w-0 flex-1 text-sm text-phu-sa">{t("favorites.recap")}</p>
+          </Card>
+        )}
+
         {learned.length > 0 && (
           <section>
             <SectionTitle icon="star" className="mb-3">{t("session.recap.canSay")}</SectionTitle>
-            <Card tone="plain" as="ul" className="flex flex-col gap-3 py-3">
+            <Card tone="plain" as="ul" data-testid="recap-can-say" className="flex flex-col gap-3 py-3">
               {learned.map((c, i) => (
                 <li
                   key={c.id}

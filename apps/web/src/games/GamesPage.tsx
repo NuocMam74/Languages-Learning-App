@@ -4,6 +4,8 @@ import {
   GAME_PASS_RATIO,
   buaComSources,
   generateBuaComRounds,
+  isGamePlayable,
+  packHasNativeAudio,
   pickXeOmRoutes,
   type BuaComSource,
   type Concept,
@@ -66,6 +68,10 @@ export function GamesPage({ content }: { content: ContentIndex }) {
   const tutorAvailable = useTutorStatus((s) => s.available);
   // Karaoké tonal : entrée masquée tant qu'aucune courbe de référence n'est présente (contrat phase5 §1).
   const karaoke = useMemo(() => karaokeCandidates(content, new Set()).all.length > 0, [content]);
+  // Chợ nổi fait trier des barques à l'oreille : sans voix native, il s'ouvrait sur « Pas assez de
+  // mots avec un audio natif pour jouer ici ». On ne l'ouvre plus (contrat phase16 §5) — même
+  // règle et même endroit que le karaoké.
+  const voices = useMemo(() => packHasNativeAudio(content), [content]);
   useEffect(() => {
     const ids = MVP_GAMES.filter((id) => PLAYABLE[id]);
     void Promise.all(ids.map((id) => getKv<GameBest | null>(bestKey(id), null))).then((values) =>
@@ -90,6 +96,10 @@ export function GamesPage({ content }: { content: ContentIndex }) {
       continue;
     }
     const entry = PLAYABLE[id];
+    if (entry && !isGamePlayable(content, id)) {
+      rows.push({ id, name, icon: "lock", soon: t("games.needsVoices") });
+      continue;
+    }
     rows.push(
       entry
         ? { id, name, icon: entry.icon, to: `/jeux/${id}`, tagline: t(entry.tagline), state: state(id) }

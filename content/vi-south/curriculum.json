@@ -96,6 +96,9 @@
         "core"
       ],
       "requires": [],
+      "guides": [
+        "g_construire_phrase"
+      ],
       "lessons": [
         "vi-south.u01.l01",
         "vi-south.u01.l02",
@@ -120,6 +123,9 @@
       ],
       "requires": [
         "vi-south.u01"
+      ],
+      "guides": [
+        "g_particules_sud"
       ],
       "lessons": [
         "vi-south.u02.l01",
@@ -146,6 +152,9 @@
       "requires": [
         "vi-south.u02"
       ],
+      "guides": [
+        "g_a_qui_je_parle"
+      ],
       "lessons": [
         "vi-south.u03.l01",
         "vi-south.u03.l02",
@@ -170,6 +179,9 @@
       ],
       "requires": [
         "vi-south.u03"
+      ],
+      "guides": [
+        "g_saluer_remercier"
       ],
       "lessons": [
         "vi-south.u04.l01",
@@ -196,6 +208,9 @@
       "requires": [
         "vi-south.u03"
       ],
+      "guides": [
+        "g_poser_question"
+      ],
       "lessons": [
         "vi-south.u05.l01",
         "vi-south.u05.l02",
@@ -221,6 +236,9 @@
       "requires": [
         "vi-south.u03"
       ],
+      "guides": [
+        "g_classificateurs"
+      ],
       "lessons": [
         "vi-south.u06.l01",
         "vi-south.u06.l02",
@@ -245,6 +263,9 @@
       "requires": [
         "vi-south.u06"
       ],
+      "guides": [
+        "g_au_quan"
+      ],
       "lessons": [
         "vi-south.u07.l01",
         "vi-south.u07.l02",
@@ -268,6 +289,10 @@
       ],
       "requires": [
         "vi-south.u06"
+      ],
+      "guides": [
+        "g_au_marche",
+        "g_prix_argent"
       ],
       "lessons": [
         "vi-south.u08.l01",
@@ -294,6 +319,9 @@
       "requires": [
         "vi-south.u06"
       ],
+      "guides": [
+        "g_situer_temps"
+      ],
       "lessons": [
         "vi-south.u09.l01",
         "vi-south.u09.l02",
@@ -318,6 +346,9 @@
       "requires": [
         "vi-south.u05",
         "vi-south.u06"
+      ],
+      "guides": [
+        "g_se_deplacer"
       ],
       "lessons": [
         "vi-south.u10.l01",
@@ -369,6 +400,9 @@
         "vi-south.u07",
         "vi-south.u09",
         "vi-south.u10"
+      ],
+      "guides": [
+        "g_dire_non"
       ],
       "lessons": [
         "vi-south.u12.l01",
@@ -447,6 +481,9 @@
         "vi-south.u05",
         "vi-south.u09"
       ],
+      "guides": [
+        "g_au_telephone"
+      ],
       "lessons": [
         "vi-south.u15.l01",
         "vi-south.u15.l02",
@@ -472,6 +509,9 @@
       "requires": [
         "vi-south.u10",
         "vi-south.u12"
+      ],
+      "guides": [
+        "g_chez_le_medecin"
       ],
       "lessons": [
         "vi-south.u16.l01",

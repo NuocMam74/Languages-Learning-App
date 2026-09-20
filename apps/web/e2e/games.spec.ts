@@ -1,3 +1,4 @@
+import { dismissCelebrations } from "./helpers.ts";
 import { expect, test, type Page } from "@playwright/test";
 import { declareAllMedia } from "./media.ts";
 
@@ -40,6 +41,9 @@ test("Chợ nổi se joue jusqu'au résultat et garde le record", async ({ page 
   await expect(page.getByText(/^\d+ sur 10$/)).toBeVisible();
   await expect(page.getByText("Nouveau record")).toBeVisible();
 
+  // Terminer un jeu peut rapporter des xu : la carte de récompense se pose par-dessus l'écran de
+  // fin et intercepte les clics. On la referme comme le ferait un joueur.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour aux jeux" }).click();
   await expect(page.getByText(/^Record : \d+ points · \d+ sur 10$/)).toBeVisible();
 });
@@ -134,6 +138,9 @@ test("Xe ôm : suit les consignes carrefour par carrefour jusqu'au terminus", as
   expect(event!.localDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   expect(event!.total).toBeGreaterThan(event!.correct);
 
+  // Terminer un jeu peut rapporter des xu : la carte de récompense se pose par-dessus l'écran de
+  // fin et intercepte les clics. On la referme comme le ferait un joueur.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour aux jeux" }).click();
   await expect(page.locator('[data-game="xe_om"]')).toContainText(/Record : \d+ points · \d+ sur \d+/);
   await expect(page.locator('[data-game="bua_com"]')).toContainText("Pas encore joué");
@@ -180,6 +187,9 @@ test("Bữa cơm : assemble les phrases, chrono doux, jusqu'au repas", async ({ 
   await expect(page.getByText("Nouveau record")).toBeVisible();
   await expect.poll(async () => (await gamePlayedEvents(page)).filter((e) => e.game === "bua_com").length).toBe(1);
 
+  // Terminer un jeu peut rapporter des xu : la carte de récompense se pose par-dessus l'écran de
+  // fin et intercepte les clics. On la referme comme le ferait un joueur.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour aux jeux" }).click();
   await expect(page.locator('[data-game="bua_com"]')).toContainText(/Record : \d+ points · \d sur 5/);
 });

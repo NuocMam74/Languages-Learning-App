@@ -1,4 +1,4 @@
-import type { Concept, ContentIndex, Dialogue, Lesson, LessonStep, StepType } from "./types.ts";
+import type { Concept, ContentIndex, Dialogue, GameId, Lesson, LessonStep, StepType } from "./types.ts";
 import { NATIVE_AUDIO_STEP_TYPES, TONAL_STEP_TYPES } from "./types.ts";
 
 /**
@@ -82,6 +82,41 @@ export function stepHasRequiredAudio(content: ContentIndex, step: LessonStep, me
   return tonalStepHasNativeAudio(content, step, media);
 }
 
+/**
+ * Le pack a-t-il **au moins un** enregistrement natif présent ?
+ *
+ * Question grossière, mais c'est la bonne : tant qu'aucune voix n'a été enregistrée, la moitié des
+ * écrans affiche « Audio natif pas encore enregistré » en rouge, exercice après exercice, comme si
+ * chaque mot avait un problème particulier. Ce n'est pas un incident par mot, c'est un état du
+ * pack — et il se dit **une fois**, calmement.
+ *
+ * `media === null` (contenu lu sur disque en test) : tout est réputé présent.
+ */
+export function packHasNativeAudio(content: Pick<ContentIndex, "concepts" | "mediaIndex">, media: MediaIndex | null = contentMedia(content)): boolean {
+  if (media === null) return true;
+  for (const concept of content.concepts.values()) if (hasNativeAudio(concept, media)) return true;
+  return false;
+}
+
+/**
+ * Mini-jeux qui n'ont aucun sens sans voix native. `cho_noi` fait trier des barques à l'oreille par
+ * leur ton : en voix de synthèse, les tons sont faux (spec §7.4), donc le jeu exige du natif et,
+ * sans lui, s'ouvre sur « Pas assez de mots avec un audio natif pour jouer ici ». Mieux vaut ne pas
+ * l'ouvrir : une porte qui mène à un mur n'est pas une porte.
+ *
+ * Les autres jeux acceptent la synthèse (le contenu n'y est pas tonal) et restent jouables.
+ */
+export const NATIVE_AUDIO_GAMES: ReadonlySet<GameId> = new Set<GameId>(["cho_noi", "karaoke_tonal"]);
+
+/**
+ * Le mini-jeu est-il jouable avec les médias présents ? `toneFallback` (bêta interne
+ * `VITE_TTS_TONE_FALLBACK`) rend la synthèse acceptable pour les tons : `cho_noi` redevient alors
+ * jouable, exactement comme les étapes tonales — c'est la même décision, prise au même endroit.
+ */
+export function isGamePlayable(content: ContentIndex, game: GameId, media: MediaIndex | null = contentMedia(content), toneFallback = false): boolean {
+  return toneFallback || !NATIVE_AUDIO_GAMES.has(game) || packHasNativeAudio(content, media);
+}
+
 export interface PlayableOptions {
   /** Build `VITE_TTS_TONE_FALLBACK=true` (bêta interne) : étapes tonales jouées en synthèse vocale. */
   toneFallback?: boolean;
@@ -97,7 +132,11 @@ export function isStepPlayable(content: ContentIndex, step: LessonStep, options:
   // Le repli de synthèse ne concerne que les tons : on ne fait jamais transcrire ni écouter un
   // dialogue en voix de synthèse.
   if (options.toneFallback && TONAL_STEP_TYPES.has(step.type)) return true;
-  return stepHasRequiredAudio(content, step, options.media === undefined ? contentMedia(content) : options.media);
+  const media = options.media === undefined ? contentMedia(content) : options.media;
+  // Un mini-jeu qui s'ouvrirait sur « pas assez de mots pour jouer » est retiré comme une étape
+  // d'écoute sans enregistrement : on ne fait pas traverser un cul-de-sac.
+  if (step.type === "game") return isGamePlayable(content, step.game, media, options.toneFallback ?? false);
+  return stepHasRequiredAudio(content, step, media);
 }
 
 /** Index des étapes jouables d'une leçon (ordre conservé, indices d'origine). */

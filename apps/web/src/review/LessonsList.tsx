@@ -2,6 +2,7 @@ import type { ContentIndex, LessonId } from "@parlo/core";
 import { Link } from "react-router";
 import { Screen } from "../components/ui.tsx";
 import { Card, Chip, EmptyState, Icon, ProgressBar } from "../design/index.ts";
+import { FavoriteButton } from "../components/FavoriteButton.tsx";
 import { l, t } from "../i18n/index.ts";
 import type { LibraryData } from "./data.ts";
 import { enter, GroupTitle, LibraryHeader } from "./ui.tsx";
@@ -73,9 +74,14 @@ function LessonRow({ content, data, lessonId, stagger }: { content: ContentIndex
             {done && row && <p className="text-sm text-phu-sa">{t("review.lessons.score", { n: Math.round(row.bestScore * 100) })}</p>}
           </div>
         </div>
-        <Chip tone={done ? "ngoc" : open ? "solid" : "neutral"}>
-          {t(done ? "review.lessons.state.done" : open ? "review.lessons.state.open" : "review.lessons.state.locked")}
-        </Chip>
+        <div className="flex shrink-0 items-center gap-1">
+          <Chip tone={done ? "ngoc" : open ? "solid" : "neutral"}>
+            {t(done ? "review.lessons.state.done" : open ? "review.lessons.state.open" : "review.lessons.state.locked")}
+          </Chip>
+          {/* Aimer une leçon depuis la bibliothèque (contrat phase18 §2) : seulement celles qu'on a
+              faites — on n'aime pas ce qu'on n'a pas encore vu. */}
+          {done && <FavoriteButton target={{ lessonId }} size={18} className="-mr-2 size-9" />}
+        </div>
       </div>
       {done && row && <ProgressBar value={row.bestScore} size="sm" label={t("review.lessons.score", { n: Math.round(row.bestScore * 100) })} />}
       {done && (

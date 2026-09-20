@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_vo_into",
+  "type": "word",
+  "vi": "vô",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "entrer ; mettre (dedans)",
+    "en": "to enter; to put on"
+  },
+  "northernEquivalent": "vào",
+  "register": "neutral",
+  "pos": "verb",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_vo_into_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_vo_into_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Anh đội nón bảo hiểm vô nha.",
+      "fr": "Mets ton casque, d’accord ?",
+      "en": "Put your helmet on, alright?"
+    }
+  ],
+  "note": {
+    "fr": "Au Sud on dit vô ; au Nord, vào.",
+    "en": "In the South you say vô; up North, vào."
+  },
+  "reviewed": false
+}

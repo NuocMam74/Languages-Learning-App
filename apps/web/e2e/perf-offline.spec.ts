@@ -1,5 +1,5 @@
 import { expect, test, type BrowserContext, type Page } from "@playwright/test";
-import { onboard, playOneStep, playUntil } from "./helpers.ts";
+import { dismissCelebrations, onboard, playOneStep, playUntil, skipBriefing } from "./helpers.ts";
 
 /**
  * Performance et contenu hors ligne (audit mobile P1 #6, spec §8.1) :
@@ -97,7 +97,9 @@ test("premier affichage : core.json seulement (pas de bundle), skeleton puis acc
   await throttle(context, cold);
   const t0 = Date.now();
   await cold.goto("/apprendre");
-  await expect(cold.getByTestId("hub-pack").or(cold.locator('[data-testid="lesson"]')).first()).toBeVisible();
+  // La séance laissée en cours reprend : l'écran utile est le parcours, l'exercice **ou** la fiche
+  // de préparation. Les trois sont du contenu affiché — c'est ce que cette mesure chronomètre.
+  await expect(cold.getByTestId("hub-pack").or(cold.locator('[data-testid="lesson"], [data-testid="lesson-intro"]')).first()).toBeVisible();
   const wallMs = Date.now() - t0;
   const shownAt = await cold.evaluate(() => performance.now());
   console.log(`[perf] démarrage à froid Fast 3G (service worker + IndexedDB) : contenu en ${Math.round(shownAt)} ms (horloge du test : ${wallMs} ms)`);
@@ -123,6 +125,8 @@ test("unité téléchargée depuis les réglages : jouée hors ligne sans avoir 
 
   await context.setOffline(true);
   await page.goto("/lecon/vi-south.u04.l01");
+  // Hors ligne aussi, la leçon s'ouvre sur sa préparation : les fiches voyagent dans core.json.
+  await skipBriefing(page);
   const lesson = page.locator('[data-testid="lesson"][data-status="answering"]');
   await expect(lesson).toBeVisible();
   for (let i = 0; i < 3; i++) await playOneStep(page, /Leçon terminée/);
@@ -157,8 +161,13 @@ test.describe(() => {
   test("nouvelle version du pack publiée pendant une séance : la séance continue, la version s'applique ensuite", async ({ page }) => {
     test.setTimeout(240_000);
     await onboard(page);
-    for (let i = 0; i < 2; i++) await playOneStep(page, /Leçon terminée/);
-    const cursor = await page.locator('[data-testid="lesson"]').getAttribute("data-cursor");
+    // On joue jusqu'à ce que le curseur avance vraiment : consulter la fiche de préparation et
+    // refermer une correction prennent des tours sans faire bouger la séance.
+    let cursor: string | null = null;
+    for (let i = 0; i < 10 && Number(cursor ?? 0) === 0; i++) {
+      await playOneStep(page, /Leçon terminée/);
+      cursor = await page.locator('[data-testid="lesson"]').getAttribute("data-cursor").catch(() => null);
+    }
     expect(Number(cursor)).toBeGreaterThan(0);
 
     // Version 2 publiée (sans rebuild) : manifeste statique, core et unités de la v2.
@@ -186,12 +195,16 @@ test.describe(() => {
     expect((await idbGet<{ version: number }>(page, "packs", "vi-south"))?.version).toBe(1);
 
     await playUntil(page, /Leçon terminée/);
+    await dismissCelebrations(page);
     await page.getByRole("button", { name: "Retour au parcours" }).click();
     await expect(page.getByTestId("hub-pack")).toBeVisible();
 
     // Séance terminée : la v2 s'applique au démarrage suivant, sans perte de progression.
     await page.reload();
-    await expect(page.getByRole("link", { name: "Nouvelle version publiée" })).toBeVisible();
+    // Le titre de la v2 est sur la carte. On ne l'exige pas comme **lien** : depuis le contrat
+    // phase10 §3, la leçon suivante ne s'ouvre qu'une fois la précédente réussie, et on répond
+    // ici au hasard. Ce que cette ligne vérifie, c'est que la nouvelle version s'est appliquée.
+    await expect(page.getByText("Nouvelle version publiée")).toBeVisible();
     expect((await idbGet<{ version: number }>(page, "packs", "vi-south"))?.version).toBe(2);
     expect(await idbGet(page, "lessonProgress", "vi-south.u01.l01")).toBeDefined();
   });

@@ -137,6 +137,31 @@ export interface NoteRow {
   updatedAt: string;
 }
 
+/** Ce qu'un favori désigne (contrat phase18 §1) : une leçon entière, ou un exercice précis. */
+export type FavoriteKind = "lesson" | "step";
+
+/**
+ * Favori (contrat phase18 §1) : « celui-là, je veux le retrouver ». Local, propre à une langue,
+ * jamais envoyé au serveur — comme les notes (contrat phase8 §3), et pour la même raison : c'est
+ * un goût, pas une progression.
+ *
+ * `id` vaut l'identifiant de la leçon pour un favori de leçon, et `<leçon>#<étape>` pour un
+ * exercice — une clé stable, lisible, qui survit au rechargement du contenu.
+ */
+export interface FavoriteRow {
+  id: string;
+  packCode: string;
+  kind: FavoriteKind;
+  lessonId: string;
+  /** Index de l'étape dans la leçon ; absent pour un favori de leçon. */
+  stepIndex?: number;
+  addedAt: string;
+}
+
+/** Clé d'un favori : la même des deux côtés (on aime et on retire au même endroit). */
+export const favoriteId = (lessonId: string, stepIndex?: number): string =>
+  stepIndex === undefined ? lessonId : `${lessonId}#${stepIndex}`;
+
 /** Clé `kv` globale du pack actif (langue apprise). */
 export const ACTIVE_PACK_KEY = "activePack";
 /** Clé du snapshot avant la version 3 du schéma (un seul pack). */
@@ -182,6 +207,7 @@ export class ParloDB extends Dexie {
   units!: EntityTable<StoredUnit, "key">;
   offlineUnits!: EntityTable<OfflineUnitRow, "key">;
   notes!: EntityTable<NoteRow, "id">;
+  favorites!: EntityTable<FavoriteRow, "id">;
 
   constructor(name = "parlo") {
     super(name);
@@ -214,6 +240,12 @@ export class ParloDB extends Dexie {
     // (Dexie ne recopie que les tables citées) — rien à migrer, rien à perdre.
     this.version(5).stores({
       notes: "id, packCode, [packCode+targetKind+targetId], [packCode+updatedAt], updatedAt",
+    });
+    // Favoris (contrat phase18 §1) : table nouvelle, aucune table existante n'est touchée — rien
+    // à migrer, rien à perdre. L'index composé sert la seule lecture qu'on en fait : « les favoris
+    // de cette langue, du plus récent au plus ancien ».
+    this.version(6).stores({
+      favorites: "id, packCode, [packCode+addedAt], [packCode+lessonId]",
     });
 
     // Toute écriture sans packCode (tests, modules qui ignorent les packs) est rattachée au bon pack.

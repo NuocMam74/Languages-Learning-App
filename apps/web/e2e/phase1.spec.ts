@@ -1,5 +1,5 @@
 import { expect, test, type Page, type Route } from "@playwright/test";
-import { onboard, playOneStep, playUntil } from "./helpers.ts";
+import { dismissCelebrations, onboard, playOneStep, playUntil } from "./helpers.ts";
 
 /**
  * Phase 1 (spec §15) : séance du jour complète avec révisions dues, et création
@@ -61,8 +61,8 @@ test("séance du jour : révisions dues, nouvelle leçon, mise en pratique, bila
   await expect(page.getByText(/^\+\d+ XP$/)).toBeVisible();
   await expect(page.getByText(/^Révisé aujourd'hui \(\d\)/)).toBeVisible();
   // « Ce que tu sais dire » ne liste que les concepts réussis (contrat phase5) : les réponses du parcours sont prises au hasard.
-  const canSay = page.getByText("Ce que tu sais dire de plus qu'hier :");
-  if (await canSay.isVisible()) await expect(canSay.locator("xpath=following-sibling::ul/li").first()).toBeVisible();
+  const canSay = page.getByTestId("recap-can-say");
+  if (await canSay.isVisible()) await expect(canSay.locator("li").first()).toBeVisible();
   await expect(page.getByText("Premier embarcadère")).toBeVisible();
 
   await page.getByRole("button", { name: "Retour au parcours" }).click();
@@ -107,6 +107,8 @@ test("création de compte après la première leçon : migration de l'invité ve
 
   await onboard(page);
   await playUntil(page, /Leçon terminée/);
+  // Les cartes de félicitations se posent par-dessus le bilan : on les referme avant d'y agir.
+  await dismissCelebrations(page);
   await expect(page.getByText("Garde ta progression")).toBeVisible();
   await page.getByRole("link", { name: "Créer un compte" }).click();
 

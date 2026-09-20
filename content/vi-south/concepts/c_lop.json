@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_lop",
+  "type": "word",
+  "vi": "lớp",
+  "tone": "sac",
+  "gloss": {
+    "fr": "la classe (groupe d’élèves, salle)",
+    "en": "class (group of pupils, classroom)"
+  },
+  "register": "neutral",
+  "pos": "noun",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_lop_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_lop_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Lớp tôi có ba mươi tư người.",
+      "fr": "Ma classe compte trente-quatre personnes.",
+      "en": "My class has thirty-four people."
+    }
+  ],
+  "reviewed": false
+}

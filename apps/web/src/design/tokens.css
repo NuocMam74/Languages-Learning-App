@@ -52,20 +52,55 @@
 
 @layer base {
   /*
-   * Texture d'eau (contrat §1) : un motif de rides tracé une fois, à 4 % d'opacité, posé derrière
-   * tout le contenu. Couche `fixed` : elle ne participe pas au flux, ne décale rien (CLS = 0) et ne
-   * coûte qu'une image de 0,3 ko en data-URI (aucune requête réseau, hors ligne compris).
+   * L'eau du delta (contrat §1, animée phase19 §1) : deux couches de rides tracées une fois, posées
+   * derrière tout le contenu, qui **dérivent lentement** à des vitesses différentes.
+   *
+   * Pourquoi deux : une seule couche qui glisse se lit comme un défilement. Deux, à des vitesses et
+   * des tailles différentes, donnent la parallaxe — et c'est elle qui fait « de l'eau » plutôt que
+   * « un motif qui bouge ». Assez lent pour qu'on ne le regarde jamais, assez vivant pour que
+   * l'écran ne soit pas mort.
+   *
+   * Trois garanties tenues :
+   *   - **rien ne se décale** : couches `fixed`, hors flux, animées en `transform` seul — le
+   *     compositeur s'en charge, la page n'est jamais remise en page (CLS = 0) ;
+   *   - **rien ne se télécharge** : 0,3 ko de data-URI, hors ligne compris ;
+   *   - **rien ne bouge** si l'appareil demande du calme (voir le bloc `prefers-reduced-motion`).
+   *
+   * La translation vaut exactement une tuile (120 px) : la boucle est invisible.
    */
-  body::before {
+  body::before,
+  body::after {
     content: "";
     position: fixed;
-    inset: 0;
+    /* Débordement d'une tuile de chaque côté : la dérive ne découvre jamais de bord. */
+    inset: -120px;
     z-index: -1;
     pointer-events: none;
+    background-repeat: repeat;
+    will-change: transform;
+  }
+
+  body::before {
     opacity: 0.04;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%230E5E55' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: repeat;
     background-size: 120px 60px;
+  }
+
+  /* La couche lointaine : plus large, plus pâle, et elle dérive en sens inverse. */
+  body::after {
+    z-index: -2;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%230E5E55' stroke-width='1'%3E%3Cpath d='M0 30q15-12 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 200px 100px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    body::before {
+      animation: parlo-drift-near 64s linear infinite;
+    }
+    body::after {
+      animation: parlo-drift-far 110s linear infinite;
+    }
   }
   /* Texte vietnamien en serif : les diacritiques empilés respirent mieux avec un peu d'avance optique. */
   [data-target-text] {
@@ -116,6 +151,61 @@
   }
 }
 
+/*
+ * Dérive de l'eau (phase19 §1). Une tuile exactement, pour que la boucle ne se voie pas ; un léger
+ * mouvement vertical sur la couche proche, parce qu'une eau qui ne fait que glisser latéralement
+ * ressemble à un tapis roulant.
+ */
+@keyframes parlo-drift-near {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-120px, -60px, 0);
+  }
+}
+
+@keyframes parlo-drift-far {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(200px, 0, 0);
+  }
+}
+
+/*
+ * Halo du nœud courant sur la carte du parcours (phase19 §2) : une onde qui s'écarte et s'efface,
+ * comme une goutte sur l'eau. Elle ne grossit pas le nœud — elle part d'un calque posé **derrière**,
+ * donc rien ne se décale et rien n'intercepte le toucher.
+ */
+@keyframes parlo-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.75);
+    opacity: 0;
+  }
+}
+
+/* Cœur mis en favori : une pulsation unique, pas une boucle — c'est un accusé de réception. */
+@keyframes parlo-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.28);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* Squelette : une lueur qui traverse, moins agressive qu'un clignotement d'opacité. */
 @keyframes parlo-shimmer {
   from {
@@ -140,6 +230,14 @@
   animation: parlo-flame 520ms var(--ease-out-soft) both;
 }
 
+@utility parlo-ripple {
+  animation: parlo-ripple 2600ms var(--ease-out-soft) infinite;
+}
+
+@utility parlo-pop {
+  animation: parlo-pop 420ms var(--ease-out-soft) both;
+}
+
 @utility parlo-shimmer {
   background-image: linear-gradient(90deg, transparent 0%, var(--color-shimmer) 50%, transparent 100%);
   background-size: 60% 100%;
@@ -161,8 +259,23 @@
   ::view-transition-new(root) {
     animation: none;
   }
+  /*
+   * Les animations **en boucle** s'arrêtent, elles ne s'accélèrent pas. La règle globale d'app.css
+   * ramène toute durée à 1 ms : sur une animation finie c'est exactement ce qu'on veut (elle se
+   * pose instantanément), mais sur une boucle infinie cela donne mille tours par seconde — du
+   * calcul pour rien, et un scintillement pour qui a précisément demandé le calme.
+   */
+  body::before,
+  body::after,
+  .parlo-shimmer,
+  .parlo-ripple {
+    animation: none !important;
+  }
   body::before {
     opacity: 0.03;
+  }
+  body::after {
+    opacity: 0.02;
   }
 }
 
@@ -236,17 +349,26 @@
 
 @layer base {
   /*
-   * Texture d'eau en sombre : le tracé jade du motif clair disparaîtrait. On redessine les mêmes
-   * rides en clair, à peine posées — la page garde son grain au lieu d'être un aplat noir.
+   * L'eau en sombre : le tracé jade du motif clair disparaîtrait. On redessine les mêmes rides en
+   * clair, à peine posées — la page garde son grain au lieu d'être un aplat noir. Les deux couches
+   * sont traitées : sans cela, la lointaine resterait jade et dériverait invisible.
    */
   @media (prefers-color-scheme: dark) {
     html:not([data-theme="light"]) body::before {
       opacity: 0.055;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
     }
+    html:not([data-theme="light"]) body::after {
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1'%3E%3Cpath d='M0 30q15-12 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
+    }
   }
   html[data-theme="dark"] body::before {
     opacity: 0.055;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  html[data-theme="dark"] body::after {
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1'%3E%3Cpath d='M0 30q15-12 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
   }
 }

@@ -35,7 +35,10 @@ export function Button({ variant = "primary", className = "", ref, ...props }: B
   ref?: Ref<HTMLButtonElement>;
 }) {
   const styles: Record<Variant, string> = {
-    primary: "bg-ngoc text-nuoc shadow-card hover:bg-ngoc/90 disabled:bg-phu-sa/25 disabled:text-phu-sa/60 disabled:shadow-none",
+    // Désactivé : le fond s'éteint, **le texte reste lisible**. Un bouton qu'on doit lire pour
+    // comprendre ce qui manque (« Commencer les exercices », contrat phase16 §2) ne peut pas être
+    // à 2,8:1. Le gris du fond suffit à dire qu'il n'est pas prêt.
+    primary: "bg-ngoc text-nuoc shadow-card hover:bg-ngoc/90 disabled:bg-phu-sa/20 disabled:text-phu-sa disabled:shadow-none",
     quiet: "bg-transparent text-ngoc underline-offset-4 hover:underline",
     outline: "border-2 border-ngoc bg-surface text-ngoc hover:bg-ngoc-sang/50",
     reward: "bg-nghe text-muc shadow-card hover:bg-nghe/90",

@@ -19,7 +19,8 @@
     "c_hop",
     "c_som",
     "c_tre_late",
-    "c_toi_arrive"
+    "c_toi_arrive",
+    "c_luc"
   ],
   "steps": [
     {
@@ -142,7 +143,8 @@
       "c_hop",
       "c_som",
       "c_tre_late",
-      "c_toi_arrive"
+      "c_toi_arrive",
+      "c_luc"
     ]
   },
   "reviewed": false

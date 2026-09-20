@@ -1,4 +1,4 @@
-import type { ContentIndex } from "@parlo/core";
+import { nextRung, studyPath, type ContentIndex, type RungId } from "@parlo/core";
 import { useMemo } from "react";
 import { Link } from "react-router";
 import { Screen } from "../components/ui.tsx";
@@ -7,6 +7,8 @@ import { l, plural, t, type MessageKey } from "../i18n/index.ts";
 import { useNotes } from "../notes/store.ts";
 import { useOnline } from "../use-online.ts";
 import type { LibraryData } from "./data.ts";
+import { useFavorites } from "../favorites.ts";
+import { useGuidesRead } from "./guides-read.ts";
 import { byPos, byTheme } from "./library.ts";
 
 /**
@@ -17,9 +19,25 @@ import { byPos, byTheme } from "./library.ts";
  * Hiérarchie (contrat §1) : cinq rayons identiques ne sont pas une bibliothèque. Quand des mots sont
  * dus, le rayon vocabulaire passe en `feature` — c'est là qu'il faut aller aujourd'hui ; sinon la
  * liste est homogène et **aucune** carte ne se décolle. L'unique moment animé est leur cascade.
+ *
+ * Au-dessus des rayons, une porte (contrat phase16 §4) : **par où commencer**. Huit rayons de même
+ * poids répondaient à « où est telle chose ? » mais jamais à « que dois-je travailler ? » — la
+ * question qu'on se pose vraiment en ouvrant cet écran. L'ordre de travail y répond en une carte,
+ * et les rayons restent dessous, intacts, pour qui sait ce qu'il cherche.
  */
 
 type Shelf = { to: string; label: MessageKey; icon: IconName; count: string; testId: string };
+
+/** Nom de chaque barreau — même source que l'écran « Par où commencer ». */
+export const RUNG_LABEL: Record<RungId, MessageKey> = {
+  due: "study.rung.due",
+  hard: "study.rung.hard",
+  words: "study.rung.words",
+  pronouns: "study.rung.pronouns",
+  grammar: "study.rung.grammar",
+  glue: "study.rung.glue",
+  speaking: "study.rung.speaking",
+};
 
 export default function ReviewHome({ content, data }: { content: ContentIndex; data: LibraryData }) {
   const online = useOnline();
@@ -28,13 +46,24 @@ export default function ReviewHome({ content, data }: { content: ContentIndex; d
   const empty =
     data.concepts.length === 0 && data.grammar.length === 0 && data.completed.size === 0 && notes.length === 0 && content.guides.size === 0;
   const due = data.dueCount > 0;
+  const read = useGuidesRead((s) => s.read);
+  const favorites = useFavorites((s) => s.rows);
+  // Le barreau du jour, calculé ici pour l'annoncer sans ouvrir l'écran : une porte qui dit où
+  // elle mène vaut mieux qu'une porte de plus.
+  const current = useMemo(
+    () => nextRung(studyPath(content, { seen: data.concepts.map((c) => c.conceptId), cards: data.cards, readGuides: read, now: data.now })),
+    [content, data.concepts, data.cards, data.now, read],
+  );
   // On n'annonce que les rayons **ouverts** : promettre « 12 catégories » puis n'en laisser cliquer
   // que trois serait une fausse promesse.
   const categories = useMemo(() => byPos(content, data.concepts).filter((s) => s.entries.length > 0).length, [content, data.concepts]);
   const themes = useMemo(() => byTheme(content, data.concepts).filter((s) => s.entries.length > 0).length, [content, data.concepts]);
 
   const shelves: Shelf[] = [
+    // Les favoris juste après le vocabulaire : c'est le rayon qu'on ouvre par plaisir, pas par
+    // devoir, et il n'a de sens que s'il est visible sans chercher (contrat phase18 §3).
     { to: "/reviser/vocabulaire", label: "review.section.vocabulary", icon: "cards", count: plural("review.count.words", "review.count.words.plural", data.concepts.length), testId: "review-vocabulary" },
+    { to: "/reviser/favoris", label: "favorites.title", icon: "heart", count: plural("favorites.count", "favorites.count.plural", favorites.length), testId: "review-favorites" },
     { to: "/reviser/conseils", label: "review.section.tips", icon: "info", count: plural("review.count.tips", "review.count.tips.plural", content.guides.size), testId: "review-tips" },
     { to: "/reviser/categories", label: "review.section.categories", icon: "grammar", count: plural("review.count.categories", "review.count.categories.plural", categories), testId: "review-categories" },
     { to: "/reviser/themes", label: "review.section.themes", icon: "book", count: plural("review.count.themes", "review.count.themes.plural", themes), testId: "review-themes" },
@@ -69,7 +98,22 @@ export default function ReviewHome({ content, data }: { content: ContentIndex; d
           }
         />
       ) : (
-        <ul className="flex flex-col gap-2.5">
+        <>
+          <Card tone="feature" className="mb-4" data-testid="review-order">
+            <Link to="/reviser/ordre" className="-mx-5 -my-4 flex items-center gap-3 rounded-card px-5 py-4">
+              <span className="grid size-11 shrink-0 place-items-center rounded-full bg-nuoc/15 text-nuoc">
+                <Icon name="chart" size={22} />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-semibold">{t("study.title")}</span>
+                <span className="block text-sm opacity-80">
+                  {current ? t("study.home.next", { what: t(RUNG_LABEL[current.id]) }) : t("study.home.done")}
+                </span>
+              </span>
+              <Icon name="chevronRight" size={20} />
+            </Link>
+          </Card>
+          <ul className="flex flex-col gap-2.5">
           {shelves.map((shelf, index) => (
             // Le rayon dû porte le poids de l'écran ; les autres restent posés (contrat §1).
             <Card key={shelf.to} as="li" tone={due && index === 0 ? "feature" : "plain"} stagger={index}>
@@ -83,7 +127,8 @@ export default function ReviewHome({ content, data }: { content: ContentIndex; d
               </Link>
             </Card>
           ))}
-        </ul>
+          </ul>
+        </>
       )}
 
       <SectionTitle tone="banner" icon="lantern" className="mt-7 mb-3">

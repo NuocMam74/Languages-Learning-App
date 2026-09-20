@@ -1,4 +1,5 @@
 import { GAP } from "./engine.ts";
+import { lexiconOf, unmetDemands, type KnownLexicon } from "./prerequisites.ts";
 import { heardClassOf, isToneMinimalPair, normalizeAnswer, toneOf } from "./text.ts";
 import {
   DIALOGUE_CHOICE_MAX_TURNS,
@@ -45,6 +46,9 @@ export function checkContent(content: ContentIndex, opts: { production?: boolean
       if (!content.lessons.has(lessonId)) err(unit.id, `Leçon ${lessonId} listée mais fichier absent`);
     }
     if (unit.status === "available" && unit.lessons.length === 0) err(unit.id, `Unité publiée sans leçon`);
+    // Lecture préalable (contrat phase16 §3) : une fiche introuvable ne préviendrait personne —
+    // la préparation la sauterait en silence.
+    for (const guideId of unit.guides ?? []) if (!content.guides.has(guideId)) err(unit.id, `Fiche conseil inconnue : ${guideId}`);
   }
 
   for (const lesson of content.lessons.values()) {
@@ -85,8 +89,47 @@ export function checkContent(content: ContentIndex, opts: { production?: boolean
 
   checkDialogues(content, opts, err, warn);
   checkGuides(content, opts, err, warn);
+  checkPrerequisites(content, err);
 
   return issues;
+}
+
+/**
+ * Garde des prérequis (contrat phase16 §1) : **aucune leçon ne fait produire un mot que rien n'a
+ * présenté avant elle**.
+ *
+ * Sans cette garde, on écrit un `build_sentence` dont un jeton n'apparaît nulle part dans le
+ * cursus amont, et l'apprenant assemble une phrase à l'aveugle. C'était le cas de 55 leçons sur
+ * 194 au moment d'écrire ce contrôle ; le corpus a été corrigé, et le compte est désormais nul.
+ *
+ * Niveau `error`, donc : la dette est soldée, elle ne doit pas revenir. Écrire une phrase avec un
+ * mot que le cursus n'a pas encore donné bloque la CI, et le message dit quoi faire — le concept
+ * du pack à présenter plus tôt, ou le mot qui reste à écrire.
+ */
+function checkPrerequisites(content: ContentIndex, err: Report) {
+  const concepts = new Set<string>();
+  const forms = new Set<string>();
+  for (const unit of content.curriculum.units) {
+    for (const lessonId of unit.lessons) {
+      const lesson = content.lessons.get(lessonId);
+      if (!lesson) continue;
+      // Ce que la leçon présente elle-même compte comme acquis : c'est le rôle de la fiche.
+      const own = lexiconOf(content, lesson.review.srsIntroduce);
+      const known: KnownLexicon = {
+        concepts: new Set([...concepts, ...own.concepts]),
+        forms: new Set([...forms, ...own.forms]),
+      };
+      for (const unmet of unmetDemands(content, lesson, known)) {
+        const fix =
+          unmet.candidates.length > 0
+            ? ` — à présenter plus tôt : ${unmet.candidates.join(", ")}`
+            : ` — aucun concept du pack ne porte ce mot : il reste à écrire`;
+        err(lesson.id, `${unmet.step} fait produire « ${unmet.what} », que rien n'a présenté avant${unmet.kind === "concept" ? "" : fix}`);
+      }
+      for (const id of own.concepts) concepts.add(id);
+      for (const form of own.forms) forms.add(form);
+    }
+  }
 }
 
 /**

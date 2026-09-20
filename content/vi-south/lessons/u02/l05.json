@@ -20,7 +20,8 @@
     "c_an_eat",
     "c_mot_one",
     "c_tot_good",
-    "c_mac_expensive"
+    "c_mac_expensive",
+    "c_chua"
   ],
   "steps": [
     {
@@ -133,7 +134,8 @@
       "c_an_eat",
       "c_mot_one",
       "c_tot_good",
-      "c_mac_expensive"
+      "c_mac_expensive",
+      "c_chua"
     ]
   },
   "reviewed": false

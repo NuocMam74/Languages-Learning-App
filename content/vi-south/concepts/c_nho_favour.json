@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_nho_favour",
+  "type": "word",
+  "vi": "nhờ",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "demander un service ; s’il vous plaît",
+    "en": "to ask a favour; please"
+  },
+  "register": "neutral",
+  "pos": "verb",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nho_favour_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_nho_favour_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Cho em sạc pin nhờ được không?",
+      "fr": "Je peux recharger mon téléphone, s’il vous plaît ?",
+      "en": "Could I charge my phone, please?"
+    }
+  ],
+  "note": {
+    "fr": "En fin de demande, nhờ ajoute « s’il vous plaît » sans le dire.",
+    "en": "At the end of a request, nhờ adds “please” without saying it."
+  },
+  "reviewed": false
+}

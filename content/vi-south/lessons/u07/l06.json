@@ -20,7 +20,8 @@
     "c_chua_sour",
     "c_nuoc_mam",
     "c_ot",
-    "c_cay"
+    "c_cay",
+    "c_canh"
   ],
   "steps": [
     {
@@ -130,7 +131,8 @@
       "c_man",
       "c_chua_sour",
       "c_nuoc_mam",
-      "c_ot"
+      "c_ot",
+      "c_canh"
     ]
   },
   "reviewed": false

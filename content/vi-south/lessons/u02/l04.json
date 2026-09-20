@@ -20,7 +20,9 @@
     "c_cho_wait",
     "c_trai_fruit",
     "c_che_dessert",
-    "c_troi"
+    "c_troi",
+    "c_chut",
+    "c_nha_particle"
   ],
   "steps": [
     {
@@ -141,7 +143,9 @@
       "c_cho_wait",
       "c_trai_fruit",
       "c_che_dessert",
-      "c_troi"
+      "c_troi",
+      "c_chut",
+      "c_nha_particle"
     ]
   },
   "reviewed": false

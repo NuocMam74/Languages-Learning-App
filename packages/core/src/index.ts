@@ -9,6 +9,8 @@ export * from "./events.ts";
 export * from "./streak.ts";
 export * from "./content-checks.ts";
 export * from "./review.ts";
+export * from "./prerequisites.ts";
+export * from "./study-path.ts";
 export * from "./session-run.ts";
 export * from "./badges.ts";
 export * from "./skills.ts";

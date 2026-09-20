@@ -18,7 +18,9 @@
     "c_non_bao_hiem",
     "c_ket_xe",
     "s_ket_xe_qua",
-    "c_can_than"
+    "c_can_than",
+    "c_doi_wear",
+    "c_vo_into"
   ],
   "steps": [
     {
@@ -141,7 +143,9 @@
       "c_non_bao_hiem",
       "c_ket_xe",
       "s_ket_xe_qua",
-      "c_can_than"
+      "c_can_than",
+      "c_doi_wear",
+      "c_vo_into"
     ]
   },
   "reviewed": false

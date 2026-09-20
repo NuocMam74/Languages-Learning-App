@@ -19,7 +19,8 @@
     "c_het",
     "c_pin",
     "s_het_pin",
-    "c_sac_pin"
+    "c_sac_pin",
+    "c_nho_favour"
   ],
   "steps": [
     {
@@ -160,7 +161,8 @@
       "c_het",
       "c_pin",
       "s_het_pin",
-      "c_sac_pin"
+      "c_sac_pin",
+      "c_nho_favour"
     ]
   },
   "reviewed": false

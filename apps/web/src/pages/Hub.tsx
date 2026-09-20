@@ -1,4 +1,4 @@
-import { localDay, streakAt, type ContentIndex } from "@parlo/core";
+import { localDay, packHasNativeAudio, streakAt, type ContentIndex } from "@parlo/core";
 import { examLevels } from "../exams/exam-files.ts";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
@@ -69,6 +69,8 @@ export function Hub({ content }: { content: ContentIndex }) {
   const today = localDay(new Date());
   const frozen = streak.frozenUntil !== null && streak.frozenUntil >= today;
 
+  const voices = packHasNativeAudio(content);
+
   const shortcuts: { to: string; icon: IconName; label: string; badge?: string; strong?: boolean }[] = [
     ...(plan.dueCount > 0
       ? [{
@@ -109,6 +111,19 @@ export function Hub({ content }: { content: ContentIndex }) {
           <Icon name="settings" strokeWidth={1.8} />
         </Link>
       </header>
+
+      {/* Aucune voix native dans ce pack (contrat phase16 §5) : dit une fois, ici, au ton d'un
+          chantier annoncé — et plus jamais en rouge sous chaque mot. Disparaît dès le premier
+          enregistrement livré. */}
+      {!voices && (
+        <Card tone="notice" as="section" role="status" className="mb-4 flex items-start gap-2.5" data-testid="hub-no-voices">
+          <Icon name="mute" size={18} className="mt-0.5 shrink-0 text-phu-sa" />
+          <span className="min-w-0">
+            <span className="block font-medium">{t("audio.noVoices.title")}</span>
+            <span className="block text-sm text-phu-sa text-balance">{t("audio.noVoices.body")}</span>
+          </span>
+        </Card>
+      )}
 
       {notice === "locked" && (
         <Card tone="notice" as="p" role="status" className="mb-4 flex items-center gap-2 py-2.5 text-sm" data-testid="hub-notice">

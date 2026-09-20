@@ -150,7 +150,9 @@
       "c_dia_plate",
       "c_muong",
       "c_dua",
-      "c_them"
+      "c_them",
+      "s_em_oi",
+      "s_ngon_qua"
     ]
   },
   "reviewed": false

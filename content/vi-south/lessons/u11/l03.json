@@ -19,7 +19,8 @@
     "s_queo_trai",
     "s_queo_phai",
     "c_nga_tu",
-    "c_den_do"
+    "c_den_do",
+    "c_b_thi"
   ],
   "steps": [
     {
@@ -140,7 +141,8 @@
       "s_queo_trai",
       "s_queo_phai",
       "c_nga_tu",
-      "c_den_do"
+      "c_den_do",
+      "c_b_thi"
     ]
   },
   "reviewed": false

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_cho_for",
+  "type": "word",
+  "vi": "cho",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "pour, à (donner à, travailler pour)",
+    "en": "for, to (give to, work for)"
+  },
+  "register": "neutral",
+  "pos": "preposition",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_cho_for_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_cho_for_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Tôi làm việc cho một công ty Pháp.",
+      "fr": "Je travaille pour une entreprise française.",
+      "en": "I work for a French company."
+    }
+  ],
+  "note": {
+    "fr": "Trois tons, trois mots : cho (pour), chợ (le marché), chờ (attendre).",
+    "en": "Three tones, three words: cho (for), chợ (market), chờ (to wait)."
+  },
+  "reviewed": false
+}

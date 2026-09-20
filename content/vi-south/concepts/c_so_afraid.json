@@ -1,0 +1,35 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_so_afraid",
+  "type": "word",
+  "vi": "sợ",
+  "tone": "nang",
+  "gloss": {
+    "fr": "avoir peur, craindre",
+    "en": "to be afraid, to fear"
+  },
+  "register": "neutral",
+  "pos": "verb",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_so_afraid_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_so_afraid_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Tui thấy hơi sợ.",
+      "fr": "Je me sens un peu inquiet.",
+      "en": "I feel a bit scared."
+    }
+  ],
+  "reviewed": false
+}

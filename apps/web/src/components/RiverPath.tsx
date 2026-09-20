@@ -79,7 +79,7 @@ export function RiverPath({ content, completed, passed = completed, current, unl
 
           const dot = (
             <span
-              className={`grid place-items-center rounded-full ${
+              className={`relative grid place-items-center rounded-full ${
                 planned
                   ? "size-6 border-4 border-line-strong bg-surface"
                   : isCurrent
@@ -91,6 +91,14 @@ export function RiverPath({ content, completed, passed = completed, current, unl
                         : "size-14 border-4 border-line-strong bg-surface text-phu-sa"
               }`}
             >
+              {/* L'onde du nœud courant (phase19 §2) : le seul mouvement de la carte, et il sert —
+                  l'œil va droit à l'étape du jour. Calque derrière, sans toucher au flux. */}
+              {isCurrent && (
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 rounded-full border-4 border-nghe motion-safe:parlo-ripple"
+                />
+              )}
               {planned ? null : done ? (
                 <Icon name="check" size={24} strokeWidth={3} />
               ) : redo ? (

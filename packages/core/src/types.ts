@@ -202,6 +202,12 @@ export interface Unit {
   tags?: string[];
   /** Unités à réussir avant celle-ci (défaut : la précédente). */
   requires?: UnitId[];
+  /**
+   * Fiches conseils à lire avant les leçons de l'unité (contrat phase16 §3). Le contenu décide de
+   * ce qu'il faut avoir compris avant de pratiquer : on n'assemble pas une phrase sans savoir dans
+   * quel ordre les mots se rangent.
+   */
+  guides?: string[];
   lessons: LessonId[];
 }
 

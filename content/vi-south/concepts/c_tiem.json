@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tiem",
+  "type": "word",
+  "vi": "tiệm",
+  "tone": "nang",
+  "gloss": {
+    "fr": "la boutique, l’échoppe",
+    "en": "shop, small store"
+  },
+  "northernEquivalent": "cửa hàng",
+  "register": "neutral",
+  "pos": "noun",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tiem_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tiem_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Tiệm phở ở sau chợ.",
+      "fr": "La boutique de phở est derrière le marché.",
+      "en": "The phở shop is behind the market."
+    }
+  ],
+  "note": {
+    "fr": "Au Sud on dit tiệm ; au Nord, cửa hàng.",
+    "en": "In the South you say tiệm; up North, cửa hàng."
+  },
+  "reviewed": false
+}

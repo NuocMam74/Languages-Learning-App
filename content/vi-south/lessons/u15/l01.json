@@ -23,7 +23,8 @@
     "c_dien_thoai",
     "c_sach",
     "c_tien",
-    "c_goi"
+    "c_goi",
+    "c_b_ne"
   ],
   "steps": [
     {
@@ -148,7 +149,8 @@
       "s_alo_em_nghe",
       "s_ai_vay_a",
       "c_goi_pack",
-      "c_goi_salad"
+      "c_goi_salad",
+      "c_b_ne"
     ]
   },
   "reviewed": false

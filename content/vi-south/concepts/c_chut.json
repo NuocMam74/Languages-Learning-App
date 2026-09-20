@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chut",
+  "type": "word",
+  "vi": "chút",
+  "tone": "sac",
+  "gloss": {
+    "fr": "un peu, un instant",
+    "en": "a bit, a moment"
+  },
+  "register": "neutral",
+  "pos": "adverb",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chut_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chut_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Chờ em chút nha.",
+      "fr": "Attends-moi un instant.",
+      "en": "Wait a moment for me."
+    }
+  ],
+  "note": {
+    "fr": "Adoucit une demande : « attends un peu » passe toujours mieux que « attends ».",
+    "en": "Softens a request: “wait a bit” always lands better than “wait”."
+  },
+  "reviewed": false
+}

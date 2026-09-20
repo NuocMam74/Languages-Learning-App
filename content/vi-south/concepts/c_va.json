@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_va",
+  "type": "word",
+  "vi": "và",
+  "tone": "huyen",
+  "gloss": {
+    "fr": "et (relie deux éléments)",
+    "en": "and (links two items)"
+  },
+  "register": "neutral",
+  "pos": "conjunction",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_va_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_va_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Trường học ở giữa công viên và bệnh viện.",
+      "fr": "L’école est entre le parc et l’hôpital.",
+      "en": "The school is between the park and the hospital."
+    }
+  ],
+  "note": {
+    "fr": "À l’oral au Sud, on relie plus souvent avec với qu’avec và.",
+    "en": "In southern speech, với links things more often than và does."
+  },
+  "reviewed": false
+}

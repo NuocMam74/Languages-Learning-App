@@ -47,6 +47,10 @@ const PATHS = {
   // Progression et récompense
   flame: "M12 3.5s4.5 3.7 4.5 8a4.5 4.5 0 0 1-9 0c0-1.7.8-3 1.7-4 .2 1.2.9 2 1.8 2 1.3 0 1.6-1.6 1-6M9.7 15.5a2.4 2.4 0 0 0 4.6 0",
   star: "M12 4.5l2.3 4.7 5.2.8-3.8 3.6.9 5.1-4.6-2.4-4.6 2.4.9-5.1-3.8-3.6 5.2-.8z",
+  // Favoris (contrat phase18 §2) : le même dessin, vide ou plein. Le plein se lit d'un coup
+  // d'œil, ce qu'un contour épaissi ne donne jamais.
+  heart: "M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9z",
+  heartFull: "M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9z",
   trophy: "M7.5 5h9v4.5a4.5 4.5 0 0 1-9 0zM7.5 6.5H5a2.5 2.5 0 0 0 2.5 4M16.5 6.5H19a2.5 2.5 0 0 1-2.5 4M12 14v3M9 19.5h6",
   diploma: "M6 4.5h9l3 3v7.5H6zM15 4.5V8h3M9 9h4M9 12h6M12 15v2.5l-2 1.5v-4M12 17.5l2 1.5v-4",
   target: "M12 4.5a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7M12 11.7h.01",
@@ -82,13 +86,16 @@ const PATHS = {
   userMinus: "M10.5 5.5a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4M4 19c.8-3.2 3.3-4.8 6.5-4.8 1.1 0 2.1.2 3 .5M15.5 18.5h5",
 } as const;
 
+/** Icônes dessinées **pleines** : leur trait seul ne dirait pas l'état (un cœur aimé, par exemple). */
+const FILLED: ReadonlySet<IconName> = new Set<IconName>(["heartFull"]);
+
 export function Icon({ name, size = 24, className = "", ...rest }: { name: IconName; size?: number; className?: string } & Omit<SVGProps<SVGSVGElement>, "name" | "size">) {
   return (
     <svg
       viewBox="0 0 24 24"
       width={size}
       height={size}
-      fill="none"
+      fill={FILLED.has(name) ? "currentColor" : "none"}
       stroke="currentColor"
       strokeWidth={2}
       strokeLinecap="round"

@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_voi",
+  "type": "word",
+  "vi": "với",
+  "tone": "sac",
+  "gloss": {
+    "fr": "avec ; et (à l’oral)",
+    "en": "with; and (in speech)"
+  },
+  "register": "neutral",
+  "pos": "preposition",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_voi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_voi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Em bị sốt với ho.",
+      "fr": "J’ai de la fièvre et je tousse.",
+      "en": "I have a fever and a cough."
+    }
+  ],
+  "note": {
+    "fr": "Au Sud, với relie souvent deux choses là où l’écrit mettrait và.",
+    "en": "In the South, với often links two things where writing would use và."
+  },
+  "reviewed": false
+}

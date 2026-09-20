@@ -19,7 +19,9 @@
     "c_sau_after",
     "c_giua",
     "c_trong",
-    "c_sau_six"
+    "c_sau_six",
+    "c_tiem",
+    "c_va"
   ],
   "steps": [
     {
@@ -162,7 +164,9 @@
       "c_truoc",
       "c_sau_after",
       "c_giua",
-      "c_trong"
+      "c_trong",
+      "c_tiem",
+      "c_va"
     ]
   },
   "reviewed": false

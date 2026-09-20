@@ -115,6 +115,14 @@ test("compte connecté : défi réclamé, examen certifiant réussi, certificat 
     };
     // Partage natif indisponible : l'image de partage se télécharge (testable).
     Object.defineProperty(navigator, "canShare", { value: undefined, configurable: true });
+    // Un navigateur sans interface déclare les notifications « denied », quoi qu'on accorde au
+    // contexte : l'app désactive alors l'interrupteur à juste titre (« bloquées dans les réglages
+    // du navigateur »). Ce test porte sur l'abonnement et sur ce qu'il envoie à l'API, pas sur la
+    // gestion des permissions par Chromium — on lui donne donc un navigateur qui les accorde.
+    if ("Notification" in window) {
+      Object.defineProperty(Notification, "permission", { value: "granted", configurable: true });
+      Notification.requestPermission = async () => "granted";
+    }
     if ("PushManager" in window) {
       PushManager.prototype.subscribe = async () => fake as unknown as PushSubscription;
       PushManager.prototype.getSubscription = async () => null;

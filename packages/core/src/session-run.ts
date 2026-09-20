@@ -1,5 +1,6 @@
 import { currentItem, isFinished, startLesson, type Evaluation, type Exercise, type LessonRun } from "./engine.ts";
 import type { SessionSource } from "./events.ts";
+import { isBriefingEmpty, type Briefing } from "./prerequisites.ts";
 import { XP_REVIEW } from "./progress.ts";
 import type { SessionPlan } from "./session.ts";
 import type { ConceptId, ContentIndex, Lesson, StepType } from "./types.ts";
@@ -55,10 +56,17 @@ export interface SessionRun {
   /** La partie leçon a été enregistrée (cartes SRS, progression). */
   lessonSaved: boolean;
   /**
-   * La fiche de découverte a été vue (contrat phase10 §1). Absent = pas encore vue, donc les
-   * séances écrites avant ce contrat la montrent une fois à la reprise — sans conséquence.
+   * La fiche de préparation a été consultée (contrat phase10 §1, élargi phase16 §2). Absent = pas
+   * encore vue, donc les séances écrites avant ce contrat la montrent une fois à la reprise — sans
+   * conséquence.
    */
   taught?: boolean;
+  /**
+   * Ce qu'il faut avoir consulté avant les exercices (contrat phase16 §2), figé au démarrage comme
+   * `knownAtStart` : une reprise retrouve exactement la même fiche, même si on a révisé entre-temps.
+   * Absent = séance écrite avant ce contrat ; la fiche retombe alors sur les seuls mots introduits.
+   */
+  briefing?: Briefing;
   learned: ConceptId[];
   xp: number;
   startedAt: string;
@@ -69,11 +77,12 @@ export interface SessionRun {
 export type SessionPhase =
   | { kind: "warmup" | "review"; item: ReviewItem; index: number }
   /**
-   * Découverte : on **présente** ce que la leçon introduit avant de le faire pratiquer (contrat
-   * phase10 §1). Ce n'est pas un item — elle ne compte ni dans la barre de progression, ni dans le
-   * SRS, ni dans les événements.
+   * Préparation : on **présente tout ce que les exercices vont exiger** avant de faire pratiquer
+   * (contrat phase10 §1, élargi phase16 §2) — les mots neufs, ceux qu'on réutilise, les phrases
+   * modèles, les fiches à lire et les consignes des formats jamais rencontrés. Ce n'est pas un
+   * item : elle ne compte ni dans la barre de progression, ni dans le SRS, ni dans les événements.
    */
-  | { kind: "teach"; lesson: LessonRun; conceptIds: ConceptId[] }
+  | { kind: "teach"; lesson: LessonRun; briefing: Briefing }
   | { kind: "new" | "practice"; lesson: LessonRun }
   | { kind: "save_lesson"; lesson: LessonRun }
   | { kind: "recap" };
@@ -92,12 +101,14 @@ export function startSessionRun(input: {
   now: Date;
   /** Défaut : `normal`. */
   mode?: SessionMode;
+  /** Ce qu'il faut consulter avant les exercices (contrat phase16 §2). */
+  briefing?: Briefing;
   /** Étapes jouables de la leçon (voir playableStepIndexes) ; défaut : toutes. */
   playable?: readonly number[];
   /** Version du contenu au démarrage (contrat phase5 §6). */
   contentVersion?: number;
 }): SessionRun {
-  const { plan, sessionId, source, lesson, known, now, playable, contentVersion, mode } = input;
+  const { plan, sessionId, source, lesson, known, now, playable, contentVersion, mode, briefing } = input;
   const reviewQueue: ReviewItem[] = [];
   let hasNew = false;
   for (const block of plan.blocks) {
@@ -119,17 +130,27 @@ export function startSessionRun(input: {
     lessonSaved: false,
     learned: [],
     xp: 0,
+    ...(briefing && !isBriefingEmpty(briefing) ? { briefing } : {}),
     startedAt: now.toISOString(),
     ...(contentVersion !== undefined ? { contentVersion } : {}),
   };
 }
 
 /**
- * Ce que la fiche de découverte présente : les concepts que la leçon introduit et que l'apprenant
- * n'a pas déjà rencontrés. Vide = rien à présenter (leçon de révision, test d'unité) : la phase est
- * alors sautée, on ne fait pas lire une fiche pour rien. L'entraînement, lui, est écarté en amont
- * par `sessionPhase`.
+ * Ce que la fiche de préparation présente. La séance la porte depuis son démarrage (`briefing`) ;
+ * les snapshots écrits avant le contrat phase16 n'en ont pas, et retombent alors sur les seuls
+ * mots que la leçon introduit — le comportement d'avant, sans rien casser à la reprise.
+ *
+ * Vide = rien à préparer (leçon de révision, test d'unité, tout déjà connu) : la phase est sautée,
+ * on ne fait pas lire une fiche pour rien. L'entraînement, lui, est écarté en amont par
+ * `sessionPhase`.
  */
+export function runBriefing(run: SessionRun, content: ContentIndex): Briefing {
+  if (run.briefing) return run.briefing;
+  return { discover: conceptsToTeach(run, content), recall: [], models: [], guides: [], formats: [] };
+}
+
+/** Les concepts que la leçon introduit et que l'apprenant n'a pas déjà rencontrés. */
 export function conceptsToTeach(run: SessionRun, content: ContentIndex): ConceptId[] {
   if (!run.lesson) return [];
   const known = new Set(run.knownAtStart);
@@ -137,7 +158,7 @@ export function conceptsToTeach(run: SessionRun, content: ContentIndex): Concept
   return (lesson?.review.srsIntroduce ?? []).filter((id) => !known.has(id) && content.concepts.has(id));
 }
 
-/** La fiche de découverte a été vue : on passe aux exercices. */
+/** La fiche de préparation a été consultée : on passe aux exercices. */
 export function markTaught(run: SessionRun): SessionRun {
   return run.taught ? run : { ...run, taught: true };
 }
@@ -152,8 +173,8 @@ export function sessionPhase(run: SessionRun, content: ContentIndex): SessionPha
     // Jamais en entraînement (contrat phase8 §2) : on y rejoue une leçon déjà terminée pour
     // s'exercer, pas pour découvrir — présenter la fiche serait un contresens.
     if (!run.taught && !isPracticeRun(run)) {
-      const conceptIds = conceptsToTeach(run, content);
-      if (conceptIds.length > 0) return { kind: "teach", lesson: run.lesson, conceptIds };
+      const briefing = runBriefing(run, content);
+      if (!isBriefingEmpty(briefing)) return { kind: "teach", lesson: run.lesson, briefing };
     }
     const step = currentItem(run.lesson);
     const type = step ? content.lessons.get(run.lesson.lessonId)?.steps[step.stepIndex]?.type : undefined;

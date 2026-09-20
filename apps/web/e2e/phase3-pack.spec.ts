@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test, type Page } from "@playwright/test";
-import { onboard, playUntil } from "./helpers.ts";
+import { dismissCelebrations, onboard, playUntil } from "./helpers.ts";
 
 /**
  * Phase 3 — deuxième pack (ADR 0006, contrat phase3 §5) : un apprenant du vietnamien du Sud
@@ -18,6 +18,9 @@ const titleOf = (pack: string, unit: string, lesson: string) => readJson<{ title
 async function finishLesson(page: Page) {
   await playUntil(page, /^Leçon terminée$/);
   await expect(page.getByText(/^\+\d+ XP$/)).toBeVisible();
+  // Une leçon terminée déclenche ses récompenses : leurs cartes couvrent l'écran et
+  // interceptent tout clic tant qu'on ne les a pas refermées.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
   await expect(page.getByTestId("hub-pack")).toBeVisible();
 }
@@ -82,7 +85,10 @@ test("espagnol hors ligne, retour au vietnamien intact, les deux progressions pe
   await expect(page.getByTestId("hub-pack")).toHaveText(esName);
   const esXp = await hubXp(page);
   expect(esXp).not.toBe("0 XP");
-  await expect(page.getByRole("link", { name: titleOf("es", "u01", "l02") })).toBeVisible();
+  // La leçon jouée est sur la carte, atteignable : c'est ce qui prouve que la progression du pack
+  // a été relue. On n'attend pas la **suivante** — depuis le contrat phase10 §3, elle ne s'ouvre
+  // qu'une fois la précédente réussie, et on répond ici au hasard.
+  await expect(page.getByRole("link", { name: new RegExp(titleOf("es", "u01", "l01")) })).toBeVisible();
 
   // 4. Retour au vietnamien depuis les réglages, toujours hors ligne : progression intacte.
   await page.getByRole("link", { name: "Réglages" }).click();
@@ -91,8 +97,7 @@ test("espagnol hors ligne, retour au vietnamien intact, les deux progressions pe
   await viRadio.click();
   await expect(page.getByTestId("hub-pack")).toHaveText(viName);
   await expect(page.getByText(/^\d+ XP$/)).toHaveText(viXp);
-  await expect(page.getByRole("link", { name: titleOf("vi-south", "u01", "l01") })).toBeVisible();
-  await expect(page.getByRole("link", { name: titleOf("vi-south", "u01", "l02") })).toBeVisible();
+  await expect(page.getByRole("link", { name: new RegExp(titleOf("vi-south", "u01", "l01")) })).toBeVisible();
 
   // 5. Redémarrage à froid : le pack actif et sa progression sont relus depuis IndexedDB.
   await page.reload();

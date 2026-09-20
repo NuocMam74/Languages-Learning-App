@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_doi_wear",
+  "type": "word",
+  "vi": "đội",
+  "tone": "nang",
+  "gloss": {
+    "fr": "porter (sur la tête)",
+    "en": "to wear (on the head)"
+  },
+  "register": "neutral",
+  "pos": "verb",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_doi_wear_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_doi_wear_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Anh đội nón bảo hiểm vô nha.",
+      "fr": "Mets ton casque, d’accord ?",
+      "en": "Put your helmet on, alright?"
+    }
+  ],
+  "note": {
+    "fr": "Le verbe change selon l’endroit : đội sur la tête, mang aux pieds, mặc sur le corps.",
+    "en": "The verb changes with the body part: đội on the head, mang on the feet, mặc on the body."
+  },
+  "reviewed": false
+}

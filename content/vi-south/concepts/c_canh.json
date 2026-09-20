@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_canh",
+  "type": "word",
+  "vi": "canh",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "la soupe (bouillon servi avec le riz)",
+    "en": "soup (broth served with rice)"
+  },
+  "register": "neutral",
+  "pos": "noun",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_canh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_canh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "examples": [
+    {
+      "vi": "Canh chua ngon lắm.",
+      "fr": "La soupe aigre est délicieuse.",
+      "en": "The sour soup is delicious."
+    }
+  ],
+  "note": {
+    "fr": "Canh accompagne le riz au repas ; ce n’est pas un plat de nouilles comme phở.",
+    "en": "Canh comes alongside rice at a meal; it is not a noodle dish like phở."
+  },
+  "reviewed": false
+}

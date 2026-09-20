@@ -1,5 +1,5 @@
 import { expect, test, type Page, type Route } from "@playwright/test";
-import { onboard } from "./helpers.ts";
+import { dismissCelebrations, fillStable, onboard } from "./helpers.ts";
 
 /**
  * Contrat phase5-parcours côté PWA (API simulée) : restauration sur un second appareil, test d'unité
@@ -173,8 +173,10 @@ test("test d'unité : échoué → « Presque ! Refais le test », puis réussi 
     });
     await new Promise<void>((resolve, reject) => {
       const tx = db.transaction(["lessonProgress", "snapshot"], "readwrite");
+      // `mastered: true` : depuis le contrat phase10 §3, la suite s'ouvre sur des prérequis
+      // **réussis**, pas seulement terminés. Sans ce champ, le test d'unité reste verrouillé.
       for (let i = 1; i <= 8; i++) {
-        tx.objectStore("lessonProgress").put({ lessonId: `vi-south.u01.l0${i}`, packCode: "vi-south", status: "completed", bestScore: 1, attempts: 1, completedAt: new Date().toISOString() });
+        tx.objectStore("lessonProgress").put({ lessonId: `vi-south.u01.l0${i}`, packCode: "vi-south", status: "completed", bestScore: 1, mastered: true, attempts: 1, completedAt: new Date().toISOString() });
       }
       tx.objectStore("snapshot").clear();
       tx.oncomplete = () => resolve();
@@ -188,10 +190,19 @@ test("test d'unité : échoué → « Presque ! Refais le test », puis réussi 
   await expect(page.getByTestId("unit-test-failed")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Presque ! Refais le test" })).toBeVisible();
   await expect(page.getByText(/Il faut 70 %/)).toBeVisible();
+  // Un test échoué rapporte quand même de l'XP, donc parfois une carte de récompense : elle se
+  // pose par-dessus le bilan et avale le clic suivant.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Refaire le test" }).click();
+  // Le bilan précédent doit avoir disparu avant de rejouer : sinon `playTest` le prend pour le
+  // sien et rend la main sans avoir joué une seule question.
+  await expect(page.getByTestId("unit-test-failed")).toHaveCount(0);
 
   await playTest(page, true);
   await expect(page.getByTestId("unit-test-passed")).toBeVisible();
+  // Réussir un test déclenche des récompenses : on referme leurs cartes avant de reprendre la
+  // main sur le bilan, sinon le clic tombe sur le voile.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
   await expect(page.getByRole("link", { name: "Douze voyelles" })).toBeVisible();
 });
@@ -206,7 +217,9 @@ async function playTest(page: Page, right: boolean) {
     const lesson = page.locator('[data-testid="lesson"][data-status="answering"]');
     const cont = page.getByRole("button", { name: "Continuer" });
     // Une bonne réponse enchaîne seule ; une erreur attend « Continuer ».
-    await expect(recap.or(lesson).or(cont)).toBeVisible({ timeout: 15_000 });
+    // `.first()` : à la fin d'un test réussi, la carte de félicitations pose son propre bouton
+    // « Continuer » par-dessus, et le mode strict refuserait deux correspondances.
+    await expect(recap.or(lesson).or(cont).first()).toBeVisible({ timeout: 15_000 });
     if (await recap.isVisible()) return;
     if (await cont.isVisible()) {
       await cont.click();
@@ -416,7 +429,7 @@ test("mot de passe oublié, réinitialisation et vérification d'email", async (
   await page.goto("/connexion");
   await page.getByRole("link", { name: "Mot de passe oublié ?" }).click();
   await expect(page).toHaveURL(/\/compte\/mot-de-passe-oublie$/);
-  await page.getByLabel("Email").fill("lan@parlo.app");
+  await fillStable(page.getByLabel("Email"), "lan@parlo.app");
   await page.getByRole("button", { name: "Envoyer le lien" }).click();
   await expect(page.getByTestId("forgot-sent")).toBeVisible();
   expect(calls.find((c) => c.path === "/auth/password/forgot")?.body).toEqual({ email: "lan@parlo.app" });
