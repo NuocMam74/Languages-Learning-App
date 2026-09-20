@@ -97,7 +97,8 @@ de tests ne tournait pas :
 
 ## 6. Le geste suivant
 
-1. **Commiter.** Une centaine de fichiers vivent dans l'arbre de travail, jamais dans un commit.
+1. ~~Commiter.~~ Fait : `c452669` (contrats phase16–19) puis `03c1d0d` (jeux sans voix retirés,
+   deux courses de la suite de bout en bout).
 2. **Enregistrer les voix**, ou au minimum celles de l'unité 1, pour voir la chaîne d'écoute
    fonctionner de bout en bout.
 3. **Faire relire** le corpus par un locuteur du Sud, unité par unité — `reviewed: true` se pose
