@@ -38,6 +38,8 @@ import {
   sessionCounters,
   sessionMisses,
   sessionPhase,
+  sessionScore,
+  sessionTally,
   startSessionRun,
   TONE_EXERCISE_TYPES,
   uuidv7,
@@ -60,6 +62,7 @@ import {
   type SessionPlan,
   type SessionRun,
   type SessionSource,
+  type SessionTally,
   type SkillStats,
   type SrsCard,
   type StepType,
@@ -187,6 +190,8 @@ export interface Planning {
   unlocked: Set<LessonId>;
   /** Tests d'unité réussis (meilleur score ≥ 0,7) + leçons sautées au placement. */
   passed: Set<LessonId>;
+  /** Meilleur score obtenu par leçon terminée (0 à 1) : la note affichée sur le parcours. */
+  scores: Map<LessonId, number>;
   /** Leçons ouvertes (graphe d'unités, prérequis intra-unité) : carte du parcours et garde de lien profond. */
   open: Set<LessonId>;
   cards: SrsCard[];
@@ -200,6 +205,8 @@ export interface ProgressState {
   completed: Set<LessonId>;
   unlocked: Set<LessonId>;
   passed: Set<LessonId>;
+  /** Meilleur score par leçon terminée (0 à 1). Une leçon sautée au placement n'en a pas. */
+  scores: Map<LessonId, number>;
 }
 
 /** Progression du pack : terminées, sautées au placement, tests d'unité réussis (contrat phase5 §2). */
@@ -221,7 +228,7 @@ export async function progressState(content: ContentIndex, d: ParloDB = db()): P
       .map((r) => r.lessonId),
     ...skipped,
   ]);
-  return { completed, unlocked, passed };
+  return { completed, unlocked, passed, scores: new Map(rows.map((r) => [r.lessonId, r.bestScore])) };
 }
 
 export function openLessons(content: ContentIndex, progress: ProgressState): Set<LessonId> {
@@ -238,13 +245,13 @@ export async function isLessonOpen(content: ContentIndex, lessonId: LessonId): P
 export async function planning(content: ContentIndex, profile: Profile, now = new Date()): Promise<Planning> {
   const pack = content.pack.code;
   const [progress, cards] = await Promise.all([progressState(content), packCards(pack)]);
-  const { completed, unlocked, passed } = progress;
+  const { completed, unlocked, passed, scores } = progress;
   const next = nextLesson(content.curriculum, content.lessons, unlocked, profile.motivation, passed);
   const daily = planSession({ targetMinutes: profile.dailyGoalMin, cards, nextLesson: next, now });
   const review = planSession({ targetMinutes: profile.dailyGoalMin, cards, nextLesson: null, now });
   const reviewBlock = review.blocks.find((b) => b.kind === "review");
   const dueCount = reviewBlock?.kind === "review" ? reviewBlock.conceptIds.length + reviewBlock.deferred : 0;
-  return { completed, unlocked, passed, open: openLessons(content, progress), cards, next, daily, review, dueCount };
+  return { completed, unlocked, passed, scores, open: openLessons(content, progress), cards, next, daily, review, dueCount };
 }
 
 /** Une séance a-t-elle quelque chose à faire (au-delà du bilan) ? */
@@ -606,6 +613,14 @@ export interface SessionRecap {
   recovered: ConceptId[];
   /** Test d'unité : score de cette tentative et réussite (seuil 0,7). */
   unitTest: { lessonId: LessonId; score: number; passed: boolean } | null;
+  /**
+   * Réussite de la séance entière au premier essai (révisions comprises), entre 0 et 1 ; `null`
+   * quand rien n'était noté. C'est le pourcentage affiché au bilan — il répond à la seule question
+   * qu'on se pose en arrivant là : « j'ai eu combien ? »
+   */
+  score: number | null;
+  /** Détail du pourcentage : items notés joués, et réussis du premier coup. */
+  tally: SessionTally;
   /** XP totale avant / après (montée de niveau). */
   xpBefore: number;
   xpAfter: number;
@@ -718,6 +733,8 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       practice,
       // Un test d'unité rejoué en entraînement ne se réussit ni ne se rate : il est déjà acquis.
       unitTest: !practice && lesson?.kind === "unit_test" && lessonId ? { lessonId, score, passed: isUnitTestPassed(score) } : null,
+      score: sessionScore(saved),
+      tally: sessionTally(saved),
       xpBefore: totals.xp,
       xpAfter: totals.xp + xp,
       // Une séance vide ou un entraînement ne nourrit ni les missions ni les trophées : ils ne

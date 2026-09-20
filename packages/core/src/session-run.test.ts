@@ -3,7 +3,7 @@ import { buildExercise, currentItem, evaluate, recordResult, type Exercise, type
 import { XP_REVIEW } from "./progress.ts";
 import { buildReviewExercise } from "./review.ts";
 import { planSession } from "./session.ts";
-import { conceptsToTeach, isPracticeRun, markTaught, recordReviewResult, reviewSeed, sessionItemsDone, sessionMisses, sessionPhase, startSessionRun, type SessionRun } from "./session-run.ts";
+import { conceptsToTeach, isPracticeRun, markTaught, recordReviewResult, reviewSeed, sessionItemsDone, sessionMisses, sessionPhase, sessionScore, sessionTally, startSessionRun, type SessionRun } from "./session-run.ts";
 import { newCard, review } from "./srs.ts";
 import { loadPack } from "./testing/pack.ts";
 
@@ -152,5 +152,25 @@ describe("ce qui a résisté (contrat phase13 §1)", () => {
     const misses = sessionMisses(playWith((i) => i !== 0));
     expect(misses.recovered.length).toBeGreaterThan(0);
     for (const id of misses.recovered) expect(misses.missed).not.toContain(id);
+  });
+
+  it("réussite de la séance : premiers essais seulement, rappel espacé compris", () => {
+    const perfect = playWith(() => true);
+    expect(sessionScore(perfect)).toBe(1);
+    const tally = sessionTally(perfect);
+    expect(tally.graded).toBeGreaterThan(0);
+    expect(tally.correct).toBe(tally.graded);
+
+    const none = playWith(() => false);
+    expect(sessionScore(none)).toBe(0);
+    expect(sessionTally(none).correct).toBe(0);
+    // Un item raté puis rattrapé reste faux au décompte : c'est le premier essai qui se mesure.
+    expect(sessionTally(none).graded).toBeGreaterThan(0);
+  });
+
+  it("rien de noté : pas de pourcentage plutôt qu'un zéro", () => {
+    const fresh = startSessionRun({ plan, sessionId: "vide", source: "daily", lesson: l01, known: [], now: NOW });
+    expect(sessionScore(fresh)).toBeNull();
+    expect(sessionTally(fresh)).toEqual({ graded: 0, correct: 0 });
   });
 });

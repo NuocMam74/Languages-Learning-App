@@ -116,7 +116,7 @@ export function JoinClassPage() {
           <SectionTitle id="never-title" icon="lock">{t("classes.join.never")}</SectionTitle>
           <Card tone="quiet">
             <ul className="flex flex-col gap-1">
-              {(["email", "audio", "messages"] as const).map((k) => (
+              {(["email", "messages"] as const).map((k) => (
                 <li key={k} className="flex gap-2">
                   <Icon name="close" size={18} className="mt-1 shrink-0 text-phu-sa" />
                   <span>{t(`classes.join.never.${k}`)}</span>

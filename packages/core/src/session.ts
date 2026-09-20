@@ -43,11 +43,23 @@ export function planSession({ targetMinutes, cards, nextLesson, now }: PlanInput
   const blocks: SessionBlock[] = [];
   let used = RECAP_SECONDS;
 
+  /**
+   * Mots que la leçon du jour fait déjà travailler. Une leçon réutilise volontiers des mots plus
+   * anciens : sans exclusion, un mot dû tombait en rappel espacé **et** revenait dans la leçon
+   * quelques écrans plus loin — le même mot, deux fois dans la même séance.
+   *
+   * L'exclusion ne s'applique qu'une fois la leçon réellement retenue (plus bas) : écarter des
+   * révisions pour une leçon qui ne tient pas dans le budget les ferait disparaître sans rien
+   * donner en échange. Le SRS ne perd rien de toute façon — une carte écartée reste due et
+   * repasse à la séance suivante si la leçon ne l'a pas relevée.
+   */
+  const inLesson = new Set(nextLesson?.concepts ?? []);
+
   const due = cards.filter((c) => isDue(c, now)).sort((a, b) => Date.parse(a.due) - Date.parse(b.due));
   const dueIds = new Set(due.map((c) => c.conceptId));
 
   const warmup = cards
-    .filter((c) => isMastered(c) && !dueIds.has(c.conceptId))
+    .filter((c) => isMastered(c) && !dueIds.has(c.conceptId) && !inLesson.has(c.conceptId))
     .sort((a, b) => b.stability - a.stability)
     .slice(0, WARMUP_ITEMS)
     .map((c) => c.conceptId);
@@ -68,9 +80,11 @@ export function planSession({ targetMinutes, cards, nextLesson, now }: PlanInput
   const reviewBudget = includeLesson
     ? Math.max(0, budget * (1 + OVERRUN_TOLERANCE) - used - lessonSeconds)
     : Math.max(0, budget - used);
-  const reviewCount = Math.min(due.length, Math.floor(reviewBudget / REVIEW_ITEM_SECONDS));
+  // La leçon est retenue : ses mots sortent du rappel espacé, ils y seront de toute façon.
+  const reviewable = includeLesson ? due.filter((c) => !inLesson.has(c.conceptId)) : due;
+  const reviewCount = Math.min(reviewable.length, Math.floor(reviewBudget / REVIEW_ITEM_SECONDS));
   if (reviewCount > 0) {
-    blocks.push({ kind: "review", conceptIds: due.slice(0, reviewCount).map((c) => c.conceptId), deferred: due.length - reviewCount });
+    blocks.push({ kind: "review", conceptIds: reviewable.slice(0, reviewCount).map((c) => c.conceptId), deferred: reviewable.length - reviewCount });
     used += reviewCount * REVIEW_ITEM_SECONDS;
   }
 

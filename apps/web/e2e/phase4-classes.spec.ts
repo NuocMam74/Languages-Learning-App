@@ -190,7 +190,7 @@ test("enseignant : classe, QR et nouveau code, tableau trié, tiroir élève, re
   await page.getByRole("link", { name: "Espace enseignant" }).click();
   await expect(page).toHaveURL(/\/prof$/);
   await expect(page.getByText(/Aucune classe pour l'instant/)).toBeVisible();
-  await expect(page.getByText(/jamais leur email ni leur voix/)).toBeVisible();
+  await expect(page.getByText(/jamais leur email/)).toBeVisible();
 
   await page.getByLabel("Nom de la classe").fill("Mardi soir");
   await page.getByRole("button", { name: "Créer la classe" }).click();
@@ -313,7 +313,8 @@ test("élève : invitation en invité → compte → consentement → rejoint ; 
   await expect(page).toHaveURL(/\/classe\/7K3Q9B$/);
   const joinForm = page.getByTestId("class-join-form");
   await expect(joinForm.getByText("ton adresse email ;")).toBeVisible();
-  await expect(joinForm.getByText(/ta voix : aucun enregistrement/)).toBeVisible();
+  // Plus de micro dans l'app : la liste ne promet plus rien sur la voix, elle n'en collecte aucune.
+  await expect(joinForm.getByText(/voix/)).toHaveCount(0);
   await expect(joinForm.getByText(/il n'y a pas de messagerie/)).toBeVisible();
   const submit = page.getByRole("button", { name: "Rejoindre la classe" });
   await expect(submit).toBeDisabled();

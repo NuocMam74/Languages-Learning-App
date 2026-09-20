@@ -46,15 +46,49 @@ test("la préparation est une porte : les exercices n'ouvrent qu'une fois tout c
   await expect(page.getByTestId("lesson")).toBeVisible();
 });
 
+/** Marque une leçon comme réussie dans IndexedDB, pour ouvrir la suivante sans la jouer. */
+async function markLessonPassed(page: Page, lessonId: string): Promise<void> {
+  await page.evaluate(
+    (id) =>
+      new Promise<void>((resolve, reject) => {
+        const open = indexedDB.open("parlo");
+        open.onerror = () => reject(open.error);
+        open.onsuccess = () => {
+          const tx = open.result.transaction("lessonProgress", "readwrite");
+          tx.objectStore("lessonProgress").put({
+            lessonId: id,
+            packCode: "vi-south",
+            status: "completed",
+            bestScore: 1,
+            mastered: true,
+            attempts: 1,
+            completedAt: new Date().toISOString(),
+          });
+          tx.oncomplete = () => {
+            open.result.close();
+            resolve();
+          };
+          tx.onerror = () => reject(tx.error);
+        };
+      }),
+    lessonId,
+  );
+}
+
 test("la préparation montre la consigne d'un format avant de le noter", async ({ page }) => {
   test.setTimeout(180_000);
   await mockGuest(page);
   await onboard(page);
   await expect(page.getByTestId("lesson-intro")).toBeVisible();
-  await openAllBriefingPanels(page);
 
-  // La toute première leçon introduit des formats qu'aucun écran n'a encore expliqués : on lit la
-  // consigne avant que l'exercice compte.
+  // La toute première leçon ne fait qu'écouter et choisir : ces formats s'expliquent d'eux-mêmes,
+  // et on n'invente pas une consigne pour eux. La suivante introduit « construis la phrase » — un
+  // format qui, lui, ne se devine pas, et dont la consigne se lit avant qu'il compte.
+  await markLessonPassed(page, "vi-south.u01.l01");
+  await page.goto("/lecon/vi-south.u01.l02");
+
+  await expect(page.getByTestId("lesson-intro")).toBeVisible();
+  await openAllBriefingPanels(page);
   await expect(page.getByTestId("brief-format").first()).toBeVisible();
   await expect(page.getByTestId("intro-start")).toBeEnabled();
 });
@@ -91,7 +125,7 @@ test("Réviser dit par où commencer, et l'échelle va du simple au difficile", 
   await expect(page).toHaveURL(/\/(reviser|revision)/);
 });
 
-test("sans voix native : le manque est dit une fois, et rien ne mène à un mur", async ({ page }) => {
+test("sans voix native : rien n'en parle à l'écran, et rien ne mène à un mur", async ({ page }) => {
   test.setTimeout(180_000);
   await mockGuest(page);
   await onboard(page);
@@ -99,8 +133,10 @@ test("sans voix native : le manque est dit une fois, et rien ne mène à un mur"
   await page.getByRole("button", { name: "Quitter la leçon" }).click();
   await expect(page).toHaveURL(/\/apprendre$/);
 
-  // Le pack livré ne contient aucun enregistrement : un chantier annoncé, en haut, une seule fois.
-  await expect(page.getByTestId("hub-no-voices")).toBeVisible();
+  // Le pack livré ne contient aucun enregistrement, et c'est une affaire de production : l'écran
+  // ne l'annonce pas, ne l'excuse pas, n'en parle pas.
+  await expect(page.getByTestId("hub-no-voices")).toHaveCount(0);
+  await expect(page.getByText(/enregistrement/i)).toHaveCount(0);
 
   // Chợ nổi trie des barques à l'oreille par leur ton : sans voix native, il ne figure pas du tout
   // dans la liste — ni ouvert sur un mur, ni verrouillé à expliquer. Les autres jeux, eux, sont là.

@@ -2,6 +2,7 @@ import {
   buildExam,
   EXAM_ITEM_COUNT,
   examAvailability,
+  examItemRefs,
   gradeExam,
   isExamUnlocked,
   lessonsForConcepts,
@@ -307,10 +308,11 @@ export function MockExamPage({ content }: { content: ContentIndex }) {
 
 function ExplainList({ exam, mock }: { exam: ExamFile; mock: boolean }) {
   const items: { icon: IconName; text: string }[] = [
-    { icon: "clock", text: t("exams.explain.duration", { n: exam.durationMinutes, items: exam.sections.reduce((n, s) => n + s.items.length, 0) || EXAM_ITEM_COUNT }) },
+    // Le nombre annoncé est celui des questions **posées** : les items de production orale sont
+    // écartés (`examItemRefs`), et promettre 25 questions pour en poser 20 serait mentir.
+    { icon: "clock", text: t("exams.explain.duration", { n: exam.durationMinutes, items: examItemRefs(exam).length || EXAM_ITEM_COUNT }) },
     { icon: "target", text: t("exams.explain.skills") },
     { icon: "refresh", text: mock ? t("exams.mock.explain") : t("exams.explain.once", { hours: exam.retryAfterHours }) },
-    { icon: "mic", text: t("exams.explain.mic") },
     { icon: "info", text: t("exams.explain.noFeedback") },
   ];
   return (

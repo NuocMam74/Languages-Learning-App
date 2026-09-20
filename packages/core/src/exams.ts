@@ -1,7 +1,7 @@
 import { checkLessonStep, type ContentIssue } from "./content-checks.ts";
 import { buildExercise, evaluate, SPEAK_PASS_SCORE, type Exercise, type ExerciseResponse } from "./engine.ts";
 import { contentMedia, stepPitchPath, tonalStepHasNativeAudio, type MediaIndex } from "./media.ts";
-import type { ConceptId, ContentIndex, Curriculum, Lesson, LessonId, LessonStep, Localized, StepType, UnitId } from "./types.ts";
+import { SPEAKING_STEP_TYPES, type ConceptId, type ContentIndex, type Curriculum, type Lesson, type LessonId, type LessonStep, type Localized, type StepType, type UnitId } from "./types.ts";
 
 /**
  * Examens de certificat (spec §5.5, docs/contracts/phase2.md §2).
@@ -127,15 +127,24 @@ export interface ExamAvailability {
 }
 
 export function examAvailability(content: ContentIndex, exam: ExamFile, media: MediaIndex | null = contentMedia(content)): ExamAvailability {
-  const gradedItems = exam.sections.reduce((n, s) => n + s.items.filter((i) => isExamStepGraded(content, i.step, media)).length, 0);
+  const gradedItems = exam.sections.reduce(
+    (n, s) => n + s.items.filter((i) => !SPEAKING_STEP_TYPES.has(i.step.type) && isExamStepGraded(content, i.step, media)).length,
+    0,
+  );
   return { gradedItems, unavailableReason: gradedItems < EXAM_MIN_GRADED_ITEMS ? "media_missing" : null };
 }
 
 // ---------------------------------------------------------------------------
 // Construction
 
+/**
+ * Items réellement passés, dans l'ordre du fichier. Les items de production orale sont écartés :
+ * l'app ne fait plus parler dans le micro (`SPEAKING_STEP_TYPES`). La section « speaking » se
+ * retrouve alors sans item noté — `gradeExam` lui donne un score `null`, déjà exclu de la règle
+ * « chaque compétence ≥ 0,5 ».
+ */
 export function examItemRefs(exam: ExamFile): ExamItemRef[] {
-  return exam.sections.flatMap((s) => s.items.map((_, index) => ({ section: s.skill, index })));
+  return exam.sections.flatMap((s) => s.items.flatMap((item, index) => (SPEAKING_STEP_TYPES.has(item.step.type) ? [] : [{ section: s.skill, index }])));
 }
 
 export function flatIndexOf(exam: ExamFile, ref: ExamItemRef): number {
@@ -186,7 +195,8 @@ export function buildExam(content: ContentIndex, exam: ExamFile, seed: string, r
   return refs.flatMap((ref) => {
     const flatIndex = flatIndexOf(exam, ref);
     const item = exam.sections.find((s) => s.skill === ref.section)?.items[ref.index];
-    if (flatIndex < 0 || !item) return [];
+    // Un ordre de passage venu du serveur peut encore citer un oral : on le laisse de côté ici aussi.
+    if (flatIndex < 0 || !item || SPEAKING_STEP_TYPES.has(item.step.type)) return [];
     return [{
       ...ref, flatIndex, stepType: item.step.type, silent: item.silent === true, graded: isExamStepGraded(content, item.step),
       exercise: buildExercise(content, lesson, flatIndex, seed),

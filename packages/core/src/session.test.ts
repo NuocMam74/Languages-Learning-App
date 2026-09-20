@@ -48,6 +48,32 @@ describe("planSession", () => {
     expect(reviewBlock.deferred).toBe(100 - reviewBlock.conceptIds.length);
   });
 
+  it("un mot que la leçon fait travailler ne revient pas en rappel espacé", () => {
+    const past = new Date("2026-09-01T08:00:00Z");
+    // Deux cartes dues : l'une est un mot de la leçon du jour, l'autre non.
+    const inLesson = l01.concepts[0]!;
+    const cards = [review(newCard(inLesson, past), "good", past), review(newCard("c_x0", past), "good", past)];
+    const plan = planSession({ targetMinutes: 10, cards, nextLesson: l01, now: NOW });
+    const block = plan.blocks.find((b) => b.kind === "review");
+    expect(block?.kind === "review" && block.conceptIds).toEqual(["c_x0"]);
+
+    // Sans la leçon (révision seule), le mot reste dû : rien n'est perdu, il attend son tour.
+    const alone = planSession({ targetMinutes: 10, cards, nextLesson: null, now: NOW });
+    const aloneBlock = alone.blocks.find((b) => b.kind === "review");
+    expect(aloneBlock?.kind === "review" && [...aloneBlock.conceptIds].sort()).toEqual([inLesson, "c_x0"].sort());
+  });
+
+  it("leçon écartée du budget : ses mots restent en rappel espacé", () => {
+    const past = new Date("2026-09-01T08:00:00Z");
+    const inLesson = l01.concepts[0]!;
+    // Assez de retard pour déclencher une journée de révision : la leçon n'entre pas.
+    const cards = [review(newCard(inLesson, past), "good", past), ...dueCards(12)];
+    const plan = planSession({ targetMinutes: 5, cards, nextLesson: l01, now: NOW });
+    expect(plan.blocks.map((b) => b.kind)).toEqual(["review", "recap"]);
+    const block = plan.blocks.find((b) => b.kind === "review");
+    expect(block?.kind === "review" && block.conceptIds).toContain(inLesson);
+  });
+
   it("commence par des items maîtrisés (réveil) quand il y en a", () => {
     let card = review(newCard("c_ba", new Date("2026-01-01")), "easy", new Date("2026-01-01"));
     for (let i = 0; i < 5; i++) card = review(card, "easy", new Date(card.due));

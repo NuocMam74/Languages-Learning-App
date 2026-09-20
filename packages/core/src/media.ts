@@ -1,5 +1,5 @@
 import type { Concept, ContentIndex, Dialogue, GameId, Lesson, LessonStep, StepType } from "./types.ts";
-import { NATIVE_AUDIO_STEP_TYPES, TONAL_STEP_TYPES } from "./types.ts";
+import { NATIVE_AUDIO_STEP_TYPES, SPEAKING_STEP_TYPES, TONAL_STEP_TYPES } from "./types.ts";
 
 /**
  * Disponibilité des médias (contrat phase5-parcours §1). Le bundle d'un pack expose
@@ -125,10 +125,15 @@ export interface PlayableOptions {
 
 /**
  * Étape jouable en séance : une étape qui exige un enregistrement natif et ne l'a pas est retirée
- * (ni affichée ni notée), sauf repli de synthèse. Les étapes orales (`speak_repeat`, `speak_answer`,
- * `speak_roleplay`) sans courbe F0 restent jouables : elles deviennent de l'écoute non notée.
+ * (ni affichée ni notée), sauf repli de synthèse.
+ *
+ * Les étapes de production orale (`speak_repeat`, `speak_answer`, `speak_roleplay`,
+ * `tone_produce`) sont retirées **toujours** : l'app ne fait plus répéter à voix haute.
  */
 export function isStepPlayable(content: ContentIndex, step: LessonStep, options: PlayableOptions = {}): boolean {
+  // Production orale : retirée avant tout le reste, y compris le repli de synthèse — `tone_produce`
+  // est aussi une étape tonale, et le repli ne doit pas la ramener par la fenêtre.
+  if (SPEAKING_STEP_TYPES.has(step.type)) return false;
   // Le repli de synthèse ne concerne que les tons : on ne fait jamais transcrire ni écouter un
   // dialogue en voix de synthèse.
   if (options.toneFallback && TONAL_STEP_TYPES.has(step.type)) return true;

@@ -269,6 +269,34 @@ export function sessionGradedItems(run: SessionRun): number {
   return run.reviewResults.filter((r) => r.graded).length + (run.lesson?.results.filter((r) => r.graded).length ?? 0);
 }
 
+export interface SessionTally {
+  /** Items notés comptés au premier essai (révisions + étapes de leçon). */
+  graded: number;
+  /** Parmi eux, réussis du premier coup. */
+  correct: number;
+}
+
+/**
+ * Compte de réussite de la séance, **au premier essai** — la même règle que `lessonScore` : ce qui
+ * se mesure, c'est ce qu'on savait en arrivant sur l'exercice, pas ce qu'on a fini par trouver.
+ * Les items non notés (carte culture sans question, mini-jeu passé) ne comptent nulle part.
+ *
+ * Lisible en cours de séance (le pourcentage affiché au fil des exercices) comme à la fin.
+ */
+export function sessionTally(run: SessionRun): SessionTally {
+  const firsts = [
+    ...run.reviewResults.filter((r) => r.attempt === 1 && r.graded).map((r) => r.correct),
+    ...(run.lesson?.results ?? []).filter((r) => r.attempt === 1 && r.graded).map((r) => r.correct),
+  ];
+  return { graded: firsts.length, correct: firsts.filter(Boolean).length };
+}
+
+/** Réussite de la séance entre 0 et 1 ; `null` tant qu'aucun item noté n'a été joué. */
+export function sessionScore(run: SessionRun): number | null {
+  const { graded, correct } = sessionTally(run);
+  return graded === 0 ? null : correct / graded;
+}
+
 /**
  * Séance vide (contrat phase5 §3) : aucun item noté ni leçon terminée → ni XP, ni session_completed,
  * ni jour de série. `lessonCompleted` : la partie leçon a été enregistrée.

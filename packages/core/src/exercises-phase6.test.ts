@@ -297,8 +297,9 @@ describe("speak_answer", () => {
     const ex = buildExercise(noPitch, lessonWith([step]), 0, "s");
     if (ex.type !== "speak_answer") throw new Error(ex.type);
     expect(ex.pitchRef).toBeNull();
-    // L'étape reste jouable : elle devient de l'écoute (comme speak_repeat sans courbe).
-    expect(isStepPlayable(noPitch, step)).toBe(true);
+    // L'étape n'est plus jouée du tout : l'app ne fait plus parler dans le micro, avec ou sans courbe.
+    expect(isStepPlayable(noPitch, step)).toBe(false);
+    expect(isStepPlayable(pack, step)).toBe(false);
   });
 });
 

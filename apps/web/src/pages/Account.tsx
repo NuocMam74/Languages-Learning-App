@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router";
 import { useAccount } from "../account.ts";
-import { ApiError, getOAuthProviders, NetworkError, oauthStartUrl, type OAuthProvider } from "../api.ts";
+import { ApiError, getOAuthProviders, isApiUnavailable, NetworkError, oauthStartUrl, type OAuthProvider } from "../api.ts";
 import { Button, Screen } from "../components/ui.tsx";
 import { Card, Icon } from "../design/index.ts";
 import { getLocale, t, type MessageKey } from "../i18n/index.ts";
@@ -19,12 +19,18 @@ import { getLocale, t, type MessageKey } from "../i18n/index.ts";
 export const PASSWORD_MIN = 10;
 
 function errorKey(error: unknown, mode: "register" | "login"): MessageKey {
+  // Pas d'API dans ce déploiement : le dire, plutôt que « réessaie dans un instant » — il n'y a
+  // rien à réessayer, et l'apprenant recommencerait indéfiniment.
+  if (isApiUnavailable(error)) return "account.error.unavailable";
   if (error instanceof NetworkError) return "account.error.network";
   if (error instanceof ApiError) {
     if (mode === "register" && error.status === 409) return "account.error.exists";
     if (mode === "login" && error.status === 401) return "account.error.credentials";
     if (error.status === 422) return "account.error.invalid";
     if (error.status === 429) return "account.error.rateLimit";
+    // 5xx : le serveur existe mais a échoué — là, réessayer a du sens.
+    if (error.status >= 500) return "account.error.generic";
+    return "account.error.generic";
   }
   return "account.error.generic";
 }
@@ -52,14 +58,16 @@ function FormError({ children }: { children: ReactNode }) {
 }
 
 /** Fournisseurs OAuth configurés (`GET /auth/oauth/providers`) ; aucun bouton sinon. */
-function ProviderButtons({ next }: { next: string | null }) {
+function ProviderButtons({ next, onUnavailable }: { next: string | null; onUnavailable: () => void }) {
   const [providers, setProviders] = useState<OAuthProvider[]>([]);
   useEffect(() => {
     let live = true;
     if (!navigator.onLine) return;
     void getOAuthProviders().then(
       (list) => live && setProviders(Array.isArray(list) ? list.filter((p) => p && (p.id === "google" || p.id === "apple")) : []),
-      () => undefined,
+      // Cette requête est la première qui touche l'API : si elle dit « pas d'API ici », on le sait
+      // avant que l'apprenant ait rempli le formulaire pour rien.
+      (error: unknown) => live && isApiUnavailable(error) && onUnavailable(),
     );
     return () => {
       live = false;
@@ -102,6 +110,8 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<MessageKey | null>(null);
   const [done, setDone] = useState(false);
+  // Déploiement sans API (scénario A) : dit avant de remplir le formulaire, pas après l'échec.
+  const [unavailable, setUnavailable] = useState(false);
 
   // Retour d'un fournisseur OAuth : /compte?oauth=ok&next=… (contrat phase5 §4).
   useEffect(() => {
@@ -183,6 +193,18 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
       <h1 className="mt-2 font-serif text-2xl text-balance">{t(register ? "account.register.title" : "account.login.title")}</h1>
       {register && <p className="mt-2 text-phu-sa text-balance">{t("account.register.why")}</p>}
 
+      {/* Pas de serveur derrière cette version : l'annoncer d'emblée, et montrer la porte qui
+          s'ouvre vraiment (le mode invité) plutôt que de laisser buter sur un formulaire mort. */}
+      {unavailable && (
+        <Card tone="notice" as="section" role="status" className="mt-4 flex items-start gap-3" data-testid="account-unavailable">
+          <Icon name="alert" size={20} className="mt-0.5 shrink-0 text-nghe" />
+          <span className="min-w-0">
+            <span className="block font-medium">{t("account.unavailable.title")}</span>
+            <span className="block text-sm text-phu-sa text-balance">{t("account.unavailable.body")}</span>
+          </span>
+        </Card>
+      )}
+
       <form id="account-form" onSubmit={(e) => void submit(e)} className="mt-6 flex flex-col gap-4" noValidate={false}>
         <Card tone="raised" className="flex flex-col gap-5">
           {register && (
@@ -235,7 +257,7 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
       )}
 
       <div className="mt-6 flex flex-col gap-4">
-        <ProviderButtons next={next} />
+        <ProviderButtons next={next} onUnavailable={() => setUnavailable(true)} />
         {register ? (
           <>
             <Link to={withNext("/connexion")} className="grid min-h-11 place-items-center font-semibold text-ngoc">{t("account.toLogin")}</Link>

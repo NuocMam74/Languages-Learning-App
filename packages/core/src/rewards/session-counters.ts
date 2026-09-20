@@ -1,6 +1,6 @@
 import type { SessionRun } from "../session-run.ts";
 import type { ConceptId, Lesson, StepType } from "../types.ts";
-import { TONAL_STEP_TYPES } from "../types.ts";
+import { SPEAKING_STEP_TYPES, TONAL_STEP_TYPES } from "../types.ts";
 import type { Counters } from "./counters.ts";
 
 /**
@@ -10,9 +10,6 @@ import type { Counters } from "./counters.ts";
  *
  * Fonction pure : `learner.ts` l'appelle avec l'état qu'il vient d'enregistrer.
  */
-
-/** Formats notés à la voix (production orale, spec §4.4). */
-export const SPEAKING_STEP_TYPES: ReadonlySet<StepType> = new Set<StepType>(["speak_repeat", "speak_answer", "speak_roleplay", "tone_produce"]);
 
 export interface SessionCountersInput {
   run: SessionRun;

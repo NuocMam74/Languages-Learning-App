@@ -329,6 +329,22 @@ export function hasFeature(pack: Pick<Pack, "features">, feature: PackFeature): 
 export const TONAL_STEP_TYPES: ReadonlySet<StepType> = new Set<StepType>(["tone_identify", "tone_minimal_pair", "tone_produce"]);
 
 /**
+ * Exercices de production orale : l'apprenant devait parler dans le micro (« Répète à voix
+ * haute »). Ils sont retirés des séances — l'app n'écoute plus la voix, et un exercice qui
+ * demande de parler sans jamais rien corriger n'apprend rien.
+ *
+ * Retirés comme une étape sans enregistrement : ni affichés, ni notés, ni comptés dans la barre
+ * de progression. Le contenu garde ces étapes (les packs ne sont pas réécrits) ; c'est le moteur
+ * qui ne les joue plus.
+ */
+export const SPEAKING_STEP_TYPES: ReadonlySet<StepType> = new Set<StepType>([
+  "speak_repeat",
+  "speak_answer",
+  "speak_roleplay",
+  "tone_produce",
+]);
+
+/**
  * Exercices qui exigent un enregistrement natif : sans le média, l'étape est retirée de la
  * séance (ni affichée, ni notée), comme les étapes tonales (contrat phase5 §1, phase6 §1).
  */

@@ -10,7 +10,7 @@ export const fr = {
   "teacher.notTeacher.body": "L'espace enseignant permet de créer une classe, de suivre la progression de tes élèves et de leur donner des devoirs. Il s'active sur demande : écris à l'équipe Parlo pour que le rôle enseignant soit ajouté à ton compte. Ton apprentissage personnel reste inchangé.",
   "teacher.error": "Impossible de charger pour le moment. Vérifie ta connexion.",
   "teacher.retry": "Réessayer",
-  "teacher.privacy": "Tes élèves choisissent de partager leur progression et peuvent quitter la classe à tout moment. Tu vois leur nom affiché, leur activité et leurs résultats ; jamais leur email ni leur voix. Il n'y a pas de messagerie.",
+  "teacher.privacy": "Tes élèves choisissent de partager leur progression et peuvent quitter la classe à tout moment. Tu vois leur nom affiché, leur activité et leurs résultats ; jamais leur email. Il n'y a pas de messagerie.",
 
   // Liste et création de classes
   "teacher.classes": "Mes classes",
@@ -107,7 +107,6 @@ export const fr = {
   "classes.join.sees.results": "les notions où tu fais le plus d'erreurs et tes résultats d'examens.",
   "classes.join.never": "Ce qu'il ne verra jamais",
   "classes.join.never.email": "ton adresse email ;",
-  "classes.join.never.audio": "ta voix : aucun enregistrement ne quitte ton appareil ;",
   "classes.join.never.messages": "de messages : il n'y a pas de messagerie, ni avec l'enseignant ni entre élèves.",
   "classes.join.revoke": "Tu peux quitter la classe à tout moment depuis « Mes classes » : le partage s'arrête aussitôt.",
   "classes.join.consent": "J'accepte de partager ma progression avec l'enseignant de cette classe.",
@@ -163,7 +162,7 @@ export const en: Record<keyof typeof fr, string> = {
   "teacher.notTeacher.body": "The teacher space lets you create a class, follow your students' progress and give them assignments. It is enabled on request: write to the Parlo team so the teacher role is added to your account. Your own learning stays unchanged.",
   "teacher.error": "Couldn't load right now. Check your connection.",
   "teacher.retry": "Try again",
-  "teacher.privacy": "Your students choose to share their progress and can leave the class at any time. You see their display name, activity and results; never their email or their voice. There is no messaging.",
+  "teacher.privacy": "Your students choose to share their progress and can leave the class at any time. You see their display name, activity and results; never their email. There is no messaging.",
   "teacher.classes": "My classes",
   "teacher.classes.empty": "No class yet. Create your first class: you'll get a code and a link to give your students.",
   "teacher.create.title": "New class",
@@ -250,7 +249,6 @@ export const en: Record<keyof typeof fr, string> = {
   "classes.join.sees.results": "the concepts where you make the most mistakes and your exam results.",
   "classes.join.never": "What they will never see",
   "classes.join.never.email": "your email address;",
-  "classes.join.never.audio": "your voice: no recording ever leaves your device;",
   "classes.join.never.messages": "messages: there is no messaging, neither with the teacher nor between students.",
   "classes.join.revoke": "You can leave the class at any time from “My classes”: sharing stops immediately.",
   "classes.join.consent": "I agree to share my progress with this class's teacher.",

@@ -52,7 +52,9 @@ export function ExamResults({ content, exam, mock, passed, global, scores, lesso
           <SectionTitle id="exam-scores" tone="strong" icon="chart">{t("cert.verify.scores")}</SectionTitle>
           <Card>
             <ul className="flex flex-col gap-4" aria-labelledby="exam-scores">
-              {EXAM_SKILLS.map((skill) => {
+              {/* Une compétence dont l'examen n'a posé aucune question notée n'a rien à dire : on ne
+                  l'aligne pas pour afficher « non noté » à côté. */}
+              {EXAM_SKILLS.filter((skill) => scores[skill] !== null && scores[skill] !== undefined).map((skill) => {
                 const value = scores[skill];
                 const label = t(`exams.skill.${skill}` as MessageKey);
                 const graded = value !== null && value !== undefined;

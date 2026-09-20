@@ -110,9 +110,10 @@ export const fr = {
   "journey.deleteAccount.done": "Ton compte a été supprimé.",
 
   // Examens
-  "journey.exam.unavailable": "Indisponible pour le moment : les enregistrements natifs nécessaires ne sont pas encore prêts.",
-  "journey.exam.notGradedMedia": "Certains items ne sont pas notés tant que leurs enregistrements natifs manquent.",
+  "journey.exam.unavailable": "Cet examen n'est pas encore prêt. Il arrivera dans une prochaine mise à jour.",
+  "journey.exam.notGradedMedia": "Certains items ne comptent pas dans la note : ils ne sont pas encore prêts.",
   "journey.lesson.redo": "{title} — à refaire : il reste une erreur",
+  "journey.lesson.score": "{n} % de réussite",
   // Mondes (contrat phase11 §2)
   "worlds.title": "Mondes",
   "worlds.intro": "Six mondes à traverser, dans l'ordre. Chacun se referme sur son épreuve.",
@@ -228,9 +229,10 @@ export const en: Record<keyof typeof fr, string> = {
   "journey.deleteAccount.error": "The deletion didn't go through. Check your connection and try again.",
   "journey.deleteAccount.done": "Your account has been deleted.",
 
-  "journey.exam.unavailable": "Unavailable for now: the native recordings it needs aren't ready yet.",
-  "journey.exam.notGradedMedia": "Some items aren't graded while their native recordings are missing.",
+  "journey.exam.unavailable": "This exam isn't ready yet. It will come in a future update.",
+  "journey.exam.notGradedMedia": "Some items don't count towards the score: they aren't ready yet.",
   "journey.lesson.redo": "{title} — to redo: one mistake left",
+  "journey.lesson.score": "{n}% correct",
   "worlds.title": "Worlds",
   "worlds.intro": "Six worlds to cross, in order. Each one closes on its own trial.",
   "worlds.number": "World {n}",

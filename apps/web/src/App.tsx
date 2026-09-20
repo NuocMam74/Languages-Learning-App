@@ -1,8 +1,7 @@
-import { packHasNativeAudio, type ContentIndex } from "@parlo/core";
+import type { ContentIndex } from "@parlo/core";
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { useAccount } from "./account.ts";
-import { NativeVoices } from "./components/AudioButton.tsx";
 import { Shell } from "./components/BottomNav.tsx";
 import { ScreenSkeleton, WithMessages } from "./components/Skeleton.tsx";
 import { Button, Screen } from "./components/ui.tsx";
@@ -292,15 +291,10 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
       }]),
     [content, onboarded],
   );
-  const voices = useMemo(() => packHasNativeAudio(content), [content]);
-
   return (
-    // Aucune voix native dans le pack (contrat phase16 §5) : les boutons audio le disent
-    // calmement au lieu d'afficher une erreur rouge par mot. Fourni ici, une fois, parce que
-    // c'est un état du **contenu** et non de l'écran où l'on se trouve.
-    <NativeVoices.Provider value={voices}>
+    <>
       <RouterProvider router={router} />
       <UpdatePrompt />
-    </NativeVoices.Provider>
+    </>
   );
 }

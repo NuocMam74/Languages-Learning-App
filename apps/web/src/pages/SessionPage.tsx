@@ -1,4 +1,4 @@
-import { BADGE_CODES, levelForXp, nextLesson, sessionItemsDone, sessionItemsRemaining, TONAL_STEP_TYPES, UNIT_TEST_PASS_SCORE, type ContentIndex, type Exercise, type SessionPhase } from "@parlo/core";
+import { BADGE_CODES, levelForXp, nextLesson, sessionItemsDone, sessionItemsRemaining, sessionTally, TONAL_STEP_TYPES, UNIT_TEST_PASS_SCORE, type ContentIndex, type Exercise, type SessionPhase } from "@parlo/core";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from "react-router";
 import { useAccount } from "../account.ts";
@@ -125,6 +125,10 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
 
   const done = sessionItemsDone(run);
   const total = Math.max(1, done + sessionItemsRemaining(run));
+  // Réussite au fil de la séance (premier essai). Tant qu'aucun item noté n'est passé, il n'y a
+  // rien à annoncer : un « 0 % » avant la première réponse serait faux et décourageant.
+  const tally = sessionTally(run);
+  const successRate = tally.graded > 0 ? Math.round((tally.correct / tally.graded) * 100) : null;
   const lesson = run.lesson ? content.lessons.get(run.lesson.lessonId) : undefined;
   const nudgeConcept = run.lesson?.tutorNudge ? content.concepts.get(run.lesson.tutorNudge) : undefined;
   const label = run.source !== "lesson" ? PHASE_LABEL[phase.kind] : undefined;
@@ -151,6 +155,16 @@ export function SessionPage({ content, mode }: { content: ContentIndex; mode: "d
             item de rappel espacé est tiré au sort, il n'a pas d'existence à retrouver. */}
         {favoriteStep !== null && <FavoriteButton target={favoriteStep} size={20} className="-mr-2" />}
       </header>
+      {/* Où j'en suis, et comment ça se passe. Deux chiffres, à gauche et à droite de la même
+          ligne : la barre seule ne dit ni combien il reste, ni ce qui est juste. */}
+      <p className="mt-2 flex items-center justify-between gap-3 text-sm text-phu-sa">
+        <span data-testid="lesson-step">{t("lesson.progress", { i: done + 1, n: total })}</span>
+        {successRate !== null && (
+          <span className="font-semibold tabular-nums text-ngoc" data-testid="lesson-success" data-score={successRate}>
+            {t("lesson.successRate", { n: successRate })}
+          </span>
+        )}
+      </p>
       {practice && (
         <p className="mt-3 flex items-center gap-2 rounded-chip bg-surface-nghe px-3 py-1.5 text-sm" data-testid="practice-banner">
           <Icon name="refresh" size={15} />
@@ -425,6 +439,16 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
   const title: MessageKey = recap.source === "lesson" ? "recap.title" : recap.source === "review" ? "session.recap.reviewTitle" : "session.recap.title";
   const offerAccount = recap.firstLesson && account === "guest";
   const badges = BADGE_CODES.filter((code) => recap.badges.includes(code));
+  /**
+   * Note finale, en pourcentage entier (null : rien n'était noté). Un test d'unité garde **sa**
+   * note — celle que le seuil de réussite juge : afficher un autre chiffre à côté du verdict
+   * n'aurait aucun sens. Partout ailleurs, c'est la séance entière, rappel espacé compris.
+   */
+  const score = recap.unitTest
+    ? Math.round(recap.unitTest.score * 100)
+    : recap.score === null
+      ? null
+      : Math.round(recap.score * 100);
   const before = levelForXp(recap.xpBefore).value;
   const after = levelLabel(content.pack, recap.xpAfter);
   const levelUp = after.value > before;
@@ -465,16 +489,27 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
               {recap.streak.current > 0 && <Icon name="flame" size={18} className="text-son-mai motion-safe:parlo-flame" />}
               {t("recap.streak", { n: recap.streak.current })}
             </span>
+            {/* Le pourcentage mérite son décompte : sans lui, on ne sait pas sur combien il porte. */}
+            {!recap.unitTest && recap.tally.graded > 0 && (
+              <span className="text-sm text-phu-sa" data-testid="recap-tally">
+                {t(recap.tally.correct > 1 ? "recap.score.detail.plural" : "recap.score.detail", { correct: recap.tally.correct, n: recap.tally.graded })}
+              </span>
+            )}
           </p>
-          {recap.unitTest && (
+          {/* La note de la séance : la question qu'on se pose en arrivant ici. L'anneau vaut pour
+              toutes les séances, pas seulement pour les tests d'unité — c'est le même calcul (les
+              items notés, au premier essai) et la même promesse. */}
+          {score !== null && (
             <ProgressRing
-              value={Math.round(recap.unitTest.score * 100)}
+              value={score}
               max={100}
               size={84}
-              tone={recap.unitTest.passed ? "ngoc" : "nghe"}
-              label={t("journey.unitTest.passed")}
+              tone={recap.unitTest ? (recap.unitTest.passed ? "ngoc" : "nghe") : "ngoc"}
+              label={t("recap.score.label")}
+              data-testid="recap-score"
+              data-score={score}
             >
-              <span className="text-lg font-semibold tabular-nums">{Math.round(recap.unitTest.score * 100)}%</span>
+              <span className="text-lg font-semibold tabular-nums">{score}%</span>
             </ProgressRing>
           )}
         </Card>

@@ -184,6 +184,7 @@ export function WorldPage({ content }: { content: ContentIndex }) {
         completed={plan.completed}
         passed={plan.passed}
         unlocked={plan.open}
+        scores={plan.scores}
         current={plan.next?.id ?? null}
         unitIds={world.units}
       />

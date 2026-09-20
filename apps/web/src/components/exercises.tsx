@@ -1,9 +1,10 @@
 import type { ChoiceOption, ContentIndex, Exercise, ExerciseResponse, GameId } from "@parlo/core";
-import { lazy, Suspense, useState, type ComponentType, type ReactNode } from "react";
+import { lazy, Suspense, useMemo, useState, type ComponentType, type ReactNode } from "react";
 import { playConcept, playPath, ttsAllowed } from "../audio.ts";
 import { mediaUrl } from "../content.ts";
 import { useSession } from "../session-store.ts";
 import { ensureMessages, l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
+import { ExerciseMeaningContext, exerciseMeaning, MeaningLine, meaningGivesAnswer } from "../exercises/meaning.tsx";
 import { AudioButton } from "./AudioButton.tsx";
 import { ExerciseSkeleton } from "./Skeleton.tsx";
 import { Button, Vi } from "./ui.tsx";
@@ -79,6 +80,21 @@ interface ViewProps<T extends Exercise["type"]> {
 }
 
 export function ExerciseView({ exercise, content, onAnswer, locked }: { exercise: Exercise; content: ContentIndex; onAnswer: (r: ExerciseResponse) => void; locked: boolean }) {
+  // Le sens, fourni une fois pour toute la famille affichée (voir exercises/meaning.tsx). Quand la
+  // traduction **est** la réponse (écoute à choix, transcription, traduction), elle attend que la
+  // réponse soit donnée : `locked` marque ce moment.
+  const meaning = useMemo(
+    () => (meaningGivesAnswer(exercise) && !locked ? null : exerciseMeaning(content, exercise)),
+    [exercise, content, locked],
+  );
+  return (
+    <ExerciseMeaningContext.Provider value={meaning}>
+      <ExerciseBody exercise={exercise} content={content} onAnswer={onAnswer} locked={locked} />
+    </ExerciseMeaningContext.Provider>
+  );
+}
+
+function ExerciseBody({ exercise, content, onAnswer, locked }: { exercise: Exercise; content: ContentIndex; onAnswer: (r: ExerciseResponse) => void; locked: boolean }) {
   const common = { content, onAnswer, locked };
   switch (exercise.type) {
     case "culture_card":
@@ -124,6 +140,8 @@ function Layout({ prompt, stage, children, action }: { prompt: string; stage?: R
   return (
     <div className="flex flex-1 flex-col">
       <h2 className="text-lg font-medium text-phu-sa">{prompt}</h2>
+      {/* Ce que la phrase veut dire : sous la consigne, avant de manipuler quoi que ce soit. */}
+      <MeaningLine />
       {stage && <div className="grid min-h-40 place-items-center py-6">{stage}</div>}
       <div className="flex-1">{children}</div>
       <div className="sticky bottom-0 bg-nuoc pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">{action}</div>

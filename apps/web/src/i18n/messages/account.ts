@@ -15,7 +15,7 @@ export const fr = {
   "account.field.passwordHint": "Au moins {n} caractères.",
   "account.field.locale": "Langue de l'interface",
   "account.field.age": "J'ai au moins 13 ans (16 ans dans certains pays de l'Union européenne).",
-  "account.privacy": "Ta voix n'est jamais envoyée : l'analyse de prononciation se fait sur ton téléphone.",
+  "account.privacy": "Ton compte sert à retrouver ta progression sur un autre appareil. Rien d'autre n'en sort.",
   "account.provider.google": "Continuer avec Google",
   "account.provider.apple": "Continuer avec Apple",
   "account.provider.soon": "bientôt",
@@ -32,6 +32,10 @@ export const fr = {
   "account.error.invalid": "Vérifie l'email et le mot de passe (au moins 10 caractères).",
   "account.error.rateLimit": "Trop de tentatives. Réessaie dans quelques minutes.",
   "account.error.generic": "Ça n'a pas marché. Réessaie dans un instant.",
+  // Déploiement sans serveur : ce n'est pas un incident, rien ne sert d'attendre.
+  "account.error.unavailable": "Les comptes ne sont pas disponibles dans cette version. Continue en invité : tu apprends exactement pareil.",
+  "account.unavailable.title": "Pas de compte dans cette version",
+  "account.unavailable.body": "Le serveur n'est pas encore en ligne. En invité, tout fonctionne : ta progression est enregistrée sur cet appareil et tu la retrouveras ici.",
   "account.error.age": "Coche la case d'âge pour créer un compte.",
 } as const;
 
@@ -51,7 +55,7 @@ export const en: Record<keyof typeof fr, string> = {
   "account.field.passwordHint": "At least {n} characters.",
   "account.field.locale": "Interface language",
   "account.field.age": "I am at least 13 years old (16 in some European Union countries).",
-  "account.privacy": "Your voice is never uploaded: pronunciation analysis runs on your phone.",
+  "account.privacy": "Your account is there to carry your progress to another device. Nothing else leaves it.",
   "account.provider.google": "Continue with Google",
   "account.provider.apple": "Continue with Apple",
   "account.provider.soon": "soon",
@@ -68,5 +72,8 @@ export const en: Record<keyof typeof fr, string> = {
   "account.error.invalid": "Check the email and password (at least 10 characters).",
   "account.error.rateLimit": "Too many attempts. Try again in a few minutes.",
   "account.error.generic": "That didn't work. Try again in a moment.",
+  "account.error.unavailable": "Accounts aren't available in this version. Carry on as a guest: you learn exactly the same.",
+  "account.unavailable.title": "No accounts in this version",
+  "account.unavailable.body": "The server isn't online yet. As a guest everything works: your progress is saved on this device and you'll find it here again.",
   "account.error.age": "Tick the age box to create an account.",
 };

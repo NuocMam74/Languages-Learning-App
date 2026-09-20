@@ -94,7 +94,6 @@ function WordDetail({ content, entry, concept }: { content: ContentIndex; entry:
         {concept.tone && <span className="text-sm text-phu-sa">{t("review.vocab.tone")} · {toneLabel([concept.tone])}</span>}
       </div>
       {source === "tts" && <p className="text-sm text-phu-sa/80">{t("audio.tts")}</p>}
-      {source === "missing" && <p className="text-sm text-son-mai">{t("audio.missing")}</p>}
 
       {example && (
         <p className="flex flex-col gap-0.5 rounded-field bg-surface-2 px-3 py-2">

@@ -24,6 +24,19 @@ export class NetworkError extends Error {
   override name = "NetworkError";
 }
 
+/**
+ * Le déploiement n'a pas d'API (scénario A du README : la PWA seule, en hébergement statique).
+ * `apps/web/worker.js` répond alors `404 {"detail":"api_unavailable"}` à tout `/api/*` — sans ça,
+ * l'app conclurait « réseau injoignable » et s'afficherait hors ligne en permanence.
+ *
+ * Ce n'est pas une panne passagère : rien ne sert de proposer « réessaie dans un instant ». Les
+ * écrans qui en dépendent (créer un compte, se connecter) doivent le dire franchement et renvoyer
+ * vers le mode invité, qui, lui, fonctionne entièrement.
+ */
+export function isApiUnavailable(error: unknown): boolean {
+  return error instanceof ApiError && error.status === 404 && error.detail === "api_unavailable";
+}
+
 type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;
 
 let base: string = import.meta.env.VITE_API_BASE ?? "/api";

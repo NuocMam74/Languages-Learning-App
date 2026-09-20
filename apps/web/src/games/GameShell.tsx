@@ -153,10 +153,13 @@ export function ReplayButton({ label, onClick, size = "lg" }: { label: string; o
   );
 }
 
-/** Marqueur discret de synthèse vocale / audio manquant (spec §7.4). */
+/**
+ * Marqueur discret de la voix de synthèse (spec §7.4), et invitation à toucher quand la lecture
+ * automatique est refusée. Un audio absent ne dit rien : c'est un état du contenu, pas un
+ * incident de ce mot-là.
+ */
 export function SourceMarker({ source }: { source: PlaybackSource | null }) {
   if (source === "tts") return <span className="text-sm text-phu-sa/80">{t("audio.tts")}</span>;
-  if (source === "missing") return <span className="text-sm text-son-mai">{t("audio.missing")}</span>;
   if (source === "blocked") return <span className="text-sm font-semibold text-ngoc">{t("mobile.audio.tapToListen")}</span>;
   return null;
 }

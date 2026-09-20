@@ -91,7 +91,8 @@ test("examen blanc complet hors ligne : résultats par compétence et leçons à
 
   const results = page.getByTestId("exam-results");
   await expect(results.getByText("Écoute")).toBeVisible();
-  await expect(results.getByText("Production orale")).toBeVisible();
+  // Plus aucun item oral n'est posé : la compétence ne s'affiche pas « non notée », elle disparaît.
+  await expect(results.getByText("Production orale")).toHaveCount(0);
   await expect(results.getByRole("heading", { name: "À revoir" })).toBeVisible();
   await expect(results.getByRole("link").first().or(results.getByText("Aucune lacune : tu es prêt·e."))).toBeVisible();
   await page.getByRole("button", { name: "Retour aux examens" }).click();
@@ -212,14 +213,14 @@ test("compte connecté : défi réclamé, examen certifiant réussi, certificat 
   await page.getByRole("link", { name: "Examens et certificats" }).click();
   await page.getByRole("link", { name: "Examen certifiant" }).click();
   await expect(page.getByText("Une seule tentative toutes les 48 heures.")).toBeVisible();
-  await expect(page.getByText(/micro/)).toBeVisible();
+  await expect(page.getByText(/micro/)).toHaveCount(0);
   await page.getByRole("button", { name: "Commencer l'examen" }).click();
   await answerExam(page);
 
   const submit = calls.find((c) => c.path === "/exams/attempts/att-1/submit");
   const answers = (submit?.body as { answers: { section: string; index: number; response: { kind: string }; responseMs: number }[] }).answers;
-  expect(answers).toHaveLength(25);
-  expect(answers.filter((a) => a.section === "speaking")).toHaveLength(5);
+  expect(answers).toHaveLength(SECTIONS.listening + SECTIONS.reading + SECTIONS.vocabulary);
+  expect(answers.filter((a) => a.section === "speaking")).toHaveLength(0);
 
   const results = page.getByTestId("exam-results");
   await expect(results).toHaveAttribute("data-passed", "true");

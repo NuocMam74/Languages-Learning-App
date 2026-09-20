@@ -315,7 +315,7 @@ test("révision vide : « Rien à réviser », aucun XP ; lien profond vers une 
   await expect(page.getByTestId("hub-notice")).toHaveText(/pas encore débloquée/);
 });
 
-test("examen certifiant : une seule soumission ; 409 déjà soumis → résultat ; oraux sans courbe non notés", async ({ page }) => {
+test("examen certifiant : une seule soumission ; 409 déjà soumis → résultat ; aucun oral posé", async ({ page }) => {
   test.setTimeout(200_000);
   const EXAM_ID = "vi-south.exam.a0";
   const SECTIONS = { listening: 8, reading: 6, vocabulary: 6, speaking: 5 } as const;
@@ -391,12 +391,13 @@ test("examen certifiant : une seule soumission ; 409 déjà soumis → résultat
 
   await expect(results).toHaveAttribute("data-passed", "false");
   await expect(results.getByText("62 %")).toBeVisible();
-  await expect(results.getByText("non noté")).toBeVisible();
+  // Aucun item oral n'est posé : la compétence n'est pas alignée « non notée », elle n'est pas là.
+  await expect(results.getByText("Production orale")).toHaveCount(0);
   await page.waitForTimeout(1500);
   expect(calls.filter((c) => c.path === "/exams/attempts/att-9/submit")).toHaveLength(1);
 });
 
-test("examen blanc sans médias : oraux et écoutes tonales non notés, Production orale « non noté », pas de transcription", async ({ page }) => {
+test("examen blanc sans médias : écoutes tonales non notées, aucun oral posé, pas de transcription", async ({ page }) => {
   test.setTimeout(180_000);
   await page.addInitScript(() => localStorage.setItem("parlo.prefs", JSON.stringify({ locale: null, silent: true, dictation: false })));
   await onboard(page);
@@ -429,8 +430,7 @@ test("examen blanc sans médias : oraux et écoutes tonales non notés, Producti
       expect(snap).not.toBe(index);
     }).toPass({ timeout: 10_000 });
   }
-  const speaking = results.locator("li").filter({ hasText: "Production orale" });
-  await expect(speaking.getByText("non noté")).toBeVisible();
+  await expect(results.locator("li").filter({ hasText: "Production orale" })).toHaveCount(0);
 });
 
 test("mot de passe oublié, réinitialisation et vérification d'email", async ({ page }) => {

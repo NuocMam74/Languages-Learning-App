@@ -11,7 +11,7 @@ import { l, t } from "../i18n/index.ts";
 const STEP_Y = 112;
 const AMPLITUDE = 26; // % de la largeur
 
-export function RiverPath({ content, completed, passed = completed, current, unlocked = completed, unitIds }: {
+export function RiverPath({ content, completed, passed = completed, current, unlocked = completed, scores, unitIds }: {
   content: ContentIndex;
   completed: ReadonlySet<LessonId>;
   /**
@@ -23,6 +23,12 @@ export function RiverPath({ content, completed, passed = completed, current, unl
   current: LessonId | null;
   /** Leçons ouvertes sans être terminées (sautées grâce au test de placement). */
   unlocked?: ReadonlySet<LessonId>;
+  /**
+   * Meilleur score par leçon terminée (0 à 1). Affiché sous le titre : le parcours doit dire
+   * **comment** on est passé, pas seulement qu'on est passé. Absent (démo, leçon sautée au
+   * placement) : rien ne s'affiche, on n'invente pas une note.
+   */
+  scores?: ReadonlyMap<LessonId, number>;
   /**
    * Unités à dessiner (contrat phase11 §2) : celles d'un monde quand on est entré dedans. Par
    * défaut, tout le cursus — le même fleuve, simplement tronçonné.
@@ -66,6 +72,9 @@ export function RiverPath({ content, completed, passed = completed, current, unl
           const redo = !done && completed.has(node.id);
           const isCurrent = node.id === current;
           const locked = !node.lesson || (!done && !redo && !isCurrent && !unlocked.has(node.id));
+          // Note de la leçon : seulement pour celles qu'on a réellement faites.
+          const raw = node.lesson ? scores?.get(node.id) : undefined;
+          const score = raw === undefined ? null : Math.round(raw * 100);
           const showUnit = node.unit.id !== lastUnit;
           lastUnit = node.unit.id;
           const left = xOf(i);
@@ -121,6 +130,11 @@ export function RiverPath({ content, completed, passed = completed, current, unl
               <div className={`absolute top-1/2 -translate-y-1/2 break-words ${labelSide}`} style={{ width: labelWidth }}>
                 {showUnit && <p className="text-xs text-phu-sa">{l(node.unit.title)}</p>}
                 <p className={`text-sm leading-snug ${locked ? "text-phu-sa" : "font-medium"}`}>{node.lesson ? l(node.lesson.title) : ""}</p>
+                {score !== null && (
+                  <p className="text-xs font-semibold tabular-nums text-ngoc" data-testid={`river-score-${node.id}`} data-score={score}>
+                    {t("journey.lesson.score", { n: score })}
+                  </p>
+                )}
               </div>
             </li>
           );

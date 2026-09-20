@@ -5,8 +5,13 @@ import { fileURLToPath } from "node:url";
 import { onboard, skipBriefing } from "./helpers.ts";
 
 /**
- * Catalogue complet d'exercices (contrat phase6) en navigateur réel : les neuf types que le moteur
- * sait construire sont jouables, notés et utilisables au clavier.
+ * Catalogue complet d'exercices (contrat phase6) en navigateur réel : les types que le moteur sait
+ * construire sont jouables, notés et utilisables au clavier.
+ *
+ * La leçon en déclare neuf ; deux d'entre eux — `speak_answer` et `speak_roleplay` — ne sont plus
+ * joués du tout (`SPEAKING_STEP_TYPES`) : l'app ne fait plus parler dans le micro. Ils restent
+ * dans le contenu, et la séance doit les enjamber sans trou ni blocage. C'est aussi ce que ce
+ * parcours vérifie.
  *
  * Le contenu publié répartit ces types sur les unités u04 à u24 : plutôt que de débloquer vingt
  * unités, la leçon d'ouverture (`vi-south.u01.l01`, où l'onboarding dépose l'apprenant) est
@@ -42,7 +47,7 @@ const gist: DialogueFile = (() => {
 
 const fr = (fr: string, en: string) => ({ fr, en });
 
-/** Une leçon qui enchaîne les neuf types, sur les cinq « ma » de l'unité 1. */
+/** Une leçon qui enchaîne les neuf types du contenu, sur les cinq « ma » de l'unité 1. */
 const STEPS: Record<string, unknown>[] = [
   { type: "listen_transcribe", concept: "c_ma_mom" },
   { type: "match_pairs", concepts: ["c_ma_ghost", "c_ma_but", "c_ma_mom"] },
@@ -164,7 +169,7 @@ async function answer(page: Page, act: () => Promise<void>): Promise<void> {
   await expect(lesson(page)).not.toHaveAttribute("data-correct", "false");
 }
 
-test("les neuf exercices du catalogue sont jouables, notés et accessibles au clavier", async ({ page }, testInfo) => {
+test("les exercices du catalogue sont jouables, notés et accessibles au clavier", async ({ page }, testInfo) => {
   test.setTimeout(180_000);
   const project = testInfo.project.name || "default";
   await seed(page);
@@ -188,6 +193,13 @@ test("les neuf exercices du catalogue sont jouables, notés et accessibles au cl
   await expect(field).toHaveValue("má");
   await shot(page, "01-listen-transcribe", project);
   await answer(page, async () => check(page).click());
+
+  // La barre compte ce qui se joue : neuf étapes dans le contenu, sept à l'écran — les deux oraux
+  // ne gonflent pas un total qu'on n'atteindrait jamais. Et la réussite se lit au fil de la
+  // séance, dès le premier item noté (jamais avant : un « 0 % » d'avant la première réponse
+  // serait faux).
+  await expect(page.getByTestId("lesson-step")).toHaveText("Étape 2 sur 7");
+  await expect(page.getByTestId("lesson-success")).toHaveAttribute("data-score", "100");
 
   // 2. match_pairs — deux touchers par paire, validation d'un coup.
   await expect(page.getByRole("heading", { name: "Associe les paires" })).toBeVisible();
@@ -244,22 +256,18 @@ test("les neuf exercices du catalogue sont jouables, notés et accessibles au cl
   await expect(page.getByTestId("dialogue-summary")).toBeVisible();
   await answer(page, async () => check(page).click());
 
-  // 8. speak_answer — sans courbe de référence : écoute libre, « C'est fait », non noté.
-  await expect(page.getByTestId("speak-question")).toBeVisible();
-  await shot(page, "08-speak-answer", project);
-  await answer(page, async () => page.getByRole("button", { name: "C'est fait" }).click());
-
-  // 9. speak_roleplay — deux répliques enchaînées.
-  await expect(page.getByTestId("roleplay")).toHaveAttribute("data-step", "1");
-  await page.getByRole("button", { name: "C'est fait" }).click();
-  await expect(page.getByTestId("roleplay")).toHaveAttribute("data-step", "2");
-  await shot(page, "09-speak-roleplay", project);
-  await page.getByRole("button", { name: "C'est fait" }).click();
-
-  // La leçon va au bilan : aucun type ne bloque la séance.
+  // 8 et 9. speak_answer et speak_roleplay sont dans la leçon, et ne sont jamais présentés : la
+  // séance passe directement au bilan. Aucun écran « Répète à voix haute » sur le chemin.
   await expect(page.getByRole("heading", { name: "Leçon terminée" })).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("speak-question")).toHaveCount(0);
+  await expect(page.getByTestId("roleplay")).toHaveCount(0);
 
-  // Les sept types notés ont bien produit un `answer_submitted` ; les deux oraux sans courbe, non.
+  // La note de la séance : sept items notés, tous justes du premier coup.
+  await expect(page.getByTestId("recap-score")).toHaveAttribute("data-score", "100");
+  await expect(page.getByTestId("recap-tally")).toContainText("7");
+  await shot(page, "08-recap", project);
+
+  // Les sept types joués ont bien produit un `answer_submitted` ; les deux oraux, jamais présentés, non.
   const submitted = await page.evaluate(
     () =>
       new Promise<string[]>((resolve, reject) => {

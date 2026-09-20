@@ -399,7 +399,6 @@ function ChoNoiPlay({ content, rounds, durationMs, timed, reduced, onSkip, onDon
             </svg>
           </button>
           {source === "tts" && <span className="text-sm text-phu-sa/80">{t("audio.tts")}</span>}
-          {source === "missing" && <span className="text-sm text-son-mai">{t("audio.missing")}</span>}
           {source === "blocked" && <span className="text-sm font-semibold text-ngoc">{t("mobile.audio.tapToListen")}</span>}
         </div>
         {onSkip && (

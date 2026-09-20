@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { MeaningLine } from "./meaning.tsx";
 
 /**
  * Charpente commune aux exercices du catalogue complet (contrat phase6) : même silhouette que
@@ -10,6 +11,8 @@ export function Frame({ prompt, stage, children, action }: { prompt: string; sta
   return (
     <div className="flex flex-1 flex-col">
       <h2 className="text-lg font-medium text-phu-sa">{prompt}</h2>
+      {/* Ce que la phrase veut dire : sous la consigne, avant de manipuler quoi que ce soit. */}
+      <MeaningLine />
       {stage && <div className="py-5">{stage}</div>}
       <div className="flex-1">{children}</div>
       <div className="sticky bottom-0 bg-nuoc pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">{action}</div>
