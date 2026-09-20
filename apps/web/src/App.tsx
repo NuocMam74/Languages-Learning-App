@@ -2,6 +2,7 @@ import type { ContentIndex } from "@parlo/core";
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import { useAccount } from "./account.ts";
+import { useApiStatus } from "./api-status.ts";
 import { Shell } from "./components/BottomNav.tsx";
 import { ScreenSkeleton, WithMessages } from "./components/Skeleton.tsx";
 import { Button, Screen } from "./components/ui.tsx";
@@ -176,6 +177,8 @@ export function App() {
 
   useEffect(() => {
     void useAccount.getState().init();
+    // Y a-t-il une API derrière cette installation ? Les écrans qui offrent un compte en dépendent.
+    void useApiStatus.getState().probe();
     // File du défi express : module chargé après le premier affichage.
     let stopExpress: (() => void) | null = null;
     let live = true;

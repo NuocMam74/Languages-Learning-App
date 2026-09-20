@@ -449,6 +449,9 @@ export interface OAuthProvider {
   name: string;
 }
 
+/** Sonde de présence de l'API (`GET /healthz`) : route publique, sans jeton (voir api-status.ts). */
+export const getHealth = () => request<unknown>("/healthz", { auth: false });
+
 export const getOAuthProviders = () => request<OAuthProvider[]>("/auth/oauth/providers", { auth: false });
 export const oauthStartUrl = (provider: string, next: string) => `${base}/auth/oauth/${encodeURIComponent(provider)}/start?next=${encodeURIComponent(next)}`;
 

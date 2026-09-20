@@ -2,6 +2,7 @@ import { badgeCodesFor, isChallengeBadge, levelForXp, levelName, SKILLS, type Co
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
+import { useApiStatus } from "../api-status.ts";
 import { BadgeIcon } from "../components/BadgeIcon.tsx";
 import { Screen } from "../components/ui.tsx";
 import { allPackSummaries, type PackSummary } from "../dashboard/summary.ts";
@@ -328,6 +329,8 @@ function Identity({ name, onName, status, email, verified, memberSince, level, t
 }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState("");
+  // Sans API, « crée un compte » mène à un mur : on renvoie vers « Changer d'appareil ».
+  const accounts = useApiStatus((s) => s.accountsPossible)();
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
@@ -429,9 +432,13 @@ function Identity({ name, onName, status, email, verified, memberSince, level, t
         <Card tone="notice" className="mb-5 flex items-start gap-3">
           <Icon name="info" size={20} className="mt-0.5 shrink-0 text-nghe" />
           <div className="min-w-0 flex-1">
-            <p className="text-sm">{t("profile.guestHint")}</p>
-            <Link to="/compte" className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc" data-testid="profile-account-cta">
-              {t("profile.guestCta")}
+            <p className="text-sm">{t(accounts ? "profile.guestHint" : "account.offer.noServer")}</p>
+            <Link
+              to={accounts ? "/compte" : "/reglages/appareil"}
+              className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc"
+              data-testid="profile-account-cta"
+            >
+              {t(accounts ? "profile.guestCta" : "transfer.title")}
               <Icon name="chevronRight" size={18} />
             </Link>
           </div>

@@ -201,6 +201,11 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
           <span className="min-w-0">
             <span className="block font-medium">{t("account.unavailable.title")}</span>
             <span className="block text-sm text-phu-sa text-balance">{t("account.unavailable.body")}</span>
+            {/* La porte qui s'ouvre vraiment : emporter sa progression dans un fichier. */}
+            <Link to="/reglages/appareil" className="mt-1 flex min-h-11 items-center gap-1.5 font-semibold text-ngoc">
+              {t("transfer.title")}
+              <Icon name="chevronRight" size={18} />
+            </Link>
           </span>
         </Card>
       )}

@@ -2,6 +2,7 @@ import { BADGE_CODES, levelForXp, nextLesson, sessionItemsDone, sessionItemsRema
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from "react-router";
 import { useAccount } from "../account.ts";
+import { useApiStatus } from "../api-status.ts";
 import { playConcept, ttsAllowed } from "../audio.ts";
 import { BadgeIcon } from "../components/BadgeIcon.tsx";
 import { FavoriteButton } from "../components/FavoriteButton.tsx";
@@ -407,6 +408,7 @@ function XpCount({ xp }: { xp: number }) {
 function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: () => void; onRetry: () => void }) {
   const recap = useSession((s) => s.recap);
   const account = useAccount((s) => s.status);
+  const accountsPossible = useApiStatus((s) => s.accountsPossible);
   const [nextTitle, setNextTitle] = useState<string | null>(null);
 
   useEffect(() => {
@@ -438,6 +440,9 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
   const recovered = concepts(recap.recovered);
   const title: MessageKey = recap.source === "lesson" ? "recap.title" : recap.source === "review" ? "session.recap.reviewTitle" : "session.recap.title";
   const offerAccount = recap.firstLesson && account === "guest";
+  // Sans API, « crée un compte » mène à un mur : on propose ce qui marche — emporter sa
+  // progression dans un fichier (Réglages → Changer d'appareil).
+  const accounts = accountsPossible();
   const badges = BADGE_CODES.filter((code) => recap.badges.includes(code));
   /**
    * Note finale, en pourcentage entier (null : rien n'était noté). Un test d'unité garde **sa**
@@ -632,13 +637,13 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
 
         {offerAccount && (
           <Card tone="notice" as="section" className="flex flex-col gap-3">
-            <p className="font-semibold">{t("account.offer.title")}</p>
-            <p className="text-sm text-phu-sa">{t("account.offer.body")}</p>
+            <p className="font-semibold">{t(accounts ? "account.offer.title" : "transfer.title")}</p>
+            <p className="text-sm text-phu-sa">{t(accounts ? "account.offer.body" : "account.offer.noServer")}</p>
             <Link
-              to="/compte"
+              to={accounts ? "/compte" : "/reglages/appareil"}
               className="grid min-h-12 place-items-center rounded-card border-2 border-ngoc bg-surface px-5 font-semibold text-ngoc transition-transform motion-safe:active:scale-[.98]"
             >
-              {t("account.offer.cta")}
+              {t(accounts ? "account.offer.cta" : "transfer.title")}
             </Link>
             <p className="text-sm text-phu-sa">{t("account.offer.guestWarning")}</p>
           </Card>

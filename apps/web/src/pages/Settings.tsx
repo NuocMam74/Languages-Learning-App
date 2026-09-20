@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAccount } from "../account.ts";
+import { useApiStatus } from "../api-status.ts";
 import { ApiError, getServerExport } from "../api.ts";
 import { Slot } from "../components/Slot.tsx";
 import { Screen } from "../components/ui.tsx";
@@ -126,6 +127,7 @@ function Alert({ children }: { children: ReactNode }) {
 export default function Settings() {
   const navigate = useNavigate();
   const { status, account, signOut } = useAccount();
+  const accountsPossible = useApiStatus((s) => s.accountsPossible);
   const { locale, theme, feedbackSounds, silent, dictation, setLocale, setTheme, setFeedbackSounds, setSilent, setDictation } = usePrefs();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -294,13 +296,24 @@ export default function Settings() {
               <Icon name="info" size={20} className="mt-0.5 shrink-0 text-nghe" />
               <span className="min-w-0 flex-1">{t("account.offer.guestWarning")}</span>
             </p>
-            <div className="flex flex-wrap gap-x-6">
-              <Link to="/compte" className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc">
-                {t("account.offer.cta")}
-                <Icon name="chevronRight" size={18} />
-              </Link>
-              <Link to="/connexion" className="flex min-h-11 items-center font-semibold text-ngoc">{t("account.login.title")}</Link>
-            </div>
+            {/* Sans API : ni compte ni connexion à proposer — seulement la porte qui s'ouvre. */}
+            {accountsPossible() ? (
+              <div className="flex flex-wrap gap-x-6">
+                <Link to="/compte" className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc">
+                  {t("account.offer.cta")}
+                  <Icon name="chevronRight" size={18} />
+                </Link>
+                <Link to="/connexion" className="flex min-h-11 items-center font-semibold text-ngoc">{t("account.login.title")}</Link>
+              </div>
+            ) : (
+              <>
+                <p className="text-sm text-phu-sa">{t("account.offer.noServer")}</p>
+                <Link to="/reglages/appareil" className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc">
+                  {t("transfer.title")}
+                  <Icon name="chevronRight" size={18} />
+                </Link>
+              </>
+            )}
           </Card>
         )}
       </Section>
