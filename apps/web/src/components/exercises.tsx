@@ -310,10 +310,12 @@ function BuildSentenceView({ exercise, content, onAnswer, locked }: ViewProps<"b
       }
     >
       <div className="flex flex-col gap-6">
-        <div className="flex items-center gap-4">
-          {audio && <AudioButton play={(speed) => playConcept(content, audio, { speed, allowTts: ttsAllowed(false) })} autoPlay={false} large={false} withSlow={false} />}
-          <p className="text-lg">{l(exercise.translation)}</p>
-        </div>
+        {/* La traduction est déjà dite une fois, sous la consigne (`MeaningLine`) : ici, l'écoute seule. */}
+        {audio && (
+          <div className="flex items-center gap-4">
+            <AudioButton play={(speed) => playConcept(content, audio, { speed, allowTts: ttsAllowed(false) })} autoPlay={false} large={false} withSlow={false} />
+          </div>
+        )}
 
         <div className="flex min-h-20 flex-wrap content-start gap-2 border-b-2 border-line-strong pb-3" aria-live="polite">
           {picked.map((id, i) => (

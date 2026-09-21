@@ -1,7 +1,7 @@
 import { GAP, type ContentIndex, type Exercise, type ExerciseResponse } from "@parlo/core";
 import { useState } from "react";
 import { Button, Vi } from "../components/ui.tsx";
-import { l, t } from "../i18n/index.ts";
+import { t } from "../i18n/index.ts";
 import { Frame } from "./Frame.tsx";
 
 /**
@@ -46,8 +46,6 @@ export function FillGapView({ exercise, onAnswer, locked }: Props) {
           </span>
           <Vi size="vi">{after}</Vi>
         </p>
-
-        {exercise.translation && <p className="text-phu-sa">{l(exercise.translation)}</p>}
 
         <div className="flex flex-wrap gap-2" role="radiogroup" aria-label={t("exercise.fillGap.options")}>
           {exercise.options.map((option) => {

@@ -24,6 +24,30 @@ function firstOfType<T extends Exercise["type"]>(type: T): Extract<Exercise, { t
   throw new Error(`Aucune étape ${type} dans le pack`);
 }
 
+/** Un exercice de chaque type présent dans le pack — de quoi passer tout le catalogue en revue. */
+function oneOfEachType(): Exercise[] {
+  const seen = new Set<string>();
+  const all: Exercise[] = [];
+  for (const lesson of content.lessons.values()) {
+    lesson.steps.forEach((step, index) => {
+      if (seen.has(step.type)) return;
+      seen.add(step.type);
+      all.push(buildExercise(content, lesson, index, "test"));
+    });
+  }
+  return all;
+}
+
+/**
+ * Combien de fois cette phrase est-elle écrite à l'écran ? La transcription du mode silencieux ne
+ * compte pas : elle remplace l'écoute, elle ne redit pas la consigne.
+ */
+function timesOnScreen(phrase: string): number {
+  const body = document.body.cloneNode(true) as HTMLElement;
+  for (const node of body.querySelectorAll('[data-testid="transcript"], [data-testid="transcript-fallback"]')) node.remove();
+  return (body.textContent ?? "").split(phrase).length - 1;
+}
+
 beforeEach(() => {
   usePrefs.setState({ silent: false });
   vi.spyOn(HTMLMediaElement.prototype, "play").mockResolvedValue(undefined);
@@ -74,6 +98,21 @@ describe("ligne de sens à l'écran", () => {
     expect(screen.getByTestId("exercise-meaning").textContent).not.toContain(exercise.target);
     const tokens = screen.getAllByRole("button").map((b) => b.textContent ?? "");
     expect(tokens).not.toContain(exercise.target);
+  });
+
+  // Régression : la ligne de sens a été ajoutée au-dessus de vues qui affichaient déjà leur
+  // traduction — on lisait la même phrase deux fois de suite, en haut de l'exercice.
+  it("ne dit jamais deux fois la même phrase, dans aucun exercice du pack", () => {
+    for (const exercise of oneOfEachType()) {
+      for (const locked of [false, true]) {
+        render(<ExerciseView exercise={exercise} content={content} onAnswer={() => undefined} locked={locked} />);
+        const gloss = screen.queryByTestId("exercise-meaning") ? exerciseMeaning(content, exercise)?.gloss : null;
+        if (gloss && gloss.trim() !== "") {
+          expect(timesOnScreen(gloss), `${exercise.type} (locked=${locked}) : « ${gloss} »`).toBe(1);
+        }
+        cleanup();
+      }
+    }
   });
 
   it("attend la réponse quand elle la donnerait, puis paraît", () => {

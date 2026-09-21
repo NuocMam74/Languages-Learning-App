@@ -43,10 +43,13 @@ export function exerciseMeaning(content: ContentIndex, exercise: Exercise): Exer
       return { vi: null, gloss: l(exercise.translation) };
     case "fill_gap":
       return exercise.translation ? { vi: null, gloss: l(exercise.translation) } : conceptMeaning(content, exercise.conceptIds);
+    // Traduire : l'énoncé **est** la phrase de départ, affichée en haut de l'exercice du début à la
+    // fin. La redire ici en ferait un doublon — d'un sens vers le vietnamien il ne reste rien à
+    // ajouter, et dans l'autre sens seule la traduction française apporte quelque chose.
     case "translate_to_vi":
-      return { vi: null, gloss: l(exercise.source) };
+      return null;
     case "translate_to_fr":
-      return { vi: exercise.source, gloss: exercise.accepted.fr[0] ?? "" };
+      return { vi: null, gloss: exercise.accepted.fr[0] ?? "" };
     case "listen_transcribe":
       return { vi: exercise.accepted[0] ?? exercise.audio.vi, gloss: l(exercise.audio.gloss) };
     case "listen_pick_image":
@@ -81,7 +84,6 @@ export function meaningGivesAnswer(exercise: Exercise): boolean {
     case "listen_pick_text":
     case "listen_transcribe":
     case "listen_gist":
-    case "translate_to_vi":
     case "translate_to_fr":
     case "match_pairs":
     // Paire minimale : les deux options ne diffèrent que par le ton, et leurs sens diffèrent —
