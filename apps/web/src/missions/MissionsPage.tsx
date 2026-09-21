@@ -6,6 +6,7 @@ import { t, type MessageKey } from "../i18n/index.ts";
 import { celebrate } from "../rewards/celebrate.ts";
 import { CoinIcon } from "../rewards/RewardArt.tsx";
 import { claimMission, missionGroups, useRewards, type MissionGroup, type MissionView } from "../rewards/store.ts";
+import { QuestCard } from "./QuestCard.tsx";
 
 /**
  * Missions (contrat phase9 §3) : trois périodes, une section chacune, la plus courte en haut.
@@ -64,8 +65,14 @@ export default function MissionsPage({ content }: { content: ContentIndex }) {
         />
       }
     >
+      {/* La quête ouvre l'écran (contrat phase24 §4) : elle demande des jours, les missions
+          demandent du volume — et seule la première donne une raison d'ouvrir l'app un mardi. */}
+      <div className="pt-2 pb-5">
+        <QuestCard onClaimed={reload} />
+      </div>
+
       {groups === null ? (
-        <div className="flex flex-col gap-3 pt-2">
+        <div className="flex flex-col gap-3">
           <Skeleton className="h-6 w-32" />
           <Skeleton className="h-24 w-full" rounded="card" />
           <Skeleton className="h-24 w-full" rounded="card" />

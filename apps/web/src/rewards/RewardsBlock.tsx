@@ -1,11 +1,12 @@
 import { TROPHIES, type Pack } from "@parlo/core";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Card, Chip, Icon, Skeleton } from "../design/index.ts";
+import { Card, Chip, Icon, Skeleton, type IconName } from "../design/index.ts";
 import { t } from "../i18n/index.ts";
 import { AvatarArt } from "../profile/AvatarArt.tsx";
 import { CoinIcon } from "./RewardArt.tsx";
-import { claimableCount, loadRewardsData, useRewards, wornOutfit } from "./store.ts";
+import { SceneArt } from "../scene/SceneArt.tsx";
+import { claimableCount, loadRewardsData, placedScene, useRewards, wornOutfit } from "./store.ts";
 
 /**
  * Bloc « Récompenses » du profil (contrat phase9) : la bourse, le personnage, et les trois portes
@@ -47,10 +48,19 @@ export function RewardsBlock({ pack }: { pack: Pack }) {
           </p>
         </div>
       </div>
+      {/* La rive, en petit et cliquable : c'est ce qu'on a acheté, il faut que ça se voie sans
+          aller le chercher (contrat phase24 §2). Ratio fixe — rien ne se décale en arrivant. */}
+      <Link to="/ma-rive" aria-label={t("scene.open")} data-testid="rewards-scene" className="block">
+        {loaded ? <SceneArt scene={placedScene(data)} /> : <Skeleton className="aspect-[12/7] w-full" rounded="card" />}
+      </Link>
+
       <div className="flex flex-col">
         <RowLink to="/missions" icon="target" badge={claimable !== null && claimable > 0 ? t("missions.claimable", { n: claimable }) : null}>
           {t("missions.open")}
         </RowLink>
+        <RowLink to="/boutique" icon="star">{t("shop.open")}</RowLink>
+        <RowLink to="/ma-rive" icon="boat">{t("scene.open")}</RowLink>
+        <RowLink to="/calendrier" icon="calendar">{t("calendar.open")}</RowLink>
         <RowLink to="/recompenses" icon="trophy">{t("rewards.open")}</RowLink>
         <RowLink to="/atelier" icon="user">{t("wardrobe.open")}</RowLink>
       </div>
@@ -59,7 +69,7 @@ export function RewardsBlock({ pack }: { pack: Pack }) {
 }
 
 /** Même rangée que le reste du profil, avec une pastille facultative (missions à réclamer). */
-function RowLink({ to, icon, badge, children }: { to: string; icon: "target" | "trophy" | "user"; badge?: string | null; children: string }) {
+function RowLink({ to, icon, badge, children }: { to: string; icon: IconName; badge?: string | null; children: string }) {
   return (
     <Link to={to} className="flex min-h-12 items-center gap-3 border-t border-line font-semibold text-ngoc first:border-t-0" data-testid={`rewards-link-${to.slice(1)}`}>
       <Icon name={icon} size={20} />

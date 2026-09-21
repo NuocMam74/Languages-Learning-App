@@ -13,6 +13,7 @@ export * from "./prerequisites.ts";
 export * from "./practice.ts";
 export * from "./marks.ts";
 export * from "./memo.ts";
+export * from "./calendar.ts";
 export * from "./study-path.ts";
 export * from "./session-run.ts";
 export * from "./badges.ts";

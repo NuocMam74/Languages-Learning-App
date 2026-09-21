@@ -80,18 +80,27 @@
     will-change: transform;
   }
 
+  /*
+   * Les rides sont un **masque**, pas une image colorée (contrat phase24 §3). Une data-URI porte
+   * une couleur figée ; l'ambiance achetée doit pouvoir la changer. Le tracé découpe, la couleur
+   * vient de `--color-ripple` — donc de l'ambiance, et du thème qui va avec.
+   */
   body::before {
     opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%230E5E55' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 120px 60px;
+    background-color: var(--color-ripple, #0e5e55);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
+    mask-size: 120px 60px;
+    mask-repeat: repeat;
   }
 
   /* La couche lointaine : plus large, plus pâle, et elle dérive en sens inverse. */
   body::after {
     z-index: -2;
     opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%230E5E55' stroke-width='1'%3E%3Cpath d='M0 30q15-12 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 200px 100px;
+    background-color: var(--color-ripple, #0e5e55);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%23000' stroke-width='1'%3E%3Cpath d='M0 30q15-12 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
+    mask-size: 200px 100px;
+    mask-repeat: repeat;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -356,19 +365,15 @@
   @media (prefers-color-scheme: dark) {
     html:not([data-theme="light"]) body::before {
       opacity: 0.055;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
     }
     html:not([data-theme="light"]) body::after {
       opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1'%3E%3Cpath d='M0 30q15-12 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
     }
   }
   html[data-theme="dark"] body::before {
     opacity: 0.055;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1.25'%3E%3Cpath d='M0 15q15-10 30 0t30 0t30 0t30 0'/%3E%3Cpath d='M0 45q15-10 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
   }
   html[data-theme="dark"] body::after {
     opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%235CC0AF' stroke-width='1'%3E%3Cpath d='M0 30q15-12 30 0t30 0t30 0t30 0'/%3E%3C/g%3E%3C/svg%3E");
   }
 }

@@ -63,6 +63,10 @@ const WorldsPage = lazy(() => import("./worlds/WorldsPage.tsx"));
 const WorldPage = lazy(() => import("./worlds/WorldsPage.tsx").then((m) => ({ default: m.WorldPage })));
 const RewardsPage = lazy(() => import("./rewards/RewardsPage.tsx"));
 const WardrobePage = lazy(() => import("./rewards/WardrobePage.tsx"));
+// Phase 24 : la boutique, la rive à aménager, le calendrier d'apprentissage.
+const ShopPage = lazy(() => import("./shop/ShopPage.tsx"));
+const ScenePage = lazy(() => import("./scene/ScenePage.tsx"));
+const CalendarPage = lazy(() => import("./calendar/CalendarPage.tsx"));
 // Phase 2 : examens, certificats, rappels.
 const ExamsPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.ExamsPage })));
 const MockExamPage = lazy(() => import("./exams/ExamPages.tsx").then((m) => ({ default: m.MockExamPage })));
@@ -274,6 +278,12 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/mondes/:worldId", element: later(<WorldPage content={content} />) },
         { path: "/recompenses", element: later(<RewardsPage />) },
         { path: "/atelier", element: later(<WardrobePage />) },
+        // Boutique et rive : quatre rayons, huit emplacements, portés par l'URL.
+        { path: "/boutique", element: later(<ShopPage />) },
+        { path: "/boutique/:section", element: later(<ShopPage />) },
+        { path: "/ma-rive", element: later(<ScenePage />) },
+        { path: "/calendrier", element: later(<CalendarPage content={content} />) },
+        { path: "/calendrier/:tab", element: later(<CalendarPage content={content} />) },
         { path: "/jeux", element: later(<WithUnits content={content}><GamesPage content={content} /></WithUnits>) },
         { path: "/jeux/karaoke_tonal", element: later(<WithUnits content={content}><KaraokePage content={content} /></WithUnits>) },
         { path: "/jeux/doi_dap", element: later(<DoiDapPage content={content} />) },

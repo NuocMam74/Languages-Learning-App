@@ -1,10 +1,11 @@
-import { collectionRewardItem, trophyByCode, wardrobeItem, worldRewardItem } from "@parlo/core";
+import { collectionRewardItem, sceneItem, trophyByCode, wardrobeItem, worldRewardItem } from "@parlo/core";
 import { useEffect, useRef, type ReactNode } from "react";
 import { Button } from "../components/ui.tsx";
 import { Card, Icon } from "../design/index.ts";
 import { playFanfareSound, playRewardSound } from "../feedback-sound.ts";
 import { l, t, type MessageKey } from "../i18n/index.ts";
 import { WardrobePreview } from "../profile/AvatarArt.tsx";
+import { ScenePreview } from "../scene/SceneArt.tsx";
 import { useCelebrations } from "./celebrate.ts";
 import { ChestIcon, CoinIcon, TrophyIcon } from "./RewardArt.tsx";
 import type { Celebration } from "./store.ts";
@@ -89,6 +90,22 @@ function copyFor(celebration: Celebration): Copy {
         fanfare: true,
       };
     }
+    case "scene": {
+      // Une pièce de décor se montre **sur la rive**, pas en icône : c'est là qu'elle vivra.
+      const item = sceneItem(celebration.itemId);
+      return {
+        title: t("reward.scene.title", { name: t(`scene.item.${celebration.itemId}.name` as MessageKey) }),
+        body: t("reward.scene.body"),
+        art: item ? <ScenePreview slot={item.slot} itemId={item.id} size={80} /> : <Icon name="boat" size={56} className="text-ngoc" />,
+      };
+    }
+    case "quest":
+      return {
+        title: t("quest.step.done", { n: celebration.days }),
+        body: t("quest.step.body"),
+        art: <Icon name="calendar" size={56} className="text-ngoc" />,
+        fanfare: true,
+      };
     case "coins":
       return {
         title: t("reward.coins.title", { n: celebration.coins }),

@@ -23,6 +23,8 @@ export const fr = {
   "reward.set.bodyItem": "Les cinq objets sont à toi — et « {name} » s'ouvre dans l'atelier.",
   "reward.wardrobe.title": "Nouveau : {name}",
   "reward.wardrobe.body": "À essayer dans l'atelier.",
+  "reward.scene.title": "Nouveau sur ta rive : {name}",
+  "reward.scene.body": "À poser quand tu veux.",
 
   // -- Page Récompenses
   "rewards.title": "Récompenses",
@@ -169,6 +171,8 @@ export const en: Record<keyof typeof fr, string> = {
   "reward.set.bodyItem": "All five objects are yours — and “{name}” is now open in the workshop.",
   "reward.wardrobe.title": "New: {name}",
   "reward.wardrobe.body": "Try it on in the workshop.",
+  "reward.scene.title": "New on your riverbank: {name}",
+  "reward.scene.body": "Place it whenever you like.",
 
   "rewards.title": "Rewards",
   "rewards.intro": "What you have earned, and what is waiting.",

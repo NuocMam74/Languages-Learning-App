@@ -9,3 +9,7 @@ export * from "./trophies.ts";
 export * from "./collection.ts";
 export * from "./economy.ts";
 export * from "./wardrobe.ts";
+export * from "./scene.ts";
+export * from "./ambiance.ts";
+export * from "./shop.ts";
+export * from "./quest.ts";

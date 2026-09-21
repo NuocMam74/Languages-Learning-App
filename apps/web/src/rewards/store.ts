@@ -1,13 +1,17 @@
 import {
   addCounters,
+  ambiance,
   bumpJournal,
   CHEST_COINS,
   coinsForGame,
   coinsForSession,
+  collectibleById,
   collectionRewardItem,
   completedSets,
   currentMissions,
+  DEFAULT_AMBIANCE,
   DEFAULT_OUTFIT,
+  DEFAULT_SCENE,
   evaluateTrophies,
   itemPrice,
   itemState,
@@ -17,13 +21,26 @@ import {
   localDay,
   missionDone,
   missionProgress,
+  AMBIANCE_LIST,
+  isAmbianceId,
   newlyOwned,
+  newlySceneOwned,
   normalizeCounters,
   normalizeJournal,
   openChest,
+  ownedItems,
+  ownedSceneItems,
   periodCounters,
+  periodOf,
+  priceThisWeek,
+  questProgress,
+  questSteps,
   sanitizeOutfit,
+  sanitizeScene,
+  sceneItem,
   SET_COMPLETION_COINS,
+  isShopOwned,
+  shopEntry,
   streakChest,
   wardrobeContext,
   WORLD_COMPLETION_CHEST,
@@ -36,14 +53,23 @@ import {
   type Localized,
   type Mission,
   type MissionKind,
+  type AmbianceId,
   type Outfit,
   type Pack,
   type Period,
+  type QuestProgress,
+  type QuestStep,
+  type Scene,
+  type SceneContext,
+  type SceneSlot,
+  type ShopEntry,
+  type ShopOwned,
   type WardrobeContext,
   type WardrobeSlot,
 } from "@parlo/core";
 import { create } from "zustand";
 import { db, getKv, setKv } from "../db.ts";
+import { applyAmbiance } from "../theme.ts";
 import { getProfile } from "../learner.ts";
 
 /**
@@ -75,6 +101,14 @@ export interface RewardsData {
   collectibles: FoundCollectible[];
   /** Pièces d'atelier achetées en xu. */
   purchased: string[];
+  /** Pièces de décor de la rive achetées en xu (contrat phase24 §2). */
+  purchasedScene: string[];
+  /** Ambiances d'interface achetées (contrat phase24 §3). */
+  purchasedAmbiances: string[];
+  /** Aménagement de la rive. */
+  scene: Scene;
+  /** Ambiance portée par l'interface. */
+  ambiance: AmbianceId;
   /** Mondes du cursus terminés (contrat phase11 §3) : chacun offre son paysage. */
   worlds: string[];
   outfit: Outfit;
@@ -82,7 +116,7 @@ export interface RewardsData {
   totals: Counters;
   /** Compteurs par jour (missions). */
   journal: CountersJournal;
-  /** `missionId` → date de réclamation. */
+  /** `missionId` **et** palier de quête → date de réclamation (contrat phase24 §4). */
   claims: Record<string, string>;
   /** Coffres déjà ouverts : sert de graine, pour que deux coffres ne donnent pas le même objet. */
   chests: number;
@@ -98,6 +132,10 @@ export const emptyRewards = (): RewardsData => ({
   trophies: [],
   collectibles: [],
   purchased: [],
+  purchasedScene: [],
+  purchasedAmbiances: [],
+  scene: { ...DEFAULT_SCENE },
+  ambiance: DEFAULT_AMBIANCE,
   worlds: [],
   outfit: { ...DEFAULT_OUTFIT },
   totals: {},
@@ -128,6 +166,11 @@ export function normalizeRewards(raw: unknown): RewardsData {
     trophies: dated<EarnedTrophy>(source.trophies, "code"),
     collectibles: dated<FoundCollectible>(source.collectibles, "id"),
     purchased: strings(source.purchased),
+    purchasedScene: strings(source.purchasedScene),
+    purchasedAmbiances: strings(source.purchasedAmbiances),
+    // La rive est nettoyée à l'affichage (`sanitizeScene`), comme la tenue : ici on garde le choix.
+    scene: typeof source.scene === "object" && source.scene !== null ? (source.scene as Scene) : { ...DEFAULT_SCENE },
+    ambiance: isAmbianceId(source.ambiance) ? source.ambiance : DEFAULT_AMBIANCE,
     worlds: strings(source.worlds),
     // La tenue est nettoyée à l'affichage (`sanitizeOutfit`) : ici on garde ce qui a été choisi.
     outfit: typeof source.outfit === "object" && source.outfit !== null ? (source.outfit as Outfit) : { ...DEFAULT_OUTFIT },
@@ -141,7 +184,13 @@ export function normalizeRewards(raw: unknown): RewardsData {
   };
 }
 
-export const loadRewardsData = async (): Promise<RewardsData> => normalizeRewards(await getKv<unknown>(REWARDS_KEY, null));
+export const loadRewardsData = async (): Promise<RewardsData> => {
+  const data = normalizeRewards(await getKv<unknown>(REWARDS_KEY, null));
+  // L'ambiance vit ici (elle s'achète en xu) mais habille toute l'application : elle se pose dès
+  // qu'on lit l'état, et pas seulement quand on ouvre l'écran de la rive.
+  applyAmbiance(data.ambiance);
+  return data;
+};
 
 const saveRewardsData = (data: RewardsData): Promise<void> => setKv(REWARDS_KEY, data);
 
@@ -166,13 +215,17 @@ export type Celebration =
   | { kind: "collectible"; id: string }
   | { kind: "set"; set: CollectionSet }
   | { kind: "wardrobe"; itemId: string }
+  /** Pièce de décor ouverte (contrat phase24 §2). */
+  | { kind: "scene"; itemId: string }
+  /** Palier de la quête de la semaine réclamé (contrat phase24 §4). */
+  | { kind: "quest"; days: number }
   | { kind: "mission"; period: Mission["period"]; missionKind: MissionKind }
   /** Monde du cursus terminé (contrat phase11 §3) ; `name` vient du contenu, pas de l'i18n. */
   | { kind: "world"; world: string; name: Localized | null }
   | { kind: "coins"; coins: number };
 
 /** Ordre d'apparition (contrat §5) : le plus rare d'abord, la monnaie en dernier. */
-const CELEBRATION_ORDER: Celebration["kind"][] = ["world", "mission", "level", "trophy", "collectible", "set", "wardrobe", "coins"];
+const CELEBRATION_ORDER: Celebration["kind"][] = ["world", "quest", "mission", "level", "trophy", "collectible", "set", "wardrobe", "scene", "coins"];
 
 const sortCelebrations = (list: Celebration[]): Celebration[] =>
   [...list].sort((a, b) => CELEBRATION_ORDER.indexOf(a.kind) - CELEBRATION_ORDER.indexOf(b.kind));
@@ -189,6 +242,12 @@ export interface ActivityInput {
   coins?: number;
   /** Coffres à ouvrir. */
   chests?: readonly ChestTier[];
+  /**
+   * Objets de collection acquis autrement que par un coffre — achetés en boutique (contrat
+   * phase24 §1). Ils passent **par ici** et non par une écriture à part : c'est la seule façon
+   * que la prime de collection terminée soit versée du même calcul, quel que soit le chemin.
+   */
+  collectibles?: readonly string[];
   /** Niveau atteint (XP de toutes les langues) : lu tout seul s'il n'est pas fourni. */
   level?: number;
   /** Série courante : donne un coffre aux jalons (7 jours, 30 jours…). */
@@ -214,6 +273,46 @@ const context = (data: RewardsData): WardrobeContext =>
   });
 
 /**
+ * Contexte de la rive. Même forme que celui de l'atelier — mêmes déblocages, même niveau, mêmes
+ * collections — mais sa **propre** liste d'achats : un chapeau acheté n'ouvre pas une barque.
+ */
+const sceneContext = (data: RewardsData): SceneContext => ({
+  ...context(data),
+  purchased: new Set(data.purchasedScene),
+});
+
+/** Ce que la boutique doit savoir de l'état pour dire « possédé » sur chaque rayon. */
+export function shopOwned(data: RewardsData): ShopOwned {
+  return {
+    wardrobe: new Set(ownedItems(context(data)).map((item) => item.id)),
+    scene: new Set(ownedSceneItems(sceneContext(data)).map((item) => item.id)),
+    collectibles: new Set(data.collectibles.map((c) => c.id)),
+    ambiances: new Set([DEFAULT_AMBIANCE, ...data.purchasedAmbiances, ...ownedAmbiances(data)]),
+  };
+}
+
+/** Ambiances offertes autrement qu'à l'achat (une collection terminée, un niveau). */
+function ownedAmbiances(data: RewardsData): string[] {
+  const ctx = context(data);
+  return AMBIANCE_LIST.filter((item) => {
+    switch (item.unlock.kind) {
+      case "start":
+        return true;
+      case "level":
+        return ctx.level >= item.unlock.level;
+      case "trophy":
+        return ctx.trophies.has(item.unlock.code);
+      case "collection":
+        return ctx.sets.has(item.unlock.set);
+      case "world":
+        return ctx.worlds.has(item.unlock.world);
+      case "shop":
+        return data.purchasedAmbiances.includes(item.id);
+    }
+  }).map((item) => item.id);
+}
+
+/**
  * Applique un gain et rend les félicitations à montrer. Tout le pipeline est ici, dans cet ordre :
  * compteurs, xu, niveaux, série, trophées, coffres, collections terminées, pièces d'atelier.
  *
@@ -226,6 +325,7 @@ export async function awardActivity(input: ActivityInput, now = new Date()): Pro
   const day = input.day ?? localDay(now);
   const level = Math.max(before.level, input.level ?? (await totalXpAllPacks().then((xp) => levelForXp(xp).value)));
   const ctxBefore = context(before);
+  const sceneCtxBefore = sceneContext(before);
 
   const data: RewardsData = {
     ...before,
@@ -271,8 +371,18 @@ export async function awardActivity(input: ActivityInput, now = new Date()): Pro
     celebrations.push({ kind: "trophy", code: trophy.code });
   }
 
-  // Coffres : déterministes, un objet jamais possédé, jamais de doublon.
+  // Collections : l'état d'avant est figé **ici**, avant tout ajout — c'est lui qui décide si une
+  // collection vient de se terminer.
   const setsBefore = new Set(completedSets(new Set(data.collectibles.map((c) => c.id))));
+
+  // Objets achetés : ajoutés avant les coffres, pour qu'un coffre ne redonne pas ce qu'on vient
+  // de payer.
+  for (const id of input.collectibles ?? []) {
+    if (!collectibleById(id) || data.collectibles.some((c) => c.id === id)) continue;
+    data.collectibles = [...data.collectibles, { id, foundAt: now.toISOString() }];
+  }
+
+  // Coffres : déterministes, un objet jamais possédé, jamais de doublon.
   for (const tier of chests) {
     const owned = new Set(data.collectibles.map((c) => c.id));
     const found = openChest(`${data.chests}`, owned, tier);
@@ -296,6 +406,8 @@ export async function awardActivity(input: ActivityInput, now = new Date()): Pro
   // Pièces d'atelier : par différence, donc une pièce débloquée par un trophée ou une collection
   // gagnée à l'instant est annoncée dans la même salve.
   for (const item of newlyOwned(ctxBefore, context(data))) celebrations.push({ kind: "wardrobe", itemId: item.id });
+  // La rive suit la même règle : un décor ouvert par le niveau qu'on vient de gagner se fête ici.
+  for (const item of newlySceneOwned(sceneCtxBefore, sceneContext(data))) celebrations.push({ kind: "scene", itemId: item.id });
 
   await saveRewardsData(data);
   useRewards.setState({ data, loaded: true });
@@ -427,6 +539,93 @@ export async function buyWardrobeItem(itemId: string): Promise<PurchaseResult> {
   return "bought";
 }
 
+/**
+ * Achat en boutique (contrat phase24 §1) : un seul chemin pour les quatre rayons.
+ *
+ * Les gardes sont ici et pas dans le bouton : deux onglets ouverts, un double appui, une entrée
+ * déjà possédée — chacun de ces cas se termine par un refus propre, jamais par des xu perdus.
+ * Le prix relu est celui de **la semaine** : la vitrine affiche une remise, l'achat l'applique.
+ */
+export async function buyShopEntry(key: string, now = new Date()): Promise<PurchaseResult> {
+  const entry = shopEntry(key);
+  if (!entry) return "unknown";
+  const data = await loadRewardsData();
+  if (isShopOwned(entry, shopOwned(data))) return "already";
+  const price = priceThisWeek(entry, periodOf("weekly", now).key);
+  if (data.coins < price) return "tooExpensive";
+
+  const next: RewardsData = { ...data, coins: data.coins - price, spent: data.spent + price };
+  switch (entry.section) {
+    case "wardrobe":
+      next.purchased = [...data.purchased, entry.id];
+      break;
+    case "scene":
+      next.purchasedScene = [...data.purchasedScene, entry.id];
+      break;
+    case "ambiance":
+      next.purchasedAmbiances = [...data.purchasedAmbiances, entry.id];
+      break;
+    case "collectible":
+      // L'objet n'est pas écrit ici : c'est `awardActivity` qui l'ajoute, sinon la collection
+      // paraîtrait déjà complète au moment où il cherche ce qui vient de se terminer.
+      break;
+  }
+  await saveRewardsData(next);
+  useRewards.setState({ data: next, loaded: true });
+
+  // Un objet acheté peut terminer une collection : elle se fête et paie exactement comme si elle
+  // venait d'un coffre. Un seul chemin compte les collections.
+  if (entry.section === "collectible") return (await awardActivity({ collectibles: [entry.id] }, now), "bought");
+  return "bought";
+}
+
+/** Pose (ou retire) une pièce de décor. L'aménagement enregistré est toujours valide. */
+export async function placeSceneItem(slot: SceneSlot, itemId: string | null): Promise<Scene> {
+  const data = await loadRewardsData();
+  const wanted: Scene = { ...data.scene };
+  if (itemId === null) delete wanted[slot];
+  else wanted[slot] = itemId;
+  const scene = sanitizeScene(wanted, sceneContext(data));
+  const next = { ...data, scene };
+  await saveRewardsData(next);
+  useRewards.setState({ data: next, loaded: true });
+  return scene;
+}
+
+/** Porte une ambiance. Une ambiance non possédée est refusée sans bruit : l'interface ne change pas. */
+export async function chooseAmbiance(id: string): Promise<AmbianceId> {
+  const data = await loadRewardsData();
+  if (!isAmbianceId(id) || !shopOwned(data).ambiances.has(id)) return data.ambiance;
+  const next = { ...data, ambiance: id };
+  await saveRewardsData(next);
+  applyAmbiance(id);
+  useRewards.setState({ data: next, loaded: true });
+  return id;
+}
+
+/** Quête de la semaine (contrat phase24 §4) : les paliers, leur état et ce qui reste à réclamer. */
+export async function weeklyQuest(now = new Date()): Promise<QuestProgress> {
+  const data = await loadRewardsData();
+  return questProgress(data.journal, periodOf("weekly", now), data.claims);
+}
+
+/**
+ * Réclame un palier de quête. Même garde que les missions : on revérifie que le palier est atteint
+ * et pas déjà réclamé — le bouton n'est pas une preuve.
+ */
+export async function claimQuestStep(step: QuestStep, now = new Date()): Promise<Celebration[]> {
+  const data = await loadRewardsData();
+  if (data.claims[step.id]) return [];
+  const progress = questProgress(data.journal, periodOf("weekly", now), data.claims);
+  if (!progress.steps.some((view) => view.step.id === step.id && view.done)) return [];
+  await saveRewardsData({ ...data, claims: { ...data.claims, [step.id]: now.toISOString() } });
+  const celebrations = await awardActivity(
+    { coins: step.coins, ...(step.chest ? { chests: [step.chest] } : {}) },
+    now,
+  );
+  return sortCelebrations([{ kind: "quest", days: step.days }, ...celebrations]);
+}
+
 /** Porte (ou retire) une pièce. La tenue enregistrée est toujours une tenue valide. */
 export async function wearWardrobeItem(slot: WardrobeSlot, itemId: string | null): Promise<Outfit> {
   const data = await loadRewardsData();
@@ -472,6 +671,12 @@ export const useRewards = create<RewardsStore>((set, get) => ({
 
 /** Contexte de déblocage de l'état courant : utilisé par l'atelier et le personnage. */
 export const rewardsContext = (data: RewardsData): WardrobeContext => context(data);
+
+/** Le même, pour la rive (contrat phase24 §2) : ses achats lui sont propres. */
+export const sceneContextOf = (data: RewardsData): SceneContext => sceneContext(data);
+
+/** Rive aménagée, nettoyée : ce que l'écran et l'accueil dessinent réellement. */
+export const placedScene = (data: RewardsData): Scene => sanitizeScene(data.scene, sceneContext(data));
 
 /** Tenue portée, nettoyée : ce que le personnage dessine réellement. */
 export const wornOutfit = (data: RewardsData): Outfit => sanitizeOutfit(data.outfit, context(data));
