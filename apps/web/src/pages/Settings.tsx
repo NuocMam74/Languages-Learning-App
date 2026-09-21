@@ -229,6 +229,21 @@ export default function Settings() {
           <Row icon="boat" label={t("settings.path")}>
             <Segmented label={t("settings.path")} value={profile.motivation} options={motivations.map((m) => ({ value: m, label: t(`onboarding.why.${m}` as MessageKey) }))} onChange={(v) => update({ motivation: v })} />
           </Row>
+          {/* La visite du premier lancement se revoit (contrat phase23 §3) : six écrans qu'on a
+              souvent traversés trop vite, et dont on se souvient trois jours plus tard qu'ils
+              parlaient de quelque chose d'utile. */}
+          <Link
+            to="/decouverte"
+            className="flex min-h-12 items-center gap-3 font-semibold text-ngoc"
+            data-testid="settings-discovery"
+          >
+            <Icon name="boat" size={20} />
+            <span className="min-w-0 flex-1">
+              {t("discovery.replay")}
+              <span className="block text-sm font-normal text-phu-sa">{t("discovery.replay.hint")}</span>
+            </span>
+            <Icon name="chevronRight" size={18} className="text-phu-sa" />
+          </Link>
         </Card>
       </Section>
 

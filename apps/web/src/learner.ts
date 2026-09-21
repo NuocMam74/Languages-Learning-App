@@ -23,12 +23,14 @@ import {
   mergeCards,
   newCard,
   nextLesson,
+  normalizeActivityLog,
   normalizeSkillStats,
   placementCards,
   planSession,
   pushSouthResult,
   pushToneResult,
   recordActivity,
+  recordActivitySeconds,
   recordResult,
   recordSkillAnswer,
   recordReviewResult,
@@ -45,6 +47,7 @@ import {
   TONE_EXERCISE_TYPES,
   uuidv7,
   XP_SESSION_BONUS,
+  type ActivityLog,
   type BadgeCode,
   type Briefing,
   type ConceptId,
@@ -151,6 +154,9 @@ export const getPlacement = () => getKv<PlacementRecord | null>("placement", nul
 /** Agrégat de compétences du pack (contrat phase7 §3) : toujours ramené à la forme attendue. */
 export const getSkillStats = async (pack?: string): Promise<SkillStats> =>
   normalizeSkillStats(pack === undefined ? await getKv<unknown>("stats", null) : (await db().kv.get(scopedKey("stats", pack)))?.value);
+/** Journal des minutes par jour du pack (contrat phase23 §1) : la série de l'écran Statistiques. */
+export const getActivityLog = async (pack?: string): Promise<ActivityLog> =>
+  normalizeActivityLog(pack === undefined ? await getKv<unknown>("activityLog", null) : (await db().kv.get(scopedKey("activityLog", pack)))?.value);
 export const getLanguageInterest = () => getKv<Record<string, boolean>>("langInterest", {});
 export const setLanguageInterest = (value: Record<string, boolean>) => setKv("langInterest", value);
 
@@ -700,6 +706,11 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       // Une séance oubliée ouverte ne compte pas des heures : plafond à deux fois la durée prévue.
       const seconds = Math.min(capped.durationMs / 1000, Math.max(saved.plan.estimatedSeconds * 2, 60));
       await d.kv.put({ key: "activity", value: { date: today, seconds: (activity.date === today ? activity.seconds : 0) + seconds } satisfies DailyActivity });
+      // Journal des minutes, jour par jour (contrat phase23 §1). `activity` ne retient que le jour
+      // courant — il répond à « ai-je fait mes 10 minutes ? », pas à « est-ce que je m'y tiens ? ».
+      // Le journal est propre au pack, comme `stats` : les deux séries se lisent côte à côte.
+      const log = normalizeActivityLog(await packKv<unknown>(d, pack, "activityLog", {}));
+      await setPackKv(d, pack, "activityLog", recordActivitySeconds(log, today, seconds));
       events.push(makeEvent("session_completed", { sessionId: saved.sessionId, xpGained: xp, itemsCount: capped.itemsCount, durationMs: capped.durationMs, localDate: today }, now));
     }
 

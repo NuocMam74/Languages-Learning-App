@@ -32,6 +32,8 @@ const SessionPage = lazy(() => import("./pages/SessionPage.tsx").then((m) => ({ 
 const GamesPage = lazy(() => import("./games/GamesPage.tsx").then((m) => ({ default: m.GamesPage })));
 const GamePlayPage = lazy(() => import("./games/GamesPage.tsx").then((m) => ({ default: m.GamePlayPage })));
 const Onboarding = lazy(() => import("./pages/Onboarding.tsx").then((m) => ({ default: m.Onboarding })));
+/** Visite guidée du premier lancement, après le test de niveau (contrat phase23 §3). */
+const Discovery = lazy(() => import("./pages/Discovery.tsx"));
 // Écrans hors du parcours quotidien : chargés à la demande (bundle principal léger).
 const LanguageChoice = lazy(() => import("./pages/LanguageChoice.tsx"));
 const Placement = lazy(() => import("./pages/Placement.tsx"));
@@ -43,6 +45,12 @@ const Settings = lazy(() => import("./pages/Settings.tsx"));
 /** Changer d'appareil (contrat phase17 §2) : écran dédié, chargé à la demande. */
 const TransferPage = lazy(() => import("./pages/Transfer.tsx"));
 const ProfilePage = lazy(() => import("./profile/ProfilePage.tsx"));
+/** Statistiques (contrat phase23 §1) : cinquième destination, chargée à la demande — ses
+ *  graphiques et ses séries n'ont rien à faire dans le bundle de démarrage. */
+const StatsPage = lazy(() => import("./stats/StatsPage.tsx"));
+/** Fiches mémoire (contrat phase23 §4) : la liste, une fiche, et le moteur PDF avec elles. */
+const MemoListPage = lazy(() => import("./memo/MemoPages.tsx").then((m) => ({ default: m.MemoListPage })));
+const MemoSheetPage = lazy(() => import("./memo/MemoPages.tsx").then((m) => ({ default: m.MemoSheetPage })));
 /** Onglet « Réviser » (contrat phase8 §2, §4) : la bibliothèque de tout ce qui a été vu, et les notes. */
 const ReviewPage = lazy(() => import("./review/ReviewPage.tsx"));
 const NotesPage = lazy(() => import("./notes/NotesPage.tsx"));
@@ -239,6 +247,13 @@ function Routes({ boot, onProfile }: { boot: Boot; onProfile: (p: Profile) => vo
         { path: "/langue", element: later(<LanguageChoice content={content} />) },
         { path: "/onboarding", element: later(<Onboarding content={content} onDone={onProfile} />) },
         { path: "/placement", element: later(<Placement content={content} />) },
+        { path: "/decouverte", element: later(<Discovery />) },
+        // Statistiques : trois onglets, portés par l'URL (contrat phase23 §1).
+        { path: "/statistiques", element: later(<StatsPage content={content} />) },
+        { path: "/statistiques/:tab", element: later(<StatsPage content={content} />) },
+        // Fiches mémoire : la liste vit sur core.json, une fiche a besoin de son unité.
+        { path: "/fiches", element: later(<MemoListPage content={content} />) },
+        { path: "/fiches/:lessonId", element: later(<MemoSheetPage content={content} />) },
         { path: "/seance", element: later(<SessionPage content={content} mode="daily" />) },
         { path: "/revision", element: later(<SessionPage content={content} mode="review" />) },
         // Lien profond vers une leçon d'une autre langue : confirmation, bascule, puis la leçon (contrat phase7 §1).

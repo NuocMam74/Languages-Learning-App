@@ -74,11 +74,15 @@ export default function ReviewHome({ content, data }: { content: ContentIndex; d
   ];
 
   const more: { to: string; label: MessageKey; icon: IconName }[] = [
+    // Les fiches mémoire en tête : c'est ce qu'on vient chercher ici quand on ne veut pas
+    // réviser à l'écran mais relire au calme (contrat phase23 §4).
+    { to: "/fiches", label: "memo.review.link", icon: "notebook" },
     { to: "/jeux", label: "review.more.games", icon: "games" },
     // Les missions vivent ici aussi : c'est la page où l'on vient chercher quoi faire (phase9 §3).
     { to: "/missions", label: "review.more.missions", icon: "target" },
     { to: "/defis", label: "review.more.challenges", icon: "trophy" },
     { to: "/examens", label: "review.more.exams", icon: "diploma" },
+    { to: "/statistiques", label: "stats.title", icon: "chart" },
   ];
 
   return (

@@ -201,11 +201,9 @@ export default function AccountPage({ mode }: { mode: "register" | "login" }) {
           <span className="min-w-0">
             <span className="block font-medium">{t("account.unavailable.title")}</span>
             <span className="block text-sm text-phu-sa text-balance">{t("account.unavailable.body")}</span>
-            {/* La porte qui s'ouvre vraiment : emporter sa progression dans un fichier. */}
-            <Link to="/reglages/appareil" className="mt-1 flex min-h-11 items-center gap-1.5 font-semibold text-ngoc">
-              {t("transfer.title")}
-              <Icon name="chevronRight" size={18} />
-            </Link>
+            {/* Plus de raccourci vers le transfert ici (contrat phase23 §2) : il vit dans
+                Réglages → Données, et cet écran n'est pas l'endroit où l'on cherche à changer
+                d'appareil — on y cherchait un compte, et on apprend qu'il n'y en a pas. */}
           </span>
         </Card>
       )}

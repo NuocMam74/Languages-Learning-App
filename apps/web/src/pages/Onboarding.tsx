@@ -1,5 +1,4 @@
 import type { ContentIndex } from "@parlo/core";
-import { nextLesson } from "@parlo/core";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Screen } from "../components/ui.tsx";
@@ -58,11 +57,23 @@ export function Onboarding({ content, onDone }: { content: ContentIndex; onDone:
     // Compte déjà connecté (autre langue, nouvel appareil) : réponses envoyées au serveur (contrat phase5 §4).
     void syncProfileChange(null, final).catch(() => undefined);
     onDone(final);
-    // Mini-test de placement optionnel (spec §4.1.4), puis première leçon avant tout compte (§4.1.5).
-    // Seulement si le pack fournit un placement.json avec au moins 6 items jouables (contrat phase5 §1).
+    /**
+     * Test de niveau, puis visite guidée (contrat phase23 §3).
+     *
+     * Ce qui se passait avant : les cinq questions débouchaient sur **la leçon 1**, jouée dans la
+     * foulée. Deux dégâts. Un apprenant qui parle déjà un peu passait vingt minutes sur des choses
+     * qu'il savait — et le test qui l'en aurait dispensé était offert juste avant, avec un bouton
+     * « Passer » de la même taille. Et quiconque arrivait au bout n'avait toujours rien vu de
+     * l'application : ni le parcours, ni la révision, ni ses fiches.
+     *
+     * Désormais on situe d'abord (le test), on montre la maison ensuite (la visite), et la
+     * première séance se lance **depuis le parcours**, quand l'apprenant la demande.
+     *
+     * Le test n'existe que si le pack fournit un placement.json avec au moins 6 items jouables
+     * (contrat phase5 §1) ; sinon on enchaîne directement sur la visite.
+     */
     const placement = playablePlacementFor(content) !== null && content.lessons.size > 0;
-    const first = nextLesson(content.curriculum, content.lessons, new Set(), final.motivation);
-    navigate(placement ? "/placement" : first ? `/lecon/${first.id}` : "/", { replace: true });
+    navigate(placement ? "/placement" : "/decouverte", { replace: true });
   };
 
   return (

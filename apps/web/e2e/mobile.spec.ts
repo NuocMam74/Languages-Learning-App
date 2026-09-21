@@ -34,12 +34,15 @@ async function onboardHere(page: Page) {
     const choice = i === 3 ? page.getByRole("button", { name: "10 min", exact: true }) : page.locator("main button").first();
     await choice.click();
   }
-  const placement = page.getByRole("heading", { name: "Un mini-test de 90 secondes ?" });
-  // L'arrivée est le placement, la fiche de préparation ou l'exercice : on accepte les trois,
-  // puis on traverse ce qui précède l'exercice.
-  const entry = page.locator('[data-testid="lesson"], [data-testid="lesson-intro"]');
-  await expect(placement.or(entry).first()).toBeVisible({ timeout: 30_000 });
-  if (await placement.isVisible()) await page.getByRole("button", { name: /^Passer/ }).click();
+  // Test de niveau, puis visite guidée (contrat phase23 §3) : on traverse les deux, puis on
+  // demande la première leçon — l'application ne l'impose plus.
+  const placement = page.getByRole("heading", { name: "Commençons par te situer" });
+  const tour = page.getByTestId("discovery-step");
+  await expect(placement.or(tour).first()).toBeVisible({ timeout: 30_000 });
+  if (await placement.isVisible()) await page.getByRole("button", { name: "Je pars de zéro" }).click();
+  await expect(tour).toBeVisible({ timeout: 30_000 });
+  await page.getByTestId("discovery-skip").click();
+  await page.goto("/lecon/vi-south.u01.l01");
   await skipBriefing(page);
   await expect(page.locator('[data-testid="lesson"]')).toBeVisible({ timeout: 30_000 });
 }

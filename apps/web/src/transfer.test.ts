@@ -47,7 +47,7 @@ async function seedDevice(): Promise<void> {
   await d.notes.bulkPut([
     { id: "n1", packCode: "vi-south", targetKind: "concept", targetId: "c_chao", text: "à revoir", createdAt: NOW.toISOString(), updatedAt: NOW.toISOString() },
   ]);
-  writePrefs({ locale: "fr", theme: "dark", feedbackSounds: false, silent: true, dictation: false });
+  writePrefs({ locale: "fr", theme: "dark", feedbackSounds: false, silent: true, dictation: false, discoveredAt: "2026-09-01T10:00:00.000Z" });
 }
 
 beforeEach(async () => {

@@ -1,7 +1,6 @@
 import {
   buildPlacementExercise,
   evaluate,
-  nextLesson,
   nextPlacementItem,
   type ContentIndex,
   type ExerciseResponse,
@@ -16,18 +15,29 @@ import { ExerciseView } from "../components/exercises.tsx";
 import { Button, Screen } from "../components/ui.tsx";
 import { Card, Diploma, EmptyState, Icon, Illustration, ProgressBar, ProgressRing, Skeleton } from "../design/index.ts";
 import { l, t, type MessageKey } from "../i18n/index.ts";
-import { getProfile, savePlacement } from "../learner.ts";
+import { savePlacement } from "../learner.ts";
 import { playablePlacementFor } from "../packs/placement.ts";
+import { usePrefs } from "../prefs.ts";
 
 
 type Stage = { kind: "intro" } | { kind: "test"; startedAt: number } | { kind: "saving" } | { kind: "result"; result: PlacementResult; entry: Lesson | null };
 
 /**
- * Mini-test de placement, optionnel (spec §4.1.4).
+ * Test de niveau, première chose qu'on fait après l'onboarding (spec §4.1.4, élargi contrat
+ * phase23 §3).
+ *
+ * Il était présenté comme une option au milieu du chemin vers la leçon 1, avec un bouton
+ * « Passer » aussi gros que le bouton « Faire le test ». Résultat : un apprenant qui parlait déjà
+ * commençait quand même par « Cinq tons à entendre ». Le test est maintenant **le chemin**, et ce
+ * qui reste offert à côté n'est pas un refus mais une réponse : « je pars de zéro » — qui dit la
+ * même chose que le test aurait dit, sans les 90 secondes.
  *
  * Trois moments, un seul objet fort à chaque fois (contrat phase8 §1) : le diplôme à l'invitation,
  * la barre de progression pendant le test, l'anneau du score à l'arrivée. Aucun écran vide : la
  * sauvegarde montre un squelette, l'absence de test un état vide avec son illustration.
+ *
+ * Aucune sortie ne mène à une leçon : on rejoint la visite guidée, puis le parcours. La première
+ * séance se lance quand l'apprenant la demande, pas parce qu'un écran l'y a poussé.
  */
 export default function Placement({ content }: { content: ContentIndex }) {
   const navigate = useNavigate();
@@ -38,15 +48,18 @@ export default function Placement({ content }: { content: ContentIndex }) {
   const [remaining, setRemaining] = useState(0);
   const seed = useRef(`placement:${Date.now()}`);
 
+  // Où l'on va une fois situé : la visite guidée si elle n'a jamais été faite, sinon le parcours
+  // (le test peut être rejoué plus tard, et on ne refait pas visiter la maison à quelqu'un qui
+  // l'habite déjà).
+  const discovered = usePrefs((s) => s.discoveredAt);
+  const onward = discovered === null ? "/decouverte" : "/apprendre";
+
   useEffect(() => {
-    if (!spec) void skip();
+    // Pas de test jouable pour ce pack : on ne bloque personne sur un écran qui s'excuse.
+    if (!spec) navigate(onward, { replace: true });
   }, []);
 
-  const skip = async () => {
-    const profile = await getProfile();
-    const first = nextLesson(content.curriculum, content.lessons, new Set(), profile.motivation);
-    navigate(first ? `/lecon/${first.id}` : "/", { replace: true });
-  };
+  const skip = () => navigate(onward, { replace: true });
 
   const finished = useRef(false);
   const finish = async (final: PlacementAnswer[]) => {
@@ -75,7 +88,7 @@ export default function Placement({ content }: { content: ContentIndex }) {
 
   if (!spec) {
     return (
-      <Screen action={<Button onClick={() => void skip()}>{t("placement.skip")}</Button>}>
+      <Screen action={<Button onClick={skip}>{t("placement.skip")}</Button>}>
         <div className="flex flex-1 flex-col justify-center">
           <EmptyState art="diploma" title={t("placement.unavailable")} />
         </div>
@@ -89,7 +102,8 @@ export default function Placement({ content }: { content: ContentIndex }) {
         action={
           <div className="flex flex-col gap-2">
             <Button onClick={() => setStage({ kind: "test", startedAt: Date.now() })}>{t("placement.start")}</Button>
-            <Button variant="quiet" onClick={() => void skip()}>{t("placement.skip")}</Button>
+            {/* Une réponse, pas un refus : « je pars de zéro » dit ce que le test aurait dit. */}
+            <Button variant="quiet" onClick={skip}>{t("placement.skip")}</Button>
           </div>
         }
       >
@@ -112,7 +126,7 @@ export default function Placement({ content }: { content: ContentIndex }) {
   if (stage.kind === "result") {
     const { result, entry } = stage;
     return (
-      <Screen action={<Button onClick={() => navigate(entry ? `/lecon/${entry.id}` : "/", { replace: true })}>{t("placement.go")}</Button>}>
+      <Screen action={<Button onClick={() => navigate(onward, { replace: true })}>{t(discovered === null ? "placement.go" : "placement.go.hub")}</Button>}>
         <div className="flex flex-1 flex-col items-center justify-center gap-5 text-center">
           {/* L'anneau du score est le moment fort : il se remplit une fois, à l'arrivée du résultat. */}
           <ProgressRing value={result.correct} max={Math.max(1, result.total)} size={128} label={t("placement.score", { correct: result.correct, total: result.total })}>

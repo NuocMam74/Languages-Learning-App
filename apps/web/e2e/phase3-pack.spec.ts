@@ -71,12 +71,17 @@ test("espagnol hors ligne, retour au vietnamien intact, les deux progressions pe
   await esRadio.click();
   await page.getByRole("button", { name: "Continuer" }).click();
 
-  // Onboarding propre au pack, sans placement (le pack n'en a pas) : directement la première leçon.
+  // Onboarding propre au pack, sans test de niveau (le pack n'en a pas) : on passe directement à
+  // la visite guidée, puis au parcours (contrat phase23 §3).
   await expect(page).toHaveURL(/\/onboarding$/);
   for (let i = 0; i < 5; i++) {
     await expect(page.getByText(`Question ${i + 1} sur 5`)).toBeVisible();
     await page.locator("main button").first().click();
   }
+  await expect(page).toHaveURL(/\/decouverte$/);
+  await page.getByTestId("discovery-skip").click();
+  await expect(page).toHaveURL(/\/apprendre$/);
+  await page.goto("/lecon/es.u01.l01");
   await expect(page).toHaveURL(/\/lecon\/es\.u01\.l01$/);
 
   // 3. Leçon d'espagnol hors ligne.

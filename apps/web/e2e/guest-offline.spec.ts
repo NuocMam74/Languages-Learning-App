@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { dismissCelebrations } from "./helpers.ts";
 
 /**
  * Critère d'acceptation Phase 0 (spec §15) : un utilisateur invité termine une
@@ -16,11 +17,15 @@ async function onboard(page: Page) {
     await expect(page.getByText(`Question ${i + 1} sur 5`)).toBeVisible();
     await page.locator("main button").first().click();
   }
-  // Mini-test de placement : proposé seulement si assez d'items ont leur enregistrement natif
-  // (contrat phase10 §5). Sans voix, on arrive droit sur la première leçon — les deux chemins
-  // sont légitimes, le test ne doit en imposer aucun.
-  await expect(page).toHaveURL(/\/(placement|lecon\/vi-south\.u01\.l01)$/);
-  if (new URL(page.url()).pathname === "/placement") await page.getByRole("button", { name: /^Passer/ }).click();
+  // Test de niveau puis visite guidée (contrat phase23 §3). Le test n'existe que si assez d'items
+  // ont leur enregistrement natif (contrat phase10 §5) : les deux chemins sont légitimes, le test
+  // n'en impose aucun. Aucun des deux ne mène à une leçon — c'est l'apprenant qui la demande.
+  await expect(page).toHaveURL(/\/(placement|decouverte)$/);
+  if (new URL(page.url()).pathname === "/placement") await page.getByRole("button", { name: "Je pars de zéro" }).click();
+  await expect(page).toHaveURL(/\/decouverte$/);
+  await page.getByTestId("discovery-skip").click();
+  await expect(page).toHaveURL(/\/apprendre$/);
+  await page.goto("/lecon/vi-south.u01.l01");
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
 }
 
@@ -142,6 +147,11 @@ test("un invité termine une leçon hors ligne et la retrouve après redémarrag
   await context.setOffline(true);
   await finishLesson(page);
   await expect(page.getByText(/^\+\d+ XP$/)).toBeVisible();
+  // Les cartes de félicitations (contrat phase9 §5) se posent **par-dessus** le bilan et couvrent
+  // son bouton. Elles arrivent **après** l'affichage du bilan : regarder si elles sont là conclut
+  // « non » pendant qu'elles montent, puis le clic se fait intercepter. `dismissCelebrations` leur
+  // laisse le temps d'apparaître — c'est la seule implémentation, on ne la recopie pas ici.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
 
   const xpBefore = await page.getByText(/^\d+ XP$/).textContent();

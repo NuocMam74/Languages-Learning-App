@@ -16,6 +16,7 @@ import { l, t, toneLabel, type MessageKey } from "../i18n/index.ts";
 import { getProfile, progressState } from "../learner.ts";
 import { LessonNoteBlock } from "../notes/NoteBlock.tsx";
 import { noteTargetOf, SessionNoteButton, SessionNotePanel, useSessionNote } from "../notes/SessionNote.tsx";
+import { MemoCard } from "../memo/MemoCard.tsx";
 import { SessionNotesRecap } from "../notes/SessionNotesRecap.tsx";
 import { usePrefs } from "../prefs.ts";
 import { markGuideRead } from "../review/guides-read.ts";
@@ -449,10 +450,11 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
   const missed = concepts(recap.missed);
   const recovered = concepts(recap.recovered);
   const title: MessageKey = recap.source === "lesson" ? "recap.title" : recap.source === "review" ? "session.recap.reviewTitle" : "session.recap.title";
-  const offerAccount = recap.firstLesson && account === "guest";
-  // Sans API, « crée un compte » mène à un mur : on propose ce qui marche — emporter sa
-  // progression dans un fichier (Réglages → Changer d'appareil).
+  // Sans API, « crée un compte » mène à un mur : l'offre disparaît alors entièrement. Emporter sa
+  // progression dans un fichier reste possible, mais à sa place — Réglages → Données (contrat
+  // phase23 §2) : au bilan d'une première leçon, ce geste ne répond à aucune question qu'on se pose.
   const accounts = accountsPossible();
+  const offerAccount = recap.firstLesson && account === "guest" && accounts;
   const badges = BADGE_CODES.filter((code) => recap.badges.includes(code));
   /**
    * Note finale, en pourcentage entier (null : rien n'était noté). Un test d'unité garde **sa**
@@ -556,6 +558,11 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
             </span>
           </Card>
         )}
+
+        {/* La fiche mémoire du niveau (contrat phase23 §4). Sa place est ici et nulle part
+            ailleurs : c'est le seul instant où l'on sait exactement ce qu'on vient d'apprendre.
+            Absente en révision seule et en entraînement — il n'y a pas de niveau à emporter. */}
+        {recap.lessonId && recap.source === "lesson" && <MemoCard content={content} lessonId={recap.lessonId} />}
 
         {/* Les notes prises en chemin, rassemblées (contrat phase22 §2) : c'est ici qu'elles se
             relisent, pas dans une page qu'on rouvrira peut-être. */}
@@ -669,13 +676,13 @@ function Recap({ content, onDone, onRetry }: { content: ContentIndex; onDone: ()
 
         {offerAccount && (
           <Card tone="notice" as="section" className="flex flex-col gap-3">
-            <p className="font-semibold">{t(accounts ? "account.offer.title" : "transfer.title")}</p>
-            <p className="text-sm text-phu-sa">{t(accounts ? "account.offer.body" : "account.offer.noServer")}</p>
+            <p className="font-semibold">{t("account.offer.title")}</p>
+            <p className="text-sm text-phu-sa">{t("account.offer.body")}</p>
             <Link
-              to={accounts ? "/compte" : "/reglages/appareil"}
+              to="/compte"
               className="grid min-h-12 place-items-center rounded-card border-2 border-ngoc bg-surface px-5 font-semibold text-ngoc transition-transform motion-safe:active:scale-[.98]"
             >
-              {t(accounts ? "account.offer.cta" : "transfer.title")}
+              {t("account.offer.cta")}
             </Link>
             <p className="text-sm text-phu-sa">{t("account.offer.guestWarning")}</p>
           </Card>

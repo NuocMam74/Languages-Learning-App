@@ -45,7 +45,11 @@ async function shot(page: Page, dir: string, name: string) {
   process.stdout.write(`  ${name}.png\n`);
 }
 
-/** Premier lancement : bienvenue → choix de la langue → 5 questions → première leçon. */
+/**
+ * Premier lancement : bienvenue → langue → 5 questions → test de niveau → visite guidée → parcours
+ * (contrat phase23 §3), puis la première leçon, demandée explicitement — l'application ne l'impose
+ * plus.
+ */
 async function onboard(page: Page, dir: string) {
   await page.goto(`${BASE}/`, { waitUntil: "domcontentloaded" });
   // Premier chargement à froid (WebKit, précache du service worker) : plus lent que le reste.
@@ -61,11 +65,18 @@ async function onboard(page: Page, dir: string) {
     if (i === 0) await shot(page, dir, "03-onboarding");
     await page.locator("main button").first().click();
   }
-  const placement = page.getByRole("heading", { name: "Un mini-test de 90 secondes ?" });
-  const lesson = page.locator('[data-testid="lesson"]');
-  await placement.or(lesson).first().waitFor();
-  if (await placement.isVisible()) await page.getByRole("button", { name: /^Passer/ }).click();
-  await lesson.waitFor();
+  const placement = page.getByRole("heading", { name: "Commençons par te situer" });
+  const tour = page.getByTestId("discovery-step");
+  await placement.or(tour).first().waitFor();
+  if (await placement.isVisible()) {
+    await shot(page, dir, "03b-test-de-niveau");
+    await page.getByRole("button", { name: "Je pars de zéro" }).click();
+  }
+  await tour.waitFor();
+  await shot(page, dir, "03c-decouverte");
+  await page.getByTestId("discovery-skip").click();
+  await page.goto(`${BASE}/lecon/vi-south.u01.l01`, { waitUntil: "domcontentloaded" });
+  await page.locator('[data-testid="lesson"], [data-testid="lesson-intro"]').first().waitFor();
 }
 
 /** Répond à l'item affiché comme le ferait quelqu'un de pressé ; renvoie `done` au bilan. */
@@ -155,6 +166,11 @@ async function run(device: Device) {
     ["13-jeux", "/jeux"],
     ["14-examens", "/examens"],
     ["15-notes", "/notes"],
+    ["16-statistiques", "/statistiques"],
+    ["17-statistiques-competences", "/statistiques/skills"],
+    ["18-statistiques-parcours", "/statistiques/journey"],
+    ["19-fiches", "/fiches"],
+    ["20-fiche", "/fiches/vi-south.u01.l01"],
   ] as const) {
     await page.goto(`${BASE}${path}`, { waitUntil: "domcontentloaded" });
     await page.locator("main").first().waitFor({ timeout: 6000 }).catch(() => undefined);

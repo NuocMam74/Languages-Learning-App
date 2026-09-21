@@ -39,13 +39,22 @@ const DESTINATIONS: Destination[] = [
   { to: "/apprendre", label: "nav.learn", icon: "boat" },
   // Un carnet ouvert : la bibliothèque de révision (contrat phase8 §4 ; les jeux restent dans « Apprendre »).
   { to: "/reviser", label: "nav.review", icon: "book" },
+  // Des colonnes : les statistiques (contrat phase23 §1). Cinquième destination assumée — la spec
+  // §3.4 interdit le menu caché, pas la cinquième porte ; les cibles restent à 44 px de haut et le
+  // libellé passe en une ligne dans les deux langues.
+  { to: "/statistiques", label: "nav.stats", icon: "chart" },
   // Une silhouette : le profil.
   { to: "/profil", label: "nav.profile", icon: "user" },
 ];
 
-/** Écrans de concentration : séance, leçon, révision, examen, partie, placement, premier lancement. */
+/**
+ * Écrans de concentration : séance, leçon, révision, examen, partie, test de niveau, visite
+ * guidée, premier lancement. La visite en fait partie (contrat phase23 §3) : elle présente
+ * justement les destinations de cette barre — les montrer pendant qu'on les explique inviterait
+ * à en sortir avant d'avoir fini.
+ */
 const FOCUSED =
-  /^\/(seance|revision|lecon\/|examens\/|jeux\/|placement|onboarding|bienvenue|langue|co-mai\/|bilan-semaine|express|studio|prof|compte|connexion|verifier\/|defi\/|partage\/|classe\/)/;
+  /^\/(seance|revision|lecon\/|examens\/|jeux\/|placement|decouverte|onboarding|bienvenue|langue|co-mai\/|bilan-semaine|express|studio|prof|compte|connexion|verifier\/|defi\/|partage\/|classe\/)/;
 
 export function isFocusedRoute(pathname: string): boolean {
   return FOCUSED.test(pathname);

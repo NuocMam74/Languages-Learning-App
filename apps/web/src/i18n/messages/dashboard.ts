@@ -5,6 +5,8 @@ export const fr = {
   "nav.learn": "Apprendre",
   "nav.games": "Jeux",
   "nav.review": "Réviser",
+  // Cinquième destination (contrat phase23 §1). Un mot court : « Statistiques » déborde sous 360 px.
+  "nav.stats": "Chiffres",
   "nav.profile": "Profil",
   "nav.label": "Navigation principale",
 
@@ -82,6 +84,7 @@ export const en: Record<keyof typeof fr, string> = {
   "nav.learn": "Learn",
   "nav.games": "Games",
   "nav.review": "Review",
+  "nav.stats": "Numbers",
   "nav.profile": "Profile",
   "nav.label": "Main navigation",
 

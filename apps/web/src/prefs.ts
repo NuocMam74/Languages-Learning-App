@@ -25,6 +25,12 @@ export interface PrefsValue {
    * vocale des navigateurs peut envoyer l'audio au service en ligne de leur éditeur (spec §14).
    */
   dictation: boolean;
+  /**
+   * Visite guidée du premier lancement déjà faite (contrat phase23 §3), en ISO. Gardée ici et non
+   * dans le profil parce qu'elle parle de **l'application**, pas d'une langue : ajouter une
+   * seconde langue ne doit pas refaire visiter la maison.
+   */
+  discoveredAt: string | null;
 }
 
 interface PrefsState extends PrefsValue {
@@ -33,6 +39,8 @@ interface PrefsState extends PrefsValue {
   setFeedbackSounds: (on: boolean) => void;
   setSilent: (silent: boolean) => void;
   setDictation: (dictation: boolean) => void;
+  /** `null` : la visite est à refaire (Réglages → « Revoir la visite »). */
+  setDiscovered: (at: string | null) => void;
 }
 
 const KEY = "parlo.prefs";
@@ -49,9 +57,10 @@ export function readPrefs(): PrefsValue {
       feedbackSounds: parsed.feedbackSounds !== false,
       silent: parsed.silent === true,
       dictation: parsed.dictation === true,
+      discoveredAt: typeof parsed.discoveredAt === "string" ? parsed.discoveredAt : null,
     };
   } catch {
-    return { locale: null, theme: "system", feedbackSounds: true, silent: false, dictation: false };
+    return { locale: null, theme: "system", feedbackSounds: true, silent: false, dictation: false, discoveredAt: null };
   }
 }
 
@@ -64,7 +73,7 @@ export function writePrefs(value: PrefsValue): void {
   }
 }
 
-const pick = ({ locale, theme, feedbackSounds, silent, dictation }: PrefsValue): PrefsValue => ({ locale, theme, feedbackSounds, silent, dictation });
+const pick = ({ locale, theme, feedbackSounds, silent, dictation, discoveredAt }: PrefsValue): PrefsValue => ({ locale, theme, feedbackSounds, silent, dictation, discoveredAt });
 
 export const usePrefs = create<PrefsState>((set, get) => ({
   ...readPrefs(),
@@ -88,6 +97,10 @@ export const usePrefs = create<PrefsState>((set, get) => ({
     set({ dictation });
     writePrefs({ ...pick(get()), dictation });
   },
+  setDiscovered(discoveredAt) {
+    set({ discoveredAt });
+    writePrefs({ ...pick(get()), discoveredAt });
+  },
 }));
 
 export function clearPrefs(): void {
@@ -96,5 +109,5 @@ export function clearPrefs(): void {
   } catch {
     // rien à effacer
   }
-  usePrefs.setState({ locale: null, theme: "system", feedbackSounds: true, silent: false, dictation: false });
+  usePrefs.setState({ locale: null, theme: "system", feedbackSounds: true, silent: false, dictation: false, discoveredAt: null });
 }

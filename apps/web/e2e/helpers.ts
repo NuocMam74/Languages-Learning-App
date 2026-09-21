@@ -2,8 +2,17 @@ import { expect, type Locator, type Page } from "@playwright/test";
 
 /** Aides partagées des parcours e2e (séance, onboarding). */
 
-/** `minutes` : un des objectifs proposés (10, 15 ou 20 — le plancher est passé à 10, contrat phase21 §3). */
-export async function onboard(page: Page, minutes = "10 min") {
+/**
+ * Traverse le premier lancement et **rend la main sur le parcours** (`/apprendre`).
+ *
+ * Depuis le contrat phase23 §3, l'enchaînement est : cinq questions → test de niveau → visite
+ * guidée → parcours. Plus aucune leçon n'est imposée à l'arrivée ; les tests qui en veulent une
+ * passent par `onboard` (voir plus bas), qui ouvre explicitement la première.
+ *
+ * `minutes` : un des objectifs proposés (10, 15 ou 20 — le plancher est passé à 10, contrat
+ * phase21 §3).
+ */
+export async function onboardToHub(page: Page, minutes = "10 min") {
   await page.goto("/");
   await expect(page).toHaveURL(/\/bienvenue$/);
   await page.getByRole("button", { name: "Commencer" }).click();
@@ -14,13 +23,28 @@ export async function onboard(page: Page, minutes = "10 min") {
     const choice = i === 3 ? page.getByRole("button", { name: minutes, exact: true }) : page.locator("main button").first();
     await choice.click();
   }
-  // Le placement n'est proposé que si assez d'items ont leur audio natif (contrat parcours §1).
-  const placement = page.getByRole("heading", { name: "Un mini-test de 90 secondes ?" });
+  // Le test de niveau n'est proposé que si assez d'items ont leur audio natif (contrat phase5 §1) ;
+  // sans lui, on arrive directement sur la visite.
+  const placement = page.getByRole("heading", { name: "Commençons par te situer" });
+  const tour = page.getByTestId("discovery-step");
+  await expect(placement.or(tour).first()).toBeVisible();
+  if (await placement.isVisible()) await page.getByRole("button", { name: "Je pars de zéro" }).click();
+  await expect(tour).toBeVisible();
+  await page.getByTestId("discovery-skip").click();
+  await expect(page).toHaveURL(/\/apprendre$/);
+}
+
+/**
+ * Premier lancement, puis **ouvre la première leçon** : la forme qu'attendent les parcours qui
+ * enchaînent sur une séance. L'application ne le fait plus d'elle-même (contrat phase23 §3) —
+ * c'est le test qui demande la leçon, comme un apprenant la demanderait depuis le parcours.
+ */
+export async function onboard(page: Page, minutes = "10 min") {
+  await onboardToHub(page, minutes);
+  await page.goto("/lecon/vi-south.u01.l01");
   // Depuis le contrat phase10 §1, une leçon qui introduit du nouveau s'ouvre sur sa fiche de
   // découverte : l'arrivée peut donc être la fiche **ou** le premier exercice.
-  const lesson = page.locator('[data-testid="lesson"], [data-testid="lesson-intro"]');
-  await expect(placement.or(lesson).first()).toBeVisible();
-  if (await placement.isVisible()) await page.getByRole("button", { name: /^Passer/ }).click();
+  await expect(page.locator('[data-testid="lesson"], [data-testid="lesson-intro"]').first()).toBeVisible();
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
 }
 

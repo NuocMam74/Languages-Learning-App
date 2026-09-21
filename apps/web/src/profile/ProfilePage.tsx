@@ -512,17 +512,16 @@ function Identity({ name, onName, status, email, verified, memberSince, level, t
         </div>
       </Card>
 
-      {status === "guest" && (
+      {/* Mode invité : on propose un compte **quand un serveur peut en créer un**. Sans API, la
+          carte disparaît — « Changer d'appareil » vit dans les Réglages et nulle part ailleurs
+          (contrat phase23 §2) : c'est un geste d'administration, pas une réponse à « qui suis-je ». */}
+      {status === "guest" && accounts && (
         <Card tone="notice" className="mb-5 flex items-start gap-3">
           <Icon name="info" size={20} className="mt-0.5 shrink-0 text-nghe" />
           <div className="min-w-0 flex-1">
-            <p className="text-sm">{t(accounts ? "profile.guestHint" : "account.offer.noServer")}</p>
-            <Link
-              to={accounts ? "/compte" : "/reglages/appareil"}
-              className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc"
-              data-testid="profile-account-cta"
-            >
-              {t(accounts ? "profile.guestCta" : "transfer.title")}
+            <p className="text-sm">{t("profile.guestHint")}</p>
+            <Link to="/compte" className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc" data-testid="profile-account-cta">
+              {t("profile.guestCta")}
               <Icon name="chevronRight" size={18} />
             </Link>
           </div>
