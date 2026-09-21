@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { expect, test, type BrowserContext, type Page } from "@playwright/test";
 import { dismissCelebrations, onboard, playOneStep, playUntil, skipBriefing } from "./helpers.ts";
 
@@ -7,6 +10,9 @@ import { dismissCelebrations, onboard, playOneStep, playUntil, skipBriefing } fr
  * unité téléchargée jouée hors ligne sans visite préalable, purge LRU au-delà du quota,
  * mise à jour du contenu appliquée sans perdre la séance en cours.
  */
+
+/** Le contenu que le build vient d'écrire : la source exacte de ce que le serveur d'aperçu sert. */
+const DIST = join(dirname(fileURLToPath(import.meta.url)), "..", "dist");
 
 /** Réseau « Fast 3G » des DevTools (latence 562,5 ms, 1,44 Mb/s descendant). */
 async function throttle(context: BrowserContext, page: Page) {
@@ -173,16 +179,27 @@ test.describe(() => {
     // Version 2 publiée (sans rebuild) : manifeste statique, core et unités de la v2.
     await page.route("**/api/courses/vi-south/manifest", (route) => route.fulfill({ status: 404, contentType: "application/json", body: "{}" }));
     await page.route("**/content/vi-south/latest.json", (route) => route.fulfill({ contentType: "application/json", body: JSON.stringify({ code: "vi-south", version: 2 }) }));
+    /*
+     * La v2 est fabriquée **depuis le disque**, pas par `page.request.get`.
+     *
+     * L'ancienne version allait rechercher la v1 par le réseau, depuis l'intérieur du gestionnaire
+     * de route. Or ces unités sont demandées **après** le rechargement final : la page navigue
+     * pendant que la requête est en vol, sa réponse est libérée, et le gestionnaire lève
+     * « Response has been disposed ». Une course, donc : elle tombait ou non selon la vitesse de la
+     * machine et le temps passé au bilan. Lire le fichier que le build vient d'écrire donne
+     * exactement le même contenu, sans course et sans réseau.
+     */
+    const v1 = (name: string) => JSON.parse(readFileSync(join(DIST, "content", "vi-south", "v1", name), "utf8")) as Record<string, unknown>;
+
     await page.route("**/content/vi-south/v2/core.json", async (route) => {
-      const response = await page.request.get("/content/vi-south/v1/core.json");
-      const core = (await response.json()) as { pack: { version: number }; lessonIndex: { id: string; title: { fr: string } }[] };
+      const core = v1("core.json") as { pack: { version: number }; lessonIndex: { id: string; title: { fr: string } }[] };
       core.pack.version = 2;
       core.lessonIndex.find((l) => l.id === "vi-south.u01.l02")!.title.fr = "Nouvelle version publiée";
       await route.fulfill({ contentType: "application/json", body: JSON.stringify(core) });
     });
     await page.route("**/content/vi-south/v2/units/*.json", async (route) => {
-      const name = new URL(route.request().url()).pathname.split("/").pop();
-      const unit = (await (await page.request.get(`/content/vi-south/v1/units/${name}`)).json()) as { version: number; lessons: { id: string; title: { fr: string } }[] };
+      const name = new URL(route.request().url()).pathname.split("/").pop() ?? "";
+      const unit = v1(join("units", name)) as { version: number; lessons: { id: string; title: { fr: string } }[] };
       unit.version = 2;
       for (const lesson of unit.lessons) if (lesson.id === "vi-south.u01.l02") lesson.title.fr = "Nouvelle version publiée";
       await route.fulfill({ contentType: "application/json", body: JSON.stringify(unit) });

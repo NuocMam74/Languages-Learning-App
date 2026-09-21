@@ -131,12 +131,14 @@ test("première ouverture : l'accueil invite à commencer, il ne montre pas un t
   const nav = page.getByTestId("bottom-nav");
   await expect(nav).toBeVisible();
   await expect(nav.getByRole("link", { name: "Accueil" })).toHaveAttribute("aria-current", "page");
-  // Quatre entrées (contrat phase8 §4) : les jeux restent dans « Apprendre ».
-  for (const name of ["Accueil", "Apprendre", "Réviser", "Profil"]) {
+  // Cinq entrées : les quatre du contrat phase8 §4 — les jeux restent dans « Apprendre » — plus
+  // les chiffres (contrat phase23 §1). La contrainte de 44 px vaut pour toutes, c'est elle qui
+  // justifiait de s'en tenir à quatre : on vérifie donc qu'une cinquième ne l'a pas cassée.
+  for (const name of ["Accueil", "Apprendre", "Réviser", "Chiffres", "Profil"]) {
     const box = await nav.getByRole("link", { name }).boundingBox();
     expect(box?.height ?? 0, `cible « ${name} » ≥ 44 px`).toBeGreaterThanOrEqual(44);
   }
-  await expect(nav.getByRole("link")).toHaveCount(4);
+  await expect(nav.getByRole("link")).toHaveCount(5);
 });
 
 test("progression : reprise, compteurs, profil mis à jour, navigation basse masquée en séance", async ({ page }) => {
@@ -236,9 +238,10 @@ test("changer de langue depuis l'accueil : /apprendre avec les données de cette
   await expect(page).toHaveURL(/\/(apprendre|onboarding)$/);
   if (new URL(page.url()).pathname === "/onboarding") {
     for (let i = 0; i < 5; i++) await page.locator("main button").first().click();
-    await skipBriefing(page);
-    await expect(page.locator('[data-testid="lesson"]')).toBeVisible({ timeout: 30_000 });
-    await page.getByRole("button", { name: "Quitter la leçon" }).click();
+    // Depuis le contrat phase23 §3, l'onboarding ne débouche plus sur une leçon : le pack `es`
+    // n'a pas de test de niveau, donc on arrive sur la visite guidée, qu'on passe.
+    await expect(page).toHaveURL(/\/decouverte$/);
+    await page.getByTestId("discovery-skip").click();
   }
   await expect(page).toHaveURL(/\/apprendre$/);
   await expect(page.getByTestId("hub-pack")).toHaveText(esName);

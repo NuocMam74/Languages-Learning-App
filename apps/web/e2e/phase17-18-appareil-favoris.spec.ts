@@ -27,9 +27,12 @@ test("aimer un exercice, le retrouver, le rejouer seul", async ({ page }) => {
   expect(liked).toMatch(/^vi-south\.u01\.l01#\d+$/);
 
   await playUntil(page, /^Leçon terminée$/);
+  // Les félicitations se posent **par-dessus** le bilan et interceptent les clics : on les referme
+  // d'abord, comme le ferait un apprenant. Elles arrivent après le bilan, d'où `dismissCelebrations`
+  // qui leur laisse le temps de monter plutôt qu'un test d'affichage immédiat.
+  await dismissCelebrations(page);
   // Et la leçon qu'on vient de finir s'aime depuis le bilan.
   await page.getByTestId("recap-favorite").getByTestId("favorite-button").click();
-  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
 
   // On les retrouve au même endroit, séparés : les leçons, les exercices.

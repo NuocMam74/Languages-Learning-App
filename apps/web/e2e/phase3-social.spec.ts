@@ -1,5 +1,5 @@
 import { expect, test, type Page, type Route } from "@playwright/test";
-import { onboard } from "./helpers.ts";
+import { dismissCelebrations, onboard } from "./helpers.ts";
 import { declareAllMedia } from "./media.ts";
 
 /**
@@ -326,6 +326,10 @@ test("Nhớ mặt : grille 4×4, cartes ≥ 44 px, paires image ↔ son jusqu'au
   await expect(page.getByText(/^En \d+ coups$/)).toBeVisible();
   await expect(page.getByText("Nouveau record")).toBeVisible();
   await expect.poll(async () => (await outboxGames(page)).filter((g) => g === "nho_mat").length).toBe(1);
+  // Les félicitations se posent par-dessus le résultat et interceptent les clics. Une partie en
+  // ouvre d'autant plus depuis le contrat phase24 §2 : un niveau gagné déverrouille aussi des
+  // pièces de rive, et chacune a sa carte.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour aux jeux" }).click();
   await expect(page.locator('[data-game="nho_mat"]')).toContainText(/Record : \d+ points · \d sur 8/);
 });
