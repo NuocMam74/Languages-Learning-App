@@ -151,6 +151,10 @@ class LessonProgress(Base):
     score: Mapped[float | None] = mapped_column(Float)
     completed_at: Mapped[datetime | None] = mapped_column(UTCDateTime())
     attempts: Mapped[int] = mapped_column(Integer, default=0)
+    # Maîtrise (contrat phase10 §3), gardée pour la restauration d'un appareil : acquise dès qu'une
+    # tentative a tout réussi, jamais reperdue. Fausse pour les lignes écrites avant le contrat
+    # phase25 §1 — le client la redéduit alors d'un score parfait, qui l'implique.
+    mastered: Mapped[bool] = mapped_column(Boolean, default=False, server_default=false())
 
 
 class SrsCardRow(Base):

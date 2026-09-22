@@ -602,7 +602,9 @@ export async function saveLessonPart(content: ContentIndex, run: SessionRun, now
       attempts: (progress?.attempts ?? 0) + 1,
       completedAt: now.toISOString(),
     });
-    events.push(makeEvent("lesson_completed", { sessionId: run.sessionId, lessonId: lesson.id, score, durationMs: capDurationMs(now.getTime() - Date.parse(lessonRun.startedAt)) }, now));
+    // La maîtrise part avec l'événement (contrat phase25 §1) : c'est elle qui ouvre la leçon
+    // suivante, et sans elle le serveur ne pouvait pas la rendre à un appareil neuf.
+    events.push(makeEvent("lesson_completed", { sessionId: run.sessionId, lessonId: lesson.id, score, mastered, durationMs: capDurationMs(now.getTime() - Date.parse(lessonRun.startedAt)) }, now));
 
     const next: SessionRun = { ...run, lessonSaved: true, learned: outcome.learned, xp: run.xp + outcome.xp };
     await d.outbox.bulkPut(events.map(toOutbox));

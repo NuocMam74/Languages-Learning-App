@@ -400,11 +400,13 @@ def _apply_lesson_completed(db: Session, user_id: str, event: LessonCompleted, p
 
     progress = db.get(LessonProgress, (user_id, p.lesson_id))
     if progress is None:
-        progress = LessonProgress(user_id=user_id, lesson_id=p.lesson_id, attempts=0)
+        progress = LessonProgress(user_id=user_id, lesson_id=p.lesson_id, attempts=0, mastered=False)
         db.add(progress)
     progress.status = "completed"
     progress.attempts = (progress.attempts or 0) + 1
     progress.score = p.score if progress.score is None else max(progress.score, p.score)
+    # Comme le meilleur score : la maîtrise est le meilleur de toutes les tentatives, jamais reperdue.
+    progress.mastered = bool(progress.mastered) or p.mastered
     progress.completed_at = (
         event.occurred_at if progress.completed_at is None else min(progress.completed_at, event.occurred_at)
     )

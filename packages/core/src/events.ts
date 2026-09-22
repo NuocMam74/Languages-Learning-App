@@ -63,7 +63,13 @@ export type ParloEvent =
   | BaseEvent<"conversation_turn", { conversationId: string; mode: "free" | "doi_dap"; words: number; responseMs: number; localDate: string }>
   /** Changement de langue apprise (plusieurs packs). */
   | BaseEvent<"pack_switched", { fromPack: string | null; toPack: string }>
-  | BaseEvent<"lesson_completed", { sessionId: string; lessonId: LessonId; score: number; durationMs: number }>
+  /**
+   * `mastered` : tous les exercices notés de la leçon réussis, réessais compris (contrat phase10 §3).
+   * C'est cette maîtrise — et non le score — qui ouvre la leçon suivante côté client. Elle voyage
+   * avec l'événement depuis le contrat phase25 §1 : sans elle, le serveur ne pouvait pas la rendre
+   * à un nouvel appareil, et le parcours s'y reverrouillait. Absent : événement d'avant ce contrat.
+   */
+  | BaseEvent<"lesson_completed", { sessionId: string; lessonId: LessonId; score: number; durationMs: number; mastered?: boolean }>
   | BaseEvent<
       "session_completed",
       {

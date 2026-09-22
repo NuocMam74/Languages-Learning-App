@@ -44,6 +44,11 @@ export async function applyRestoredState(pack: string, state: MeStateDto, now = 
         status: "completed",
         bestScore: Math.max(local?.bestScore ?? 0, remote.bestScore),
         attempts: Math.max(local?.attempts ?? 0, remote.attempts),
+        // Maîtrise (contrat phase10 §3) : c'est elle qui ouvre la leçon suivante. La perdre ici
+        // reverrouillait le parcours d'un appareil restauré — et même d'une simple reconnexion.
+        // Elle est acquise si l'un des deux côtés l'a, ou si le score est parfait : tout juste du
+        // premier coup, c'est la maîtrise (l'inverse est faux — d'où le serveur, qui la garde).
+        mastered: (local?.mastered ?? false) || (remote.mastered ?? false) || remote.bestScore >= 1,
         completedAt: local?.completedAt ?? remote.completedAt,
       };
     });

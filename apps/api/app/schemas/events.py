@@ -90,6 +90,10 @@ class LessonCompletedPayload(CamelModel):
     lesson_id: Id
     score: Annotated[float, Field(ge=0, le=1)]
     duration_ms: NonNegative
+    # Maîtrise (contrat phase10 §3) : tous les exercices notés réussis, réessais compris. C'est elle
+    # qui ouvre la leçon suivante côté client ; le serveur la garde pour la rendre à un appareil neuf.
+    # Par défaut `False` : les événements d'avant le contrat phase25 §1 ne la portent pas.
+    mastered: bool = False
 
 
 class SessionCompletedPayload(CamelModel):

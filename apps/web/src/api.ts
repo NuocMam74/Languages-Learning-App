@@ -427,7 +427,8 @@ export interface MeStateDto {
     onboardedAt?: string | null;
   } | null;
   placement: { levelEstimate: number; entryLessonId: string } | null;
-  lessonProgress: { lessonId: string; bestScore: number; attempts: number; completedAt: string }[];
+  /** `mastered` : maîtrise de la leçon (contrat phase10 §3) — absente des comptes d'avant phase25 §1. */
+  lessonProgress: { lessonId: string; bestScore: number; attempts: number; completedAt: string; mastered?: boolean }[];
   srsCards: SrsCard[];
   badges: { code: string; earnedAt: string }[];
   streak: MeResponse["streak"] & { frozenFrom?: string | null };

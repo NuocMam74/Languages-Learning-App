@@ -155,6 +155,36 @@ describe("restauration depuis le compte (contrat phase5 §4)", () => {
     // Rien n'est renvoyé au serveur : ces données en viennent.
     expect(await d.outbox.count()).toBe(0);
   });
+
+  it("la maîtrise ne se perd pas à la restauration : sans elle, le parcours se reverrouille", async () => {
+    const t0 = new Date("2026-09-01T08:00:00Z");
+    // Maîtrisée ici, sans score parfait : seul l'appareil le sait — une reconnexion ne doit pas l'effacer.
+    await d.lessonProgress.put({ lessonId: "vi-south.u01.l01", packCode: "vi-south", status: "completed", bestScore: 0.6, mastered: true, attempts: 2, completedAt: t0.toISOString() });
+
+    await applyRestoredState("vi-south", {
+      profile: null,
+      placement: null,
+      lessonProgress: [
+        { lessonId: "vi-south.u01.l01", bestScore: 0.6, attempts: 2, completedAt: t0.toISOString() },
+        // Maîtrisée sur l'autre appareil, jamais jouée ici : le serveur la rend.
+        { lessonId: "vi-south.u01.l02", bestScore: 0.7, attempts: 1, completedAt: t0.toISOString(), mastered: true },
+        // Compte d'avant le contrat phase25 §1 : le serveur ne sait pas. Un sans-faute l'implique.
+        { lessonId: "vi-south.u01.l03", bestScore: 1, attempts: 1, completedAt: t0.toISOString() },
+        // Terminée en se trompant, et rien qui dise la maîtrise : elle reste à refaire.
+        { lessonId: "vi-south.u01.l04", bestScore: 0.5, attempts: 1, completedAt: t0.toISOString() },
+      ],
+      srsCards: [],
+      badges: [],
+      streak: { current: 1, longest: 1, lastActiveDate: "2026-09-13", freezesAvailable: 1, frozenUntil: null },
+      xpTotal: 0,
+    });
+
+    const mastery = async (id: string) => (await d.lessonProgress.get(id))?.mastered;
+    expect(await mastery("vi-south.u01.l01")).toBe(true);
+    expect(await mastery("vi-south.u01.l02")).toBe(true);
+    expect(await mastery("vi-south.u01.l03")).toBe(true);
+    expect(await mastery("vi-south.u01.l04")).toBe(false);
+  });
 });
 
 describe("lot empoisonné (contrat phase5 §4)", () => {

@@ -95,6 +95,47 @@ def test_restore_state_on_second_device(client: TestClient) -> None:
     assert cards == {"c_ba": 1, "c_chao": 2}
 
 
+def test_mastery_survives_the_change_of_device(client: TestClient) -> None:
+    """La maîtrise ouvre la leçon suivante côté client : le serveur doit la rendre (contrat phase25 §1).
+
+    Sans elle, un appareil restauré retrouvait des leçons « terminées » et plus rien d'ouvert
+    derrière — le parcours repartait de la première leçon.
+    """
+    device_a = register(client, "mastery@example.com")
+    t0 = TODAY - timedelta(hours=2)
+    session = str(uuid.uuid4())
+    outbox = [
+        event(
+            "lesson_completed",
+            {"sessionId": session, "lessonId": "vi-south.u01.l01", "score": 0.6, "durationMs": 300_000, "mastered": True},
+            t0,
+        ),
+        # Terminée en se trompant : pas de maîtrise, la leçon reste à refaire.
+        event(
+            "lesson_completed",
+            {"sessionId": session, "lessonId": "vi-south.u01.l02", "score": 0.5, "durationMs": 300_000},
+            t0 + timedelta(minutes=5),
+        ),
+    ]
+    assert post(client, device_a, outbox)["rejected"] == []
+
+    client.cookies.clear()
+    device_b = login_headers(client, "mastery@example.com")
+    state = client.get("/me/state?pack=vi-south", headers=device_b).json()
+    mastery = {p["lessonId"]: p["mastered"] for p in state["lessonProgress"]}
+    assert mastery == {"vi-south.u01.l01": True, "vi-south.u01.l02": False}
+
+    # Jamais reperdue : une tentative ratée ensuite ne défait pas ce qui a été maîtrisé.
+    again = event(
+        "lesson_completed",
+        {"sessionId": str(uuid.uuid4()), "lessonId": "vi-south.u01.l01", "score": 0.2, "durationMs": 60_000},
+        t0 + timedelta(hours=1),
+    )
+    assert post(client, device_b, [again])["rejected"] == []
+    state = client.get("/me/state?pack=vi-south", headers=device_b).json()
+    assert {p["lessonId"]: p["mastered"] for p in state["lessonProgress"]}["vi-south.u01.l01"] is True
+
+
 # --- §4 Lot empoisonné ----------------------------------------------------------------------
 
 

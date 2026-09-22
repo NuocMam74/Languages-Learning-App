@@ -150,6 +150,8 @@ class LessonProgressOut(CamelModel):
     best_score: float
     attempts: int
     completed_at: datetime | None
+    #: Maîtrise (contrat phase10 §3) : sans elle, le parcours se reverrouille sur l'appareil restauré.
+    mastered: bool = False
 
 
 class StateOut(CamelModel):

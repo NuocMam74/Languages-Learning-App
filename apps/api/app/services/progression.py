@@ -79,18 +79,19 @@ def lesson_done(lesson: Lesson, state: ProgressState) -> bool:
 
     **Volontairement plus permissif que le client**, et ce n'est pas un oubli. Depuis le contrat
     phase10 §3, l'application exige la *maîtrise* d'une leçon ordinaire — tous ses exercices notés
-    réussis — pour ouvrir la suivante. Le serveur, lui, ne reçoit que des scores : `events.py` ne
-    lui envoie jamais `mastered`, donc `passed` ne contient que des tests d'unité (voir
-    `progress_from`). Il ne peut pas appliquer la même règle.
+    réussis — pour ouvrir la suivante. `passed` ne contient ici que des tests d'unité (voir
+    `progress_from`) : la même règle n'est pas appliquée.
+
+    Le serveur *reçoit* la maîtrise depuis le contrat phase25 §1 (`lesson_progress.mastered`), mais
+    il la garde pour la **rendre** à un appareil restauré — il ne s'en sert pas pour juger. La
+    colonne est fausse pour toutes les leçons faites avant ce contrat : s'en servir ici renverrait
+    les comptes existants à la première leçon du cursus. Ne pas « aligner » cette fonction sur le
+    client tant que ces lignes n'ont pas été rattrapées.
 
     Conséquence assumée : côté serveur, `next_lesson` peut désigner la leçon suivante là où le
     client propose de refaire la précédente. C'est sans effet sur l'apprentissage — le client est
     la source de vérité de la séance ; le serveur ne s'en sert que pour le pointeur d'inscription
     et la phrase du bilan hebdomadaire.
-
-    Ne pas « aligner » cette fonction sur le client sans donner d'abord au serveur la maîtrise :
-    avec le `passed` actuel, une leçon ordinaire n'y figure jamais, et `next_lesson` renverrait
-    éternellement la toute première leçon du cursus.
     """
     if lesson.id not in state.completed:
         return False

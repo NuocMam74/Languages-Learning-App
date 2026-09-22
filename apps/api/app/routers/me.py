@@ -193,6 +193,7 @@ def get_state(
                 best_score=float(p.score or 0.0),
                 attempts=p.attempts,
                 completed_at=p.completed_at,
+                mastered=bool(p.mastered),
             )
             for p in progress
         ],
