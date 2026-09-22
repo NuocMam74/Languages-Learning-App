@@ -2,7 +2,7 @@
 
 import json
 import uuid
-from datetime import UTC, date, datetime, timedelta
+from datetime import UTC, date, datetime, time, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -128,16 +128,26 @@ def test_streak_speaking_and_games(client: TestClient, auth: dict[str, str]) -> 
     now = datetime.now(UTC)
     start = challenges.week_start(now)
     use_challenge(client, "streak_days", 5)
+    # Les jours se dérivent de la semaine en cours, et seulement de ceux déjà passés. Écrits en dur,
+    # ils sortaient de la période dès que la semaine tournait : le serveur rejette un `localDate` à
+    # plus d'un jour de son `occurredAt` (et un `occurredAt` à venir), les séances n'étaient plus
+    # comptées, et le test virait au rouge pour la seule raison que le temps passe.
+    # Deux jours de suite, puis — si la semaine est assez avancée — un jour sauté : la suite reste
+    # de 2. `test_longest_run` couvre la règle elle-même ; ici on vérifie que les séances arrivent
+    # et sont rattachées au bon jour.
+    elapsed = (now.date() - start.date()).days
+    days = [start.date() + timedelta(days=offset) for offset in (0, 1, 3) if offset <= elapsed]
     sessions = [
         event(
             "session_completed",
-            {"sessionId": f"s{i}", "xpGained": 1, "itemsCount": 1, "durationMs": 1000, "localDate": day},
-            start + timedelta(minutes=i),
+            {"sessionId": f"s{i}", "xpGained": 1, "itemsCount": 1, "durationMs": 1000, "localDate": day.isoformat()},
+            # Midi, sauf pour aujourd'hui : un `occurredAt` à venir serait rejeté.
+            min(datetime.combine(day, time(12), tzinfo=UTC), now),
         )
-        for i, day in enumerate(["2026-09-14", "2026-09-15", "2026-09-17"])
+        for i, day in enumerate(days)
     ]
     post(client, auth, sessions)
-    assert current(client, auth)["progress"] == 2
+    assert current(client, auth)["progress"] == challenges.longest_run(set(days))
 
     use_challenge(client, "speaking_minutes", 5)
     scores = [
@@ -157,7 +167,7 @@ def test_streak_speaking_and_games(client: TestClient, auth: dict[str, str]) -> 
     plays = [
         event(
             "game_played",
-            {"game": "cho_noi", "correct": c, "total": t, "durationMs": 1, "localDate": "2026-09-14"},
+            {"game": "cho_noi", "correct": c, "total": t, "durationMs": 1, "localDate": start.date().isoformat()},
             start + timedelta(seconds=i),
         )
         for i, (c, t) in enumerate([(7, 10), (6, 10), (0, 0), (3, 3), (9, 9)])
