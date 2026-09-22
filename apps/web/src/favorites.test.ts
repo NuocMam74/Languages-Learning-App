@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { readPackFiles, toRaw } from "../../../scripts/lib/load-pack.ts";
 import { db, favoriteId, ParloDB, setDb } from "./db.ts";
 import { isFavorite, likedSteps, lessonsWithLikedSteps, listFavorites, stepPreview, useFavorites, viewFavorites } from "./favorites.ts";
+import { exportLocalData } from "./learner.ts";
 
 /**
  * Favoris (contrat phase18 §1). Ce qui est vérifié ici : aimer et retirer sont le même geste, un
@@ -37,6 +38,15 @@ describe("aimer, retirer", () => {
     expect(await isFavorite(target, "vi-south")).toBe(true);
     expect(await useFavorites.getState().toggle(target, "vi-south")).toBe(false);
     expect(await isFavorite(target, "vi-south")).toBe(false);
+  });
+
+  it("voyage dans l'export local RGPD : un droit d'accès ne peut pas oublier une table", async () => {
+    await useFavorites.getState().toggle({ lessonId: LESSON, stepIndex: 5 }, "vi-south");
+    const dump = await exportLocalData(new Date("2026-03-01T10:00:00Z"));
+    expect(dump.tables.favorites).toHaveLength(1);
+    expect(dump.tables.favorites[0]).toMatchObject({ lessonId: LESSON, stepIndex: 5 });
+    // Comme les notes : un goût ne remonte jamais au serveur (minimisation, spec §14).
+    expect(await db().outbox.count()).toBe(0);
   });
 
   it("une leçon et un de ses exercices sont deux favoris distincts", async () => {

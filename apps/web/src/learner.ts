@@ -934,12 +934,13 @@ export async function todaySeconds(now = new Date()): Promise<number> {
 
 export async function exportLocalData(now = new Date()) {
   const d = db();
-  // `notes` : local seulement, jamais synchronisé — mais il fait partie des données de l'appareil,
-  // donc de l'export RGPD (contrat phase8 §3).
-  const [srsCards, lessonProgress, outbox, snapshot, kv, syncLog, notes] = await Promise.all([
-    d.srsCards.toArray(), d.lessonProgress.toArray(), d.outbox.toArray(), d.snapshot.toArray(), d.kv.toArray(), d.syncLog.toArray(), d.notes.toArray(),
+  // `notes` et `favorites` : locaux seulement, jamais synchronisés — mais ils font partie des
+  // données de l'appareil, donc de l'export RGPD (contrats phase8 §3 et phase18 §1). Un vidage de
+  // toutes les tables ne peut pas en oublier une : c'est un droit d'accès, pas un résumé.
+  const [srsCards, lessonProgress, outbox, snapshot, kv, syncLog, notes, favorites] = await Promise.all([
+    d.srsCards.toArray(), d.lessonProgress.toArray(), d.outbox.toArray(), d.snapshot.toArray(), d.kv.toArray(), d.syncLog.toArray(), d.notes.toArray(), d.favorites.toArray(),
   ]);
-  return { app: "parlo", exportedAt: now.toISOString(), badgeCodes: BADGE_CODES, tables: { srsCards, lessonProgress, outbox, snapshot, kv, syncLog, notes } };
+  return { app: "parlo", exportedAt: now.toISOString(), badgeCodes: BADGE_CODES, tables: { srsCards, lessonProgress, outbox, snapshot, kv, syncLog, notes, favorites } };
 }
 
 export async function deleteLocalData(): Promise<void> {
