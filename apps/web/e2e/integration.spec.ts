@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { onboard, playUntil } from "./helpers.ts";
+import { dismissCelebrations, onboard, playUntil } from "./helpers.ts";
 
 /**
  * Intégration réelle PWA + API (sans simulation). Nécessite l'API sur :8000
@@ -15,6 +15,10 @@ test("un invité crée son compte et sa progression arrive sur le serveur", asyn
 
   await onboard(page);
   await playUntil(page, /Leçon terminée|Séance terminée/);
+  // Les cartes de félicitations se posent **après** le bilan et interceptent les clics : on les
+  // referme d'abord, comme le ferait un apprenant. Elles sont arrivées après ce parcours, qui est
+  // ignoré hors intégration réelle — il ne les avait jamais rencontrées.
+  await dismissCelebrations(page);
   await page.getByRole("link", { name: "Créer un compte" }).click();
   await page.getByLabel("Prénom ou pseudo").fill("Lan");
   await page.getByLabel("Email").fill(email);

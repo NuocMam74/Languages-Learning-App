@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { onboard, playUntil } from "./helpers.ts";
+import { dismissCelebrations, onboard, playUntil } from "./helpers.ts";
 
 /**
  * Parcours complet (contrat phase5) en intégration réelle avec l'API :
@@ -21,6 +21,10 @@ test("second appareil, séance vide, mot de passe oublié, export et suppression
   const pageA = await a.newPage();
   await onboard(pageA);
   await playUntil(pageA, /Leçon terminée|Séance terminée/);
+  // Les cartes de félicitations se posent **après** le bilan et interceptent les clics : on les
+  // referme d'abord, comme le ferait un apprenant. Elles sont arrivées après ce parcours, qui est
+  // ignoré hors intégration réelle — il ne les avait jamais rencontrées.
+  await dismissCelebrations(pageA);
   await pageA.getByRole("link", { name: "Créer un compte" }).click();
   await pageA.getByLabel("Prénom ou pseudo").fill("Lan");
   await pageA.getByLabel("Email").fill(email);
