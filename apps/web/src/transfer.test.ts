@@ -43,6 +43,12 @@ async function seedDevice(): Promise<void> {
     // Restent sur l'appareil : identité connectée et langue affichée.
     { key: "account", value: { email: "lan@parlo.app" } },
     { key: "activePack", value: "vi-south" },
+    // Restent aussi : l'abonnement push de ce navigateur, et ce qui attend d'être envoyé d'ici.
+    { key: "notifications", value: { enabled: true, hour: 19, endpoint: "https://push.example/abc" } },
+    { key: "notifications.asked", value: true },
+    { key: "express.queue", value: [{ game: "cho_noi", score: 120, correct: 12, total: 15, localDate: "2026-02-28" }] },
+    { key: "profile.pendingPatch", value: { dailyGoalMin: 15 } },
+    { key: "sync.poison", value: { evt_1: 2 } },
   ]);
   await d.notes.bulkPut([
     { id: "n1", packCode: "vi-south", targetKind: "concept", targetId: "c_chao", text: "à revoir", createdAt: NOW.toISOString(), updatedAt: NOW.toISOString() },
@@ -82,6 +88,18 @@ describe("emporter son appareil", () => {
     expect(keys).not.toContain("activePack");
     expect(keys).toContain("vi-south:profile");
     expect(keys).toContain("vi-south:guidesRead");
+  });
+
+  it("ce qui attend d'être envoyé d'ici, et l'abonnement push de ce navigateur, ne partent pas", async () => {
+    await seedDevice();
+    const keys = (await buildTransfer(NOW)).tables.kv.map((r) => r.key);
+    // Même raison que l'outbox : rejouer ailleurs compterait deux fois.
+    expect(keys).not.toContain("express.queue");
+    expect(keys).not.toContain("profile.pendingPatch");
+    expect(keys).not.toContain("sync.poison");
+    // Des rappels « activés » que personne n'enverrait, et qu'on ne proposerait plus d'activer.
+    expect(keys).not.toContain("notifications");
+    expect(keys).not.toContain("notifications.asked");
   });
 
   it("le résumé se calcule, langue par langue", async () => {
@@ -162,6 +180,27 @@ describe("reposer sur un autre appareil", () => {
     expect(await db().srsCards.get("c_ba")).toBeUndefined();
     expect(await db().lessonProgress.get("vi-south.u09.l01")).toBeUndefined();
     expect(await db().srsCards.get("c_chao")).toBeDefined();
+  });
+
+  it("reposer son fichier ne déconnecte pas : on arrive souvent avec un compte déjà ouvert", async () => {
+    await seedDevice();
+    const text = JSON.stringify(await buildTransfer(NOW));
+    await db().delete();
+    setDb(new ParloDB(`${dbName}-connecte`));
+    await db().open();
+    // Le geste courant sur un téléphone neuf : on se connecte d'abord, on repose le fichier ensuite.
+    await db().kv.bulkPut([
+      { key: "account", value: { email: "lan@parlo.app" } },
+      { key: "activePack", value: "es" },
+    ]);
+
+    const read = parseTransfer(text);
+    if (!("file" in read)) throw new Error("fichier refusé");
+    await applyTransfer(read.file, "replace");
+
+    expect((await db().kv.get("account"))?.value).toMatchObject({ email: "lan@parlo.app" });
+    // La langue affichée est un choix local : le fichier ne la change pas non plus.
+    expect((await db().kv.get("activePack"))?.value).toBe("es");
   });
 
   it("fusionner ne perd rien : on garde le plus avancé des deux côtés", async () => {

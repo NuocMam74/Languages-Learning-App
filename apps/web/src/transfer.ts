@@ -23,8 +23,11 @@ import { readPrefs, writePrefs, type PrefsValue } from "./prefs.ts";
  *   - la **session de connexion** : un fichier ne peut pas transporter une identité. On se
  *     reconnecte sur le nouvel appareil ; le serveur y renvoie ce qu'il avait. Le fichier, lui,
  *     couvre ce que le serveur n'a pas ;
- *   - la **file d'envoi** (`outbox`) et le **journal de synchronisation** : ce sont des événements
- *     en attente pour *cet* appareil. Les rejouer ailleurs compterait deux fois la même séance ;
+ *   - la **file d'envoi** (`outbox`), le **journal de synchronisation** et tout ce qui attend d'être
+ *     envoyé depuis *cet* appareil (scores du défi express, changement de profil en attente) : les
+ *     rejouer ailleurs compterait deux fois la même séance ;
+ *   - les **rappels** : l'état `notifications` porte l'abonnement push de *ce* navigateur. Sur le
+ *     nouvel appareil, on réactive les rappels — l'heure vient du profil, qui, lui, voyage ;
  *   - la **séance en cours** : elle est liée à une version de contenu et à un instant. On la
  *     recommence, ce n'est pas une perte de progression ;
  *   - les **packs téléchargés** : des dizaines de mégaoctets qui se retéléchargent. Un fichier de
@@ -64,11 +67,31 @@ export interface TransferSummary {
 }
 
 /**
- * Clés `kv` que le transfert laisse sur place. `account` porte l'identité connectée de **cet**
- * appareil : l'importer afficherait un compte sans session derrière. `activePack` est un choix
- * local — on ne change pas la langue affichée sous les pieds de quelqu'un.
+ * Clés `kv` qui restent sur l'appareil — ni emportées, ni écrasées à l'import.
+ *
+ * Deux familles, pour deux raisons :
+ *
+ *   - **une identité, un choix local** : `account` porte la session de **cet** appareil (l'importer
+ *     afficherait un compte sans session derrière) ; `activePack` est la langue affichée, on ne la
+ *     change pas sous les pieds de quelqu'un ;
+ *   - **ce qui attend d'être envoyé, ou ce qui décrit ce navigateur-ci** : même raison que `outbox`
+ *     et `syncLog` — rejouer ailleurs compterait deux fois. `notifications` porte l'abonnement push
+ *     du navigateur d'origine (l'importer montrerait des rappels « activés » que personne
+ *     n'enverra, et empêcherait de les proposer ici) ; `express.queue` des scores en attente ;
+ *     `profile.pendingPatch` un changement de profil pas encore parti ; `leagues.unsynced` le même
+ *     drapeau pour la ligue ; `sync.poison` compte les échecs de lignes d'`outbox` qui, elles, ne
+ *     traversent pas — ses compteurs n'auraient plus rien à désigner.
  */
-const KEPT_LOCAL = new Set(["account", "activePack"]);
+const KEPT_LOCAL = new Set([
+  "account",
+  "activePack",
+  "notifications",
+  "notifications.asked",
+  "express.queue",
+  "profile.pendingPatch",
+  "leagues.unsynced",
+  "sync.poison",
+]);
 
 const packOfKey = (key: string): string => (key.includes(":") ? (key.split(":")[0] ?? "") : "");
 
@@ -197,8 +220,16 @@ export type TransferMode =
  * Les contenus téléchargés ne sont pas touchés : ils se retéléchargeront ou sont déjà là.
  */
 export async function applyTransfer(file: TransferFile, mode: TransferMode = "replace"): Promise<TransferSummary> {
-  if (mode === "replace") await clearLearningData();
   const d = db();
+  if (mode === "replace") {
+    // `clearLearningData` est la déconnexion : elle efface **toutes** les clés `kv` sauf la langue
+    // active — l'identité connectée comprise. Un import n'est pas une déconnexion. Arriver avec un
+    // compte, reposer son fichier et se retrouver déconnecté serait un piège : on repose les clés
+    // que le transfert laisse sur l'appareil (KEPT_LOCAL) telles qu'elles étaient.
+    const kept = (await d.kv.bulkGet([...KEPT_LOCAL])).filter((row): row is KeyValue => row !== undefined);
+    await clearLearningData();
+    if (kept.length > 0) await d.kv.bulkPut(kept);
+  }
 
   await d.transaction("rw", [d.srsCards, d.lessonProgress, d.kv, d.notes, d.favorites], async () => {
     for (const incoming of file.tables.srsCards) {
