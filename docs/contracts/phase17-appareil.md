@@ -32,6 +32,7 @@ récompenses et tenue, fiches conseils lues, records des jeux — plus les préf
 | `outbox`, `syncLog` | Des événements en attente pour **cet** appareil. Les rejouer ailleurs compterait deux fois la même séance. |
 | `snapshot` (séance en cours) | Liée à une version de contenu et à un instant. On la recommence : ce n'est pas une perte de progression. |
 | `packs`, `units`, `offlineUnits` | Des dizaines de mégaoctets qui se retéléchargent. Un fichier de transfert doit pouvoir s'envoyer par message. |
+| `notifications`, `express.queue`, `profile.pendingPatch`, `leagues.unsynced`, `sync.poison` | Ajoutés par le contrat phase25 §2 : l'abonnement push de **ce** navigateur, et ce qui attend d'en partir. Même raison que l'`outbox`. |
 
 Le **résumé** affiché (XP, leçons, mots en révision, notes, ligne par langue) est toujours
 **recalculé** à partir des tables, jamais lu dans le fichier : un fichier ne s'auto-certifie pas.
@@ -59,7 +60,9 @@ même forme, l'un au-dessus de l'autre.
 
 - **Remplacer** — l'appareil repart de ce que dit le fichier. C'est le geste d'un changement
   d'appareil, et c'est le défaut. Il réutilise `clearLearningData`, la même fonction que la
-  déconnexion : les contenus téléchargés et la langue active ne sont pas touchés.
+  déconnexion : les contenus téléchargés et la langue active ne sont pas touchés. Les clés que le
+  fichier laisse sur l'appareil sont reposées telles quelles après l'effacement (contrat phase25
+  §3) — sans quoi reposer son fichier déconnectait.
 - **Fusionner** — on garde, pour chaque mot et chaque leçon, l'état le plus avancé des deux. Les
   cartes passent par `mergeCards`, la résolution de conflit du SRS (ADR 0003) : **un transfert n'est
   qu'une synchronisation faite à la main**, il n'avait pas besoin d'une règle à lui. Une leçon garde
