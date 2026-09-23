@@ -334,12 +334,21 @@ function CaPheStandalone({ completed, bestChip, ...props }: StandaloneProps & { 
   );
 }
 
-/** Concepts des leçons terminées (ordre du parcours), sinon ceux de la première leçon. */
+/**
+ * Concepts des leçons terminées (ordre du parcours), sinon ceux de la première leçon **qui présente
+ * des mots**.
+ *
+ * Depuis les bases (contrat phase26 §2), la première leçon du parcours n'enseigne que des lettres
+ * (concepts `sound`, sans enregistrement) : prise telle quelle, elle laissait les jeux d'un nouvel
+ * apprenant sans rien à jouer (« pas assez de mots avec un audio natif »).
+ */
 export function gamePool(content: ContentIndex, completed: ReadonlySet<string>): { concepts: Concept[]; fromCompleted: boolean } {
   const lessonIds = availableLessons(content);
   const done = lessonIds.filter((id) => completed.has(id));
   const fromCompleted = done.length > 0;
-  return { concepts: conceptsOf(content, fromCompleted ? done : lessonIds.slice(0, 1)), fromCompleted };
+  if (fromCompleted) return { concepts: conceptsOf(content, done), fromCompleted };
+  const first = lessonIds.find((id) => conceptsOf(content, [id]).some((c) => c.type === "word")) ?? lessonIds[0];
+  return { concepts: conceptsOf(content, first ? [first] : []), fromCompleted };
 }
 
 /**
