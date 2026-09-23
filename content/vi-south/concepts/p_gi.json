@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_gi",
+  "type": "sound",
+  "vi": "gi",
+  "gloss": {
+    "fr": "y aussi au Sud, écrit gi",
+    "en": "y too in the South, spelled gi"
+  },
+  "audio": [],
+  "reviewed": false
+}

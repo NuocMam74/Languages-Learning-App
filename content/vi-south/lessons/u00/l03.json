@@ -1,0 +1,256 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l03",
+  "unit": "vi-south.u00",
+  "title": {
+    "fr": "La syllabe et les six tons",
+    "en": "The syllable and its six tones"
+  },
+  "goal": {
+    "fr": "Reconnaître les accents des tons et entendre ma, mà, má, mả et mạ.",
+    "en": "Recognise the tone marks and hear ma, mà, má, mả and mạ."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u00.l02"
+  ],
+  "concepts": [
+    "t_ngang",
+    "t_huyen",
+    "t_sac",
+    "t_hoi",
+    "t_nga",
+    "t_nang",
+    "c_ma_ghost",
+    "c_ma_but",
+    "c_ma_mom",
+    "c_ma_tomb",
+    "c_ma_seedling",
+    "p_syl_tha",
+    "p_syl_pha"
+  ],
+  "steps": [
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "t_ngang",
+        "t_huyen",
+        "t_sac",
+        "t_hoi",
+        "t_nga",
+        "t_nang"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_ghost",
+      "distractors": [
+        "má",
+        "mà"
+      ],
+      "explain": {
+        "fr": "ma : pas d'accent, ton ngang, la voix reste plate.",
+        "en": "ma: no mark, ngang tone, the voice stays level."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "ma",
+        "mạ"
+      ],
+      "explain": {
+        "fr": "má : accent aigu, ton sắc, la voix monte.",
+        "en": "má: acute mark, sắc tone, the voice rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_but",
+      "distractors": [
+        "má",
+        "mả"
+      ],
+      "explain": {
+        "fr": "mà : accent grave, ton huyền, la voix descend doucement.",
+        "en": "mà: grave mark, huyền tone, the voice falls gently."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_ma_ghost",
+        "c_ma_but",
+        "c_ma_mom",
+        "c_ma_tomb",
+        "c_ma_seedling"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_tomb",
+      "distractors": [
+        "ma",
+        "mạ"
+      ],
+      "explain": {
+        "fr": "mả : ton hỏi, la voix plonge puis remonte. Au Sud, ngã sonne pareil.",
+        "en": "mả: hỏi tone, the voice dips then rises. In the South, ngã sounds the same."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_seedling",
+      "distractors": [
+        "mà",
+        "má"
+      ],
+      "explain": {
+        "fr": "mạ : point sous la voyelle, ton nặng, bas et court.",
+        "en": "mạ: dot under the vowel, nặng tone, low and short."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "mà",
+        "mả"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_ghost",
+      "distractors": [
+        "mạ",
+        "mả"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "t_ngang",
+        "t_huyen",
+        "t_sac",
+        "c_ma_ghost",
+        "c_ma_but",
+        "c_ma_mom"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_but",
+      "distractors": [
+        "ma",
+        "mạ"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "t_hoi",
+        "t_nga",
+        "t_nang",
+        "c_ma_tomb",
+        "c_ma_seedling",
+        "c_ma_mom"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "t_ngang",
+      "distractors": [
+        "hỏi",
+        "ngã",
+        "sắc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "t_huyen",
+      "distractors": [
+        "ngang",
+        "hỏi",
+        "sắc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "t_sac",
+      "distractors": [
+        "nặng",
+        "ngang",
+        "ngã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "t_hoi",
+      "distractors": [
+        "ngã",
+        "sắc",
+        "ngang"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "t_nga",
+      "distractors": [
+        "nga",
+        "nặng",
+        "sắc"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "t_nang",
+      "distractors": [
+        "huyền",
+        "hỏi",
+        "ngã"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_tha",
+      "distractors": [
+        "kh",
+        "ê",
+        "tr"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_pha",
+      "distractors": [
+        "xa",
+        "nh",
+        "đ"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "t_ngang",
+      "t_huyen",
+      "t_sac",
+      "t_hoi",
+      "t_nga",
+      "t_nang",
+      "c_ma_ghost",
+      "c_ma_but",
+      "c_ma_mom",
+      "c_ma_tomb",
+      "c_ma_seedling"
+    ]
+  },
+  "guides": [
+    "g_syllabe_tons"
+  ],
+  "reviewed": false
+}

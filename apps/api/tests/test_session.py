@@ -43,8 +43,9 @@ def test_session_next_for_fresh_user(client: TestClient, auth: dict[str, str]) -
     assert plan == {
         "courseCode": "vi-south",
         "targetMinutes": 10,
-        "blocks": [{"kind": "new", "lessonId": "vi-south.u01.l01"}, {"kind": "recap"}],
-        "estimatedSeconds": 20 + PACK.lessons["vi-south.u01.l01"].estimated_minutes * 60,
+        # Les bases (u00, contrat phase26 §2) ouvrent le parcours.
+        "blocks": [{"kind": "new", "lessonId": "vi-south.u00.l01"}, {"kind": "recap"}],
+        "estimatedSeconds": 20 + PACK.lessons["vi-south.u00.l01"].estimated_minutes * 60,
     }
 
 
@@ -67,17 +68,17 @@ def test_session_next_uses_progress_cards_and_goal(client: TestClient, auth: dic
         json={
             "events": [
                 event(
-                    "lesson_completed", {"sessionId": "s", "lessonId": "vi-south.u01.l01", "score": 1, "durationMs": 1}
+                    "lesson_completed", {"sessionId": "s", "lessonId": "vi-south.u00.l01", "score": 1, "durationMs": 1}
                 ),
                 event("srs_card_updated", {"card": due_card}),
             ]
         },
     )
-    lesson_seconds = PACK.lessons["vi-south.u01.l02"].estimated_minutes * 60
+    lesson_seconds = PACK.lessons["vi-south.u00.l02"].estimated_minutes * 60
     plan = client.get("/me/session/next", headers=auth).json()
     assert plan["blocks"] == [
         {"kind": "review", "conceptIds": ["c_ma_mom"], "deferred": 0},
-        {"kind": "new", "lessonId": "vi-south.u01.l02"},
+        {"kind": "new", "lessonId": "vi-south.u00.l02"},
         {"kind": "recap"},
     ]
     assert plan["estimatedSeconds"] == 20 + 15 + lesson_seconds
@@ -158,8 +159,8 @@ def test_next_lesson_follows_prerequisites() -> None:
     def done(ids: set[str]) -> ProgressState:
         return progress_from(PACK, dict.fromkeys(ids, 1.0))
 
-    assert next_lesson(PACK, PACK.lessons, done(set()), None).id == "vi-south.u01.l01"  # type: ignore[union-attr]
-    assert next_lesson(PACK, PACK.lessons, done({"vi-south.u01.l01"}), "family").id == "vi-south.u01.l02"  # type: ignore[union-attr]
+    assert next_lesson(PACK, PACK.lessons, done(set()), None).id == "vi-south.u00.l01"  # type: ignore[union-attr]
+    assert next_lesson(PACK, PACK.lessons, done({"vi-south.u00.l01"}), "family").id == "vi-south.u00.l02"  # type: ignore[union-attr]
     assert next_lesson(PACK, PACK.lessons, done(set(PACK.lessons)), None) is None
 
 

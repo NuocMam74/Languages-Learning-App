@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_x",
+  "type": "sound",
+  "vi": "x",
+  "gloss": {
+    "fr": "s, comme en français",
+    "en": "s, as in 'see'"
+  },
+  "audio": [],
+  "reviewed": false
+}

@@ -160,7 +160,17 @@ function ChoiceView({ exercise, content, onAnswer, locked }: ViewProps<ChoiceTyp
   let stage: ReactNode = null;
   const isTone = exercise.type === "tone_identify" || exercise.type === "tone_minimal_pair";
 
-  switch (exercise.type) {
+  // À lire plutôt qu'à écouter (test de niveau à l'écrit, contrat phase26 §6).
+  const read = exercise.read;
+  if (read) {
+    if ("vi" in read) {
+      prompt = t(isTone ? "ex.read.tone" : "ex.read.meaning");
+      stage = <Vi size="vi-xl" className="text-center">{read.vi}</Vi>;
+    } else {
+      prompt = t("ex.read.word");
+      stage = <p className="text-center font-serif text-2xl text-balance">{l(read.gloss)}</p>;
+    }
+  } else switch (exercise.type) {
     case "listen_pick_image":
       prompt = t("ex.listenPickImage");
       stage = <AudioButton play={(speed) => playConcept(content, exercise.audio, { speed, allowTts: ttsAllowed(false) })} transcript={exercise.audio.vi} />;

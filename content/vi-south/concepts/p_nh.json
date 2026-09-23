@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_nh",
+  "type": "sound",
+  "vi": "nh",
+  "gloss": {
+    "fr": "gn, comme dans « montagne »",
+    "en": "ny, as in 'canyon'"
+  },
+  "audio": [],
+  "reviewed": false
+}

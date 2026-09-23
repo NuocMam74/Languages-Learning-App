@@ -117,7 +117,7 @@ def test_student_progress(client: TestClient) -> None:
     now = datetime.now(UTC)
 
     post(client, learner, [session_completed("a", now.date().isoformat(), xp=40)])
-    post(client, learner, [lesson_completed(f"{PACK}.u01.l01"), lesson_completed(f"{PACK}.u01.l02")])
+    post(client, learner, [lesson_completed(f"{PACK}.u00.l01"), lesson_completed(f"{PACK}.u00.l02")])
     events = [answer("c_ma_mom", False, now - timedelta(minutes=i)) for i in range(3)]
     events += [answer("c_ma_mom", True, now - timedelta(minutes=5))]
     events += [answer("c_ma_ghost", False, now - timedelta(minutes=6)), answer("c_ma_ghost", True, now)]
@@ -144,7 +144,7 @@ def test_student_progress(client: TestClient) -> None:
     assert student["streak"] == 1
     assert student["xpWeek"] >= 40
     assert student["lessonsCompleted"] == 2
-    assert student["currentLessonId"] == f"{PACK}.u01.l03"
+    assert student["currentLessonId"] == f"{PACK}.u00.l03"
     assert student["weakConcepts"] == [{"id": "c_ma_mom", "vi": "má", "errorRate": 0.75}]
     assert student["exams"] == [{"level": "A0", "passed": True, "global": 0.84}]
     assert set(student) == {

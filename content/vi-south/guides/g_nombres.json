@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_nombres",
+  "kind": "grammar",
+  "order": 4,
+  "title": {
+    "fr": "Compter de 0 à 100",
+    "en": "Counting from 0 to 100"
+  },
+  "summary": {
+    "fr": "Les dix chiffres, puis tous les nombres jusqu'à cent, avec les trois pièges du Sud.",
+    "en": "The ten digits, then every number up to a hundred, with the three Southern traps."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "De 0 à 10",
+        "en": "From 0 to 10"
+      },
+      "body": {
+        "fr": "không (0), một (1), hai (2), ba (3), bốn (4), năm (5), sáu (6), bảy (7), tám (8), chín (9), mười (10).",
+        "en": "không (0), một (1), hai (2), ba (3), bốn (4), năm (5), sáu (6), bảy (7), tám (8), chín (9), mười (10)."
+      }
+    },
+    {
+      "heading": {
+        "fr": "De 11 à 19 : mười, puis le chiffre",
+        "en": "From 11 to 19: mười, then the digit"
+      },
+      "body": {
+        "fr": "11 : mười một. 12 : mười hai. Piège : après une dizaine, 5 ne se dit plus năm mais lăm. 15 : mười lăm.",
+        "en": "11: mười một. 12: mười hai. Trap: after a tens word, 5 is no longer năm but lăm. 15: mười lăm."
+      },
+      "examples": [
+        {
+          "vi": "mười một",
+          "fr": "11",
+          "en": "11"
+        },
+        {
+          "vi": "mười lăm",
+          "fr": "15",
+          "en": "15"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Les dizaines : le chiffre, puis mươi",
+        "en": "Tens: the digit, then mươi"
+      },
+      "body": {
+        "fr": "mươi, sans accent, veut dire « dizaine ». 20 : hai mươi. 30 : ba mươi. Piège : après une dizaine, 1 se dit mốt. 21 : hai mươi mốt. 25 : hai mươi lăm. À l'oral, le Sud avale souvent mươi : hai mốt pour 21.",
+        "en": "mươi, without a mark, means 'tens'. 20: hai mươi. 30: ba mươi. Trap: after a tens word, 1 becomes mốt. 21: hai mươi mốt. 25: hai mươi lăm. In speech, the South often drops mươi: hai mốt for 21."
+      },
+      "examples": [
+        {
+          "vi": "hai mươi",
+          "fr": "20",
+          "en": "20"
+        },
+        {
+          "vi": "hai mươi mốt",
+          "fr": "21",
+          "en": "21"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Cent",
+        "en": "A hundred"
+      },
+      "body": {
+        "fr": "100 : một trăm. 200 : hai trăm. Les prix, les âges et les numéros de téléphone viendront plus tard, dans le thème des chiffres.",
+        "en": "100: một trăm. 200: hai trăm. Prices, ages and phone numbers come later, in the numbers theme."
+      },
+      "examples": [
+        {
+          "vi": "một trăm",
+          "fr": "100",
+          "en": "100"
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "mười (10) descend, mươi (dizaine) reste plat : un accent de différence.",
+      "en": "mười (10) falls, mươi (tens) stays level: one mark apart."
+    },
+    {
+      "fr": "10 se dit mười, jamais một mươi.",
+      "en": "10 is mười, never một mươi."
+    }
+  ],
+  "reviewed": false
+}

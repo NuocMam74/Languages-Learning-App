@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_o",
+  "type": "sound",
+  "vi": "o",
+  "gloss": {
+    "fr": "o ouvert, comme dans « porte »",
+    "en": "open o, as in 'law'"
+  },
+  "audio": [],
+  "reviewed": false
+}

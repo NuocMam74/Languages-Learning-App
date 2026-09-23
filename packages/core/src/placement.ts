@@ -96,9 +96,35 @@ export function playablePlacement(content: ContentIndex, spec: PlacementSpec, op
   return items.length >= PLACEMENT_MIN_PLAYABLE_ITEMS ? { ...spec, items } : null;
 }
 
-export function buildPlacementExercise(content: ContentIndex, item: PlacementItem, seed: string, stepIndex = 0): Exercise {
+/**
+ * Comment le test se passe : à l'écoute quand assez d'items ont leur voix native, **à l'écrit**
+ * sinon (contrat phase26 §6).
+ *
+ * Sans enregistrement, le test était simplement sauté, et tout le monde commençait au tout
+ * premier niveau — y compris qui lisait déjà le vietnamien. Un test d'écoute muet reste exclu
+ * (il se répondait au hasard, voir `isPlacementItemPlayable`) ; un test **de lecture**, lui, mesure
+ * quelque chose de vrai : lire un mot et en dire le sens, retrouver un mot à partir de son sens,
+ * reconnaître le ton que porte un accent. Mêmes items, mêmes seuils, même point d'entrée.
+ */
+export type PlacementMode = "listening" | "reading";
+
+export interface PlacementPlan {
+  spec: PlacementSpec;
+  mode: PlacementMode;
+}
+
+export function placementPlan(content: ContentIndex, spec: PlacementSpec, options: PlayableOptions = {}): PlacementPlan | null {
+  const listening = playablePlacement(content, spec, options);
+  if (listening) return { spec: listening, mode: "listening" };
+  // À l'écrit, un item n'a besoin que de son concept (et de ses leurres pour les choix).
+  const items = spec.items.filter((i) => content.concepts.has(i.concept) && (i.distractors ?? []).every((d) => content.concepts.has(d)));
+  return items.length >= PLACEMENT_MIN_PLAYABLE_ITEMS ? { spec: { ...spec, items }, mode: "reading" } : null;
+}
+
+export function buildPlacementExercise(content: ContentIndex, item: PlacementItem, seed: string, stepIndex = 0, mode: PlacementMode = "listening"): Exercise {
   const target = content.concepts.get(item.concept);
   if (!target) throw new ContentError(`Placement ${item.id} : concept inconnu ${item.concept}`);
+  if (mode === "reading") return readingExercise(content, item, seed, stepIndex);
   const rand = seededRandom(`${seed}:${item.id}`);
 
   switch (item.skill) {
@@ -135,6 +161,34 @@ export function buildPlacementExercise(content: ContentIndex, item: PlacementIte
       return {
         type: "listen_pick_text", stepIndex, conceptIds: [target.id], explain: target.note ?? null,
         audio: target, options, answerId: `v${picks.indexOf(target)}`,
+      };
+    }
+  }
+}
+
+/**
+ * Le même item, à lire. Ton : le mot écrit, dont on nomme le ton d'après son accent. Compréhension :
+ * le mot écrit, dont on choisit le sens. Vocabulaire : le sens, dont on choisit le mot.
+ */
+function readingExercise(content: ContentIndex, item: PlacementItem, seed: string, stepIndex: number): Exercise {
+  const target = content.concepts.get(item.concept)!;
+  const rand = seededRandom(`${seed}:${item.id}:read`);
+  const others = (item.distractors ?? []).flatMap((id) => content.concepts.get(id) ?? []);
+  switch (item.skill) {
+    case "tone":
+      return { ...buildReviewExercise(content, item.concept, seed, "tone_identify", { stepIndex, allowTtsTone: true }), read: { vi: target.vi } };
+    case "comprehension": {
+      const picks = shuffle([target, ...others], rand);
+      return {
+        type: "listen_pick_text", stepIndex, conceptIds: [target.id], explain: target.note ?? null, read: { vi: target.vi },
+        audio: target, options: picks.map((c, i) => ({ id: `g${i}`, label: c.gloss })), answerId: `g${picks.indexOf(target)}`,
+      };
+    }
+    case "vocab": {
+      const picks = shuffle([target, ...others], rand);
+      return {
+        type: "listen_pick_text", stepIndex, conceptIds: [target.id], explain: target.note ?? null, read: { gloss: target.gloss },
+        audio: target, options: picks.map((c, i) => ({ id: `v${i}`, text: c.vi })), answerId: `v${picks.indexOf(target)}`,
       };
     }
   }
@@ -177,7 +231,7 @@ export function scorePlacement(spec: PlacementSpec, answers: readonly PlacementA
 }
 
 /** Unité d'entrée par niveau estimé 0..3 (contrat phase5 §2) : numéro d'unité cible. */
-export const PLACEMENT_ENTRY_UNITS = [1, 3, 5, 7] as const;
+export const PLACEMENT_ENTRY_UNITS = [0, 3, 5, 7] as const;
 
 /** Numéro d'une unité (`vi-south.u05` → 5), sinon sa position (1-based) dans le cursus. */
 function unitNumber(unitId: string, position: number): number {
@@ -186,13 +240,13 @@ function unitNumber(unitId: string, position: number): number {
 }
 
 /**
- * Point d'entrée : niveau 0..3 → début de u01 / u03 / u05 / u07, première unité publiée (avec
- * leçons) de numéro ≥ cible. Aucune unité assez loin : la dernière unité publiée. Les unités
+ * Point d'entrée : niveau 0..3 → début de u00 (les bases, contrat phase26 §2) / u03 / u05 / u07,
+ * première unité publiée (avec leçons) de numéro ≥ cible. Aucune unité assez loin : la dernière unité publiée. Les unités
  * antérieures sont « sautées » (voir lessonsBefore). `path` est conservé pour compatibilité.
  */
 export function resolveEntryLesson(content: ContentIndex, levelEstimate: number, _path: string | null = null): Lesson | null {
   const level = Math.max(0, Math.min(PLACEMENT_ENTRY_UNITS.length - 1, Math.floor(levelEstimate)));
-  const target = PLACEMENT_ENTRY_UNITS[level] ?? 1;
+  const target = PLACEMENT_ENTRY_UNITS[level] ?? 0;
   const units = content.curriculum.units
     .map((unit, position) => ({ unit, number: unitNumber(unit.id, position), first: unit.lessons.map((id) => content.lessons.get(id)).find((l) => l !== undefined) }))
     .filter((u): u is typeof u & { first: Lesson } => u.unit.status === "available" && u.first !== undefined);

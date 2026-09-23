@@ -6,8 +6,8 @@ import {
   type ExerciseResponse,
   type Lesson,
   type PlacementAnswer,
+  type PlacementPlan,
   type PlacementResult,
-  type PlacementSpec,
 } from "@parlo/core";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router";
@@ -16,7 +16,7 @@ import { Button, Screen } from "../components/ui.tsx";
 import { Card, Diploma, EmptyState, Icon, Illustration, ProgressBar, ProgressRing, Skeleton } from "../design/index.ts";
 import { l, t, type MessageKey } from "../i18n/index.ts";
 import { savePlacement } from "../learner.ts";
-import { playablePlacementFor } from "../packs/placement.ts";
+import { placementPlanFor } from "../packs/placement.ts";
 import { usePrefs } from "../prefs.ts";
 
 
@@ -41,8 +41,10 @@ type Stage = { kind: "intro" } | { kind: "test"; startedAt: number } | { kind: "
  */
 export default function Placement({ content }: { content: ContentIndex }) {
   const navigate = useNavigate();
-  // Items jouables seulement (tons sans audio natif retirés) ; moins de 6 → placement passé (contrat phase5 §1).
-  const [spec] = useState<PlacementSpec | null>(() => playablePlacementFor(content));
+  // À l'écoute si les voix natives sont là, à l'écrit sinon (contrat phase26 §6).
+  const [plan] = useState<PlacementPlan | null>(() => placementPlanFor(content));
+  const spec = plan?.spec ?? null;
+  const mode = plan?.mode ?? "listening";
   const [stage, setStage] = useState<Stage>({ kind: "intro" });
   const [answers, setAnswers] = useState<PlacementAnswer[]>([]);
   const [remaining, setRemaining] = useState(0);
@@ -84,7 +86,7 @@ export default function Placement({ content }: { content: ContentIndex }) {
   }, [stage, spec, answers]);
 
   const item = spec && stage.kind === "test" ? nextPlacementItem(spec, answers) : null;
-  const exercise = useMemo(() => (item ? buildPlacementExercise(content, item, seed.current, answers.length) : null), [item, content, answers.length]);
+  const exercise = useMemo(() => (item ? buildPlacementExercise(content, item, seed.current, answers.length, mode) : null), [item, content, answers.length, mode]);
 
   if (!spec) {
     return (
@@ -115,8 +117,10 @@ export default function Placement({ content }: { content: ContentIndex }) {
           <h1 className="font-serif text-2xl text-balance">{t("placement.title")}</h1>
           <p className="text-lg text-balance">{t("placement.body", { n: spec.slots.length, s: spec.durationSeconds })}</p>
           <Card tone="quiet" className="flex items-start gap-3">
-            <Icon name="sound" size={20} className="mt-0.5 shrink-0 text-ngoc" />
-            <p className="min-w-0 flex-1 text-sm text-phu-sa">{t("placement.audioNote")}</p>
+            <Icon name={mode === "reading" ? "book" : "sound"} size={20} className="mt-0.5 shrink-0 text-ngoc" />
+            <p className="min-w-0 flex-1 text-sm text-phu-sa" data-testid="placement-mode" data-mode={mode}>
+              {t(mode === "reading" ? "placement.readingNote" : "placement.audioNote")}
+            </p>
           </Card>
         </div>
       </Screen>

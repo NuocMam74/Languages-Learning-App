@@ -1,0 +1,256 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l05",
+  "unit": "vi-south.u00",
+  "title": {
+    "fr": "Il, elle, nous, ils",
+    "en": "He, she, we, they"
+  },
+  "goal": {
+    "fr": "Parler de quelqu'un au Sud, et dire « nous » et « ils ».",
+    "en": "Talk about someone in the South, and say 'we' and 'they'."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u00.l04"
+  ],
+  "concepts": [
+    "c_anh_he",
+    "c_chi_she",
+    "c_ong_he",
+    "c_ba_she",
+    "c_ho_they",
+    "c_chung_toi",
+    "s_tui_minh",
+    "c_minh",
+    "c_anh",
+    "c_chi",
+    "c_ong",
+    "c_ba_grandma",
+    "c_chu"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_he",
+      "distractors": [
+        "anh",
+        "em"
+      ],
+      "explain": {
+        "fr": "ảnh, avec un hỏi : « lui ». anh, sans accent : « toi ».",
+        "en": "ảnh, with a hỏi: 'him'. anh, no mark: 'you'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi_she",
+      "distractors": [
+        "chị",
+        "cô"
+      ],
+      "explain": {
+        "fr": "chỉ, avec un hỏi : « elle ». chị, avec un nặng : « toi ».",
+        "en": "chỉ, with a hỏi: 'her'. chị, with a nặng: 'you'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_he",
+      "distractors": [
+        "ông",
+        "chú"
+      ],
+      "explain": {
+        "fr": "ổng : « lui », pour un homme âgé.",
+        "en": "ổng: 'him', for an elderly man."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_she",
+      "distractors": [
+        "bà",
+        "chị"
+      ],
+      "explain": {
+        "fr": "bả : « elle », pour une femme âgée.",
+        "en": "bả: 'her', for an elderly woman."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_anh_he",
+        "c_chi_she",
+        "c_ong_he",
+        "c_ba_she",
+        "c_anh",
+        "c_chi"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_they",
+      "distractors": [
+        "tôi",
+        "em"
+      ],
+      "explain": {
+        "fr": "họ : « ils » ou « elles ».",
+        "en": "họ: 'they'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chung_toi",
+      "distractors": [
+        "tụi mình",
+        "tôi"
+      ],
+      "explain": {
+        "fr": "chúng tôi : « nous », sans la personne à qui tu parles.",
+        "en": "chúng tôi: 'we', not including the listener."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tui_minh",
+      "distractors": [
+        "chúng tôi",
+        "mình"
+      ],
+      "explain": {
+        "fr": "tụi mình : « nous », toi compris, entre proches.",
+        "en": "tụi mình: 'we', including you, between friends."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_minh",
+      "distractors": [
+        "tôi",
+        "tui"
+      ],
+      "explain": {
+        "fr": "mình : « moi » ou « nous », sur un ton chaleureux.",
+        "en": "mình: 'me' or 'us', in a warm tone."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_ho_they",
+        "c_chung_toi",
+        "s_tui_minh",
+        "c_minh",
+        "c_ong_he",
+        "c_ba_she"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh",
+      "distractors": [
+        "ảnh",
+        "em"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "chỉ",
+        "cô"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong",
+      "distractors": [
+        "ổng",
+        "chú"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "bả",
+        "chị"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_ong",
+        "c_ong_he",
+        "c_ba_grandma",
+        "c_ba_she",
+        "c_ho_they",
+        "c_chung_toi"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_anh",
+      "distractors": [
+        "c_chi",
+        "c_chu",
+        "c_ong"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chi",
+      "distractors": [
+        "c_co_aunt",
+        "c_em",
+        "c_ma_mom"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ong",
+      "distractors": [
+        "c_chu",
+        "c_ba_grandma",
+        "c_em"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "c_em",
+        "c_co_aunt",
+        "c_chi"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu",
+      "distractors": [
+        "chủ",
+        "mà",
+        "chỉ"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_anh_he",
+      "c_chi_she",
+      "c_ong_he",
+      "c_ba_she",
+      "c_ho_they",
+      "c_chung_toi",
+      "s_tui_minh",
+      "c_minh"
+    ]
+  },
+  "reviewed": false
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "t_nang",
+  "type": "tone",
+  "vi": "nặng",
+  "gloss": {
+    "fr": "ton bas, court, qui tombe (ạ)",
+    "en": "low, short, falling tone (ạ)"
+  },
+  "audio": [],
+  "reviewed": false
+}

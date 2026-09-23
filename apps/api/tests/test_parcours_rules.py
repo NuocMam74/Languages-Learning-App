@@ -76,7 +76,8 @@ def test_intra_unit_prerequisites_still_apply(tmp_path: Path) -> None:
 
 
 def test_placement_entry_mapping_real_curriculum() -> None:
-    expected = {0: "vi-south.u01", 1: "vi-south.u03", 2: "vi-south.u05", 3: "vi-south.u07"}
+    # Niveau 0 : les bases (u00, contrat phase26 §2).
+    expected = {0: "vi-south.u00", 1: "vi-south.u03", 2: "vi-south.u05", 3: "vi-south.u07"}
     for level, unit_id in expected.items():
         entry = progression.resolve_entry_lesson(VI, level)
         assert entry is not None and entry.unit == unit_id
@@ -84,8 +85,8 @@ def test_placement_entry_mapping_real_curriculum() -> None:
     entry = progression.resolve_entry_lesson(VI, 2)
     assert entry is not None
     s = state(entry=entry.id)
-    # Leçons antérieures sautées : terminées et réussies ; u01 à u04 réussies, u05 proposée.
-    assert progression.passed_units(VI, s) >= {"vi-south.u01", "vi-south.u02", "vi-south.u03", "vi-south.u04"}
+    # Leçons antérieures sautées : terminées et réussies ; u00 à u04 réussies, u05 proposée.
+    assert progression.passed_units(VI, s) >= {"vi-south.u00", "vi-south.u01", "vi-south.u02", "vi-south.u03", "vi-south.u04"}
     assert "vi-south.u05" not in progression.passed_units(VI, s)
     proposed = progression.next_lesson(VI, VI.lessons, s, None)
     assert proposed is not None and proposed.unit == "vi-south.u05"

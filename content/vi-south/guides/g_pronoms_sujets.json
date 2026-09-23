@@ -1,0 +1,114 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_pronoms_sujets",
+  "kind": "grammar",
+  "order": 3,
+  "title": {
+    "fr": "Je, tu, il : les pronoms sujets",
+    "en": "I, you, he: subject pronouns"
+  },
+  "summary": {
+    "fr": "Qui parle à qui : les mots pour dire je, tu, il, elle, nous et ils.",
+    "en": "Who speaks to whom: the words for I, you, he, she, we and they."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Je : tôi, tui",
+        "en": "I: tôi, tui"
+      },
+      "body": {
+        "fr": "tôi : « je », neutre et poli, toujours juste. tui : le « je » du Sud, entre proches.",
+        "en": "tôi: 'I', neutral and polite, always correct. tui: the Southern 'I', between friends."
+      },
+      "examples": [
+        {
+          "vi": "tôi",
+          "fr": "je (neutre)",
+          "en": "I (neutral)"
+        },
+        {
+          "vi": "tui",
+          "fr": "je (entre proches, Sud)",
+          "en": "I (casual, South)"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Tu : un mot de famille",
+        "en": "You: a family word"
+      },
+      "body": {
+        "fr": "Le vietnamien n'a pas de « tu » passe-partout : on appelle l'autre selon son âge. anh : un homme un peu plus âgé que toi. chị : une femme un peu plus âgée. em : quelqu'un de plus jeune. bạn : quelqu'un de ton âge. cô et chú : l'âge de tes parents. ông et bà : une personne âgée.",
+        "en": "Vietnamese has no all-purpose 'you': you address people by age. anh: a slightly older man. chị: a slightly older woman. em: someone younger. bạn: someone your age. cô and chú: your parents' age. ông and bà: an elderly person."
+      },
+      "examples": [
+        {
+          "vi": "anh",
+          "fr": "homme un peu plus âgé",
+          "en": "slightly older man"
+        },
+        {
+          "vi": "chị",
+          "fr": "femme un peu plus âgée",
+          "en": "slightly older woman"
+        },
+        {
+          "vi": "em",
+          "fr": "plus jeune que toi",
+          "en": "younger than you"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Le même mot pour je et pour tu",
+        "en": "The same word for I and you"
+      },
+      "body": {
+        "fr": "Face à anh ou chị, tu parles de toi avec em. Face à plus jeune, tu parles de toi avec anh ou chị. Chacun prend le mot qui lui revient.",
+        "en": "Talking to anh or chị, you call yourself em. Talking to someone younger, you call yourself anh or chị. Each person takes the word that fits them."
+      }
+    },
+    {
+      "heading": {
+        "fr": "Il, elle : un ton qui change tout",
+        "en": "He, she: a tone that changes everything"
+      },
+      "body": {
+        "fr": "Au Sud, on dit « il » ou « elle » en posant un hỏi sur le mot de famille : anh devient ảnh (lui), chị devient chỉ (elle), ông devient ổng, bà devient bả. Pour « ils » ou « elles » : họ.",
+        "en": "In the South, you say 'he' or 'she' by putting a hỏi on the family word: anh becomes ảnh (him), chị becomes chỉ (her), ông becomes ổng, bà becomes bả. For 'they': họ."
+      },
+      "examples": [
+        {
+          "vi": "anh → ảnh",
+          "fr": "toi (homme plus âgé) → lui",
+          "en": "you (older man) → him"
+        },
+        {
+          "vi": "chị → chỉ",
+          "fr": "toi (femme plus âgée) → elle",
+          "en": "you (older woman) → her"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Nous",
+        "en": "We"
+      },
+      "body": {
+        "fr": "chúng tôi : nous, sans la personne à qui tu parles. tụi mình : nous, toi compris, entre proches. mình seul : moi ou nous, sur un ton chaleureux.",
+        "en": "chúng tôi: we, not including the listener. tụi mình: we, including you, between friends. mình alone: me or us, in a warm tone."
+      }
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Dire tôi à un ami, c'est correct mais distant : entre proches, le Sud dit tui ou mình.",
+      "en": "Saying tôi to a friend is correct but distant: between friends, the South says tui or mình."
+    }
+  ],
+  "reviewed": false
+}

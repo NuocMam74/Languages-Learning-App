@@ -1,0 +1,293 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l02",
+  "unit": "vi-south.u00",
+  "title": {
+    "fr": "Les consonnes qui surprennent",
+    "en": "Surprising consonants"
+  },
+  "goal": {
+    "fr": "Lire đ, d, x, ch, tr, nh, ng, kh, ph et th comme au Sud.",
+    "en": "Read đ, d, x, ch, tr, nh, ng, kh, ph and th the Southern way."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u00.l01"
+  ],
+  "concepts": [
+    "p_dd",
+    "p_d",
+    "p_gi",
+    "p_x",
+    "p_ch",
+    "p_tr",
+    "p_nh",
+    "p_ng",
+    "p_kh",
+    "p_ph",
+    "p_th",
+    "p_syl_dda",
+    "p_syl_da",
+    "p_syl_xa",
+    "p_syl_cha",
+    "p_syl_tra",
+    "p_syl_nha",
+    "p_syl_nga",
+    "p_syl_kha",
+    "p_syl_pha",
+    "p_syl_tha"
+  ],
+  "steps": [
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_dd",
+        "p_d",
+        "p_x",
+        "p_ch",
+        "p_tr",
+        "p_nh"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_dda",
+      "distractors": [
+        "da",
+        "tha"
+      ],
+      "explain": {
+        "fr": "đ barré se dit d. d sans barre se dit « y » au Sud.",
+        "en": "đ with a bar is d. d without a bar is 'y' in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_da",
+      "distractors": [
+        "đa",
+        "nha"
+      ],
+      "explain": {
+        "fr": "da se dit « ya » : d sans barre, c'est « y » au Sud.",
+        "en": "da sounds like 'ya': d without a bar is 'y' in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_xa",
+      "distractors": [
+        "cha",
+        "kha"
+      ],
+      "explain": {
+        "fr": "x se dit s, jamais « ks ».",
+        "en": "x is said s, never 'ks'."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_gi",
+        "p_ng",
+        "p_kh",
+        "p_ph",
+        "p_th",
+        "p_x"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_cha",
+      "distractors": [
+        "xa",
+        "tha"
+      ],
+      "explain": {
+        "fr": "ch : un « tch » léger.",
+        "en": "ch: a light 'ch'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_tra",
+      "distractors": [
+        "đa",
+        "pha"
+      ],
+      "explain": {
+        "fr": "tr : « tch », langue recourbée vers l'arrière.",
+        "en": "tr: 'ch' with the tongue curled back."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_nha",
+      "distractors": [
+        "nga",
+        "da"
+      ],
+      "explain": {
+        "fr": "nh : le « gn » de « montagne ».",
+        "en": "nh: the 'ny' of 'canyon'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_nga",
+      "distractors": [
+        "nha",
+        "kha"
+      ],
+      "explain": {
+        "fr": "ng se dit même en début de mot : laisse le son passer par le nez.",
+        "en": "ng is said even at the start of a word: let the sound go through the nose."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_syl_dda",
+        "p_syl_da",
+        "p_syl_xa",
+        "p_syl_cha",
+        "p_syl_tra",
+        "p_syl_nha"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_kha",
+      "distractors": [
+        "xa",
+        "pha"
+      ],
+      "explain": {
+        "fr": "kh : un r raclé au fond de la gorge.",
+        "en": "kh: a scraped h at the back of the throat."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_pha",
+      "distractors": [
+        "tha",
+        "đa"
+      ],
+      "explain": {
+        "fr": "ph se dit f.",
+        "en": "ph is said f."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_tha",
+      "distractors": [
+        "đa",
+        "pha"
+      ],
+      "explain": {
+        "fr": "th : un t avec un petit souffle.",
+        "en": "th: a t with a small puff of air."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_syl_nga",
+        "p_syl_kha",
+        "p_syl_pha",
+        "p_syl_tha",
+        "p_syl_dda",
+        "p_syl_xa"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_dd",
+        "p_d",
+        "p_gi",
+        "p_ch",
+        "p_tr",
+        "p_kh"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_dd",
+      "distractors": [
+        "đa",
+        "y",
+        "da"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_d",
+      "distractors": [
+        "â",
+        "đa",
+        "tra"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_gi",
+      "distractors": [
+        "gì",
+        "ơ",
+        "ng"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_x",
+      "distractors": [
+        "ô",
+        "đa",
+        "a"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_ch",
+      "distractors": [
+        "đa",
+        "xa",
+        "o"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "p_dd",
+      "p_d",
+      "p_gi",
+      "p_x",
+      "p_ch",
+      "p_tr",
+      "p_nh",
+      "p_ng",
+      "p_kh",
+      "p_ph",
+      "p_th",
+      "p_syl_dda",
+      "p_syl_da",
+      "p_syl_xa",
+      "p_syl_cha",
+      "p_syl_tra",
+      "p_syl_nha",
+      "p_syl_nga",
+      "p_syl_kha",
+      "p_syl_pha",
+      "p_syl_tha"
+    ]
+  },
+  "reviewed": false
+}

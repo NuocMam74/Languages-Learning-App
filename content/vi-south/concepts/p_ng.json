@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_ng",
+  "type": "sound",
+  "vi": "ng",
+  "gloss": {
+    "fr": "ng de « parking », même en début de mot",
+    "en": "ng as in 'sing', even at the start"
+  },
+  "audio": [],
+  "reviewed": false
+}

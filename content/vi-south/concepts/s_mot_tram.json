@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_mot_tram",
+  "type": "structure",
+  "vi": "một trăm",
+  "gloss": {
+    "fr": "cent",
+    "en": "one hundred"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_mot_tram_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_mot_tram_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "pos": "phrase",
+  "reviewed": false
+}

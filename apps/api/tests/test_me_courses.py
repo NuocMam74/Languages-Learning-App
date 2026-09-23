@@ -28,7 +28,7 @@ def test_me_fresh_user(client: TestClient, auth: dict[str, str]) -> None:
     assert me["enrollment"]["courseCode"] == "vi-south"
     assert me["enrollment"]["xpTotal"] == 0
     assert me["enrollment"]["level"] == 1
-    assert me["enrollment"]["currentLessonId"] == "vi-south.u01.l01"
+    assert me["enrollment"]["currentLessonId"] == "vi-south.u00.l01"
     assert me["streak"] == {
         "current": 0,
         "longest": 0,

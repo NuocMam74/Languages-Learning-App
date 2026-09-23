@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "t_sac",
+  "type": "tone",
+  "vi": "sắc",
+  "gloss": {
+    "fr": "ton qui monte (á)",
+    "en": "rising tone (á)"
+  },
+  "audio": [],
+  "reviewed": false
+}

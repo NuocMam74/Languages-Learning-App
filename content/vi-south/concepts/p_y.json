@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_y",
+  "type": "sound",
+  "vi": "y",
+  "gloss": {
+    "fr": "i aussi, écrit y",
+    "en": "ee too, spelled y"
+  },
+  "audio": [],
+  "reviewed": false
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "t_ngang",
+  "type": "tone",
+  "vi": "ngang",
+  "gloss": {
+    "fr": "ton plat, sans accent (ma)",
+    "en": "level tone, no mark (ma)"
+  },
+  "audio": [],
+  "reviewed": false
+}

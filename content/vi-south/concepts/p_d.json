@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_d",
+  "type": "sound",
+  "vi": "d",
+  "gloss": {
+    "fr": "y au Sud, comme dans « yoyo »",
+    "en": "y in the South, as in 'yes'"
+  },
+  "audio": [],
+  "reviewed": false
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_ow",
+  "type": "sound",
+  "vi": "ơ",
+  "gloss": {
+    "fr": "eu, comme dans « peur »",
+    "en": "'er' as in 'her', without the r"
+  },
+  "audio": [],
+  "reviewed": false
+}

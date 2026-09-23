@@ -1,0 +1,259 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l04",
+  "unit": "vi-south.u00",
+  "title": {
+    "fr": "Je et tu : les pronoms",
+    "en": "I and you: pronouns"
+  },
+  "goal": {
+    "fr": "Dire « je » et choisir le bon « tu » selon l'âge de l'autre.",
+    "en": "Say 'I' and pick the right 'you' by the other person's age."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u00.l03"
+  ],
+  "concepts": [
+    "c_toi",
+    "c_tui_me",
+    "c_ban_friend",
+    "c_anh",
+    "c_chi",
+    "c_em",
+    "c_co_aunt",
+    "c_chu",
+    "c_ong",
+    "c_ba_grandma",
+    "c_ma_seedling"
+  ],
+  "steps": [
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_toi",
+        "c_tui_me",
+        "c_ban_friend",
+        "c_anh",
+        "c_chi",
+        "c_em"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi",
+      "distractors": [
+        "tui",
+        "em"
+      ],
+      "explain": {
+        "fr": "tôi : « je », neutre, toujours juste.",
+        "en": "tôi: 'I', neutral, always correct."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui_me",
+      "distractors": [
+        "tôi",
+        "bạn"
+      ],
+      "explain": {
+        "fr": "tui : le « je » du Sud, entre proches.",
+        "en": "tui: the Southern 'I', between friends."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_anh",
+      "distractors": [
+        "c_chi",
+        "c_em"
+      ],
+      "explain": {
+        "fr": "anh : un homme un peu plus âgé que toi.",
+        "en": "anh: a man slightly older than you."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chi",
+      "distractors": [
+        "c_anh",
+        "c_co_aunt"
+      ],
+      "explain": {
+        "fr": "chị : une femme un peu plus âgée que toi.",
+        "en": "chị: a woman slightly older than you."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_em",
+      "distractors": [
+        "c_anh",
+        "c_ong"
+      ],
+      "explain": {
+        "fr": "em : quelqu'un de plus jeune que toi.",
+        "en": "em: someone younger than you."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ban_friend",
+      "distractors": [
+        "anh",
+        "bà"
+      ],
+      "explain": {
+        "fr": "bạn : quelqu'un de ton âge.",
+        "en": "bạn: someone your age."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_co_aunt",
+        "c_chu",
+        "c_ong",
+        "c_ba_grandma",
+        "c_em",
+        "c_ban_friend"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_co_aunt",
+      "distractors": [
+        "c_chu",
+        "c_ba_grandma"
+      ],
+      "explain": {
+        "fr": "cô : une femme de l'âge de tes parents.",
+        "en": "cô: a woman your parents' age."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chu",
+      "distractors": [
+        "c_co_aunt",
+        "c_ong"
+      ],
+      "explain": {
+        "fr": "chú : un homme de l'âge de tes parents.",
+        "en": "chú: a man your parents' age."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ong",
+      "distractors": [
+        "c_chu",
+        "c_anh"
+      ],
+      "explain": {
+        "fr": "ông : un homme âgé.",
+        "en": "ông: an elderly man."
+      }
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "c_co_aunt",
+        "c_chi"
+      ],
+      "explain": {
+        "fr": "bà : une femme âgée.",
+        "en": "bà: an elderly woman."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh",
+      "distractors": [
+        "em",
+        "ông"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "cô",
+        "bà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_em",
+      "distractors": [
+        "anh",
+        "chú"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong",
+      "distractors": [
+        "anh",
+        "chú"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_co_aunt",
+      "distractors": [
+        "chị",
+        "bà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chu",
+      "distractors": [
+        "ông",
+        "anh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_grandma",
+      "distractors": [
+        "cô",
+        "chị"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_seedling",
+      "distractors": [
+        "má",
+        "ma",
+        "mà"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_toi",
+      "c_tui_me",
+      "c_ban_friend",
+      "c_anh",
+      "c_chi",
+      "c_em",
+      "c_co_aunt",
+      "c_chu",
+      "c_ong",
+      "c_ba_grandma"
+    ]
+  },
+  "guides": [
+    "g_pronoms_sujets"
+  ],
+  "reviewed": false
+}

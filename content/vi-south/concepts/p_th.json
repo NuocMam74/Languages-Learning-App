@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_th",
+  "type": "sound",
+  "vi": "th",
+  "gloss": {
+    "fr": "t soufflé",
+    "en": "a breathy t"
+  },
+  "audio": [],
+  "reviewed": false
+}

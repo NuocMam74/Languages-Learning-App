@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_chung_toi",
+  "type": "structure",
+  "vi": "chúng tôi",
+  "gloss": {
+    "fr": "nous (sans la personne à qui l'on parle)",
+    "en": "we (not including the listener)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chung_toi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_chung_toi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "pos": "pronoun",
+  "reviewed": false
+}

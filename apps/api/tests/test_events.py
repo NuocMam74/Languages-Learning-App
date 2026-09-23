@@ -202,12 +202,12 @@ def test_lesson_completed_advances_current_lesson(client: TestClient, auth: dict
     def completed(score: float) -> dict[str, Any]:
         return event(
             "lesson_completed",
-            {"sessionId": "s1", "lessonId": "vi-south.u01.l01", "score": score, "durationMs": 300000},
+            {"sessionId": "s1", "lessonId": "vi-south.u00.l01", "score": score, "durationMs": 300000},
         )
 
-    assert me(client, auth)["enrollment"]["currentLessonId"] == "vi-south.u01.l01"
+    assert me(client, auth)["enrollment"]["currentLessonId"] == "vi-south.u00.l01"
     post(client, auth, [completed(0.8)])
-    assert me(client, auth)["enrollment"]["currentLessonId"] == "vi-south.u01.l02"
+    assert me(client, auth)["enrollment"]["currentLessonId"] == "vi-south.u00.l02"
 
     post(client, auth, [completed(0.5)])
     with client.app.state.session_factory() as db:  # type: ignore[attr-defined]

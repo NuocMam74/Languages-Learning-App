@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_syl_pha",
+  "type": "sound",
+  "vi": "pha",
+  "gloss": {
+    "fr": "ph + a : « fa »",
+    "en": "ph + a: 'fa'"
+  },
+  "audio": [],
+  "reviewed": false
+}

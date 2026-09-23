@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_uw",
+  "type": "sound",
+  "vi": "ư",
+  "gloss": {
+    "fr": "ou dit lèvres étirées",
+    "en": "oo said with spread lips"
+  },
+  "audio": [],
+  "reviewed": false
+}

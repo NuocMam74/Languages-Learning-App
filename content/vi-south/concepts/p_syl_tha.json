@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_syl_tha",
+  "type": "sound",
+  "vi": "tha",
+  "gloss": {
+    "fr": "th + a : « ta » soufflé",
+    "en": "th + a: a breathy 'ta'"
+  },
+  "audio": [],
+  "reviewed": false
+}

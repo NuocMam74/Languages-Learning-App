@@ -93,7 +93,7 @@ describe("découpage core + unités", () => {
 
 describe("index partiel", () => {
   const { core, units } = splitPack(vi);
-  const u01 = units[0]!;
+  const u01 = units.find((u) => u.unit === "vi-south.u01")!;
 
   it("hub sans unité : cursus, titres, concepts compacts ; leçons sans étapes", () => {
     const index = buildSplitContentIndex(core);

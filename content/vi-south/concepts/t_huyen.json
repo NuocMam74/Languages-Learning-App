@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "t_huyen",
+  "type": "tone",
+  "vi": "huyền",
+  "gloss": {
+    "fr": "ton qui descend doucement (à)",
+    "en": "gently falling tone (à)"
+  },
+  "audio": [],
+  "reviewed": false
+}

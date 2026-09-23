@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_syl_kha",
+  "type": "sound",
+  "vi": "kha",
+  "gloss": {
+    "fr": "kh + a : « kha » raclé",
+    "en": "kh + a: a scraped 'kha'"
+  },
+  "audio": [],
+  "reviewed": false
+}

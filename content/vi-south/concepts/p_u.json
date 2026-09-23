@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_u",
+  "type": "sound",
+  "vi": "u",
+  "gloss": {
+    "fr": "ou, comme dans « loup »",
+    "en": "oo, as in 'food'"
+  },
+  "audio": [],
+  "reviewed": false
+}

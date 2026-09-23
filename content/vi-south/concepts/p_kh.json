@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_kh",
+  "type": "sound",
+  "vi": "kh",
+  "gloss": {
+    "fr": "r raclé, comme la jota espagnole",
+    "en": "a scraped h, as in Scottish 'loch'"
+  },
+  "audio": [],
+  "reviewed": false
+}

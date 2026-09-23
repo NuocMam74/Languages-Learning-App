@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "t_hoi",
+  "type": "tone",
+  "vi": "hỏi",
+  "gloss": {
+    "fr": "ton qui plonge puis remonte (ả)",
+    "en": "dipping then rising tone (ả)"
+  },
+  "audio": [],
+  "reviewed": false
+}

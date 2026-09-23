@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_syl_da",
+  "type": "sound",
+  "vi": "da",
+  "gloss": {
+    "fr": "d + a : se dit « ya »",
+    "en": "d + a: said 'ya'"
+  },
+  "audio": [],
+  "reviewed": false
+}

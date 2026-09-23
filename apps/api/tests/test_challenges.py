@@ -117,9 +117,12 @@ def test_challenge_badge_cannot_be_self_awarded(client: TestClient, auth: dict[s
 def test_words_theme_counts_unit_words_of_completed_lessons(client: TestClient, auth: dict[str, str]) -> None:
     use_challenge(client, "words_theme", 10)
     item = current(client, auth)
-    assert item["unit"] == "vi-south.u01"
-    post(client, auth, [lesson_done("vi-south.u01.l01"), lesson_done("vi-south.u02.l01")])
-    words = challenges.unit_words(PACK, "vi-south.u01")["vi-south.u01.l01"]
+    # L'unité en cours est la première du cursus : les bases (contrat phase26 §2). Son niveau des
+    # pronoms introduit des mots ; les lettres et les tons, eux, ne comptent pas comme mots.
+    assert item["unit"] == "vi-south.u00"
+    post(client, auth, [lesson_done("vi-south.u00.l04"), lesson_done("vi-south.u02.l01")])
+    words = challenges.unit_words(PACK, "vi-south.u00")["vi-south.u00.l04"]
+    assert challenges.unit_words(PACK, "vi-south.u00")["vi-south.u00.l01"] == []
     assert words
     assert current(client, auth)["progress"] == min(10, len(words))
 

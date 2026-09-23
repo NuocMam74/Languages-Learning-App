@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_ee",
+  "type": "sound",
+  "vi": "ê",
+  "gloss": {
+    "fr": "é fermé, comme dans « été »",
+    "en": "closed e, as in 'hey' without the glide"
+  },
+  "audio": [],
+  "reviewed": false
+}

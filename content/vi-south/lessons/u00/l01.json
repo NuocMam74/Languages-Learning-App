@@ -1,0 +1,229 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l01",
+  "unit": "vi-south.u00",
+  "title": {
+    "fr": "Les lettres et les voyelles",
+    "en": "Letters and vowels"
+  },
+  "goal": {
+    "fr": "Lire les douze voyelles et reconnaître les sept lettres nouvelles.",
+    "en": "Read the twelve vowels and recognise the seven new letters."
+  },
+  "estimatedMinutes": 5,
+  "prerequisites": [],
+  "concepts": [
+    "p_a",
+    "p_aw",
+    "p_aa",
+    "p_e",
+    "p_ee",
+    "p_i",
+    "p_y",
+    "p_o",
+    "p_oo",
+    "p_ow",
+    "p_u",
+    "p_uw"
+  ],
+  "steps": [
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_a",
+        "p_aw",
+        "p_aa",
+        "p_e",
+        "p_ee",
+        "p_i"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_a",
+      "distractors": [
+        "e",
+        "ơ"
+      ],
+      "explain": {
+        "fr": "a se dit comme dans « papa ».",
+        "en": "a sounds as in 'father'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_o",
+      "distractors": [
+        "ô",
+        "ơ"
+      ],
+      "explain": {
+        "fr": "o est ouvert, ô est fermé, ơ se dit « eu ».",
+        "en": "o is open, ô is closed, ơ sounds like 'er'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_oo",
+      "distractors": [
+        "o",
+        "u"
+      ],
+      "explain": {
+        "fr": "ô : lèvres arrondies et fermées, comme dans « eau ».",
+        "en": "ô: lips rounded and closed, as in 'go'."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_y",
+        "p_o",
+        "p_oo",
+        "p_ow",
+        "p_u",
+        "p_uw"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_ow",
+      "distractors": [
+        "o",
+        "ô"
+      ],
+      "explain": {
+        "fr": "ơ : ni o ni ô, un « eu » comme dans « peur ».",
+        "en": "ơ: neither o nor ô, an 'er' as in 'her'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_u",
+      "distractors": [
+        "ư",
+        "ô"
+      ],
+      "explain": {
+        "fr": "u : un « ou » lèvres arrondies.",
+        "en": "u: 'oo' with rounded lips."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_uw",
+      "distractors": [
+        "u",
+        "i"
+      ],
+      "explain": {
+        "fr": "ư : un « ou » lèvres étirées, sans les arrondir.",
+        "en": "ư: 'oo' with spread lips, without rounding."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_e",
+      "distractors": [
+        "ê",
+        "i"
+      ],
+      "explain": {
+        "fr": "e est ouvert, comme dans « fête » ; ê est fermé, comme dans « été ».",
+        "en": "e is open, as in 'bed'; ê is closed, as in 'hey'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_ee",
+      "distractors": [
+        "e",
+        "a"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_i",
+      "distractors": [
+        "ê",
+        "ư"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_aw",
+        "p_aa",
+        "p_ee",
+        "p_oo",
+        "p_ow",
+        "p_uw"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_y",
+      "distractors": [
+        "e",
+        "u"
+      ],
+      "explain": {
+        "fr": "y se dit i : deux lettres, un seul son.",
+        "en": "y sounds like i: two letters, one sound."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_a",
+        "p_e",
+        "p_i",
+        "p_o",
+        "p_u",
+        "p_ow"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_aw",
+      "distractors": [
+        "e",
+        "â",
+        "ơ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_aa",
+      "distractors": [
+        "i",
+        "ê",
+        "o"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "p_a",
+      "p_aw",
+      "p_aa",
+      "p_e",
+      "p_ee",
+      "p_i",
+      "p_y",
+      "p_o",
+      "p_oo",
+      "p_ow",
+      "p_u",
+      "p_uw"
+    ]
+  },
+  "guides": [
+    "g_alphabet"
+  ],
+  "reviewed": false
+}

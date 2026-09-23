@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_a",
+  "type": "sound",
+  "vi": "a",
+  "gloss": {
+    "fr": "a, comme dans « papa »",
+    "en": "a, as in 'father'"
+  },
+  "audio": [],
+  "reviewed": false
+}

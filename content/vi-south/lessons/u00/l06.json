@@ -1,0 +1,271 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l06",
+  "unit": "vi-south.u00",
+  "title": {
+    "fr": "Les nombres de 0 à 10",
+    "en": "Numbers from 0 to 10"
+  },
+  "goal": {
+    "fr": "Compter de zéro à dix et reconnaître chaque chiffre à l'oreille.",
+    "en": "Count from zero to ten and recognise each digit by ear."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u00.l05"
+  ],
+  "concepts": [
+    "c_khong_zero",
+    "c_mot_one",
+    "c_hai",
+    "c_ba_three",
+    "c_bon",
+    "c_nam_five",
+    "c_sau_six",
+    "c_bay_seven",
+    "c_tam_eight",
+    "c_chin_nine",
+    "c_muoi_ten"
+  ],
+  "steps": [
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_mot_one",
+        "c_hai",
+        "c_ba_three",
+        "c_bon",
+        "c_nam_five",
+        "c_sau_six"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_one",
+      "distractors": [
+        "mười",
+        "năm"
+      ],
+      "explain": {
+        "fr": "một : un. Le t final sonne presque c au Sud.",
+        "en": "một: one. The final t sounds almost like c in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hai",
+      "distractors": [
+        "ba",
+        "tám"
+      ],
+      "explain": {
+        "fr": "hai : deux.",
+        "en": "hai: two."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_three",
+      "distractors": [
+        "bảy",
+        "hai"
+      ],
+      "explain": {
+        "fr": "ba : trois. Même mot que « papa ».",
+        "en": "ba: three. Same word as 'dad'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bon",
+      "distractors": [
+        "bảy",
+        "không"
+      ],
+      "explain": {
+        "fr": "bốn : quatre. Ton sắc, la voix monte.",
+        "en": "bốn: four. sắc tone, the voice rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_five",
+      "distractors": [
+        "tám",
+        "một"
+      ],
+      "explain": {
+        "fr": "năm : cinq. Le n final sonne presque ng au Sud.",
+        "en": "năm: five. The final n sounds almost like ng in the South."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_bay_seven",
+        "c_tam_eight",
+        "c_chin_nine",
+        "c_muoi_ten",
+        "c_khong_zero",
+        "c_mot_one"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_six",
+      "distractors": [
+        "tám",
+        "chín"
+      ],
+      "explain": {
+        "fr": "sáu : six. Ton sắc.",
+        "en": "sáu: six. sắc tone."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bay_seven",
+      "distractors": [
+        "ba",
+        "bốn"
+      ],
+      "explain": {
+        "fr": "bảy : sept. Ton hỏi : la voix plonge puis remonte.",
+        "en": "bảy: seven. hỏi tone: the voice dips then rises."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tam_eight",
+      "distractors": [
+        "năm",
+        "ba"
+      ],
+      "explain": {
+        "fr": "tám : huit.",
+        "en": "tám: eight."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chin_nine",
+      "distractors": [
+        "sáu",
+        "mười"
+      ],
+      "explain": {
+        "fr": "chín : neuf.",
+        "en": "chín: nine."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_ten",
+      "distractors": [
+        "một",
+        "năm"
+      ],
+      "explain": {
+        "fr": "mười : dix. Ton huyền, la voix descend.",
+        "en": "mười: ten. huyền tone, the voice falls."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khong_zero",
+      "distractors": [
+        "một",
+        "hai"
+      ],
+      "explain": {
+        "fr": "không : zéro.",
+        "en": "không: zero."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_khong_zero",
+        "c_hai",
+        "c_bon",
+        "c_sau_six",
+        "c_tam_eight",
+        "c_muoi_ten"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_mot_one",
+        "c_ba_three",
+        "c_nam_five",
+        "c_bay_seven",
+        "c_chin_nine",
+        "c_muoi_ten"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_nam_five",
+      "distractors": [
+        "tám",
+        "hai"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bay_seven",
+      "distractors": [
+        "sáu",
+        "chín"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hai",
+      "distractors": [
+        "mười",
+        "không"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_six",
+      "distractors": [
+        "ba",
+        "bảy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_three",
+      "distractors": [
+        "tám",
+        "một"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "c_khong_zero",
+      "c_mot_one",
+      "c_hai",
+      "c_ba_three",
+      "c_bon",
+      "c_nam_five",
+      "c_sau_six",
+      "c_bay_seven",
+      "c_tam_eight",
+      "c_chin_nine",
+      "c_muoi_ten"
+    ]
+  },
+  "guides": [
+    "g_nombres"
+  ],
+  "reviewed": false
+}

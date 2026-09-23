@@ -1,0 +1,99 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_syllabe_tons",
+  "kind": "grammar",
+  "order": 2,
+  "title": {
+    "fr": "La syllabe et ses tons",
+    "en": "The syllable and its tones"
+  },
+  "summary": {
+    "fr": "Comment se lit une syllabe, et les six tons de l'écrit, cinq à l'oreille du Sud.",
+    "en": "How a syllable is read, and the six written tones, five to a Southern ear."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Une syllabe à la fois",
+        "en": "One syllable at a time"
+      },
+      "body": {
+        "fr": "Le vietnamien s'écrit syllabe par syllabe, séparées par des espaces. Une syllabe se lit en trois morceaux : une consonne de départ (parfois aucune), une voyelle, et parfois une consonne finale. Les finales possibles : c, ch, m, n, ng, nh, p, t.",
+        "en": "Vietnamese is written one syllable at a time, separated by spaces. A syllable reads in three parts: a starting consonant (sometimes none), a vowel, and sometimes a final consonant. Possible finals: c, ch, m, n, ng, nh, p, t."
+      },
+      "examples": [
+        {
+          "vi": "b + a = ba",
+          "fr": "une consonne, une voyelle",
+          "en": "a consonant, a vowel"
+        },
+        {
+          "vi": "m + ô + t = một",
+          "fr": "consonne, voyelle, finale, et un ton",
+          "en": "consonant, vowel, final, and a tone"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Six tons à l'écrit, cinq à l'oreille",
+        "en": "Six written tones, five heard"
+      },
+      "body": {
+        "fr": "Chaque syllabe porte un ton, noté par un accent sur la voyelle. Changer de ton, c'est changer de mot. ngang : pas d'accent, la voix reste plate. huyền (à) : elle descend doucement. sắc (á) : elle monte. hỏi (ả) : elle plonge puis remonte. ngã (ã) : au Sud, il se dit comme hỏi. nặng (ạ) : bas, court, qui tombe.",
+        "en": "Every syllable carries a tone, marked on the vowel. Change the tone, change the word. ngang: no mark, the voice stays level. huyền (à): it falls gently. sắc (á): it rises. hỏi (ả): it dips then rises. ngã (ã): in the South, said like hỏi. nặng (ạ): low, short, falling."
+      },
+      "examples": [
+        {
+          "vi": "ma",
+          "fr": "fantôme : ton plat",
+          "en": "ghost: level tone"
+        },
+        {
+          "vi": "mà",
+          "fr": "mais : descend",
+          "en": "but: falling"
+        },
+        {
+          "vi": "má",
+          "fr": "maman : monte",
+          "en": "mom: rising"
+        },
+        {
+          "vi": "mả",
+          "fr": "tombe : plonge puis remonte",
+          "en": "grave: dips then rises"
+        },
+        {
+          "vi": "mạ",
+          "fr": "jeune plant de riz : bas et court",
+          "en": "rice seedling: low and short"
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Les finales du Sud",
+        "en": "Southern finals"
+      },
+      "body": {
+        "fr": "Au Sud, un n final se dit presque ng, et un t final presque c. L'écrit ne change pas : c'est l'oreille qui s'habitue. Les nombres de la leçon suivante en sont pleins.",
+        "en": "In the South, a final n sounds almost like ng, and a final t almost like c. The spelling does not change: your ear gets used to it. The numbers coming up are full of them."
+      },
+      "examples": [
+        {
+          "vi": "một",
+          "fr": "un : on entend presque « mộc »",
+          "en": "one: it sounds almost like 'mộc'"
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "Un accent oublié change le mot : má (maman) n'est pas ma (fantôme).",
+      "en": "A missing mark changes the word: má (mom) is not ma (ghost)."
+    }
+  ],
+  "reviewed": false
+}

@@ -8,6 +8,7 @@ import {
   lessonsBefore,
   nextPlacementItem,
   placementCards,
+  placementPlan,
   playablePlacement,
   resolveEntryLesson,
   scorePlacement,
@@ -101,15 +102,15 @@ describe("test adaptatif", () => {
 });
 
 describe("point d'entrée", () => {
-  it("niveau 0 → première leçon", () => {
-    expect(resolveEntryLesson(content, 0)?.id).toBe("vi-south.u01.l01");
+  it("niveau 0 → première leçon : les bases (contrat phase26 §2)", () => {
+    expect(resolveEntryLesson(content, 0)?.id).toBe("vi-south.u00.l01");
   });
 
-  it("niveaux 0..3 → début de u01 / u03 / u05 / u07 ; les unités antérieures sont sautées", () => {
-    expect([0, 1, 2, 3].map((lv) => resolveEntryLesson(content, lv)?.id)).toEqual(["vi-south.u01.l01", "vi-south.u03.l01", "vi-south.u05.l01", "vi-south.u07.l01"]);
+  it("niveaux 0..3 → début de u00 / u03 / u05 / u07 ; les unités antérieures sont sautées", () => {
+    expect([0, 1, 2, 3].map((lv) => resolveEntryLesson(content, lv)?.id)).toEqual(["vi-south.u00.l01", "vi-south.u03.l01", "vi-south.u05.l01", "vi-south.u07.l01"]);
     const skipped = lessonsBefore(content.curriculum, "vi-south.u03.l01");
-    expect(skipped).toEqual([...content.curriculum.units[0]!.lessons, ...content.curriculum.units[1]!.lessons]);
-    expect(lessonsBefore(content.curriculum, "vi-south.u01.l01")).toEqual([]);
+    expect(skipped).toEqual(content.curriculum.units.slice(0, 3).flatMap((u) => u.lessons));
+    expect(lessonsBefore(content.curriculum, "vi-south.u00.l01")).toEqual([]);
   });
 
   it("unité cible non publiée → première unité publiée de numéro supérieur ; au-delà de la fin → dernière", () => {
@@ -118,7 +119,7 @@ describe("point d'entrée", () => {
       curriculum: { ...content.curriculum, units: content.curriculum.units.map((u) => (u.id === "vi-south.u03" ? { ...u, status: "planned" as const } : u)) },
     };
     expect(resolveEntryLesson(withoutU3, 1)?.id).toBe("vi-south.u04.l01");
-    const short: ContentIndex = { ...content, curriculum: { ...content.curriculum, units: content.curriculum.units.slice(0, 2) } };
+    const short: ContentIndex = { ...content, curriculum: { ...content.curriculum, units: content.curriculum.units.slice(0, 3) } };
     expect(resolveEntryLesson(short, 3)?.id).toBe("vi-south.u02.l01");
   });
 
@@ -147,5 +148,40 @@ describe("point d'entrée", () => {
     const missing = new Set([...audio].filter((src) => !(content.concepts.get(first.concept)?.audio ?? []).some((a) => a.src === src)));
     const partial = playablePlacement({ ...content, mediaIndex: missing }, spec);
     expect(partial?.items.some((i) => i.id === first.id)).toBe(false);
+  });
+});
+
+describe("test de niveau à l'écrit (contrat phase26 §6)", () => {
+  const silent: ContentIndex = { ...content, mediaIndex: new Set() };
+
+  it("sans voix natives, le test se passe à l'écrit plutôt que d'être sauté", () => {
+    const plan = placementPlan(silent, spec);
+    expect(plan?.mode).toBe("reading");
+    expect(plan?.spec.items).toHaveLength(spec.items.length);
+    // Avec les voix, rien ne change : on écoute.
+    expect(placementPlan(silent, spec, { toneFallback: true })?.mode).toBe("listening");
+  });
+
+  it("chaque famille d'items se lit : le mot pour le ton et le sens, le sens pour le mot", () => {
+    const tone = spec.items.find((i) => i.skill === "tone")!;
+    const comp = spec.items.find((i) => i.skill === "comprehension")!;
+    const vocab = spec.items.find((i) => i.skill === "vocab")!;
+    const target = (id: string) => content.concepts.get(id)!;
+
+    const t = buildPlacementExercise(silent, tone, "s", 0, "reading");
+    expect(t.type).toBe("tone_identify");
+    expect(t.read).toEqual({ vi: target(tone.concept).vi });
+
+    const c = buildPlacementExercise(silent, comp, "s", 1, "reading");
+    expect(c.read).toEqual({ vi: target(comp.concept).vi });
+    expect(c.type === "listen_pick_text" && c.options.every((o) => o.label !== undefined)).toBe(true);
+
+    const v = buildPlacementExercise(silent, vocab, "s", 2, "reading");
+    expect(v.read).toEqual({ gloss: target(vocab.concept).gloss });
+    expect(v.type === "listen_pick_text" && v.options.map((o) => o.text)).toContain(target(vocab.concept).vi);
+  });
+
+  it("à l'écoute, aucun exercice ne se lit", () => {
+    for (const item of spec.items) expect(buildPlacementExercise(content, item, "s").read).toBeUndefined();
   });
 });

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_syl_tra",
+  "type": "sound",
+  "vi": "tra",
+  "gloss": {
+    "fr": "tr + a : « tcha » langue recourbée",
+    "en": "tr + a: 'cha' with a curled tongue"
+  },
+  "audio": [],
+  "reviewed": false
+}

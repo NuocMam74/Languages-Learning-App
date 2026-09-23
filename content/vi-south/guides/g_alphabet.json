@@ -1,0 +1,88 @@
+{
+  "$schema": "../../schema/guide.schema.json",
+  "id": "g_alphabet",
+  "kind": "grammar",
+  "order": 1,
+  "title": {
+    "fr": "L'alphabet : 29 lettres",
+    "en": "The alphabet: 29 letters"
+  },
+  "summary": {
+    "fr": "Lire le vietnamien : des lettres latines, sept lettres nouvelles et des consonnes qui se lisent autrement.",
+    "en": "Reading Vietnamese: Latin letters, seven new ones, and consonants read differently."
+  },
+  "sections": [
+    {
+      "heading": {
+        "fr": "Des lettres que tu connais déjà",
+        "en": "Letters you already know"
+      },
+      "body": {
+        "fr": "Le vietnamien s'écrit en lettres latines : tu sais déjà presque tout lire. L'alphabet compte 29 lettres. f, j, w et z n'y figurent pas. Sept lettres sont nouvelles : ă, â, đ, ê, ô, ơ et ư.",
+        "en": "Vietnamese uses Latin letters: you can already read almost everything. The alphabet has 29 letters. f, j, w and z are missing. Seven letters are new: ă, â, đ, ê, ô, ơ and ư."
+      },
+      "examples": [
+        {
+          "vi": "a ă â b c d đ e ê g h i k l m n o ô ơ p q r s t u ư v x y",
+          "fr": "Les 29 lettres, dans l'ordre.",
+          "en": "The 29 letters, in order."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Douze voyelles",
+        "en": "Twelve vowels"
+      },
+      "body": {
+        "fr": "a : comme dans « papa ». ă : un a très bref. â : un e bref, comme dans « le ». e : è ouvert, comme dans « fête ». ê : é fermé, comme dans « été ». i et y : i. o : o ouvert, comme dans « porte ». ô : o fermé, comme dans « eau ». ơ : eu, comme dans « peur ». u : ou. ư : ou dit les lèvres étirées, sans les arrondir.",
+        "en": "a: as in 'father'. ă: a very short a. â: a short 'uh'. e: open, as in 'bed'. ê: closed, as in 'hey'. i and y: ee. o: open, as in 'law'. ô: closed, as in 'go'. ơ: 'er' as in 'her'. u: oo. ư: oo said with spread lips, without rounding them."
+      },
+      "examples": [
+        {
+          "vi": "o, ô, ơ",
+          "fr": "Trois o : ouvert, fermé, et « eu ».",
+          "en": "Three o's: open, closed, and 'er'."
+        },
+        {
+          "vi": "u, ư",
+          "fr": "ou, puis ou lèvres étirées.",
+          "en": "oo, then oo with spread lips."
+        }
+      ]
+    },
+    {
+      "heading": {
+        "fr": "Les consonnes qui surprennent",
+        "en": "Surprising consonants"
+      },
+      "body": {
+        "fr": "đ, barré : notre d. d et gi : au Sud, ils se disent « y ». x : notre s. ch : tch léger. tr : tch, langue recourbée. nh : gn, comme dans « montagne ». ng : le ng de « parking », même en début de mot. kh : un r raclé. ph : f. th : un t soufflé. c, k et q : notre k.",
+        "en": "đ, with a bar: our d. d and gi: said 'y' in the South. x: our s. ch: a light ch. tr: ch with the tongue curled back. nh: ny, as in 'canyon'. ng: as in 'sing', even at the start of a word. kh: a scraped h. ph: f. th: a breathy t. c, k and q: our k."
+      },
+      "examples": [
+        {
+          "vi": "đa · da · xa",
+          "fr": "da · ya · sa",
+          "en": "da · ya · sa"
+        },
+        {
+          "vi": "nha · nga · pha",
+          "fr": "gna · nga · fa",
+          "en": "nya · nga · fa"
+        }
+      ]
+    }
+  ],
+  "pitfalls": [
+    {
+      "fr": "d sans barre ne se dit jamais « d » : au Sud, c'est « y ».",
+      "en": "d without a bar is never 'd': in the South it is 'y'."
+    },
+    {
+      "fr": "x se dit s, jamais « ks ».",
+      "en": "x is said s, never 'ks'."
+    }
+  ],
+  "reviewed": false
+}

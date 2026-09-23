@@ -40,6 +40,11 @@ interface ExerciseBase {
   stepIndex: number;
   conceptIds: ConceptId[];
   explain: Localized | null;
+  /**
+   * À lire plutôt qu'à écouter (test de niveau à l'écrit, contrat phase26 §6) : le mot vietnamien,
+   * ou le sens en langue d'interface. Absent : l'exercice s'écoute, comme toujours.
+   */
+  read?: { vi: string } | { gloss: Localized };
 }
 
 /** Association attendue (ou proposée) dans `match_pairs`. */

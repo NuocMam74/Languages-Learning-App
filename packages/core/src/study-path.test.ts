@@ -79,7 +79,8 @@ describe("le barreau du jour", () => {
 describe("les fiches conseils", () => {
   it("entrent dans l'échelle à leur place, dans l'ordre que le contenu impose", () => {
     const grammar = orderedGuides(content, ["grammar"]);
-    expect(grammar[0]!.id).toBe("g_construire_phrase");
+    // Les fiches des bases (contrat phase26 §3) ouvrent le rayon : on lit avant de construire.
+    expect(grammar[0]!.id).toBe("g_alphabet");
     expect(grammar.map((g) => g.order)).toEqual([...grammar.map((g) => g.order)].sort((a, b) => (a ?? 0) - (b ?? 0)));
   });
 

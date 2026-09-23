@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_e",
+  "type": "sound",
+  "vi": "e",
+  "gloss": {
+    "fr": "è ouvert, comme dans « fête »",
+    "en": "open e, as in 'bed'"
+  },
+  "audio": [],
+  "reviewed": false
+}

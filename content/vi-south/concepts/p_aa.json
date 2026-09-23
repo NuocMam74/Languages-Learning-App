@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_aa",
+  "type": "sound",
+  "vi": "â",
+  "gloss": {
+    "fr": "e bref, comme dans « le »",
+    "en": "a short 'uh'"
+  },
+  "audio": [],
+  "reviewed": false
+}

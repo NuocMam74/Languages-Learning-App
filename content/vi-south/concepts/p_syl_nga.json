@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_syl_nga",
+  "type": "sound",
+  "vi": "nga",
+  "gloss": {
+    "fr": "ng + a : « nga »",
+    "en": "ng + a: 'nga'"
+  },
+  "audio": [],
+  "reviewed": false
+}

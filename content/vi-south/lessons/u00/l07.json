@@ -1,0 +1,306 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l07",
+  "unit": "vi-south.u00",
+  "title": {
+    "fr": "De 11 à 100",
+    "en": "From 11 to 100"
+  },
+  "goal": {
+    "fr": "Former les nombres jusqu'à cent, avec lăm, mốt et mươi.",
+    "en": "Build numbers up to a hundred, with lăm, mốt and mươi."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u00.l06"
+  ],
+  "concepts": [
+    "s_muoi_mot",
+    "c_lam_five",
+    "s_muoi_lam",
+    "c_muoi_tens",
+    "s_hai_muoi",
+    "c_mot_high",
+    "s_hai_muoi_mot",
+    "c_tram",
+    "s_mot_tram",
+    "c_muoi_ten",
+    "c_mot_one",
+    "c_hai",
+    "c_nam_five"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "s_muoi_mot",
+      "distractors": [
+        "mười hai",
+        "một trăm"
+      ],
+      "explain": {
+        "fr": "11 : mười, puis một.",
+        "en": "11: mười, then một."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_muoi_lam",
+      "distractors": [
+        "mười một",
+        "hai mươi"
+      ],
+      "explain": {
+        "fr": "15 : après une dizaine, 5 se dit lăm, pas năm.",
+        "en": "15: after a tens word, 5 is lăm, not năm."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam_five",
+      "distractors": [
+        "năm",
+        "mốt"
+      ],
+      "explain": {
+        "fr": "lăm : 5, après une dizaine.",
+        "en": "lăm: 5, after a tens word."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "mười ___",
+      "answer": "lăm",
+      "options": [
+        "lăm",
+        "năm",
+        "mốt"
+      ],
+      "translation": {
+        "fr": "15",
+        "en": "15"
+      },
+      "explain": {
+        "fr": "Après mười, 5 devient lăm.",
+        "en": "After mười, 5 becomes lăm."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_tens",
+      "distractors": [
+        "mười",
+        "mốt"
+      ],
+      "explain": {
+        "fr": "mươi, sans accent : la dizaine. mười, qui descend : dix.",
+        "en": "mươi, no mark: tens. mười, falling: ten."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hai_muoi",
+      "distractors": [
+        "hai mươi mốt",
+        "mười hai"
+      ],
+      "explain": {
+        "fr": "20 : hai mươi, « deux dizaines ».",
+        "en": "20: hai mươi, 'two tens'."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "hai mươi",
+      "tokens": [
+        "hai",
+        "mươi",
+        "mười"
+      ],
+      "translation": {
+        "fr": "20",
+        "en": "20"
+      },
+      "audioConcept": "s_hai_muoi",
+      "explain": {
+        "fr": "Le chiffre d'abord, puis mươi.",
+        "en": "The digit first, then mươi."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_high",
+      "distractors": [
+        "một",
+        "mười"
+      ],
+      "explain": {
+        "fr": "mốt : 1 après une dizaine, avec un ton sắc.",
+        "en": "mốt: 1 after a tens word, with a sắc tone."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hai_muoi_mot",
+      "distractors": [
+        "hai mươi",
+        "mười một"
+      ],
+      "explain": {
+        "fr": "21 : hai mươi mốt. Après mươi, 1 devient mốt.",
+        "en": "21: hai mươi mốt. After mươi, 1 becomes mốt."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "hai mươi mốt",
+      "tokens": [
+        "hai",
+        "mươi",
+        "mốt",
+        "một"
+      ],
+      "translation": {
+        "fr": "21",
+        "en": "21"
+      },
+      "audioConcept": "s_hai_muoi_mot",
+      "explain": {
+        "fr": "Après une dizaine, 1 se dit mốt.",
+        "en": "After a tens word, 1 is mốt."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "hai mươi ___",
+      "answer": "mốt",
+      "options": [
+        "mốt",
+        "một",
+        "lăm"
+      ],
+      "translation": {
+        "fr": "21",
+        "en": "21"
+      },
+      "explain": {
+        "fr": "Après mươi, 1 devient mốt.",
+        "en": "After mươi, 1 becomes mốt."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tram",
+      "distractors": [
+        "mười",
+        "mươi"
+      ],
+      "explain": {
+        "fr": "trăm : cent. tr : « tch » langue recourbée.",
+        "en": "trăm: hundred. tr: 'ch' with a curled tongue."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_mot_tram",
+      "distractors": [
+        "mười một",
+        "hai mươi"
+      ],
+      "explain": {
+        "fr": "100 : một trăm, « un cent ».",
+        "en": "100: một trăm, 'one hundred'."
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "s_muoi_mot",
+        "s_muoi_lam",
+        "s_hai_muoi",
+        "s_hai_muoi_mot",
+        "s_mot_tram",
+        "c_muoi_ten"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_lam_five",
+        "c_mot_high",
+        "c_muoi_tens",
+        "c_tram",
+        "c_nam_five",
+        "c_mot_one"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "build_sentence",
+      "target": "mười lăm",
+      "tokens": [
+        "mười",
+        "lăm",
+        "năm"
+      ],
+      "translation": {
+        "fr": "15",
+        "en": "15"
+      },
+      "audioConcept": "s_muoi_lam"
+    },
+    {
+      "type": "build_sentence",
+      "target": "một trăm",
+      "tokens": [
+        "một",
+        "trăm",
+        "mốt"
+      ],
+      "translation": {
+        "fr": "100",
+        "en": "100"
+      },
+      "audioConcept": "s_mot_tram"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_muoi_ten",
+      "distractors": [
+        "mươi",
+        "mốt"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_hai",
+      "distractors": [
+        "hai mươi",
+        "mười"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_mot_one",
+      "distractors": [
+        "mốt",
+        "chú",
+        "chỉ"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": [
+      "s_muoi_mot",
+      "c_lam_five",
+      "s_muoi_lam",
+      "c_muoi_tens",
+      "s_hai_muoi",
+      "c_mot_high",
+      "s_hai_muoi_mot",
+      "c_tram",
+      "s_mot_tram"
+    ]
+  },
+  "reviewed": false
+}

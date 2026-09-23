@@ -24,6 +24,12 @@
         "srsIntroduce": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/conceptId" } }
       }
     },
+    "guides": {
+      "description": "Fiches conseils à lire avant ce niveau, en plus de celles de l'unité (contrat phase26 §3).",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^g_[a-z0-9_]+$" }
+    },
     "reviewed": { "$ref": "common.schema.json#/$defs/reviewed" }
   },
   "$defs": {

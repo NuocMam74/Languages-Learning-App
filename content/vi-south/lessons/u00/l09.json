@@ -1,0 +1,237 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l09",
+  "unit": "vi-south.u00",
+  "kind": "unit_test",
+  "title": {
+    "fr": "Épreuve : les bases",
+    "en": "Test: the basics"
+  },
+  "goal": {
+    "fr": "Montrer que tu lis les lettres, entends les tons, choisis le bon pronom et comptes jusqu'à cent.",
+    "en": "Show that you can read the letters, hear the tones, pick the right pronoun and count to a hundred."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u00.l08"
+  ],
+  "concepts": [
+    "p_aa",
+    "p_ee",
+    "p_ow",
+    "p_syl_kha",
+    "p_syl_pha",
+    "p_syl_xa",
+    "t_ngang",
+    "t_sac",
+    "t_nang",
+    "c_ma_ghost",
+    "c_ma_seedling",
+    "c_ma_tomb",
+    "c_tui_me",
+    "c_em",
+    "c_co_aunt",
+    "c_ong",
+    "c_ba_she",
+    "s_tui_minh",
+    "c_chung_toi",
+    "c_sau_six",
+    "c_chin_nine",
+    "c_khong_zero",
+    "s_hai_muoi",
+    "s_mot_tram",
+    "c_tram",
+    "c_lam_five",
+    "c_muoi_tens"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "p_ow",
+      "distractors": [
+        "ô",
+        "u"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_kha",
+      "distractors": [
+        "pha",
+        "xa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_xa",
+      "distractors": [
+        "cha",
+        "nha"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "p_aa",
+        "p_ee",
+        "p_ow",
+        "t_ngang",
+        "t_sac",
+        "t_nang"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_ghost",
+      "distractors": [
+        "má",
+        "mạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_seedling",
+      "distractors": [
+        "ma",
+        "mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_tomb",
+      "distractors": [
+        "má",
+        "mà"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_pha",
+      "distractors": [
+        "tha",
+        "kha"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_tui_me",
+      "distractors": [
+        "tôi",
+        "em"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_she",
+      "distractors": [
+        "bà",
+        "cô"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_tui_minh",
+      "distractors": [
+        "chúng tôi",
+        "tui"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_em",
+        "c_co_aunt",
+        "c_ong",
+        "c_ba_she",
+        "s_tui_minh",
+        "c_chung_toi"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_sau_six",
+      "distractors": [
+        "tám",
+        "bảy"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chin_nine",
+      "distractors": [
+        "chín mươi",
+        "năm"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_khong_zero",
+      "distractors": [
+        "một",
+        "mười"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hai_muoi",
+      "distractors": [
+        "mười hai",
+        "hai mươi mốt"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "mười ___",
+      "answer": "lăm",
+      "options": [
+        "lăm",
+        "năm",
+        "mốt"
+      ],
+      "translation": {
+        "fr": "15",
+        "en": "15"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "một trăm",
+      "tokens": [
+        "một",
+        "trăm",
+        "mươi"
+      ],
+      "translation": {
+        "fr": "100",
+        "en": "100"
+      },
+      "audioConcept": "s_mot_tram"
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_sau_six",
+        "c_chin_nine",
+        "c_khong_zero",
+        "s_hai_muoi",
+        "c_tram",
+        "c_muoi_tens"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_lam_five",
+      "distractors": [
+        "năm",
+        "mốt"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

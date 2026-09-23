@@ -1,0 +1,257 @@
+{
+  "$schema": "../../../schema/lesson.schema.json",
+  "id": "vi-south.u00.l08",
+  "unit": "vi-south.u00",
+  "kind": "review",
+  "title": {
+    "fr": "Révision : les bases",
+    "en": "Review: the basics"
+  },
+  "goal": {
+    "fr": "Revoir les lettres, les tons, les pronoms et les nombres.",
+    "en": "Review letters, tones, pronouns and numbers."
+  },
+  "estimatedMinutes": 6,
+  "prerequisites": [
+    "vi-south.u00.l07"
+  ],
+  "concepts": [
+    "p_ow",
+    "p_uw",
+    "p_oo",
+    "p_syl_da",
+    "p_syl_nha",
+    "p_syl_tra",
+    "t_sac",
+    "t_huyen",
+    "t_hoi",
+    "c_ma_mom",
+    "c_ma_but",
+    "c_toi",
+    "c_anh",
+    "c_chi",
+    "c_em",
+    "c_anh_he",
+    "c_ho_they",
+    "c_bon",
+    "c_bay_seven",
+    "s_muoi_lam",
+    "s_hai_muoi_mot",
+    "c_mot_one",
+    "c_nam_five",
+    "c_muoi_ten",
+    "c_ban_friend",
+    "c_chi_she"
+  ],
+  "steps": [
+    {
+      "type": "listen_pick_text",
+      "concept": "p_ow",
+      "distractors": [
+        "o",
+        "ô"
+      ],
+      "explain": {
+        "fr": "ơ : un « eu », comme dans « peur ».",
+        "en": "ơ: 'er', as in 'her'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_uw",
+      "distractors": [
+        "u",
+        "ơ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_da",
+      "distractors": [
+        "đa",
+        "tra"
+      ],
+      "explain": {
+        "fr": "d sans barre : « y » au Sud.",
+        "en": "d without a bar: 'y' in the South."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_nha",
+      "distractors": [
+        "nga",
+        "xa"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "p_syl_tra",
+      "distractors": [
+        "cha",
+        "tha"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "t_sac",
+        "t_huyen",
+        "t_hoi",
+        "p_ow",
+        "p_uw",
+        "p_oo"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_mom",
+      "distractors": [
+        "mà",
+        "ma"
+      ],
+      "explain": {
+        "fr": "má monte : ton sắc.",
+        "en": "má rises: sắc tone."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ma_but",
+      "distractors": [
+        "má",
+        "mạ"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_toi",
+      "distractors": [
+        "em",
+        "anh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_anh_he",
+      "distractors": [
+        "anh",
+        "chỉ"
+      ],
+      "explain": {
+        "fr": "ảnh : « lui ». anh : « toi ».",
+        "en": "ảnh: 'him'. anh: 'you'."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ho_they",
+      "distractors": [
+        "tôi",
+        "chị"
+      ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_anh",
+        "c_chi",
+        "c_em",
+        "c_ban_friend",
+        "c_chi_she",
+        "c_ho_they"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bon",
+      "distractors": [
+        "bảy",
+        "một"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bay_seven",
+      "distractors": [
+        "bốn",
+        "ba"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_muoi_lam",
+      "distractors": [
+        "mười một",
+        "hai mươi mốt"
+      ],
+      "explain": {
+        "fr": "15 : mười lăm, jamais mười năm.",
+        "en": "15: mười lăm, never mười năm."
+      }
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_hai_muoi_mot",
+      "distractors": [
+        "mười một",
+        "mười lăm"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "hai mươi ___",
+      "answer": "mốt",
+      "options": [
+        "mốt",
+        "một",
+        "năm"
+      ],
+      "translation": {
+        "fr": "21",
+        "en": "21"
+      }
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_mot_one",
+        "c_bon",
+        "c_nam_five",
+        "c_bay_seven",
+        "c_muoi_ten",
+        "s_muoi_lam"
+      ],
+      "mode": "text_gloss"
+    },
+    {
+      "type": "build_sentence",
+      "target": "hai mươi mốt",
+      "tokens": [
+        "hai",
+        "mươi",
+        "mốt",
+        "mười"
+      ],
+      "translation": {
+        "fr": "21",
+        "en": "21"
+      },
+      "audioConcept": "s_hai_muoi_mot"
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_chi",
+      "distractors": [
+        "chỉ",
+        "em"
+      ]
+    }
+  ],
+  "review": {
+    "srsIntroduce": []
+  },
+  "reviewed": false
+}

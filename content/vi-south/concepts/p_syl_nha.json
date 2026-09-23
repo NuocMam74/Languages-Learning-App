@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_syl_nha",
+  "type": "sound",
+  "vi": "nha",
+  "gloss": {
+    "fr": "nh + a : « gna »",
+    "en": "nh + a: 'nya'"
+  },
+  "audio": [],
+  "reviewed": false
+}

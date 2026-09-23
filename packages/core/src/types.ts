@@ -192,6 +192,12 @@ export interface Lesson {
   concepts: ConceptId[];
   steps: LessonStep[];
   review: { srsIntroduce: ConceptId[] };
+  /**
+   * Fiches conseils à lire avant **ce** niveau (contrat phase26 §3), en plus de celles de l'unité.
+   * La leçon qui présente l'alphabet a besoin de la fiche de l'alphabet, pas de celle des nombres :
+   * attachées à l'unité, les cinq fiches des bases tomberaient toutes sur le premier niveau.
+   */
+  guides?: string[];
   reviewed: boolean;
 }
 

@@ -6,7 +6,7 @@ import type { Profile } from "../db.ts";
 import { Icon, ProgressBar, staggerStyle } from "../design/index.ts";
 import { t, type MessageKey } from "../i18n/index.ts";
 import { DAILY_GOAL_CHOICES, DEFAULT_PROFILE, saveProfile } from "../learner.ts";
-import { playablePlacementFor } from "../packs/placement.ts";
+import { placementPlanFor } from "../packs/placement.ts";
 import { syncProfileChange } from "../profile-sync.ts";
 
 /**
@@ -72,7 +72,7 @@ export function Onboarding({ content, onDone }: { content: ContentIndex; onDone:
      * Le test n'existe que si le pack fournit un placement.json avec au moins 6 items jouables
      * (contrat phase5 §1) ; sinon on enchaîne directement sur la visite.
      */
-    const placement = playablePlacementFor(content) !== null && content.lessons.size > 0;
+    const placement = placementPlanFor(content) !== null && content.lessons.size > 0;
     navigate(placement ? "/placement" : "/decouverte", { replace: true });
   };
 

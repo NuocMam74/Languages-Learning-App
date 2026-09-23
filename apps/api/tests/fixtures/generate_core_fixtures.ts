@@ -185,16 +185,20 @@ const units = content.curriculum.units;
 const unitLessons = (i: number) => units[i]?.lessons ?? [];
 const testsOf = (ids: readonly string[]) => ids.filter((id) => content.lessons.get(id)?.kind === "unit_test");
 const upTo = (n: number) => units.slice(0, n).flatMap((u) => u.lessons);
+const nonTests = (ids: readonly string[]) => ids.filter((id) => content.lessons.get(id)?.kind !== "unit_test");
+// Leçons **maîtrisées** (contrat phase25 §1) : c'est ce que le client appelle « réussi ». Le serveur
+// reste plus permissif à dessein (une leçon terminée compte) ; la parité se vérifie donc là où les
+// deux jugent pareil — leçons maîtrisées, tests réussis ou non.
 const progressionCases: { name: string; completed: string[]; passed: string[]; path: string | null }[] = [
   { name: "fresh", completed: [], passed: [], path: null },
-  { name: "u01-lessons", completed: unitLessons(0).slice(0, 3), passed: [], path: null },
-  { name: "u01-test-failed", completed: unitLessons(0), passed: [], path: null },
-  { name: "u01-passed", completed: unitLessons(0), passed: testsOf(unitLessons(0)), path: null },
-  { name: "u01-u02-passed-family", completed: upTo(2), passed: testsOf(upTo(2)), path: "family" },
-  { name: "u01-u02-passed-travel", completed: upTo(2), passed: testsOf(upTo(2)), path: "travel" },
-  { name: "u01-u04-passed-work", completed: upTo(4), passed: testsOf(upTo(4)), path: "work" },
-  { name: "u01-u06-passed-roots", completed: upTo(6), passed: testsOf(upTo(6)), path: "roots" },
-  { name: "u01-u06-tests-failed", completed: upTo(6), passed: testsOf(upTo(5)), path: null },
+  { name: "unit1-lessons", completed: unitLessons(0).slice(0, 3), passed: unitLessons(0).slice(0, 3), path: null },
+  { name: "unit1-test-failed", completed: unitLessons(0), passed: nonTests(unitLessons(0)), path: null },
+  { name: "unit1-passed", completed: unitLessons(0), passed: unitLessons(0), path: null },
+  { name: "units1-2-passed-family", completed: upTo(2), passed: upTo(2), path: "family" },
+  { name: "units1-2-passed-travel", completed: upTo(2), passed: upTo(2), path: "travel" },
+  { name: "units1-4-passed-work", completed: upTo(4), passed: upTo(4), path: "work" },
+  { name: "units1-6-passed-roots", completed: upTo(6), passed: upTo(6), path: "roots" },
+  { name: "units1-6-tests-failed", completed: upTo(6), passed: [...nonTests(upTo(6)), ...testsOf(upTo(5))], path: null },
   ...[0, 1, 2, 3].map((level) => {
     const entry = resolveEntryLesson(content, level);
     const skipped = entry ? lessonsBefore(content.curriculum, entry.id) : [];

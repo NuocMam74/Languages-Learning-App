@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_hai_muoi",
+  "type": "structure",
+  "vi": "hai mươi",
+  "gloss": {
+    "fr": "vingt",
+    "en": "twenty"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_hai_muoi_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_hai_muoi_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "pos": "phrase",
+  "reviewed": false
+}

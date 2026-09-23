@@ -85,16 +85,17 @@ describe("planSession", () => {
 describe("nextLesson", () => {
   it("respecte les prérequis et l'ordre du cursus", () => {
     const none = new Set<string>();
-    expect(nextLesson(content.curriculum, content.lessons, none, null)?.id).toBe("vi-south.u01.l01");
-    expect(nextLesson(content.curriculum, content.lessons, new Set(["vi-south.u01.l01"]), null)?.id).toBe("vi-south.u01.l02");
+    // Les bases (u00, contrat phase26 §2) ouvrent le parcours.
+    expect(nextLesson(content.curriculum, content.lessons, none, null)?.id).toBe("vi-south.u00.l01");
+    expect(nextLesson(content.curriculum, content.lessons, new Set(["vi-south.u00.l01"]), null)?.id).toBe("vi-south.u00.l02");
     const all = new Set(content.lessons.keys());
     expect(nextLesson(content.curriculum, content.lessons, all, null)).toBeNull();
   });
 
   it("le parcours du profil trie les unités disponibles : famille, voyage, travail changent réellement l'ordre", () => {
-    // Socle u01→u02→u03 réussi : u04 (famille), u05 (travail), u06 (voyage) deviennent disponibles.
-    const done = new Set(["vi-south.u01", "vi-south.u02", "vi-south.u03"].flatMap((u) => content.curriculum.units.find((x) => x.id === u)!.lessons));
-    expect(nextLesson(content.curriculum, content.lessons, new Set(), "family")?.id).toBe("vi-south.u01.l01");
+    // Socle u00→u01→u02→u03 réussi : u04 (famille), u05 (travail), u06 (voyage) deviennent disponibles.
+    const done = new Set(["vi-south.u00", "vi-south.u01", "vi-south.u02", "vi-south.u03"].flatMap((u) => content.curriculum.units.find((x) => x.id === u)!.lessons));
+    expect(nextLesson(content.curriculum, content.lessons, new Set(), "family")?.id).toBe("vi-south.u00.l01");
     expect(nextLesson(content.curriculum, content.lessons, done, "family")?.id).toBe("vi-south.u04.l01");
     expect(nextLesson(content.curriculum, content.lessons, done, "work")?.id).toBe("vi-south.u05.l01");
     expect(nextLesson(content.curriculum, content.lessons, done, "travel")?.id).toBe("vi-south.u06.l01");
@@ -105,22 +106,22 @@ describe("nextLesson", () => {
     // Le défaut corrigé : `nextLesson` la comptait comme faite et passait à la suivante, que
     // `isLessonUnlocked` refusait d'ouvrir faute de prérequis **réussi**. La séance du jour se
     // retrouvait vide et l'accueil sans bouton, pendant que le parcours affichait « à refaire ».
-    const completed = new Set(["vi-south.u01.l01"]);
+    const completed = new Set(["vi-south.u00.l01"]);
     const passed = new Set<string>();
-    expect(nextLesson(content.curriculum, content.lessons, completed, null, passed)?.id).toBe("vi-south.u01.l01");
-    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u01.l02", { completed, passed })).toBe(false);
+    expect(nextLesson(content.curriculum, content.lessons, completed, null, passed)?.id).toBe("vi-south.u00.l01");
+    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u00.l02", { completed, passed })).toBe(false);
     // Réussie, elle laisse enfin la place à la suivante.
-    expect(nextLesson(content.curriculum, content.lessons, completed, null, completed)?.id).toBe("vi-south.u01.l02");
+    expect(nextLesson(content.curriculum, content.lessons, completed, null, completed)?.id).toBe("vi-south.u00.l02");
   });
 
   it("test d'unité terminé sous le seuil : l'unité suivante reste fermée, le test est reproposé", () => {
-    const u01 = content.curriculum.units[0]!;
-    const test = u01.lessons.find((id) => content.lessons.get(id)?.kind === "unit_test")!;
-    const completed = new Set(u01.lessons);
-    const failed = new Set(u01.lessons.filter((id) => id !== test));
+    const first = content.curriculum.units[0]!;
+    const test = first.lessons.find((id) => content.lessons.get(id)?.kind === "unit_test")!;
+    const completed = new Set(first.lessons);
+    const failed = new Set(first.lessons.filter((id) => id !== test));
     expect(nextLesson(content.curriculum, content.lessons, completed, null, failed)?.id).toBe(test);
-    expect(isUnitAvailable(content.curriculum, content.lessons, "vi-south.u02", { completed, passed: failed })).toBe(false);
-    expect(nextLesson(content.curriculum, content.lessons, completed, null, completed)?.id).toBe("vi-south.u02.l01");
+    expect(isUnitAvailable(content.curriculum, content.lessons, "vi-south.u01", { completed, passed: failed })).toBe(false);
+    expect(nextLesson(content.curriculum, content.lessons, completed, null, completed)?.id).toBe("vi-south.u01.l01");
     expect(isUnitTestPassed(0.7)).toBe(true);
     expect(isUnitTestPassed(0.69)).toBe(false);
   });
@@ -129,11 +130,13 @@ describe("nextLesson", () => {
     expect(unitRequires(content.curriculum, "vi-south.u10")).toEqual(["vi-south.u05", "vi-south.u06"]);
     const noRequires: Curriculum = { ...content.curriculum, units: content.curriculum.units.map(({ requires: _r, ...u }) => u) };
     expect(unitRequires(noRequires, "vi-south.u02")).toEqual(["vi-south.u01"]);
-    expect(unitRequires(noRequires, "vi-south.u01")).toEqual([]);
+    expect(unitRequires(noRequires, "vi-south.u01")).toEqual(["vi-south.u00"]);
+    expect(unitRequires(noRequires, "vi-south.u00")).toEqual([]);
     const none = { completed: new Set<string>() };
-    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u01.l01", none)).toBe(true);
+    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u00.l01", none)).toBe(true);
+    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u01.l01", none)).toBe(false);
     expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u24.l08", none)).toBe(false);
-    const u01Test = content.curriculum.units[0]!.lessons.find((id) => content.lessons.get(id)?.kind === "unit_test")!;
-    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u02.l01", { completed: new Set([u01Test]) })).toBe(true);
+    const u00Test = content.curriculum.units[0]!.lessons.find((id) => content.lessons.get(id)?.kind === "unit_test")!;
+    expect(isLessonUnlocked(content.curriculum, content.lessons, "vi-south.u01.l01", { completed: new Set([u00Test]) })).toBe(true);
   });
 });

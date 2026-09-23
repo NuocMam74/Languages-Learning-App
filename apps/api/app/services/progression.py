@@ -5,7 +5,7 @@
 - **Graphe d'unités** : `requires` (défaut : unité précédente dans la liste). Une unité est disponible quand chaque
   unité requise (existante) est réussie. Seuls les prérequis de leçons **intra-unité** comptent. Le tri par
   `boostTags` s'applique aux unités disponibles.
-- **Placement** : niveau 0..3 → début de u01 / u03 / u05 / u07 (première unité publiée de numéro ≥ cible, sinon la
+- **Placement** : niveau 0..3 → début de u00 / u03 / u05 / u07 (première unité publiée de numéro ≥ cible, sinon la
   dernière) ; les leçons antérieures sont « sautées » : comptées terminées **et** réussies (comme le client, qui les
   ajoute à ses ensembles `completed` et `passed`).
 """
@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from app.services.content import Lesson, Pack, Unit
 
 UNIT_TEST_PASS_SCORE = 0.7
-PLACEMENT_ENTRY_UNITS = (1, 3, 5, 7)
+PLACEMENT_ENTRY_UNITS = (0, 3, 5, 7)  # u00 = les bases (contrat phase26 §2)
 _EPSILON = 1e-9
 _UNIT_NUMBER = re.compile(r"u(\d+)$")
 
@@ -137,7 +137,7 @@ def unit_number(unit: Unit, index: int) -> int:
 
 
 def resolve_entry_lesson(pack: Pack, level_estimate: int) -> Lesson | None:
-    """Niveau 0..3 → première leçon de la première unité publiée (avec leçons) de numéro ≥ u01/u03/u05/u07,
+    """Niveau 0..3 → première leçon de la première unité publiée (avec leçons) de numéro ≥ u00/u03/u05/u07,
     sinon de la dernière unité publiée."""
     level = max(0, min(len(PLACEMENT_ENTRY_UNITS) - 1, int(level_estimate)))
     target = PLACEMENT_ENTRY_UNITS[level]

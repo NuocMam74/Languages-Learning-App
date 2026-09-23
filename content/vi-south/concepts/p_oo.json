@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "p_oo",
+  "type": "sound",
+  "vi": "ô",
+  "gloss": {
+    "fr": "o fermé, comme dans « eau »",
+    "en": "closed o, as in 'go' without the glide"
+  },
+  "audio": [],
+  "reviewed": false
+}

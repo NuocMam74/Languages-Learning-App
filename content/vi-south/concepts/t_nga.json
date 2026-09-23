@@ -1,0 +1,12 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "t_nga",
+  "type": "tone",
+  "vi": "ngã",
+  "gloss": {
+    "fr": "au Sud, se dit comme hỏi (ã)",
+    "en": "in the South, sounds like hỏi (ã)"
+  },
+  "audio": [],
+  "reviewed": false
+}
