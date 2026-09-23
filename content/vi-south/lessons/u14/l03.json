@@ -144,7 +144,7 @@
       "distractors": [
         "dơ",
         "ạ",
-        "đẹp"
+        "rẻ"
       ]
     },
     {
@@ -161,17 +161,17 @@
       "concept": "c_hoi_slightly",
       "distractors": [
         "cô",
-        "tháng",
-        "mấy"
+        "mấy",
+        "chút"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_pho",
       "distractors": [
-        "sốt",
-        "nghe",
-        "ơi"
+        "ơi",
+        "đâu",
+        "cậu"
       ]
     },
     {
@@ -179,7 +179,7 @@
       "concept": "c_com_tam",
       "distractors": [
         "cảm ơn",
-        "lì xì"
+        "nước mía"
       ]
     },
     {
@@ -187,7 +187,7 @@
       "concept": "c_banh_mi",
       "distractors": [
         "sầu riêng",
-        "đồng nghiệp"
+        "em út"
       ]
     },
     {
@@ -216,7 +216,7 @@
         "dở",
         "dơ",
         "ạ",
-        "đẹp"
+        "tuổi"
       ],
       "translation": {
         "fr": "Ce plat n'est pas terrible.",
@@ -229,9 +229,9 @@
       "answer": "phở",
       "options": [
         "phở",
-        "sốt",
-        "nghe",
-        "ơi"
+        "ơi",
+        "đi",
+        "tư"
       ],
       "translation": {
         "fr": "Un bol de phở, s'il te plaît.",
@@ -245,8 +245,8 @@
       "options": [
         "cơm tấm",
         "cảm ơn",
-        "lì xì",
-        "hôm nay"
+        "hôm nay",
+        "sau Tết"
       ],
       "translation": {
         "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",

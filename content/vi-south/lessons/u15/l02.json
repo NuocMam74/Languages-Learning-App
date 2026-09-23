@@ -103,7 +103,7 @@
       "concept": "c_goi_lai",
       "distractors": [
         "gói lại",
-        "gọi lạ"
+        "chút xíu"
       ],
       "explain": {
         "fr": "gọi lại : rappeler. gói lại : remballer.",
@@ -236,9 +236,9 @@
       "answer": "Lát em gọi lại nha.",
       "options": [
         "Lát em gọi lại nha.",
-        "Tui muốn gia hạn visa.",
         "Anh có thích phở không?",
-        "Cho em gặp anh Minh."
+        "Bớt cho em đi chị.",
+        "Nhà vệ sinh ở đâu?"
       ],
       "translation": {
         "fr": "Je suis occupé(e), je te rappelle tout à l'heure.",
@@ -249,9 +249,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_ne",
       "distractors": [
-        "hết",
         "cô",
-        "rối"
+        "rối",
+        "ghiền"
       ]
     },
     {
@@ -292,9 +292,9 @@
       "type": "listen_pick_text",
       "concept": "c_alo",
       "distractors": [
-        "sợ",
         "tôi",
-        "cơm"
+        "cơm",
+        "tiền"
       ]
     },
     {
@@ -303,9 +303,9 @@
       "answer": "nè",
       "options": [
         "nè",
-        "hết",
         "cô",
-        "rối"
+        "rối",
+        "vợ"
       ],
       "translation": {
         "fr": "Tiens, regarde ça !",
@@ -318,9 +318,9 @@
       "answer": "alô",
       "options": [
         "alô",
-        "sợ",
         "tôi",
-        "cơm"
+        "cơm",
+        "mua"
       ],
       "translation": {
         "fr": "Allô, je t'écoute.",

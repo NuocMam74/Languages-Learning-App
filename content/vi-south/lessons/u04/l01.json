@@ -124,7 +124,7 @@
       "concept": "c_chi_hai",
       "distractors": [
         "bình thường",
-        "máy bay"
+        "anh hai"
       ]
     },
     {
@@ -132,49 +132,34 @@
       "concept": "c_tu",
       "distractors": [
         "năm",
-        "đũa",
-        "ngày"
+        "da",
+        "mè"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_anh_hai",
       "distractors": [
-        "nước mắm",
-        "phòng trọ"
+        "em út",
+        "bình thường"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_em_ut",
       "distractors": [
-        "xe máy",
-        "danh thiếp"
+        "bình thường",
+        "mọi người"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_chi_hai",
       "distractors": [
-        "c_benh_vien",
         "c_chu",
-        "c_xe"
+        "c_xe",
+        "c_ca_fish"
       ]
-    },
-    {
-      "type": "fill_gap",
-      "text": "Anh ___ tôi ở Cần Thơ.",
-      "answer": "hai",
-      "options": [
-        "hai",
-        "bạn",
-        "sẽ",
-        "đồng"
-      ],
-      "translation": {
-        "fr": "Mon frère aîné habite à Cần Thơ.",
-        "en": "My eldest brother lives in Cần Thơ."
-      }
     },
     {
       "type": "match_pairs",
@@ -186,6 +171,52 @@
         "c_tu",
         "c_em_ut"
       ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ mươi lăm tuổi.",
+      "answer": "chị hai",
+      "options": [
+        "chị hai",
+        "em út",
+        "xin lỗi",
+        "anh ba"
+      ],
+      "translation": {
+        "fr": "Elle a vingt-cinq ans.",
+        "en": "She's twenty-five."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Chị hai mươi lăm tuổi",
+      "tokens": [
+        "Chị",
+        "hai",
+        "mươi",
+        "lăm",
+        "tuổi"
+      ],
+      "translation": {
+        "fr": "Elle a vingt-cinq ans.",
+        "en": "She's twenty-five."
+      },
+      "audioConcept": "c_chi_hai"
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ tôi ở Cần Thơ.",
+      "answer": "hai",
+      "options": [
+        "hai",
+        "già",
+        "thầy",
+        "tốt"
+      ],
+      "translation": {
+        "fr": "Mon frère aîné habite à Cần Thơ.",
+        "en": "My eldest brother lives in Cần Thơ."
+      }
     },
     {
       "type": "game",

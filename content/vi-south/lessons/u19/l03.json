@@ -197,9 +197,9 @@
       "answer": "tạm trú",
       "options": [
         "tạm trú",
-        "hình thẻ",
         "chìa khóa",
-        "chuyển khoản"
+        "Khỏe chưa?",
+        "Ngon quá!"
       ],
       "translation": {
         "fr": "Je vais déclarer mon lieu de résidence.",
@@ -214,7 +214,7 @@
         "địa chỉ",
         "cà phê",
         "xe hơi",
-        "đám giỗ"
+        "Chưa xong."
       ],
       "translation": {
         "fr": "C'est quoi ton adresse ? (à un homme un peu plus âgé)",
@@ -291,7 +291,7 @@
       "concept": "c_b_het_han",
       "distractors": [
         "giấy tờ",
-        "dễ thương"
+        "xe máy"
       ]
     }
   ],

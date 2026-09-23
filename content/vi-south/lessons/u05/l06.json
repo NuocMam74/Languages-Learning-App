@@ -34,8 +34,9 @@
       "type": "listen_pick_text",
       "concept": "c_noi_speak",
       "distractors": [
-        "nổi",
-        "nôi"
+        "chè",
+        "mình",
+        "ông"
       ],
       "explain": {
         "fr": "nói monte : parler. nôi, plat : le berceau.",
@@ -59,7 +60,8 @@
       "concept": "c_hoc",
       "distractors": [
         "hóc",
-        "hộc"
+        "mạ",
+        "thím"
       ],
       "explain": {
         "fr": "học tombe court : apprendre.",
@@ -156,9 +158,9 @@
       "type": "listen_pick_text",
       "concept": "c_hieu",
       "distractors": [
-        "thẻ",
-        "cay",
-        "rút"
+        "chè",
+        "ơi",
+        "họ"
       ]
     },
     {
@@ -167,9 +169,9 @@
       "answer": "nói",
       "options": [
         "nói",
-        "ghé",
         "chồng",
-        "của"
+        "của",
+        "thầy"
       ],
       "translation": {
         "fr": "Tu parles vietnamien ?",
@@ -182,9 +184,9 @@
       "answer": "hiểu",
       "options": [
         "hiểu",
-        "thẻ",
-        "cay",
-        "rút"
+        "rau",
+        "chỉ",
+        "mười"
       ],
       "translation": {
         "fr": "Pardon, je ne comprends pas.",
@@ -197,9 +199,9 @@
       "answer": "chút xíu",
       "options": [
         "chút xíu",
-        "chủ nhà",
         "họ hàng",
-        "xe buýt"
+        "Đây là…",
+        "Không sao."
       ],
       "translation": {
         "fr": "Je parle un tout petit peu vietnamien.",
@@ -236,40 +238,40 @@
       "type": "listen_pick_text",
       "concept": "c_danh_thiep",
       "distractors": [
-        "trúng số",
-        "giả sử"
+        "ông bà",
+        "anh hai"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_chi_lam_o_dau",
       "distractors": [
-        "Người đó là ai?",
-        "Phim này hay quá!"
+        "Mời bác uống trà.",
+        "Anh làm nghề gì?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_van_phong",
       "distractors": [
-        "mắc cỡ",
-        "anh ba"
+        "anh ba",
+        "kỹ sư"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_cong_ty",
       "distractors": [
-        "bắt đầu",
-        "giả sử"
+        "ông bà",
+        "xin lỗi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_lam_viec",
       "distractors": [
-        "bên phải",
-        "tuần trước"
+        "anh hai",
+        "xin lỗi"
       ]
     },
     {
@@ -277,7 +279,7 @@
       "concept": "c_nhan_vien",
       "distractors": [
         "đi làm",
-        "chung cư"
+        "thành phố"
       ]
     },
     {
@@ -285,7 +287,7 @@
       "concept": "c_ky_su",
       "distractors": [
         "Việt kiều",
-        "chủ nhà"
+        "công ty"
       ]
     }
   ],

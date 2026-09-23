@@ -35,8 +35,9 @@
       "type": "listen_pick_text",
       "concept": "c_truoc",
       "distractors": [
-        "chước",
-        "trúc"
+        "xin",
+        "bắp",
+        "bớt"
       ],
       "explain": {
         "fr": "trước : devant. Le Sud distingue bien tr et ch.",
@@ -62,8 +63,9 @@
       "type": "listen_pick_text",
       "concept": "c_giua",
       "distractors": [
-        "giũa",
-        "gió"
+        "tuổi",
+        "ma",
+        "dừa"
       ],
       "explain": {
         "fr": "giữa : entre. gió : le vent.",
@@ -122,8 +124,9 @@
       "type": "listen_pick_text",
       "concept": "c_trong",
       "distractors": [
-        "trông",
-        "chong"
+        "vui",
+        "dượng",
+        "khỏe"
       ],
       "explain": {
         "fr": "trong : dans. trông, avec ô : regarder, garder.",
@@ -174,8 +177,8 @@
       "concept": "c_sau_six",
       "distractors": [
         "sau",
-        "sợ",
-        "ơi"
+        "ơi",
+        "mươi"
       ]
     },
     {
@@ -184,16 +187,16 @@
       "distractors": [
         "ma",
         "ngọt",
-        "thuê"
+        "chùa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_va",
       "distractors": [
-        "nhiều",
         "một",
-        "nước"
+        "nước",
+        "ghế"
       ]
     },
     {
@@ -202,9 +205,9 @@
       "answer": "trước",
       "options": [
         "trước",
-        "coi",
-        "nhiều",
-        "bắp"
+        "bắp",
+        "bả",
+        "sông"
       ],
       "translation": {
         "fr": "Attends-moi devant l'hôtel, d'accord ?",
@@ -234,7 +237,7 @@
         "giữa",
         "xin",
         "ký",
-        "muốn"
+        "trà"
       ],
       "translation": {
         "fr": "L'école est entre le parc et l'hôpital.",
@@ -245,9 +248,9 @@
       "type": "listen_pick_text",
       "concept": "c_quan_district",
       "distractors": [
-        "mệt",
-        "nếu",
-        "chị"
+        "chị",
+        "một",
+        "ngàn"
       ]
     },
     {
@@ -263,7 +266,7 @@
       "concept": "c_dia_chi",
       "distractors": [
         "cơm tấm",
-        "năm ngoái"
+        "em út"
       ]
     },
     {
@@ -271,8 +274,8 @@
       "concept": "c_hem",
       "distractors": [
         "sáng",
-        "hen",
-        "về"
+        "về",
+        "má"
       ]
     },
     {
@@ -280,8 +283,8 @@
       "concept": "c_duong_street",
       "distractors": [
         "ngọt",
-        "mở",
-        "hồi"
+        "ông",
+        "dạ"
       ]
     },
     {
@@ -289,7 +292,7 @@
       "concept": "c_doi_dien",
       "distractors": [
         "ngày sinh",
-        "xe đạp"
+        "làm việc"
       ]
     },
     {
@@ -297,7 +300,7 @@
       "concept": "c_ke_ben",
       "distractors": [
         "anh hai",
-        "tạm trú"
+        "đối diện"
       ]
     },
     {

@@ -53,7 +53,7 @@
       "concept": "c_b_mac_co",
       "distractors": [
         "mắc có",
-        "mác cỡ"
+        "xe máy"
       ],
       "explain": {
         "fr": "mắc cỡ : gêné, timide.",
@@ -207,9 +207,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_coi",
       "distractors": [
-        "theo",
         "chậm",
-        "thím"
+        "thím",
+        "thẻ"
       ]
     },
     {
@@ -250,8 +250,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_nho_nghen",
       "distractors": [
-        "theo tui",
-        "tuần sau"
+        "tuần sau",
+        "uống thuốc"
       ]
     },
     {

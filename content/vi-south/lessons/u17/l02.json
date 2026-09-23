@@ -108,8 +108,8 @@
       "type": "listen_pick_text",
       "concept": "c_tang_tret",
       "distractors": [
-        "tăng trệt",
-        "tâng trệt"
+        "tâng trệt",
+        "trả lời"
       ],
       "explain": {
         "fr": "tầng trệt : le rez-de-chaussée.",
@@ -154,9 +154,9 @@
       "type": "listen_pick_text",
       "concept": "c_phong",
       "distractors": [
-        "chắc",
         "thưa",
-        "ăn"
+        "ăn",
+        "chỉ"
       ]
     },
     {
@@ -192,7 +192,7 @@
       "distractors": [
         "c_ba",
         "c_quan_ca_phe",
-        "c_chia_khoa"
+        "c_giao_vien"
       ]
     },
     {

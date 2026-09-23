@@ -166,7 +166,7 @@
       "distractors": [
         "ca",
         "cà",
-        "lên"
+        "chiều"
       ]
     },
     {
@@ -182,8 +182,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_tang_ca",
       "distractors": [
-        "Mai nhà em có đám giỗ.",
-        "Hồi nhỏ tui ở dưới quê."
+        "Phòng này bao nhiêu một tháng?",
+        "Anh chở em ra chợ nha."
       ]
     },
     {
@@ -201,7 +201,7 @@
       "distractors": [
         "c_chuoi",
         "c_ngan_hang",
-        "c_b_li_xi"
+        "c_ben_trai"
       ]
     },
     {
@@ -236,7 +236,7 @@
         "việc",
         "mì",
         "cơm",
-        "hen"
+        "mợ"
       ],
       "translation": {
         "fr": "Tellement de travail !",
@@ -281,7 +281,7 @@
         "cá",
         "ca",
         "cà",
-        "lên"
+        "chút"
       ],
       "translation": {
         "fr": "J'ai trois poissons.",

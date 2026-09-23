@@ -188,7 +188,7 @@
       "distractors": [
         "lầu",
         "lẩu",
-        "hen"
+        "bạn"
       ]
     },
     {
@@ -222,8 +222,8 @@
       "concept": "c_chu_owner",
       "distractors": [
         "chú",
-        "tiếc",
-        "chào"
+        "chào",
+        "thưa"
       ]
     },
     {
@@ -239,8 +239,8 @@
       "type": "listen_pick_text",
       "concept": "s_con_phong",
       "distractors": [
-        "Dễ thương quá!",
-        "Em đi đâu?"
+        "Em đi đâu?",
+        "Em bị sốt."
       ]
     },
     {
@@ -249,7 +249,7 @@
       "distractors": [
         "ba",
         "lớn",
-        "bông"
+        "ma"
       ]
     },
     {

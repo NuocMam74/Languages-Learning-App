@@ -115,8 +115,9 @@
       "type": "listen_pick_text",
       "concept": "c_hop",
       "distractors": [
-        "hộp",
-        "học"
+        "học",
+        "chú",
+        "chút"
       ],
       "explain": {
         "fr": "họp : la réunion.",
@@ -181,7 +182,7 @@
       "distractors": [
         "chị",
         "đã",
-        "nghĩ"
+        "anh"
       ]
     },
     {
@@ -197,7 +198,7 @@
       "concept": "c_b_nghi_phep",
       "distractors": [
         "bên phải",
-        "bàn thờ"
+        "đèn đỏ"
       ]
     },
     {
@@ -237,8 +238,8 @@
       "options": [
         "nghỉ phép",
         "bên phải",
-        "bàn thờ",
-        "tuần trước"
+        "tuần trước",
+        "đau bụng"
       ],
       "translation": {
         "fr": "Je demande trois jours de congé.",
@@ -253,7 +254,7 @@
         "tháng",
         "chị",
         "đã",
-        "nghĩ"
+        "chưa"
       ],
       "translation": {
         "fr": "On touche le salaire seulement en fin de mois.",
@@ -268,7 +269,7 @@
         "họp",
         "gần",
         "muỗng",
-        "há"
+        "mấy"
       ],
       "translation": {
         "fr": "Minh est en réunion. C'est de la part de qui ?",

@@ -42,8 +42,8 @@
       "type": "listen_pick_text",
       "concept": "c_xe_may",
       "distractors": [
-        "xe mây",
-        "xe mấy"
+        "xe mấy",
+        "xin lỗi"
       ],
       "explain": {
         "fr": "xe máy : la moto.",
@@ -113,8 +113,7 @@
         "cho",
         "em",
         "xuống",
-        "đây",
-        "lên"
+        "đây"
       ],
       "translation": {
         "fr": "On est arrivés, déposez-moi ici.",
@@ -196,7 +195,7 @@
       "distractors": [
         "bên",
         "cơm",
-        "ghé"
+        "cổ"
       ]
     },
     {
@@ -204,7 +203,7 @@
       "concept": "c_xe_hoi",
       "distractors": [
         "công ty",
-        "yên tĩnh"
+        "em út"
       ]
     },
     {
@@ -219,8 +218,8 @@
       "type": "listen_pick_text",
       "concept": "s_dung_lai",
       "distractors": [
-        "Dở quá!",
-        "thối tiền"
+        "thối tiền",
+        "tiếng Việt"
       ]
     },
     {
@@ -236,8 +235,8 @@
       "concept": "c_xe_may",
       "distractors": [
         "c_nuoc",
-        "c_tin_nhan",
-        "c_b_qua_gift"
+        "c_benh_vien",
+        "c_ma_mom"
       ]
     },
     {
@@ -246,9 +245,9 @@
       "answer": "xe máy",
       "options": [
         "xe máy",
-        "hình thẻ",
         "nước mía",
-        "chung cư"
+        "tụi mình",
+        "chúng tôi"
       ],
       "translation": {
         "fr": "Aujourd'hui, tout le monde a une moto.",
@@ -263,7 +262,7 @@
         "quẹo trái",
         "nửa ký",
         "Mắc quá!",
-        "Thiệt hông?"
+        "Tới rồi."
       ],
       "translation": {
         "fr": "Au carrefour, tourne à gauche.",
@@ -278,7 +277,7 @@
         "quẹo",
         "bên",
         "cơm",
-        "ghé"
+        "lăm"
       ],
       "translation": {
         "fr": "Au carrefour, tourne à gauche.",

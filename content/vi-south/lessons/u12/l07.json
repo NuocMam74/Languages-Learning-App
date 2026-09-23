@@ -144,16 +144,16 @@
       "type": "listen_pick_text",
       "concept": "c_benh_vien",
       "distractors": [
-        "hồi đó",
-        "tăng ca"
+        "bác sĩ",
+        "trả lời"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ngan_hang",
       "distractors": [
-        "tầng trệt",
-        "hôm qua"
+        "hôm qua",
+        "nước mắm"
       ]
     },
     {
@@ -171,7 +171,7 @@
       "distractors": [
         "mấy",
         "rưỡi",
-        "sợ"
+        "rau"
       ]
     },
     {
@@ -196,8 +196,8 @@
       "concept": "c_nao_which",
       "distractors": [
         "tui",
-        "ước",
-        "đem"
+        "không",
+        "phút"
       ]
     },
     {
@@ -205,7 +205,7 @@
       "concept": "c_khi_nao",
       "distractors": [
         "đèn đỏ",
-        "giả sử"
+        "bên trái"
       ]
     },
     {
@@ -220,17 +220,17 @@
       "type": "listen_pick_text",
       "concept": "c_hoi_ask",
       "distractors": [
-        "hen",
         "cái",
-        "số"
+        "số",
+        "chào"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_tra_loi",
       "distractors": [
-        "thiệp mời",
-        "bên trái"
+        "bên trái",
+        "bao giờ"
       ]
     },
     {

@@ -44,8 +44,9 @@
       "type": "listen_pick_text",
       "concept": "c_song_river",
       "distractors": [
-        "xông",
-        "sống"
+        "sống",
+        "chào",
+        "em"
       ],
       "explain": {
         "fr": "sông : s, langue un peu recourbée. xông : s simple. sống monte : vivre.",
@@ -72,8 +73,9 @@
       "type": "listen_pick_text",
       "concept": "c_xa_far",
       "distractors": [
-        "sa",
-        "xà"
+        "xà",
+        "vui",
+        "gì"
       ],
       "explain": {
         "fr": "xa, plat, avec un x doux : loin. xà descend.",
@@ -127,63 +129,63 @@
       "type": "listen_pick_text",
       "concept": "c_sach",
       "distractors": [
-        "xong",
-        "cổ",
-        "nhỏ"
+        "lăm",
+        "tô",
+        "em"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_xe",
       "distractors": [
-        "đội",
-        "ghé",
-        "gì"
+        "gì",
+        "hông",
+        "mạ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sua_milk",
       "distractors": [
-        "đũa",
-        "lớn",
-        "năm"
+        "năm",
+        "bảy",
+        "phải"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_xin",
       "distractors": [
-        "ngủ",
-        "Tết",
-        "chút"
+        "lăm",
+        "bạn",
+        "ổng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ly",
       "distractors": [
-        "giữa",
-        "này",
-        "bận"
+        "mà",
+        "bạn",
+        "chỉ"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_song_river",
       "distractors": [
-        "c_may_bay",
-        "c_ot",
-        "c_ben_phai"
+        "c_ba_grandma",
+        "c_xe",
+        "c_ca_fish"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_sach",
       "distractors": [
-        "c_khach_san",
         "c_song_river",
-        "c_b_dong_nghiep"
+        "c_ma_mom",
+        "c_dua_coconut"
       ]
     },
     {
@@ -191,8 +193,8 @@
       "concept": "c_ly",
       "distractors": [
         "c_ca_fish",
-        "c_b_sep",
-        "c_ngan_hang"
+        "c_em",
+        "c_song_river"
       ]
     },
     {
@@ -201,9 +203,9 @@
       "answer": "sữa",
       "options": [
         "sữa",
-        "đũa",
-        "lớn",
-        "năm"
+        "năm",
+        "ông",
+        "sáu"
       ],
       "translation": {
         "fr": "Je voudrais un verre de lait.",
@@ -216,25 +218,25 @@
       "distractors": [
         "dạ",
         "sông",
-        "đụng"
+        "bạn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ra",
       "distractors": [
-        "đau",
-        "nghen",
-        "mạ"
+        "mạ",
+        "mì",
+        "hông"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_rau",
       "distractors": [
-        "vô",
-        "rút",
-        "gặp"
+        "gặp",
+        "cơm",
+        "to"
       ]
     },
     {
@@ -242,8 +244,8 @@
       "concept": "c_dua_coconut",
       "distractors": [
         "tô",
-        "chén",
-        "mất"
+        "mả",
+        "bò"
       ]
     },
     {

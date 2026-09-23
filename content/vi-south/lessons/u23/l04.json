@@ -182,8 +182,8 @@
       "type": "listen_pick_text",
       "concept": "c_b_ho_chieu",
       "distractors": [
-        "ước gì",
-        "họ hàng"
+        "họ hàng",
+        "Việt kiều"
       ]
     },
     {
@@ -191,7 +191,7 @@
       "concept": "s_b_neu_co_tien",
       "distractors": [
         "Hôm qua tui đi chợ rồi về nhà.",
-        "Ước gì tui được về quê ăn Tết."
+        "Nếu rảnh thì ghé nhà tui chơi nha."
       ]
     },
     {

@@ -32,7 +32,8 @@
       "concept": "c_thich",
       "distractors": [
         "thịt",
-        "thiếc"
+        "lấy",
+        "tốt"
       ],
       "explain": {
         "fr": "thích monte : aimer. thịt tombe court : la viande.",
@@ -173,7 +174,7 @@
       "concept": "s_thiet_hong",
       "distractors": [
         "Thiết hông?",
-        "Mệt hông?"
+        "Chưa xong."
       ],
       "explain": {
         "fr": "Thiệt hông ? : vraiment ? thiệt tombe court.",
@@ -193,8 +194,8 @@
       "concept": "c_do_bad",
       "distractors": [
         "dơ",
-        "giấy",
-        "cà"
+        "cà",
+        "ra"
       ]
     },
     {
@@ -230,8 +231,8 @@
       "options": [
         "thích",
         "tụi",
-        "thuê",
-        "sớm"
+        "sớm",
+        "con"
       ],
       "translation": {
         "fr": "Tu aimes le phở ?",
@@ -245,8 +246,8 @@
       "options": [
         "dở",
         "dơ",
-        "giấy",
-        "cà"
+        "cà",
+        "đường"
       ],
       "translation": {
         "fr": "Ce plat n'est pas terrible.",

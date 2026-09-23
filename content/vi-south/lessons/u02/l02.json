@@ -51,7 +51,8 @@
       "concept": "c_ra",
       "distractors": [
         "da",
-        "gia"
+        "mình",
+        "mười"
       ],
       "explain": {
         "fr": "Au Sud, da et gia sonnent tous deux « ya » ; r reste un vrai r.",
@@ -136,8 +137,8 @@
       "concept": "c_da_skin",
       "distractors": [
         "dạ",
-        "hay",
-        "sai"
+        "mươi",
+        "cũng"
       ]
     },
     {
@@ -145,8 +146,8 @@
       "concept": "c_da",
       "distractors": [
         "da",
-        "chuối",
-        "nhờ"
+        "cũng",
+        "trăm"
       ]
     },
     {
@@ -155,25 +156,25 @@
       "distractors": [
         "cô",
         "bả",
-        "đúng"
+        "má"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_dua_coconut",
       "distractors": [
-        "người",
-        "mặn",
-        "năm"
+        "năm",
+        "mình",
+        "hông"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_rau",
       "distractors": [
-        "mua",
-        "dĩa",
-        "nhang"
+        "bảy",
+        "bốn",
+        "hông"
       ]
     },
     {
@@ -184,7 +185,7 @@
         "vui",
         "cô",
         "bả",
-        "đúng"
+        "trăm"
       ],
       "translation": {
         "fr": "Je suis très content(e).",
@@ -198,8 +199,8 @@
       "options": [
         "dạ",
         "da",
-        "chuối",
-        "nhờ"
+        "gà",
+        "mà"
       ],
       "translation": {
         "fr": "Oui, merci (à un homme un peu plus âgé).",
@@ -226,54 +227,54 @@
       "type": "listen_pick_text",
       "concept": "c_bo_beef",
       "distractors": [
-        "tên",
-        "pin",
-        "ho"
+        "ông",
+        "mè",
+        "cũng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_me_sesame",
       "distractors": [
-        "đâu",
-        "vợ",
-        "đũa"
+        "ông",
+        "anh",
+        "hai"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_mua_rain",
       "distractors": [
-        "sữa",
-        "khám",
-        "chút"
+        "mè",
+        "khỏe",
+        "ơi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_mi",
       "distractors": [
-        "hen",
-        "nội",
-        "bà"
+        "bà",
+        "bò",
+        "ga"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_to_bowl",
       "distractors": [
-        "bán",
-        "vừa",
-        "ghiền"
+        "tui",
+        "sáu",
+        "chỉ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_to_big",
       "distractors": [
-        "chậm",
-        "tuổi",
-        "bốn"
+        "bốn",
+        "gà",
+        "không"
       ]
     }
   ],

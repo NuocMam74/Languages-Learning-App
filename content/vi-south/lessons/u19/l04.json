@@ -90,8 +90,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_rut_tien",
       "distractors": [
-        "Tui muốn gửi tiền.",
-        "Tui muốn đổi tiền."
+        "Ngày uống mấy lần?",
+        "Em sắp tới rồi."
       ],
       "explain": {
         "fr": "rút tiền : retirer. gửi : déposer. đổi : changer.",
@@ -183,8 +183,8 @@
       "type": "listen_pick_text",
       "concept": "c_ngan_hang",
       "distractors": [
-        "đám cưới",
-        "hết hạn"
+        "hết hạn",
+        "sầu riêng"
       ]
     },
     {
@@ -193,9 +193,9 @@
       "answer": "ngân hàng",
       "options": [
         "ngân hàng",
-        "đám cưới",
         "hết hạn",
-        "công ty"
+        "công ty",
+        "mười một"
       ],
       "translation": {
         "fr": "La banque est à gauche.",
@@ -222,8 +222,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_khai_bao_tam_tru",
       "distractors": [
-        "Theo tui, quán này ngon hơn.",
-        "Anh chở em ra chợ nha."
+        "Anh chở em ra chợ nha.",
+        "Chị nhắn lại giùm em nha."
       ]
     },
     {
@@ -247,8 +247,8 @@
       "concept": "c_b_phuong",
       "distractors": [
         "lúc",
-        "lên",
-        "đụng"
+        "giường",
+        "mả"
       ]
     },
     {

@@ -1,6 +1,6 @@
 import { GAP } from "./engine.ts";
 import { GRADED_STEPS_PER_LESSON, gradedSteps, unpracticedConcepts } from "./practice.ts";
-import { lexiconOf, unmetDemands, type KnownLexicon } from "./prerequisites.ts";
+import { lexiconOf, unmetDemands, unmetExposure, type KnownLexicon } from "./prerequisites.ts";
 import { heardClassOf, isToneMinimalPair, normalizeAnswer, toneOf } from "./text.ts";
 import {
   DIALOGUE_CHOICE_MAX_TURNS,
@@ -59,6 +59,7 @@ export function checkContent(content: ContentIndex, opts: { production?: boolean
     else if (unitOfLesson !== lesson.unit) err(where, `Déclarée dans ${lesson.unit} mais listée dans ${unitOfLesson}`);
 
     for (const p of lesson.prerequisites) if (!content.lessons.has(p)) err(where, `Prérequis inconnu : ${p}`);
+    for (const guideId of lesson.guides ?? []) if (!content.guides.has(guideId)) err(where, `Fiche conseil inconnue : ${guideId}`);
     for (const c of lesson.concepts) if (!content.concepts.has(c)) err(where, `Concept inconnu : ${c}`);
     for (const c of lesson.review.srsIntroduce) {
       if (!lesson.concepts.includes(c)) err(where, `srsIntroduce contient ${c}, absent de concepts`);
@@ -122,6 +123,16 @@ function checkPrerequisites(content: ContentIndex, err: Report) {
         concepts: new Set([...concepts, ...own.concepts]),
         forms: new Set([...forms, ...own.forms]),
       };
+      for (const unmet of unmetExposure(content, lesson, known)) {
+        const what = unmet.kind === "decoy" ? "montre en choix possible" : "cite dans un conseil";
+        const fix =
+          unmet.candidates.length > 0
+            ? ` — à présenter plus tôt : ${unmet.candidates.join(", ")}, ou à remplacer par un mot déjà appris`
+            : unmet.kind === "decoy"
+              ? ` — à remplacer par un mot déjà appris`
+              : ` — aucun concept du pack ne porte ce mot : l'écrire, ou le retirer du conseil`;
+        err(lesson.id, `${unmet.step} ${what} « ${unmet.what} », que rien n'a présenté avant${fix}`);
+      }
       for (const unmet of unmetDemands(content, lesson, known)) {
         const fix =
           unmet.candidates.length > 0

@@ -80,8 +80,9 @@
       "type": "listen_pick_text",
       "concept": "c_pin",
       "distractors": [
-        "bin",
-        "pín"
+        "pín",
+        "đâu",
+        "giờ"
       ],
       "explain": {
         "fr": "pin : la batterie, du français « pile ».",
@@ -126,8 +127,8 @@
       "type": "listen_pick_text",
       "concept": "c_sac_pin",
       "distractors": [
-        "sát pin",
-        "xạc pin"
+        "kỹ sư",
+        "ngã tư"
       ],
       "explain": {
         "fr": "sạc tombe court. s et x : le Sud les distingue.",
@@ -167,9 +168,9 @@
       "type": "listen_pick_text",
       "concept": "c_het",
       "distractors": [
-        "sợ",
         "mả",
-        "tới"
+        "tới",
+        "mây"
       ]
     },
     {
@@ -200,8 +201,8 @@
       "type": "listen_pick_text",
       "concept": "s_doi_em_chut",
       "distractors": [
-        "Tui đi khai báo tạm trú.",
-        "Đây là đồng nghiệp của tui."
+        "Điện thoại em hết pin rồi.",
+        "Anh ghiền cà phê sữa đá."
       ]
     },
     {
@@ -216,9 +217,9 @@
       "type": "listen_pick_text",
       "concept": "c_doi_wait",
       "distractors": [
-        "đem",
         "lát",
-        "muốn"
+        "của",
+        "rẻ"
       ]
     },
     {
@@ -233,24 +234,24 @@
       "type": "listen_pick_text",
       "concept": "s_nhan_zalo",
       "distractors": [
-        "Tiếc quá, em bận rồi.",
-        "Chị là người nước nào?"
+        "Chị là người nước nào?",
+        "Nhà vệ sinh ở đâu?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_tin_nhan",
       "distractors": [
-        "mắc cỡ",
-        "bác sĩ"
+        "bác sĩ",
+        "chị hai"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nhan_tin",
       "distractors": [
-        "trúng số",
-        "giấy tờ"
+        "em út",
+        "mắc cười"
       ]
     },
     {
@@ -267,7 +268,7 @@
       "concept": "s_em_dang_ban",
       "distractors": [
         "Trời đang mưa.",
-        "Rồi sao nữa?"
+        "Làm xong rồi."
       ]
     }
   ],

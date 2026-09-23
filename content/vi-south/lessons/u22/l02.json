@@ -163,7 +163,7 @@
         "Hồi đó chưa có điện thoại.",
         "Con mời ba má ăn cơm.",
         "Tối nay tui phải tăng ca.",
-        "Theo tui, quán này ngon hơn."
+        "Tết này tui về miền Tây."
       ],
       "translation": {
         "fr": "Très bien. Tous les après-midis on allait se baigner au fleuve. À l'époque il n'y avait pas de téléphone.",
@@ -247,8 +247,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_hoi_nho_tui_o_que",
       "distractors": [
-        "Theo tui, quán này ngon hơn.",
-        "Em có anh chị em không?"
+        "Em có anh chị em không?",
+        "Anh ghiền cà phê sữa đá."
       ]
     },
     {
@@ -256,7 +256,7 @@
       "concept": "c_b_hoi_nho",
       "distractors": [
         "năm ngoái",
-        "nhưng mà"
+        "nhà thuốc"
       ]
     },
     {
@@ -284,8 +284,8 @@
       "options": [
         "hồi nhỏ",
         "năm ngoái",
-        "nhưng mà",
-        "nhân viên"
+        "nhân viên",
+        "thịt heo"
       ],
       "translation": {
         "fr": "Quand j'étais petit(e), je vivais à la campagne.",

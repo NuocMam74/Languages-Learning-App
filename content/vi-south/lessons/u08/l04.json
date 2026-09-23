@@ -125,7 +125,8 @@
       "options": [
         "một",
         "mốt",
-        "mọt"
+        "hông",
+        "cũng"
       ],
       "translation": {
         "fr": "Combien le kilo de mangues ?",
@@ -140,9 +141,9 @@
       "type": "listen_pick_text",
       "concept": "c_ky",
       "distractors": [
-        "cưới",
         "phòng",
-        "lát"
+        "đá",
+        "cho"
       ]
     },
     {
@@ -152,8 +153,8 @@
       "options": [
         "lấy",
         "cá",
-        "đã",
-        "thưởng"
+        "tôi",
+        "trà"
       ],
       "translation": {
         "fr": "Je prends celui-ci.",
@@ -179,16 +180,16 @@
       "type": "listen_pick_text",
       "concept": "c_dua_hau",
       "distractors": [
-        "nhắn tin",
-        "tin nhắn"
+        "sinh viên",
+        "anh ba"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sau_rieng",
       "distractors": [
-        "tài khoản",
-        "trúng số"
+        "điện thoại",
+        "ông xã"
       ]
     },
     {
@@ -196,17 +197,17 @@
       "concept": "c_thom",
       "distractors": [
         "tên",
-        "họp",
-        "sông"
+        "sông",
+        "hông"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chuoi",
       "distractors": [
-        "bên",
         "no",
-        "vườn"
+        "sáu",
+        "chợ"
       ]
     },
     {
@@ -215,32 +216,32 @@
       "distractors": [
         "trăm",
         "đâu",
-        "theo"
+        "má"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_bot_cho_em",
       "distractors": [
-        "Cho em gặp anh Minh.",
-        "Nhắn Zalo cho em nha."
+        "Rất vui được gặp chị.",
+        "Cho em một tô phở."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bot",
       "distractors": [
-        "quẹo",
         "cậu",
-        "nhen"
+        "ăn",
+        "ra"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_mac_qua",
       "distractors": [
-        "thứ bảy",
-        "Cái nào?"
+        "Cái nào?",
+        "mười một"
       ]
     },
     {
@@ -249,7 +250,7 @@
       "distractors": [
         "qua",
         "quà",
-        "sẽ"
+        "mợ"
       ]
     },
     {

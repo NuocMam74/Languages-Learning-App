@@ -122,8 +122,9 @@
       "answer": "quẹo",
       "options": [
         "quẹo",
-        "què",
-        "queo"
+        "queo",
+        "bàn",
+        "lẻ"
       ],
       "translation": {
         "fr": "Au carrefour, tournez à droite.",
@@ -138,9 +139,9 @@
       "type": "listen_pick_text",
       "concept": "c_queo",
       "distractors": [
-        "tiếc",
-        "nhiều",
-        "quận"
+        "quận",
+        "ký",
+        "mè"
       ]
     },
     {
@@ -156,15 +157,15 @@
       "concept": "s_queo_phai",
       "distractors": [
         "thứ hai",
-        "Đúng rồi!"
+        "bằng tuổi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_den_do",
       "distractors": [
-        "cẩn thận",
-        "điền đơn"
+        "hôm nay",
+        "sầu riêng"
       ]
     },
     {
@@ -182,9 +183,9 @@
       "answer": "quẹo",
       "options": [
         "quẹo",
-        "tiếc",
-        "nhiều",
-        "quận"
+        "quận",
+        "nửa",
+        "bạn"
       ],
       "translation": {
         "fr": "Au carrefour, tourne à gauche.",
@@ -198,8 +199,8 @@
       "options": [
         "quẹo phải",
         "thứ hai",
-        "Đúng rồi!",
-        "Tới rồi."
+        "Tới rồi.",
+        "Dạ, có."
       ],
       "translation": {
         "fr": "Au carrefour, tournez à droite.",
@@ -210,8 +211,8 @@
       "type": "listen_pick_text",
       "concept": "s_cho_em_ra_cho",
       "distractors": [
-        "Anh cho tôi coi hộ chiếu.",
-        "Tại sao em học tiếng Việt?"
+        "Anh nói chậm lại được không?",
+        "Em có anh chị em không?"
       ]
     },
     {
@@ -228,24 +229,24 @@
       "distractors": [
         "chờ",
         "chợ",
-        "dở"
+        "trễ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_dat",
       "distractors": [
-        "giây",
-        "ghét",
-        "ra"
+        "ra",
+        "ma",
+        "vui"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_xe_om",
       "distractors": [
-        "bàn thờ",
-        "nước mía"
+        "nước mía",
+        "sân bay"
       ]
     },
     {

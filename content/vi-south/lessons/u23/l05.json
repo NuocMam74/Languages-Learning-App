@@ -33,7 +33,7 @@
       "concept": "s_b_neu_co_tien",
       "distractors": [
         "Nếu có tiền, tui sẽ mua xe.",
-        "Nếu có thời gian, tui sẽ mua nhà."
+        "Nếu rảnh thì ghé nhà tui chơi nha."
       ],
       "explain": {
         "fr": "tiền : argent ; thời gian : temps.",
@@ -246,7 +246,7 @@
       "concept": "s_b_gia_su_trung_so",
       "distractors": [
         "Rất vui được làm việc với chị.",
-        "Ước gì tui nói giỏi tiếng Việt."
+        "Anh cho em nghỉ thứ sáu nha."
       ]
     },
     {

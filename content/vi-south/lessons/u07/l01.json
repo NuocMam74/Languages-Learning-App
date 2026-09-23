@@ -75,7 +75,7 @@
       "concept": "s_cho_em_to_pho",
       "distractors": [
         "Cho em một tô hủ tiếu.",
-        "Cho em một dĩa cơm tấm."
+        "Rất vui được gặp chị."
       ],
       "explain": {
         "fr": "tô phở : le grand bol de phở.",
@@ -144,25 +144,25 @@
       "type": "listen_pick_text",
       "concept": "c_pho",
       "distractors": [
-        "xoài",
-        "thứ",
-        "vô"
+        "con",
+        "tám",
+        "nội"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_com_tam",
       "distractors": [
-        "máy bay",
-        "tầng trệt"
+        "Việt kiều",
+        "ông xã"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_banh_mi",
       "distractors": [
-        "năm ngoái",
-        "nhắn tin"
+        "công ty",
+        "chị hai"
       ]
     },
     {
@@ -171,9 +171,9 @@
       "answer": "hủ tiếu",
       "options": [
         "hủ tiếu",
-        "hồi đó",
-        "máy bay",
-        "em út"
+        "em út",
+        "người Pháp",
+        "chúng tôi"
       ],
       "translation": {
         "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
@@ -186,9 +186,9 @@
       "answer": "cơm tấm",
       "options": [
         "cơm tấm",
-        "máy bay",
-        "tầng trệt",
-        "hôm nay"
+        "Dạ, có.",
+        "bà nội",
+        "bằng tuổi"
       ],
       "translation": {
         "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",

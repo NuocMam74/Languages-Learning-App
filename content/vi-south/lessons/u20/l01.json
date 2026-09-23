@@ -43,9 +43,9 @@
       "type": "listen_pick_image",
       "concept": "c_b_dam_cuoi",
       "distractors": [
-        "c_b_dam_gio",
-        "c_b_li_xi",
-        "c_b_qua_gift"
+        "c_anh",
+        "c_chua_pagoda",
+        "c_trai_fruit"
       ],
       "explain": {
         "fr": "đám cưới : le mariage.",
@@ -121,7 +121,7 @@
       "concept": "s_b_moi_di_dam_cuoi",
       "distractors": [
         "Mời anh đi đám cưới em nha.",
-        "Mời chị đi đám giỗ nha."
+        "Tui làm ở một công ty Pháp."
       ],
       "explain": {
         "fr": "đám cưới : mariage ; đám giỗ : anniversaire de décès.",
@@ -175,7 +175,7 @@
         "mời",
         "mới",
         "bảy",
-        "nhớ"
+        "rối"
       ],
       "translation": {
         "fr": "Je vous en prie, prenez du thé (à un aîné).",

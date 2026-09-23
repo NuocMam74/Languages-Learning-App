@@ -154,24 +154,24 @@
       "concept": "c_ngoai",
       "distractors": [
         "chào",
-        "nhang",
-        "hồi"
+        "anh",
+        "cậu"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_ba_noi",
       "distractors": [
-        "sau Tết",
-        "Chào anh."
+        "Chào anh.",
+        "Dạ, có."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chi_hai",
       "distractors": [
-        "ngày xưa",
-        "giả sử"
+        "gia đình",
+        "họ hàng"
       ]
     },
     {
@@ -180,23 +180,8 @@
       "distractors": [
         "bàn",
         "lắm",
-        "chở"
+        "họ"
       ]
-    },
-    {
-      "type": "fill_gap",
-      "text": "Quê ___ tôi ở Bến Tre.",
-      "answer": "ngoại",
-      "options": [
-        "ngoại",
-        "chào",
-        "nhang",
-        "hồi"
-      ],
-      "translation": {
-        "fr": "La famille de ma mère vient de Bến Tre.",
-        "en": "My mother's family comes from Bến Tre."
-      }
     },
     {
       "type": "fill_gap",
@@ -204,9 +189,9 @@
       "answer": "bà nội",
       "options": [
         "bà nội",
-        "sau Tết",
         "Chào anh.",
-        "Không sao."
+        "Không sao.",
+        "Dạ, có."
       ],
       "translation": {
         "fr": "Ma grand-mère paternelle est encore en pleine forme.",
@@ -251,8 +236,8 @@
       "type": "listen_pick_text",
       "concept": "s_nha_toi_co",
       "distractors": [
-        "Đừng khách sáo!",
-        "Mấy giờ rồi?"
+        "Con chào cô.",
+        "Con chào ông."
       ]
     },
     {
@@ -260,8 +245,8 @@
       "concept": "c_ghe",
       "distractors": [
         "gặp",
-        "sai",
-        "sắp"
+        "lắm",
+        "nhỏ"
       ]
     },
     {
@@ -269,8 +254,8 @@
       "concept": "c_meo",
       "distractors": [
         "con",
-        "visa",
-        "có"
+        "có",
+        "ơi"
       ]
     },
     {
@@ -279,7 +264,7 @@
       "distractors": [
         "cho",
         "đây",
-        "thuốc"
+        "trời"
       ]
     },
     {
@@ -287,8 +272,17 @@
       "concept": "c_con_clf",
       "distractors": [
         "còn",
-        "tiệm",
-        "sớm"
+        "mốt",
+        "ảnh"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ghe",
+      "distractors": [
+        "c_ga_chicken",
+        "c_co_aunt",
+        "c_che_dessert"
       ]
     },
     {

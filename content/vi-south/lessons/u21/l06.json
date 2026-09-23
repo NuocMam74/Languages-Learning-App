@@ -74,8 +74,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_ve_mien_tay",
       "distractors": [
-        "Tết này tui về miền Bắc.",
-        "Tuần này tui về miền Tây."
+        "Tuần này tui về miền Tây.",
+        "Visa của tui sắp hết hạn."
       ],
       "explain": {
         "fr": "miền Tây : le delta ; miền Bắc : le Nord.",
@@ -115,8 +115,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_bong",
       "distractors": [
-        "bóng",
-        "bổng"
+        "bổng",
+        "cô",
+        "đũa"
       ],
       "explain": {
         "fr": "bông, plat : la fleur. bóng : la balle, l'ombre.",
@@ -152,9 +153,9 @@
       "type": "listen_pick_text",
       "concept": "c_dua_coconut",
       "distractors": [
-        "ước",
         "với",
-        "chén"
+        "chén",
+        "nhà"
       ]
     },
     {
@@ -179,8 +180,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_di_ghe_cho_noi",
       "distractors": [
-        "Giả sử trúng số, anh làm gì?",
-        "Con chúc cô năm mới vui vẻ."
+        "Con chúc cô năm mới vui vẻ.",
+        "Chị photo giùm em hai bản nha."
       ]
     },
     {

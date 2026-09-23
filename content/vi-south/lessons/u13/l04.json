@@ -51,8 +51,9 @@
       "type": "listen_pick_text",
       "concept": "c_sap",
       "distractors": [
-        "sập",
-        "xắp"
+        "mất",
+        "tui",
+        "ký"
       ],
       "explain": {
         "fr": "sắp monte, court.",
@@ -147,9 +148,9 @@
       "answer": "sẽ",
       "options": [
         "sẽ",
-        "sai",
         "lăm",
-        "mới"
+        "mới",
+        "tốt"
       ],
       "translation": {
         "fr": "La semaine prochaine, je rentre en France.",
@@ -163,8 +164,8 @@
       "options": [
         "sắp",
         "thơm",
-        "vừa",
-        "mất"
+        "mất",
+        "trứng"
       ],
       "translation": {
         "fr": "J'arrive bientôt.",
@@ -198,8 +199,8 @@
       "type": "listen_pick_text",
       "concept": "s_em_dang_lam",
       "distractors": [
-        "Em mắc cỡ quá.",
-        "Khi nào anh về?"
+        "Khi nào anh về?",
+        "Người đó là ai?"
       ]
     },
     {
@@ -215,18 +216,18 @@
       "type": "listen_pick_text",
       "concept": "c_dang_bitter",
       "distractors": [
-        "với",
         "chồng",
-        "gà"
+        "gà",
+        "đêm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_dang",
       "distractors": [
-        "ca",
         "chiều",
-        "tô"
+        "tô",
+        "trước"
       ]
     },
     {
@@ -235,15 +236,15 @@
       "distractors": [
         "sáng",
         "tiệm",
-        "đau"
+        "chục"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_chua_bao_gio",
       "distractors": [
-        "Hổng có đâu!",
-        "Trời đang mưa."
+        "Trời đang mưa.",
+        "Bao nhiêu tiền?"
       ]
     },
     {
@@ -251,7 +252,7 @@
       "concept": "s_chua_xong",
       "distractors": [
         "bao lâu",
-        "Đúng rồi!"
+        "ông ngoại"
       ]
     },
     {
@@ -259,15 +260,15 @@
       "concept": "s_di_da_lat_chua",
       "distractors": [
         "Cho em một tô phở.",
-        "Em không đồng ý lắm."
+        "Nhà vệ sinh ở đâu?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_lam_xong_roi",
       "distractors": [
-        "Mai gặp hen.",
-        "Món nào ngon?"
+        "Món nào ngon?",
+        "chưa bao giờ"
       ]
     }
   ],

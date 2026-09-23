@@ -58,8 +58,9 @@
       "type": "listen_pick_text",
       "concept": "c_gium",
       "distractors": [
-        "giùn",
-        "chùm"
+        "hông",
+        "hẹn",
+        "ghiền"
       ],
       "explain": {
         "fr": "giùm descend : pour quelqu'un.",
@@ -150,15 +151,15 @@
       "concept": "c_bac_si",
       "distractors": [
         "chủ nhật",
-        "chụp hình"
+        "nước mía"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_giao_vien",
       "distractors": [
-        "nhà thuốc",
-        "kế bên"
+        "kế bên",
+        "máy bay"
       ]
     },
     {
@@ -174,8 +175,8 @@
       "type": "listen_pick_text",
       "concept": "s_nhan_lai_gium",
       "distractors": [
-        "Anh điền vô đơn này nha.",
-        "Hồi đó chưa có điện thoại."
+        "Hồi đó chưa có điện thoại.",
+        "Điện thoại em hết pin rồi."
       ]
     },
     {
@@ -183,8 +184,8 @@
       "concept": "c_ben_side",
       "distractors": [
         "bệnh",
-        "ca",
-        "về"
+        "về",
+        "rối"
       ]
     },
     {
@@ -192,7 +193,7 @@
       "concept": "c_ky_su",
       "distractors": [
         "năm ngoái",
-        "nhưng mà"
+        "xe hơi"
       ]
     },
     {
@@ -235,8 +236,8 @@
       "options": [
         "Anh Minh đang họp.",
         "Phim này hay quá!",
-        "Em ở lầu hai.",
-        "Anh có vợ chưa?"
+        "Anh có vợ chưa?",
+        "Cho em xuống đây."
       ],
       "translation": {
         "fr": "Minh est en réunion. C'est de la part de qui ?",
@@ -249,9 +250,9 @@
       "answer": "giùm",
       "options": [
         "giùm",
-        "đem",
-        "nhớ",
-        "học"
+        "học",
+        "anh",
+        "tuổi"
       ],
       "translation": {
         "fr": "Tu peux lui laisser un message de ma part ? (à une femme un peu plus âgée)",
@@ -265,8 +266,8 @@
       "options": [
         "bên",
         "bệnh",
-        "ca",
-        "về"
+        "về",
+        "có"
       ],
       "translation": {
         "fr": "La banque est à gauche.",

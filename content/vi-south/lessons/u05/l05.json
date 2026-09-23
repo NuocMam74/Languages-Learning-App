@@ -99,7 +99,7 @@
       "concept": "c_van_phong",
       "distractors": [
         "văn phỏng",
-        "vân phòng"
+        "anh hai"
       ],
       "explain": {
         "fr": "văn plat, phòng descend : le bureau.",
@@ -159,8 +159,8 @@
       "options": [
         "làm việc",
         "phòng ngủ",
-        "chung cư",
-        "sinh viên"
+        "sinh viên",
+        "Không phải."
       ],
       "translation": {
         "fr": "Je travaille pour une entreprise française.",
@@ -171,40 +171,40 @@
       "type": "listen_pick_text",
       "concept": "c_nhan_vien",
       "distractors": [
-        "miền Tây",
-        "chủ nhà"
+        "giáo viên",
+        "bác sĩ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ky_su",
       "distractors": [
-        "bánh mì",
-        "tại sao"
+        "gia đình",
+        "xin lỗi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sinh_vien",
       "distractors": [
-        "tại sao",
-        "máy tính"
+        "ông xã",
+        "ông bà"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_giao_vien",
       "distractors": [
-        "phòng trọ",
-        "tại vì"
+        "thành phố",
+        "họ hàng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bac_si",
       "distractors": [
-        "tại vì",
-        "năm ngoái"
+        "bà xã",
+        "ông xã"
       ]
     },
     {
@@ -220,15 +220,15 @@
       "concept": "s_anh_o_dau",
       "distractors": [
         "Chị tên gì?",
-        "Mai gặp hen."
+        "Con chào ông."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_thanh_pho",
       "distractors": [
-        "máy tính",
-        "chủ nhà"
+        "ông bà",
+        "anh hai"
       ]
     },
     {
@@ -236,8 +236,8 @@
       "concept": "c_moi_just",
       "distractors": [
         "mời",
-        "chậm",
-        "nhen"
+        "không",
+        "má"
       ]
     },
     {

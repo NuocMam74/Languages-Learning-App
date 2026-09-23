@@ -68,7 +68,8 @@
       "concept": "c_mot_one",
       "distractors": [
         "mốt",
-        "mọt"
+        "chưa",
+        "ảnh"
       ],
       "explain": {
         "fr": "một tombe court, et son -t sonne presque -c au Sud.",
@@ -87,8 +88,9 @@
       "type": "listen_pick_text",
       "concept": "c_mac_expensive",
       "distractors": [
-        "mác",
-        "mặc"
+        "mặc",
+        "hai",
+        "mà"
       ],
       "explain": {
         "fr": "mắc monte, voyelle ă brève : « cher » au Sud. mặc tombe : porter (un vêtement).",
@@ -135,16 +137,16 @@
       "distractors": [
         "bàn",
         "bán",
-        "mây"
+        "xa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_tot_good",
       "distractors": [
-        "giả",
-        "sắp",
-        "món"
+        "sách",
+        "xe",
+        "tám"
       ]
     },
     {
@@ -153,7 +155,7 @@
       "distractors": [
         "bạn",
         "bán",
-        "tiệm"
+        "bả"
       ]
     },
     {
@@ -161,17 +163,17 @@
       "concept": "c_an_eat",
       "distractors": [
         "cô",
-        "và",
-        "nửa"
+        "mả",
+        "lắm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chua",
       "distractors": [
-        "gần",
         "ly",
-        "chú"
+        "chú",
+        "nước"
       ]
     },
     {
@@ -181,8 +183,8 @@
       "options": [
         "ăn",
         "cô",
-        "và",
-        "nửa"
+        "bả",
+        "trời"
       ],
       "translation": {
         "fr": "Tu as mangé ? (salutation entre proches)",
@@ -194,8 +196,8 @@
       "concept": "c_nha_particle",
       "distractors": [
         "nhà",
-        "già",
-        "điện"
+        "hai",
+        "tô"
       ]
     },
     {
@@ -203,8 +205,8 @@
       "concept": "c_chut",
       "distractors": [
         "mà",
-        "theo",
-        "trái"
+        "trái",
+        "cá"
       ]
     },
     {
@@ -212,17 +214,17 @@
       "concept": "c_troi",
       "distractors": [
         "bốn",
-        "tối",
-        "hội"
+        "chợ",
+        "chờ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_che_dessert",
       "distractors": [
-        "cay",
-        "sẽ",
-        "tới"
+        "cơm",
+        "sông",
+        "sách"
       ]
     },
     {
@@ -230,8 +232,8 @@
       "concept": "c_trai_fruit",
       "distractors": [
         "không",
-        "sau",
-        "nội"
+        "chút",
+        "chờ"
       ]
     },
     {
@@ -240,7 +242,7 @@
       "distractors": [
         "chợ",
         "chở",
-        "lẻ"
+        "trà"
       ]
     },
     {
@@ -257,8 +259,8 @@
       "concept": "c_tra_tea",
       "distractors": [
         "trả",
-        "ở",
-        "bạn"
+        "bạn",
+        "tra"
       ]
     },
     {

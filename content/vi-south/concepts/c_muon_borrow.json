@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_muon_borrow",
+  "type": "word",
+  "vi": "mượn",
+  "tone": "nang",
+  "gloss": {
+    "fr": "emprunter",
+    "en": "to borrow"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_muon_borrow_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_muon_borrow_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false,
+  "pos": "verb"
+}

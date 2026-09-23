@@ -57,8 +57,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_khac",
       "distractors": [
-        "khắc",
-        "khạc"
+        "khạc",
+        "khá",
+        "việc"
       ],
       "explain": {
         "fr": "khác monte : différent.",

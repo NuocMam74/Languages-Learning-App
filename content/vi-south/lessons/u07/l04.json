@@ -54,7 +54,8 @@
       "concept": "c_cay",
       "distractors": [
         "cày",
-        "cây"
+        "anh",
+        "mới"
       ],
       "explain": {
         "fr": "cay, plat : piquant. cày descend : labourer.",
@@ -247,7 +248,7 @@
       "distractors": [
         "xa",
         "dĩa",
-        "chuối"
+        "là"
       ]
     },
     {
@@ -255,8 +256,8 @@
       "concept": "c_b_hay",
       "distractors": [
         "già",
-        "gỏi",
-        "mè"
+        "mè",
+        "mèo"
       ]
     },
     {
@@ -276,8 +277,8 @@
       "concept": "c_them",
       "distractors": [
         "gọi",
-        "ho",
-        "trái"
+        "trái",
+        "cơm"
       ]
     },
     {
@@ -285,8 +286,8 @@
       "concept": "c_dua",
       "distractors": [
         "mả",
-        "quẹo",
-        "dĩa"
+        "dĩa",
+        "con"
       ]
     },
     {
@@ -294,8 +295,8 @@
       "concept": "c_muong",
       "distractors": [
         "mưa",
-        "giùm",
-        "sếp"
+        "mì",
+        "con"
       ]
     },
     {
@@ -304,7 +305,7 @@
       "distractors": [
         "mì",
         "dì",
-        "dơ"
+        "dượng"
       ]
     },
     {
@@ -313,7 +314,7 @@
       "distractors": [
         "đâu",
         "bạn",
-        "gỏi"
+        "ai"
       ]
     },
     {
@@ -321,7 +322,7 @@
       "concept": "c_nuoc_mia",
       "distractors": [
         "bác sĩ",
-        "bắt đầu"
+        "bình thường"
       ]
     },
     {
@@ -329,16 +330,16 @@
       "concept": "c_ly",
       "distractors": [
         "chú",
-        "sếp",
-        "nhà"
+        "nhà",
+        "ngon"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_tra_da",
       "distractors": [
-        "Sai rồi.",
-        "đau bụng"
+        "Ngon quá!",
+        "Đây là…"
       ]
     },
     {
@@ -346,8 +347,8 @@
       "concept": "c_da_ice",
       "distractors": [
         "đã",
-        "trứng",
-        "năm"
+        "năm",
+        "đa"
       ]
     }
   ],

@@ -72,7 +72,7 @@
       "concept": "s_b_thiet_ha",
       "distractors": [
         "Thiệt hông?",
-        "Thật hả?"
+        "nửa ký"
       ],
       "explain": {
         "fr": "thiệt : vrai (Sud) ; há : « ah bon ? ».",
@@ -104,7 +104,8 @@
       "concept": "c_b_coi",
       "distractors": [
         "cói",
-        "cỗi"
+        "ba",
+        "này"
       ],
       "explain": {
         "fr": "coi, plat : regarder (Sud).",
@@ -176,7 +177,7 @@
         "Đi đâu vậy?",
         "Tại sao vậy?",
         "Em mới tới.",
-        "Rồi sao nữa?"
+        "Lúc mấy giờ?"
       ],
       "translation": {
         "fr": "Tu vas où comme ça ?",
@@ -203,7 +204,7 @@
       "concept": "s_b_mai_gap_hen",
       "distractors": [
         "Mau khỏe nha!",
-        "Anh giỡn hoài!"
+        "Em bị sốt."
       ]
     },
     {

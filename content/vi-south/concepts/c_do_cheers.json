@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_do_cheers",
+  "type": "word",
+  "vi": "dô",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "santé ! (en trinquant, Sud)",
+    "en": "cheers! (South)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_do_cheers_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_do_cheers_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false,
+  "pos": "particle"
+}

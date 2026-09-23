@@ -114,7 +114,8 @@
       "concept": "c_cham",
       "distractors": [
         "chấm",
-        "chạm"
+        "cho",
+        "mốt"
       ],
       "explain": {
         "fr": "chậm tombe court : lent. chấm monte : le point.",
@@ -154,8 +155,8 @@
       "options": [
         "bao lâu",
         "bằng tuổi",
-        "Mệt quá!",
-        "Chưa xong."
+        "quẹo phải",
+        "thịt heo"
       ],
       "translation": {
         "fr": "Ça prend combien de temps ?",
@@ -184,8 +185,8 @@
       "options": [
         "chậm",
         "thì",
-        "khác",
-        "đội"
+        "trước",
+        "trứng"
       ],
       "translation": {
         "fr": "Tu peux rouler moins vite ? (à un homme un peu plus âgé)",
@@ -223,7 +224,7 @@
       "concept": "s_toi_roi",
       "distractors": [
         "Em ơi!",
-        "Thiệt há?"
+        "quẹo phải"
       ]
     },
     {
@@ -231,7 +232,7 @@
       "concept": "s_cho_em_xuong",
       "distractors": [
         "Nhà em ở đâu?",
-        "Chắc ảnh tới trễ."
+        "Em ơi, tính tiền."
       ]
     },
     {
@@ -239,15 +240,15 @@
       "concept": "s_dung_lai",
       "distractors": [
         "tuần sau",
-        "Đúng rồi!"
+        "tụi mình"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_di_thang",
       "distractors": [
-        "Sai rồi.",
-        "Chưa xong."
+        "thịt heo",
+        "chạy thẳng"
       ]
     },
     {

@@ -30,8 +30,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_luc_do_troi_mua",
       "distractors": [
-        "Lúc đó trời nắng lắm.",
-        "Bây giờ trời mưa lớn lắm."
+        "Bây giờ trời mưa lớn lắm.",
+        "Mai nhà em có đám giỗ."
       ],
       "explain": {
         "fr": "lúc đó : à ce moment-là ; nắng : ensoleillé.",
@@ -70,8 +70,7 @@
         "trời",
         "mưa",
         "lớn",
-        "lắm",
-        "lấm"
+        "lắm"
       ],
       "translation": {
         "fr": "À ce moment-là, il pleuvait très fort.",
@@ -114,7 +113,7 @@
       "concept": "c_b_bat_dau",
       "distractors": [
         "bắt đâu",
-        "bất đầu"
+        "lì xì"
       ],
       "explain": {
         "fr": "bắt đầu : commencer.",
@@ -166,8 +165,8 @@
       "concept": "c_luc",
       "distractors": [
         "đêm",
-        "chắc",
-        "tôi"
+        "tôi",
+        "số"
       ]
     },
     {
@@ -215,9 +214,9 @@
       "answer": "bắt đầu",
       "options": [
         "bắt đầu",
-        "trúng số",
         "sinh viên",
-        "hết hạn"
+        "hết hạn",
+        "số nhà"
       ],
       "translation": {
         "fr": "J'ai commencé le vietnamien l'an dernier.",
@@ -231,8 +230,8 @@
       "options": [
         "lúc",
         "đêm",
-        "chắc",
-        "tôi"
+        "tôi",
+        "thưa"
       ],
       "translation": {
         "fr": "D'habitude, je pars travailler à sept heures du matin.",
@@ -310,8 +309,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_hom_qua_tui_di_cho",
       "distractors": [
-        "Nếu rảnh thì ghé nhà tui chơi nha.",
-        "Số điện thoại của chị là bao nhiêu?"
+        "Số điện thoại của chị là bao nhiêu?",
+        "Hẹn gặp lại."
       ]
     },
     {

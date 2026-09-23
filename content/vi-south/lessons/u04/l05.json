@@ -47,8 +47,9 @@
       "type": "listen_pick_text",
       "concept": "c_chua",
       "distractors": [
-        "chùa",
-        "chua"
+        "xe",
+        "sách",
+        "vui"
       ],
       "explain": {
         "fr": "chưa est plat : « pas encore ». chùa descend : la pagode.",
@@ -147,25 +148,25 @@
       "type": "listen_pick_text",
       "concept": "c_anh_chi_em",
       "distractors": [
-        "trạm xe buýt",
-        "quán cà phê"
+        "lắm",
+        "đi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_co_vo_chua",
       "distractors": [
-        "Hôm nay thứ mấy?",
-        "Ngày uống mấy lần?"
+        "Mời bác uống trà.",
+        "Chào anh."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_co",
       "distractors": [
-        "nè",
-        "sốt",
-        "coi"
+        "ổng",
+        "mắc",
+        "bà"
       ]
     },
     {
@@ -174,9 +175,9 @@
       "answer": "anh chị em",
       "options": [
         "anh chị em",
-        "trạm xe buýt",
-        "quán cà phê",
-        "nhà vệ sinh"
+        "Hẹn gặp lại.",
+        "Con chào cô.",
+        "Bạn tên gì?"
       ],
       "translation": {
         "fr": "Tu as des frères et sœurs ? (à plus jeune)",
@@ -189,9 +190,9 @@
       "answer": "chưa",
       "options": [
         "chưa",
-        "về",
-        "chích",
-        "thôi"
+        "mốt",
+        "tám",
+        "gì"
       ],
       "translation": {
         "fr": "Tu es marié ? (à un homme un peu plus âgé)",
@@ -204,9 +205,9 @@
       "answer": "có",
       "options": [
         "có",
-        "nè",
-        "sốt",
-        "coi"
+        "tui",
+        "dì",
+        "em"
       ],
       "translation": {
         "fr": "De rien (poliment).",
@@ -260,8 +261,8 @@
       "type": "listen_pick_text",
       "concept": "c_ho_hang",
       "distractors": [
-        "nhà thuốc",
-        "hôm qua"
+        "mọi người",
+        "bình thường"
       ]
     },
     {
@@ -269,17 +270,17 @@
       "concept": "c_mo",
       "distractors": [
         "mở",
-        "ghé",
-        "vui"
+        "vui",
+        "ở"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_thim",
       "distractors": [
-        "tiệm",
-        "nói",
-        "nè"
+        "mấy",
+        "có",
+        "gà"
       ]
     },
     {
@@ -287,8 +288,8 @@
       "concept": "c_duong",
       "distractors": [
         "chồng",
-        "nghen",
-        "lên"
+        "dừa",
+        "mè"
       ]
     },
     {

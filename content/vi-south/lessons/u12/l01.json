@@ -148,23 +148,23 @@
       "distractors": [
         "rưỡi",
         "ổng",
-        "khá"
+        "thôi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_giao_vien",
       "distractors": [
-        "nghỉ phép",
-        "giả sử"
+        "sinh viên",
+        "công viên"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sinh_vien",
       "distractors": [
-        "phòng trọ",
-        "trả lời"
+        "trả lời",
+        "gia đình"
       ]
     },
     {
@@ -172,7 +172,7 @@
       "concept": "c_bac_si",
       "distractors": [
         "xin lỗi",
-        "đồng nghiệp"
+        "xe máy"
       ]
     },
     {
@@ -189,8 +189,8 @@
       "concept": "c_sinh_vien",
       "distractors": [
         "c_sua_milk",
-        "c_chia_khoa",
-        "c_xoai"
+        "c_xoai",
+        "c_com_tam"
       ]
     },
     {

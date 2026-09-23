@@ -32,8 +32,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_lan_dau_toi_saigon",
       "distractors": [
-        "Lần đầu tui tới Hà Nội là năm 2015.",
-        "Lần sau tui tới Sài Gòn là năm 2015."
+        "Lần sau tui tới Sài Gòn là năm 2015.",
+        "một trăm lẻ năm"
       ],
       "explain": {
         "fr": "lần đầu : la première fois ; lần sau : la prochaine fois.",
@@ -165,8 +165,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_roi_sao_nua",
       "distractors": [
-        "Tui đồng ý.",
-        "Con chào cô."
+        "Con chào cô.",
+        "Anh tên gì?"
       ]
     },
     {

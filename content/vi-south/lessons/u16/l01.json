@@ -53,7 +53,8 @@
       "concept": "c_benh_sick",
       "distractors": [
         "bênh",
-        "bến"
+        "ly",
+        "mất"
       ],
       "explain": {
         "fr": "bệnh tombe court.",
@@ -166,8 +167,8 @@
       "type": "listen_pick_text",
       "concept": "c_bac_si",
       "distractors": [
-        "đám giỗ",
-        "văn phòng"
+        "văn phòng",
+        "năm ngoái"
       ]
     },
     {
@@ -175,8 +176,8 @@
       "concept": "c_ky_su",
       "distractors": [
         "c_mua_rain",
-        "c_b_may_tinh",
-        "c_xoai"
+        "c_xoai",
+        "c_ghe"
       ]
     },
     {
@@ -195,8 +196,8 @@
       "options": [
         "bệnh",
         "học",
-        "muốn",
-        "mở"
+        "rau",
+        "bên"
       ],
       "translation": {
         "fr": "Je suis tombé(e) malade.",

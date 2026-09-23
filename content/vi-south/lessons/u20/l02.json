@@ -30,8 +30,9 @@
       "type": "listen_pick_image",
       "concept": "c_b_qua_gift",
       "distractors": [
-        "c_b_li_xi",
-        "c_b_dam_cuoi"
+        "c_b_dam_cuoi",
+        "c_ben_trai",
+        "c_benh_vien"
       ],
       "explain": {
         "fr": "quà : le cadeau.",

@@ -47,8 +47,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_thang",
       "distractors": [
-        "thắng",
-        "thang"
+        "thang",
+        "sáu",
+        "hay"
       ],
       "explain": {
         "fr": "tháng monte : le mois. thang, plat : l'échelle.",
@@ -82,8 +83,7 @@
         "Cuối tháng",
         "mới",
         "lãnh",
-        "lương",
-        "lường"
+        "lương"
       ],
       "translation": {
         "fr": "On touche le salaire seulement en fin de mois.",
@@ -157,7 +157,7 @@
       "distractors": [
         "đã",
         "dở",
-        "muốn"
+        "tôi"
       ]
     },
     {
@@ -267,8 +267,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_xin_loi_toi_tre",
       "distractors": [
-        "Em muốn mở tài khoản.",
-        "Nhà em có mấy người?"
+        "Nhà em có mấy người?",
+        "Lát em gọi lại nha."
       ]
     },
     {
@@ -283,9 +283,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_ban_busy",
       "distractors": [
-        "hổng",
-        "giây",
-        "lẩu"
+        "lẩu",
+        "chè",
+        "chưa"
       ]
     }
   ],

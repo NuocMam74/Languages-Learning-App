@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_den",
+  "type": "word",
+  "vi": "đến",
+  "tone": "sac",
+  "gloss": {
+    "fr": "arriver, venir (le Sud dit plutôt tới)",
+    "en": "to arrive, to come (the South prefers tới)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_den_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_den_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false,
+  "pos": "verb"
+}

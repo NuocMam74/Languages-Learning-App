@@ -154,8 +154,8 @@
       "concept": "c_toi",
       "distractors": [
         "tối",
-        "dơ",
-        "rẻ"
+        "rẻ",
+        "tô"
       ]
     },
     {
@@ -163,8 +163,8 @@
       "concept": "c_sang",
       "distractors": [
         "cơm",
-        "trong",
-        "mua"
+        "mua",
+        "cháu"
       ]
     },
     {
@@ -180,9 +180,9 @@
       "type": "listen_pick_text",
       "concept": "c_dem",
       "distractors": [
-        "hoài",
-        "chủ",
-        "chậm"
+        "chậm",
+        "giờ",
+        "em"
       ]
     },
     {
@@ -191,7 +191,7 @@
       "distractors": [
         "c_ca_phe",
         "c_mua_rain",
-        "c_cay_xang"
+        "c_em"
       ]
     },
     {
@@ -200,7 +200,7 @@
       "distractors": [
         "c_con",
         "c_troi",
-        "c_chua_pagoda"
+        "c_tien"
       ]
     },
     {
@@ -225,8 +225,8 @@
       "options": [
         "tôi",
         "tối",
-        "dơ",
-        "rẻ"
+        "rẻ",
+        "ngoại"
       ],
       "translation": {
         "fr": "Voici mon père.",
@@ -252,17 +252,17 @@
       "type": "listen_pick_text",
       "concept": "c_ruoi",
       "distractors": [
-        "nếu",
         "mình",
-        "sao"
+        "sao",
+        "đá"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_bay_gio",
       "distractors": [
-        "theo tui",
-        "Thiệt há?"
+        "mười lăm",
+        "Ai vậy?"
       ]
     },
     {
@@ -271,7 +271,7 @@
       "distractors": [
         "tui",
         "Pháp",
-        "lên"
+        "bàn"
       ]
     },
     {

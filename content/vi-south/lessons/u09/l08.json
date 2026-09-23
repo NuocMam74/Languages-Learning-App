@@ -160,8 +160,9 @@
       "type": "listen_pick_text",
       "concept": "c_som",
       "distractors": [
-        "xóm",
-        "sờm"
+        "sờm",
+        "cô",
+        "ít"
       ],
       "explain": {
         "fr": "sớm : tôt.",
@@ -202,27 +203,27 @@
       "type": "listen_pick_text",
       "concept": "c_ruoi",
       "distractors": [
-        "khác",
         "cho",
-        "chợ"
+        "chợ",
+        "bà"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_gio",
       "distractors": [
-        "đợi",
         "cơm",
-        "đầu"
+        "bà",
+        "nha"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_dem",
       "distractors": [
-        "thưởng",
         "rưỡi",
-        "ở"
+        "ở",
+        "chợ"
       ]
     },
     {
@@ -231,9 +232,9 @@
       "answer": "giờ",
       "options": [
         "giờ",
-        "đợi",
         "cơm",
-        "đầu"
+        "dạ",
+        "bán"
       ],
       "translation": {
         "fr": "Quelle heure est-il ?",
@@ -246,9 +247,9 @@
       "answer": "bây giờ",
       "options": [
         "bây giờ",
-        "Mệt quá!",
         "tụi mình",
-        "Thích lắm!"
+        "Mắc quá!",
+        "trà đá"
       ],
       "translation": {
         "fr": "Quelle heure est-il ?",
@@ -263,7 +264,7 @@
         "ngày mai",
         "họ hàng",
         "chút xíu",
-        "bệnh viện"
+        "nửa ký"
       ],
       "translation": {
         "fr": "Demain, je vais au marché.",
@@ -277,8 +278,8 @@
       "options": [
         "sớm",
         "trời",
-        "nhờ",
-        "mặn"
+        "mặn",
+        "nhỏ"
       ],
       "translation": {
         "fr": "Cet après-midi, je rentre tôt.",
@@ -291,9 +292,9 @@
       "answer": "rưỡi",
       "options": [
         "rưỡi",
-        "khác",
         "cho",
-        "chợ"
+        "chợ",
+        "dượng"
       ],
       "translation": {
         "fr": "deux heures et demie",

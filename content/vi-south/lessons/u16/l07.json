@@ -163,8 +163,8 @@
       "concept": "c_ngu_sleep",
       "distractors": [
         "hay",
-        "hen",
-        "nghĩ"
+        "sẽ",
+        "phút"
       ]
     },
     {
@@ -173,7 +173,7 @@
       "distractors": [
         "đầu",
         "trăm",
-        "ca"
+        "thích"
       ]
     },
     {
@@ -190,15 +190,15 @@
       "concept": "c_benh_vien",
       "distractors": [
         "ngày sinh",
-        "có lẽ"
+        "tại sao"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ngan_hang",
       "distractors": [
-        "ngày xưa",
-        "miền Tây"
+        "xe hơi",
+        "sinh viên"
       ]
     },
     {
@@ -214,7 +214,7 @@
       "concept": "c_nha_thuoc",
       "distractors": [
         "vé số",
-        "dễ thương"
+        "mắc cười"
       ]
     },
     {
@@ -231,8 +231,8 @@
       "concept": "c_ho_cough",
       "distractors": [
         "họ",
-        "nhen",
-        "hội"
+        "trà",
+        "thứ"
       ]
     },
     {
@@ -241,7 +241,7 @@
       "distractors": [
         "chậm",
         "pin",
-        "hội"
+        "ba"
       ]
     },
     {
@@ -259,7 +259,7 @@
       "distractors": [
         "bận",
         "tôi",
-        "ghé"
+        "cơm"
       ]
     },
     {

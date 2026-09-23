@@ -99,7 +99,8 @@
       "concept": "c_thue",
       "distractors": [
         "thuế",
-        "thui"
+        "chợ",
+        "ăn"
       ],
       "explain": {
         "fr": "thuê : louer. thuế : l'impôt !",
@@ -248,9 +249,9 @@
       "type": "listen_pick_image",
       "concept": "c_ban_table",
       "distractors": [
-        "c_b_dam_gio",
         "c_thuoc_medicine",
-        "c_da_ice"
+        "c_da_ice",
+        "c_ly"
       ]
     },
     {
@@ -274,9 +275,9 @@
       "answer": "tiền điện",
       "options": [
         "tiền điện",
-        "Hổng biết.",
         "thứ hai",
-        "Sao vậy?"
+        "Sao vậy?",
+        "chừng nào"
       ],
       "translation": {
         "fr": "L'eau et l'électricité sont facturées à part.",

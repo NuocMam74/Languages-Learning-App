@@ -72,8 +72,8 @@
       "type": "listen_pick_text",
       "concept": "s_ai_vay",
       "distractors": [
-        "Ai đó?",
-        "Gì vậy?"
+        "Gì vậy?",
+        "tiếng Việt"
       ],
       "explain": {
         "fr": "Ai vậy ? = « C'est qui ? ». vậy adoucit la question.",
@@ -112,7 +112,7 @@
       "concept": "c_moi_nguoi",
       "distractors": [
         "mời người",
-        "mọi ngày"
+        "bình thường"
       ],
       "explain": {
         "fr": "mọi người = « tout le monde ». mọi tombe court.",
@@ -149,9 +149,9 @@
       "type": "listen_pick_text",
       "concept": "c_vay",
       "distractors": [
-        "nghỉ",
-        "khám",
-        "rẻ"
+        "cơm",
+        "một",
+        "cô"
       ]
     },
     {
@@ -159,8 +159,8 @@
       "concept": "c_tui_me",
       "distractors": [
         "tụi",
-        "hoài",
-        "cái"
+        "mả",
+        "mời"
       ]
     },
     {
@@ -168,8 +168,8 @@
       "concept": "c_tui",
       "distractors": [
         "tui",
-        "trong",
-        "tiệm"
+        "con",
+        "ảnh"
       ]
     },
     {
@@ -179,8 +179,8 @@
       "options": [
         "tụi",
         "tui",
-        "trong",
-        "tiệm"
+        "tô",
+        "trà"
       ],
       "translation": {
         "fr": "On va où ?",
@@ -193,9 +193,9 @@
       "answer": "vậy",
       "options": [
         "vậy",
-        "nghỉ",
-        "khám",
-        "rẻ"
+        "họ",
+        "sách",
+        "xa"
       ],
       "translation": {
         "fr": "Tu vas où ? (à un homme un peu plus âgé)",
@@ -208,28 +208,13 @@
       "answer": "mọi người",
       "options": [
         "mọi người",
-        "hôm qua",
-        "điền đơn",
-        "đèn đỏ"
+        "Ai vậy?",
+        "Không phải.",
+        "chúng tôi"
       ],
       "translation": {
         "fr": "Bonjour tout le monde.",
         "en": "Hello everyone."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "___ tên là Hùng.",
-      "answer": "tui",
-      "options": [
-        "tui",
-        "tụi",
-        "hoài",
-        "cái"
-      ],
-      "translation": {
-        "fr": "Moi, c'est Hùng (familier).",
-        "en": "I'm Hùng (casual)."
       }
     },
     {
@@ -268,7 +253,7 @@
       "distractors": [
         "cô",
         "ra",
-        "hay"
+        "mà"
       ]
     },
     {
@@ -276,8 +261,8 @@
       "concept": "c_chi_she",
       "distractors": [
         "chị",
-        "đắng",
-        "cổ"
+        "cổ",
+        "một"
       ]
     },
     {
@@ -285,8 +270,8 @@
       "concept": "c_anh_he",
       "distractors": [
         "anh",
-        "và",
-        "theo"
+        "hơn",
+        "ba"
       ]
     },
     {
@@ -295,7 +280,7 @@
       "distractors": [
         "ba",
         "bà",
-        "cần"
+        "ở"
       ]
     },
     {
@@ -304,8 +289,23 @@
       "distractors": [
         "ông",
         "xe",
-        "quận"
+        "ăn"
       ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tên là Hùng.",
+      "answer": "tui",
+      "options": [
+        "tui",
+        "tụi",
+        "thưa",
+        "ngủ"
+      ],
+      "translation": {
+        "fr": "Moi, c'est Hùng (familier).",
+        "en": "I'm Hùng (casual)."
+      }
     },
     {
       "type": "game",

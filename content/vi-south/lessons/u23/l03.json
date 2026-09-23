@@ -50,8 +50,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_chac",
       "distractors": [
-        "chạc",
-        "chác"
+        "bị",
+        "cậu",
+        "bạn"
       ],
       "explain": {
         "fr": "chắc monte, bref : sûrement.",
@@ -110,15 +111,16 @@
       "answer": "Chắc",
       "options": [
         "Chắc",
-        "Chắt",
-        "Chặt"
+        "ngủ",
+        "ai",
+        "đầu"
       ],
       "translation": {
         "fr": "Il va sûrement arriver en retard.",
         "en": "He'll probably be late."
       },
       "explain": {
-        "fr": "chắc = sûrement (plus sûr que có lẽ). chắt = arrière-petit-enfant, chặt = couper.",
+        "fr": "chắc = sûrement (plus sûr que có lẽ).",
         "en": "chắc = probably (stronger than có lẽ). chắt = great-grandchild, chặt = to chop."
       }
     },
@@ -151,7 +153,7 @@
       "concept": "s_b_chac_hong",
       "distractors": [
         "người Việt",
-        "theo tui"
+        "đi thẳng"
       ]
     },
     {

@@ -154,18 +154,102 @@
       "type": "listen_pick_text",
       "concept": "c_duong",
       "distractors": [
-        "tuần",
         "má",
-        "ngon"
+        "cơm",
+        "không"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_thim",
       "distractors": [
-        "bớt",
-        "nhớ",
-        "sau"
+        "mạ",
+        "mưa",
+        "cá"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_que",
+      "distractors": [
+        "sông",
+        "chợ",
+        "chú"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ong_ngoai",
+      "distractors": [
+        "Không phải.",
+        "Ai vậy?"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "s_ba_noi",
+      "distractors": [
+        "tụi mình",
+        "Không sao."
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_ba",
+      "distractors": [
+        "chị hai",
+        "em út"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ngoai",
+      "distractors": [
+        "tôi",
+        "lăm",
+        "vui"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_noi",
+      "distractors": [
+        "sáu",
+        "mè",
+        "chị"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ba_xa",
+      "distractors": [
+        "anh hai",
+        "gia đình"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_ong_xa",
+      "distractors": [
+        "xin lỗi",
+        "cảm ơn"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_cua",
+      "distractors": [
+        "tụi",
+        "tên",
+        "anh"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_gia_dinh",
+      "distractors": [
+        "anh hai",
+        "bà xã"
       ]
     },
     {
@@ -174,98 +258,14 @@
       "answer": "dì",
       "options": [
         "dì",
-        "phải",
-        "người",
-        "sợ"
+        "dạ",
+        "má",
+        "bả"
       ],
       "translation": {
         "fr": "Ma plus jeune tante (côté mère) habite à Saïgon.",
         "en": "My youngest aunt (mother's side) lives in Saigon."
       }
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "c_que",
-      "distractors": [
-        "sông",
-        "lẩu",
-        "rút"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "s_ong_ngoai",
-      "distractors": [
-        "tiền nước",
-        "bao lâu"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "s_ba_noi",
-      "distractors": [
-        "thứ bảy",
-        "dừng lại"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "c_ong_ba",
-      "distractors": [
-        "ngân hàng",
-        "danh thiếp"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "c_ngoai",
-      "distractors": [
-        "tôi",
-        "giỡn",
-        "đơn"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "c_noi",
-      "distractors": [
-        "sáu",
-        "thêm",
-        "mè"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "c_ba_xa",
-      "distractors": [
-        "cơm tấm",
-        "ngày mai"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "c_ong_xa",
-      "distractors": [
-        "chụp hình",
-        "bao nhiêu"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "c_cua",
-      "distractors": [
-        "vườn",
-        "bông",
-        "đã"
-      ]
-    },
-    {
-      "type": "listen_pick_text",
-      "concept": "c_gia_dinh",
-      "distractors": [
-        "nhân viên",
-        "anh hai"
-      ]
     }
   ],
   "review": {

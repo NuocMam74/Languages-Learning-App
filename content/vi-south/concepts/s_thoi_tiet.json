@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_thoi_tiet",
+  "type": "structure",
+  "vi": "thời tiết",
+  "gloss": {
+    "fr": "la météo, le temps qu'il fait",
+    "en": "the weather"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thoi_tiet_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_thoi_tiet_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false,
+  "pos": "phrase"
+}

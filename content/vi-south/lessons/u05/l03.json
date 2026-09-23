@@ -65,7 +65,8 @@
       "concept": "c_song_live",
       "distractors": [
         "sông",
-        "sóng"
+        "không",
+        "vậy"
       ],
       "explain": {
         "fr": "sống monte : vivre. sông, plat : le fleuve.",
@@ -96,29 +97,11 @@
       "concept": "c_thanh_pho",
       "distractors": [
         "thanh phố",
-        "thành phó"
+        "Việt kiều"
       ],
       "explain": {
         "fr": "thành descend, phố monte : la ville.",
         "en": "thành falls, phố rises: city."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "Tôi ___ ở Sài Gòn.",
-      "answer": "sống",
-      "options": [
-        "sống",
-        "sóng",
-        "xong"
-      ],
-      "translation": {
-        "fr": "Je vis à Saïgon.",
-        "en": "I live in Saigon."
-      },
-      "explain": {
-        "fr": "sống = vivre. sóng (monte) = la vague, xong = fini.",
-        "en": "sống = to live. sóng (rising) = wave, xong = finished."
       }
     },
     {
@@ -162,7 +145,7 @@
       "distractors": [
         "quá",
         "quà",
-        "chiều"
+        "trời"
       ]
     },
     {
@@ -170,8 +153,8 @@
       "concept": "c_moi_just",
       "distractors": [
         "mời",
-        "dở",
-        "hẻm"
+        "ghế",
+        "là"
       ]
     },
     {
@@ -179,24 +162,9 @@
       "concept": "c_moi",
       "distractors": [
         "mới",
-        "sẽ",
-        "dượng"
+        "dượng",
+        "ăn"
       ]
-    },
-    {
-      "type": "fill_gap",
-      "text": "Tôi ___ ở Paris.",
-      "answer": "sống",
-      "options": [
-        "sống",
-        "sông",
-        "rau",
-        "chua"
-      ],
-      "translation": {
-        "fr": "J'habite à Paris.",
-        "en": "I live in Paris."
-      }
     },
     {
       "type": "fill_gap",
@@ -204,9 +172,9 @@
       "answer": "thành phố",
       "options": [
         "thành phố",
-        "kế bên",
-        "bánh mì",
-        "ông bà"
+        "ông bà",
+        "Chào anh.",
+        "hai mươi"
       ],
       "translation": {
         "fr": "Tu habites dans quelle ville ? (à un homme un peu plus âgé)",
@@ -220,8 +188,8 @@
       "options": [
         "mời",
         "mới",
-        "sẽ",
-        "dượng"
+        "dượng",
+        "không"
       ],
       "translation": {
         "fr": "Je vous en prie, prenez du thé (à un aîné).",
@@ -247,24 +215,24 @@
       "type": "listen_pick_text",
       "concept": "c_viet_kieu",
       "distractors": [
-        "phòng ngủ",
-        "hồi nãy"
+        "bình thường",
+        "em út"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_nguoi_nuoc_nao",
       "distractors": [
-        "Nè, coi cái này nè!",
-        "Em là nhân viên mới."
+        "Rất vui được gặp chị.",
+        "tiếng Việt"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_nguoi_viet",
       "distractors": [
-        "Đúng rồi!",
-        "Thiệt há?"
+        "người Pháp",
+        "Không sao."
       ]
     },
     {
@@ -272,26 +240,56 @@
       "concept": "s_nguoi_phap",
       "distractors": [
         "Cũng được.",
-        "bao lâu"
+        "ông ngoại"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_phap",
       "distractors": [
-        "ký",
         "chè",
-        "thêm"
+        "họ",
+        "chào"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nguoi",
       "distractors": [
-        "cần",
-        "hổng",
-        "mua"
+        "bốn",
+        "nhỏ",
+        "uống"
       ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi ___ ở Paris.",
+      "answer": "sống",
+      "options": [
+        "sống",
+        "sông",
+        "hông",
+        "ơi"
+      ],
+      "translation": {
+        "fr": "J'habite à Paris.",
+        "en": "I live in Paris."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi tên Nam. ___",
+      "answer": "Chị là người nước nào?",
+      "options": [
+        "Chị là người nước nào?",
+        "Rất vui được gặp chị.",
+        "ông ngoại",
+        "tiếng Việt"
+      ],
+      "translation": {
+        "fr": "Moi c'est Nam. Vous êtes de quel pays ?",
+        "en": "I'm Nam. What country are you from?"
+      }
     }
   ],
   "review": {

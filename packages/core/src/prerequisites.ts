@@ -1,4 +1,4 @@
-import { nfc } from "./text.ts";
+import { nfc, stripTones } from "./text.ts";
 import type { ConceptId, Concept, ContentIndex, Lesson, LessonStep, Localized, StepType } from "./types.ts";
 
 /**
@@ -19,6 +19,10 @@ import type { ConceptId, Concept, ContentIndex, Lesson, LessonStep, Localized, S
  *
  * Seul le second compte comme prérequis. Le reste de la chaîne (fiche de préparation, garde du
  * contenu) se construit dessus.
+ *
+ * Le contrat phase26 §4 a ajouté une règle à côté : les leurres, s'ils n'ont pas à être
+ * **produits**, doivent être **connus** — choisir parmi des mots jamais vus, c'est deviner. Voir
+ * `unmetExposure` plus bas.
  */
 
 /** Ce qu'une étape fait produire : des concepts nommés, et des formes brutes écrites dans l'étape. */
@@ -32,7 +36,7 @@ export interface Demands {
 export function lexicalKey(text: string): string {
   return nfc(text)
     .toLowerCase()
-    .replace(/[.,!?…:;"'«»()\-–—]/g, " ")
+    .replace(/[.,!?…:;"'«»()\-–—¿¡]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -103,6 +107,19 @@ export function conceptForms(concept: Pick<Concept, "vi">): string[] {
  * la contenir : pour « em », on veut `c_em`, pas les cinquante phrases où le mot apparaît.
  */
 export function formIndex(content: Pick<ContentIndex, "concepts">): ReadonlyMap<string, ConceptId[]> {
+  // Mis en cache par table de concepts : la fiche de préparation et les gardes le redemandent à
+  // chaque leçon. Un index découpé s'enrichit en place quand une unité se charge (contrat phase12)
+  // — la taille change alors, et l'index est reconstruit.
+  const cached = formIndexCache.get(content.concepts);
+  if (cached && cached.size === content.concepts.size) return cached.index;
+  const index = buildFormIndex(content);
+  formIndexCache.set(content.concepts, { size: content.concepts.size, index });
+  return index;
+}
+
+const formIndexCache = new WeakMap<ReadonlyMap<ConceptId, Concept>, { size: number; index: ReadonlyMap<string, ConceptId[]> }>();
+
+function buildFormIndex(content: Pick<ContentIndex, "concepts">): ReadonlyMap<string, ConceptId[]> {
   const exact = new Map<string, ConceptId[]>();
   const within = new Map<string, ConceptId[]>();
   const push = (map: Map<string, ConceptId[]>, key: string, id: ConceptId) => {
@@ -246,6 +263,210 @@ export function withLesson(content: Pick<ContentIndex, "concepts">, known: Known
 }
 
 // ---------------------------------------------------------------------------
+// Ce qu'une leçon fait voir (contrat phase26 §4)
+
+/**
+ * La garde des prérequis ne regarde que ce qu'on **produit**. Retour d'usage : ce n'est pas assez.
+ * Dès le niveau 2, on choisissait « chào » parmi « giả sử » et « đối diện », on complétait une phrase
+ * parmi « nước mía » et « hết hạn », et le conseil affiché après la réponse parlait de « hồng ».
+ * Des mots que rien n'avait présentés. Choisir parmi des mots inconnus, c'est deviner ; un conseil
+ * qui s'appuie sur des mots inconnus n'explique rien.
+ *
+ * Deux familles, deux règles :
+ *   - les **leurres** (options d'un choix, jetons en trop, images voisines, reste d'une phrase à
+ *     trous) : déjà appris. Seule exception, les variantes tonales de la bonne réponse (ma / má /
+ *     mà) : entendre la différence, c'est justement l'exercice ;
+ *   - les mots **cités** par un conseil ou une carte culture : appris, variante tonale d'un mot
+ *     appris (le conseil les oppose), ou présentés par la fiche de préparation, qui les montre avec
+ *     leur traduction avant la séance (volet `cited`).
+ */
+export interface Exposure {
+  /** Formes montrées comme choix possibles : elles doivent être connues. */
+  decoys: string[];
+  /** Mots vietnamiens cités dans un texte en langue d'interface. */
+  cited: string[];
+  /** Textes d'où viennent ces mots : une expression citée (thời tiết) s'y retrouve entière. */
+  texts: string[];
+  /** Forme de la bonne réponse : ses variantes tonales sont des leurres légitimes. */
+  target: string | null;
+}
+
+/** ngã, brève (ă), hỏi, corne (ơ, ư), nặng : aucune n'existe en français. */
+const VI_ONLY_MARKS = /[\u0303\u0306\u0309\u031B\u0323]/u;
+
+/**
+ * Le mot, pris dans un texte français, est-il vietnamien ? On ne retient que les graphies
+ * impossibles en français : đ, ă, ơ, ư, les marques hỏi, ngã et nặng, l'aigu hors du « e », le grave
+ * hors de « a, e, u », un ton posé sur un circonflexe. « là », « à » ou « ma » restent français —
+ * faute de mieux, et c'est le bon côté pour se tromper : un faux positif ferait écrire un concept
+ * pour un mot français.
+ */
+export function isVietnameseWord(token: string): boolean {
+  const decomposed = token.normalize("NFD").toLowerCase();
+  if (/đ/u.test(token.toLowerCase()) || VI_ONLY_MARKS.test(decomposed)) return true;
+  const letters = decomposed.match(/\p{L}\p{M}*/gu) ?? [];
+  return letters.some((cluster) => {
+    const base = cluster[0]!;
+    const marks = cluster.slice(1);
+    if (marks.includes("\u0301") && base !== "e") return true;
+    if (marks.includes("\u0300") && !"aeu".includes(base)) return true;
+    return marks.includes("\u0302") && /[\u0300\u0301]/u.test(marks);
+  });
+}
+
+/**
+ * Mots vietnamiens d'un texte en langue d'interface. Ce qui est entre guillemets français n'en fait
+ * pas partie : c'est une prononciation figurée (on écrit bạn, on entend « bạng »), pas un mot à
+ * connaître.
+ */
+export function citedWords(text: string): string[] {
+  return nfc(text)
+    .replace(/«[^»]*»/gu, " ")
+    .split(/[^\p{L}\p{M}]+/u)
+    // Une majuscule dans un texte français, c'est un nom propre (Sài Gòn, Tết) : on ne l'apprend pas.
+    .filter((token) => token !== "" && token === token.toLowerCase() && isVietnameseWord(token))
+    .map((token) => lexicalKey(token));
+}
+
+/**
+ * Formes du Nord que le pack met en regard du Sud (variantes lexicales, `northernEquivalent`) : un
+ * conseil qui dit « au Nord, on dit bố » les cite pour qu'on les reconnaisse, et l'exercice de
+ * repérage les présente avec leur sens.
+ */
+export function northernForms(content: Pick<ContentIndex, "concepts" | "variants">): ReadonlySet<string> {
+  const out = new Set<string>();
+  const add = (text: string) => {
+    for (const word of lexicalKey(text).split(" ")) if (word) out.add(word);
+  };
+  for (const entry of content.variants?.entries ?? []) for (const form of entry.north) add(form);
+  for (const concept of content.concepts.values()) if (concept.northernEquivalent) add(concept.northernEquivalent);
+  return out;
+}
+
+type ExposureContent = Pick<ContentIndex, "concepts" | "culture" | "variants" | "pack">;
+
+export function stepExposure(content: ExposureContent, step: LessonStep): Exposure {
+  // Le repérage des mots cités est propre à l'orthographe vietnamienne : sur un autre pack, il
+  // prendrait « día » pour un mot vietnamien.
+  const tonal = content.pack.features.includes("tones");
+  const words = (text: string) => (tonal ? citedWords(text) : []);
+  const own = "explain" in step && step.explain ? [step.explain.fr] : [];
+  const cited = own.flatMap(words);
+  const texts = own;
+  const form = (id: ConceptId) => content.concepts.get(id)?.vi ?? "";
+  switch (step.type) {
+    case "listen_pick_text":
+      return { decoys: [...step.distractors], cited, texts, target: form(step.concept) };
+    case "listen_pick_image":
+      return { decoys: step.distractors.map(form).filter(Boolean), cited, texts, target: form(step.concept) };
+    case "fill_gap": {
+      const rest = step.text.replace("___", " ");
+      return { decoys: [...step.options.filter((o) => lexicalKey(o) !== lexicalKey(step.answer)), rest], cited, texts, target: step.answer };
+    }
+    case "build_sentence": {
+      const wanted = new Set(lexicalKey(step.target).split(" "));
+      return { decoys: step.tokens.filter((t) => !lexicalKey(t).split(" ").every((w) => wanted.has(w))), cited, texts, target: null };
+    }
+    case "culture_card": {
+      const card = content.culture.get(step.ref);
+      if (!card) return { decoys: [], cited: [], texts: [], target: null };
+      const french = [card.body.fr, card.question.prompt.fr, ...card.question.options.map((o) => o.fr)];
+      // La ligne en vietnamien se lit entière : chacun de ses mots compte, noms propres mis à part.
+      const vi = card.vi && tonal ? lexicalKey(card.vi).split(" ").filter((w) => w !== "" && !isProperNounOrNumber(card.vi!, w)) : [];
+      return { decoys: [], cited: [...french.flatMap(words), ...vi], texts: [...french, ...(card.vi ? [card.vi] : [])], target: null };
+    }
+    default:
+      return { decoys: [], cited, texts, target: null };
+  }
+}
+
+/** Ce que la leçon montre sans l'avoir appris. */
+export interface UnmetExposure {
+  kind: "decoy" | "cited";
+  what: string;
+  /** Concepts du pack qui **sont** ce mot : ce qu'il faudrait présenter plus tôt. */
+  candidates: ConceptId[];
+  step: StepType;
+}
+
+/**
+ * Concept qui traduit un mot cité : celui qui **est** ce mot d'abord ; à défaut, une expression du
+ * pack qui le contient et que le texte cite entière (« thời tiết : la météo » cite thời et tiết,
+ * que seule l'expression traduit).
+ */
+function citedConcept(content: Pick<ContentIndex, "concepts">, index: ReadonlyMap<string, ConceptId[]>, word: string, texts: readonly string[]): ConceptId | undefined {
+  const exact = exactCandidates(content, index, word)[0];
+  if (exact) return exact;
+  const haystacks = texts.map((t) => ` ${lexicalKey(t)} `);
+  return (index.get(word) ?? []).find((id) => {
+    const form = lexicalKey(content.concepts.get(id)?.vi ?? "");
+    return form.includes(" ") && haystacks.some((h) => h.includes(` ${form} `));
+  });
+}
+
+/** Variante tonale d'une forme connue : même syllabe, autre ton. */
+function tonalVariantOf(word: string, forms: Iterable<string>): boolean {
+  const base = stripTones(word);
+  for (const form of forms) if (form !== word && stripTones(form) === base) return true;
+  return false;
+}
+
+/** Le mot cité est-il déjà couvert, sans avoir à le présenter ? */
+function citedCovered(word: string, known: KnownLexicon, knownForms: readonly string[], north: ReadonlySet<string>): boolean {
+  return word === "" || known.forms.has(word) || north.has(word) || /^\p{Nd}+$/u.test(word) || tonalVariantOf(word, knownForms);
+}
+
+/**
+ * Mots montrés par la leçon que le lexique connu ne couvre pas. Un mot cité qui a un concept n'y
+ * figure pas : la fiche de préparation le présente (`citedToPresent`). Restent les leurres inconnus
+ * et les mots cités que rien dans le pack ne traduit.
+ */
+export function unmetExposure(content: ExposureContent, lesson: Lesson, known: KnownLexicon): UnmetExposure[] {
+  const index = formIndex(content);
+  const knownForms = [...known.forms];
+  const north = northernForms(content);
+  const out: UnmetExposure[] = [];
+  const seen = new Set<string>();
+  for (const step of lesson.steps) {
+    const exposure = stepExposure(content, step);
+    const targetWords = exposure.target ? lexicalKey(exposure.target).split(" ") : [];
+    for (const decoy of exposure.decoys) {
+      for (const part of lexicalKey(decoy).split(" ")) {
+        if (part === "" || known.forms.has(part) || seen.has(`d:${part}`)) continue;
+        if (isProperNounOrNumber(decoy, part)) continue;
+        if (targetWords.some((t) => t !== part && stripTones(t) === stripTones(part))) continue;
+        seen.add(`d:${part}`);
+        out.push({ kind: "decoy", what: part, candidates: exactCandidates(content, index, part).slice(0, MAX_CANDIDATES), step: step.type });
+      }
+    }
+    for (const word of exposure.cited) {
+      if (citedCovered(word, known, knownForms, north) || seen.has(`c:${word}`)) continue;
+      seen.add(`c:${word}`);
+      if (citedConcept(content, index, word, exposure.texts)) continue;
+      out.push({ kind: "cited", what: word, candidates: [], step: step.type });
+    }
+  }
+  return out;
+}
+
+/** Concepts cités par ces étapes, inconnus, que la fiche de préparation doit présenter. */
+export function citedToPresent(content: ExposureContent, steps: readonly LessonStep[], known: KnownLexicon): ConceptId[] {
+  const index = formIndex(content);
+  const knownForms = [...known.forms];
+  const north = northernForms(content);
+  const out: ConceptId[] = [];
+  for (const step of steps) {
+    const exposure = stepExposure(content, step);
+    for (const word of exposure.cited) {
+      if (citedCovered(word, known, knownForms, north)) continue;
+      const id = citedConcept(content, index, word, exposure.texts);
+      if (id && !known.concepts.has(id) && !out.includes(id)) out.push(id);
+    }
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------------------
 // La fiche de préparation
 
 /**
@@ -276,6 +497,11 @@ export interface Briefing {
   recall: ConceptId[];
   /** Phrases à assembler dont une forme échappe au corpus. */
   models: ModelSentence[];
+  /**
+   * Mots que les conseils et les cartes culture du niveau citent sans que rien ne les ait appris
+   * (contrat phase26 §4) : on les montre, traduits, avant de les lire dans une explication.
+   */
+  cited: ConceptId[];
   /** Fiches conseils que l'unité désigne comme lecture préalable. */
   guides: string[];
   /** Formats d'exercice jamais rencontrés : on explique la consigne avant de la noter. */
@@ -304,6 +530,7 @@ export function briefingParts(briefing: Briefing): number {
     (briefing.discover.length > 0 ? 1 : 0) +
     (briefing.recall.length > 0 ? 1 : 0) +
     (briefing.models.length > 0 ? 1 : 0) +
+    (briefing.cited.length > 0 ? 1 : 0) +
     briefing.guides.length +
     briefing.formats.length
   );
@@ -313,13 +540,16 @@ export function isBriefingEmpty(briefing: Briefing): boolean {
   return briefingParts(briefing) === 0;
 }
 
-/** Fiches conseils attachées à l'unité d'une leçon (`Unit.guides`, contrat phase16 §3). */
+/**
+ * Fiches conseils à lire avant une leçon : les siennes d'abord (`Lesson.guides`, contrat phase26
+ * §3), puis celles de son unité (`Unit.guides`, contrat phase16 §3).
+ */
 export function unitGuides(content: ContentIndex, lesson: Lesson): string[] {
   const unit = content.curriculum.units.find((u) => u.id === lesson.unit);
-  return (unit?.guides ?? []).filter((id) => content.guides.has(id));
+  return [...new Set([...(lesson.guides ?? []), ...(unit?.guides ?? [])])].filter((id) => content.guides.has(id));
 }
 
-export const EMPTY_BRIEFING: Briefing = { discover: [], recall: [], models: [], guides: [], formats: [] };
+export const EMPTY_BRIEFING: Briefing = { discover: [], recall: [], models: [], cited: [], guides: [], formats: [] };
 
 export function lessonBriefing(content: ContentIndex, lesson: Lesson, input: BriefingInput): Briefing {
   // Un test d'unité ne se prépare pas : il vérifie ce qui a été appris. Lui poser une fiche en
@@ -376,10 +606,13 @@ export function lessonBriefing(content: ContentIndex, lesson: Lesson, input: Bri
 
   const formats = [...new Set(steps.map((s) => s.type))].filter((type) => !seenFormats.has(type) && EXPLAINED_FORMATS.has(type));
 
+  const cited = citedToPresent(content, steps, lexicon).filter((id) => !discover.includes(id) && !recall.includes(id));
+
   return {
     discover,
     recall,
     models,
+    cited,
     guides: unitGuides(content, lesson).filter((id) => !readGuides.has(id)),
     formats,
   };

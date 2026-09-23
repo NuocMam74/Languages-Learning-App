@@ -54,7 +54,8 @@
       "concept": "c_b_uoc",
       "distractors": [
         "ược",
-        "uốc"
+        "thưa",
+        "chiều"
       ],
       "explain": {
         "fr": "ước monte : souhaiter.",
@@ -73,8 +74,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_gioi",
       "distractors": [
-        "giời",
-        "giội"
+        "mè",
+        "sống",
+        "mệt"
       ],
       "explain": {
         "fr": "giỏi plonge : doué.",
@@ -106,8 +108,7 @@
         "được",
         "về",
         "quê",
-        "ăn Tết",
-        "vê"
+        "ăn Tết"
       ],
       "translation": {
         "fr": "Si seulement je pouvais rentrer au pays pour le Tết.",
@@ -147,7 +148,7 @@
       "concept": "s_b_uoc_gi_ve_que",
       "distractors": [
         "Hôm qua tui đi chợ rồi về nhà.",
-        "Tại vì kẹt xe nên em tới trễ."
+        "Nếu rảnh thì ghé nhà tui chơi nha."
       ]
     },
     {
@@ -169,8 +170,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_neu_co_tien",
       "distractors": [
-        "Tại vì kẹt xe nên em tới trễ.",
-        "Nếu rảnh thì ghé nhà tui chơi nha."
+        "Nếu rảnh thì ghé nhà tui chơi nha.",
+        "Ước gì tui được về quê ăn Tết."
       ]
     },
     {
@@ -252,8 +253,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_co_le_mai_mua",
       "distractors": [
-        "Em không đồng ý lắm.",
-        "Lát em gọi lại nha."
+        "Lát em gọi lại nha.",
+        "Tiếc quá, em bận rồi."
       ]
     },
     {

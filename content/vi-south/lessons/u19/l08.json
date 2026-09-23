@@ -134,8 +134,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_rut_tien",
       "distractors": [
-        "Tui muốn gửi tiền.",
-        "Tui muốn đổi tiền."
+        "Dạ, ai vậy ạ?",
+        "Em đang làm việc."
       ],
       "explain": {
         "fr": "rút tiền : retirer.",
@@ -149,8 +149,7 @@
         "Ký",
         "tên",
         "ở",
-        "đây",
-        "kỳ"
+        "đây"
       ],
       "translation": {
         "fr": "Signez ici.",
@@ -215,7 +214,7 @@
       "distractors": [
         "tiệm",
         "gọi",
-        "lên"
+        "chích"
       ]
     },
     {

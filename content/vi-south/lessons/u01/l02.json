@@ -121,8 +121,8 @@
       "type": "listen_pick_text",
       "concept": "s_chao_anh",
       "distractors": [
-        "Đỡ rồi.",
-        "Dạ, có."
+        "mười một",
+        "mười lăm"
       ]
     },
     {
@@ -130,8 +130,8 @@
       "concept": "c_anh",
       "distractors": [
         "ảnh",
-        "về",
-        "há"
+        "tôi",
+        "mươi"
       ]
     },
     {
@@ -139,17 +139,17 @@
       "concept": "c_chi",
       "distractors": [
         "chỉ",
-        "nhỏ",
-        "trễ"
+        "ảnh",
+        "mả"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_em",
       "distractors": [
-        "cưới",
-        "ai",
-        "chồng"
+        "mà",
+        "tôi",
+        "trăm"
       ]
     },
     {
@@ -157,25 +157,25 @@
       "concept": "c_da",
       "distractors": [
         "da",
-        "qua",
-        "gì"
+        "chào",
+        "bảy"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_cam_on",
       "distractors": [
-        "giả sử",
-        "đối diện"
+        "họ",
+        "em"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_em",
       "distractors": [
-        "c_nha_thuoc",
-        "c_xe_dap",
-        "c_thom"
+        "c_chi",
+        "c_ong",
+        "c_co_aunt"
       ]
     },
     {
@@ -184,9 +184,9 @@
       "answer": "chào",
       "options": [
         "chào",
-        "qua",
         "mạ",
-        "đội"
+        "chín",
+        "chỉ"
       ],
       "translation": {
         "fr": "Bonjour (à un homme un peu plus âgé).",
@@ -200,8 +200,8 @@
       "options": [
         "anh",
         "ảnh",
-        "về",
-        "há"
+        "bả",
+        "mả"
       ],
       "translation": {
         "fr": "Oui, merci (à un homme un peu plus âgé).",

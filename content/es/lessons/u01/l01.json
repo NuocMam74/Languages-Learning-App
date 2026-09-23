@@ -96,17 +96,16 @@
       "type": "listen_pick_text",
       "concept": "c_es_buenas_tardes",
       "distractors": [
-        "me llamo",
-        "mucho gusto"
+        "buenas noches",
+        "buenos días"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_es_hola",
       "distractors": [
-        "soy",
-        "ocho",
-        "gracias"
+        "gracias",
+        "adiós"
       ]
     },
     {
@@ -114,16 +113,15 @@
       "concept": "c_es_buenos_dias",
       "distractors": [
         "buenas tardes",
-        "mucho gusto"
+        "buenas noches"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_es_gracias",
       "distractors": [
-        "nueve",
-        "cinco",
-        "tres"
+        "adiós",
+        "hola"
       ]
     },
     {
@@ -146,9 +144,8 @@
       "type": "listen_pick_image",
       "concept": "c_es_adios",
       "distractors": [
-        "c_es_tu",
-        "c_es_yo",
-        "c_es_dos"
+        "c_es_hola",
+        "c_es_gracias"
       ]
     },
     {

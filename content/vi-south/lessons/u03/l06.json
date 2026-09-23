@@ -154,7 +154,7 @@
       "distractors": [
         "ba",
         "bà",
-        "gỏi"
+        "cà"
       ]
     },
     {
@@ -163,7 +163,7 @@
       "distractors": [
         "cô",
         "bả",
-        "bông"
+        "ạ"
       ]
     },
     {
@@ -172,7 +172,7 @@
       "distractors": [
         "ổng",
         "cổ",
-        "giây"
+        "bà"
       ]
     },
     {
@@ -181,7 +181,7 @@
       "distractors": [
         "bả",
         "ba",
-        "tuần"
+        "chỉ"
       ]
     },
     {
@@ -189,8 +189,8 @@
       "concept": "c_co_aunt",
       "distractors": [
         "cổ",
-        "đụng",
-        "chích"
+        "sách",
+        "cũng"
       ]
     },
     {
@@ -198,8 +198,8 @@
       "concept": "c_ong_he",
       "distractors": [
         "ông",
-        "giữa",
-        "bên"
+        "già",
+        "bà"
       ]
     },
     {
@@ -207,8 +207,8 @@
       "concept": "c_chi_she",
       "distractors": [
         "chị",
-        "ồn",
-        "sợ"
+        "cơm",
+        "bà"
       ]
     },
     {
@@ -216,44 +216,44 @@
       "concept": "c_chi",
       "distractors": [
         "chỉ",
-        "mở",
-        "nhà"
+        "nhà",
+        "bác"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ong",
       "distractors": [
-        "c_b_cong_an",
-        "c_chong",
-        "c_to_bowl"
+        "c_to_bowl",
+        "c_bo_beef",
+        "c_tra_tea"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_chi",
       "distractors": [
-        "c_ben_phai",
-        "c_san_bay",
-        "c_phong"
+        "c_bac",
+        "c_trai_fruit",
+        "c_sach"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ba_grandma",
       "distractors": [
-        "c_xe_buyt",
-        "c_com_tam",
-        "c_sau_rieng"
+        "c_to_bowl",
+        "c_chu",
+        "c_nha_house"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_co_aunt",
       "distractors": [
-        "c_xe_buyt",
-        "c_dia_plate",
-        "c_to_bowl"
+        "c_to_bowl",
+        "c_mua_rain",
+        "c_ba_grandma"
       ]
     },
     {
@@ -263,8 +263,8 @@
       "options": [
         "ổng",
         "ông",
-        "giữa",
-        "bên"
+        "lớn",
+        "ngủ"
       ],
       "translation": {
         "fr": "Lui, c'est mon père.",
@@ -278,8 +278,8 @@
       "options": [
         "chỉ",
         "chị",
-        "ồn",
-        "sợ"
+        "là",
+        "sông"
       ],
       "translation": {
         "fr": "Elle, c'est ma grande sœur.",
@@ -294,7 +294,7 @@
         "ông",
         "ổng",
         "cổ",
-        "giây"
+        "phải"
       ],
       "translation": {
         "fr": "Bonjour (à un homme âgé).",

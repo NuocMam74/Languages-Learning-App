@@ -157,9 +157,9 @@
       "type": "listen_pick_text",
       "concept": "c_thit",
       "distractors": [
-        "lẩu",
         "cổ",
-        "với"
+        "tên",
+        "chó"
       ]
     },
     {
@@ -167,8 +167,8 @@
       "concept": "c_heo",
       "distractors": [
         "cô",
-        "chiều",
-        "đã"
+        "trời",
+        "canh"
       ]
     },
     {
@@ -176,8 +176,8 @@
       "concept": "c_trung",
       "distractors": [
         "ăn",
-        "bị",
-        "cậu"
+        "cậu",
+        "nhà"
       ]
     },
     {
@@ -186,7 +186,7 @@
       "distractors": [
         "tư",
         "già",
-        "tuần"
+        "thêm"
       ]
     },
     {
@@ -194,7 +194,7 @@
       "concept": "s_bao_nhieu_mot_ky",
       "distractors": [
         "Ổng đi đâu rồi?",
-        "Em ở lầu hai."
+        "một trăm lẻ năm"
       ]
     },
     {
@@ -202,15 +202,15 @@
       "concept": "s_mac_qua",
       "distractors": [
         "Không phải.",
-        "đi thẳng"
+        "chúng tôi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_nua_ky",
       "distractors": [
-        "quẹo phải",
-        "Nhớ nghen!"
+        "tiếng Việt",
+        "bằng tuổi"
       ]
     },
     {
@@ -219,7 +219,7 @@
       "distractors": [
         "c_bo_beef",
         "c_dia_plate",
-        "c_may_lanh"
+        "c_tien"
       ]
     },
     {
@@ -228,9 +228,9 @@
       "answer": "thịt",
       "options": [
         "thịt",
-        "lẩu",
         "cổ",
-        "với"
+        "đâu",
+        "no"
       ],
       "translation": {
         "fr": "Vends-moi un kilo de porc, s'il te plaît.",
@@ -244,8 +244,8 @@
       "options": [
         "Bao nhiêu một ký?",
         "Ổng đi đâu rồi?",
-        "Em ở lầu hai.",
-        "Anh bao nhiêu tuổi?"
+        "Anh bao nhiêu tuổi?",
+        "Mời bác uống trà."
       ],
       "translation": {
         "fr": "Combien le kilo de mangues ?",

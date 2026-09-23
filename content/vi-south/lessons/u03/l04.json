@@ -67,8 +67,9 @@
       "type": "listen_pick_text",
       "concept": "c_chau",
       "distractors": [
-        "châu",
-        "chầu"
+        "già",
+        "cơm",
+        "chút"
       ],
       "explain": {
         "fr": "cháu monte : petit-enfant, neveu ou nièce.",
@@ -91,8 +92,9 @@
       "type": "listen_pick_text",
       "concept": "c_tre",
       "distractors": [
-        "che",
-        "tre"
+        "tre",
+        "ở",
+        "cũng"
       ],
       "explain": {
         "fr": "trẻ plonge : jeune. tr recourbé ; che commence par ch.",
@@ -150,8 +152,8 @@
       "concept": "c_bac",
       "distractors": [
         "sách",
-        "tiếc",
-        "thưa"
+        "cũng",
+        "năm"
       ]
     },
     {
@@ -159,16 +161,16 @@
       "concept": "c_ong",
       "distractors": [
         "ổng",
-        "rảnh",
-        "hội"
+        "trái",
+        "cá"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_con_chao_ong",
       "distractors": [
-        "Dạ, ăn rồi.",
-        "Em mấy tuổi?"
+        "Em mấy tuổi?",
+        "Tôi tên là…"
       ]
     },
     {
@@ -178,8 +180,8 @@
       "options": [
         "bác",
         "sách",
-        "tiếc",
-        "thưa"
+        "không",
+        "gì"
       ],
       "translation": {
         "fr": "Vous êtes encore très jeune (à un aîné).",
@@ -193,8 +195,8 @@
       "options": [
         "ông",
         "ổng",
-        "rảnh",
-        "hội"
+        "lăm",
+        "ly"
       ],
       "translation": {
         "fr": "Bonjour (à un homme âgé).",
@@ -206,8 +208,8 @@
       "concept": "c_thay",
       "distractors": [
         "thấy",
-        "thẻ",
-        "dở"
+        "bác",
+        "trà"
       ]
     },
     {
@@ -224,7 +226,7 @@
       "distractors": [
         "còn",
         "một",
-        "thẻ"
+        "anh"
       ]
     },
     {
@@ -232,8 +234,8 @@
       "concept": "c_chu",
       "distractors": [
         "chủ",
-        "nhức",
-        "gỏi"
+        "chín",
+        "bà"
       ]
     },
     {
@@ -241,8 +243,8 @@
       "concept": "c_co_aunt",
       "distractors": [
         "cổ",
-        "ồn",
-        "cá"
+        "cá",
+        "cũng"
       ]
     },
     {
@@ -251,15 +253,15 @@
       "distractors": [
         "hông",
         "da",
-        "qua"
+        "vui"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_em_may_tuoi",
       "distractors": [
-        "Hổng có đâu!",
-        "Có xa không?"
+        "Có xa không?",
+        "hai mươi mốt"
       ]
     },
     {
@@ -267,8 +269,8 @@
       "concept": "c_may",
       "distractors": [
         "mây",
-        "cho",
-        "lầu"
+        "một",
+        "sáu"
       ]
     },
     {

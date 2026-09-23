@@ -60,8 +60,9 @@
       "type": "listen_pick_text",
       "concept": "c_lan",
       "distractors": [
-        "lăn",
-        "lận"
+        "lận",
+        "ngủ",
+        "cà"
       ],
       "explain": {
         "fr": "lần descend : la fois. lận : particule du Sud.",
@@ -149,18 +150,18 @@
       "type": "listen_pick_text",
       "concept": "c_xoai",
       "distractors": [
-        "sợ",
-        "rút",
-        "ít"
+        "ít",
+        "dượng",
+        "ai"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_thom",
       "distractors": [
-        "coi",
         "học",
-        "sáng"
+        "sáng",
+        "nửa"
       ]
     },
     {
@@ -169,7 +170,7 @@
       "distractors": [
         "c_chen",
         "c_chong",
-        "c_b_qua_gift"
+        "c_ba_grandma"
       ]
     },
     {
@@ -177,8 +178,8 @@
       "concept": "c_thom",
       "distractors": [
         "c_chu",
-        "c_b_ve_so",
-        "c_co_aunt"
+        "c_co_aunt",
+        "c_may_bay"
       ]
     },
     {
@@ -189,7 +190,7 @@
         "chưa bao giờ",
         "Kẹt xe quá!",
         "số điện thoại",
-        "Đừng khách sáo!"
+        "Hẹn gặp lại."
       ],
       "translation": {
         "fr": "Je n'ai jamais mangé de durian.",
@@ -202,9 +203,9 @@
       "answer": "xoài",
       "options": [
         "xoài",
-        "sợ",
-        "rút",
-        "ít"
+        "ít",
+        "mắc",
+        "mấy"
       ],
       "translation": {
         "fr": "une mangue",
@@ -236,8 +237,8 @@
       "concept": "c_xong",
       "distractors": [
         "chín",
-        "nghe",
-        "mợ"
+        "mợ",
+        "sữa"
       ]
     },
     {
@@ -245,7 +246,7 @@
       "concept": "s_em_da_an_roi",
       "distractors": [
         "Dạ, ai vậy ạ?",
-        "Chúc mừng năm mới!"
+        "Khi nào anh về?"
       ]
     },
     {
@@ -253,8 +254,8 @@
       "concept": "c_da_past",
       "distractors": [
         "đá",
-        "hết",
-        "vui"
+        "vui",
+        "đa"
       ]
     },
     {

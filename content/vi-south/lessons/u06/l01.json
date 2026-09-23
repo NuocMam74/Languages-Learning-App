@@ -10,7 +10,7 @@
     "fr": "Compter jusqu'à cinq et reconnaître les chiffres à l'oreille.",
     "en": "Count to five and recognise digits by ear."
   },
-  "estimatedMinutes": 5,
+  "estimatedMinutes": 6,
   "prerequisites": [
     "vi-south.u03.l09"
   ],
@@ -74,8 +74,9 @@
       "type": "listen_pick_text",
       "concept": "c_khong_zero",
       "distractors": [
-        "khóng",
-        "khộng"
+        "khộng",
+        "gặp",
+        "năm"
       ],
       "explain": {
         "fr": "không : zéro, le même mot que « non ».",
@@ -107,7 +108,8 @@
       "concept": "c_so",
       "distractors": [
         "sổ",
-        "sơ"
+        "mươi",
+        "nói"
       ],
       "explain": {
         "fr": "số monte : nombre, numéro. sổ plonge : le cahier.",
@@ -153,18 +155,18 @@
       "type": "listen_pick_text",
       "concept": "c_bon",
       "distractors": [
-        "đúng",
-        "nửa",
-        "coi"
+        "anh",
+        "tốt",
+        "có"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ba_grandma",
       "distractors": [
-        "c_benh_vien",
-        "c_tin_nhan",
-        "c_bac"
+        "c_bac",
+        "c_chong",
+        "c_giao_vien"
       ]
     },
     {
@@ -203,9 +205,9 @@
       "answer": "bốn",
       "options": [
         "bốn",
-        "đúng",
-        "nửa",
-        "coi"
+        "lớn",
+        "ga",
+        "còn"
       ],
       "translation": {
         "fr": "Nous sommes quatre à la maison.",
@@ -270,6 +272,36 @@
         "c_so",
         "c_ba_grandma"
       ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Nhà tôi ___ tám.",
+      "answer": "số",
+      "options": [
+        "số",
+        "tên",
+        "nhà",
+        "gà"
+      ],
+      "translation": {
+        "fr": "J'habite au numéro huit.",
+        "en": "I live at number eight."
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Nhà tôi số tám",
+      "tokens": [
+        "Nhà",
+        "tôi",
+        "số",
+        "tám"
+      ],
+      "translation": {
+        "fr": "J'habite au numéro huit.",
+        "en": "I live at number eight."
+      },
+      "audioConcept": "c_so"
     },
     {
       "type": "game",

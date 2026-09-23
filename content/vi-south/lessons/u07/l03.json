@@ -145,27 +145,27 @@
       "type": "listen_pick_text",
       "concept": "c_chen",
       "distractors": [
-        "trước",
         "đây",
-        "ho"
+        "tư",
+        "ơi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_muong",
       "distractors": [
-        "nhiều",
-        "ký",
-        "quẹo"
+        "sáu",
+        "bốn",
+        "trái"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_dua",
       "distractors": [
-        "đụng",
-        "trứng",
-        "đem"
+        "ghế",
+        "chị",
+        "bả"
       ]
     },
     {
@@ -173,7 +173,7 @@
       "concept": "s_em_oi",
       "distractors": [
         "Cái nào?",
-        "Vậy hả?"
+        "bằng tuổi"
       ]
     },
     {
@@ -181,16 +181,16 @@
       "concept": "s_ngon_qua",
       "distractors": [
         "Cái nào?",
-        "Hổng biết."
+        "trà đá"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_dia_plate",
       "distractors": [
-        "c_may_lanh",
-        "c_ben_phai",
-        "c_ben_trai"
+        "c_chi",
+        "c_ba_grandma",
+        "c_ca_phe"
       ]
     },
     {
@@ -199,9 +199,9 @@
       "answer": "chén",
       "options": [
         "chén",
-        "trước",
         "đây",
-        "ho"
+        "mới",
+        "phải"
       ],
       "translation": {
         "fr": "Un bol de plus, s'il te plaît.",
@@ -215,8 +215,8 @@
       "options": [
         "thêm",
         "già",
-        "chở",
-        "lẩu"
+        "mưa",
+        "sách"
       ],
       "translation": {
         "fr": "Un bol de plus, s'il te plaît.",
@@ -259,7 +259,7 @@
       "concept": "c_nuoc_mia",
       "distractors": [
         "danh thiếp",
-        "hộ chiếu"
+        "kỹ sư"
       ]
     },
     {
@@ -268,15 +268,15 @@
       "distractors": [
         "chú",
         "chào",
-        "hết"
+        "không"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_tra_da",
       "distractors": [
-        "tuần sau",
-        "Ngon quá!"
+        "Ngon quá!",
+        "tụi mình"
       ]
     },
     {

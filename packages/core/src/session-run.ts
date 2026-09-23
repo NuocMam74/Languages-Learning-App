@@ -147,7 +147,7 @@ export function startSessionRun(input: {
  */
 export function runBriefing(run: SessionRun, content: ContentIndex): Briefing {
   if (run.briefing) return run.briefing;
-  return { discover: conceptsToTeach(run, content), recall: [], models: [], guides: [], formats: [] };
+  return { discover: conceptsToTeach(run, content), recall: [], models: [], cited: [], guides: [], formats: [] };
 }
 
 /** Les concepts que la leçon introduit et que l'apprenant n'a pas déjà rencontrés. */

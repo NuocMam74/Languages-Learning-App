@@ -78,8 +78,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_luc_do_troi_mua",
       "distractors": [
-        "Lúc đó trời nắng lắm.",
-        "Bây giờ trời mưa lớn lắm."
+        "Bây giờ trời mưa lớn lắm.",
+        "Tuần này em làm ca sáng."
       ],
       "explain": {
         "fr": "lúc đó.",
@@ -220,21 +220,6 @@
     },
     {
       "type": "fill_gap",
-      "text": "Năm ngoái tui ___ qua Việt Nam.",
-      "answer": "đã",
-      "options": [
-        "đã",
-        "đá",
-        "ông",
-        "ồn"
-      ],
-      "translation": {
-        "fr": "L'an dernier, je suis venu(e) au Vietnam.",
-        "en": "Last year I came to Vietnam."
-      }
-    },
-    {
-      "type": "fill_gap",
       "text": "___ tui qua Pháp.",
       "answer": "sau đó",
       "options": [
@@ -308,6 +293,21 @@
         "en": "After that I went to France."
       },
       "audioConcept": "c_b_sau_do"
+    },
+    {
+      "type": "fill_gap",
+      "text": "Năm ngoái tui ___ qua Việt Nam.",
+      "answer": "đã",
+      "options": [
+        "đã",
+        "đá",
+        "đa",
+        "thưa"
+      ],
+      "translation": {
+        "fr": "L'an dernier, je suis venu(e) au Vietnam.",
+        "en": "Last year I came to Vietnam."
+      }
     }
   ],
   "review": {

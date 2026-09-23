@@ -46,8 +46,9 @@
       "type": "listen_pick_text",
       "concept": "c_di_go",
       "distractors": [
-        "di",
-        "đì"
+        "đì",
+        "một",
+        "bốn"
       ],
       "explain": {
         "fr": "đ barré : langue contre les dents. d sans barre se dit « y » au Sud.",
@@ -83,7 +84,8 @@
       "concept": "c_dau_where",
       "distractors": [
         "đầu",
-        "dâu"
+        "xa",
+        "trái"
       ],
       "explain": {
         "fr": "đâu est plat : « où ? ». đầu descend : la tête. dâu commence par « y ».",
@@ -139,8 +141,8 @@
       "type": "listen_pick_text",
       "concept": "s_tieng_viet",
       "distractors": [
-        "đi thẳng",
-        "Chắc hông?"
+        "Chào anh.",
+        "chúng tôi"
       ]
     },
     {
@@ -148,35 +150,35 @@
       "concept": "c_nha_house",
       "distractors": [
         "nha",
-        "mấy",
-        "gọi"
+        "mè",
+        "chị"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ngu_sleep",
       "distractors": [
-        "kể",
-        "nhờ",
-        "không"
+        "không",
+        "xa",
+        "ba"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_o_at",
       "distractors": [
-        "đêm",
-        "ghe",
-        "sống"
+        "ơ",
+        "xin",
+        "nha"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_vay",
       "distractors": [
-        "quẹo",
-        "dở",
-        "sữa"
+        "sữa",
+        "tô",
+        "dừa"
       ]
     },
     {
@@ -201,8 +203,8 @@
       "options": [
         "nhà",
         "nha",
-        "mấy",
-        "gọi"
+        "ổng",
+        "mì"
       ],
       "translation": {
         "fr": "Je suis à la maison.",
@@ -213,18 +215,18 @@
       "type": "listen_pick_text",
       "concept": "c_chua",
       "distractors": [
-        "ghe",
-        "ồn",
-        "việc"
+        "cà",
+        "cũng",
+        "bả"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_mac_expensive",
       "distractors": [
-        "với",
-        "ai",
-        "mốt"
+        "mốt",
+        "em",
+        "chào"
       ]
     },
     {
@@ -232,8 +234,8 @@
       "concept": "c_tot_good",
       "distractors": [
         "chè",
-        "xấu",
-        "bị"
+        "gì",
+        "xin"
       ]
     },
     {
@@ -241,17 +243,17 @@
       "concept": "c_mot_one",
       "distractors": [
         "mốt",
-        "nhiều",
-        "ly"
+        "ly",
+        "mắc"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_an_eat",
       "distractors": [
-        "lát",
-        "đũa",
-        "thịt"
+        "xa",
+        "bà",
+        "không"
       ]
     },
     {

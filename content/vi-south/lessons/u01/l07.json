@@ -151,9 +151,9 @@
       "type": "listen_pick_text",
       "concept": "c_khoe",
       "distractors": [
-        "vợ",
         "năm",
-        "muỗng"
+        "có",
+        "hai"
       ]
     },
     {
@@ -161,8 +161,8 @@
       "concept": "c_con_and",
       "distractors": [
         "con",
-        "quà",
-        "đặt"
+        "chín",
+        "mười"
       ]
     },
     {
@@ -170,8 +170,8 @@
       "concept": "c_lam",
       "distractors": [
         "lăm",
-        "xấu",
-        "gọi"
+        "mả",
+        "mà"
       ]
     },
     {
@@ -180,9 +180,9 @@
       "answer": "khỏe",
       "options": [
         "khỏe",
-        "vợ",
         "năm",
-        "muỗng"
+        "không",
+        "phải"
       ],
       "translation": {
         "fr": "Très bien (poliment).",
@@ -195,9 +195,9 @@
       "answer": "cũng",
       "options": [
         "cũng",
-        "học",
-        "quà",
-        "chích"
+        "mươi",
+        "tôi",
+        "anh"
       ],
       "translation": {
         "fr": "Moi aussi, je vais bien.",
@@ -211,8 +211,8 @@
       "options": [
         "còn",
         "con",
-        "quà",
-        "đặt"
+        "tui",
+        "phải"
       ],
       "translation": {
         "fr": "Je vais bien. Et toi ? (à un homme un peu plus âgé)",
@@ -223,18 +223,18 @@
       "type": "listen_pick_text",
       "concept": "c_nuoc",
       "distractors": [
-        "đang",
-        "sẽ",
-        "tên"
+        "dạ",
+        "mà",
+        "lăm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_com",
       "distractors": [
-        "bò",
-        "rau",
-        "đơn"
+        "ga",
+        "mà",
+        "ổng"
       ]
     },
     {
@@ -251,8 +251,8 @@
       "concept": "c_ga_chicken",
       "distractors": [
         "ga",
-        "chiều",
-        "không"
+        "không",
+        "mình"
       ]
     },
     {
@@ -270,7 +270,7 @@
       "distractors": [
         "ca",
         "cà",
-        "đã"
+        "cũng"
       ]
     },
     {
@@ -278,7 +278,7 @@
       "concept": "s_khong_phai",
       "distractors": [
         "Chào anh.",
-        "bà nội"
+        "Đây là…"
       ]
     },
     {
@@ -286,8 +286,8 @@
       "concept": "c_phai",
       "distractors": [
         "má",
-        "mua",
-        "bị"
+        "hai",
+        "chào"
       ]
     }
   ],

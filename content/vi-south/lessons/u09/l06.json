@@ -92,7 +92,8 @@
       "concept": "c_ve",
       "distractors": [
         "vế",
-        "vẻ"
+        "chợ",
+        "hông"
       ],
       "explain": {
         "fr": "về descend : rentrer.",
@@ -123,7 +124,7 @@
       "concept": "c_di_lam",
       "distractors": [
         "đi học",
-        "đi chơi"
+        "bao nhiêu"
       ],
       "explain": {
         "fr": "đi làm : aller travailler. đi học : aller à l'école.",
@@ -155,7 +156,7 @@
       "distractors": [
         "lấy",
         "cho",
-        "giấy"
+        "xa"
       ]
     },
     {
@@ -166,7 +167,7 @@
         "lúc",
         "lấy",
         "cho",
-        "giấy"
+        "con"
       ],
       "translation": {
         "fr": "D'habitude, je pars travailler à sept heures du matin.",
@@ -180,8 +181,8 @@
       "options": [
         "Lúc mấy giờ?",
         "Nhà tôi có…",
-        "Em đang bận.",
-        "Còn phòng không?"
+        "Còn phòng không?",
+        "Mấy giờ rồi?"
       ],
       "translation": {
         "fr": "On se donne rendez-vous à quelle heure ?",
@@ -232,27 +233,27 @@
       "type": "listen_pick_text",
       "concept": "c_tre_late",
       "distractors": [
-        "quà",
-        "giấy",
-        "nhờ"
+        "mười",
+        "thịt",
+        "đâu"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_som",
       "distractors": [
-        "ước",
-        "đang",
-        "con"
+        "con",
+        "ớt",
+        "dĩa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hop",
       "distractors": [
-        "thuốc",
-        "phường",
-        "hoài"
+        "này",
+        "mời",
+        "rẻ"
       ]
     },
     {
@@ -260,24 +261,24 @@
       "concept": "c_hen",
       "distractors": [
         "hen",
-        "nè",
-        "thưa"
+        "thưa",
+        "dĩa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_hom_nay_thu_may",
       "distractors": [
-        "Kể tui nghe đi!",
-        "Em nhắn rồi đó."
+        "Em ơi, tính tiền.",
+        "cà phê sữa đá"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chu_nhat",
       "distractors": [
-        "chung cư",
-        "ông xã"
+        "ông xã",
+        "làm việc"
       ]
     },
     {

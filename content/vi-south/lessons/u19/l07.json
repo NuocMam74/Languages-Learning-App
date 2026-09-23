@@ -61,7 +61,7 @@
       "concept": "s_b_gia_han_visa",
       "distractors": [
         "Tui muốn gia hạn hộ chiếu.",
-        "Tui mượn gia hạn visa."
+        "Rất vui được gặp chị."
       ],
       "explain": {
         "fr": "muốn : vouloir ; mượn : emprunter.",
@@ -183,7 +183,7 @@
       "concept": "s_b_ky_ten_o_day",
       "distractors": [
         "Cho em xuống đây.",
-        "Chúc mừng hạnh phúc!"
+        "Em đã ăn rồi."
       ]
     },
     {
@@ -191,8 +191,8 @@
       "concept": "c_b_visa",
       "distractors": [
         "chuối",
-        "đụng",
-        "khám"
+        "khám",
+        "uống"
       ]
     },
     {
@@ -201,7 +201,7 @@
       "distractors": [
         "mả",
         "ngàn",
-        "khá"
+        "gọi"
       ]
     },
     {
@@ -216,9 +216,9 @@
       "type": "listen_pick_image",
       "concept": "c_b_the",
       "distractors": [
-        "c_b_vuon",
         "c_ca_eggplant",
-        "c_ky_su"
+        "c_ky_su",
+        "c_che_dessert"
       ]
     },
     {

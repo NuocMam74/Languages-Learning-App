@@ -10,7 +10,7 @@
     "fr": "Dire ton nom et choisir entre tôi, tui et mình.",
     "en": "Say your name and choose between tôi, tui and mình."
   },
-  "estimatedMinutes": 4,
+  "estimatedMinutes": 5,
   "prerequisites": [
     "vi-south.u02.l08"
   ],
@@ -130,26 +130,67 @@
       "concept": "c_minh",
       "distractors": [
         "ở",
-        "muốn",
-        "anh"
+        "anh",
+        "cô"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ten",
       "distractors": [
-        "vừa",
-        "tới",
-        "phút"
+        "tôi",
+        "ăn",
+        "xin"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_toi_ten_la",
       "distractors": [
-        "Rồi sao nữa?",
-        "Em mới tới."
+        "Không có chi.",
+        "Bạn tên gì?"
       ]
+    },
+    {
+      "type": "match_pairs",
+      "concepts": [
+        "c_tui_me",
+        "c_minh",
+        "c_ten",
+        "c_la",
+        "s_toi_ten_la",
+        "s_ban_ten_gi"
+      ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tụi ___ đi đâu?",
+      "answer": "mình",
+      "options": [
+        "mình",
+        "nhà",
+        "lăm",
+        "mươi"
+      ],
+      "translation": {
+        "fr": "On va où ?",
+        "en": "Where are we going?"
+      }
+    },
+    {
+      "type": "build_sentence",
+      "target": "Tụi mình đi đâu",
+      "tokens": [
+        "Tụi",
+        "mình",
+        "đi",
+        "đâu"
+      ],
+      "translation": {
+        "fr": "On va où ?",
+        "en": "Where are we going?"
+      },
+      "audioConcept": "c_minh"
     },
     {
       "type": "fill_gap",
@@ -158,8 +199,8 @@
       "options": [
         "tui",
         "tụi",
-        "thường",
-        "chiều"
+        "gì",
+        "bò"
       ],
       "translation": {
         "fr": "Moi, c'est Hùng (familier).",
@@ -172,25 +213,14 @@
       "answer": "tên",
       "options": [
         "tên",
-        "vừa",
-        "tới",
-        "phút"
+        "cơm",
+        "chỉ",
+        "mắc"
       ],
       "translation": {
         "fr": "Je m'appelle Lan.",
         "en": "My name is Lan."
       }
-    },
-    {
-      "type": "match_pairs",
-      "concepts": [
-        "c_tui_me",
-        "c_minh",
-        "c_ten",
-        "c_la",
-        "s_toi_ten_la",
-        "s_ban_ten_gi"
-      ]
     },
     {
       "type": "game",

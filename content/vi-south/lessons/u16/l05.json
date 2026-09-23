@@ -43,7 +43,7 @@
       "concept": "s_di_kham",
       "distractors": [
         "đi làm bệnh",
-        "đi thăm bệnh"
+        "Bạn tên gì?"
       ],
       "explain": {
         "fr": "đi khám bệnh : consulter. thăm bệnh : rendre visite à un malade.",
@@ -141,8 +141,9 @@
       "type": "listen_pick_text",
       "concept": "c_chich",
       "distractors": [
-        "chít",
-        "trích"
+        "ba",
+        "trứng",
+        "xin"
       ],
       "explain": {
         "fr": "chích : piquer. ch et tr restent distincts au Sud.",
@@ -162,24 +163,24 @@
       "concept": "c_kham",
       "distractors": [
         "muỗng",
-        "muốn",
-        "lăm"
+        "lăm",
+        "vậy"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nha_thuoc",
       "distractors": [
-        "lì xì",
-        "điền đơn"
+        "xe hơi",
+        "dưa hấu"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_truong_hoc",
       "distractors": [
-        "phong bì",
-        "chủ nhà"
+        "chủ nhà",
+        "hôm nay"
       ]
     },
     {
@@ -260,9 +261,9 @@
       "answer": "nhà thuốc",
       "options": [
         "nhà thuốc",
-        "lì xì",
-        "điền đơn",
-        "cơm tấm"
+        "cơm tấm",
+        "Dở quá!",
+        "bà nội"
       ],
       "translation": {
         "fr": "C'est tout près. La pharmacie est à côté de la banque.",
@@ -275,9 +276,9 @@
       "answer": "trường học",
       "options": [
         "trường học",
-        "phong bì",
         "chủ nhà",
-        "đèn đỏ"
+        "đèn đỏ",
+        "thứ bảy"
       ],
       "translation": {
         "fr": "L'école est entre le parc et l'hôpital.",

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_chich_ngua",
+  "type": "structure",
+  "vi": "chích ngừa",
+  "gloss": {
+    "fr": "se faire vacciner (Sud)",
+    "en": "to get vaccinated (South)"
+  },
+  "northernEquivalent": "tiêm phòng",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chich_ngua_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_chich_ngua_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false,
+  "pos": "phrase"
+}

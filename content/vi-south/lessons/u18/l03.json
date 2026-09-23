@@ -47,8 +47,9 @@
       "type": "listen_pick_text",
       "concept": "c_hop",
       "distractors": [
-        "hộp",
-        "học"
+        "học",
+        "lâu",
+        "trời"
       ],
       "explain": {
         "fr": "họp : la réunion. hộp : la boîte.",
@@ -120,15 +121,16 @@
       "answer": "lắm",
       "options": [
         "lắm",
-        "lấm",
-        "làm"
+        "làm",
+        "lăm",
+        "lâu"
       ],
       "translation": {
         "fr": "Aujourd'hui je suis très occupé(e).",
         "en": "Today I'm very busy."
       },
       "explain": {
-        "fr": "lắm se place après l'adjectif. lấm = taché, làm = faire.",
+        "fr": "lắm se place après l'adjectif. làm, qui descend, veut dire faire.",
         "en": "lắm goes after the adjective. lấm = smudged, làm = to do."
       }
     },
@@ -144,9 +146,9 @@
       "type": "listen_pick_text",
       "concept": "c_tre_late",
       "distractors": [
-        "quà",
         "trả",
-        "qua"
+        "qua",
+        "ạ"
       ]
     },
     {
@@ -154,7 +156,7 @@
       "concept": "s_b_em_ban_lam",
       "distractors": [
         "Nhắn Zalo cho em nha.",
-        "Có lẽ mai trời mưa."
+        "Cho em gặp anh Minh."
       ]
     },
     {
@@ -178,9 +180,9 @@
       "answer": "họp",
       "options": [
         "họp",
-        "chơi",
         "mới",
-        "thì"
+        "thì",
+        "ạ"
       ],
       "translation": {
         "fr": "Minh est en réunion. C'est de la part de qui ?",
@@ -193,9 +195,9 @@
       "answer": "trễ",
       "options": [
         "trễ",
-        "quà",
         "trả",
-        "qua"
+        "qua",
+        "đang"
       ],
       "translation": {
         "fr": "Désolé(e), je suis en retard.",
@@ -260,8 +262,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_rat_vui_lam_viec",
       "distractors": [
-        "Con chúc cô năm mới vui vẻ.",
-        "Năm sau em sẽ đi Cần Thơ."
+        "Năm sau em sẽ đi Cần Thơ.",
+        "Cho em xin số điện thoại nha."
       ]
     },
     {
@@ -277,15 +279,15 @@
       "concept": "s_b_em_la_nhan_vien_moi",
       "distractors": [
         "Anh đi Đà Lạt chưa?",
-        "Có lẽ mai trời mưa."
+        "Chị là người nước nào?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_b_tui_lam_cong_ty",
       "distractors": [
-        "Chị photo giùm em hai bản nha.",
-        "Năm sau em sẽ đi Cần Thơ."
+        "Năm sau em sẽ đi Cần Thơ.",
+        "Rất vui được làm việc với chị."
       ]
     }
   ],

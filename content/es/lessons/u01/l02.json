@@ -44,8 +44,8 @@
       "type": "listen_pick_text",
       "concept": "s_es_como_te_llamas",
       "distractors": [
-        "¿Cómo estás?",
-        "Me llamo Ana."
+        "buenas tardes",
+        "mucho gusto"
       ]
     },
     {
@@ -68,8 +68,8 @@
       "type": "listen_pick_text",
       "concept": "c_es_mucho_gusto",
       "distractors": [
-        "muchas gracias",
-        "buenas tardes"
+        "buenas tardes",
+        "me llamo"
       ]
     },
     {
@@ -119,18 +119,18 @@
       "type": "listen_pick_text",
       "concept": "c_es_tu",
       "distractors": [
-        "dos",
         "adiós",
-        "hola"
+        "hola",
+        "soy"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_es_yo",
       "distractors": [
-        "tres",
-        "seis",
-        "ocho"
+        "gracias",
+        "soy",
+        "hola"
       ]
     },
     {
@@ -138,8 +138,8 @@
       "concept": "c_es_soy",
       "distractors": [
         "gracias",
-        "nueve",
-        "siete"
+        "hola",
+        "yo"
       ]
     },
     {
@@ -160,36 +160,6 @@
       ]
     },
     {
-      "type": "fill_gap",
-      "text": "___ Pablo.",
-      "answer": "soy",
-      "options": [
-        "soy",
-        "gracias",
-        "nueve",
-        "siete"
-      ],
-      "translation": {
-        "fr": "Je suis Pablo.",
-        "en": "I'm Pablo."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "___ Ana.",
-      "answer": "me llamo",
-      "options": [
-        "me llamo",
-        "mucho gusto",
-        "buenas tardes",
-        "buenos días"
-      ],
-      "translation": {
-        "fr": "Je m'appelle Ana.",
-        "en": "My name is Ana."
-      }
-    },
-    {
       "type": "translate_to_fr",
       "source": "Soy Pablo.",
       "accepted": {
@@ -205,18 +175,18 @@
       "type": "listen_pick_text",
       "concept": "c_es_gracias",
       "distractors": [
-        "siete",
-        "diez",
-        "ocho"
+        "tú",
+        "yo",
+        "adiós"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_es_adios",
       "distractors": [
-        "dos",
-        "diez",
-        "seis"
+        "gracias",
+        "yo",
+        "tú"
       ]
     },
     {
@@ -241,6 +211,24 @@
       "distractors": [
         "buenas noches",
         "mucho gusto"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_gracias",
+      "distractors": [
+        "c_es_tu",
+        "c_es_hola",
+        "c_es_adios"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_es_adios",
+      "distractors": [
+        "c_es_gracias",
+        "c_es_tu",
+        "c_es_hola"
       ]
     },
     {

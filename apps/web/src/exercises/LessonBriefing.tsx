@@ -21,7 +21,10 @@ import { FORMAT_TITLE } from "./format-names.ts";
  *   - **ce qu'on réutilise** : les mots plus anciens que les exercices vont faire produire ;
  *   - **les phrases modèles** : quand un mot de la phrase cible échappe au corpus, on montre la
  *     phrase entière, traduite — la remettre dans l'ordre reste le travail ;
- *   - **les fiches conseils** de l'unité : comment une phrase se construit, à qui on dit anh ;
+ *   - **les mots cités** par les conseils et les cartes culture sans avoir été appris (contrat
+ *     phase26 §4) : on ne lit pas une explication qui s'appuie sur des mots inconnus ;
+ *   - **les fiches conseils** du niveau et de l'unité : comment une phrase se construit, à qui on
+ *     dit anh. Celles du niveau passent en tête (contrat phase26 §3) : ce sont la leçon elle-même ;
  *   - **les consignes** des formats d'exercice jamais rencontrés.
  *
  * Et c'est une **porte** : le bouton ne s'ouvre qu'une fois tous les volets dépliés. Le compteur
@@ -73,11 +76,23 @@ export function LessonBriefing({ content, lesson, briefing, onStart, onQuit, onG
     });
   const discover = concepts(briefing.discover);
   const recall = concepts(briefing.recall);
+  const cited = concepts(briefing.cited);
+  const guidePanel = (guideId: string) => {
+    const guide = content.guides.get(guideId);
+    return guide ? { key: `guide:${guideId}`, title: l(guide.title), body: () => <GuideDigest content={content} guideId={guideId} /> } : null;
+  };
+  // Les fiches propres au niveau sont la leçon elle-même (l'alphabet, les nombres) : on les lit
+  // avant les mots qu'elles présentent.
+  const ownGuides = briefing.guides.filter((id) => lesson?.guides?.includes(id));
 
   // Un volet par bloc à consulter. Les fiches et les consignes comptent une par une : elles se
   // lisent séparément, et sauter la seule qui explique « comment construire une phrase » serait
   // exactement le trou qu'on est en train de boucher.
   const panels: { key: string; title: string; count?: string; body: () => React.ReactNode }[] = [];
+  for (const guideId of ownGuides) {
+    const panel = guidePanel(guideId);
+    if (panel) panels.push(panel);
+  }
   if (discover.length > 0) {
     panels.push({
       key: "discover",
@@ -116,14 +131,23 @@ export function LessonBriefing({ content, lesson, briefing, onStart, onQuit, onG
       ),
     });
   }
-  for (const guideId of briefing.guides) {
-    const guide = content.guides.get(guideId);
-    if (!guide) continue;
+  if (cited.length > 0) {
     panels.push({
-      key: `guide:${guideId}`,
-      title: l(guide.title),
-      body: () => <GuideDigest content={content} guideId={guideId} />,
+      key: "cited",
+      title: t("brief.panel.cited"),
+      count: plural("intro.words", "intro.words.plural", cited.length),
+      body: () => (
+        <>
+          <p className="px-5 pb-1 text-sm text-phu-sa">{t("brief.panel.cited.hint")}</p>
+          <WordList content={content} concepts={cited} />
+        </>
+      ),
     });
+  }
+  for (const guideId of briefing.guides) {
+    if (ownGuides.includes(guideId)) continue;
+    const panel = guidePanel(guideId);
+    if (panel) panels.push(panel);
   }
   for (const format of briefing.formats) {
     const title = FORMAT_TITLE[format];

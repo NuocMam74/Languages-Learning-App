@@ -133,17 +133,17 @@
       "type": "listen_pick_text",
       "concept": "c_phai",
       "distractors": [
-        "vợ",
-        "gà",
-        "mì"
+        "họ",
+        "mình",
+        "ổng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_khong_phai",
       "distractors": [
-        "Sai rồi.",
-        "Đúng rồi!"
+        "Chào anh.",
+        "tụi mình"
       ]
     },
     {
@@ -152,9 +152,9 @@
       "answer": "có",
       "options": [
         "có",
-        "há",
-        "tới",
-        "đụng"
+        "bốn",
+        "bà",
+        "mươi"
       ],
       "translation": {
         "fr": "De rien (poliment).",
@@ -167,9 +167,9 @@
       "answer": "không",
       "options": [
         "không",
-        "sắp",
-        "giỡn",
-        "trả"
+        "chú",
+        "trăm",
+        "bạn"
       ],
       "translation": {
         "fr": "Non, ce n'est pas ça (poliment).",
@@ -195,8 +195,8 @@
       "type": "listen_pick_text",
       "concept": "s_hen_gap_lai",
       "distractors": [
-        "số điện thoại",
-        "Anh thấy sao?"
+        "hai mươi mốt",
+        "Không có chi."
       ]
     },
     {
@@ -204,40 +204,40 @@
       "concept": "c_oi",
       "distractors": [
         "sao",
-        "thơm",
-        "ít"
+        "chín",
+        "mà"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_khong_sao",
       "distractors": [
-        "bao lâu",
-        "Thiệt hông?"
+        "Chào anh.",
+        "mười một"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_khong_co_chi",
       "distractors": [
-        "Dạ, ăn rồi.",
-        "Em mới tới."
+        "hai mươi mốt",
+        "Hẹn gặp lại."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_xin_loi",
       "distractors": [
-        "trả lời",
-        "bình thường"
+        "cảm ơn",
+        "ba"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_day_la",
       "distractors": [
-        "chừng nào",
-        "Mắc quá!"
+        "hai mươi",
+        "mười lăm"
       ]
     },
     {
@@ -245,8 +245,8 @@
       "concept": "c_toi",
       "distractors": [
         "tối",
-        "ước",
-        "quá"
+        "ba",
+        "chào"
       ]
     },
     {

@@ -76,7 +76,8 @@
       "concept": "c_bot",
       "distractors": [
         "bợt",
-        "bọt"
+        "chén",
+        "chào"
       ],
       "explain": {
         "fr": "bớt monte : baisser le prix. bọt : la mousse.",
@@ -236,8 +237,8 @@
       "type": "listen_pick_text",
       "concept": "s_bot_cho_em",
       "distractors": [
-        "Tui muốn gia hạn visa.",
-        "Nhà em có mấy người?"
+        "Nhà em có mấy người?",
+        "Cho em một tô phở."
       ]
     },
     {
@@ -260,25 +261,25 @@
       "concept": "c_dong",
       "distractors": [
         "mấy",
-        "đang",
-        "ghét"
+        "mua",
+        "tui"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_cai_nay_bao_nhieu",
       "distractors": [
-        "Giữ sức khỏe nha.",
-        "Chị làm ở đâu?"
+        "Chị làm ở đâu?",
+        "Anh làm nghề gì?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nay",
       "distractors": [
-        "thôi",
-        "giả",
-        "thưởng"
+        "bò",
+        "mấy",
+        "nói"
       ]
     },
     {
@@ -287,7 +288,7 @@
       "distractors": [
         "bạn",
         "bàn",
-        "ồn"
+        "rau"
       ]
     },
     {
@@ -306,8 +307,8 @@
       "options": [
         "đồng",
         "mấy",
-        "đang",
-        "ghét"
+        "cổ",
+        "xa"
       ],
       "translation": {
         "fr": "Quinze mille đồng.",
@@ -320,9 +321,9 @@
       "answer": "Cái này bao nhiêu?",
       "options": [
         "Cái này bao nhiêu?",
-        "Giữ sức khỏe nha.",
         "Chị làm ở đâu?",
-        "Em mắc cỡ quá."
+        "Mời bác uống trà.",
+        "Anh làm nghề gì?"
       ],
       "translation": {
         "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
@@ -335,9 +336,9 @@
       "answer": "này",
       "options": [
         "này",
-        "thôi",
-        "giả",
-        "thưởng"
+        "ngàn",
+        "cô",
+        "rau"
       ],
       "translation": {
         "fr": "ceci, cet objet-ci",
@@ -352,7 +353,7 @@
         "bán",
         "bạn",
         "bàn",
-        "ồn"
+        "trà"
       ],
       "translation": {
         "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",

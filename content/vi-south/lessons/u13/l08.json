@@ -172,8 +172,8 @@
       "type": "listen_pick_text",
       "concept": "s_vua_an_xong",
       "distractors": [
-        "Em vừa ăn xôi.",
-        "Em sắp ăn xong."
+        "Em sắp ăn xong.",
+        "Em ơi, tính tiền."
       ],
       "explain": {
         "fr": "vừa… xong : venir de finir.",
@@ -212,8 +212,8 @@
       "type": "listen_pick_text",
       "concept": "s_nam_sau_di_can_tho",
       "distractors": [
-        "Rất vui được làm việc với chị.",
-        "Tui làm ở một công ty Pháp."
+        "Tui làm ở một công ty Pháp.",
+        "Cho em xin số điện thoại nha."
       ]
     },
     {
@@ -239,7 +239,7 @@
         "sẽ",
         "phút",
         "qua",
-        "chơi"
+        "mất"
       ],
       "translation": {
         "fr": "La semaine prochaine, je rentre en France.",
@@ -268,7 +268,7 @@
       "concept": "s_sau_tet",
       "distractors": [
         "quẹo trái",
-        "Thiệt hông?"
+        "Tới rồi."
       ]
     },
     {
@@ -292,7 +292,7 @@
       "concept": "s_tuan_truoc",
       "distractors": [
         "nửa ký",
-        "Tui thấy…"
+        "mười lăm"
       ]
     },
     {

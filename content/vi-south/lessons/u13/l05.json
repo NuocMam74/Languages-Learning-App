@@ -124,8 +124,8 @@
       "type": "listen_pick_text",
       "concept": "s_vua_an_xong",
       "distractors": [
-        "Em vừa ăn xôi.",
-        "Em sắp ăn xong."
+        "Em sắp ăn xong.",
+        "một trăm lẻ năm"
       ],
       "explain": {
         "fr": "vừa… xong : venir de finir.",
@@ -146,7 +146,7 @@
       "distractors": [
         "rối",
         "lẻ",
-        "dở"
+        "hông"
       ]
     },
     {
@@ -179,9 +179,9 @@
       "answer": "tuần trước",
       "options": [
         "tuần trước",
-        "Vậy hả?",
         "Chưa xong.",
-        "Dở quá!"
+        "thứ hai",
+        "người Pháp"
       ],
       "translation": {
         "fr": "La semaine dernière, je suis rentré(e) au pays.",
@@ -196,7 +196,7 @@
         "rồi",
         "rối",
         "lẻ",
-        "dở"
+        "có"
       ],
       "translation": {
         "fr": "Merci, j'ai assez mangé.",
@@ -254,18 +254,18 @@
       "type": "listen_pick_text",
       "concept": "c_sap",
       "distractors": [
-        "bận",
         "chua",
-        "khác"
+        "hông",
+        "giữa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_se",
       "distractors": [
-        "sai",
         "nhà",
-        "trước"
+        "trước",
+        "thím"
       ]
     },
     {

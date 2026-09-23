@@ -40,10 +40,11 @@
       "concept": "c_to_big",
       "distractors": [
         "tô",
-        "tơ"
+        "bà",
+        "mì"
       ],
       "explain": {
-        "fr": "to : o ouvert. tô : o fermé. tơ : lèvres non arrondies.",
+        "fr": "to : o ouvert. tô : o fermé. « tơ » : lèvres non arrondies.",
         "en": "to: open o. tô: closed o. tơ: unrounded lips."
       }
     },
@@ -67,11 +68,12 @@
       "type": "listen_pick_text",
       "concept": "c_mi",
       "distractors": [
-        "mù",
-        "mờ"
+        "mà",
+        "chào",
+        "mạ"
       ],
       "explain": {
-        "fr": "mì : i, lèvres étirées. mù : u arrondi. mờ : ơ neutre.",
+        "fr": "mì : i, lèvres étirées. mù : u arrondi. « mờ » : ơ neutre.",
         "en": "mì: i, spread lips. mù: rounded u. mờ: neutral ơ."
       }
     },
@@ -115,45 +117,45 @@
       "type": "listen_pick_text",
       "concept": "c_me_sesame",
       "distractors": [
-        "hổng",
         "chào",
-        "ba"
+        "ba",
+        "cũng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_to_bowl",
       "distractors": [
-        "chén",
         "khỏe",
-        "mì"
+        "mì",
+        "gà"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_mua_rain",
       "distractors": [
-        "lấy",
-        "việc",
-        "nội"
+        "mà",
+        "chín",
+        "ba"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bo_beef",
       "distractors": [
-        "vợ",
-        "ngàn",
-        "bán"
+        "ổng",
+        "ba",
+        "bảy"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_mi",
       "distractors": [
-        "c_tien",
-        "c_heo",
-        "c_b_vuon"
+        "c_ong",
+        "c_chu",
+        "c_to_bowl"
       ]
     },
     {

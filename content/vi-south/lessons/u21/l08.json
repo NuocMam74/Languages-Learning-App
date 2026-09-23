@@ -99,7 +99,7 @@
       "concept": "c_b_mac_co",
       "distractors": [
         "mắc có",
-        "mác cỡ"
+        "tin nhắn"
       ],
       "explain": {
         "fr": "mắc cỡ : gêné.",
@@ -147,7 +147,7 @@
       "concept": "s_b_thiet_ha",
       "distractors": [
         "Thiệt hông?",
-        "Thật hả?"
+        "Dở quá!"
       ],
       "explain": {
         "fr": "Thiệt há ?",

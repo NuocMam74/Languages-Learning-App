@@ -49,8 +49,8 @@
       "type": "listen_pick_text",
       "concept": "c_nhan_tin",
       "distractors": [
-        "nhận tin",
-        "nhắn tiền"
+        "nhắn tiền",
+        "bác sĩ"
       ],
       "explain": {
         "fr": "nhắn tin : envoyer un message. nhận : recevoir.",
@@ -81,8 +81,8 @@
       "type": "listen_pick_text",
       "concept": "s_em_nhan_roi",
       "distractors": [
-        "Em nhận rồi đó.",
-        "Em nhắn chưa?"
+        "Em nhắn chưa?",
+        "Cho em xuống đây."
       ],
       "explain": {
         "fr": "Em nhắn rồi đó : je t'ai écrit.",
@@ -149,7 +149,7 @@
       "concept": "c_dien_thoai",
       "distractors": [
         "xin lỗi",
-        "giả sử"
+        "làm việc"
       ]
     },
     {
@@ -158,16 +158,16 @@
       "distractors": [
         "sớm",
         "chưa",
-        "giá"
+        "nội"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_dien_thoai",
       "distractors": [
-        "c_thuoc_medicine",
         "c_nha_ve_sinh",
-        "c_rau"
+        "c_rau",
+        "c_che_dessert"
       ]
     },
     {
@@ -186,8 +186,8 @@
       "options": [
         "điện thoại",
         "xin lỗi",
-        "giả sử",
-        "tăng ca"
+        "thứ hai",
+        "Dở quá!"
       ],
       "translation": {
         "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
@@ -226,8 +226,8 @@
       "type": "listen_pick_text",
       "concept": "s_em_dang_ban",
       "distractors": [
-        "Anh giỡn hoài!",
-        "Anh ở đâu?"
+        "Anh ở đâu?",
+        "Em ăn gì?"
       ]
     },
     {
@@ -243,16 +243,16 @@
       "concept": "c_lat",
       "distractors": [
         "ngoại",
-        "nhang",
-        "sai"
+        "già",
+        "trăm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_goi_lai_nha",
       "distractors": [
-        "Em muốn mở tài khoản.",
-        "Em là nhân viên mới."
+        "Em là nhân viên mới.",
+        "Cho em một tô phở."
       ]
     },
     {

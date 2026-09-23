@@ -140,26 +140,26 @@
       "type": "listen_pick_text",
       "concept": "c_ba_xa",
       "distractors": [
-        "máy lạnh",
-        "cơm tấm"
+        "ông xã",
+        "cảm ơn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_vo",
       "distractors": [
-        "hen",
         "xin",
-        "dở"
+        "ở",
+        "ảnh"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chong",
       "distractors": [
-        "nghỉ",
-        "nửa",
-        "hồi"
+        "hai",
+        "con",
+        "ga"
       ]
     },
     {
@@ -167,8 +167,8 @@
       "concept": "c_cua",
       "distractors": [
         "tui",
-        "chủ",
-        "thịt"
+        "nước",
+        "xa"
       ]
     },
     {
@@ -177,9 +177,9 @@
       "answer": "vợ",
       "options": [
         "vợ",
-        "hen",
         "xin",
-        "dở"
+        "trăm",
+        "tên"
       ],
       "translation": {
         "fr": "Voici ma femme.",
@@ -192,9 +192,9 @@
       "answer": "gia đình",
       "options": [
         "gia đình",
-        "hợp đồng",
-        "tầng trệt",
-        "xe buýt"
+        "một trăm",
+        "Ai vậy?",
+        "Không sao."
       ],
       "translation": {
         "fr": "Voici ma famille.",
@@ -205,8 +205,8 @@
       "type": "listen_pick_text",
       "concept": "c_em_ut",
       "distractors": [
-        "máy bay",
-        "làm việc"
+        "cảm ơn",
+        "anh ba"
       ]
     },
     {
@@ -214,50 +214,50 @@
       "concept": "c_tu",
       "distractors": [
         "da",
-        "tiệc",
-        "đêm"
+        "thưa",
+        "nha"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_anh_ba",
       "distractors": [
-        "bao giờ",
-        "bên phải"
+        "em út",
+        "cảm ơn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chi_hai",
       "distractors": [
-        "khách sạn",
-        "chủ nhật"
+        "em út",
+        "anh ba"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_anh_hai",
       "distractors": [
-        "tầng trệt",
-        "chìa khóa"
+        "bà xã",
+        "bình thường"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hai",
       "distractors": [
-        "ghiền",
-        "chuối",
-        "hỏi"
+        "hỏi",
+        "mì",
+        "trà"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_em_ut",
       "distractors": [
-        "c_muong",
-        "c_gio",
-        "c_thit"
+        "c_dua_coconut",
+        "c_ga_station",
+        "c_ba_grandma"
       ]
     }
   ],

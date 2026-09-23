@@ -164,8 +164,8 @@
       "concept": "c_b_dung_right",
       "distractors": [
         "đụng",
-        "nghĩ",
-        "thấy"
+        "thấy",
+        "lớp"
       ]
     },
     {
@@ -175,8 +175,8 @@
       "options": [
         "đúng",
         "đụng",
-        "nghĩ",
-        "thấy"
+        "thấy",
+        "ga"
       ],
       "translation": {
         "fr": "C'est juste ou faux ?",
@@ -218,8 +218,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_anh_thay_sao",
       "distractors": [
-        "Cũng khá ngon.",
-        "Tôi tên là…"
+        "Tôi tên là…",
+        "Dạ, ăn rồi."
       ]
     },
     {

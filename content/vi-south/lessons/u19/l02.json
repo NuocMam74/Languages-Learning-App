@@ -56,8 +56,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_muon",
       "distractors": [
-        "mượn",
-        "muồn"
+        "muồn",
+        "sáng",
+        "mời"
       ],
       "explain": {
         "fr": "muốn monte : vouloir. mượn : emprunter.",
@@ -111,8 +112,7 @@
         "Tui",
         "muốn",
         "gia hạn",
-        "visa",
-        "mượn"
+        "visa"
       ],
       "translation": {
         "fr": "Je veux prolonger mon visa.",
@@ -137,15 +137,16 @@
       "answer": "sắp",
       "options": [
         "sắp",
-        "sáp",
-        "sắc"
+        "sắc",
+        "giấy",
+        "hai"
       ],
       "translation": {
         "fr": "Mon visa expire bientôt.",
         "en": "My visa expires soon."
       },
       "explain": {
-        "fr": "sắp = sur le point de. sáp = la cire, sắc = tranchant (et le nom du ton).",
+        "fr": "sắp = sur le point de. sắc = tranchant (et le nom du ton).",
         "en": "sắp = about to. sáp = wax, sắc = sharp (also the tone's name)."
       }
     },
@@ -180,9 +181,9 @@
       "answer": "muốn",
       "options": [
         "muốn",
-        "bông",
         "thím",
-        "đợi"
+        "đợi",
+        "bên"
       ],
       "translation": {
         "fr": "Je veux prolonger mon visa.",
@@ -204,7 +205,7 @@
       "distractors": [
         "giây",
         "mây",
-        "hen"
+        "dĩa"
       ]
     },
     {
@@ -258,7 +259,7 @@
         "giấy",
         "giây",
         "mây",
-        "hen"
+        "là"
       ],
       "translation": {
         "fr": "Où sont tes papiers ? (à un homme un peu plus âgé)",

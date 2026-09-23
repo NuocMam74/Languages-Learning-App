@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "s_cao_gio",
+  "type": "structure",
+  "vi": "cạo gió",
+  "gloss": {
+    "fr": "frotter la peau avec une pièce (remède)",
+    "en": "coining, rubbing the skin with a coin (remedy)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cao_gio_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/s_cao_gio_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false,
+  "pos": "phrase"
+}

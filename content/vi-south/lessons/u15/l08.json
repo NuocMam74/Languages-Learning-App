@@ -89,8 +89,8 @@
       "type": "listen_pick_text",
       "concept": "c_nhan_tin",
       "distractors": [
-        "nhận tin",
-        "nhắn tiền"
+        "nhắn tiền",
+        "nước mắm"
       ],
       "explain": {
         "fr": "nhắn tin : envoyer un message. nhận : recevoir.",
@@ -237,7 +237,7 @@
       "distractors": [
         "sống",
         "bên",
-        "nghĩ"
+        "con"
       ]
     },
     {
@@ -245,7 +245,7 @@
       "concept": "c_dien_thoai",
       "distractors": [
         "ngày sinh",
-        "phòng trọ"
+        "hôm qua"
       ]
     },
     {
@@ -273,8 +273,8 @@
       "options": [
         "điện thoại",
         "ngày sinh",
-        "phòng trọ",
-        "bắt đầu"
+        "Chưa xong.",
+        "thối tiền"
       ],
       "translation": {
         "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
@@ -303,8 +303,8 @@
       "options": [
         "Lát em gọi lại nha.",
         "Nhà vệ sinh ở đâu?",
-        "Em không đồng ý lắm.",
-        "Cuối tháng mới lãnh lương."
+        "Bớt cho em đi chị.",
+        "Anh có thích phở không?"
       ],
       "translation": {
         "fr": "Je suis occupé(e), je te rappelle tout à l'heure.",

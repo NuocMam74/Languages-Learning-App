@@ -73,8 +73,9 @@
       "type": "listen_pick_text",
       "concept": "c_tra_tea",
       "distractors": [
-        "chà",
-        "trả"
+        "trả",
+        "tra",
+        "hông"
       ],
       "explain": {
         "fr": "trà : tr recourbé, ton qui descend. chà commence par ch ; trả plonge.",
@@ -142,16 +143,16 @@
       "distractors": [
         "chở",
         "chờ",
-        "chục"
+        "ảnh"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_troi",
       "distractors": [
-        "đắng",
-        "và",
-        "ghe"
+        "bà",
+        "chè",
+        "mè"
       ]
     },
     {
@@ -160,34 +161,34 @@
       "distractors": [
         "chợ",
         "chở",
-        "giá"
+        "ly"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_trai_fruit",
       "distractors": [
-        "chưa",
         "chỉ",
-        "ai"
+        "xe",
+        "mè"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_che_dessert",
       "distractors": [
-        "thím",
-        "nghen",
-        "giây"
+        "bạn",
+        "tôi",
+        "cá"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chut",
       "distractors": [
-        "nói",
-        "nghe",
-        "quẹo"
+        "sách",
+        "mốt",
+        "da"
       ]
     },
     {
@@ -195,26 +196,26 @@
       "concept": "c_nha_particle",
       "distractors": [
         "nhà",
-        "đâu",
-        "cậu"
+        "chị",
+        "rau"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_cho_market",
       "distractors": [
-        "c_vo",
         "c_com",
-        "c_xe"
+        "c_xe",
+        "c_sach"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_troi",
       "distractors": [
-        "c_banh_mi",
-        "c_chia_khoa",
-        "c_truong_hoc"
+        "c_co_aunt",
+        "c_song_river",
+        "c_sach"
       ]
     },
     {
@@ -225,7 +226,7 @@
         "trà",
         "trả",
         "trời",
-        "lầu"
+        "tra"
       ],
       "translation": {
         "fr": "Je voudrais un verre de thé.",
@@ -240,7 +241,7 @@
         "chờ",
         "chợ",
         "chở",
-        "giá"
+        "xe"
       ],
       "translation": {
         "fr": "Attends-moi un peu, d'accord ?",
@@ -266,9 +267,9 @@
       "type": "listen_pick_text",
       "concept": "c_ly",
       "distractors": [
-        "người",
-        "sẽ",
-        "gì"
+        "gì",
+        "sách",
+        "to"
       ]
     }
   ],

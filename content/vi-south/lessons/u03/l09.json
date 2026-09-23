@@ -127,8 +127,9 @@
       "type": "listen_pick_text",
       "concept": "c_nho",
       "distractors": [
-        "nhớ",
-        "nho"
+        "nho",
+        "mì",
+        "tui"
       ],
       "explain": {
         "fr": "nhỏ : petit, jeune.",
@@ -158,8 +159,8 @@
       "type": "listen_pick_text",
       "concept": "s_ai_vay",
       "distractors": [
-        "Ai đó?",
-        "Gì vậy?"
+        "Gì vậy?",
+        "tiếng Việt"
       ],
       "explain": {
         "fr": "Ai vậy ? = « C'est qui ? ».",
@@ -205,8 +206,8 @@
       "concept": "c_con",
       "distractors": [
         "còn",
-        "đẹp",
-        "rút"
+        "không",
+        "trời"
       ]
     },
     {
@@ -214,8 +215,8 @@
       "concept": "c_con_and",
       "distractors": [
         "con",
-        "món",
-        "thì"
+        "cũng",
+        "mốt"
       ]
     },
     {
@@ -224,7 +225,7 @@
       "distractors": [
         "chỉ",
         "thưa",
-        "thôi"
+        "bà"
       ]
     },
     {
@@ -232,17 +233,17 @@
       "concept": "c_chi_she",
       "distractors": [
         "chị",
-        "ghé",
-        "trứng"
+        "trẻ",
+        "không"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_minh",
       "distractors": [
-        "mợ",
-        "ký",
-        "người"
+        "người",
+        "sông",
+        "mưa"
       ]
     },
     {
@@ -250,8 +251,8 @@
       "concept": "c_tui_me",
       "distractors": [
         "tụi",
-        "nghỉ",
-        "trong"
+        "bò",
+        "mưa"
       ]
     },
     {
@@ -259,8 +260,8 @@
       "concept": "c_tui",
       "distractors": [
         "tui",
-        "thịt",
-        "trà"
+        "trà",
+        "lăm"
       ]
     },
     {
@@ -268,35 +269,35 @@
       "concept": "c_co_aunt",
       "distractors": [
         "cổ",
-        "lãnh",
-        "ghét"
+        "năm",
+        "chợ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bac",
       "distractors": [
-        "học",
-        "gọi",
-        "hen"
+        "chưa",
+        "ổng",
+        "bạn"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_con",
       "distractors": [
-        "c_nha_thuoc",
-        "c_sinh_vien",
-        "c_chong"
+        "c_chu",
+        "c_xe",
+        "c_che_dessert"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_chi",
       "distractors": [
-        "c_chia_khoa",
-        "c_b_li_xi",
-        "c_may_lanh"
+        "c_ngu_sleep",
+        "c_con",
+        "c_com"
       ]
     },
     {
@@ -306,8 +307,8 @@
       "options": [
         "cô",
         "cổ",
-        "lãnh",
-        "ghét"
+        "nha",
+        "năm"
       ],
       "translation": {
         "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",

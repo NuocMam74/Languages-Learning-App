@@ -32,7 +32,8 @@
       "concept": "c_to_bowl",
       "distractors": [
         "to",
-        "tơ"
+        "tốt",
+        "xa"
       ],
       "explain": {
         "fr": "tô : o fermé, bouche arrondie.",
@@ -56,7 +57,8 @@
       "concept": "c_ra",
       "distractors": [
         "da",
-        "gia"
+        "cà",
+        "gà"
       ],
       "explain": {
         "fr": "r reste distinct ; da et gia sonnent « ya ».",
@@ -82,8 +84,9 @@
       "type": "listen_pick_text",
       "concept": "c_song_river",
       "distractors": [
-        "xông",
-        "sống"
+        "sống",
+        "ga",
+        "lắm"
       ],
       "explain": {
         "fr": "sông : s recourbé, ton plat.",
@@ -146,7 +149,7 @@
       "distractors": [
         "chở",
         "chờ",
-        "rút"
+        "trà"
       ]
     },
     {
@@ -155,7 +158,7 @@
       "distractors": [
         "chở",
         "chợ",
-        "cưới"
+        "nước"
       ]
     },
     {
@@ -163,8 +166,8 @@
       "concept": "c_da_skin",
       "distractors": [
         "dạ",
-        "biết",
-        "rút"
+        "chỉ",
+        "ba"
       ]
     },
     {
@@ -173,16 +176,16 @@
       "distractors": [
         "da",
         "mạ",
-        "coi"
+        "vậy"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_dua_coconut",
       "distractors": [
-        "theo",
-        "cay",
-        "tháng"
+        "họ",
+        "mạ",
+        "mè"
       ]
     },
     {
@@ -190,8 +193,8 @@
       "concept": "c_tra_tea",
       "distractors": [
         "trả",
-        "hiểu",
-        "giữa"
+        "tra",
+        "má"
       ]
     },
     {
@@ -200,34 +203,34 @@
       "distractors": [
         "c_sua_milk",
         "c_ngu_sleep",
-        "c_cho_dog"
+        "c_ga_chicken"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_cho_market",
       "distractors": [
-        "c_b_li_xi",
         "c_xe",
-        "c_chong"
+        "c_rau",
+        "c_mua_rain"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_song_river",
       "distractors": [
-        "c_xoai",
-        "c_trua",
-        "c_phong"
+        "c_co_aunt",
+        "c_troi",
+        "c_to_bowl"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_tra_tea",
       "distractors": [
-        "c_dien_thoai",
-        "c_xe_dap",
-        "c_b_nghi_phep"
+        "c_to_bowl",
+        "c_ly",
+        "c_ca_eggplant"
       ]
     },
     {
@@ -238,7 +241,7 @@
         "chờ",
         "chở",
         "chợ",
-        "cưới"
+        "xa"
       ],
       "translation": {
         "fr": "Attends-moi un peu, d'accord ?",
@@ -253,7 +256,7 @@
         "dạ",
         "da",
         "mạ",
-        "coi"
+        "cà"
       ],
       "translation": {
         "fr": "Oui, merci (à un homme un peu plus âgé).",
@@ -267,8 +270,8 @@
       "options": [
         "trà",
         "trả",
-        "hiểu",
-        "giữa"
+        "tra",
+        "không"
       ],
       "translation": {
         "fr": "Je voudrais un verre de thé.",

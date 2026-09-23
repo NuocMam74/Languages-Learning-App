@@ -172,8 +172,8 @@
       "options": [
         "kế bên",
         "đối diện",
-        "dễ thương",
-        "anh hai"
+        "anh hai",
+        "thịt heo"
       ],
       "translation": {
         "fr": "Le café est à côté du marché.",
@@ -225,8 +225,8 @@
       "type": "listen_pick_text",
       "concept": "c_cay_xang",
       "distractors": [
-        "địa chỉ",
-        "đèn đỏ"
+        "năm nay",
+        "cảm ơn"
       ]
     },
     {
@@ -234,7 +234,7 @@
       "concept": "c_quan_ca_phe",
       "distractors": [
         "anh chị em",
-        "trạm xe buýt"
+        "nhà vệ sinh"
       ]
     },
     {
@@ -242,16 +242,16 @@
       "concept": "s_co_xa_khong",
       "distractors": [
         "Em đi đâu?",
-        "Cũng khá ngon."
+        "Anh khỏe không?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_gan",
       "distractors": [
-        "giỡn",
         "hay",
-        "sếp"
+        "lấy",
+        "đâu"
       ]
     },
     {
@@ -267,8 +267,8 @@
       "type": "listen_pick_text",
       "concept": "c_san_bay",
       "distractors": [
-        "năm ngoái",
-        "cà phê"
+        "cà phê",
+        "giáo viên"
       ]
     },
     {

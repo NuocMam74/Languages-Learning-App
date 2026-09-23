@@ -42,8 +42,9 @@
       "type": "listen_pick_text",
       "concept": "c_ho_surname",
       "distractors": [
-        "hồ",
-        "hò"
+        "hò",
+        "ho",
+        "ở"
       ],
       "explain": {
         "fr": "họ : le nom de famille.",
@@ -88,7 +89,8 @@
       "concept": "c_song_live",
       "distractors": [
         "sông",
-        "sóng"
+        "tư",
+        "không"
       ],
       "explain": {
         "fr": "sống : vivre.",
@@ -202,26 +204,71 @@
       "type": "listen_pick_text",
       "concept": "c_gap",
       "distractors": [
-        "ca",
-        "nên",
-        "tên"
+        "tên",
+        "tư",
+        "cổ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_giao_vien",
       "distractors": [
-        "ngày sinh",
-        "giấy tờ"
+        "họ hàng",
+        "thành phố"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ky_su",
       "distractors": [
-        "hôm qua",
-        "tầng trệt"
+        "ông bà",
+        "bà xã"
       ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi là ___.",
+      "answer": "kỹ sư",
+      "options": [
+        "kỹ sư",
+        "tụi mình",
+        "Đây là…",
+        "Chào anh."
+      ],
+      "translation": {
+        "fr": "Je suis ingénieur(e).",
+        "en": "I'm an engineer."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Tôi nói tiếng Việt ___.",
+      "answer": "chút xíu",
+      "options": [
+        "chút xíu",
+        "ông ngoại",
+        "chúng tôi",
+        "Không sao."
+      ],
+      "translation": {
+        "fr": "Je parle un tout petit peu vietnamien.",
+        "en": "I speak a tiny bit of Vietnamese."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Hẹn ___ lại anh.",
+      "answer": "gặp",
+      "options": [
+        "gặp",
+        "tên",
+        "ghế",
+        "họ"
+      ],
+      "translation": {
+        "fr": "À bientôt (à un homme un peu plus âgé).",
+        "en": "See you (to a slightly older man)."
+      }
     },
     {
       "type": "fill_gap",
@@ -230,8 +277,8 @@
       "options": [
         "họ",
         "ho",
-        "xong",
-        "tui"
+        "gặp",
+        "dượng"
       ],
       "translation": {
         "fr": "Mon nom de famille est Trần.",
@@ -244,9 +291,9 @@
       "answer": "Chị là người nước nào?",
       "options": [
         "Chị là người nước nào?",
-        "Anh đi Đà Lạt chưa?",
-        "Nhà em có mấy người?",
-        "Hơi mắc, nhưng mà ngon."
+        "Rất vui được gặp chị.",
+        "Em mấy tuổi?",
+        "chúng tôi"
       ],
       "translation": {
         "fr": "Moi c'est Nam. Vous êtes de quel pays ?",
@@ -260,57 +307,12 @@
       "options": [
         "sống",
         "sông",
-        "nào",
-        "khá"
+        "cũng",
+        "xa"
       ],
       "translation": {
         "fr": "J'habite à Paris.",
         "en": "I live in Paris."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "Tôi là ___.",
-      "answer": "kỹ sư",
-      "options": [
-        "kỹ sư",
-        "hôm qua",
-        "tầng trệt",
-        "tại sao"
-      ],
-      "translation": {
-        "fr": "Je suis ingénieur(e).",
-        "en": "I'm an engineer."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "Tôi nói tiếng Việt ___.",
-      "answer": "chút xíu",
-      "options": [
-        "chút xíu",
-        "nước mắm",
-        "vé số",
-        "bên trái"
-      ],
-      "translation": {
-        "fr": "Je parle un tout petit peu vietnamien.",
-        "en": "I speak a tiny bit of Vietnamese."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "Hẹn ___ lại anh.",
-      "answer": "gặp",
-      "options": [
-        "gặp",
-        "ca",
-        "nên",
-        "tên"
-      ],
-      "translation": {
-        "fr": "À bientôt (à un homme un peu plus âgé).",
-        "en": "See you (to a slightly older man)."
       }
     }
   ],

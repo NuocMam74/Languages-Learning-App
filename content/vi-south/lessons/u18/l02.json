@@ -221,7 +221,7 @@
       "concept": "s_b_rat_vui_lam_viec",
       "distractors": [
         "Năm sau em sẽ đi Cần Thơ.",
-        "Mình đi ghe ra chợ nổi hen."
+        "Tui làm ở một công ty Pháp."
       ]
     },
     {
@@ -230,7 +230,7 @@
       "distractors": [
         "mới",
         "ơi",
-        "khá"
+        "đâu"
       ]
     },
     {
@@ -246,8 +246,8 @@
       "type": "listen_pick_text",
       "concept": "c_b_dong_nghiep",
       "distractors": [
-        "đám giỗ",
-        "chung cư"
+        "chung cư",
+        "danh thiếp"
       ]
     },
     {
@@ -273,7 +273,7 @@
         "mời",
         "mới",
         "ơi",
-        "khá"
+        "đi"
       ],
       "translation": {
         "fr": "Je vous en prie, prenez du thé (à un aîné).",
@@ -301,9 +301,9 @@
       "answer": "đồng nghiệp",
       "options": [
         "đồng nghiệp",
-        "đám giỗ",
         "chung cư",
-        "ngân hàng"
+        "ngân hàng",
+        "Khỏe chưa?"
       ],
       "translation": {
         "fr": "Voici mon collègue.",

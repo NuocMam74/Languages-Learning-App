@@ -46,8 +46,9 @@
       "type": "listen_pick_text",
       "concept": "c_mi",
       "distractors": [
-        "mù",
-        "mờ"
+        "má",
+        "nhà",
+        "sữa"
       ],
       "explain": {
         "fr": "mì : i, lèvres étirées.",
@@ -85,8 +86,9 @@
       "type": "listen_pick_text",
       "concept": "c_xa_far",
       "distractors": [
-        "sa",
-        "xà"
+        "xà",
+        "mì",
+        "ba"
       ],
       "explain": {
         "fr": "xa : x doux, ton plat.",
@@ -124,8 +126,9 @@
       "type": "listen_pick_text",
       "concept": "c_mac_expensive",
       "distractors": [
-        "mác",
-        "mặc"
+        "mặc",
+        "dạ",
+        "vui"
       ],
       "explain": {
         "fr": "mắc monte : « cher ».",
@@ -145,7 +148,8 @@
       "concept": "c_dau_where",
       "distractors": [
         "đầu",
-        "dâu"
+        "ăn",
+        "mạ"
       ],
       "explain": {
         "fr": "đâu, plat : « où ? ».",
@@ -184,8 +188,8 @@
       "concept": "c_da_skin",
       "distractors": [
         "dạ",
-        "chậm",
-        "đây"
+        "đây",
+        "mì"
       ]
     },
     {
@@ -193,8 +197,8 @@
       "concept": "c_da",
       "distractors": [
         "da",
-        "đội",
-        "việc"
+        "ơi",
+        "ăn"
       ]
     },
     {
@@ -203,7 +207,7 @@
       "distractors": [
         "bàn",
         "bán",
-        "rẻ"
+        "chín"
       ]
     },
     {
@@ -219,27 +223,27 @@
       "type": "listen_pick_text",
       "concept": "c_o_at",
       "distractors": [
-        "vừa",
-        "bông",
-        "rưỡi"
+        "ơ",
+        "họ",
+        "xe"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_mua_rain",
       "distractors": [
-        "ký",
-        "rồi",
-        "nghen"
+        "một",
+        "sữa",
+        "mươi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_trai_fruit",
       "distractors": [
-        "trả",
         "cá",
-        "bà"
+        "bà",
+        "không"
       ]
     },
     {
@@ -248,7 +252,7 @@
       "distractors": [
         "c_troi",
         "c_chu",
-        "c_b_dam_gio"
+        "c_ly"
       ]
     },
     {
@@ -256,8 +260,8 @@
       "concept": "c_ban_table",
       "distractors": [
         "c_bo_beef",
-        "c_pho",
-        "c_xe_may"
+        "c_sach",
+        "c_troi"
       ]
     },
     {
@@ -267,8 +271,8 @@
       "options": [
         "dạ",
         "da",
-        "đội",
-        "việc"
+        "trăm",
+        "chợ"
       ],
       "translation": {
         "fr": "Oui, merci (à un homme un peu plus âgé).",
@@ -282,8 +286,8 @@
       "options": [
         "đâu",
         "đầu",
-        "nhức",
-        "người"
+        "mả",
+        "ở"
       ],
       "translation": {
         "fr": "Tu vas où ? (à un homme un peu plus âgé)",

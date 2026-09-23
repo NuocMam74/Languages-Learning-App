@@ -78,7 +78,7 @@
       "concept": "c_dia_chi",
       "distractors": [
         "địa chì",
-        "dịa chỉ"
+        "dưa hấu"
       ],
       "explain": {
         "fr": "địa chỉ : l'adresse. chỉ plonge.",
@@ -143,25 +143,10 @@
       "type": "listen_pick_text",
       "concept": "c_quan_district",
       "distractors": [
-        "khác",
         "mèo",
-        "mất"
-      ]
-    },
-    {
-      "type": "fill_gap",
-      "text": "Nhà tôi ở hẻm năm mươi, ___ Lê Lợi.",
-      "answer": "đường",
-      "options": [
-        "đường",
-        "giường",
         "mốt",
-        "ghe"
-      ],
-      "translation": {
-        "fr": "J'habite ruelle 50, rue Lê Lợi.",
-        "en": "I live in alley 50, Lê Lợi street."
-      }
+        "thịt"
+      ]
     },
     {
       "type": "fill_gap",
@@ -169,9 +154,9 @@
       "answer": "địa chỉ",
       "options": [
         "địa chỉ",
-        "xe hơi",
-        "năm sau",
-        "chủ nhà"
+        "chủ nhà",
+        "thứ bảy",
+        "bằng tuổi"
       ],
       "translation": {
         "fr": "C'est quoi ton adresse ? (à un homme un peu plus âgé)",
@@ -184,9 +169,9 @@
       "answer": "quận",
       "options": [
         "quận",
-        "khác",
         "mèo",
-        "mất"
+        "thịt",
+        "dừa"
       ],
       "translation": {
         "fr": "le 1er arrondissement",
@@ -218,23 +203,23 @@
       "concept": "c_ke_ben",
       "distractors": [
         "kỹ sư",
-        "nhưng mà"
+        "mọi người"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ben_phai",
       "distractors": [
-        "hợp đồng",
-        "vé số"
+        "điện thoại",
+        "mọi người"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ben_trai",
       "distractors": [
-        "lúc đó",
-        "gia hạn"
+        "ngân hàng",
+        "năm nay"
       ]
     },
     {
@@ -242,23 +227,32 @@
       "concept": "s_gan_day",
       "distractors": [
         "tiền điện",
-        "dừng lại"
+        "Mắc quá!"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_cay_xang",
       "distractors": [
-        "tại sao",
-        "tuần trước"
+        "kỹ sư",
+        "kế bên"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_quan_ca_phe",
       "distractors": [
-        "nón bảo hiểm",
-        "anh chị em"
+        "anh chị em",
+        "nhà vệ sinh"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_ben_phai",
+      "distractors": [
+        "c_ga_station",
+        "c_dem",
+        "c_chua_pagoda"
       ]
     },
     {

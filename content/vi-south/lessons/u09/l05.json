@@ -33,8 +33,9 @@
       "type": "listen_pick_text",
       "concept": "c_tre_late",
       "distractors": [
-        "trè",
-        "tré"
+        "ở",
+        "giờ",
+        "rưỡi"
       ],
       "explain": {
         "fr": "trễ plonge : en retard.",
@@ -57,8 +58,9 @@
       "type": "listen_pick_text",
       "concept": "c_hop",
       "distractors": [
-        "hộp",
-        "hớp"
+        "trễ",
+        "lớn",
+        "mạ"
       ],
       "explain": {
         "fr": "họp tombe court : la réunion. hộp : la boîte.",
@@ -96,8 +98,9 @@
       "type": "listen_pick_text",
       "concept": "c_som",
       "distractors": [
-        "xóm",
-        "sờm"
+        "sờm",
+        "dì",
+        "thầy"
       ],
       "explain": {
         "fr": "sớm, avec s : tôt. xóm, avec x : le hameau.",
@@ -111,7 +114,8 @@
       "options": [
         "lúc",
         "lục",
-        "lúa"
+        "cái",
+        "một"
       ],
       "translation": {
         "fr": "On se donne rendez-vous à quelle heure ?",
@@ -146,9 +150,9 @@
       "type": "listen_pick_text",
       "concept": "c_toi_arrive",
       "distractors": [
-        "gần",
-        "rảnh",
-        "xin"
+        "xin",
+        "vậy",
+        "lăm"
       ]
     },
     {
@@ -167,8 +171,8 @@
       "options": [
         "hẹn",
         "hen",
-        "ho",
-        "bông"
+        "tuần",
+        "xe"
       ],
       "translation": {
         "fr": "On se donne rendez-vous à quelle heure ?",
@@ -182,8 +186,8 @@
       "options": [
         "trễ",
         "rồi",
-        "lầu",
-        "tiếc"
+        "hiểu",
+        "chuối"
       ],
       "translation": {
         "fr": "Désolé(e), je suis en retard.",
@@ -228,24 +232,24 @@
       "type": "listen_pick_text",
       "concept": "s_hom_nay_thu_may",
       "distractors": [
-        "Khi nào anh về?",
-        "Em nhắn rồi đó."
+        "Thôi, cảm ơn chị.",
+        "Anh làm nghề gì?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chu_nhat",
       "distractors": [
-        "xe ôm",
-        "bàn thờ"
+        "anh ba",
+        "em út"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_thu_bay",
       "distractors": [
-        "tuần sau",
-        "thối tiền"
+        "thối tiền",
+        "ông ngoại"
       ]
     },
     {
@@ -261,8 +265,8 @@
       "concept": "c_thu",
       "distractors": [
         "tuổi",
-        "trước",
-        "nhanh"
+        "hẹn",
+        "không"
       ]
     },
     {
@@ -270,8 +274,8 @@
       "concept": "c_tuan",
       "distractors": [
         "tốt",
-        "đã",
-        "bán"
+        "bán",
+        "mắc"
       ]
     }
   ],

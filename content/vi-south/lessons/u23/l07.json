@@ -40,7 +40,7 @@
       "concept": "s_b_neu_mua_thi_o_nha",
       "distractors": [
         "Nếu mưa thì tui đi làm.",
-        "Hôm qua mưa nên tui ở nhà."
+        "Con mời ba má ăn cơm."
       ],
       "explain": {
         "fr": "nếu… thì.",
@@ -274,8 +274,8 @@
       "type": "listen_pick_text",
       "concept": "c_b_uoc_gi",
       "distractors": [
-        "đồng ý",
-        "danh thiếp"
+        "danh thiếp",
+        "ngã tư"
       ]
     },
     {

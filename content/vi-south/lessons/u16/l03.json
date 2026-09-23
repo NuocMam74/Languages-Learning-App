@@ -57,8 +57,9 @@
       "type": "listen_pick_text",
       "concept": "c_sot",
       "distractors": [
-        "sốc",
-        "xốt"
+        "heo",
+        "alô",
+        "rẻ"
       ],
       "explain": {
         "fr": "sốt : fièvre. xốt : sauce. s et x restent distincts au Sud.",
@@ -114,8 +115,8 @@
       "type": "listen_pick_text",
       "concept": "s_bi_sot",
       "distractors": [
-        "Em bị sốc.",
-        "Em hết sốt."
+        "Em hết sốt.",
+        "Làm xong rồi."
       ],
       "explain": {
         "fr": "bị sốt : avoir de la fièvre. hết sốt : plus de fièvre.",
@@ -149,7 +150,7 @@
       "concept": "s_nhuc_dau",
       "distractors": [
         "tụi mình",
-        "theo tui"
+        "sau Tết"
       ]
     },
     {
@@ -203,8 +204,8 @@
       "options": [
         "sốt",
         "mạ",
-        "đơn",
-        "dừa"
+        "dừa",
+        "bốn"
       ],
       "translation": {
         "fr": "J'ai de la fièvre et je tousse.",
@@ -233,8 +234,8 @@
       "options": [
         "nhức đầu",
         "tụi mình",
-        "theo tui",
-        "mấy ngày"
+        "mấy ngày",
+        "chúng tôi"
       ],
       "translation": {
         "fr": "J'ai mal à la tête.",
@@ -270,8 +271,8 @@
       "concept": "c_dau_head",
       "distractors": [
         "đâu",
-        "vườn",
-        "visa"
+        "trả",
+        "đũa"
       ]
     },
     {

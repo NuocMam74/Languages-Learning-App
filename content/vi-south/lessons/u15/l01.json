@@ -44,7 +44,7 @@
       "concept": "s_alo_em_nghe",
       "distractors": [
         "Alô, em nói.",
-        "Alô, em nghỉ."
+        "Anh khỏe không?"
       ],
       "explain": {
         "fr": "em nghe : j'écoute. nghỉ : se reposer.",
@@ -59,8 +59,9 @@
       "type": "listen_pick_text",
       "concept": "c_alo",
       "distractors": [
-        "a lố",
-        "à lô"
+        "ngàn",
+        "sao",
+        "phút"
       ],
       "explain": {
         "fr": "alô : a plat, lô plat.",
@@ -191,8 +192,8 @@
       "type": "listen_pick_text",
       "concept": "c_dien_thoai",
       "distractors": [
-        "hộ chiếu",
-        "bệnh viện"
+        "bệnh viện",
+        "kỹ sư"
       ]
     },
     {
@@ -228,9 +229,9 @@
       "answer": "alô",
       "options": [
         "alô",
-        "hoài",
-        "chích",
-        "mời"
+        "mời",
+        "có",
+        "xấu"
       ],
       "translation": {
         "fr": "Allô, je t'écoute.",
@@ -243,9 +244,9 @@
       "answer": "điện thoại",
       "options": [
         "điện thoại",
-        "hộ chiếu",
         "bệnh viện",
-        "chìa khóa"
+        "Sao vậy?",
+        "mười một"
       ],
       "translation": {
         "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",

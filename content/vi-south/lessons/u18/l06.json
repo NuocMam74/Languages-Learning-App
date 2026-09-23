@@ -159,8 +159,8 @@
       "type": "listen_pick_text",
       "concept": "c_b_nghi_phep",
       "distractors": [
-        "ước gì",
-        "chủ nhật"
+        "chủ nhật",
+        "làm việc"
       ]
     },
     {
@@ -178,7 +178,7 @@
       "distractors": [
         "c_ba_grandma",
         "c_ly",
-        "c_b_ho_chieu"
+        "c_quan_ca_phe"
       ]
     },
     {
@@ -188,8 +188,8 @@
       "options": [
         "nghỉ",
         "thưởng",
-        "chơi",
-        "là"
+        "là",
+        "ba"
       ],
       "translation": {
         "fr": "Je demande trois jours de congé.",
@@ -266,7 +266,7 @@
       "distractors": [
         "cà",
         "cá",
-        "nhen"
+        "cậu"
       ]
     },
     {

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_tuoi_fresh",
+  "type": "word",
+  "vi": "tươi",
+  "tone": "ngang",
+  "gloss": {
+    "fr": "frais (fruit, fleur)",
+    "en": "fresh (fruit, flowers)"
+  },
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tuoi_fresh_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_tuoi_fresh_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false,
+  "pos": "adjective"
+}

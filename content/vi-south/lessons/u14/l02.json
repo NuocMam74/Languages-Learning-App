@@ -87,8 +87,8 @@
       "type": "listen_pick_text",
       "concept": "s_ghet_ket_xe",
       "distractors": [
-        "Em hết kẹt xe.",
-        "Em kẹt xe."
+        "Em kẹt xe.",
+        "Anh bao nhiêu tuổi?"
       ],
       "explain": {
         "fr": "ghét : détester. hết : fini.",
@@ -135,9 +135,9 @@
       "type": "listen_pick_text",
       "concept": "c_chuoi",
       "distractors": [
-        "lát",
         "chào",
-        "đúng"
+        "mắc",
+        "nha"
       ]
     },
     {
@@ -145,15 +145,15 @@
       "concept": "c_dua_hau",
       "distractors": [
         "trường học",
-        "bắt đầu"
+        "thành phố"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_ghien_ca_phe",
       "distractors": [
-        "Điện thoại em hết pin rồi.",
-        "Anh cho tôi coi hộ chiếu."
+        "Anh nói chậm lại được không?",
+        "Anh chở em ra chợ nha."
       ]
     },
     {
@@ -170,7 +170,7 @@
       "distractors": [
         "c_ba",
         "c_xe",
-        "c_b_ghe"
+        "c_dien_thoai"
       ]
     },
     {
@@ -234,8 +234,8 @@
       "type": "listen_pick_text",
       "concept": "s_thich_lam",
       "distractors": [
-        "Tui thấy…",
-        "bằng tuổi"
+        "bằng tuổi",
+        "người Pháp"
       ]
     },
     {
@@ -250,9 +250,9 @@
       "type": "listen_pick_text",
       "concept": "c_thich",
       "distractors": [
-        "bông",
         "ở",
-        "bệnh"
+        "bệnh",
+        "nước"
       ]
     },
     {
@@ -261,9 +261,9 @@
       "answer": "thích",
       "options": [
         "thích",
-        "bông",
         "ở",
-        "bệnh"
+        "bệnh",
+        "rưỡi"
       ],
       "translation": {
         "fr": "Tu aimes le phở ?",

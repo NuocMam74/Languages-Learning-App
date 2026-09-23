@@ -60,7 +60,8 @@
       "concept": "c_moi",
       "distractors": [
         "mới",
-        "môi"
+        "mươi",
+        "dừa"
       ],
       "explain": {
         "fr": "mời descend : inviter. mới monte : nouveau.",
@@ -100,7 +101,8 @@
       "concept": "c_thua",
       "distractors": [
         "thừa",
-        "thua"
+        "mốt",
+        "dạ"
       ],
       "explain": {
         "fr": "thưa, plat et doux : s'adresser avec respect. thua : perdre.",
@@ -147,18 +149,18 @@
       "type": "listen_pick_text",
       "concept": "c_a",
       "distractors": [
-        "hoài",
         "khỏe",
-        "thịt"
+        "a",
+        "ma"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_uong",
       "distractors": [
-        "giùm",
-        "ngoại",
-        "người"
+        "đi",
+        "họ",
+        "trẻ"
       ]
     },
     {
@@ -167,9 +169,9 @@
       "answer": "ạ",
       "options": [
         "ạ",
-        "hoài",
         "khỏe",
-        "thịt"
+        "a",
+        "còn"
       ],
       "translation": {
         "fr": "Merci beaucoup (très poli, à une femme de l'âge de tes parents).",
@@ -183,8 +185,8 @@
       "options": [
         "mời",
         "mới",
-        "phim",
-        "về"
+        "trà",
+        "tui"
       ],
       "translation": {
         "fr": "Je vous en prie, prenez du thé (à un aîné).",
@@ -195,9 +197,9 @@
       "type": "listen_pick_text",
       "concept": "c_tre",
       "distractors": [
-        "thêm",
-        "qua",
-        "chơi"
+        "bàn",
+        "còn",
+        "nhà"
       ]
     },
     {
@@ -206,7 +208,7 @@
       "distractors": [
         "giá",
         "giả",
-        "sợ"
+        "ổng"
       ]
     },
     {
@@ -221,9 +223,9 @@
       "type": "listen_pick_text",
       "concept": "c_chau",
       "distractors": [
-        "Pháp",
-        "quận",
-        "thuê"
+        "sáu",
+        "tôi",
+        "đi"
       ]
     },
     {
@@ -239,9 +241,9 @@
       "type": "listen_pick_text",
       "concept": "c_bac",
       "distractors": [
-        "bận",
-        "xoài",
-        "đi"
+        "đi",
+        "anh",
+        "chị"
       ]
     },
     {
@@ -258,7 +260,7 @@
       "concept": "s_con_chao_co",
       "distractors": [
         "Em ăn gì?",
-        "Thôi, huề nha!"
+        "Em mấy tuổi?"
       ]
     },
     {

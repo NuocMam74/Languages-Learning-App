@@ -26,8 +26,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_hoi_nho_tui_o_que",
       "distractors": [
-        "Hồi nhỏ tui ở Sài Gòn.",
-        "Bây giờ tui ở dưới quê."
+        "Bây giờ tui ở dưới quê.",
+        "Tuần này em làm ca sáng."
       ],
       "explain": {
         "fr": "hồi nhỏ : dans l'enfance ; bây giờ : maintenant.",
@@ -97,8 +97,9 @@
       "type": "listen_pick_text",
       "concept": "c_que",
       "distractors": [
-        "qué",
-        "quế"
+        "quế",
+        "phường",
+        "chú"
       ],
       "explain": {
         "fr": "quê, plat : le pays natal.",
@@ -158,21 +159,6 @@
       ]
     },
     {
-      "type": "fill_gap",
-      "text": "___ ngoại tôi ở Bến Tre.",
-      "answer": "quê",
-      "options": [
-        "quê",
-        "bàn",
-        "ngoại",
-        "chị"
-      ],
-      "translation": {
-        "fr": "La famille de ma mère vient de Bến Tre.",
-        "en": "My mother's family comes from Bến Tre."
-      }
-    },
-    {
       "type": "build_sentence",
       "target": "Hồi nhỏ tui ở dưới quê gần sông",
       "tokens": [
@@ -229,6 +215,21 @@
         "s_b_hoi_nho_tui_o_que",
         "c_que"
       ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ngoại tôi ở Bến Tre.",
+      "answer": "quê",
+      "options": [
+        "quê",
+        "há",
+        "hông",
+        "quẹo"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      }
     }
   ],
   "review": {

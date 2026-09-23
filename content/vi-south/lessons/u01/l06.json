@@ -133,17 +133,17 @@
       "concept": "c_ga_station",
       "distractors": [
         "gà",
-        "đặt",
-        "nhỏ"
+        "ma",
+        "trăm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nuoc",
       "distractors": [
-        "Tết",
         "anh",
-        "khá"
+        "chào",
+        "ba"
       ]
     },
     {
@@ -152,7 +152,7 @@
       "distractors": [
         "ca",
         "cà",
-        "cay"
+        "bảy"
       ]
     },
     {
@@ -160,52 +160,52 @@
       "concept": "c_ga_chicken",
       "distractors": [
         "ga",
-        "vậy",
-        "nên"
+        "cơm",
+        "bả"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_com",
       "distractors": [
-        "chắc",
-        "bớt",
-        "to"
+        "ba",
+        "ảnh",
+        "gà"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ca_eggplant",
       "distractors": [
-        "c_troi",
-        "c_nuoc_mam",
-        "c_chuoi"
+        "c_ba",
+        "c_em",
+        "c_com"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ga_station",
       "distractors": [
-        "c_heo",
         "c_co_aunt",
-        "c_sach"
+        "c_ong",
+        "c_anh"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_nuoc",
       "distractors": [
-        "c_sua_milk",
-        "c_b_may_tinh",
-        "c_ot"
+        "c_em",
+        "c_ong",
+        "c_ga_chicken"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_khong_phai",
       "distractors": [
-        "tiền nước",
-        "người Việt"
+        "hai mươi",
+        "Chào anh."
       ]
     },
     {
@@ -214,7 +214,7 @@
       "distractors": [
         "mươi",
         "cơm",
-        "theo"
+        "mười"
       ]
     },
     {
@@ -222,43 +222,43 @@
       "concept": "c_hong",
       "distractors": [
         "hổng",
-        "chua",
-        "mặn"
+        "chú",
+        "anh"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_khong",
       "distractors": [
-        "lớn",
-        "rưỡi",
-        "hồi"
+        "lăm",
+        "ga",
+        "mả"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_co",
       "distractors": [
-        "ngọt",
-        "sắp",
-        "sẽ"
+        "sáu",
+        "bốn",
+        "mười"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_hen_gap_lai",
       "distractors": [
-        "Còn phòng không?",
-        "Anh ở đâu?"
+        "Không có chi.",
+        "hai mươi mốt"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_oi",
       "distractors": [
-        "gói",
-        "mè",
-        "ước"
+        "cá",
+        "tám",
+        "trăm"
       ]
     },
     {

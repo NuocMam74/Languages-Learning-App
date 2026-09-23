@@ -71,8 +71,7 @@
         "Dạ",
         "không",
         "có",
-        "chi",
-        "gì"
+        "chi"
       ],
       "translation": {
         "fr": "De rien (poliment).",
@@ -134,16 +133,16 @@
       "concept": "s_hen_gap_lai",
       "distractors": [
         "Có xa không?",
-        "Nhà tôi có…"
+        "hai mươi mốt"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_oi",
       "distractors": [
-        "hông",
         "chào",
-        "ạ"
+        "mười",
+        "chỉ"
       ]
     },
     {
@@ -152,9 +151,9 @@
       "answer": "xin lỗi",
       "options": [
         "xin lỗi",
-        "nước mía",
-        "hết hạn",
-        "xe hơi"
+        "Đây là…",
+        "Chào anh.",
+        "Không sao."
       ],
       "translation": {
         "fr": "Pardon (à une femme un peu plus âgée).",
@@ -167,9 +166,9 @@
       "answer": "Không có chi.",
       "options": [
         "Không có chi.",
-        "Kẹt xe quá!",
-        "Em cũng vậy.",
-        "Trời đang mưa."
+        "Hẹn gặp lại.",
+        "hai mươi mốt",
+        "mười lăm"
       ],
       "translation": {
         "fr": "De rien (poliment).",
@@ -182,9 +181,9 @@
       "answer": "ơi",
       "options": [
         "ơi",
-        "hông",
         "chào",
-        "ạ"
+        "mươi",
+        "bả"
       ],
       "translation": {
         "fr": "S'il vous plaît ! (pour appeler un homme un peu plus âgé)",
@@ -221,8 +220,8 @@
       "type": "listen_pick_text",
       "concept": "s_day_la",
       "distractors": [
-        "phải không?",
-        "quẹo trái"
+        "một trăm",
+        "chúng tôi"
       ]
     },
     {
@@ -230,8 +229,8 @@
       "concept": "c_toi",
       "distractors": [
         "tối",
-        "trưa",
-        "khác"
+        "bốn",
+        "không"
       ]
     },
     {
@@ -240,7 +239,7 @@
       "distractors": [
         "ba",
         "bả",
-        "giây"
+        "mươi"
       ]
     },
     {
@@ -249,24 +248,24 @@
       "distractors": [
         "bà",
         "bả",
-        "cổ"
+        "ma"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_em",
       "distractors": [
-        "nhớ",
-        "dơ",
-        "ước"
+        "mươi",
+        "họ",
+        "mà"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_chao_anh",
       "distractors": [
-        "Vậy hả?",
-        "gần đây"
+        "Đây là…",
+        "tụi mình"
       ]
     },
     {

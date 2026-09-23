@@ -149,7 +149,7 @@
       "concept": "s_b_photo_gium",
       "distractors": [
         "Anh cho em nghỉ thứ sáu nha.",
-        "Mời chị đi đám cưới em nha."
+        "Tui làm ở một công ty Pháp."
       ]
     },
     {
@@ -168,8 +168,8 @@
       "options": [
         "chụp hình",
         "sầu riêng",
-        "miền Tây",
-        "Việt kiều"
+        "Việt kiều",
+        "mấy ngày"
       ],
       "translation": {
         "fr": "On fait les photos où ? (à une femme un peu plus âgée)",
@@ -227,8 +227,8 @@
       "concept": "c_b_ky_sign",
       "distractors": [
         "dừa",
-        "giỏi",
-        "lấy"
+        "lấy",
+        "lẻ"
       ]
     },
     {

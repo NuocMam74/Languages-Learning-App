@@ -64,8 +64,9 @@
       "type": "listen_pick_text",
       "concept": "c_ghe",
       "distractors": [
-        "ghe",
-        "ghé"
+        "anh",
+        "mợ",
+        "mì"
       ],
       "explain": {
         "fr": "ghế monte : la chaise. ghe, plat, est une barque au Sud !",
@@ -117,7 +118,8 @@
       "concept": "c_con_clf",
       "distractors": [
         "còn",
-        "cơn"
+        "chú",
+        "tuổi"
       ],
       "explain": {
         "fr": "con : devant un animal, c'est le classificateur des êtres vivants.",
@@ -158,8 +160,8 @@
       "concept": "c_cai",
       "distractors": [
         "mời",
-        "đụng",
-        "nên"
+        "tám",
+        "cũng"
       ]
     },
     {
@@ -167,8 +169,8 @@
       "concept": "c_cho_dog",
       "distractors": [
         "cho",
-        "rút",
-        "xe"
+        "xe",
+        "chỉ"
       ]
     },
     {
@@ -176,25 +178,25 @@
       "concept": "c_meo",
       "distractors": [
         "rau",
-        "khám",
-        "tháng"
+        "bả",
+        "bàn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_nha_toi_co",
       "distractors": [
-        "Cũng khá ngon.",
-        "Để anh trả."
+        "hai mươi mốt",
+        "Tôi tên là…"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ghe",
       "distractors": [
-        "c_sang",
-        "c_b_ghe",
-        "c_b_bong"
+        "c_ba_grandma",
+        "c_song_river",
+        "c_chi"
       ]
     },
     {
@@ -204,8 +206,8 @@
       "options": [
         "cái",
         "mời",
-        "đụng",
-        "nên"
+        "chè",
+        "cà"
       ],
       "translation": {
         "fr": "Ceci est une table.",
@@ -219,8 +221,8 @@
       "options": [
         "con",
         "còn",
-        "thơm",
-        "sẽ"
+        "trái",
+        "tên"
       ],
       "translation": {
         "fr": "Chez moi, il y a deux chats.",
@@ -234,8 +236,8 @@
       "options": [
         "chó",
         "cho",
-        "rút",
-        "xe"
+        "xe",
+        "bảy"
       ],
       "translation": {
         "fr": "Chez moi, il y a un chien.",
@@ -246,8 +248,8 @@
       "type": "listen_pick_text",
       "concept": "s_da_co",
       "distractors": [
-        "tiền cọc",
-        "Thích lắm!"
+        "mười lăm",
+        "hai mươi"
       ]
     },
     {
@@ -255,32 +257,32 @@
       "concept": "s_co_anh_chi_em_khong",
       "distractors": [
         "Con mời ba má ăn cơm.",
-        "Chị nhắn lại giùm em nha."
+        "Đây là…"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_co_vo_chua",
       "distractors": [
-        "Mọi người thấy sao?",
-        "Em vừa ăn xong."
+        "Mời bác uống trà.",
+        "chúng tôi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chua",
       "distractors": [
-        "món",
         "da",
-        "còn"
+        "còn",
+        "mốt"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_anh_chi_em",
       "distractors": [
-        "nón bảo hiểm",
-        "trạm xe buýt"
+        "mười",
+        "ba"
       ]
     },
     {

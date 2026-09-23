@@ -168,7 +168,7 @@
       "distractors": [
         "đá",
         "nào",
-        "gói"
+        "đa"
       ]
     },
     {
@@ -176,8 +176,8 @@
       "concept": "c_dang",
       "distractors": [
         "lớp",
-        "ghé",
-        "hơi"
+        "hơi",
+        "sông"
       ]
     },
     {
@@ -185,8 +185,8 @@
       "concept": "c_se",
       "distractors": [
         "chó",
-        "tiếc",
-        "thịt"
+        "thịt",
+        "chua"
       ]
     },
     {
@@ -194,8 +194,8 @@
       "concept": "c_sap",
       "distractors": [
         "bắp",
-        "với",
-        "đặt"
+        "đặt",
+        "ngủ"
       ]
     },
     {
@@ -203,8 +203,8 @@
       "concept": "c_vua_just",
       "distractors": [
         "ra",
-        "há",
-        "sẽ"
+        "sẽ",
+        "ảnh"
       ]
     },
     {
@@ -230,7 +230,7 @@
         "đã",
         "đá",
         "nào",
-        "gói"
+        "đa"
       ],
       "translation": {
         "fr": "Hier, je suis allé(e) au marché.",
@@ -244,8 +244,8 @@
       "options": [
         "đang",
         "lớp",
-        "ghé",
-        "hơi"
+        "hơi",
+        "hay"
       ],
       "translation": {
         "fr": "Il pleut en ce moment.",
@@ -259,8 +259,8 @@
       "options": [
         "sẽ",
         "chó",
-        "tiếc",
-        "thịt"
+        "thịt",
+        "sáng"
       ],
       "translation": {
         "fr": "La semaine prochaine, je rentre en France.",
@@ -274,8 +274,8 @@
       "options": [
         "sắp",
         "bắp",
-        "với",
-        "đặt"
+        "đặt",
+        "tư"
       ],
       "translation": {
         "fr": "J'arrive bientôt.",
@@ -289,8 +289,8 @@
       "options": [
         "vừa",
         "ra",
-        "há",
-        "sẽ"
+        "sẽ",
+        "mạ"
       ],
       "translation": {
         "fr": "Je viens de finir de manger.",

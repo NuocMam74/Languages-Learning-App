@@ -96,8 +96,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_chua_chac",
       "distractors": [
-        "Chưa chắc chắn.",
-        "Chắc rồi."
+        "Chắc rồi.",
+        "chừng nào"
       ],
       "explain": {
         "fr": "Chưa chắc : pas sûr.",

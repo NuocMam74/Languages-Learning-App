@@ -143,7 +143,7 @@
       "distractors": [
         "bàn",
         "bán",
-        "rảnh"
+        "chợ"
       ]
     },
     {
@@ -152,7 +152,7 @@
       "distractors": [
         "bán",
         "bạn",
-        "sai"
+        "chua"
       ]
     },
     {
@@ -161,25 +161,25 @@
       "distractors": [
         "bàn",
         "bạn",
-        "đụng"
+        "mợ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nay",
       "distractors": [
-        "nhiều",
         "phở",
-        "năm"
+        "năm",
+        "không"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ban_table",
       "distractors": [
-        "c_dua_hau",
-        "c_tin_nhan",
-        "c_chi"
+        "c_chi",
+        "c_troi",
+        "c_sua_milk"
       ]
     },
     {
@@ -190,7 +190,7 @@
         "bán",
         "bàn",
         "bạn",
-        "đụng"
+        "mưa"
       ],
       "translation": {
         "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
@@ -203,9 +203,9 @@
       "answer": "này",
       "options": [
         "này",
-        "nhiều",
         "phở",
-        "năm"
+        "năm",
+        "trái"
       ],
       "translation": {
         "fr": "ceci, cet objet-ci",
@@ -219,8 +219,8 @@
       "options": [
         "đồng",
         "ngon",
-        "đội",
-        "cô"
+        "cô",
+        "ổng"
       ],
       "translation": {
         "fr": "Quinze mille đồng.",
@@ -235,7 +235,7 @@
         "bàn",
         "bán",
         "bạn",
-        "sai"
+        "mè"
       ],
       "translation": {
         "fr": "Ceci est une table.",

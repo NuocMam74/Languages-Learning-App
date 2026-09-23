@@ -78,8 +78,7 @@
         "Cuối tháng",
         "mới",
         "lãnh",
-        "lương",
-        "lường"
+        "lương"
       ],
       "translation": {
         "fr": "On touche le salaire seulement en fin de mois.",
@@ -150,7 +149,7 @@
       "distractors": [
         "hơi",
         "con",
-        "nghen"
+        "to"
       ]
     },
     {
@@ -168,7 +167,7 @@
       "distractors": [
         "ca",
         "cá",
-        "nhang"
+        "rồi"
       ]
     },
     {
@@ -202,7 +201,7 @@
       "concept": "c_b_dong_nghiep",
       "distractors": [
         "em út",
-        "mắc cỡ"
+        "chút xíu"
       ]
     },
     {
@@ -227,7 +226,7 @@
       "concept": "c_b_nghi_phep",
       "distractors": [
         "đối diện",
-        "đám giỗ"
+        "giáo viên"
       ]
     },
     {
@@ -235,8 +234,8 @@
       "concept": "c_ca_eggplant",
       "distractors": [
         "c_co_aunt",
-        "c_b_bong",
-        "c_nuoc_mam"
+        "c_nuoc_mam",
+        "c_tra_tea"
       ]
     },
     {

@@ -67,7 +67,7 @@
       "concept": "s_tien_nuoc",
       "distractors": [
         "tiền nhà",
-        "tiền nợ"
+        "đi thẳng"
       ],
       "explain": {
         "fr": "tiền nước : l'eau. tiền nhà : le loyer.",
@@ -125,8 +125,8 @@
       "type": "listen_pick_text",
       "concept": "s_tinh_rieng",
       "distractors": [
-        "Tiền điện tính chung.",
-        "Tiền điện tính rồi."
+        "Tiền điện tính rồi.",
+        "Em đau ở đây."
       ],
       "explain": {
         "fr": "riêng : à part. chung : en commun.",
@@ -154,8 +154,8 @@
       "type": "listen_pick_text",
       "concept": "c_dien_thoai",
       "distractors": [
-        "thiệp mời",
-        "tầng trệt"
+        "tầng trệt",
+        "sinh viên"
       ]
     },
     {
@@ -180,8 +180,8 @@
       "concept": "c_giuong",
       "distractors": [
         "c_trua",
-        "c_b_li_xi",
-        "c_quan_ca_phe"
+        "c_quan_ca_phe",
+        "c_mi"
       ]
     },
     {
@@ -229,9 +229,9 @@
       "answer": "điện thoại",
       "options": [
         "điện thoại",
-        "thiệp mời",
         "tầng trệt",
-        "gọi lại"
+        "gọi lại",
+        "tiền điện"
       ],
       "translation": {
         "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
@@ -261,16 +261,16 @@
       "type": "listen_pick_text",
       "concept": "c_chia_khoa",
       "distractors": [
-        "phong bì",
-        "đồng nghiệp"
+        "bao nhiêu",
+        "phòng tắm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hop_dong",
       "distractors": [
-        "nhưng mà",
-        "trái cây"
+        "trái cây",
+        "địa chỉ"
       ]
     }
   ],

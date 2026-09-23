@@ -34,8 +34,8 @@
       "type": "listen_pick_text",
       "concept": "s_vay_ha",
       "distractors": [
-        "Vậy hen.",
-        "Ai vậy?"
+        "Ai vậy?",
+        "hai mươi"
       ],
       "explain": {
         "fr": "Vậy hả ? : ah bon ?",
@@ -59,7 +59,7 @@
       "concept": "s_thiet_hong",
       "distractors": [
         "Thiết hông?",
-        "Mệt hông?"
+        "Chào anh."
       ],
       "explain": {
         "fr": "Thiệt hông ? : vraiment ? thiệt tombe court.",
@@ -71,7 +71,7 @@
       "concept": "s_dung_roi",
       "distractors": [
         "Đúng giờ.",
-        "Dùng rồi."
+        "Tui thấy…"
       ],
       "explain": {
         "fr": "Đúng rồi : exactement. dùng : utiliser.",
@@ -167,7 +167,7 @@
       "distractors": [
         "dở",
         "gà",
-        "rút"
+        "mấy"
       ]
     },
     {
@@ -177,8 +177,8 @@
       "options": [
         "Vậy hả?",
         "Đúng rồi!",
-        "nhức đầu",
-        "tiền cọc"
+        "Cũng được.",
+        "mười một"
       ],
       "translation": {
         "fr": "Ah bon ? Moi aussi j'aime le phở.",
@@ -235,8 +235,8 @@
       "type": "listen_pick_text",
       "concept": "s_tui_thay",
       "distractors": [
-        "Nhớ nghen!",
-        "mười lăm"
+        "mười lăm",
+        "gần đây"
       ]
     },
     {
@@ -262,16 +262,16 @@
       "distractors": [
         "ly",
         "giờ",
-        "kể"
+        "năm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_phim",
       "distractors": [
-        "há",
         "tôi",
-        "xin"
+        "xin",
+        "uống"
       ]
     }
   ],

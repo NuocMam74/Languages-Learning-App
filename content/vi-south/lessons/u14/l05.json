@@ -91,8 +91,8 @@
       "type": "listen_pick_text",
       "concept": "c_mac_cuoi",
       "distractors": [
-        "mắc cỡ",
-        "mặc cười"
+        "mặc cười",
+        "giáo viên"
       ],
       "explain": {
         "fr": "mắc cười : drôle. mắc cỡ : timide (Sud aussi).",
@@ -196,18 +196,18 @@
       "type": "listen_pick_text",
       "concept": "c_phim",
       "distractors": [
-        "bận",
         "người",
-        "cay"
+        "cay",
+        "thích"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hay_good",
       "distractors": [
-        "sai",
         "lần",
-        "hơn"
+        "hơn",
+        "ra"
       ]
     },
     {
@@ -232,9 +232,9 @@
       "type": "listen_pick_text",
       "concept": "c_hoi_slightly",
       "distractors": [
-        "tháng",
-        "nghen",
-        "giỡn"
+        "mả",
+        "trà",
+        "hiểu"
       ]
     },
     {
@@ -242,7 +242,7 @@
       "concept": "s_cung_duoc",
       "distractors": [
         "Sao vậy?",
-        "Mệt quá!"
+        "chừng nào"
       ]
     },
     {
@@ -250,7 +250,7 @@
       "concept": "s_do_qua",
       "distractors": [
         "Cái nào?",
-        "Sai rồi."
+        "Không sao."
       ]
     },
     {
@@ -258,8 +258,8 @@
       "concept": "c_do_dirty",
       "distractors": [
         "dở",
-        "vườn",
-        "giùm"
+        "thím",
+        "thưa"
       ]
     }
   ],

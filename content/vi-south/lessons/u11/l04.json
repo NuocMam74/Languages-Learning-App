@@ -57,8 +57,8 @@
       "type": "listen_pick_text",
       "concept": "s_di_thang",
       "distractors": [
-        "đi thang",
-        "đi thắng"
+        "đi thắng",
+        "trà đá"
       ],
       "explain": {
         "fr": "đi thẳng : tout droit. thẳng plonge.",
@@ -69,8 +69,8 @@
       "type": "listen_pick_text",
       "concept": "s_cho_em_xuong",
       "distractors": [
-        "Cho em lên đây.",
-        "Cho em xuống kia."
+        "Cái này bao nhiêu?",
+        "Thôi, cảm ơn chị."
       ],
       "explain": {
         "fr": "xuống : descendre. lên : monter.",
@@ -131,8 +131,7 @@
         "cho",
         "em",
         "xuống",
-        "đây",
-        "lên"
+        "đây"
       ],
       "translation": {
         "fr": "On est arrivés, déposez-moi ici.",
@@ -181,16 +180,16 @@
       "type": "listen_pick_text",
       "concept": "s_chay_thang",
       "distractors": [
-        "sau Tết",
-        "Tui thấy…"
+        "bằng tuổi",
+        "tiếng Việt"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_dung_lai",
       "distractors": [
-        "theo tui",
-        "mười lăm"
+        "mười lăm",
+        "tụi mình"
       ]
     },
     {
@@ -199,9 +198,9 @@
       "answer": "chạy thẳng",
       "options": [
         "chạy thẳng",
-        "sau Tết",
-        "Tui thấy…",
-        "Vậy hả?"
+        "Đây là…",
+        "quẹo trái",
+        "thứ bảy"
       ],
       "translation": {
         "fr": "Va tout droit et passe le pont, d'accord ?",
@@ -216,7 +215,7 @@
         "đi thẳng",
         "số nhà",
         "tiền nước",
-        "Tui thấy…"
+        "Không sao."
       ],
       "translation": {
         "fr": "Va tout droit jusqu'au carrefour, puis tourne à droite.",
@@ -229,9 +228,9 @@
       "answer": "Cho em xuống đây.",
       "options": [
         "Cho em xuống đây.",
-        "Khi nào anh về?",
-        "Chúc mừng năm mới!",
-        "Mời bác uống trà."
+        "Mời bác uống trà.",
+        "Thôi, cảm ơn chị.",
+        "Hôm nay thứ mấy?"
       ],
       "translation": {
         "fr": "On est arrivés, déposez-moi ici.",
@@ -255,8 +254,8 @@
       "concept": "c_b_thi",
       "distractors": [
         "đồng",
-        "tiếc",
-        "nửa"
+        "nửa",
+        "chờ"
       ]
     },
     {
@@ -264,7 +263,7 @@
       "concept": "c_den_do",
       "distractors": [
         "bà xã",
-        "hình thẻ"
+        "chị hai"
       ]
     },
     {
@@ -272,15 +271,15 @@
       "concept": "c_nga_tu",
       "distractors": [
         "ngân hàng",
-        "chung cư"
+        "nước mía"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_queo_phai",
       "distractors": [
-        "Tui thấy…",
-        "tiền nước"
+        "tiền nước",
+        "Ngon quá!"
       ]
     },
     {
@@ -288,16 +287,16 @@
       "concept": "s_queo_trai",
       "distractors": [
         "thối tiền",
-        "Nhớ nghen!"
+        "Ngon quá!"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_queo",
       "distractors": [
-        "nhanh",
         "mả",
-        "tuần"
+        "tuần",
+        "mình"
       ]
     },
     {

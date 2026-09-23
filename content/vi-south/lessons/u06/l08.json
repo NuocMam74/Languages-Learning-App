@@ -47,7 +47,8 @@
       "concept": "c_chin_nine",
       "distractors": [
         "chìn",
-        "chinh"
+        "gà",
+        "ngoại"
       ],
       "explain": {
         "fr": "chín : neuf.",
@@ -185,7 +186,8 @@
       "concept": "c_chuc",
       "distractors": [
         "chúc",
-        "chức"
+        "khỏe",
+        "bác"
       ],
       "explain": {
         "fr": "chục : la dizaine.",
@@ -196,9 +198,9 @@
       "type": "listen_pick_text",
       "concept": "c_bay_seven",
       "distractors": [
-        "alô",
-        "xong",
-        "hẻm"
+        "anh",
+        "chè",
+        "lẻ"
       ]
     },
     {
@@ -206,7 +208,7 @@
       "concept": "c_dien_thoai",
       "distractors": [
         "em út",
-        "ước gì"
+        "mọi người"
       ]
     },
     {
@@ -231,8 +233,8 @@
       "options": [
         "điện thoại",
         "em út",
-        "ước gì",
-        "sân bay"
+        "chúng tôi",
+        "người Việt"
       ],
       "translation": {
         "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
@@ -261,32 +263,32 @@
       "distractors": [
         "gói",
         "gỏi",
-        "vì"
+        "ổng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_cho_em_xin_so",
       "distractors": [
-        "Giả sử trúng số, anh làm gì?",
-        "Anh cho em nghỉ thứ sáu nha."
+        "hai mươi mốt",
+        "Anh bao nhiêu tuổi?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_so_dien_thoai",
       "distractors": [
-        "Dễ thương quá!",
-        "Hổng có đâu!"
+        "Anh khỏe không?",
+        "Chị tên gì?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_le",
       "distractors": [
-        "quà",
-        "hết",
-        "chậm"
+        "chậm",
+        "là",
+        "mưa"
       ]
     }
   ],

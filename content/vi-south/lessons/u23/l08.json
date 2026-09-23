@@ -217,9 +217,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_uoc",
       "distractors": [
-        "đụng",
         "rau",
-        "cay"
+        "cay",
+        "mươi"
       ]
     },
     {

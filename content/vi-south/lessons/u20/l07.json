@@ -172,15 +172,15 @@
       "concept": "c_b_li_xi",
       "distractors": [
         "phòng trọ",
-        "trúng số"
+        "nghỉ phép"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_b_da_con_cam_on",
       "distractors": [
-        "Kể tui nghe đi!",
-        "Em đang làm việc."
+        "Em đang làm việc.",
+        "cà phê sữa đá"
       ]
     },
     {
@@ -188,7 +188,7 @@
       "concept": "c_b_dam_gio",
       "distractors": [
         "ngã tư",
-        "đồng ý"
+        "phòng tắm"
       ]
     },
     {

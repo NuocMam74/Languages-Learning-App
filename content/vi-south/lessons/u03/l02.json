@@ -70,8 +70,9 @@
       "type": "listen_pick_text",
       "concept": "c_lon",
       "distractors": [
-        "lộn",
-        "non"
+        "chờ",
+        "ổng",
+        "ở"
       ],
       "explain": {
         "fr": "lớn monte : grand, plus âgé.",
@@ -82,8 +83,9 @@
       "type": "listen_pick_text",
       "concept": "c_nho",
       "distractors": [
-        "nhớ",
-        "nho"
+        "nho",
+        "tên",
+        "mả"
       ],
       "explain": {
         "fr": "nhỏ plonge puis remonte : petit, jeune. nhớ monte : se souvenir.",
@@ -148,9 +150,9 @@
       "type": "listen_pick_text",
       "concept": "c_tuoi",
       "distractors": [
-        "điện",
-        "mây",
-        "trời"
+        "trời",
+        "bò",
+        "hơn"
       ]
     },
     {
@@ -158,26 +160,26 @@
       "concept": "c_may",
       "distractors": [
         "mây",
-        "nhức",
-        "cơm"
+        "cơm",
+        "lăm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hon",
       "distractors": [
-        "bông",
         "vậy",
-        "đụng"
+        "ổng",
+        "xa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_em",
       "distractors": [
-        "ký",
         "tám",
-        "ít"
+        "mười",
+        "tôi"
       ]
     },
     {
@@ -186,9 +188,9 @@
       "answer": "lớn",
       "options": [
         "lớn",
-        "nghỉ",
-        "mất",
-        "rẻ"
+        "sữa",
+        "sách",
+        "em"
       ],
       "translation": {
         "fr": "Je suis plus âgé que toi (dit par un grand frère).",
@@ -201,9 +203,9 @@
       "answer": "nhỏ",
       "options": [
         "nhỏ",
-        "nói",
-        "thơm",
-        "bị"
+        "chưa",
+        "dạ",
+        "mình"
       ],
       "translation": {
         "fr": "Je suis plus jeune que toi (à une femme plus âgée).",
@@ -215,33 +217,33 @@
       "concept": "s_ban_ten_gi",
       "distractors": [
         "Chị tên gì?",
-        "Dạ, ăn rồi."
+        "Tôi tên là…"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_toi_ten_la",
       "distractors": [
-        "Dễ thương quá!",
-        "Chị tên gì?"
+        "Chị tên gì?",
+        "Anh khỏe không?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_la",
       "distractors": [
-        "no",
-        "rồi",
-        "thưởng"
+        "mè",
+        "cá",
+        "bàn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ten",
       "distractors": [
-        "giùm",
-        "trẻ",
-        "ngon"
+        "chào",
+        "mà",
+        "chỉ"
       ]
     },
     {
@@ -249,8 +251,8 @@
       "concept": "c_minh",
       "distractors": [
         "xin",
-        "qua",
-        "phòng"
+        "em",
+        "ổng"
       ]
     },
     {
@@ -259,22 +261,22 @@
       "distractors": [
         "tụi",
         "xin",
-        "tháng"
+        "mè"
       ]
     },
     {
       "type": "fill_gap",
-      "text": "Tôi tên ___ Lan.",
-      "answer": "là",
+      "text": "Em tôi mười ___.",
+      "answer": "tuổi",
       "options": [
-        "là",
-        "no",
-        "rồi",
-        "thưởng"
+        "tuổi",
+        "dừa",
+        "vui",
+        "sáu"
       ],
       "translation": {
-        "fr": "Je m'appelle Lan.",
-        "en": "My name is Lan."
+        "fr": "Mon petit frère a dix ans.",
+        "en": "My little brother is ten."
       }
     }
   ],

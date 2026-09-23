@@ -45,8 +45,8 @@
       "type": "listen_pick_text",
       "concept": "s_troi_dang_mua",
       "distractors": [
-        "Trời sắp mưa.",
-        "Trời hết mưa."
+        "Con chào ông.",
+        "Có xa không?"
       ],
       "explain": {
         "fr": "đang mưa : il pleut en ce moment.",
@@ -73,7 +73,8 @@
       "concept": "c_dang_bitter",
       "distractors": [
         "đang",
-        "dắng"
+        "chiều",
+        "lẻ"
       ],
       "explain": {
         "fr": "đắng : amer. đ bien fermé, pas d.",
@@ -84,8 +85,8 @@
       "type": "listen_pick_text",
       "concept": "s_em_dang_lam",
       "distractors": [
-        "Em sẽ làm việc.",
-        "Em đang làm gì?"
+        "Em đang làm gì?",
+        "Người đó là ai?"
       ],
       "explain": {
         "fr": "đang + verbe : être en train de.",
@@ -100,8 +101,7 @@
         "đang",
         "làm",
         "gì",
-        "vậy",
-        "sẽ"
+        "vậy"
       ],
       "translation": {
         "fr": "Qu'est-ce que tu fais, là ? (à un homme un peu plus âgé)",
@@ -127,7 +127,8 @@
       "options": [
         "đang",
         "đáng",
-        "đăng"
+        "bàn",
+        "ghế"
       ],
       "translation": {
         "fr": "Il pleut en ce moment.",
@@ -172,8 +173,8 @@
       "concept": "c_troi",
       "distractors": [
         "mời",
-        "phim",
-        "ông"
+        "ông",
+        "hơn"
       ]
     },
     {
@@ -181,8 +182,8 @@
       "concept": "c_dem",
       "distractors": [
         "tư",
-        "phim",
-        "tới"
+        "tới",
+        "thầy"
       ]
     },
     {
@@ -190,8 +191,8 @@
       "concept": "c_roi",
       "distractors": [
         "rối",
-        "nghĩ",
-        "to"
+        "to",
+        "người"
       ]
     },
     {
@@ -199,26 +200,26 @@
       "concept": "c_tra_tea",
       "distractors": [
         "trả",
-        "sẽ",
-        "ba"
+        "ba",
+        "tra"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sua_milk",
       "distractors": [
-        "lầu",
-        "giỏi",
-        "vừa"
+        "đã",
+        "cái",
+        "uống"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_dang",
       "distractors": [
-        "vườn",
-        "cưới",
-        "coi"
+        "dừa",
+        "đã",
+        "to"
       ]
     },
     {
@@ -226,8 +227,8 @@
       "concept": "c_mua_rain",
       "distractors": [
         "lớn",
-        "kể",
-        "bả"
+        "bả",
+        "vậy"
       ]
     },
     {
@@ -251,9 +252,9 @@
       "type": "listen_pick_image",
       "concept": "c_dem",
       "distractors": [
-        "c_b_sep",
         "c_benh_vien",
-        "c_ca_eggplant"
+        "c_ca_eggplant",
+        "c_da_ice"
       ]
     },
     {
@@ -261,17 +262,17 @@
       "concept": "c_tra_tea",
       "distractors": [
         "c_ban_table",
-        "c_thuoc_medicine",
-        "c_banh_mi"
+        "c_banh_mi",
+        "c_xe_dap"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_sua_milk",
       "distractors": [
-        "c_b_nghi_phep",
         "c_dien_thoai",
-        "c_chi_hai"
+        "c_chi_hai",
+        "c_mi"
       ]
     }
   ],

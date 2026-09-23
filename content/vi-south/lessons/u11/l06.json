@@ -58,7 +58,7 @@
       "concept": "c_ket_xe",
       "distractors": [
         "két xe",
-        "kẹp xe"
+        "nước mắm"
       ],
       "explain": {
         "fr": "kẹt xe : l'embouteillage. kẹt tombe court.",
@@ -155,9 +155,9 @@
       "type": "listen_pick_text",
       "concept": "c_doi_wear",
       "distractors": [
-        "hồi",
         "hơi",
-        "tốt"
+        "tốt",
+        "con"
       ]
     },
     {
@@ -205,16 +205,16 @@
       "distractors": [
         "trứng",
         "chị",
-        "lần"
+        "cũng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nhanh",
       "distractors": [
-        "ghé",
         "thơm",
-        "chỉ"
+        "chỉ",
+        "thím"
       ]
     },
     {
@@ -231,7 +231,7 @@
       "concept": "s_bao_lau",
       "distractors": [
         "thứ hai",
-        "Hổng biết."
+        "bây giờ"
       ]
     },
     {

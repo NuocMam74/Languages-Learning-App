@@ -59,7 +59,8 @@
       "concept": "c_phong",
       "distractors": [
         "phóng",
-        "phông"
+        "giường",
+        "ớt"
       ],
       "explain": {
         "fr": "phòng descend (huyền).",
@@ -155,7 +156,7 @@
       "distractors": [
         "bạn",
         "bán",
-        "nhang"
+        "món"
       ]
     },
     {
@@ -172,8 +173,8 @@
       "concept": "c_nha_house",
       "distractors": [
         "nha",
-        "ồn",
-        "rối"
+        "rối",
+        "đêm"
       ]
     },
     {
@@ -191,7 +192,7 @@
       "distractors": [
         "c_trua",
         "c_heo",
-        "c_b_bong"
+        "c_nha_house"
       ]
     },
     {
@@ -199,8 +200,8 @@
       "concept": "c_ghe",
       "distractors": [
         "c_nha_thuoc",
-        "c_b_nghi_phep",
-        "c_chi_hai"
+        "c_chi_hai",
+        "c_ba_grandma"
       ]
     },
     {
@@ -219,8 +220,8 @@
       "options": [
         "phòng ngủ",
         "kẹt xe",
-        "chụp hình",
-        "bình thường"
+        "bình thường",
+        "mấy ngày"
       ],
       "translation": {
         "fr": "Chez moi, il y a trois chambres.",
@@ -234,8 +235,8 @@
       "options": [
         "nhà",
         "nha",
-        "ồn",
-        "rối"
+        "rối",
+        "xong"
       ],
       "translation": {
         "fr": "Je suis à la maison.",

@@ -173,7 +173,7 @@
       "distractors": [
         "ba",
         "bả",
-        "người"
+        "má"
       ]
     },
     {
@@ -182,7 +182,7 @@
       "distractors": [
         "bà",
         "bả",
-        "vui"
+        "chị"
       ]
     },
     {
@@ -190,34 +190,34 @@
       "concept": "c_ga_chicken",
       "distractors": [
         "ga",
-        "lầu",
-        "da"
+        "da",
+        "khỏe"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_khong_co_chi",
       "distractors": [
-        "Còn phòng không?",
-        "Hổng có đâu!"
+        "hai mươi mốt",
+        "Anh khỏe không?"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ma_mom",
       "distractors": [
-        "c_benh_vien",
-        "c_b_dong_nghiep",
-        "c_b_li_xi"
+        "c_anh",
+        "c_em",
+        "c_com"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ba_grandma",
       "distractors": [
-        "c_sau_rieng",
         "c_ba",
-        "c_nha_house"
+        "c_ga_station",
+        "c_chu"
       ]
     },
     {
@@ -243,7 +243,7 @@
         "ba",
         "bà",
         "bả",
-        "vui"
+        "lắm"
       ],
       "translation": {
         "fr": "Voici mon père.",
@@ -256,9 +256,9 @@
       "answer": "cảm ơn",
       "options": [
         "cảm ơn",
-        "nhà thuốc",
-        "bao giờ",
-        "bắt đầu"
+        "tụi mình",
+        "hai mươi",
+        "một trăm"
       ],
       "translation": {
         "fr": "Oui, merci (à un homme un peu plus âgé).",
@@ -271,9 +271,9 @@
       "answer": "Không có chi.",
       "options": [
         "Không có chi.",
-        "Còn phòng không?",
-        "Hổng có đâu!",
-        "Mai gặp hen."
+        "Anh khỏe không?",
+        "Hẹn gặp lại.",
+        "hai mươi mốt"
       ],
       "translation": {
         "fr": "De rien (poliment).",

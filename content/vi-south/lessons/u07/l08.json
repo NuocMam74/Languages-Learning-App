@@ -141,7 +141,7 @@
       "concept": "s_tinh_tien",
       "distractors": [
         "Em ơi, cho thêm chén.",
-        "Em ơi, ít cay thôi."
+        "Anh có vợ chưa?"
       ],
       "explain": {
         "fr": "tính tiền : l'addition.",
@@ -176,8 +176,7 @@
         "ăn",
         "phở",
         "hay",
-        "hủ tiếu",
-        "và"
+        "hủ tiếu"
       ],
       "translation": {
         "fr": "Tu prends un phở ou un hủ tiếu ? (à un homme un peu plus âgé)",
@@ -193,16 +192,16 @@
       "concept": "c_ngot",
       "distractors": [
         "mình",
-        "thấy",
-        "năm"
+        "năm",
+        "không"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_com_tam",
       "distractors": [
-        "đồng ý",
-        "đám giỗ"
+        "bác sĩ",
+        "kỹ sư"
       ]
     },
     {
@@ -210,16 +209,16 @@
       "concept": "s_ca_phe_sua_da",
       "distractors": [
         "Em ăn cơm chưa?",
-        "Chúc mừng năm mới!"
+        "Mời bác uống trà."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chen",
       "distractors": [
-        "quẹo",
         "việc",
-        "xa"
+        "xa",
+        "lắm"
       ]
     },
     {
@@ -227,7 +226,7 @@
       "concept": "c_nuoc_mam",
       "distractors": [
         "hủ tiếu",
-        "năm ngoái"
+        "thành phố"
       ]
     },
     {
@@ -236,9 +235,9 @@
       "answer": "cơm tấm",
       "options": [
         "cơm tấm",
-        "đồng ý",
-        "đám giỗ",
-        "hợp đồng"
+        "bằng tuổi",
+        "Chào anh.",
+        "mười một"
       ],
       "translation": {
         "fr": "Tu as déjà goûté le cơm tấm ? (à un homme un peu plus âgé)",
@@ -251,9 +250,9 @@
       "answer": "hủ tiếu",
       "options": [
         "hủ tiếu",
-        "nhưng mà",
-        "giả sử",
-        "ông bà"
+        "ông bà",
+        "Chào anh.",
+        "ông ngoại"
       ],
       "translation": {
         "fr": "S'il te plaît, un bol de hủ tiếu. (homme, à un serveur plus jeune)",
@@ -267,8 +266,8 @@
       "options": [
         "cà phê sữa đá",
         "Em ăn cơm chưa?",
-        "Chúc mừng năm mới!",
-        "Phim này hay quá!"
+        "Anh bao nhiêu tuổi?",
+        "Anh có vợ chưa?"
       ],
       "translation": {
         "fr": "Un café glacé au lait, s'il te plaît.",
@@ -281,9 +280,9 @@
       "answer": "chén",
       "options": [
         "chén",
-        "quẹo",
         "việc",
-        "xa"
+        "xa",
+        "em"
       ],
       "translation": {
         "fr": "Un bol de plus, s'il te plaît.",

@@ -113,7 +113,8 @@
       "concept": "c_que",
       "distractors": [
         "quế",
-        "quẻ"
+        "xe",
+        "mốt"
       ],
       "explain": {
         "fr": "quê, plat : le pays natal. quế monte : la cannelle.",
@@ -153,18 +154,18 @@
       "type": "listen_pick_text",
       "concept": "c_noi",
       "distractors": [
-        "khá",
-        "ca",
-        "nước"
+        "nước",
+        "của",
+        "chờ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ngoai",
       "distractors": [
-        "giỡn",
         "trẻ",
-        "chỉ"
+        "chỉ",
+        "không"
       ]
     },
     {
@@ -173,9 +174,9 @@
       "answer": "nội",
       "options": [
         "nội",
-        "khá",
-        "ca",
-        "nước"
+        "nước",
+        "sách",
+        "trái"
       ],
       "translation": {
         "fr": "Ma grand-mère paternelle est encore en pleine forme.",
@@ -183,34 +184,19 @@
       }
     },
     {
-      "type": "fill_gap",
-      "text": "Quê ___ tôi ở Bến Tre.",
-      "answer": "ngoại",
-      "options": [
-        "ngoại",
-        "giỡn",
-        "trẻ",
-        "chỉ"
-      ],
-      "translation": {
-        "fr": "La famille de ma mère vient de Bến Tre.",
-        "en": "My mother's family comes from Bến Tre."
-      }
-    },
-    {
       "type": "listen_pick_text",
       "concept": "c_ba_xa",
       "distractors": [
-        "sầu riêng",
-        "xin lỗi"
+        "xin lỗi",
+        "mọi người"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ong_xa",
       "distractors": [
-        "xe hơi",
-        "xin lỗi"
+        "xin lỗi",
+        "bình thường"
       ]
     },
     {
@@ -218,16 +204,16 @@
       "concept": "c_cua",
       "distractors": [
         "ơi",
-        "Tết",
-        "nghen"
+        "mả",
+        "ba"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_gia_dinh",
       "distractors": [
-        "lúc đó",
-        "mắc cười"
+        "xin lỗi",
+        "anh hai"
       ]
     },
     {
@@ -235,8 +221,8 @@
       "concept": "c_chong",
       "distractors": [
         "gà",
-        "coi",
-        "sắp"
+        "họ",
+        "nha"
       ]
     },
     {
@@ -245,24 +231,24 @@
       "distractors": [
         "mạ",
         "ông",
-        "mất"
+        "bạn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_em_ut",
       "distractors": [
-        "công ty",
-        "chị hai"
+        "chị hai",
+        "gia đình"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_tu",
       "distractors": [
-        "này",
-        "nhờ",
-        "mợ"
+        "uống",
+        "ba",
+        "ma"
       ]
     },
     {
@@ -270,7 +256,16 @@
       "concept": "c_anh_ba",
       "distractors": [
         "ngã tư",
-        "Việt kiều"
+        "cảm ơn"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_chong",
+      "distractors": [
+        "c_troi",
+        "c_trai_fruit",
+        "c_anh"
       ]
     }
   ],

@@ -128,7 +128,8 @@
       "concept": "c_thay",
       "distractors": [
         "thấy",
-        "tay"
+        "cơm",
+        "chợ"
       ],
       "explain": {
         "fr": "thầy descend : le maître. thấy monte : voir.",
@@ -148,8 +149,8 @@
       "concept": "c_con_and",
       "distractors": [
         "con",
-        "việc",
-        "cái"
+        "xe",
+        "cà"
       ]
     },
     {
@@ -157,8 +158,8 @@
       "concept": "c_co_aunt",
       "distractors": [
         "cổ",
-        "xong",
-        "mợ"
+        "ga",
+        "họ"
       ]
     },
     {
@@ -166,8 +167,8 @@
       "concept": "c_chu",
       "distractors": [
         "chủ",
-        "theo",
-        "mình"
+        "mình",
+        "bốn"
       ]
     },
     {
@@ -176,7 +177,7 @@
       "distractors": [
         "còn",
         "ly",
-        "gần"
+        "ga"
       ]
     },
     {
@@ -186,8 +187,8 @@
       "options": [
         "chú",
         "chủ",
-        "theo",
-        "mình"
+        "mình",
+        "ơi"
       ],
       "translation": {
         "fr": "Merci (à un homme de l'âge de tes parents).",
@@ -201,8 +202,8 @@
       "options": [
         "còn",
         "con",
-        "việc",
-        "cái"
+        "bảy",
+        "mười"
       ],
       "translation": {
         "fr": "Je vais bien. Et toi ? (à un homme un peu plus âgé)",
@@ -229,17 +230,17 @@
       "type": "listen_pick_text",
       "concept": "c_hon",
       "distractors": [
-        "bên",
-        "với",
-        "ồn"
+        "cá",
+        "trời",
+        "ngủ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_em_may_tuoi",
       "distractors": [
-        "Để anh trả.",
-        "Còn phòng không?"
+        "Không có chi.",
+        "Bạn tên gì?"
       ]
     },
     {
@@ -248,16 +249,16 @@
       "distractors": [
         "mây",
         "hơn",
-        "nếu"
+        "chợ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nho",
       "distractors": [
-        "chồng",
-        "chích",
-        "ghe"
+        "ly",
+        "bàn",
+        "không"
       ]
     },
     {
@@ -266,16 +267,16 @@
       "distractors": [
         "da",
         "đi",
-        "bận"
+        "chợ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_tuoi",
       "distractors": [
-        "quê",
-        "quà",
-        "chùa"
+        "nhà",
+        "ông",
+        "sữa"
       ]
     }
   ],

@@ -156,9 +156,9 @@
       "answer": "năm nay",
       "options": [
         "năm nay",
-        "sầu riêng",
-        "miền Tây",
-        "giả sử"
+        "bà nội",
+        "tiếng Việt",
+        "mười một"
       ],
       "translation": {
         "fr": "Cette année, j'ai trente ans.",
@@ -171,15 +171,15 @@
       "distractors": [
         "tốt",
         "cơm",
-        "ca"
+        "còn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_hai_muoi_mot",
       "distractors": [
-        "Đợi chút nha.",
-        "Hổng có đâu!"
+        "Con chào cô.",
+        "Con chào ông."
       ]
     },
     {
@@ -195,8 +195,8 @@
       "concept": "c_lam_five",
       "distractors": [
         "lắm",
-        "trước",
-        "bò"
+        "bò",
+        "thưa"
       ]
     },
     {
@@ -204,8 +204,8 @@
       "concept": "c_mot_high",
       "distractors": [
         "một",
-        "rẻ",
-        "nghĩ"
+        "ổng",
+        "ghế"
       ]
     },
     {
@@ -213,8 +213,8 @@
       "concept": "c_muoi_tens",
       "distractors": [
         "mười",
-        "theo",
-        "nhớ"
+        "cổ",
+        "chú"
       ]
     },
     {
@@ -222,8 +222,8 @@
       "concept": "c_muoi_ten",
       "distractors": [
         "mươi",
-        "đem",
-        "muỗng"
+        "xe",
+        "má"
       ]
     },
     {
@@ -231,26 +231,26 @@
       "concept": "c_chin_nine",
       "distractors": [
         "gà",
-        "sắp",
-        "má"
+        "má",
+        "cô"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_tam_eight",
       "distractors": [
-        "phút",
-        "hay",
-        "trời"
+        "trời",
+        "cà",
+        "vui"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bay_seven",
       "distractors": [
-        "đau",
-        "bận",
-        "chưa"
+        "chưa",
+        "năm",
+        "mình"
       ]
     },
     {
@@ -258,8 +258,8 @@
       "concept": "c_sau_six",
       "distractors": [
         "sau",
-        "lấy",
-        "tuần"
+        "sữa",
+        "sống"
       ]
     },
     {

@@ -36,7 +36,7 @@
       "concept": "s_tinh_tien",
       "distractors": [
         "Em ơi, cho thêm chén.",
-        "Em ơi, ít cay thôi."
+        "Mời bác uống trà."
       ],
       "explain": {
         "fr": "tính tiền : l'addition.",
@@ -145,8 +145,8 @@
       "concept": "c_roi",
       "distractors": [
         "rối",
-        "chiều",
-        "ba"
+        "ba",
+        "ga"
       ]
     },
     {
@@ -155,9 +155,9 @@
       "answer": "tiền",
       "options": [
         "tiền",
-        "giỏi",
         "bàn",
-        "pin"
+        "nhỏ",
+        "chục"
       ],
       "translation": {
         "fr": "L'addition, s'il te plaît !",
@@ -171,8 +171,8 @@
       "options": [
         "no",
         "cậu",
-        "gỏi",
-        "ly"
+        "ly",
+        "có"
       ],
       "translation": {
         "fr": "Merci, j'ai assez mangé.",
@@ -183,9 +183,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_hay",
       "distractors": [
-        "giùm",
-        "coi",
-        "về"
+        "ba",
+        "mèo",
+        "khỏe"
       ]
     },
     {
@@ -193,16 +193,16 @@
       "concept": "s_ngon_qua",
       "distractors": [
         "tiền điện",
-        "Mệt quá!"
+        "mười một"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ngon",
       "distractors": [
-        "giờ",
         "tư",
-        "khám"
+        "đâu",
+        "cũng"
       ]
     },
     {
@@ -210,34 +210,34 @@
       "concept": "c_it",
       "distractors": [
         "cũng",
-        "thôi",
-        "mợ"
+        "mợ",
+        "rau"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_cay",
       "distractors": [
-        "đúng",
         "ngon",
-        "ít"
+        "ít",
+        "bạn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_mon",
       "distractors": [
-        "bớt",
         "nói",
-        "vườn"
+        "mốt",
+        "gặp"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_em_oi",
       "distractors": [
-        "bây giờ",
-        "Chưa xong."
+        "bà nội",
+        "hai mươi"
       ]
     },
     {
@@ -245,8 +245,8 @@
       "concept": "c_them",
       "distractors": [
         "trẻ",
-        "gói",
-        "giường"
+        "ông",
+        "cái"
       ]
     },
     {
@@ -254,8 +254,8 @@
       "concept": "c_dua",
       "distractors": [
         "phải",
-        "giá",
-        "ông"
+        "ông",
+        "bạn"
       ]
     },
     {

@@ -66,7 +66,8 @@
       "concept": "c_thuoc_medicine",
       "distractors": [
         "thuộc",
-        "thước"
+        "mười",
+        "phút"
       ],
       "explain": {
         "fr": "thuốc monte. thước : la règle.",
@@ -138,8 +139,8 @@
       "type": "listen_pick_text",
       "concept": "c_benh_vien",
       "distractors": [
-        "đồng nghiệp",
-        "nhưng mà"
+        "gọi lại",
+        "thành phố"
       ]
     },
     {
@@ -147,7 +148,7 @@
       "concept": "c_ngan_hang",
       "distractors": [
         "kế bên",
-        "bàn thờ"
+        "văn phòng"
       ]
     },
     {
@@ -165,15 +166,15 @@
       "distractors": [
         "ông",
         "thầy",
-        "quà"
+        "rẻ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nha_thuoc",
       "distractors": [
-        "tăng ca",
-        "yên tĩnh"
+        "năm ngoái",
+        "hôm qua"
       ]
     },
     {
@@ -189,18 +190,18 @@
       "type": "listen_pick_image",
       "concept": "c_ngan_hang",
       "distractors": [
-        "c_b_bong",
         "c_ky_su",
-        "c_vo"
+        "c_vo",
+        "c_bo_beef"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_tien",
       "distractors": [
-        "c_b_ve_so",
         "c_xe_buyt",
-        "c_bac"
+        "c_bac",
+        "c_thit"
       ]
     },
     {
@@ -218,9 +219,9 @@
       "answer": "thuốc",
       "options": [
         "thuốc",
-        "khám",
         "cũng",
-        "chuyện"
+        "gì",
+        "mây"
       ],
       "translation": {
         "fr": "Vends-moi un médicament contre le mal de tête. (à une femme un peu plus âgée)",
@@ -233,9 +234,9 @@
       "answer": "nhà thuốc",
       "options": [
         "nhà thuốc",
-        "tăng ca",
-        "yên tĩnh",
-        "khi nào"
+        "khi nào",
+        "bây giờ",
+        "thứ bảy"
       ],
       "translation": {
         "fr": "C'est tout près. La pharmacie est à côté de la banque.",
@@ -248,9 +249,9 @@
       "answer": "bệnh viện",
       "options": [
         "bệnh viện",
-        "đồng nghiệp",
-        "nhưng mà",
-        "chủ nhật"
+        "chủ nhật",
+        "Không phải.",
+        "tụi mình"
       ],
       "translation": {
         "fr": "L'école est entre le parc et l'hôpital.",

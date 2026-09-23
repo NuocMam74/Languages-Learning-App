@@ -149,7 +149,7 @@
       "concept": "s_b_con_moi_ba_ma",
       "distractors": [
         "Chị nhắn lại giùm em nha.",
-        "Nếu mưa thì tui ở nhà."
+        "Anh điền vô đơn này nha."
       ]
     },
     {
@@ -157,7 +157,7 @@
       "concept": "s_b_da_con_no_roi",
       "distractors": [
         "Mọi người thấy sao?",
-        "Để bữa khác nha."
+        "Cho em xuống đây."
       ]
     },
     {
@@ -191,8 +191,8 @@
       "options": [
         "Con mời ba má ăn cơm.",
         "Chị nhắn lại giùm em nha.",
-        "Nếu mưa thì tui ở nhà.",
-        "Tết này tui về miền Tây."
+        "Anh nói chậm lại được không?",
+        "Tối nay tui phải tăng ca."
       ],
       "translation": {
         "fr": "Je vous en prie, papa, maman, mangez.",

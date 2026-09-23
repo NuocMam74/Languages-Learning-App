@@ -74,8 +74,8 @@
       "type": "listen_pick_text",
       "concept": "c_xe_may",
       "distractors": [
-        "xe mây",
-        "xe mấy"
+        "xe mấy",
+        "thành phố"
       ],
       "explain": {
         "fr": "xe máy : la moto. máy monte.",
@@ -117,16 +117,16 @@
       "type": "listen_pick_text",
       "concept": "c_xe_buyt",
       "distractors": [
-        "năm ngoái",
-        "hủ tiếu"
+        "hủ tiếu",
+        "công ty"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_xe_hoi",
       "distractors": [
-        "yên tĩnh",
-        "nghỉ phép"
+        "danh thiếp",
+        "đi làm"
       ]
     },
     {
@@ -142,7 +142,7 @@
       "concept": "c_xe_dap",
       "distractors": [
         "sân bay",
-        "phong bì"
+        "hủ tiếu"
       ]
     },
     {
@@ -160,9 +160,9 @@
       "answer": "xe máy",
       "options": [
         "xe máy",
-        "phong bì",
-        "đèn đỏ",
-        "ngày xưa"
+        "bà nội",
+        "Dạ, có.",
+        "bằng tuổi"
       ],
       "translation": {
         "fr": "Aujourd'hui, tout le monde a une moto.",

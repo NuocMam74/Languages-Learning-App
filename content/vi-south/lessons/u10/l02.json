@@ -169,8 +169,8 @@
       "type": "listen_pick_text",
       "concept": "s_gan_day",
       "distractors": [
-        "uống thuốc",
-        "Đây là…"
+        "Đây là…",
+        "mười một"
       ]
     },
     {
@@ -178,23 +178,23 @@
       "concept": "c_nha_ve_sinh",
       "distractors": [
         "anh chị em",
-        "nón bảo hiểm"
+        "lớn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_khach_san",
       "distractors": [
-        "nghỉ phép",
-        "tài khoản"
+        "trường học",
+        "văn phòng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_san_bay",
       "distractors": [
-        "đám cưới",
-        "làm việc"
+        "làm việc",
+        "hủ tiếu"
       ]
     },
     {
@@ -204,8 +204,8 @@
       "options": [
         "nhà vệ sinh",
         "anh chị em",
-        "nón bảo hiểm",
-        "quán cà phê"
+        "Lúc mấy giờ?",
+        "Chị tên gì?"
       ],
       "translation": {
         "fr": "Où sont les toilettes ?"
@@ -217,9 +217,9 @@
       "answer": "khách sạn",
       "options": [
         "khách sạn",
-        "nghỉ phép",
-        "tài khoản",
-        "xe ôm"
+        "ông ngoại",
+        "bằng tuổi",
+        "bà nội"
       ],
       "translation": {
         "fr": "Pardon, où est l'hôtel ? (à un homme un peu plus âgé)",
@@ -232,9 +232,9 @@
       "answer": "đây",
       "options": [
         "đây",
-        "thuốc",
         "mèo",
-        "lên"
+        "chiều",
+        "xin"
       ],
       "translation": {
         "fr": "ici",
@@ -247,9 +247,9 @@
       "answer": "gần đây",
       "options": [
         "gần đây",
-        "uống thuốc",
         "Đây là…",
-        "nghỉ ngơi"
+        "thối tiền",
+        "thịt heo"
       ],
       "translation": {
         "fr": "Le marché est près d'ici ?",
@@ -303,8 +303,8 @@
       "type": "listen_pick_text",
       "concept": "c_ngan_hang",
       "distractors": [
-        "giả sử",
-        "trả lời"
+        "nước mía",
+        "hôm qua"
       ]
     },
     {
@@ -312,7 +312,7 @@
       "concept": "c_cong_vien",
       "distractors": [
         "bình thường",
-        "xe hơi"
+        "danh thiếp"
       ]
     },
     {

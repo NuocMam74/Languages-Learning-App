@@ -30,7 +30,7 @@
       "concept": "s_em_da_an_roi",
       "distractors": [
         "Em chưa ăn.",
-        "Em đang ăn."
+        "Bao nhiêu một ký?"
       ],
       "explain": {
         "fr": "đã… rồi : déjà fait.",
@@ -69,8 +69,7 @@
         "em",
         "đã",
         "đi",
-        "chợ",
-        "sẽ"
+        "chợ"
       ],
       "translation": {
         "fr": "Hier, je suis allé(e) au marché.",
@@ -112,7 +111,8 @@
       "options": [
         "rồi",
         "rối",
-        "roi"
+        "tối",
+        "về"
       ],
       "translation": {
         "fr": "J'ai déjà mangé.",
@@ -140,26 +140,26 @@
       "type": "listen_pick_text",
       "concept": "c_xong",
       "distractors": [
-        "lẩu",
-        "phim",
-        "gần"
+        "gần",
+        "ghế",
+        "nào"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_pho",
       "distractors": [
-        "mở",
-        "nghĩ",
-        "bớt"
+        "bớt",
+        "chỉ",
+        "trưa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_banh_mi",
       "distractors": [
-        "nhắn tin",
-        "đồng ý"
+        "hủ tiếu",
+        "cảm ơn"
       ]
     },
     {
@@ -175,9 +175,9 @@
       "type": "listen_pick_text",
       "concept": "c_com",
       "distractors": [
-        "muốn",
         "thím",
-        "khỏe"
+        "khỏe",
+        "học"
       ]
     },
     {
@@ -193,9 +193,9 @@
       "type": "listen_pick_image",
       "concept": "c_banh_mi",
       "distractors": [
-        "c_b_don",
         "c_ga_chicken",
-        "c_com"
+        "c_com",
+        "c_cho_market"
       ]
     },
     {
@@ -206,7 +206,7 @@
         "đã",
         "đá",
         "heo",
-        "theo"
+        "đa"
       ],
       "translation": {
         "fr": "Hier, je suis allé(e) au marché.",
@@ -234,9 +234,9 @@
       "answer": "cơm",
       "options": [
         "cơm",
-        "muốn",
         "thím",
-        "khỏe"
+        "khỏe",
+        "xin"
       ],
       "translation": {
         "fr": "Tu as mangé ? (salutation entre proches)",
@@ -249,9 +249,9 @@
       "answer": "phở",
       "options": [
         "phở",
-        "mở",
-        "nghĩ",
-        "bớt"
+        "bớt",
+        "chào",
+        "tư"
       ],
       "translation": {
         "fr": "Un bol de phở, s'il te plaît.",

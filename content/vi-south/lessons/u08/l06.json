@@ -88,8 +88,8 @@
       "type": "listen_pick_text",
       "concept": "s_thoi_tien",
       "distractors": [
-        "thời tiết",
-        "thôi tiền"
+        "thôi tiền",
+        "tiếng Việt"
       ],
       "explain": {
         "fr": "thối tiền : rendre la monnaie. thời tiết : la météo.",
@@ -123,7 +123,8 @@
       "concept": "c_thoi",
       "distractors": [
         "thối",
-        "thời"
+        "trời",
+        "nội"
       ],
       "explain": {
         "fr": "thôi, plat : ça suffit. thối monte : rendre la monnaie.",
@@ -160,8 +161,8 @@
       "concept": "c_tien",
       "distractors": [
         "c_co_aunt",
-        "c_lau_floor",
-        "c_b_nghi_phep"
+        "c_bac",
+        "c_trung"
       ]
     },
     {
@@ -172,7 +173,7 @@
         "trả",
         "trà",
         "hay",
-        "giùm"
+        "tra"
       ],
       "translation": {
         "fr": "Je vous paie, d'accord ? (à une vendeuse un peu plus âgée)",
@@ -187,7 +188,7 @@
         "thôi",
         "chín",
         "thưa",
-        "xong"
+        "bốn"
       ],
       "translation": {
         "fr": "Juste un peu piquant, s'il te plaît.",
@@ -262,8 +263,8 @@
       "type": "listen_pick_text",
       "concept": "s_thit_heo",
       "distractors": [
-        "uống thuốc",
-        "Chào anh."
+        "Chào anh.",
+        "Mắc quá!"
       ]
     },
     {
@@ -271,8 +272,8 @@
       "concept": "c_heo",
       "distractors": [
         "mả",
-        "nhen",
-        "đợi"
+        "lớn",
+        "Pháp"
       ]
     },
     {
@@ -280,8 +281,8 @@
       "concept": "c_thit",
       "distractors": [
         "cho",
-        "sớm",
-        "trời"
+        "trời",
+        "dì"
       ]
     },
     {
@@ -289,8 +290,8 @@
       "concept": "c_lay",
       "distractors": [
         "học",
-        "xong",
-        "no"
+        "no",
+        "sách"
       ]
     }
   ],

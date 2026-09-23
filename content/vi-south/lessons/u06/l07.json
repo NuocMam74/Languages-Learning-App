@@ -147,8 +147,8 @@
       "concept": "c_mot_one",
       "distractors": [
         "mốt",
-        "lãnh",
-        "sắp"
+        "cháu",
+        "vậy"
       ]
     },
     {
@@ -164,8 +164,8 @@
       "type": "listen_pick_text",
       "concept": "s_anh_bao_nhieu_tuoi",
       "distractors": [
-        "Em đã ăn rồi.",
-        "Người đó là ai?"
+        "Mời bác uống trà.",
+        "Anh làm nghề gì?"
       ]
     },
     {
@@ -181,8 +181,8 @@
       "concept": "c_muoi_ten",
       "distractors": [
         "mươi",
-        "chuối",
-        "hơn"
+        "hơn",
+        "trăm"
       ]
     },
     {
@@ -190,35 +190,35 @@
       "concept": "c_muoi_tens",
       "distractors": [
         "mười",
-        "chủ",
-        "hông"
+        "hông",
+        "xe"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bay_seven",
       "distractors": [
-        "thêm",
-        "chuối",
-        "cần"
+        "cô",
+        "mả",
+        "sống"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_tam_eight",
       "distractors": [
-        "coi",
-        "bên",
-        "nên"
+        "da",
+        "đi",
+        "tên"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chin_nine",
       "distractors": [
-        "họp",
         "ly",
-        "gặp"
+        "gặp",
+        "cậu"
       ]
     },
     {
@@ -228,8 +228,8 @@
       "options": [
         "mười",
         "mươi",
-        "chuối",
-        "hơn"
+        "hơn",
+        "hông"
       ],
       "translation": {
         "fr": "Mon petit frère a dix ans.",
@@ -243,8 +243,8 @@
       "options": [
         "mươi",
         "mười",
-        "chủ",
-        "hông"
+        "hông",
+        "chỉ"
       ],
       "translation": {
         "fr": "Elle a vingt-cinq ans.",
@@ -258,8 +258,8 @@
       "options": [
         "một",
         "mốt",
-        "lãnh",
-        "sắp"
+        "mình",
+        "cháu"
       ],
       "translation": {
         "fr": "Chez moi, il y a un chien.",

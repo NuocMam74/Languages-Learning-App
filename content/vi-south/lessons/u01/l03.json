@@ -120,7 +120,7 @@
       "distractors": [
         "bà",
         "bả",
-        "hẹn"
+        "em"
       ]
     },
     {
@@ -128,34 +128,34 @@
       "concept": "c_toi",
       "distractors": [
         "tối",
-        "no",
-        "cười"
+        "ông",
+        "tui"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_day_la",
       "distractors": [
-        "Thiệt há?",
-        "tuần sau"
+        "chúng tôi",
+        "Chào anh."
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ma_mom",
       "distractors": [
-        "c_meo",
-        "c_troi",
-        "c_rau"
+        "c_chu",
+        "c_ong",
+        "c_chi"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ba_grandma",
       "distractors": [
-        "c_ho_cough",
         "c_co_aunt",
-        "c_chieu"
+        "c_ba",
+        "c_anh"
       ]
     },
     {
@@ -166,7 +166,7 @@
         "ba",
         "bà",
         "bả",
-        "hẹn"
+        "mươi"
       ],
       "translation": {
         "fr": "Voici mon père.",
@@ -208,24 +208,24 @@
       "concept": "c_em",
       "distractors": [
         "mười",
-        "nghĩ",
-        "mất"
+        "tám",
+        "anh"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_chao_anh",
       "distractors": [
-        "đi thẳng",
-        "Tui thấy…"
+        "mười một",
+        "tụi mình"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_cam_on",
       "distractors": [
-        "ngân hàng",
-        "du lịch"
+        "hai",
+        "mốt"
       ]
     },
     {
@@ -233,8 +233,8 @@
       "concept": "c_da",
       "distractors": [
         "da",
-        "bị",
-        "tháng"
+        "mươi",
+        "má"
       ]
     },
     {
@@ -242,8 +242,8 @@
       "concept": "c_chi",
       "distractors": [
         "chỉ",
-        "tô",
-        "quá"
+        "bốn",
+        "trăm"
       ]
     },
     {

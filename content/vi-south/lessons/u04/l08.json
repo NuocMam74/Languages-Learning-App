@@ -195,66 +195,36 @@
       "type": "listen_pick_text",
       "concept": "c_thim",
       "distractors": [
-        "chua",
-        "rút",
-        "mặn"
+        "nhỏ",
+        "bàn",
+        "dượng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_anh_hai",
       "distractors": [
-        "tăng ca",
-        "phòng trọ"
+        "ông xã",
+        "bình thường"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_vo",
       "distractors": [
-        "thuê",
-        "thích",
-        "không"
+        "không",
+        "chỉ",
+        "thưa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_meo",
       "distractors": [
-        "heo",
-        "hiểu",
-        "thích"
+        "đi",
+        "mì",
+        "nhà"
       ]
-    },
-    {
-      "type": "fill_gap",
-      "text": "___ tôi ở Cần Thơ.",
-      "answer": "anh hai",
-      "options": [
-        "anh hai",
-        "tăng ca",
-        "phòng trọ",
-        "hợp đồng"
-      ],
-      "translation": {
-        "fr": "Mon frère aîné habite à Cần Thơ.",
-        "en": "My eldest brother lives in Cần Thơ."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "Anh ___ tôi ở Cần Thơ.",
-      "answer": "hai",
-      "options": [
-        "hai",
-        "ly",
-        "sai",
-        "khá"
-      ],
-      "translation": {
-        "fr": "Mon frère aîné habite à Cần Thơ.",
-        "en": "My eldest brother lives in Cần Thơ."
-      }
     },
     {
       "type": "fill_gap",
@@ -262,9 +232,9 @@
       "answer": "vợ",
       "options": [
         "vợ",
-        "thuê",
-        "thích",
-        "không"
+        "không",
+        "bà",
+        "quê"
       ],
       "translation": {
         "fr": "Voici ma femme.",
@@ -277,9 +247,9 @@
       "answer": "bà nội",
       "options": [
         "bà nội",
-        "đi thẳng",
-        "tuần sau",
-        "Đỡ rồi."
+        "ông ngoại",
+        "tụi mình",
+        "tiếng Việt"
       ],
       "translation": {
         "fr": "Ma grand-mère paternelle est encore en pleine forme.",
@@ -288,13 +258,43 @@
     },
     {
       "type": "fill_gap",
+      "text": "___ tôi ở Cần Thơ.",
+      "answer": "anh hai",
+      "options": [
+        "anh hai",
+        "xin lỗi",
+        "bà xã",
+        "bình thường"
+      ],
+      "translation": {
+        "fr": "Mon frère aîné habite à Cần Thơ.",
+        "en": "My eldest brother lives in Cần Thơ."
+      }
+    },
+    {
+      "type": "fill_gap",
+      "text": "Anh ___ tôi ở Cần Thơ.",
+      "answer": "hai",
+      "options": [
+        "hai",
+        "chợ",
+        "đi",
+        "cá"
+      ],
+      "translation": {
+        "fr": "Mon frère aîné habite à Cần Thơ.",
+        "en": "My eldest brother lives in Cần Thơ."
+      }
+    },
+    {
+      "type": "fill_gap",
       "text": "___ Út tôi ở Sài Gòn.",
       "answer": "dì",
       "options": [
         "dì",
-        "chó",
-        "rau",
-        "già"
+        "ạ",
+        "ngoại",
+        "xa"
       ],
       "translation": {
         "fr": "Ma plus jeune tante (côté mère) habite à Saïgon.",

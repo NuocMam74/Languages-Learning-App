@@ -157,16 +157,16 @@
       "type": "listen_pick_text",
       "concept": "s_nha_ve_sinh_o_dau",
       "distractors": [
-        "Có lẽ mai trời mưa.",
-        "Anh có thích phở không?"
+        "Bớt cho em đi chị.",
+        "Rất vui được gặp chị."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_cong_vien",
       "distractors": [
-        "năm ngoái",
-        "kẹt xe"
+        "bên trái",
+        "nước mía"
       ]
     },
     {
@@ -190,8 +190,8 @@
       "type": "listen_pick_text",
       "concept": "c_ben_phai",
       "distractors": [
-        "yên tĩnh",
-        "cây xăng"
+        "cây xăng",
+        "nước mắm"
       ]
     },
     {
@@ -206,18 +206,18 @@
       "type": "listen_pick_text",
       "concept": "c_truoc",
       "distractors": [
-        "bận",
-        "nhanh",
-        "đẹp"
+        "tôi",
+        "ai",
+        "họp"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_cho_market",
       "distractors": [
-        "c_xe_may",
         "c_ngan_hang",
-        "c_xe_buyt"
+        "c_con",
+        "c_tra_tea"
       ]
     },
     {
@@ -225,8 +225,8 @@
       "concept": "c_ben_phai",
       "distractors": [
         "c_toi_evening",
-        "c_chia_khoa",
-        "c_ngan_hang"
+        "c_ngan_hang",
+        "c_co_aunt"
       ]
     },
     {
@@ -235,9 +235,9 @@
       "answer": "công viên",
       "options": [
         "công viên",
-        "năm ngoái",
-        "kẹt xe",
-        "bình thường"
+        "bình thường",
+        "hai mươi",
+        "trà đá"
       ],
       "translation": {
         "fr": "L'école est entre le parc et l'hôpital.",
@@ -265,9 +265,9 @@
       "answer": "kế bên",
       "options": [
         "kế bên",
-        "nhắn tin",
-        "đồng nghiệp",
-        "bệnh viện"
+        "bệnh viện",
+        "gần đây",
+        "trà đá"
       ],
       "translation": {
         "fr": "Le café est à côté du marché.",

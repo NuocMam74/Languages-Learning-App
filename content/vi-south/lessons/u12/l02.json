@@ -143,8 +143,8 @@
       "type": "listen_pick_text",
       "concept": "c_benh_vien",
       "distractors": [
-        "nhà thuốc",
-        "trúng số"
+        "chút xíu",
+        "đèn đỏ"
       ]
     },
     {
@@ -152,7 +152,7 @@
       "concept": "c_ngan_hang",
       "distractors": [
         "nhân viên",
-        "hộ chiếu"
+        "bao nhiêu"
       ]
     },
     {
@@ -188,9 +188,9 @@
       "answer": "Cái nào?",
       "options": [
         "Cái nào?",
-        "Chưa xong.",
         "Không phải.",
-        "tiếng Việt"
+        "tiếng Việt",
+        "tụi mình"
       ],
       "translation": {
         "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",
@@ -218,9 +218,9 @@
       "answer": "bệnh viện",
       "options": [
         "bệnh viện",
-        "nhà thuốc",
-        "trúng số",
-        "trường học"
+        "trường học",
+        "thối tiền",
+        "thịt heo"
       ],
       "translation": {
         "fr": "L'école est entre le parc et l'hôpital.",
@@ -234,8 +234,8 @@
       "options": [
         "ngân hàng",
         "nhân viên",
-        "hộ chiếu",
-        "máy tính"
+        "máy tính",
+        "người Việt"
       ],
       "translation": {
         "fr": "La banque est à gauche.",

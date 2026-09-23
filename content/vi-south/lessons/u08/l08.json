@@ -187,18 +187,18 @@
       "type": "listen_pick_text",
       "concept": "c_re",
       "distractors": [
-        "cần",
-        "mở",
-        "trả"
+        "trả",
+        "ghế",
+        "canh"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chuoi",
       "distractors": [
-        "bị",
         "chút",
-        "đội"
+        "mạ",
+        "cổ"
       ]
     },
     {
@@ -218,7 +218,7 @@
         "đồng",
         "bắp",
         "chút",
-        "xấu"
+        "tô"
       ],
       "translation": {
         "fr": "Quinze mille đồng.",
@@ -231,9 +231,9 @@
       "answer": "Bao nhiêu một ký?",
       "options": [
         "Bao nhiêu một ký?",
-        "Mọi người thấy sao?",
         "Anh có vợ chưa?",
-        "Phim này hay quá!"
+        "Chị làm ở đâu?",
+        "Anh làm nghề gì?"
       ],
       "translation": {
         "fr": "Combien le kilo de mangues ?",
@@ -291,7 +291,7 @@
       "concept": "s_thoi_tien",
       "distractors": [
         "trà đá",
-        "đi thẳng"
+        "bà nội"
       ]
     }
   ],

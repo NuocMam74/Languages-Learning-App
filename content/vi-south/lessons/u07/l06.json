@@ -58,8 +58,9 @@
       "type": "listen_pick_text",
       "concept": "c_man",
       "distractors": [
-        "màn",
-        "măn"
+        "măn",
+        "lắm",
+        "vợ"
       ],
       "explain": {
         "fr": "mặn tombe court : salé. màn descend : le rideau.",
@@ -138,17 +139,17 @@
       "type": "listen_pick_text",
       "concept": "c_nuoc_mam",
       "distractors": [
-        "trường học",
-        "kỹ sư"
+        "kỹ sư",
+        "danh thiếp"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ot",
       "distractors": [
-        "khác",
-        "đắng",
-        "rảnh"
+        "ạ",
+        "chén",
+        "của"
       ]
     },
     {
@@ -164,9 +165,9 @@
       "type": "listen_pick_text",
       "concept": "c_canh",
       "distractors": [
-        "hơi",
-        "nhờ",
-        "đâu"
+        "đâu",
+        "con",
+        "dì"
       ]
     },
     {
@@ -176,8 +177,8 @@
       "options": [
         "chua",
         "chùa",
-        "đã",
-        "nên"
+        "chồng",
+        "no"
       ],
       "translation": {
         "fr": "soupe aigre (au tamarin)",
@@ -190,9 +191,9 @@
       "answer": "canh",
       "options": [
         "canh",
-        "hơi",
-        "nhờ",
-        "đâu"
+        "đâu",
+        "khỏe",
+        "ổng"
       ],
       "translation": {
         "fr": "La soupe aigre est délicieuse.",
@@ -232,9 +233,9 @@
       "type": "listen_pick_text",
       "concept": "c_no_full",
       "distractors": [
-        "bận",
-        "chủ",
-        "nói"
+        "nói",
+        "còn",
+        "mời"
       ]
     },
     {
@@ -242,25 +243,25 @@
       "concept": "c_tien",
       "distractors": [
         "sách",
-        "trứng",
-        "quà"
+        "bốn",
+        "em"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_tinh_tien",
       "distractors": [
-        "Chúc mừng năm mới!",
-        "Em đau ở đây."
+        "Anh có vợ chưa?",
+        "Mời bác uống trà."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_b_hay",
       "distractors": [
-        "hổng",
         "chén",
-        "nội"
+        "nội",
+        "ngoại"
       ]
     },
     {

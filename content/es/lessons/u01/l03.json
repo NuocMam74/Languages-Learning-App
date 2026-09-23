@@ -69,7 +69,8 @@
       "concept": "c_es_diez",
       "distractors": [
         "dos",
-        "doce"
+        "gracias",
+        "cuatro"
       ],
       "explain": {
         "fr": "Diez (10) finit par z, prononcé « s » en Amérique latine.",

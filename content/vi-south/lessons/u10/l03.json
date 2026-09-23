@@ -47,7 +47,8 @@
       "concept": "c_gan",
       "distractors": [
         "gân",
-        "gắn"
+        "thứ",
+        "còn"
       ],
       "explain": {
         "fr": "gần descend : près. gân, plat : le tendon.",
@@ -116,8 +117,8 @@
       "type": "listen_pick_text",
       "concept": "s_gan_day",
       "distractors": [
-        "gần đó",
-        "xa đây"
+        "xa đây",
+        "nửa ký"
       ],
       "explain": {
         "fr": "gần đây : près d'ici. gần đó : près de là.",
@@ -130,8 +131,9 @@
       "answer": "gần",
       "options": [
         "gần",
-        "cần",
-        "gắn"
+        "cho",
+        "mới",
+        "trái"
       ],
       "translation": {
         "fr": "Le marché est près d'ici ?",
@@ -155,16 +157,16 @@
       "type": "listen_pick_text",
       "concept": "c_quan_ca_phe",
       "distractors": [
-        "nón bảo hiểm",
-        "trạm xe buýt"
+        "nhà vệ sinh",
+        "anh chị em"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_cay_xang",
       "distractors": [
-        "ước gì",
-        "chị hai"
+        "chị hai",
+        "cảm ơn"
       ]
     },
     {
@@ -181,8 +183,8 @@
       "concept": "c_cho_market",
       "distractors": [
         "c_ca_phe",
-        "c_phong",
-        "c_anh_hai"
+        "c_anh_hai",
+        "c_chi_hai"
       ]
     },
     {
@@ -191,9 +193,9 @@
       "answer": "gần đây",
       "options": [
         "gần đây",
-        "Hổng biết.",
-        "tuần sau",
-        "Dở quá!"
+        "thịt heo",
+        "một trăm",
+        "tiếng Việt"
       ],
       "translation": {
         "fr": "Le marché est près d'ici ?",
@@ -266,8 +268,8 @@
       "concept": "c_day_here",
       "distractors": [
         "không",
-        "chích",
-        "chậm"
+        "chậm",
+        "họp"
       ]
     },
     {
@@ -275,7 +277,7 @@
       "concept": "c_san_bay",
       "distractors": [
         "trường học",
-        "ước gì"
+        "bánh mì"
       ]
     },
     {

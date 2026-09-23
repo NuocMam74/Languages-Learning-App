@@ -89,7 +89,8 @@
       "concept": "c_gan",
       "distractors": [
         "gân",
-        "gắn"
+        "mèo",
+        "heo"
       ],
       "explain": {
         "fr": "gần : près.",
@@ -218,8 +219,8 @@
       "type": "listen_pick_text",
       "concept": "c_benh_vien",
       "distractors": [
-        "tài khoản",
-        "trái cây"
+        "trái cây",
+        "giáo viên"
       ]
     },
     {
@@ -235,15 +236,15 @@
       "concept": "c_cay_xang",
       "distractors": [
         "nước mắm",
-        "chụp hình"
+        "kế bên"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ben_phai",
       "distractors": [
-        "chung cư",
-        "điền đơn"
+        "chị hai",
+        "cà phê"
       ]
     },
     {
@@ -270,9 +271,9 @@
       "answer": "bệnh viện",
       "options": [
         "bệnh viện",
-        "tài khoản",
         "trái cây",
-        "đám cưới"
+        "người Pháp",
+        "Ngon quá!"
       ],
       "translation": {
         "fr": "L'école est entre le parc et l'hôpital.",

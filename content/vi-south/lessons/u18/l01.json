@@ -145,9 +145,9 @@
       "type": "listen_pick_text",
       "concept": "c_b_sep",
       "distractors": [
-        "cưới",
         "vì",
-        "nhớ"
+        "món",
+        "lầu"
       ]
     },
     {
@@ -155,7 +155,7 @@
       "concept": "c_b_dong_nghiep",
       "distractors": [
         "lúc đó",
-        "đám giỗ"
+        "năm sau"
       ]
     },
     {
@@ -170,8 +170,8 @@
       "type": "listen_pick_text",
       "concept": "c_van_phong",
       "distractors": [
-        "du lịch",
-        "năm ngoái"
+        "năm ngoái",
+        "đi làm"
       ]
     },
     {
@@ -181,8 +181,8 @@
       "options": [
         "đồng nghiệp",
         "lúc đó",
-        "đám giỗ",
-        "kẹt xe"
+        "kẹt xe",
+        "số nhà"
       ],
       "translation": {
         "fr": "Voici mon collègue.",
@@ -195,9 +195,9 @@
       "answer": "công ty",
       "options": [
         "công ty",
-        "ước gì",
         "nhân viên",
-        "sinh viên"
+        "sinh viên",
+        "tuần trước"
       ],
       "translation": {
         "fr": "Je travaille pour une entreprise française.",
@@ -210,9 +210,9 @@
       "answer": "văn phòng",
       "options": [
         "văn phòng",
-        "du lịch",
         "năm ngoái",
-        "cảm ơn"
+        "cảm ơn",
+        "sau Tết"
       ],
       "translation": {
         "fr": "Mon bureau est dans le 1er arrondissement.",

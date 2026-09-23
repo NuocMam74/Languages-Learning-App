@@ -109,7 +109,8 @@
       "options": [
         "mấy",
         "mây",
-        "máy"
+        "cũng",
+        "cá"
       ],
       "translation": {
         "fr": "Quelle heure est-il ?",
@@ -142,8 +143,8 @@
       "concept": "c_ruoi",
       "distractors": [
         "ngủ",
-        "bận",
-        "hay"
+        "hay",
+        "ai"
       ]
     },
     {
@@ -167,9 +168,9 @@
       "answer": "phút",
       "options": [
         "phút",
-        "khác",
-        "há",
-        "dì"
+        "dì",
+        "của",
+        "tư"
       ],
       "translation": {
         "fr": "Sept heures quinze.",
@@ -183,8 +184,8 @@
       "options": [
         "rưỡi",
         "ngủ",
-        "bận",
-        "hay"
+        "hay",
+        "tám"
       ],
       "translation": {
         "fr": "deux heures et demie",

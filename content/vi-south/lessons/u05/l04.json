@@ -116,7 +116,7 @@
       "concept": "c_nhan_vien",
       "distractors": [
         "nhân viện",
-        "nhan viên"
+        "họ hàng"
       ],
       "explain": {
         "fr": "nhân viên : l'employé. Les deux syllabes restent hautes et plates.",
@@ -145,33 +145,33 @@
       "type": "listen_pick_text",
       "concept": "c_bac_si",
       "distractors": [
-        "hồi nãy",
-        "tăng ca"
+        "ông bà",
+        "giáo viên"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sinh_vien",
       "distractors": [
-        "sầu riêng",
-        "anh hai"
+        "anh hai",
+        "kỹ sư"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ky_su",
       "distractors": [
-        "đám cưới",
-        "bao giờ"
+        "chị hai",
+        "anh ba"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_giao_vien",
       "distractors": [
-        "c_chieu",
-        "c_ben_phai",
-        "c_dua_coconut"
+        "c_dua_coconut",
+        "c_sach",
+        "c_chong"
       ]
     },
     {
@@ -180,9 +180,9 @@
       "answer": "kỹ sư",
       "options": [
         "kỹ sư",
-        "đám cưới",
-        "bao giờ",
-        "thành phố"
+        "thành phố",
+        "mười một",
+        "chúng tôi"
       ],
       "translation": {
         "fr": "Je suis ingénieur(e).",
@@ -201,8 +201,8 @@
       "type": "listen_pick_text",
       "concept": "c_thanh_pho",
       "distractors": [
-        "xe buýt",
-        "hết hạn"
+        "sinh viên",
+        "ông bà"
       ]
     },
     {
@@ -210,8 +210,8 @@
       "concept": "c_moi_just",
       "distractors": [
         "mời",
-        "rảnh",
-        "dở"
+        "sáu",
+        "chị"
       ]
     },
     {
@@ -220,7 +220,7 @@
       "distractors": [
         "quá",
         "quà",
-        "điện"
+        "ở"
       ]
     },
     {
@@ -228,16 +228,16 @@
       "concept": "c_song_live",
       "distractors": [
         "sông",
-        "sai",
-        "kể"
+        "bạn",
+        "cô"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_viet_kieu",
       "distractors": [
-        "xe máy",
-        "kỹ sư"
+        "kỹ sư",
+        "sinh viên"
       ]
     }
   ],

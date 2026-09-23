@@ -140,9 +140,9 @@
       "type": "listen_pick_image",
       "concept": "c_ma_mom",
       "distractors": [
-        "c_b_dam_cuoi",
-        "c_tien",
-        "c_anh"
+        "c_anh",
+        "c_em",
+        "c_ba_grandma"
       ]
     },
     {

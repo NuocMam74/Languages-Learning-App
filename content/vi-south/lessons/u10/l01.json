@@ -80,7 +80,7 @@
       "concept": "c_ngan_hang",
       "distractors": [
         "ngân hạng",
-        "ngăn hàng"
+        "xin lỗi"
       ],
       "explain": {
         "fr": "ngân plat, hàng descend : la banque.",
@@ -130,8 +130,8 @@
       "type": "listen_pick_text",
       "concept": "c_truong_hoc",
       "distractors": [
-        "chung cư",
-        "chút xíu"
+        "chút xíu",
+        "Việt kiều"
       ]
     },
     {
@@ -147,15 +147,15 @@
       "concept": "c_cong_vien",
       "distractors": [
         "nhân viên",
-        "máy tính"
+        "nước mắm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nha_ve_sinh",
       "distractors": [
-        "nón bảo hiểm",
-        "trạm xe buýt"
+        "anh chị em",
+        "ngọt"
       ]
     },
     {
@@ -182,9 +182,9 @@
       "answer": "nhà vệ sinh",
       "options": [
         "nhà vệ sinh",
-        "nón bảo hiểm",
-        "trạm xe buýt",
-        "anh chị em"
+        "anh chị em",
+        "Anh ở đâu?",
+        "Anh khỏe không?"
       ],
       "translation": {
         "fr": "Où sont les toilettes ?"

@@ -98,7 +98,8 @@
       "concept": "c_cay",
       "distractors": [
         "cày",
-        "cây"
+        "con",
+        "tốt"
       ],
       "explain": {
         "fr": "cay : piquant.",
@@ -143,17 +144,17 @@
       "type": "listen_pick_text",
       "concept": "s_cho_em_to_pho",
       "distractors": [
-        "Cho em gặp anh Minh.",
-        "Sau đó tui qua Pháp."
+        "Chị là người nước nào?",
+        "Rất vui được gặp chị."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_pho",
       "distractors": [
-        "hẻm",
         "ông",
-        "bông"
+        "cơm",
+        "dừa"
       ]
     },
     {
@@ -161,8 +162,8 @@
       "concept": "c_muong",
       "distractors": [
         "trẻ",
-        "nhen",
-        "lấy"
+        "năm",
+        "chè"
       ]
     },
     {
@@ -178,50 +179,50 @@
       "concept": "c_com_tam",
       "distractors": [
         "công viên",
-        "hồi đó"
+        "cảm ơn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_banh_mi",
       "distractors": [
-        "trả lời",
-        "bà xã"
+        "bà xã",
+        "bác sĩ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nuoc_mia",
       "distractors": [
-        "trả lời",
-        "bệnh viện"
+        "danh thiếp",
+        "bác sĩ"
       ]
     },
     {
-      "type": "listen_pick_image",
+      "type": "listen_pick_text",
       "concept": "s_tra_da",
       "distractors": [
-        "s_dau_bung",
-        "s_queo_trai",
-        "s_nhuc_dau"
+        "tụi mình",
+        "người Pháp",
+        "ông ngoại"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_com_tam",
       "distractors": [
-        "c_sot",
-        "c_chua_pagoda",
-        "c_may_lanh"
+        "c_banh_mi",
+        "c_cho_dog",
+        "c_mi"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_banh_mi",
       "distractors": [
-        "c_chia_khoa",
-        "c_b_qua_gift",
-        "c_sau_rieng"
+        "c_ga_station",
+        "c_trai_fruit",
+        "c_ca_phe"
       ]
     },
     {
@@ -230,9 +231,9 @@
       "answer": "phở",
       "options": [
         "phở",
-        "hẻm",
         "ông",
-        "bông"
+        "lớp",
+        "sách"
       ],
       "translation": {
         "fr": "Un bol de phở, s'il te plaît.",

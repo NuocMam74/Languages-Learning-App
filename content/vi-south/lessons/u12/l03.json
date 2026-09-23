@@ -116,7 +116,8 @@
       "concept": "c_sao_why",
       "distractors": [
         "sáo",
-        "xao"
+        "hẹn",
+        "cháu"
       ],
       "explain": {
         "fr": "sao : s du Sud, bien distinct de x.",
@@ -128,7 +129,7 @@
       "concept": "s_tai_sao_em_hoc",
       "distractors": [
         "Tại sao em hỏi?",
-        "Khi nào em học?"
+        "Anh chở em ra chợ nha."
       ],
       "explain": {
         "fr": "học : étudier. hỏi : demander.",
@@ -149,16 +150,16 @@
       "distractors": [
         "rưỡi",
         "gì",
-        "giỡn"
+        "ngon"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hoc",
       "distractors": [
-        "ho",
         "nhanh",
-        "hổng"
+        "xe",
+        "mả"
       ]
     },
     {
@@ -169,7 +170,7 @@
         "sao",
         "mợ",
         "gọi",
-        "cần"
+        "bò"
       ],
       "translation": {
         "fr": "Pourquoi tu apprends le vietnamien ? (à plus jeune)",
@@ -180,8 +181,8 @@
       "type": "listen_pick_text",
       "concept": "s_mon_nao_ngon",
       "distractors": [
-        "Đợi chút nha.",
-        "Anh ở đâu?"
+        "Anh ở đâu?",
+        "Kẹt xe quá!"
       ]
     },
     {
@@ -197,16 +198,16 @@
       "concept": "s_cai_nao",
       "distractors": [
         "thối tiền",
-        "Hổng biết."
+        "bằng tuổi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nao_which",
       "distractors": [
-        "đụng",
         "vé",
-        "người"
+        "người",
+        "đồng"
       ]
     },
     {
@@ -223,7 +224,7 @@
       "distractors": [
         "ba",
         "hai",
-        "cười"
+        "tuần"
       ]
     },
     {
@@ -238,16 +239,16 @@
       "type": "listen_pick_text",
       "concept": "s_nguoi_do_la_ai",
       "distractors": [
-        "Chúc mừng hạnh phúc!",
-        "Em đã ăn rồi."
+        "Anh làm nghề gì?",
+        "Mời bác uống trà."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_cai_gi_vay",
       "distractors": [
-        "Anh thấy sao?",
-        "Bao nhiêu tiền?"
+        "Bao nhiêu tiền?",
+        "Có xa không?"
       ]
     },
     {
@@ -257,8 +258,8 @@
       "options": [
         "Cái nào?",
         "thối tiền",
-        "Hổng biết.",
-        "số nhà"
+        "số nhà",
+        "một trăm"
       ],
       "translation": {
         "fr": "Tu prends lequel ? (à une femme un peu plus âgée)",

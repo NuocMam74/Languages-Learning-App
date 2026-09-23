@@ -158,8 +158,8 @@
       "type": "listen_pick_text",
       "concept": "s_luc_may_gio",
       "distractors": [
-        "Tại sao vậy?",
-        "Mấy giờ rồi?"
+        "Mấy giờ rồi?",
+        "Không có chi."
       ]
     },
     {
@@ -177,7 +177,7 @@
       "distractors": [
         "tôi",
         "tuổi",
-        "lương"
+        "ga"
       ]
     },
     {
@@ -185,17 +185,17 @@
       "concept": "c_sang",
       "distractors": [
         "lăm",
-        "lên",
-        "bận"
+        "tới",
+        "ăn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_trua",
       "distractors": [
-        "giỡn",
         "mả",
-        "dạ"
+        "dạ",
+        "tuổi"
       ]
     },
     {
@@ -204,7 +204,7 @@
       "distractors": [
         "lớp",
         "thôi",
-        "đã"
+        "lớn"
       ]
     },
     {
@@ -212,8 +212,8 @@
       "concept": "c_toi_evening",
       "distractors": [
         "c_troi",
-        "c_b_bong",
-        "c_khach_san"
+        "c_dua_coconut",
+        "c_anh_hai"
       ]
     },
     {
@@ -222,7 +222,7 @@
       "distractors": [
         "c_ca_eggplant",
         "c_ba_grandma",
-        "c_cay_xang"
+        "c_song_river"
       ]
     },
     {
@@ -239,8 +239,8 @@
       "concept": "c_dem",
       "distractors": [
         "c_ghe",
-        "c_xe_may",
-        "c_san_bay"
+        "c_bac",
+        "c_ba"
       ]
     },
     {
@@ -264,9 +264,9 @@
       "answer": "Mấy giờ rồi?",
       "options": [
         "Mấy giờ rồi?",
-        "Cũng khá ngon.",
         "Con chào ông.",
-        "Anh giỡn hoài!"
+        "Bạn tên gì?",
+        "Chị tên gì?"
       ],
       "translation": {
         "fr": "Quelle heure est-il ?",

@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/concept.schema.json",
+  "id": "c_khom",
+  "type": "word",
+  "vi": "khóm",
+  "tone": "sac",
+  "gloss": {
+    "fr": "ananas (Sud)",
+    "en": "pineapple (South)"
+  },
+  "northernEquivalent": "dứa",
+  "register": "neutral",
+  "audio": [
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_khom_mai.opus",
+      "source": "native",
+      "speed": "natural"
+    },
+    {
+      "voice": "mai_hcm_f",
+      "src": "audio/c_khom_mai_slow.opus",
+      "source": "native",
+      "speed": "slow"
+    }
+  ],
+  "reviewed": false,
+  "pos": "noun"
+}

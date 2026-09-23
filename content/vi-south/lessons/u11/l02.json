@@ -62,8 +62,9 @@
       "type": "listen_pick_text",
       "concept": "c_dat",
       "distractors": [
-        "đất",
-        "đạt"
+        "chút",
+        "ngoại",
+        "chồng"
       ],
       "explain": {
         "fr": "đặt : réserver. đất monte : la terre.",
@@ -243,8 +244,8 @@
       "type": "listen_pick_text",
       "concept": "s_cho_em_ra_cho",
       "distractors": [
-        "Điện thoại em hết pin rồi.",
-        "Tại sao em học tiếng Việt?"
+        "Anh nói chậm lại được không?",
+        "Em có anh chị em không?"
       ]
     },
     {
@@ -296,21 +297,6 @@
       "translation": {
         "fr": "réserver une course",
         "en": "book a ride"
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "Anh ___ em ra chợ Bến Thành nha.",
-      "answer": "chở",
-      "options": [
-        "chở",
-        "chờ",
-        "chợ",
-        "phòng"
-      ],
-      "translation": {
-        "fr": "Emmène-moi au marché Bến Thành, d'accord ? (à un homme un peu plus âgé)",
-        "en": "Take me to Bến Thành market, okay? (to a slightly older man)"
       }
     },
     {
@@ -392,6 +378,15 @@
       "distractors": [
         "gia đình",
         "văn phòng"
+      ]
+    },
+    {
+      "type": "listen_pick_image",
+      "concept": "c_xe_dap",
+      "distractors": [
+        "c_anh_hai",
+        "c_com_tam",
+        "c_ong"
       ]
     }
   ],

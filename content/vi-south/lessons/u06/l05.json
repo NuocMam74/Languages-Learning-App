@@ -36,8 +36,9 @@
       "type": "listen_pick_text",
       "concept": "c_tram",
       "distractors": [
-        "trầm",
-        "trạm"
+        "ăn",
+        "cơm",
+        "không"
       ],
       "explain": {
         "fr": "trăm, plat : cent. trạm tombe court : la station.",
@@ -103,7 +104,8 @@
       "options": [
         "lẻ",
         "lẹ",
-        "lê"
+        "ra",
+        "bảy"
       ],
       "translation": {
         "fr": "Cent cinq.",
@@ -119,7 +121,8 @@
       "concept": "c_chuc",
       "distractors": [
         "chúc",
-        "chức"
+        "tôi",
+        "ghế"
       ],
       "explain": {
         "fr": "chục tombe court : la dizaine. chúc monte : souhaiter.",
@@ -139,8 +142,8 @@
       "concept": "c_le",
       "distractors": [
         "con",
-        "kể",
-        "ớt"
+        "sách",
+        "da"
       ]
     },
     {
@@ -149,9 +152,9 @@
       "answer": "trăm",
       "options": [
         "trăm",
-        "họp",
-        "rảnh",
-        "tháng"
+        "cô",
+        "quê",
+        "chút"
       ],
       "translation": {
         "fr": "Cent cinq.",
@@ -163,56 +166,56 @@
       "concept": "s_bang_tuoi",
       "distractors": [
         "tụi mình",
-        "nửa ký"
+        "tiếng Việt"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nam_nay",
       "distractors": [
-        "bánh mì",
-        "điền đơn"
+        "bình thường",
+        "xin lỗi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_anh_bao_nhieu_tuoi",
       "distractors": [
-        "Em nhắn rồi đó.",
-        "Giữ sức khỏe nha."
+        "Anh làm nghề gì?",
+        "một trăm lẻ năm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bao_nhieu",
       "distractors": [
-        "kế bên",
-        "trúng số"
+        "năm nay",
+        "Việt kiều"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_lop",
       "distractors": [
-        "hẻm",
-        "giùm",
-        "dừa"
+        "dừa",
+        "họ",
+        "mươi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_hai_muoi_mot",
       "distractors": [
-        "Hổng có đâu!",
-        "Anh khỏe không?"
+        "Anh khỏe không?",
+        "Nhà tôi có…"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_muoi_lam",
       "distractors": [
-        "sau Tết",
-        "mấy ngày"
+        "bà nội",
+        "mười một"
       ]
     },
     {
@@ -221,7 +224,7 @@
       "distractors": [
         "lắm",
         "dượng",
-        "bắp"
+        "Pháp"
       ]
     },
     {
@@ -229,8 +232,8 @@
       "concept": "c_mot_high",
       "distractors": [
         "một",
-        "chích",
-        "vậy"
+        "vậy",
+        "bác"
       ]
     },
     {
@@ -239,7 +242,7 @@
       "distractors": [
         "mười",
         "ma",
-        "tới"
+        "già"
       ]
     }
   ],

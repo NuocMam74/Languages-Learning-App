@@ -69,7 +69,7 @@
       "concept": "c_nuoc_mia",
       "distractors": [
         "nước mìa",
-        "nước mắm"
+        "ông xã"
       ],
       "explain": {
         "fr": "nước mía : le jus de canne. mía monte.",
@@ -140,23 +140,23 @@
       "distractors": [
         "đã",
         "chục",
-        "heo"
+        "đa"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ca_phe",
       "distractors": [
-        "tuần trước",
-        "máy lạnh"
+        "bình thường",
+        "chút xíu"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_ca_phe_sua_da",
       "distractors": [
-        "Kể tui nghe đi!",
-        "một trăm lẻ năm"
+        "một trăm lẻ năm",
+        "Anh làm nghề gì?"
       ]
     },
     {
@@ -174,16 +174,16 @@
       "distractors": [
         "c_ca_fish",
         "c_sua_milk",
-        "c_chua_pagoda"
+        "c_nuoc"
       ]
     },
     {
-      "type": "listen_pick_image",
+      "type": "listen_pick_text",
       "concept": "s_tra_da",
       "distractors": [
-        "s_ca_phe_sua_da",
-        "s_chay_thang",
-        "s_dung_lai"
+        "Không sao.",
+        "Không phải.",
+        "chúng tôi"
       ]
     },
     {
@@ -192,9 +192,9 @@
       "answer": "cà phê",
       "options": [
         "cà phê",
-        "tuần trước",
-        "máy lạnh",
-        "đám cưới"
+        "Không phải.",
+        "Chào anh.",
+        "Ai vậy?"
       ],
       "translation": {
         "fr": "Un café glacé au lait, s'il te plaît.",
@@ -205,16 +205,16 @@
       "type": "listen_pick_text",
       "concept": "s_cho_em_to_pho",
       "distractors": [
-        "Hơi mắc, nhưng mà ngon.",
-        "Bớt cho em đi chị."
+        "Chị là người nước nào?",
+        "Rất vui được gặp chị."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_banh_mi",
       "distractors": [
-        "bệnh viện",
-        "nhắn tin"
+        "điện thoại",
+        "hủ tiếu"
       ]
     },
     {
@@ -222,7 +222,7 @@
       "concept": "c_com_tam",
       "distractors": [
         "nhân viên",
-        "bắt đầu"
+        "ông xã"
       ]
     },
     {
@@ -230,7 +230,7 @@
       "concept": "c_hu_tieu",
       "distractors": [
         "cảm ơn",
-        "vé số"
+        "Việt kiều"
       ]
     },
     {
@@ -239,7 +239,7 @@
       "distractors": [
         "nói",
         "cậu",
-        "đồng"
+        "mình"
       ]
     }
   ],

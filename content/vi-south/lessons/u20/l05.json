@@ -58,7 +58,8 @@
       "concept": "c_b_tet",
       "distractors": [
         "tệt",
-        "tét"
+        "ga",
+        "ạ"
       ],
       "explain": {
         "fr": "Tết monte : le Nouvel An lunaire.",
@@ -220,21 +221,6 @@
     },
     {
       "type": "fill_gap",
-      "text": "___ ngoại tôi ở Bến Tre.",
-      "answer": "quê",
-      "options": [
-        "quê",
-        "ca",
-        "sáu",
-        "thím"
-      ],
-      "translation": {
-        "fr": "La famille de ma mère vient de Bến Tre.",
-        "en": "My mother's family comes from Bến Tre."
-      }
-    },
-    {
-      "type": "fill_gap",
       "text": "Chị nói tiếng Việt được ___?",
       "answer": "hông",
       "options": [
@@ -314,6 +300,21 @@
         "en": "Do you speak Vietnamese?"
       },
       "audioConcept": "c_hong"
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ ngoại tôi ở Bến Tre.",
+      "answer": "quê",
+      "options": [
+        "quê",
+        "họp",
+        "có",
+        "điện"
+      ],
+      "translation": {
+        "fr": "La famille de ma mère vient de Bến Tre.",
+        "en": "My mother's family comes from Bến Tre."
+      }
     },
     {
       "type": "game",

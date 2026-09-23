@@ -157,9 +157,9 @@
       "type": "listen_pick_text",
       "concept": "c_tuan",
       "distractors": [
-        "đem",
-        "giùm",
-        "tới"
+        "ạ",
+        "ông",
+        "món"
       ]
     },
     {
@@ -168,31 +168,31 @@
       "distractors": [
         "tôi",
         "hay",
-        "đã"
+        "sách"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hom_qua",
       "distractors": [
-        "thiệp mời",
-        "tăng ca"
+        "năm nay",
+        "văn phòng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ngay_mai",
       "distractors": [
-        "năm sau",
-        "phòng trọ"
+        "danh thiếp",
+        "sinh viên"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hom_nay",
       "distractors": [
-        "sân bay",
-        "hôm qua"
+        "hôm qua",
+        "cơm tấm"
       ]
     },
     {
@@ -210,7 +210,7 @@
       "distractors": [
         "tôi",
         "này",
-        "cầu"
+        "cá"
       ]
     },
     {
@@ -218,8 +218,8 @@
       "concept": "c_chieu",
       "distractors": [
         "chị",
-        "tới",
-        "nhiều"
+        "chú",
+        "ít"
       ]
     },
     {
@@ -227,17 +227,17 @@
       "concept": "c_trua",
       "distractors": [
         "xe",
-        "nhờ",
-        "xin"
+        "xin",
+        "cơm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sang",
       "distractors": [
-        "cưới",
         "mời",
-        "ra"
+        "ra",
+        "chiều"
       ]
     },
     {
@@ -245,8 +245,8 @@
       "concept": "c_ruoi",
       "distractors": [
         "tốt",
-        "hội",
-        "thơm"
+        "thơm",
+        "xe"
       ]
     },
     {
@@ -254,7 +254,7 @@
       "concept": "s_bay_gio",
       "distractors": [
         "tiền nước",
-        "nhức đầu"
+        "thứ bảy"
       ]
     },
     {

@@ -157,7 +157,7 @@
       "distractors": [
         "bán",
         "bàn",
-        "sẽ"
+        "lăm"
       ]
     },
     {
@@ -184,7 +184,7 @@
       "distractors": [
         "cổ",
         "dạ",
-        "trưa"
+        "ơi"
       ]
     },
     {
@@ -193,7 +193,7 @@
       "distractors": [
         "bạn",
         "bàn",
-        "gỏi"
+        "uống"
       ]
     },
     {
@@ -201,7 +201,7 @@
       "concept": "s_mac_qua",
       "distractors": [
         "ông ngoại",
-        "chừng nào"
+        "Em ơi!"
       ]
     },
     {
@@ -209,17 +209,17 @@
       "concept": "c_mua_buy",
       "distractors": [
         "thím",
-        "sau",
-        "chén"
+        "chén",
+        "ơi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_re",
       "distractors": [
-        "sắp",
         "cá",
-        "gặp"
+        "gặp",
+        "dì"
       ]
     },
     {
@@ -236,17 +236,17 @@
       "concept": "c_bot",
       "distractors": [
         "hai",
-        "lần",
-        "Tết"
+        "không",
+        "thêm"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ban_table",
       "distractors": [
-        "c_sot",
-        "c_b_don",
-        "c_xe"
+        "c_xe",
+        "c_tra_tea",
+        "c_che_dessert"
       ]
     },
     {
@@ -256,8 +256,8 @@
       "options": [
         "Cái này bao nhiêu?",
         "Dạ, con ăn rồi.",
-        "Anh Minh đang họp.",
-        "Anh có vợ chưa?"
+        "Anh có vợ chưa?",
+        "Thôi, cảm ơn chị."
       ],
       "translation": {
         "fr": "Tu vends ça combien ? (à une vendeuse un peu plus âgée)",
@@ -272,7 +272,7 @@
         "heo",
         "cổ",
         "dạ",
-        "trưa"
+        "nhỏ"
       ],
       "translation": {
         "fr": "Vends-moi un kilo de porc, s'il te plaît.",

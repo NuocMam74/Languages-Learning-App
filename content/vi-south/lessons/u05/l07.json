@@ -73,7 +73,7 @@
       "concept": "s_nguoi_phap",
       "distractors": [
         "người Việt",
-        "người Mỹ"
+        "mười lăm"
       ],
       "explain": {
         "fr": "người Pháp : Français(e).",
@@ -150,7 +150,7 @@
       "distractors": [
         "mới",
         "cơm",
-        "lúc"
+        "mắc"
       ]
     },
     {
@@ -158,49 +158,49 @@
       "concept": "c_moi_just",
       "distractors": [
         "mời",
-        "rút",
-        "ghét"
+        "da",
+        "khỏe"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_hieu",
       "distractors": [
-        "thấy",
         "không",
-        "bả"
+        "bả",
+        "mấy"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_rat_vui_duoc_gap",
       "distractors": [
-        "Nhà vệ sinh ở đâu?",
-        "Sau đó tui qua Pháp."
+        "Chị là người nước nào?",
+        "Con chào cô."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bac_si",
       "distractors": [
-        "bàn thờ",
-        "tuần trước"
+        "ông xã",
+        "danh thiếp"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_nguoi_nuoc_nao",
       "distractors": [
-        "Cho em một tô phở.",
-        "Cho em gặp anh Minh."
+        "Rất vui được gặp chị.",
+        "Bạn tên gì?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_anh_o_dau",
       "distractors": [
-        "Em bị sốt.",
-        "Em cũng vậy."
+        "Em cũng vậy.",
+        "hai mươi mốt"
       ]
     },
     {
@@ -208,7 +208,7 @@
       "concept": "s_anh_lam_nghe_gi",
       "distractors": [
         "Chị làm ở đâu?",
-        "Khi nào anh về?"
+        "Mời bác uống trà."
       ]
     },
     {
@@ -219,7 +219,7 @@
         "mời",
         "mới",
         "cơm",
-        "lúc"
+        "uống"
       ],
       "translation": {
         "fr": "Je vous en prie, prenez du thé (à un aîné).",
@@ -233,8 +233,8 @@
       "options": [
         "mới",
         "mời",
-        "rút",
-        "ghét"
+        "bả",
+        "mười"
       ],
       "translation": {
         "fr": "Je suis le nouvel employé / la nouvelle employée.",
@@ -248,8 +248,8 @@
       "options": [
         "người Pháp",
         "người Việt",
-        "Mệt quá!",
-        "Vậy hả?"
+        "tụi mình",
+        "Chào anh."
       ],
       "translation": {
         "fr": "Je suis français(e).",
@@ -262,9 +262,9 @@
       "answer": "công ty",
       "options": [
         "công ty",
-        "tại vì",
         "anh ba",
-        "công viên"
+        "công viên",
+        "người Pháp"
       ],
       "translation": {
         "fr": "Je travaille pour une entreprise française.",
@@ -277,9 +277,9 @@
       "answer": "hiểu",
       "options": [
         "hiểu",
-        "thấy",
         "không",
-        "bả"
+        "bả",
+        "chút"
       ],
       "translation": {
         "fr": "Pardon, je ne comprends pas.",
@@ -292,9 +292,9 @@
       "answer": "Chị là người nước nào?",
       "options": [
         "Chị là người nước nào?",
-        "Cho em một tô phở.",
-        "Cho em gặp anh Minh.",
-        "Tiếc quá, em bận rồi."
+        "Rất vui được gặp chị.",
+        "Anh làm nghề gì?",
+        "Em mấy tuổi?"
       ],
       "translation": {
         "fr": "Moi c'est Nam. Vous êtes de quel pays ?",

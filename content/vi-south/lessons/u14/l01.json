@@ -40,7 +40,8 @@
       "concept": "c_thich",
       "distractors": [
         "thịt",
-        "thiếc"
+        "dạ",
+        "quê"
       ],
       "explain": {
         "fr": "thích monte : aimer. thịt tombe court : la viande.",
@@ -95,8 +96,8 @@
       "type": "listen_pick_text",
       "concept": "s_thich_lam",
       "distractors": [
-        "Thích lám!",
-        "Thích làm!"
+        "Thích làm!",
+        "tuần trước"
       ],
       "explain": {
         "fr": "lắm monte : beaucoup. làm descend : faire.",
@@ -137,7 +138,7 @@
       "concept": "s_tra_da",
       "distractors": [
         "mười lăm",
-        "đau bụng"
+        "Đây là…"
       ]
     },
     {
@@ -153,26 +154,26 @@
       "concept": "c_sua_milk",
       "distractors": [
         "trời",
-        "tiếc",
-        "cười"
+        "mạ",
+        "nước"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "s_tra_da",
       "distractors": [
-        "s_nhuc_dau",
         "s_queo_trai",
-        "s_dau_bung"
+        "s_queo_phai",
+        "s_dung_lai"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_sua_milk",
       "distractors": [
-        "c_ho_cough",
         "c_truong_hoc",
-        "c_thit"
+        "c_thit",
+        "c_meo"
       ]
     },
     {
@@ -198,7 +199,7 @@
         "cà phê sữa đá",
         "Dạ, con ăn rồi.",
         "Bao nhiêu một ký?",
-        "Em ở lầu hai."
+        "Anh có vợ chưa?"
       ],
       "translation": {
         "fr": "Un café glacé au lait, s'il te plaît.",
@@ -212,8 +213,8 @@
       "options": [
         "sữa",
         "trời",
-        "tiếc",
-        "cười"
+        "lần",
+        "trả"
       ],
       "translation": {
         "fr": "Je voudrais un verre de lait.",

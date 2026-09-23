@@ -147,25 +147,25 @@
       "concept": "c_ong_he",
       "distractors": [
         "ông",
-        "coi",
-        "ồn"
+        "ạ",
+        "chú"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_tuoi",
       "distractors": [
-        "nhiều",
-        "nghe",
-        "hồi"
+        "ngủ",
+        "trời",
+        "chè"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_moi_bac_uong_tra",
       "distractors": [
-        "Ký tên ở đây.",
-        "Em ăn cơm chưa?"
+        "Em ăn cơm chưa?",
+        "một trăm"
       ]
     },
     {
@@ -173,8 +173,8 @@
       "concept": "c_ong",
       "distractors": [
         "ổng",
-        "nếu",
-        "visa"
+        "tuổi",
+        "ảnh"
       ]
     },
     {
@@ -184,8 +184,8 @@
       "options": [
         "ông",
         "ổng",
-        "nếu",
-        "visa"
+        "gà",
+        "hông"
       ],
       "translation": {
         "fr": "Bonjour (à un homme âgé).",
@@ -199,27 +199,12 @@
       "options": [
         "ổng",
         "ông",
-        "coi",
-        "ồn"
+        "vui",
+        "da"
       ],
       "translation": {
         "fr": "Lui, c'est mon père.",
         "en": "He's my dad."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "___ tên là Hùng.",
-      "answer": "tui",
-      "options": [
-        "tui",
-        "tụi",
-        "thích",
-        "giá"
-      ],
-      "translation": {
-        "fr": "Moi, c'est Hùng (familier).",
-        "en": "I'm Hùng (casual)."
       }
     },
     {
@@ -271,24 +256,24 @@
       "concept": "c_moi_nguoi",
       "distractors": [
         "anh ba",
-        "ông xã"
+        "xin lỗi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_vay",
       "distractors": [
-        "thẻ",
-        "trưa",
-        "ăn"
+        "ăn",
+        "mạ",
+        "chú"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_ai_vay",
       "distractors": [
-        "gần đây",
-        "thứ bảy"
+        "mười lăm",
+        "hai mươi"
       ]
     },
     {
@@ -297,8 +282,23 @@
       "distractors": [
         "mốt",
         "đâu",
-        "thưởng"
+        "chị"
       ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tên là Hùng.",
+      "answer": "tui",
+      "options": [
+        "tui",
+        "tụi",
+        "ăn",
+        "ông"
+      ],
+      "translation": {
+        "fr": "Moi, c'est Hùng (familier).",
+        "en": "I'm Hùng (casual)."
+      }
     },
     {
       "type": "game",

@@ -131,24 +131,24 @@
       "distractors": [
         "tiền",
         "tô",
-        "nghĩ"
+        "ơi"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_thom",
       "distractors": [
-        "theo",
-        "chơi",
-        "rảnh"
+        "bả",
+        "sách",
+        "cô"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sau_rieng",
       "distractors": [
-        "tạm trú",
-        "gọi lại"
+        "gọi lại",
+        "chị hai"
       ]
     },
     {
@@ -156,16 +156,16 @@
       "concept": "c_dua_hau",
       "distractors": [
         "ngã tư",
-        "lần đầu"
+        "nhân viên"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_xoai",
       "distractors": [
-        "c_den_do",
-        "c_b_vuon",
-        "c_thit"
+        "c_sinh_vien",
+        "c_nha_house",
+        "c_dua_hau"
       ]
     },
     {
@@ -176,7 +176,7 @@
         "xoài",
         "hay",
         "phải",
-        "chắc"
+        "người"
       ],
       "translation": {
         "fr": "une mangue",
@@ -199,8 +199,8 @@
       "type": "listen_pick_text",
       "concept": "s_bot_cho_em",
       "distractors": [
-        "Anh đi Đà Lạt chưa?",
-        "Xin lỗi, em tới trễ."
+        "Cho em một tô phở.",
+        "Chị là người nước nào?"
       ]
     },
     {
@@ -216,8 +216,8 @@
       "type": "listen_pick_text",
       "concept": "s_mac_qua",
       "distractors": [
-        "Đúng rồi!",
-        "nhức đầu"
+        "bà nội",
+        "mười một"
       ]
     },
     {
@@ -226,7 +226,7 @@
       "distractors": [
         "qua",
         "quà",
-        "chắc"
+        "tư"
       ]
     }
   ],

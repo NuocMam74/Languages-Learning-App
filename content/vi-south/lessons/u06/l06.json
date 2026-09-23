@@ -115,7 +115,7 @@
       "concept": "c_dien_thoai",
       "distractors": [
         "điện thoải",
-        "diện thoại"
+        "bà xã"
       ],
       "explain": {
         "fr": "điện, avec đ, tombe court ; thoại aussi.",
@@ -136,7 +136,7 @@
       "distractors": [
         "gói",
         "gỏi",
-        "đợi"
+        "mưa"
       ]
     },
     {
@@ -145,9 +145,9 @@
       "answer": "điện thoại",
       "options": [
         "điện thoại",
-        "gia hạn",
-        "lúc đó",
-        "trả lời"
+        "ông ngoại",
+        "tiếng Việt",
+        "bà nội"
       ],
       "translation": {
         "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
@@ -162,7 +162,7 @@
         "số điện thoại",
         "Còn phòng không?",
         "Có xa không?",
-        "Rồi sao nữa?"
+        "hai mươi mốt"
       ],
       "translation": {
         "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
@@ -177,7 +177,7 @@
         "gọi",
         "gói",
         "gỏi",
-        "đợi"
+        "ba"
       ],
       "translation": {
         "fr": "Appelle-moi, d'accord ?",
@@ -188,17 +188,17 @@
       "type": "listen_pick_text",
       "concept": "c_chuc",
       "distractors": [
-        "theo",
-        "trong",
-        "về"
+        "to",
+        "sách",
+        "mạ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_mot_tram_le_nam",
       "distractors": [
-        "Em ở lầu hai.",
-        "Ổng đi đâu rồi?"
+        "Mời bác uống trà.",
+        "Anh làm nghề gì?"
       ]
     },
     {
@@ -206,17 +206,17 @@
       "concept": "c_le",
       "distractors": [
         "rau",
-        "rút",
-        "mời"
+        "mời",
+        "ăn"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ngan",
       "distractors": [
-        "bán",
         "thường",
-        "đang"
+        "tôi",
+        "cổ"
       ]
     },
     {
@@ -224,49 +224,49 @@
       "concept": "c_tram",
       "distractors": [
         "anh",
-        "họp",
-        "đau"
+        "mả",
+        "ngủ"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_bang_tuoi",
       "distractors": [
-        "Chưa xong.",
-        "Chưa chắc."
+        "hai mươi",
+        "Chào anh."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_nam_nay",
       "distractors": [
-        "máy tính",
-        "cẩn thận"
+        "giáo viên",
+        "họ hàng"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_anh_bao_nhieu_tuoi",
       "distractors": [
-        "Ngày uống mấy lần?",
-        "Cho em xuống đây."
+        "Mời bác uống trà.",
+        "Anh làm nghề gì?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bao_nhieu",
       "distractors": [
-        "chung cư",
-        "hết hạn"
+        "chút xíu",
+        "sinh viên"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_lop",
       "distractors": [
-        "khám",
-        "ngon",
-        "trong"
+        "của",
+        "thưa",
+        "mươi"
       ]
     },
     {

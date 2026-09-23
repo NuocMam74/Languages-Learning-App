@@ -207,7 +207,7 @@
       "distractors": [
         "bắp",
         "thưa",
-        "nhen"
+        "ngon"
       ]
     },
     {
@@ -216,7 +216,7 @@
       "distractors": [
         "họ",
         "xấu",
-        "phường"
+        "bàn"
       ]
     },
     {
@@ -266,9 +266,9 @@
       "type": "listen_pick_image",
       "concept": "c_ho_cough",
       "distractors": [
-        "c_b_dam_cuoi",
         "c_pho",
-        "c_nha_thuoc"
+        "c_nha_thuoc",
+        "c_dua"
       ]
     },
     {

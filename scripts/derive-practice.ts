@@ -19,9 +19,10 @@
  * elles-mêmes tirées du corpus par `derive-examples.ts` (contrat phase12 §1). Six formats, du plus
  * utile au plus coûteux :
  *
- *   1. `listen_pick_text` — le mot est la réponse, les leurres sont d'autres formes du pack : voisins
- *      tonals d'abord (ma / mà / mạ), jamais deux formes que l'oreille du Sud confondrait (hỏi et ngã
- *      y sonnent pareil, spec §7.1) ;
+ *   1. `listen_pick_text` — le mot est la réponse, les leurres sont des mots **déjà appris**
+ *      (contrat phase26 §4) : voisins tonals d'abord (ma / mà / mạ, seuls leurres permis sans être
+ *      appris), jamais deux formes que l'oreille du Sud confondrait (hỏi et ngã y sonnent pareil,
+ *      spec §7.1) ;
  *   2. `listen_pick_image` — quand le mot et ses voisins ont une image ;
  *   3. `fill_gap` — le mot retiré d'une de ses phrases d'exemple ;
  *   4. `build_sentence` — la même phrase à remettre dans l'ordre ;
@@ -50,15 +51,11 @@ import {
   GAP,
   GRADED_STEPS_PER_LESSON,
   gradedSteps,
-  heardClassOf,
   lexiconBefore,
   lexiconOf,
   normalizeAnswer,
   seededRandom,
-  shuffle,
-  stripTones,
   syllables,
-  toneOf,
   unmetDemands,
   unpracticedConcepts,
   type Concept,
@@ -68,8 +65,8 @@ import {
   type Lesson,
   type LessonStep,
   type Localized,
-  type Tone,
 } from "@parlo/core";
+import { type DistractorPools, type HeardClasses, pickDistractors, pickImageMates } from "./lib/distractors.ts";
 import { listPacks, readPackFiles, rel, toRaw } from "./lib/load-pack.ts";
 
 const args = process.argv.slice(2);
@@ -92,73 +89,10 @@ const BUILD_MAX_TOKENS = 8;
 const SECONDS_PER_STEP = 15;
 const LESSON_OVERHEAD_SECONDS = 60;
 
-type HeardClasses = readonly (readonly Tone[])[] | undefined;
-
-/** Ce que l'oreille distingue (cf. games/cho-noi.ts) : base sans tons + classe auditive par syllabe. */
-function heardKey(text: string, heardClasses: HeardClasses): string {
-  const parts = syllables(text);
-  if (!heardClasses || heardClasses.length === 0) return parts.map((s) => stripTones(s)).join(" ");
-  return parts.map((s) => `${stripTones(s)}:${heardClassOf(toneOf(s), heardClasses)}`).join(" ");
-}
-
-const toneless = (text: string) => stripTones(normalizeAnswer(text));
 const tokensOf = (text: string) => text.replace(/[.,!?;:…]/g, " ").split(/\s+/).filter(Boolean);
 
 function conceptsOf(content: ContentIndex, ids: Iterable<ConceptId>): Concept[] {
   return [...ids].flatMap((id) => content.concepts.get(id) ?? []);
-}
-
-/**
- * Distracteurs textuels, du plus utile au plus lointain :
- *   1. voisin tonal (même base sans tons) — le vrai piège d'une langue à tons ;
- *   2. même nature et même nombre de syllabes ;
- *   3. même nature ;
- *   4. n'importe quel autre mot déjà rencontré.
- * Jamais deux formes que l'oreille du parler confondrait, jamais la réponse elle-même.
- */
-function pickDistractors(target: Concept, candidates: readonly Concept[], max: number, classes: HeardClasses, rand: () => number): string[] {
-  const base = toneless(target.vi);
-  const size = syllables(target.vi).length;
-  const others = candidates.filter((c) => c.id !== target.id);
-  const tiers = [
-    others.filter((c) => toneless(c.vi) === base),
-    others.filter((c) => toneless(c.vi) !== base && c.type === target.type && syllables(c.vi).length === size),
-    others.filter((c) => toneless(c.vi) !== base && c.type === target.type && syllables(c.vi).length !== size),
-    others.filter((c) => toneless(c.vi) !== base && c.type !== target.type && syllables(c.vi).length === size),
-  ];
-  const keys = new Set([heardKey(target.vi, classes)]);
-  const forms = new Set([normalizeAnswer(target.vi)]);
-  const out: string[] = [];
-  for (const tier of tiers) {
-    // Tirage mélangé, mais déterministe (graine = niveau + mot). Sans ça, l'ordre fixe des
-    // candidats ramène les deux mêmes leurres à chaque question du niveau, et on apprend vite que
-    // « bà xã » n'est jamais la réponse : l'exercice se résout sans écouter.
-    for (const c of shuffle(tier, rand)) {
-      if (out.length >= max) return out;
-      const key = heardKey(c.vi, classes);
-      if (keys.has(key) || forms.has(normalizeAnswer(c.vi))) continue;
-      keys.add(key);
-      forms.add(normalizeAnswer(c.vi));
-      out.push(c.vi);
-    }
-  }
-  return out;
-}
-
-/** Concepts à images distinctes, de même nature : de quoi bâtir un choix d'images. */
-function pickImageMates(target: Concept, candidates: readonly Concept[], max: number, rand: () => number): Concept[] {
-  const images = new Set([target.image]);
-  const forms = new Set([normalizeAnswer(target.vi)]);
-  const out: Concept[] = [];
-  for (const c of shuffle(candidates, rand)) {
-    if (out.length >= max) break;
-    if (c.id === target.id || !c.image || c.type !== target.type) continue;
-    if (images.has(c.image) || forms.has(normalizeAnswer(c.vi))) continue;
-    images.add(c.image);
-    forms.add(normalizeAnswer(c.vi));
-    out.push(c);
-  }
-  return out;
 }
 
 const localized = (fr: string, en?: string): Localized => ({ fr, ...(en ? { en } : {}) });
@@ -184,8 +118,11 @@ function exampleOf(target: Concept): { vi: string; fr: string; en?: string } | n
 interface Forge {
   content: ContentIndex;
   lesson: Lesson;
-  /** Concepts du pack, les plus proches de l'apprenant d'abord. */
-  candidates: readonly Concept[];
+  /**
+   * Leurres possibles : les mots déjà appris, et le pack entier pour les seules variantes tonales
+   * de la réponse (contrat phase26 §4).
+   */
+  pools: DistractorPools;
   classes: HeardClasses;
   /** Lexique présenté à ce point du cursus : ce qu'une phrase a le droit d'exiger. */
   known: KnownLexicon;
@@ -195,14 +132,14 @@ interface Forge {
 
 function pickText(f: Forge, target: Concept): LessonStep | null {
   const max = (syllables(target.vi).length > 1 ? MAX_OPTIONS_PHRASE : MAX_OPTIONS_WORD) - 1;
-  const distractors = pickDistractors(target, f.candidates, max, f.classes, f.rand(target));
+  const distractors = pickDistractors(target, f.pools, max, f.classes, f.rand(target));
   if (distractors.length < MIN_DISTRACTORS) return null;
   return { type: "listen_pick_text", concept: target.id, distractors };
 }
 
 function pickImage(f: Forge, target: Concept): LessonStep | null {
   if (!target.image) return null;
-  const mates = pickImageMates(target, f.candidates, MAX_OPTIONS_WORD - 1, f.rand(target));
+  const mates = pickImageMates(target, f.pools.known, MAX_OPTIONS_WORD - 1, f.rand(target));
   if (mates.length < MIN_DISTRACTORS) return null;
   return { type: "listen_pick_image", concept: target.id, distractors: mates.map((c) => c.id) };
 }
@@ -212,7 +149,7 @@ function fillGap(f: Forge, target: Concept): LessonStep | null {
   if (!example) return null;
   const at = example.vi.toLocaleLowerCase("vi").indexOf(target.vi.toLocaleLowerCase("vi"));
   if (at < 0) return null;
-  const distractors = pickDistractors(target, f.candidates, MAX_OPTIONS_WORD - 1, f.classes, f.rand(target));
+  const distractors = pickDistractors(target, f.pools, MAX_OPTIONS_WORD - 1, f.classes, f.rand(target));
   if (distractors.length < MIN_DISTRACTORS) return null;
   return {
     type: "fill_gap",
@@ -387,12 +324,14 @@ function practiceSteps(content: ContentIndex, lesson: Lesson, revision: readonly
     content,
     lesson,
     classes: content.pack.toneSystem?.heardClasses,
-    // Distracteurs : ce que l'apprenant a déjà pu croiser d'abord (le niveau, puis les niveaux
-    // d'avant), le reste du pack ensuite — un leurre inconnu reste un leurre, pas une leçon.
-    candidates: [...content.concepts.values()].sort((a, b) => {
-      const rank = (c: Concept) => (lesson.concepts.includes(c.id) ? 0 : before.concepts.has(c.id) ? 1 : 2);
-      return rank(a) - rank(b) || a.id.localeCompare(b.id);
-    }),
+    // Leurres : seulement des mots déjà appris (contrat phase26 §4). Un leurre inconnu n'est pas
+    // un piège, c'est une devinette : on choisit la réponse par élimination, sans rien reconnaître.
+    pools: {
+      known: [...content.concepts.values()]
+        .filter((c) => before.concepts.has(c.id) || own.concepts.has(c.id))
+        .sort((a, b) => a.id.localeCompare(b.id)),
+      all: [...content.concepts.values()].sort((a, b) => a.id.localeCompare(b.id)),
+    },
     known: {
       concepts: new Set([...before.concepts, ...own.concepts]),
       forms: new Set([...before.forms, ...own.forms]),

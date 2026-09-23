@@ -159,16 +159,16 @@
       "concept": "c_sach",
       "distractors": [
         "trước",
-        "sẽ",
-        "hổng"
+        "má",
+        "chậm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bao_nhieu",
       "distractors": [
-        "trúng số",
-        "ngày sinh"
+        "ngày sinh",
+        "khi nào"
       ]
     },
     {
@@ -184,9 +184,9 @@
       "type": "listen_pick_text",
       "concept": "c_tien",
       "distractors": [
-        "lần",
         "hẹn",
-        "muỗng"
+        "muỗng",
+        "thì"
       ]
     },
     {
@@ -209,21 +209,6 @@
     },
     {
       "type": "fill_gap",
-      "text": "Em ở Sài Gòn ___?",
-      "answer": "mấy ngày",
-      "options": [
-        "mấy ngày",
-        "tụi mình",
-        "thứ bảy",
-        "người Việt"
-      ],
-      "translation": {
-        "fr": "Tu restes combien de jours à Saïgon ? (à plus jeune)",
-        "en": "How many days are you staying in Saigon? (to someone younger)"
-      }
-    },
-    {
-      "type": "fill_gap",
       "text": "Bây giờ ___ giờ rồi?",
       "answer": "mấy",
       "options": [
@@ -243,9 +228,9 @@
       "answer": "tiền",
       "options": [
         "tiền",
-        "lần",
         "hẹn",
-        "muỗng"
+        "muỗng",
+        "lẻ"
       ],
       "translation": {
         "fr": "L'addition, s'il te plaît !",
@@ -273,9 +258,9 @@
       "answer": "bao nhiêu",
       "options": [
         "bao nhiêu",
-        "trúng số",
         "ngày sinh",
-        "đồng ý"
+        "thứ hai",
+        "thịt heo"
       ],
       "translation": {
         "fr": "Tu as quel âge ? (à un homme un peu plus âgé)",
@@ -297,6 +282,21 @@
         "en": "What time is it?"
       },
       "audioConcept": "c_may"
+    },
+    {
+      "type": "fill_gap",
+      "text": "Em ở Sài Gòn ___?",
+      "answer": "mấy ngày",
+      "options": [
+        "mấy ngày",
+        "thối tiền",
+        "bao lâu",
+        "Không phải."
+      ],
+      "translation": {
+        "fr": "Tu restes combien de jours à Saïgon ? (à plus jeune)",
+        "en": "How many days are you staying in Saigon? (to someone younger)"
+      }
     }
   ],
   "review": {

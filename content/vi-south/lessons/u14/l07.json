@@ -121,8 +121,8 @@
       "type": "listen_pick_text",
       "concept": "s_vay_ha",
       "distractors": [
-        "Vậy hen.",
-        "Ai vậy?"
+        "Ai vậy?",
+        "thứ bảy"
       ],
       "explain": {
         "fr": "Vậy hả ? : ah bon ?",
@@ -152,7 +152,7 @@
       "concept": "s_ca_phe_sua_da",
       "distractors": [
         "Em sắp tới rồi.",
-        "Em đau ở đây."
+        "Hôm nay thứ mấy?"
       ]
     },
     {
@@ -177,8 +177,8 @@
       "concept": "c_do_bad",
       "distractors": [
         "dơ",
-        "hội",
-        "giùm"
+        "mưa",
+        "heo"
       ]
     },
     {
@@ -194,8 +194,8 @@
       "type": "listen_pick_text",
       "concept": "s_anh_thay_sao",
       "distractors": [
-        "Rồi sao nữa?",
-        "Đừng khách sáo!"
+        "Bao nhiêu tiền?",
+        "hai mươi mốt"
       ]
     },
     {
@@ -204,25 +204,25 @@
       "distractors": [
         "ký",
         "lần",
-        "theo"
+        "lúc"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ghet",
       "distractors": [
-        "nhức",
         "tối",
-        "nhen"
+        "rưỡi",
+        "sao"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ghien",
       "distractors": [
-        "hết",
         "họ",
-        "bạn"
+        "bạn",
+        "khỏe"
       ]
     },
     {
@@ -231,7 +231,7 @@
       "distractors": [
         "nội",
         "đang",
-        "đau"
+        "thì"
       ]
     },
     {
@@ -259,8 +259,8 @@
       "options": [
         "cà phê sữa đá",
         "Em sắp tới rồi.",
-        "Em đau ở đây.",
-        "Bao nhiêu một ký?"
+        "Bao nhiêu một ký?",
+        "Khi nào anh về?"
       ],
       "translation": {
         "fr": "Un café glacé au lait, s'il te plaît.",

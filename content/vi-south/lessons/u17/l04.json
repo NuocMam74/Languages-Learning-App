@@ -58,7 +58,7 @@
       "concept": "s_tien_coc",
       "distractors": [
         "tiền cơm",
-        "tiền cộc"
+        "thứ hai"
       ],
       "explain": {
         "fr": "tiền cọc : la caution. tiền cơm : l'argent des repas.",
@@ -89,7 +89,7 @@
       "concept": "c_hop_dong",
       "distractors": [
         "họp đồng",
-        "hộp đồng"
+        "máy bay"
       ],
       "explain": {
         "fr": "hợp đồng : le contrat. họp : la réunion. hộp : la boîte.",
@@ -155,8 +155,8 @@
       "type": "listen_pick_text",
       "concept": "c_dien_thoai",
       "distractors": [
-        "bắt đầu",
-        "phòng ngủ"
+        "phòng ngủ",
+        "chút xíu"
       ]
     },
     {
@@ -165,15 +165,15 @@
       "distractors": [
         "chủ",
         "mất",
-        "thưởng"
+        "mà"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_chia_khoa",
       "distractors": [
-        "bắt đầu",
-        "dễ thương"
+        "sạc pin",
+        "bao nhiêu"
       ]
     },
     {
@@ -181,8 +181,8 @@
       "concept": "c_tien",
       "distractors": [
         "giờ",
-        "sai",
-        "chuyện"
+        "sáu",
+        "họp"
       ]
     },
     {
@@ -218,9 +218,9 @@
       "answer": "tiền cọc",
       "options": [
         "tiền cọc",
-        "Thiệt há?",
         "Tới rồi.",
-        "Không phải."
+        "Không phải.",
+        "Không sao."
       ],
       "translation": {
         "fr": "La caution, c'est un mois.",
@@ -233,9 +233,9 @@
       "answer": "điện thoại",
       "options": [
         "điện thoại",
-        "bắt đầu",
         "phòng ngủ",
-        "nước mía"
+        "nước mía",
+        "phải không?"
       ],
       "translation": {
         "fr": "C'est quoi ton numéro ? (à une femme un peu plus âgée)",
@@ -249,8 +249,8 @@
       "options": [
         "tiền",
         "giờ",
-        "sai",
-        "chuyện"
+        "phim",
+        "cũng"
       ],
       "translation": {
         "fr": "L'addition, s'il te plaît !",
@@ -265,7 +265,7 @@
         "chú",
         "chủ",
         "mất",
-        "thưởng"
+        "chỉ"
       ],
       "translation": {
         "fr": "Merci (à un homme de l'âge de tes parents).",

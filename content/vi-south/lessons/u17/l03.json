@@ -49,7 +49,8 @@
       "concept": "c_thue",
       "distractors": [
         "thuế",
-        "thui"
+        "alô",
+        "nhiều"
       ],
       "explain": {
         "fr": "thuê : louer. thuế : l'impôt !",
@@ -209,8 +210,8 @@
       "type": "listen_pick_text",
       "concept": "c_phong_tro",
       "distractors": [
-        "phòng trống",
-        "phòng trò"
+        "phòng trò",
+        "đèn đỏ"
       ],
       "explain": {
         "fr": "phòng trọ : chambre en location. phòng trống : chambre vide.",
@@ -247,9 +248,9 @@
       "type": "listen_pick_text",
       "concept": "c_tien",
       "distractors": [
-        "giỏi",
         "dở",
-        "khỏe"
+        "khỏe",
+        "bả"
       ]
     },
     {
@@ -276,7 +277,7 @@
       "distractors": [
         "c_cho_market",
         "c_bo_beef",
-        "c_chia_khoa"
+        "c_chieu"
       ]
     },
     {
@@ -300,9 +301,9 @@
       "answer": "tiền",
       "options": [
         "tiền",
-        "giỏi",
         "dở",
-        "khỏe"
+        "khỏe",
+        "gặp"
       ],
       "translation": {
         "fr": "L'addition, s'il te plaît !",
@@ -336,8 +337,8 @@
       "type": "listen_pick_text",
       "concept": "c_tang_tret",
       "distractors": [
-        "dễ thương",
-        "cảm ơn"
+        "cảm ơn",
+        "hủ tiếu"
       ]
     },
     {

@@ -61,7 +61,8 @@
       "concept": "c_doi_wait",
       "distractors": [
         "đời",
-        "đói"
+        "bò",
+        "đường"
       ],
       "explain": {
         "fr": "đợi : attendre. đời : la vie. đói : avoir faim.",
@@ -74,8 +75,9 @@
       "answer": "đợi",
       "options": [
         "đợi",
-        "đói",
-        "đội"
+        "đội",
+        "họ",
+        "mặn"
       ],
       "translation": {
         "fr": "Attends-moi une petite minute.",
@@ -137,7 +139,7 @@
       "distractors": [
         "sông",
         "và",
-        "đem"
+        "cho"
       ]
     },
     {
@@ -155,7 +157,7 @@
       "distractors": [
         "c_ot",
         "c_com",
-        "c_giuong"
+        "c_anh_hai"
       ]
     },
     {
@@ -205,7 +207,7 @@
         "tiền",
         "sông",
         "và",
-        "đem"
+        "của"
       ],
       "translation": {
         "fr": "L'addition, s'il te plaît !",

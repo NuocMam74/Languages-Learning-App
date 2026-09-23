@@ -169,7 +169,7 @@
       "distractors": [
         "chở",
         "chợ",
-        "nghỉ"
+        "trái"
       ]
     },
     {
@@ -177,15 +177,15 @@
       "concept": "s_cho_em_xuong",
       "distractors": [
         "Ký tên ở đây.",
-        "Khi nào anh về?"
+        "Anh làm nghề gì?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_xe_om",
       "distractors": [
-        "hình thẻ",
-        "ngã tư"
+        "ngã tư",
+        "cảm ơn"
       ]
     },
     {
@@ -193,7 +193,7 @@
       "concept": "s_queo_phai",
       "distractors": [
         "Dạ, có.",
-        "Thích lắm!"
+        "Không phải."
       ]
     },
     {
@@ -210,7 +210,7 @@
       "concept": "c_nga_tu",
       "distractors": [
         "ông bà",
-        "tại sao"
+        "chị hai"
       ]
     },
     {

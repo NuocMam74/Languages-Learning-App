@@ -238,7 +238,7 @@
       "distractors": [
         "bả",
         "ba",
-        "ít"
+        "chú"
       ]
     },
     {
@@ -247,7 +247,7 @@
       "distractors": [
         "gà",
         "sao",
-        "bớt"
+        "bạn"
       ]
     },
     {
@@ -255,8 +255,8 @@
       "concept": "c_ga_chicken",
       "distractors": [
         "ga",
-        "mua",
-        "đi"
+        "mình",
+        "nước"
       ]
     },
     {
@@ -264,8 +264,8 @@
       "concept": "c_chi",
       "distractors": [
         "chỉ",
-        "gỏi",
-        "đâu"
+        "chú",
+        "có"
       ]
     },
     {
@@ -274,34 +274,34 @@
       "distractors": [
         "ơi",
         "còn",
-        "bên"
+        "trăm"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_khoe",
       "distractors": [
-        "cổ",
-        "phường",
-        "mười"
+        "mười",
+        "em",
+        "cà"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ma_mom",
       "distractors": [
-        "c_meo",
-        "c_xoai",
-        "c_b_dam_cuoi"
+        "c_chu",
+        "c_nuoc",
+        "c_ca_fish"
       ]
     },
     {
       "type": "listen_pick_image",
       "concept": "c_ba",
       "distractors": [
-        "c_com_tam",
-        "c_b_dam_cuoi",
-        "c_thit"
+        "c_com",
+        "c_ga_station",
+        "c_chu"
       ]
     }
   ],

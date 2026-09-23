@@ -72,7 +72,8 @@
       "concept": "c_dau_pain",
       "distractors": [
         "đâu",
-        "đậu"
+        "mặn",
+        "trẻ"
       ],
       "explain": {
         "fr": "đau : avoir mal. đâu : où.",
@@ -111,8 +112,8 @@
       "type": "listen_pick_text",
       "concept": "s_nhuc_dau",
       "distractors": [
-        "nhức răng",
-        "nhắc đầu"
+        "đau bụng",
+        "dừng lại"
       ],
       "explain": {
         "fr": "nhức răng : mal aux dents.",
@@ -148,9 +149,9 @@
       "type": "listen_pick_text",
       "concept": "c_ngu_sleep",
       "distractors": [
-        "thuê",
         "cá",
-        "nghỉ"
+        "uống",
+        "alô"
       ]
     },
     {
@@ -159,7 +160,7 @@
       "distractors": [
         "đầu",
         "bị",
-        "nghỉ"
+        "quẹo"
       ]
     },
     {
@@ -167,8 +168,8 @@
       "concept": "c_dau_head",
       "distractors": [
         "đâu",
-        "muốn",
-        "bệnh"
+        "bệnh",
+        "trước"
       ]
     },
     {
@@ -193,8 +194,8 @@
       "concept": "c_ngu_sleep",
       "distractors": [
         "c_xe_may",
-        "c_sot",
-        "c_phong"
+        "c_ong",
+        "c_troi"
       ]
     },
     {
@@ -219,8 +220,8 @@
       "options": [
         "đầu",
         "đâu",
-        "muốn",
-        "bệnh"
+        "bệnh",
+        "nhanh"
       ],
       "translation": {
         "fr": "J'ai mal à la tête.",
@@ -233,9 +234,9 @@
       "answer": "ngủ",
       "options": [
         "ngủ",
-        "thuê",
         "cá",
-        "nghỉ"
+        "mợ",
+        "hơn"
       ],
       "translation": {
         "fr": "Chez moi, il y a trois chambres.",
@@ -250,7 +251,7 @@
         "đâu",
         "đầu",
         "bị",
-        "nghỉ"
+        "quẹo"
       ],
       "translation": {
         "fr": "Tu vas où ? (à un homme un peu plus âgé)",

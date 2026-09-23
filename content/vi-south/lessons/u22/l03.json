@@ -164,21 +164,6 @@
     },
     {
       "type": "fill_gap",
-      "text": "___ tui đã qua Việt Nam.",
-      "answer": "năm ngoái",
-      "options": [
-        "năm ngoái",
-        "giấy tờ",
-        "thiệp mời",
-        "hình thẻ"
-      ],
-      "translation": {
-        "fr": "L'an dernier, je suis venu(e) au Vietnam.",
-        "en": "Last year I came to Vietnam."
-      }
-    },
-    {
-      "type": "fill_gap",
       "text": "___ em về quê.",
       "answer": "tuần trước",
       "options": [
@@ -257,8 +242,8 @@
       "type": "listen_pick_text",
       "concept": "c_b_ngay_xua",
       "distractors": [
-        "du lịch",
-        "năm ngoái"
+        "năm ngoái",
+        "khách sạn"
       ]
     },
     {
@@ -282,7 +267,7 @@
       "concept": "s_b_hoi_nho_tui_o_que",
       "distractors": [
         "Tại sao em học tiếng Việt?",
-        "Theo tui, quán này ngon hơn."
+        "Con mời ba má ăn cơm."
       ]
     },
     {
@@ -292,6 +277,21 @@
         "hợp đồng",
         "nhân viên"
       ]
+    },
+    {
+      "type": "fill_gap",
+      "text": "___ tui đã qua Việt Nam.",
+      "answer": "năm ngoái",
+      "options": [
+        "năm ngoái",
+        "công viên",
+        "ông xã",
+        "tăng ca"
+      ],
+      "translation": {
+        "fr": "L'an dernier, je suis venu(e) au Vietnam.",
+        "en": "Last year I came to Vietnam."
+      }
     },
     {
       "type": "game",

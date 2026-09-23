@@ -192,6 +192,7 @@ describe("la fiche de préparation", () => {
       (briefing.discover.length > 0 ? 1 : 0) +
         (briefing.recall.length > 0 ? 1 : 0) +
         (briefing.models.length > 0 ? 1 : 0) +
+        (briefing.cited.length > 0 ? 1 : 0) +
         briefing.guides.length +
         briefing.formats.length,
     );

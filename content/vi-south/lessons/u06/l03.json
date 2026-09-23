@@ -24,7 +24,8 @@
     "c_mot_one",
     "c_lop",
     "c_chin_nine",
-    "c_tam_eight"
+    "c_tam_eight",
+    "c_bay_seven"
   ],
   "steps": [
     {
@@ -110,29 +111,12 @@
       "concept": "c_lam_five",
       "distractors": [
         "lắm",
-        "lầm"
+        "có",
+        "nội"
       ],
       "explain": {
         "fr": "lăm, plat : le cinq après une dizaine. lắm monte : très.",
         "en": "lăm, level: five after a tens word. lắm rises: very."
-      }
-    },
-    {
-      "type": "fill_gap",
-      "text": "Mười ___ ngàn đồng.",
-      "answer": "lăm",
-      "options": [
-        "lăm",
-        "năm",
-        "nắm"
-      ],
-      "translation": {
-        "fr": "Quinze mille đồng.",
-        "en": "Fifteen thousand đồng."
-      },
-      "explain": {
-        "fr": " Après une dizaine, năm devient lăm : mười lăm, hai mươi lăm.",
-        "en": "After a ten, năm becomes lăm: mười lăm, hai mươi lăm."
       }
     },
     {
@@ -148,8 +132,8 @@
       "concept": "c_mot_high",
       "distractors": [
         "một",
-        "sắp",
-        "thứ"
+        "cho",
+        "đi"
       ]
     },
     {
@@ -167,7 +151,7 @@
       "distractors": [
         "mốt",
         "mà",
-        "chở"
+        "mời"
       ]
     },
     {
@@ -175,8 +159,8 @@
       "concept": "c_lop",
       "distractors": [
         "chị",
-        "thưởng",
-        "phòng"
+        "phòng",
+        "tám"
       ]
     },
     {
@@ -185,7 +169,7 @@
       "distractors": [
         "mười",
         "cho",
-        "cưới"
+        "mình"
       ]
     },
     {
@@ -196,7 +180,7 @@
         "mươi",
         "mười",
         "cho",
-        "cưới"
+        "quê"
       ],
       "translation": {
         "fr": "Elle a vingt-cinq ans.",
@@ -226,7 +210,7 @@
         "một",
         "mốt",
         "mà",
-        "chở"
+        "quê"
       ],
       "translation": {
         "fr": "Chez moi, il y a un chien.",
@@ -240,8 +224,8 @@
       "options": [
         "lớp",
         "chị",
-        "thưởng",
-        "phòng"
+        "phòng",
+        "trái"
       ],
       "translation": {
         "fr": "Ma classe compte trente-quatre personnes.",
@@ -302,9 +286,9 @@
       "type": "listen_pick_text",
       "concept": "c_chin_nine",
       "distractors": [
-        "thẻ",
-        "giá",
-        "nhen"
+        "sáu",
+        "gì",
+        "chị"
       ]
     },
     {
@@ -312,8 +296,17 @@
       "concept": "c_tam_eight",
       "distractors": [
         "nhà",
-        "giùm",
-        "giỡn"
+        "ông",
+        "con"
+      ]
+    },
+    {
+      "type": "listen_pick_text",
+      "concept": "c_bay_seven",
+      "distractors": [
+        "chưa",
+        "cô",
+        "mấy"
       ]
     },
     {

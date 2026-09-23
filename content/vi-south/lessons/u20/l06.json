@@ -210,7 +210,7 @@
       "concept": "s_b_dung_khach_sao",
       "distractors": [
         "Đừng khách sạo!",
-        "Đừng ngại!"
+        "Dạ, ăn rồi."
       ],
       "explain": {
         "fr": "khách sáo : faire des manières.",
@@ -238,17 +238,17 @@
       "concept": "c_b_tiec_party",
       "distractors": [
         "tiếc",
-        "ghé",
-        "nội"
+        "nội",
+        "hiểu"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_b_ban_busy",
       "distractors": [
-        "nếu",
         "tiền",
-        "giỡn"
+        "ghiền",
+        "lương"
       ]
     },
     {
@@ -258,8 +258,8 @@
       "options": [
         "tiếc",
         "tiệc",
-        "giả",
-        "rưỡi"
+        "rưỡi",
+        "bà"
       ],
       "translation": {
         "fr": "Dommage, je suis déjà pris(e).",
@@ -272,9 +272,9 @@
       "answer": "bận",
       "options": [
         "bận",
-        "nếu",
         "tiền",
-        "giỡn"
+        "chua",
+        "đá"
       ],
       "translation": {
         "fr": "Aujourd'hui je suis très occupé(e).",
@@ -310,8 +310,8 @@
       "type": "listen_pick_text",
       "concept": "s_b_con_chuc_co",
       "distractors": [
-        "Giả sử trúng số, anh làm gì?",
-        "Ước gì tui nói giỏi tiếng Việt."
+        "Mời chị đi đám cưới em nha.",
+        "Chị photo giùm em hai bản nha."
       ]
     },
     {

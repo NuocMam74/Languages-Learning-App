@@ -154,9 +154,9 @@
       "type": "listen_pick_text",
       "concept": "c_ngay",
       "distractors": [
-        "nghỉ",
         "xa",
-        "vườn"
+        "heo",
+        "xoài"
       ]
     },
     {
@@ -165,9 +165,9 @@
       "answer": "hôm nay",
       "options": [
         "hôm nay",
-        "chụp hình",
-        "khi nào",
-        "cẩn thận"
+        "bây giờ",
+        "hai mươi",
+        "Không phải."
       ],
       "translation": {
         "fr": "Aujourd'hui, je vais au marché.",
@@ -180,9 +180,9 @@
       "answer": "ngày mai",
       "options": [
         "ngày mai",
-        "lì xì",
         "giáo viên",
-        "năm ngoái"
+        "người Pháp",
+        "Không sao."
       ],
       "translation": {
         "fr": "Demain, je vais au marché.",
@@ -197,7 +197,7 @@
         "hôm qua",
         "bác sĩ",
         "bà xã",
-        "trái cây"
+        "Dạ, có."
       ],
       "translation": {
         "fr": "Hier, j'ai mangé un phở.",
@@ -208,9 +208,9 @@
       "type": "listen_pick_text",
       "concept": "c_dem",
       "distractors": [
-        "sai",
         "sông",
-        "nghĩ"
+        "ông",
+        "trời"
       ]
     },
     {
@@ -226,9 +226,9 @@
       "type": "listen_pick_text",
       "concept": "c_chieu",
       "distractors": [
-        "với",
         "da",
-        "nhen"
+        "trà",
+        "cậu"
       ]
     },
     {
@@ -236,43 +236,43 @@
       "concept": "c_trua",
       "distractors": [
         "dĩa",
-        "chùa",
-        "của"
+        "của",
+        "chè"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_sang",
       "distractors": [
-        "sau",
-        "thưởng",
-        "ngoại"
+        "ngoại",
+        "bạn",
+        "xe"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_ruoi",
       "distractors": [
-        "cưới",
         "ghế",
-        "hông"
+        "hông",
+        "ra"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_bay_gio",
       "distractors": [
-        "Đúng rồi!",
-        "Dạ, có."
+        "Dạ, có.",
+        "người Việt"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_phut",
       "distractors": [
-        "đụng",
         "mưa",
-        "nhức"
+        "quê",
+        "xoài"
       ]
     },
     {
@@ -280,7 +280,7 @@
       "concept": "s_may_gio_roi",
       "distractors": [
         "Đi đâu vậy?",
-        "Alô, em nghe."
+        "Anh tên gì?"
       ]
     },
     {

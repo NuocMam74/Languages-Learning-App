@@ -116,7 +116,8 @@
       "options": [
         "đám",
         "đàm",
-        "dám"
+        "ma",
+        "thôi"
       ],
       "translation": {
         "fr": "Demain, il y a un đám giỗ chez moi.",
@@ -147,8 +148,8 @@
       "type": "listen_pick_text",
       "concept": "c_b_dam_gio",
       "distractors": [
-        "ước gì",
-        "hồi đó"
+        "hồi đó",
+        "ông bà"
       ]
     },
     {
@@ -165,7 +166,7 @@
       "distractors": [
         "tiệm",
         "mốt",
-        "vườn"
+        "đang"
       ]
     },
     {
@@ -174,9 +175,9 @@
       "answer": "đám giỗ",
       "options": [
         "đám giỗ",
-        "ước gì",
         "hồi đó",
-        "khách sạn"
+        "khách sạn",
+        "đau bụng"
       ],
       "translation": {
         "fr": "Demain, il y a un đám giỗ chez moi.",
@@ -202,16 +203,16 @@
       "type": "listen_pick_text",
       "concept": "s_b_da_con_no_roi",
       "distractors": [
-        "Kể tui nghe đi!",
-        "Chắc ảnh tới trễ."
+        "Anh có vợ chưa?",
+        "Mời bác uống trà."
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_b_an_them_di",
       "distractors": [
-        "Kể tui nghe đi!",
-        "Em mắc cỡ quá."
+        "Em ghét kẹt xe.",
+        "Em ăn cơm chưa?"
       ]
     },
     {
@@ -219,7 +220,7 @@
       "concept": "s_b_con_moi_ba_ma",
       "distractors": [
         "Phòng này bao nhiêu một tháng?",
-        "Nếu mưa thì tui ở nhà."
+        "Tuần này em làm ca sáng."
       ]
     },
     {
@@ -242,8 +243,8 @@
       "type": "listen_pick_text",
       "concept": "c_b_phong_bi",
       "distractors": [
-        "lì xì",
-        "tại sao"
+        "tại sao",
+        "xe buýt"
       ]
     },
     {

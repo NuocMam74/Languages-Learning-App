@@ -147,8 +147,8 @@
       "concept": "c_chua",
       "distractors": [
         "lớp",
-        "rối",
-        "giùm"
+        "đặt",
+        "mời"
       ]
     },
     {
@@ -173,8 +173,8 @@
       "options": [
         "chưa",
         "lớp",
-        "rối",
-        "giùm"
+        "dừa",
+        "bán"
       ],
       "translation": {
         "fr": "Tu es marié ? (à un homme un peu plus âgé)",
@@ -208,8 +208,8 @@
       "type": "listen_pick_text",
       "concept": "s_may_ngay",
       "distractors": [
-        "sau Tết",
-        "chừng nào"
+        "chừng nào",
+        "thứ bảy"
       ]
     },
     {
@@ -217,7 +217,7 @@
       "concept": "s_nha_may_nguoi",
       "distractors": [
         "Bớt cho em đi chị.",
-        "Anh có thích phở không?"
+        "Chị là người nước nào?"
       ]
     },
     {
@@ -241,32 +241,32 @@
       "type": "listen_pick_text",
       "concept": "s_khi_nao_anh_ve",
       "distractors": [
-        "Em nhắn rồi đó.",
-        "Chị làm ở đâu?"
+        "Chị làm ở đâu?",
+        "Anh bao nhiêu tuổi?"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_bao_gio_when",
       "distractors": [
-        "chuyển khoản",
-        "chụp hình"
+        "hôm qua",
+        "bình thường"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "c_khi_nao",
       "distractors": [
-        "nhưng mà",
-        "ngày sinh"
+        "ngày sinh",
+        "bà xã"
       ]
     },
     {
       "type": "listen_pick_text",
       "concept": "s_tai_sao_em_hoc",
       "distractors": [
-        "Hồi nhỏ tui ở dưới quê.",
-        "Visa của tui sắp hết hạn."
+        "Em có anh chị em không?",
+        "Anh chở em ra chợ nha."
       ]
     }
   ],
