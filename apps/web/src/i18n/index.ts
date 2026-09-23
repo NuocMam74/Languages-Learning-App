@@ -41,6 +41,12 @@ const bootFr = import.meta.glob(
     "./messages/missions.ts",
     "./messages/mobile.ts",
     "./messages/offline.ts",
+    // Le parcours porte désormais la carte des chiffres (`stats`) et la visite en bulles
+    // (`discovery`) — contrat phase26 §7 et §8. Le hub se rend dès le démarrage, avant que
+    // `ensureMessages("all")` n'ait fini, et rien ne le re-rend ensuite : chargées à la demande,
+    // ces chaînes restaient vides (titre et lien de la carte, bulles, nom du bouton « ? »).
+    "./messages/stats.ts",
+    "./messages/discovery.ts",
   ],
   { eager: true, query: { lang: "fr" }, import: "fr" },
 ) as Record<string, Table>;
@@ -65,6 +71,8 @@ const lazyFr = import.meta.glob(
     "!./messages/missions.ts",
     "!./messages/mobile.ts",
     "!./messages/offline.ts",
+    "!./messages/stats.ts",
+    "!./messages/discovery.ts",
   ],
   { query: { lang: "fr" }, import: "fr" },
 ) as Record<string, () => Promise<Table>>;
