@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { MARK_MAX, markLevel, overallMark, themeMarks, weakestThemes } from "./marks.ts";
+import { MARK_MAX, markLevel, overallMark, themeDetail, themeMarks, weakestThemes } from "./marks.ts";
+import { newCard, type SrsCard } from "./srs.ts";
 import { GRADED_STEPS_PER_LESSON, gradedSteps, markOutOf20 } from "./practice.ts";
 import { loadPack } from "./testing/pack.ts";
 import type { LessonId } from "./types.ts";
@@ -96,5 +97,41 @@ describe("thèmes à reprendre", () => {
   it("un thème qui tient n'y figure pas", () => {
     const [a, b] = unit1.lessons as [LessonId, LessonId];
     expect(weakestThemes(themeMarks(content, scores([[a, 0.9], [b, 0.8]])))).toEqual([]);
+  });
+});
+
+describe("fiche d'un thème", () => {
+  const NOW = new Date("2026-09-01T10:00:00Z");
+  const introduced = [...new Set(unit1.lessons.flatMap((id) => content.lessons.get(id)?.review.srsIntroduce ?? []))];
+  const seen = (conceptId: string, over: Partial<SrsCard> = {}): SrsCard => ({ ...newCard(conceptId, NOW), state: "review", reps: 4, ...over });
+
+  it("chaque niveau a sa note, et un niveau pas encore fait n'a pas zéro", () => {
+    const [a] = unit1.lessons as [LessonId];
+    const detail = themeDetail(content, unit1.id, scores([[a, 0.75]]), [])!;
+    expect(detail.levels).toHaveLength(unit1.lessons.length);
+    expect(detail.levels[0]?.mark).toBe(15);
+    expect(detail.levels[1]?.mark).toBeNull();
+    expect(detail.mark.mark).toBe(15);
+  });
+
+  it("les mots acquis sont ceux du thème dont la carte a quitté l'état « nouveau »", () => {
+    const [x, y, z] = introduced as [string, string, string];
+    const cards = [seen(x), seen(y), { ...newCard(z, NOW) }, seen("concept_d_un_autre_theme")];
+    const detail = themeDetail(content, unit1.id, new Map(), cards)!;
+    expect(detail.concepts).toBe(introduced.length);
+    expect(detail.acquired).toBe(2);
+  });
+
+  it("les mots qui résistent : les plus oubliés d'abord, et seulement ceux qui ont été oubliés", () => {
+    const [x, y, z] = introduced as [string, string, string];
+    const detail = themeDetail(content, unit1.id, new Map(), [seen(x, { lapses: 1 }), seen(y, { lapses: 3 }), seen(z)])!;
+    expect(detail.resisting).toEqual([{ conceptId: y, lapses: 3 }, { conceptId: x, lapses: 1 }]);
+    // 12 révisions, 4 oublis : deux tiers tenues.
+    expect(detail.retention).toBeCloseTo(8 / 12);
+  });
+
+  it("rien de revu : pas de taux inventé ; thème inconnu : pas de fiche", () => {
+    expect(themeDetail(content, unit1.id, new Map(), [])?.retention).toBeNull();
+    expect(themeDetail(content, "u_inexistant", new Map(), [])).toBeNull();
   });
 });

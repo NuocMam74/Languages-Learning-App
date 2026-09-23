@@ -1,28 +1,29 @@
-import { MARK_MAX, STATS_WINDOW_DAYS, type ContentIndex, type DayPoint, type ThemeMark } from "@parlo/core";
+import { HISTORY_MONTHS, MARK_MAX, STATS_WINDOW_DAYS, type ContentIndex, type DayPoint, type HistoryMonths, type ThemeMark } from "@parlo/core";
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { Button, Screen } from "../components/ui.tsx";
 import { Card, EmptyState, Icon, PageHeader, ProgressBar, ProgressRing, SectionTitle, Skeleton, staggerStyle, Stat, type IconName } from "../design/index.ts";
 import { getLocale, l, plural, t, type MessageKey } from "../i18n/index.ts";
 import { DayBars, RatioLine, RegularityStrip, ShareBars, TrendChip, type ChartPoint, type LinePoint, type ShareRow } from "./charts.tsx";
-import { statsView, type StatsView } from "./data.ts";
+import { historyData, historyView, statsView, type HistoryData, type StatsView } from "./data.ts";
 
 /**
  * Statistiques (contrat phase23 §1), cinquième destination de la navigation basse.
  *
  * Le profil est une étagère à trophées : il dit **ce qu'on a**. Cet écran dit **ce qui bouge** —
  * la question qu'aucun écran ne traitait, et celle qui décide si on revient demain. D'où le
- * découpage en trois onglets, chacun répondant à une question qu'on se pose vraiment :
+ * découpage en quatre onglets, chacun répondant à une question qu'on se pose vraiment :
  *
  *   Activité     — est-ce que je m'y tiens ?
  *   Compétences  — à quoi passe mon temps, et qu'est-ce qui rend ?
  *   Parcours     — où j'en suis, et sur quoi je bute ?
+ *   Historique   — est-ce que ça avance, sur des mois ? (contrat phase26 §7)
  *
  * Tout se lit en local (mode invité, hors ligne compris). Les hauteurs qui attendent IndexedDB
  * sont réservées d'avance : les compteurs arrivent après le premier rendu et ne poussent rien.
  */
 
-const TABS = ["activity", "skills", "journey"] as const;
+const TABS = ["activity", "skills", "journey", "history"] as const;
 type Tab = (typeof TABS)[number];
 
 const isTab = (value: string | undefined): value is Tab => TABS.includes(value as Tab);
@@ -44,10 +45,19 @@ export default function StatsPage({ content }: { content: ContentIndex }) {
   const started = view === null || view.lifetimeAnswers > 0 || view.lessonsDone > 0;
 
   return (
-    <Screen top={<PageHeader title={t("stats.title")} subtitle={t("stats.subtitle", { n: STATS_WINDOW_DAYS })} />}>
+    <Screen
+      top={
+        <PageHeader
+          title={t("stats.title")}
+          subtitle={tab === "history" ? t("stats.subtitle.history") : t("stats.subtitle", { n: STATS_WINDOW_DAYS })}
+        />
+      }
+    >
       {/* Les onglets vivent dans l'URL : revenir sur « Parcours » depuis le profil n'oblige pas à
-          rechercher l'onglet, et le bouton retour du navigateur fait ce qu'on attend de lui. */}
-      <div role="tablist" aria-label={t("stats.title")} className="mb-5 grid grid-cols-3 gap-1 rounded-card bg-surface-2 p-1">
+          rechercher l'onglet, et le bouton retour du navigateur fait ce qu'on attend de lui. Quatre
+          onglets tiennent sur deux rangées tant que l'écran est étroit : « Compétences » n'entre pas
+          dans un quart de 360 px, et un libellé tronqué ne se lit plus. */}
+      <div role="tablist" aria-label={t("stats.title")} className="mb-5 grid grid-cols-2 gap-1 rounded-card bg-surface-2 p-1 sm:grid-cols-4">
         {TABS.map((key) => (
           <button
             key={key}
@@ -72,8 +82,10 @@ export default function StatsPage({ content }: { content: ContentIndex }) {
         <ActivityTab view={view} />
       ) : tab === "skills" ? (
         <SkillsTab view={view} />
-      ) : (
+      ) : tab === "journey" ? (
         <JourneyTab view={view} />
+      ) : (
+        <HistoryTab content={content} />
       )}
 
       <p className="mt-6 flex items-start gap-2 text-sm text-phu-sa">
@@ -387,16 +399,173 @@ function ThemeLine({ theme, index }: { theme: ThemeMark; index: number }) {
   const tone = theme.level === "fragile" ? "son-mai" : theme.level === "strong" ? "ngoc" : "nghe";
   return (
     <li data-testid="stats-theme" data-unit={theme.unit} data-level={theme.level ?? "none"} style={staggerStyle(index)} className="motion-safe:parlo-enter">
-      <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-3">
-        <span className="font-medium">{l(theme.title)}</span>
-        <span className="text-sm text-phu-sa tabular-nums">{t("profile.marks.value", { mark, max: MARK_MAX })}</span>
-      </div>
-      <ProgressBar value={mark} max={MARK_MAX} size="sm" tone={tone} label={l(theme.title)} />
-      {/* Le niveau est écrit à côté de la barre : sa couleur seule ne le dirait pas. */}
-      <p className="mt-0.5 flex flex-wrap justify-between gap-x-3 text-sm text-phu-sa">
-        <span>{theme.level ? t(`profile.marks.level.${theme.level}` as MessageKey) : ""}</span>
-        <span>{t(theme.done > 1 ? "profile.marks.progress.plural" : "profile.marks.progress", { n: theme.done, total: theme.total })}</span>
-      </p>
+      {/* Toute la ligne ouvre la fiche du thème (contrat phase26 §7) : une cible large, pas un
+          lien de trois lettres à viser au bout de la barre. */}
+      <Link
+        to={`/statistiques/theme/${encodeURIComponent(theme.unit)}`}
+        aria-label={t("stats.theme.open", { title: l(theme.title) })}
+        data-testid="stats-theme-link"
+        className="-mx-2 block rounded-chip px-2 py-1 transition-[background-color,transform] hover:bg-phu-sa/8 motion-safe:active:scale-[.99]"
+      >
+        <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-3">
+          <span className="flex items-center gap-1 font-medium">
+            {l(theme.title)}
+            <Icon name="chevronRight" size={16} className="text-phu-sa" />
+          </span>
+          <span className="text-sm text-phu-sa tabular-nums">{t("profile.marks.value", { mark, max: MARK_MAX })}</span>
+        </div>
+        <ProgressBar value={mark} max={MARK_MAX} size="sm" tone={tone} label={l(theme.title)} />
+        {/* Le niveau est écrit à côté de la barre : sa couleur seule ne le dirait pas. */}
+        <p className="mt-0.5 flex flex-wrap justify-between gap-x-3 text-sm text-phu-sa">
+          <span>{theme.level ? t(`profile.marks.level.${theme.level}` as MessageKey) : ""}</span>
+          <span>{t(theme.done > 1 ? "profile.marks.progress.plural" : "profile.marks.progress", { n: theme.done, total: theme.total })}</span>
+        </p>
+      </Link>
     </li>
+  );
+}
+
+/* ------------------------------------------------------------- Historique */
+
+/** Période par défaut : trois mois, la plus courte — celle qui a le plus de chances d'être pleine. */
+const DEFAULT_MONTHS: HistoryMonths = 3;
+
+/**
+ * Historique long (contrat phase26 §7) : la même lecture que l'onglet Activité, à la maille de la
+ * semaine, sur 3, 6 ou 12 mois. Ses données se lisent à l'ouverture de l'onglet seulement — les
+ * trois autres n'en ont pas besoin —, une fois : changer de période ne relit rien.
+ */
+function HistoryTab({ content }: { content: ContentIndex }) {
+  const locale = getLocale();
+  const [data, setData] = useState<HistoryData | null>(null);
+  const [months, setMonths] = useState<HistoryMonths>(DEFAULT_MONTHS);
+
+  useEffect(() => {
+    let live = true;
+    void historyData(content).then((next) => live && setData(next));
+    return () => {
+      live = false;
+    };
+  }, [content]);
+
+  const view = useMemo(() => (data ? historyView(data, months) : null), [data, months]);
+  const weekLabel = useMemo(
+    () => (week: string) => new Date(`${week}T12:00:00`).toLocaleDateString(locale, { day: "numeric", month: "short" }),
+    [locale],
+  );
+  const points = view?.points ?? [];
+  const totals = view?.totals;
+
+  // Une semaine d'avant la mesure garde sa colonne, sans barre : on ne sait pas, ce n'est pas zéro.
+  const minutes: ChartPoint[] = points.map((point) => ({
+    day: point.week,
+    value: point.seconds,
+    placeholder: !point.measured,
+    label: !point.measured
+      ? t("stats.history.weekUnknown", { date: weekLabel(point.week) })
+      : point.seconds === 0
+        ? t("stats.history.weekNone", { date: weekLabel(point.week) })
+        : t("stats.history.minutes.week", { date: weekLabel(point.week), n: Math.max(1, Math.round(point.seconds / 60)) }),
+  }));
+  // Les niveaux, eux, sont datés dans la progression : connus pour toutes les semaines.
+  const lessons: ChartPoint[] = points.map((point) => ({
+    day: point.week,
+    value: point.lessons,
+    label:
+      point.lessons === 0
+        ? t("stats.history.weekNone", { date: weekLabel(point.week) })
+        : point.lessons === 1
+          ? t("stats.history.lessons.weekOne", { date: weekLabel(point.week) })
+          : t("stats.history.lessons.week", { date: weekLabel(point.week), n: point.lessons }),
+  }));
+  const accuracy: LinePoint[] = points.map((point) => ({
+    day: point.week,
+    value: point.ratio,
+    label:
+      point.ratio === null
+        ? t(point.measured ? "stats.history.weekNone" : "stats.history.weekUnknown", { date: weekLabel(point.week) })
+        : t("stats.history.accuracy.week", { date: weekLabel(point.week), n: Math.round(point.ratio * 100), correct: point.correct, total: point.answers }),
+  }));
+
+  const percent = (ratio: number | null | undefined) => (ratio === null || ratio === undefined ? t("stats.kpi.none") : `${Math.round(ratio * 100)} %`);
+  const totalMinutes = (seconds: number) => (seconds === 0 ? "0" : seconds < 60 ? t("stats.kpi.minutes.under") : String(Math.round(seconds / 60)));
+  const firstMeasured = view?.measuredFrom ?? null;
+  const unmeasured = points.some((p) => !p.measured);
+
+  return (
+    <>
+      {/* Trois périodes, un seul choix : des boutons pressés, pas des onglets dans les onglets. */}
+      <div role="group" aria-label={t("stats.history.period")} className="mb-4 flex gap-2" data-testid="history-period">
+        {HISTORY_MONTHS.map((option) => (
+          <button
+            key={option}
+            type="button"
+            aria-pressed={option === months}
+            data-months={option}
+            onClick={() => setMonths(option)}
+            className={`min-h-11 flex-1 rounded-chip border px-3 text-sm font-semibold transition-[background-color,color,border-color] ${
+              option === months ? "border-ngoc bg-ngoc-sang text-ngoc" : "border-line bg-surface text-phu-sa"
+            }`}
+          >
+            {t("stats.history.months", { n: option })}
+          </button>
+        ))}
+      </div>
+
+      <Kpis
+        items={[
+          { key: "minutes", icon: "clock", label: t("stats.history.kpi.minutes"), value: totals ? totalMinutes(totals.seconds) : null },
+          { key: "lessons", icon: "book", label: t("stats.history.kpi.lessons"), value: totals ? String(totals.lessons) : null },
+          { key: "answers", icon: "target", label: t("stats.history.kpi.answers"), value: totals ? String(totals.answers) : null },
+          { key: "accuracy", icon: "chart", tone: "ngoc", label: t("stats.history.kpi.accuracy"), value: totals ? percent(totals.ratio) : null },
+        ]}
+      />
+
+      <Card as="section" className="mb-4 flex flex-col gap-5" data-testid="history-charts" data-weeks={points.length}>
+        {/* Deux cadres, deux échelles : des minutes et des niveaux ne se comparent pas. */}
+        <DayBars
+          title={t("stats.history.minutes")}
+          unitLabel={t("stats.chart.minutes.unit")}
+          tone="nghe"
+          height={96}
+          points={minutes}
+          summary={t("stats.history.minutes.summary", {
+            n: totalMinutes(totals?.seconds ?? 0),
+            avg: totals?.minutesPerWeek === null || totals?.minutesPerWeek === undefined ? "—" : totalMinutes(totals.minutesPerWeek * 60),
+          })}
+        />
+        <DayBars
+          title={t("stats.history.lessons")}
+          unitLabel={t("stats.history.lessons.unit")}
+          height={84}
+          points={lessons}
+          hint={t("stats.history.lessonsHint")}
+          summary={t((totals?.lessons ?? 0) > 1 ? "stats.history.lessons.summary" : "stats.history.lessons.summary.one", { n: totals?.lessons ?? 0 })}
+        />
+      </Card>
+
+      <Card as="section" className="mb-4 flex flex-col gap-2">
+        <RatioLine
+          title={t("stats.history.accuracy")}
+          hint={t("stats.chart.accuracy.hint")}
+          points={accuracy}
+          summary={t("stats.chart.accuracy.summary", { n: totals?.ratio === null || totals === undefined ? 0 : Math.round((totals.ratio ?? 0) * 100) })}
+        />
+        {view && (
+          <p className="flex flex-wrap items-center gap-x-2 text-sm text-phu-sa">
+            <span>{t("stats.history.trend")}</span>
+            <TrendChip trend={view.comparison.trend} label={trendLabel(view.comparison)} />
+          </p>
+        )}
+      </Card>
+
+      {/* Ce que la série ne couvre pas est dit en toutes lettres : une période plus courte que
+          demandée ne doit pas passer pour des mois d'abandon. */}
+      <div className="flex min-h-[1.3125rem] flex-col gap-1 text-sm text-phu-sa" data-testid="history-notes">
+        {view && points.length === 0 && <p>{t("stats.history.empty")}</p>}
+        {view && view.shortened && points[0] && <p>{t("stats.history.since", { date: weekLabel(points[0].week) })}</p>}
+        {view && unmeasured && firstMeasured && <p>{t("stats.history.measuredFrom", { date: weekLabel(firstMeasured) })}</p>}
+      </div>
+    </>
   );
 }

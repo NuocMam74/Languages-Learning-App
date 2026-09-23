@@ -79,9 +79,15 @@ function Frame({ title, hint, reading, height, children, empty }: {
  * c'est le jour où l'on n'a rien fait, et c'est exactement ce qu'on vient voir. Un filet gris à la
  * ligne de base les rend visibles sans les faire passer pour une valeur.
  */
-export function DayBars({ title, hint, points, unitLabel, summary, tone = "ngoc", height = 132 }: {
+export function DayBars({ title, hint, points, unitLabel, summary, tone = "ngoc", height = 132, max: scale }: {
   title: string;
   hint?: string | undefined;
+  /**
+   * Une colonne par point : un jour, une semaine (historique long) ou un niveau (fiche d'un thème,
+   * contrat phase26 §7). Un point `placeholder` — une semaine pas encore mesurée, un niveau pas
+   * encore fait — garde sa place et sa ligne de lecture, sans barre **ni** ligne de base : ce
+   * n'est pas un zéro, c'est une inconnue.
+   */
   points: readonly ChartPoint[];
   /** Nom de la mesure, lu par les lecteurs d'écran (« réponses », « minutes »). */
   unitLabel: string;
@@ -89,10 +95,12 @@ export function DayBars({ title, hint, points, unitLabel, summary, tone = "ngoc"
   summary: string;
   tone?: "ngoc" | "nghe";
   height?: number;
+  /** Haut de l'échelle, quand il est fixe (une note sur 20) ; absent = la plus grande valeur. */
+  max?: number | undefined;
 }) {
   const [picked, setPicked] = useState<number | null>(null);
   const titleId = useId();
-  const max = Math.max(1, ...points.map((p) => p.value));
+  const max = scale ?? Math.max(1, ...points.map((p) => p.value));
   const empty = points.every((p) => p.value === 0);
   // Repère horizontal unique : le maximum. Une grille complète encombrerait 132 px de haut.
   const width = Math.max(1, points.length) * 10;
@@ -109,12 +117,12 @@ export function DayBars({ title, hint, points, unitLabel, summary, tone = "ngoc"
       >
         <title id={titleId}>{`${title} (${unitLabel}) — ${summary}`}</title>
         {points.map((point, i) => {
-          const h = empty ? 0 : (point.value / max) * 96;
+          const h = empty || point.placeholder ? 0 : (Math.min(point.value, max) / max) * 96;
           const x = i * 10;
           return (
             <g key={point.day}>
               {/* Ligne de base : le jour creux se voit, sans peser comme une valeur. */}
-              <rect x={x + 1.5} y={98.5} width={7} height={1.5} className="fill-current opacity-20" />
+              {!point.placeholder && <rect x={x + 1.5} y={98.5} width={7} height={1.5} className="fill-current opacity-20" />}
               {h > 0 && (
                 <rect
                   x={x + 1.5}

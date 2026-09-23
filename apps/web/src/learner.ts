@@ -25,6 +25,7 @@ import {
   nextLesson,
   normalizeActivityLog,
   normalizeSkillStats,
+  normalizeWeeklyLog,
   placementCards,
   planSession,
   pushSouthResult,
@@ -34,6 +35,8 @@ import {
   recordResult,
   recordSkillAnswer,
   recordReviewResult,
+  recordWeeklyAnswer,
+  recordWeeklySeconds,
   resolveEntryLesson,
   reviewConcept,
   reviewedConcepts,
@@ -72,6 +75,7 @@ import {
   type StepType,
   type Streak,
   type UnitId,
+  type WeeklyLog,
 } from "@parlo/core";
 import { ensureSessionContent } from "./content.ts";
 import { db, getKv, LEGACY_SNAPSHOT_KEY, setDb, setKv, withoutPack, type ParloDB, type Profile, type SessionSnapshot, type StoredSrsCard, type Totals } from "./db.ts";
@@ -157,6 +161,9 @@ export const getSkillStats = async (pack?: string): Promise<SkillStats> =>
 /** Journal des minutes par jour du pack (contrat phase23 §1) : la série de l'écran Statistiques. */
 export const getActivityLog = async (pack?: string): Promise<ActivityLog> =>
   normalizeActivityLog(pack === undefined ? await getKv<unknown>("activityLog", null) : (await db().kv.get(scopedKey("activityLog", pack)))?.value);
+/** Journal des semaines (contrat phase26 §7), tel qu'écrit — sans le complément des 60 jours. */
+export const getWeeklyLog = async (pack?: string): Promise<WeeklyLog> =>
+  normalizeWeeklyLog(pack === undefined ? await getKv<unknown>("weeklyLog", null) : (await db().kv.get(scopedKey("weeklyLog", pack)))?.value);
 export const getLanguageInterest = () => getKv<Record<string, boolean>>("langInterest", {});
 export const setLanguageInterest = (value: Record<string, boolean>) => setKv("langInterest", value);
 
@@ -529,6 +536,10 @@ export async function submitSessionAnswer(
     if (evaluation.graded) {
       const stats = normalizeSkillStats(await packKv<unknown>(d, pack, "stats", null));
       await setPackKv(d, pack, "stats", recordSkillAnswer(stats, exerciseType, evaluation.correct, localDay(now)));
+      // Historique long (contrat phase26 §7) : la même réponse, comptée dans sa semaine. Les 60
+      // jours de `stats` s'effacent ; ce journal-là tient un an.
+      const weekly = normalizeWeeklyLog(await packKv<unknown>(d, pack, "weeklyLog", null));
+      await setPackKv(d, pack, "weeklyLog", recordWeeklyAnswer(weekly, localDay(now), evaluation.correct));
     }
     if (evaluation.graded && TONE_EXERCISE_TYPES.has(exerciseType)) {
       const log = await packKv<boolean[]>(d, pack, "toneLog", []);
@@ -713,6 +724,8 @@ export async function finishSession(content: ContentIndex, run: SessionRun, now 
       // Le journal est propre au pack, comme `stats` : les deux séries se lisent côte à côte.
       const log = normalizeActivityLog(await packKv<unknown>(d, pack, "activityLog", {}));
       await setPackKv(d, pack, "activityLog", recordActivitySeconds(log, today, seconds));
+      const weekly = normalizeWeeklyLog(await packKv<unknown>(d, pack, "weeklyLog", null));
+      await setPackKv(d, pack, "weeklyLog", recordWeeklySeconds(weekly, today, seconds));
       events.push(makeEvent("session_completed", { sessionId: saved.sessionId, xpGained: xp, itemsCount: capped.itemsCount, durationMs: capped.durationMs, localDate: today }, now));
     }
 

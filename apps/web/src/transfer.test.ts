@@ -1,6 +1,7 @@
 import { newCard } from "@parlo/core";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { db, ParloDB, setDb } from "./db.ts";
+import { exportLocalData } from "./learner.ts";
 import { readPrefs, writePrefs } from "./prefs.ts";
 import { applyTransfer, buildTransfer, parseTransfer, summarize, TRANSFER_VERSION } from "./transfer.ts";
 
@@ -88,6 +89,22 @@ describe("emporter son appareil", () => {
     expect(keys).not.toContain("activePack");
     expect(keys).toContain("vi-south:profile");
     expect(keys).toContain("vi-south:guidesRead");
+  });
+
+  it("l'historique voyage : le journal des semaines suit celui des minutes (contrat phase26 §7)", async () => {
+    await seedDevice();
+    await db().kv.bulkPut([
+      { key: "vi-south:activityLog", value: { "2026-02-28": 600 } },
+      { key: "vi-south:weeklyLog", value: { "2025-11-03": { answers: 40, correct: 31, seconds: 2400 } } },
+    ]);
+    const file = await buildTransfer(NOW);
+    expect(file.tables.kv.map((r) => r.key)).toEqual(expect.arrayContaining(["vi-south:activityLog", "vi-south:weeklyLog"]));
+    // Et il se repose tel quel sur l'appareil neuf, comme le reste de `kv`.
+    await applyTransfer(file, "replace");
+    expect((await db().kv.get("vi-south:weeklyLog"))?.value).toEqual({ "2025-11-03": { answers: 40, correct: 31, seconds: 2400 } });
+    // L'export RGPD vide toute la table `kv` : il l'emporte aussi.
+    const exported = await exportLocalData(NOW);
+    expect(exported.tables.kv.map((r) => r.key)).toContain("vi-south:weeklyLog");
   });
 
   it("ce qui attend d'être envoyé d'ici, et l'abonnement push de ce navigateur, ne partent pas", async () => {

@@ -5,13 +5,22 @@ import {
   compareHalves,
   dailySeries,
   lastDays,
+  mondayOf,
   normalizeActivityLog,
+  normalizeWeeklyLog,
   recordActivitySeconds,
+  recordWeeklyAnswer,
+  recordWeeklySeconds,
   regularity,
+  seedWeeklyLog,
   seriesTotals,
   shiftDay,
   skillShares,
   STATS_WINDOW_DAYS,
+  WEEKLY_LOG_WEEKS,
+  weeklySeries,
+  weeklyTotals,
+  weeksOfMonths,
 } from "./stats.ts";
 
 /**
@@ -155,5 +164,103 @@ describe("journal des minutes", () => {
       "2026-09-21": 300,
       "2026-09-19": 61,
     });
+  });
+});
+
+describe("historique long : le journal des semaines", () => {
+  it("une semaine commence le lundi, quel que soit le jour", () => {
+    // 21 septembre 2026 : un lundi.
+    expect(mondayOf("2026-09-21")).toBe("2026-09-21");
+    expect(mondayOf("2026-09-27")).toBe("2026-09-21");
+    expect(mondayOf("2026-09-20")).toBe("2026-09-14");
+    expect(mondayOf("2027-01-01")).toBe("2026-12-28");
+  });
+
+  it("cumule réponses, réussites et secondes dans la semaine du jour", () => {
+    let log = recordWeeklyAnswer({}, "2026-09-22", true);
+    log = recordWeeklyAnswer(log, "2026-09-26", false);
+    log = recordWeeklySeconds(log, "2026-09-27", 420);
+    expect(log).toEqual({ "2026-09-21": { answers: 2, correct: 1, seconds: 420 } });
+  });
+
+  it("reste borné aux semaines écrites les plus récentes", () => {
+    let log = {};
+    for (let i = 0; i < WEEKLY_LOG_WEEKS + 5; i++) log = recordWeeklySeconds(log, shiftDay(TODAY, -7 * i), 60);
+    expect(Object.keys(log)).toHaveLength(WEEKLY_LOG_WEEKS);
+    expect(Object.keys(log).sort().at(-1)).toBe(mondayOf(TODAY));
+  });
+
+  it("une horloge qui recule ne vide rien : on compte des semaines écrites, pas un écart de dates", () => {
+    let log = recordWeeklySeconds({}, "2027-06-01", 60);
+    log = recordWeeklySeconds(log, "2026-01-05", 60);
+    expect(Object.keys(log)).toHaveLength(2);
+  });
+
+  it("une valeur abîmée est ramenée à sa forme ; une clé qui n'est pas un lundi y est ramenée", () => {
+    expect(normalizeWeeklyLog({ nope: { answers: 3 }, "2026-09-23": { answers: "5", correct: 9, seconds: 61.6 }, "2026-09-14": { answers: 0 } })).toEqual({
+      "2026-09-21": { answers: 5, correct: 5, seconds: 62 },
+    });
+  });
+
+  it("à la lecture, les soixante jours comblent les semaines d'avant le journal — sans compter deux fois", () => {
+    const stats = statsFrom({ "2026-08-04": [6, 10], "2026-09-15": [3, 4] });
+    const activity = { "2026-08-04": 600, "2026-09-15": 120 };
+    // La semaine du 14 septembre est déjà dans le journal, plus fournie : elle n'est pas écrasée.
+    const weekly = { "2026-09-14": { answers: 9, correct: 7, seconds: 900 } };
+    expect(seedWeeklyLog(weekly, stats, activity)).toEqual({
+      "2026-08-03": { answers: 10, correct: 6, seconds: 600 },
+      "2026-09-14": { answers: 9, correct: 7, seconds: 900 },
+    });
+    // Le journal vient d'être créé : il ne connaît que la fin de la semaine, les jours en savent plus.
+    const partial = { "2026-09-14": { answers: 1, correct: 1, seconds: 60 } };
+    expect(seedWeeklyLog(partial, stats, activity)["2026-09-14"]).toEqual({ answers: 4, correct: 3, seconds: 120 });
+  });
+});
+
+describe("historique long : la série des semaines", () => {
+  const weekly = {
+    [mondayOf(shiftDay(TODAY, -14))]: { answers: 20, correct: 15, seconds: 1200 },
+    [mondayOf(TODAY)]: { answers: 10, correct: 9, seconds: 600 },
+  };
+
+  it("commence à la première semaine connue, pas douze mois en arrière", () => {
+    const series = weeklySeries(weekly, [], TODAY, weeksOfMonths(12));
+    expect(weeksOfMonths(3)).toBe(13);
+    expect(weeksOfMonths(12)).toBe(52);
+    expect(series.map((p) => p.answers)).toEqual([20, 0, 10]);
+    // La semaine creuse du milieu est un zéro mesuré, et n'a pas de taux.
+    expect(series[1]).toMatchObject({ measured: true, ratio: null });
+    expect(series.at(-1)?.week).toBe(mondayOf(TODAY));
+  });
+
+  it("les niveaux remontent avant le journal ; ces semaines-là ne sont pas des zéros", () => {
+    const old = shiftDay(TODAY, -60);
+    const series = weeklySeries(weekly, [old, old, TODAY], TODAY, 13);
+    expect(series[0]).toMatchObject({ week: mondayOf(old), lessons: 2, measured: false, ratio: null });
+    expect(series.at(-1)?.lessons).toBe(1);
+    const totals = weeklyTotals(series);
+    expect(totals.lessons).toBe(3);
+    expect(totals.measuredWeeks).toBe(3);
+    // 30 minutes sur trois semaines mesurées : la moyenne n'est pas diluée par les semaines inconnues.
+    expect(totals.minutesPerWeek).toBe(10);
+    expect(totals.ratio).toBe(0.8);
+  });
+
+  it("la fenêtre coupe ce qui est plus ancien qu'elle", () => {
+    expect(weeklySeries(weekly, [shiftDay(TODAY, -200)], TODAY, 13)).toHaveLength(13);
+  });
+
+  it("rien de connu : pas de série du tout, plutôt qu'une rangée de zéros", () => {
+    expect(weeklySeries({}, [], TODAY, 13)).toEqual([]);
+  });
+
+  it("la tendance se lit aussi semaine contre semaine", () => {
+    const points = weeklySeries(
+      { [mondayOf(shiftDay(TODAY, -7))]: { answers: 20, correct: 10, seconds: 0 }, [mondayOf(TODAY)]: { answers: 20, correct: 18, seconds: 0 } },
+      [],
+      TODAY,
+      13,
+    );
+    expect(compareHalves(points).trend).toBe("up");
   });
 });

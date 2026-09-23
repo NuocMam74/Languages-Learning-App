@@ -1,5 +1,6 @@
 import { GRADED_STEPS_PER_LESSON, markOutOf20 } from "./practice.ts";
-import type { ContentIndex, LessonId, Localized, UnitId } from "./types.ts";
+import type { SrsCard } from "./srs.ts";
+import type { ConceptId, ContentIndex, LessonId, Localized, UnitId } from "./types.ts";
 
 /**
  * Notes du parcours (contrat phase21 §4) : un niveau vaut une note sur 20, un thème la moyenne de
@@ -121,4 +122,88 @@ export function weakestThemes(themes: readonly ThemeMark[], max = 3): ThemeMark[
     .filter((t) => t.mark !== null && t.done >= WEAK_THEME_MIN_LEVELS && t.level === "fragile")
     .sort((a, b) => (a.mark ?? 0) - (b.mark ?? 0))
     .slice(0, max);
+}
+
+/* ------------------------------------------------------------ Fiche d'un thème */
+
+/** Un niveau du thème, noté ou pas encore fait (`mark: null` : ce n'est pas un zéro). */
+export interface ThemeLevel {
+  lessonId: LessonId;
+  title: Localized;
+  kind: "lesson" | "review" | "unit_test";
+  mark: number | null;
+}
+
+/** Un mot du thème qui résiste : oublié en révision au moins une fois. */
+export interface ResistingConcept {
+  conceptId: ConceptId;
+  lapses: number;
+}
+
+export interface ThemeDetail {
+  mark: ThemeMark;
+  levels: ThemeLevel[];
+  /** Concepts que les niveaux du thème font entrer en révision. */
+  concepts: number;
+  /** Ceux dont la carte a quitté l'état « nouveau » : vus, et revus au moins une fois. */
+  acquired: number;
+  /** Révisions notées et oublis sur les cartes du thème. */
+  reviews: number;
+  lapses: number;
+  /** Part des révisions tenues (sans oubli), `null` tant qu'aucune carte n'a été revue. */
+  retention: number | null;
+  /** Les mots les plus souvent oubliés, du plus au moins fragile. */
+  resisting: ResistingConcept[];
+}
+
+/** Au-delà, la liste des mots qui résistent devient un inventaire : on n'en reprend pas dix. */
+export const RESISTING_MAX = 5;
+
+/**
+ * Fiche d'un thème (contrat phase26 §7) : sa note, celle de chacun de ses niveaux, ce qu'il a fait
+ * entrer en mémoire et ce qui n'y tient pas.
+ *
+ * Les mots viennent des cartes de révision, pas des réponses : la carte garde **toute** l'histoire
+ * d'un mot — ses oublis compris — là où les journaux de réponses ne gardent que soixante jours et ne
+ * savent pas à quel thème une réponse appartenait. `null` si le thème n'existe pas dans ce pack.
+ */
+export function themeDetail(
+  content: ContentIndex,
+  unitId: UnitId,
+  scores: ReadonlyMap<LessonId, number>,
+  cards: readonly SrsCard[],
+  max = RESISTING_MAX,
+): ThemeDetail | null {
+  const unit = content.curriculum.units.find((u) => u.id === unitId);
+  const mark = themeMarks(content, scores).find((m) => m.unit === unitId);
+  if (!unit || !mark) return null;
+
+  const levels: ThemeLevel[] = unit.lessons.flatMap((lessonId) => {
+    const lesson = content.lessons.get(lessonId);
+    if (!lesson) return [];
+    const score = scores.get(lessonId);
+    return [{ lessonId, title: lesson.title, kind: lesson.kind ?? "lesson", mark: score === undefined ? null : markOutOf20(score) }];
+  });
+
+  const introduced = new Set<ConceptId>(unit.lessons.flatMap((id) => content.lessons.get(id)?.review.srsIntroduce ?? []));
+  const own = cards.filter((card) => introduced.has(card.conceptId));
+  const reviews = own.reduce((sum, card) => sum + card.reps, 0);
+  const lapses = own.reduce((sum, card) => sum + card.lapses, 0);
+  const resisting = own
+    .filter((card) => card.lapses > 0)
+    // À égalité d'oublis, la carte la plus difficile selon FSRS : c'est elle qui reviendra le plus.
+    .sort((a, b) => b.lapses - a.lapses || b.difficulty - a.difficulty || a.conceptId.localeCompare(b.conceptId))
+    .slice(0, max)
+    .map((card) => ({ conceptId: card.conceptId, lapses: card.lapses }));
+
+  return {
+    mark,
+    levels,
+    concepts: introduced.size,
+    acquired: own.filter((card) => card.state !== "new").length,
+    reviews,
+    lapses,
+    retention: reviews > 0 ? Math.max(0, reviews - lapses) / reviews : null,
+    resisting,
+  };
 }

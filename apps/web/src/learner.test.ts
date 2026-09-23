@@ -22,9 +22,12 @@ import {
   currentSession,
   DEFAULT_PROFILE,
   finishSession,
+  getActivityLog,
   getBadges,
   getPlacement,
+  getSkillStats,
   getTotals,
+  getWeeklyLog,
   isLessonOpen,
   openSession,
   planning,
@@ -158,6 +161,14 @@ describe("parcours invité hors ligne", () => {
     expect(await d.srsCards.count()).toBe(lesson.review.srsIntroduce.length);
     expect(await currentSession(content)).toBeNull();
     expect((await getBadges()).map((b) => b.code)).toEqual(["first_lesson"]);
+    // Historique long (contrat phase26 §7) : chaque réponse notée et les minutes de la séance
+    // entrent aussi dans leur semaine — les mêmes que les journaux de soixante jours.
+    const answered = Object.values((await getSkillStats("vi-south")).bySkill).reduce((sum, c) => sum + c.total, 0);
+    const weeks = Object.values(await getWeeklyLog("vi-south"));
+    expect(answered).toBeGreaterThan(0);
+    expect(weeks).toHaveLength(1);
+    expect(weeks[0]?.answers).toBe(answered);
+    expect(weeks[0]?.seconds ?? 0).toBe(Object.values(await getActivityLog("vi-south")).reduce((sum, s) => sum + s, 0));
 
     const types = (await d.outbox.toArray()).map((r) => r.event.type);
     expect(types[0]).toBe("session_started");
@@ -315,8 +326,9 @@ describe("placement", () => {
 });
 
 describe("progression : réussir avant de passer à la suite (contrat phase10 §3)", () => {
-  const L01 = "vi-south.u01.l01";
-  const L02 = "vi-south.u01.l02";
+  // Les deux premiers niveaux du parcours : ceux des bases (contrat phase26 §2).
+  const L01 = "vi-south.u00.l01";
+  const L02 = "vi-south.u00.l02";
 
   // Base neuve par test : ces vérifications portent sur un parcours vierge, pas sur ce qu'un test
   // précédent a laissé.
