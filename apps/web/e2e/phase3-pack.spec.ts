@@ -71,16 +71,17 @@ test("espagnol hors ligne, retour au vietnamien intact, les deux progressions pe
   await esRadio.click();
   await page.getByRole("button", { name: "Continuer" }).click();
 
-  // Onboarding propre au pack, sans test de niveau (le pack n'en a pas) : on passe directement à
-  // la visite guidée, puis au parcours (contrat phase23 §3).
+  // Onboarding propre au pack, sans test de niveau (le pack n'en a pas) : on rejoint directement
+  // le parcours (contrat phase26 §8). La visite en bulles a déjà été vue sur le vietnamien — elle
+  // est de l'application, pas du pack — et ne se rouvre donc pas d'elle-même.
   await expect(page).toHaveURL(/\/onboarding$/);
   for (let i = 0; i < 5; i++) {
     await expect(page.getByText(`Question ${i + 1} sur 5`)).toBeVisible();
     await page.locator("main button").first().click();
   }
-  await expect(page).toHaveURL(/\/decouverte$/);
-  await page.getByTestId("discovery-skip").click();
   await expect(page).toHaveURL(/\/apprendre$/);
+  await expect(page.getByTestId("hub-pack")).toHaveText(esName);
+  await expect(page.getByTestId("discovery-step")).toHaveCount(0);
   await page.goto("/lecon/es.u01.l01");
   await expect(page).toHaveURL(/\/lecon\/es\.u01\.l01$/);
 

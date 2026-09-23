@@ -238,12 +238,12 @@ test("changer de langue depuis l'accueil : /apprendre avec les données de cette
   await expect(page).toHaveURL(/\/(apprendre|onboarding)$/);
   if (new URL(page.url()).pathname === "/onboarding") {
     for (let i = 0; i < 5; i++) await page.locator("main button").first().click();
-    // Depuis le contrat phase23 §3, l'onboarding ne débouche plus sur une leçon : le pack `es`
-    // n'a pas de test de niveau, donc on arrive sur la visite guidée, qu'on passe.
-    await expect(page).toHaveURL(/\/decouverte$/);
-    await page.getByTestId("discovery-skip").click();
+    // L'onboarding ne débouche pas sur une leçon : le pack `es` n'a pas de test de niveau, on
+    // rejoint directement le parcours (contrat phase26 §8).
   }
   await expect(page).toHaveURL(/\/apprendre$/);
+  // La visite a été vue pendant l'onboarding du vietnamien : elle ne se rouvre pas d'elle-même.
+  await expect(page.getByTestId("discovery-step")).toHaveCount(0);
   await expect(page.getByTestId("hub-pack")).toHaveText(esName);
   await expect(page.getByText("0 XP", { exact: true })).toBeVisible();
 

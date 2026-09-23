@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { onboard, playUntil } from "./helpers.ts";
+import { dismissCelebrations, onboard, playUntil } from "./helpers.ts";
 
 /**
  * Contrat phase14 §2 — les deux index d'étude autonome : **par catégorie grammaticale** et
@@ -18,6 +18,9 @@ async function firstLesson(page: Page) {
   await mockGuest(page);
   await onboard(page);
   await playUntil(page, /^Leçon terminée$/);
+  // Les cartes de félicitations se posent par-dessus le bilan et interceptent le clic : on les
+  // referme d'abord, comme le ferait un apprenant.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
   await expect(page).toHaveURL(/\/apprendre$/);
 }
@@ -73,10 +76,13 @@ test("les index par catégorie et par thème mènent au vocabulaire déjà filtr
   await expect(page.getByTestId("themes")).toBeVisible();
   await expect(themes.first()).toBeVisible();
   expect(await themes.count()).toBeGreaterThan(1);
-  await expect(themes.first()).toHaveAttribute("data-open", "true");
+  // Le thème de la leçon jouée est ouvert. Ce n'est plus le premier de la liste : les bases (u00,
+  // contrat phase26 §2) le précèdent, sautées ici comme le ferait le test de niveau, donc fermées.
+  const played = page.locator('[data-testid="index-shelf"][data-key="vi-south.u01"]');
+  await expect(played).toHaveAttribute("data-open", "true");
   await expect(page.locator('[data-testid="index-shelf"][data-open="false"]').first()).toContainText(/\d+ à découvrir/);
 
-  await themes.first().locator("a").click();
+  await played.locator("a").click();
   await expect(page).toHaveURL(/\/reviser\/vocabulaire\?unite=/);
   await expect(page.getByTestId("word").first()).toBeVisible();
 });

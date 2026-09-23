@@ -151,13 +151,16 @@ test("quota dépassé : les unités les moins récemment utilisées sont retiré
   // Quota minuscule simulé : chaque nouveau téléchargement dépasse la limite.
   await page.evaluate(() => localStorage.setItem("parlo.offlineQuotaBytes", "1"));
 
+  // Une unité emporte les unités dont elle reprend les mots, et le quota les protège avec elle
+  // (contrat phase26 §2) : u03 et u04 reprennent toutes deux u00–u02, mais aucune ne reprend
+  // l'autre. Télécharger u04 après u03 doit donc évincer u03, et elle seule parmi les trois.
   await download(page, "vi-south.u01"); // unité en cours
-  await download(page, "vi-south.u02");
   await download(page, "vi-south.u03");
-  await expect(unitRow(page, "vi-south.u02")).toHaveAttribute("data-state", "none");
+  await download(page, "vi-south.u04");
+  await expect(unitRow(page, "vi-south.u03")).toHaveAttribute("data-state", "none");
   await expect(unitRow(page, "vi-south.u01")).toHaveAttribute("data-state", "ready");
-  await expect(unitRow(page, "vi-south.u03")).toHaveAttribute("data-state", "ready");
-  expect(await idbGet(page, "offlineUnits", "vi-south:vi-south.u02")).toBeUndefined();
+  await expect(unitRow(page, "vi-south.u04")).toHaveAttribute("data-state", "ready");
+  expect(await idbGet(page, "offlineUnits", "vi-south:vi-south.u03")).toBeUndefined();
 });
 
 test.describe(() => {

@@ -65,6 +65,8 @@ test("séance du jour : révisions dues, nouvelle leçon, mise en pratique, bila
   if (await canSay.isVisible()) await expect(canSay.locator("li").first()).toBeVisible();
   await expect(page.getByText("Premier embarcadère")).toBeVisible();
 
+  // Les cartes de félicitations se posent par-dessus le bilan et interceptent le clic suivant.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
   await expect(page.getByText("1 jour de suite")).toBeVisible();
   await expect(page.getByRole("link", { name: /mots? à revoir/ })).toHaveCount(0);

@@ -255,7 +255,10 @@ test("enseignant : classe, QR et nouveau code, tableau trié, tiroir élève, re
   const due = isoDay(4);
   await form.getByLabel("À terminer pour le").fill(due);
   await form.getByText("Premiers sons, premiers mots", { exact: true }).click();
-  await form.getByLabel("Toute l'unité").first().check();
+  // « Toute l'unité » de **cette** unité : les bases (u00, contrat phase26 §2) la précèdent
+  // désormais dans la liste, repliées.
+  const u01 = form.locator("details").filter({ hasText: "Premiers sons, premiers mots" });
+  await u01.getByLabel("Toute l'unité").check();
   await expect(form.getByText("9 leçons choisies")).toBeVisible();
   await form.getByRole("button", { name: "Créer le devoir" }).click();
   const assignment = page.getByTestId("assignment-row");

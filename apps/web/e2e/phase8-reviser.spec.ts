@@ -18,6 +18,8 @@ async function firstLesson(page: Page) {
   await mockGuest(page);
   await onboard(page);
   await playUntil(page, /^Leçon terminée$/);
+  // Les cartes peuvent aussi arriver avant le clic sur le bilan : on les referme des deux côtés.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
   // Une première leçon donne ses récompenses : leurs cartes couvrent l'écran et interceptent les
   // clics suivants. On les referme comme le ferait un apprenant.

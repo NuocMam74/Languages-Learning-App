@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { dismissCelebrations } from "./helpers.ts";
+import { dismissCelebrations, skipBasics } from "./helpers.ts";
 
 /**
  * Critère d'acceptation Phase 0 (spec §15) : un utilisateur invité termine une
@@ -17,14 +17,18 @@ async function onboard(page: Page) {
     await expect(page.getByText(`Question ${i + 1} sur 5`)).toBeVisible();
     await page.locator("main button").first().click();
   }
-  // Test de niveau puis visite guidée (contrat phase23 §3). Le test n'existe que si assez d'items
-  // ont leur enregistrement natif (contrat phase10 §5) : les deux chemins sont légitimes, le test
-  // n'en impose aucun. Aucun des deux ne mène à une leçon — c'est l'apprenant qui la demande.
-  await expect(page).toHaveURL(/\/(placement|decouverte)$/);
-  if (new URL(page.url()).pathname === "/placement") await page.getByRole("button", { name: "Je pars de zéro" }).click();
-  await expect(page).toHaveURL(/\/decouverte$/);
-  await page.getByTestId("discovery-skip").click();
+  // Le test de niveau est toujours proposé, à l'écoute ou à l'écrit (contrat phase26 §6), puis le
+  // parcours, où la visite en bulles s'ouvre d'elle-même (§8). Aucun des deux ne mène à une leçon
+  // — c'est l'apprenant qui la demande.
+  await expect(page).toHaveURL(/\/placement$/);
+  await page.getByRole("button", { name: "Je pars de zéro" }).click();
   await expect(page).toHaveURL(/\/apprendre$/);
+  await expect(page.getByTestId("discovery-step")).toBeVisible();
+  await page.getByTestId("discovery-skip").click();
+  await expect(page.getByTestId("discovery-step")).toHaveCount(0);
+  // u01 attend désormais les bases (contrat phase26 §2) : on place l'apprenant après elles, comme
+  // l'aurait fait le test de niveau, pour jouer la leçon que ce critère éprouve depuis la Phase 0.
+  await skipBasics(page);
   await page.goto("/lecon/vi-south.u01.l01");
   await expect(page).toHaveURL(/\/lecon\/vi-south\.u01\.l01$/);
 }

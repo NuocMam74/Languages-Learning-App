@@ -98,6 +98,9 @@ test("Réviser dit par où commencer, et l'échelle va du simple au difficile", 
   await mockGuest(page);
   await onboard(page);
   await playUntil(page, /^Leçon terminée$/);
+  // Les cartes de félicitations peuvent se poser avant le clic sur le bilan : on les referme d'abord,
+  // sinon elles l'interceptent jusqu'à la fin du test.
+  await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
 
   // Une première leçon terminée déclenche ses récompenses : on referme leurs cartes comme le

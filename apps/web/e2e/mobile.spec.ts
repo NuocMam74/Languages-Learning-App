@@ -1,5 +1,5 @@
 import { expect, test, type Page, type Route, type TestInfo } from "@playwright/test";
-import { dismissCelebrations, playOneStep, skipBriefing } from "./helpers.ts";
+import { dismissCelebrations, playOneStep, skipBasics, skipBriefing } from "./helpers.ts";
 
 /**
  * QA mobile (docs/audits/mobile-audit.md). Matrice d'acceptation, définie en projets Playwright :
@@ -34,14 +34,17 @@ async function onboardHere(page: Page) {
     const choice = i === 3 ? page.getByRole("button", { name: "10 min", exact: true }) : page.locator("main button").first();
     await choice.click();
   }
-  // Test de niveau, puis visite guidée (contrat phase23 §3) : on traverse les deux, puis on
-  // demande la première leçon — l'application ne l'impose plus.
+  // Test de niveau, puis visite en bulles sur le parcours (contrat phase26 §6, §8) : on traverse
+  // les deux, puis on demande une leçon — l'application ne l'impose plus.
   const placement = page.getByRole("heading", { name: "Commençons par te situer" });
   const tour = page.getByTestId("discovery-step");
   await expect(placement.or(tour).first()).toBeVisible({ timeout: 30_000 });
   if (await placement.isVisible()) await page.getByRole("button", { name: "Je pars de zéro" }).click();
   await expect(tour).toBeVisible({ timeout: 30_000 });
   await page.getByTestId("discovery-skip").click();
+  await expect(tour).toHaveCount(0);
+  // u01 attend les bases (contrat phase26 §2) : les écrans audités ici sont ceux de u01.l01.
+  await skipBasics(page);
   await page.goto("/lecon/vi-south.u01.l01");
   await skipBriefing(page);
   await expect(page.locator('[data-testid="lesson"]')).toBeVisible({ timeout: 30_000 });
