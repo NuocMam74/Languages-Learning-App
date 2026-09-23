@@ -129,6 +129,10 @@ def _summarize_concept(concept: dict[str, Any], unit: str | None) -> dict[str, A
     if concept.get("tone"):
         out["tone"] = concept["tone"]
     out["gloss"] = concept["gloss"]
+    # Catégorie grammaticale (contrat phase14 §1) : `summarizeConcept` la garde, l'étude par
+    # catégorie en a besoin sans charger l'unité.
+    if concept.get("pos"):
+        out["pos"] = concept["pos"]
     out["audio"] = concept["audio"]
     if concept.get("image"):
         out["image"] = concept["image"]
