@@ -321,13 +321,9 @@ export default function Settings() {
                 <Link to="/connexion" className="flex min-h-11 items-center font-semibold text-ngoc">{t("account.login.title")}</Link>
               </div>
             ) : (
-              <>
-                <p className="text-sm text-phu-sa">{t("account.offer.noServer")}</p>
-                <Link to="/reglages/appareil" className="flex min-h-11 items-center gap-1.5 font-semibold text-ngoc">
-                  {t("transfer.title")}
-                  <Icon name="chevronRight" size={18} />
-                </Link>
-              </>
+              // Plus de lien direct vers « Changer d'appareil » : il ne vit que dans le menu
+              // dépliant de la section Données (contrat phase26 §1).
+              <p className="text-sm text-phu-sa">{t("account.offer.noServer")}</p>
             )}
           </Card>
         )}
@@ -343,15 +339,23 @@ export default function Settings() {
       </Slot>
 
       <Section title={t("settings.data")} icon="download">
-        {/* Changer d'appareil vient **avant** l'export RGPD : c'est le geste qu'on cherche ici, et
-            les deux fichiers ne servent pas à la même chose (contrat phase17 §2). */}
+        {/* Changer d'appareil se range dans un menu dépliant, fermé par défaut (contrat phase26 §1) :
+            c'est un geste rare, qui n'a pas à s'afficher à chaque visite des réglages. */}
         <Card className="flex flex-col gap-2">
-          <Link to="/reglages/appareil" className="flex min-h-12 items-center gap-3 font-semibold text-ngoc" data-testid="settings-transfer">
-            <Icon name="share" size={20} />
-            <span className="min-w-0 flex-1 text-left">{t("settings.transfer")}</span>
-            <Icon name="chevronRight" size={20} className="text-phu-sa" />
-          </Link>
-          <p className="text-sm text-phu-sa">{t("settings.transfer.hint")}</p>
+          <details className="group" data-testid="settings-more">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center gap-3 font-semibold text-ngoc [&::-webkit-details-marker]:hidden">
+              <Icon name="chevronRight" size={20} className="text-phu-sa transition-transform group-open:rotate-90" />
+              <span className="min-w-0 flex-1 text-left">{t("settings.more")}</span>
+            </summary>
+            <div className="flex flex-col gap-2 pt-1">
+              <Link to="/reglages/appareil" className="flex min-h-12 items-center gap-3 font-semibold text-ngoc" data-testid="settings-transfer">
+                <Icon name="share" size={20} />
+                <span className="min-w-0 flex-1 text-left">{t("settings.transfer")}</span>
+                <Icon name="chevronRight" size={20} className="text-phu-sa" />
+              </Link>
+              <p className="text-sm text-phu-sa">{t("settings.transfer.hint")}</p>
+            </div>
+          </details>
         </Card>
         <Card className="flex flex-col gap-2">
           <button type="button" className="flex min-h-12 items-center gap-3 font-semibold text-ngoc" data-testid="export-data" onClick={() => void exportData()}>

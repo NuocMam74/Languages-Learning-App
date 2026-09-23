@@ -77,8 +77,9 @@ test("changer d'appareil : le fichier dit ce qu'il contient avant d'écrire quoi
   await dismissCelebrations(page);
   await page.getByRole("button", { name: "Retour au parcours" }).click();
 
-  // L'écran se trouve depuis les réglages, en tête de la section « Données ».
+  // L'écran se trouve depuis les réglages, dans le menu dépliant de la section « Données ».
   await page.goto("/reglages");
+  await page.getByTestId("settings-more").getByText("Autres options").click();
   await page.getByTestId("settings-transfer").click();
   await expect(page).toHaveURL(/\/reglages\/appareil$/);
 

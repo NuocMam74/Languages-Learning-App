@@ -89,6 +89,9 @@ test("« Changer d'appareil » ne vit que dans les réglages", async ({ page }) 
 
   // Réglages → Données : la seule porte, et elle est entière.
   await page.goto("/reglages");
+  // Rangée dans un menu dépliant fermé (contrat phase26 §1) : invisible tant qu'on ne l'ouvre pas.
+  await expect(page.getByTestId("settings-transfer")).toBeHidden();
+  await page.getByTestId("settings-more").getByText("Autres options").click();
   await expect(page.getByTestId("settings-transfer")).toBeVisible();
 
   // Profil : plus de carte invité du tout — sans serveur, elle n'avait rien à proposer.
