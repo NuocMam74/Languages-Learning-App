@@ -94,15 +94,17 @@ describe("test d'unité (contrat phase5 §2)", () => {
     expect(await completedLessons()).toContain(test.id);
     const afterFail = await planning(content, await getProfile());
     expect(afterFail.next?.id).toBe(test.id);
-    expect(await isLessonOpen(content, "vi-south.u02.l01")).toBe(false);
+    // L'unité qui suit la première (les bases, contrat phase26 §2) : u01.
+    expect(await isLessonOpen(content, "vi-south.u01.l01")).toBe(false);
 
     const passed = await finishSession(content, await play(await openSession(content, { source: "lesson", lessonId: test.id }), true));
     expect(passed.unitTest).toMatchObject({ passed: true });
-    expect((await planning(content, await getProfile())).next?.id).toBe("vi-south.u02.l01");
+    expect((await planning(content, await getProfile())).next?.id).toBe("vi-south.u01.l01");
   });
 
   it("garde de lien profond : une leçon d'une unité fermée n'est pas ouverte", async () => {
-    expect(await isLessonOpen(content, "vi-south.u01.l01")).toBe(true);
+    expect(await isLessonOpen(content, "vi-south.u00.l01")).toBe(true);
+    expect(await isLessonOpen(content, "vi-south.u01.l01")).toBe(false);
     expect(await isLessonOpen(content, "vi-south.u24.l08")).toBe(false);
   });
 });

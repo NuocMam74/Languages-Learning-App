@@ -4,7 +4,7 @@ import { offlineKey } from "../db.ts";
 import { Icon, ProgressBar } from "../design/index.ts";
 import { getLocale, l, t } from "../i18n/index.ts";
 import { useOnline } from "../use-online.ts";
-import { downloadUnit, removeOfflineUnit, unitSize, useOffline } from "./downloads.ts";
+import { downloadUnitWithDependencies, removeOfflineUnit, unitSize, useOffline } from "./downloads.ts";
 import { formatBytes } from "./lru.ts";
 
 export type OfflineUnitState = "none" | "downloading" | "ready" | "stale" | "error";
@@ -45,7 +45,7 @@ export function OfflineUnit({ content, unitId, current = false, protect = [], sh
 
   const download = () => {
     setBusy(true);
-    void downloadUnit(code, content.pack.version, unitId, { protect: [...protect, ...(current ? [unitId] : [])] })
+    void downloadUnitWithDependencies(content, unitId, { protect: [...protect, ...(current ? [unitId] : [])] })
       .catch(() => undefined)
       .finally(() => setBusy(false));
   };

@@ -5,7 +5,7 @@ import { checkContentUpdate, ensureUnits, loadPack, UnitUnavailableError } from 
 import { offlineKey, ParloDB, setDb, unitKey } from "../db.ts";
 import { markSessionTaught, openSession, saveLessonPart, submitSessionAnswer } from "../learner.ts";
 import { exerciseFor } from "../session-store.ts";
-import { downloadUnit, enforceOfflineQuota, removeOfflineUnit, unitSize } from "./downloads.ts";
+import { downloadUnit, downloadUnitWithDependencies, enforceOfflineQuota, removeOfflineUnit, unitSize } from "./downloads.ts";
 
 /** Contenu découpé côté client : démarrage sur core.json, unités à la demande, hors ligne explicite, quota LRU. */
 
@@ -200,8 +200,10 @@ describe("unités hors ligne : taille, téléchargement, quota LRU", () => {
 
   it("une unité téléchargée se joue hors ligne sans avoir été visitée", async () => {
     const { fetchImpl } = server();
-    await loadPack("vi-south", fetchImpl);
-    await downloadUnit("vi-south", 1, "vi-south.u03");
+    const online = await loadPack("vi-south", fetchImpl);
+    // u03 reprend des mots des bases (u00, contrat phase26 §2) : elles partent avec elle.
+    await downloadUnitWithDependencies(online, "vi-south.u03");
+    expect(await new ParloDB(name).offlineUnits.get(offlineKey("vi-south", "vi-south.u00"))).toBeDefined();
     setDb(new ParloDB(name));
     const content = await loadPack("vi-south", offline);
     const run = await openSession(content, { source: "lesson", lessonId: "vi-south.u03.l01" });

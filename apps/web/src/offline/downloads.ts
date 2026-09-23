@@ -1,4 +1,4 @@
-import { unitDownloadBytes, type ContentIndex, type UnitId } from "@parlo/core";
+import { unitDownloadBytes, unitsForLessons, type ContentIndex, type UnitId } from "@parlo/core";
 import { create } from "zustand";
 import { getUnit, onContentUpdateApplied, packBaseUrl } from "../content.ts";
 import { db, offlineKey, type OfflineUnitRow } from "../db.ts";
@@ -113,6 +113,22 @@ const running = new Map<string, Promise<OfflineUnitRow>>();
  * Télécharge une unité pour le hors ligne (JSON + médias), puis applique le quota.
  * `protect` : unités à ne jamais purger (unité en cours).
  */
+/**
+ * Télécharge une unité **et celles dont ses niveaux empruntent des mots** (contrat phase26 §2).
+ *
+ * Un concept vit dans une seule unité : la première qui l'introduit. Depuis les bases (u00), les
+ * pronoms et les nombres y vivent — et u03, qui les reprend, ne se joue plus hors ligne sans elles.
+ * Un apprenant placé après les bases ne les a jamais ouvertes : on les emporte avec l'unité
+ * demandée, et le quota les protège au même titre qu'elle.
+ */
+export async function downloadUnitWithDependencies(content: ContentIndex, unit: UnitId, options: { protect?: readonly UnitId[] } = {}): Promise<OfflineUnitRow> {
+  const lessons = content.curriculum.units.find((u) => u.id === unit)?.lessons ?? [];
+  const dependencies = unitsForLessons(content, lessons).filter((id) => id !== unit);
+  const protect = [...(options.protect ?? []), unit, ...dependencies];
+  for (const dependency of dependencies) await downloadUnit(content.pack.code, content.pack.version, dependency, { protect });
+  return downloadUnit(content.pack.code, content.pack.version, unit, { protect: [...(options.protect ?? []), ...dependencies] });
+}
+
 export function downloadUnit(code: string, version: number, unit: UnitId, options: { protect?: readonly UnitId[] } = {}): Promise<OfflineUnitRow> {
   const key = offlineKey(code, unit);
   const already = running.get(key);
