@@ -5,8 +5,8 @@ import { expect, type Locator, type Page } from "@playwright/test";
 /**
  * Traverse le premier lancement et **rend la main sur le parcours** (`/apprendre`).
  *
- * Depuis le contrat phase23 §3, l'enchaînement est : cinq questions → test de niveau → visite
- * guidée → parcours. Plus aucune leçon n'est imposée à l'arrivée ; les tests qui en veulent une
+ * Depuis le contrat phase26 (§6, §8), l'enchaînement est : cinq questions → test de niveau (à
+ * l'écoute ou à l'écrit) → parcours, où la visite en bulles s'ouvre d'elle-même. Plus aucune leçon n'est imposée à l'arrivée ; les tests qui en veulent une
  * passent par `onboard` (voir plus bas), qui ouvre explicitement la première.
  *
  * `minutes` : un des objectifs proposés (10, 15 ou 20 — le plancher est passé à 10, contrat
@@ -23,15 +23,41 @@ export async function onboardToHub(page: Page, minutes = "10 min") {
     const choice = i === 3 ? page.getByRole("button", { name: minutes, exact: true }) : page.locator("main button").first();
     await choice.click();
   }
-  // Le test de niveau n'est proposé que si assez d'items ont leur audio natif (contrat phase5 §1) ;
-  // sans lui, on arrive directement sur la visite.
+  // Le test de niveau est toujours proposé : à l'écoute, ou à l'écrit sans voix natives (contrat
+  // phase26 §6). On le décline — « je pars de zéro ».
   const placement = page.getByRole("heading", { name: "Commençons par te situer" });
   const tour = page.getByTestId("discovery-step");
   await expect(placement.or(tour).first()).toBeVisible();
   if (await placement.isVisible()) await page.getByRole("button", { name: "Je pars de zéro" }).click();
+  // Sur le parcours, la visite en bulles s'ouvre d'elle-même la première fois (contrat phase26 §8).
+  await expect(page).toHaveURL(/\/apprendre$/);
   await expect(tour).toBeVisible();
   await page.getByTestId("discovery-skip").click();
-  await expect(page).toHaveURL(/\/apprendre$/);
+  await expect(tour).toHaveCount(0);
+}
+
+/**
+ * Place l'apprenant **après les bases** (u00, contrat phase26 §2), comme le ferait un test de niveau
+ * qui le situe au début de u01 : les niveaux des bases comptent alors comme faits et réussis.
+ *
+ * Les parcours e2e écrits avant les bases ouvrent `vi-south.u01.l01` et en éprouvent le contenu ;
+ * sans ce placement, u01 est verrouillée et la leçon renvoie au parcours.
+ */
+export async function skipBasics(page: Page): Promise<void> {
+  await page.evaluate(async () => {
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      const req = indexedDB.open("parlo");
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction("kv", "readwrite");
+      tx.objectStore("kv").put({ key: "vi-south:placement", value: { levelEstimate: 0, entryLessonId: "vi-south.u01.l01", completedAt: new Date().toISOString() } });
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+    db.close();
+  });
 }
 
 /**
@@ -41,6 +67,7 @@ export async function onboardToHub(page: Page, minutes = "10 min") {
  */
 export async function onboard(page: Page, minutes = "10 min") {
   await onboardToHub(page, minutes);
+  await skipBasics(page);
   await page.goto("/lecon/vi-south.u01.l01");
   // Depuis le contrat phase10 §1, une leçon qui introduit du nouveau s'ouvre sur sa fiche de
   // découverte : l'arrivée peut donc être la fiche **ou** le premier exercice.

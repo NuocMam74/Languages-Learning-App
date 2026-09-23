@@ -87,6 +87,7 @@ function BottomNav({ pathname }: { pathname: string }) {
     <nav
       aria-label={t("nav.label")}
       data-testid="bottom-nav"
+      data-tour="tabs"
       className="fixed inset-x-0 bottom-0 z-20 border-t border-line-strong bg-nuoc/92 pb-[env(safe-area-inset-bottom)] backdrop-blur"
     >
       <ul className="mx-auto flex w-full max-w-[480px] md:max-w-[720px]">

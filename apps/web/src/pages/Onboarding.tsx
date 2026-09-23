@@ -69,11 +69,11 @@ export function Onboarding({ content, onDone }: { content: ContentIndex; onDone:
      * Désormais on situe d'abord (le test), on montre la maison ensuite (la visite), et la
      * première séance se lance **depuis le parcours**, quand l'apprenant la demande.
      *
-     * Le test n'existe que si le pack fournit un placement.json avec au moins 6 items jouables
-     * (contrat phase5 §1) ; sinon on enchaîne directement sur la visite.
+     * Le test se passe à l'écoute ou à l'écrit (contrat phase26 §6) ; sans placement.json, on
+     * rejoint directement le parcours, où la visite en bulles s'ouvre d'elle-même (§8).
      */
     const placement = placementPlanFor(content) !== null && content.lessons.size > 0;
-    navigate(placement ? "/placement" : "/decouverte", { replace: true });
+    navigate(placement ? "/placement" : "/apprendre", { replace: true });
   };
 
   return (

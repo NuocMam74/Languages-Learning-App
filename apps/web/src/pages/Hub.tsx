@@ -10,6 +10,9 @@ import { Card, Icon, ProgressRing, SectionTitle, Skeleton, staggerStyle, type Ic
 import type { Profile, Totals } from "../db.ts";
 import { getLocale, l, plural, t } from "../i18n/index.ts";
 import { getProfile, getTotals, hasWork, MAX_FREEZE_DAYS, planning, setFreeze, todaySeconds, type Planning } from "../learner.ts";
+import { HubKpis } from "../stats/HubKpis.tsx";
+import { HubTour, TOUR_STATE, useTourRequested } from "../tour/HubTour.tsx";
+import { hubKpis, type HubKpisView } from "../stats/hub-kpis.ts";
 import { localGreeting, remoteGreeting } from "../tutor.ts";
 import { useOnline } from "../use-online.ts";
 
@@ -20,6 +23,8 @@ interface HubState {
   totals: Totals;
   plan: Planning;
   seconds: number;
+  /** Chiffres de la semaine (contrat phase26 §7), lus avec le reste : la carte n'arrive pas après coup. */
+  kpis: HubKpisView;
 }
 
 /**
@@ -40,12 +45,13 @@ export function Hub({ content }: { content: ContentIndex }) {
   const [state, setState] = useState<HubState | null>(null);
   const [greeting, setGreeting] = useState<string | null>(null);
   const location = useLocation();
+  const touring = useTourRequested();
   const notice = (location.state as { notice?: string } | null)?.notice ?? null;
 
   const load = async () => {
     const profile = await getProfile();
-    const [totals, plan, seconds] = await Promise.all([getTotals(), planning(content, profile), todaySeconds()]);
-    setState({ profile, totals, plan, seconds });
+    const [totals, plan, seconds, kpis] = await Promise.all([getTotals(), planning(content, profile), todaySeconds(), hubKpis(content)]);
+    setState({ profile, totals, plan, seconds, kpis });
   };
 
   useEffect(() => {
@@ -60,7 +66,7 @@ export function Hub({ content }: { content: ContentIndex }) {
   // Un squelette plutôt qu'un écran vide (contrat phase8 §1) — mêmes hauteurs que le contenu final.
   if (!state || accountStatus === "loading") return <HubSkeleton />;
 
-  const { profile, totals, plan, seconds } = state;
+  const { profile, totals, plan, seconds, kpis } = state;
   const { xp } = totals;
   // Série à la lecture (contrat phase5 §3) : 0 si des jours manqués ne sont pas couverts.
   const streak = streakAt(totals.streak, localDay(new Date()));
@@ -86,7 +92,7 @@ export function Hub({ content }: { content: ContentIndex }) {
     <Screen
       action={
         hasWork(plan.daily) ? (
-          <Button onClick={() => navigate("/seance")}>
+          <Button onClick={() => navigate("/seance")} data-tour="daily">
             {t("hub.daily")} · {t("hub.minutes", { n: minutes })}
           </Button>
         ) : undefined
@@ -101,14 +107,29 @@ export function Hub({ content }: { content: ContentIndex }) {
           </Link>
           <p className="text-sm text-phu-sa">{accountStatus === "signed_in" ? t("session.hub.synced") : accountStatus === "expired" ? t("session.hub.expired") : t("hub.guest")}</p>
         </div>
-        <Link
-          to="/reglages"
-          aria-label={t("settings.title")}
-          className="grid size-11 shrink-0 place-items-center rounded-full text-phu-sa transition-[background-color,transform] hover:bg-phu-sa/8 motion-safe:active:scale-[.98]"
-        >
-          <Icon name="settings" strokeWidth={1.8} />
-        </Link>
+        <div className="flex shrink-0 items-center">
+          {/* La visite en bulles se relance d'ici, à tout moment (contrat phase26 §8). */}
+          <Link
+            to="/apprendre"
+            state={TOUR_STATE}
+            replace
+            aria-label={t("tour.help.button")}
+            data-tour="help"
+            data-testid="tour-help"
+            className="grid size-11 place-items-center rounded-full font-serif text-xl font-semibold text-phu-sa transition-[background-color,transform] hover:bg-phu-sa/8 motion-safe:active:scale-[.98]"
+          >
+            ?
+          </Link>
+          <Link
+            to="/reglages"
+            aria-label={t("settings.title")}
+            className="grid size-11 place-items-center rounded-full text-phu-sa transition-[background-color,transform] hover:bg-phu-sa/8 motion-safe:active:scale-[.98]"
+          >
+            <Icon name="settings" strokeWidth={1.8} />
+          </Link>
+        </div>
       </header>
+      {touring && <HubTour goalMin={profile.dailyGoalMin} />}
 
       {notice === "locked" && (
         <Card tone="notice" as="p" role="status" className="mb-4 flex items-center gap-2 py-2.5 text-sm" data-testid="hub-notice">
@@ -130,7 +151,7 @@ export function Hub({ content }: { content: ContentIndex }) {
       </Card>
 
       {/* L'élan du jour : un seul bloc, l'anneau porte l'écran. */}
-      <Card tone="raised" as="section" className="mb-5 flex flex-col gap-4" aria-label={t("session.hub.progress")}>
+      <Card tone="raised" as="section" className="mb-5 flex flex-col gap-4" aria-label={t("session.hub.progress")} data-tour="goal">
         <div className="flex items-center gap-5">
           <ProgressRing
             value={Math.min(doneMin, profile.dailyGoalMin)}
@@ -166,6 +187,8 @@ export function Hub({ content }: { content: ContentIndex }) {
         <FreezeControl frozenUntil={frozen ? streak.frozenUntil : null} onChange={() => void load()} />
       </Card>
 
+      <HubKpis view={kpis} streak={streak.current} />
+
       {/* Ce qu'on peut faire d'autre : des raccourcis lisibles, jamais des liens nus soulignés. */}
       <nav className="mb-6 flex flex-col gap-2" aria-label={t("session.hub.more")}>
         {shortcuts.map((shortcut, i) => (
@@ -193,6 +216,7 @@ export function Hub({ content }: { content: ContentIndex }) {
       )}
 
       {/* La carte du parcours est l'élément mémorable (spec §13) : un bandeau jade l'annonce. */}
+      <div data-tour="path">
       <SectionTitle
         tone="banner"
         icon="boat"
@@ -206,6 +230,7 @@ export function Hub({ content }: { content: ContentIndex }) {
       >
         {t("hub.path")}
       </SectionTitle>
+      </div>
       {/* Unité en cours disponible hors ligne (spec §8.1) ; toutes les unités : Réglages → Hors ligne. */}
       {plan.next && <Suspense fallback={null}><OfflineUnit content={content} unitId={plan.next.unit} current /></Suspense>}
       <RiverPath content={content} completed={plan.completed} passed={plan.passed} unlocked={plan.open} scores={plan.scores} current={plan.next?.id ?? null} />

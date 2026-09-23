@@ -20,6 +20,7 @@ import { preloadPackChoices } from "../packs/use-packs.ts";
 import { ClassesSettings } from "../classes/ClassesSettings.tsx";
 import { StudioLink } from "../studio/StudioLink.tsx";
 import { OfflineSettings } from "../offline/OfflineSettings.tsx";
+import { TOUR_STATE } from "../tour/HubTour.tsx";
 
 /**
  * Réglages (spec §4.1.6, §13, §14) : profil, affichage, compte, données.
@@ -229,11 +230,11 @@ export default function Settings() {
           <Row icon="boat" label={t("settings.path")}>
             <Segmented label={t("settings.path")} value={profile.motivation} options={motivations.map((m) => ({ value: m, label: t(`onboarding.why.${m}` as MessageKey) }))} onChange={(v) => update({ motivation: v })} />
           </Row>
-          {/* La visite du premier lancement se revoit (contrat phase23 §3) : six écrans qu'on a
-              souvent traversés trop vite, et dont on se souvient trois jours plus tard qu'ils
-              parlaient de quelque chose d'utile. */}
+          {/* La visite du premier lancement se revoit (contrats phase23 §3 et phase26 §8) : on
+              l'a souvent traversée trop vite. Elle se rejoue sur l'écran du parcours. */}
           <Link
-            to="/decouverte"
+            to="/apprendre"
+            state={TOUR_STATE}
             className="flex min-h-12 items-center gap-3 font-semibold text-ngoc"
             data-testid="settings-discovery"
           >

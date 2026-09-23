@@ -50,11 +50,10 @@ export default function Placement({ content }: { content: ContentIndex }) {
   const [remaining, setRemaining] = useState(0);
   const seed = useRef(`placement:${Date.now()}`);
 
-  // Où l'on va une fois situé : la visite guidée si elle n'a jamais été faite, sinon le parcours
-  // (le test peut être rejoué plus tard, et on ne refait pas visiter la maison à quelqu'un qui
-  // l'habite déjà).
+  // Une fois situé, on rejoint le parcours. La visite en bulles s'y ouvre d'elle-même si elle n'a
+  // jamais été faite (contrat phase26 §8) ; le test rejoué plus tard ne la relance pas.
   const discovered = usePrefs((s) => s.discoveredAt);
-  const onward = discovered === null ? "/decouverte" : "/apprendre";
+  const onward = "/apprendre";
 
   useEffect(() => {
     // Pas de test jouable pour ce pack : on ne bloque personne sur un écran qui s'excuse.
