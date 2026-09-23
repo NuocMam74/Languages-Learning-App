@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isMemoEmpty, memoSheet } from "./memo.ts";
+import { ESSENTIAL_RULES, ESSENTIAL_WORDS, isMemoEmpty, memoEssentials, memoSheet, unitMemoSheet } from "./memo.ts";
 import { loadPack } from "./testing/pack.ts";
 import type { LessonId } from "./types.ts";
 
@@ -97,10 +97,39 @@ describe("couverture du parcours", () => {
   it("une fiche tient sur une page qu'on relit : jamais plus de 40 lignes à retenir", () => {
     // Garde de forme, pas de goût. Une fiche de 200 lignes n'est plus un pense-bête, et personne
     // ne s'en apercevrait avant de l'imprimer.
-    for (const lesson of lessons) {
+    // La fiche d'un thème entier (épreuve, contrat phase26 §5) en réunit plusieurs : elle n'est pas
+    // tenue à une page, son pense-bête au bilan l'est.
+    for (const lesson of lessons.filter((l) => l.kind !== "unit_test")) {
       const sheet = memoSheet(content, lesson.id)!;
       const lines = sheet.words.length + sheet.structures.length + sheet.sounds.length + sheet.phrases.length;
       expect(lines, `${lesson.id} : ${lines} lignes`).toBeLessThanOrEqual(40);
     }
+  });
+});
+
+describe("fiche d'un thème et pense-bête du bilan (contrat phase26 §5)", () => {
+  it("l'épreuve porte la fiche du thème entier : tous les mots de ses niveaux, sans doublon", () => {
+    const unit = content.curriculum.units[0]!;
+    const test = unit.lessons.find((id) => content.lessons.get(id)?.kind === "unit_test")!;
+    const sheet = memoSheet(content, test)!;
+    expect(sheet.lessonId).toBe(test);
+    expect(sheet.title).toEqual(unit.title);
+    const taught = unit.lessons
+      .filter((id) => (content.lessons.get(id)?.kind ?? "lesson") === "lesson")
+      .flatMap((id) => content.lessons.get(id)!.review.srsIntroduce);
+    const ids = [...sheet.words, ...sheet.structures, ...sheet.sounds].map((e) => e.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(new Set(ids)).toEqual(new Set(taught.filter((id) => content.concepts.has(id))));
+    expect(unitMemoSheet(content, "inconnue", test)).toBeNull();
+  });
+
+  it("le pense-bête garde l'essentiel : quelques mots, les règles des fiches du niveau, les pièges", () => {
+    const sheet = memoSheet(content, "vi-south.u00.l01")!;
+    const essentials = memoEssentials(content, sheet);
+    expect(essentials.words.length).toBeLessThanOrEqual(ESSENTIAL_WORDS);
+    expect(essentials.words.length + essentials.moreWords).toBe(sheet.words.length + sheet.structures.length + sheet.sounds.length);
+    // Les pièges de la fiche de l'alphabet, lue avant ce niveau, passent en tête des règles.
+    expect(essentials.rules[0]).toEqual(content.guides.get("g_alphabet")!.pitfalls![0]);
+    expect(essentials.rules.length).toBeLessThanOrEqual(ESSENTIAL_RULES);
   });
 });

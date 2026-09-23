@@ -1,8 +1,9 @@
-import { isMemoEmpty, type ContentIndex, type LessonId, type MemoSheet } from "@parlo/core";
+import { isMemoEmpty, memoEssentials, type ContentIndex, type LessonId, type MemoSheet } from "@parlo/core";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { Vi } from "../components/ui.tsx";
 import { Card, Icon } from "../design/index.ts";
-import { t } from "../i18n/index.ts";
+import { l, t } from "../i18n/index.ts";
 import { buildMemoSheet, canSharePdf, downloadMemo } from "./download.ts";
 
 /**
@@ -41,13 +42,55 @@ export function MemoCard({ content, lessonId }: { content: ContentIndex; lessonI
     }
   };
 
+  const whole = content.lessons.get(lessonId)?.kind === "unit_test";
+  const essentials = memoEssentials(content, sheet);
+
   return (
-    <Card tone="notice" as="section" className="flex flex-col gap-3" data-testid="memo-card">
+    <Card tone="notice" as="section" className="flex flex-col gap-3" data-testid="memo-card" data-scope={whole ? "unit" : "lesson"}>
       <p className="flex items-center gap-2 font-semibold">
         <Icon name="notebook" size={20} className="text-nghe-ecrit" />
-        {t("memo.recap.title")}
+        {t(whole ? "memo.recap.unitTitle" : "memo.recap.title")}
       </p>
-      <p className="text-sm text-phu-sa">{t("memo.recap.body")}</p>
+      <p className="text-sm text-phu-sa">{t(whole ? "memo.recap.unitBody" : "memo.recap.body")}</p>
+
+      {/* Le pense-bête lui-même, à relire avant de fermer l'écran (contrat phase26 §5) : un
+          bouton de téléchargement seul ne faisait rien retenir. */}
+      <div className="flex flex-col gap-3" data-testid="memo-essentials">
+        {essentials.words.length > 0 && (
+          <div>
+            <p className="pb-1 text-sm font-semibold">{t("memo.essentials.words")}</p>
+            <ul className="flex flex-col gap-1">
+              {essentials.words.map((entry) => (
+                <li key={entry.id} className="flex flex-wrap items-baseline gap-x-2">
+                  <Vi className="font-semibold">{entry.vi}</Vi>
+                  <span className="text-sm text-phu-sa">{l(entry.gloss)}</span>
+                </li>
+              ))}
+            </ul>
+            {essentials.moreWords > 0 && <p className="pt-1 text-sm text-phu-sa">{t("memo.essentials.more", { n: essentials.moreWords })}</p>}
+          </div>
+        )}
+        {essentials.rules.length > 0 && (
+          <div>
+            <p className="pb-1 text-sm font-semibold">{t("memo.essentials.rules")}</p>
+            <ul className="flex list-disc flex-col gap-1 pl-5 text-sm">
+              {essentials.rules.map((rule) => (
+                <li key={rule.fr}>{l(rule)}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {essentials.pitfalls.length > 0 && (
+          <div>
+            <p className="pb-1 text-sm font-semibold">{t("memo.section.pitfalls")}</p>
+            <ul className="flex flex-col gap-1 text-sm">
+              {essentials.pitfalls.map((pitfall) => (
+                <li key={pitfall.vi}>{t("memo.pitfall.line", { south: pitfall.vi, north: pitfall.north })}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
         <button
           type="button"

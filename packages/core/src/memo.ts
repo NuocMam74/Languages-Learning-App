@@ -157,6 +157,9 @@ export function memoSheet(content: ContentIndex, lessonId: LessonId): MemoSheet 
   const lesson = content.lessons.get(lessonId);
   if (!lesson) return null;
   const unit = content.curriculum.units.find((u) => u.id === lesson.unit);
+  // L'épreuve d'un thème n'introduit rien : sa fiche est celle **du thème entier** (contrat
+  // phase26 §5) — le pense-bête qu'on garde une fois le thème bouclé.
+  if (lesson.kind === "unit_test" && unit) return unitMemoSheet(content, unit.id, lessonId);
 
   const words: MemoEntry[] = [];
   const structures: MemoEntry[] = [];
@@ -220,5 +223,92 @@ export function memoSheet(content: ContentIndex, lessonId: LessonId): MemoSheet 
     culture,
     dialogues,
     pitfalls,
+  };
+}
+
+/**
+ * Fiche d'un thème entier (contrat phase26 §5) : la réunion des fiches de ses niveaux, sans
+ * doublon, dans l'ordre du cursus. Les révisions et l'épreuve n'y ajoutent rien — elles reprennent
+ * ce que les niveaux ont présenté. `lessonId` est le niveau qui la porte (l'épreuve, en général).
+ */
+export function unitMemoSheet(content: ContentIndex, unitId: UnitId, lessonId: LessonId): MemoSheet | null {
+  const unit = content.curriculum.units.find((u) => u.id === unitId);
+  if (!unit) return null;
+  const sheets = unit.lessons
+    .filter((id) => {
+      const lesson = content.lessons.get(id);
+      return lesson !== undefined && (lesson.kind ?? "lesson") === "lesson";
+    })
+    .flatMap((id) => memoSheet(content, id) ?? []);
+  const byKey = <T>(items: T[], key: (item: T) => string): T[] => {
+    const seen = new Set<string>();
+    return items.filter((item) => {
+      const k = key(item);
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+  };
+  const holder = content.lessons.get(lessonId);
+  return {
+    lessonId,
+    unit: unit.id,
+    unitTitle: unit.title,
+    title: unit.title,
+    goal: holder?.goal ?? unit.title,
+    words: byKey(sheets.flatMap((s) => s.words), (e) => e.id),
+    structures: byKey(sheets.flatMap((s) => s.structures), (e) => e.id),
+    sounds: byKey(sheets.flatMap((s) => s.sounds), (e) => e.id),
+    phrases: byKey(sheets.flatMap((s) => s.phrases), (p) => p.vi),
+    tips: byKey(sheets.flatMap((s) => s.tips), tipKey),
+    culture: byKey(sheets.flatMap((s) => s.culture), (c) => JSON.stringify(c.title)),
+    dialogues: byKey(sheets.flatMap((s) => s.dialogues), (d) => JSON.stringify(d.title)),
+    pitfalls: byKey(sheets.flatMap((s) => s.pitfalls), (p) => p.vi),
+  };
+}
+
+/**
+ * Le pense-bête affiché au bilan (contrat phase26 §5) : ce qu'on relit en dix secondes avant de
+ * fermer l'écran. La fiche complète reste à un geste (écran, PDF) ; ici, seulement l'essentiel :
+ * les mots du niveau, les règles à ne pas oublier, les pièges.
+ *
+ * Les règles viennent des fiches conseils du niveau (leurs « pièges », écrits pour être retenus),
+ * puis des explications du niveau. Rien n'est écrit ici : tout est tiré du pack.
+ */
+export interface MemoEssentials {
+  words: MemoEntry[];
+  /** Mots au-delà de ceux affichés : « et 12 autres dans la fiche ». */
+  moreWords: number;
+  rules: Localized[];
+  pitfalls: MemoSheet["pitfalls"];
+}
+
+export const ESSENTIAL_WORDS = 8;
+export const ESSENTIAL_RULES = 3;
+export const ESSENTIAL_PITFALLS = 3;
+
+export function memoEssentials(content: ContentIndex, sheet: MemoSheet): MemoEssentials {
+  const all = [...sheet.words, ...sheet.structures, ...sheet.sounds];
+  const lesson = content.lessons.get(sheet.lessonId);
+  const unit = content.curriculum.units.find((u) => u.id === sheet.unit);
+  // Les fiches du niveau d'abord ; pour l'épreuve, toutes celles du thème.
+  const guideIds =
+    lesson?.kind === "unit_test"
+      ? [...(unit?.guides ?? []), ...(unit?.lessons ?? []).flatMap((id) => content.lessons.get(id)?.guides ?? [])]
+      : [...(lesson?.guides ?? [])];
+  const fromGuides = [...new Set(guideIds)].flatMap((id) => content.guides.get(id)?.pitfalls ?? []);
+  const rules: Localized[] = [];
+  const seen = new Set<string>();
+  for (const rule of [...fromGuides, ...sheet.tips]) {
+    if (rules.length >= ESSENTIAL_RULES) break;
+    if (seen.has(tipKey(rule))) continue;
+    seen.add(tipKey(rule));
+    rules.push(rule);
+  }
+  return {
+    words: all.slice(0, ESSENTIAL_WORDS),
+    moreWords: Math.max(0, all.length - ESSENTIAL_WORDS),
+    rules,
+    pitfalls: sheet.pitfalls.slice(0, ESSENTIAL_PITFALLS),
   };
 }
